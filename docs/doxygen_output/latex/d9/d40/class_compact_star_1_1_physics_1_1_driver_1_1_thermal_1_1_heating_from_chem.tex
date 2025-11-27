@@ -1,0 +1,126 @@
+\hypertarget{class_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_heating_from_chem}{}\doxysection{Compact\+Star\+::Physics\+::Driver\+::Thermal\+::Heating\+From\+Chem Class Reference}
+\label{class_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_heating_from_chem}\index{CompactStar::Physics::Driver::Thermal::HeatingFromChem@{CompactStar::Physics::Driver::Thermal::HeatingFromChem}}
+
+
+Accumulates the thermal RHS from chemical heating (η⋅Γ terms).  
+
+
+
+
+{\ttfamily \#include $<$Heating\+From\+Chem.\+hpp$>$}
+
+Inheritance diagram for Compact\+Star\+::Physics\+::Driver\+::Thermal\+::Heating\+From\+Chem\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{d9/d40/class_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_heating_from_chem}
+\end{center}
+\end{figure}
+\doxysubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{struct_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_heating_from_chem_1_1_options}{Options}}
+\begin{DoxyCompactList}\small\item\em Optional knobs for channel selection / scaling. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_heating_from_chem_aaee4c064407ef8dc97a3582d3e391be9}\label{class_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_heating_from_chem_aaee4c064407ef8dc97a3582d3e391be9}} 
+{\bfseries Heating\+From\+Chem} (\mbox{\hyperlink{struct_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_heating_from_chem_1_1_options}{Options}} opts=\{\})
+\item 
+std\+::string \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_heating_from_chem_af91c809a426103a5e2df8077d21c6ed1}{Name}} () const override
+\begin{DoxyCompactList}\small\item\em Human-\/readable name for diagnostics/logging. \end{DoxyCompactList}\item 
+std\+::span$<$ const \mbox{\hyperlink{_tags_8hpp_af14f5554b0d9be50c5ea718733bc424b}{State\+::\+State\+Tag}} $>$ \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_heating_from_chem_a9913eff798bd1896243a978d1e5c9cc1}{Depends\+On}} () const override
+\begin{DoxyCompactList}\small\item\em Which state blocks this driver reads. \end{DoxyCompactList}\item 
+std\+::span$<$ const \mbox{\hyperlink{_tags_8hpp_af14f5554b0d9be50c5ea718733bc424b}{State\+::\+State\+Tag}} $>$ \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_heating_from_chem_a40751d8be9aebf75f3302b0b9bd2bd63}{Updates}} () const override
+\begin{DoxyCompactList}\small\item\em Which state blocks this driver updates (adds contributions to). \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_heating_from_chem_a5f9f22c76959e7eb907e5c6997598093}{Accumulate\+RHS}} (double t, const Evolution\+::\+State\+Vector \&Y, Evolution\+::\+RHSAccumulator \&d\+Ydt, const Evolution\+::\+Star\+Context \&ctx) const override
+\begin{DoxyCompactList}\small\item\em Add this driver’s contribution to the global RHS d\+Y/dt. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_heating_from_chem_acfda4da6e6471ff4944a29aa1820aa24}\label{class_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_heating_from_chem_acfda4da6e6471ff4944a29aa1820aa24}} 
+const \mbox{\hyperlink{struct_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_heating_from_chem_1_1_options}{Options}} \& {\bfseries Get\+Options} () const
+\item 
+\mbox{\Hypertarget{class_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_heating_from_chem_aa5a1dde19cb3340d722e1a2cf93057eb}\label{class_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_heating_from_chem_aa5a1dde19cb3340d722e1a2cf93057eb}} 
+void {\bfseries Set\+Options} (const \mbox{\hyperlink{struct_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_heating_from_chem_1_1_options}{Options}} \&o)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Accumulates the thermal RHS from chemical heating (η⋅Γ terms). 
+
+{\bfseries{Depends on\+:}} Chem, Thermal {\bfseries{Updates\+:}} Thermal
+
+The microphysics for Γ\+\_\+i should be accessed via the Star\+Context and/or Microphysics modules (rates/emissivities). This driver only performs the bookkeeping to add its contribution to the thermal component of d\+Y/dt. 
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_heating_from_chem_a5f9f22c76959e7eb907e5c6997598093}\label{class_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_heating_from_chem_a5f9f22c76959e7eb907e5c6997598093}} 
+\index{CompactStar::Physics::Driver::Thermal::HeatingFromChem@{CompactStar::Physics::Driver::Thermal::HeatingFromChem}!AccumulateRHS@{AccumulateRHS}}
+\index{AccumulateRHS@{AccumulateRHS}!CompactStar::Physics::Driver::Thermal::HeatingFromChem@{CompactStar::Physics::Driver::Thermal::HeatingFromChem}}
+\doxysubsubsection{\texorpdfstring{AccumulateRHS()}{AccumulateRHS()}}
+{\footnotesize\ttfamily void Compact\+Star\+::\+Physics\+::\+Driver\+::\+Thermal\+::\+Heating\+From\+Chem\+::\+Accumulate\+RHS (\begin{DoxyParamCaption}\item[{double}]{t,  }\item[{const Evolution\+::\+State\+Vector \&}]{Y,  }\item[{Evolution\+::\+RHSAccumulator \&}]{d\+Ydt,  }\item[{const Evolution\+::\+Star\+Context \&}]{ctx }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Add this driver’s contribution to the global RHS d\+Y/dt. 
+
+Implementations must {\itshape accumulate} into {\ttfamily d\+Ydt} (i.\+e., add), and must not assume any specific call order beyond what the Evolution graph resolves.
+
+
+\begin{DoxyParams}{Parameters}
+{\em t} & Current time (model units; typically seconds). \\
+\hline
+{\em Y} & Read-\/only composite state vector (Spin/\+Thermal/\+Chem/…). \\
+\hline
+{\em d\+Ydt} & Write-\/only accumulator for RHS components (add to it). \\
+\hline
+{\em ctx} & Read-\/only star/context data (geometry, EOS, microphysics). \\
+\hline
+\end{DoxyParams}
+
+
+Implements \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_i_driver_a8f6a4dd41179102863ea109d24e68bf4}{Compact\+Star\+::\+Physics\+::\+IDriver}}.
+
+\mbox{\Hypertarget{class_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_heating_from_chem_a9913eff798bd1896243a978d1e5c9cc1}\label{class_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_heating_from_chem_a9913eff798bd1896243a978d1e5c9cc1}} 
+\index{CompactStar::Physics::Driver::Thermal::HeatingFromChem@{CompactStar::Physics::Driver::Thermal::HeatingFromChem}!DependsOn@{DependsOn}}
+\index{DependsOn@{DependsOn}!CompactStar::Physics::Driver::Thermal::HeatingFromChem@{CompactStar::Physics::Driver::Thermal::HeatingFromChem}}
+\doxysubsubsection{\texorpdfstring{DependsOn()}{DependsOn()}}
+{\footnotesize\ttfamily std\+::span$<$ const \mbox{\hyperlink{_tags_8hpp_af14f5554b0d9be50c5ea718733bc424b}{State\+::\+State\+Tag}} $>$ Compact\+Star\+::\+Physics\+::\+Driver\+::\+Thermal\+::\+Heating\+From\+Chem\+::\+Depends\+On (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Which state blocks this driver reads. 
+
+Return a span to a static array (e.\+g., {\ttfamily static constexpr std\+::array\texorpdfstring{$<$}{<}State\+Tag,2\texorpdfstring{$>$}{>} \{...\}}). 
+
+Implements \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_i_driver_a1bc750160d5a6ae9fe0aba2673703549}{Compact\+Star\+::\+Physics\+::\+IDriver}}.
+
+\mbox{\Hypertarget{class_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_heating_from_chem_af91c809a426103a5e2df8077d21c6ed1}\label{class_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_heating_from_chem_af91c809a426103a5e2df8077d21c6ed1}} 
+\index{CompactStar::Physics::Driver::Thermal::HeatingFromChem@{CompactStar::Physics::Driver::Thermal::HeatingFromChem}!Name@{Name}}
+\index{Name@{Name}!CompactStar::Physics::Driver::Thermal::HeatingFromChem@{CompactStar::Physics::Driver::Thermal::HeatingFromChem}}
+\doxysubsubsection{\texorpdfstring{Name()}{Name()}}
+{\footnotesize\ttfamily std\+::string Compact\+Star\+::\+Physics\+::\+Driver\+::\+Thermal\+::\+Heating\+From\+Chem\+::\+Name (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Human-\/readable name for diagnostics/logging. 
+
+
+
+Implements \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_i_driver_a1337b0292d71b672785c37ba4d7e8564}{Compact\+Star\+::\+Physics\+::\+IDriver}}.
+
+\mbox{\Hypertarget{class_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_heating_from_chem_a40751d8be9aebf75f3302b0b9bd2bd63}\label{class_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_heating_from_chem_a40751d8be9aebf75f3302b0b9bd2bd63}} 
+\index{CompactStar::Physics::Driver::Thermal::HeatingFromChem@{CompactStar::Physics::Driver::Thermal::HeatingFromChem}!Updates@{Updates}}
+\index{Updates@{Updates}!CompactStar::Physics::Driver::Thermal::HeatingFromChem@{CompactStar::Physics::Driver::Thermal::HeatingFromChem}}
+\doxysubsubsection{\texorpdfstring{Updates()}{Updates()}}
+{\footnotesize\ttfamily std\+::span$<$ const \mbox{\hyperlink{_tags_8hpp_af14f5554b0d9be50c5ea718733bc424b}{State\+::\+State\+Tag}} $>$ Compact\+Star\+::\+Physics\+::\+Driver\+::\+Thermal\+::\+Heating\+From\+Chem\+::\+Updates (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Which state blocks this driver updates (adds contributions to). 
+
+Return a span to a static array (e.\+g., {\ttfamily static constexpr std\+::array\texorpdfstring{$<$}{<}State\+Tag,1\texorpdfstring{$>$}{>} \{...\}}). 
+
+Implements \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_i_driver_a0862f87840d73c57161af298c840c48e}{Compact\+Star\+::\+Physics\+::\+IDriver}}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Compact\+Star/\+Physics/\+Driver/\+Thermal/\mbox{\hyperlink{_heating_from_chem_8hpp}{Heating\+From\+Chem.\+hpp}}\end{DoxyCompactItemize}

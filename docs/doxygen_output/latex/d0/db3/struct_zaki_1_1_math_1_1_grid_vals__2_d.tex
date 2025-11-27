@@ -1,0 +1,47 @@
+\hypertarget{struct_zaki_1_1_math_1_1_grid_vals__2_d}{}\doxysection{Zaki\+::Math\+::Grid\+Vals\+\_\+2D Struct Reference}
+\label{struct_zaki_1_1_math_1_1_grid_vals__2_d}\index{Zaki::Math::GridVals\_2D@{Zaki::Math::GridVals\_2D}}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{struct_zaki_1_1_math_1_1_grid_vals__2_d_a978c639db18bb2e954125ec6c6d7ae96}{Grid\+Vals\+\_\+2D}} (const \mbox{\hyperlink{class_zaki_1_1_vector_1_1_data_set}{Zaki\+::\+Vector\+::\+Data\+Set}} \&in\+\_\+ds, const int \&x\+\_\+idx, const int \&y\+\_\+idx, const int \&z\+\_\+val\+\_\+idx)
+\item 
+\mbox{\hyperlink{struct_zaki_1_1_math_1_1_grid_vals__2_d_a914057318b274e79c22d214d363c295f}{Grid\+Vals\+\_\+2D}} (const \mbox{\hyperlink{class_zaki_1_1_vector_1_1_data_set}{Zaki\+::\+Vector\+::\+Data\+Set}} \&in\+\_\+ds, const int \&x\+\_\+idx, const size\+\_\+t \&x\+\_\+res, const int \&y\+\_\+idx, const size\+\_\+t \&y\+\_\+res, const int \&z\+\_\+val\+\_\+idx, const double \&def\+\_\+val=-\/1)
+\item 
+\mbox{\Hypertarget{struct_zaki_1_1_math_1_1_grid_vals__2_d_a1f3f693facdc1f0dbd63920b8bb3dd26}\label{struct_zaki_1_1_math_1_1_grid_vals__2_d_a1f3f693facdc1f0dbd63920b8bb3dd26}} 
+void {\bfseries Interpolate} (const \mbox{\hyperlink{struct_zaki_1_1_math_1_1_grid2_d}{Zaki\+::\+Math\+::\+Grid2D}} \&in\+\_\+g2d)
+\item 
+\mbox{\Hypertarget{struct_zaki_1_1_math_1_1_grid_vals__2_d_ae6d1f4a72225a76c339efb6c7535bcc7}\label{struct_zaki_1_1_math_1_1_grid_vals__2_d_ae6d1f4a72225a76c339efb6c7535bcc7}} 
+double {\bfseries Evaluate} (const double \&in\+\_\+x, const double \&in\+\_\+y)
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{struct_zaki_1_1_math_1_1_grid_vals__2_d_a2b6a87e2a85a75f6fd032ff935e90b4e}\label{struct_zaki_1_1_math_1_1_grid_vals__2_d_a2b6a87e2a85a75f6fd032ff935e90b4e}} 
+double $\ast$ {\bfseries m\+\_\+\+Grid\+Val\+Arr} = nullptr
+\item 
+\mbox{\Hypertarget{struct_zaki_1_1_math_1_1_grid_vals__2_d_abdae54ecac7664214ef658c5bd175e3d}\label{struct_zaki_1_1_math_1_1_grid_vals__2_d_abdae54ecac7664214ef658c5bd175e3d}} 
+size\+\_\+t {\bfseries n\+\_\+x}
+\begin{DoxyCompactList}\small\item\em n\+\_\+x and n\+\_\+y are the same as \textquotesingle{}res\textquotesingle{} = \# of points -\/ 1 \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{struct_zaki_1_1_math_1_1_grid_vals__2_d_a2294360171ecf73261a5d487b8dbb867}\label{struct_zaki_1_1_math_1_1_grid_vals__2_d_a2294360171ecf73261a5d487b8dbb867}} 
+size\+\_\+t {\bfseries n\+\_\+y}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{struct_zaki_1_1_math_1_1_grid_vals__2_d_a978c639db18bb2e954125ec6c6d7ae96}\label{struct_zaki_1_1_math_1_1_grid_vals__2_d_a978c639db18bb2e954125ec6c6d7ae96}} 
+\index{Zaki::Math::GridVals\_2D@{Zaki::Math::GridVals\_2D}!GridVals\_2D@{GridVals\_2D}}
+\index{GridVals\_2D@{GridVals\_2D}!Zaki::Math::GridVals\_2D@{Zaki::Math::GridVals\_2D}}
+\doxysubsubsection{\texorpdfstring{GridVals\_2D()}{GridVals\_2D()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily Zaki\+::\+Math\+::\+Grid\+Vals\+\_\+2\+D\+::\+Grid\+Vals\+\_\+2D (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_zaki_1_1_vector_1_1_data_set}{Zaki\+::\+Vector\+::\+Data\+Set}} \&}]{in\+\_\+ds,  }\item[{const int \&}]{x\+\_\+idx,  }\item[{const int \&}]{y\+\_\+idx,  }\item[{const int \&}]{z\+\_\+val\+\_\+idx }\end{DoxyParamCaption})}
+
+Default constructor If there are missing values, the code will abort \mbox{\Hypertarget{struct_zaki_1_1_math_1_1_grid_vals__2_d_a914057318b274e79c22d214d363c295f}\label{struct_zaki_1_1_math_1_1_grid_vals__2_d_a914057318b274e79c22d214d363c295f}} 
+\index{Zaki::Math::GridVals\_2D@{Zaki::Math::GridVals\_2D}!GridVals\_2D@{GridVals\_2D}}
+\index{GridVals\_2D@{GridVals\_2D}!Zaki::Math::GridVals\_2D@{Zaki::Math::GridVals\_2D}}
+\doxysubsubsection{\texorpdfstring{GridVals\_2D()}{GridVals\_2D()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily Zaki\+::\+Math\+::\+Grid\+Vals\+\_\+2\+D\+::\+Grid\+Vals\+\_\+2D (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_zaki_1_1_vector_1_1_data_set}{Zaki\+::\+Vector\+::\+Data\+Set}} \&}]{in\+\_\+ds,  }\item[{const int \&}]{x\+\_\+idx,  }\item[{const size\+\_\+t \&}]{x\+\_\+res,  }\item[{const int \&}]{y\+\_\+idx,  }\item[{const size\+\_\+t \&}]{y\+\_\+res,  }\item[{const int \&}]{z\+\_\+val\+\_\+idx,  }\item[{const double \&}]{def\+\_\+val = {\ttfamily -\/1} }\end{DoxyParamCaption})}
+
+Second constructor Missing values will be replaced with \textquotesingle{}def\+\_\+val\textquotesingle{} 
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+dependencies/include/\+Zaki/\+Math/\mbox{\hyperlink{_math___core_8hpp}{Math\+\_\+\+Core.\+hpp}}\end{DoxyCompactItemize}

@@ -1,0 +1,107 @@
+\hypertarget{_task_manager_8hpp_source}{}\doxysection{Task\+Manager.\+hpp}
+\label{_task_manager_8hpp_source}\index{CompactStar/Core/TaskManager.hpp@{CompactStar/Core/TaskManager.hpp}}
+\mbox{\hyperlink{_task_manager_8hpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{comment}{// -\/*-\/ lsst-\/c++ -\/*-\/}}
+\DoxyCodeLine{2 \textcolor{comment}{/*}}
+\DoxyCodeLine{3 \textcolor{comment}{ * CompactStar}}
+\DoxyCodeLine{4 \textcolor{comment}{ * See License file at the top of the source tree.}}
+\DoxyCodeLine{5 \textcolor{comment}{ *}}
+\DoxyCodeLine{6 \textcolor{comment}{ * Copyright (c) 2023 Mohammadreza Zakeri}}
+\DoxyCodeLine{7 \textcolor{comment}{ *}}
+\DoxyCodeLine{8 \textcolor{comment}{ * Permission is hereby granted, free of charge, to any person obtaining a copy}}
+\DoxyCodeLine{9 \textcolor{comment}{ * of this software and associated documentation files (the "{}Software"{}), to deal}}
+\DoxyCodeLine{10 \textcolor{comment}{ * in the Software without restriction, including without limitation the rights}}
+\DoxyCodeLine{11 \textcolor{comment}{ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell}}
+\DoxyCodeLine{12 \textcolor{comment}{ * copies of the Software, and to permit persons to whom the Software is}}
+\DoxyCodeLine{13 \textcolor{comment}{ * furnished to do so, subject to the following conditions:}}
+\DoxyCodeLine{14 \textcolor{comment}{ *}}
+\DoxyCodeLine{15 \textcolor{comment}{ * The above copyright notice and this permission notice shall be included in all}}
+\DoxyCodeLine{16 \textcolor{comment}{ * copies or substantial portions of the Software.}}
+\DoxyCodeLine{17 \textcolor{comment}{ *}}
+\DoxyCodeLine{18 \textcolor{comment}{ * THE SOFTWARE IS PROVIDED "{}AS IS"{}, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR}}
+\DoxyCodeLine{19 \textcolor{comment}{ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,}}
+\DoxyCodeLine{20 \textcolor{comment}{ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE}}
+\DoxyCodeLine{21 \textcolor{comment}{ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER}}
+\DoxyCodeLine{22 \textcolor{comment}{ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,}}
+\DoxyCodeLine{23 \textcolor{comment}{ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE}}
+\DoxyCodeLine{24 \textcolor{comment}{ * SOFTWARE.}}
+\DoxyCodeLine{25 \textcolor{comment}{ */}}
+\DoxyCodeLine{26 }
+\DoxyCodeLine{38 \textcolor{preprocessor}{\#ifndef CompactStar\_TaskManager\_H}}
+\DoxyCodeLine{39 \textcolor{preprocessor}{\#define CompactStar\_TaskManager\_H}}
+\DoxyCodeLine{40 }
+\DoxyCodeLine{41 \textcolor{comment}{// \#include <vector>}}
+\DoxyCodeLine{42 \textcolor{preprocessor}{\#include <\mbox{\hyperlink{_math___core_8hpp}{Zaki/Math/Math\_Core.hpp}}>}}
+\DoxyCodeLine{43 \textcolor{preprocessor}{\#include <thread>}}
+\DoxyCodeLine{44 }
+\DoxyCodeLine{45 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_prog_8hpp}{CompactStar/Core/Prog.hpp}}"{}}}
+\DoxyCodeLine{46 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_t_o_v_solver_8hpp}{CompactStar/Core/TOVSolver.hpp}}"{}}}
+\DoxyCodeLine{47 \textcolor{comment}{//==============================================================}}
+\DoxyCodeLine{48 \textcolor{keyword}{namespace }CompactStar}
+\DoxyCodeLine{49 \{}
+\DoxyCodeLine{50 }
+\DoxyCodeLine{51 \textcolor{keyword}{class }MixedStar;}
+\DoxyCodeLine{52 \textcolor{keyword}{class }MixedSequence;}
+\DoxyCodeLine{53 \textcolor{comment}{// ========================================================}}
+\DoxyCodeLine{54 \textcolor{keyword}{class }\mbox{\hyperlink{class_compact_star_1_1_task_manager}{TaskManager}} : \textcolor{keyword}{public} \mbox{\hyperlink{class_compact_star_1_1_prog}{Prog}}}
+\DoxyCodeLine{55 \{}
+\DoxyCodeLine{56     \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{57   \textcolor{keyword}{private}:}
+\DoxyCodeLine{58     std::\_\_1::chrono::steady\_clock::time\_point t\_start;}
+\DoxyCodeLine{59 }
+\DoxyCodeLine{60     \mbox{\hyperlink{class_zaki_1_1_string_1_1_directory}{Zaki::String::Directory}} dar\_eos\_dir = \textcolor{stringliteral}{"{}"{}};}
+\DoxyCodeLine{61     \mbox{\hyperlink{class_zaki_1_1_string_1_1_directory}{Zaki::String::Directory}} vis\_eos\_dir = \textcolor{stringliteral}{"{}"{}};}
+\DoxyCodeLine{62     \textcolor{keywordtype}{double} m\_chi;}
+\DoxyCodeLine{63     std::string chi\_str = \textcolor{stringliteral}{"{}m\_chi"{}};}
+\DoxyCodeLine{64 }
+\DoxyCodeLine{65     \textcolor{keywordtype}{size\_t} num\_of\_thrds = 2;}
+\DoxyCodeLine{66 }
+\DoxyCodeLine{67     std::vector<std::thread> threads;}
+\DoxyCodeLine{68     \mbox{\hyperlink{class_zaki_1_1_math_1_1_cond___polygon}{Zaki::Math::Cond\_Polygon}} c\_poly;}
+\DoxyCodeLine{69     \mbox{\hyperlink{struct_zaki_1_1_math_1_1_axis}{Zaki::Math::Axis}} v\_ax;}
+\DoxyCodeLine{70     \mbox{\hyperlink{struct_zaki_1_1_math_1_1_axis}{Zaki::Math::Axis}} d\_ax;}
+\DoxyCodeLine{71 }
+\DoxyCodeLine{72     \textcolor{comment}{// std::vector<Zaki::Math::Segment> critical\_curve ;}}
+\DoxyCodeLine{73     \mbox{\hyperlink{class_zaki_1_1_math_1_1_curve2_d}{Zaki::Math::Curve2D}} critical\_curve;}
+\DoxyCodeLine{74 }
+\DoxyCodeLine{75     \textcolor{comment}{// MixedSequence sequence\_grid ;}}
+\DoxyCodeLine{76     \mbox{\hyperlink{class_zaki_1_1_vector_1_1_data_set}{Zaki::Vector::DataSet}} sequence\_grid;}
+\DoxyCodeLine{77 }
+\DoxyCodeLine{78     \textcolor{keywordtype}{void} Task(\textcolor{keyword}{const} \textcolor{keywordtype}{int} tsk\_id) \textcolor{keyword}{const};}
+\DoxyCodeLine{79     \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{short} \textcolor{keywordtype}{int} cont\_divisions = 10;}
+\DoxyCodeLine{80     \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{81   \textcolor{keyword}{public}:}
+\DoxyCodeLine{82     \mbox{\hyperlink{class_compact_star_1_1_task_manager}{TaskManager}}(\textcolor{keyword}{const} \textcolor{keywordtype}{size\_t} \&in\_num\_thrds);}
+\DoxyCodeLine{83     \mbox{\hyperlink{class_compact_star_1_1_task_manager}{\string~TaskManager}}();}
+\DoxyCodeLine{84 }
+\DoxyCodeLine{85     \textcolor{keywordtype}{void} SetDarEOSDir(\textcolor{keyword}{const} \mbox{\hyperlink{class_zaki_1_1_string_1_1_directory}{Zaki::String::Directory}} \&);}
+\DoxyCodeLine{86     \textcolor{keywordtype}{void} SetVisEOSDir(\textcolor{keyword}{const} \mbox{\hyperlink{class_zaki_1_1_string_1_1_directory}{Zaki::String::Directory}} \&);}
+\DoxyCodeLine{87     \textcolor{keywordtype}{void} FindDarkEOS(\textcolor{keyword}{const} \textcolor{keywordtype}{double} \&in\_m);}
+\DoxyCodeLine{88     \textcolor{keywordtype}{void} SetChiMass(\textcolor{keyword}{const} \textcolor{keywordtype}{double} \&in\_m);}
+\DoxyCodeLine{89 }
+\DoxyCodeLine{90     \mbox{\hyperlink{class_compact_star_1_1_task_manager}{TaskManager}} *SetExclusionRegion(\textcolor{keyword}{const} \mbox{\hyperlink{class_zaki_1_1_math_1_1_cond___polygon}{Zaki::Math::Cond\_Polygon}} \&);}
+\DoxyCodeLine{91     \mbox{\hyperlink{class_compact_star_1_1_task_manager}{TaskManager}} *SetGrid(\textcolor{keyword}{const} \mbox{\hyperlink{struct_zaki_1_1_math_1_1_axis}{Zaki::Math::Axis}} \&v\_ax,}
+\DoxyCodeLine{92                          \textcolor{keyword}{const} \mbox{\hyperlink{struct_zaki_1_1_math_1_1_axis}{Zaki::Math::Axis}} \&d\_ax);}
+\DoxyCodeLine{93     \textcolor{comment}{// TaskManager* SetWrkDir(const Zaki::String::Directory\& in\_dir) override ;}}
+\DoxyCodeLine{94     \mbox{\hyperlink{struct_zaki_1_1_math_1_1_axis}{Zaki::Math::Axis}} GetVisibleAxis() \textcolor{keyword}{const};}
+\DoxyCodeLine{95     \mbox{\hyperlink{struct_zaki_1_1_math_1_1_axis}{Zaki::Math::Axis}} GetDarkAxis() \textcolor{keyword}{const};}
+\DoxyCodeLine{96 }
+\DoxyCodeLine{97     \textcolor{keywordtype}{void} Work();}
+\DoxyCodeLine{98     \textcolor{keywordtype}{void} ImportSequence(\textcolor{keyword}{const} \mbox{\hyperlink{class_zaki_1_1_string_1_1_directory}{Zaki::String::Directory}} \&in\_dir);}
+\DoxyCodeLine{99     \textcolor{keywordtype}{void} FindCriticalCurve();}
+\DoxyCodeLine{100     \textcolor{keywordtype}{void} FindBtotContour(\textcolor{keyword}{const} \textcolor{keywordtype}{double} \&in\_mass, \textcolor{keyword}{const} std::vector<Zaki::Math::Coord2D> \&);}
+\DoxyCodeLine{101     \textcolor{keywordtype}{void} FindMtotContour(\textcolor{keyword}{const} \textcolor{keywordtype}{double} \&in\_mass);}
+\DoxyCodeLine{102     \textcolor{keywordtype}{void} Precision\_Task(\textcolor{keyword}{const} \textcolor{keywordtype}{double} \&in\_mass) \textcolor{keyword}{const};}
+\DoxyCodeLine{103     \textcolor{keywordtype}{void} FindLimits(\textcolor{keyword}{const} \textcolor{keywordtype}{double} \&in\_mass) \textcolor{keyword}{const};}
+\DoxyCodeLine{104 \};}
+\DoxyCodeLine{105 \textcolor{comment}{// ========================================================}}
+\DoxyCodeLine{106 }
+\DoxyCodeLine{107 \textcolor{comment}{//==============================================================}}
+\DoxyCodeLine{108 }
+\DoxyCodeLine{109 \textcolor{comment}{//==============================================================}}
+\DoxyCodeLine{110 \} \textcolor{comment}{// namespace CompactStar}}
+\DoxyCodeLine{111 \textcolor{comment}{//==============================================================}}
+\DoxyCodeLine{112 \textcolor{preprocessor}{\#endif }\textcolor{comment}{/*CompactStar\_TaskManager\_H*/}\textcolor{preprocessor}{}}
+
+\end{DoxyCode}

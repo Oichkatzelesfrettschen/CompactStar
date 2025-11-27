@@ -1,0 +1,69 @@
+\hypertarget{class_compact_star_1_1_chemical_heating_1_1_microphysics}{}\doxysection{Compact\+Star\+::Chemical\+Heating\+::Microphysics Class Reference}
+\label{class_compact_star_1_1_chemical_heating_1_1_microphysics}\index{CompactStar::ChemicalHeating::Microphysics@{CompactStar::ChemicalHeating::Microphysics}}
+
+
+Strategy interface for thermal coefficients needed by the RHS.  
+
+
+
+
+{\ttfamily \#include $<$Microphysics.\+hpp$>$}
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+virtual double \mbox{\hyperlink{class_compact_star_1_1_chemical_heating_1_1_microphysics_a6b4823f4e6e0fd5e2406381e2c641f69}{cV}} (std\+::size\+\_\+t i, double T) const =0
+\begin{DoxyCompactList}\small\item\em Local specific heat per unit volume $c_V(r,T)$. \end{DoxyCompactList}\item 
+virtual double \mbox{\hyperlink{class_compact_star_1_1_chemical_heating_1_1_microphysics_ac6b4c681049ceb7eb9fa630d9c8a4d92}{reduction}} (std\+::size\+\_\+t i, double T) const
+\begin{DoxyCompactList}\small\item\em Optional multiplicative reduction (e.\+g., superfluid gaps) for rates. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Strategy interface for thermal coefficients needed by the RHS. 
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_compact_star_1_1_chemical_heating_1_1_microphysics_a6b4823f4e6e0fd5e2406381e2c641f69}\label{class_compact_star_1_1_chemical_heating_1_1_microphysics_a6b4823f4e6e0fd5e2406381e2c641f69}} 
+\index{CompactStar::ChemicalHeating::Microphysics@{CompactStar::ChemicalHeating::Microphysics}!cV@{cV}}
+\index{cV@{cV}!CompactStar::ChemicalHeating::Microphysics@{CompactStar::ChemicalHeating::Microphysics}}
+\doxysubsubsection{\texorpdfstring{cV()}{cV()}}
+{\footnotesize\ttfamily virtual double Compact\+Star\+::\+Chemical\+Heating\+::\+Microphysics\+::cV (\begin{DoxyParamCaption}\item[{std\+::size\+\_\+t}]{i,  }\item[{double}]{T }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Local specific heat per unit volume $c_V(r,T)$. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em i} & Radial zone index. \\
+\hline
+{\em T} & Local temperature (K). \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+$c_V$ in \mbox{[}erg cm$^\wedge$\{-\/3\} K$^\wedge$\{-\/1\}\mbox{]}. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_compact_star_1_1_chemical_heating_1_1_microphysics_ac6b4c681049ceb7eb9fa630d9c8a4d92}\label{class_compact_star_1_1_chemical_heating_1_1_microphysics_ac6b4c681049ceb7eb9fa630d9c8a4d92}} 
+\index{CompactStar::ChemicalHeating::Microphysics@{CompactStar::ChemicalHeating::Microphysics}!reduction@{reduction}}
+\index{reduction@{reduction}!CompactStar::ChemicalHeating::Microphysics@{CompactStar::ChemicalHeating::Microphysics}}
+\doxysubsubsection{\texorpdfstring{reduction()}{reduction()}}
+{\footnotesize\ttfamily virtual double Compact\+Star\+::\+Chemical\+Heating\+::\+Microphysics\+::reduction (\begin{DoxyParamCaption}\item[{std\+::size\+\_\+t}]{i,  }\item[{double}]{T }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Optional multiplicative reduction (e.\+g., superfluid gaps) for rates. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em i} & Radial zone index. \\
+\hline
+{\em T} & Local temperature (K). \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Dimensionless factor $0 \le R \le 1$. 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Compact\+Star/\+Chemical\+Heating/\mbox{\hyperlink{_microphysics_8hpp}{Microphysics.\+hpp}}\end{DoxyCompactItemize}

@@ -1,0 +1,332 @@
+\hypertarget{_pulsar__old_8hpp_source}{}\doxysection{Pulsar\+\_\+old.\+hpp}
+\label{_pulsar__old_8hpp_source}\index{CompactStar/Core/Pulsar\_old.hpp@{CompactStar/Core/Pulsar\_old.hpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{comment}{// -\/*-\/ lsst-\/c++ -\/*-\/}}
+\DoxyCodeLine{2 \textcolor{comment}{/*}}
+\DoxyCodeLine{3 \textcolor{comment}{ * CompactStar}}
+\DoxyCodeLine{4 \textcolor{comment}{ * See License file at the top of the source tree.}}
+\DoxyCodeLine{5 \textcolor{comment}{ *}}
+\DoxyCodeLine{6 \textcolor{comment}{ * Copyright (c) 2023 Mohammadreza Zakeri}}
+\DoxyCodeLine{7 \textcolor{comment}{ *}}
+\DoxyCodeLine{8 \textcolor{comment}{ * Permission is hereby granted, free of charge, to any person obtaining a copy}}
+\DoxyCodeLine{9 \textcolor{comment}{ * of this software and associated documentation files (the "{}Software"{}), to deal}}
+\DoxyCodeLine{10 \textcolor{comment}{ * in the Software without restriction, including without limitation the rights}}
+\DoxyCodeLine{11 \textcolor{comment}{ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell}}
+\DoxyCodeLine{12 \textcolor{comment}{ * copies of the Software, and to permit persons to whom the Software is}}
+\DoxyCodeLine{13 \textcolor{comment}{ * furnished to do so, subject to the following conditions:}}
+\DoxyCodeLine{14 \textcolor{comment}{ *}}
+\DoxyCodeLine{15 \textcolor{comment}{ * The above copyright notice and this permission notice shall be included in all}}
+\DoxyCodeLine{16 \textcolor{comment}{ * copies or substantial portions of the Software.}}
+\DoxyCodeLine{17 \textcolor{comment}{ *}}
+\DoxyCodeLine{18 \textcolor{comment}{ * THE SOFTWARE IS PROVIDED "{}AS IS"{}, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR}}
+\DoxyCodeLine{19 \textcolor{comment}{ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,}}
+\DoxyCodeLine{20 \textcolor{comment}{ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE}}
+\DoxyCodeLine{21 \textcolor{comment}{ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER}}
+\DoxyCodeLine{22 \textcolor{comment}{ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,}}
+\DoxyCodeLine{23 \textcolor{comment}{ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE}}
+\DoxyCodeLine{24 \textcolor{comment}{ * SOFTWARE.}}
+\DoxyCodeLine{25 \textcolor{comment}{ */}}
+\DoxyCodeLine{26 }
+\DoxyCodeLine{47 \textcolor{comment}{// Last edit Nov 9, 2021}}
+\DoxyCodeLine{48 \textcolor{preprocessor}{\#ifndef CompactStar\_Pulsar\_H}}
+\DoxyCodeLine{49 \textcolor{preprocessor}{\#define CompactStar\_Pulsar\_H}}
+\DoxyCodeLine{50 }
+\DoxyCodeLine{51 \textcolor{preprocessor}{\#include <map>}}
+\DoxyCodeLine{52 }
+\DoxyCodeLine{53 \textcolor{preprocessor}{\#include <\mbox{\hyperlink{_math___core_8hpp}{Zaki/Math/Math\_Core.hpp}}>}}
+\DoxyCodeLine{54 \textcolor{preprocessor}{\#include <\mbox{\hyperlink{_data_set_8hpp}{Zaki/Vector/DataSet.hpp}}>}}
+\DoxyCodeLine{55 }
+\DoxyCodeLine{56 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_prog_8hpp}{CompactStar/Core/Prog.hpp}}"{}}}
+\DoxyCodeLine{57 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_t_o_v_solver_8hpp}{CompactStar/Core/TOVSolver.hpp}}"{}}}
+\DoxyCodeLine{58 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_comp_o_s_e___e_o_s_8hpp}{CompactStar/EOS/CompOSE\_EOS.hpp}}"{}}}
+\DoxyCodeLine{59 }
+\DoxyCodeLine{60 \textcolor{comment}{//==============================================================}}
+\DoxyCodeLine{61 \textcolor{keyword}{namespace }CompactStar}
+\DoxyCodeLine{62 \{}
+\DoxyCodeLine{63 }
+\DoxyCodeLine{64 \textcolor{comment}{//==============================================================}}
+\DoxyCodeLine{65 \textcolor{comment}{//                      Baryon\_Lim Struct}}
+\DoxyCodeLine{66 \textcolor{comment}{//==============================================================}}
+\DoxyCodeLine{80 \textcolor{comment}{}\textcolor{keyword}{struct }\mbox{\hyperlink{struct_compact_star_1_1_baryon___lim}{Baryon\_Lim}}}
+\DoxyCodeLine{81 \{}
+\DoxyCodeLine{82     \textcolor{comment}{// Baryon's name}}
+\DoxyCodeLine{83     std::string \mbox{\hyperlink{struct_compact_star_1_1_baryon___lim_a6cfabcfd128ad300a4773b067a3ba650}{name}}; }
+\DoxyCodeLine{85     \textcolor{comment}{// Fraction inside the NS}}
+\DoxyCodeLine{86     \textcolor{keywordtype}{double} \mbox{\hyperlink{struct_compact_star_1_1_baryon___lim_a647dce984e0837b2dbbd75c83fe14832}{fraction}}; }
+\DoxyCodeLine{88     \textcolor{comment}{// Similar to fraction, but has the exp(nu) time-\/dilation factor}}
+\DoxyCodeLine{89     \textcolor{keywordtype}{double} \mbox{\hyperlink{struct_compact_star_1_1_baryon___lim_aed27a440d99aa965f729e650604782d4}{b\_dot}}; }
+\DoxyCodeLine{91     \textcolor{comment}{// BNV Limit}}
+\DoxyCodeLine{92     \textcolor{keywordtype}{double} \mbox{\hyperlink{struct_compact_star_1_1_baryon___lim_ae3d13da66deec4c75e2b38839efb594c}{limit}} = 0; }
+\DoxyCodeLine{100     \mbox{\hyperlink{struct_compact_star_1_1_baryon___lim_a7cb0b9e0af9e92d03404d900e5d6d4e3}{Baryon\_Lim}}(\textcolor{keyword}{const} std::string \&in\_name,}
+\DoxyCodeLine{101                \textcolor{keyword}{const} \textcolor{keywordtype}{double} \&in\_fraction,}
+\DoxyCodeLine{102                \textcolor{keyword}{const} \textcolor{keywordtype}{double} \&in\_b\_dot)}
+\DoxyCodeLine{103         : \mbox{\hyperlink{struct_compact_star_1_1_baryon___lim_a6cfabcfd128ad300a4773b067a3ba650}{name}}(in\_name), \mbox{\hyperlink{struct_compact_star_1_1_baryon___lim_a647dce984e0837b2dbbd75c83fe14832}{fraction}}(in\_fraction), \mbox{\hyperlink{struct_compact_star_1_1_baryon___lim_aed27a440d99aa965f729e650604782d4}{b\_dot}}(in\_b\_dot)}
+\DoxyCodeLine{104     \{}
+\DoxyCodeLine{105     \}}
+\DoxyCodeLine{106 \};}
+\DoxyCodeLine{107 \textcolor{comment}{//==============================================================}}
+\DoxyCodeLine{108 }
+\DoxyCodeLine{109 \textcolor{comment}{//==============================================================}}
+\DoxyCodeLine{110 \textcolor{comment}{//                        Pulsar Class}}
+\DoxyCodeLine{111 \textcolor{comment}{//==============================================================}}
+\DoxyCodeLine{112 }
+\DoxyCodeLine{128 \textcolor{keyword}{class }Pulsar : \textcolor{keyword}{public} Prog}
+\DoxyCodeLine{129 \{}
+\DoxyCodeLine{130 }
+\DoxyCodeLine{131     \textcolor{keyword}{friend} \textcolor{keyword}{class }Decay\_Analysis;}
+\DoxyCodeLine{132 }
+\DoxyCodeLine{133     \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{134   \textcolor{keyword}{private}:}
+\DoxyCodeLine{135     \textcolor{comment}{// Spin and mass properties}}
+\DoxyCodeLine{136 }
+\DoxyCodeLine{137     \textcolor{comment}{// Pulsar mass}}
+\DoxyCodeLine{138     \mbox{\hyperlink{class_zaki_1_1_math_1_1_quantity}{Zaki::Math::Quantity}} mp; }
+\DoxyCodeLine{140     \textcolor{comment}{// Observed pulsar spin period (ms)}}
+\DoxyCodeLine{141     \mbox{\hyperlink{class_zaki_1_1_math_1_1_quantity}{Zaki::Math::Quantity}} spin\_p; }
+\DoxyCodeLine{143     \textcolor{comment}{// Observed pulsar spin period derivative}}
+\DoxyCodeLine{144     \mbox{\hyperlink{class_zaki_1_1_math_1_1_quantity}{Zaki::Math::Quantity}} spin\_p\_dot; }
+\DoxyCodeLine{146     \textcolor{comment}{// Distance between the Solar system Barycentre (SSB)}}
+\DoxyCodeLine{147     \textcolor{comment}{//  and the position of the isolated pulsar or}}
+\DoxyCodeLine{148     \textcolor{comment}{//  the binary barycentre in the case of a binary pulsar.}}
+\DoxyCodeLine{149     \textcolor{comment}{// Unit: kpc}}
+\DoxyCodeLine{150     \mbox{\hyperlink{class_zaki_1_1_math_1_1_quantity}{Zaki::Math::Quantity}} d = \{0, 0\}; }
+\DoxyCodeLine{152     \textcolor{comment}{// Proper motion of the pulsar}}
+\DoxyCodeLine{153     \textcolor{comment}{// Unit: milli-\/arcsec per year}}
+\DoxyCodeLine{154     \mbox{\hyperlink{class_zaki_1_1_math_1_1_quantity}{Zaki::Math::Quantity}} mu = \{0, 0\}; }
+\DoxyCodeLine{156     \textcolor{comment}{// Limit on BNV form spin-\/down}}
+\DoxyCodeLine{157     \textcolor{keywordtype}{double} bnv\_spin\_down\_limit; }
+\DoxyCodeLine{170     \mbox{\hyperlink{class_zaki_1_1_vector_1_1_data_set}{Zaki::Vector::DataSet}} profile;}
+\DoxyCodeLine{171 }
+\DoxyCodeLine{176     \mbox{\hyperlink{class_zaki_1_1_vector_1_1_data_set}{Zaki::Vector::DataSet}} seq\_profile;}
+\DoxyCodeLine{177 }
+\DoxyCodeLine{178     \textcolor{comment}{// The point along the sequence that this pulsar belongs to}}
+\DoxyCodeLine{179     SeqPoint seq\_point;}
+\DoxyCodeLine{180 }
+\DoxyCodeLine{181     CompOSE\_EOS *eos = \textcolor{keyword}{nullptr}; }
+\DoxyCodeLine{188     \textcolor{keywordtype}{double} eta\_I;}
+\DoxyCodeLine{189 }
+\DoxyCodeLine{195     std::map<std::string, std::string> baryons = \{}
+\DoxyCodeLine{196         \{\textcolor{stringliteral}{"{}10"{}}, \textcolor{stringliteral}{"{}Neutron"{}}\},}
+\DoxyCodeLine{197         \{\textcolor{stringliteral}{"{}100"{}}, \textcolor{stringliteral}{"{}Lambda"{}}\},}
+\DoxyCodeLine{198         \{\textcolor{stringliteral}{"{}110"{}}, \textcolor{stringliteral}{"{}Sigma-\/"{}}\},}
+\DoxyCodeLine{199         \{\textcolor{stringliteral}{"{}111"{}}, \textcolor{stringliteral}{"{}Sigma0"{}}\},}
+\DoxyCodeLine{200         \{\textcolor{stringliteral}{"{}112"{}}, \textcolor{stringliteral}{"{}Sigma+"{}}\},}
+\DoxyCodeLine{201         \{\textcolor{stringliteral}{"{}120"{}}, \textcolor{stringliteral}{"{}Xi-\/"{}}\},}
+\DoxyCodeLine{202         \{\textcolor{stringliteral}{"{}121"{}}, \textcolor{stringliteral}{"{}Xi0"{}}\}\};}
+\DoxyCodeLine{203 }
+\DoxyCodeLine{209     \textcolor{keywordtype}{bool} IsBaryon(\textcolor{keyword}{const} std::string \&in\_label);}
+\DoxyCodeLine{210 }
+\DoxyCodeLine{211     \textcolor{comment}{// -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{212     \textcolor{comment}{//         Temperature (private)}}
+\DoxyCodeLine{213     \textcolor{comment}{// -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{218 \textcolor{comment}{}    \textcolor{keywordtype}{double} T\_core = 0;}
+\DoxyCodeLine{219 }
+\DoxyCodeLine{222 }
+\DoxyCodeLine{228     \textcolor{keywordtype}{double} T\_blanket = 0;}
+\DoxyCodeLine{229 }
+\DoxyCodeLine{234     \textcolor{keywordtype}{double} T\_surf = 0;}
+\DoxyCodeLine{235 }
+\DoxyCodeLine{241     \textcolor{keywordtype}{double} r\_blanket = 0;}
+\DoxyCodeLine{242 }
+\DoxyCodeLine{248     \textcolor{keywordtype}{int} r\_blanket\_idx = 0;}
+\DoxyCodeLine{249 }
+\DoxyCodeLine{252     \textcolor{keywordtype}{double} r\_durca\_thresh = 0;}
+\DoxyCodeLine{253 }
+\DoxyCodeLine{257     \mbox{\hyperlink{struct_zaki_1_1_vector_1_1_data_column}{Zaki::Vector::DataColumn}} r\_durca\_cond;}
+\DoxyCodeLine{258 }
+\DoxyCodeLine{261     \textcolor{keywordtype}{double} DUrca\_emissivity\_prefactor = 3e27;}
+\DoxyCodeLine{262 }
+\DoxyCodeLine{265     \textcolor{keywordtype}{double} MUrca\_emissivity\_prefactor = 3e21;}
+\DoxyCodeLine{266     \textcolor{comment}{// -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{267 }
+\DoxyCodeLine{268     \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{269   \textcolor{keyword}{public}:}
+\DoxyCodeLine{273     \mbox{\hyperlink{class_compact_star_1_1_pulsar_aa8e5083c30a7bbe59f3db9277c05e769}{Pulsar}}();}
+\DoxyCodeLine{274 }
+\DoxyCodeLine{282     \mbox{\hyperlink{class_compact_star_1_1_pulsar_aa8e5083c30a7bbe59f3db9277c05e769}{Pulsar}}(\textcolor{keyword}{const} std::string \&name,}
+\DoxyCodeLine{283            \textcolor{keyword}{const} \mbox{\hyperlink{class_zaki_1_1_math_1_1_quantity}{Zaki::Math::Quantity}} \&m,}
+\DoxyCodeLine{284            \textcolor{keyword}{const} \mbox{\hyperlink{class_zaki_1_1_math_1_1_quantity}{Zaki::Math::Quantity}} \&spin\_p,}
+\DoxyCodeLine{285            \textcolor{keyword}{const} \mbox{\hyperlink{class_zaki_1_1_math_1_1_quantity}{Zaki::Math::Quantity}} \&spin\_pdot);}
+\DoxyCodeLine{286 }
+\DoxyCodeLine{290     \mbox{\hyperlink{class_compact_star_1_1_pulsar_a23f6bf4e493f5970afa53c9881c75f3e}{\string~Pulsar}}();}
+\DoxyCodeLine{291 }
+\DoxyCodeLine{292     \textcolor{comment}{// /// Copy Constructor}}
+\DoxyCodeLine{293     \textcolor{comment}{// Pulsar(const Pulsar \&) = delete ;}}
+\DoxyCodeLine{294 }
+\DoxyCodeLine{295     \textcolor{comment}{// /// Assignment operator}}
+\DoxyCodeLine{296     \textcolor{comment}{// Pulsar\& operator= (const Pulsar\&) = delete ;}}
+\DoxyCodeLine{297 }
+\DoxyCodeLine{302     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_compact_star_1_1_pulsar_a904a6fb35defc737c27fc8386974dd68}{SetMass}}(\textcolor{keyword}{const} \mbox{\hyperlink{class_zaki_1_1_math_1_1_quantity}{Zaki::Math::Quantity}} \&in\_mass);}
+\DoxyCodeLine{303 }
+\DoxyCodeLine{308     \textcolor{keywordtype}{void} SetSpinP(\textcolor{keyword}{const} \mbox{\hyperlink{class_zaki_1_1_math_1_1_quantity}{Zaki::Math::Quantity}} \&in\_spin\_p);}
+\DoxyCodeLine{309 }
+\DoxyCodeLine{314     \textcolor{keywordtype}{void} SetSpinPDot(\textcolor{keyword}{const} \mbox{\hyperlink{class_zaki_1_1_math_1_1_quantity}{Zaki::Math::Quantity}} \&in\_spin\_p\_dot);}
+\DoxyCodeLine{315 }
+\DoxyCodeLine{323     \textcolor{keywordtype}{void} SetDistance(\textcolor{keyword}{const} \mbox{\hyperlink{class_zaki_1_1_math_1_1_quantity}{Zaki::Math::Quantity}} \&in\_d);}
+\DoxyCodeLine{324 }
+\DoxyCodeLine{329     \textcolor{keywordtype}{void} SetProperMotion(\textcolor{keyword}{const} \mbox{\hyperlink{class_zaki_1_1_math_1_1_quantity}{Zaki::Math::Quantity}} \&in\_mu);}
+\DoxyCodeLine{330 }
+\DoxyCodeLine{331     \textcolor{comment}{// -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{332     \textcolor{comment}{// Profile loading}}
+\DoxyCodeLine{333     \textcolor{comment}{// -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{334 }
+\DoxyCodeLine{341     \textcolor{keywordtype}{int} \mbox{\hyperlink{class_compact_star_1_1_pulsar_ac9898a0d66b950119e8eff8d27a15bcf}{FindProfile}}(\textcolor{keyword}{const} std::string \&model\_name,}
+\DoxyCodeLine{342                     \textcolor{keyword}{const} \mbox{\hyperlink{class_zaki_1_1_string_1_1_directory}{Zaki::String::Directory}} \&in\_dir = \textcolor{stringliteral}{"{}"{}});}
+\DoxyCodeLine{343 }
+\DoxyCodeLine{349     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_compact_star_1_1_pulsar_a7d1fd708248d018199d1813cd3217cae}{ImportProfile}}(\textcolor{keyword}{const} std::string \&model\_name,}
+\DoxyCodeLine{350                        \textcolor{keyword}{const} \mbox{\hyperlink{class_zaki_1_1_string_1_1_directory}{Zaki::String::Directory}} \&in\_dir = \textcolor{stringliteral}{"{}"{}});}
+\DoxyCodeLine{351 }
+\DoxyCodeLine{356     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_compact_star_1_1_pulsar_a4da6eefe7e3da41b24a330d8587c4e7e}{AttachEOS}}(CompOSE\_EOS *eos);}
+\DoxyCodeLine{357     \textcolor{comment}{// -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{358     \textcolor{comment}{// Getters}}
+\DoxyCodeLine{359     \textcolor{comment}{// -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{360 }
+\DoxyCodeLine{365     \mbox{\hyperlink{class_zaki_1_1_math_1_1_quantity}{Zaki::Math::Quantity}} \mbox{\hyperlink{class_compact_star_1_1_pulsar_a8bf48f63afab8d6b6c69ab9480f1f773}{GetMass}}() \textcolor{keyword}{const};}
+\DoxyCodeLine{366 }
+\DoxyCodeLine{371     \mbox{\hyperlink{class_zaki_1_1_vector_1_1_data_set}{Zaki::Vector::DataSet}} *\mbox{\hyperlink{class_compact_star_1_1_pulsar_a93fa1bce0fee1dfcaf3c488a61282c11}{GetProfile}}();}
+\DoxyCodeLine{372 }
+\DoxyCodeLine{378     CompOSE\_EOS *\mbox{\hyperlink{class_compact_star_1_1_pulsar_a63acf24ba4d73ed43975b3a0f98a3444}{GetEOS}}() \textcolor{keyword}{const};}
+\DoxyCodeLine{379 }
+\DoxyCodeLine{384     \mbox{\hyperlink{struct_zaki_1_1_vector_1_1_data_column}{Zaki::Vector::DataColumn}} GetMetricNu() \textcolor{keyword}{const};}
+\DoxyCodeLine{385 }
+\DoxyCodeLine{391     \textcolor{keywordtype}{double} GetMetricNu(\textcolor{keyword}{const} \textcolor{keywordtype}{double} \&in\_r) \textcolor{keyword}{const};}
+\DoxyCodeLine{392 }
+\DoxyCodeLine{394     SeqPoint GetSeqPoint() \textcolor{keyword}{const};}
+\DoxyCodeLine{395 }
+\DoxyCodeLine{401     \textcolor{keyword}{const} \mbox{\hyperlink{class_zaki_1_1_vector_1_1_data_set}{Zaki::Vector::DataSet}} *GetSeqProfile() \textcolor{keyword}{const};}
+\DoxyCodeLine{402 }
+\DoxyCodeLine{403     \textcolor{comment}{// -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{404     \textcolor{comment}{// BNV analysis}}
+\DoxyCodeLine{405     \textcolor{comment}{// -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{406 }
+\DoxyCodeLine{411     \textcolor{keywordtype}{void} FindBNVGammaLimits();}
+\DoxyCodeLine{412 }
+\DoxyCodeLine{417     \textcolor{keywordtype}{double} GetBNVSpinDownLimit();}
+\DoxyCodeLine{418 }
+\DoxyCodeLine{419     \textcolor{comment}{// -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{420     \textcolor{comment}{// Spin observables}}
+\DoxyCodeLine{421     \textcolor{comment}{// -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{422 }
+\DoxyCodeLine{427     \mbox{\hyperlink{class_zaki_1_1_math_1_1_quantity}{Zaki::Math::Quantity}} \mbox{\hyperlink{class_compact_star_1_1_pulsar_a31450ca0b07ddd1d9d03332926da7807}{GetSpinP}}() \textcolor{keyword}{const};}
+\DoxyCodeLine{428 }
+\DoxyCodeLine{433     \mbox{\hyperlink{class_zaki_1_1_math_1_1_quantity}{Zaki::Math::Quantity}} GetSpinPDot() \textcolor{keyword}{const};}
+\DoxyCodeLine{434 }
+\DoxyCodeLine{440     \mbox{\hyperlink{class_zaki_1_1_math_1_1_quantity}{Zaki::Math::Quantity}} GetSpinPDot\_over\_P() \textcolor{keyword}{const};}
+\DoxyCodeLine{441 }
+\DoxyCodeLine{442     \textcolor{comment}{// -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{443     \textcolor{comment}{// Distance \& motion}}
+\DoxyCodeLine{444     \textcolor{comment}{// -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{445 }
+\DoxyCodeLine{453     \mbox{\hyperlink{class_zaki_1_1_math_1_1_quantity}{Zaki::Math::Quantity}} GetDistance() \textcolor{keyword}{const};}
+\DoxyCodeLine{454 }
+\DoxyCodeLine{460     \mbox{\hyperlink{class_zaki_1_1_math_1_1_quantity}{Zaki::Math::Quantity}} GetProperMotion() \textcolor{keyword}{const};}
+\DoxyCodeLine{461 }
+\DoxyCodeLine{466     std::vector<Baryon\_Lim> EvalBaryonNumber();}
+\DoxyCodeLine{467 }
+\DoxyCodeLine{468     \textcolor{comment}{// -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{469     \textcolor{comment}{// Composition \& plotting}}
+\DoxyCodeLine{470     \textcolor{comment}{// -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{471 }
+\DoxyCodeLine{478     \textcolor{keywordtype}{void} PlotRelativeComposition(\textcolor{keyword}{const} std::string \&file,}
+\DoxyCodeLine{479                                  \textcolor{keyword}{const} \mbox{\hyperlink{class_zaki_1_1_string_1_1_directory}{Zaki::String::Directory}} \&in\_dir = \textcolor{stringliteral}{"{}"{}});}
+\DoxyCodeLine{480 }
+\DoxyCodeLine{482     \textcolor{keywordtype}{void} PlotAbsoluteComposition(\textcolor{keyword}{const} std::string \&file,}
+\DoxyCodeLine{483                                  \textcolor{keyword}{const} \mbox{\hyperlink{class_zaki_1_1_string_1_1_directory}{Zaki::String::Directory}} \&in\_dir = \textcolor{stringliteral}{"{}"{}}) \textcolor{keyword}{const};}
+\DoxyCodeLine{484 }
+\DoxyCodeLine{485     \textcolor{comment}{// /// Plots the chemical potentials vs radius}}
+\DoxyCodeLine{486     \textcolor{comment}{// /// For now only for electron!}}
+\DoxyCodeLine{487     \textcolor{comment}{// void PlotChemPotential(const std::string\& file,}}
+\DoxyCodeLine{488     \textcolor{comment}{//                         const Zaki::String::Directory\& in\_dir="{}"{}) const ;}}
+\DoxyCodeLine{489 }
+\DoxyCodeLine{494     \textcolor{keywordtype}{void} PlotFermiE(\textcolor{keyword}{const} std::string \&file,}
+\DoxyCodeLine{495                     \textcolor{keyword}{const} \mbox{\hyperlink{class_zaki_1_1_string_1_1_directory}{Zaki::String::Directory}} \&in\_dir = \textcolor{stringliteral}{"{}"{}}) \textcolor{keyword}{const};}
+\DoxyCodeLine{496 }
+\DoxyCodeLine{498     \textcolor{keywordtype}{void} PlotExpNu(\textcolor{keyword}{const} std::string \&file,}
+\DoxyCodeLine{499                    \textcolor{keyword}{const} \mbox{\hyperlink{class_zaki_1_1_string_1_1_directory}{Zaki::String::Directory}} \&in\_dir = \textcolor{stringliteral}{"{}"{}}) \textcolor{keyword}{const};}
+\DoxyCodeLine{500 }
+\DoxyCodeLine{503     \textcolor{keywordtype}{double} Get\_Surface\_Gravity() \textcolor{keyword}{const};}
+\DoxyCodeLine{504 }
+\DoxyCodeLine{505     \textcolor{comment}{// -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{506     \textcolor{comment}{//         Temperature Methods (public)}}
+\DoxyCodeLine{507     \textcolor{comment}{// -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{510 \textcolor{comment}{}    \textcolor{keywordtype}{void} Set\_T\_Core(\textcolor{keyword}{const} \textcolor{keywordtype}{double} \&);}
+\DoxyCodeLine{511 }
+\DoxyCodeLine{514     \textcolor{keywordtype}{void} Set\_T\_Blanket(\textcolor{keyword}{const} \textcolor{keywordtype}{double} \&);}
+\DoxyCodeLine{515 }
+\DoxyCodeLine{518     \textcolor{keywordtype}{void} Set\_T\_Surf(\textcolor{keyword}{const} \textcolor{keywordtype}{double} \&);}
+\DoxyCodeLine{519 }
+\DoxyCodeLine{522     \textcolor{keywordtype}{void} Set\_T\_Surf\_Apparent(\textcolor{keyword}{const} \textcolor{keywordtype}{double} \&);}
+\DoxyCodeLine{523 }
+\DoxyCodeLine{527     \textcolor{keywordtype}{double} Get\_R\_Blanket() \textcolor{keyword}{const};}
+\DoxyCodeLine{528 }
+\DoxyCodeLine{532     \textcolor{keywordtype}{double} Get\_R\_Durca() \textcolor{keyword}{const};}
+\DoxyCodeLine{533 }
+\DoxyCodeLine{536     \textcolor{keywordtype}{double} Get\_T\_Core() \textcolor{keyword}{const};}
+\DoxyCodeLine{537 }
+\DoxyCodeLine{540     \textcolor{keywordtype}{double} Get\_T\_Blanket() \textcolor{keyword}{const};}
+\DoxyCodeLine{541 }
+\DoxyCodeLine{544     \textcolor{keywordtype}{double} Get\_T\_Surf() \textcolor{keyword}{const};}
+\DoxyCodeLine{545 }
+\DoxyCodeLine{548     \textcolor{keywordtype}{double} Get\_T\_Surf\_Apparent() \textcolor{keyword}{const};}
+\DoxyCodeLine{549 }
+\DoxyCodeLine{554     \textcolor{keywordtype}{double} Get\_Redshifted\_T() \textcolor{keyword}{const};}
+\DoxyCodeLine{555 }
+\DoxyCodeLine{559     \textcolor{keywordtype}{double} Get\_T(\textcolor{keyword}{const} \textcolor{keywordtype}{double} \&in\_r) \textcolor{keyword}{const};}
+\DoxyCodeLine{560 }
+\DoxyCodeLine{561     \textcolor{comment}{// Returns the temperature DataColumn as a function of r(km)}}
+\DoxyCodeLine{562     \textcolor{comment}{// as measured in a local frame inside the star.}}
+\DoxyCodeLine{563     \textcolor{comment}{// Assuming that the interior of NS is thermalized}}
+\DoxyCodeLine{564     \mbox{\hyperlink{struct_zaki_1_1_vector_1_1_data_column}{Zaki::Vector::DataColumn}} Get\_T() \textcolor{keyword}{const};}
+\DoxyCodeLine{565 }
+\DoxyCodeLine{569     \textcolor{keywordtype}{double} Get\_Surface\_Photon\_Lumin() \textcolor{keyword}{const};}
+\DoxyCodeLine{570 }
+\DoxyCodeLine{575     \textcolor{keywordtype}{double} Get\_Surface\_Photon\_Lumin\_T9242() \textcolor{keyword}{const};}
+\DoxyCodeLine{576 }
+\DoxyCodeLine{580     \textcolor{keywordtype}{double} Get\_DUrca\_Neutrino\_Emissivity(\textcolor{keyword}{const} \textcolor{keywordtype}{double} \&in\_radius) \textcolor{keyword}{const};}
+\DoxyCodeLine{581     \mbox{\hyperlink{struct_zaki_1_1_vector_1_1_data_column}{Zaki::Vector::DataColumn}} Get\_DUrca\_Neutrino\_Emissivity() \textcolor{keyword}{const};}
+\DoxyCodeLine{582 }
+\DoxyCodeLine{586     \mbox{\hyperlink{struct_zaki_1_1_vector_1_1_data_column}{Zaki::Vector::DataColumn}} Get\_DUrca\_Neutrino\_Emissivity\_T96() \textcolor{keyword}{const};}
+\DoxyCodeLine{587 }
+\DoxyCodeLine{591     \textcolor{keywordtype}{double} Get\_DUrca\_Neutrino\_Rate(\textcolor{keyword}{const} \textcolor{keywordtype}{double} \&in\_radius) \textcolor{keyword}{const};}
+\DoxyCodeLine{592     \mbox{\hyperlink{struct_zaki_1_1_vector_1_1_data_column}{Zaki::Vector::DataColumn}} Get\_DUrca\_Neutrino\_Rate() \textcolor{keyword}{const};}
+\DoxyCodeLine{593 }
+\DoxyCodeLine{597     \textcolor{keywordtype}{double} Get\_MUrca\_Neutrino\_Emissivity(\textcolor{keyword}{const} \textcolor{keywordtype}{double} \&in\_radius) \textcolor{keyword}{const};}
+\DoxyCodeLine{598     \mbox{\hyperlink{struct_zaki_1_1_vector_1_1_data_column}{Zaki::Vector::DataColumn}} Get\_MUrca\_Neutrino\_Emissivity() \textcolor{keyword}{const};}
+\DoxyCodeLine{599 }
+\DoxyCodeLine{603     \mbox{\hyperlink{struct_zaki_1_1_vector_1_1_data_column}{Zaki::Vector::DataColumn}} Get\_MUrca\_Neutrino\_Emissivity\_T98() \textcolor{keyword}{const};}
+\DoxyCodeLine{604 }
+\DoxyCodeLine{608     \textcolor{keywordtype}{double} Get\_MUrca\_Neutrino\_Rate(\textcolor{keyword}{const} \textcolor{keywordtype}{double} \&in\_radius) \textcolor{keyword}{const};}
+\DoxyCodeLine{609     \mbox{\hyperlink{struct_zaki_1_1_vector_1_1_data_column}{Zaki::Vector::DataColumn}} Get\_MUrca\_Neutrino\_Rate() \textcolor{keyword}{const};}
+\DoxyCodeLine{610 }
+\DoxyCodeLine{614     \textcolor{keywordtype}{double} Get\_Neutrino\_Emissivity(\textcolor{keyword}{const} \textcolor{keywordtype}{double} \&in\_radius) \textcolor{keyword}{const};}
+\DoxyCodeLine{615     \mbox{\hyperlink{struct_zaki_1_1_vector_1_1_data_column}{Zaki::Vector::DataColumn}} Get\_Neutrino\_Emissivity() \textcolor{keyword}{const};}
+\DoxyCodeLine{616 }
+\DoxyCodeLine{620     \textcolor{keywordtype}{double} Get\_Neutrino\_Rate(\textcolor{keyword}{const} \textcolor{keywordtype}{double} \&in\_radius) \textcolor{keyword}{const};}
+\DoxyCodeLine{621     \mbox{\hyperlink{struct_zaki_1_1_vector_1_1_data_column}{Zaki::Vector::DataColumn}} Get\_Neutrino\_Rate() \textcolor{keyword}{const};}
+\DoxyCodeLine{622 }
+\DoxyCodeLine{626     \textcolor{keywordtype}{void} Plot\_Neutrino\_Emissivity(\textcolor{keyword}{const} std::string \&file,}
+\DoxyCodeLine{627                                   \textcolor{keyword}{const} \mbox{\hyperlink{class_zaki_1_1_string_1_1_directory}{Zaki::String::Directory}} \&in\_dir = \textcolor{stringliteral}{"{}"{}}) \textcolor{keyword}{const};}
+\DoxyCodeLine{628 }
+\DoxyCodeLine{632     \textcolor{keywordtype}{void} Plot\_Neutrino\_Rate(\textcolor{keyword}{const} std::string \&file,}
+\DoxyCodeLine{633                             \textcolor{keyword}{const} \mbox{\hyperlink{class_zaki_1_1_string_1_1_directory}{Zaki::String::Directory}} \&in\_dir = \textcolor{stringliteral}{"{}"{}}) \textcolor{keyword}{const};}
+\DoxyCodeLine{634 }
+\DoxyCodeLine{638     \textcolor{keywordtype}{double} Get\_Neutrino\_Lumin() \textcolor{keyword}{const};}
+\DoxyCodeLine{639 }
+\DoxyCodeLine{644     \textcolor{keywordtype}{double} Get\_DUrca\_Neutrino\_Rate\_T95() \textcolor{keyword}{const};}
+\DoxyCodeLine{645 }
+\DoxyCodeLine{650     \textcolor{keywordtype}{double} Get\_MUrca\_Neutrino\_Rate\_T97() \textcolor{keyword}{const};}
+\DoxyCodeLine{651     \textcolor{comment}{// -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{652 \};}
+\DoxyCodeLine{653 }
+\DoxyCodeLine{654 \textcolor{comment}{//==============================================================}}
+\DoxyCodeLine{655 \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{656 \} \textcolor{comment}{// End of namespace CompactStar}}
+\DoxyCodeLine{657 \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{658 }
+\DoxyCodeLine{667 std::ostream \&operator<<(std::ostream \&, \textcolor{keyword}{const} \mbox{\hyperlink{struct_compact_star_1_1_baryon___lim}{CompactStar::Baryon\_Lim}} \&);}
+\DoxyCodeLine{668 \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{669 }
+\DoxyCodeLine{670 \textcolor{preprocessor}{\#endif }\textcolor{comment}{/*CompactStar\_Pulsar\_H*/}\textcolor{preprocessor}{}}
+
+\end{DoxyCode}

@@ -1,0 +1,110 @@
+\hypertarget{_data_set_8hpp}{}\doxysection{dependencies/include/\+Zaki/\+Vector/\+Data\+Set.hpp File Reference}
+\label{_data_set_8hpp}\index{dependencies/include/Zaki/Vector/DataSet.hpp@{dependencies/include/Zaki/Vector/DataSet.hpp}}
+
+
+Data\+Columns and Data\+Sets generalize std\+::vector to Mathematica style sets.  
+
+
+{\ttfamily \#include $<$gsl/gsl\+\_\+spline.\+h$>$}\newline
+{\ttfamily \#include $<$vector$>$}\newline
+{\ttfamily \#include $<$string$>$}\newline
+{\ttfamily \#include $<$sstream$>$}\newline
+{\ttfamily \#include $<$map$>$}\newline
+{\ttfamily \#include $<$Zaki/\+String/\+Directory.\+hpp$>$}\newline
+{\ttfamily \#include $<$Zaki/\+Math/\+Math\+\_\+\+Core.\+hpp$>$}\newline
+{\ttfamily \#include $<$Zaki/\+File/\+Vec\+Saver.\+hpp$>$}\newline
+\doxysubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{struct_zaki_1_1_vector_1_1_data_column}{Zaki\+::\+Vector\+::\+Data\+Column}}
+\item 
+struct \mbox{\hyperlink{struct_zaki_1_1_vector_1_1_row}{Zaki\+::\+Vector\+::\+Row}}
+\item 
+struct \mbox{\hyperlink{struct_zaki_1_1_vector_1_1_spline_idx}{Zaki\+::\+Vector\+::\+Spline\+Idx}}
+\item 
+struct \mbox{\hyperlink{struct_zaki_1_1_vector_1_1_spline_set}{Zaki\+::\+Vector\+::\+Spline\+Set}}
+\item 
+class \mbox{\hyperlink{class_zaki_1_1_vector_1_1_data_set}{Zaki\+::\+Vector\+::\+Data\+Set}}
+\item 
+struct \mbox{\hyperlink{struct_zaki_1_1_vector_1_1_data_set_1_1_plot_param}{Zaki\+::\+Vector\+::\+Data\+Set\+::\+Plot\+Param}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{_data_set_8hpp_a3ea9ad8d5dd42b7ce29e06964e3799aa}\label{_data_set_8hpp_a3ea9ad8d5dd42b7ce29e06964e3799aa}} 
+Data\+Column {\bfseries Zaki\+::\+Vector\+::operator+} (const Data\+Column \&, const Data\+Column \&)
+\begin{DoxyCompactList}\small\item\em Addition of a \mbox{\hyperlink{struct_zaki_1_1_vector_1_1_data_column}{Data\+Column}} to a \mbox{\hyperlink{struct_zaki_1_1_vector_1_1_data_column}{Data\+Column}}. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{_data_set_8hpp_a7ca31c60a8c345a5a893fd8ccfaf4ff1}\label{_data_set_8hpp_a7ca31c60a8c345a5a893fd8ccfaf4ff1}} 
+Data\+Column {\bfseries Zaki\+::\+Vector\+::operator+} (const double \&, const Data\+Column \&)
+\begin{DoxyCompactList}\small\item\em Addition of a \mbox{\hyperlink{struct_zaki_1_1_vector_1_1_data_column}{Data\+Column}} to a double. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{_data_set_8hpp_a8ac80534326547dbe8b97b1dec3ee1eb}\label{_data_set_8hpp_a8ac80534326547dbe8b97b1dec3ee1eb}} 
+Data\+Column {\bfseries Zaki\+::\+Vector\+::operator+} (const Data\+Column \&, const double \&)
+\begin{DoxyCompactList}\small\item\em Addition of a double to a \mbox{\hyperlink{struct_zaki_1_1_vector_1_1_data_column}{Data\+Column}}. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{_data_set_8hpp_a6da4eb74705da551f25b99267ea1e07c}\label{_data_set_8hpp_a6da4eb74705da551f25b99267ea1e07c}} 
+Data\+Column {\bfseries Zaki\+::\+Vector\+::operator+} (const Data\+Column \&, const std\+::vector$<$ double $>$ \&)
+\begin{DoxyCompactList}\small\item\em Addition of a list of doubles to a \mbox{\hyperlink{struct_zaki_1_1_vector_1_1_data_column}{Data\+Column}}. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{_data_set_8hpp_adc78c1530967ca06ddf3af403dc7589e}\label{_data_set_8hpp_adc78c1530967ca06ddf3af403dc7589e}} 
+Data\+Column {\bfseries Zaki\+::\+Vector\+::operator+} (const std\+::vector$<$ double $>$ \&, const Data\+Column \&)
+\begin{DoxyCompactList}\small\item\em Addition of a list of doubles to a \mbox{\hyperlink{struct_zaki_1_1_vector_1_1_data_column}{Data\+Column}}. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{_data_set_8hpp_aaf6cc326a1a0a5f749420a845d88def9}\label{_data_set_8hpp_aaf6cc326a1a0a5f749420a845d88def9}} 
+Data\+Column {\bfseries Zaki\+::\+Vector\+::operator-\/} (const Data\+Column \&, const Data\+Column \&)
+\begin{DoxyCompactList}\small\item\em Subtraction of a \mbox{\hyperlink{struct_zaki_1_1_vector_1_1_data_column}{Data\+Column}} from a \mbox{\hyperlink{struct_zaki_1_1_vector_1_1_data_column}{Data\+Column}}. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{_data_set_8hpp_a1a8cfe1b6ec7c0d23effe14c6206d226}\label{_data_set_8hpp_a1a8cfe1b6ec7c0d23effe14c6206d226}} 
+Data\+Column {\bfseries Zaki\+::\+Vector\+::operator-\/} (const double \&, const Data\+Column \&)
+\begin{DoxyCompactList}\small\item\em Subtraction of a \mbox{\hyperlink{struct_zaki_1_1_vector_1_1_data_column}{Data\+Column}} from a double. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{_data_set_8hpp_a8216893e7a00d080737d4fc3cb8dfcbd}\label{_data_set_8hpp_a8216893e7a00d080737d4fc3cb8dfcbd}} 
+Data\+Column {\bfseries Zaki\+::\+Vector\+::operator-\/} (const Data\+Column \&, const double \&)
+\begin{DoxyCompactList}\small\item\em Subtraction of a double from a \mbox{\hyperlink{struct_zaki_1_1_vector_1_1_data_column}{Data\+Column}}. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{_data_set_8hpp_a9606295525944434f1f823ce93f9066a}\label{_data_set_8hpp_a9606295525944434f1f823ce93f9066a}} 
+Data\+Column {\bfseries Zaki\+::\+Vector\+::operator-\/} (const Data\+Column \&, const std\+::vector$<$ double $>$ \&)
+\begin{DoxyCompactList}\small\item\em Subtraction of a list of doubles from a \mbox{\hyperlink{struct_zaki_1_1_vector_1_1_data_column}{Data\+Column}}. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{_data_set_8hpp_a2089f5d9f057f63ea57f97ad46727d62}\label{_data_set_8hpp_a2089f5d9f057f63ea57f97ad46727d62}} 
+Data\+Column {\bfseries Zaki\+::\+Vector\+::operator-\/} (const std\+::vector$<$ double $>$ \&, const Data\+Column \&)
+\begin{DoxyCompactList}\small\item\em Subtraction of a list of doubles from a \mbox{\hyperlink{struct_zaki_1_1_vector_1_1_data_column}{Data\+Column}}. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{_data_set_8hpp_abc97f4d1efb73c583bdcc015c64dff52}\label{_data_set_8hpp_abc97f4d1efb73c583bdcc015c64dff52}} 
+Data\+Column {\bfseries Zaki\+::\+Vector\+::operator$\ast$} (const Data\+Column \&, const double \&)
+\begin{DoxyCompactList}\small\item\em Multiplication of a \mbox{\hyperlink{struct_zaki_1_1_vector_1_1_data_column}{Data\+Column}} by a double. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{_data_set_8hpp_ab83a2bf654dc8cc6a97de90e64ea4b57}\label{_data_set_8hpp_ab83a2bf654dc8cc6a97de90e64ea4b57}} 
+Data\+Column {\bfseries Zaki\+::\+Vector\+::operator$\ast$} (const double \&, const Data\+Column \&)
+\begin{DoxyCompactList}\small\item\em Multiplication of a double by a \mbox{\hyperlink{struct_zaki_1_1_vector_1_1_data_column}{Data\+Column}}. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{_data_set_8hpp_a025ed60fe264a55655995eed077bc3db}\label{_data_set_8hpp_a025ed60fe264a55655995eed077bc3db}} 
+Data\+Column {\bfseries Zaki\+::\+Vector\+::operator$\ast$} (const Data\+Column \&, const int \&)
+\begin{DoxyCompactList}\small\item\em Multiplication of a \mbox{\hyperlink{struct_zaki_1_1_vector_1_1_data_column}{Data\+Column}} by an int. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{_data_set_8hpp_a51ab81f355f638f6822a80afc70305cf}\label{_data_set_8hpp_a51ab81f355f638f6822a80afc70305cf}} 
+Data\+Column {\bfseries Zaki\+::\+Vector\+::operator$\ast$} (const int \&, const Data\+Column \&)
+\begin{DoxyCompactList}\small\item\em Multiplication of an int by a \mbox{\hyperlink{struct_zaki_1_1_vector_1_1_data_column}{Data\+Column}}. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{_data_set_8hpp_af863f536cc9aafa72393c87b4aac0bf7}\label{_data_set_8hpp_af863f536cc9aafa72393c87b4aac0bf7}} 
+Data\+Column {\bfseries Zaki\+::\+Vector\+::operator$\ast$} (const Data\+Column \&, const Data\+Column \&)
+\begin{DoxyCompactList}\small\item\em Multiplication of a \mbox{\hyperlink{struct_zaki_1_1_vector_1_1_data_column}{Data\+Column}} by another \mbox{\hyperlink{struct_zaki_1_1_vector_1_1_data_column}{Data\+Column}}. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{_data_set_8hpp_a7999919b7c69206fe169e49c0f1a7dad}\label{_data_set_8hpp_a7999919b7c69206fe169e49c0f1a7dad}} 
+Data\+Column {\bfseries Zaki\+::\+Vector\+::operator/} (const Data\+Column \&, const double \&)
+\begin{DoxyCompactList}\small\item\em Division of a \mbox{\hyperlink{struct_zaki_1_1_vector_1_1_data_column}{Data\+Column}} by a double. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{_data_set_8hpp_a67d72fce078ec9f6ab1603beb07ca63c}\label{_data_set_8hpp_a67d72fce078ec9f6ab1603beb07ca63c}} 
+Data\+Column {\bfseries Zaki\+::\+Vector\+::operator/} (const double \&, const Data\+Column \&)
+\begin{DoxyCompactList}\small\item\em Division of a double by a \mbox{\hyperlink{struct_zaki_1_1_vector_1_1_data_column}{Data\+Column}}. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{_data_set_8hpp_af0e4f61e9cc08ba3740cf7c73b329ff7}\label{_data_set_8hpp_af0e4f61e9cc08ba3740cf7c73b329ff7}} 
+Data\+Column {\bfseries Zaki\+::\+Vector\+::operator/} (const Data\+Column \&, const int \&)
+\begin{DoxyCompactList}\small\item\em Division of a \mbox{\hyperlink{struct_zaki_1_1_vector_1_1_data_column}{Data\+Column}} by an int. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{_data_set_8hpp_a56b78207f934082775903ba82e88751a}\label{_data_set_8hpp_a56b78207f934082775903ba82e88751a}} 
+Data\+Column {\bfseries Zaki\+::\+Vector\+::operator/} (const int \&, const Data\+Column \&)
+\begin{DoxyCompactList}\small\item\em Division of an int by a \mbox{\hyperlink{struct_zaki_1_1_vector_1_1_data_column}{Data\+Column}}. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{_data_set_8hpp_ae905ba441e63dfba40ab94113df4d581}\label{_data_set_8hpp_ae905ba441e63dfba40ab94113df4d581}} 
+Data\+Column {\bfseries Zaki\+::\+Vector\+::operator/} (const Data\+Column \&, const Data\+Column \&)
+\begin{DoxyCompactList}\small\item\em Division of a \mbox{\hyperlink{struct_zaki_1_1_vector_1_1_data_column}{Data\+Column}} by another \mbox{\hyperlink{struct_zaki_1_1_vector_1_1_data_column}{Data\+Column}}. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{_data_set_8hpp_a5491aa87871440980d93cdbd1031c7d3}\label{_data_set_8hpp_a5491aa87871440980d93cdbd1031c7d3}} 
+Data\+Column {\bfseries Zaki\+::\+Vector\+::exp} (const Data\+Column \&)
+\item 
+\mbox{\Hypertarget{_data_set_8hpp_a2a817831265d55114d470d21dc4227bc}\label{_data_set_8hpp_a2a817831265d55114d470d21dc4227bc}} 
+Data\+Column {\bfseries Zaki\+::\+Vector\+::log} (const Data\+Column \&)
+\item 
+\mbox{\Hypertarget{_data_set_8hpp_a66c1ba8e8f2853498fc477905feda4c8}\label{_data_set_8hpp_a66c1ba8e8f2853498fc477905feda4c8}} 
+Data\+Column {\bfseries Zaki\+::\+Vector\+::log10} (const Data\+Column \&)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Data\+Columns and Data\+Sets generalize std\+::vector to Mathematica style sets. 
+
+\begin{DoxyAuthor}{Author}
+Mohammadreza Zakeri Contact\+: \href{mailto:M.Zakeri@uky.edu}{\texttt{ M.\+Zakeri@uky.\+edu}} 
+\end{DoxyAuthor}

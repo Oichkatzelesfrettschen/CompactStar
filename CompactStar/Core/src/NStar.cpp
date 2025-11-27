@@ -4,869 +4,2150 @@
 
 // #include <gsl/gsl_math.h>
 
-#include <Zaki/Util/Instrumentor.hpp>
 #include <Zaki/Math/GSLFuncWrapper.hpp>
 #include <Zaki/Physics/Constants.hpp>
-
-#include <gsl/gsl_integration.h>
+#include <Zaki/Util/Instrumentor.hpp>
 
 #include "CompactStar/Core/NStar.hpp"
-#include "CompactStar/Core/TOVSolver.hpp"
 #include "CompactStar/Core/RotationSolver.hpp"
+#include "CompactStar/Core/TOVSolver.hpp"
 
-
+#include <gsl/gsl_integration.h>
+#include <limits>
+//==============================================================
+//               Conversion Factors
+//==============================================================
+static constexpr double FM3_TO_KM3 = 1e54;
 //==============================================================
 //                        NStar class
 //==============================================================
 // Default Constructor
 // Be sure to run SurfaceIsReached if using this constructor!
-CompactStar::NStar::NStar() : Prog("NStar")
+CompactStar::NStar::NStar() : Prog("NStar"), B_integrand{}
 {
-  // radius.label  = "r"   ;
-  // mass.label    = "m"   ;
-  // rho.label     = "rho" ;
-  // eps.label     = "eps" ;
-  // press.label   = "p" ;
-  // nu_der.label  = "nu'" ;
-  // nu.label      = "nu" ;
-
-  rot_solver.AttachNStar(this) ;
+	rot_solver.AttachNStar(this);
 }
 
 //--------------------------------------------------------------
 // Constructor from TOV Solutions
-CompactStar::NStar::NStar(const std::vector<CompactStar::TOVPoint>& in_tov) 
-: Prog("NStar", true),
-  ds(7+in_tov[0].rho_i.size(), in_tov.size()), 
-  B_integrand(2, in_tov.size())
-{ 
-
-  B_integrand[0].label = "r(km)" ;       
-  B_integrand[1].label = "B_v" ;
-
-  rot_solver.AttachNStar(this) ;
-
-  ds[m_idx].label       = "m" ;
-  ds[r_idx].label       = "r" ;
-  ds[rho_idx].label     = "rho" ;
-  ds[eps_idx].label     = "eps" ;
-  ds[pre_idx].label     = "p" ;
-  ds[nu_der_idx].label  = "nu'" ;
-  ds[nu_idx].label      = "nu" ;
-
-  for (size_t j = 0; j < in_tov[0].rho_i.size(); j++)
-  {
-    rho_i_idx.emplace_back(6 + j) ;
-    ds[ rho_i_idx[j] ].label = "X" ; // !!!
-  }
-
-  // ...............................................
-  for (auto &&i : in_tov)
-  {
-    ds[r_idx].vals.emplace_back(i.r) ; // in km
-    ds[m_idx].vals.emplace_back(Zaki::Physics::SUN_M_KM*i.m) ; // in km
-    ds[rho_idx].vals.emplace_back(i.rho) ; // in fm^{-3}
-    ds[eps_idx].vals.emplace_back(i.e * Zaki::Physics::INV_FM4_2_INV_KM2 / Zaki::Physics::INV_FM4_2_G_CM3) ; // in km^{-2}
-    ds[pre_idx].vals.emplace_back(i.p * Zaki::Physics::INV_FM4_2_INV_KM2 / Zaki::Physics::INV_FM4_2_Dyn_CM2 ) ; // in km^{-2}
-    ds[nu_der_idx].vals.emplace_back(i.nu_der * 1e+5) ; // convert 1/cm to 1/km
-
-    for (size_t j = 0; j < i.rho_i.size(); j++)
-    {
-      ds[ rho_i_idx[j] ].vals.emplace_back( i.rho_i[j] ) ;
-    }
-  }
-  // ...............................................
-
-  ds.Interpolate(r_idx, {m_idx, nu_der_idx, rho_idx, eps_idx, pre_idx} ) ;
-
-  EvaluateNu() ;
-
-  // ..................................................................  
-  //            B Integrand
-  // ..................................................................  
-  B_integrand[0] = ds[r_idx] ;
-  B_integrand[1] = ds[r_idx].pow(2) ;
-  B_integrand[1] *= 4*M_PI * ds[rho_idx] ; 
-
-  B_integrand[1] /= (1. - 2.* ds[m_idx] / ds[r_idx]).sqrt() ;
-
-  // converting fm^{-3} to km^{-3}
-  B_integrand[1] *= pow(10, 54) ;
-
-  B_integrand.Interpolate(0, 1) ;
-  // ..................................................................  
-
-
-  sequence.ec = ds[eps_idx][0] * Zaki::Physics::INV_FM4_2_G_CM3 /
-                                      Zaki::Physics::INV_FM4_2_INV_KM2  ;
-  sequence.m  = ds[m_idx][-1] / Zaki::Physics::SUN_M_KM ;
-  sequence.r  = ds[r_idx][-1] ;
-  sequence.pc = ds[pre_idx][0] * Zaki::Physics::INV_FM4_2_Dyn_CM2 /
-                                      Zaki::Physics::INV_FM4_2_INV_KM2 ;
-  // sequence.b  = Find_BaryonNum_Visible() ;
-  sequence.b  = B_integrand.Integrate(1, {ds[r_idx][0], ds[r_idx][-1]}) ;
-
-  sequence.I  = Find_MomInertia() ;
-  // ..................................................................  
-
-  // accel  = gsl_interp_accel_alloc ();
-
-  // mass_r_spline = gsl_spline_alloc (gsl_interp_cspline, in_tov.size()) ;
-  // rho_r_spline  = gsl_spline_alloc (gsl_interp_cspline, in_tov.size()) ;
-  // eps_r_spline  = gsl_spline_alloc (gsl_interp_cspline, in_tov.size()) ;
-  // press_r_spline = gsl_spline_alloc (gsl_interp_cspline, in_tov.size()) ;
-  // nu_der_r_spline = gsl_spline_alloc (gsl_interp_cspline, in_tov.size()) ;
-  // nu_r_spline = gsl_spline_alloc (gsl_interp_cspline, in_tov.size()) ;
-
-  // radius.label  = "r"   ;
-  // mass.label    = "m"   ;
-  // rho.label     = "rho" ;
-  // eps.label     = "eps" ;
-  // press.label   = "p" ;
-  // nu_der.label  = "nu'" ;
-  // nu.label      = "nu" ;
-
-
-  // radius.Reserve(in_tov.size()) ;
-  // mass.Reserve(in_tov.size()) ;
-  // rho.Reserve(in_tov.size()) ;
-  // eps.Reserve(in_tov.size()) ;
-  // press.Reserve(in_tov.size()) ;
-  // nu_der.Reserve(in_tov.size()) ;
-  // nu.Reserve(in_tov.size()) ;
-
-  // for (auto &&i : in_tov)
-  // {
-  //   radius.vals.emplace_back(i.r) ; // in km
-  //   mass.vals.emplace_back(Zaki::Physics::SUN_M_KM*i.m) ; // in km
-  //   rho.vals.emplace_back(i.rho) ; // in fm^{-3}
-  //   eps.vals.emplace_back(i.e * Zaki::Physics::INV_FM4_2_INV_KM2 / Zaki::Physics::INV_FM4_2_G_CM3) ; // in km^{-2}
-  //   press.vals.emplace_back(i.p * Zaki::Physics::INV_FM4_2_INV_KM2 / Zaki::Physics::INV_FM4_2_Dyn_CM2 ) ; // in km^{-2}
-  //   nu_der.vals.emplace_back(i.nu_der * 1e+5) ; // convert 1/cm to 1/km
-  // }
-
-  // gsl_spline_init (mass_r_spline, &radius.vals[0], &mass.vals[0], in_tov.size()) ;
-  // gsl_spline_init (rho_r_spline, &radius.vals[0], &rho.vals[0], in_tov.size()) ;
-  // gsl_spline_init (eps_r_spline, &radius.vals[0], &eps.vals[0], in_tov.size()) ;
-  // gsl_spline_init (press_r_spline, &radius.vals[0], &press.vals[0], in_tov.size()) ;
-  // gsl_spline_init (nu_der_r_spline, &radius.vals[0], &nu_der.vals[0], in_tov.size()) ;
+CompactStar::NStar::NStar(const std::vector<CompactStar::TOVPoint> &in_tov)
+	: Prog("NStar"), B_integrand{}
+{
+	rot_solver.AttachNStar(this);
+	BuildFromTOV(in_tov, /*species_labels=*/nullptr);
 }
 
 //--------------------------------------------------------------
-// Initializes the dataset
-void CompactStar::NStar::Init(const TOVSolver* in_tov_solver) 
+// Constructor from TOV Solutions with species labels
+CompactStar::NStar::NStar(const std::vector<CompactStar::TOVPoint> &in_tov,
+						  const std::vector<std::string> &species_labels)
+	: Prog("NStar"), B_integrand{}
 {
-// Resizes the columns to '7', and
-  // reserves 'radial_res' space for each column
-  ds.Reserve(7+in_tov_solver->eos_tab.rho_i.size(), 
-                    in_tov_solver->radial_res) ;
+	rot_solver.AttachNStar(this);
+	BuildFromTOV(in_tov, &species_labels);
+}
 
-  ds[m_idx].label       = "m(km)" ;
-  ds[r_idx].label       = "r(km)" ;
-  ds[rho_idx].label     = "rho(fm^-3)" ;
-  ds[eps_idx].label     = "eps(km^-2)" ;
-  ds[pre_idx].label     = "p(km^-2)" ;
-  ds[nu_der_idx].label  = "nu'(km^-1)" ;
-  ds[nu_idx].label      = "nu" ;
+// ---------------------------------------------------------
+// Builder — Populate ds/B_integrand/sequence from TOV data
+// ---------------------------------------------------------
+// ---------------------------------------------------------
+// Builder — Populate profile + legacy ds from TOV data
+// ---------------------------------------------------------
+void CompactStar::NStar::BuildFromTOV(const std::vector<TOVPoint> &in_tov,
+									  const std::vector<std::string> *species_labels)
+{
+	PROFILE_FUNCTION();
 
-  for (size_t i = 0; i < in_tov_solver->eos_tab.rho_i.size() ; i++)
-  {
-    rho_i_idx.emplace_back( i + 7 ) ;
-    ds[ rho_i_idx[i] ].label =
-                            in_tov_solver->eos_tab.extra_labels[i] ;
-  }
+	// -------- guardrails & basic sizes --------
+	if (in_tov.empty())
+	{
+		Z_LOG_ERROR("Empty TOV vector; leaving object uninitialized.");
+		surface_ready = false;
+		return;
+	}
 
-  B_integrand.Reserve(2, in_tov_solver->radial_res) ;
+	const std::size_t n_rows = in_tov.size();
 
-  B_integrand[0].label = "r(km)" ;       
-  B_integrand[1].label = "B" ;
-  
+	// Be robust: infer species count as the maximum rho_i length across rows.
+	std::size_t n_species = 0;
+	for (const auto &tp : in_tov)
+		n_species = std::max(n_species, tp.rho_i.size());
+
+	// If labels provided, require consistency (warn if mismatch).
+	if (species_labels && species_labels->size() != n_species)
+	{
+		Z_LOG_ERROR("Species_labels.size() = " +
+					std::to_string(species_labels->size()) +
+					" != inferred n_species = " + std::to_string(n_species) +
+					". Proceeding with inferred n_species; extra/missing labels ignored.");
+	}
+
+	// ------------------------------------------------------------
+	// 0) Fresh start
+	// ------------------------------------------------------------
+	Reset(); // clears ds, B_integrand, sequence, rho_i_idx, prof_
+
+	// ============================================================
+	// 1) PROFILE-FIRST BUILD
+	// ============================================================
+	{
+		auto &radial = prof_.radial;
+		radial.data_set.clear();
+		radial.Reserve(8 + n_species, n_rows);
+
+		// create canonical columns in the exact order we settled on:
+		// 0 r, 1 m, 2 nu', 3 p, 4 eps, 5 rho, 6 nu, 7 lambda
+		radial.AddColumn("r(km)");
+		prof_.idx_r = 0;
+
+		radial.AddColumn("m(km)");
+		prof_.idx_m = 1;
+
+		radial.AddColumn("nu_prime(km^-1)");
+		prof_.idx_nuprime = 2;
+
+		radial.AddColumn("p(km^-2)");
+		prof_.idx_p = 3;
+
+		radial.AddColumn("eps(km^-2)");
+		prof_.idx_eps = 4;
+
+		radial.AddColumn("nB(fm^-3)");
+		prof_.idx_nb = 5;
+
+		radial.AddColumn("nu");
+		prof_.idx_nu = 6;
+
+		radial.AddColumn("lambda");
+		prof_.idx_lambda = 7; // may remain unused
+
+		// species (after the fixed ones)
+		prof_.species_labels.clear();
+		prof_.species_idx.clear();
+		prof_.species_labels.reserve(n_species);
+		prof_.species_idx.reserve(n_species);
+
+		for (std::size_t j = 0; j < n_species; ++j)
+		{
+			std::string lbl;
+			if (species_labels && j < species_labels->size())
+				lbl = (*species_labels)[j];
+			else
+				lbl = "rho_i_" + std::to_string(j);
+
+			const int col_idx = static_cast<int>(radial.Dim().size());
+			radial.AddColumn(lbl);
+			prof_.AddSpecies(lbl, col_idx);
+		}
+
+		// now fill rows
+		for (const auto &tp : in_tov)
+		{
+			// r (km)
+			double r_km = tp.r;
+			radial[prof_.idx_r].vals.emplace_back(r_km);
+
+			double m_km = Zaki::Physics::SUN_M_KM * tp.m;
+			// m (km): tp.m is in solar masses
+			radial[prof_.idx_m].vals.emplace_back(m_km);
+
+			// nu' (1/cm -> 1/km)
+			radial[prof_.idx_nuprime].vals.emplace_back(tp.nu_der * 1e5);
+
+			// p (→ km^-2)
+			radial[prof_.idx_p].vals.emplace_back(
+				tp.p * Zaki::Physics::INV_FM4_2_INV_KM2 /
+				Zaki::Physics::INV_FM4_2_Dyn_CM2);
+
+			// eps (→ km^-2)
+			radial[prof_.idx_eps].vals.emplace_back(
+				tp.e * Zaki::Physics::INV_FM4_2_INV_KM2 /
+				Zaki::Physics::INV_FM4_2_G_CM3);
+
+			// nB (fm^-3)
+			radial[prof_.idx_nb].vals.emplace_back(tp.rho);
+
+			// nu (will be built later)
+			radial[prof_.idx_nu].vals.emplace_back(0.0);
+
+			// ------------------------------
+			// lambda(r) = 1 / (1 - 2 M(r)/r)
+			// r, m are in km, so this is consistent
+			double denom = 1.0;
+
+			// avoid r=0 division
+			if (r_km > 0.0)
+			{
+				denom = 1.0 - 2.0 * m_km / r_km;
+				if (denom <= 0.0)
+					denom = 1e-15; // clamp: very compact inner point
+			}
+			else
+			{
+				// at the exact center, m=0, so λ=1 is fine
+				denom = 1.0;
+			}
+
+			double lambda_val = 1.0 / denom;
+			radial[prof_.idx_lambda].vals.emplace_back(lambda_val);
+			// ------------------------------
+
+			// species values (pad with 0.0)
+			if (!tp.rho_i.empty())
+			{
+				for (std::size_t j = 0; j < n_species; ++j)
+				{
+					const double val = (j < tp.rho_i.size()) ? tp.rho_i[j] : 0.0;
+					const int col_idx = prof_.species_idx[j];
+					radial[col_idx].vals.emplace_back(val);
+				}
+			}
+			else
+			{
+				// no species in this row → append zeros to all species cols
+				for (std::size_t j = 0; j < n_species; ++j)
+				{
+					const int col_idx = prof_.species_idx[j];
+					radial[col_idx].vals.emplace_back(0.0);
+				}
+			}
+		}
+
+		// interpolate the columns we actually have
+		{
+			std::vector<int> interp_cols;
+			interp_cols.push_back(prof_.idx_m);
+			interp_cols.push_back(prof_.idx_nuprime);
+			interp_cols.push_back(prof_.idx_nb);
+			interp_cols.push_back(prof_.idx_eps);
+			interp_cols.push_back(prof_.idx_p);
+			radial.Interpolate(prof_.idx_r, interp_cols);
+		}
+
+		// build ν(r) from ν'(r)
+		EvaluateNu(); // profile-aware version
+
+		// build baryon number integrand from profile
+		{
+			B_integrand[0] = radial[prof_.idx_r];
+			B_integrand[0].label = "r(km)";
+
+			B_integrand[1] = radial[prof_.idx_r].pow(2);
+			B_integrand[1].label = "B_v";
+			B_integrand[1] *= 4.0 * M_PI * radial[prof_.idx_nb];
+			B_integrand[1] /= (1.0 - 2.0 * radial[prof_.idx_m] / radial[prof_.idx_r]).sqrt();
+			B_integrand[1] *= FM3_TO_KM3;
+			B_integrand.Interpolate(0, 1);
+		}
+
+		// fill profile's sequence
+		prof_.seq_point.clear();
+		// central energy density
+		prof_.seq_point.ec =
+			radial[prof_.idx_eps][0] *
+			Zaki::Physics::INV_FM4_2_G_CM3 /
+			Zaki::Physics::INV_FM4_2_INV_KM2; // g/cm^3
+
+		// surface radius
+		prof_.seq_point.r = radial[prof_.idx_r][-1]; // km
+		prof_.R = prof_.seq_point.r;
+
+		// surface mass (in solar masses)
+		// prof_.seq_point.m =
+		// 	radial[prof_.idx_m][-1] / Zaki::Physics::SUN_M_KM; // Msun
+		// prof_.M = prof_.seq_point.m;
+		const double Msurf_km = radial[prof_.idx_m][-1];			  // km
+		const double Msurf_Msun = Msurf_km / Zaki::Physics::SUN_M_KM; // Msun
+
+		prof_.M = Msurf_km;				// km
+		prof_.seq_point.m = Msurf_Msun; // Msun
+
+		// central pressure
+		prof_.seq_point.pc =
+			radial[prof_.idx_p][0] *
+			Zaki::Physics::INV_FM4_2_Dyn_CM2 /
+			Zaki::Physics::INV_FM4_2_INV_KM2; // dyne/cm^2
+
+		// baryon number
+		prof_.seq_point.b =
+			B_integrand.Integrate(1, {radial[prof_.idx_r][0], radial[prof_.idx_r][-1]});
+
+		// moment of inertia
+		prof_.seq_point.I = Find_MomInertia();
+
+		// surface redshift factor (if we have ν)
+		if (prof_.HasColumn(StarProfile::Column::MetricNu))
+		{
+			const auto &nu_col = radial[prof_.idx_nu];
+			if (nu_col.Size() > 0)
+				prof_.z_surf = std::exp(nu_col[-1]);
+			else
+				prof_.z_surf = 0.0;
+		}
+
+		surface_ready = true;
+	}
+
+	// ============================================================
+	// 2) LEGACY DS BUILD (kept so old code works)
+	// ============================================================
+	// {
+	// 	// 7 fixed columns: r, m, nu', p, eps, rho, nu  (+ per-species rho_i)
+	// 	ds.Reserve(7 + n_species, n_rows);
+
+	// 	// label fixed columns
+	// 	col(Col::R).label = "r(km)";
+	// 	col(Col::M).label = "m(km)";
+	// 	col(Col::NuPrime).label = "nu'(km^-1)";
+	// 	col(Col::P).label = "p(km^-2)";
+	// 	col(Col::Eps).label = "eps(km^-2)";
+	// 	col(Col::Rho).label = "rho(fm^-3)";
+	// 	col(Col::Nu).label = "nu";
+
+	// 	// per-species columns
+	// 	rho_i_idx.clear();
+	// 	rho_i_idx.reserve(n_species);
+	// 	for (std::size_t j = 0; j < n_species; ++j)
+	// 	{
+	// 		const int idx_col = 7 + static_cast<int>(j);
+	// 		rho_i_idx.emplace_back(idx_col);
+	// 		if (species_labels && j < species_labels->size())
+	// 			ds[idx_col].label = (*species_labels)[j];
+	// 		else
+	// 			ds[idx_col].label = "X" + std::to_string(idx_col);
+	// 	}
+
+	// 	// fill rows (unit handling matches your previous code)
+	// 	for (const auto &tp : in_tov)
+	// 	{
+	// 		col(Col::R).vals.emplace_back(tp.r); // km
+	// 		col(Col::M).vals.emplace_back(Zaki::Physics::SUN_M_KM * tp.m);
+	// 		col(Col::Rho).vals.emplace_back(tp.rho); // fm^-3
+
+	// 		col(Col::Eps).vals.emplace_back(
+	// 			tp.e * Zaki::Physics::INV_FM4_2_INV_KM2 /
+	// 			Zaki::Physics::INV_FM4_2_G_CM3);
+	// 		col(Col::P).vals.emplace_back(
+	// 			tp.p * Zaki::Physics::INV_FM4_2_INV_KM2 /
+	// 			Zaki::Physics::INV_FM4_2_Dyn_CM2);
+	// 		col(Col::NuPrime).vals.emplace_back(tp.nu_der * 1e5);
+
+	// 		for (std::size_t j = 0; j < n_species; ++j)
+	// 		{
+	// 			const double val = (j < tp.rho_i.size()) ? tp.rho_i[j] : 0.0;
+	// 			ds[rho_i_idx[j]].vals.emplace_back(val);
+	// 		}
+	// 	}
+
+	// 	// splines for legacy ds
+	// 	ds.Interpolate(idx(Col::R),
+	// 				   {idx(Col::M), idx(Col::NuPrime), idx(Col::Rho),
+	// 					idx(Col::Eps), idx(Col::P)});
+
+	// 	// build ν(r) from ν'(r) (legacy path)
+	// 	EvaluateNu();
+
+	// 	// sequence (legacy struct)
+	// 	sequence.ec = col(Col::Eps)[0] * Zaki::Physics::INV_FM4_2_G_CM3 /
+	// 				  Zaki::Physics::INV_FM4_2_INV_KM2;
+	// 	sequence.m = col(Col::M)[-1] / Zaki::Physics::SUN_M_KM;
+	// 	sequence.r = col(Col::R)[-1];
+	// 	sequence.pc = col(Col::P)[0] * Zaki::Physics::INV_FM4_2_Dyn_CM2 /
+	// 				  Zaki::Physics::INV_FM4_2_INV_KM2;
+	// 	sequence.b = B_integrand.Integrate(
+	// 		1, {col(Col::R)[0], col(Col::R)[-1]});
+	// 	sequence.I = prof_.seq_point.I; // keep them consistent
+	// }
+}
+
+/* -------------------- LEGACY VERSION FOR REFERENCE --------------------
+
+// ---------------------------------------------------------
+// Builder — Populate ds/B_integrand/sequence from TOV data
+// ---------------------------------------------------------
+void CompactStar::NStar::BuildFromTOV(const std::vector<TOVPoint> &in_tov,
+									  const std::vector<std::string> *species_labels)
+{
+	PROFILE_FUNCTION();
+
+	// -------- guardrails & basic sizes --------
+	if (in_tov.empty())
+	{
+		Z_LOG_ERROR("Empty TOV vector; leaving object uninitialized.");
+		surface_ready = false;
+		return;
+	}
+
+	const size_t n_rows = in_tov.size();
+
+	// Be robust: infer species count as the maximum rho_i length across rows.
+	size_t n_species = 0;
+	for (const auto &tp : in_tov)
+		n_species = std::max(n_species, tp.rho_i.size());
+
+	// If labels provided, require consistency (warn if mismatch).
+	if (species_labels && species_labels->size() != n_species)
+	{
+		Z_LOG_ERROR("Species_labels.size() = " +
+					std::to_string(species_labels->size()) +
+					" != inferred n_species = " + std::to_string(n_species) +
+					". Proceeding with inferred n_species; extra/missing labels ignored.");
+	}
+
+	// -------- allocate datasets --------
+	// 7 fixed columns: r, m, nu', p, eps, rho, nu  (+ per-species rho_i)
+	ds.Reserve(7 + n_species, n_rows);
+	B_integrand.Reserve(2, n_rows);
+
+	// -------- label fixed columns --------
+	col(Col::R).label      = "r(km)";
+	col(Col::M).label      = "m(km)";
+	col(Col::NuPrime).label= "nu'(km^-1)";
+	col(Col::P).label      = "p(km^-2)";
+	col(Col::Eps).label    = "eps(km^-2)";
+	col(Col::Rho).label    = "rho(fm^-3)";
+	col(Col::Nu).label     = "nu";
+
+	// -------- set up per-species columns & labels --------
+	rho_i_idx.clear();
+	rho_i_idx.reserve(n_species);
+	for (size_t j = 0; j < n_species; ++j)
+	{
+		const int idx_col = 6 + static_cast<int>(j);
+		rho_i_idx.emplace_back(idx_col);
+		if (species_labels && j < species_labels->size())
+			ds[idx_col].label = (*species_labels)[j];
+		else
+			ds[idx_col].label = "X" + std::to_string(idx_col); // fallback
+	}
+
+	// -------- fill rows --------
+	for (const auto &tp : in_tov)
+	{
+		col(Col::R).vals.emplace_back(tp.r);
+		col(Col::M).vals.emplace_back(Zaki::Physics::SUN_M_KM * tp.m);
+		col(Col::Rho).vals.emplace_back(tp.rho);
+		col(Col::Eps).vals.emplace_back(
+			tp.e * Zaki::Physics::INV_FM4_2_INV_KM2 / Zaki::Physics::INV_FM4_2_G_CM3);
+		col(Col::P).vals.emplace_back(
+			tp.p * Zaki::Physics::INV_FM4_2_INV_KM2 / Zaki::Physics::INV_FM4_2_Dyn_CM2);
+		col(Col::NuPrime).vals.emplace_back(tp.nu_der * 1e5);
+
+		for (size_t j = 0; j < n_species; ++j)
+		{
+			const double val = (j < tp.rho_i.size()) ? tp.rho_i[j] : 0.0;
+			ds[rho_i_idx[j]].vals.emplace_back(val);
+		}
+	}
+
+	// -------- make splines --------
+	ds.Interpolate(idx(Col::R),
+				   { idx(Col::M), idx(Col::NuPrime), idx(Col::Rho),
+					 idx(Col::Eps), idx(Col::P) });
+
+	// -------- build ν(r) --------
+	EvaluateNu();
+
+	// -------- Baryon-number integrand dataset --------
+	B_integrand[0] = col(Col::R);
+	B_integrand[0].label = "r(km)";
+	B_integrand[1] = col(Col::R).pow(2);
+	B_integrand[1].label = "B_v";
+	B_integrand[1] *= 4.0 * M_PI * col(Col::Rho);
+	B_integrand[1] /= (1.0 - 2.0 * col(Col::M) / col(Col::R)).sqrt();
+	B_integrand[1] *= FM3_TO_KM3;
+	B_integrand.Interpolate(0, 1);
+
+	// -------- sequence point --------
+	surface_ready = true;
+
+	sequence.ec = col(Col::Eps)[0] * Zaki::Physics::INV_FM4_2_G_CM3 / Zaki::Physics::INV_FM4_2_INV_KM2;
+	sequence.m  = col(Col::M)[-1] / Zaki::Physics::SUN_M_KM;
+	sequence.r  = col(Col::R)[-1];
+	sequence.pc = col(Col::P)[0] * Zaki::Physics::INV_FM4_2_Dyn_CM2 / Zaki::Physics::INV_FM4_2_INV_KM2;
+	sequence.b  = B_integrand.Integrate(1, { col(Col::R)[0], col(Col::R)[-1] });
+	sequence.I  = Find_MomInertia();
+}
+
+------------------------------------------------------------------------- */
+// //--------------------------------------------------------------
+// // Constructor from TOV Solutions
+// CompactStar::NStar::NStar(const std::vector<CompactStar::TOVPoint> &in_tov)
+// 	: Prog("NStar", true),
+// 	  ds(7 + in_tov[0].rho_i.size(), in_tov.size()),
+// 	  B_integrand(2, in_tov.size())
+// {
+
+// 	B_integrand[0].label = "r(km)";
+// 	B_integrand[1].label = "B_v";
+
+// 	rot_solver.AttachNStar(this);
+
+// 	col(Col::M).label = "m(km)";
+// 	col(Col::R).label = "r(km)";
+// 	col(Col::Rho).label = "rho(fm^-3)";
+// 	col(Col::Eps).label = "eps(km^-2)";
+// 	col(Col::P).label = "p(km^-2)";
+// 	col(Col::NuPrime).label = "nu'(km^-1)";
+// 	col(Col::Nu).label = "nu";
+
+// 	// ds[m_idx].label = "m";
+// 	// ds[r_idx].label = "r";
+// 	// ds[rho_idx].label = "rho";
+// 	// ds[eps_idx].label = "eps";
+// 	// ds[pre_idx].label = "p";
+// 	// ds[nu_der_idx].label = "nu'";
+// 	// ds[nu_idx].label = "nu";
+
+// 	for (size_t j = 0; j < in_tov[0].rho_i.size(); j++)
+// 	{
+// 		rho_i_idx.emplace_back(6 + j);
+// 		ds[rho_i_idx[j]].label = "X" + std::to_string(6 + j); // Fix?!!!
+// 	}
+
+// 	// ...............................................
+// 	for (auto &&i : in_tov)
+// 	{
+// 		// ds[r_idx].vals.emplace_back(i.r);																		  // in km
+// 		// ds[m_idx].vals.emplace_back(Zaki::Physics::SUN_M_KM * i.m);												  // in km
+// 		// ds[rho_idx].vals.emplace_back(i.rho);																	  // in fm^{-3}
+// 		// ds[eps_idx].vals.emplace_back(i.e * Zaki::Physics::INV_FM4_2_INV_KM2 / Zaki::Physics::INV_FM4_2_G_CM3);	  // in km^{-2}
+// 		// ds[pre_idx].vals.emplace_back(i.p * Zaki::Physics::INV_FM4_2_INV_KM2 / Zaki::Physics::INV_FM4_2_Dyn_CM2); // in km^{-2}
+// 		// ds[nu_der_idx].vals.emplace_back(i.nu_der * 1e+5);
+// 		col(Col::R).vals.emplace_back(i.r);																		  // in km
+// 		col(Col::M).vals.emplace_back(Zaki::Physics::SUN_M_KM * i.m);											  // in km
+// 		col(Col::Rho).vals.emplace_back(i.rho);																	  // in fm^{-3}
+// 		col(Col::Eps).vals.emplace_back(i.e * Zaki::Physics::INV_FM4_2_INV_KM2 / Zaki::Physics::INV_FM4_2_G_CM3); // in km^{-2}
+// 		col(Col::P).vals.emplace_back(i.p * Zaki::Physics::INV_FM4_2_INV_KM2 / Zaki::Physics::INV_FM4_2_Dyn_CM2); // in km^{-2}
+// 		col(Col::NuPrime).vals.emplace_back(i.nu_der * 1e+5);													  // convert 1/cm to 1/km
+
+// 		for (size_t j = 0; j < i.rho_i.size(); j++)
+// 		{
+// 			ds[rho_i_idx[j]].vals.emplace_back(i.rho_i[j]);
+// 		}
+// 	}
+// 	// ...............................................
+
+// 	ds.Interpolate(idx(Col::R), {idx(Col::M), idx(Col::NuPrime),
+// 								 idx(Col::Rho), idx(Col::Eps), idx(Col::P)});
+
+// 	EvaluateNu();
+
+// 	// ..................................................................
+// 	//            B Integrand
+// 	// ..................................................................
+// 	B_integrand[0] = col(Col::R);
+// 	B_integrand[1] = col(Col::R).pow(2);
+// 	B_integrand[1] *= 4 * M_PI * col(Col::Rho);
+
+// 	B_integrand[1] /= (1. - 2. * col(Col::M) / col(Col::R)).sqrt();
+
+// 	// converting fm^{-3} to km^{-3}
+// 	// B_integrand[1] *= pow(10, 54);
+// 	B_integrand[1] *= FM3_TO_KM3;
+
+// 	B_integrand.Interpolate(0, 1);
+// 	// ..................................................................
+
+// 	sequence.ec = col(Col::Eps)[0] * Zaki::Physics::INV_FM4_2_G_CM3 /
+// 				  Zaki::Physics::INV_FM4_2_INV_KM2;
+// 	sequence.m = col(Col::M)[-1] / Zaki::Physics::SUN_M_KM;
+// 	sequence.r = col(Col::R)[-1];
+// 	sequence.pc = col(Col::P)[0] * Zaki::Physics::INV_FM4_2_Dyn_CM2 /
+// 				  Zaki::Physics::INV_FM4_2_INV_KM2;
+// 	// sequence.b  = Find_BaryonNum_Visible() ;
+// 	sequence.b = B_integrand.Integrate(1, {col(Col::R)[0], col(Col::R)[-1]});
+
+// 	sequence.I = Find_MomInertia();
+// 	// ..................................................................
+// }
+
+//--------------------------------------------------------------
+//--------------------------------------------------------------
+// Initializes the dataset from a TOV solver
+void CompactStar::NStar::InitFromTOVSolver(const TOVSolver *in_tov_solver)
+{
+	if (!in_tov_solver)
+	{
+		Z_LOG_ERROR("Null TOVSolver pointer.");
+		return;
+	}
+
+	// ------------------------------------------------------------
+	// 1) Fresh start
+	// ------------------------------------------------------------
+	Reset(); // clears ds, B_integrand, sequence, rho_i_idx, prof_
+
+	// ------------------------------------------------------------
+	// 2) Read solver metadata
+	// ------------------------------------------------------------
+	const std::size_t n_species = in_tov_solver->eos_tab.rho_i.size(); // number of species columns
+	const std::size_t n_rows_expect = in_tov_solver->radial_res;	   // expected radial samples
+	B_integrand.Reserve(2, n_rows_expect);
+	// ------------------------------------------------------------
+	// 3) ----- PROFILE-FIRST INITIALIZATION ----------------------
+	// ------------------------------------------------------------
+	{
+		auto &radial = prof_.radial;
+		radial.data_set.clear();
+		radial.Reserve(8 + n_species, n_rows_expect);
+
+		// label the ones we just reserved
+		radial[0].label = "r(km)";
+		prof_.idx_r = 0;
+		radial[1].label = "m(km)";
+		prof_.idx_m = 1;
+		radial[2].label = "nu_prime(km^-1)";
+		prof_.idx_nuprime = 2;
+		radial[3].label = "p(km^-2)";
+		prof_.idx_p = 3;
+		radial[4].label = "eps(km^-2)";
+		prof_.idx_eps = 4;
+		radial[5].label = "nB(fm^-3)";
+		prof_.idx_nb = 5;
+		radial[6].label = "nu";
+		prof_.idx_nu = 6;
+		radial[7].label = "lambda";
+		prof_.idx_lambda = 7;
+
+		// Species columns start right after the 8 fixed ones
+		prof_.species_labels.clear();
+		prof_.species_idx.clear();
+		prof_.species_labels.reserve(n_species);
+		prof_.species_idx.reserve(n_species);
+
+		for (std::size_t j = 0; j < n_species; ++j)
+		{
+			const std::string lbl =
+				(j < in_tov_solver->eos_tab.extra_labels.size())
+					? in_tov_solver->eos_tab.extra_labels[j]
+					: ("rho_i_" + std::to_string(j));
+			const int col_idx = 8 + static_cast<int>(j);
+			radial[col_idx].label = lbl;
+			prof_.AddSpecies(lbl, col_idx);
+		}
+		// fill profile’s sequence with zeros; it will be filled in FinalizeSurface()
+		prof_.seq_point.clear();
+
+		// also set surface M, R, z_surf to 0 here
+		prof_.M = 0.0; // in solar masses
+		prof_.R = 0.0;
+		prof_.z_surf = 0.0;
+	}
+
+	// ------------------------------------------------------------
+	// 4) ----- LEGACY DS INITIALIZATION -----------
+	// NOTE: profile uses 8 fixed cols; legacy used 7 → species index shifts by 1
+	// ------------------------------------------------------------
+	// {
+	// 	// Allocate columns and reserve row capacity
+	// 	ds.Reserve(7 + n_species, n_rows_expect);
+	// 	B_integrand.Reserve(2, n_rows_expect);
+
+	// 	// Label fixed columns
+	// 	col(Col::M).label = "m(km)";
+	// 	col(Col::R).label = "r(km)";
+	// 	col(Col::Rho).label = "rho(fm^-3)";
+	// 	col(Col::Eps).label = "eps(km^-2)";
+	// 	col(Col::P).label = "p(km^-2)";
+	// 	col(Col::NuPrime).label = "nu'(km^-1)";
+	// 	col(Col::Nu).label = "nu";
+
+	// NOTE: profile uses 8 fixed cols; legacy used 7 → species index shifts by 1
+	// 	// per-species columns in legacy ds
+	// 	rho_i_idx.clear();
+	// 	rho_i_idx.reserve(n_species);
+	// 	for (std::size_t j = 0; j < n_species; ++j)
+	// 	{
+	// 		const int idx_col = 7 + static_cast<int>(j); // NOTE: legacy had 7 fixed cols
+	// 		rho_i_idx.emplace_back(idx_col);
+
+	// 		if (j < in_tov_solver->eos_tab.extra_labels.size())
+	// 			ds[idx_col].label = in_tov_solver->eos_tab.extra_labels[j];
+	// 		else
+	// 			ds[idx_col].label = "X" + std::to_string(idx_col);
+	// 	}
+
+	// 	// Simple labels for the integrand dataset
+	// 	B_integrand[0].label = "r(km)";
+	// 	B_integrand[1].label = "B";
+	// }
+}
+
+/* -------------- LEGACY VERSION FOR REFERENCE -----------------
+
+//--------------------------------------------------------------
+// Initializes the dataset
+void CompactStar::NStar::InitFromTOVSolver(const TOVSolver *in_tov_solver)
+{
+	if (!in_tov_solver)
+	{
+		Z_LOG_ERROR("null TOVSolver pointer.");
+		return;
+	}
+
+	// Fresh start
+	Reset(); // clears ds rows, B_integrand rows, sequence, flags, rho_i_idx
+
+	// Infer species count and planned row count from solver metadata
+	const size_t n_species     = in_tov_solver->eos_tab.rho_i.size(); // number of species columns
+	const size_t n_rows_reserve = in_tov_solver->radial_res;          // expected radial samples
+
+	// Allocate columns and reserve row capacity
+	ds.Reserve(7 + n_species, n_rows_reserve);
+	B_integrand.Reserve(2, n_rows_reserve);
+
+	// Label fixed columns
+	col(Col::M).label       = "m(km)";
+	col(Col::R).label       = "r(km)";
+	col(Col::Rho).label     = "rho(fm^-3)";
+	col(Col::Eps).label     = "eps(km^-2)";
+	col(Col::P).label       = "p(km^-2)";
+	col(Col::NuPrime).label = "nu'(km^-1)";
+	col(Col::Nu).label      = "nu";
+
+	// Set up per-species columns & labels
+	rho_i_idx.clear();
+	rho_i_idx.reserve(n_species);
+	for (size_t j = 0; j < n_species; ++j)
+	{
+		const int idx_col = 6 + static_cast<int>(j);
+		rho_i_idx.emplace_back(idx_col);
+
+		// Use EOS extra_labels if available, otherwise fallback
+		if (j < in_tov_solver->eos_tab.extra_labels.size())
+			ds[idx_col].label = in_tov_solver->eos_tab.extra_labels[j];
+		else
+			ds[idx_col].label = "X" + std::to_string(idx_col);
+	}
+
+	// Simple labels for the integrand dataset
+	B_integrand[0].label = "r(km)";
+	B_integrand[1].label = "B";
+}
+
+---------------------------------------------------------------- */
+
+// ------------------------------------------------------------
+// Init interpolants from profile
+// ------------------------------------------------------------
+void CompactStar::NStar::InitInterpolantsFromProfile_()
+{
+	// nothing to do if profile is empty
+	if (prof_.empty())
+		return;
+
+	// We only interpolate columns that actually exist.
+	// NOTE: your StarProfile throws in Get(...) if column is missing,
+	// so we MUST guard with HasColumn(...) before calling Interpolate.
+
+	// Radius column must exist for interpolation to make sense
+	if (!prof_.HasColumn(StarProfile::Column::Radius))
+	{
+		Z_LOG_ERROR("StarProfile has no radius column; cannot finalize.");
+		surface_ready = false;
+		return;
+	}
+
+	// auto &radial = prof_.radial;
+	const int rcol = prof_.GetColumnIndex(StarProfile::Column::Radius);
+
+	if (prof_.radial[rcol].Size() == 0)
+	{
+		Z_LOG_ERROR("StarProfile radius column is empty; nothing to finalize.");
+		surface_ready = false;
+		return;
+	}
+
+	if (prof_.HasColumn(StarProfile::Column::Mass))
+		prof_.radial.Interpolate(rcol, prof_.GetColumnIndex(StarProfile::Column::Mass));
+
+	if (prof_.HasColumn(StarProfile::Column::Pressure))
+		prof_.radial.Interpolate(rcol, prof_.GetColumnIndex(StarProfile::Column::Pressure));
+
+	if (prof_.HasColumn(StarProfile::Column::EnergyDensity))
+		prof_.radial.Interpolate(rcol, prof_.GetColumnIndex(StarProfile::Column::EnergyDensity));
+
+	if (prof_.HasColumn(StarProfile::Column::BaryonDensity))
+		prof_.radial.Interpolate(rcol, prof_.GetColumnIndex(StarProfile::Column::BaryonDensity));
+
+	if (prof_.HasColumn(StarProfile::Column::MetricNuPrime))
+	{
+		const int nupcol = prof_.GetColumnIndex(StarProfile::Column::MetricNuPrime);
+		if (prof_.radial[nupcol].Size() == prof_.radial[rcol].Size())
+			prof_.radial.Interpolate(rcol, nupcol);
+		else
+			Z_LOG_ERROR("MetricNuPrime column size mismatch; skipping ν′ interpolation.");
+	}
+
+	// if (prof_.HasColumn(StarProfile::Column::MetricLambda))
+	// 	prof_.radial.Interpolate(rcol, prof_.GetColumnIndex(StarProfile::Column::MetricLambda));
+
+	if (prof_.HasColumn(StarProfile::Column::MetricLambda))
+	{
+		const int lcol = prof_.GetColumnIndex(StarProfile::Column::MetricLambda);
+		if (prof_.radial[lcol].Size() == prof_.radial[rcol].Size())
+			prof_.radial.Interpolate(rcol, lcol);
+		else
+			Z_LOG_ERROR("lambda column size mismatch; skipping lambda interpolation.");
+	}
+
+	// per-species
+	for (std::size_t i = 0; i < prof_.species_idx.size(); ++i)
+	{
+		const int scol = prof_.species_idx[i];
+		if (prof_.IsValidColumnIndex(scol))
+			prof_.radial.Interpolate(rcol, scol);
+	}
+}
+
+//--------------------------------------------------------------
+// Print profile column sizes
+void CompactStar::NStar::PrintProfileColumnSizes() const
+{
+	std::cout << "[NStar] profile column sizes:\n";
+	for (const auto &col : prof_.radial.data_set)
+	{
+		std::cout << "  - " << col.label << " : " << col.Size() << "\n";
+	}
+	std::cout << "------------------------------\n";
 }
 
 //--------------------------------------------------------------
 // This has to be run so the class
 // knows when to initialize all the splines
-void CompactStar::NStar::SurfaceIsReached() 
-{
-  PROFILE_FUNCTION() ;
-
-  ds.Interpolate(r_idx, {m_idx, nu_der_idx, rho_idx, eps_idx, pre_idx} ) ;
-  
-  EvaluateNu() ;
-
-  // ..................................................................  
-  //                                B Integrand
-  // ..................................................................  
-  B_integrand[0] = ds[r_idx] ;
-  B_integrand[1] = ds[r_idx].pow(2) ;
-  B_integrand[1] *= 4*M_PI * ds[rho_idx] ; 
-
-  B_integrand[1] /= (1. - 2.* ds[m_idx] / ds[r_idx]).sqrt() ;
-
-  // converting fm^{-3} to km^{-3}
-  B_integrand[1] *= pow(10, 54) ;
-
-  B_integrand.Interpolate(0, 1) ;
-  // ..................................................................  
-
-  // Units must be converted from km
-  sequence.ec = ds[eps_idx][0] * Zaki::Physics::INV_FM4_2_G_CM3 /
-                                      Zaki::Physics::INV_FM4_2_INV_KM2  ;
-  sequence.m  = ds[m_idx][-1] / Zaki::Physics::SUN_M_KM ;
-  sequence.r  = ds[r_idx][-1] ;
-  sequence.pc = ds[pre_idx][0] * Zaki::Physics::INV_FM4_2_Dyn_CM2 /
-                                      Zaki::Physics::INV_FM4_2_INV_KM2 ;
-  // sequence.b  = Find_BaryonNum_Visible() ;
-  sequence.b  = B_integrand.Integrate(1, {ds[r_idx][0], ds[r_idx][-1]}) ;
-
-  sequence.I  = Find_MomInertia() ;
-  // accel  = gsl_interp_accel_alloc ();
-
-  // mass_r_spline = gsl_spline_alloc (gsl_interp_cspline, radius.Size()) ;
-  // rho_r_spline  = gsl_spline_alloc (gsl_interp_cspline, radius.Size()) ;
-  // eps_r_spline  = gsl_spline_alloc (gsl_interp_cspline, radius.Size()) ;
-  // press_r_spline = gsl_spline_alloc (gsl_interp_cspline, radius.Size()) ;
-  // nu_der_r_spline = gsl_spline_alloc (gsl_interp_cspline, radius.Size()) ;
-  // nu_r_spline = gsl_spline_alloc (gsl_interp_cspline, radius.Size()) ;
-
- 
-
-  // gsl_spline_init (mass_r_spline, &radius.vals[0], &mass.vals[0], radius.Size()) ;
-  // gsl_spline_init (rho_r_spline, &radius.vals[0], &rho.vals[0], radius.Size()) ;
-  // gsl_spline_init (eps_r_spline, &radius.vals[0], &eps.vals[0], radius.Size()) ;
-  // gsl_spline_init (press_r_spline, &radius.vals[0], &press.vals[0], radius.Size()) ;
-  // gsl_spline_init (nu_der_r_spline, &radius.vals[0], &nu_der.vals[0], radius.Size()) ;
-}
-//--------------------------------------------------------------
-// Reserving the needed space for all datacolumns
-// void CompactStar::NStar::Reserve(const size_t& space_size) 
+// void CompactStar::NStar::FinalizeSurface()
 // {
-//   radius.Reserve(space_size) ;
-//   mass.Reserve(space_size) ;
-//   rho.Reserve(space_size) ;
-//   eps.Reserve(space_size) ;
-//   press.Reserve(space_size) ;
-//   nu_der.Reserve(space_size) ;
-//   nu.Reserve(space_size) ;
+// 	PROFILE_FUNCTION();
+
+// 	// Must have rows before we can interpolate
+// 	const auto &r = col(Col::R);
+// 	if (r.Size() == 0)
+// 	{
+// 		Z_LOG_ERROR("FinalizeAfterSurface: no rows appended; nothing to finalize.");
+// 		surface_ready = false;
+// 		return;
+// 	}
+
+// 	// Build splines for (M, ν', ρ, ε, p) as functions of r
+// 	ds.Interpolate(idx(Col::R), {idx(Col::M), idx(Col::NuPrime), idx(Col::Rho), idx(Col::Eps), idx(Col::P)});
+
+// 	// Build ν(r) from ν'(r) with surface BC (O(N) cumulative integral of segments)
+// 	EvaluateNu();
+
+// 	// ..................................................................
+// 	//                         B Integrand
+// 	// ..................................................................
+// 	// Build baryon-number integrand as a dataset for convenience + fast integrate
+// 	B_integrand[0] = col(Col::R);
+// 	B_integrand[1] = col(Col::R).pow(2);
+// 	B_integrand[1] *= 4.0 * M_PI * col(Col::Rho);
+
+// 	B_integrand[1] /= (1.0 - 2.0 * col(Col::M) / col(Col::R)).sqrt();
+
+// 	// converting fm^{-3} to km^{-3}
+// 	B_integrand[1] *= FM3_TO_KM3;
+
+// 	B_integrand.Interpolate(0, 1);
+// 	// ..................................................................
+
+// 	// Fill the sequence point
+// 	// Units must be converted from km
+// 	sequence.ec = col(Col::Eps)[0] * Zaki::Physics::INV_FM4_2_G_CM3 /
+// 				  Zaki::Physics::INV_FM4_2_INV_KM2;			// g/cm^3
+// 	sequence.m = col(Col::M)[-1] / Zaki::Physics::SUN_M_KM; // M_sun
+// 	sequence.r = col(Col::R)[-1];							// km
+// 	sequence.pc = col(Col::P)[0] * Zaki::Physics::INV_FM4_2_Dyn_CM2 /
+// 				  Zaki::Physics::INV_FM4_2_INV_KM2; // dyne/cm^2
+// 	// sequence.b  = Find_BaryonNum_Visible() ;
+// 	sequence.b = B_integrand.Integrate(1, {col(Col::R)[0], col(Col::R)[-1]});
+
+// 	// RotationSolver updates MomI; returns it
+// 	sequence.I = Find_MomInertia();
+
+// 	surface_ready = true;
 // }
 //--------------------------------------------------------------
-// Appends tov points to the NStar
-void CompactStar::NStar::Append(const TOVPoint& in_tov) 
+// This has to be run so the class
+// knows when to initialize all the splines
+void CompactStar::NStar::FinalizeSurface()
 {
-  // radius.vals.emplace_back(in_tov.r) ; // in km
-  // mass.vals.emplace_back(Zaki::Physics::SUN_M_KM*in_tov.m) ; // in km
-  // rho.vals.emplace_back(in_tov.rho) ; // in fm^{-3}
-  // eps.vals.emplace_back(in_tov.e * Zaki::Physics::INV_FM4_2_INV_KM2 / Zaki::Physics::INV_FM4_2_G_CM3) ; // in km^{-2}
-  // press.vals.emplace_back(in_tov.p * Zaki::Physics::INV_FM4_2_INV_KM2 / Zaki::Physics::INV_FM4_2_Dyn_CM2 ) ; // in km^{-2}
-  // nu_der.vals.emplace_back(in_tov.nu_der * 1e+5) ; // convert 1/cm to 1/km
+	PROFILE_FUNCTION();
 
-  ds[r_idx].vals.emplace_back(in_tov.r) ; // in km
-  ds[m_idx].vals.emplace_back(Zaki::Physics::SUN_M_KM*in_tov.m) ; // in km
-  ds[rho_idx].vals.emplace_back(in_tov.rho) ; // in fm^{-3}
-  ds[eps_idx].vals.emplace_back(in_tov.e * Zaki::Physics::INV_FM4_2_INV_KM2 / Zaki::Physics::INV_FM4_2_G_CM3) ; // in km^{-2}
-  ds[pre_idx].vals.emplace_back(in_tov.p * Zaki::Physics::INV_FM4_2_INV_KM2 / Zaki::Physics::INV_FM4_2_Dyn_CM2 ) ; // in km^{-2}
-  ds[nu_der_idx].vals.emplace_back(in_tov.nu_der * 1e+5) ; // convert 1/cm to 1/km
+	// ============================================================
+	// 1) PROFILE-FIRST PATH
+	// ============================================================
+	if (!prof_.empty())
+	{
+		InitInterpolantsFromProfile_();
 
-  for (size_t i = 0; i < in_tov.rho_i.size(); i++)
-  {
-    // in fm^{-3}
-    ds[ rho_i_idx[i] ].vals.emplace_back( in_tov.rho_i[i] ) ;
-  }
+		// auto &radial = prof_.radial;
+
+		// --- safety: must have radius column with rows
+		// if (!prof_.HasColumn(StarProfile::Column::Radius))
+		// {
+		// 	Z_LOG_ERROR("StarProfile has no radius column; cannot finalize.");
+		// 	surface_ready = false;
+		// 	return;
+		// }
+		const int rcol = prof_.GetColumnIndex(StarProfile::Column::Radius);
+		// const auto &r = radial[rcol];
+		// if (r.Size() == 0)
+		// {
+		// 	Z_LOG_ERROR("StarProfile radius column is empty; nothing to finalize.");
+		// 	surface_ready = false;
+		// 	return;
+		// }
+
+		// --------------------------------------------------------
+		// 1.a) Interpolate basic columns vs r
+		//     (only those that actually exist in the profile)
+		// --------------------------------------------------------
+		// Collect the columns we want to interpolate
+		// std::vector<int> interp_cols;
+		// if (prof_.HasColumn(StarProfile::Column::Mass))
+		// 	interp_cols.push_back(prof_.GetColumnIndex(StarProfile::Column::Mass));
+		// if (prof_.HasColumn(StarProfile::Column::MetricNuPrime))
+		// 	interp_cols.push_back(prof_.GetColumnIndex(StarProfile::Column::MetricNuPrime));
+		// if (prof_.HasColumn(StarProfile::Column::BaryonDensity))
+		// 	interp_cols.push_back(prof_.GetColumnIndex(StarProfile::Column::BaryonDensity));
+		// if (prof_.HasColumn(StarProfile::Column::EnergyDensity))
+		// 	interp_cols.push_back(prof_.GetColumnIndex(StarProfile::Column::EnergyDensity));
+		// if (prof_.HasColumn(StarProfile::Column::Pressure))
+		// 	interp_cols.push_back(prof_.GetColumnIndex(StarProfile::Column::Pressure));
+
+		// if (!interp_cols.empty())
+		// 	radial.Interpolate(rcol, interp_cols);
+
+		// --------------------------------------------------------
+		// 1.b) Build ν(r) from ν′(r) with surface BC
+		//      (this will also register interpolation for ν)
+		// --------------------------------------------------------
+		EvaluateNu(); // profile-aware version we just wrote
+
+		// --------------------------------------------------------
+		// 1.c) Build baryon-number integrand
+		// --------------------------------------------------------
+		if (!prof_.HasColumn(StarProfile::Column::BaryonDensity) ||
+			!prof_.HasColumn(StarProfile::Column::Mass))
+		{
+			Z_LOG_ERROR("Missing nB or M column in StarProfile; cannot build B integrand.");
+		}
+		else
+		{
+			Z_LOG_INFO("Building baryon-number integrand from StarProfile.");
+			const int mcol = prof_.GetColumnIndex(StarProfile::Column::Mass);
+			const int nbcol = prof_.GetColumnIndex(StarProfile::Column::BaryonDensity);
+
+			B_integrand[0] = prof_.radial[rcol];				// r
+			B_integrand[1] = prof_.radial[rcol].pow(2);			// r^2
+			B_integrand[1] *= 4.0 * M_PI * prof_.radial[nbcol]; // 4π r^2 nB
+
+			// divide by sqrt(1 - 2M/r)
+			// M is already in km, r in km
+			B_integrand[1] /= (1.0 - 2.0 * prof_.radial[mcol] / prof_.radial[rcol]).sqrt();
+
+			// fm^{-3} → km^{-3}
+			B_integrand[1] *= FM3_TO_KM3;
+
+			B_integrand.Interpolate(0, 1);
+		}
+
+		// --------------------------------------------------------
+		// 1.d) Fill the sequence point from the profile
+		// --------------------------------------------------------
+		// energy density at center
+		if (prof_.HasColumn(StarProfile::Column::EnergyDensity))
+		{
+			const auto &eps0 = prof_.radial[prof_.GetColumnIndex(StarProfile::Column::EnergyDensity)][0];
+			prof_.seq_point.ec = eps0 * Zaki::Physics::INV_FM4_2_G_CM3 /
+								 Zaki::Physics::INV_FM4_2_INV_KM2; // g/cm^3
+		}
+		else
+		{
+			prof_.seq_point.ec = 0.0;
+		}
+
+		// mass and radius at surface
+		prof_.seq_point.r = prof_.GetRadius()->operator[](-1); // km
+
+		if (prof_.HasColumn(StarProfile::Column::Mass))
+		{
+			const auto &m_last = prof_.GetMass()->operator[](-1);
+			prof_.seq_point.m = m_last / Zaki::Physics::SUN_M_KM; // M_sun
+		}
+		else
+		{
+			prof_.seq_point.m = 0.0; // M_sun
+		}
+
+		// central pressure
+		if (prof_.HasColumn(StarProfile::Column::Pressure))
+		{
+			const auto &p0 = prof_.GetPressure()->operator[](0);
+			prof_.seq_point.pc = p0 * Zaki::Physics::INV_FM4_2_Dyn_CM2 /
+								 Zaki::Physics::INV_FM4_2_INV_KM2; // dyne/cm^2
+		}
+		else
+		{
+			prof_.seq_point.pc = 0.0;
+		}
+
+		// total baryon number (visible) from integrand
+		if (B_integrand[0].Size() > 0)
+		{
+			prof_.seq_point.b = B_integrand.Integrate(
+				1, {B_integrand[0][0], B_integrand[0][-1]});
+		}
+		else
+		{
+			prof_.seq_point.b = 0.0;
+		}
+
+		// moment of inertia
+		prof_.seq_point.I = Find_MomInertia();
+
+		surface_ready = true;
+		return;
+	}
+
+	// ============================================================
+	// 2) LEGACY DS PATH (KEPT FOR NOW)
+	// ============================================================
+	// {
+	// 	// Must have rows before we can interpolate
+	// 	const auto &r = col(Col::R);
+	// 	if (r.Size() == 0)
+	// 	{
+	// 		Z_LOG_ERROR("FinalizeAfterSurface: no rows appended; nothing to finalize.");
+	// 		surface_ready = false;
+	// 		return;
+	// 	}
+
+	// 	// Build splines for (M, ν', ρ, ε, p) as functions of r
+	// 	ds.Interpolate(idx(Col::R),
+	// 				   {idx(Col::M), idx(Col::NuPrime), idx(Col::Rho),
+	// 					idx(Col::Eps), idx(Col::P)});
+
+	// 	// Build ν(r) from ν'(r) with surface BC
+	// 	EvaluateNu();
+
+	// 	// ........................ B integrand ........................
+	// 	B_integrand[0] = col(Col::R);
+	// 	B_integrand[1] = col(Col::R).pow(2);
+	// 	B_integrand[1] *= 4.0 * M_PI * col(Col::Rho);
+	// 	B_integrand[1] /= (1.0 - 2.0 * col(Col::M) / col(Col::R)).sqrt();
+	// 	B_integrand[1] *= FM3_TO_KM3;
+	// 	B_integrand.Interpolate(0, 1);
+	// 	// .............................................................
+
+	// 	// Fill the sequence point
+	// 	sequence.ec = col(Col::Eps)[0] * Zaki::Physics::INV_FM4_2_G_CM3 /
+	// 				  Zaki::Physics::INV_FM4_2_INV_KM2;			// g/cm^3
+	// 	sequence.m = col(Col::M)[-1] / Zaki::Physics::SUN_M_KM; // M_sun
+	// 	sequence.r = col(Col::R)[-1];							// km
+	// 	sequence.pc = col(Col::P)[0] * Zaki::Physics::INV_FM4_2_Dyn_CM2 /
+	// 				  Zaki::Physics::INV_FM4_2_INV_KM2; // dyne/cm^2
+	// 	sequence.b = B_integrand.Integrate(
+	// 		1, {col(Col::R)[0], col(Col::R)[-1]});
+
+	// 	sequence.I = Find_MomInertia();
+
+	// 	surface_ready = true;
+	// }
 }
 
 //--------------------------------------------------------------
+// Check if surface is initialized
+//  Returns true if SurfaceIsReached has been called
+//  and internal splines are ready.
+//  It is set to true in SurfaceIsReached()
+// bool CompactStar::NStar::IsSurfaceFinalized() const noexcept
+// {
+// 	return surface_ready;
+// }
+
+//--------------------------------------------------------------
+// Appends one TOV point to the NStar (legacy ds + new StarProfile)
+void CompactStar::NStar::Append(const TOVPoint &in_tov)
+{
+	// ============================================================
+	// 1) ---- LEGACY DS PATH (keep as-is) -------------------------
+	// ============================================================
+	// NOTE: this preserves your current behavior.
+	// col(Col::R).vals.emplace_back(in_tov.r); // in km
+
+	// col(Col::M).vals.emplace_back(
+	// 	Zaki::Physics::SUN_M_KM * in_tov.m); // solar-mass → km
+
+	// col(Col::Rho).vals.emplace_back(
+	// 	in_tov.rho); // in fm^{-3}
+
+	// col(Col::Eps).vals.emplace_back(
+	// 	in_tov.e * Zaki::Physics::INV_FM4_2_INV_KM2 / Zaki::Physics::INV_FM4_2_G_CM3); // to km^{-2}
+
+	// col(Col::P).vals.emplace_back(
+	// 	in_tov.p * Zaki::Physics::INV_FM4_2_INV_KM2 / Zaki::Physics::INV_FM4_2_Dyn_CM2); // to km^{-2}
+
+	// col(Col::NuPrime).vals.emplace_back(in_tov.nu_der * 1e5); // 1/cm → 1/km
+
+	// // per-species for legacy ds
+	// if (in_tov.rho_i.size() != rho_i_idx.size())
+	// {
+	// 	Z_LOG_ERROR("Append (legacy ds): mismatch in species count: rho_i.size() = " +
+	// 				std::to_string(in_tov.rho_i.size()) + " vs rho_i_idx = " +
+	// 				std::to_string(rho_i_idx.size()));
+	// }
+	// for (std::size_t i = 0; i < in_tov.rho_i.size() && i < rho_i_idx.size(); ++i)
+	// {
+	// 	ds[rho_i_idx[i]].vals.emplace_back(in_tov.rho_i[i]); // fm^{-3}
+	// }
+
+	// ============================================================
+	// 2) ---- PROFILE PATH (preferred going forward) --------------
+	// ============================================================
+	// Make sure the radial dataset inside the profile is large enough
+	// and has the canonical columns.
+	auto &radial = prof_.radial;
+
+	// If InitFromTOVSolver() ran, we already have 8 base columns
+	// (0..7) labeled and sized; just reuse them. Only in the rare case
+	// that the profile is totally empty (e.g. NStar constructed directly
+	// without going through TOVSolver) do we create columns here.
+	// const bool has_preallocated_base = (radial.Dim().size() >= 8) &&
+	// 								   prof_.IsValidColumnIndex(prof_.idx_r) &&
+	// 								   prof_.IsValidColumnIndex(prof_.idx_m) &&
+	// 								   prof_.IsValidColumnIndex(prof_.idx_nuprime) &&
+	// 								   prof_.IsValidColumnIndex(prof_.idx_p) &&
+	// 								   prof_.IsValidColumnIndex(prof_.idx_eps) &&
+	// 								   prof_.IsValidColumnIndex(prof_.idx_nb) &&
+	// 								   prof_.IsValidColumnIndex(prof_.idx_nu);
+
+	// if (!has_preallocated_base)
+	// {
+	// 	std::cout << "[NStar::Append] StarProfile radial dataset missing base columns; adding them now.\n";
+	// 	// Fallback — old behavior (for standalone NStar use)
+	// 	if (!prof_.IsValidColumnIndex(prof_.idx_r))
+	// 	{
+	// 		radial.AddColumn("r(km)");
+	// 		prof_.idx_r = static_cast<int>(radial.Dim().size() - 1);
+	// 	}
+	// 	if (!prof_.IsValidColumnIndex(prof_.idx_m))
+	// 	{
+	// 		radial.AddColumn("m(km)");
+	// 		prof_.idx_m = static_cast<int>(radial.Dim().size() - 1);
+	// 	}
+	// 	if (!prof_.IsValidColumnIndex(prof_.idx_nuprime))
+	// 	{
+	// 		radial.AddColumn("nu_prime(km^-1)");
+	// 		prof_.idx_nuprime = static_cast<int>(radial.Dim().size() - 1);
+	// 	}
+	// 	if (!prof_.IsValidColumnIndex(prof_.idx_p))
+	// 	{
+	// 		radial.AddColumn("p(km^-2)");
+	// 		prof_.idx_p = static_cast<int>(radial.Dim().size() - 1);
+	// 	}
+	// 	if (!prof_.IsValidColumnIndex(prof_.idx_eps))
+	// 	{
+	// 		radial.AddColumn("eps(km^-2)");
+	// 		prof_.idx_eps = static_cast<int>(radial.Dim().size() - 1);
+	// 	}
+	// 	if (!prof_.IsValidColumnIndex(prof_.idx_nb))
+	// 	{
+	// 		radial.AddColumn("nB(fm^-3)");
+	// 		prof_.idx_nb = static_cast<int>(radial.Dim().size() - 1);
+	// 	}
+	// 	if (!prof_.IsValidColumnIndex(prof_.idx_nu))
+	// 	{
+	// 		radial.AddColumn("nu");
+	// 		prof_.idx_nu = static_cast<int>(radial.Dim().size() - 1);
+	// 	}
+	// 	// lambda stays optional
+	// }
+
+	// Now actually append the values (same unit conversions as legacy)
+	radial[prof_.idx_r].vals.emplace_back(in_tov.r);
+	radial[prof_.idx_m].vals.emplace_back(Zaki::Physics::SUN_M_KM * in_tov.m); // solar-mass → km
+	radial[prof_.idx_nuprime].vals.emplace_back(in_tov.nu_der * 1e5);		   // 1/cm→1/km
+	radial[prof_.idx_p].vals.emplace_back(
+		in_tov.p * Zaki::Physics::INV_FM4_2_INV_KM2 / Zaki::Physics::INV_FM4_2_Dyn_CM2);
+	radial[prof_.idx_eps].vals.emplace_back(
+		in_tov.e * Zaki::Physics::INV_FM4_2_INV_KM2 / Zaki::Physics::INV_FM4_2_G_CM3);
+	radial[prof_.idx_nb].vals.emplace_back(in_tov.rho);
+
+	// we do not set nu here — EvaluateNu() will overwrite this column later
+	radial[prof_.idx_nu].vals.emplace_back(0.0);
+
+	// std::cout << "radial[idx_r].Size() - radial[idx_m].Size() = "
+	// 		  << radial[prof_.idx_r].Size() - radial[prof_.idx_m].Size() << "\n";
+
+	// λ(r) = 1 / (1 - 2M/r)
+	{
+		const double r_km = in_tov.r;
+		const double m_km = Zaki::Physics::SUN_M_KM * in_tov.m;
+		double denom = 1.0;
+		if (r_km > 0.0)
+		{
+			denom = 1.0 - 2.0 * m_km / r_km;
+			if (denom <= 0.0)
+				denom = 1e-15;
+		}
+		const double lambda_val = 1.0 / denom;
+		radial[prof_.idx_lambda].vals.emplace_back(lambda_val);
+	}
+
+	// ------------------------------------------------------------
+	// 2.a) per-species for the profile
+	// ------------------------------------------------------------
+	if (!in_tov.rho_i.empty())
+	{
+		// If the profile doesn’t yet know these species, we auto-register them.
+		// We assume order-matching: in_tov.rho_i[k] ↔ prof_.species_labels[k]
+		if (prof_.species_labels.size() < in_tov.rho_i.size())
+		{
+			// extend labels and columns
+			for (std::size_t k = prof_.species_labels.size();
+				 k < in_tov.rho_i.size(); ++k)
+			{
+				// make up a label if we don't have one
+				const std::string lbl = "rho_i_" + std::to_string(k);
+				radial.AddColumn(lbl);
+				const int col_idx = static_cast<int>(radial.Dim().size() - 1);
+				prof_.AddSpecies(lbl, col_idx);
+			}
+		}
+
+		// now append the data
+		for (std::size_t k = 0; k < in_tov.rho_i.size(); ++k)
+		{
+			const int col_idx = prof_.species_idx[k];
+			radial[col_idx].vals.emplace_back(in_tov.rho_i[k]); // fm^{-3}
+		}
+	}
+
+	// ------------------------------------------------------------
+	// 2.b) update surface guess (sequence) incrementally
+	// ------------------------------------------------------------
+	// We can’t finalize here (that’s FinalizeSurface’s job) but we can
+	// at least update the running “last point” so if you inspect sequence
+	// before finalization, you get something reasonable.
+	prof_.seq_point.r = in_tov.r; // km
+	prof_.seq_point.m = in_tov.m; // M_sun  ← leave it in solar masses
+								  // pc, ec, B, I will be filled / fixed at finalize time
+}
+
+/* ------------- LEGACY VERSION FOR REFERENCE ------------------
+
+void CompactStar::NStar::Append(const TOVPoint &in_tov)
+{
+	col(Col::R).vals.emplace_back(in_tov.r);                                                                       // in km
+	col(Col::M).vals.emplace_back(Zaki::Physics::SUN_M_KM * in_tov.m);                                             // in km
+	col(Col::Rho).vals.emplace_back(in_tov.rho);                                                                   // in fm^{-3}
+	col(Col::Eps).vals.emplace_back(in_tov.e * Zaki::Physics::INV_FM4_2_INV_KM2 / Zaki::Physics::INV_FM4_2_G_CM3); // in km^{-2}
+	col(Col::P).vals.emplace_back(in_tov.p * Zaki::Physics::INV_FM4_2_INV_KM2 / Zaki::Physics::INV_FM4_2_Dyn_CM2); // in km^{-2}
+	col(Col::NuPrime).vals.emplace_back(in_tov.nu_der * 1e+5);                                                     // convert 1/cm to 1/km
+
+	if (in_tov.rho_i.size() != rho_i_idx.size())
+	{
+		Z_LOG_ERROR("Append: mismatch in species count: rho_i.size() = " +
+					std::to_string(in_tov.rho_i.size()) + " vs rho_i_idx = " +
+					std::to_string(rho_i_idx.size()));
+	}
+
+	for (size_t i = 0; i < in_tov.rho_i.size(); i++)
+	{
+		// in fm^{-3}
+		ds[rho_i_idx[i]].vals.emplace_back(in_tov.rho_i[i]);
+	}
+}
+
+//-------------------------------------------------------------- */
 // Sets the work directory for the member objects
-CompactStar::Prog* CompactStar::NStar::SetMemWrkDir(
-  const Zaki::String::Directory& in_dir) 
+void CompactStar::NStar::OnWorkDirChanged(
+	const Zaki::String::Directory &in_dir)
 {
-  ds.SetWrkDir( in_dir ) ;
-
-  return this ;
+	prof_.radial.SetWrkDir(in_dir);
 }
-
-//--------------------------------------------------------------
-
-// void CompactStar::NStar::SetSharedPtr(std::shared_ptr<CompactStar::NStar> in_ptr) 
-// {
-//   ns_shared_ptr = in_ptr ;
-// }
-
-// //--------------------------------------------------------------
-
-// std::shared_ptr<CompactStar::NStar> CompactStar::NStar::GetSharedPtr() 
-// {
-//   return ns_shared_ptr ;
-// }
-
-//--------------------------------------------------------------
-/// Initializing the class
-// void CompactStar::NStar::Init(const std::vector<TOVPoint>& in_tov) 
-// {
-
-//   mass_r_spline = gsl_spline_alloc (gsl_interp_cspline, in_tov.size()) ;
-//   rho_r_spline  = gsl_spline_alloc (gsl_interp_cspline, in_tov.size()) ;
-//   eps_r_spline  = gsl_spline_alloc (gsl_interp_cspline, in_tov.size()) ;
-//   press_r_spline = gsl_spline_alloc (gsl_interp_cspline, in_tov.size()) ;
-//   nu_der_r_spline = gsl_spline_alloc (gsl_interp_cspline, in_tov.size()) ;
-//   nu_r_spline = gsl_spline_alloc (gsl_interp_cspline, in_tov.size()) ;
-
-//   if (radius.Size() != 0 )
-//     Reset() ;
-
-//   radius.Reserve(in_tov.size()) ;
-//   mass.Reserve(in_tov.size()) ;
-//   rho.Reserve(in_tov.size()) ;
-//   eps.Reserve(in_tov.size()) ;
-//   press.Reserve(in_tov.size()) ;
-//   nu_der.Reserve(in_tov.size()) ;
-//   nu.Reserve(in_tov.size()) ;
-
-//   for (auto &&i : in_tov)
-//   {
-//     radius.vals.emplace_back(i.r) ; // in km
-//     mass.vals.emplace_back(Zaki::Physics::SUN_M_KM*i.m) ; // in km
-//     rho.vals.emplace_back(i.rho) ; // in fm^{-3}
-//     eps.vals.emplace_back(i.e * Zaki::Physics::INV_FM4_2_INV_KM2 / Zaki::Physics::INV_FM4_2_G_CM3) ; // in km^{-2}
-//     press.vals.emplace_back(i.p * Zaki::Physics::INV_FM4_2_INV_KM2 / Zaki::Physics::INV_FM4_2_Dyn_CM2 ) ; // in km^{-2}
-//     nu_der.vals.emplace_back(i.nu_der * 1e+5) ; // convert 1/cm to 1/km
-//   }
-
-//   gsl_spline_init (mass_r_spline, &radius.vals[0], &mass.vals[0], in_tov.size()) ;
-//   gsl_spline_init (rho_r_spline, &radius.vals[0], &rho.vals[0], in_tov.size()) ;
-//   gsl_spline_init (eps_r_spline, &radius.vals[0], &eps.vals[0], in_tov.size()) ;
-//   gsl_spline_init (press_r_spline, &radius.vals[0], &press.vals[0], in_tov.size()) ;
-//   gsl_spline_init (nu_der_r_spline, &radius.vals[0], &nu_der.vals[0], in_tov.size()) ;
-// }
 
 //--------------------------------------------------------------
 /// Similar to the destructor
-void CompactStar::NStar::Reset() 
+void CompactStar::NStar::Reset()
 {
-  ds.ClearRows() ;
-  B_integrand.ClearRows() ;
-  sequence.Reset() ;
-  // if(mass_r_spline)
-  //   gsl_spline_free (mass_r_spline);
-  
-  // if(rho_r_spline)
-  //   gsl_spline_free (rho_r_spline);
-  
-  // if(eps_r_spline)
-  //   gsl_spline_free (eps_r_spline);
-
-  // if(press_r_spline)
-  //   gsl_spline_free (press_r_spline);
-    
-  // if(nu_der_r_spline)
-  //   gsl_spline_free (nu_der_r_spline);
-    
-  // if(nu_r_spline)
-  //   gsl_spline_free (nu_r_spline);
-
-  // if(accel)
-  //   gsl_interp_accel_free (accel);
-
-  // radius.vals.clear() ;
-  // mass.vals.clear() ;
-  // rho.vals.clear() ;
-  // eps.vals.clear() ;
-  // press.vals.clear() ;
-  // nu_der.vals.clear() ;
-  // nu.vals.clear() ;
+	// ds.ClearRows();
+	prof_.Reset();
+	B_integrand.ClearRows();
+	// sequence.clear();
+	surface_ready = false;
 }
-
-//--------------------------------------------------------------
-/// Constructor from file
-// CompactStar::NStar::NStar(const Zaki::String::Directory& in_tov_file) 
-// : Prog("NStar")
-// {
-//   accel  = gsl_interp_accel_alloc ();
-// }
 
 //--------------------------------------------------------------
 /// Destructor
-CompactStar::NStar::~NStar() 
+CompactStar::NStar::~NStar()
 {
-  // if(mass_r_spline)
-  //   gsl_spline_free (mass_r_spline);
-  
-  // if(rho_r_spline)
-  //   gsl_spline_free (rho_r_spline);
-  
-  // if(eps_r_spline)
-  //   gsl_spline_free (eps_r_spline);
-
-  // if(press_r_spline)
-  //   gsl_spline_free (press_r_spline);
-    
-  // if(nu_der_r_spline)
-  //   gsl_spline_free (nu_der_r_spline);
-
-  // if(nu_r_spline)
-  //   gsl_spline_free (nu_r_spline);
-
-  // if(accel)
-  //   gsl_interp_accel_free (accel);
 }
 
 //--------------------------------------------------------------
-/// Returns the nu_der value given the radius input
-// r is in km ! ----> !!!
-// double CompactStar::NStar::GetNuDerSpline(const double& in_r) 
+// /// Evaluate the metric function
+// Out of commission from October 28, 2025
+// Reason: This was an O(N^2) algorithm due to the repeated integrations
+// void CompactStar::NStar::EvaluateNu()
 // {
-//   return gsl_spline_eval(nu_der_r_spline, in_r, accel);
+// 	PROFILE_FUNCTION();
+
+// 	// -----------------------------------
+// 	// Integrate to find nu(r) :
+// 	// -----------------------------------
+// 	col(Col::Nu).Resize(col(Col::R).Size());
+
+// 	// Boundary condition
+// 	double nu_at_R = 0.5 * log(
+// 							   1 - 2 * col(Col::M)[-1] / col(Col::R)[-1]);
+
+// 	// Calculate the surface term first to find out delta_nu_r
+// 	col(Col::Nu)[-1] = ds.Integrate(idx(Col::NuPrime), {col(Col::R)[0], col(Col::R)[-1]});
+// 	double delta_nu_r = col(Col::Nu)[-1] - nu_at_R;
+
+// 	col(Col::Nu)[-1] = nu_at_R;
+
+// 	// We don't need to calculate the surface term anymore,
+// 	//  therefore we have 'i < col(Col::R).Size()-1'
+// 	for (size_t i = 0; i < col(Col::R).Size() - 1; ++i)
+// 	{
+// 		col(Col::Nu)[i] = ds.Integrate(idx(Col::NuPrime), {col(Col::R)[0], col(Col::R)[i]}) - delta_nu_r;
+// 	}
+
+// 	ds.Interpolate(0, idx(Col::Nu));
 // }
 
 //--------------------------------------------------------------
 /// Evaluate the metric function
-void CompactStar::NStar::EvaluateNu() 
+// void CompactStar::NStar::EvaluateNu()
+// {
+// 	PROFILE_FUNCTION();
+
+// 	auto &r = col(Col::R);
+
+// 	const std::size_t N = r.Size();
+// 	if (N == 0)
+// 	{
+// 		return;
+// 	}
+
+// 	auto &m = col(Col::M);
+// 	auto &nup = col(Col::Nu);
+// 	nup.Resize(N);
+
+// 	// Surface boundary condition at R
+// 	const double R = r[-1];
+// 	const double MR = m[-1];
+// 	double x = 1.0 - 2.0 * MR / R;
+// 	if (x <= 0.0)
+// 	{
+// 		Z_LOG_ERROR("Non-physical 2M/R >= 1 in EvaluateNu(); clamping.");
+// 		x = 1e-15;
+// 	}
+// 	const double nu_R = 0.5 * std::log(x);
+
+// 	// Build J[i] = int_{r_i}^{R} ν'(r) dr with adjacent-interval integrals
+// 	std::vector<double> J(N, 0.0);
+// 	// J[N-1] = 0
+// 	for (std::size_t i = N - 1; i > 0; --i)
+// 	{
+// 		// integrate just the small interval [r[i-1], r[i]] using our GSL-backed DataSet
+// 		const double seg = ds.Integrate(idx(Col::NuPrime), {r[i - 1], r[i]});
+// 		J[i - 1] = J[i] + seg; // accumulate inward
+// 	}
+
+// 	// ν(r_i) = ν(R) - J[i]
+// 	for (std::size_t i = 0; i < N; ++i)
+// 	{
+// 		nup[i] = nu_R - J[i];
+// 	}
+
+// 	ds.Interpolate(idx(Col::R), idx(Col::Nu));
+// }
+void CompactStar::NStar::EvaluateNu()
 {
-  PROFILE_FUNCTION() ;
+	PROFILE_FUNCTION();
 
-  // -----------------------------------
-  // Integrate to find nu(r) :
-  // -----------------------------------
-  ds[nu_idx].Resize( ds[r_idx].Size() ) ;
+	// prefer StarProfile path
+	if (!prof_.empty() &&
+		prof_.HasColumn(StarProfile::Column::Radius) &&
+		prof_.HasColumn(StarProfile::Column::Mass) &&
+		prof_.HasColumn(StarProfile::Column::MetricNuPrime))
+	{
+		auto &radial = prof_.radial;
+		const int rcol = prof_.GetColumnIndex(StarProfile::Column::Radius);
+		const int mcol = prof_.GetColumnIndex(StarProfile::Column::Mass);
+		const int nupcol = prof_.GetColumnIndex(StarProfile::Column::MetricNuPrime);
 
-  // Boundary condition
-  double nu_at_R = 0.5*log(
-                  1 - 2 * ds[m_idx][-1] / ds[r_idx].Max()
-                          ) ;
+		// ensure ν column exists (create or clear)
+		int nucol = prof_.GetColumnIndex(StarProfile::Column::MetricNu);
+		if (!prof_.IsValidColumnIndex(nucol))
+		{
+			// append a new column for ν(r)
+			nucol = static_cast<int>(radial.Dim().size());
+			radial.AddColumn("nu");
+			prof_.SetColumnIndex(StarProfile::Column::MetricNu, nucol);
+		}
 
-  // if (dark_core)
-  // {
-    // ds.AddColumn("nu") ;
+		auto &nu = radial[nucol];
 
-  // Calculate the surface term first to find out delta_nu_r 
-  ds[nu_idx][-1] = ds.Integrate(nu_der_idx, { ds[r_idx][0], ds[r_idx][-1] } ) ;
-  double delta_nu_r = ds[nu_idx][-1] - nu_at_R ;
+		const auto &r = radial[rcol];
+		const auto &m = radial[mcol];
 
-  ds[nu_idx][-1] = nu_at_R ;
+		const std::size_t N = r.Size();
+		if (N == 0)
+			return;
+		nu.Resize(N);
 
-  // We don't need to calculate the surface term anymore,
-  //  therefore we have 'i < ds[r_idx].Size()-1'
-  for(size_t i = 0 ; i < ds[r_idx].Size()-1 ; ++i)
-  {
-    ds[nu_idx][i] = ds.Integrate(nu_der_idx, { ds[r_idx][0], ds[r_idx][i] } ) 
-                        - delta_nu_r ;
-  }
+		// surface boundary condition
+		const double R = r[N - 1];
+		const double MR = m[N - 1];
+		double x = 1.0 - 2.0 * MR / R;
+		if (x <= 0.0)
+		{
+			Z_LOG_ERROR("Non-physical 2M/R ≥ 1 in EvaluateNu(); clamping.");
+			x = 1e-15;
+		}
+		const double nu_R = 0.5 * std::log(x);
 
-  ds.Interpolate(0, nu_idx) ;
+		// accumulate ∫ ν′ dr inward
+		std::vector<double> J(N, 0.0);
+		for (std::size_t i = N - 1; i > 0; --i)
+		{
+			const double seg = radial.Integrate(nupcol, {r[i - 1], r[i]});
+			J[i - 1] = J[i] + seg;
+		}
 
-  // // -----------------------------------
-  // // Integrate to find nu(r) :
-  // // -----------------------------------
+		for (std::size_t i = 0; i < N; ++i)
+			nu[i] = nu_R - J[i];
 
-  // gsl_integration_workspace *w = gsl_integration_workspace_alloc(1000*radius.Size());
-  // double err;
+		// register spline
+		radial.Interpolate(rcol, nucol);
+		return;
+	}
 
-  // Zaki::Math::GSLFuncWrapper<NStar, double (NStar::*)( const double& )> 
-  //   Fp(this, &NStar::GetNuDerSpline);     
+	// // fallback: legacy dataset
+	// if (!ds.Dim().empty())
+	// {
+	//     auto &r = col(Col::R);
+	//     const std::size_t N = r.Size();
+	//     if (N == 0) return;
 
-  // gsl_function F = static_cast<gsl_function> (Fp) ; 
+	//     auto &m   = col(Col::M);
+	//     auto &nu  = col(Col::Nu);
+	//     auto &nup = col(Col::NuPrime);
+	//     nu.Resize(N);
 
-  // double tmp_nu ;
+	//     const double R  = r[N-1];
+	//     const double MR = m[N-1];
+	//     double x = 1.0 - 2.0 * MR / R;
+	//     if (x <= 0.0)
+	//     {
+	//         Z_LOG_ERROR("Non-physical 2M/R ≥ 1 in EvaluateNu(); clamping.");
+	//         x = 1e-15;
+	//     }
+	//     const double nu_R = 0.5 * std::log(x);
 
-  // for(size_t i = 0 ; i < radius.Size() ; ++i)
-  // {
-  //   gsl_integration_qag(&F, radius[0], radius[i], 1e-9, 1e-9, 1000, 1, w, &tmp_nu, &err);
-  //   nu.vals.push_back(tmp_nu) ;
-  //   // tmp_nu = 0 ;
-  // }
-  
-  // // std::cout << "tmp_nu: " << tmp_nu << "\n" ;
-  // gsl_integration_workspace_free(w) ;
-  
-  // // -------------------------------------------
-  // // Saving the results for [ r, M(r), nu(r) ] 
-  // // -------------------------------------------
-  
-  // // Matching the boundary condition for nu(r)
-  // double nu_at_R = 0.5*log(1 - 2*mass[-1] / radius[-1]) ;
+	//     std::vector<double> J(N, 0.0);
+	//     for (std::size_t i = N - 1; i > 0; --i)
+	//     {
+	//         const double seg = ds.Integrate(idx(Col::NuPrime), {r[i-1], r[i]});
+	//         J[i-1] = J[i] + seg;
+	//     }
 
-  // double delta_nu_r = nu[-1] - nu_at_R ;
+	//     for (std::size_t i = 0; i < N; ++i)
+	//         nu[i] = nu_R - J[i];
 
-  // // std::cout << "1 - 2*mass[-1] / radius[-1]: " << 1 - 2*mass[-1] / radius[-1] << "\n" ;
-  // // std::cout << "log(1 - 2*mass[-1] / radius[-1]): " << log(1 - 2*mass[-1] / radius[-1]) << "\n" ;
-  // // std::cout << "nu[-1]: " << nu[-1] << "\n" ;
-  // // std::cout << "nu_at_R: " << nu_at_R << "\n" ;
-
-  // // std::cout << "delta_nu_r: " << delta_nu_r << "\n" ;
-
-  // nu = nu - delta_nu_r ;
-
-  // // std::cout << "nu[-1]: " << nu[-1] << "\n" ;
-
-  // gsl_spline_init (nu_r_spline, &radius.vals[0], &nu.vals[0], nu.Size()) ;
+	//     ds.Interpolate(idx(Col::R), idx(Col::Nu));
+	// }
 }
 
 //--------------------------------------------------------------
 /// Metric function as a function of radius (in km)
-double CompactStar::NStar::GetNu(const double& in_r) const 
+double CompactStar::NStar::GetMetricNu(const double &in_r) const
 {
-  // return gsl_spline_eval(nu_r_spline, in_r, accel) ;
-  return ds.Evaluate(nu_idx, in_r) ;
+	if (in_r < 0)
+	{
+		Z_LOG_ERROR("radius must be non-negative.");
+		return std::numeric_limits<double>::quiet_NaN();
+	}
+
+	// profile path
+	if (!prof_.empty() && prof_.HasColumn(StarProfile::Column::Radius) &&
+		prof_.HasColumn(StarProfile::Column::MetricNu))
+	{
+		const auto &rcol = prof_.GetRadius();
+		const std::size_t N = rcol->Size();
+		if (N == 0)
+			return 0.0;
+		const double r0 = rcol->operator[](0);
+		const double rR = rcol->operator[](N - 1);
+		if (in_r < r0 || in_r > rR)
+			return 0.0;
+
+		return prof_.radial.Evaluate(
+			prof_.GetColumnIndex(StarProfile::Column::MetricNu),
+			in_r);
+	}
+
+	// legacy path
+	// auto dims = ds.Dim();
+	// if (!dims.empty())
+	// {
+	// 	const auto &r = col(Col::R);
+	// 	const std::size_t N = r.Size();
+	// 	if (N == 0)
+	// 		return 0.0;
+	// 	if (in_r < r[0] || in_r > r[N - 1])
+	// 		return 0.0;
+	// 	return ds.Evaluate(idx(Col::Nu), in_r);
+	// }
+
+	return 0.0;
 }
 
 //--------------------------------------------------------------
 // Metric function as a function of radius (in km)
-Zaki::Vector::DataColumn* CompactStar::NStar::GetNu() 
-{
-  return &ds[nu_idx] ;
-}
+// Zaki::Vector::DataColumn *CompactStar::NStar::GetNu() noexcept
+// {
+// 	return &col(Col::Nu);
+// }
+//--------------------------------------------------------------
+// Get radius at star surface.
+//  returns Radius at surface (km).
+// double CompactStar::NStar::RadiusSurface() const noexcept // sequence.r
+// {
+// 	if (!prof_.empty() && prof_.R > 0.0)
+// 		return prof_.R;
+// 	return sequence.r;
+// }
+
+//--------------------------------------------------------------
+// Get mass at star surface.
+// returns Mass at surface in solar mass units.
+// prof_.M is in km
+// sequence.m is in solar mass units
+// double CompactStar::NStar::MassSurface() const noexcept // sequence.m
+// {
+// 	if (!prof_.empty() && prof_.M > 0.0)
+// 		return prof_.M / Zaki::Physics::SUN_M_KM;
+// 	return sequence.m;
+// }
+
+//--------------------------------------------------------------
+//  Get the number of radial grid points.
+// returns Number of points.
+// std::size_t CompactStar::NStar::Size() const noexcept
+// {
+// 	if (!prof_.empty())
+// 		return prof_.size();
+
+// 	// Legacy behavior:
+// 	// auto ds_dims = ds.Dim();
+// 	// if (!ds_dims.empty())
+// 	// 	return ds[0].Size();
+
+// 	return 0;
+// }
+
+//--------------------------------------------------------------
+// Metric function as a function of radius (in km) - const version
+// const Zaki::Vector::DataColumn *CompactStar::NStar::GetNu() const noexcept
+// {
+// 	return &col(Col::Nu);
+// }
 
 //--------------------------------------------------------------
 /// Mass (in km) as a function of radius
-double CompactStar::NStar::GetMass(const double& in_r) const 
+double CompactStar::NStar::GetMass(const double &in_r) const
 {
-  // if (in_r < radius[0] || in_r > radius[-1])
-  // {
-  //   Z_LOG_ERROR("Input radius is out of range [ " 
-  //               + std::to_string(radius[0]) + ", "
-  //               + std::to_string(radius[-1]) +" ]") ;
+	{
+		if (in_r < 0)
+		{
+			Z_LOG_ERROR("Radius must be non-negative.");
+			return std::numeric_limits<double>::quiet_NaN();
+		}
 
-  //   return -1 ;
-  // }
-  
-  // return gsl_spline_eval(mass_r_spline, in_r, accel) ;
-  if (in_r < 0)
-  {
-    Z_LOG_ERROR("Input radius is must be positive!") ;
+		// ----- profile path -----
+		if (!prof_.empty() && prof_.HasColumn(StarProfile::Column::Radius) &&
+			prof_.HasColumn(StarProfile::Column::Mass))
+		{
+			const auto &radial = prof_.radial;
+			const auto &rcol = prof_.GetRadius();
+			const std::size_t N = rcol->Size();
+			if (N == 0)
+				return 0.0;
 
-    return -1 ;
-  }
-  
-  if (in_r < ds[r_idx][0])
-    return 0 ;
+			const double r0 = rcol->operator[](0);
+			const double rR = rcol->operator[](N - 1);
 
-  if( in_r > ds[r_idx][-1])
-    return ds[m_idx][-1] ;
+			if (in_r < r0)
+				return 0.0;
+			if (in_r > rR)
+				return radial[prof_.GetColumnIndex(StarProfile::Column::Mass)][N - 1];
 
-  // return gsl_spline_eval(mass_r_spline, in_r, visi_r_accel) ;
-  return ds.Evaluate(m_idx, in_r) ;
+			return radial.Evaluate(
+				prof_.GetColumnIndex(StarProfile::Column::Mass),
+				in_r);
+		}
+
+		// ----- legacy path -----
+		// auto dims = ds.Dim();
+		// if (!dims.empty())
+		// {
+		// 	const auto &r = col(Col::R);
+		// 	const std::size_t N = r.Size();
+		// 	if (N == 0)
+		// 		return 0.0;
+
+		// 	if (in_r < r[0])
+		// 		return 0.0;
+		// 	if (in_r > r[N - 1])
+		// 		return col(Col::M)[N - 1];
+
+		// 	return ds.Evaluate(idx(Col::M), in_r);
+		// }
+
+		return 0.0;
+	}
 }
 
 //--------------------------------------------------------------
-// Mass (in km) as a function of radius
-Zaki::Vector::DataColumn* 
-CompactStar::NStar::GetMass()  
-{
-  return &ds[m_idx] ;
-}
+// // Mass (in km) as a function of radius
+// Zaki::Vector::DataColumn *CompactStar::NStar::GetMass() noexcept
+// {
+// 	return &col(Col::M);
+// }
+// //--------------------------------------------------------------
+// // Mass (in km) as a function of radius - const version
+// const Zaki::Vector::DataColumn *CompactStar::NStar::GetMass() const noexcept
+// {
+// 	return &col(Col::M);
+// }
 
 //--------------------------------------------------------------
-/// Returns the radius dataset
-Zaki::Vector::DataColumn* CompactStar::NStar::GetRadius() 
-{
-  return &ds[r_idx] ;
-}
+// /// Returns the radius dataset
+// Zaki::Vector::DataColumn *CompactStar::NStar::GetRadius() noexcept
+// {
+// 	return &col(Col::R);
+// }
+
+// //--------------------------------------------------------------
+// /// Returns the radius dataset - const version
+// const Zaki::Vector::DataColumn *CompactStar::NStar::GetRadius() const noexcept
+// {
+// 	return &col(Col::R);
+// }
 
 //--------------------------------------------------------------
 /// Baryon number density (fm^{-3}) as a function of radius
-double CompactStar::NStar::GetRho(const double& in_r) const 
+double CompactStar::NStar::GetBaryonDensity(const double &in_r) const
 {
-  // if (in_r < radius[0] || in_r > radius[-1])
-  // {
-  //   Z_LOG_ERROR("Input radius is out of range [ " 
-  //               + std::to_string(radius[0]) + ", "
-  //               + std::to_string(radius[-1]) +" ]") ;
+	if (in_r < 0)
+	{
+		Z_LOG_ERROR("Radius must be non-negative.");
+		return std::numeric_limits<double>::quiet_NaN();
+	}
 
-  //   return -1 ;
-  // }
-  
-  // return gsl_spline_eval(rho_r_spline, in_r, accel) ;
+	// profile path
+	if (!prof_.empty() && prof_.HasColumn(StarProfile::Column::Radius) &&
+		prof_.HasColumn(StarProfile::Column::BaryonDensity))
+	{
+		const auto &rcol = prof_.GetRadius();
+		const std::size_t N = rcol->Size();
+		if (N == 0)
+			return 0.0;
 
-  if (in_r < 0)
-  {
-    Z_LOG_ERROR("Input radius is must be positive!") ;
+		const double r0 = rcol->operator[](0);
+		const double rR = rcol->operator[](N - 1);
+		if (in_r < r0 || in_r > rR)
+			return 0.0;
 
-    return -1 ;
-  }
+		return prof_.radial.Evaluate(
+			prof_.GetColumnIndex(StarProfile::Column::BaryonDensity),
+			in_r);
+	}
 
-  if (in_r < ds[r_idx][0] || in_r > ds[r_idx][-1])
-  {
-    return 0 ;
-  }
-  
-  // return gsl_spline_eval(rho_r_spline, in_r, visi_r_accel) ;
-  return ds.Evaluate(rho_idx, in_r) ;
+	// legacy path
+	// auto dims = ds.Dim();
+	// if (!dims.empty())
+	// {
+	// 	const auto &r = col(Col::R);
+	// 	const std::size_t N = r.Size();
+	// 	if (N == 0)
+	// 		return 0.0;
+
+	// 	if (in_r < r[0] || in_r > r[N - 1])
+	// 		return 0.0;
+
+	// 	return ds.Evaluate(idx(Col::Rho), in_r);
+	// }
+
+	return 0.0;
 }
 
 //--------------------------------------------------------------
 // Baryon number density (fm^{-3}) as a function of radius
-Zaki::Vector::DataColumn* 
-CompactStar::NStar::GetRho()  
-{
-  return &ds[rho_idx] ;
-}
+// Zaki::Vector::DataColumn *CompactStar::NStar::GetRho() noexcept
+// {
+// 	return &col(Col::Rho);
+// }
+
+//--------------------------------------------------------------
+// Baryon number density (fm^{-3}) as a function of radius - const version
+// const Zaki::Vector::DataColumn *CompactStar::NStar::GetRho() const noexcept
+// {
+// 	return &col(Col::Rho);
+// }
+
+//--------------------------------------------------------------
+// Check if density data exists for a labeled species.
+//  label  Species label string.
+// Returns True if data exists, false otherwise.
+// bool CompactStar::NStar::HasRho_i(std::string_view label) const noexcept
+// {
+// 	for (auto &&c : rho_i_idx)
+// 	{
+// 		if (ds[c].label == label)
+// 		{
+// 			return true;
+// 		}
+// 	}
+
+// 	return false;
+// }
 
 //--------------------------------------------------------------
 // Visible baryon number density (fm^{-3}) as a function of radius
 // for a specific species labeled as (in_label)
-Zaki::Vector::DataColumn* 
-CompactStar::NStar::GetRho_i(const std::string& in_label)  
-{
-  
-  for (auto &&c : rho_i_idx)
-  {
-    if ( ds[ c ].label ==  in_label )
-    {
-      return  &ds[ c ] ;
-    }
-    
-  }
+// Zaki::Vector::DataColumn *CompactStar::NStar::GetRho_i(const std::string &in_label) noexcept
+// {
 
-  Z_LOG_ERROR("Species density with label '"+ 
-                in_label +"' was not found. Returning nullptr.") ;
-                
-  return nullptr ;
+// 	for (auto &&c : rho_i_idx)
+// 	{
+// 		if (ds[c].label == in_label)
+// 		{
+// 			return &ds[c];
+// 		}
+// 	}
+
+// 	Z_LOG_ERROR("Species density with label '" +
+// 				in_label + "' was not found. Returning nullptr.");
+
+// 	return nullptr;
+// }
+
+//--------------------------------------------------------------
+// Visible baryon number density (fm^{-3}) as a function of radius
+// for a specific species labeled as (in_label) - const version
+// const Zaki::Vector::DataColumn *
+// CompactStar::NStar::GetRho_i(const std::string_view &in_label) const
+// {
+// 	for (auto &&c : rho_i_idx)
+// 	{
+// 		if (ds[c].label == in_label)
+// 			return &ds[c];
+// 	}
+// 	Z_LOG_ERROR(std::string("Species density with label '") +
+// 				std::string(in_label) + "' was not found. Returning nullptr.");
+// 	return nullptr;
+// }
+
+// ------------------------------------------------------------
+// profile-aware species
+// ------------------------------------------------------------
+// Check if density data exists for a labeled species.
+//  label  Species label string.
+// Returns True if data exists, false otherwise.
+// bool CompactStar::NStar::HasRho_i(std::string_view label) const noexcept
+// {
+// 	if (!prof_.empty() && prof_.HasSpecies(std::string(label)))
+// 		return true;
+// 	return false;
+// }
+
+// ------------------------------------------------------------
+// Visible baryon number density (fm^{-3}) as a function of radius
+// for a specific species labeled as (in_label) - const version
+const Zaki::Vector::DataColumn *
+CompactStar::NStar::GetRho_i(const std::string_view &in_label) const
+{
+	if (prof_.empty())
+		return nullptr;
+
+	// use the pointer-returning helper inside StarProfile
+	const auto *col = prof_.GetSpeciesPtr(std::string(in_label));
+
+	return col; // either a valid pointer to the real column or nullptr
 }
+
+// ------------------------------------------------------------
+// Visible baryon number density (fm^{-3}) as a function of radius
+// for a specific species labeled as (in_label)
+// Zaki::Vector::DataColumn *
+// CompactStar::NStar::GetRho_i(const std::string &in_label)
+// {
+// 	if (prof_.empty())
+// 		return nullptr;
+
+// 	return prof_.GetSpeciesPtr(in_label); // calls the non-const overload
+// }
 
 //--------------------------------------------------------------
 /// Energy density (in km^{-2}) as a function of radius
-double CompactStar::NStar::GetEps(const double& in_r) const 
+double CompactStar::NStar::GetEnergyDensity(const double &in_r) const
 {
-  // if (in_r < radius[0] || in_r > radius[-1])
-  // {
-  //   Z_LOG_ERROR("Input radius is out of range [ " 
-  //               + std::to_string(radius[0]) + ", "
-  //               + std::to_string(radius[-1]) +" ]") ;
+	if (in_r < 0)
+	{
+		Z_LOG_ERROR("Radius must be non-negative.");
+		return std::numeric_limits<double>::quiet_NaN();
+	}
 
-  //   return -1 ;
-  // }
-  
-  // return gsl_spline_eval(eps_r_spline, in_r, accel) ;
-  if (in_r < 0)
-  {
-    Z_LOG_ERROR("Input radius is must be positive!") ;
+	// profile path
+	if (!prof_.empty() && prof_.HasColumn(StarProfile::Column::Radius) &&
+		prof_.HasColumn(StarProfile::Column::EnergyDensity))
+	{
+		const auto &rcol = prof_.GetRadius();
+		const std::size_t N = rcol->Size();
+		if (N == 0)
+			return 0.0;
+		const double r0 = rcol->operator[](0);
+		const double rR = rcol->operator[](N - 1);
+		if (in_r < r0 || in_r > rR)
+			return 0.0;
 
-    return -1 ;
-  }
+		return prof_.radial.Evaluate(
+			prof_.GetColumnIndex(StarProfile::Column::EnergyDensity),
+			in_r);
+	}
 
-  if (in_r < ds[r_idx][0] || in_r > ds[r_idx][-1])
-  {
-    return 0 ;
-  }
-  
-  return ds.Evaluate(eps_idx, in_r) ;
+	// legacy path
+	// auto dims = ds.Dim();
+	// if (!dims.empty())
+	// {
+	// 	const auto &r = col(Col::R);
+	// 	const std::size_t N = r.Size();
+	// 	if (N == 0)
+	// 		return 0.0;
+	// 	if (in_r < r[0] || in_r > r[N - 1])
+	// 		return 0.0;
+	// 	return ds.Evaluate(idx(Col::Eps), in_r);
+	// }
+
+	return 0.0;
 }
 
 //--------------------------------------------------------------
 // Energy density (in km^{-2}) as a function of radius
-Zaki::Vector::DataColumn* 
-CompactStar::NStar::GetEps()  
-{
-  return &ds[eps_idx] ;
-}
+// Zaki::Vector::DataColumn *
+// CompactStar::NStar::GetEps() noexcept
+// {
+// 	return &col(Col::Eps);
+// }
+// //--------------------------------------------------------------
+// // Energy density (in km^{-2}) as a function of radius - const version
+// const Zaki::Vector::DataColumn *
+// CompactStar::NStar::GetEps() const noexcept
+// {
+// 	return &col(Col::Eps);
+// }
 
 //--------------------------------------------------------------
 /// Pressure (in km^{-2}) as a function of radius
-double CompactStar::NStar::GetPress(const double& in_r) const 
+double CompactStar::NStar::GetPressure(const double &in_r) const
 {
-  // if (in_r < radius[0] || in_r > radius[-1])
-  // {
-  //   Z_LOG_ERROR("Input radius is out of range [ " 
-  //               + std::to_string(radius[0]) + ", "
-  //               + std::to_string(radius[-1]) +" ]") ;
+	if (in_r < 0)
+	{
+		Z_LOG_ERROR("Radius must be non-negative.");
+		return std::numeric_limits<double>::quiet_NaN();
+	}
 
-  //   return -1 ;
-  // }
-  
-  // return gsl_spline_eval(press_r_spline, in_r, accel) ;
-  if (in_r < 0)
-  {
-    Z_LOG_ERROR("Input radius is must be positive!") ;
+	// profile path
+	if (!prof_.empty() && prof_.HasColumn(StarProfile::Column::Radius) &&
+		prof_.HasColumn(StarProfile::Column::Pressure))
+	{
+		const auto &rcol = prof_.GetRadius();
+		const std::size_t N = rcol->Size();
+		if (N == 0)
+			return 0.0;
+		const double r0 = rcol->operator[](0);
+		const double rR = rcol->operator[](N - 1);
+		if (in_r < r0 || in_r > rR)
+			return 0.0;
 
-    return -1 ;
-  }
+		return prof_.radial.Evaluate(
+			prof_.GetColumnIndex(StarProfile::Column::Pressure),
+			in_r);
+	}
 
-  if (in_r < ds[r_idx][0] || in_r > ds[r_idx][-1])
-  {
-    return 0 ;
-  }
+	// legacy path
+	// auto dims = ds.Dim();
+	// if (!dims.empty())
+	// {
+	// 	const auto &r = col(Col::R);
+	// 	const std::size_t N = r.Size();
+	// 	if (N == 0)
+	// 		return 0.0;
+	// 	if (in_r < r[0] || in_r > r[N - 1])
+	// 		return 0.0;
+	// 	return ds.Evaluate(idx(Col::P), in_r);
+	// }
 
-  // return gsl_spline_eval(press_r_spline, in_r, visi_r_accel) ;
-  return ds.Evaluate(pre_idx, in_r) ;
+	return 0.0;
 }
 
 //--------------------------------------------------------------
 // Pressure (in km^{-2}) as a function of radius
-Zaki::Vector::DataColumn* 
-CompactStar::NStar::GetPress()  
+// Zaki::Vector::DataColumn *
+// CompactStar::NStar::GetPress() noexcept
+// {
+// 	return &col(Col::P);
+// }
+
+//--------------------------------------------------------------
+// Pressure (in km^{-2}) as a function of radius - const version
+// const Zaki::Vector::DataColumn *
+// CompactStar::NStar::GetPress() const noexcept
+// {
+// 	return &col(Col::P);
+// }
+
+// ------------------------------------------------------------
+// Sequence forwarding
+const CompactStar::SeqPoint &CompactStar::NStar::GetSequence() const noexcept
 {
-  return &ds[pre_idx] ;
+	if (!prof_.empty())
+		return prof_.seq_point;
+
+	// fallback: static empty
+	static SeqPoint empty{};
+	return empty;
+}
+// ------------------------------------------------------------
+// Sequence forwarding (non-const)
+CompactStar::SeqPoint &CompactStar::NStar::GetSequence() noexcept
+{
+	if (!prof_.empty())
+		return prof_.seq_point;
+
+	// fallback: static singleton you can write to (rare path)
+	static SeqPoint empty{};
+	return empty;
 }
 
 //--------------------------------------------------------------
-// Returns 'sequence'
-CompactStar::SeqPoint CompactStar::NStar::GetSequence() const 
+// Baryon number integrand
+double CompactStar::NStar::BaryonNumIntegrand(double in_r) const
 {
-  return sequence ;
+	// if (in_r <= 0)
+	// 	return 0.0; // center contributes 0 anyway (r^2 factor)
+	// const double nb = GetRho(in_r);
+	// if (nb <= 0)
+	// 	return 0.0; // outside star or invalid -> no contribution
+
+	// const double M = GetMass(in_r);
+	// const double f = 1.0 - 2.0 * M / in_r;
+
+	// if (f <= 0.0)
+	// 	return 0.0; // numerical guard; physically should not be ≤0 inside R
+
+	// return 4.0 * M_PI * in_r * in_r * nb / std::sqrt(f);
+
+	// double out = in_r * in_r;
+	// out *= 4 * M_PI * GetRho(in_r);
+
+	// // // converting fm^{-3} to km^{-3}
+	// // out *= pow(10, 54) ;
+
+	// out /= sqrt(1 - 2 * GetMass(in_r) / in_r);
+
+	// return out;
+	if (in_r <= 0.0)
+		return 0.0;
+
+	const double nb = GetBaryonDensity(in_r);
+	if (nb <= 0.0)
+		return 0.0;
+
+	const double M = GetMass(in_r);
+	const double f = 1.0 - 2.0 * M / in_r;
+	if (f <= 0.0)
+		return 0.0;
+
+	return 4.0 * M_PI * in_r * in_r * nb / std::sqrt(f);
 }
-
-//--------------------------------------------------------------
-// Baryon number inegrand
-double CompactStar::NStar::BaryonNumIntegrand(double in_r) 
-{
-  double out = in_r * in_r ;
-        out *= 4*M_PI*GetRho(in_r) ; 
-
-        // // converting fm^{-3} to km^{-3}
-        // out *= pow(10, 54) ;
-
-        out /= sqrt(1 - 2*GetMass(in_r) / in_r) ;
-
-  return out ;
-}
-//--------------------------------------------------------------
-/// Total baryon number inegrand
-// double CompactStar::NStar::BaryonNumIntegrand(double in_r) 
-// {
-//   double out = in_r * in_r ;
-//         out *= 4*M_PI*GetRho(in_r) ; 
-
-//         // converting fm^{-3} to km^{-3}
-//         out *= pow(10, 54) ;
-
-//         out /= sqrt(1 - 2*GetMass(in_r) / in_r) ;
-
-//   return out ;
-// }
-
-//--------------------------------------------------------------
-/// Total baryon number as a function of radius
-// double CompactStar::NStar::GetBaryonNum(const double& in_r) 
-// {
-//   PROFILE_FUNCTION() ;
-//   double result, err ;
-
-//   gsl_integration_workspace *w = 
-//    gsl_integration_workspace_alloc(2500);
-
-//   Zaki::Math::GSLFuncWrapper<NStar, double (NStar::*)(double)> 
-//       Fp(this, &NStar::BaryonNumIntegrand);     
-
-//   gsl_function F = static_cast<gsl_function> (Fp) ; 
-
-//   gsl_integration_qag(&F, radius[0], in_r, 1e-9, 1e-9, 2500, 1, w, &result, &err);
-
-//   return result ;
-// }
-
-//--------------------------------------------------------------
-/// Total baryon number
-// double CompactStar::NStar::GetBaryonNum() 
-// {
-//   return GetBaryonNum(radius[-1]) ;
-// }
-
-//--------------------------------------------------------------
-/// Moment of inertia (in km^3) inegrand
-// This is wrong and missing a factor of 
-//  [ 1 - \omega(r) / \Omega ]
-// double CompactStar::NStar::MomInertiaIntegrand(double in_r) 
-// {
-//   double out = pow(in_r, 4) ;
-//         out *= 8*M_PI/3. ; 
-//         out *= ( GetEps(in_r) + GetPress(in_r) ) ; 
-
-//         // // converting fm^{-3} to km^{-3}
-//         // out *= pow(10, 54) ;
-
-//         out *= ::exp(-GetNu(in_r)) ;
-//         out /= sqrt(1 - 2*GetMass(in_r) / in_r) ;
-
-//   return out ;
-// }
 
 //--------------------------------------------------------------
 /// Total moment of inertia (in km^3)
 // MomInertiaIntegrand is wrong!
-double CompactStar::NStar::Find_MomInertia() 
+double CompactStar::NStar::Find_MomInertia()
 {
-  PROFILE_FUNCTION() ;
+	PROFILE_FUNCTION();
 
-  // double result = 0 ;
+	rot_solver.FindNMomInertia();
 
-  // double err ;
-  // gsl_integration_workspace *w = 
-  //  gsl_integration_workspace_alloc(2000);
-
-  // Zaki::Math::GSLFuncWrapper<NStar, double (NStar::*)(double)> 
-  //     Fp(this, &NStar::MomInertiaIntegrand);     
-
-  // gsl_function F = static_cast<gsl_function> (Fp) ; 
-
-  // gsl_integration_qag(&F, radius[0], radius[-1], 1e-9, 1e-9, 2000, 1, w, &result, &err);
-
-
-
-  // CompactStar::RotationSolver r_solver ;
-
-  // r_solver.SetWrkDir(wrk_dir) ;
-
-  // r_solver.AttachNStar(ns_shared_ptr) ;
-
-  // r_solver.ImportTOVSolution({radius.vals, mass.vals, press.vals, eps.vals}) ;
-
-  // r_solver.Solve({{5e-3, 5e-2}, 1, "Log"}) ;
-  // r_solver.Solve(5e-3) ;
-
-  // OmegaSeqPoint omega_seq_pt = r_solver.GetOmegaSeq()[0] ;
-  // result = omega_seq_pt.J / ( omega_seq_pt.Omega / Zaki::Physics::LIGHT_C_KM_S ) ;
-
-  // std::cout 
-  //           << "J = " << omega_seq_pt.J 
-  //           << ", Omega = " << omega_seq_pt.Omega << ","
-  //           << " I = " << result << "\n" ;
-
-  rot_solver.FindNMomInertia() ;
-
-  return MomI ;
+	return MomI;
 }
 
 //--------------------------------------------------------------
 /// Precision for printing the profile
 /// by default it is set to '9' digits
-void CompactStar::NStar::SetProfilePrecision(const int& in_prec) 
+void CompactStar::NStar::SetProfilePrecision(const int &in_prec)
 {
-  profile_precision = in_prec ;
+	prof_.SetProfilePrecision(in_prec);
 }
 
 //--------------------------------------------------------------
-// Exports the star profile
-void CompactStar::NStar::Export(const Zaki::String::Directory& in_dir) 
+// // Exports the star profile
+// void CompactStar::NStar::Export(const Zaki::String::Directory &in_dir)
+// {
+// 	char seq_header[200];
+// 	snprintf(seq_header, sizeof(seq_header),
+// 			 "    %-14s\t %-14s\t %-14s\t %-14s\t %-14s\t %-14s",
+// 			 "ec(g/cm^3)", "M", "R(km)", "pc(dyne/cm^2)", "B", "I(km^3)");
+
+// 	std::time_t end_time = std::chrono::system_clock::to_time_t(
+// 		std::chrono::system_clock::now());
+
+// 	ds.AddHead("# --------------------------------------------------------"
+// 			   "--------------------------------------------------------\n");
+
+// 	ds.AddHead("# Profile generated on ");
+// 	ds.AddHead(std::string(std::ctime(&end_time)));
+// 	ds.AddHead("# --------------------------------------------------------"
+// 			   "--------------------------------------------------------\n");
+// 	ds.AddHead("# Sequence point info: \n");
+// 	ds.AddHead("#         " + std::string(seq_header) + "\n");
+// 	ds.AddHead("#         " + sequence.Str() + "\n");
+// 	ds.AddHead("# --------------------------------------------------------"
+// 			   "--------------------------------------------------------\n");
+// 	ds.AddFoot("# --------------------------------------------------------"
+// 			   "--------------------------------------------------------");
+
+// 	ds.SetPrecision(profile_precision);
+// 	ds.Export(in_dir.ThisFileDir() + "/" + in_dir.ThisFile().Str());
+
+// 	ds.ClearHeadFoot();
+// }
+void CompactStar::NStar::Export(const Zaki::String::Directory &in_dir)
 {
-  char seq_header[200] ;
-  snprintf(seq_header, sizeof(seq_header),
-          "    %-14s\t %-14s\t %-14s\t %-14s\t %-14s\t %-14s", 
-          "ec(g/cm^3)", "M",  "R(km)", "pc(dyne/cm^2)", "B", "I(km^3)") ;
-  
-  std::time_t end_time = std::chrono::system_clock::to_time_t(
-    std::chrono::system_clock::now()) ;
+	if (!prof_.empty())
+	{
+		prof_.Export(in_dir);
+		return;
+	}
+	// ------------------------------------------------------------
+	// 1) figure out output path
+	// ------------------------------------------------------------
+	// const std::string out_path =
+	// 	in_dir.ThisFileDir().Str() + "/" + in_dir.ThisFile().Str();
+	// // ------------------------------------------------------------
+	// // 2) get time
+	// // ------------------------------------------------------------
+	// std::time_t end_time = std::chrono::system_clock::to_time_t(
+	// 	std::chrono::system_clock::now());
 
-  ds.AddHead("# --------------------------------------------------------"
-                 "--------------------------------------------------------\n") ;
-  
-  ds.AddHead("# Profile generated on ") ;
-  ds.AddHead(std::string( std::ctime(&end_time)) ) ;
-  ds.AddHead("# --------------------------------------------------------"
-                 "--------------------------------------------------------\n") ;
-  ds.AddHead("# Sequence point info: \n");
-  ds.AddHead("#         " + std::string(seq_header) + "\n" ) ;
-  ds.AddHead("#         " + sequence.Str() + "\n");
-  ds.AddHead("# --------------------------------------------------------"
-                 "--------------------------------------------------------\n") ;
-  ds.AddFoot("# --------------------------------------------------------"
-                 "--------------------------------------------------------") ;
+	// // ============================================================
+	// // ========== PROFILE-FIRST BRANCH =============================
+	// // ============================================================
+	// if (!prof_.empty())
+	// {
+	// 	auto &radial = prof_.radial; // NOTE: this makes a copy if DataSet is by value;
+	// 								// if your DataSet is cheap to copy, this is fine.
+	// 								// If not, make it a ref and push heads/foots on the
+	// 								// underlying one.
 
-  // std::cout << "\n\t profile_precision = " << profile_precision << "\n" ;
-  ds.SetPrecision(profile_precision) ;
-  ds.Export(in_dir.ThisFileDir() + "/" + in_dir.ThisFile().Str()) ;
-  
-  ds.ClearHeadFoot() ;
+	// 	// ---------- build sequence header ----------
+	// 	char seq_header[200];
+	// 	snprintf(seq_header, sizeof(seq_header),
+	// 			 "    %-14s\t %-14s\t %-14s\t %-14s\t %-14s\t %-14s",
+	// 			 "ec(g/cm^3)", "M", "R(km)", "pc(dyne/cm^2)", "B", "I(km^3)");
+
+	// 	// ---------- header ----------
+	// 	radial.AddHead("# --------------------------------------------------------"
+	// 				   "--------------------------------------------------------\n");
+	// 	radial.AddHead("# Profile generated on ");
+	// 	radial.AddHead(std::string(std::ctime(&end_time)));
+	// 	radial.AddHead("# --------------------------------------------------------"
+	// 				   "--------------------------------------------------------\n");
+	// 	radial.AddHead("# Sequence point info: \n");
+	// 	radial.AddHead("#         " + std::string(seq_header) + "\n");
+	// 	radial.AddHead("#         " + prof_.seq_point.Str() + "\n");
+	// 	radial.AddHead("# --------------------------------------------------------"
+	// 				   "--------------------------------------------------------\n");
+
+	// 	// ---------- column description ----------
+	// 	radial.AddHead("# Columns (present in this file):\n");
+
+	// 	if (prof_.HasColumn(StarProfile::Column::Radius))
+	// 		radial.AddHead("#   r(km)\n");
+	// 	if (prof_.HasColumn(StarProfile::Column::Mass))
+	// 		radial.AddHead("#   m(Msun)\n");
+	// 	if (prof_.HasColumn(StarProfile::Column::MetricNuPrime))
+	// 		radial.AddHead("#   nu_prime(d nu/dr)\n");
+	// 	if (prof_.HasColumn(StarProfile::Column::Pressure))
+	// 		radial.AddHead("#   p(r)\n");
+	// 	if (prof_.HasColumn(StarProfile::Column::EnergyDensity))
+	// 		radial.AddHead("#   eps(r)\n");
+	// 	if (prof_.HasColumn(StarProfile::Column::BaryonDensity))
+	// 		radial.AddHead("#   nB(r)\n");
+	// 	if (prof_.HasColumn(StarProfile::Column::MetricNu))
+	// 		radial.AddHead("#   nu(r)\n");
+	// 	if (prof_.HasColumn(StarProfile::Column::MetricLambda))
+	// 		radial.AddHead("#   lambda(r)\n");
+
+	// 	// ---------- per-species ----------
+	// 	if (!prof_.species_labels.empty())
+	// 	{
+	// 		radial.AddHead("# Species densities (following above columns):\n");
+	// 		for (std::size_t i = 0; i < prof_.species_labels.size(); ++i)
+	// 		{
+	// 			const auto &lbl = prof_.species_labels[i];
+	// 			const int idx = prof_.species_idx[i];
+	// 			radial.AddHead("#   [" + std::to_string(idx) + "] " + lbl + "(r)\n");
+	// 		}
+	// 	}
+
+	// 	radial.AddFoot("# --------------------------------------------------------"
+	// 				   "--------------------------------------------------------");
+
+	// 	radial.SetPrecision(profile_precision);
+	// 	radial.Export(out_path);
+
+	// 	// if you copied, no need to ClearHeadFoot on original
+	// 	return;
+	// }
+
+	// ============================================================
+	// ========== LEGACY DS BRANCH (your original) =================
+	// ============================================================
+	// {
+	// 	char seq_header[200];
+	// 	snprintf(seq_header, sizeof(seq_header),
+	// 			 "    %-14s\t %-14s\t %-14s\t %-14s\t %-14s\t %-14s",
+	// 			 "ec(g/cm^3)", "M", "R(km)", "pc(dyne/cm^2)", "B", "I(km^3)");
+
+	// 	ds.AddHead("# --------------------------------------------------------"
+	// 			   "--------------------------------------------------------\n");
+	// 	ds.AddHead("# Profile generated on ");
+	// 	ds.AddHead(std::string(std::ctime(&end_time)));
+	// 	ds.AddHead("# --------------------------------------------------------"
+	// 			   "--------------------------------------------------------\n");
+	// 	ds.AddHead("# Sequence point info: \n");
+	// 	ds.AddHead("#         " + std::string(seq_header) + "\n");
+	// 	ds.AddHead("#         " + sequence.Str() + "\n");
+	// 	ds.AddHead("# --------------------------------------------------------"
+	// 			   "--------------------------------------------------------\n");
+	// 	ds.AddFoot("# --------------------------------------------------------"
+	// 			   "--------------------------------------------------------");
+
+	// 	ds.SetPrecision(profile_precision);
+	// 	ds.Export(out_path);
+	// 	ds.ClearHeadFoot();
+	// }
 }
-
 //--------------------------------------------------------------
 
 //==============================================================

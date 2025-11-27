@@ -1,0 +1,72 @@
+\hypertarget{_config_8hpp}{}\doxysection{Compact\+Star/\+Chemical\+Heating/\+Config.hpp File Reference}
+\label{_config_8hpp}\index{CompactStar/ChemicalHeating/Config.hpp@{CompactStar/ChemicalHeating/Config.hpp}}
+
+
+User-\/configurable options for chemical/thermal evolution runs.  
+
+
+{\ttfamily \#include $<$cstddef$>$}\newline
+{\ttfamily \#include $<$string$>$}\newline
+{\ttfamily \#include $<$vector$>$}\newline
+\doxysubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{struct_compact_star_1_1_chemical_heating_1_1_config}{Compact\+Star\+::\+Chemical\+Heating\+::\+Config}}
+\begin{DoxyCompactList}\small\item\em Configures a single evolution run. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum class \mbox{\hyperlink{_config_8hpp_a095bc4bf317dab5e4ca6d0b0b6903074}{Compact\+Star\+::\+Chemical\+Heating\+::\+Stepper\+Type}} \{ \mbox{\hyperlink{_config_8hpp_a095bc4bf317dab5e4ca6d0b0b6903074a651742901a96ccc36ad193073cb71b4a}{RKF45}}
+, \mbox{\hyperlink{_config_8hpp_a095bc4bf317dab5e4ca6d0b0b6903074a14a72850b24c13d12d4e2370e682a181}{MSBDF}}
+ \}
+\begin{DoxyCompactList}\small\item\em Available ODE steppers (backend is GSL in Phase 1+). \end{DoxyCompactList}\item 
+enum class \mbox{\hyperlink{_config_8hpp_add99b1e3c709af78e4545e2c253c1739}{Compact\+Star\+::\+Chemical\+Heating\+::\+Envelope\+Model}} \{ {\bfseries Iron}
+, {\bfseries Accreted}
+, \mbox{\hyperlink{_config_8hpp_add99b1e3c709af78e4545e2c253c1739a90589c47f06eb971d548591f23c285af}{Custom}}
+ \}
+\begin{DoxyCompactList}\small\item\em Surface boundary models mapping $T_b \to T_s$. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+User-\/configurable options for chemical/thermal evolution runs. 
+
+Includes integrator tolerances, enabled physics channels, envelope and gap choices, output cadence, and initial conditions (sizes only; values live in Evolution\+State). 
+
+\doxysubsection{Enumeration Type Documentation}
+\mbox{\Hypertarget{_config_8hpp_add99b1e3c709af78e4545e2c253c1739}\label{_config_8hpp_add99b1e3c709af78e4545e2c253c1739}} 
+\index{Config.hpp@{Config.hpp}!EnvelopeModel@{EnvelopeModel}}
+\index{EnvelopeModel@{EnvelopeModel}!Config.hpp@{Config.hpp}}
+\doxysubsubsection{\texorpdfstring{EnvelopeModel}{EnvelopeModel}}
+{\footnotesize\ttfamily enum class \mbox{\hyperlink{_config_8hpp_add99b1e3c709af78e4545e2c253c1739}{Compact\+Star\+::\+Chemical\+Heating\+::\+Envelope\+Model}}\hspace{0.3cm}{\ttfamily [strong]}}
+
+
+
+Surface boundary models mapping $T_b \to T_s$. 
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Custom@{Custom}!Config.hpp@{Config.hpp}}\index{Config.hpp@{Config.hpp}!Custom@{Custom}}}\mbox{\Hypertarget{_config_8hpp_add99b1e3c709af78e4545e2c253c1739a90589c47f06eb971d548591f23c285af}\label{_config_8hpp_add99b1e3c709af78e4545e2c253c1739a90589c47f06eb971d548591f23c285af}} 
+Custom&Provide a custom callable in Phase 2+. \\
+\hline
+
+\end{DoxyEnumFields}
+\mbox{\Hypertarget{_config_8hpp_a095bc4bf317dab5e4ca6d0b0b6903074}\label{_config_8hpp_a095bc4bf317dab5e4ca6d0b0b6903074}} 
+\index{Config.hpp@{Config.hpp}!StepperType@{StepperType}}
+\index{StepperType@{StepperType}!Config.hpp@{Config.hpp}}
+\doxysubsubsection{\texorpdfstring{StepperType}{StepperType}}
+{\footnotesize\ttfamily enum class \mbox{\hyperlink{_config_8hpp_a095bc4bf317dab5e4ca6d0b0b6903074}{Compact\+Star\+::\+Chemical\+Heating\+::\+Stepper\+Type}}\hspace{0.3cm}{\ttfamily [strong]}}
+
+
+
+Available ODE steppers (backend is GSL in Phase 1+). 
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{RKF45@{RKF45}!Config.hpp@{Config.hpp}}\index{Config.hpp@{Config.hpp}!RKF45@{RKF45}}}\mbox{\Hypertarget{_config_8hpp_a095bc4bf317dab5e4ca6d0b0b6903074a651742901a96ccc36ad193073cb71b4a}\label{_config_8hpp_a095bc4bf317dab5e4ca6d0b0b6903074a651742901a96ccc36ad193073cb71b4a}} 
+RKF45&Explicit Runge–\+Kutta–\+Fehlberg 4(5) — diagnostics/exploration. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{MSBDF@{MSBDF}!Config.hpp@{Config.hpp}}\index{Config.hpp@{Config.hpp}!MSBDF@{MSBDF}}}\mbox{\Hypertarget{_config_8hpp_a095bc4bf317dab5e4ca6d0b0b6903074a14a72850b24c13d12d4e2370e682a181}\label{_config_8hpp_a095bc4bf317dab5e4ca6d0b0b6903074a14a72850b24c13d12d4e2370e682a181}} 
+MSBDF&Multi-\/step BDF — good default for stiffness at late times. ~\newline
+ \\
+\hline
+
+\end{DoxyEnumFields}

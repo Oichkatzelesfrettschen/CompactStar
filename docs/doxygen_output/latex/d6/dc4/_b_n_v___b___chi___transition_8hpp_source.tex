@@ -1,0 +1,111 @@
+\hypertarget{_b_n_v___b___chi___transition_8hpp_source}{}\doxysection{BNV\+\_\+\+B\+\_\+\+Chi\+\_\+\+Transition.\+hpp}
+\label{_b_n_v___b___chi___transition_8hpp_source}\index{CompactStar/Microphysics/BNV/Channels/BNV\_B\_Chi\_Transition.hpp@{CompactStar/Microphysics/BNV/Channels/BNV\_B\_Chi\_Transition.hpp}}
+\mbox{\hyperlink{_b_n_v___b___chi___transition_8hpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{comment}{// -\/*-\/ lsst-\/c++ -\/*-\/}}
+\DoxyCodeLine{2 \textcolor{comment}{/*}}
+\DoxyCodeLine{3 \textcolor{comment}{ * CompactStar}}
+\DoxyCodeLine{4 \textcolor{comment}{ * See License file at the top of the source tree.}}
+\DoxyCodeLine{5 \textcolor{comment}{ *}}
+\DoxyCodeLine{6 \textcolor{comment}{ * Copyright (c) 2023 Mohammadreza Zakeri}}
+\DoxyCodeLine{7 \textcolor{comment}{ *}}
+\DoxyCodeLine{8 \textcolor{comment}{ * Permission is hereby granted, free of charge, to any person obtaining a copy}}
+\DoxyCodeLine{9 \textcolor{comment}{ * of this software and associated documentation files (the "{}Software"{}), to deal}}
+\DoxyCodeLine{10 \textcolor{comment}{ * in the Software without restriction, including without limitation the rights}}
+\DoxyCodeLine{11 \textcolor{comment}{ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell}}
+\DoxyCodeLine{12 \textcolor{comment}{ * copies of the Software, and to permit persons to whom the Software is}}
+\DoxyCodeLine{13 \textcolor{comment}{ * furnished to do so, subject to the following conditions:}}
+\DoxyCodeLine{14 \textcolor{comment}{ *}}
+\DoxyCodeLine{15 \textcolor{comment}{ * The above copyright notice and this permission notice shall be included in all}}
+\DoxyCodeLine{16 \textcolor{comment}{ * copies or substantial portions of the Software.}}
+\DoxyCodeLine{17 \textcolor{comment}{ *}}
+\DoxyCodeLine{18 \textcolor{comment}{ * THE SOFTWARE IS PROVIDED "{}AS IS"{}, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR}}
+\DoxyCodeLine{19 \textcolor{comment}{ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,}}
+\DoxyCodeLine{20 \textcolor{comment}{ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE}}
+\DoxyCodeLine{21 \textcolor{comment}{ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER}}
+\DoxyCodeLine{22 \textcolor{comment}{ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,}}
+\DoxyCodeLine{23 \textcolor{comment}{ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE}}
+\DoxyCodeLine{24 \textcolor{comment}{ * SOFTWARE.}}
+\DoxyCodeLine{25 \textcolor{comment}{ */}}
+\DoxyCodeLine{26 }
+\DoxyCodeLine{38 \textcolor{comment}{// -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{39 \textcolor{comment}{//               Created on Mar 13, 2023}}
+\DoxyCodeLine{40 \textcolor{comment}{// This class is made specifically for analyzing the}}
+\DoxyCodeLine{41 \textcolor{comment}{//  B -\/-\/> Chi}}
+\DoxyCodeLine{42 \textcolor{comment}{//  transitions in neutron stars.}}
+\DoxyCodeLine{43 \textcolor{comment}{// -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{44 \textcolor{preprocessor}{\#ifndef CompactStar\_BNV\_B\_Chi\_Transition\_H}}
+\DoxyCodeLine{45 \textcolor{preprocessor}{\#define CompactStar\_BNV\_B\_Chi\_Transition\_H}}
+\DoxyCodeLine{46 }
+\DoxyCodeLine{47 \textcolor{preprocessor}{\#include <\mbox{\hyperlink{_data_set_8hpp}{Zaki/Vector/DataSet.hpp}}>}}
+\DoxyCodeLine{48 }
+\DoxyCodeLine{49 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_pulsar_8hpp}{CompactStar/Core/Pulsar.hpp}}"{}}}
+\DoxyCodeLine{50 \textcolor{preprocessor}{\#include <\mbox{\hyperlink{_comp_o_s_e___e_o_s_8hpp}{CompactStar/EOS/CompOSE\_EOS.hpp}}>}}
+\DoxyCodeLine{51 \textcolor{preprocessor}{\#include <CompactStar/Microphysics/BNV/Internal/BNV\_Chi.hpp>}}
+\DoxyCodeLine{52 }
+\DoxyCodeLine{53 \textcolor{comment}{//==============================================================}}
+\DoxyCodeLine{54 \textcolor{keyword}{namespace }CompactStar::Microphysics::BNV::Channels}
+\DoxyCodeLine{55 \{}
+\DoxyCodeLine{56 }
+\DoxyCodeLine{57 \textcolor{comment}{//==============================================================}}
+\DoxyCodeLine{58 \textcolor{keyword}{class }\mbox{\hyperlink{class_compact_star_1_1_microphysics_1_1_b_n_v_1_1_channels_1_1_b_n_v___b___chi___transition}{BNV\_B\_Chi\_Transition}} : \textcolor{keyword}{public} \mbox{\hyperlink{class_compact_star_1_1_microphysics_1_1_b_n_v_1_1_internal_1_1_b_n_v___chi}{Internal::BNV\_Chi}}}
+\DoxyCodeLine{59 \{}
+\DoxyCodeLine{60     \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{61   \textcolor{keyword}{private}:}
+\DoxyCodeLine{62     \mbox{\hyperlink{struct_compact_star_1_1_microphysics_1_1_b_n_v_1_1_internal_1_1_b_n_v___chi_1_1_process}{Process}} GetSpecificProcess(\textcolor{keyword}{const} \mbox{\hyperlink{struct_compact_star_1_1_microphysics_1_1_b_n_v_1_1_internal_1_1_b_n_v___chi_1_1_baryon}{Baryon}} \&B) \textcolor{keyword}{const override};}
+\DoxyCodeLine{63 }
+\DoxyCodeLine{64   \textcolor{keyword}{public}:}
+\DoxyCodeLine{65     \mbox{\hyperlink{class_compact_star_1_1_microphysics_1_1_b_n_v_1_1_channels_1_1_b_n_v___b___chi___transition}{BNV\_B\_Chi\_Transition}}();}
+\DoxyCodeLine{66     \mbox{\hyperlink{class_compact_star_1_1_microphysics_1_1_b_n_v_1_1_channels_1_1_b_n_v___b___chi___transition}{\string~BNV\_B\_Chi\_Transition}}();}
+\DoxyCodeLine{67 }
+\DoxyCodeLine{71     \mbox{\hyperlink{struct_zaki_1_1_vector_1_1_data_column}{Zaki::Vector::DataColumn}} \mbox{\hyperlink{class_compact_star_1_1_microphysics_1_1_b_n_v_1_1_channels_1_1_b_n_v___b___chi___transition_a746da6974047f1760d6caaae05b79e2c}{SigmaMinus}}(\textcolor{keyword}{const} \textcolor{keywordtype}{double} \&m\_chi,}
+\DoxyCodeLine{72                                         \textcolor{keyword}{const} \mbox{\hyperlink{struct_compact_star_1_1_microphysics_1_1_b_n_v_1_1_internal_1_1_b_n_v___chi_1_1_baryon}{Baryon}} \&B);}
+\DoxyCodeLine{73 }
+\DoxyCodeLine{74     \textcolor{comment}{// Returns the lower limit on the vector}}
+\DoxyCodeLine{75     \textcolor{comment}{// self-\/energy, from condition (a).}}
+\DoxyCodeLine{76     \textcolor{comment}{// The arguments are (m\_chi, m\_B\string^*, n [fm\string^-\/3] ).}}
+\DoxyCodeLine{77     \textcolor{keywordtype}{double} \mbox{\hyperlink{class_compact_star_1_1_microphysics_1_1_b_n_v_1_1_channels_1_1_b_n_v___b___chi___transition_a746da6974047f1760d6caaae05b79e2c}{SigmaMinus}}(\textcolor{keyword}{const} \textcolor{keywordtype}{double} \&m\_chi,}
+\DoxyCodeLine{78                       \textcolor{keyword}{const} \textcolor{keywordtype}{double} \&m\_B,}
+\DoxyCodeLine{79                       \textcolor{keyword}{const} \textcolor{keywordtype}{double} \&n);}
+\DoxyCodeLine{80 }
+\DoxyCodeLine{81     \textcolor{comment}{// /// Returns the upper limit on the vector}}
+\DoxyCodeLine{82     \textcolor{comment}{// /// self-\/energy, from condition (b).}}
+\DoxyCodeLine{83     \textcolor{comment}{// /// The arguments are (m\_chi, m\_B\string^*, n [fm\string^-\/3] ).}}
+\DoxyCodeLine{84     \textcolor{comment}{// Zaki::Vector::DataColumn SigmaPlus(const double\& m\_chi,}}
+\DoxyCodeLine{85     \textcolor{comment}{//                                   const Baryon\& B) ;}}
+\DoxyCodeLine{86 }
+\DoxyCodeLine{87     \textcolor{comment}{// /// Returns the upper limit on the vector}}
+\DoxyCodeLine{88     \textcolor{comment}{// /// self-\/energy, from condition (b).}}
+\DoxyCodeLine{89     \textcolor{comment}{// /// The arguments are (m\_chi, m\_B\string^*, n [fm\string^-\/3] ).}}
+\DoxyCodeLine{90     \textcolor{comment}{// double SigmaPlus(const double\& m\_chi,}}
+\DoxyCodeLine{91     \textcolor{comment}{//                   const double\& m\_B,}}
+\DoxyCodeLine{92     \textcolor{comment}{//                   const double\& n) ;}}
+\DoxyCodeLine{93 }
+\DoxyCodeLine{96     \mbox{\hyperlink{class_zaki_1_1_vector_1_1_data_set}{Zaki::Vector::DataSet}} \mbox{\hyperlink{class_compact_star_1_1_microphysics_1_1_b_n_v_1_1_channels_1_1_b_n_v___b___chi___transition_ae4c9f3bbc4f484530e73b0e4029d7699}{Rate\_vs\_Density}}(}
+\DoxyCodeLine{97         \textcolor{keyword}{const} \textcolor{keywordtype}{double} \&m\_chi,}
+\DoxyCodeLine{98         \textcolor{keyword}{const} \mbox{\hyperlink{struct_compact_star_1_1_microphysics_1_1_b_n_v_1_1_internal_1_1_b_n_v___chi_1_1_baryon}{Baryon}} \&B,}
+\DoxyCodeLine{99         \textcolor{keyword}{const} \textcolor{keywordtype}{bool} \&gen\_plots = \textcolor{keyword}{false})}
+\DoxyCodeLine{100         \textcolor{keyword}{override};}
+\DoxyCodeLine{101 }
+\DoxyCodeLine{104     \mbox{\hyperlink{class_zaki_1_1_vector_1_1_data_set}{Zaki::Vector::DataSet}} \mbox{\hyperlink{class_compact_star_1_1_microphysics_1_1_b_n_v_1_1_channels_1_1_b_n_v___b___chi___transition_a91bc374d343b14d0dec24f730f53f9a3}{Rate\_vs\_R}}(\textcolor{keyword}{const} \textcolor{keywordtype}{double} \&m\_chi,}
+\DoxyCodeLine{105                                     \textcolor{keyword}{const} \mbox{\hyperlink{struct_compact_star_1_1_microphysics_1_1_b_n_v_1_1_internal_1_1_b_n_v___chi_1_1_baryon}{Baryon}} \&B,}
+\DoxyCodeLine{106                                     \textcolor{keyword}{const} \textcolor{keywordtype}{bool} \&gen\_plots = \textcolor{keyword}{false})}
+\DoxyCodeLine{107         \textcolor{keyword}{override};}
+\DoxyCodeLine{108 }
+\DoxyCodeLine{111     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_compact_star_1_1_microphysics_1_1_b_n_v_1_1_channels_1_1_b_n_v___b___chi___transition_a99cf04be04b377f90ccbad2435f5c026}{PlotTransCond}}(\textcolor{keyword}{const} \textcolor{keywordtype}{double} \&m\_chi,}
+\DoxyCodeLine{112                        \textcolor{keyword}{const} \mbox{\hyperlink{struct_compact_star_1_1_microphysics_1_1_b_n_v_1_1_internal_1_1_b_n_v___chi_1_1_baryon}{Baryon}} \&B);}
+\DoxyCodeLine{113 }
+\DoxyCodeLine{116     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_compact_star_1_1_microphysics_1_1_b_n_v_1_1_channels_1_1_b_n_v___b___chi___transition_a99cf04be04b377f90ccbad2435f5c026}{PlotTransCond}}(\textcolor{keyword}{const} \textcolor{keywordtype}{double} \&m\_chi);}
+\DoxyCodeLine{117 }
+\DoxyCodeLine{120     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_compact_star_1_1_microphysics_1_1_b_n_v_1_1_channels_1_1_b_n_v___b___chi___transition_a89685508f9d9049c30b4dd14929e68da}{PlotTransBand}}(\textcolor{keyword}{const} \mbox{\hyperlink{struct_compact_star_1_1_microphysics_1_1_b_n_v_1_1_internal_1_1_b_n_v___chi_1_1_baryon}{Baryon}} \&B);}
+\DoxyCodeLine{121 }
+\DoxyCodeLine{122     \textcolor{comment}{// Plots the transition band as a function of m\_chi}}
+\DoxyCodeLine{123     \textcolor{keywordtype}{void} PlotTransBand();}
+\DoxyCodeLine{124 \};}
+\DoxyCodeLine{125 }
+\DoxyCodeLine{126 \textcolor{comment}{//==============================================================}}
+\DoxyCodeLine{127 \} \textcolor{comment}{// namespace CompactStar}}
+\DoxyCodeLine{128 \textcolor{comment}{//==============================================================}}
+\DoxyCodeLine{129 \textcolor{preprocessor}{\#endif }\textcolor{comment}{/*CompactStar\_BNV\_B\_Chi\_Transition\_H*/}\textcolor{preprocessor}{}}
+
+\end{DoxyCode}

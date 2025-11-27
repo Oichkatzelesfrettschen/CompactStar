@@ -32,7 +32,7 @@
  * @ingroup Core
  *
  * @author Mohammadreza Zakeri
- * Contact: M.Zakeri@uky.edu
+ * Contact: M.Zakeri@eku.edu
  *
 */
 #ifndef CompactStar_RotationSolver_H

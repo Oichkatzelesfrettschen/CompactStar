@@ -1,0 +1,39 @@
+\hypertarget{_star_profile_8hpp}{}\doxysection{Compact\+Star/\+Core/\+Star\+Profile.hpp File Reference}
+\label{_star_profile_8hpp}\index{CompactStar/Core/StarProfile.hpp@{CompactStar/Core/StarProfile.hpp}}
+
+
+Unified structural / metric / composition profile for compact stars.  
+
+
+{\ttfamily \#include $<$algorithm$>$}\newline
+{\ttfamily \#include $<$cstddef$>$}\newline
+{\ttfamily \#include $<$stdexcept$>$}\newline
+{\ttfamily \#include $<$string$>$}\newline
+{\ttfamily \#include $<$vector$>$}\newline
+{\ttfamily \#include \char`\"{}Compact\+Star/\+Core/\+Seq\+Point.\+hpp\char`\"{}}\newline
+{\ttfamily \#include $<$Zaki/\+Vector/\+Data\+Set.\+hpp$>$}\newline
+\doxysubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{struct_compact_star_1_1_star_profile}{Compact\+Star\+::\+Star\+Profile}}
+\begin{DoxyCompactList}\small\item\em Structural / metric / composition data for a compact-\/star configuration. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{struct_compact_star_1_1_star_profile_view}{Compact\+Star\+::\+Star\+Profile\+View}}
+\begin{DoxyCompactList}\small\item\em Non-\/owning view into a {\ttfamily \mbox{\hyperlink{struct_compact_star_1_1_star_profile}{Star\+Profile}}}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Unified structural / metric / composition profile for compact stars. 
+
+This is the “fully populated” phase-\/2 version. It mirrors the column layout you already used in {\ttfamily NStar}\+:
+
+0\+: r (radius) 1\+: m (enclosed mass) 2\+: nu\textquotesingle{} (dν/dr) 3\+: p (pressure) 4\+: eps (energy density) 5\+: rho (total baryon number density) 6\+: nu (metric exponent)
+
+plus optional\+: 7\+: lambda (the other metric exponent / g\+\_\+rr)
+
+and then {\bfseries{per-\/species}} density columns after that.
+
+The idea is\+: if the TOV solver wrote it, this struct should be able to carry it.
+
+\begin{DoxyAuthor}{Author}
+Mohammadreza Zakeri Contact\+: \href{mailto:M.Zakeri@eku.edu}{\texttt{ M.\+Zakeri@eku.\+edu}} 
+\end{DoxyAuthor}

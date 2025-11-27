@@ -1,0 +1,119 @@
+\hypertarget{class_compact_star_1_1_sigma_omega_rho__nstar}{}\doxysection{Compact\+Star\+::Sigma\+Omega\+Rho\+\_\+nstar Class Reference}
+\label{class_compact_star_1_1_sigma_omega_rho__nstar}\index{CompactStar::SigmaOmegaRho\_nstar@{CompactStar::SigmaOmegaRho\_nstar}}
+Inheritance diagram for Compact\+Star\+::Sigma\+Omega\+Rho\+\_\+nstar\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{d4/d7e/class_compact_star_1_1_sigma_omega_rho__nstar}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_compact_star_1_1_sigma_omega_rho__nstar_ade4f3b08cdc37e26504bb4c615a59fe0}\label{class_compact_star_1_1_sigma_omega_rho__nstar_ade4f3b08cdc37e26504bb4c615a59fe0}} 
+{\bfseries $\sim$\+Sigma\+Omega\+Rho\+\_\+nstar} ()
+\begin{DoxyCompactList}\small\item\em Destructor. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{class_compact_star_1_1_sigma_omega_rho__nstar_aaee2207e57c85fff569b4079a31be6e2}{EDens}} (const double \&in\+\_\+rho) override
+\item 
+double \mbox{\hyperlink{class_compact_star_1_1_sigma_omega_rho__nstar_a1f89e6f425aedea22c307e438cd82300}{Press}} (const double \&in\+\_\+rho) override
+\item 
+std\+::vector$<$ double $>$ \mbox{\hyperlink{class_compact_star_1_1_sigma_omega_rho__nstar_a5476e58f2c843809d755118c3b7ef93b}{EOSRow}} (const double \&) override
+\begin{DoxyCompactList}\small\item\em This will generate a row of values for EOS. \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{class_compact_star_1_1_sigma_omega_rho__nstar_a5624974e21b0429210e03c54cec7a96c}{EOSHeader}} () const override
+\begin{DoxyCompactList}\small\item\em This will generate the header for EOS. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_compact_star_1_1_sigma_omega_rho__nstar_abf4ef49a7e4903e2faa37357731d66c4}\label{class_compact_star_1_1_sigma_omega_rho__nstar_abf4ef49a7e4903e2faa37357731d66c4}} 
+void {\bfseries Set\+Pars} (const \mbox{\hyperlink{struct_compact_star_1_1_sigma_omega_par}{Sigma\+Omega\+Par}} \&in\+\_\+pars)
+\item 
+\mbox{\Hypertarget{class_compact_star_1_1_sigma_omega_rho__nstar_a4193b06b31d67f17c792e136d02eeabc}\label{class_compact_star_1_1_sigma_omega_rho__nstar_a4193b06b31d67f17c792e136d02eeabc}} 
+int {\bfseries Eq} (const gsl\+\_\+vector $\ast$x, gsl\+\_\+vector $\ast$f)
+\item 
+\mbox{\Hypertarget{class_compact_star_1_1_sigma_omega_rho__nstar_a3cab4136577ab0f7042448c226b63b37}\label{class_compact_star_1_1_sigma_omega_rho__nstar_a3cab4136577ab0f7042448c226b63b37}} 
+int {\bfseries Solve\+Eq} ()
+\begin{DoxyCompactList}\small\item\em Equilibrium Equation Solver. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_compact_star_1_1_sigma_omega_rho__nstar_aa1320370dd9fb0069077393a8c855a97}\label{class_compact_star_1_1_sigma_omega_rho__nstar_aa1320370dd9fb0069077393a8c855a97}} 
+void {\bfseries Print\+State} (const size\+\_\+t \&iter, gsl\+\_\+multiroot\+\_\+fsolver $\ast$s)
+\item 
+int \mbox{\hyperlink{class_compact_star_1_1_sigma_omega_rho__nstar_a344c088c4e5078cc8d3cce4494be6850}{Jacob}} (const gsl\+\_\+vector $\ast$x, gsl\+\_\+matrix $\ast$J)
+\begin{DoxyCompactList}\small\item\em Jacobian calculator. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_compact_star_1_1_sigma_omega_rho__nstar_a0b5c96d23a952f73968c4905ccbdf3e1}\label{class_compact_star_1_1_sigma_omega_rho__nstar_a0b5c96d23a952f73968c4905ccbdf3e1}} 
+int {\bfseries Eq\+Fdf} (const gsl\+\_\+vector $\ast$x, gsl\+\_\+vector $\ast$f, gsl\+\_\+matrix $\ast$J)
+\item 
+\mbox{\Hypertarget{class_compact_star_1_1_sigma_omega_rho__nstar_abb18cca25847eb05bd9a630517c9fec4}\label{class_compact_star_1_1_sigma_omega_rho__nstar_abb18cca25847eb05bd9a630517c9fec4}} 
+int {\bfseries Solve\+Eq\+Jacob} ()
+\begin{DoxyCompactList}\small\item\em Equilibrium Equation Solver (using Jacobian) \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_compact_star_1_1_sigma_omega_rho__nstar_aa6c899d7f87ae52e9f0d6483a6cca18d}\label{class_compact_star_1_1_sigma_omega_rho__nstar_aa6c899d7f87ae52e9f0d6483a6cca18d}} 
+void {\bfseries Print\+State} (const size\+\_\+t \&iter, gsl\+\_\+multiroot\+\_\+fdfsolver $\ast$s)
+\item 
+\mbox{\Hypertarget{class_compact_star_1_1_sigma_omega_rho__nstar_a2a8b7d2efc82f69518440572ab9c979c}\label{class_compact_star_1_1_sigma_omega_rho__nstar_a2a8b7d2efc82f69518440572ab9c979c}} 
+void {\bfseries Update\+Pool} (const double \&in\+\_\+rho)
+\item 
+\mbox{\Hypertarget{class_compact_star_1_1_sigma_omega_rho__nstar_aafa967cb4b64d4f7a77413abe0798bb0}\label{class_compact_star_1_1_sigma_omega_rho__nstar_aafa967cb4b64d4f7a77413abe0798bb0}} 
+void {\bfseries Set\+Rho} (const double \&in\+\_\+rho)
+\end{DoxyCompactItemize}
+\doxysubsection*{Additional Inherited Members}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_compact_star_1_1_sigma_omega_rho__nstar_aaee2207e57c85fff569b4079a31be6e2}\label{class_compact_star_1_1_sigma_omega_rho__nstar_aaee2207e57c85fff569b4079a31be6e2}} 
+\index{CompactStar::SigmaOmegaRho\_nstar@{CompactStar::SigmaOmegaRho\_nstar}!EDens@{EDens}}
+\index{EDens@{EDens}!CompactStar::SigmaOmegaRho\_nstar@{CompactStar::SigmaOmegaRho\_nstar}}
+\doxysubsubsection{\texorpdfstring{EDens()}{EDens()}}
+{\footnotesize\ttfamily double Compact\+Star\+::\+Sigma\+Omega\+Rho\+\_\+nstar\+::\+EDens (\begin{DoxyParamCaption}\item[{const double \&}]{in\+\_\+rho }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{class_compact_star_1_1_model}{Compact\+Star\+::\+Model}}.
+
+\mbox{\Hypertarget{class_compact_star_1_1_sigma_omega_rho__nstar_a5624974e21b0429210e03c54cec7a96c}\label{class_compact_star_1_1_sigma_omega_rho__nstar_a5624974e21b0429210e03c54cec7a96c}} 
+\index{CompactStar::SigmaOmegaRho\_nstar@{CompactStar::SigmaOmegaRho\_nstar}!EOSHeader@{EOSHeader}}
+\index{EOSHeader@{EOSHeader}!CompactStar::SigmaOmegaRho\_nstar@{CompactStar::SigmaOmegaRho\_nstar}}
+\doxysubsubsection{\texorpdfstring{EOSHeader()}{EOSHeader()}}
+{\footnotesize\ttfamily std\+::string Compact\+Star\+::\+Sigma\+Omega\+Rho\+\_\+nstar\+::\+EOSHeader (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+This will generate the header for EOS. 
+
+
+
+Reimplemented from \mbox{\hyperlink{class_compact_star_1_1_model_aaa76bc6bdb8a2fac18d68fec52f10ad9}{Compact\+Star\+::\+Model}}.
+
+\mbox{\Hypertarget{class_compact_star_1_1_sigma_omega_rho__nstar_a5476e58f2c843809d755118c3b7ef93b}\label{class_compact_star_1_1_sigma_omega_rho__nstar_a5476e58f2c843809d755118c3b7ef93b}} 
+\index{CompactStar::SigmaOmegaRho\_nstar@{CompactStar::SigmaOmegaRho\_nstar}!EOSRow@{EOSRow}}
+\index{EOSRow@{EOSRow}!CompactStar::SigmaOmegaRho\_nstar@{CompactStar::SigmaOmegaRho\_nstar}}
+\doxysubsubsection{\texorpdfstring{EOSRow()}{EOSRow()}}
+{\footnotesize\ttfamily std\+::vector$<$ double $>$ Compact\+Star\+::\+Sigma\+Omega\+Rho\+\_\+nstar\+::\+EOSRow (\begin{DoxyParamCaption}\item[{const double \&}]{rho\+\_\+i }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+This will generate a row of values for EOS. 
+
+
+
+Reimplemented from \mbox{\hyperlink{class_compact_star_1_1_model_a993364b332aded0dde14e502b50d90b3}{Compact\+Star\+::\+Model}}.
+
+\mbox{\Hypertarget{class_compact_star_1_1_sigma_omega_rho__nstar_a344c088c4e5078cc8d3cce4494be6850}\label{class_compact_star_1_1_sigma_omega_rho__nstar_a344c088c4e5078cc8d3cce4494be6850}} 
+\index{CompactStar::SigmaOmegaRho\_nstar@{CompactStar::SigmaOmegaRho\_nstar}!Jacob@{Jacob}}
+\index{Jacob@{Jacob}!CompactStar::SigmaOmegaRho\_nstar@{CompactStar::SigmaOmegaRho\_nstar}}
+\doxysubsubsection{\texorpdfstring{Jacob()}{Jacob()}}
+{\footnotesize\ttfamily int Compact\+Star\+::\+Sigma\+Omega\+Rho\+\_\+nstar\+::\+Jacob (\begin{DoxyParamCaption}\item[{const gsl\+\_\+vector $\ast$}]{x,  }\item[{gsl\+\_\+matrix $\ast$}]{J }\end{DoxyParamCaption})}
+
+
+
+Jacobian calculator. 
+
+Jacobian. \mbox{\Hypertarget{class_compact_star_1_1_sigma_omega_rho__nstar_a1f89e6f425aedea22c307e438cd82300}\label{class_compact_star_1_1_sigma_omega_rho__nstar_a1f89e6f425aedea22c307e438cd82300}} 
+\index{CompactStar::SigmaOmegaRho\_nstar@{CompactStar::SigmaOmegaRho\_nstar}!Press@{Press}}
+\index{Press@{Press}!CompactStar::SigmaOmegaRho\_nstar@{CompactStar::SigmaOmegaRho\_nstar}}
+\doxysubsubsection{\texorpdfstring{Press()}{Press()}}
+{\footnotesize\ttfamily double Compact\+Star\+::\+Sigma\+Omega\+Rho\+\_\+nstar\+::\+Press (\begin{DoxyParamCaption}\item[{const double \&}]{in\+\_\+rho }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{class_compact_star_1_1_model}{Compact\+Star\+::\+Model}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Compact\+Star/\+EOS/\mbox{\hyperlink{_sigma_omega_rho__nstar_8hpp}{Sigma\+Omega\+Rho\+\_\+nstar.\+hpp}}\item 
+Compact\+Star/\+EOS/src/Sigma\+Omega\+Rho\+\_\+nstar.\+cpp\end{DoxyCompactItemize}

@@ -1,0 +1,93 @@
+\hypertarget{class_zaki_1_1_math_1_1_curve2_d}{}\doxysection{Zaki\+::Math\+::Curve2D Class Reference}
+\label{class_zaki_1_1_math_1_1_curve2_d}\index{Zaki::Math::Curve2D@{Zaki::Math::Curve2D}}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_zaki_1_1_math_1_1_curve2_d_affb60ed6074f99645640ce8e70689a5c}\label{class_zaki_1_1_math_1_1_curve2_d_affb60ed6074f99645640ce8e70689a5c}} 
+{\bfseries Curve2D} (const std\+::string \&in\+\_\+label=\char`\"{}\char`\"{})
+\item 
+\mbox{\Hypertarget{class_zaki_1_1_math_1_1_curve2_d_a6fb5d7a5335a3f007ec855a60a361762}\label{class_zaki_1_1_math_1_1_curve2_d_a6fb5d7a5335a3f007ec855a60a361762}} 
+{\bfseries Curve2D} (const std\+::vector$<$ \mbox{\hyperlink{struct_zaki_1_1_math_1_1_coord2_d}{Coord2D}} $>$ \&in\+\_\+pts, const std\+::string \&in\+\_\+label=\char`\"{}\char`\"{})
+\item 
+\mbox{\Hypertarget{class_zaki_1_1_math_1_1_curve2_d_a71d9e035134b5ff1c8baef9e7e255176}\label{class_zaki_1_1_math_1_1_curve2_d_a71d9e035134b5ff1c8baef9e7e255176}} 
+void {\bfseries Set\+Label} (const std\+::string \&)
+\begin{DoxyCompactList}\small\item\em Sets the label. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_zaki_1_1_math_1_1_curve2_d_a3fe23f24dee6a432fbc99b2640e4c6e6}\label{class_zaki_1_1_math_1_1_curve2_d_a3fe23f24dee6a432fbc99b2640e4c6e6}} 
+std\+::string {\bfseries Get\+Label} () const
+\begin{DoxyCompactList}\small\item\em Returns the label. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_zaki_1_1_math_1_1_curve2_d_a85568b7dbbfd2e2da183214fd211852a}\label{class_zaki_1_1_math_1_1_curve2_d_a85568b7dbbfd2e2da183214fd211852a}} 
+void {\bfseries Import} (const \mbox{\hyperlink{class_zaki_1_1_string_1_1_directory}{Zaki\+::\+String\+::\+Directory}} \&in\+\_\+file)
+\begin{DoxyCompactList}\small\item\em Imports the curve points. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_zaki_1_1_math_1_1_curve2_d_a1a60b392ee6d7a96868d840e273eb6da}\label{class_zaki_1_1_math_1_1_curve2_d_a1a60b392ee6d7a96868d840e273eb6da}} 
+void {\bfseries Append} (const \mbox{\hyperlink{struct_zaki_1_1_math_1_1_coord2_d}{Coord2D}} \&in\+\_\+p)
+\item 
+\mbox{\Hypertarget{class_zaki_1_1_math_1_1_curve2_d_abf5c18aa14f5ec1975cbdf64afd23561}\label{class_zaki_1_1_math_1_1_curve2_d_abf5c18aa14f5ec1975cbdf64afd23561}} 
+void {\bfseries Plot} (const \mbox{\hyperlink{class_zaki_1_1_string_1_1_directory}{Zaki\+::\+String\+::\+Directory}} \&f\+\_\+name, const std\+::string \&in\+\_\+title=\char`\"{}\char`\"{})
+\begin{DoxyCompactList}\small\item\em Makes a 2D plot of pts. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_zaki_1_1_math_1_1_curve2_d_a166302daba056af44a5c7fbe6e966f9d}\label{class_zaki_1_1_math_1_1_curve2_d_a166302daba056af44a5c7fbe6e966f9d}} 
+size\+\_\+t {\bfseries Size} () const
+\item 
+\mbox{\Hypertarget{class_zaki_1_1_math_1_1_curve2_d_aa80a96d324be69f6aafd082d87da101a}\label{class_zaki_1_1_math_1_1_curve2_d_aa80a96d324be69f6aafd082d87da101a}} 
+void {\bfseries Reserve} (const size\+\_\+t \&)
+\item 
+\mbox{\Hypertarget{class_zaki_1_1_math_1_1_curve2_d_a9e1c479308bc4324e5d4adbf9f1d11c2}\label{class_zaki_1_1_math_1_1_curve2_d_a9e1c479308bc4324e5d4adbf9f1d11c2}} 
+\mbox{\hyperlink{struct_zaki_1_1_math_1_1_coord2_d}{Coord2D}} \& {\bfseries operator\mbox{[}$\,$\mbox{]}} (const int)
+\begin{DoxyCompactList}\small\item\em Overloading \mbox{[}\mbox{]}. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_zaki_1_1_math_1_1_curve2_d_a7c3356ea95d2f83df90f920562ccda4d}\label{class_zaki_1_1_math_1_1_curve2_d_a7c3356ea95d2f83df90f920562ccda4d}} 
+\mbox{\hyperlink{struct_zaki_1_1_math_1_1_coord2_d}{Coord2D}} {\bfseries operator\mbox{[}$\,$\mbox{]}} (const int) const
+\begin{DoxyCompactList}\small\item\em Overloading \mbox{[}\mbox{]} ( const ) \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_zaki_1_1_math_1_1_curve2_d_a8710bd2b3f8608e709e6a1c6fd4a1f34}\label{class_zaki_1_1_math_1_1_curve2_d_a8710bd2b3f8608e709e6a1c6fd4a1f34}} 
+std\+::vector$<$ double $>$ {\bfseries Get\+XVals} () const
+\item 
+\mbox{\Hypertarget{class_zaki_1_1_math_1_1_curve2_d_a721b9fae6e1bd7ea4a8b3b36509e1cec}\label{class_zaki_1_1_math_1_1_curve2_d_a721b9fae6e1bd7ea4a8b3b36509e1cec}} 
+std\+::vector$<$ double $>$ {\bfseries Get\+YVals} () const
+\item 
+\mbox{\Hypertarget{class_zaki_1_1_math_1_1_curve2_d_ab98e1ee29ea49450d6594b7fa8f6a1ce}\label{class_zaki_1_1_math_1_1_curve2_d_ab98e1ee29ea49450d6594b7fa8f6a1ce}} 
+\mbox{\hyperlink{class_zaki_1_1_math_1_1_curve2_d}{Curve2D}} {\bfseries Get\+Smooth} (const short int \&window) const
+\begin{DoxyCompactList}\small\item\em Uses moving average to smooth the curve. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_zaki_1_1_math_1_1_curve2_d_aefdfc320b05dd58f51ea81e7025bfcf0}{Make\+Smooth}} (const short int \&window)
+\item 
+\mbox{\Hypertarget{class_zaki_1_1_math_1_1_curve2_d_ae57ffd4e23e370eee9451076510bc42e}\label{class_zaki_1_1_math_1_1_curve2_d_ae57ffd4e23e370eee9451076510bc42e}} 
+std\+::vector$<$ \mbox{\hyperlink{class_zaki_1_1_math_1_1_segment}{Segment}} $>$ {\bfseries Segmentize} () const
+\begin{DoxyCompactList}\small\item\em Transforms the curve into a set of segments. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_zaki_1_1_math_1_1_curve2_d_acf9041b66eb2b4f6c69e25b19522fc8b}\label{class_zaki_1_1_math_1_1_curve2_d_acf9041b66eb2b4f6c69e25b19522fc8b}} 
+std\+::vector$<$ \mbox{\hyperlink{struct_zaki_1_1_math_1_1_coord2_d}{Coord2D}} $>$ {\bfseries Intersection} (const \mbox{\hyperlink{class_zaki_1_1_math_1_1_curve2_d}{Curve2D}} \&other) const
+\begin{DoxyCompactList}\small\item\em Finds all the intersection points. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_zaki_1_1_math_1_1_curve2_d_a701b6843f617a4d9e96c47e83ff07591}\label{class_zaki_1_1_math_1_1_curve2_d_a701b6843f617a4d9e96c47e83ff07591}} 
+void {\bfseries Export} (const \mbox{\hyperlink{class_zaki_1_1_string_1_1_directory}{Zaki\+::\+String\+::\+Directory}} \&) const
+\begin{DoxyCompactList}\small\item\em Exports the curve points. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_zaki_1_1_math_1_1_curve2_d_aee7a027587413764defb8632fc848103}\label{class_zaki_1_1_math_1_1_curve2_d_aee7a027587413764defb8632fc848103}} 
+size\+\_\+t {\bfseries Get\+Idx} (const \mbox{\hyperlink{struct_zaki_1_1_math_1_1_coord2_d}{Coord2D}} \&in\+\_\+p) const
+\begin{DoxyCompactList}\small\item\em Returns the closes index to the input point. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_zaki_1_1_math_1_1_curve2_d_ad26d1790a884569c301103444f178560}\label{class_zaki_1_1_math_1_1_curve2_d_ad26d1790a884569c301103444f178560}} 
+std\+::pair$<$ \mbox{\hyperlink{class_zaki_1_1_math_1_1_curve2_d}{Curve2D}}, \mbox{\hyperlink{class_zaki_1_1_math_1_1_curve2_d}{Curve2D}} $>$ {\bfseries Bisect} (const \mbox{\hyperlink{struct_zaki_1_1_math_1_1_coord2_d}{Coord2D}} \&in\+\_\+p) const
+\begin{DoxyCompactList}\small\item\em Bisects the curve into two smaller curves. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_zaki_1_1_math_1_1_curve2_d_ad53f7f6fe713ad4f01583187c50ee91c}\label{class_zaki_1_1_math_1_1_curve2_d_ad53f7f6fe713ad4f01583187c50ee91c}} 
+static void {\bfseries Plot} (const std\+::vector$<$ \mbox{\hyperlink{class_zaki_1_1_math_1_1_curve2_d}{Curve2D}} $>$ \&, const \mbox{\hyperlink{class_zaki_1_1_string_1_1_directory}{Zaki\+::\+String\+::\+Directory}} \&f\+\_\+name, const std\+::string \&in\+\_\+title=\char`\"{}\char`\"{})
+\begin{DoxyCompactList}\small\item\em Makes a 2D plot of multiple curves. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_zaki_1_1_math_1_1_curve2_d_a7291518d92f6f05002514fdb146277c8}\label{class_zaki_1_1_math_1_1_curve2_d_a7291518d92f6f05002514fdb146277c8}} 
+std\+::vector$<$ \mbox{\hyperlink{struct_zaki_1_1_math_1_1_coord2_d}{Coord2D}} $>$ {\bfseries pts}
+\item 
+\mbox{\Hypertarget{class_zaki_1_1_math_1_1_curve2_d_a289277b71378db822f2684ed532fe4b2}\label{class_zaki_1_1_math_1_1_curve2_d_a289277b71378db822f2684ed532fe4b2}} 
+std\+::string {\bfseries label} = \char`\"{}\char`\"{}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_zaki_1_1_math_1_1_curve2_d_aefdfc320b05dd58f51ea81e7025bfcf0}\label{class_zaki_1_1_math_1_1_curve2_d_aefdfc320b05dd58f51ea81e7025bfcf0}} 
+\index{Zaki::Math::Curve2D@{Zaki::Math::Curve2D}!MakeSmooth@{MakeSmooth}}
+\index{MakeSmooth@{MakeSmooth}!Zaki::Math::Curve2D@{Zaki::Math::Curve2D}}
+\doxysubsubsection{\texorpdfstring{MakeSmooth()}{MakeSmooth()}}
+{\footnotesize\ttfamily void Zaki\+::\+Math\+::\+Curve2\+D\+::\+Make\+Smooth (\begin{DoxyParamCaption}\item[{const short int \&}]{window }\end{DoxyParamCaption})}
+
+Uses moving average to smooth the curve \mbox{[} in-\/place \mbox{]} 
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+dependencies/include/\+Zaki/\+Math/\mbox{\hyperlink{_math___core_8hpp}{Math\+\_\+\+Core.\+hpp}}\end{DoxyCompactItemize}

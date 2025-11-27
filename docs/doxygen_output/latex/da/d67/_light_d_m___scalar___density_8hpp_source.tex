@@ -1,0 +1,212 @@
+\hypertarget{_light_d_m___scalar___density_8hpp_source}{}\doxysection{Light\+DM\+\_\+\+Scalar\+\_\+\+Density.\+hpp}
+\label{_light_d_m___scalar___density_8hpp_source}\index{CompactStar/Extensions/LightDM/LightDM\_Scalar\_Density.hpp@{CompactStar/Extensions/LightDM/LightDM\_Scalar\_Density.hpp}}
+\mbox{\hyperlink{_light_d_m___scalar___density_8hpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{comment}{// -\/*-\/ lsst-\/c++ -\/*-\/}}
+\DoxyCodeLine{2 \textcolor{comment}{/*}}
+\DoxyCodeLine{3 \textcolor{comment}{ * CompactStar}}
+\DoxyCodeLine{4 \textcolor{comment}{ * See License file at the top of the source tree.}}
+\DoxyCodeLine{5 \textcolor{comment}{ *}}
+\DoxyCodeLine{6 \textcolor{comment}{ * Copyright (c) 2024 Mohammadreza Zakeri}}
+\DoxyCodeLine{7 \textcolor{comment}{ *}}
+\DoxyCodeLine{8 \textcolor{comment}{ * Permission is hereby granted, free of charge, to any person obtaining a copy}}
+\DoxyCodeLine{9 \textcolor{comment}{ * of this software and associated documentation files (the "{}Software"{}), to deal}}
+\DoxyCodeLine{10 \textcolor{comment}{ * in the Software without restriction, including without limitation the rights}}
+\DoxyCodeLine{11 \textcolor{comment}{ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell}}
+\DoxyCodeLine{12 \textcolor{comment}{ * copies of the Software, and to permit persons to whom the Software is}}
+\DoxyCodeLine{13 \textcolor{comment}{ * furnished to do so, subject to the following conditions:}}
+\DoxyCodeLine{14 \textcolor{comment}{ *}}
+\DoxyCodeLine{15 \textcolor{comment}{ * The above copyright notice and this permission notice shall be included in all}}
+\DoxyCodeLine{16 \textcolor{comment}{ * copies or substantial portions of the Software.}}
+\DoxyCodeLine{17 \textcolor{comment}{ *}}
+\DoxyCodeLine{18 \textcolor{comment}{ * THE SOFTWARE IS PROVIDED "{}AS IS"{}, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR}}
+\DoxyCodeLine{19 \textcolor{comment}{ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,}}
+\DoxyCodeLine{20 \textcolor{comment}{ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE}}
+\DoxyCodeLine{21 \textcolor{comment}{ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER}}
+\DoxyCodeLine{22 \textcolor{comment}{ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,}}
+\DoxyCodeLine{23 \textcolor{comment}{ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE}}
+\DoxyCodeLine{24 \textcolor{comment}{ * SOFTWARE.}}
+\DoxyCodeLine{25 \textcolor{comment}{ */}}
+\DoxyCodeLine{26 }
+\DoxyCodeLine{38 \textcolor{comment}{// -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{39 \textcolor{comment}{//               Created on Mar 19, 2024}}
+\DoxyCodeLine{40 \textcolor{comment}{// This class is made for analyzing ...}}
+\DoxyCodeLine{41 \textcolor{comment}{// -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{42 \textcolor{preprocessor}{\#ifndef CompactStar\_LightDM\_Scalar\_Density\_H}}
+\DoxyCodeLine{43 \textcolor{preprocessor}{\#define CompactStar\_LightDM\_Scalar\_Density\_H}}
+\DoxyCodeLine{44 }
+\DoxyCodeLine{45 \textcolor{preprocessor}{\#include <\mbox{\hyperlink{_data_set_8hpp}{Zaki/Vector/DataSet.hpp}}>}}
+\DoxyCodeLine{46 }
+\DoxyCodeLine{47 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_pulsar_8hpp}{CompactStar/Core/Pulsar.hpp}}"{}}}
+\DoxyCodeLine{48 \textcolor{preprocessor}{\#include <\mbox{\hyperlink{_comp_o_s_e___e_o_s_8hpp}{CompactStar/EOS/CompOSE\_EOS.hpp}}>}}
+\DoxyCodeLine{49 }
+\DoxyCodeLine{50 \textcolor{comment}{//==============================================================}}
+\DoxyCodeLine{51 \textcolor{keyword}{namespace }CompactStar}
+\DoxyCodeLine{52 \{}
+\DoxyCodeLine{53 }
+\DoxyCodeLine{54 \textcolor{comment}{//==============================================================}}
+\DoxyCodeLine{55 \textcolor{keyword}{class }\mbox{\hyperlink{class_compact_star_1_1_light_d_m___scalar___density}{LightDM\_Scalar\_Density}} : \textcolor{keyword}{public} \mbox{\hyperlink{class_compact_star_1_1_prog}{Prog}}}
+\DoxyCodeLine{56 \{}
+\DoxyCodeLine{57   \textcolor{keyword}{private}:}
+\DoxyCodeLine{59     \textcolor{keywordtype}{bool} pulsar\_is\_set = \textcolor{keyword}{false};}
+\DoxyCodeLine{60 }
+\DoxyCodeLine{61   \textcolor{keyword}{public}:}
+\DoxyCodeLine{62     \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{63     \textcolor{keyword}{struct }\mbox{\hyperlink{struct_compact_star_1_1_light_d_m___scalar___density_1_1_baryon}{Baryon}}}
+\DoxyCodeLine{64     \{}
+\DoxyCodeLine{66         std::string \mbox{\hyperlink{struct_compact_star_1_1_light_d_m___scalar___density_1_1_baryon_ad0c0bcad8deff79da86eb5fd95419743}{name}} = \textcolor{stringliteral}{"{}"{}};}
+\DoxyCodeLine{67 }
+\DoxyCodeLine{69         std::string \mbox{\hyperlink{struct_compact_star_1_1_light_d_m___scalar___density_1_1_baryon_a8d3f5e0fe5868e574c86641bed30224d}{short\_name}} = \textcolor{stringliteral}{"{}"{}};}
+\DoxyCodeLine{70 }
+\DoxyCodeLine{72         std::string \mbox{\hyperlink{struct_compact_star_1_1_light_d_m___scalar___density_1_1_baryon_adbfe7bb8d7688045918f0fb8ec78e0f2}{label}} = \textcolor{stringliteral}{"{}"{}};}
+\DoxyCodeLine{73 }
+\DoxyCodeLine{75         std::string \mbox{\hyperlink{struct_compact_star_1_1_light_d_m___scalar___density_1_1_baryon_a63cb38e258ae949efce0440e27b83eac}{TeX\_name}} = \textcolor{stringliteral}{"{}"{}};}
+\DoxyCodeLine{76 }
+\DoxyCodeLine{78         \textcolor{keywordtype}{double} \mbox{\hyperlink{struct_compact_star_1_1_light_d_m___scalar___density_1_1_baryon_aea6c538101c7afe8c3fd27d73f58fed7}{mass}} = 0;}
+\DoxyCodeLine{79 }
+\DoxyCodeLine{81         \textcolor{keywordtype}{double} \mbox{\hyperlink{struct_compact_star_1_1_light_d_m___scalar___density_1_1_baryon_a90567db10792c96156c74dc773897632}{g}} = 0;}
+\DoxyCodeLine{82 }
+\DoxyCodeLine{84         \textcolor{keywordtype}{double} \mbox{\hyperlink{struct_compact_star_1_1_light_d_m___scalar___density_1_1_baryon_a5b40bf93e8f457a7c9a7b405a49f69e3}{tau}} = 0;}
+\DoxyCodeLine{85 }
+\DoxyCodeLine{86         \mbox{\hyperlink{struct_compact_star_1_1_light_d_m___scalar___density_1_1_baryon}{Baryon}}() \{\}}
+\DoxyCodeLine{87         \mbox{\hyperlink{struct_compact_star_1_1_light_d_m___scalar___density_1_1_baryon}{Baryon}}(\textcolor{keyword}{const} std::string \&in\_name,}
+\DoxyCodeLine{88                \textcolor{keyword}{const} std::string \&in\_TeX\_name,}
+\DoxyCodeLine{89                \textcolor{keyword}{const} std::string \&in\_short\_name,}
+\DoxyCodeLine{90                \textcolor{keyword}{const} std::string \&in\_label,}
+\DoxyCodeLine{91                \textcolor{keyword}{const} \textcolor{keywordtype}{double} \&in\_mass,}
+\DoxyCodeLine{92                \textcolor{keyword}{const} \textcolor{keywordtype}{double} \&in\_g,}
+\DoxyCodeLine{93                \textcolor{keyword}{const} \textcolor{keywordtype}{double} \&in\_tau)}
+\DoxyCodeLine{94             : \mbox{\hyperlink{struct_compact_star_1_1_light_d_m___scalar___density_1_1_baryon_ad0c0bcad8deff79da86eb5fd95419743}{name}}(in\_name),}
+\DoxyCodeLine{95               \mbox{\hyperlink{struct_compact_star_1_1_light_d_m___scalar___density_1_1_baryon_a63cb38e258ae949efce0440e27b83eac}{TeX\_name}}(in\_TeX\_name),}
+\DoxyCodeLine{96               \mbox{\hyperlink{struct_compact_star_1_1_light_d_m___scalar___density_1_1_baryon_a8d3f5e0fe5868e574c86641bed30224d}{short\_name}}(in\_short\_name),}
+\DoxyCodeLine{97               \mbox{\hyperlink{struct_compact_star_1_1_light_d_m___scalar___density_1_1_baryon_adbfe7bb8d7688045918f0fb8ec78e0f2}{label}}(in\_label),}
+\DoxyCodeLine{98               \mbox{\hyperlink{struct_compact_star_1_1_light_d_m___scalar___density_1_1_baryon_aea6c538101c7afe8c3fd27d73f58fed7}{mass}}(in\_mass),}
+\DoxyCodeLine{99               \mbox{\hyperlink{struct_compact_star_1_1_light_d_m___scalar___density_1_1_baryon_a90567db10792c96156c74dc773897632}{g}}(in\_g), \mbox{\hyperlink{struct_compact_star_1_1_light_d_m___scalar___density_1_1_baryon_a5b40bf93e8f457a7c9a7b405a49f69e3}{tau}}(in\_tau)}
+\DoxyCodeLine{100         \{}
+\DoxyCodeLine{101         \}}
+\DoxyCodeLine{102     \};}
+\DoxyCodeLine{103 }
+\DoxyCodeLine{104     \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{105     \textcolor{comment}{// protected:}}
+\DoxyCodeLine{106     \textcolor{comment}{//   //-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{107     \textcolor{comment}{//   struct Rate\_Eps}}
+\DoxyCodeLine{108     \textcolor{comment}{//   \{}}
+\DoxyCodeLine{109     \textcolor{comment}{//     double rate ;}}
+\DoxyCodeLine{110     \textcolor{comment}{//     double eps ;}}
+\DoxyCodeLine{111     \textcolor{comment}{//   \};}}
+\DoxyCodeLine{112     \textcolor{comment}{//   //-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{113     \textcolor{comment}{//   struct Process}}
+\DoxyCodeLine{114     \textcolor{comment}{//   \{}}
+\DoxyCodeLine{115     \textcolor{comment}{//     const std::string name ;}}
+\DoxyCodeLine{116     \textcolor{comment}{//     const std::string TeX ;}}
+\DoxyCodeLine{117 }
+\DoxyCodeLine{118     \textcolor{comment}{//     Process(const std::string\& name, const std::string\& TeX)}}
+\DoxyCodeLine{119     \textcolor{comment}{//     : name(name), TeX(TeX) \{\}}}
+\DoxyCodeLine{120 }
+\DoxyCodeLine{121     \textcolor{comment}{//     std::string GetName() const}}
+\DoxyCodeLine{122     \textcolor{comment}{//     \{}}
+\DoxyCodeLine{123     \textcolor{comment}{//       return name ;}}
+\DoxyCodeLine{124     \textcolor{comment}{//     \}}}
+\DoxyCodeLine{125 }
+\DoxyCodeLine{126     \textcolor{comment}{//     std::string GetTeX() const}}
+\DoxyCodeLine{127     \textcolor{comment}{//     \{}}
+\DoxyCodeLine{128     \textcolor{comment}{//       return TeX ;}}
+\DoxyCodeLine{129     \textcolor{comment}{//     \}}}
+\DoxyCodeLine{130     \textcolor{comment}{//   \};}}
+\DoxyCodeLine{131     \textcolor{comment}{//   //-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{132     \textcolor{comment}{//   virtual Process GetSpecificProcess(const Baryon\& B) const}}
+\DoxyCodeLine{133     \textcolor{comment}{//   \{}}
+\DoxyCodeLine{134     \textcolor{comment}{//     return process ;}}
+\DoxyCodeLine{135     \textcolor{comment}{//   \}}}
+\DoxyCodeLine{136     \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{137 }
+\DoxyCodeLine{138     std::string model = \textcolor{stringliteral}{"{}"{}};}
+\DoxyCodeLine{139 }
+\DoxyCodeLine{140     \textcolor{comment}{// // double PhaseSpace\_Integrand(const double\& x, const double\& mu\_chi,}}
+\DoxyCodeLine{141     \textcolor{comment}{// //                             const double\& sigma\_0) ;}}
+\DoxyCodeLine{142     \textcolor{comment}{// double phase\_int\_mu\_chi = 0 ;}}
+\DoxyCodeLine{143     \textcolor{comment}{// double phase\_int\_sigma\_0 = 0 ;}}
+\DoxyCodeLine{144 }
+\DoxyCodeLine{146     \mbox{\hyperlink{class_zaki_1_1_vector_1_1_data_set}{Zaki::Vector::DataSet}} \mbox{\hyperlink{class_compact_star_1_1_light_d_m___scalar___density_a9287158a977800073b536486e1db63bc}{m\_B\_ds}};}
+\DoxyCodeLine{147 }
+\DoxyCodeLine{149     \mbox{\hyperlink{class_zaki_1_1_vector_1_1_data_set}{Zaki::Vector::DataSet}} \mbox{\hyperlink{class_compact_star_1_1_light_d_m___scalar___density_ad86e89de172f0d293a62797ea15eeb0f}{sig0\_ds}};}
+\DoxyCodeLine{150 }
+\DoxyCodeLine{155     \mbox{\hyperlink{class_zaki_1_1_vector_1_1_data_set}{Zaki::Vector::DataSet}} \mbox{\hyperlink{class_compact_star_1_1_light_d_m___scalar___density_ae6290012323ab098b1d1d0a32b3ffe2a}{micro\_r}};}
+\DoxyCodeLine{156 }
+\DoxyCodeLine{158     \mbox{\hyperlink{class_compact_star_1_1_comp_o_s_e___e_o_s}{CompactStar::CompOSE\_EOS}} \mbox{\hyperlink{class_compact_star_1_1_light_d_m___scalar___density_a6649638079205313f27ff355becb1476}{eos}};}
+\DoxyCodeLine{159 }
+\DoxyCodeLine{164     \mbox{\hyperlink{class_zaki_1_1_vector_1_1_data_set}{Zaki::Vector::DataSet}} \mbox{\hyperlink{class_compact_star_1_1_light_d_m___scalar___density_ac3bb093acf61734a146d3d8c13412b47}{n\_B}};}
+\DoxyCodeLine{165 }
+\DoxyCodeLine{166     \mbox{\hyperlink{class_compact_star_1_1_pulsar}{Pulsar}} pulsar;}
+\DoxyCodeLine{167 }
+\DoxyCodeLine{170     \textcolor{comment}{// double gamma\_bnv\_bin\_lim = 7.83129*1e-\/10 ;}}
+\DoxyCodeLine{171     \textcolor{comment}{// double gamma\_bnv\_bin\_lim = 1.75e-\/10 ;}}
+\DoxyCodeLine{172 }
+\DoxyCodeLine{174     \textcolor{comment}{// double default\_eps = 1e-\/16 ;}}
+\DoxyCodeLine{175 }
+\DoxyCodeLine{177     \textcolor{comment}{// int m\_chi\_res = 2*1380 ;}}
+\DoxyCodeLine{178 }
+\DoxyCodeLine{180     \textcolor{comment}{// Zaki::Math::Axis m\_chi\_vals ;}}
+\DoxyCodeLine{181 }
+\DoxyCodeLine{183     \textcolor{comment}{// void hidden\_Plot\_Rate\_vs\_R(const Baryon\& B,}}
+\DoxyCodeLine{184     \textcolor{comment}{//                           const double\& m\_chi,}}
+\DoxyCodeLine{185     \textcolor{comment}{//                           Zaki::Vector::DataSet* ds) const ;}}
+\DoxyCodeLine{186 }
+\DoxyCodeLine{187     \textcolor{comment}{// /// Plots the rate as a function of density (ds) in units of s\string^-\/1/fm\string^3}}
+\DoxyCodeLine{188     \textcolor{comment}{// void hidden\_Plot\_Rate\_vs\_Density(const Baryon\& B,}}
+\DoxyCodeLine{189     \textcolor{comment}{//                                 const double\& m\_chi,}}
+\DoxyCodeLine{190     \textcolor{comment}{//                                 Zaki::Vector::DataSet* ds) const ;}}
+\DoxyCodeLine{191 }
+\DoxyCodeLine{192     \textcolor{comment}{// /// Plots rates for a set of chi's in the same figure}}
+\DoxyCodeLine{193     \textcolor{comment}{// /// as a function of radius in units of s\string^-\/1/fm\string^3}}
+\DoxyCodeLine{194     \textcolor{comment}{// /// for multiple pulsars!}}
+\DoxyCodeLine{195     \textcolor{comment}{// /// [ Incomplete ]}}
+\DoxyCodeLine{196     \textcolor{comment}{// void Rate\_vs\_R(const std::vector<double>\& m\_chi,}}
+\DoxyCodeLine{197     \textcolor{comment}{//                const Baryon\& B,}}
+\DoxyCodeLine{198     \textcolor{comment}{//                const std::vector<CompactStar::Pulsar\_Limit>\& ) ;}}
+\DoxyCodeLine{199 }
+\DoxyCodeLine{200     \textcolor{comment}{// /// Plots rates for a set of chi's in the same figure}}
+\DoxyCodeLine{201     \textcolor{comment}{// /// as a function of radius in units of s\string^-\/1/fm\string^3}}
+\DoxyCodeLine{202     \textcolor{comment}{// /// for multiple pulsars!}}
+\DoxyCodeLine{203     \textcolor{comment}{// /// [ Incomplete ]}}
+\DoxyCodeLine{204     \textcolor{comment}{// void Rate\_vs\_R(const std::vector<double>\& m\_chi,}}
+\DoxyCodeLine{205     \textcolor{comment}{//     const std::vector<CompactStar::Pulsar\_Limit>\& ) ;}}
+\DoxyCodeLine{206   \textcolor{keyword}{public}:}
+\DoxyCodeLine{207     \mbox{\hyperlink{struct_compact_star_1_1_light_d_m___scalar___density_1_1_baryon}{Baryon}} \mbox{\hyperlink{class_compact_star_1_1_light_d_m___scalar___density_a2b56208e61944f3796d605301787d83e}{neutron}};}
+\DoxyCodeLine{208     \mbox{\hyperlink{struct_compact_star_1_1_light_d_m___scalar___density_1_1_baryon}{Baryon}} lambda;}
+\DoxyCodeLine{209     \mbox{\hyperlink{struct_compact_star_1_1_light_d_m___scalar___density_1_1_baryon}{Baryon}} proton;}
+\DoxyCodeLine{210     \mbox{\hyperlink{struct_compact_star_1_1_light_d_m___scalar___density_1_1_baryon}{Baryon}} sigma\_m;}
+\DoxyCodeLine{211 }
+\DoxyCodeLine{212     \textcolor{comment}{// Process process ;}}
+\DoxyCodeLine{213 }
+\DoxyCodeLine{214     \mbox{\hyperlink{class_compact_star_1_1_light_d_m___scalar___density}{LightDM\_Scalar\_Density}}();}
+\DoxyCodeLine{215     \mbox{\hyperlink{class_compact_star_1_1_light_d_m___scalar___density}{\string~LightDM\_Scalar\_Density}}();}
+\DoxyCodeLine{216 }
+\DoxyCodeLine{217     \textcolor{keywordtype}{double} Scalar\_Density\_Integrand(\textcolor{keyword}{const} \textcolor{keywordtype}{double} \&k);}
+\DoxyCodeLine{218 }
+\DoxyCodeLine{220     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_compact_star_1_1_light_d_m___scalar___density_aa49e16addf03aa1132d5c4d2cf603e27}{SetModel}}(\textcolor{keyword}{const} std::string \&in\_eos\_model);}
+\DoxyCodeLine{221 }
+\DoxyCodeLine{223     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_compact_star_1_1_light_d_m___scalar___density_af688f679fc90fc22644ba3837c3dca57}{SetPulsar}}(\textcolor{keyword}{const} \mbox{\hyperlink{class_compact_star_1_1_pulsar}{CompactStar::Pulsar}} \&);}
+\DoxyCodeLine{224 }
+\DoxyCodeLine{225     \textcolor{comment}{// / Imports the EOS}}
+\DoxyCodeLine{226     \textcolor{keywordtype}{void} ImportEOS(\textcolor{keyword}{const} \mbox{\hyperlink{class_zaki_1_1_string_1_1_directory}{Zaki::String::Directory}} \&eos\_dir);}
+\DoxyCodeLine{227 }
+\DoxyCodeLine{228     \textcolor{keywordtype}{double} Eval\_Scalar\_Density\_vs\_Baryon\_Density(\textcolor{keyword}{const} \textcolor{keywordtype}{double} \&in\_baryon\_density, \textcolor{keyword}{const} \mbox{\hyperlink{struct_compact_star_1_1_light_d_m___scalar___density_1_1_baryon}{Baryon}} \&B);}
+\DoxyCodeLine{229 }
+\DoxyCodeLine{230     \textcolor{keywordtype}{void} Export\_Scalar\_Density\_vs\_Baryon\_Density(\textcolor{keyword}{const} \mbox{\hyperlink{struct_compact_star_1_1_light_d_m___scalar___density_1_1_baryon}{Baryon}} \&B);}
+\DoxyCodeLine{231 }
+\DoxyCodeLine{232     \textcolor{keywordtype}{void} Export\_Scalar\_Density\_vs\_Radius(\textcolor{keyword}{const} \mbox{\hyperlink{struct_compact_star_1_1_light_d_m___scalar___density_1_1_baryon}{Baryon}} \&B);}
+\DoxyCodeLine{233 }
+\DoxyCodeLine{235     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_compact_star_1_1_light_d_m___scalar___density_aecee8d883562009199d40bab2501fc46}{GenSequence}}() \textcolor{keyword}{const};}
+\DoxyCodeLine{236 }
+\DoxyCodeLine{238     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_compact_star_1_1_light_d_m___scalar___density_a4139feeb6b3aa7af65643c7193df8435}{FindPulsar}}(\textcolor{keyword}{const} \textcolor{keywordtype}{bool} \&gen\_plots = \textcolor{keyword}{false});}
+\DoxyCodeLine{239 }
+\DoxyCodeLine{242     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_compact_star_1_1_light_d_m___scalar___density_ae771dc91616dad93747d483c2d0a1458}{Export\_Escape\_Params}}(\textcolor{keyword}{const} \mbox{\hyperlink{struct_compact_star_1_1_light_d_m___scalar___density_1_1_baryon}{Baryon}} \&B);}
+\DoxyCodeLine{243 \};}
+\DoxyCodeLine{244 }
+\DoxyCodeLine{245 \textcolor{comment}{//==============================================================}}
+\DoxyCodeLine{246 \} \textcolor{comment}{// namespace CompactStar}}
+\DoxyCodeLine{247 \textcolor{comment}{//==============================================================}}
+\DoxyCodeLine{248 \textcolor{preprocessor}{\#endif }\textcolor{comment}{/*CompactStar\_LightDM\_Scalar\_Density\_H*/}\textcolor{preprocessor}{}}
+
+\end{DoxyCode}

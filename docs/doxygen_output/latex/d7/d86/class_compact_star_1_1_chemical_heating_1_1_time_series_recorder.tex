@@ -1,0 +1,101 @@
+\hypertarget{class_compact_star_1_1_chemical_heating_1_1_time_series_recorder}{}\doxysection{Compact\+Star\+::Chemical\+Heating\+::Time\+Series\+Recorder Class Reference}
+\label{class_compact_star_1_1_chemical_heating_1_1_time_series_recorder}\index{CompactStar::ChemicalHeating::TimeSeriesRecorder@{CompactStar::ChemicalHeating::TimeSeriesRecorder}}
+
+
+Writes samples to a {\ttfamily \mbox{\hyperlink{class_zaki_1_1_vector_1_1_data_set}{Zaki\+::\+Vector\+::\+Data\+Set}}} as columns.  
+
+
+
+
+{\ttfamily \#include $<$IObserver.\+hpp$>$}
+
+Inheritance diagram for Compact\+Star\+::Chemical\+Heating\+::Time\+Series\+Recorder\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{d7/d86/class_compact_star_1_1_chemical_heating_1_1_time_series_recorder}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_compact_star_1_1_chemical_heating_1_1_time_series_recorder_a3222a404f5aec93a5ca844ea26c4d82f}{Time\+Series\+Recorder}} (\mbox{\hyperlink{class_zaki_1_1_vector_1_1_data_set}{Zaki\+::\+Vector\+::\+Data\+Set}} \&ds, const std\+::string \&tag=std\+::string())
+\begin{DoxyCompactList}\small\item\em Construct with a target dataset. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_compact_star_1_1_chemical_heating_1_1_time_series_recorder_ada2755c26b3bdba8620665b0d1ea9e0d}{on\+\_\+sample}} (const Evolution\+State \&state, const \mbox{\hyperlink{struct_compact_star_1_1_chemical_heating_1_1_derived}{Derived}} \&d) override
+\begin{DoxyCompactList}\small\item\em Called whenever the integrator saves a sample (every dt\+\_\+save).   \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_compact_star_1_1_chemical_heating_1_1_time_series_recorder_a64c7e95e64cda106e84aab4655e7611f}{on\+\_\+finish}} (const Evolution\+State \&state, bool ok) override
+\begin{DoxyCompactList}\small\item\em Called once the integration finishes (success or failure).   \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Writes samples to a {\ttfamily \mbox{\hyperlink{class_zaki_1_1_vector_1_1_data_set}{Zaki\+::\+Vector\+::\+Data\+Set}}} as columns. 
+
+Column layout (created on first use)\+: t\mbox{[}s\mbox{]}, Tinf\mbox{[}K\mbox{]}, Ts\mbox{[}K\mbox{]}, Lnu\+\_\+inf\mbox{[}erg/s\mbox{]}, Lgamma\+\_\+inf\mbox{[}erg/s\mbox{]}, H\+\_\+inf\mbox{[}erg/s\mbox{]}, C\+\_\+tot\mbox{[}erg/K\mbox{]}, eta\+\_\+0, eta\+\_\+1, ... 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_compact_star_1_1_chemical_heating_1_1_time_series_recorder_a3222a404f5aec93a5ca844ea26c4d82f}\label{class_compact_star_1_1_chemical_heating_1_1_time_series_recorder_a3222a404f5aec93a5ca844ea26c4d82f}} 
+\index{CompactStar::ChemicalHeating::TimeSeriesRecorder@{CompactStar::ChemicalHeating::TimeSeriesRecorder}!TimeSeriesRecorder@{TimeSeriesRecorder}}
+\index{TimeSeriesRecorder@{TimeSeriesRecorder}!CompactStar::ChemicalHeating::TimeSeriesRecorder@{CompactStar::ChemicalHeating::TimeSeriesRecorder}}
+\doxysubsubsection{\texorpdfstring{TimeSeriesRecorder()}{TimeSeriesRecorder()}}
+{\footnotesize\ttfamily Compact\+Star\+::\+Chemical\+Heating\+::\+Time\+Series\+Recorder\+::\+Time\+Series\+Recorder (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_zaki_1_1_vector_1_1_data_set}{Zaki\+::\+Vector\+::\+Data\+Set}} \&}]{ds,  }\item[{const std\+::string \&}]{tag = {\ttfamily std\+:\+:string()} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [explicit]}}
+
+
+
+Construct with a target dataset. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em ds} & Dataset to receive appended rows. \\
+\hline
+{\em tag} & Optional run label to embed in metadata. \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_compact_star_1_1_chemical_heating_1_1_time_series_recorder_a64c7e95e64cda106e84aab4655e7611f}\label{class_compact_star_1_1_chemical_heating_1_1_time_series_recorder_a64c7e95e64cda106e84aab4655e7611f}} 
+\index{CompactStar::ChemicalHeating::TimeSeriesRecorder@{CompactStar::ChemicalHeating::TimeSeriesRecorder}!on\_finish@{on\_finish}}
+\index{on\_finish@{on\_finish}!CompactStar::ChemicalHeating::TimeSeriesRecorder@{CompactStar::ChemicalHeating::TimeSeriesRecorder}}
+\doxysubsubsection{\texorpdfstring{on\_finish()}{on\_finish()}}
+{\footnotesize\ttfamily void Compact\+Star\+::\+Chemical\+Heating\+::\+Time\+Series\+Recorder\+::on\+\_\+finish (\begin{DoxyParamCaption}\item[{const Evolution\+State \&}]{state,  }\item[{bool}]{ok }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Called once the integration finishes (success or failure).   
+
+
+\begin{DoxyParams}{Parameters}
+{\em state} & Final state. \\
+\hline
+{\em ok} & True if reached the target time.   \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented from \mbox{\hyperlink{class_compact_star_1_1_chemical_heating_1_1_observer_a2475dced2f1fc6484bc7910f7f6adf5a}{Compact\+Star\+::\+Chemical\+Heating\+::\+Observer}}.
+
+\mbox{\Hypertarget{class_compact_star_1_1_chemical_heating_1_1_time_series_recorder_ada2755c26b3bdba8620665b0d1ea9e0d}\label{class_compact_star_1_1_chemical_heating_1_1_time_series_recorder_ada2755c26b3bdba8620665b0d1ea9e0d}} 
+\index{CompactStar::ChemicalHeating::TimeSeriesRecorder@{CompactStar::ChemicalHeating::TimeSeriesRecorder}!on\_sample@{on\_sample}}
+\index{on\_sample@{on\_sample}!CompactStar::ChemicalHeating::TimeSeriesRecorder@{CompactStar::ChemicalHeating::TimeSeriesRecorder}}
+\doxysubsubsection{\texorpdfstring{on\_sample()}{on\_sample()}}
+{\footnotesize\ttfamily void Compact\+Star\+::\+Chemical\+Heating\+::\+Time\+Series\+Recorder\+::on\+\_\+sample (\begin{DoxyParamCaption}\item[{const Evolution\+State \&}]{state,  }\item[{const \mbox{\hyperlink{struct_compact_star_1_1_chemical_heating_1_1_derived}{Derived}} \&}]{d }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Called whenever the integrator saves a sample (every dt\+\_\+save).   
+
+
+\begin{DoxyParams}{Parameters}
+{\em state} & Current ODE state (t, T$^\wedge$∞, η, …). \\
+\hline
+{\em d} & \mbox{\hyperlink{struct_compact_star_1_1_chemical_heating_1_1_derived}{Derived}} diagnostics and luminosities.   \\
+\hline
+\end{DoxyParams}
+
+
+Implements \mbox{\hyperlink{class_compact_star_1_1_chemical_heating_1_1_observer_a0f2176f2215329230ff5071b72650cde}{Compact\+Star\+::\+Chemical\+Heating\+::\+Observer}}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Compact\+Star/\+Physics/\+Evolution/\+Observers/IObserver.\+hpp\end{DoxyCompactItemize}

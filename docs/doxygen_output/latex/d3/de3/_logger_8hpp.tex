@@ -1,0 +1,66 @@
+\hypertarget{_logger_8hpp}{}\doxysection{dependencies/include/\+Zaki/\+Util/\+Logger.hpp File Reference}
+\label{_logger_8hpp}\index{dependencies/include/Zaki/Util/Logger.hpp@{dependencies/include/Zaki/Util/Logger.hpp}}
+
+
+Logs info, warnings and errors on terminal and into a file if needed.  
+
+
+{\ttfamily \#include $<$iostream$>$}\newline
+{\ttfamily \#include $<$string$>$}\newline
+{\ttfamily \#include $<$fstream$>$}\newline
+{\ttfamily \#include $<$mutex$>$}\newline
+{\ttfamily \#include $<$time.\+h$>$}\newline
+{\ttfamily \#include $<$cstring$>$}\newline
+{\ttfamily \#include \char`\"{}Zaki/\+String/\+String\+\_\+\+Basic.\+hpp\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}Zaki/\+String/\+Directory.\+hpp\char`\"{}}\newline
+\doxysubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{class_zaki_1_1_util_1_1_log_manager}{Zaki\+::\+Util\+::\+Log\+Manager}}
+\item 
+struct \mbox{\hyperlink{struct_zaki_1_1_util_1_1_log_format}{Zaki\+::\+Util\+::\+Log\+Format}}
+\item 
+struct \mbox{\hyperlink{struct_zaki_1_1_util_1_1_log_entry}{Zaki\+::\+Util\+::\+Log\+Entry}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{_logger_8hpp_a5fccb4fc71e44089a1b1a77fc76c0b68}\label{_logger_8hpp_a5fccb4fc71e44089a1b1a77fc76c0b68}} 
+\#define {\bfseries \+\_\+\+\_\+\+FILENAME\+\_\+\+\_\+}~strrchr(\char`\"{}/\char`\"{} \+\_\+\+\_\+\+FILE\+\_\+\+\_\+, \textquotesingle{}/\textquotesingle{}) + 1
+\item 
+\mbox{\Hypertarget{_logger_8hpp_a6720ae827dddddff52813636623af928}\label{_logger_8hpp_a6720ae827dddddff52813636623af928}} 
+\#define {\bfseries Z\+\_\+\+LOG\+\_\+\+HIDDEN}(MSG,  LEVEL,  L)~\mbox{\hyperlink{struct_zaki_1_1_util_1_1_log_entry}{Zaki\+::\+Util\+::\+Log\+Entry}} \+\_\+\+\_\+\+CONCAT(log\+Entry,L)(MSG,  \+\_\+\+\_\+\+LINE\+\_\+\+\_\+, \+\_\+\+\_\+func\+\_\+\+\_\+, \+\_\+\+\_\+\+FILENAME\+\_\+\+\_\+, LEVEL)
+\item 
+\mbox{\Hypertarget{_logger_8hpp_aeeb52603868e416dbddc8a1e7b77fcd5}\label{_logger_8hpp_aeeb52603868e416dbddc8a1e7b77fcd5}} 
+\#define {\bfseries Z\+\_\+\+LOG}(MSG,  LEVEL)~Z\+\_\+\+LOG\+\_\+\+HIDDEN(MSG, LEVEL, \+\_\+\+\_\+\+COUNTER\+\_\+\+\_\+)
+\item 
+\mbox{\Hypertarget{_logger_8hpp_a5d9e77f33b7b2ad22b245a72f6e93411}\label{_logger_8hpp_a5d9e77f33b7b2ad22b245a72f6e93411}} 
+\#define {\bfseries Z\+\_\+\+LOG\+\_\+\+NOTE}(MSG)~Z\+\_\+\+LOG(MSG, Zaki\+::\+Util\+::\+Log\+Level\+::\+Verbose)
+\item 
+\mbox{\Hypertarget{_logger_8hpp_aea38f298b0435c6ab97e559cc7c3ead4}\label{_logger_8hpp_aea38f298b0435c6ab97e559cc7c3ead4}} 
+\#define {\bfseries Z\+\_\+\+LOG\+\_\+\+INFO}(MSG)~Z\+\_\+\+LOG(MSG, Zaki\+::\+Util\+::\+Log\+Level\+::\+Info)
+\item 
+\mbox{\Hypertarget{_logger_8hpp_a7122aaf8e3c668f12254d2e4381338b0}\label{_logger_8hpp_a7122aaf8e3c668f12254d2e4381338b0}} 
+\#define {\bfseries Z\+\_\+\+LOG\+\_\+\+WARNING}(MSG)~Z\+\_\+\+LOG(MSG, Zaki\+::\+Util\+::\+Log\+Level\+::\+Warning)
+\item 
+\mbox{\Hypertarget{_logger_8hpp_abe4f57036490c6421af3dfba17c2a1f6}\label{_logger_8hpp_abe4f57036490c6421af3dfba17c2a1f6}} 
+\#define {\bfseries Z\+\_\+\+LOG\+\_\+\+ERROR}(MSG)~Z\+\_\+\+LOG(MSG, Zaki\+::\+Util\+::\+Log\+Level\+::\+Error)
+\end{DoxyCompactItemize}
+\doxysubsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{_logger_8hpp_a6cd7c67887466ece9efe677901f1361f}\label{_logger_8hpp_a6cd7c67887466ece9efe677901f1361f}} 
+enum class {\bfseries Log\+Level} \{ {\bfseries Error} = 0
+, {\bfseries Warning}
+, {\bfseries Info}
+, {\bfseries Verbose}
+ \}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Logs info, warnings and errors on terminal and into a file if needed. 
+
+\begin{DoxyAuthor}{Author}
+Mohammadreza Zakeri Contact\+: \href{mailto:M.Zakeri@uky.edu}{\texttt{ M.\+Zakeri@uky.\+edu}} 
+\end{DoxyAuthor}

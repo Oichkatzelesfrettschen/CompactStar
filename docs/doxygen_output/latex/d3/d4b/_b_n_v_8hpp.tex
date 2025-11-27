@@ -1,0 +1,47 @@
+\hypertarget{_b_n_v_8hpp}{}\doxysection{Compact\+Star/\+Physics/\+BNV.hpp File Reference}
+\label{_b_n_v_8hpp}\index{CompactStar/Physics/BNV.hpp@{CompactStar/Physics/BNV.hpp}}
+
+
+Baryon-\/number-\/violation utilities built on profiles + spin state.  
+
+
+{\ttfamily \#include \char`\"{}Compact\+Star/\+Core/\+Star\+Profile.\+hpp\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}Compact\+Star/\+Physics/\+State/\+Spin\+State.\+hpp\char`\"{}}\newline
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+double \mbox{\hyperlink{_b_n_v_8hpp_a3001ef28c39ffdd90557b326180f4636}{Compact\+Star\+::\+BNV\+::\+Spin\+Down\+Limit}} (Star\+Profile\+View view, const Spin\+State \&s)
+\begin{DoxyCompactList}\small\item\em Spin-\/down energy budget bound on the total BNV rate. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Baryon-\/number-\/violation utilities built on profiles + spin state. 
+
+\begin{DoxyAuthor}{Author}
+Mohammadreza Zakeri Contact\+: \href{mailto:M.Zakeri@eku.edu}{\texttt{ M.\+Zakeri@eku.\+edu}} 
+\end{DoxyAuthor}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{_b_n_v_8hpp_a3001ef28c39ffdd90557b326180f4636}\label{_b_n_v_8hpp_a3001ef28c39ffdd90557b326180f4636}} 
+\index{BNV.hpp@{BNV.hpp}!SpinDownLimit@{SpinDownLimit}}
+\index{SpinDownLimit@{SpinDownLimit}!BNV.hpp@{BNV.hpp}}
+\doxysubsubsection{\texorpdfstring{SpinDownLimit()}{SpinDownLimit()}}
+{\footnotesize\ttfamily double Compact\+Star\+::\+BNV\+::\+Spin\+Down\+Limit (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_compact_star_1_1_star_profile_view}{Star\+Profile\+View}}}]{view,  }\item[{const \mbox{\hyperlink{struct_compact_star_1_1_spin_state}{Spin\+State}} \&}]{s }\end{DoxyParamCaption})}
+
+
+
+Spin-\/down energy budget bound on the total BNV rate. 
+
+Computes an upper limit on $\Gamma_{\mathrm{BNV}}$ by requiring the BNV heating power not to exceed the observed spin-\/down power (model assumptions apply).
+
+
+\begin{DoxyParams}{Parameters}
+{\em view} & Structural profile view (may use I(\+M,\+R) if available). \\
+\hline
+{\em s} & Spin state (uses P, Pdot). \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Upper bound on $\Gamma_{\mathrm{BNV}}$ \mbox{[}1/yr\mbox{]}. 
+\end{DoxyReturn}

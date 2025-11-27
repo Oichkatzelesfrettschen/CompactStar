@@ -1,0 +1,107 @@
+\hypertarget{class_compact_star_1_1_sequence}{}\doxysection{Compact\+Star\+::Sequence Class Reference}
+\label{class_compact_star_1_1_sequence}\index{CompactStar::Sequence@{CompactStar::Sequence}}
+
+
+Class representing a sequence of TOV solution points.  
+
+
+
+
+{\ttfamily \#include $<$TOVSolver.\+hpp$>$}
+
+Inheritance diagram for Compact\+Star\+::Sequence\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{dc/d3d/class_compact_star_1_1_sequence}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_compact_star_1_1_sequence_a532b7e8df6ff6b2f990c14ae97859ca2}{Sequence}} ()
+\begin{DoxyCompactList}\small\item\em Default constructor. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_compact_star_1_1_sequence_a28b57a73d8b4fefdaf1819256ff95d64}\label{class_compact_star_1_1_sequence_a28b57a73d8b4fefdaf1819256ff95d64}} 
+{\bfseries $\sim$\+Sequence} ()
+\begin{DoxyCompactList}\small\item\em Destructor. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_compact_star_1_1_sequence_a4cb5082a04d7a4e497d2b7a19f7c16c0}{Add}} (const \mbox{\hyperlink{class_compact_star_1_1_n_star}{NStar}} \&in\+\_\+star)
+\begin{DoxyCompactList}\small\item\em Adds a neutron star point to the sequence. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_compact_star_1_1_sequence_a9efb9806eaa5aed849728022ce2df644}{Export}} (const \mbox{\hyperlink{class_zaki_1_1_string_1_1_directory}{Zaki\+::\+String\+::\+Directory}} \&in\+\_\+dir=\char`\"{}\char`\"{}) const
+\begin{DoxyCompactList}\small\item\em Exports the star sequence to a file. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_compact_star_1_1_sequence_a4c7ece961bf02c923c261f02eda04604}{Combine}} (const \mbox{\hyperlink{class_compact_star_1_1_sequence}{Sequence}} \&other)
+\begin{DoxyCompactList}\small\item\em Combines two sequences. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_compact_star_1_1_sequence_aca92939d8ded8627027e161ab8e87cd6}\label{class_compact_star_1_1_sequence_aca92939d8ded8627027e161ab8e87cd6}} 
+void {\bfseries Clear} ()
+\begin{DoxyCompactList}\small\item\em Clears the sequence. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Additional Inherited Members}
+
+
+\doxysubsection{Detailed Description}
+Class representing a sequence of TOV solution points. 
+
+The \mbox{\hyperlink{class_compact_star_1_1_sequence}{Sequence}} class stores a vector of \mbox{\hyperlink{class_compact_star_1_1_seq_point}{Seq\+Point}} objects, which represent individual TOV solution points. It provides methods to add points, export the sequence to a file, combine sequences, and clear the sequence. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_compact_star_1_1_sequence_a532b7e8df6ff6b2f990c14ae97859ca2}\label{class_compact_star_1_1_sequence_a532b7e8df6ff6b2f990c14ae97859ca2}} 
+\index{CompactStar::Sequence@{CompactStar::Sequence}!Sequence@{Sequence}}
+\index{Sequence@{Sequence}!CompactStar::Sequence@{CompactStar::Sequence}}
+\doxysubsubsection{\texorpdfstring{Sequence()}{Sequence()}}
+{\footnotesize\ttfamily Sequence\+::\+Sequence (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Default constructor. 
+
+Initializes an empty sequence object. 
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_compact_star_1_1_sequence_a4cb5082a04d7a4e497d2b7a19f7c16c0}\label{class_compact_star_1_1_sequence_a4cb5082a04d7a4e497d2b7a19f7c16c0}} 
+\index{CompactStar::Sequence@{CompactStar::Sequence}!Add@{Add}}
+\index{Add@{Add}!CompactStar::Sequence@{CompactStar::Sequence}}
+\doxysubsubsection{\texorpdfstring{Add()}{Add()}}
+{\footnotesize\ttfamily void Sequence\+::\+Add (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_compact_star_1_1_n_star}{NStar}} \&}]{in\+\_\+star }\end{DoxyParamCaption})}
+
+
+
+Adds a neutron star point to the sequence. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em in\+\_\+star} & the neutron star point to be added \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_compact_star_1_1_sequence_a4c7ece961bf02c923c261f02eda04604}\label{class_compact_star_1_1_sequence_a4c7ece961bf02c923c261f02eda04604}} 
+\index{CompactStar::Sequence@{CompactStar::Sequence}!Combine@{Combine}}
+\index{Combine@{Combine}!CompactStar::Sequence@{CompactStar::Sequence}}
+\doxysubsubsection{\texorpdfstring{Combine()}{Combine()}}
+{\footnotesize\ttfamily void Sequence\+::\+Combine (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_compact_star_1_1_sequence}{Sequence}} \&}]{other }\end{DoxyParamCaption})}
+
+
+
+Combines two sequences. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em other} & the other sequence to combine with \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_compact_star_1_1_sequence_a9efb9806eaa5aed849728022ce2df644}\label{class_compact_star_1_1_sequence_a9efb9806eaa5aed849728022ce2df644}} 
+\index{CompactStar::Sequence@{CompactStar::Sequence}!Export@{Export}}
+\index{Export@{Export}!CompactStar::Sequence@{CompactStar::Sequence}}
+\doxysubsubsection{\texorpdfstring{Export()}{Export()}}
+{\footnotesize\ttfamily void Sequence\+::\+Export (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_zaki_1_1_string_1_1_directory}{Zaki\+::\+String\+::\+Directory}} \&}]{in\+\_\+dir = {\ttfamily \char`\"{}\char`\"{}} }\end{DoxyParamCaption}) const}
+
+
+
+Exports the star sequence to a file. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em in\+\_\+dir} & the directory to export the sequence to \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Compact\+Star/\+Core/\mbox{\hyperlink{_t_o_v_solver_8hpp}{TOVSolver.\+hpp}}\item 
+Compact\+Star/\+Core/src/TOVSolver.\+cpp\end{DoxyCompactItemize}

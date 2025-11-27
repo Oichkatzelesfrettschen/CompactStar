@@ -1,0 +1,31 @@
+\hypertarget{_prog_8hpp}{}\doxysection{Compact\+Star/\+Core/\+Prog.hpp File Reference}
+\label{_prog_8hpp}\index{CompactStar/Core/Prog.hpp@{CompactStar/Core/Prog.hpp}}
+
+
+Lightweight base providing naming and work-\/directory handling.  
+
+
+{\ttfamily \#include \char`\"{}Compact\+Star/\+Core/\+Compact\+Star\+Config.\+h\char`\"{}}\newline
+{\ttfamily \#include $<$Zaki/\+String/\+Directory.\+hpp$>$}\newline
+{\ttfamily \#include $<$Zaki/\+Util/\+Logger.\+hpp$>$}\newline
+{\ttfamily \#include $<$iostream$>$}\newline
+{\ttfamily \#include $<$sstream$>$}\newline
+{\ttfamily \#include $<$string$>$}\newline
+\doxysubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{class_compact_star_1_1_prog}{Compact\+Star\+::\+Prog}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Lightweight base providing naming and work-\/directory handling. 
+
+This version removes banner printing and custom new/delete from the constructor path. The banner is now handled by Banner.\+cpp at program startup. {\ttfamily Prog} focuses on opt-\/in capabilities that many classes need\+: name, working directory, and a hook to propagate directory changes to member objects.
+
+\begin{DoxyAuthor}{Author}
+Mohammadreza Zakeri @contact \href{mailto:M.Zakeri@eku.edu}{\texttt{ M.\+Zakeri@eku.\+edu}}
+\end{DoxyAuthor}
+
+
+This version removes banner printing and custom new/delete from the constructor path. The banner is now handled by Banner.\+cpp at program startup. {\ttfamily Prog} focuses on opt-\/in capabilities that many classes need\+: name, working directory, and a hook to propagate directory changes to member objects. 

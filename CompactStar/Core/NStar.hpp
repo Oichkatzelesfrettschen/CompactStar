@@ -3,7 +3,8 @@
  * CompactStar
  * See License file at the top of the source tree.
  *
- * Copyright (c) 2023 Mohammadreza Zakeri
+ * Copyright (c) 2025
+ *   Mohammadreza Zakeri
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -26,449 +27,436 @@
 
 /**
  * @file NStar.hpp
- * @brief Definition of neutron star profile and sequence handling.
+ * @brief Neutron-star class (phase 2): legacy DataSet API + unified, SAFE StarProfile.
  *
- * This file declares the SeqPoint struct for storing star sequence points
- * and the NStar class for managing TOV solutions, rotation, and profile export.
+ * This version:
+ *  - uses your latest StarProfile (with safety checks, HasColumn, HasSpecies, etc.),
+ *  - keeps the legacy ds-based API but comments out the ones we want to migrate away from,
+ *  - prefers StarProfile (profile path) when it is non-empty,
+ *  - falls back to legacy (ds + SeqPoint) otherwise.
  *
  * @ingroup Core
  * @author Mohammadreza Zakeri
  * @contact M.Zakeri@eku.edu
  */
-// Last edit Nov 3, 2021
+// Last edit Oct 31, 2025
+
 #ifndef CompactStar_NStar_H
 #define CompactStar_NStar_H
 
-
 #include <Zaki/String/Directory.hpp>
 #include <Zaki/Vector/DataSet.hpp>
+// #include <chrono>
+// #include <cstdio>
+// #include <ctime>
+// #include <string>
 
-#include "CompactStar/Core/RotationSolver.hpp"
+#include <string_view>
+#include <vector>
+
 #include "CompactStar/Core/Prog.hpp"
+#include "CompactStar/Core/RotationSolver.hpp"
+#include "CompactStar/Core/SeqPoint.hpp"
+#include "CompactStar/Core/StarProfile.hpp"
+#include "CompactStar/EOS/CompOSE_EOS.hpp"
 
-//==============================================================
 namespace CompactStar
 {
 
-/**
- * @struct TOVPoint
- * @brief Forward declaration for Tolman-Oppenheimer-Volkoff solution point.
- */
-struct TOVPoint ;     
-class RotationSolver ;
-class TOVSolver ;
-
-
-//==============================================================
-//             Usual Star Sequence Points Class
-//==============================================================
-/**
- * @class SeqPoint
- * @brief Holds a single data point in a star sequence.
- *
- * Stores energy density, mass, radius, central pressure, baryon number,
- * and moment of inertia for a neutron star model.
- */
-class SeqPoint
-{
-  public:
-    /** @brief Energy density (EC). */
-    double ec;
-
-    /** @brief Gravitational mass (M). */
-    double m;
-
-    /** @brief Radius (R). */
-    double r;
-
-    /** @brief Central pressure (PC). */
-    double pc;
-
-    /** @brief Baryon number integral (B). */
-    double b;
-
-    /** @brief Moment of inertia (I). */
-    double I;
-
-    /**
-     * @brief Default constructor, initializes all values to zero.
-     */
-    SeqPoint() : ec(0), m(0), r(0), pc(0),
-              b(0), I(0) 
-      { } ;
-
-    /**
-     * @brief Parameterized constructor.
-     *
-     * @param in_ec  Energy density.
-     * @param in_m   Mass.
-     * @param in_r   Radius.
-     * @param in_pc  Central pressure.
-     * @param in_b   Baryon number.
-     * @param in_I   Moment of inertia.
-     */
-    SeqPoint(const double& in_ec, const double& in_m,
-            const double& in_r, const double& in_pc,
-            const double& in_b, const double& in_I)
-            : ec(in_ec), m(in_m), r(in_r), pc(in_pc),
-              b(in_b), I(in_I)
-      { }
-
-    /**
-     * @brief Construct from a sequence row vector.
-     *
-     * Expects a vector of length 6: [ec, m, r, pc, b, I].
-     * Logs an error if size mismatch.
-     *
-     * @param in_seq_row  Input row vector.
-     */
-    SeqPoint(const std::vector<double>& in_seq_row)
-      {
-        if ( in_seq_row.size() != 6 )
-          Z_LOG_ERROR("The sequence data point is incomplete.") ;
-        else
-          {
-            ec  = in_seq_row[0] ;
-            m   = in_seq_row[1] ;
-            r   = in_seq_row[2] ;
-            pc  = in_seq_row[3] ;
-            b   = in_seq_row[4] ;
-            I   = in_seq_row[5] ;
-          }
-      }
-
-    /**
-     * @brief Format the sequence point as a string.
-     *
-     * @return Tab-delimited string of values in scientific notation.
-     */
-    std::string Str() const
-    {
-      std::stringstream ss;
-      char tmp[150] ;
-      snprintf(tmp, sizeof(tmp), "%.8e\t %.8e\t %.8e\t %.8e\t %.8e\t %.8e",
-              ec, m, r, pc, b, I) ;
-      ss << tmp ;
-
-      return ss.str() ;
-    }
-
-    /**
-     * @brief Reset all sequence values to zero.
-     */
-    void Reset()
-    {
-      ec  = 0;
-      m   = 0;
-      r   = 0;
-      pc  = 0;
-      b   = 0;
-      I   = 0;
-    }
-    //..................................................
-
-    /**
-     * @brief Addition operator.
-     *
-     * Adds corresponding fields of two SeqPoint objects.
-     *
-     * @param seq  Sequence point to add.
-     * @return     New SeqPoint representing the sum.
-     */
-    SeqPoint operator+(const SeqPoint& seq) const
-    {
-      SeqPoint out_seq( ec+seq.ec, m+seq.m, r+seq.r, 
-                        pc+seq.pc, b+seq.b, I+seq.I) ;
-      return out_seq ;
-    }
-    
-    /**
-     * @brief Scalar multiplication operator.
-     *
-     * Multiplies all fields by a scalar.
-     *
-     * @param num  Scalar multiplier.
-     * @return     New SeqPoint scaled by num.
-     */
-    SeqPoint operator*(const double& num) const
-    {
-      SeqPoint out_seq( ec*num, m*num, r*num, 
-                        pc*num, b*num, I*num) ;
-      return out_seq ;
-    }
-    //..................................................
-};
+// Forward declarations
+struct TOVPoint;
+class TOVSolver;
+class RotationSolver;
+class Sequence;
 
 //==============================================================
 //                        NStar Class
 //==============================================================
-
 /**
  * @class NStar
- * @brief Main neutron star class for handling TOV solutions and rotation.
+ * @brief Neutron-star container for TOV solutions, rotation, and export.
  *
- * Inherits from Prog to provide utility functions, manages interpolation
- * datasets, computes baryon number and moment of inertia, and exports profiles.
+ * Transitional “phase 2” class:
+ *  - **new** path: TOV → StarProfile (preferred)
+ *  - **old** path: TOV → ds (kept, but marked for replacement)
  */
 class NStar : public Prog
 {
-  friend class RotationSolver ;
-  friend class TOVSolver ;
-  friend class Sequence ;
-  //--------------------------------------------------------------
+	friend class RotationSolver;
+	friend class TOVSolver;
+	friend class Sequence;
+
   private:
+	// ------------------------------------------------------------
+	// 1) Legacy storage (pre-StarProfile)
+	// ------------------------------------------------------------
+	/** @brief Legacy dataset holding radius, mass, pressure, etc. */
+	// Zaki::Vector::DataSet ds;
 
-    /** @brief Dataset holding radius, mass, pressure, etc. */
-    Zaki::Vector::DataSet ds ;
+	/** @brief Integrand dataset for baryon number calculation (legacy). */
+	Zaki::Vector::DataSet B_integrand;
 
-    /** @brief Integrand dataset for baryon number calculation. */
-    Zaki::Vector::DataSet B_integrand ;
+	/** @brief Whether legacy surface info has been finalized. */
+	bool surface_ready = false;
 
-    int r_idx      = 0; /**< Radius index in dataset. */
-    int m_idx      = 1; /**< Mass index.          */
-    int nu_der_idx = 2; /**< Derivative of metric function index. */
-    int pre_idx    = 3; /**< Pressure index.      */
-    int eps_idx    = 4; /**< Energy density index.*/
-    int rho_idx    = 5; /**< Baryon density index.*/
-    int nu_idx     = 6; /**< Metric function index.*/
+	/** @brief Rotation solver instance. */
+	RotationSolver rot_solver;
 
-    std::vector<int> rho_i_idx ; /**< Indices for individual species densities. */
+	/** @brief Cached sequence point after surface is reached/imported. */
+	// SeqPoint sequence;
 
-    /**
-     * @brief Set working directory for internal objects.
-     *
-     * @param in_dir  Input directory path.
-     * @return        Pointer to Prog base for chaining calls.
-     */
-    CompactStar::Prog* SetMemWrkDir(const 
-                  Zaki::String::Directory& in_dir)  ;
+	/** @brief Cached moment of inertia. */
+	double MomI = 0.0;
 
-    /// The SeqPoint that corresponds to this star
-    /// This will be initialized after SurfaceIsReached 
-    /// is called, or if the whole TOV is imported from a file
-    SeqPoint sequence ; /**< Cached sequence point after surface is reached. */
+	/** @brief Precision used when exporting profile values. */
+	// int profile_precision = 9;
 
-    RotationSolver rot_solver ; /**< Rotation solver instance. */
+	/**
+	 * @brief Legacy column layout in `ds`:
+	 *
+	 *  [0] r
+	 *  [1] m
+	 *  [2] nu'
+	 *  [3] p
+	 *  [4] eps
+	 *  [5] rho
+	 *  [6] nu
+	 */
+	// enum class Col : int
+	// {
+	// 	R = 0,
+	// 	M = 1,
+	// 	NuPrime = 2,
+	// 	P = 3,
+	// 	Eps = 4,
+	// 	Rho = 5,
+	// 	Nu = 6
+	// };
+	// static constexpr std::size_t kFixedCols = 7;
+	// static constexpr int idx(Col c) noexcept { return static_cast<int>(c); }
 
-    double MomI = 0 ; /**< Cached moment of inertia. */
+	// const Zaki::Vector::DataColumn &col(Col c) const noexcept { return ds[idx(c)]; }
+	// Zaki::Vector::DataColumn &col(Col c) noexcept { return ds[idx(c)]; }
 
-    int profile_precision = 9 ; /**< Digits of precision when printing profiles. */
+	/** @brief Indices for individual species densities (legacy ds style). */
+	// std::vector<int> rho_i_idx;
 
-  //--------------------------------------------------------------
+	/**
+	 * @brief Propagate the new working directory to internal members.
+	 *
+	 * Called automatically by SetWrkDir() after this object's own
+	 * working directory is updated and created on disk.
+	 *
+	 * Derived classes override this method to push the directory
+	 * into member objects that also produce output files.
+	 *
+	 * @param dir Newly assigned working directory.
+	 */
+	void OnWorkDirChanged(const Zaki::String::Directory &dir) override;
+
+	/**
+	 * @brief Legacy helper that builds `ds` from TOV points (pre-profile path).
+	 */
+	void BuildFromTOV(const std::vector<TOVPoint> &in_tov,
+					  const std::vector<std::string> *species_labels = nullptr);
+
+	// ------------------------------------------------------------
+	// 2) New unified structural / metric / composition profile
+	// ------------------------------------------------------------
+	/** @brief Unified, safe StarProfile (with p, nu', lambda, species). */
+	StarProfile prof_;
+
+	/** @brief EOS pointer used by profile-based solves (not owned). */
+	CompOSE_EOS *eos_ = nullptr;
+
+	/**
+	 * @brief Build / register all interpolants on the current StarProfile.
+	 *
+	 * We must call DataSet::Interpolate
+	 * on the profile’s dataset, just like we did on `ds`.
+	 *
+	 * Safe to call multiple times.
+	 */
+	void InitInterpolantsFromProfile_();
+
   public:
-    
-    /**
-     * @brief Default constructor.
-     */ 
-    NStar();
+	// ------------------------------------------------------------
+	// 3) Ctors / Dtor
+	// ------------------------------------------------------------
+	NStar();
+	explicit NStar(const std::vector<TOVPoint> &in_tov_results);
+	NStar(const std::vector<TOVPoint> &in_tov,
+		  const std::vector<std::string> &species_labels);
+	~NStar();
 
-    /**
-     * @brief Construct from TOV solution points.
-     *
-     * Initializes dataset from provided TOV results.
-     *
-     * @param in_tov_results  Vector of TOVPoint structures.
-     */
-    NStar(const std::vector<TOVPoint>& in_tov_results) ;
+	NStar(const NStar &) = delete;
+	NStar &operator=(const NStar &) = delete;
 
-    /**
-     * @brief Initialize internal datasets from a TOV solver.
-     *
-     * Must be called before appending points.
-     *
-     * @param in_tov_solver  Pointer to initialized TOVSolver.
-     */
-    void Init(const TOVSolver* in_tov_solver) ;
+	// ------------------------------------------------------------
+	// 4) EOS management
+	// ------------------------------------------------------------
+	void AttachEOS(CompOSE_EOS *eos) { eos_ = eos; }
+	CompOSE_EOS *GetEOS() const { return eos_; }
 
-    /**
-     * @brief Append a single TOV solution point.
-     *
-     * @param in_tov_pts  TOVPoint to append.
-     */
-    void Append(const TOVPoint& in_tov_pts) ;
+	// ------------------------------------------------------------
+	// 5) Legacy TOV init path (keep)
+	// ------------------------------------------------------------
+	void InitFromTOVSolver(const TOVSolver *in_tov_solver);
+	void Append(const TOVPoint &in_tov_pts);
+	/**
+	 * @brief Debug helper: print column labels and sizes.
+	 */
+	void PrintProfileColumnSizes() const;
 
-    /// This has to be run so the class
-    /// knows when to initialize all the splines
-    /**
-     * @brief Signal that surface has been reached, enabling spline init.
-     */
-    void SurfaceIsReached() ;
+	void FinalizeSurface();
+	[[nodiscard]] bool IsSurfaceFinalized() const noexcept { return surface_ready; }
 
-    /**
-     * @brief Reset the NStar object to initial state.
-     */
-    void Reset() ;
+	/// @brief Reset B_integrand, sequence, flags, and profile to an empty state. Invalidates all profile views.
+	void Reset();
 
-    /**
-     * @brief Destructor cleans up any allocated resources.
-     */
-    ~NStar() ;
+	// ------------------------------------------------------------
+	// 6) NEW: profile-based solving / importing (preferred)
+	// ------------------------------------------------------------
+	/**
+	 * @brief Solve TOV and store result in internal StarProfile.
+	 *
+	 * Implementation in .cpp should call your new
+	 * `TOVSolver::SolveToProfile(...)` (or equivalent) that now fills
+	 * radius, mass, p, eps, rho, nu, and (optionally) lambda, and also
+	 * registers species via `AddSpecies(...)`.
+	 */
+	int SolveTOV_Profile(const CompOSE_EOS &eos, double target_M_solar);
 
-    // Deleted copy operations to enforce unique ownership
-    NStar(const NStar &) = delete ;
+	/**
+	 * @brief Solve TOV using the attached EOS and store in internal profile.
+	 */
+	int SolveTOV_Profile(double target_M_solar)
+	{
+		if (!eos_)
+			return 0;
+		return SolveTOV_Profile(*eos_, target_M_solar);
+	}
 
-    /// Assignment operator
-    NStar& operator= (const NStar&) = delete;
+	/**
+	 * @brief Import a precomputed StarProfile from disk and store internally.
+	 */
+	void ImportProfile_Profile(const std::string &model_name,
+							   const Zaki::String::Directory &dir);
 
-    // ------------------------------
-    //  Getters
-    // ------------------------------
+	/**
+	 * @brief Access the owned structural profile (safe).
+	 */
+	const StarProfile &Profile() const { return prof_; }
 
-    /**
-     * @brief Get interpolated mass at a given radius.
-     *
-     * @param in_r  Radius value.
-     * @return      Mass at radius.
-     */
-    double GetMass(const double& in_r) const ;
+	/**
+	 * @brief Get a non-owning view into the structural profile.
+	 */
+	StarProfileView View() const { return {&prof_}; }
 
-    /**
-     * @brief Get the DataColumn of mass values.
-     *
-     * @return Pointer to mass DataColumn.
-     */
-    Zaki::Vector::DataColumn* GetMass() ;
+	// ------------------------------------------------------------
+	// 7) High-level properties (prefer profile, fallback to legacy)
+	// ------------------------------------------------------------
 
-    ///  Baryon number density (fm^{-3}) as a function 
-    /// of radius for a specific species labeled as (in_label)
+	/**
+	 * @brief Retrieve the computed sequence point (legacy).
+	 */
+	// [[nodiscard]] SeqPoint GetSequence() const { return sequence; }
 
-    /**
-     * @brief Get baryon density (fm^{-3}) DataColumn
-     *   as a function of radius for a labeled species.
-     *
-     * @param in_label  Species label string.
-     * @return          Pointer to density DataColumn.
-     */
-    Zaki::Vector::DataColumn* GetRho_i(const 
-                                    std::string& in_label) ;
+	/// brief Return const reference to the sequence point (from the profile).
+	/// details If the profile is empty, returns a static empty SeqPoint.
+	const SeqPoint &GetSequence() const noexcept;
 
-    /**
-     * @brief Get interpolated total baryon density at radius.
-     *
-     * @param in_r  Radius value.
-     * @return      Baryon density.
-     */
-    double GetRho(const double& in_r) const ;
+	/// brief Mutable access to the sequence point (from the profile).
+	/// details Use this if you want to tweak B, I, etc. after finalize.
+	SeqPoint &GetSequence() noexcept;
 
-    /**
-     * @brief Get DataColumn of total baryon density.
-     *
-     * @return Pointer to density DataColumn.
-     */
-    Zaki::Vector::DataColumn* GetRho() ;
-    
-    /**
-     * @brief Get interpolated energy density at radius.
-     *
-     * @param in_r  Radius value.
-     * @return      Energy density.
-     */
-    double GetEps(const double& in_r) const ;
+	/**
+	 * @brief Get radius at star surface.
+	 */
+	[[nodiscard]] double RadiusSurface() const noexcept
+	{
+		if (!prof_.empty() && prof_.R > 0.0)
+			return prof_.R;
+		return GetSequence().r;
+	}
 
-    /**
-     * @brief Get DataColumn of energy density.
-     *
-     * @return Pointer to energy density DataColumn.
-     */
-    Zaki::Vector::DataColumn* GetEps() ;
+	/**
+	 * @brief Get mass at star surface.
+	 */
+	[[nodiscard]] double MassSurface() const noexcept
+	{
+		if (!prof_.empty() && prof_.M > 0.0)
+			return prof_.M;
+		return GetSequence().m;
+	}
 
-    /**
-     * @brief Get interpolated pressure at radius.
-     *
-     * @param in_r  Radius value.
-     * @return      Pressure.
-     */
-    double GetPress(const double& in_r) const ;
+	/**
+	 * @brief Get number of radial grid points.
+	 *
+	 * Uses the safe helpers you added: first we check `prof_.empty()`,
+	 * then we fall back to the legacy `ds` if necessary.
+	 */
+	[[nodiscard]] std::size_t Size() const noexcept
+	{
+		if (!prof_.empty())
+			return prof_.size();
 
-    /**
-     * @brief Get DataColumn of pressure values.
-     *
-     * @return Pointer to pressure DataColumn.
-     */
-    Zaki::Vector::DataColumn* GetPress() ;
+		// legacy branch
+		// auto ds_dims = ds.Dim();
+		// if (!ds_dims.empty())
+		// 	return ds[0].Size();
 
-    /**
-     * @brief Retrieve the computed sequence point.
-     *
-     * @return SeqPoint instance.
-     */
-    SeqPoint GetSequence() const ;
+		return 0;
+	}
 
-    /**
-     * @brief Compute metric function spline values.
-     */
-    void EvaluateNu() ;
+	// ------------------------------------------------------------
+	// 8) Per-species handling
+	// ------------------------------------------------------------
+	/**
+	 * @brief Check if density data exists for a labeled species (profile-aware).
+	 */
+	[[nodiscard]] bool HasRho_i(std::string_view label) const noexcept
+	{
+		// profile-aware check (preferred)
+		if (!prof_.empty() && prof_.HasSpecies(std::string(label)))
+			return true;
 
-    /**
-     * @brief Get interpolated metric function at radius.
-     *
-     * @param in_r  Radius value.
-     * @return      Metric function value.
-     */      
-    double GetNu(const double& in_r) const ;
+		// legacy: we don’t have label→index here, so we can’t be exact
+		return false;
+	}
 
-    /**
-     * @brief Get DataColumn of metric function values.
-     *
-     * @return Pointer to metric DataColumn.
-     */
-    Zaki::Vector::DataColumn* GetNu() ;
+	/**
+	 * @brief Get baryon density DataColumn for a labeled species (profile-aware).
+	 *
+	 * @return pointer to column or nullptr if not found.
+	 */
+	// 1) CONST VERSION
+	// profile-aware, read-only
+	const Zaki::Vector::DataColumn *
+	GetRho_i(const std::string_view &label) const;
+	// {
+	// 	if (prof_.empty())
+	// 		return nullptr;
 
-    /**
-     * @brief Get DataColumn of radius values.
-     *
-     * @return Pointer to radius DataColumn.
-     */
-    Zaki::Vector::DataColumn* GetRadius() ;
+	// 	// assume StarProfile has: const DataColumn *GetSpeciesPtr(const std::string &) const
+	// 	return prof_.GetSpeciesPtr(std::string(label));
+	// }
 
-    /**
-     * @brief Compute integrand for baryon number at radius.
-     *
-     * @param in_r  Radius value.
-     * @return      Integrand value.
-     */
-    double BaryonNumIntegrand(double in_r) ;
+	/**
+	 * @brief Mutable version of species access.
+	 */
+	// 2) MUTABLE VERSION
+	// profile-aware, returns non-const column
+	Zaki::Vector::DataColumn *GetRho_i(const std::string &label)
+	{
+		if (prof_.empty())
+			return nullptr;
 
-    /**
-     * @brief Compute baryon number as a function of radius.
-     *
-     * @param in_r  Radius up to which to integrate.
-     * @return      Baryon number.
-     */
-    double Find_BaryonNum(const double& in_r) ;
+		// assume StarProfile has: DataColumn *GetSpeciesPtr(const std::string &)
+		return prof_.GetSpeciesPtr(label);
+	}
 
-    /**
-     * @brief Compute total baryon number.
-     *
-     * @return Baryon number.
-     */
-    double Find_BaryonNum() ;
+	// ------------------------------------------------------------
+	// 9) Rotation / moment of inertia (keep)
+	// ------------------------------------------------------------
+	[[nodiscard]] double Find_MomInertia();
 
-    /**
-     * @brief Compute total moment of inertia.
-     *
-     * @return Moment of inertia.
-     */
-    double Find_MomInertia() ;
+	// ------------------------------------------------------------
+	void EvaluateNu();
 
-    /**
-     * @brief Set precision for exporting profile values.
-     *
-     * @param precision  Number of digits.
-     * @note Default is 9.
-     */
-    void SetProfilePrecision(const int& profile_precision) ;
+	// ------------------------------------------------------------
+	// 10) Export (keep)
+	// ------------------------------------------------------------
+	void SetProfilePrecision(const int &profile_precision);
+	void Export(const Zaki::String::Directory &in_dir);
 
-    /**
-     * @brief Export the star profile to directory.
-     *
-     * @param in_dir  Output directory path.
-     */
-    void Export(const Zaki::String::Directory& in_dir) ;
-    //------------------------------------------
+	// =========================================================
+	// ===== INTERPOLATED ACCESSORS (profile-first) ============
+	// =========================================================
+
+	/// Metric function ν(r)
+	double GetMetricNu(const double &in_r) const;
+
+	/// Mass m(r)
+	double GetMass(const double &in_r) const;
+
+	/// Total baryon density n_B(r)
+	double GetBaryonDensity(const double &in_r) const;
+
+	/// Energy density ε(r)
+	double GetEnergyDensity(const double &in_r) const;
+
+	/// Pressure p(r)
+	double GetPressure(const double &in_r) const;
+
+	/// Baryon number integrand 4π r^2 n_B / sqrt(1-2M/r)
+	double BaryonNumIntegrand(double in_r) const;
+	// ------------------------------------------------------------
+	// 11) ===== LEGACY ds-BASED GETTERS (commented, to be replaced) =====
+	// ------------------------------------------------------------
+	// These are the ones you can grep in VSCode and replace with
+	// Profile().Get(...), Profile().GetPressure(), etc.
+
+	// [[nodiscard]] double GetMass(const double& in_r) const;
+	// Zaki::Vector::DataColumn*       GetMass() noexcept;
+	// const Zaki::Vector::DataColumn* GetMass() const noexcept;
+
+	// [[nodiscard]] double GetRho(const double& in_r) const noexcept;
+	// Zaki::Vector::DataColumn*       GetRho() noexcept;
+	// const Zaki::Vector::DataColumn* GetRho() const noexcept;
+
+	// [[nodiscard]] double GetEps(const double& in_r) const noexcept;
+	// Zaki::Vector::DataColumn*       GetEps() noexcept;
+	// const Zaki::Vector::DataColumn* GetEps() const noexcept;
+
+	// [[nodiscard]] double GetPress(const double& in_r) const noexcept;
+	// Zaki::Vector::DataColumn*       GetPress() noexcept;
+	// const Zaki::Vector::DataColumn* GetPress() const noexcept;
+
+	// [[nodiscard]] double GetNu(const double& in_r) const;
+	// Zaki::Vector::DataColumn*       GetNu() noexcept;
+	// const Zaki::Vector::DataColumn* GetNu() const noexcept;
+
+	// Zaki::Vector::DataColumn*       GetRadius() noexcept;
+	// const Zaki::Vector::DataColumn* GetRadius() const noexcept;
+
+	// double BaryonNumIntegrand(double in_r) const;
 };
 
 //==============================================================
-} // CompactStar namespace
+//              Candidate removals / replacements
 //==============================================================
-#endif /*CompactStar_NStar_H*/
+/*
+ * Replace these calls in your codebase:
+ *
+ * 1) GetMass(...) / GetMass()
+ *      → Profile().GetMass()
+ *      → Profile().M   (surface)
+ *
+ * 2) GetRho(...) / GetRho()
+ *      → Profile().GetBaryonDensity()
+ *
+ * 3) GetEps(...) / GetEps()
+ *      → Profile().GetEnergyDensity()
+ *
+ * 4) GetPress(...) / GetPress()
+ *      → Profile().GetPressure()
+ *
+ * 5) GetNu(...) / GetNu()
+ *      → Profile().GetMetricNu()
+ *
+ * 6) GetRadius()
+ *      → Profile().GetRadius()
+ *
+ * 7) BaryonNumIntegrand(...)
+ *      → move to a thermal/BNV helper that takes StarProfileView and uses only
+ *        safe accessors (HasColumn(...) before Get(...)).
+ *
+ * NOTE: species
+ *  - old code can stay on NStar::GetRho_i(...)
+ *  - new code should do: nstar.Profile().GetSpecies("n") (now safe)
+ */
+
+} // namespace CompactStar
+
+#endif /* CompactStar_NStar_H */

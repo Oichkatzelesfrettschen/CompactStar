@@ -1,0 +1,88 @@
+\hypertarget{_b_n_v___b___chi___combo_8hpp_source}{}\doxysection{BNV\+\_\+\+B\+\_\+\+Chi\+\_\+\+Combo.\+hpp}
+\label{_b_n_v___b___chi___combo_8hpp_source}\index{CompactStar/Microphysics/BNV/Channels/BNV\_B\_Chi\_Combo.hpp@{CompactStar/Microphysics/BNV/Channels/BNV\_B\_Chi\_Combo.hpp}}
+\mbox{\hyperlink{_b_n_v___b___chi___combo_8hpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{comment}{// -\/*-\/ lsst-\/c++ -\/*-\/}}
+\DoxyCodeLine{2 \textcolor{comment}{/*}}
+\DoxyCodeLine{3 \textcolor{comment}{ * CompactStar}}
+\DoxyCodeLine{4 \textcolor{comment}{ * See License file at the top of the source tree.}}
+\DoxyCodeLine{5 \textcolor{comment}{ *}}
+\DoxyCodeLine{6 \textcolor{comment}{ * Copyright (c) 2023 Mohammadreza Zakeri}}
+\DoxyCodeLine{7 \textcolor{comment}{ *}}
+\DoxyCodeLine{8 \textcolor{comment}{ * Permission is hereby granted, free of charge, to any person obtaining a copy}}
+\DoxyCodeLine{9 \textcolor{comment}{ * of this software and associated documentation files (the "{}Software"{}), to deal}}
+\DoxyCodeLine{10 \textcolor{comment}{ * in the Software without restriction, including without limitation the rights}}
+\DoxyCodeLine{11 \textcolor{comment}{ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell}}
+\DoxyCodeLine{12 \textcolor{comment}{ * copies of the Software, and to permit persons to whom the Software is}}
+\DoxyCodeLine{13 \textcolor{comment}{ * furnished to do so, subject to the following conditions:}}
+\DoxyCodeLine{14 \textcolor{comment}{ *}}
+\DoxyCodeLine{15 \textcolor{comment}{ * The above copyright notice and this permission notice shall be included in all}}
+\DoxyCodeLine{16 \textcolor{comment}{ * copies or substantial portions of the Software.}}
+\DoxyCodeLine{17 \textcolor{comment}{ *}}
+\DoxyCodeLine{18 \textcolor{comment}{ * THE SOFTWARE IS PROVIDED "{}AS IS"{}, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR}}
+\DoxyCodeLine{19 \textcolor{comment}{ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,}}
+\DoxyCodeLine{20 \textcolor{comment}{ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE}}
+\DoxyCodeLine{21 \textcolor{comment}{ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER}}
+\DoxyCodeLine{22 \textcolor{comment}{ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,}}
+\DoxyCodeLine{23 \textcolor{comment}{ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE}}
+\DoxyCodeLine{24 \textcolor{comment}{ * SOFTWARE.}}
+\DoxyCodeLine{25 \textcolor{comment}{ */}}
+\DoxyCodeLine{26 }
+\DoxyCodeLine{38 \textcolor{comment}{// -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{39 \textcolor{comment}{//               Created on Mar 15, 2023}}
+\DoxyCodeLine{40 \textcolor{comment}{// -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{41 \textcolor{preprocessor}{\#ifndef CompactStar\_BNV\_B\_Chi\_Combo\_H}}
+\DoxyCodeLine{42 \textcolor{preprocessor}{\#define CompactStar\_BNV\_B\_Chi\_Combo\_H}}
+\DoxyCodeLine{43 }
+\DoxyCodeLine{44 \textcolor{preprocessor}{\#include <\mbox{\hyperlink{_data_set_8hpp}{Zaki/Vector/DataSet.hpp}}>}}
+\DoxyCodeLine{45 }
+\DoxyCodeLine{46 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_pulsar_8hpp}{CompactStar/Core/Pulsar.hpp}}"{}}}
+\DoxyCodeLine{47 \textcolor{preprocessor}{\#include <\mbox{\hyperlink{_comp_o_s_e___e_o_s_8hpp}{CompactStar/EOS/CompOSE\_EOS.hpp}}>}}
+\DoxyCodeLine{48 \textcolor{preprocessor}{\#include <CompactStar/Microphysics/BNV/Internal/BNV\_Chi.hpp>}}
+\DoxyCodeLine{49 }
+\DoxyCodeLine{50 \textcolor{comment}{//==============================================================}}
+\DoxyCodeLine{51 \textcolor{keyword}{namespace }CompactStar::Microphysics::BNV::Channels}
+\DoxyCodeLine{52 \{}
+\DoxyCodeLine{53 }
+\DoxyCodeLine{54 \textcolor{comment}{//==============================================================}}
+\DoxyCodeLine{55 \textcolor{keyword}{class }\mbox{\hyperlink{class_compact_star_1_1_microphysics_1_1_b_n_v_1_1_channels_1_1_b_n_v___b___chi___combo}{BNV\_B\_Chi\_Combo}} : \textcolor{keyword}{public} \mbox{\hyperlink{class_compact_star_1_1_microphysics_1_1_b_n_v_1_1_internal_1_1_b_n_v___chi}{Internal::BNV\_Chi}}}
+\DoxyCodeLine{56 \{}
+\DoxyCodeLine{57     \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{58   \textcolor{keyword}{private}:}
+\DoxyCodeLine{59     std::vector<BNV\_Chi *> chi\_reactions;}
+\DoxyCodeLine{60     \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{61   \textcolor{keyword}{public}:}
+\DoxyCodeLine{62     \mbox{\hyperlink{class_compact_star_1_1_microphysics_1_1_b_n_v_1_1_channels_1_1_b_n_v___b___chi___combo}{BNV\_B\_Chi\_Combo}}();}
+\DoxyCodeLine{63     \mbox{\hyperlink{class_compact_star_1_1_microphysics_1_1_b_n_v_1_1_channels_1_1_b_n_v___b___chi___combo}{\string~BNV\_B\_Chi\_Combo}}();}
+\DoxyCodeLine{64 }
+\DoxyCodeLine{65     \mbox{\hyperlink{struct_compact_star_1_1_microphysics_1_1_b_n_v_1_1_internal_1_1_b_n_v___chi_1_1_process}{Process}} GetSpecificProcess(\textcolor{keyword}{const} \mbox{\hyperlink{struct_compact_star_1_1_microphysics_1_1_b_n_v_1_1_internal_1_1_b_n_v___chi_1_1_baryon}{Baryon}} \&B) \textcolor{keyword}{const override};}
+\DoxyCodeLine{66 }
+\DoxyCodeLine{78     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_compact_star_1_1_microphysics_1_1_b_n_v_1_1_channels_1_1_b_n_v___b___chi___combo_a79b66d37224aaf800eda47826fec2b4b}{OnWorkDirChanged}}(\textcolor{keyword}{const} \mbox{\hyperlink{class_zaki_1_1_string_1_1_directory}{Zaki::String::Directory}} \&dir) \textcolor{keyword}{override};}
+\DoxyCodeLine{79 }
+\DoxyCodeLine{81     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_compact_star_1_1_microphysics_1_1_b_n_v_1_1_channels_1_1_b_n_v___b___chi___combo_a7a745351bdaf78084225215cf7b11d71}{SetModel}}(\textcolor{keyword}{const} std::string \&in\_eos\_model) \textcolor{keyword}{override};}
+\DoxyCodeLine{82 }
+\DoxyCodeLine{84     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_compact_star_1_1_microphysics_1_1_b_n_v_1_1_channels_1_1_b_n_v___b___chi___combo_ab614b6da7b8c45593015fc546ed5a77f}{ImportEOS}}(\textcolor{keyword}{const} \mbox{\hyperlink{class_zaki_1_1_string_1_1_directory}{Zaki::String::Directory}} \&eos\_dir,}
+\DoxyCodeLine{85                    \textcolor{keyword}{const} std::string \&micro\_model = \textcolor{stringliteral}{"{}"{}}) \textcolor{keyword}{override};}
+\DoxyCodeLine{86 }
+\DoxyCodeLine{88     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_compact_star_1_1_microphysics_1_1_b_n_v_1_1_channels_1_1_b_n_v___b___chi___combo_a583ab2d0ecfd5b3deb397c6d5a993f4a}{FindPulsar}}(\textcolor{keyword}{const} \textcolor{keywordtype}{bool} \&gen\_plots = \textcolor{keyword}{false}) \textcolor{keyword}{override};}
+\DoxyCodeLine{89 }
+\DoxyCodeLine{92     \mbox{\hyperlink{class_zaki_1_1_vector_1_1_data_set}{Zaki::Vector::DataSet}} \mbox{\hyperlink{class_compact_star_1_1_microphysics_1_1_b_n_v_1_1_channels_1_1_b_n_v___b___chi___combo_ab7878828983f0cca546f124d7361c538}{Rate\_vs\_Density}}(}
+\DoxyCodeLine{93         \textcolor{keyword}{const} \textcolor{keywordtype}{double} \&m\_chi,}
+\DoxyCodeLine{94         \textcolor{keyword}{const} \mbox{\hyperlink{struct_compact_star_1_1_microphysics_1_1_b_n_v_1_1_internal_1_1_b_n_v___chi_1_1_baryon}{Baryon}} \&B,}
+\DoxyCodeLine{95         \textcolor{keyword}{const} \textcolor{keywordtype}{bool} \&gen\_plots = \textcolor{keyword}{false})}
+\DoxyCodeLine{96         \textcolor{keyword}{override};}
+\DoxyCodeLine{97 }
+\DoxyCodeLine{100     \mbox{\hyperlink{class_zaki_1_1_vector_1_1_data_set}{Zaki::Vector::DataSet}} \mbox{\hyperlink{class_compact_star_1_1_microphysics_1_1_b_n_v_1_1_channels_1_1_b_n_v___b___chi___combo_a2c117bfc0953a2a684f97224b5fd120e}{Rate\_vs\_R}}(\textcolor{keyword}{const} \textcolor{keywordtype}{double} \&m\_chi,}
+\DoxyCodeLine{101                                     \textcolor{keyword}{const} \mbox{\hyperlink{struct_compact_star_1_1_microphysics_1_1_b_n_v_1_1_internal_1_1_b_n_v___chi_1_1_baryon}{Baryon}} \&B,}
+\DoxyCodeLine{102                                     \textcolor{keyword}{const} \textcolor{keywordtype}{bool} \&gen\_plots = \textcolor{keyword}{false})}
+\DoxyCodeLine{103         \textcolor{keyword}{override};}
+\DoxyCodeLine{104 }
+\DoxyCodeLine{105     \textcolor{keywordtype}{void} AddChiReaction(BNV\_Chi *);}
+\DoxyCodeLine{106 \};}
+\DoxyCodeLine{107 }
+\DoxyCodeLine{108 \textcolor{comment}{//==============================================================}}
+\DoxyCodeLine{109 \} \textcolor{comment}{// namespace CompactStar}}
+\DoxyCodeLine{110 \textcolor{comment}{//==============================================================}}
+\DoxyCodeLine{111 \textcolor{preprocessor}{\#endif }\textcolor{comment}{/*CompactStar\_BNV\_B\_Chi\_Combo\_H*/}\textcolor{preprocessor}{}}
+
+\end{DoxyCode}

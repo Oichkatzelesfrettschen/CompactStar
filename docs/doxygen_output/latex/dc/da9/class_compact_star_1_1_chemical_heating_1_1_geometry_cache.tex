@@ -1,0 +1,55 @@
+\hypertarget{class_compact_star_1_1_chemical_heating_1_1_geometry_cache}{}\doxysection{Compact\+Star\+::Chemical\+Heating\+::Geometry\+Cache Class Reference}
+\label{class_compact_star_1_1_chemical_heating_1_1_geometry_cache}\index{CompactStar::ChemicalHeating::GeometryCache@{CompactStar::ChemicalHeating::GeometryCache}}
+
+
+Stores radial weights and simple structure flags for integrals.  
+
+
+
+
+{\ttfamily \#include $<$Geometry\+Cache.\+hpp$>$}
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_compact_star_1_1_chemical_heating_1_1_geometry_cache_a75f75627e6ba1474e01bdf8cd3e874f6}{Geometry\+Cache}} (const \mbox{\hyperlink{class_compact_star_1_1_chemical_heating_1_1_star_context}{Star\+Context}} \&ctx)
+\begin{DoxyCompactList}\small\item\em Build weights from a {\ttfamily \mbox{\hyperlink{class_compact_star_1_1_chemical_heating_1_1_star_context}{Star\+Context}}}. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_compact_star_1_1_chemical_heating_1_1_geometry_cache_a667e9d632837d73b115ab6527c4ec117}\label{class_compact_star_1_1_chemical_heating_1_1_geometry_cache_a667e9d632837d73b115ab6527c4ec117}} 
+std\+::size\+\_\+t {\bfseries Size} () const
+\begin{DoxyCompactList}\small\item\em Number of radial samples. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_compact_star_1_1_chemical_heating_1_1_geometry_cache_a9c99086728c8f4f517cfab19f94f0bcd}\label{class_compact_star_1_1_chemical_heating_1_1_geometry_cache_a9c99086728c8f4f517cfab19f94f0bcd}} 
+const std\+::vector$<$ double $>$ \& {\bfseries WC} () const
+\begin{DoxyCompactList}\small\item\em Weight for heat-\/capacity-\/like integrals\+: $w_C(r)$. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_compact_star_1_1_chemical_heating_1_1_geometry_cache_af84c63de79b6fc3d8f50490ecc20f8bb}\label{class_compact_star_1_1_chemical_heating_1_1_geometry_cache_af84c63de79b6fc3d8f50490ecc20f8bb}} 
+const std\+::vector$<$ double $>$ \& {\bfseries WNu} () const
+\begin{DoxyCompactList}\small\item\em Weight for redshifted luminosities\+: $w_\nu(r)$. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_compact_star_1_1_chemical_heating_1_1_geometry_cache_ade9d6bc121225447725160d762a84dd3}\label{class_compact_star_1_1_chemical_heating_1_1_geometry_cache_ade9d6bc121225447725160d762a84dd3}} 
+const std\+::vector$<$ double $>$ \& {\bfseries Radius} () const
+\begin{DoxyCompactList}\small\item\em Radius grid (km). Provided for convenience. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Stores radial weights and simple structure flags for integrals. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_compact_star_1_1_chemical_heating_1_1_geometry_cache_a75f75627e6ba1474e01bdf8cd3e874f6}\label{class_compact_star_1_1_chemical_heating_1_1_geometry_cache_a75f75627e6ba1474e01bdf8cd3e874f6}} 
+\index{CompactStar::ChemicalHeating::GeometryCache@{CompactStar::ChemicalHeating::GeometryCache}!GeometryCache@{GeometryCache}}
+\index{GeometryCache@{GeometryCache}!CompactStar::ChemicalHeating::GeometryCache@{CompactStar::ChemicalHeating::GeometryCache}}
+\doxysubsubsection{\texorpdfstring{GeometryCache()}{GeometryCache()}}
+{\footnotesize\ttfamily Compact\+Star\+::\+Chemical\+Heating\+::\+Geometry\+Cache\+::\+Geometry\+Cache (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_compact_star_1_1_chemical_heating_1_1_star_context}{Star\+Context}} \&}]{ctx }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [explicit]}}
+
+
+
+Build weights from a {\ttfamily \mbox{\hyperlink{class_compact_star_1_1_chemical_heating_1_1_star_context}{Star\+Context}}}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em ctx} & Read-\/only star context (grid, metric). \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Compact\+Star/\+Physics/\+Evolution/\mbox{\hyperlink{_geometry_cache_8hpp}{Geometry\+Cache.\+hpp}}\item 
+Compact\+Star/\+Physics/\+Evolution/src/\mbox{\hyperlink{_geometry_cache_8cpp}{Geometry\+Cache.\+cpp}}\end{DoxyCompactItemize}

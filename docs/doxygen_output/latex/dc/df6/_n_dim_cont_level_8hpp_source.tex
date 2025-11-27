@@ -1,0 +1,90 @@
+\hypertarget{_n_dim_cont_level_8hpp_source}{}\doxysection{NDim\+Cont\+Level.\+hpp}
+\label{_n_dim_cont_level_8hpp_source}\index{dependencies/include/Zaki/Math/NDimContLevel.hpp@{dependencies/include/Zaki/Math/NDimContLevel.hpp}}
+\mbox{\hyperlink{_n_dim_cont_level_8hpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{comment}{// -\/*-\/ lsst-\/c++ -\/*-\/}}
+\DoxyCodeLine{2 \textcolor{comment}{/*}}
+\DoxyCodeLine{3 \textcolor{comment}{* Zaki's Common Library}}
+\DoxyCodeLine{4 \textcolor{comment}{* See License file at the top of the source tree.}}
+\DoxyCodeLine{5 \textcolor{comment}{*}}
+\DoxyCodeLine{6 \textcolor{comment}{* Copyright (c) 2023 Mohammadreza Zakeri}}
+\DoxyCodeLine{7 \textcolor{comment}{*}}
+\DoxyCodeLine{8 \textcolor{comment}{* Permission is hereby granted, free of charge, to any person obtaining a copy}}
+\DoxyCodeLine{9 \textcolor{comment}{* of this software and associated documentation files (the "{}Software"{}), to deal}}
+\DoxyCodeLine{10 \textcolor{comment}{* in the Software without restriction, including without limitation the rights}}
+\DoxyCodeLine{11 \textcolor{comment}{* to use, copy, modify, merge, publish, distribute, sublicense, and/or sell}}
+\DoxyCodeLine{12 \textcolor{comment}{* copies of the Software, and to permit persons to whom the Software is}}
+\DoxyCodeLine{13 \textcolor{comment}{* furnished to do so, subject to the following conditions:}}
+\DoxyCodeLine{14 \textcolor{comment}{*}}
+\DoxyCodeLine{15 \textcolor{comment}{* The above copyright notice and this permission notice shall be included in all}}
+\DoxyCodeLine{16 \textcolor{comment}{* copies or substantial portions of the Software.}}
+\DoxyCodeLine{17 \textcolor{comment}{*}}
+\DoxyCodeLine{18 \textcolor{comment}{* THE SOFTWARE IS PROVIDED "{}AS IS"{}, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR}}
+\DoxyCodeLine{19 \textcolor{comment}{* IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,}}
+\DoxyCodeLine{20 \textcolor{comment}{* FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE}}
+\DoxyCodeLine{21 \textcolor{comment}{* AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER}}
+\DoxyCodeLine{22 \textcolor{comment}{* LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,}}
+\DoxyCodeLine{23 \textcolor{comment}{* OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE}}
+\DoxyCodeLine{24 \textcolor{comment}{* SOFTWARE.}}
+\DoxyCodeLine{25 \textcolor{comment}{*/}}
+\DoxyCodeLine{26 }
+\DoxyCodeLine{39 \textcolor{preprocessor}{\#ifndef Zaki\_Math\_NDimContLevel\_H}}
+\DoxyCodeLine{40 \textcolor{preprocessor}{\#define Zaki\_Math\_NDimContLevel\_H}}
+\DoxyCodeLine{41 }
+\DoxyCodeLine{42 \textcolor{comment}{// Zaki::Math}}
+\DoxyCodeLine{43 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_math___core_8hpp}{Zaki/Math/Math\_Core.hpp}}"{}}}
+\DoxyCodeLine{44 }
+\DoxyCodeLine{45 \textcolor{comment}{//==============================================================}}
+\DoxyCodeLine{46 \textcolor{keyword}{namespace }Zaki::Math}
+\DoxyCodeLine{47 \{}
+\DoxyCodeLine{48 }
+\DoxyCodeLine{49 \textcolor{comment}{//==============================================================}}
+\DoxyCodeLine{50 \textcolor{keyword}{class }\mbox{\hyperlink{class_zaki_1_1_math_1_1_n_dim_cont_level}{NDimContLevel}}}
+\DoxyCodeLine{51 \{}
+\DoxyCodeLine{52   \textcolor{keyword}{private}:}
+\DoxyCodeLine{53 }
+\DoxyCodeLine{54     \textcolor{keywordtype}{double} PSeries(\textcolor{keyword}{const} \textcolor{keywordtype}{double} n) \textcolor{keyword}{const};}
+\DoxyCodeLine{55 }
+\DoxyCodeLine{56     \textcolor{keywordtype}{double} P(\textcolor{keyword}{const} \textcolor{keywordtype}{double} n) \textcolor{keyword}{const} ;}
+\DoxyCodeLine{57 }
+\DoxyCodeLine{58     \textcolor{keywordtype}{double} tolerance = 0.00001 ;}
+\DoxyCodeLine{59     \textcolor{keywordtype}{int} dim = 1 ;}
+\DoxyCodeLine{60     \textcolor{keywordtype}{double} conf\_level = 1 ; \textcolor{comment}{// 1 sigma}}
+\DoxyCodeLine{61 }
+\DoxyCodeLine{62 }
+\DoxyCodeLine{63   \textcolor{keyword}{public}:}
+\DoxyCodeLine{64 }
+\DoxyCodeLine{66     \mbox{\hyperlink{class_zaki_1_1_math_1_1_n_dim_cont_level_afd274e993fb2c3c2fda6f2e0d7ff1c7f}{NDimContLevel}}() ;}
+\DoxyCodeLine{67 }
+\DoxyCodeLine{69     \mbox{\hyperlink{class_zaki_1_1_math_1_1_n_dim_cont_level_a3fdcd1900307221114c73cc7c0631a58}{NDimContLevel}}(\textcolor{keyword}{const} \textcolor{keywordtype}{int} in\_Dim, \textcolor{keyword}{const} \textcolor{keywordtype}{double} in\_CL) }
+\DoxyCodeLine{70      : dim(in\_Dim), conf\_level(in\_CL) \{\} ;}
+\DoxyCodeLine{71 }
+\DoxyCodeLine{73     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_zaki_1_1_math_1_1_n_dim_cont_level_a83fbcc295acb55a40a2780e797142d52}{SetTolerance}}(\textcolor{keyword}{const} \textcolor{keywordtype}{double}) ;}
+\DoxyCodeLine{74     }
+\DoxyCodeLine{76     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_zaki_1_1_math_1_1_n_dim_cont_level_a3b550c14f9956908355d1e972168eb02}{SetDim}}(\textcolor{keyword}{const} \textcolor{keywordtype}{int}) ;}
+\DoxyCodeLine{77     }
+\DoxyCodeLine{79     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_zaki_1_1_math_1_1_n_dim_cont_level_a3e16e9e9201206bac57e7737832febda}{SetCL}}(\textcolor{keyword}{const} \textcolor{keywordtype}{double}) ;}
+\DoxyCodeLine{80 }
+\DoxyCodeLine{81     \textcolor{keyword}{struct }\mbox{\hyperlink{struct_zaki_1_1_math_1_1_n_dim_cont_level_1_1_solution}{Solution}}}
+\DoxyCodeLine{82     \{}
+\DoxyCodeLine{83       \textcolor{keywordtype}{int} Dim ; \textcolor{keywordtype}{double} CL, P, Err;}
+\DoxyCodeLine{84       \textcolor{keywordtype}{double} Val, Up;}
+\DoxyCodeLine{85     \};}
+\DoxyCodeLine{86 }
+\DoxyCodeLine{88     \mbox{\hyperlink{struct_zaki_1_1_math_1_1_n_dim_cont_level_1_1_solution}{Solution}} \mbox{\hyperlink{class_zaki_1_1_math_1_1_n_dim_cont_level_a5e9eb8edb692060f4c86479e6cb26495}{Solve}}() ;}
+\DoxyCodeLine{89 }
+\DoxyCodeLine{90 \};}
+\DoxyCodeLine{91 }
+\DoxyCodeLine{92 \textcolor{comment}{//==============================================================}}
+\DoxyCodeLine{93 \textcolor{comment}{//                  ostream << overloading}}
+\DoxyCodeLine{94 std::ostream\& operator << (std::ostream \&output,}
+\DoxyCodeLine{95 \textcolor{keyword}{const} \mbox{\hyperlink{struct_zaki_1_1_math_1_1_n_dim_cont_level_1_1_solution}{Zaki::Math::NDimContLevel::Solution}}\&) ;}
+\DoxyCodeLine{96 \textcolor{comment}{//==============================================================}}
+\DoxyCodeLine{97 }
+\DoxyCodeLine{98 \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{99 \} \textcolor{comment}{// End of namespace Zaki::Math}}
+\DoxyCodeLine{100 \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{101 }
+\DoxyCodeLine{102 \textcolor{preprocessor}{\#endif }\textcolor{comment}{/*Zaki\_Math\_NDimContLevel\_H*/}\textcolor{preprocessor}{}}
+
+\end{DoxyCode}

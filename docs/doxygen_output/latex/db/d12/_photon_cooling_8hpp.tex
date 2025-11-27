@@ -1,0 +1,24 @@
+\hypertarget{_photon_cooling_8hpp}{}\doxysection{Compact\+Star/\+Physics/\+Driver/\+Thermal/\+Photon\+Cooling.hpp File Reference}
+\label{_photon_cooling_8hpp}\index{CompactStar/Physics/Driver/Thermal/PhotonCooling.hpp@{CompactStar/Physics/Driver/Thermal/PhotonCooling.hpp}}
+
+
+Driver for surface photon cooling contribution to d\+T̃/dt.  
+
+
+{\ttfamily \#include \char`\"{}Compact\+Star/\+Physics/\+Driver/\+IDriver.\+hpp\char`\"{}}\newline
+{\ttfamily \#include $<$array$>$}\newline
+{\ttfamily \#include $<$span$>$}\newline
+{\ttfamily \#include $<$string$>$}\newline
+\doxysubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_photon_cooling}{Compact\+Star\+::\+Physics\+::\+Driver\+::\+Thermal\+::\+Photon\+Cooling}}
+\begin{DoxyCompactList}\small\item\em Adds −\+L\+\_\+γ/\+C\+\_\+eff to the thermal RHS (redshifted frame). \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{struct_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_photon_cooling_1_1_options}{Compact\+Star\+::\+Physics\+::\+Driver\+::\+Thermal\+::\+Photon\+Cooling\+::\+Options}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Driver for surface photon cooling contribution to d\+T̃/dt. 
+
+Converts (L\+\_\+\{\textbackslash{}gamma,\textbackslash{}infty\} = 4\textbackslash{}pi R$^\wedge$2 \textbackslash{}sigma T\+\_\+\{\textbackslash{}text\{surf\}\}$^\wedge$4 z\+\_\+\textbackslash{}text\{surf\}$^\wedge$2) (or an envelope model provided via Star\+Context) into the redshifted thermal RHS term −\+L\+\_\+γ/\+C\+\_\+eff. Envelope physics (T\+\_\+core↔\+T\+\_\+surf relations) should be provided by the context/microphysics layer. 

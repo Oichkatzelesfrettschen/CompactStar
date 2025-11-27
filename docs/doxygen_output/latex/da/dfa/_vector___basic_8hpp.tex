@@ -1,0 +1,42 @@
+\hypertarget{_vector___basic_8hpp}{}\doxysection{dependencies/include/\+Zaki/\+Vector/\+Vector\+\_\+\+Basic.hpp File Reference}
+\label{_vector___basic_8hpp}\index{dependencies/include/Zaki/Vector/Vector\_Basic.hpp@{dependencies/include/Zaki/Vector/Vector\_Basic.hpp}}
+
+
+Basic vector operations.  
+
+
+{\ttfamily \#include $<$algorithm$>$}\newline
+{\ttfamily \#include $<$vector$>$}\newline
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{_vector___basic_8hpp_ab24687abbe44b5d18db5a56373b1ae62}\label{_vector___basic_8hpp_ab24687abbe44b5d18db5a56373b1ae62}} 
+{\footnotesize template$<$class T $>$ }\\bool {\bfseries Zaki\+::\+Vector\+::\+Exists} (const T \&Element, const std\+::vector$<$ T $>$ \&Vec)
+\item 
+{\footnotesize template$<$class T , class U $>$ }\\int \mbox{\hyperlink{_vector___basic_8hpp_ab813c896ccaa724e7f1dc9eb970ed62c}{Zaki\+::\+Vector\+::\+Get\+Idx}} (const T \&Element, const std\+::vector$<$ U $>$ \&Vec)
+\item 
+\mbox{\Hypertarget{_vector___basic_8hpp_aab09db639220a2cd5b0788dd30570b88}\label{_vector___basic_8hpp_aab09db639220a2cd5b0788dd30570b88}} 
+{\footnotesize template$<$class T $>$ }\\void {\bfseries Zaki\+::\+Vector\+::\+Add} (std\+::vector$<$ T $>$ \&lst, const T \&ele)
+\item 
+\mbox{\Hypertarget{_vector___basic_8hpp_aca7cc3064f75076a8472ec46a7ca64a9}\label{_vector___basic_8hpp_aca7cc3064f75076a8472ec46a7ca64a9}} 
+{\footnotesize template$<$class T $>$ }\\void {\bfseries Zaki\+::\+Vector\+::\+Remove} (std\+::vector$<$ T $>$ \&list, const std\+::vector$<$ int $>$ \&rm\+\_\+index\+\_\+list)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Basic vector operations. 
+
+\begin{DoxyAuthor}{Author}
+Mohammadreza Zakeri Contact\+: \href{mailto:M.Zakeri@uky.edu}{\texttt{ M.\+Zakeri@uky.\+edu}} 
+\end{DoxyAuthor}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{_vector___basic_8hpp_ab813c896ccaa724e7f1dc9eb970ed62c}\label{_vector___basic_8hpp_ab813c896ccaa724e7f1dc9eb970ed62c}} 
+\index{Vector\_Basic.hpp@{Vector\_Basic.hpp}!GetIdx@{GetIdx}}
+\index{GetIdx@{GetIdx}!Vector\_Basic.hpp@{Vector\_Basic.hpp}}
+\doxysubsubsection{\texorpdfstring{GetIdx()}{GetIdx()}}
+{\footnotesize\ttfamily template$<$class T , class U $>$ \\
+int Zaki\+::\+Vector\+::\+Get\+Idx (\begin{DoxyParamCaption}\item[{const T \&}]{Element,  }\item[{const std\+::vector$<$ U $>$ \&}]{Vec }\end{DoxyParamCaption})}
+
+Checks if an element exists in the list, if yes it will return its index, if not it will return \textquotesingle{}-\/1\textquotesingle{} 

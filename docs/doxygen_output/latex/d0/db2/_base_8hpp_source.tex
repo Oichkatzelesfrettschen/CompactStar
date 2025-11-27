@@ -1,0 +1,79 @@
+\hypertarget{_base_8hpp_source}{}\doxysection{Base.\+hpp}
+\label{_base_8hpp_source}\index{dependencies/include/Confind/Base.hpp@{dependencies/include/Confind/Base.hpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#ifndef Base\_H}}
+\DoxyCodeLine{2 \textcolor{preprocessor}{\#define Base\_H}}
+\DoxyCodeLine{3 }
+\DoxyCodeLine{4 \textcolor{preprocessor}{\#include "{}Confind/ConfindConfig.h"{}}}
+\DoxyCodeLine{5 }
+\DoxyCodeLine{6 \textcolor{preprocessor}{\#include <Zaki/Util/Instrumentor.hpp>}}
+\DoxyCodeLine{7 \textcolor{preprocessor}{\#include <\mbox{\hyperlink{_directory_8hpp}{Zaki/String/Directory.hpp}}>}}
+\DoxyCodeLine{8 }
+\DoxyCodeLine{9 \textcolor{preprocessor}{\#include "{}Confind/Common.hpp"{}}}
+\DoxyCodeLine{10 }
+\DoxyCodeLine{11 \textcolor{preprocessor}{\#define CONFIND\_BASE\_DEBUG\_MODE 1}}
+\DoxyCodeLine{12 }
+\DoxyCodeLine{13 \textcolor{keyword}{namespace }CONFIND}
+\DoxyCodeLine{14 \{}
+\DoxyCodeLine{15 }
+\DoxyCodeLine{16 \textcolor{comment}{//==============================================================}}
+\DoxyCodeLine{17 \textcolor{keyword}{class }Base \{}
+\DoxyCodeLine{18 }
+\DoxyCodeLine{19   \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{20   \textcolor{keyword}{protected}:}
+\DoxyCodeLine{21     }
+\DoxyCodeLine{23     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_c_o_n_f_i_n_d_1_1_base_a7d5f9db9960e9a177e9b695e65cf2893}{ShowBanner}}();}
+\DoxyCodeLine{24 }
+\DoxyCodeLine{26     \textcolor{keyword}{static} std::atomic<size\_t> \mbox{\hyperlink{class_c_o_n_f_i_n_d_1_1_base_a94cc32d5d97269fc6037b3787da18eb9}{counter}};}
+\DoxyCodeLine{27 }
+\DoxyCodeLine{29     \mbox{\hyperlink{class_zaki_1_1_string_1_1_directory}{Zaki::String::Directory}} \mbox{\hyperlink{class_c_o_n_f_i_n_d_1_1_base_a677ddec23ce32426328ee78219da29e1}{wrk\_dir}}\{\textcolor{stringliteral}{"{}"{}}\}    ;}
+\DoxyCodeLine{30     }
+\DoxyCodeLine{32     std::string \mbox{\hyperlink{class_c_o_n_f_i_n_d_1_1_base_a3117f59f8c13f73685cda73e9dc41378}{name}} = \textcolor{stringliteral}{"{}"{}}    ;}
+\DoxyCodeLine{33 }
+\DoxyCodeLine{34     \textcolor{comment}{// Flags}}
+\DoxyCodeLine{35     }
+\DoxyCodeLine{37     \textcolor{keywordtype}{bool} \mbox{\hyperlink{class_c_o_n_f_i_n_d_1_1_base_a018bb5a56d3d3986ead69d6985dcf314}{set\_name\_flag}} = false    ;}
+\DoxyCodeLine{38     }
+\DoxyCodeLine{40     \textcolor{keywordtype}{bool} \mbox{\hyperlink{class_c_o_n_f_i_n_d_1_1_base_a096505baac9118f09157bb39b5deffac}{set\_wrk\_dir\_flag}} = false ;}
+\DoxyCodeLine{41     }
+\DoxyCodeLine{42     \textcolor{keyword}{static} \textcolor{keyword}{inline} std::string class\_name = \textcolor{stringliteral}{"{}Base"{}} ;}
+\DoxyCodeLine{43     }
+\DoxyCodeLine{44   \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{45   \textcolor{keyword}{private}:}
+\DoxyCodeLine{46     }
+\DoxyCodeLine{48     \textcolor{keywordtype}{bool} track\_objs\_flag = false ;}
+\DoxyCodeLine{49   \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{50   \textcolor{keyword}{public}:}
+\DoxyCodeLine{51     }
+\DoxyCodeLine{54     \mbox{\hyperlink{class_c_o_n_f_i_n_d_1_1_base_a85cad60ce375d8efed73cfca83449f43}{Base}}() ;}
+\DoxyCodeLine{55 }
+\DoxyCodeLine{58     \mbox{\hyperlink{class_c_o_n_f_i_n_d_1_1_base_a90a4bbb7ca0a1121e9ec241114f9a93d}{Base}}(\textcolor{keyword}{const} std::string\&) ;}
+\DoxyCodeLine{59 }
+\DoxyCodeLine{64     \mbox{\hyperlink{class_c_o_n_f_i_n_d_1_1_base_af162b34c29901618c15eda1a5320c29b}{Base}}(\textcolor{keyword}{const} std::string\&, \textcolor{keyword}{const} \textcolor{keywordtype}{bool}\&) ;}
+\DoxyCodeLine{65 }
+\DoxyCodeLine{67     \textcolor{keyword}{virtual} \mbox{\hyperlink{class_c_o_n_f_i_n_d_1_1_base_a543029c63893a475665abdd5c38601b5}{\string~Base}}() ;}
+\DoxyCodeLine{68 }
+\DoxyCodeLine{70     \textcolor{keyword}{static} \textcolor{keywordtype}{void}* \textcolor{keyword}{operator} \textcolor{keyword}{new}(\textcolor{keywordtype}{size\_t} sz) ;}
+\DoxyCodeLine{71 }
+\DoxyCodeLine{73     \textcolor{keyword}{static} \textcolor{keywordtype}{void} \textcolor{keyword}{operator} \textcolor{keyword}{delete}(\textcolor{keywordtype}{void}* m);}
+\DoxyCodeLine{74 }
+\DoxyCodeLine{76     \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_c_o_n_f_i_n_d_1_1_base_a1f4f8d9652ebd957b46dcb02ab2b918d}{SetWrkDir}}(\textcolor{keyword}{const} \mbox{\hyperlink{class_zaki_1_1_string_1_1_directory}{Zaki::String::Directory}}\&) ;}
+\DoxyCodeLine{77     }
+\DoxyCodeLine{79     \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_c_o_n_f_i_n_d_1_1_base_a7e93e3151880ac2eee43e603f6740df6}{SetName}}(\textcolor{keyword}{const} std::string\&) ;}
+\DoxyCodeLine{80 }
+\DoxyCodeLine{82     \textcolor{keyword}{virtual} \mbox{\hyperlink{class_zaki_1_1_string_1_1_directory}{Zaki::String::Directory}} \mbox{\hyperlink{class_c_o_n_f_i_n_d_1_1_base_a0b8ff9baf000f83dfda7167f17a7ef4b}{GetWrkDir}}() \textcolor{keyword}{const} ;}
+\DoxyCodeLine{83     }
+\DoxyCodeLine{85     \textcolor{keyword}{virtual} std::string \mbox{\hyperlink{class_c_o_n_f_i_n_d_1_1_base_ac56b288ead28e5d37af4a206980224a3}{GetName}}() \textcolor{keyword}{const}   ;}
+\DoxyCodeLine{86     }
+\DoxyCodeLine{88     \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_c_o_n_f_i_n_d_1_1_base_a29cdf8766733305440c245d55279d440}{Print}}() \textcolor{keyword}{const}            ;}
+\DoxyCodeLine{89     }
+\DoxyCodeLine{91     std::string \mbox{\hyperlink{class_c_o_n_f_i_n_d_1_1_base_a88f23d3226eadfb0085c9a220726efd2}{PtrStr}}() \textcolor{keyword}{const} ;}
+\DoxyCodeLine{92 \};}
+\DoxyCodeLine{93 }
+\DoxyCodeLine{94 \textcolor{comment}{//==============================================================}}
+\DoxyCodeLine{95 \} \textcolor{comment}{// Namespace "{}CONFIND"{} ends.}}
+\DoxyCodeLine{96 \textcolor{comment}{//==============================================================}}
+\DoxyCodeLine{97 \textcolor{preprocessor}{\#endif }\textcolor{comment}{/*Base\_H*/}\textcolor{preprocessor}{}}
+
+\end{DoxyCode}

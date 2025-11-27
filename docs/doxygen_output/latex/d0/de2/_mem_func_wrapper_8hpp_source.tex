@@ -1,0 +1,159 @@
+\hypertarget{_mem_func_wrapper_8hpp_source}{}\doxysection{Mem\+Func\+Wrapper.\+hpp}
+\label{_mem_func_wrapper_8hpp_source}\index{dependencies/include/Zaki/Math/MemFuncWrapper.hpp@{dependencies/include/Zaki/Math/MemFuncWrapper.hpp}}
+\mbox{\hyperlink{_mem_func_wrapper_8hpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{comment}{// -\/*-\/ lsst-\/c++ -\/*-\/}}
+\DoxyCodeLine{2 \textcolor{comment}{/*}}
+\DoxyCodeLine{3 \textcolor{comment}{* Zaki's Common Library}}
+\DoxyCodeLine{4 \textcolor{comment}{* See License file at the top of the source tree.}}
+\DoxyCodeLine{5 \textcolor{comment}{*}}
+\DoxyCodeLine{6 \textcolor{comment}{* Copyright (c) 2023 Mohammadreza Zakeri}}
+\DoxyCodeLine{7 \textcolor{comment}{*}}
+\DoxyCodeLine{8 \textcolor{comment}{* Permission is hereby granted, free of charge, to any person obtaining a copy}}
+\DoxyCodeLine{9 \textcolor{comment}{* of this software and associated documentation files (the "{}Software"{}), to deal}}
+\DoxyCodeLine{10 \textcolor{comment}{* in the Software without restriction, including without limitation the rights}}
+\DoxyCodeLine{11 \textcolor{comment}{* to use, copy, modify, merge, publish, distribute, sublicense, and/or sell}}
+\DoxyCodeLine{12 \textcolor{comment}{* copies of the Software, and to permit persons to whom the Software is}}
+\DoxyCodeLine{13 \textcolor{comment}{* furnished to do so, subject to the following conditions:}}
+\DoxyCodeLine{14 \textcolor{comment}{*}}
+\DoxyCodeLine{15 \textcolor{comment}{* The above copyright notice and this permission notice shall be included in all}}
+\DoxyCodeLine{16 \textcolor{comment}{* copies or substantial portions of the Software.}}
+\DoxyCodeLine{17 \textcolor{comment}{*}}
+\DoxyCodeLine{18 \textcolor{comment}{* THE SOFTWARE IS PROVIDED "{}AS IS"{}, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR}}
+\DoxyCodeLine{19 \textcolor{comment}{* IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,}}
+\DoxyCodeLine{20 \textcolor{comment}{* FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE}}
+\DoxyCodeLine{21 \textcolor{comment}{* AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER}}
+\DoxyCodeLine{22 \textcolor{comment}{* LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,}}
+\DoxyCodeLine{23 \textcolor{comment}{* OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE}}
+\DoxyCodeLine{24 \textcolor{comment}{* SOFTWARE.}}
+\DoxyCodeLine{25 \textcolor{comment}{*/}}
+\DoxyCodeLine{26 }
+\DoxyCodeLine{39 \textcolor{preprocessor}{\#ifndef Zaki\_Math\_MemFuncWrapper\_H}}
+\DoxyCodeLine{40 \textcolor{preprocessor}{\#define Zaki\_Math\_MemFuncWrapper\_H}}
+\DoxyCodeLine{41 }
+\DoxyCodeLine{42 \textcolor{preprocessor}{\#include "{}algorithm"{}}}
+\DoxyCodeLine{43 }
+\DoxyCodeLine{44 \textcolor{comment}{// Zaki::Math}}
+\DoxyCodeLine{45 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_func2_d_8hpp}{Zaki/Math/Func2D.hpp}}"{}}}
+\DoxyCodeLine{46 }
+\DoxyCodeLine{47 \textcolor{comment}{// Zaki::Util}}
+\DoxyCodeLine{48 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_logger_8hpp}{Zaki/Util/Logger.hpp}}"{}}}
+\DoxyCodeLine{49 }
+\DoxyCodeLine{50 \textcolor{comment}{// Zaki::Vector}}
+\DoxyCodeLine{51 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_vector___basic_8hpp}{Zaki/Vector/Vector\_Basic.hpp}}"{}}}
+\DoxyCodeLine{52 }
+\DoxyCodeLine{53 \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{54 \textcolor{keyword}{namespace }Zaki::Math}
+\DoxyCodeLine{55 \{}
+\DoxyCodeLine{56 }
+\DoxyCodeLine{57 \textcolor{comment}{//==============================================================}}
+\DoxyCodeLine{58 \textcolor{keyword}{template}<\textcolor{keyword}{typename} FuncObj, \textcolor{keyword}{typename} MemFuncPtr >}
+\DoxyCodeLine{59 \textcolor{keyword}{class }\mbox{\hyperlink{class_zaki_1_1_math_1_1_mem_func_wrapper}{MemFuncWrapper}} : \textcolor{keyword}{public} \mbox{\hyperlink{class_zaki_1_1_math_1_1_func2_d}{Func2D}}}
+\DoxyCodeLine{60 \{}
+\DoxyCodeLine{61 }
+\DoxyCodeLine{62   \textcolor{keyword}{public}:}
+\DoxyCodeLine{63     \mbox{\hyperlink{class_zaki_1_1_math_1_1_mem_func_wrapper}{MemFuncWrapper}}(\textcolor{keyword}{const} FuncObj\& obj, \textcolor{keyword}{const} MemFuncPtr\& memFn) }
+\DoxyCodeLine{64       : fObj(obj), fMemFunc( memFn ) }
+\DoxyCodeLine{65     \{}
+\DoxyCodeLine{66       Z\_LOG\_NOTE(\textcolor{stringliteral}{"{}MemFuncWrapper constructor called from "{}} + PtrStr() + \textcolor{stringliteral}{"{}."{}}) ;}
+\DoxyCodeLine{67     \}}
+\DoxyCodeLine{68     }
+\DoxyCodeLine{69     \mbox{\hyperlink{class_zaki_1_1_math_1_1_mem_func_wrapper}{MemFuncWrapper}}(\textcolor{keyword}{const} \mbox{\hyperlink{class_zaki_1_1_math_1_1_mem_func_wrapper}{MemFuncWrapper}} \&mfw2) }
+\DoxyCodeLine{70     : fObj(mfw2.fObj), fMemFunc(mfw2.fMemFunc) }
+\DoxyCodeLine{71     \{}
+\DoxyCodeLine{72       Z\_LOG\_NOTE(\textcolor{stringliteral}{"{}MemFuncWrapper copy constructor: from "{}} }
+\DoxyCodeLine{73           + mfw2.PtrStr() + \textcolor{stringliteral}{"{} -\/-\/> "{}} + PtrStr() + \textcolor{stringliteral}{"{}."{}}) ;}
+\DoxyCodeLine{74 }
+\DoxyCodeLine{75       \textcolor{comment}{// if constexpr(!std::is\_copy\_constructible\_v<FuncObj>)}}
+\DoxyCodeLine{76       \textcolor{comment}{//   Z\_LOG\_ERROR("{}Cannot copy 'MemFuncWrapper' because the wrapped object is not copy constructible."{}) ;}}
+\DoxyCodeLine{77 }
+\DoxyCodeLine{78       cpy\_const\_called = true ;}
+\DoxyCodeLine{79     \}}
+\DoxyCodeLine{80 }
+\DoxyCodeLine{81     \mbox{\hyperlink{class_zaki_1_1_math_1_1_mem_func_wrapper}{\string~MemFuncWrapper}}() }
+\DoxyCodeLine{82     \{}
+\DoxyCodeLine{83       Z\_LOG\_NOTE(\textcolor{stringliteral}{"{}MemFuncWrapper destructor called from "{}} + PtrStr() + \textcolor{stringliteral}{"{}."{}}) ;}
+\DoxyCodeLine{84       \textcolor{comment}{// Z\_LOG\_NOTE(("{}heap\_allocated: "{} +}}
+\DoxyCodeLine{85       \textcolor{comment}{//             std::to\_string(heap\_allocated.size()) +}}
+\DoxyCodeLine{86       \textcolor{comment}{//             "{}, heap\_deleted: "{} + std::to\_string(heap\_deleted)}}
+\DoxyCodeLine{87       \textcolor{comment}{//             + "{}."{}). ) ;}}
+\DoxyCodeLine{88     \}}
+\DoxyCodeLine{89 }
+\DoxyCodeLine{90     \textcolor{keywordtype}{double} Eval(\textcolor{keyword}{const} \textcolor{keywordtype}{double} x, \textcolor{keyword}{const} \textcolor{keywordtype}{double} y)\textcolor{keyword}{ override }\{ \textcolor{keywordflow}{return} (fObj.*fMemFunc)( x , y) ;\}}
+\DoxyCodeLine{91 }
+\DoxyCodeLine{92     \textcolor{comment}{// void* GetObj() override \{ return \&fObj ;\}}}
+\DoxyCodeLine{93     FuncObj\& GetObj() \{ \textcolor{keywordflow}{return} fObj ;\}}
+\DoxyCodeLine{94 }
+\DoxyCodeLine{95 }
+\DoxyCodeLine{96     \textcolor{comment}{// GeneralObject* GetGenObj() override }}
+\DoxyCodeLine{97     \textcolor{comment}{// \{}}
+\DoxyCodeLine{98     \textcolor{comment}{//   return(dynamic\_cast<GeneralObject*> (\&fObj)) ;}}
+\DoxyCodeLine{99     \textcolor{comment}{// \}}}
+\DoxyCodeLine{100 }
+\DoxyCodeLine{101     \textcolor{keywordtype}{void} UpdateObj(\textcolor{keyword}{const} FuncObj\& otherfObj)}
+\DoxyCodeLine{102     \{}
+\DoxyCodeLine{103       fObj = otherfObj;}
+\DoxyCodeLine{104     \}}
+\DoxyCodeLine{105 }
+\DoxyCodeLine{106     \textcolor{comment}{// void UpdateObj(void* otherfObj) override}}
+\DoxyCodeLine{107     \textcolor{comment}{// \{}}
+\DoxyCodeLine{108     \textcolor{comment}{//   fObj = *(FuncObj*)otherfObj;}}
+\DoxyCodeLine{109     \textcolor{comment}{// \}}}
+\DoxyCodeLine{110     }
+\DoxyCodeLine{111     \textcolor{comment}{// Overloading CLass specific new operator}}
+\DoxyCodeLine{112     \textcolor{keyword}{static} \textcolor{keywordtype}{void}* \textcolor{keyword}{operator} \textcolor{keyword}{new}(\textcolor{keywordtype}{size\_t} sz)}
+\DoxyCodeLine{113     \{}
+\DoxyCodeLine{114       \textcolor{keywordtype}{void}* m = malloc(sz);}
+\DoxyCodeLine{115 }
+\DoxyCodeLine{116       heap\_allocated.push\_back(m) ;}
+\DoxyCodeLine{117       \textcolor{keywordflow}{return} m;}
+\DoxyCodeLine{118     \}}
+\DoxyCodeLine{119     \textcolor{comment}{// Overloading Class specific delete operator}}
+\DoxyCodeLine{120     \textcolor{keyword}{static} \textcolor{keywordtype}{void} \textcolor{keyword}{operator} \textcolor{keyword}{delete}(\textcolor{keywordtype}{void}* m)}
+\DoxyCodeLine{121     \{}
+\DoxyCodeLine{122       std::stringstream ss;}
+\DoxyCodeLine{123       ss << m;}
+\DoxyCodeLine{124 }
+\DoxyCodeLine{125       \textcolor{keywordflow}{if} (Zaki::Vector::Exists(m, heap\_allocated)) }
+\DoxyCodeLine{126       \{}
+\DoxyCodeLine{127         Z\_LOG\_NOTE(\textcolor{stringliteral}{"{}Freeing heap allocated memory at: "{}}+ ss.str() + \textcolor{stringliteral}{"{}."{}});}
+\DoxyCodeLine{128         heap\_allocated.erase(std::remove(heap\_allocated.begin(), heap\_allocated.end(), m)) ;}
+\DoxyCodeLine{129         free(m);}
+\DoxyCodeLine{130         \textcolor{comment}{// heap\_deleted++ ;}}
+\DoxyCodeLine{131       \}}
+\DoxyCodeLine{132       \textcolor{keywordflow}{else}}
+\DoxyCodeLine{133       \{}
+\DoxyCodeLine{134         Z\_LOG\_NOTE(\textcolor{stringliteral}{"{}Failed attempt to free a pointer at '"{}} +}
+\DoxyCodeLine{135                     ss.str() + \textcolor{stringliteral}{"{}' that wasn't allocated."{}});}
+\DoxyCodeLine{136       \}}
+\DoxyCodeLine{137     \}}
+\DoxyCodeLine{138 }
+\DoxyCodeLine{139   \textcolor{keyword}{private}:}
+\DoxyCodeLine{140 }
+\DoxyCodeLine{141     \textcolor{keyword}{static} \textcolor{keyword}{inline} std::vector<void*> heap\_allocated = \{\} ; }
+\DoxyCodeLine{142     \textcolor{comment}{// static inline unsigned int heap\_deleted = 0; }}
+\DoxyCodeLine{143 }
+\DoxyCodeLine{144     \textcolor{keyword}{virtual} \mbox{\hyperlink{class_zaki_1_1_math_1_1_mem_func_wrapper}{MemFuncWrapper}}* IClone()\textcolor{keyword}{ const override }}
+\DoxyCodeLine{145 \textcolor{keyword}{    }\{}
+\DoxyCodeLine{146       Z\_LOG\_NOTE(\textcolor{stringliteral}{"{}MemFuncWrapper::IClone() called from "{}} + PtrStr() + \textcolor{stringliteral}{"{}."{}}) ;}
+\DoxyCodeLine{147       \textcolor{keywordflow}{return} (\textcolor{keyword}{new} \mbox{\hyperlink{class_zaki_1_1_math_1_1_mem_func_wrapper}{MemFuncWrapper}}(*\textcolor{keyword}{this})) ;}
+\DoxyCodeLine{148     \}}
+\DoxyCodeLine{149 }
+\DoxyCodeLine{150     \textcolor{comment}{// virtual MemFuncWrapper* IThis() override}}
+\DoxyCodeLine{151     \textcolor{comment}{// \{}}
+\DoxyCodeLine{152     \textcolor{comment}{//   return this ;}}
+\DoxyCodeLine{153     \textcolor{comment}{// \}}}
+\DoxyCodeLine{154 }
+\DoxyCodeLine{155     \textcolor{keywordtype}{bool} cpy\_const\_called = false ;}
+\DoxyCodeLine{156     FuncObj fObj;}
+\DoxyCodeLine{157     MemFuncPtr fMemFunc ;}
+\DoxyCodeLine{158 }
+\DoxyCodeLine{159 \};}
+\DoxyCodeLine{160 }
+\DoxyCodeLine{161 \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{162 \} \textcolor{comment}{// End of namespace Zaki::Math}}
+\DoxyCodeLine{163 \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{164 \textcolor{comment}{//==============================================================}}
+\DoxyCodeLine{165 \textcolor{preprocessor}{\#endif }\textcolor{comment}{/*Zaki\_Math\_MemFuncWrapper\_H*/}\textcolor{preprocessor}{}}
+
+\end{DoxyCode}

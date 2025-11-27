@@ -1,0 +1,116 @@
+\hypertarget{_text_box_8hpp_source}{}\doxysection{Text\+Box.\+hpp}
+\label{_text_box_8hpp_source}\index{dependencies/include/Zaki/String/TextBox.hpp@{dependencies/include/Zaki/String/TextBox.hpp}}
+\mbox{\hyperlink{_text_box_8hpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{comment}{// -\/*-\/ lsst-\/c++ -\/*-\/}}
+\DoxyCodeLine{2 \textcolor{comment}{/*}}
+\DoxyCodeLine{3 \textcolor{comment}{* Zaki's Common Library}}
+\DoxyCodeLine{4 \textcolor{comment}{* See License file at the top of the source tree.}}
+\DoxyCodeLine{5 \textcolor{comment}{*}}
+\DoxyCodeLine{6 \textcolor{comment}{* Copyright (c) 2023 Mohammadreza Zakeri}}
+\DoxyCodeLine{7 \textcolor{comment}{*}}
+\DoxyCodeLine{8 \textcolor{comment}{* Permission is hereby granted, free of charge, to any person obtaining a copy}}
+\DoxyCodeLine{9 \textcolor{comment}{* of this software and associated documentation files (the "{}Software"{}), to deal}}
+\DoxyCodeLine{10 \textcolor{comment}{* in the Software without restriction, including without limitation the rights}}
+\DoxyCodeLine{11 \textcolor{comment}{* to use, copy, modify, merge, publish, distribute, sublicense, and/or sell}}
+\DoxyCodeLine{12 \textcolor{comment}{* copies of the Software, and to permit persons to whom the Software is}}
+\DoxyCodeLine{13 \textcolor{comment}{* furnished to do so, subject to the following conditions:}}
+\DoxyCodeLine{14 \textcolor{comment}{*}}
+\DoxyCodeLine{15 \textcolor{comment}{* The above copyright notice and this permission notice shall be included in all}}
+\DoxyCodeLine{16 \textcolor{comment}{* copies or substantial portions of the Software.}}
+\DoxyCodeLine{17 \textcolor{comment}{*}}
+\DoxyCodeLine{18 \textcolor{comment}{* THE SOFTWARE IS PROVIDED "{}AS IS"{}, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR}}
+\DoxyCodeLine{19 \textcolor{comment}{* IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,}}
+\DoxyCodeLine{20 \textcolor{comment}{* FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE}}
+\DoxyCodeLine{21 \textcolor{comment}{* AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER}}
+\DoxyCodeLine{22 \textcolor{comment}{* LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,}}
+\DoxyCodeLine{23 \textcolor{comment}{* OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE}}
+\DoxyCodeLine{24 \textcolor{comment}{* SOFTWARE.}}
+\DoxyCodeLine{25 \textcolor{comment}{*/}}
+\DoxyCodeLine{26 }
+\DoxyCodeLine{39 \textcolor{preprocessor}{\#ifndef Zaki\_String\_TextBox\_H}}
+\DoxyCodeLine{40 \textcolor{preprocessor}{\#define Zaki\_String\_TextBox\_H}}
+\DoxyCodeLine{41 }
+\DoxyCodeLine{42 \textcolor{preprocessor}{\#include "{}sstream"{}}}
+\DoxyCodeLine{43 \textcolor{preprocessor}{\#include "{}vector"{}}}
+\DoxyCodeLine{44 }
+\DoxyCodeLine{45 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_string___basic_8hpp}{Zaki/String/String\_Basic.hpp}}"{}}}
+\DoxyCodeLine{46 }
+\DoxyCodeLine{47 \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{48 \textcolor{keyword}{namespace }Zaki::String}
+\DoxyCodeLine{49 \{}
+\DoxyCodeLine{50 }
+\DoxyCodeLine{51 \textcolor{comment}{//==============================================================}}
+\DoxyCodeLine{52 \textcolor{keyword}{class }\mbox{\hyperlink{class_zaki_1_1_string_1_1_text_box}{TextBox}}}
+\DoxyCodeLine{53   \{}
+\DoxyCodeLine{54   }
+\DoxyCodeLine{55   \textcolor{keyword}{public}:}
+\DoxyCodeLine{56     \textcolor{comment}{// Constructor 1}}
+\DoxyCodeLine{57     \mbox{\hyperlink{class_zaki_1_1_string_1_1_text_box}{TextBox}}();}
+\DoxyCodeLine{58     \textcolor{comment}{// Constructor 2}}
+\DoxyCodeLine{59     \mbox{\hyperlink{class_zaki_1_1_string_1_1_text_box}{TextBox}}(\textcolor{keyword}{const} std::vector<std::string>\&);}
+\DoxyCodeLine{60 }
+\DoxyCodeLine{61     \textcolor{keyword}{enum} TextAlignment}
+\DoxyCodeLine{62     \{}
+\DoxyCodeLine{63       left = 0, center = 1, right = 2}
+\DoxyCodeLine{64     \};}
+\DoxyCodeLine{65 }
+\DoxyCodeLine{66     \textcolor{keywordtype}{void} SetText(\textcolor{keyword}{const} std::vector<std::string>\&) ;}
+\DoxyCodeLine{67     \textcolor{keywordtype}{void} AddText(\textcolor{keyword}{const} std::string\&) ;}
+\DoxyCodeLine{68     \textcolor{keywordtype}{void} AddText(\textcolor{keyword}{const} std::vector<std::string>\&) ;}
+\DoxyCodeLine{69 }
+\DoxyCodeLine{70     \textcolor{keywordtype}{void} SetAlignment(\textcolor{keyword}{const} TextAlignment\&) ;}
+\DoxyCodeLine{71     \textcolor{keywordtype}{void} SetFrameColor(\textcolor{keyword}{const} \mbox{\hyperlink{struct_zaki_1_1_string_1_1_color}{Color}}\&) ;}
+\DoxyCodeLine{72     \textcolor{keywordtype}{void} SetTextColor(\textcolor{keyword}{const} \mbox{\hyperlink{struct_zaki_1_1_string_1_1_color}{Color}}\&) ;}
+\DoxyCodeLine{73     \textcolor{keywordtype}{void} SetPadColor(\textcolor{keyword}{const} \mbox{\hyperlink{struct_zaki_1_1_string_1_1_color}{Color}}\&) ;}
+\DoxyCodeLine{74     \textcolor{keywordtype}{void} SetPadLeft(\textcolor{keyword}{const} \textcolor{keywordtype}{size\_t}) ;}
+\DoxyCodeLine{75     \textcolor{keywordtype}{void} SetPadRight(\textcolor{keyword}{const} \textcolor{keywordtype}{size\_t}) ;}
+\DoxyCodeLine{76     \textcolor{keywordtype}{void} SetPadding(\textcolor{keyword}{const} \textcolor{keywordtype}{size\_t}, \textcolor{keyword}{const} \textcolor{keywordtype}{int} = -\/1) ;}
+\DoxyCodeLine{77     }
+\DoxyCodeLine{78     \textcolor{comment}{// Clears the screen first \& moves the cursor to (1,1)}}
+\DoxyCodeLine{79     \textcolor{keywordtype}{void} EnableClearScreen() ;}
+\DoxyCodeLine{80 }
+\DoxyCodeLine{81     std::string Str() ;}
+\DoxyCodeLine{82     \textcolor{keywordtype}{void} Print() ;}
+\DoxyCodeLine{83     \textcolor{keywordtype}{void} MakeFrame() ;}
+\DoxyCodeLine{84     \textcolor{keywordtype}{void} MakeStrFrame() ;}
+\DoxyCodeLine{85 }
+\DoxyCodeLine{86   \textcolor{keyword}{private}:}
+\DoxyCodeLine{87     std::vector<std::string> encoded\_chars = \{ \textcolor{stringliteral}{"{}\(\backslash\)u00B0"{}}, \textcolor{stringliteral}{"{}\(\backslash\)u0393"{}} \} ;}
+\DoxyCodeLine{88     \textcolor{keyword}{const} \textcolor{keywordtype}{char}* top\_left\_corn = \textcolor{stringliteral}{"{}\(\backslash\)u2554"{}};}
+\DoxyCodeLine{89     \textcolor{keyword}{const} \textcolor{keywordtype}{char}* top\_right\_corn = \textcolor{stringliteral}{"{}\(\backslash\)u2557"{}};}
+\DoxyCodeLine{90     \textcolor{keyword}{const} \textcolor{keywordtype}{char}* bottom\_left\_corn = \textcolor{stringliteral}{"{}\(\backslash\)u255A"{}};}
+\DoxyCodeLine{91     \textcolor{keyword}{const} \textcolor{keywordtype}{char}* bottom\_right\_corn = \textcolor{stringliteral}{"{}\(\backslash\)u255D"{}};}
+\DoxyCodeLine{92     \textcolor{keyword}{const} \textcolor{keywordtype}{char}* horizontal\_line = \textcolor{stringliteral}{"{}\(\backslash\)u2550"{}};}
+\DoxyCodeLine{93     \textcolor{keyword}{const} \textcolor{keywordtype}{char}* vertical\_line = \textcolor{stringliteral}{"{}\(\backslash\)u2551"{}};}
+\DoxyCodeLine{94 }
+\DoxyCodeLine{95     \mbox{\hyperlink{struct_zaki_1_1_string_1_1_color}{Color}} reset\_color; \textcolor{comment}{// "{}\(\backslash\)E[0m"{}}}
+\DoxyCodeLine{96 }
+\DoxyCodeLine{97     \mbox{\hyperlink{struct_zaki_1_1_string_1_1_color}{Color}} frame\_color;}
+\DoxyCodeLine{98     \mbox{\hyperlink{struct_zaki_1_1_string_1_1_color}{Color}} text\_color;}
+\DoxyCodeLine{99     \mbox{\hyperlink{struct_zaki_1_1_string_1_1_color}{Color}} pad\_color;}
+\DoxyCodeLine{100 }
+\DoxyCodeLine{101     \textcolor{comment}{// Clears the screen first \& moves the cursor to (1,1)}}
+\DoxyCodeLine{102     \textcolor{keywordtype}{bool} clear\_screen = \textcolor{keyword}{false}; }
+\DoxyCodeLine{103 }
+\DoxyCodeLine{104     \textcolor{keywordtype}{size\_t} height = 0, width = 0, l\_pad = 1, r\_pad = 1 ;}
+\DoxyCodeLine{105 }
+\DoxyCodeLine{106     TextAlignment text\_align = left ;}
+\DoxyCodeLine{107 }
+\DoxyCodeLine{108     std::stringstream top\_frame, mid\_section, bottom\_frame;}
+\DoxyCodeLine{109     std::vector<std::string> text ;}
+\DoxyCodeLine{110 }
+\DoxyCodeLine{111     \textcolor{comment}{// std::string Multiply(const char*, size\_t) ;}}
+\DoxyCodeLine{112     \textcolor{keywordtype}{size\_t} CorrectEncodedChars(\textcolor{keyword}{const} std::string\&) ;}
+\DoxyCodeLine{113 }
+\DoxyCodeLine{114   \};}
+\DoxyCodeLine{115   \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{116 }
+\DoxyCodeLine{117 \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{118 \} \textcolor{comment}{// End of namespace Zaki}}
+\DoxyCodeLine{119 \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{120 }
+\DoxyCodeLine{121 \textcolor{comment}{//==============================================================}}
+\DoxyCodeLine{122 \textcolor{preprocessor}{\#endif }\textcolor{comment}{/*Zaki\_String\_TextBox\_H*/}\textcolor{preprocessor}{}}
+
+\end{DoxyCode}

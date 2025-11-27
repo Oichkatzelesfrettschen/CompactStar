@@ -1,0 +1,104 @@
+\hypertarget{_string___basic_8hpp}{}\doxysection{dependencies/include/\+Zaki/\+String/\+String\+\_\+\+Basic.hpp File Reference}
+\label{_string___basic_8hpp}\index{dependencies/include/Zaki/String/String\_Basic.hpp@{dependencies/include/Zaki/String/String\_Basic.hpp}}
+
+
+Basic string functions.  
+
+
+{\ttfamily \#include \char`\"{}string\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}sstream\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}vector\char`\"{}}\newline
+\doxysubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{struct_zaki_1_1_string_1_1_color}{Zaki\+::\+String\+::\+Color}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{_string___basic_8hpp_a6152aae31987ce1bd76af646016704f4}\label{_string___basic_8hpp_a6152aae31987ce1bd76af646016704f4}} 
+enum class {\bfseries FGColor} \{ \newline
+{\bfseries Black}
+, {\bfseries Red}
+, {\bfseries Green}
+, {\bfseries Yellow}
+, \newline
+{\bfseries Blue}
+, {\bfseries Purple}
+, {\bfseries Cyan}
+, {\bfseries White}
+, \newline
+{\bfseries LBlack}
+, {\bfseries LRed}
+, {\bfseries LGreen}
+, {\bfseries LYellow}
+, \newline
+{\bfseries LBlue}
+, {\bfseries LPurple}
+, {\bfseries LCyan}
+, {\bfseries LWhite}
+ \}
+\item 
+\mbox{\Hypertarget{_string___basic_8hpp_a0ae70113256d2b664dfb2c02ca548baa}\label{_string___basic_8hpp_a0ae70113256d2b664dfb2c02ca548baa}} 
+enum class {\bfseries BGColor} \{ \newline
+{\bfseries Black\+Bg}
+, {\bfseries Red\+Bg}
+, {\bfseries Green\+Bg}
+, {\bfseries Yellow\+Bg}
+, \newline
+{\bfseries Blue\+Bg}
+, {\bfseries Purple\+Bg}
+, {\bfseries Cyan\+Bg}
+, {\bfseries White\+Bg}
+ \}
+\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{_string___basic_8hpp_af8f5349f9b6cd35469073d8e68309fd0}\label{_string___basic_8hpp_af8f5349f9b6cd35469073d8e68309fd0}} 
+{\footnotesize template$<$class T $>$ }\\std\+::string {\bfseries Zaki\+::\+String\+::\+To\+String} (const T \&a)
+\item 
+\mbox{\Hypertarget{_string___basic_8hpp_a9eaa43e1fdb2b92737ddab303fd2248c}\label{_string___basic_8hpp_a9eaa43e1fdb2b92737ddab303fd2248c}} 
+bool {\bfseries Zaki\+::\+String\+::\+Ends\+With} (std\+::string const \&full\+String, std\+::string const \&ending)
+\item 
+\mbox{\Hypertarget{_string___basic_8hpp_a1a661456f92b2edc5f9249f8ccecdc87}\label{_string___basic_8hpp_a1a661456f92b2edc5f9249f8ccecdc87}} 
+std\+::string {\bfseries Zaki\+::\+String\+::\+Strip} (const std\+::string \&str, char c)
+\item 
+\mbox{\Hypertarget{_string___basic_8hpp_abde6844285b99bfaadca188ec34c4e44}\label{_string___basic_8hpp_abde6844285b99bfaadca188ec34c4e44}} 
+std\+::vector$<$ std\+::string $>$ {\bfseries Zaki\+::\+String\+::\+Pars} (const std\+::string \&, const char $\ast$, int=1)
+\item 
+\mbox{\Hypertarget{_string___basic_8hpp_a9a88081f22126b7d90ac15af6f77a13d}\label{_string___basic_8hpp_a9a88081f22126b7d90ac15af6f77a13d}} 
+std\+::vector$<$ std\+::string $>$ {\bfseries Zaki\+::\+String\+::\+Pars} (const std\+::string \&, const std\+::vector$<$ std\+::string $>$ \&)
+\item 
+\mbox{\Hypertarget{_string___basic_8hpp_aaf7a0c3bebdeef230762fbed967cf1f6}\label{_string___basic_8hpp_aaf7a0c3bebdeef230762fbed967cf1f6}} 
+void {\bfseries Zaki\+::\+String\+::\+Str2\+Lst} (std\+::vector$<$ int $>$ \&, const std\+::string \&, const char $\ast$=\char`\"{},\char`\"{})
+\item 
+\mbox{\Hypertarget{_string___basic_8hpp_ae0a10d397f346c71288f23ef1adcd58e}\label{_string___basic_8hpp_ae0a10d397f346c71288f23ef1adcd58e}} 
+void {\bfseries Zaki\+::\+String\+::\+Str2\+Lst} (std\+::vector$<$ float $>$ \&, const std\+::string \&, const char $\ast$=\char`\"{},\char`\"{})
+\item 
+\mbox{\Hypertarget{_string___basic_8hpp_ab120692b73681b771844bc22a814bf85}\label{_string___basic_8hpp_ab120692b73681b771844bc22a814bf85}} 
+void {\bfseries Zaki\+::\+String\+::\+Str2\+Lst} (std\+::vector$<$ std\+::string $>$ \&, const std\+::string \&, const char $\ast$=\char`\"{},\char`\"{})
+\item 
+\mbox{\Hypertarget{_string___basic_8hpp_a21c5459d2339c6c2c7f50d2011688298}\label{_string___basic_8hpp_a21c5459d2339c6c2c7f50d2011688298}} 
+std\+::vector$<$ int $>$ {\bfseries Zaki\+::\+String\+::\+Range\+Parser} (const std\+::string \&)
+\item 
+\mbox{\Hypertarget{_string___basic_8hpp_aca6e1bfca91dffbf733d87fe6db9d78e}\label{_string___basic_8hpp_aca6e1bfca91dffbf733d87fe6db9d78e}} 
+std\+::string {\bfseries Zaki\+::\+String\+::\+Multiply} (const char, size\+\_\+t)
+\item 
+\mbox{\Hypertarget{_string___basic_8hpp_aa47f2db600bcce2c6d0228d111109063}\label{_string___basic_8hpp_aa47f2db600bcce2c6d0228d111109063}} 
+std\+::string {\bfseries Zaki\+::\+String\+::\+Multiply} (const char $\ast$, size\+\_\+t)
+\item 
+\mbox{\Hypertarget{_string___basic_8hpp_a204cce1dd8f2a890475d74cc6330e16f}\label{_string___basic_8hpp_a204cce1dd8f2a890475d74cc6330e16f}} 
+int {\bfseries Zaki\+::\+String\+::\+Find\+Occurrences} (const std\+::string \&, const std\+::string \&)
+\item 
+\mbox{\Hypertarget{_string___basic_8hpp_a8e93be70fa6392d48fb204453c91f166}\label{_string___basic_8hpp_a8e93be70fa6392d48fb204453c91f166}} 
+std\+::ostream \& {\bfseries Zaki\+::\+String\+::operator$<$$<$} (std\+::ostream \&output, const \mbox{\hyperlink{struct_zaki_1_1_string_1_1_color}{Zaki\+::\+String\+::\+Color}} \&)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Basic string functions. 
+
+\begin{DoxyAuthor}{Author}
+Mohammadreza Zakeri Contact\+: \href{mailto:M.Zakeri@uky.edu}{\texttt{ M.\+Zakeri@uky.\+edu}} 
+\end{DoxyAuthor}

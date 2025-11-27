@@ -1,0 +1,401 @@
+\hypertarget{_constants_8hpp_source}{}\doxysection{Constants.\+hpp}
+\label{_constants_8hpp_source}\index{dependencies/include/Zaki/Physics/Constants.hpp@{dependencies/include/Zaki/Physics/Constants.hpp}}
+\mbox{\hyperlink{_constants_8hpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{comment}{// -\/*-\/ lsst-\/c++ -\/*-\/}}
+\DoxyCodeLine{2 \textcolor{comment}{/*}}
+\DoxyCodeLine{3 \textcolor{comment}{* Zaki's Common Library}}
+\DoxyCodeLine{4 \textcolor{comment}{* See License file at the top of the source tree.}}
+\DoxyCodeLine{5 \textcolor{comment}{*}}
+\DoxyCodeLine{6 \textcolor{comment}{* Copyright (c) 2023 Mohammadreza Zakeri}}
+\DoxyCodeLine{7 \textcolor{comment}{*}}
+\DoxyCodeLine{8 \textcolor{comment}{* Permission is hereby granted, free of charge, to any person obtaining a copy}}
+\DoxyCodeLine{9 \textcolor{comment}{* of this software and associated documentation files (the "{}Software"{}), to deal}}
+\DoxyCodeLine{10 \textcolor{comment}{* in the Software without restriction, including without limitation the rights}}
+\DoxyCodeLine{11 \textcolor{comment}{* to use, copy, modify, merge, publish, distribute, sublicense, and/or sell}}
+\DoxyCodeLine{12 \textcolor{comment}{* copies of the Software, and to permit persons to whom the Software is}}
+\DoxyCodeLine{13 \textcolor{comment}{* furnished to do so, subject to the following conditions:}}
+\DoxyCodeLine{14 \textcolor{comment}{*}}
+\DoxyCodeLine{15 \textcolor{comment}{* The above copyright notice and this permission notice shall be included in all}}
+\DoxyCodeLine{16 \textcolor{comment}{* copies or substantial portions of the Software.}}
+\DoxyCodeLine{17 \textcolor{comment}{*}}
+\DoxyCodeLine{18 \textcolor{comment}{* THE SOFTWARE IS PROVIDED "{}AS IS"{}, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR}}
+\DoxyCodeLine{19 \textcolor{comment}{* IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,}}
+\DoxyCodeLine{20 \textcolor{comment}{* FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE}}
+\DoxyCodeLine{21 \textcolor{comment}{* AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER}}
+\DoxyCodeLine{22 \textcolor{comment}{* LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,}}
+\DoxyCodeLine{23 \textcolor{comment}{* OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE}}
+\DoxyCodeLine{24 \textcolor{comment}{* SOFTWARE.}}
+\DoxyCodeLine{25 \textcolor{comment}{*/}}
+\DoxyCodeLine{26 }
+\DoxyCodeLine{39 \textcolor{preprocessor}{\#ifndef Zaki\_Physics\_Constants\_H}}
+\DoxyCodeLine{40 \textcolor{preprocessor}{\#define Zaki\_Physics\_Constants\_H}}
+\DoxyCodeLine{41 }
+\DoxyCodeLine{42 \textcolor{preprocessor}{\#include <math.h>}}
+\DoxyCodeLine{43 \textcolor{preprocessor}{\#include <vector>}}
+\DoxyCodeLine{44 \textcolor{preprocessor}{\#include <algorithm>}}
+\DoxyCodeLine{45 \textcolor{preprocessor}{\#include <string>}}
+\DoxyCodeLine{46 }
+\DoxyCodeLine{47 \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{48 \textcolor{keyword}{namespace }Zaki::Physics}
+\DoxyCodeLine{49 \{}
+\DoxyCodeLine{50 }
+\DoxyCodeLine{51 \textcolor{comment}{//......................................}}
+\DoxyCodeLine{52 \textcolor{comment}{// Forward declrations}}
+\DoxyCodeLine{53 \textcolor{comment}{//......................................}}
+\DoxyCodeLine{54 \textcolor{keyword}{struct }Date;}
+\DoxyCodeLine{55 \textcolor{comment}{//==============================================================}}
+\DoxyCodeLine{56 \textcolor{comment}{//                      Unit Conversion}}
+\DoxyCodeLine{57 \textcolor{comment}{//==============================================================}}
+\DoxyCodeLine{58 \textcolor{comment}{//......................................}}
+\DoxyCodeLine{59 \textcolor{comment}{//          Length}}
+\DoxyCodeLine{60 \textcolor{comment}{//......................................}}
+\DoxyCodeLine{61 \textcolor{keyword}{extern} \textcolor{keyword}{const} \textcolor{keywordtype}{double}  M\_2\_CM     ;           \textcolor{comment}{// meter to cm conversion}}
+\DoxyCodeLine{62 \textcolor{keyword}{extern} \textcolor{keyword}{const} \textcolor{keywordtype}{double}  KM\_2\_M     ;           \textcolor{comment}{// kilometer to meter}}
+\DoxyCodeLine{63 \textcolor{keyword}{extern} \textcolor{keyword}{const} \textcolor{keywordtype}{double}  M\_2\_KM     ;           \textcolor{comment}{// meter to kilometer}}
+\DoxyCodeLine{64 \textcolor{keyword}{extern} \textcolor{keyword}{const} \textcolor{keywordtype}{double}  CM\_2\_M     ;           \textcolor{comment}{// cm to meter conversion}}
+\DoxyCodeLine{65 \textcolor{keyword}{extern} \textcolor{keyword}{const} \textcolor{keywordtype}{double}  CM\_2\_GEV   ;           \textcolor{comment}{// cm to GeV conversion}}
+\DoxyCodeLine{66 \textcolor{keyword}{extern} \textcolor{keyword}{const} \textcolor{keywordtype}{double}  GEV\_2\_CM   ;           \textcolor{comment}{// GeV to cm conversion}}
+\DoxyCodeLine{67 \textcolor{keyword}{extern} \textcolor{keyword}{const} \textcolor{keywordtype}{double}  M\_2\_GEV    ;           \textcolor{comment}{// m to GeV conversion}}
+\DoxyCodeLine{68 \textcolor{keyword}{extern} \textcolor{keyword}{const} \textcolor{keywordtype}{double}  KM\_2\_GEV   ;           \textcolor{comment}{// kilometer to GeV}}
+\DoxyCodeLine{69 \textcolor{keyword}{extern} \textcolor{keyword}{const} \textcolor{keywordtype}{double}  GEV\_2\_M    ;           \textcolor{comment}{// GeV to m conversion}}
+\DoxyCodeLine{70 \textcolor{keyword}{extern} \textcolor{keyword}{const} \textcolor{keywordtype}{double}  GEV\_2\_KM   ;           \textcolor{comment}{// GeV to km}}
+\DoxyCodeLine{71 \textcolor{keyword}{extern} \textcolor{keyword}{const} \textcolor{keywordtype}{double}  AU\_2\_KM    ;           \textcolor{comment}{// AU to km}}
+\DoxyCodeLine{72 \textcolor{keyword}{extern} \textcolor{keyword}{const} \textcolor{keywordtype}{double}  AU\_2\_GEV   ;           \textcolor{comment}{// AU to GeV}}
+\DoxyCodeLine{73 \textcolor{keyword}{extern} \textcolor{keyword}{const} \textcolor{keywordtype}{double}  AU\_2\_LSEC  ;           \textcolor{comment}{// AU to light-\/sec}}
+\DoxyCodeLine{74 }
+\DoxyCodeLine{76 \textcolor{keyword}{extern} \textcolor{keyword}{const} \textcolor{keywordtype}{double} \mbox{\hyperlink{_constants_8hpp_ad1c27d366475820d7cf0b36b304c8adf}{KPC\_2\_M}}     ;}
+\DoxyCodeLine{77 }
+\DoxyCodeLine{78 \textcolor{comment}{//......................................}}
+\DoxyCodeLine{79 \textcolor{comment}{//          Time}}
+\DoxyCodeLine{80 \textcolor{comment}{//......................................}}
+\DoxyCodeLine{81 \textcolor{keyword}{extern} \textcolor{keyword}{const} \textcolor{keywordtype}{double}  SEC\_2\_GEV  ;           \textcolor{comment}{// sec to GeV\string^-\/1 conversion}}
+\DoxyCodeLine{82 \textcolor{keyword}{extern} \textcolor{keyword}{const} \textcolor{keywordtype}{double}  GEV\_2\_S    ;           \textcolor{comment}{// GeV to sec conversion}}
+\DoxyCodeLine{83 \textcolor{keyword}{extern} \textcolor{keyword}{const} \textcolor{keywordtype}{double}  GYR\_2\_YR   ;           \textcolor{comment}{// Giga year to year}}
+\DoxyCodeLine{84 \textcolor{keyword}{extern} \textcolor{keyword}{const} \textcolor{keywordtype}{double}  YR\_2\_DAY   ;           \textcolor{comment}{// Year to days}}
+\DoxyCodeLine{85 \textcolor{keyword}{extern} \textcolor{keyword}{const} \textcolor{keywordtype}{double}  DAY\_2\_SEC  ;           \textcolor{comment}{// Year to days}}
+\DoxyCodeLine{86 \textcolor{keyword}{extern} \textcolor{keyword}{const} \textcolor{keywordtype}{double}  YR\_2\_SEC   ;           \textcolor{comment}{// Year to days}}
+\DoxyCodeLine{87 \textcolor{keyword}{extern} \textcolor{keyword}{const} \textcolor{keywordtype}{double}  GYR\_2\_SEC  ;           \textcolor{comment}{// Giga year to seconds}}
+\DoxyCodeLine{88 \textcolor{keyword}{extern} \textcolor{keyword}{const} \textcolor{keywordtype}{double}  GYR\_2\_GEV  ;           \textcolor{comment}{// Giga year to GeV\string^-\/1}}
+\DoxyCodeLine{89 \textcolor{keyword}{extern} \textcolor{keyword}{const} \textcolor{keywordtype}{double}  MIN\_2\_DAY  ;           \textcolor{comment}{// minutes to day}}
+\DoxyCodeLine{90 }
+\DoxyCodeLine{91 \textcolor{comment}{//......................................}}
+\DoxyCodeLine{92 \textcolor{comment}{//          Temperature}}
+\DoxyCodeLine{93 \textcolor{comment}{//......................................}}
+\DoxyCodeLine{94 \textcolor{keyword}{extern} \textcolor{keyword}{const} \textcolor{keywordtype}{double}  KEL\_2\_GEV  ;           \textcolor{comment}{// Kelvin to GeV conversion}}
+\DoxyCodeLine{95 \textcolor{keyword}{extern} \textcolor{keyword}{const} \textcolor{keywordtype}{double}  GEV\_2\_KEL  ;           \textcolor{comment}{// GeV to Kelvin conversion}}
+\DoxyCodeLine{96 }
+\DoxyCodeLine{97 \textcolor{comment}{//......................................}}
+\DoxyCodeLine{98 \textcolor{comment}{//           Mass}}
+\DoxyCodeLine{99 \textcolor{comment}{//......................................}}
+\DoxyCodeLine{100 \textcolor{keyword}{extern} \textcolor{keyword}{const} \textcolor{keywordtype}{double}  KG\_2\_GR    ;           \textcolor{comment}{// Kilogram to gram conversion}}
+\DoxyCodeLine{101 \textcolor{keyword}{extern} \textcolor{keyword}{const} \textcolor{keywordtype}{double}  GR\_2\_KG    ;           \textcolor{comment}{// gram to Kilogram conversion}}
+\DoxyCodeLine{102 \textcolor{keyword}{extern} \textcolor{keyword}{const} \textcolor{keywordtype}{double}  GEV\_2\_GR   ;           \textcolor{comment}{// GeV to gram conversion}}
+\DoxyCodeLine{103 \textcolor{keyword}{extern} \textcolor{keyword}{const} \textcolor{keywordtype}{double}  GR\_2\_GEV   ;           \textcolor{comment}{// gram to GeV conversion}}
+\DoxyCodeLine{104 \textcolor{keyword}{extern} \textcolor{keyword}{const} \textcolor{keywordtype}{double}  KG\_2\_GEV   ;           \textcolor{comment}{// kilogram to GeV conversion}}
+\DoxyCodeLine{105 \textcolor{keyword}{extern} \textcolor{keyword}{const} \textcolor{keywordtype}{double}  GEV\_2\_KG   ;           \textcolor{comment}{// GeV to kilogram conversion}}
+\DoxyCodeLine{106 \textcolor{keyword}{extern} \textcolor{keyword}{const} \textcolor{keywordtype}{double}  AMU\_2\_GEV  ;           \textcolor{comment}{// amu to GeV conversion}}
+\DoxyCodeLine{107 \textcolor{keyword}{extern} \textcolor{keyword}{const} \textcolor{keywordtype}{double}  GEV\_2\_AMU  ;           \textcolor{comment}{// GeV to amu conversion}}
+\DoxyCodeLine{108 }
+\DoxyCodeLine{109 \textcolor{comment}{//......................................}}
+\DoxyCodeLine{110 \textcolor{comment}{//           Angle}}
+\DoxyCodeLine{111 \textcolor{comment}{//......................................}}
+\DoxyCodeLine{112 \textcolor{keyword}{extern} \textcolor{keyword}{const} \textcolor{keywordtype}{double} RAD\_2\_DEG    ;          \textcolor{comment}{// Radian to degree}}
+\DoxyCodeLine{113 \textcolor{keyword}{extern} \textcolor{keyword}{const} \textcolor{keywordtype}{double} DEG\_2\_RAD    ;          \textcolor{comment}{// Degree to radian}}
+\DoxyCodeLine{114 }
+\DoxyCodeLine{115 \textcolor{comment}{//......................................}}
+\DoxyCodeLine{116 \textcolor{comment}{//    Compact Star Unit Conversions}}
+\DoxyCodeLine{117 \textcolor{comment}{//......................................}}
+\DoxyCodeLine{118 \textcolor{keyword}{extern} \textcolor{keyword}{const} \textcolor{keywordtype}{double} MEV\_2\_CM        ;       \textcolor{comment}{// MeV to cm}}
+\DoxyCodeLine{119 \textcolor{keyword}{extern} \textcolor{keyword}{const} \textcolor{keywordtype}{double} MEV\_2\_INV\_FM    ;       \textcolor{comment}{// MeV to 1/fm}}
+\DoxyCodeLine{120 \textcolor{keyword}{extern} \textcolor{keyword}{const} \textcolor{keywordtype}{double} MEV\_FM3\_2\_G\_CM3 ;       \textcolor{comment}{// MeV/fm\string^3 to g/cm\string^3}}
+\DoxyCodeLine{121 \textcolor{keyword}{extern} \textcolor{keyword}{const} \textcolor{keywordtype}{double} G\_CM3\_2\_Dyn\_CM2 ;       \textcolor{comment}{// g/cm\string^3 to dyne/cm\string^2}}
+\DoxyCodeLine{122 }
+\DoxyCodeLine{123 \textcolor{keyword}{extern} \textcolor{keyword}{const} \textcolor{keywordtype}{double} MEV\_FM3\_2\_Dyn\_CM2 ;     \textcolor{comment}{// MeV/fm\string^3 to dyne/cm\string^2}}
+\DoxyCodeLine{124 \textcolor{keyword}{extern} \textcolor{keyword}{const} \textcolor{keywordtype}{double} INV\_FM4\_2\_G\_CM3       ;     \textcolor{comment}{// 1/fm\string^4 to g/cm\string^3}}
+\DoxyCodeLine{125 \textcolor{keyword}{extern} \textcolor{keyword}{const} \textcolor{keywordtype}{double} INV\_FM4\_2\_Dyn\_CM2     ;     \textcolor{comment}{// 1/fm\string^4 to dyne/cm\string^2}}
+\DoxyCodeLine{126 }
+\DoxyCodeLine{127 \textcolor{keyword}{extern} \textcolor{keyword}{const} \textcolor{keywordtype}{double} INV\_FM4\_2\_INV\_KM2 ; \textcolor{comment}{// 1/fm\string^4 to 1/km\string^2}}
+\DoxyCodeLine{128 \textcolor{keyword}{extern} \textcolor{keyword}{const} \textcolor{keywordtype}{double} MEV\_FM3\_2\_INV\_KM2 ; \textcolor{comment}{// MeV/fm\string^3 to 1/km\string^2}}
+\DoxyCodeLine{129 \textcolor{comment}{//==============================================================}}
+\DoxyCodeLine{130 \textcolor{comment}{//                      Constants}}
+\DoxyCodeLine{131 \textcolor{comment}{//==============================================================}}
+\DoxyCodeLine{132 \textcolor{comment}{//......................................}}
+\DoxyCodeLine{133 \textcolor{comment}{//              Physical constants}}
+\DoxyCodeLine{134 \textcolor{comment}{//......................................}}
+\DoxyCodeLine{135 \textcolor{keyword}{extern} \textcolor{keyword}{const} \textcolor{keywordtype}{double}  H\_PLANCK\_JS        ;       \textcolor{comment}{// Planck Constant in J.s}}
+\DoxyCodeLine{136 \textcolor{keyword}{extern} \textcolor{keyword}{const} \textcolor{keywordtype}{double}  H\_PLANCK\_MeVS      ;       \textcolor{comment}{// Planck Constant in MeV.s}}
+\DoxyCodeLine{137 \textcolor{keyword}{extern} \textcolor{keyword}{const} \textcolor{keywordtype}{double}  HBAR\_PLANCK\_JS     ;       \textcolor{comment}{// Reduced Planck Constant in J.s}}
+\DoxyCodeLine{138 \textcolor{keyword}{extern} \textcolor{keyword}{const} \textcolor{keywordtype}{double}  HBAR\_PLANCK\_MeVS   ;       \textcolor{comment}{// Reduced Planck Constant in MeV.s}}
+\DoxyCodeLine{139 }
+\DoxyCodeLine{140 \textcolor{keyword}{extern} \textcolor{keyword}{const} \textcolor{keywordtype}{double}  ALPHA\_EM       ;       \textcolor{comment}{// EM structure const doubleant}}
+\DoxyCodeLine{141 \textcolor{keyword}{extern} \textcolor{keyword}{const} \textcolor{keywordtype}{double}  Q\_E            ;       \textcolor{comment}{// Electric charge}}
+\DoxyCodeLine{142 \textcolor{keyword}{extern} \textcolor{keyword}{const} \textcolor{keywordtype}{double}  Q\_E\_SQRD\_MeVfm ;       \textcolor{comment}{// Electric charge in MeV.fm}}
+\DoxyCodeLine{143 }
+\DoxyCodeLine{144 \textcolor{keyword}{extern} \textcolor{keyword}{const} \textcolor{keywordtype}{double} NEWTON\_G\_SI     ;       \textcolor{comment}{//  m\string^3/(kg s\string^2)}}
+\DoxyCodeLine{145 \textcolor{keyword}{extern} \textcolor{keyword}{const} \textcolor{keywordtype}{double} NEWTON\_G\_GEV    ;       \textcolor{comment}{//  in 1/GeV\string^2}}
+\DoxyCodeLine{146 }
+\DoxyCodeLine{147 \textcolor{keyword}{extern} \textcolor{keyword}{const} \textcolor{keywordtype}{double} LIGHT\_C\_M\_S     ; \textcolor{comment}{// Speed of light in m/s}}
+\DoxyCodeLine{148 \textcolor{keyword}{extern} \textcolor{keyword}{const} \textcolor{keywordtype}{double} LIGHT\_C\_KM\_S    ; \textcolor{comment}{// Speed of light in km/s}}
+\DoxyCodeLine{149 }
+\DoxyCodeLine{150 \textcolor{keyword}{extern} \textcolor{keyword}{const} \textcolor{keywordtype}{double} K\_BOLTZ\_SI      ; \textcolor{comment}{// Boltzmann constant in J/K}}
+\DoxyCodeLine{151 \textcolor{keyword}{extern} \textcolor{keyword}{const} \textcolor{keywordtype}{double} K\_BOLTZ\_EV      ; \textcolor{comment}{// Boltzmann constant in eV/K}}
+\DoxyCodeLine{152 \textcolor{comment}{//......................................}}
+\DoxyCodeLine{153 \textcolor{comment}{//              Particles}}
+\DoxyCodeLine{154 \textcolor{comment}{//......................................}}
+\DoxyCodeLine{155 \textcolor{comment}{// Electron}}
+\DoxyCodeLine{156 \textcolor{keyword}{extern} \textcolor{keyword}{const} \textcolor{keywordtype}{double} ELECTRON\_M\_KG   ;       \textcolor{comment}{// Mass of the electron in kilograms}}
+\DoxyCodeLine{157 \textcolor{keyword}{extern} \textcolor{keyword}{const} \textcolor{keywordtype}{double} ELECTRON\_M\_GEV  ;       \textcolor{comment}{// Mass of the electron in GeV}}
+\DoxyCodeLine{158 \textcolor{keyword}{extern} \textcolor{keyword}{const} \textcolor{keywordtype}{double} ELECTRON\_M\_MEV  ;       \textcolor{comment}{// Mass of the electron in MeV}}
+\DoxyCodeLine{159 \textcolor{keyword}{extern} \textcolor{keyword}{const} \textcolor{keywordtype}{double} ELECTRON\_M\_FM   ;       \textcolor{comment}{// Mass of the electron in 1/fm}}
+\DoxyCodeLine{160 }
+\DoxyCodeLine{161 \textcolor{comment}{// Muon}}
+\DoxyCodeLine{162 \textcolor{keyword}{extern} \textcolor{keyword}{const} \textcolor{keywordtype}{double} MUON\_M\_GEV      ;       \textcolor{comment}{// GeV}}
+\DoxyCodeLine{163 \textcolor{keyword}{extern} \textcolor{keyword}{const} \textcolor{keywordtype}{double} MUON\_M\_MEV      ;       \textcolor{comment}{// MeV}}
+\DoxyCodeLine{164 \textcolor{keyword}{extern} \textcolor{keyword}{const} \textcolor{keywordtype}{double} MUON\_M\_FM       ;       \textcolor{comment}{// fm\string^-\/1}}
+\DoxyCodeLine{165 }
+\DoxyCodeLine{166 \textcolor{comment}{// Tau Lepton}}
+\DoxyCodeLine{167 \textcolor{keyword}{extern} \textcolor{keyword}{const} \textcolor{keywordtype}{double} TAU\_M\_GEV      ;       \textcolor{comment}{// GeV}}
+\DoxyCodeLine{168 \textcolor{keyword}{extern} \textcolor{keyword}{const} \textcolor{keywordtype}{double} TAU\_M\_MEV      ;       \textcolor{comment}{// MeV}}
+\DoxyCodeLine{169 \textcolor{keyword}{extern} \textcolor{keyword}{const} \textcolor{keywordtype}{double} TAU\_M\_FM       ;       \textcolor{comment}{// fm\string^-\/1}}
+\DoxyCodeLine{170 }
+\DoxyCodeLine{171 \textcolor{comment}{// Proton}}
+\DoxyCodeLine{172 \textcolor{keyword}{extern} \textcolor{keyword}{const} \textcolor{keywordtype}{double} PROTON\_M\_GEV    ;       \textcolor{comment}{// GeV}}
+\DoxyCodeLine{173 \textcolor{keyword}{extern} \textcolor{keyword}{const} \textcolor{keywordtype}{double} PROTON\_M\_MEV    ;       \textcolor{comment}{// MeV}}
+\DoxyCodeLine{174 \textcolor{keyword}{extern} \textcolor{keyword}{const} \textcolor{keywordtype}{double} PROTON\_M\_FM     ;       \textcolor{comment}{// fm\string^-\/1}}
+\DoxyCodeLine{175 }
+\DoxyCodeLine{176 \textcolor{comment}{// Neutron}}
+\DoxyCodeLine{177 \textcolor{keyword}{extern} \textcolor{keyword}{const} \textcolor{keywordtype}{double} NEUTRON\_M\_GEV   ;       \textcolor{comment}{// GeV}}
+\DoxyCodeLine{178 \textcolor{keyword}{extern} \textcolor{keyword}{const} \textcolor{keywordtype}{double} NEUTRON\_M\_MEV   ;       \textcolor{comment}{// MeV}}
+\DoxyCodeLine{179 \textcolor{keyword}{extern} \textcolor{keyword}{const} \textcolor{keywordtype}{double} NEUTRON\_M\_FM    ;       \textcolor{comment}{// fm\string^-\/1}}
+\DoxyCodeLine{180 }
+\DoxyCodeLine{181 \textcolor{comment}{// Sigma\string^-\/ Baryon}}
+\DoxyCodeLine{182 \textcolor{keyword}{extern} \textcolor{keyword}{const} \textcolor{keywordtype}{double} SIGMA\_MINUS\_M\_GEV   ;       \textcolor{comment}{// GeV}}
+\DoxyCodeLine{183 \textcolor{keyword}{extern} \textcolor{keyword}{const} \textcolor{keywordtype}{double} SIGMA\_MINUS\_M\_MEV   ;       \textcolor{comment}{// MeV}}
+\DoxyCodeLine{184 \textcolor{keyword}{extern} \textcolor{keyword}{const} \textcolor{keywordtype}{double} SIGMA\_MINUS\_M\_FM    ;       \textcolor{comment}{// fm\string^-\/1}}
+\DoxyCodeLine{185 }
+\DoxyCodeLine{186 \textcolor{comment}{// Sigma\string^0 Baryon}}
+\DoxyCodeLine{187 \textcolor{keyword}{extern} \textcolor{keyword}{const} \textcolor{keywordtype}{double} SIGMA\_ZERO\_M\_GEV   ;       \textcolor{comment}{// GeV}}
+\DoxyCodeLine{188 \textcolor{keyword}{extern} \textcolor{keyword}{const} \textcolor{keywordtype}{double} SIGMA\_ZERO\_M\_MEV   ;       \textcolor{comment}{// MeV}}
+\DoxyCodeLine{189 \textcolor{keyword}{extern} \textcolor{keyword}{const} \textcolor{keywordtype}{double} SIGMA\_ZERO\_M\_FM    ;       \textcolor{comment}{// fm\string^-\/1}}
+\DoxyCodeLine{190 }
+\DoxyCodeLine{191 \textcolor{comment}{// Sigma\string^+ Baryon}}
+\DoxyCodeLine{192 \textcolor{keyword}{extern} \textcolor{keyword}{const} \textcolor{keywordtype}{double} SIGMA\_PLUS\_M\_GEV   ;       \textcolor{comment}{// GeV}}
+\DoxyCodeLine{193 \textcolor{keyword}{extern} \textcolor{keyword}{const} \textcolor{keywordtype}{double} SIGMA\_PLUS\_M\_MEV   ;       \textcolor{comment}{// MeV}}
+\DoxyCodeLine{194 \textcolor{keyword}{extern} \textcolor{keyword}{const} \textcolor{keywordtype}{double} SIGMA\_PLUS\_M\_FM    ;       \textcolor{comment}{// fm\string^-\/1}}
+\DoxyCodeLine{195 }
+\DoxyCodeLine{196 \textcolor{comment}{// Lambda\string^0 Baryon}}
+\DoxyCodeLine{197 \textcolor{keyword}{extern} \textcolor{keyword}{const} \textcolor{keywordtype}{double} LAMBDA\_ZERO\_M\_GEV   ;       \textcolor{comment}{// GeV}}
+\DoxyCodeLine{198 \textcolor{keyword}{extern} \textcolor{keyword}{const} \textcolor{keywordtype}{double} LAMBDA\_ZERO\_M\_MEV   ;       \textcolor{comment}{// MeV}}
+\DoxyCodeLine{199 \textcolor{keyword}{extern} \textcolor{keyword}{const} \textcolor{keywordtype}{double} LAMBDA\_ZERO\_M\_FM    ;       \textcolor{comment}{// fm\string^-\/1}}
+\DoxyCodeLine{200 }
+\DoxyCodeLine{201 \textcolor{comment}{// Xsi\string^-\/ Baryon}}
+\DoxyCodeLine{202 \textcolor{keyword}{extern} \textcolor{keyword}{const} \textcolor{keywordtype}{double} XSI\_MINUS\_M\_GEV   ;       \textcolor{comment}{// GeV}}
+\DoxyCodeLine{203 \textcolor{keyword}{extern} \textcolor{keyword}{const} \textcolor{keywordtype}{double} XSI\_MINUS\_M\_MEV   ;       \textcolor{comment}{// MeV}}
+\DoxyCodeLine{204 \textcolor{keyword}{extern} \textcolor{keyword}{const} \textcolor{keywordtype}{double} XSI\_MINUS\_M\_FM    ;       \textcolor{comment}{// fm\string^-\/1}}
+\DoxyCodeLine{205 }
+\DoxyCodeLine{206 \textcolor{comment}{// Xsi\string^0 Baryon}}
+\DoxyCodeLine{207 \textcolor{keyword}{extern} \textcolor{keyword}{const} \textcolor{keywordtype}{double} XSI\_ZERO\_M\_GEV   ;       \textcolor{comment}{// GeV}}
+\DoxyCodeLine{208 \textcolor{keyword}{extern} \textcolor{keyword}{const} \textcolor{keywordtype}{double} XSI\_ZERO\_M\_MEV   ;       \textcolor{comment}{// MeV}}
+\DoxyCodeLine{209 \textcolor{keyword}{extern} \textcolor{keyword}{const} \textcolor{keywordtype}{double} XSI\_ZERO\_M\_FM    ;       \textcolor{comment}{// fm\string^-\/1}}
+\DoxyCodeLine{210 }
+\DoxyCodeLine{211 \textcolor{comment}{// Delta\string^-\/ Baryon}}
+\DoxyCodeLine{212 \textcolor{keyword}{extern} \textcolor{keyword}{const} \textcolor{keywordtype}{double} DELTA\_MINUS\_M\_GEV   ;       \textcolor{comment}{// GeV}}
+\DoxyCodeLine{213 \textcolor{keyword}{extern} \textcolor{keyword}{const} \textcolor{keywordtype}{double} DELTA\_MINUS\_M\_MEV   ;       \textcolor{comment}{// MeV}}
+\DoxyCodeLine{214 \textcolor{keyword}{extern} \textcolor{keyword}{const} \textcolor{keywordtype}{double} DELTA\_MINUS\_M\_FM    ;       \textcolor{comment}{// fm\string^-\/1}}
+\DoxyCodeLine{215 }
+\DoxyCodeLine{216 \textcolor{comment}{// Delta\string^0 Baryon}}
+\DoxyCodeLine{217 \textcolor{keyword}{extern} \textcolor{keyword}{const} \textcolor{keywordtype}{double} DELTA\_ZERO\_M\_GEV   ;       \textcolor{comment}{// GeV}}
+\DoxyCodeLine{218 \textcolor{keyword}{extern} \textcolor{keyword}{const} \textcolor{keywordtype}{double} DELTA\_ZERO\_M\_MEV   ;       \textcolor{comment}{// MeV}}
+\DoxyCodeLine{219 \textcolor{keyword}{extern} \textcolor{keyword}{const} \textcolor{keywordtype}{double} DELTA\_ZERO\_M\_FM    ;       \textcolor{comment}{// fm\string^-\/1}}
+\DoxyCodeLine{220 }
+\DoxyCodeLine{221 \textcolor{comment}{// Delta\string^+ Baryon}}
+\DoxyCodeLine{222 \textcolor{keyword}{extern} \textcolor{keyword}{const} \textcolor{keywordtype}{double} DELTA\_PLUS\_M\_GEV   ;       \textcolor{comment}{// GeV}}
+\DoxyCodeLine{223 \textcolor{keyword}{extern} \textcolor{keyword}{const} \textcolor{keywordtype}{double} DELTA\_PLUS\_M\_MEV   ;       \textcolor{comment}{// MeV}}
+\DoxyCodeLine{224 \textcolor{keyword}{extern} \textcolor{keyword}{const} \textcolor{keywordtype}{double} DELTA\_PLUS\_M\_FM    ;       \textcolor{comment}{// fm\string^-\/1}}
+\DoxyCodeLine{225 }
+\DoxyCodeLine{226 \textcolor{comment}{// Delta\string^++ Baryon}}
+\DoxyCodeLine{227 \textcolor{keyword}{extern} \textcolor{keyword}{const} \textcolor{keywordtype}{double} DELTA\_PLUSPLUS\_M\_GEV   ;       \textcolor{comment}{// GeV}}
+\DoxyCodeLine{228 \textcolor{keyword}{extern} \textcolor{keyword}{const} \textcolor{keywordtype}{double} DELTA\_PLUSPLUS\_M\_MEV   ;       \textcolor{comment}{// MeV}}
+\DoxyCodeLine{229 \textcolor{keyword}{extern} \textcolor{keyword}{const} \textcolor{keywordtype}{double} DELTA\_PLUSPLUS\_M\_FM    ;       \textcolor{comment}{// fm\string^-\/1}}
+\DoxyCodeLine{230 }
+\DoxyCodeLine{231 \textcolor{comment}{// -\/-\/-\/-\/ Quark Masses -\/-\/-\/-\/}}
+\DoxyCodeLine{232 \textcolor{comment}{// Ref: https://pdg.lbl.gov/2022/tables/rpp2022-\/sum-\/quarks.pdf}}
+\DoxyCodeLine{233 \textcolor{comment}{// Up quark}}
+\DoxyCodeLine{234 \textcolor{keyword}{extern} \textcolor{keyword}{const} \textcolor{keywordtype}{double} UP\_QUARK\_M\_GEV   ;       \textcolor{comment}{// GeV}}
+\DoxyCodeLine{235 \textcolor{keyword}{extern} \textcolor{keyword}{const} \textcolor{keywordtype}{double} UP\_QUARK\_M\_MEV   ;       \textcolor{comment}{// MeV}}
+\DoxyCodeLine{236 \textcolor{keyword}{extern} \textcolor{keyword}{const} \textcolor{keywordtype}{double} UP\_QUARK\_M\_FM    ;       \textcolor{comment}{// fm\string^-\/1}}
+\DoxyCodeLine{237 }
+\DoxyCodeLine{238 \textcolor{comment}{// Down quark}}
+\DoxyCodeLine{239 \textcolor{keyword}{extern} \textcolor{keyword}{const} \textcolor{keywordtype}{double} DOWN\_QUARK\_M\_GEV   ;       \textcolor{comment}{// GeV}}
+\DoxyCodeLine{240 \textcolor{keyword}{extern} \textcolor{keyword}{const} \textcolor{keywordtype}{double} DOWN\_QUARK\_M\_MEV   ;       \textcolor{comment}{// MeV}}
+\DoxyCodeLine{241 \textcolor{keyword}{extern} \textcolor{keyword}{const} \textcolor{keywordtype}{double} DOWN\_QUARK\_M\_FM    ;       \textcolor{comment}{// fm\string^-\/1}}
+\DoxyCodeLine{242 }
+\DoxyCodeLine{243 \textcolor{comment}{// Strange quark}}
+\DoxyCodeLine{244 \textcolor{keyword}{extern} \textcolor{keyword}{const} \textcolor{keywordtype}{double} STRANGE\_QUARK\_M\_GEV   ;      \textcolor{comment}{// GeV}}
+\DoxyCodeLine{245 \textcolor{keyword}{extern} \textcolor{keyword}{const} \textcolor{keywordtype}{double} STRANGE\_QUARK\_M\_MEV   ;      \textcolor{comment}{// MeV}}
+\DoxyCodeLine{246 \textcolor{keyword}{extern} \textcolor{keyword}{const} \textcolor{keywordtype}{double} STRANGE\_QUARK\_M\_FM    ;      \textcolor{comment}{// fm\string^-\/1}}
+\DoxyCodeLine{247 }
+\DoxyCodeLine{248 \textcolor{comment}{// -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{249 }
+\DoxyCodeLine{250 \textcolor{comment}{//......................................}}
+\DoxyCodeLine{251 \textcolor{comment}{//              Sun}}
+\DoxyCodeLine{252 \textcolor{comment}{//......................................}}
+\DoxyCodeLine{253 \textcolor{comment}{// Sun's Mass}}
+\DoxyCodeLine{254 \textcolor{keyword}{extern} \textcolor{keyword}{const} \textcolor{keywordtype}{double} SUN\_M\_KM        ;       \textcolor{comment}{// in km}}
+\DoxyCodeLine{255 }
+\DoxyCodeLine{256 \textcolor{comment}{// Sun radius }}
+\DoxyCodeLine{257 \textcolor{keyword}{extern} \textcolor{keyword}{const} \textcolor{keywordtype}{double} SUN\_R\_CM        ;       \textcolor{comment}{// in cm}}
+\DoxyCodeLine{258 \textcolor{keyword}{extern} \textcolor{keyword}{const} \textcolor{keywordtype}{double} SUN\_R\_KM        ;       \textcolor{comment}{// in km}}
+\DoxyCodeLine{259 \textcolor{keyword}{extern} \textcolor{keyword}{const} \textcolor{keywordtype}{double} SUN\_R\_GEV       ;       \textcolor{comment}{// in GeV}}
+\DoxyCodeLine{260 }
+\DoxyCodeLine{261 \textcolor{comment}{// Sun core temperature}}
+\DoxyCodeLine{262 \textcolor{keyword}{extern} \textcolor{keyword}{const} \textcolor{keywordtype}{double}  SUN\_T\_KEL      ;       \textcolor{comment}{// Kelvin}}
+\DoxyCodeLine{263 \textcolor{keyword}{extern} \textcolor{keyword}{const} \textcolor{keywordtype}{double}  SUN\_T\_GEV      ;       \textcolor{comment}{//  GeV}}
+\DoxyCodeLine{264 }
+\DoxyCodeLine{265 \textcolor{comment}{// Sun core density}}
+\DoxyCodeLine{266 \textcolor{keyword}{extern} \textcolor{keyword}{const} \textcolor{keywordtype}{double}  SUN\_RHO\_SI     ;       \textcolor{comment}{// g / cm\string^3}}
+\DoxyCodeLine{267 \textcolor{keyword}{extern} \textcolor{keyword}{const} \textcolor{keywordtype}{double}  SUN\_RHO\_GEV    ;       \textcolor{comment}{//  GeV\string^4}}
+\DoxyCodeLine{268 }
+\DoxyCodeLine{269 \textcolor{comment}{// Sun's age}}
+\DoxyCodeLine{270 \textcolor{keyword}{extern} \textcolor{keyword}{const} \textcolor{keywordtype}{double}  SUN\_AGE\_GYR    ;       \textcolor{comment}{// Sun's age in Gyr}}
+\DoxyCodeLine{271 \textcolor{keyword}{extern} \textcolor{keyword}{const} \textcolor{keywordtype}{double}  SUN\_AGE\_GEV    ;       \textcolor{comment}{// Sun's age in GeV}}
+\DoxyCodeLine{272 }
+\DoxyCodeLine{273 \textcolor{comment}{// Solar precession rate}}
+\DoxyCodeLine{274 \textcolor{keyword}{extern} \textcolor{keyword}{const} \textcolor{keywordtype}{double} SOLAR\_PREC\_RATE ;       \textcolor{comment}{// degree / day  }}
+\DoxyCodeLine{275 }
+\DoxyCodeLine{276 \textcolor{comment}{//......................................}}
+\DoxyCodeLine{277 \textcolor{comment}{//              Dark Matter}}
+\DoxyCodeLine{278 \textcolor{comment}{//......................................}}
+\DoxyCodeLine{279 \textcolor{comment}{// Dark matter density in the Solar system}}
+\DoxyCodeLine{280 \textcolor{keyword}{extern} \textcolor{keyword}{const} \textcolor{keywordtype}{double}  DM\_RHO       ;         \textcolor{comment}{// in GeV/cm\string^3}}
+\DoxyCodeLine{281 \textcolor{keyword}{extern} \textcolor{keyword}{const} \textcolor{keywordtype}{double}  DM\_RHO\_GEV   ;         \textcolor{comment}{// in GeV\string^4}}
+\DoxyCodeLine{282 }
+\DoxyCodeLine{283 \textcolor{comment}{// cross section needed for relic abundance (cm\string^3/s)}}
+\DoxyCodeLine{284 \textcolor{keyword}{extern} \textcolor{keyword}{const} \textcolor{keywordtype}{double} SIG\_V\_REL     ;}
+\DoxyCodeLine{285 }
+\DoxyCodeLine{286 \textcolor{comment}{// Angular average of the DM velocity distribution with respect to the solar rest}}
+\DoxyCodeLine{287 \textcolor{comment}{// frame neglecting the gravitational attraction of the Sun.}}
+\DoxyCodeLine{288 \textcolor{keyword}{extern} \textcolor{keyword}{const} \textcolor{keywordtype}{double}  F\_Sun        ;         \textcolor{comment}{// in natural units }}
+\DoxyCodeLine{289 }
+\DoxyCodeLine{290 \textcolor{comment}{//......................................}}
+\DoxyCodeLine{291 \textcolor{comment}{//              Earth}}
+\DoxyCodeLine{292 \textcolor{comment}{//......................................}}
+\DoxyCodeLine{293 \textcolor{keyword}{extern} \textcolor{keyword}{const} \textcolor{keywordtype}{double} EARTH\_ROT\_AXIS  ;       \textcolor{comment}{// Degrees}}
+\DoxyCodeLine{294 \textcolor{keyword}{extern} \textcolor{keyword}{const} \textcolor{keywordtype}{double} EARTH\_RADIUS    ;       \textcolor{comment}{// km}}
+\DoxyCodeLine{295 }
+\DoxyCodeLine{296 \textcolor{comment}{// Earth' s second dynamic form factor}}
+\DoxyCodeLine{297 \textcolor{keyword}{extern} \textcolor{keyword}{const} \textcolor{keywordtype}{double} EARTH\_J2        ;       \textcolor{comment}{// Earth's J2 factor}}
+\DoxyCodeLine{298 }
+\DoxyCodeLine{299 \textcolor{comment}{// Distance betwen the Sun \& Earth}}
+\DoxyCodeLine{300 \textcolor{keyword}{extern} \textcolor{keyword}{const} \textcolor{keywordtype}{double} EARTH\_2\_SUN     ;       \textcolor{comment}{// km}}
+\DoxyCodeLine{301 \textcolor{keyword}{extern} \textcolor{keyword}{const} \textcolor{keywordtype}{double} EARTH\_2\_SUN\_GEV ;       \textcolor{comment}{// GeV}}
+\DoxyCodeLine{302 }
+\DoxyCodeLine{303 \textcolor{comment}{//......................................}}
+\DoxyCodeLine{304 \textcolor{comment}{//              Date \& Time}}
+\DoxyCodeLine{305 \textcolor{comment}{//......................................}}
+\DoxyCodeLine{306 \textcolor{comment}{// Noon on January 1, 2000}}
+\DoxyCodeLine{307 \textcolor{keyword}{extern} \textcolor{keyword}{const} Date J2000 ;   }
+\DoxyCodeLine{308 }
+\DoxyCodeLine{309 \textcolor{comment}{// 00:00:00 UTC on 1 January 1970}}
+\DoxyCodeLine{310 \textcolor{keyword}{extern} \textcolor{keyword}{const} Date UnixEpoch ;   }
+\DoxyCodeLine{311 }
+\DoxyCodeLine{312 \textcolor{comment}{// 00:00:00 UTC on 1 January 1995 (for root)}}
+\DoxyCodeLine{313 \textcolor{keyword}{extern} \textcolor{keyword}{const} Date JAN1st1995 ; }
+\DoxyCodeLine{314 }
+\DoxyCodeLine{315 \textcolor{comment}{//...........................................................}}
+\DoxyCodeLine{316 \textcolor{comment}{//            Vernal equinox (UT)}}
+\DoxyCodeLine{317 \textcolor{comment}{// Ref:}}
+\DoxyCodeLine{318 \textcolor{comment}{//  1. https://en.wikipedia.org/wiki/March\_equinox}}
+\DoxyCodeLine{319 \textcolor{comment}{//  2. http://www.astropixels.com/ephemeris/soleq2001.html}}
+\DoxyCodeLine{320 \textcolor{comment}{//...........................................................}}
+\DoxyCodeLine{321 \textcolor{comment}{// Vernal equinox in 2001 (in UT)}}
+\DoxyCodeLine{322 \textcolor{keyword}{extern} \textcolor{keyword}{const} Date VERNAL\_2001;}
+\DoxyCodeLine{323 }
+\DoxyCodeLine{324 \textcolor{comment}{// Vernal equinox in 2002 (in UT)}}
+\DoxyCodeLine{325 \textcolor{keyword}{extern} \textcolor{keyword}{const} Date VERNAL\_2002;}
+\DoxyCodeLine{326 }
+\DoxyCodeLine{327 \textcolor{comment}{// Vernal equinox in 2003 (in UT)}}
+\DoxyCodeLine{328 \textcolor{keyword}{extern} \textcolor{keyword}{const} Date VERNAL\_2003;}
+\DoxyCodeLine{329 }
+\DoxyCodeLine{330 \textcolor{comment}{// Vernal equinox in 2004 (in UT)}}
+\DoxyCodeLine{331 \textcolor{keyword}{extern} \textcolor{keyword}{const} Date VERNAL\_2004;}
+\DoxyCodeLine{332 }
+\DoxyCodeLine{333 \textcolor{comment}{// Vernal equinox in 2005 (in UT)}}
+\DoxyCodeLine{334 \textcolor{keyword}{extern} \textcolor{keyword}{const} Date VERNAL\_2005;}
+\DoxyCodeLine{335 }
+\DoxyCodeLine{336 \textcolor{comment}{// Vernal equinox in 2006 (in UT)}}
+\DoxyCodeLine{337 \textcolor{keyword}{extern} \textcolor{keyword}{const} Date VERNAL\_2006;}
+\DoxyCodeLine{338 }
+\DoxyCodeLine{339 \textcolor{comment}{// Vernal equinox in 2007 (in UT)}}
+\DoxyCodeLine{340 \textcolor{keyword}{extern} \textcolor{keyword}{const} Date VERNAL\_2007;}
+\DoxyCodeLine{341 }
+\DoxyCodeLine{342 \textcolor{comment}{// Vernal equinox in 2008 (in UT)}}
+\DoxyCodeLine{343 \textcolor{keyword}{extern} \textcolor{keyword}{const} Date VERNAL\_2008;}
+\DoxyCodeLine{344 }
+\DoxyCodeLine{345 \textcolor{comment}{// Vernal equinox in 2009 (in UT)}}
+\DoxyCodeLine{346 \textcolor{keyword}{extern} \textcolor{keyword}{const} Date VERNAL\_2009;}
+\DoxyCodeLine{347 }
+\DoxyCodeLine{348 \textcolor{comment}{// Vernal equinox in 2010 (in UT)}}
+\DoxyCodeLine{349 \textcolor{keyword}{extern} \textcolor{keyword}{const} Date VERNAL\_2010;}
+\DoxyCodeLine{350 }
+\DoxyCodeLine{351 \textcolor{comment}{// Vernal equinox in 2011 (in UT)}}
+\DoxyCodeLine{352 \textcolor{keyword}{extern} \textcolor{keyword}{const} Date VERNAL\_2011;}
+\DoxyCodeLine{353 }
+\DoxyCodeLine{354 \textcolor{comment}{// Vernal equinox in 2012 (in UT)}}
+\DoxyCodeLine{355 \textcolor{keyword}{extern} \textcolor{keyword}{const} Date VERNAL\_2012;}
+\DoxyCodeLine{356 }
+\DoxyCodeLine{357 \textcolor{comment}{// Vernal equinox in 2013 (in UT)}}
+\DoxyCodeLine{358 \textcolor{keyword}{extern} \textcolor{keyword}{const} Date VERNAL\_2013;}
+\DoxyCodeLine{359 }
+\DoxyCodeLine{360 \textcolor{comment}{// Vernal equinox in 2014 (in UT)}}
+\DoxyCodeLine{361 \textcolor{keyword}{extern} \textcolor{keyword}{const} Date VERNAL\_2014;}
+\DoxyCodeLine{362 }
+\DoxyCodeLine{363 \textcolor{comment}{// Vernal equinox in 2015 (in UT)}}
+\DoxyCodeLine{364 \textcolor{keyword}{extern} \textcolor{keyword}{const} Date VERNAL\_2015;}
+\DoxyCodeLine{365 }
+\DoxyCodeLine{366 \textcolor{comment}{// Vernal equinox in 2016 (in UT)}}
+\DoxyCodeLine{367 \textcolor{keyword}{extern} \textcolor{keyword}{const} Date VERNAL\_2016;}
+\DoxyCodeLine{368 }
+\DoxyCodeLine{369 \textcolor{comment}{// Vernal equinox in 2017 (in UT)}}
+\DoxyCodeLine{370 \textcolor{keyword}{extern} \textcolor{keyword}{const} Date VERNAL\_2017;}
+\DoxyCodeLine{371 }
+\DoxyCodeLine{372 \textcolor{comment}{// Vernal equinox in 2018 (in UT)}}
+\DoxyCodeLine{373 \textcolor{keyword}{extern} \textcolor{keyword}{const} Date VERNAL\_2018;}
+\DoxyCodeLine{374 }
+\DoxyCodeLine{375 \textcolor{comment}{// Vernal equinox in 2019 (in UT)}}
+\DoxyCodeLine{376 \textcolor{keyword}{extern} \textcolor{keyword}{const} Date VERNAL\_2019;}
+\DoxyCodeLine{377 }
+\DoxyCodeLine{378 \textcolor{comment}{// Vernal equinox in 2020 (in UT)}}
+\DoxyCodeLine{379 \textcolor{keyword}{extern} \textcolor{keyword}{const} Date VERNAL\_2020;}
+\DoxyCodeLine{380 \textcolor{comment}{//...............................................}}
+\DoxyCodeLine{381 }
+\DoxyCodeLine{382 \textcolor{comment}{//==============================================================}}
+\DoxyCodeLine{383 }
+\DoxyCodeLine{384 \textcolor{comment}{//==============================================================}}
+\DoxyCodeLine{385 \textcolor{comment}{// Chemical Elements}}
+\DoxyCodeLine{386 \textcolor{keyword}{struct }\mbox{\hyperlink{struct_zaki_1_1_physics_1_1_element}{Element}}}
+\DoxyCodeLine{387 \{}
+\DoxyCodeLine{388     std::string sym = \textcolor{stringliteral}{"{}"{}} ;}
+\DoxyCodeLine{389     \textcolor{keywordtype}{double} Z = 0 ; \textcolor{comment}{// Atomic number}}
+\DoxyCodeLine{390     \textcolor{keywordtype}{double} A = 0 ; \textcolor{comment}{// Mass number, Standard atomic weight }}
+\DoxyCodeLine{391     \textcolor{keywordtype}{double} I = 0 ; \textcolor{comment}{// DM capture rate in the Sun}}
+\DoxyCodeLine{392     \textcolor{keywordtype}{double} v2 = 0; \textcolor{comment}{// Typical escape velocity squared in the Sun}}
+\DoxyCodeLine{393 }
+\DoxyCodeLine{394     \mbox{\hyperlink{struct_zaki_1_1_physics_1_1_element}{Element}}() \{\} }
+\DoxyCodeLine{395     \mbox{\hyperlink{struct_zaki_1_1_physics_1_1_element}{Element}}(\textcolor{keyword}{const} std::string\& in\_sym, \textcolor{keywordtype}{double} in\_Z, \textcolor{keywordtype}{double} in\_A)}
+\DoxyCodeLine{396         : sym(in\_sym), Z(in\_Z), A(in\_A) \{\}}
+\DoxyCodeLine{397     \mbox{\hyperlink{struct_zaki_1_1_physics_1_1_element}{Element}}(\textcolor{keyword}{const} std::string\& in\_sym, \textcolor{keywordtype}{double} in\_Z, \textcolor{keywordtype}{double} in\_A, \textcolor{keywordtype}{double} in\_I, \textcolor{keywordtype}{double} in\_v2)}
+\DoxyCodeLine{398         : sym(in\_sym), Z(in\_Z), A(in\_A), I(in\_I), v2(in\_v2) \{\}}
+\DoxyCodeLine{399 }
+\DoxyCodeLine{400     \textcolor{keywordtype}{double} mu() \{ \textcolor{keywordflow}{return} A*AMU\_2\_GEV ;\} \textcolor{comment}{// Molar mass in GeV}}
+\DoxyCodeLine{401 \};}
+\DoxyCodeLine{402 \textcolor{comment}{//==============================================================}}
+\DoxyCodeLine{403 }
+\DoxyCodeLine{404 \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{405 \} \textcolor{comment}{// End of namespace Zaki::Physics}}
+\DoxyCodeLine{406 \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{407 }
+\DoxyCodeLine{408 \textcolor{preprocessor}{\#endif }\textcolor{comment}{/*Zaki\_Physics\_Constants\_H*/}\textcolor{preprocessor}{}}
+
+\end{DoxyCode}

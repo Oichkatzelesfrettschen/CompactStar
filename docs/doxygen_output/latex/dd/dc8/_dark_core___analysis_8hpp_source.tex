@@ -1,0 +1,287 @@
+\hypertarget{_dark_core___analysis_8hpp_source}{}\doxysection{Dark\+Core\+\_\+\+Analysis.\+hpp}
+\label{_dark_core___analysis_8hpp_source}\index{CompactStar/Extensions/MixedStar/DarkCore\_Analysis.hpp@{CompactStar/Extensions/MixedStar/DarkCore\_Analysis.hpp}}
+\mbox{\hyperlink{_dark_core___analysis_8hpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{comment}{// -\/*-\/ lsst-\/c++ -\/*-\/}}
+\DoxyCodeLine{2 \textcolor{comment}{/*}}
+\DoxyCodeLine{3 \textcolor{comment}{ * CompactStar}}
+\DoxyCodeLine{4 \textcolor{comment}{ * See License file at the top of the source tree.}}
+\DoxyCodeLine{5 \textcolor{comment}{ *}}
+\DoxyCodeLine{6 \textcolor{comment}{ * Copyright (c) 2023 Mohammadreza Zakeri}}
+\DoxyCodeLine{7 \textcolor{comment}{ *}}
+\DoxyCodeLine{8 \textcolor{comment}{ * Permission is hereby granted, free of charge, to any person obtaining a copy}}
+\DoxyCodeLine{9 \textcolor{comment}{ * of this software and associated documentation files (the "{}Software"{}), to deal}}
+\DoxyCodeLine{10 \textcolor{comment}{ * in the Software without restriction, including without limitation the rights}}
+\DoxyCodeLine{11 \textcolor{comment}{ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell}}
+\DoxyCodeLine{12 \textcolor{comment}{ * copies of the Software, and to permit persons to whom the Software is}}
+\DoxyCodeLine{13 \textcolor{comment}{ * furnished to do so, subject to the following conditions:}}
+\DoxyCodeLine{14 \textcolor{comment}{ *}}
+\DoxyCodeLine{15 \textcolor{comment}{ * The above copyright notice and this permission notice shall be included in all}}
+\DoxyCodeLine{16 \textcolor{comment}{ * copies or substantial portions of the Software.}}
+\DoxyCodeLine{17 \textcolor{comment}{ *}}
+\DoxyCodeLine{18 \textcolor{comment}{ * THE SOFTWARE IS PROVIDED "{}AS IS"{}, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR}}
+\DoxyCodeLine{19 \textcolor{comment}{ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,}}
+\DoxyCodeLine{20 \textcolor{comment}{ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE}}
+\DoxyCodeLine{21 \textcolor{comment}{ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER}}
+\DoxyCodeLine{22 \textcolor{comment}{ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,}}
+\DoxyCodeLine{23 \textcolor{comment}{ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE}}
+\DoxyCodeLine{24 \textcolor{comment}{ * SOFTWARE.}}
+\DoxyCodeLine{25 \textcolor{comment}{ */}}
+\DoxyCodeLine{26 }
+\DoxyCodeLine{38 \textcolor{comment}{// Created on May 21, 2022}}
+\DoxyCodeLine{39 \textcolor{preprocessor}{\#ifndef CompactStar\_DarkCore\_Analysis\_H}}
+\DoxyCodeLine{40 \textcolor{preprocessor}{\#define CompactStar\_DarkCore\_Analysis\_H}}
+\DoxyCodeLine{41 }
+\DoxyCodeLine{42 \textcolor{comment}{// \#include <Zaki/Vector/DataSet.hpp>}}
+\DoxyCodeLine{43 }
+\DoxyCodeLine{44 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_analysis_8hpp}{CompactStar/Core/Analysis.hpp}}"{}}}
+\DoxyCodeLine{45 }
+\DoxyCodeLine{46 \textcolor{comment}{//==============================================================}}
+\DoxyCodeLine{47 \textcolor{keyword}{namespace }CompactStar}
+\DoxyCodeLine{48 \{}
+\DoxyCodeLine{49 }
+\DoxyCodeLine{50 \textcolor{comment}{//==============================================================}}
+\DoxyCodeLine{51 \textcolor{keyword}{struct }\mbox{\hyperlink{struct_compact_star_1_1_d_m___rate}{DM\_Rate}}}
+\DoxyCodeLine{52 \{}
+\DoxyCodeLine{53     \textcolor{keyword}{struct }\mbox{\hyperlink{struct_compact_star_1_1_d_m___rate_1_1_baryon}{Baryon}}}
+\DoxyCodeLine{54     \{}
+\DoxyCodeLine{55         std::string name = \textcolor{stringliteral}{"{}"{}};}
+\DoxyCodeLine{56         std::string label = \textcolor{stringliteral}{"{}"{}};}
+\DoxyCodeLine{57         \textcolor{keywordtype}{double} mass = 0;}
+\DoxyCodeLine{58         \textcolor{keywordtype}{double} crit\_chi\_den = -\/1;}
+\DoxyCodeLine{59 }
+\DoxyCodeLine{60         \mbox{\hyperlink{struct_compact_star_1_1_d_m___rate_1_1_baryon}{Baryon}}() \{\}}
+\DoxyCodeLine{61         \mbox{\hyperlink{struct_compact_star_1_1_d_m___rate_1_1_baryon}{Baryon}}(\textcolor{keyword}{const} std::string \&in\_name,}
+\DoxyCodeLine{62                \textcolor{keyword}{const} std::string \&in\_label,}
+\DoxyCodeLine{63                \textcolor{keyword}{const} \textcolor{keywordtype}{double} \&in\_mass)}
+\DoxyCodeLine{64             : name(in\_name),}
+\DoxyCodeLine{65               label(in\_label),}
+\DoxyCodeLine{66               mass(in\_mass)}
+\DoxyCodeLine{67         \{}
+\DoxyCodeLine{68         \}}
+\DoxyCodeLine{69 }
+\DoxyCodeLine{71         \textcolor{keywordtype}{void} \mbox{\hyperlink{struct_compact_star_1_1_d_m___rate_1_1_baryon_a831cb281021ea8e511ea32db02eb277c}{SetCriticalChiDen}}(\textcolor{keyword}{const} \textcolor{keywordtype}{double} \&in\_crit\_chi\_den)}
+\DoxyCodeLine{72         \{}
+\DoxyCodeLine{73             crit\_chi\_den = in\_crit\_chi\_den;}
+\DoxyCodeLine{74         \}}
+\DoxyCodeLine{75     \};}
+\DoxyCodeLine{76 }
+\DoxyCodeLine{77     \textcolor{keyword}{const} \mbox{\hyperlink{class_compact_star_1_1_baryon}{Baryon}} bar;}
+\DoxyCodeLine{78 }
+\DoxyCodeLine{79     \textcolor{keywordtype}{double} fr, b\_dot, fr\_choked, b\_dot\_choked;}
+\DoxyCodeLine{80 }
+\DoxyCodeLine{81     \mbox{\hyperlink{struct_compact_star_1_1_d_m___rate}{DM\_Rate}}(\textcolor{keyword}{const} \mbox{\hyperlink{class_compact_star_1_1_baryon}{Baryon}} \&in\_bar,}
+\DoxyCodeLine{82             \textcolor{keyword}{const} \textcolor{keywordtype}{double} \&in\_fr,}
+\DoxyCodeLine{83             \textcolor{keyword}{const} \textcolor{keywordtype}{double} \&in\_b\_dot,}
+\DoxyCodeLine{84             \textcolor{keyword}{const} \textcolor{keywordtype}{double} \&in\_fr\_choked,}
+\DoxyCodeLine{85             \textcolor{keyword}{const} \textcolor{keywordtype}{double} \&in\_b\_dot\_choked)}
+\DoxyCodeLine{86         : bar(in\_bar), fr(in\_fr), b\_dot(in\_b\_dot),}
+\DoxyCodeLine{87           fr\_choked(in\_fr\_choked),}
+\DoxyCodeLine{88           b\_dot\_choked(in\_b\_dot\_choked)}
+\DoxyCodeLine{89     \{}
+\DoxyCodeLine{90     \}}
+\DoxyCodeLine{91 }
+\DoxyCodeLine{92     std::string Str()\textcolor{keyword}{ const}}
+\DoxyCodeLine{93 \textcolor{keyword}{    }\{}
+\DoxyCodeLine{94         std::stringstream ss;}
+\DoxyCodeLine{95         \textcolor{keywordtype}{char} tmp[200];}
+\DoxyCodeLine{96         snprintf(tmp, \textcolor{keyword}{sizeof}(tmp), \textcolor{stringliteral}{"{}\%-\/16.8e\(\backslash\)t \%-\/16.8e\(\backslash\)t \%-\/16.8e\(\backslash\)t \%-\/16.8e"{}},}
+\DoxyCodeLine{97                  fr, b\_dot, fr\_choked, b\_dot\_choked);}
+\DoxyCodeLine{98         ss << tmp;}
+\DoxyCodeLine{99 }
+\DoxyCodeLine{100         \textcolor{keywordflow}{return} ss.str();}
+\DoxyCodeLine{101     \}}
+\DoxyCodeLine{102 \};}
+\DoxyCodeLine{103 \textcolor{comment}{//==============================================================}}
+\DoxyCodeLine{104 \textcolor{comment}{// struct BNV\_B}}
+\DoxyCodeLine{105 \textcolor{comment}{// \{}}
+\DoxyCodeLine{106 \textcolor{comment}{//   std::vector<DM\_Rate> bnv\_rates ;}}
+\DoxyCodeLine{107 }
+\DoxyCodeLine{108 \textcolor{comment}{//   double b\_tot, b\_vis, b\_dar ;}}
+\DoxyCodeLine{109 \textcolor{comment}{// \};}}
+\DoxyCodeLine{110 }
+\DoxyCodeLine{111 \textcolor{comment}{//==============================================================}}
+\DoxyCodeLine{112 \textcolor{keyword}{struct }\mbox{\hyperlink{struct_compact_star_1_1_d_m___rate___seq}{DM\_Rate\_Seq}}}
+\DoxyCodeLine{113 \{}
+\DoxyCodeLine{114     \textcolor{comment}{// struct Baryon}}
+\DoxyCodeLine{115     \textcolor{comment}{// \{}}
+\DoxyCodeLine{116     \textcolor{comment}{//   std::string name  = "{}"{};}}
+\DoxyCodeLine{117     \textcolor{comment}{//   std::string label = "{}"{} ;}}
+\DoxyCodeLine{118     \textcolor{comment}{//   double mass = 0 ;}}
+\DoxyCodeLine{119     \textcolor{comment}{// \} ;}}
+\DoxyCodeLine{120 }
+\DoxyCodeLine{121     \textcolor{comment}{// Baryon bar ;}}
+\DoxyCodeLine{122     \textcolor{keywordtype}{double} b\_tot, b\_vis, b\_dar, m\_tot;}
+\DoxyCodeLine{123     std::vector<DM\_Rate> bnv\_rates;}
+\DoxyCodeLine{124 }
+\DoxyCodeLine{125     \textcolor{comment}{// std::vector<BNV\_B> bnv\_b ;}}
+\DoxyCodeLine{126 }
+\DoxyCodeLine{127     \textcolor{comment}{// double crit\_chi\_den = -\/1 ;}}
+\DoxyCodeLine{128 }
+\DoxyCodeLine{129     \mbox{\hyperlink{struct_compact_star_1_1_d_m___rate___seq}{DM\_Rate\_Seq}}(\textcolor{keyword}{const} \textcolor{keywordtype}{double} \&in\_b\_tot,}
+\DoxyCodeLine{130                 \textcolor{keyword}{const} \textcolor{keywordtype}{double} \&in\_b\_vis,}
+\DoxyCodeLine{131                 \textcolor{keyword}{const} \textcolor{keywordtype}{double} \&in\_b\_dar,}
+\DoxyCodeLine{132                 \textcolor{keyword}{const} \textcolor{keywordtype}{double} \&in\_m\_tot)}
+\DoxyCodeLine{133         : b\_tot(in\_b\_tot), b\_vis(in\_b\_vis),}
+\DoxyCodeLine{134           b\_dar(in\_b\_dar), m\_tot(in\_m\_tot)}
+\DoxyCodeLine{135     \{}
+\DoxyCodeLine{136     \}}
+\DoxyCodeLine{137 }
+\DoxyCodeLine{138     \textcolor{comment}{// DM\_Rate\_Seq(const Baryon\& in\_bar)}}
+\DoxyCodeLine{139     \textcolor{comment}{// \{}}
+\DoxyCodeLine{140     \textcolor{comment}{//   bar = in\_bar ;}}
+\DoxyCodeLine{141     \textcolor{comment}{// \}}}
+\DoxyCodeLine{142 }
+\DoxyCodeLine{143     \textcolor{keywordtype}{void} Append(\textcolor{keyword}{const} \mbox{\hyperlink{struct_compact_star_1_1_d_m___rate}{DM\_Rate}} \&in\_bnv\_rate)}
+\DoxyCodeLine{144     \{}
+\DoxyCodeLine{145         bnv\_rates.emplace\_back(in\_bnv\_rate);}
+\DoxyCodeLine{146     \}}
+\DoxyCodeLine{147 }
+\DoxyCodeLine{148     \textcolor{comment}{// /// Sets the critical chi density that fully blocks the decay}}
+\DoxyCodeLine{149     \textcolor{comment}{// void SetCriticalChiDen(const double\&) ;}}
+\DoxyCodeLine{150 }
+\DoxyCodeLine{151     std::string Str()\textcolor{keyword}{ const}}
+\DoxyCodeLine{152 \textcolor{keyword}{    }\{}
+\DoxyCodeLine{153         std::stringstream ss;}
+\DoxyCodeLine{154 }
+\DoxyCodeLine{155         \textcolor{keywordflow}{for} (\textcolor{keywordtype}{size\_t} i = 0; i < bnv\_rates.size(); i++)}
+\DoxyCodeLine{156         \{}
+\DoxyCodeLine{157             ss << bnv\_rates[i].Str() << \textcolor{stringliteral}{"{}\(\backslash\)t "{}};}
+\DoxyCodeLine{158         \}}
+\DoxyCodeLine{159 }
+\DoxyCodeLine{160         \textcolor{keywordtype}{char} tmp[200];}
+\DoxyCodeLine{161         snprintf(tmp, \textcolor{keyword}{sizeof}(tmp), \textcolor{stringliteral}{"{}\%-\/16.8e\(\backslash\)t \%-\/16.8e\(\backslash\)t \%-\/16.8e\(\backslash\)t \%-\/16.8e"{}},}
+\DoxyCodeLine{162                  b\_tot, b\_vis, b\_dar, m\_tot);}
+\DoxyCodeLine{163         ss << tmp;}
+\DoxyCodeLine{164 }
+\DoxyCodeLine{165         \textcolor{keywordflow}{return} ss.str();}
+\DoxyCodeLine{166     \}}
+\DoxyCodeLine{167 \};}
+\DoxyCodeLine{168 }
+\DoxyCodeLine{169 \textcolor{comment}{//==============================================================}}
+\DoxyCodeLine{170 \textcolor{keyword}{struct }\mbox{\hyperlink{struct_compact_star_1_1_b_n_v___time}{BNV\_Time}}}
+\DoxyCodeLine{171 \{}
+\DoxyCodeLine{172     \textcolor{keywordtype}{double} t = 0;}
+\DoxyCodeLine{173 }
+\DoxyCodeLine{175     \textcolor{keywordtype}{double} \mbox{\hyperlink{struct_compact_star_1_1_b_n_v___time_a961ee87b6998da76dddd40f71759b05c}{t\_ch}} = 0;}
+\DoxyCodeLine{176 }
+\DoxyCodeLine{177     \mbox{\hyperlink{struct_compact_star_1_1_b_n_v___time}{BNV\_Time}}() \{\}}
+\DoxyCodeLine{178 }
+\DoxyCodeLine{179     \mbox{\hyperlink{struct_compact_star_1_1_b_n_v___time}{BNV\_Time}}(\textcolor{keyword}{const} \textcolor{keywordtype}{double} \&in\_t, \textcolor{keyword}{const} \textcolor{keywordtype}{double} \&in\_t\_ch)}
+\DoxyCodeLine{180         : t(in\_t), \mbox{\hyperlink{struct_compact_star_1_1_b_n_v___time_a961ee87b6998da76dddd40f71759b05c}{t\_ch}}(in\_t\_ch) \{\}}
+\DoxyCodeLine{181 }
+\DoxyCodeLine{182     BNV\_Time operator/(\textcolor{keyword}{const} BNV\_Time \&rhs)\textcolor{keyword}{ const}}
+\DoxyCodeLine{183 \textcolor{keyword}{    }\{}
+\DoxyCodeLine{184         \textcolor{keywordflow}{return} \{t / rhs.t, \mbox{\hyperlink{struct_compact_star_1_1_b_n_v___time_a961ee87b6998da76dddd40f71759b05c}{t\_ch}} / rhs.t\_ch\};}
+\DoxyCodeLine{185     \}}
+\DoxyCodeLine{186 }
+\DoxyCodeLine{187     BNV\_Time operator+(\textcolor{keyword}{const} BNV\_Time \&rhs)\textcolor{keyword}{ const}}
+\DoxyCodeLine{188 \textcolor{keyword}{    }\{}
+\DoxyCodeLine{189         \textcolor{keywordflow}{return} \{t + rhs.t, \mbox{\hyperlink{struct_compact_star_1_1_b_n_v___time_a961ee87b6998da76dddd40f71759b05c}{t\_ch}} + rhs.t\_ch\};}
+\DoxyCodeLine{190     \}}
+\DoxyCodeLine{191 }
+\DoxyCodeLine{192     BNV\_Time \&operator+=(\textcolor{keyword}{const} BNV\_Time \&rhs)}
+\DoxyCodeLine{193     \{}
+\DoxyCodeLine{194         t += rhs.t;}
+\DoxyCodeLine{195         \mbox{\hyperlink{struct_compact_star_1_1_b_n_v___time_a961ee87b6998da76dddd40f71759b05c}{t\_ch}} += rhs.t\_ch;}
+\DoxyCodeLine{196 }
+\DoxyCodeLine{197         \textcolor{keywordflow}{return} *\textcolor{keyword}{this};}
+\DoxyCodeLine{198     \}}
+\DoxyCodeLine{199 }
+\DoxyCodeLine{200     BNV\_Time operator-\/(\textcolor{keyword}{const} BNV\_Time \&rhs)\textcolor{keyword}{ const}}
+\DoxyCodeLine{201 \textcolor{keyword}{    }\{}
+\DoxyCodeLine{202         \textcolor{keywordflow}{return} \{t -\/ rhs.t, \mbox{\hyperlink{struct_compact_star_1_1_b_n_v___time_a961ee87b6998da76dddd40f71759b05c}{t\_ch}} -\/ rhs.t\_ch\};}
+\DoxyCodeLine{203     \}}
+\DoxyCodeLine{204 }
+\DoxyCodeLine{205     std::string Str()\textcolor{keyword}{ const}}
+\DoxyCodeLine{206 \textcolor{keyword}{    }\{}
+\DoxyCodeLine{207         \textcolor{keywordtype}{char} tmp[200];}
+\DoxyCodeLine{208         snprintf(tmp, \textcolor{keyword}{sizeof}(tmp), \textcolor{stringliteral}{"{}\%.6e [\%.6e]"{}}, \mbox{\hyperlink{struct_compact_star_1_1_b_n_v___time_a961ee87b6998da76dddd40f71759b05c}{t\_ch}}, t);}
+\DoxyCodeLine{209         \textcolor{keywordflow}{return} std::string(tmp);}
+\DoxyCodeLine{210     \}}
+\DoxyCodeLine{211 \};}
+\DoxyCodeLine{212 }
+\DoxyCodeLine{213 \textcolor{comment}{//==============================================================}}
+\DoxyCodeLine{214 \textcolor{keyword}{struct }\mbox{\hyperlink{struct_compact_star_1_1_dark_core___output}{DarkCore\_Output}}}
+\DoxyCodeLine{215 \{}
+\DoxyCodeLine{217     \mbox{\hyperlink{struct_compact_star_1_1_d_m___rate_1_1_baryon}{DM\_Rate::Baryon}} \mbox{\hyperlink{struct_compact_star_1_1_dark_core___output_a3639f536028c737ee6585115bafe08ac}{bar}};}
+\DoxyCodeLine{218 }
+\DoxyCodeLine{220     \textcolor{keywordtype}{double} \mbox{\hyperlink{struct_compact_star_1_1_dark_core___output_aa86e48e3c28296056b65dc2c8f50b1b0}{m\_0}};}
+\DoxyCodeLine{221 }
+\DoxyCodeLine{223     \mbox{\hyperlink{struct_compact_star_1_1_b_n_v___time}{BNV\_Time}} \mbox{\hyperlink{struct_compact_star_1_1_dark_core___output_a7b869b4116c71a8cf16f7c0787dcda44}{t\_0}};}
+\DoxyCodeLine{224 }
+\DoxyCodeLine{226     \mbox{\hyperlink{struct_compact_star_1_1_b_n_v___time}{BNV\_Time}} \mbox{\hyperlink{struct_compact_star_1_1_dark_core___output_a1bf032248662d18804dd026738f476e2}{age}};}
+\DoxyCodeLine{227 }
+\DoxyCodeLine{229     \mbox{\hyperlink{struct_compact_star_1_1_b_n_v___time}{BNV\_Time}} \mbox{\hyperlink{struct_compact_star_1_1_dark_core___output_a6353d2967df8495f6d17bd6ea15802ff}{death}};}
+\DoxyCodeLine{230 }
+\DoxyCodeLine{232     \mbox{\hyperlink{struct_compact_star_1_1_dark_core___output_a64f52521b159ca6885985e0c94ff9914}{DarkCore\_Output}}() \{\}}
+\DoxyCodeLine{233 }
+\DoxyCodeLine{234     \mbox{\hyperlink{struct_compact_star_1_1_b_n_v___time}{BNV\_Time}} Age\_over\_Death()\textcolor{keyword}{ const}}
+\DoxyCodeLine{235 \textcolor{keyword}{    }\{}
+\DoxyCodeLine{236         \textcolor{keywordflow}{return} \mbox{\hyperlink{struct_compact_star_1_1_dark_core___output_a1bf032248662d18804dd026738f476e2}{age}} / \mbox{\hyperlink{struct_compact_star_1_1_dark_core___output_a6353d2967df8495f6d17bd6ea15802ff}{death}};}
+\DoxyCodeLine{237     \}}
+\DoxyCodeLine{238 }
+\DoxyCodeLine{239     std::string Str()\textcolor{keyword}{ const}}
+\DoxyCodeLine{240 \textcolor{keyword}{    }\{}
+\DoxyCodeLine{241         \textcolor{keywordtype}{char} tmp[200];}
+\DoxyCodeLine{242         snprintf(tmp, \textcolor{keyword}{sizeof}(tmp), \textcolor{stringliteral}{"{}\%-\/8s\(\backslash\)t \%.4f\(\backslash\)t \%.6e\(\backslash\)t \%.6e\(\backslash\)t \%.6e\(\backslash\)t \%.6e\(\backslash\)t \%.6e\(\backslash\)t \%.6e\(\backslash\)t \%.6e\(\backslash\)t \%.6e"{}},}
+\DoxyCodeLine{243                  \mbox{\hyperlink{struct_compact_star_1_1_dark_core___output_a3639f536028c737ee6585115bafe08ac}{bar}}.label.c\_str(), \mbox{\hyperlink{struct_compact_star_1_1_dark_core___output_aa86e48e3c28296056b65dc2c8f50b1b0}{m\_0}}, \mbox{\hyperlink{struct_compact_star_1_1_dark_core___output_a7b869b4116c71a8cf16f7c0787dcda44}{t\_0}}.\mbox{\hyperlink{struct_compact_star_1_1_b_n_v___time_a961ee87b6998da76dddd40f71759b05c}{t\_ch}}, \mbox{\hyperlink{struct_compact_star_1_1_dark_core___output_a7b869b4116c71a8cf16f7c0787dcda44}{t\_0}}.t,}
+\DoxyCodeLine{244                  \mbox{\hyperlink{struct_compact_star_1_1_dark_core___output_a1bf032248662d18804dd026738f476e2}{age}}.\mbox{\hyperlink{struct_compact_star_1_1_b_n_v___time_a961ee87b6998da76dddd40f71759b05c}{t\_ch}}, \mbox{\hyperlink{struct_compact_star_1_1_dark_core___output_a1bf032248662d18804dd026738f476e2}{age}}.t, \mbox{\hyperlink{struct_compact_star_1_1_dark_core___output_a6353d2967df8495f6d17bd6ea15802ff}{death}}.\mbox{\hyperlink{struct_compact_star_1_1_b_n_v___time_a961ee87b6998da76dddd40f71759b05c}{t\_ch}}, \mbox{\hyperlink{struct_compact_star_1_1_dark_core___output_a6353d2967df8495f6d17bd6ea15802ff}{death}}.t, Age\_over\_Death().t\_ch, Age\_over\_Death().t);}
+\DoxyCodeLine{245         \textcolor{keywordflow}{return} std::string(tmp);}
+\DoxyCodeLine{246     \}}
+\DoxyCodeLine{247 }
+\DoxyCodeLine{248     std::string header()\textcolor{keyword}{ const}}
+\DoxyCodeLine{249 \textcolor{keyword}{    }\{}
+\DoxyCodeLine{250         \textcolor{keywordtype}{char} tmp[200];}
+\DoxyCodeLine{251         snprintf(tmp, \textcolor{keyword}{sizeof}(tmp), \textcolor{stringliteral}{"{}\%-\/8s\(\backslash\)t \%-\/6s\(\backslash\)t \%-\/13s\(\backslash\)t \%-\/13s\(\backslash\)t \%-\/13s\(\backslash\)t \%-\/13s\(\backslash\)t \%-\/13s\(\backslash\)t \%-\/13s\(\backslash\)t \%-\/13s\(\backslash\)t \%-\/13s"{}},}
+\DoxyCodeLine{252                  \textcolor{stringliteral}{"{}Channel"{}}, \textcolor{stringliteral}{"{}M(0)"{}}, \textcolor{stringliteral}{"{}t\_0"{}}, \textcolor{stringliteral}{"{}t\_0 [ch]"{}}, \textcolor{stringliteral}{"{}age"{}},}
+\DoxyCodeLine{253                  \textcolor{stringliteral}{"{}age [ch]"{}}, \textcolor{stringliteral}{"{}death"{}}, \textcolor{stringliteral}{"{}death [ch]"{}}, \textcolor{stringliteral}{"{}age/death"{}}, \textcolor{stringliteral}{"{}age/death [ch]"{}});}
+\DoxyCodeLine{254         \textcolor{keywordflow}{return} std::string(tmp);}
+\DoxyCodeLine{255     \}}
+\DoxyCodeLine{256 }
+\DoxyCodeLine{257     std::vector<double> GetVals()\textcolor{keyword}{ const}}
+\DoxyCodeLine{258 \textcolor{keyword}{    }\{}
+\DoxyCodeLine{259         \textcolor{keywordflow}{return} \{\mbox{\hyperlink{struct_compact_star_1_1_dark_core___output_aa86e48e3c28296056b65dc2c8f50b1b0}{m\_0}}, \mbox{\hyperlink{struct_compact_star_1_1_dark_core___output_a7b869b4116c71a8cf16f7c0787dcda44}{t\_0}}.\mbox{\hyperlink{struct_compact_star_1_1_b_n_v___time_a961ee87b6998da76dddd40f71759b05c}{t\_ch}}, \mbox{\hyperlink{struct_compact_star_1_1_dark_core___output_a7b869b4116c71a8cf16f7c0787dcda44}{t\_0}}.t,}
+\DoxyCodeLine{260                 \mbox{\hyperlink{struct_compact_star_1_1_dark_core___output_a1bf032248662d18804dd026738f476e2}{age}}.\mbox{\hyperlink{struct_compact_star_1_1_b_n_v___time_a961ee87b6998da76dddd40f71759b05c}{t\_ch}}, \mbox{\hyperlink{struct_compact_star_1_1_dark_core___output_a1bf032248662d18804dd026738f476e2}{age}}.t, \mbox{\hyperlink{struct_compact_star_1_1_dark_core___output_a6353d2967df8495f6d17bd6ea15802ff}{death}}.\mbox{\hyperlink{struct_compact_star_1_1_b_n_v___time_a961ee87b6998da76dddd40f71759b05c}{t\_ch}}, \mbox{\hyperlink{struct_compact_star_1_1_dark_core___output_a6353d2967df8495f6d17bd6ea15802ff}{death}}.t,}
+\DoxyCodeLine{261                 Age\_over\_Death().\mbox{\hyperlink{struct_compact_star_1_1_b_n_v___time_a961ee87b6998da76dddd40f71759b05c}{t\_ch}}, Age\_over\_Death().t\};}
+\DoxyCodeLine{262     \}}
+\DoxyCodeLine{263 \};}
+\DoxyCodeLine{264 }
+\DoxyCodeLine{265 \textcolor{comment}{//==============================================================}}
+\DoxyCodeLine{266 \textcolor{keyword}{class }\mbox{\hyperlink{class_compact_star_1_1_dark_core___analysis}{DarkCore\_Analysis}} : \textcolor{keyword}{public} \mbox{\hyperlink{class_compact_star_1_1_analysis}{Analysis}}}
+\DoxyCodeLine{267 \{}
+\DoxyCodeLine{268     \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{269   \textcolor{keyword}{private}:}
+\DoxyCodeLine{270     \textcolor{comment}{// std::vector<DM\_Rate> bnv\_rates ;}}
+\DoxyCodeLine{271     std::vector<DM\_Rate::Baryon> bar\_list;}
+\DoxyCodeLine{272     std::vector<DM\_Rate\_Seq> bnv\_rate\_seq;}
+\DoxyCodeLine{273 }
+\DoxyCodeLine{274     \mbox{\hyperlink{class_zaki_1_1_vector_1_1_data_set}{Zaki::Vector::DataSet}} neutron\_out;}
+\DoxyCodeLine{275     \mbox{\hyperlink{class_zaki_1_1_vector_1_1_data_set}{Zaki::Vector::DataSet}} lambda\_out;}
+\DoxyCodeLine{276     \mbox{\hyperlink{class_zaki_1_1_vector_1_1_data_set}{Zaki::Vector::DataSet}} sigmam\_out;}
+\DoxyCodeLine{277 }
+\DoxyCodeLine{278     \textcolor{comment}{// Dark particle's mass}}
+\DoxyCodeLine{279     \textcolor{keywordtype}{double} m\_chi = 0;}
+\DoxyCodeLine{280     \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{281   \textcolor{keyword}{public}:}
+\DoxyCodeLine{282     \mbox{\hyperlink{class_compact_star_1_1_dark_core___analysis}{DarkCore\_Analysis}}();}
+\DoxyCodeLine{283 }
+\DoxyCodeLine{284     \mbox{\hyperlink{class_compact_star_1_1_dark_core___analysis}{\string~DarkCore\_Analysis}}();}
+\DoxyCodeLine{285 }
+\DoxyCodeLine{287     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_compact_star_1_1_dark_core___analysis_a0ac02f5059dd46f75ba1bb7d000f0a05}{Analyze}}(\mbox{\hyperlink{class_compact_star_1_1_mixed_star}{MixedStar}} *in\_star) \textcolor{keyword}{override};}
+\DoxyCodeLine{288     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_compact_star_1_1_dark_core___analysis_a272b63654ee1093621dee790f1953bdd}{Analyze}}(\mbox{\hyperlink{class_compact_star_1_1_n_star}{NStar}} *in\_star)\textcolor{keyword}{ override }\{\}}
+\DoxyCodeLine{289 }
+\DoxyCodeLine{291     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_compact_star_1_1_dark_core___analysis_a950ad1404e462e749d29eca7baa76d4d}{Export}}(\textcolor{keyword}{const} \mbox{\hyperlink{class_zaki_1_1_string_1_1_directory}{Zaki::String::Directory}} \&) \textcolor{keyword}{override};}
+\DoxyCodeLine{292 }
+\DoxyCodeLine{293     \textcolor{keywordtype}{void} FindLimits(\textcolor{keyword}{const} \textcolor{keywordtype}{double} \&mass, \textcolor{keyword}{const} \mbox{\hyperlink{class_zaki_1_1_string_1_1_directory}{Zaki::String::Directory}} \&);}
+\DoxyCodeLine{294 }
+\DoxyCodeLine{295     \textcolor{comment}{// Saves the BNV results}}
+\DoxyCodeLine{296     \textcolor{keywordtype}{void} ExportBNV(\textcolor{keyword}{const} \mbox{\hyperlink{class_zaki_1_1_string_1_1_directory}{Zaki::String::Directory}} \&);}
+\DoxyCodeLine{297 \};}
+\DoxyCodeLine{298 }
+\DoxyCodeLine{299 \textcolor{comment}{//==============================================================}}
+\DoxyCodeLine{300 \} \textcolor{comment}{// namespace CompactStar}}
+\DoxyCodeLine{301 \textcolor{comment}{//==============================================================}}
+\DoxyCodeLine{302 \textcolor{preprocessor}{\#endif }\textcolor{comment}{/*CompactStar\_DarkCore\_Analysis\_H*/}\textcolor{preprocessor}{}}
+
+\end{DoxyCode}

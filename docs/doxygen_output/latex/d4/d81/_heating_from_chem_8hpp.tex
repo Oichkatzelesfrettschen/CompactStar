@@ -1,0 +1,28 @@
+\hypertarget{_heating_from_chem_8hpp}{}\doxysection{Compact\+Star/\+Physics/\+Driver/\+Thermal/\+Heating\+From\+Chem.hpp File Reference}
+\label{_heating_from_chem_8hpp}\index{CompactStar/Physics/Driver/Thermal/HeatingFromChem.hpp@{CompactStar/Physics/Driver/Thermal/HeatingFromChem.hpp}}
+
+
+Driver that converts chemical free energy (η⋅Γ) into thermal heating.  
+
+
+{\ttfamily \#include \char`\"{}Compact\+Star/\+Physics/\+Driver/\+IDriver.\+hpp\char`\"{}}\newline
+{\ttfamily \#include $<$array$>$}\newline
+{\ttfamily \#include $<$span$>$}\newline
+{\ttfamily \#include $<$string$>$}\newline
+\doxysubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_heating_from_chem}{Compact\+Star\+::\+Physics\+::\+Driver\+::\+Thermal\+::\+Heating\+From\+Chem}}
+\begin{DoxyCompactList}\small\item\em Accumulates the thermal RHS from chemical heating (η⋅Γ terms). \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{struct_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_heating_from_chem_1_1_options}{Compact\+Star\+::\+Physics\+::\+Driver\+::\+Thermal\+::\+Heating\+From\+Chem\+::\+Options}}
+\begin{DoxyCompactList}\small\item\em Optional knobs for channel selection / scaling. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Driver that converts chemical free energy (η⋅Γ) into thermal heating. 
+
+Contributes to d\+T̃/dt via Q\+\_\+heat = Σ\+\_\+i Γ\+\_\+i(η, T̃, …) $\ast$ η\+\_\+i, distributed over the stellar volume and normalized by the effective heat capacity. Chemical {\itshape evolution} (dη/dt) is handled by separate drivers (e.\+g., Weak\+Restoration).
+
+\begin{DoxyAuthor}{Author}
+Mohammadreza Zakeri (\href{mailto:M.Zakeri@eku.edu}{\texttt{ M.\+Zakeri@eku.\+edu}}) 
+\end{DoxyAuthor}

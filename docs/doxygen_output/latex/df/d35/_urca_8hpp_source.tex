@@ -1,0 +1,91 @@
+\hypertarget{_urca_8hpp_source}{}\doxysection{Urca.\+hpp}
+\label{_urca_8hpp_source}\index{CompactStar/Microphysics/Rates/Urca.hpp@{CompactStar/Microphysics/Rates/Urca.hpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{comment}{// -\/*-\/ lsst-\/c++ -\/*-\/}}
+\DoxyCodeLine{2 \textcolor{comment}{/*}}
+\DoxyCodeLine{3 \textcolor{comment}{ * CompactStar}}
+\DoxyCodeLine{4 \textcolor{comment}{ * See License file at the top of the source tree.}}
+\DoxyCodeLine{5 \textcolor{comment}{ *}}
+\DoxyCodeLine{6 \textcolor{comment}{ * Copyright (c) 2025 Mohammadreza Zakeri}}
+\DoxyCodeLine{7 \textcolor{comment}{ *}}
+\DoxyCodeLine{8 \textcolor{comment}{ * Permission is hereby granted, free of charge, to any person obtaining a copy}}
+\DoxyCodeLine{9 \textcolor{comment}{ * of this software and associated documentation files (the "{}Software"{}), to deal}}
+\DoxyCodeLine{10 \textcolor{comment}{ * in the Software without restriction, including without limitation the rights}}
+\DoxyCodeLine{11 \textcolor{comment}{ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell}}
+\DoxyCodeLine{12 \textcolor{comment}{ * copies of the Software, and to permit persons to whom the Software is}}
+\DoxyCodeLine{13 \textcolor{comment}{ * furnished to do so, subject to the following conditions:}}
+\DoxyCodeLine{14 \textcolor{comment}{ *}}
+\DoxyCodeLine{15 \textcolor{comment}{ * The above copyright notice and this permission notice shall be included in all}}
+\DoxyCodeLine{16 \textcolor{comment}{ * copies or substantial portions of the Software.}}
+\DoxyCodeLine{17 \textcolor{comment}{ *}}
+\DoxyCodeLine{18 \textcolor{comment}{ * THE SOFTWARE IS PROVIDED "{}AS IS"{}, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR}}
+\DoxyCodeLine{19 \textcolor{comment}{ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,}}
+\DoxyCodeLine{20 \textcolor{comment}{ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE}}
+\DoxyCodeLine{21 \textcolor{comment}{ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER}}
+\DoxyCodeLine{22 \textcolor{comment}{ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,}}
+\DoxyCodeLine{23 \textcolor{comment}{ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE}}
+\DoxyCodeLine{24 \textcolor{comment}{ * SOFTWARE.}}
+\DoxyCodeLine{25 \textcolor{comment}{ */}}
+\DoxyCodeLine{26 }
+\DoxyCodeLine{38 \textcolor{preprocessor}{\#ifndef CompactStar\_ChemicalHeating\_RateChannels\_H}}
+\DoxyCodeLine{39 \textcolor{preprocessor}{\#define CompactStar\_ChemicalHeating\_RateChannels\_H}}
+\DoxyCodeLine{40 }
+\DoxyCodeLine{41 \textcolor{preprocessor}{\#include <cstddef>}}
+\DoxyCodeLine{42 \textcolor{preprocessor}{\#include <memory>}}
+\DoxyCodeLine{43 \textcolor{preprocessor}{\#include <vector>}}
+\DoxyCodeLine{44 }
+\DoxyCodeLine{45 \textcolor{keyword}{namespace }CompactStar}
+\DoxyCodeLine{46 \{}
+\DoxyCodeLine{47 \textcolor{keyword}{namespace }ChemicalHeating}
+\DoxyCodeLine{48 \{}
+\DoxyCodeLine{49 \textcolor{keyword}{class }GeometryCache;}
+\DoxyCodeLine{50 \textcolor{keyword}{class }StarContext;}
+\DoxyCodeLine{51 \} \textcolor{comment}{// namespace ChemicalHeating}}
+\DoxyCodeLine{52 \} \textcolor{comment}{// namespace CompactStar}}
+\DoxyCodeLine{53 }
+\DoxyCodeLine{54 \textcolor{keyword}{namespace }CompactStar}
+\DoxyCodeLine{55 \{}
+\DoxyCodeLine{56 \textcolor{keyword}{namespace }ChemicalHeating}
+\DoxyCodeLine{57 \{}
+\DoxyCodeLine{58 }
+\DoxyCodeLine{59 \textcolor{comment}{//==============================================================}}
+\DoxyCodeLine{60 \textcolor{comment}{//                      ReactionChannel Class}}
+\DoxyCodeLine{61 \textcolor{comment}{//==============================================================}}
+\DoxyCodeLine{66 \textcolor{comment}{}\textcolor{keyword}{class }\mbox{\hyperlink{class_compact_star_1_1_chemical_heating_1_1_reaction_channel}{ReactionChannel}}}
+\DoxyCodeLine{67 \{}
+\DoxyCodeLine{68   \textcolor{keyword}{public}:}
+\DoxyCodeLine{69     \textcolor{keyword}{virtual} \mbox{\hyperlink{class_compact_star_1_1_chemical_heating_1_1_reaction_channel}{\string~ReactionChannel}}() \{\}}
+\DoxyCodeLine{70 }
+\DoxyCodeLine{78     \textcolor{keyword}{virtual} \textcolor{keywordtype}{double} \mbox{\hyperlink{class_compact_star_1_1_chemical_heating_1_1_reaction_channel_aa4427f5ffc7c08d634d5e1912edcaff0}{emissivity}}(std::size\_t i, \textcolor{keywordtype}{double} T,}
+\DoxyCodeLine{79                               \textcolor{keyword}{const} std::vector<double> \&eta) \textcolor{keyword}{const} = 0;}
+\DoxyCodeLine{80 }
+\DoxyCodeLine{85     \textcolor{keyword}{virtual} \textcolor{keywordtype}{double} \mbox{\hyperlink{class_compact_star_1_1_chemical_heating_1_1_reaction_channel_aa255efc6d5bba7c8b1d9c8baf6132abf}{heating}}(std::size\_t i, \textcolor{keywordtype}{double} T,}
+\DoxyCodeLine{86                            \textcolor{keyword}{const} std::vector<double> \&eta) \textcolor{keyword}{const} = 0;}
+\DoxyCodeLine{87 }
+\DoxyCodeLine{95     \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_compact_star_1_1_chemical_heating_1_1_reaction_channel_ac4fd7b298c718dccc27d9f8c04a4d349}{accumulate\_deta\_dt}}(std::size\_t i, \textcolor{keywordtype}{double} T,}
+\DoxyCodeLine{96                                     \textcolor{keyword}{const} std::vector<double> \&eta,}
+\DoxyCodeLine{97                                     std::vector<double> \&ddt\_eta) \textcolor{keyword}{const} = 0;}
+\DoxyCodeLine{98 \};}
+\DoxyCodeLine{99 }
+\DoxyCodeLine{100 \textcolor{comment}{//==============================================================}}
+\DoxyCodeLine{101 \textcolor{comment}{//                      RateSet Class}}
+\DoxyCodeLine{102 \textcolor{comment}{//==============================================================}}
+\DoxyCodeLine{110 \textcolor{comment}{}\textcolor{keyword}{class }\mbox{\hyperlink{class_compact_star_1_1_chemical_heating_1_1_rate_set}{RateSet}}}
+\DoxyCodeLine{111 \{}
+\DoxyCodeLine{112   \textcolor{keyword}{public}:}
+\DoxyCodeLine{114     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_compact_star_1_1_chemical_heating_1_1_rate_set_ad209216055e59791576d7ed903e05648}{add}}(std::unique\_ptr<ReactionChannel> ch);}
+\DoxyCodeLine{115 }
+\DoxyCodeLine{117     \textcolor{keyword}{const} std::vector<std::unique\_ptr<ReactionChannel>> \&\mbox{\hyperlink{class_compact_star_1_1_chemical_heating_1_1_rate_set_a9cbbeab91cd2fa81b60c96bd486a063f}{channels}}() \textcolor{keyword}{const};}
+\DoxyCodeLine{118 }
+\DoxyCodeLine{119   \textcolor{keyword}{private}:}
+\DoxyCodeLine{120     std::vector<std::unique\_ptr<ReactionChannel>> m\_channels;}
+\DoxyCodeLine{121 \};}
+\DoxyCodeLine{122 }
+\DoxyCodeLine{123 \} \textcolor{comment}{// namespace ChemicalHeating}}
+\DoxyCodeLine{124 \textcolor{comment}{//==============================================================}}
+\DoxyCodeLine{125 \} \textcolor{comment}{// namespace CompactStar}}
+\DoxyCodeLine{126 \textcolor{comment}{//==============================================================}}
+\DoxyCodeLine{127 \textcolor{preprocessor}{\#endif }\textcolor{comment}{/* CompactStar\_ChemicalHeating\_RateChannels\_H */}\textcolor{preprocessor}{}}
+
+\end{DoxyCode}

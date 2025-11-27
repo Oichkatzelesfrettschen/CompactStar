@@ -1,0 +1,167 @@
+\hypertarget{_math___core_8hpp}{}\doxysection{dependencies/include/\+Zaki/\+Math/\+Math\+\_\+\+Core.hpp File Reference}
+\label{_math___core_8hpp}\index{dependencies/include/Zaki/Math/Math\_Core.hpp@{dependencies/include/Zaki/Math/Math\_Core.hpp}}
+
+
+Core math functions.  
+
+
+{\ttfamily \#include $<$iostream$>$}\newline
+{\ttfamily \#include $<$vector$>$}\newline
+{\ttfamily \#include $<$gsl/gsl\+\_\+interp2d.\+h$>$}\newline
+{\ttfamily \#include $<$gsl/gsl\+\_\+spline2d.\+h$>$}\newline
+\doxysubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{class_zaki_1_1_math_1_1_quantity}{Zaki\+::\+Math\+::\+Quantity}}
+\begin{DoxyCompactList}\small\item\em Division of a \mbox{\hyperlink{class_zaki_1_1_math_1_1_quantity}{Quantity}} by a int. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{struct_zaki_1_1_math_1_1_range}{Zaki\+::\+Math\+::\+Range$<$ T $>$}}
+\item 
+struct \mbox{\hyperlink{struct_zaki_1_1_math_1_1_axis}{Zaki\+::\+Math\+::\+Axis}}
+\item 
+struct \mbox{\hyperlink{struct_zaki_1_1_math_1_1_grid2_d}{Zaki\+::\+Math\+::\+Grid2D}}
+\item 
+struct \mbox{\hyperlink{struct_zaki_1_1_math_1_1_coord2_d}{Zaki\+::\+Math\+::\+Coord2D}}
+\item 
+class \mbox{\hyperlink{class_zaki_1_1_math_1_1_segment}{Zaki\+::\+Math\+::\+Segment}}
+\item 
+class \mbox{\hyperlink{class_zaki_1_1_math_1_1_curve2_d}{Zaki\+::\+Math\+::\+Curve2D}}
+\item 
+class \mbox{\hyperlink{class_zaki_1_1_math_1_1_cond___segment}{Zaki\+::\+Math\+::\+Cond\+\_\+\+Segment}}
+\item 
+class \mbox{\hyperlink{class_zaki_1_1_math_1_1_cond___polygon}{Zaki\+::\+Math\+::\+Cond\+\_\+\+Polygon}}
+\item 
+struct \mbox{\hyperlink{struct_zaki_1_1_math_1_1_grid_vals__2_d}{Zaki\+::\+Math\+::\+Grid\+Vals\+\_\+2D}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{_math___core_8hpp_aeac20ca0641878af088d864274235962}\label{_math___core_8hpp_aeac20ca0641878af088d864274235962}} 
+enum class {\bfseries Excl\+\_\+\+Cond} \{ \newline
+{\bfseries ABOVE} = 0
+, {\bfseries BELOW} = 1
+, {\bfseries ON} = 2
+, {\bfseries ON\+\_\+\+ABOVE} = 3
+, \newline
+{\bfseries ON\+\_\+\+BELOW} = 4
+ \}
+\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{_math___core_8hpp_a8b2500daa2f2370ce05b7faba1fc5c27}\label{_math___core_8hpp_a8b2500daa2f2370ce05b7faba1fc5c27}} 
+int {\bfseries Zaki\+::\+Math\+::\+Double\+Fac} (int n)
+\begin{DoxyCompactList}\small\item\em Returns the double factorial for integars. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{_math___core_8hpp_a34e0954374f5849d439d97d8271925fb}\label{_math___core_8hpp_a34e0954374f5849d439d97d8271925fb}} 
+Quantity {\bfseries Zaki\+::\+Math\+::operator+} (const Quantity \&Q\+\_\+L, const Quantity \&Q\+\_\+R)
+\begin{DoxyCompactList}\small\item\em Addition of a \mbox{\hyperlink{class_zaki_1_1_math_1_1_quantity}{Quantity}} to a \mbox{\hyperlink{class_zaki_1_1_math_1_1_quantity}{Quantity}}. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{_math___core_8hpp_a821d906eecf79075f50c096371565ab8}\label{_math___core_8hpp_a821d906eecf79075f50c096371565ab8}} 
+Quantity {\bfseries Zaki\+::\+Math\+::operator+} (const double \&, const Quantity \&Q\+\_\+R)
+\begin{DoxyCompactList}\small\item\em Addition of a \mbox{\hyperlink{class_zaki_1_1_math_1_1_quantity}{Quantity}} to a double. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{_math___core_8hpp_aa893b9c2023a121f971518f601693781}\label{_math___core_8hpp_aa893b9c2023a121f971518f601693781}} 
+Quantity {\bfseries Zaki\+::\+Math\+::operator+} (const Quantity \&Q\+\_\+L, const double \&)
+\begin{DoxyCompactList}\small\item\em Addition of a double to a \mbox{\hyperlink{class_zaki_1_1_math_1_1_quantity}{Quantity}}. \end{DoxyCompactList}\item 
+Quantity \mbox{\hyperlink{_math___core_8hpp_a9b3800954c993f3acddc75dca886c015}{Zaki\+::\+Math\+::operator-\/}} (const Quantity \&Q\+\_\+L, const Quantity \&Q\+\_\+R)
+\begin{DoxyCompactList}\small\item\em Addition of a \mbox{\hyperlink{class_zaki_1_1_math_1_1_quantity}{Quantity}} to a int. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{_math___core_8hpp_a1a5a9ace263d2aa2ae7edf765dc0598d}\label{_math___core_8hpp_a1a5a9ace263d2aa2ae7edf765dc0598d}} 
+Quantity {\bfseries Zaki\+::\+Math\+::operator-\/} (const double \&, const Quantity \&Q\+\_\+R)
+\begin{DoxyCompactList}\small\item\em Subtraction of a \mbox{\hyperlink{class_zaki_1_1_math_1_1_quantity}{Quantity}} from a double. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{_math___core_8hpp_adf5185a6629a9d48d165f40e4f2c6d01}\label{_math___core_8hpp_adf5185a6629a9d48d165f40e4f2c6d01}} 
+Quantity {\bfseries Zaki\+::\+Math\+::operator-\/} (const Quantity \&Q\+\_\+L, const double \&)
+\begin{DoxyCompactList}\small\item\em Subtraction of a double from a \mbox{\hyperlink{class_zaki_1_1_math_1_1_quantity}{Quantity}}. \end{DoxyCompactList}\item 
+Quantity \mbox{\hyperlink{_math___core_8hpp_a53a431638eb7a4142cb86f4e4b1dd06b}{Zaki\+::\+Math\+::operator$\ast$}} (const Quantity \&Q\+\_\+L, const Quantity \&Q\+\_\+R)
+\begin{DoxyCompactList}\small\item\em Subtraction of a \mbox{\hyperlink{class_zaki_1_1_math_1_1_quantity}{Quantity}} from a int. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{_math___core_8hpp_a216722cc49ab01bae7588bdbd8527dee}\label{_math___core_8hpp_a216722cc49ab01bae7588bdbd8527dee}} 
+Quantity {\bfseries Zaki\+::\+Math\+::operator$\ast$} (const double \&, const Quantity \&Q\+\_\+R)
+\begin{DoxyCompactList}\small\item\em Multiplication of a \mbox{\hyperlink{class_zaki_1_1_math_1_1_quantity}{Quantity}} by a double. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{_math___core_8hpp_a8b29f168e7053e2978bc5104b855c08f}\label{_math___core_8hpp_a8b29f168e7053e2978bc5104b855c08f}} 
+Quantity {\bfseries Zaki\+::\+Math\+::operator$\ast$} (const Quantity \&Q\+\_\+L, const double \&)
+\begin{DoxyCompactList}\small\item\em Multiplication of a double by a \mbox{\hyperlink{class_zaki_1_1_math_1_1_quantity}{Quantity}}. \end{DoxyCompactList}\item 
+Quantity \mbox{\hyperlink{_math___core_8hpp_a936713b9297ee54531916eab15d46ee8}{Zaki\+::\+Math\+::operator/}} (const Quantity \&Q\+\_\+L, const Quantity \&Q\+\_\+R)
+\begin{DoxyCompactList}\small\item\em Multiplication of a \mbox{\hyperlink{class_zaki_1_1_math_1_1_quantity}{Quantity}} by a int. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{_math___core_8hpp_a1d14e870b3c8420915538aa4aeb52a38}\label{_math___core_8hpp_a1d14e870b3c8420915538aa4aeb52a38}} 
+Quantity {\bfseries Zaki\+::\+Math\+::operator/} (const double \&, const Quantity \&Q\+\_\+R)
+\begin{DoxyCompactList}\small\item\em Division of a \mbox{\hyperlink{class_zaki_1_1_math_1_1_quantity}{Quantity}} by a double. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{_math___core_8hpp_a772d1e9cf835a5de3d48413b72b4e795}\label{_math___core_8hpp_a772d1e9cf835a5de3d48413b72b4e795}} 
+Quantity {\bfseries Zaki\+::\+Math\+::operator/} (const Quantity \&Q\+\_\+L, const double \&)
+\begin{DoxyCompactList}\small\item\em Division of a double by a \mbox{\hyperlink{class_zaki_1_1_math_1_1_quantity}{Quantity}}. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{_math___core_8hpp_a91aeed21e2935570108117bce7a62108}\label{_math___core_8hpp_a91aeed21e2935570108117bce7a62108}} 
+Coord2D {\bfseries Zaki\+::\+Math\+::operator-\/} (const double \&, const Coord2D \&)
+\begin{DoxyCompactList}\small\item\em Subtraction of a \mbox{\hyperlink{struct_zaki_1_1_math_1_1_coord2_d}{Coord2D}} from a double. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{_math___core_8hpp_a309db0b61795dd4545c81213c04d36bb}\label{_math___core_8hpp_a309db0b61795dd4545c81213c04d36bb}} 
+Coord2D {\bfseries Zaki\+::\+Math\+::operator-\/} (const Coord2D \&, const double \&)
+\begin{DoxyCompactList}\small\item\em Subtraction of a double from a \mbox{\hyperlink{struct_zaki_1_1_math_1_1_coord2_d}{Coord2D}}. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{_math___core_8hpp_a82d00dcf302e1a6b5db1d273158703e2}\label{_math___core_8hpp_a82d00dcf302e1a6b5db1d273158703e2}} 
+Coord2D {\bfseries Zaki\+::\+Math\+::operator+} (const double \&, const Coord2D \&)
+\begin{DoxyCompactList}\small\item\em Addition of a \mbox{\hyperlink{struct_zaki_1_1_math_1_1_coord2_d}{Coord2D}} to a double. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{_math___core_8hpp_ae68585319047fe4fe4fcc769f0d2b7e2}\label{_math___core_8hpp_ae68585319047fe4fe4fcc769f0d2b7e2}} 
+Coord2D {\bfseries Zaki\+::\+Math\+::operator+} (const Coord2D \&, const double \&)
+\begin{DoxyCompactList}\small\item\em Addition of a double to a \mbox{\hyperlink{struct_zaki_1_1_math_1_1_coord2_d}{Coord2D}}. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{_math___core_8hpp_afbd2585782dc239ee925ce9cb2eba44e}\label{_math___core_8hpp_afbd2585782dc239ee925ce9cb2eba44e}} 
+Coord2D {\bfseries Zaki\+::\+Math\+::operator$\ast$} (const double \&, const Coord2D \&)
+\begin{DoxyCompactList}\small\item\em Multiplication of a \mbox{\hyperlink{struct_zaki_1_1_math_1_1_coord2_d}{Coord2D}} by a double. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{_math___core_8hpp_a2e51d928ffeba5431716b595c78f981a}\label{_math___core_8hpp_a2e51d928ffeba5431716b595c78f981a}} 
+Coord2D {\bfseries Zaki\+::\+Math\+::operator$\ast$} (const Coord2D \&, const double \&)
+\begin{DoxyCompactList}\small\item\em Multiplication of a double by a \mbox{\hyperlink{struct_zaki_1_1_math_1_1_coord2_d}{Coord2D}}. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{_math___core_8hpp_a3f3716062545e6d2477740d9a35ce120}\label{_math___core_8hpp_a3f3716062545e6d2477740d9a35ce120}} 
+Coord2D {\bfseries Zaki\+::\+Math\+::operator/} (const double \&, const Coord2D \&)
+\begin{DoxyCompactList}\small\item\em Division of a \mbox{\hyperlink{struct_zaki_1_1_math_1_1_coord2_d}{Coord2D}} by a double. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{_math___core_8hpp_aa0e9d1b1ad40d2342cfe4c36c6572467}\label{_math___core_8hpp_aa0e9d1b1ad40d2342cfe4c36c6572467}} 
+Coord2D {\bfseries Zaki\+::\+Math\+::operator/} (const Coord2D \&, const double \&)
+\begin{DoxyCompactList}\small\item\em Division of a double by a \mbox{\hyperlink{struct_zaki_1_1_math_1_1_coord2_d}{Coord2D}}. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{_math___core_8hpp_a3fe76553c6b68944620b171ce1c42cad}\label{_math___core_8hpp_a3fe76553c6b68944620b171ce1c42cad}} 
+std\+::ostream \& {\bfseries operator$<$$<$} (std\+::ostream \&, const \mbox{\hyperlink{class_zaki_1_1_math_1_1_quantity}{Zaki\+::\+Math\+::\+Quantity}} \&)
+\item 
+\mbox{\Hypertarget{_math___core_8hpp_a99cca8ee733143f8eb5733966822eea9}\label{_math___core_8hpp_a99cca8ee733143f8eb5733966822eea9}} 
+std\+::ostream \& {\bfseries operator$<$$<$} (std\+::ostream \&, const \mbox{\hyperlink{struct_zaki_1_1_math_1_1_range}{Zaki\+::\+Math\+::\+Range}}$<$ double $>$ \&)
+\item 
+\mbox{\Hypertarget{_math___core_8hpp_aff5f07c22e4638d20e654777d3b76e6f}\label{_math___core_8hpp_aff5f07c22e4638d20e654777d3b76e6f}} 
+std\+::ostream \& {\bfseries operator$<$$<$} (std\+::ostream \&, const \mbox{\hyperlink{struct_zaki_1_1_math_1_1_range}{Zaki\+::\+Math\+::\+Range}}$<$ int $>$ \&)
+\item 
+\mbox{\Hypertarget{_math___core_8hpp_a43f3ea31ac6d4c0afc1aac328d4982ff}\label{_math___core_8hpp_a43f3ea31ac6d4c0afc1aac328d4982ff}} 
+std\+::ostream \& {\bfseries operator$<$$<$} (std\+::ostream \&, const \mbox{\hyperlink{struct_zaki_1_1_math_1_1_coord2_d}{Zaki\+::\+Math\+::\+Coord2D}} \&)
+\item 
+\mbox{\Hypertarget{_math___core_8hpp_a68077a305a152f35c298d6dbd7da71c0}\label{_math___core_8hpp_a68077a305a152f35c298d6dbd7da71c0}} 
+std\+::ostream \& {\bfseries operator$<$$<$} (std\+::ostream \&, const \mbox{\hyperlink{class_zaki_1_1_math_1_1_segment}{Zaki\+::\+Math\+::\+Segment}} \&)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Core math functions. 
+
+\begin{DoxyAuthor}{Author}
+Mohammadreza Zakeri Contact\+: \href{mailto:M.Zakeri@uky.edu}{\texttt{ M.\+Zakeri@uky.\+edu}} 
+\end{DoxyAuthor}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{_math___core_8hpp_a53a431638eb7a4142cb86f4e4b1dd06b}\label{_math___core_8hpp_a53a431638eb7a4142cb86f4e4b1dd06b}} 
+\index{Math\_Core.hpp@{Math\_Core.hpp}!operator$\ast$@{operator$\ast$}}
+\index{operator$\ast$@{operator$\ast$}!Math\_Core.hpp@{Math\_Core.hpp}}
+\doxysubsubsection{\texorpdfstring{operator$\ast$()}{operator*()}}
+{\footnotesize\ttfamily Quantity Zaki\+::\+Math\+::operator$\ast$ (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_zaki_1_1_math_1_1_quantity}{Quantity}} \&}]{Q\+\_\+L,  }\item[{const \mbox{\hyperlink{class_zaki_1_1_math_1_1_quantity}{Quantity}} \&}]{Q\+\_\+R }\end{DoxyParamCaption})}
+
+
+
+Subtraction of a Quantity from a int. 
+
+Subtraction of a int from a Quantity Multiplication of a Quantity by a Quantity \mbox{\Hypertarget{_math___core_8hpp_a9b3800954c993f3acddc75dca886c015}\label{_math___core_8hpp_a9b3800954c993f3acddc75dca886c015}} 
+\index{Math\_Core.hpp@{Math\_Core.hpp}!operator-\/@{operator-\/}}
+\index{operator-\/@{operator-\/}!Math\_Core.hpp@{Math\_Core.hpp}}
+\doxysubsubsection{\texorpdfstring{operator-\/()}{operator-()}}
+{\footnotesize\ttfamily Quantity Zaki\+::\+Math\+::operator-\/ (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_zaki_1_1_math_1_1_quantity}{Quantity}} \&}]{Q\+\_\+L,  }\item[{const \mbox{\hyperlink{class_zaki_1_1_math_1_1_quantity}{Quantity}} \&}]{Q\+\_\+R }\end{DoxyParamCaption})}
+
+
+
+Addition of a Quantity to a int. 
+
+Addition of a int to a Quantity Subtraction of a Quantity from a Quantity \mbox{\Hypertarget{_math___core_8hpp_a936713b9297ee54531916eab15d46ee8}\label{_math___core_8hpp_a936713b9297ee54531916eab15d46ee8}} 
+\index{Math\_Core.hpp@{Math\_Core.hpp}!operator/@{operator/}}
+\index{operator/@{operator/}!Math\_Core.hpp@{Math\_Core.hpp}}
+\doxysubsubsection{\texorpdfstring{operator/()}{operator/()}}
+{\footnotesize\ttfamily Quantity Zaki\+::\+Math\+::operator/ (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_zaki_1_1_math_1_1_quantity}{Quantity}} \&}]{Q\+\_\+L,  }\item[{const \mbox{\hyperlink{class_zaki_1_1_math_1_1_quantity}{Quantity}} \&}]{Q\+\_\+R }\end{DoxyParamCaption})}
+
+
+
+Multiplication of a Quantity by a int. 
+
+Multiplication of a int by a Quantity Division of a Quantity by a Quantity 

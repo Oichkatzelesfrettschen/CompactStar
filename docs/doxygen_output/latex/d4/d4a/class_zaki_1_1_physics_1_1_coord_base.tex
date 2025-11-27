@@ -1,0 +1,118 @@
+\hypertarget{class_zaki_1_1_physics_1_1_coord_base}{}\doxysection{Zaki\+::Physics\+::Coord\+Base Class Reference}
+\label{class_zaki_1_1_physics_1_1_coord_base}\index{Zaki::Physics::CoordBase@{Zaki::Physics::CoordBase}}
+Inheritance diagram for Zaki\+::Physics\+::Coord\+Base\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{d4/d4a/class_zaki_1_1_physics_1_1_coord_base}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_zaki_1_1_physics_1_1_coord_base_ad445136a1e19277538984b0b29225890}\label{class_zaki_1_1_physics_1_1_coord_base_ad445136a1e19277538984b0b29225890}} 
+{\bfseries Coord\+Base} (const \mbox{\hyperlink{struct_zaki_1_1_physics_1_1_x_y_z_vector}{XYZVector}} \&in\+\_\+xyz)
+\item 
+\mbox{\Hypertarget{class_zaki_1_1_physics_1_1_coord_base_ad95bcf4ec8020d3468e79951718a9d06}\label{class_zaki_1_1_physics_1_1_coord_base_ad95bcf4ec8020d3468e79951718a9d06}} 
+{\bfseries Coord\+Base} (const double \&in\+\_\+x, const double \&in\+\_\+y, const double \&in\+\_\+z)
+\item 
+\mbox{\Hypertarget{class_zaki_1_1_physics_1_1_coord_base_a8fdd570db01b39c33511f3bd71c76124}\label{class_zaki_1_1_physics_1_1_coord_base_a8fdd570db01b39c33511f3bd71c76124}} 
+\mbox{\hyperlink{struct_zaki_1_1_physics_1_1_x_y_z_vector}{XYZVector}} {\bfseries XYZ} () const
+\item 
+virtual \mbox{\hyperlink{class_zaki_1_1_physics_1_1_g_ecliptic_coord}{GEcliptic\+Coord}} \mbox{\hyperlink{class_zaki_1_1_physics_1_1_coord_base_aaa128333fd509b0295eea50cd6698fb5}{To\+GEcliptic}} (const \mbox{\hyperlink{struct_zaki_1_1_physics_1_1_date}{Zaki\+::\+Physics\+::\+Date}} \&)=0
+\begin{DoxyCompactList}\small\item\em Convert to Geocentric Ecliptic coordinates. \end{DoxyCompactList}\item 
+virtual \mbox{\hyperlink{class_zaki_1_1_physics_1_1_g_ecliptic_coord}{GEcliptic\+Coord}} \mbox{\hyperlink{class_zaki_1_1_physics_1_1_coord_base_aa71da83c8a3338ee98cf87a167894258}{To\+GEcliptic}} (const double \&)=0
+\item 
+virtual \mbox{\hyperlink{class_zaki_1_1_physics_1_1_h_ecliptic_coord}{HEcliptic\+Coord}} \mbox{\hyperlink{class_zaki_1_1_physics_1_1_coord_base_a0a5551940c022a5e0ac537085532d663}{To\+HEcliptic}} (const \mbox{\hyperlink{struct_zaki_1_1_physics_1_1_date}{Zaki\+::\+Physics\+::\+Date}} \&)=0
+\begin{DoxyCompactList}\small\item\em Convert to Heliocentric Ecliptic coordinates. \end{DoxyCompactList}\item 
+virtual \mbox{\hyperlink{class_zaki_1_1_physics_1_1_h_ecliptic_coord}{HEcliptic\+Coord}} \mbox{\hyperlink{class_zaki_1_1_physics_1_1_coord_base_aad0bdf3b23d57eee6cc9c5f11331d8a1}{To\+HEcliptic}} (const double \&)=0
+\item 
+virtual \mbox{\hyperlink{class_zaki_1_1_physics_1_1_g_e_i_coord}{GEICoord}} \mbox{\hyperlink{class_zaki_1_1_physics_1_1_coord_base_a3664245315b185d1c3e17644cbac4662}{To\+GEI}} (const \mbox{\hyperlink{struct_zaki_1_1_physics_1_1_date}{Zaki\+::\+Physics\+::\+Date}} \&)=0
+\begin{DoxyCompactList}\small\item\em Convert to Geocentric Equatorial coordinates. \end{DoxyCompactList}\item 
+virtual \mbox{\hyperlink{class_zaki_1_1_physics_1_1_g_e_i_coord}{GEICoord}} \mbox{\hyperlink{class_zaki_1_1_physics_1_1_coord_base_a81d7fcbbfe5a7c57f617f952fd10bda0}{To\+GEI}} (const double \&)=0
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_zaki_1_1_physics_1_1_coord_base_a169d9c7add0f7ed700235635991c3e99}\label{class_zaki_1_1_physics_1_1_coord_base_a169d9c7add0f7ed700235635991c3e99}} 
+\mbox{\hyperlink{struct_zaki_1_1_physics_1_1_x_y_z_vector}{XYZVector}} {\bfseries xyz}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_zaki_1_1_physics_1_1_coord_base_aa71da83c8a3338ee98cf87a167894258}\label{class_zaki_1_1_physics_1_1_coord_base_aa71da83c8a3338ee98cf87a167894258}} 
+\index{Zaki::Physics::CoordBase@{Zaki::Physics::CoordBase}!ToGEcliptic@{ToGEcliptic}}
+\index{ToGEcliptic@{ToGEcliptic}!Zaki::Physics::CoordBase@{Zaki::Physics::CoordBase}}
+\doxysubsubsection{\texorpdfstring{ToGEcliptic()}{ToGEcliptic()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily virtual \mbox{\hyperlink{class_zaki_1_1_physics_1_1_g_ecliptic_coord}{GEcliptic\+Coord}} Zaki\+::\+Physics\+::\+Coord\+Base\+::\+To\+GEcliptic (\begin{DoxyParamCaption}\item[{const double \&}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+Convert to Geocentric Ecliptic coordinates overloaded for Unix\+TDays input 
+
+Implemented in \mbox{\hyperlink{class_zaki_1_1_physics_1_1_g_ecliptic_coord_a4fe091144c3eaf4a0970cce08df4f498}{Zaki\+::\+Physics\+::\+GEcliptic\+Coord}}, \mbox{\hyperlink{class_zaki_1_1_physics_1_1_h_ecliptic_coord_aba2e80ed0876f9d2d91c06d4cff2bf1f}{Zaki\+::\+Physics\+::\+HEcliptic\+Coord}}, and \mbox{\hyperlink{class_zaki_1_1_physics_1_1_g_e_i_coord_a34a66994876b3954f29867a52542a819}{Zaki\+::\+Physics\+::\+GEICoord}}.
+
+\mbox{\Hypertarget{class_zaki_1_1_physics_1_1_coord_base_aaa128333fd509b0295eea50cd6698fb5}\label{class_zaki_1_1_physics_1_1_coord_base_aaa128333fd509b0295eea50cd6698fb5}} 
+\index{Zaki::Physics::CoordBase@{Zaki::Physics::CoordBase}!ToGEcliptic@{ToGEcliptic}}
+\index{ToGEcliptic@{ToGEcliptic}!Zaki::Physics::CoordBase@{Zaki::Physics::CoordBase}}
+\doxysubsubsection{\texorpdfstring{ToGEcliptic()}{ToGEcliptic()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily virtual \mbox{\hyperlink{class_zaki_1_1_physics_1_1_g_ecliptic_coord}{GEcliptic\+Coord}} Zaki\+::\+Physics\+::\+Coord\+Base\+::\+To\+GEcliptic (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{struct_zaki_1_1_physics_1_1_date}{Zaki\+::\+Physics\+::\+Date}} \&}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Convert to Geocentric Ecliptic coordinates. 
+
+
+
+Implemented in \mbox{\hyperlink{class_zaki_1_1_physics_1_1_g_ecliptic_coord_a0ffb4a68306a52d699469cdaa4f2d779}{Zaki\+::\+Physics\+::\+GEcliptic\+Coord}}, \mbox{\hyperlink{class_zaki_1_1_physics_1_1_h_ecliptic_coord_a77f8dbca4271dd0b8a1d807e6de19753}{Zaki\+::\+Physics\+::\+HEcliptic\+Coord}}, and \mbox{\hyperlink{class_zaki_1_1_physics_1_1_g_e_i_coord_acc6278bded4c799d9648f0ed6f5f312b}{Zaki\+::\+Physics\+::\+GEICoord}}.
+
+\mbox{\Hypertarget{class_zaki_1_1_physics_1_1_coord_base_a81d7fcbbfe5a7c57f617f952fd10bda0}\label{class_zaki_1_1_physics_1_1_coord_base_a81d7fcbbfe5a7c57f617f952fd10bda0}} 
+\index{Zaki::Physics::CoordBase@{Zaki::Physics::CoordBase}!ToGEI@{ToGEI}}
+\index{ToGEI@{ToGEI}!Zaki::Physics::CoordBase@{Zaki::Physics::CoordBase}}
+\doxysubsubsection{\texorpdfstring{ToGEI()}{ToGEI()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily virtual \mbox{\hyperlink{class_zaki_1_1_physics_1_1_g_e_i_coord}{GEICoord}} Zaki\+::\+Physics\+::\+Coord\+Base\+::\+To\+GEI (\begin{DoxyParamCaption}\item[{const double \&}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+Convert to Geocentric Equatorial coordinates overloaded for Unix\+TDays input 
+
+Implemented in \mbox{\hyperlink{class_zaki_1_1_physics_1_1_g_ecliptic_coord_a4ef535e785e2965db5f935b72c50a84c}{Zaki\+::\+Physics\+::\+GEcliptic\+Coord}}, \mbox{\hyperlink{class_zaki_1_1_physics_1_1_h_ecliptic_coord_a1fc8d9d5abd6868d4fefea335460f801}{Zaki\+::\+Physics\+::\+HEcliptic\+Coord}}, and \mbox{\hyperlink{class_zaki_1_1_physics_1_1_g_e_i_coord_a4eb54b7d95ac892fd7387adbc98e096b}{Zaki\+::\+Physics\+::\+GEICoord}}.
+
+\mbox{\Hypertarget{class_zaki_1_1_physics_1_1_coord_base_a3664245315b185d1c3e17644cbac4662}\label{class_zaki_1_1_physics_1_1_coord_base_a3664245315b185d1c3e17644cbac4662}} 
+\index{Zaki::Physics::CoordBase@{Zaki::Physics::CoordBase}!ToGEI@{ToGEI}}
+\index{ToGEI@{ToGEI}!Zaki::Physics::CoordBase@{Zaki::Physics::CoordBase}}
+\doxysubsubsection{\texorpdfstring{ToGEI()}{ToGEI()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily virtual \mbox{\hyperlink{class_zaki_1_1_physics_1_1_g_e_i_coord}{GEICoord}} Zaki\+::\+Physics\+::\+Coord\+Base\+::\+To\+GEI (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{struct_zaki_1_1_physics_1_1_date}{Zaki\+::\+Physics\+::\+Date}} \&}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Convert to Geocentric Equatorial coordinates. 
+
+
+
+Implemented in \mbox{\hyperlink{class_zaki_1_1_physics_1_1_g_ecliptic_coord_a9dfece1e4509c8f366556b28a0c92da7}{Zaki\+::\+Physics\+::\+GEcliptic\+Coord}}, \mbox{\hyperlink{class_zaki_1_1_physics_1_1_h_ecliptic_coord_a29ded9236fd3db562c2b3f21b1784b06}{Zaki\+::\+Physics\+::\+HEcliptic\+Coord}}, and \mbox{\hyperlink{class_zaki_1_1_physics_1_1_g_e_i_coord_a623fb4be1b100edf3261a1a5600ac917}{Zaki\+::\+Physics\+::\+GEICoord}}.
+
+\mbox{\Hypertarget{class_zaki_1_1_physics_1_1_coord_base_aad0bdf3b23d57eee6cc9c5f11331d8a1}\label{class_zaki_1_1_physics_1_1_coord_base_aad0bdf3b23d57eee6cc9c5f11331d8a1}} 
+\index{Zaki::Physics::CoordBase@{Zaki::Physics::CoordBase}!ToHEcliptic@{ToHEcliptic}}
+\index{ToHEcliptic@{ToHEcliptic}!Zaki::Physics::CoordBase@{Zaki::Physics::CoordBase}}
+\doxysubsubsection{\texorpdfstring{ToHEcliptic()}{ToHEcliptic()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily virtual \mbox{\hyperlink{class_zaki_1_1_physics_1_1_h_ecliptic_coord}{HEcliptic\+Coord}} Zaki\+::\+Physics\+::\+Coord\+Base\+::\+To\+HEcliptic (\begin{DoxyParamCaption}\item[{const double \&}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+Convert to Heliocentric Ecliptic coordinates overloaded for Unix\+TDays input 
+
+Implemented in \mbox{\hyperlink{class_zaki_1_1_physics_1_1_g_ecliptic_coord_acb9a46ee8fb9397ec3dd7049c99b93f4}{Zaki\+::\+Physics\+::\+GEcliptic\+Coord}}, \mbox{\hyperlink{class_zaki_1_1_physics_1_1_h_ecliptic_coord_a1d63adee8aafb616ac095cf56d186a76}{Zaki\+::\+Physics\+::\+HEcliptic\+Coord}}, and \mbox{\hyperlink{class_zaki_1_1_physics_1_1_g_e_i_coord_a43ced824f22f3353a7f488236460e141}{Zaki\+::\+Physics\+::\+GEICoord}}.
+
+\mbox{\Hypertarget{class_zaki_1_1_physics_1_1_coord_base_a0a5551940c022a5e0ac537085532d663}\label{class_zaki_1_1_physics_1_1_coord_base_a0a5551940c022a5e0ac537085532d663}} 
+\index{Zaki::Physics::CoordBase@{Zaki::Physics::CoordBase}!ToHEcliptic@{ToHEcliptic}}
+\index{ToHEcliptic@{ToHEcliptic}!Zaki::Physics::CoordBase@{Zaki::Physics::CoordBase}}
+\doxysubsubsection{\texorpdfstring{ToHEcliptic()}{ToHEcliptic()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily virtual \mbox{\hyperlink{class_zaki_1_1_physics_1_1_h_ecliptic_coord}{HEcliptic\+Coord}} Zaki\+::\+Physics\+::\+Coord\+Base\+::\+To\+HEcliptic (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{struct_zaki_1_1_physics_1_1_date}{Zaki\+::\+Physics\+::\+Date}} \&}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Convert to Heliocentric Ecliptic coordinates. 
+
+
+
+Implemented in \mbox{\hyperlink{class_zaki_1_1_physics_1_1_g_ecliptic_coord_a6aabd4d39acfd7e5e511f012125b08fa}{Zaki\+::\+Physics\+::\+GEcliptic\+Coord}}, \mbox{\hyperlink{class_zaki_1_1_physics_1_1_h_ecliptic_coord_a3d1cb3a26b783d5ea9b0abf524c35bca}{Zaki\+::\+Physics\+::\+HEcliptic\+Coord}}, and \mbox{\hyperlink{class_zaki_1_1_physics_1_1_g_e_i_coord_a396a133bf693355c63b79102c84534cf}{Zaki\+::\+Physics\+::\+GEICoord}}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+dependencies/include/\+Zaki/\+Physics/\mbox{\hyperlink{_coordinate_8hpp}{Coordinate.\+hpp}}\end{DoxyCompactItemize}

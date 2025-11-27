@@ -1,0 +1,118 @@
+\hypertarget{_sigma_omega_rho__npemu_8hpp_source}{}\doxysection{Sigma\+Omega\+Rho\+\_\+npemu.\+hpp}
+\label{_sigma_omega_rho__npemu_8hpp_source}\index{CompactStar/ChemicalHeating/SigmaOmegaRho\_npemu.hpp@{CompactStar/ChemicalHeating/SigmaOmegaRho\_npemu.hpp}}
+\mbox{\hyperlink{_sigma_omega_rho__npemu_8hpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{comment}{// -\/*-\/ lsst-\/c++ -\/*-\/}}
+\DoxyCodeLine{2 \textcolor{comment}{/*}}
+\DoxyCodeLine{3 \textcolor{comment}{* CompactStar}}
+\DoxyCodeLine{4 \textcolor{comment}{* See License file at the top of the source tree.}}
+\DoxyCodeLine{5 \textcolor{comment}{*}}
+\DoxyCodeLine{6 \textcolor{comment}{* Copyright (c) 2023 Mohammadreza Zakeri}}
+\DoxyCodeLine{7 \textcolor{comment}{*}}
+\DoxyCodeLine{8 \textcolor{comment}{* Permission is hereby granted, free of charge, to any person obtaining a copy}}
+\DoxyCodeLine{9 \textcolor{comment}{* of this software and associated documentation files (the "{}Software"{}), to deal}}
+\DoxyCodeLine{10 \textcolor{comment}{* in the Software without restriction, including without limitation the rights}}
+\DoxyCodeLine{11 \textcolor{comment}{* to use, copy, modify, merge, publish, distribute, sublicense, and/or sell}}
+\DoxyCodeLine{12 \textcolor{comment}{* copies of the Software, and to permit persons to whom the Software is}}
+\DoxyCodeLine{13 \textcolor{comment}{* furnished to do so, subject to the following conditions:}}
+\DoxyCodeLine{14 \textcolor{comment}{*}}
+\DoxyCodeLine{15 \textcolor{comment}{* The above copyright notice and this permission notice shall be included in all}}
+\DoxyCodeLine{16 \textcolor{comment}{* copies or substantial portions of the Software.}}
+\DoxyCodeLine{17 \textcolor{comment}{*}}
+\DoxyCodeLine{18 \textcolor{comment}{* THE SOFTWARE IS PROVIDED "{}AS IS"{}, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR}}
+\DoxyCodeLine{19 \textcolor{comment}{* IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,}}
+\DoxyCodeLine{20 \textcolor{comment}{* FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE}}
+\DoxyCodeLine{21 \textcolor{comment}{* AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER}}
+\DoxyCodeLine{22 \textcolor{comment}{* LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,}}
+\DoxyCodeLine{23 \textcolor{comment}{* OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE}}
+\DoxyCodeLine{24 \textcolor{comment}{* SOFTWARE.}}
+\DoxyCodeLine{25 \textcolor{comment}{*/}}
+\DoxyCodeLine{26 }
+\DoxyCodeLine{38 \textcolor{preprocessor}{\#ifndef CompactStar\_SigmaOmegaRho\_npemu\_H}}
+\DoxyCodeLine{39 \textcolor{preprocessor}{\#define CompactStar\_SigmaOmegaRho\_npemu\_H}}
+\DoxyCodeLine{40 }
+\DoxyCodeLine{41 \textcolor{preprocessor}{\#include <gsl/gsl\_vector.h>}}
+\DoxyCodeLine{42 \textcolor{preprocessor}{\#include <gsl/gsl\_multiroots.h>}}
+\DoxyCodeLine{43 }
+\DoxyCodeLine{44 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_model_8hpp}{CompactStar/EOS/Model.hpp}}"{}}}
+\DoxyCodeLine{45 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_sigma_omega_par_8hpp}{CompactStar/EOS/SigmaOmegaPar.hpp}}"{}}}
+\DoxyCodeLine{46 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_baryon_8hpp}{CompactStar/EOS/Baryon.hpp}}"{}}}
+\DoxyCodeLine{47 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_lepton_8hpp}{CompactStar/EOS/Lepton.hpp}}"{}}}
+\DoxyCodeLine{48 }
+\DoxyCodeLine{49 \textcolor{comment}{//==============================================================}}
+\DoxyCodeLine{50 \textcolor{keyword}{namespace }CompactStar}
+\DoxyCodeLine{51 \{}
+\DoxyCodeLine{52 }
+\DoxyCodeLine{53 \textcolor{comment}{//==============================================================}}
+\DoxyCodeLine{54 \textcolor{keyword}{class }\mbox{\hyperlink{class_compact_star_1_1_sigma_omega_rho__npemu}{SigmaOmegaRho\_npemu}} : \textcolor{keyword}{public} \mbox{\hyperlink{class_compact_star_1_1_model}{Model}}}
+\DoxyCodeLine{55 \{}
+\DoxyCodeLine{56   \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{57   \textcolor{keyword}{private}:}
+\DoxyCodeLine{58     \mbox{\hyperlink{struct_compact_star_1_1_sigma_omega_par}{SigmaOmegaPar}} params ;}
+\DoxyCodeLine{59 }
+\DoxyCodeLine{60     \textcolor{keywordtype}{double} rho   = -\/1 ; \textcolor{comment}{// Total Baryon number density}}
+\DoxyCodeLine{61 }
+\DoxyCodeLine{62     \textcolor{keywordtype}{double} gsig  = -\/1 ; \textcolor{comment}{// g\_sigma*sigma value}}
+\DoxyCodeLine{63 }
+\DoxyCodeLine{64     \mbox{\hyperlink{class_compact_star_1_1_baryon}{Baryon}} proton, neutron;}
+\DoxyCodeLine{65     \textcolor{comment}{// Baryon sigma\_minus, lambda, sigma\_zero, sigma\_plus, xi\_minus, xi\_zero ;}}
+\DoxyCodeLine{66     \mbox{\hyperlink{class_compact_star_1_1_lepton}{Lepton}} electron ;}
+\DoxyCodeLine{67     \mbox{\hyperlink{class_compact_star_1_1_lepton}{Lepton}} muon ;}
+\DoxyCodeLine{68 }
+\DoxyCodeLine{69     \textcolor{keywordtype}{size\_t} eq\_size = 2 ;}
+\DoxyCodeLine{70 }
+\DoxyCodeLine{72     \textcolor{comment}{// [ g\_sigma * sigma, }}
+\DoxyCodeLine{73     \textcolor{comment}{//   Rho(proton)/RhoB, Rho(sigma-\/)/RhoB, Rho(muon)/RhoB]}}
+\DoxyCodeLine{74     \textcolor{comment}{// double root\_guess[4] = \{0.2, 0.03, 0.01, 9.927*0.12\} ;}}
+\DoxyCodeLine{75     \textcolor{comment}{// double root\_guess[4] = \{0.21*MN, 0.325, 0.002, 0.01\} ;}}
+\DoxyCodeLine{76     std::vector<double> root\_guess = \{0.19*MN, 0.2, 9e-\/2\} ;}
+\DoxyCodeLine{77     \textcolor{comment}{// double root\_guess[4] = \{0.086184, 0.0127884, 0.00123263, 0.825926\} ;}}
+\DoxyCodeLine{78 }
+\DoxyCodeLine{80     \textcolor{keywordtype}{void} FindGuess(\textcolor{keyword}{const} \textcolor{keywordtype}{double}\& in\_rho) ;}
+\DoxyCodeLine{81 }
+\DoxyCodeLine{85     \textcolor{keywordtype}{void} SetXRhos(\textcolor{keyword}{const} gsl\_vector* x) ;}
+\DoxyCodeLine{86 }
+\DoxyCodeLine{89     \textcolor{keywordtype}{void} SetEquilibriumEqs(\textcolor{keyword}{const} \textcolor{keywordtype}{double}\& in\_rho) ;}
+\DoxyCodeLine{90 }
+\DoxyCodeLine{92     std::vector<double> equilibrium\_eqs ;}
+\DoxyCodeLine{93 }
+\DoxyCodeLine{94   \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{95   \textcolor{keyword}{public}:}
+\DoxyCodeLine{96 }
+\DoxyCodeLine{97     \mbox{\hyperlink{class_compact_star_1_1_sigma_omega_rho__npemu}{SigmaOmegaRho\_npemu}}() ;}
+\DoxyCodeLine{98 }
+\DoxyCodeLine{99     \mbox{\hyperlink{class_compact_star_1_1_sigma_omega_rho__npemu_a68cc4d4b985c1f3e1107176485727393}{\string~SigmaOmegaRho\_npemu}}() ;}
+\DoxyCodeLine{100 }
+\DoxyCodeLine{101     \textcolor{keywordtype}{double} EDens(\textcolor{keyword}{const} \textcolor{keywordtype}{double}\& in\_rho) \textcolor{keyword}{override} ;}
+\DoxyCodeLine{102     \textcolor{keywordtype}{double} Press(\textcolor{keyword}{const} \textcolor{keywordtype}{double}\& in\_rho) \textcolor{keyword}{override} ;}
+\DoxyCodeLine{103 }
+\DoxyCodeLine{105     std::vector<double> \mbox{\hyperlink{class_compact_star_1_1_sigma_omega_rho__npemu_a7e24bddcff8992ba3097980d38a3aac1}{EOSRow}}(\textcolor{keyword}{const} \textcolor{keywordtype}{double}\&) \textcolor{keyword}{override} ;}
+\DoxyCodeLine{106 }
+\DoxyCodeLine{108     std::string \mbox{\hyperlink{class_compact_star_1_1_sigma_omega_rho__npemu_a525cc3bf3f342f029bec79fdc24d9ddc}{EOSHeader}}() \textcolor{keyword}{const override} ;}
+\DoxyCodeLine{109 }
+\DoxyCodeLine{110     \textcolor{keywordtype}{void} SetPars(\textcolor{keyword}{const} \mbox{\hyperlink{struct_compact_star_1_1_sigma_omega_par}{SigmaOmegaPar}}\& in\_pars) ;}
+\DoxyCodeLine{111     }
+\DoxyCodeLine{112     \textcolor{keywordtype}{int} Eq(\textcolor{keyword}{const} gsl\_vector* x, gsl\_vector* f) ;}
+\DoxyCodeLine{113     \textcolor{keywordtype}{int} \mbox{\hyperlink{class_compact_star_1_1_sigma_omega_rho__npemu_aac7f5cffd6f4738ee22644412ce2583e}{SolveEq}}() ;}
+\DoxyCodeLine{114     \textcolor{keywordtype}{void} PrintState(\textcolor{keyword}{const} \textcolor{keywordtype}{size\_t}\& iter, gsl\_multiroot\_fsolver * s) ;}
+\DoxyCodeLine{115 }
+\DoxyCodeLine{117     \textcolor{keywordtype}{int} \mbox{\hyperlink{class_compact_star_1_1_sigma_omega_rho__npemu_aa817a98c464b47a560e7636b27f78383}{Jacob}}(\textcolor{keyword}{const} gsl\_vector* x, gsl\_matrix* J) ;}
+\DoxyCodeLine{118     \textcolor{keywordtype}{int} EqFdf(\textcolor{keyword}{const} gsl\_vector* x, gsl\_vector* f, gsl\_matrix* J) ;}
+\DoxyCodeLine{119     \textcolor{keywordtype}{int} \mbox{\hyperlink{class_compact_star_1_1_sigma_omega_rho__npemu_af67eae1c42def9fe773d38e7e7b4c10a}{SolveEqJacob}}() ;}
+\DoxyCodeLine{120     \textcolor{keywordtype}{void} PrintState(\textcolor{keyword}{const} \textcolor{keywordtype}{size\_t}\& iter, gsl\_multiroot\_fdfsolver * s) ;}
+\DoxyCodeLine{121     \textcolor{keywordtype}{void} UpdatePool(\textcolor{keyword}{const} \textcolor{keywordtype}{double}\& in\_rho) ;}
+\DoxyCodeLine{122     }
+\DoxyCodeLine{123 }
+\DoxyCodeLine{124     \textcolor{keywordtype}{void} SetRho(\textcolor{keyword}{const} \textcolor{keywordtype}{double}\& in\_rho)}
+\DoxyCodeLine{125     \{}
+\DoxyCodeLine{126       rho = in\_rho ;}
+\DoxyCodeLine{127     \}}
+\DoxyCodeLine{128 }
+\DoxyCodeLine{129 \};}
+\DoxyCodeLine{130 }
+\DoxyCodeLine{131 \textcolor{comment}{//==============================================================}}
+\DoxyCodeLine{132 \} \textcolor{comment}{// CompactStar namespace}}
+\DoxyCodeLine{133 \textcolor{comment}{//==============================================================}}
+\DoxyCodeLine{134 \textcolor{preprocessor}{\#endif }\textcolor{comment}{/*CompactStar\_SigmaOmegaRho\_npemu\_H*/}\textcolor{preprocessor}{}}
+
+\end{DoxyCode}

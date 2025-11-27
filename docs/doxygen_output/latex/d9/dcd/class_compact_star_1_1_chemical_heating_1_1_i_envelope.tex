@@ -1,0 +1,49 @@
+\hypertarget{class_compact_star_1_1_chemical_heating_1_1_i_envelope}{}\doxysection{Compact\+Star\+::Chemical\+Heating\+::IEnvelope Class Reference}
+\label{class_compact_star_1_1_chemical_heating_1_1_i_envelope}\index{CompactStar::ChemicalHeating::IEnvelope@{CompactStar::ChemicalHeating::IEnvelope}}
+
+
+Strategy for $T_b \to T_s$ mapping.  
+
+
+
+
+{\ttfamily \#include $<$Envelope.\+hpp$>$}
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+virtual double \mbox{\hyperlink{class_compact_star_1_1_chemical_heating_1_1_i_envelope_a86fcd28c78205b0c43726bfd0b3e2363}{Ts\+\_\+from\+\_\+\+Tb}} (double Tb, double g14, double xi) const =0
+\begin{DoxyCompactList}\small\item\em Map base temperature to surface temperature. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Strategy for $T_b \to T_s$ mapping. 
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_compact_star_1_1_chemical_heating_1_1_i_envelope_a86fcd28c78205b0c43726bfd0b3e2363}\label{class_compact_star_1_1_chemical_heating_1_1_i_envelope_a86fcd28c78205b0c43726bfd0b3e2363}} 
+\index{CompactStar::ChemicalHeating::IEnvelope@{CompactStar::ChemicalHeating::IEnvelope}!Ts\_from\_Tb@{Ts\_from\_Tb}}
+\index{Ts\_from\_Tb@{Ts\_from\_Tb}!CompactStar::ChemicalHeating::IEnvelope@{CompactStar::ChemicalHeating::IEnvelope}}
+\doxysubsubsection{\texorpdfstring{Ts\_from\_Tb()}{Ts\_from\_Tb()}}
+{\footnotesize\ttfamily virtual double Compact\+Star\+::\+Chemical\+Heating\+::\+IEnvelope\+::\+Ts\+\_\+from\+\_\+\+Tb (\begin{DoxyParamCaption}\item[{double}]{Tb,  }\item[{double}]{g14,  }\item[{double}]{xi }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Map base temperature to surface temperature. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Tb} & Base-\/of-\/envelope temperature (K), local frame. \\
+\hline
+{\em g14} & Surface gravity in units of $10^{14}\,\mathrm{cm\,s^{-2}}$. \\
+\hline
+{\em xi} & Light-\/element parameter (column depth proxy). \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Surface temperature (K), local frame. 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Compact\+Star/\+Chemical\+Heating/\mbox{\hyperlink{_envelope_8hpp}{Envelope.\+hpp}}\end{DoxyCompactItemize}

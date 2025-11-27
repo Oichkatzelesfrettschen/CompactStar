@@ -1,0 +1,84 @@
+\hypertarget{class_compact_star_1_1_chemical_heating_1_1_reaction_channel}{}\doxysection{Compact\+Star\+::Chemical\+Heating\+::Reaction\+Channel Class Reference}
+\label{class_compact_star_1_1_chemical_heating_1_1_reaction_channel}\index{CompactStar::ChemicalHeating::ReactionChannel@{CompactStar::ChemicalHeating::ReactionChannel}}
+
+
+Strategy interface for a single local microphysical process.  
+
+
+
+
+{\ttfamily \#include $<$Urca.\+hpp$>$}
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+virtual double \mbox{\hyperlink{class_compact_star_1_1_chemical_heating_1_1_reaction_channel_aa4427f5ffc7c08d634d5e1912edcaff0}{emissivity}} (std\+::size\+\_\+t i, double T, const std\+::vector$<$ double $>$ \&eta) const =0
+\begin{DoxyCompactList}\small\item\em Local neutrino emissivity $Q_\nu$ \mbox{[}erg cm$^\wedge$\{-\/3\} s$^\wedge$\{-\/1\}\mbox{]}. \end{DoxyCompactList}\item 
+virtual double \mbox{\hyperlink{class_compact_star_1_1_chemical_heating_1_1_reaction_channel_aa255efc6d5bba7c8b1d9c8baf6132abf}{heating}} (std\+::size\+\_\+t i, double T, const std\+::vector$<$ double $>$ \&eta) const =0
+\begin{DoxyCompactList}\small\item\em Local dissipative heating $H$ \mbox{[}erg cm$^\wedge$\{-\/3\} s$^\wedge$\{-\/1\}\mbox{]}. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{class_compact_star_1_1_chemical_heating_1_1_reaction_channel_ac4fd7b298c718dccc27d9f8c04a4d349}{accumulate\+\_\+deta\+\_\+dt}} (std\+::size\+\_\+t i, double T, const std\+::vector$<$ double $>$ \&eta, std\+::vector$<$ double $>$ \&ddt\+\_\+eta) const =0
+\begin{DoxyCompactList}\small\item\em Accumulate local contributions to $\dot{\boldsymbol{\eta}}$. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Strategy interface for a single local microphysical process. 
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_compact_star_1_1_chemical_heating_1_1_reaction_channel_ac4fd7b298c718dccc27d9f8c04a4d349}\label{class_compact_star_1_1_chemical_heating_1_1_reaction_channel_ac4fd7b298c718dccc27d9f8c04a4d349}} 
+\index{CompactStar::ChemicalHeating::ReactionChannel@{CompactStar::ChemicalHeating::ReactionChannel}!accumulate\_deta\_dt@{accumulate\_deta\_dt}}
+\index{accumulate\_deta\_dt@{accumulate\_deta\_dt}!CompactStar::ChemicalHeating::ReactionChannel@{CompactStar::ChemicalHeating::ReactionChannel}}
+\doxysubsubsection{\texorpdfstring{accumulate\_deta\_dt()}{accumulate\_deta\_dt()}}
+{\footnotesize\ttfamily virtual void Compact\+Star\+::\+Chemical\+Heating\+::\+Reaction\+Channel\+::accumulate\+\_\+deta\+\_\+dt (\begin{DoxyParamCaption}\item[{std\+::size\+\_\+t}]{i,  }\item[{double}]{T,  }\item[{const std\+::vector$<$ double $>$ \&}]{eta,  }\item[{std\+::vector$<$ double $>$ \&}]{ddt\+\_\+eta }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Accumulate local contributions to $\dot{\boldsymbol{\eta}}$. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em i} & Radial zone index. \\
+\hline
+{\em T} & Local temperature (K). \\
+\hline
+{\em eta} & Chemical imbalances. \\
+\hline
+{\em ddt\+\_\+eta} & In/out accumulator (same size as {\ttfamily eta}). \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_compact_star_1_1_chemical_heating_1_1_reaction_channel_aa4427f5ffc7c08d634d5e1912edcaff0}\label{class_compact_star_1_1_chemical_heating_1_1_reaction_channel_aa4427f5ffc7c08d634d5e1912edcaff0}} 
+\index{CompactStar::ChemicalHeating::ReactionChannel@{CompactStar::ChemicalHeating::ReactionChannel}!emissivity@{emissivity}}
+\index{emissivity@{emissivity}!CompactStar::ChemicalHeating::ReactionChannel@{CompactStar::ChemicalHeating::ReactionChannel}}
+\doxysubsubsection{\texorpdfstring{emissivity()}{emissivity()}}
+{\footnotesize\ttfamily virtual double Compact\+Star\+::\+Chemical\+Heating\+::\+Reaction\+Channel\+::emissivity (\begin{DoxyParamCaption}\item[{std\+::size\+\_\+t}]{i,  }\item[{double}]{T,  }\item[{const std\+::vector$<$ double $>$ \&}]{eta }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Local neutrino emissivity $Q_\nu$ \mbox{[}erg cm$^\wedge$\{-\/3\} s$^\wedge$\{-\/1\}\mbox{]}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em i} & Radial zone index. \\
+\hline
+{\em T} & Local temperature (K). \\
+\hline
+{\em eta} & Chemical imbalances vector (size from \mbox{\hyperlink{struct_compact_star_1_1_chemical_heating_1_1_config_a47dfcf9e24eba298ad1bf3c6ad3f4de8}{Config\+::n\+\_\+eta}}). \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Emissivity in cgs (or module-\/consistent) units. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_compact_star_1_1_chemical_heating_1_1_reaction_channel_aa255efc6d5bba7c8b1d9c8baf6132abf}\label{class_compact_star_1_1_chemical_heating_1_1_reaction_channel_aa255efc6d5bba7c8b1d9c8baf6132abf}} 
+\index{CompactStar::ChemicalHeating::ReactionChannel@{CompactStar::ChemicalHeating::ReactionChannel}!heating@{heating}}
+\index{heating@{heating}!CompactStar::ChemicalHeating::ReactionChannel@{CompactStar::ChemicalHeating::ReactionChannel}}
+\doxysubsubsection{\texorpdfstring{heating()}{heating()}}
+{\footnotesize\ttfamily virtual double Compact\+Star\+::\+Chemical\+Heating\+::\+Reaction\+Channel\+::heating (\begin{DoxyParamCaption}\item[{std\+::size\+\_\+t}]{i,  }\item[{double}]{T,  }\item[{const std\+::vector$<$ double $>$ \&}]{eta }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Local dissipative heating $H$ \mbox{[}erg cm$^\wedge$\{-\/3\} s$^\wedge$\{-\/1\}\mbox{]}. 
+
+Includes e.\+g. rotochemical/\+BVN dissipation mapped to heat. 
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Compact\+Star/\+Microphysics/\+Rates/Urca.\+hpp\end{DoxyCompactItemize}

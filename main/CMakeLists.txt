@@ -6,4 +6,4 @@ add_subdirectory(BNV_2023)
 add_subdirectory(BNV_2024)
 add_subdirectory(LightDM_2024)
 add_subdirectory(Examples)
-
+add_subdirectory(Test)

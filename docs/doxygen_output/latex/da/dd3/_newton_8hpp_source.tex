@@ -1,0 +1,81 @@
+\hypertarget{_newton_8hpp_source}{}\doxysection{Newton.\+hpp}
+\label{_newton_8hpp_source}\index{dependencies/include/Zaki/Math/Newton.hpp@{dependencies/include/Zaki/Math/Newton.hpp}}
+\mbox{\hyperlink{_newton_8hpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{comment}{// -\/*-\/ lsst-\/c++ -\/*-\/}}
+\DoxyCodeLine{2 \textcolor{comment}{/*}}
+\DoxyCodeLine{3 \textcolor{comment}{* Zaki's Common Library}}
+\DoxyCodeLine{4 \textcolor{comment}{* See License file at the top of the source tree.}}
+\DoxyCodeLine{5 \textcolor{comment}{*}}
+\DoxyCodeLine{6 \textcolor{comment}{* Copyright (c) 2023 Mohammadreza Zakeri}}
+\DoxyCodeLine{7 \textcolor{comment}{*}}
+\DoxyCodeLine{8 \textcolor{comment}{* Permission is hereby granted, free of charge, to any person obtaining a copy}}
+\DoxyCodeLine{9 \textcolor{comment}{* of this software and associated documentation files (the "{}Software"{}), to deal}}
+\DoxyCodeLine{10 \textcolor{comment}{* in the Software without restriction, including without limitation the rights}}
+\DoxyCodeLine{11 \textcolor{comment}{* to use, copy, modify, merge, publish, distribute, sublicense, and/or sell}}
+\DoxyCodeLine{12 \textcolor{comment}{* copies of the Software, and to permit persons to whom the Software is}}
+\DoxyCodeLine{13 \textcolor{comment}{* furnished to do so, subject to the following conditions:}}
+\DoxyCodeLine{14 \textcolor{comment}{*}}
+\DoxyCodeLine{15 \textcolor{comment}{* The above copyright notice and this permission notice shall be included in all}}
+\DoxyCodeLine{16 \textcolor{comment}{* copies or substantial portions of the Software.}}
+\DoxyCodeLine{17 \textcolor{comment}{*}}
+\DoxyCodeLine{18 \textcolor{comment}{* THE SOFTWARE IS PROVIDED "{}AS IS"{}, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR}}
+\DoxyCodeLine{19 \textcolor{comment}{* IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,}}
+\DoxyCodeLine{20 \textcolor{comment}{* FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE}}
+\DoxyCodeLine{21 \textcolor{comment}{* AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER}}
+\DoxyCodeLine{22 \textcolor{comment}{* LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,}}
+\DoxyCodeLine{23 \textcolor{comment}{* OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE}}
+\DoxyCodeLine{24 \textcolor{comment}{* SOFTWARE.}}
+\DoxyCodeLine{25 \textcolor{comment}{*/}}
+\DoxyCodeLine{26 }
+\DoxyCodeLine{39 \textcolor{preprocessor}{\#ifndef Zaki\_Math\_Solver\_Newton\_H}}
+\DoxyCodeLine{40 \textcolor{preprocessor}{\#define Zaki\_Math\_Solver\_Newton\_H}}
+\DoxyCodeLine{41 }
+\DoxyCodeLine{42 \textcolor{preprocessor}{\#include <iostream>}}
+\DoxyCodeLine{43 \textcolor{preprocessor}{\#include <vector>}}
+\DoxyCodeLine{44 }
+\DoxyCodeLine{45 }
+\DoxyCodeLine{46 \textcolor{comment}{// \#include <matplotlibcpp.hpp>}}
+\DoxyCodeLine{47 \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{48 \textcolor{keyword}{namespace }Zaki::Math}
+\DoxyCodeLine{49 \{}
+\DoxyCodeLine{50 }
+\DoxyCodeLine{51 \textcolor{comment}{//=======================================================}}
+\DoxyCodeLine{52 \textcolor{keyword}{class }\mbox{\hyperlink{class_zaki_1_1_math_1_1_newton}{Newton}}}
+\DoxyCodeLine{53 \{}
+\DoxyCodeLine{54 \textcolor{keyword}{private}:}
+\DoxyCodeLine{55     \textcolor{comment}{// The function to solve}}
+\DoxyCodeLine{56     double (*func)(\textcolor{keyword}{const} \textcolor{keywordtype}{double}\&) ;}
+\DoxyCodeLine{57 }
+\DoxyCodeLine{58     \textcolor{comment}{// The derivative of function}}
+\DoxyCodeLine{59     double (*der)(\textcolor{keyword}{const} \textcolor{keywordtype}{double}\&) ;}
+\DoxyCodeLine{60 }
+\DoxyCodeLine{61     \textcolor{comment}{// Number of iterations}}
+\DoxyCodeLine{62     \textcolor{keywordtype}{size\_t} iter\_num = 100 ;}
+\DoxyCodeLine{63 }
+\DoxyCodeLine{64     \textcolor{comment}{// Relative precision}}
+\DoxyCodeLine{65     \textcolor{keywordtype}{double} prec = 1e-\/10 ;}
+\DoxyCodeLine{66 }
+\DoxyCodeLine{67     \textcolor{comment}{// Initial guess}}
+\DoxyCodeLine{68     \textcolor{keywordtype}{double} x\_0\_guess ;}
+\DoxyCodeLine{69 }
+\DoxyCodeLine{70 \textcolor{keyword}{public}:}
+\DoxyCodeLine{71     \mbox{\hyperlink{class_zaki_1_1_math_1_1_newton}{Newton}}() ;}
+\DoxyCodeLine{72     \mbox{\hyperlink{class_zaki_1_1_math_1_1_newton}{\string~Newton}}() ;}
+\DoxyCodeLine{73 }
+\DoxyCodeLine{74     \textcolor{keywordtype}{void} SetFunction(\textcolor{keywordtype}{double} (*f)(\textcolor{keyword}{const} \textcolor{keywordtype}{double}\&) ) ;}
+\DoxyCodeLine{75     \textcolor{keywordtype}{void} SetDerivative(\textcolor{keywordtype}{double} (*f)(\textcolor{keyword}{const} \textcolor{keywordtype}{double}\&) ) ;}
+\DoxyCodeLine{76     \textcolor{keywordtype}{void} SetGuessValue(\textcolor{keyword}{const} \textcolor{keywordtype}{double}\& in\_x) ;}
+\DoxyCodeLine{77 }
+\DoxyCodeLine{78     \textcolor{keywordtype}{double} Solve() ;}
+\DoxyCodeLine{79 \};}
+\DoxyCodeLine{80 }
+\DoxyCodeLine{81 \textcolor{comment}{//=======================================================}}
+\DoxyCodeLine{82 \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{83 \} \textcolor{comment}{// End of namespace Math::Solver}}
+\DoxyCodeLine{84 \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{85 }
+\DoxyCodeLine{86 \textcolor{comment}{//==============================================================}}
+\DoxyCodeLine{87 \textcolor{preprocessor}{\#endif }\textcolor{comment}{/*Zaki\_Math\_Solver\_Newton\_H*/}\textcolor{preprocessor}{}}
+
+\end{DoxyCode}

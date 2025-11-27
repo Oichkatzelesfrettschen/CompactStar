@@ -1,0 +1,73 @@
+\hypertarget{namespace_compact_star_1_1_star_builder}{}\doxysection{Compact\+Star\+::Star\+Builder Namespace Reference}
+\label{namespace_compact_star_1_1_star_builder}\index{CompactStar::StarBuilder@{CompactStar::StarBuilder}}
+
+
+Namespace for profile-\/construction helpers.  
+
+
+\doxysubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{struct_compact_star_1_1_star_builder_1_1_options}{Options}}
+\begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{struct_compact_star_1_1_star_builder_1_1_options}{Options}} controlling how the builder treats blanket / DUrca, etc. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{struct_compact_star_1_1_star_builder_1_1_output}{Output}}
+\begin{DoxyCompactList}\small\item\em Full output of the builder. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{namespace_compact_star_1_1_star_builder_a3b94da4e460dfad279f5cac1c5300b0d}{Build\+From\+Sequence}} (const \mbox{\hyperlink{class_zaki_1_1_string_1_1_directory}{Zaki\+::\+String\+::\+Directory}} \&wrk\+\_\+dir, const \mbox{\hyperlink{class_zaki_1_1_string_1_1_directory}{Zaki\+::\+String\+::\+Directory}} \&rel\+\_\+dir, const std\+::string \&model\+\_\+name, double target\+\_\+mass\+\_\+\+Msun, \mbox{\hyperlink{struct_compact_star_1_1_star_builder_1_1_output}{Output}} \&out, const \mbox{\hyperlink{struct_compact_star_1_1_star_builder_1_1_options}{Options}} \&opt)
+\begin{DoxyCompactList}\small\item\em Core implementation. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Namespace for profile-\/construction helpers. 
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{namespace_compact_star_1_1_star_builder_a3b94da4e460dfad279f5cac1c5300b0d}\label{namespace_compact_star_1_1_star_builder_a3b94da4e460dfad279f5cac1c5300b0d}} 
+\index{CompactStar::StarBuilder@{CompactStar::StarBuilder}!BuildFromSequence@{BuildFromSequence}}
+\index{BuildFromSequence@{BuildFromSequence}!CompactStar::StarBuilder@{CompactStar::StarBuilder}}
+\doxysubsubsection{\texorpdfstring{BuildFromSequence()}{BuildFromSequence()}}
+{\footnotesize\ttfamily int Compact\+Star\+::\+Star\+Builder\+::\+Build\+From\+Sequence (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_zaki_1_1_string_1_1_directory}{Zaki\+::\+String\+::\+Directory}} \&}]{wrk\+\_\+dir,  }\item[{const \mbox{\hyperlink{class_zaki_1_1_string_1_1_directory}{Zaki\+::\+String\+::\+Directory}} \&}]{rel\+\_\+dir,  }\item[{const std\+::string \&}]{model\+\_\+name,  }\item[{double}]{target\+\_\+mass\+\_\+\+Msun,  }\item[{\mbox{\hyperlink{struct_compact_star_1_1_star_builder_1_1_output}{Output}} \&}]{out,  }\item[{const \mbox{\hyperlink{struct_compact_star_1_1_star_builder_1_1_options}{Options}} \&}]{opt = {\ttfamily \mbox{\hyperlink{struct_compact_star_1_1_star_builder_1_1_options}{Options}}()} }\end{DoxyParamCaption})}
+
+
+
+Core implementation. 
+
+Build a neutron-\/star(-\/like) profile from a precomputed sequence.
+
+This is a direct extraction of your previous logic\+:
+
+
+\begin{DoxyEnumerate}
+\item load the sequence TSV
+\item find the closest mass
+\item if we’re at the upper-\/mass end\+: just load that profile
+\item else\+: load the neighbor and linearly interpolate
+\item compute η\+\_\+I from sequence derivatives
+\item locate blanket radius
+\item (optional) build DUrca mask
+\end{DoxyEnumerate}
+
+
+\begin{DoxyParams}{Parameters}
+{\em wrk\+\_\+dir} & base working directory (what used to be {\ttfamily wrk\+\_\+dir} in \mbox{\hyperlink{class_compact_star_1_1_pulsar}{Pulsar}}) \\
+\hline
+{\em rel\+\_\+dir} & relative directory where sequence and profiles live (what used to be {\ttfamily in\+\_\+dir}) \\
+\hline
+{\em model\+\_\+name} & model/\+EOS label, e.\+g. {\ttfamily \char`\"{}\+DD2\char`\"{}}, {\ttfamily \char`\"{}\+SLy4\char`\"{}}, ... \\
+\hline
+{\em target\+\_\+mass\+\_\+\+Msun} & target gravitational mass in solar masses \\
+\hline
+{\em out} & filled on success with profile + seq\+\_\+point + extras \\
+\hline
+{\em opt} & optional behavior flags / thresholds\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+index in the sequence that was chosen as “closest” (same as old code)
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em std\+::runtime\+\_\+error} & on obvious I/O or interpolation problems \\
+\hline
+\end{DoxyExceptions}

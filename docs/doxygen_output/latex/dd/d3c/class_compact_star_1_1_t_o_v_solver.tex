@@ -1,0 +1,542 @@
+\hypertarget{class_compact_star_1_1_t_o_v_solver}{}\doxysection{Compact\+Star\+::TOVSolver Class Reference}
+\label{class_compact_star_1_1_t_o_v_solver}\index{CompactStar::TOVSolver@{CompactStar::TOVSolver}}
+Inheritance diagram for Compact\+Star\+::TOVSolver\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{dd/d3c/class_compact_star_1_1_t_o_v_solver}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_compact_star_1_1_t_o_v_solver_ac57af37019ab1ac27f17c208a7dcf74f}\label{class_compact_star_1_1_t_o_v_solver_ac57af37019ab1ac27f17c208a7dcf74f}} 
+{\bfseries TOVSolver} (const \mbox{\hyperlink{class_compact_star_1_1_t_o_v_solver}{TOVSolver}} \&)=delete
+\begin{DoxyCompactList}\small\item\em Copy Constructor. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_compact_star_1_1_t_o_v_solver_abef80c07a83dff3e30be1524621b9f55}\label{class_compact_star_1_1_t_o_v_solver_abef80c07a83dff3e30be1524621b9f55}} 
+\mbox{\hyperlink{class_compact_star_1_1_t_o_v_solver}{TOVSolver}} \& {\bfseries operator=} (const \mbox{\hyperlink{class_compact_star_1_1_t_o_v_solver}{TOVSolver}} \&)=delete
+\begin{DoxyCompactList}\small\item\em Assignment operator. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_compact_star_1_1_t_o_v_solver_ab053685f9a4e92327b622f4ba164685a}\label{class_compact_star_1_1_t_o_v_solver_ab053685f9a4e92327b622f4ba164685a}} 
+void {\bfseries Import\+EOS} (const \mbox{\hyperlink{class_zaki_1_1_string_1_1_directory}{Zaki\+::\+String\+::\+Directory}} \&)
+\item 
+\mbox{\Hypertarget{class_compact_star_1_1_t_o_v_solver_acc4d15ed5e252d62f1723a46949948bb}\label{class_compact_star_1_1_t_o_v_solver_acc4d15ed5e252d62f1723a46949948bb}} 
+void {\bfseries Import\+EOS} (const \mbox{\hyperlink{class_zaki_1_1_string_1_1_directory}{Zaki\+::\+String\+::\+Directory}} \&vis\+\_\+eos, const \mbox{\hyperlink{class_zaki_1_1_string_1_1_directory}{Zaki\+::\+String\+::\+Directory}} \&dar\+\_\+eos)
+\item 
+void \mbox{\hyperlink{class_compact_star_1_1_t_o_v_solver_a928f8be4556145c06175e0839387c4c2}{Print\+EOSTable}} (const std\+::size\+\_\+t max\+\_\+rows) const
+\begin{DoxyCompactList}\small\item\em Print (at most) {\ttfamily max\+\_\+rows} rows of the EOS table. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_compact_star_1_1_t_o_v_solver_a44513b1db2d2cc7dc7ee4ed0a5585a78}{Print\+EOSSummary}} () const
+\begin{DoxyCompactList}\small\item\em Print a compact EOS summary. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{class_compact_star_1_1_t_o_v_solver_a1967285c85b794715a954d9f75483854}{Get\+EOSMin\+EDens}} () const
+\begin{DoxyCompactList}\small\item\em Return the minimum energy density available in the EOS. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{class_compact_star_1_1_t_o_v_solver_afb05a2e1edc4583016c58511c50bac8c}{Get\+EOSMax\+EDens}} () const
+\begin{DoxyCompactList}\small\item\em Return the maximum energy density available in the EOS. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_compact_star_1_1_t_o_v_solver_a83c0f4d2f677e94a30ab486ee67cba1d}{Set\+Central\+EDens\+Floor\+Factor}} (double f)
+\begin{DoxyCompactList}\small\item\em Set the floor multiplier for central energy density. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{class_compact_star_1_1_t_o_v_solver_a69ce18178fb89368ca91a797ad216a46}{Get\+EDens}} (const double \&)
+\begin{DoxyCompactList}\small\item\em Returns the energy density given pressure. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_compact_star_1_1_t_o_v_solver_a7689a834c37f69933e34f6d2cfe6c352}\label{class_compact_star_1_1_t_o_v_solver_a7689a834c37f69933e34f6d2cfe6c352}} 
+double {\bfseries Get\+EDens\+\_\+\+Dark} (const double \&)
+\item 
+\mbox{\Hypertarget{class_compact_star_1_1_t_o_v_solver_a9aff0f6aa737aab639bbe438da9a61ca}\label{class_compact_star_1_1_t_o_v_solver_a9aff0f6aa737aab639bbe438da9a61ca}} 
+double {\bfseries Get\+Rho} (const double \&)
+\begin{DoxyCompactList}\small\item\em Returns the total baryon number density given pressure. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_compact_star_1_1_t_o_v_solver_a8c6a0547d21abb9448763e35c7ddfc9a}\label{class_compact_star_1_1_t_o_v_solver_a8c6a0547d21abb9448763e35c7ddfc9a}} 
+double {\bfseries Get\+Rho\+\_\+\+Dark} (const double \&)
+\begin{DoxyCompactList}\small\item\em Returns the total baryon number density given pressure. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_compact_star_1_1_t_o_v_solver_ace56eb30f68d3e771ac4d104c6965102}\label{class_compact_star_1_1_t_o_v_solver_ace56eb30f68d3e771ac4d104c6965102}} 
+double {\bfseries Get\+Rho\+\_\+r} (const double \&)
+\begin{DoxyCompactList}\small\item\em Returns the total baryon number density given radius. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_compact_star_1_1_t_o_v_solver_a838b5c40f394c0949e6f7186d939b627}\label{class_compact_star_1_1_t_o_v_solver_a838b5c40f394c0949e6f7186d939b627}} 
+std\+::vector$<$ double $>$ {\bfseries Get\+Rho\+\_\+i} (const double \&in\+\_\+p)
+\begin{DoxyCompactList}\small\item\em Returns the specific number density given pressure. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_compact_star_1_1_t_o_v_solver_adfcf0a44bed07f01d627b2f9ecac2ab4}\label{class_compact_star_1_1_t_o_v_solver_adfcf0a44bed07f01d627b2f9ecac2ab4}} 
+std\+::vector$<$ double $>$ {\bfseries Get\+Rho\+\_\+i\+\_\+\+Dark} (const double \&in\+\_\+p)
+\begin{DoxyCompactList}\small\item\em Returns the specific number density given pressure. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_compact_star_1_1_t_o_v_solver_aca58ccf88e678bad31dbcb058a07d55a}\label{class_compact_star_1_1_t_o_v_solver_aca58ccf88e678bad31dbcb058a07d55a}} 
+double {\bfseries Get\+Init\+Press} () const
+\item 
+\mbox{\Hypertarget{class_compact_star_1_1_t_o_v_solver_ace741cbd09c5d780020ec5ab60a332f9}\label{class_compact_star_1_1_t_o_v_solver_ace741cbd09c5d780020ec5ab60a332f9}} 
+double {\bfseries Get\+Init\+EDens} () const
+\item 
+\mbox{\Hypertarget{class_compact_star_1_1_t_o_v_solver_a67daf2b7fef4e18ea1ee3546a5cd6bbb}\label{class_compact_star_1_1_t_o_v_solver_a67daf2b7fef4e18ea1ee3546a5cd6bbb}} 
+double {\bfseries Get\+Init\+Press\+\_\+\+Dark} () const
+\item 
+\mbox{\Hypertarget{class_compact_star_1_1_t_o_v_solver_ac29c870c7166d2405a91a19f72a26408}\label{class_compact_star_1_1_t_o_v_solver_ac29c870c7166d2405a91a19f72a26408}} 
+double {\bfseries Get\+Nu\+Der} (const double r, const std\+::vector$<$ double $>$ \&y)
+\begin{DoxyCompactList}\small\item\em Returns the derivative of the metric nu(r) function. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_compact_star_1_1_t_o_v_solver_a680514efaeb08aa2a88b529e1161806d}\label{class_compact_star_1_1_t_o_v_solver_a680514efaeb08aa2a88b529e1161806d}} 
+double {\bfseries Get\+Nu\+Der\+\_\+\+Dark} (const double r, const std\+::vector$<$ double $>$ \&y)
+\item 
+\mbox{\Hypertarget{class_compact_star_1_1_t_o_v_solver_a70fb1b548dc50733340b816b2952ac6d}\label{class_compact_star_1_1_t_o_v_solver_a70fb1b548dc50733340b816b2952ac6d}} 
+double {\bfseries Get\+Nu\+Der\+Spline} (const double \&in\+\_\+r)
+\begin{DoxyCompactList}\small\item\em Returns the nu\+\_\+der value given the radius input. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_compact_star_1_1_t_o_v_solver_a2175593dbf5962c3f2a93c41b3f6a8e5}\label{class_compact_star_1_1_t_o_v_solver_a2175593dbf5962c3f2a93c41b3f6a8e5}} 
+void {\bfseries Add\+Mix\+Condition} (bool($\ast$func)(const \mbox{\hyperlink{class_compact_star_1_1_mixed_star}{Mixed\+Star}} \&))
+\begin{DoxyCompactList}\small\item\em Adds the condition for printing the mixed star profile. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_compact_star_1_1_t_o_v_solver_aabe2fbe0418a0726edec0c19f9de8519}\label{class_compact_star_1_1_t_o_v_solver_aabe2fbe0418a0726edec0c19f9de8519}} 
+void {\bfseries Add\+NCondition} (bool($\ast$func)(const \mbox{\hyperlink{class_compact_star_1_1_n_star}{NStar}} \&))
+\begin{DoxyCompactList}\small\item\em Adds the condition for printing the star profile. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_compact_star_1_1_t_o_v_solver_aae8c6c92d807f8c1317e4fb84fbac0b7}\label{class_compact_star_1_1_t_o_v_solver_aae8c6c92d807f8c1317e4fb84fbac0b7}} 
+void {\bfseries Add\+Analysis} (\mbox{\hyperlink{class_compact_star_1_1_analysis}{Analysis}} $\ast$)
+\begin{DoxyCompactList}\small\item\em Attaches a pointer to analysis. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_compact_star_1_1_t_o_v_solver_a4b58d3ec7fb9c40d47afce2d5fa954e6}\label{class_compact_star_1_1_t_o_v_solver_a4b58d3ec7fb9c40d47afce2d5fa954e6}} 
+void {\bfseries Solve} (const \mbox{\hyperlink{struct_zaki_1_1_math_1_1_axis}{Zaki\+::\+Math\+::\+Axis}} \&, const \mbox{\hyperlink{class_zaki_1_1_string_1_1_directory}{Zaki\+::\+String\+::\+Directory}} \&, const \mbox{\hyperlink{class_zaki_1_1_string_1_1_directory}{Zaki\+::\+String\+::\+Directory}} \&file\+\_\+name)
+\begin{DoxyCompactList}\small\item\em Input a range of initial pressure. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_compact_star_1_1_t_o_v_solver_aa737cc1d74f256f73c71509fca653a3e}\label{class_compact_star_1_1_t_o_v_solver_aa737cc1d74f256f73c71509fca653a3e}} 
+void {\bfseries Solve\+\_\+\+Mixed} (const \mbox{\hyperlink{struct_zaki_1_1_math_1_1_axis}{Zaki\+::\+Math\+::\+Axis}} \&vis\+\_\+ax, const \mbox{\hyperlink{struct_zaki_1_1_math_1_1_axis}{Zaki\+::\+Math\+::\+Axis}} \&dark\+\_\+ax, const \mbox{\hyperlink{class_zaki_1_1_string_1_1_directory}{Zaki\+::\+String\+::\+Directory}} \&dir, const \mbox{\hyperlink{class_zaki_1_1_string_1_1_directory}{Zaki\+::\+String\+::\+Directory}} \&file\+\_\+name)
+\item 
+\mbox{\Hypertarget{class_compact_star_1_1_t_o_v_solver_a69b9529e6b02f5069ba184af7189b9d3}\label{class_compact_star_1_1_t_o_v_solver_a69b9529e6b02f5069ba184af7189b9d3}} 
+void {\bfseries Solve\+\_\+\+Mixed} (const \mbox{\hyperlink{class_compact_star_1_1_contour}{Contour}} \&eps\+\_\+cont, const \mbox{\hyperlink{class_zaki_1_1_string_1_1_directory}{Zaki\+::\+String\+::\+Directory}} \&dir, const \mbox{\hyperlink{class_zaki_1_1_string_1_1_directory}{Zaki\+::\+String\+::\+Directory}} \&file\+\_\+name)
+\item 
+\mbox{\Hypertarget{class_compact_star_1_1_t_o_v_solver_a157b182631a5d7dbc6a467239012e6fe}\label{class_compact_star_1_1_t_o_v_solver_a157b182631a5d7dbc6a467239012e6fe}} 
+void {\bfseries Radius\+Loop} (double \&r, double $\ast$y)
+\item 
+\mbox{\Hypertarget{class_compact_star_1_1_t_o_v_solver_a0245f989a86ea37231a079a61fb25af3}\label{class_compact_star_1_1_t_o_v_solver_a0245f989a86ea37231a079a61fb25af3}} 
+void {\bfseries Radius\+Loop\+Mixed} (double \&r, double $\ast$y\+\_\+core, double $\ast$y\+\_\+mantle)
+\item 
+\mbox{\Hypertarget{class_compact_star_1_1_t_o_v_solver_a16f287c7bf626e6dcae55d8825fd2dc2}\label{class_compact_star_1_1_t_o_v_solver_a16f287c7bf626e6dcae55d8825fd2dc2}} 
+void {\bfseries Export\+Sequence} (const \mbox{\hyperlink{class_zaki_1_1_string_1_1_directory}{Zaki\+::\+String\+::\+Directory}} \&) const
+\begin{DoxyCompactList}\small\item\em Exports the star sequence. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{class_compact_star_1_1_t_o_v_solver_ad7cd0f4a7c5ec67e393d3c6dcbeb041e}{Export\+Mixed\+Sequence}} (const \mbox{\hyperlink{class_zaki_1_1_string_1_1_directory}{Zaki\+::\+String\+::\+Directory}} \&)
+\begin{DoxyCompactList}\small\item\em Exports the mixed sequence. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{class_compact_star_1_1_t_o_v_solver_acae54e33e0f32db0f87a71a642acde26}{Export\+Mixed\+Star\+Profile}} (const size\+\_\+t \&v\+\_\+idx, const size\+\_\+t \&d\+\_\+idx, const \mbox{\hyperlink{class_zaki_1_1_string_1_1_directory}{Zaki\+::\+String\+::\+Directory}} \&)
+\begin{DoxyCompactList}\small\item\em Exports the mixed star profile. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_compact_star_1_1_t_o_v_solver_afaa89abf45d661246cc67909f3f7bee5}\label{class_compact_star_1_1_t_o_v_solver_afaa89abf45d661246cc67909f3f7bee5}} 
+virtual void {\bfseries Export\+NStar\+Profile} (const size\+\_\+t \&idx, const \mbox{\hyperlink{class_zaki_1_1_string_1_1_directory}{Zaki\+::\+String\+::\+Directory}} \&)
+\begin{DoxyCompactList}\small\item\em Exports the neutron star profile. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_compact_star_1_1_t_o_v_solver_a0c16cb21c1bef57463cb939d24b999d7}\label{class_compact_star_1_1_t_o_v_solver_a0c16cb21c1bef57463cb939d24b999d7}} 
+virtual void {\bfseries Surface\+Is\+Reached} (const size\+\_\+t \&v\+\_\+idx, const size\+\_\+t \&d\+\_\+idx)
+\item 
+\mbox{\Hypertarget{class_compact_star_1_1_t_o_v_solver_acbd44a86a8c5d261b0263eef52b84520}\label{class_compact_star_1_1_t_o_v_solver_acbd44a86a8c5d261b0263eef52b84520}} 
+void {\bfseries Surface\+Is\+Reached} ()
+\item 
+\mbox{\Hypertarget{class_compact_star_1_1_t_o_v_solver_ac2b2c294fec134cfd3726827564a0228}\label{class_compact_star_1_1_t_o_v_solver_ac2b2c294fec134cfd3726827564a0228}} 
+virtual void {\bfseries Print\+Status} (const size\+\_\+t \&v\+\_\+idx, const size\+\_\+t \&d\+\_\+idx, const size\+\_\+t \&v\+\_\+res, const size\+\_\+t \&d\+\_\+res)
+\item 
+\mbox{\Hypertarget{class_compact_star_1_1_t_o_v_solver_a3a608cdc520972c9378cec2afb32ed60}\label{class_compact_star_1_1_t_o_v_solver_a3a608cdc520972c9378cec2afb32ed60}} 
+void {\bfseries Print\+Status} (const size\+\_\+t \&in\+\_\+idx, const size\+\_\+t \&in\+\_\+res)
+\item 
+\mbox{\Hypertarget{class_compact_star_1_1_t_o_v_solver_a982fbaa564de4a04b56c6d8e10df4bc8}\label{class_compact_star_1_1_t_o_v_solver_a982fbaa564de4a04b56c6d8e10df4bc8}} 
+void {\bfseries Set\+Exclusion\+Region} (const \mbox{\hyperlink{class_zaki_1_1_math_1_1_cond___polygon}{Zaki\+::\+Math\+::\+Cond\+\_\+\+Polygon}} \&)
+\item 
+\mbox{\Hypertarget{class_compact_star_1_1_t_o_v_solver_a70e52bc5a19a7265e321058d0bbc4456}\label{class_compact_star_1_1_t_o_v_solver_a70e52bc5a19a7265e321058d0bbc4456}} 
+void {\bfseries Set\+Radial\+Res} (const size\+\_\+t \&)
+\item 
+\mbox{\Hypertarget{class_compact_star_1_1_t_o_v_solver_ad7a810f892d50020cc17743188a6b6c0}\label{class_compact_star_1_1_t_o_v_solver_ad7a810f892d50020cc17743188a6b6c0}} 
+void {\bfseries Set\+Profile\+Precision} (const int \&prec)
+\begin{DoxyCompactList}\small\item\em Sets the printing precision for the \mbox{\hyperlink{class_compact_star_1_1_n_star}{NStar}} profiles. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_compact_star_1_1_t_o_v_solver_a0366296404526edd6bf8ae406bba6279}{Set\+Max\+Radius}} (const double \&)
+\item 
+\mbox{\Hypertarget{class_compact_star_1_1_t_o_v_solver_ae2ad8a364f1945ed35844c2fdccfcb0d}\label{class_compact_star_1_1_t_o_v_solver_ae2ad8a364f1945ed35844c2fdccfcb0d}} 
+void {\bfseries Clear\+Sequence} ()
+\begin{DoxyCompactList}\small\item\em Empties the sequence. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_compact_star_1_1_t_o_v_solver_aa1b1e8c23f5abdcc88b086e1415e5625}{Gen\+Test\+Sequence}} (const double \&e\+\_\+c, const \mbox{\hyperlink{class_zaki_1_1_string_1_1_directory}{Zaki\+::\+String\+::\+Directory}} \&dir, const \mbox{\hyperlink{class_zaki_1_1_string_1_1_directory}{Zaki\+::\+String\+::\+Directory}} \&file)
+\begin{DoxyCompactList}\small\item\em It generates a sequence of NS by varying radial resolution. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_compact_star_1_1_t_o_v_solver_a382df5b3d890d8d31c36707a50cd3a03}\label{class_compact_star_1_1_t_o_v_solver_a382df5b3d890d8d31c36707a50cd3a03}} 
+static int {\bfseries ODE} (double r, const double y\mbox{[}$\,$\mbox{]}, double f\mbox{[}$\,$\mbox{]}, void $\ast$params)
+\begin{DoxyCompactList}\small\item\em Evaluates \& exports the nu(r) function table. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_compact_star_1_1_t_o_v_solver_a2c3b292ab65fe91d2e3eb789277ba65d}\label{class_compact_star_1_1_t_o_v_solver_a2c3b292ab65fe91d2e3eb789277ba65d}} 
+static int {\bfseries ODE\+\_\+\+Dark\+\_\+\+Core} (double r, const double y\mbox{[}$\,$\mbox{]}, double f\mbox{[}$\,$\mbox{]}, void $\ast$params)
+\item 
+\mbox{\Hypertarget{class_compact_star_1_1_t_o_v_solver_a36e7724f8fc5c7335d8d3d9c52ab5664}\label{class_compact_star_1_1_t_o_v_solver_a36e7724f8fc5c7335d8d3d9c52ab5664}} 
+static int {\bfseries ODE\+\_\+\+Dark\+\_\+\+Mantle} (double r, const double y\mbox{[}$\,$\mbox{]}, double f\mbox{[}$\,$\mbox{]}, void $\ast$params)
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Types}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_compact_star_1_1_t_o_v_solver_a62ce49ec006367136712e66498eaf171}\label{class_compact_star_1_1_t_o_v_solver_a62ce49ec006367136712e66498eaf171}} 
+enum class {\bfseries TOVSolver\+Status} \{ {\bfseries Vis\+\_\+\+Surf\+\_\+\+Reached} = 100
+, {\bfseries Dark\+\_\+\+Surf\+\_\+\+Reached} = 101
+, {\bfseries Mantle\+\_\+\+Surf\+\_\+\+Reached} = 102
+ \}
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+double \mbox{\hyperlink{class_compact_star_1_1_t_o_v_solver_a4f70ac766aeee8403c18be14a81e1ce9}{p\+\_\+of\+\_\+e}} (const double \&in\+\_\+e)
+\item 
+\mbox{\Hypertarget{class_compact_star_1_1_t_o_v_solver_a570c2b716af5e24021e2a1cb97e66f0c}\label{class_compact_star_1_1_t_o_v_solver_a570c2b716af5e24021e2a1cb97e66f0c}} 
+double {\bfseries p\+\_\+of\+\_\+e\+\_\+dark} (const double \&in\+\_\+e)
+\item 
+double \mbox{\hyperlink{class_compact_star_1_1_t_o_v_solver_a932bb6bcadea3f820e213c5f43af24b6}{cost\+\_\+p\+\_\+of\+\_\+e}} (const double in\+\_\+e)
+\item 
+\mbox{\Hypertarget{class_compact_star_1_1_t_o_v_solver_ac96b23e05447f775e2ad4bc8e01b3e11}\label{class_compact_star_1_1_t_o_v_solver_ac96b23e05447f775e2ad4bc8e01b3e11}} 
+double {\bfseries cost\+\_\+p\+\_\+of\+\_\+e\+\_\+dark} (const double in\+\_\+e)
+\item 
+double \mbox{\hyperlink{class_compact_star_1_1_t_o_v_solver_a86ec6b1d93a5ef388f7a2c009d0f144b}{Pressure\+Cutoff}} () const
+\item 
+\mbox{\Hypertarget{class_compact_star_1_1_t_o_v_solver_a9edc14de94618781374a53745f864eed}\label{class_compact_star_1_1_t_o_v_solver_a9edc14de94618781374a53745f864eed}} 
+double {\bfseries Pressure\+Cutoff\+\_\+\+Dark} () const
+\item 
+void \mbox{\hyperlink{class_compact_star_1_1_t_o_v_solver_adffee3ac13c04d67e63bdc6909d4a48b}{On\+Work\+Dir\+Changed}} (const \mbox{\hyperlink{class_zaki_1_1_string_1_1_directory}{Zaki\+::\+String\+::\+Directory}} \&dir) override
+\begin{DoxyCompactList}\small\item\em Propagate the new working directory to internal members. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_compact_star_1_1_t_o_v_solver_a2812ca309697e65248ab14f74cc41dc8}\label{class_compact_star_1_1_t_o_v_solver_a2812ca309697e65248ab14f74cc41dc8}} 
+void {\bfseries Hidden\+\_\+\+Import\+EOS\+\_\+\+Vis} (const \mbox{\hyperlink{class_zaki_1_1_string_1_1_directory}{Zaki\+::\+String\+::\+Directory}} \&)
+\item 
+\mbox{\Hypertarget{class_compact_star_1_1_t_o_v_solver_a2d75c272a1e396fb47335058b1f6f400}\label{class_compact_star_1_1_t_o_v_solver_a2d75c272a1e396fb47335058b1f6f400}} 
+void {\bfseries Hidden\+\_\+\+Import\+EOS\+\_\+\+Dar} (const \mbox{\hyperlink{class_zaki_1_1_string_1_1_directory}{Zaki\+::\+String\+::\+Directory}} \&)
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+size\+\_\+t \mbox{\hyperlink{class_compact_star_1_1_t_o_v_solver_addab6d0500d8bc434f1a7acef3fdb8ac}{radial\+\_\+res}} = 10000
+\begin{DoxyCompactList}\small\item\em The number of TOV object instances. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_compact_star_1_1_t_o_v_solver_ab460588738954dd02cddead2fb273e13}\label{class_compact_star_1_1_t_o_v_solver_ab460588738954dd02cddead2fb273e13}} 
+\mbox{\hyperlink{struct_compact_star_1_1_e_o_s_table}{EOSTable}} {\bfseries eos\+\_\+tab}
+\item 
+\mbox{\Hypertarget{class_compact_star_1_1_t_o_v_solver_a0e37b0c56fa9df735c8270b984c97188}\label{class_compact_star_1_1_t_o_v_solver_a0e37b0c56fa9df735c8270b984c97188}} 
+\mbox{\hyperlink{struct_compact_star_1_1_e_o_s_table}{EOSTable}} {\bfseries eos\+\_\+tab\+\_\+dark}
+\item 
+\mbox{\Hypertarget{class_compact_star_1_1_t_o_v_solver_afd993c4176f3fa076ee71298fd6a7f28}\label{class_compact_star_1_1_t_o_v_solver_afd993c4176f3fa076ee71298fd6a7f28}} 
+\mbox{\hyperlink{class_compact_star_1_1_mixed_star}{Mixed\+Star}} {\bfseries mixed\+\_\+star}
+\item 
+\mbox{\Hypertarget{class_compact_star_1_1_t_o_v_solver_aeda119c03579ea0dab8bfd71c98a237d}\label{class_compact_star_1_1_t_o_v_solver_aeda119c03579ea0dab8bfd71c98a237d}} 
+\mbox{\hyperlink{class_compact_star_1_1_n_star}{NStar}} {\bfseries n\+\_\+star}
+\item 
+\mbox{\Hypertarget{class_compact_star_1_1_t_o_v_solver_a56f9e7504c3f3ff2fb22bde827618348}\label{class_compact_star_1_1_t_o_v_solver_a56f9e7504c3f3ff2fb22bde827618348}} 
+gsl\+\_\+interp\+\_\+accel $\ast$ {\bfseries visi\+\_\+p\+\_\+accel} = nullptr
+\item 
+\mbox{\Hypertarget{class_compact_star_1_1_t_o_v_solver_a2846acdde90ddad1c9f4855ffac1034d}\label{class_compact_star_1_1_t_o_v_solver_a2846acdde90ddad1c9f4855ffac1034d}} 
+gsl\+\_\+interp\+\_\+accel $\ast$ {\bfseries dark\+\_\+p\+\_\+accel} = nullptr
+\item 
+\mbox{\Hypertarget{class_compact_star_1_1_t_o_v_solver_a251ac9781de50a068fe699c18e48a050}\label{class_compact_star_1_1_t_o_v_solver_a251ac9781de50a068fe699c18e48a050}} 
+gsl\+\_\+interp\+\_\+accel $\ast$ {\bfseries mixed\+\_\+r\+\_\+accel} = nullptr
+\item 
+\mbox{\Hypertarget{class_compact_star_1_1_t_o_v_solver_a3762989a98de05884927e3ceceef4d16}\label{class_compact_star_1_1_t_o_v_solver_a3762989a98de05884927e3ceceef4d16}} 
+const gsl\+\_\+interp\+\_\+type $\ast$ {\bfseries TOV\+\_\+gsl\+\_\+interp\+\_\+type} = gsl\+\_\+interp\+\_\+steffen
+\item 
+\mbox{\Hypertarget{class_compact_star_1_1_t_o_v_solver_a075a0e3c4d2c832026f3f4a4d4d10389}\label{class_compact_star_1_1_t_o_v_solver_a075a0e3c4d2c832026f3f4a4d4d10389}} 
+gsl\+\_\+spline $\ast$ {\bfseries visi\+\_\+eps\+\_\+p\+\_\+spline} = nullptr
+\item 
+\mbox{\Hypertarget{class_compact_star_1_1_t_o_v_solver_a531c0da65e8b8103ece3cbe4215123e1}\label{class_compact_star_1_1_t_o_v_solver_a531c0da65e8b8103ece3cbe4215123e1}} 
+gsl\+\_\+spline $\ast$ {\bfseries dark\+\_\+eps\+\_\+p\+\_\+spline} = nullptr
+\item 
+\mbox{\Hypertarget{class_compact_star_1_1_t_o_v_solver_aa3f674bc46303e986be972a2870cd1ab}\label{class_compact_star_1_1_t_o_v_solver_aa3f674bc46303e986be972a2870cd1ab}} 
+gsl\+\_\+spline $\ast$ {\bfseries visi\+\_\+rho\+\_\+p\+\_\+spline} = nullptr
+\begin{DoxyCompactList}\small\item\em Total baryon number density (function of p) \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_compact_star_1_1_t_o_v_solver_af0bc2eda26ddf7c7f05de13ba92ad953}\label{class_compact_star_1_1_t_o_v_solver_af0bc2eda26ddf7c7f05de13ba92ad953}} 
+gsl\+\_\+spline $\ast$ {\bfseries dark\+\_\+rho\+\_\+p\+\_\+spline} = nullptr
+\item 
+std\+::vector$<$ gsl\+\_\+spline $\ast$ $>$ \mbox{\hyperlink{class_compact_star_1_1_t_o_v_solver_af7790bf7a832d4efea8d5fa638ab4513}{visi\+\_\+rho\+\_\+i\+\_\+p\+\_\+spline}}
+\begin{DoxyCompactList}\small\item\em Total baryon number density (function of r) \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_compact_star_1_1_t_o_v_solver_a79abca2a095a106490df4ff3ead56051}\label{class_compact_star_1_1_t_o_v_solver_a79abca2a095a106490df4ff3ead56051}} 
+std\+::vector$<$ gsl\+\_\+spline $\ast$ $>$ {\bfseries dark\+\_\+rho\+\_\+i\+\_\+p\+\_\+spline}
+\item 
+\mbox{\Hypertarget{class_compact_star_1_1_t_o_v_solver_a0aa4417d4c14eab706ead711e1ee7abb}\label{class_compact_star_1_1_t_o_v_solver_a0aa4417d4c14eab706ead711e1ee7abb}} 
+gsl\+\_\+spline $\ast$ {\bfseries nu\+\_\+der\+\_\+r\+\_\+spline} = nullptr
+\begin{DoxyCompactList}\small\item\em nu(r) derivative spline \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_compact_star_1_1_t_o_v_solver_a2447675ed9e9c53332978d1b24731ce4}\label{class_compact_star_1_1_t_o_v_solver_a2447675ed9e9c53332978d1b24731ce4}} 
+double {\bfseries init\+\_\+press} = -\/1
+\begin{DoxyCompactList}\small\item\em Initial pressure (at r = r(i=0)) \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_compact_star_1_1_t_o_v_solver_aca054bc5ec20d780e563f288e5f622cd}\label{class_compact_star_1_1_t_o_v_solver_aca054bc5ec20d780e563f288e5f622cd}} 
+double {\bfseries init\+\_\+press\+\_\+dark} = -\/1
+\item 
+\mbox{\Hypertarget{class_compact_star_1_1_t_o_v_solver_ab106181cafc46b759f8ec1937d11edda}\label{class_compact_star_1_1_t_o_v_solver_ab106181cafc46b759f8ec1937d11edda}} 
+double {\bfseries init\+\_\+edens} = -\/1
+\begin{DoxyCompactList}\small\item\em Initial energy density (at r = r(i=0)) \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_compact_star_1_1_t_o_v_solver_a5c9123ce1212c7a2fa3169b5d35500f2}\label{class_compact_star_1_1_t_o_v_solver_a5c9123ce1212c7a2fa3169b5d35500f2}} 
+double {\bfseries init\+\_\+edens\+\_\+dark} = -\/1
+\item 
+\mbox{\Hypertarget{class_compact_star_1_1_t_o_v_solver_a5ae0e5bf537af3c7f7ac26a5f257e2c9}\label{class_compact_star_1_1_t_o_v_solver_a5ae0e5bf537af3c7f7ac26a5f257e2c9}} 
+\mbox{\hyperlink{class_compact_star_1_1_sequence}{Sequence}} {\bfseries sequence}
+\begin{DoxyCompactList}\small\item\em Solution to TOV are saved here. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_compact_star_1_1_t_o_v_solver_ab2ede599940a2023983bacfa5e8a34dc}\label{class_compact_star_1_1_t_o_v_solver_ab2ede599940a2023983bacfa5e8a34dc}} 
+\mbox{\hyperlink{class_compact_star_1_1_mixed_sequence}{Mixed\+Sequence}} {\bfseries mixed\+\_\+sequence}
+\item 
+\mbox{\Hypertarget{class_compact_star_1_1_t_o_v_solver_acf962e17ed5c4ff24d7d1f72f1a5cce3}\label{class_compact_star_1_1_t_o_v_solver_acf962e17ed5c4ff24d7d1f72f1a5cce3}} 
+double {\bfseries cost\+\_\+p\+\_\+of\+\_\+e\+\_\+input} = 0
+\item 
+\mbox{\Hypertarget{class_compact_star_1_1_t_o_v_solver_a8c68e91f09c7092892bcb800d73ea390}\label{class_compact_star_1_1_t_o_v_solver_a8c68e91f09c7092892bcb800d73ea390}} 
+double {\bfseries cost\+\_\+p\+\_\+of\+\_\+e\+\_\+input\+\_\+dark} = 0
+\item 
+\mbox{\Hypertarget{class_compact_star_1_1_t_o_v_solver_af603ae9883f0d26eb6c89cab00c36ba8}\label{class_compact_star_1_1_t_o_v_solver_af603ae9883f0d26eb6c89cab00c36ba8}} 
+double {\bfseries r\+\_\+min} = 1.
+\begin{DoxyCompactList}\small\item\em Minimum radius in the solver (cm) \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_compact_star_1_1_t_o_v_solver_a276fdfae92b19ea72b1cdfea605280e1}\label{class_compact_star_1_1_t_o_v_solver_a276fdfae92b19ea72b1cdfea605280e1}} 
+double {\bfseries r\+\_\+max} = 70e+5
+\begin{DoxyCompactList}\small\item\em Maximum radius in the solver (cm) \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_compact_star_1_1_t_o_v_solver_a20a0d50d2c71e4e904318d0db0a2728b}\label{class_compact_star_1_1_t_o_v_solver_a20a0d50d2c71e4e904318d0db0a2728b}} 
+bool {\bfseries dark\+\_\+core} = true
+\item 
+\mbox{\Hypertarget{class_compact_star_1_1_t_o_v_solver_a046fdedf15ee9143be2440a5f7443e4b}\label{class_compact_star_1_1_t_o_v_solver_a046fdedf15ee9143be2440a5f7443e4b}} 
+double {\bfseries m\+\_\+core} = -\/1
+\item 
+bool($\ast$ \mbox{\hyperlink{class_compact_star_1_1_t_o_v_solver_adecbbcc06e83b3e22bd77386170fef83}{mix\+\_\+exp\+\_\+cond\+\_\+f}} )(const \mbox{\hyperlink{class_compact_star_1_1_mixed_star}{Mixed\+Star}} \&) = nullptr
+\item 
+bool($\ast$ \mbox{\hyperlink{class_compact_star_1_1_t_o_v_solver_a34c332d72485cd28173839758a81cbab}{n\+\_\+exp\+\_\+cond\+\_\+f}} )(const \mbox{\hyperlink{class_compact_star_1_1_n_star}{NStar}} \&) = nullptr
+\item 
+\mbox{\Hypertarget{class_compact_star_1_1_t_o_v_solver_aaf6a02ed27a5ce9707f4e6aa977daac1}\label{class_compact_star_1_1_t_o_v_solver_aaf6a02ed27a5ce9707f4e6aa977daac1}} 
+\mbox{\hyperlink{class_compact_star_1_1_analysis}{Analysis}} $\ast$ {\bfseries analysis} = nullptr
+\begin{DoxyCompactList}\small\item\em Pointer to the analysis object. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_compact_star_1_1_t_o_v_solver_a91427040637c89dad826abcb43933daf}\label{class_compact_star_1_1_t_o_v_solver_a91427040637c89dad826abcb43933daf}} 
+\mbox{\hyperlink{class_zaki_1_1_math_1_1_cond___polygon}{Zaki\+::\+Math\+::\+Cond\+\_\+\+Polygon}} {\bfseries c\+\_\+poly}
+\begin{DoxyCompactList}\small\item\em Exclusion region in (ec\+\_\+v, ec\+\_\+d) space. \end{DoxyCompactList}\item 
+size\+\_\+t \mbox{\hyperlink{class_compact_star_1_1_t_o_v_solver_aef0082c3335bb939488c8d8b8683e387}{ignored\+\_\+counter}} = 0
+\item 
+\mbox{\Hypertarget{class_compact_star_1_1_t_o_v_solver_a99ae1647c9ae88802aafb0e75db6f571}\label{class_compact_star_1_1_t_o_v_solver_a99ae1647c9ae88802aafb0e75db6f571}} 
+int {\bfseries profile\+\_\+precision} = 9
+\item 
+\mbox{\Hypertarget{class_compact_star_1_1_t_o_v_solver_a7559208800e91da73704025b0a9da9eb}\label{class_compact_star_1_1_t_o_v_solver_a7559208800e91da73704025b0a9da9eb}} 
+double {\bfseries p\+\_\+of\+\_\+e\+\_\+prec} = 1e-\/4
+\begin{DoxyCompactList}\small\item\em The precision in evaluation pressure as a function of density. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{class_compact_star_1_1_t_o_v_solver_a3f366b0d3abe1bc126b10fa03372ace3}{central\+\_\+eps\+\_\+floor\+\_\+factor}} = 10.\+0
+\begin{DoxyCompactList}\small\item\em Multiplier applied to the EOS minimum energy density to build a lower bound for central energy density. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Friends}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_compact_star_1_1_t_o_v_solver_a8cd3de3311171cb44c84ac1d838abb63}\label{class_compact_star_1_1_t_o_v_solver_a8cd3de3311171cb44c84ac1d838abb63}} 
+class {\bfseries Mixed\+Star}
+\item 
+\mbox{\Hypertarget{class_compact_star_1_1_t_o_v_solver_a175bffece50a45cfed19a86afcfe5a1f}\label{class_compact_star_1_1_t_o_v_solver_a175bffece50a45cfed19a86afcfe5a1f}} 
+class {\bfseries NStar}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_compact_star_1_1_t_o_v_solver_a932bb6bcadea3f820e213c5f43af24b6}\label{class_compact_star_1_1_t_o_v_solver_a932bb6bcadea3f820e213c5f43af24b6}} 
+\index{CompactStar::TOVSolver@{CompactStar::TOVSolver}!cost\_p\_of\_e@{cost\_p\_of\_e}}
+\index{cost\_p\_of\_e@{cost\_p\_of\_e}!CompactStar::TOVSolver@{CompactStar::TOVSolver}}
+\doxysubsubsection{\texorpdfstring{cost\_p\_of\_e()}{cost\_p\_of\_e()}}
+{\footnotesize\ttfamily double TOVSolver\+::cost\+\_\+p\+\_\+of\+\_\+e (\begin{DoxyParamCaption}\item[{const double}]{in\+\_\+e }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+Cost function for finding the pressure for \char`\"{}p\+\_\+of\+\_\+e\char`\"{} method. \mbox{\Hypertarget{class_compact_star_1_1_t_o_v_solver_ad7cd0f4a7c5ec67e393d3c6dcbeb041e}\label{class_compact_star_1_1_t_o_v_solver_ad7cd0f4a7c5ec67e393d3c6dcbeb041e}} 
+\index{CompactStar::TOVSolver@{CompactStar::TOVSolver}!ExportMixedSequence@{ExportMixedSequence}}
+\index{ExportMixedSequence@{ExportMixedSequence}!CompactStar::TOVSolver@{CompactStar::TOVSolver}}
+\doxysubsubsection{\texorpdfstring{ExportMixedSequence()}{ExportMixedSequence()}}
+{\footnotesize\ttfamily void TOVSolver\+::\+Export\+Mixed\+Sequence (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_zaki_1_1_string_1_1_directory}{Zaki\+::\+String\+::\+Directory}} \&}]{in\+\_\+dir }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Exports the mixed sequence. 
+
+
+
+Reimplemented in \mbox{\hyperlink{class_compact_star_1_1_t_o_v_solver___thread_a027f700c453c57b23025cc4f56dbb225}{Compact\+Star\+::\+TOVSolver\+\_\+\+Thread}}.
+
+\mbox{\Hypertarget{class_compact_star_1_1_t_o_v_solver_acae54e33e0f32db0f87a71a642acde26}\label{class_compact_star_1_1_t_o_v_solver_acae54e33e0f32db0f87a71a642acde26}} 
+\index{CompactStar::TOVSolver@{CompactStar::TOVSolver}!ExportMixedStarProfile@{ExportMixedStarProfile}}
+\index{ExportMixedStarProfile@{ExportMixedStarProfile}!CompactStar::TOVSolver@{CompactStar::TOVSolver}}
+\doxysubsubsection{\texorpdfstring{ExportMixedStarProfile()}{ExportMixedStarProfile()}}
+{\footnotesize\ttfamily void TOVSolver\+::\+Export\+Mixed\+Star\+Profile (\begin{DoxyParamCaption}\item[{const size\+\_\+t \&}]{v\+\_\+idx,  }\item[{const size\+\_\+t \&}]{d\+\_\+idx,  }\item[{const \mbox{\hyperlink{class_zaki_1_1_string_1_1_directory}{Zaki\+::\+String\+::\+Directory}} \&}]{in\+\_\+dir }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Exports the mixed star profile. 
+
+
+
+Reimplemented in \mbox{\hyperlink{class_compact_star_1_1_t_o_v_solver___thread_adb0223898581ce67774853a70cec89ee}{Compact\+Star\+::\+TOVSolver\+\_\+\+Thread}}.
+
+\mbox{\Hypertarget{class_compact_star_1_1_t_o_v_solver_aa1b1e8c23f5abdcc88b086e1415e5625}\label{class_compact_star_1_1_t_o_v_solver_aa1b1e8c23f5abdcc88b086e1415e5625}} 
+\index{CompactStar::TOVSolver@{CompactStar::TOVSolver}!GenTestSequence@{GenTestSequence}}
+\index{GenTestSequence@{GenTestSequence}!CompactStar::TOVSolver@{CompactStar::TOVSolver}}
+\doxysubsubsection{\texorpdfstring{GenTestSequence()}{GenTestSequence()}}
+{\footnotesize\ttfamily void Compact\+Star\+::\+TOVSolver\+::\+Gen\+Test\+Sequence (\begin{DoxyParamCaption}\item[{const double \&}]{e\+\_\+c,  }\item[{const \mbox{\hyperlink{class_zaki_1_1_string_1_1_directory}{Zaki\+::\+String\+::\+Directory}} \&}]{dir,  }\item[{const \mbox{\hyperlink{class_zaki_1_1_string_1_1_directory}{Zaki\+::\+String\+::\+Directory}} \&}]{file }\end{DoxyParamCaption})}
+
+
+
+It generates a sequence of NS by varying radial resolution. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em e\+\_\+c} & central energy density \\
+\hline
+{\em dir} & directory for saving the results \\
+\hline
+{\em file} & result file name \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_compact_star_1_1_t_o_v_solver_a69ce18178fb89368ca91a797ad216a46}\label{class_compact_star_1_1_t_o_v_solver_a69ce18178fb89368ca91a797ad216a46}} 
+\index{CompactStar::TOVSolver@{CompactStar::TOVSolver}!GetEDens@{GetEDens}}
+\index{GetEDens@{GetEDens}!CompactStar::TOVSolver@{CompactStar::TOVSolver}}
+\doxysubsubsection{\texorpdfstring{GetEDens()}{GetEDens()}}
+{\footnotesize\ttfamily double TOVSolver\+::\+Get\+EDens (\begin{DoxyParamCaption}\item[{const double \&}]{in\+\_\+pres }\end{DoxyParamCaption})}
+
+
+
+Returns the energy density given pressure. 
+
+Evaluates \& exports the nu(r) function table input must be a TOV solution file (with nu\textquotesingle{} column) \mbox{\Hypertarget{class_compact_star_1_1_t_o_v_solver_afb05a2e1edc4583016c58511c50bac8c}\label{class_compact_star_1_1_t_o_v_solver_afb05a2e1edc4583016c58511c50bac8c}} 
+\index{CompactStar::TOVSolver@{CompactStar::TOVSolver}!GetEOSMaxEDens@{GetEOSMaxEDens}}
+\index{GetEOSMaxEDens@{GetEOSMaxEDens}!CompactStar::TOVSolver@{CompactStar::TOVSolver}}
+\doxysubsubsection{\texorpdfstring{GetEOSMaxEDens()}{GetEOSMaxEDens()}}
+{\footnotesize\ttfamily double TOVSolver\+::\+Get\+EOSMax\+EDens (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Return the maximum energy density available in the EOS. 
+
+\begin{DoxyReturn}{Returns}
+Maximum energy density (last row) or 0.\+0 if the EOS table is empty. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_compact_star_1_1_t_o_v_solver_a1967285c85b794715a954d9f75483854}\label{class_compact_star_1_1_t_o_v_solver_a1967285c85b794715a954d9f75483854}} 
+\index{CompactStar::TOVSolver@{CompactStar::TOVSolver}!GetEOSMinEDens@{GetEOSMinEDens}}
+\index{GetEOSMinEDens@{GetEOSMinEDens}!CompactStar::TOVSolver@{CompactStar::TOVSolver}}
+\doxysubsubsection{\texorpdfstring{GetEOSMinEDens()}{GetEOSMinEDens()}}
+{\footnotesize\ttfamily double TOVSolver\+::\+Get\+EOSMin\+EDens (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Return the minimum energy density available in the EOS. 
+
+\begin{DoxyReturn}{Returns}
+Minimum energy density (first row) or 0.\+0 if the EOS table is empty. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_compact_star_1_1_t_o_v_solver_adffee3ac13c04d67e63bdc6909d4a48b}\label{class_compact_star_1_1_t_o_v_solver_adffee3ac13c04d67e63bdc6909d4a48b}} 
+\index{CompactStar::TOVSolver@{CompactStar::TOVSolver}!OnWorkDirChanged@{OnWorkDirChanged}}
+\index{OnWorkDirChanged@{OnWorkDirChanged}!CompactStar::TOVSolver@{CompactStar::TOVSolver}}
+\doxysubsubsection{\texorpdfstring{OnWorkDirChanged()}{OnWorkDirChanged()}}
+{\footnotesize\ttfamily void TOVSolver\+::\+On\+Work\+Dir\+Changed (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_zaki_1_1_string_1_1_directory}{Zaki\+::\+String\+::\+Directory}} \&}]{dir }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [protected]}, {\ttfamily [virtual]}}
+
+
+
+Propagate the new working directory to internal members. 
+
+Sets the work directory for the member objects.
+
+Called automatically by \mbox{\hyperlink{class_compact_star_1_1_prog_a28c50895a9fd2c9390f82a1bb5c1eefe}{Set\+Wrk\+Dir()}} after this object\textquotesingle{}s own working directory is updated and created on disk.
+
+Derived classes override this method to push the directory into member objects that also produce output files.
+
+
+\begin{DoxyParams}{Parameters}
+{\em dir} & Newly assigned working directory. \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented from \mbox{\hyperlink{class_compact_star_1_1_prog_a3857b5dfcd7bcc5ee4ceda86a73289bf}{Compact\+Star\+::\+Prog}}.
+
+
+
+Reimplemented in \mbox{\hyperlink{class_compact_star_1_1_t_o_v_solver___thread_a3e5ed61c9c44c898a97079b8df9c8760}{Compact\+Star\+::\+TOVSolver\+\_\+\+Thread}}.
+
+\mbox{\Hypertarget{class_compact_star_1_1_t_o_v_solver_a4f70ac766aeee8403c18be14a81e1ce9}\label{class_compact_star_1_1_t_o_v_solver_a4f70ac766aeee8403c18be14a81e1ce9}} 
+\index{CompactStar::TOVSolver@{CompactStar::TOVSolver}!p\_of\_e@{p\_of\_e}}
+\index{p\_of\_e@{p\_of\_e}!CompactStar::TOVSolver@{CompactStar::TOVSolver}}
+\doxysubsubsection{\texorpdfstring{p\_of\_e()}{p\_of\_e()}}
+{\footnotesize\ttfamily double TOVSolver\+::p\+\_\+of\+\_\+e (\begin{DoxyParamCaption}\item[{const double \&}]{in\+\_\+e }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+Returns the pressure corresponding to in\+\_\+e It\textquotesingle{}s the inverse function of \char`\"{}\+Get\+EDens\char`\"{} \mbox{\Hypertarget{class_compact_star_1_1_t_o_v_solver_a86ec6b1d93a5ef388f7a2c009d0f144b}\label{class_compact_star_1_1_t_o_v_solver_a86ec6b1d93a5ef388f7a2c009d0f144b}} 
+\index{CompactStar::TOVSolver@{CompactStar::TOVSolver}!PressureCutoff@{PressureCutoff}}
+\index{PressureCutoff@{PressureCutoff}!CompactStar::TOVSolver@{CompactStar::TOVSolver}}
+\doxysubsubsection{\texorpdfstring{PressureCutoff()}{PressureCutoff()}}
+{\footnotesize\ttfamily double TOVSolver\+::\+Pressure\+Cutoff (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [protected]}}
+
+The value of pressure cut-\/off is the pressure at the surface of the star Theoretically it\textquotesingle{}s zero, but we choose 1e-\/5 times smaller than the central pressure or the lowest possible pressure given by the Eq. of state. \mbox{\Hypertarget{class_compact_star_1_1_t_o_v_solver_a44513b1db2d2cc7dc7ee4ed0a5585a78}\label{class_compact_star_1_1_t_o_v_solver_a44513b1db2d2cc7dc7ee4ed0a5585a78}} 
+\index{CompactStar::TOVSolver@{CompactStar::TOVSolver}!PrintEOSSummary@{PrintEOSSummary}}
+\index{PrintEOSSummary@{PrintEOSSummary}!CompactStar::TOVSolver@{CompactStar::TOVSolver}}
+\doxysubsubsection{\texorpdfstring{PrintEOSSummary()}{PrintEOSSummary()}}
+{\footnotesize\ttfamily void TOVSolver\+::\+Print\+EOSSummary (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Print a compact EOS summary. 
+
+Shows number of rows, column labels, and min/max for energy density, pressure, and baryon density. This is what you typically want right after Import\+EOS(...). \mbox{\Hypertarget{class_compact_star_1_1_t_o_v_solver_a928f8be4556145c06175e0839387c4c2}\label{class_compact_star_1_1_t_o_v_solver_a928f8be4556145c06175e0839387c4c2}} 
+\index{CompactStar::TOVSolver@{CompactStar::TOVSolver}!PrintEOSTable@{PrintEOSTable}}
+\index{PrintEOSTable@{PrintEOSTable}!CompactStar::TOVSolver@{CompactStar::TOVSolver}}
+\doxysubsubsection{\texorpdfstring{PrintEOSTable()}{PrintEOSTable()}}
+{\footnotesize\ttfamily void TOVSolver\+::\+Print\+EOSTable (\begin{DoxyParamCaption}\item[{const std\+::size\+\_\+t}]{max\+\_\+rows }\end{DoxyParamCaption}) const}
+
+
+
+Print (at most) {\ttfamily max\+\_\+rows} rows of the EOS table. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em max\+\_\+rows} & Maximum number of data rows (after the header) to print. If {\ttfamily max\+\_\+rows} == 0 the function only prints the header and a short footer.\\
+\hline
+\end{DoxyParams}
+This is useful for large Comp\+OSE tables\+: you can quickly verify that the file was read correctly, that labels were parsed, and that the first few rows are monotonic in pressure, without flooding the terminal. \mbox{\Hypertarget{class_compact_star_1_1_t_o_v_solver_a83c0f4d2f677e94a30ab486ee67cba1d}\label{class_compact_star_1_1_t_o_v_solver_a83c0f4d2f677e94a30ab486ee67cba1d}} 
+\index{CompactStar::TOVSolver@{CompactStar::TOVSolver}!SetCentralEDensFloorFactor@{SetCentralEDensFloorFactor}}
+\index{SetCentralEDensFloorFactor@{SetCentralEDensFloorFactor}!CompactStar::TOVSolver@{CompactStar::TOVSolver}}
+\doxysubsubsection{\texorpdfstring{SetCentralEDensFloorFactor()}{SetCentralEDensFloorFactor()}}
+{\footnotesize\ttfamily void TOVSolver\+::\+Set\+Central\+EDens\+Floor\+Factor (\begin{DoxyParamCaption}\item[{double}]{f }\end{DoxyParamCaption})}
+
+
+
+Set the floor multiplier for central energy density. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em f} & Factor by which the minimum EOS energy density is multiplied to form the {\itshape lowest} allowed central energy density in Solve(...).\\
+\hline
+\end{DoxyParams}
+If the EOS minimum energy density is $\varepsilon_{\min}$, then the solver will clamp user inputs to at least $ \varepsilon_{\text{floor}} = f \times \varepsilon_{\min} $.
+
+This is to avoid trying to build stars whose {\itshape central} energy density is already too close to the surface value of the EOS, which typically makes the TOV integration stop immediately.
+
+\begin{DoxyNote}{Note}
+A typical value is 10.\+0. 
+\end{DoxyNote}
+\mbox{\Hypertarget{class_compact_star_1_1_t_o_v_solver_a0366296404526edd6bf8ae406bba6279}\label{class_compact_star_1_1_t_o_v_solver_a0366296404526edd6bf8ae406bba6279}} 
+\index{CompactStar::TOVSolver@{CompactStar::TOVSolver}!SetMaxRadius@{SetMaxRadius}}
+\index{SetMaxRadius@{SetMaxRadius}!CompactStar::TOVSolver@{CompactStar::TOVSolver}}
+\doxysubsubsection{\texorpdfstring{SetMaxRadius()}{SetMaxRadius()}}
+{\footnotesize\ttfamily void TOVSolver\+::\+Set\+Max\+Radius (\begin{DoxyParamCaption}\item[{const double \&}]{in\+\_\+r\+\_\+max }\end{DoxyParamCaption})}
+
+Sets maximum value for radius in the solver if a maximum is known, say 15 km for NS, it would increase the radial resolution defined by\+: delta R = scale(\+R) $\ast$ (R\+\_\+max -\/ R\+\_\+min) / radial\+\_\+res
+
+Sets maximum value for radius in the solver if a maximum is known, say 15 km for NS, it would increase the radial resolution defined by\+: delta R = scale(\+R) $\ast$ (R\+\_\+max -\/ R\+\_\+min) / radial\+\_\+res Unit must be in km 
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{class_compact_star_1_1_t_o_v_solver_a3f366b0d3abe1bc126b10fa03372ace3}\label{class_compact_star_1_1_t_o_v_solver_a3f366b0d3abe1bc126b10fa03372ace3}} 
+\index{CompactStar::TOVSolver@{CompactStar::TOVSolver}!central\_eps\_floor\_factor@{central\_eps\_floor\_factor}}
+\index{central\_eps\_floor\_factor@{central\_eps\_floor\_factor}!CompactStar::TOVSolver@{CompactStar::TOVSolver}}
+\doxysubsubsection{\texorpdfstring{central\_eps\_floor\_factor}{central\_eps\_floor\_factor}}
+{\footnotesize\ttfamily double Compact\+Star\+::\+TOVSolver\+::central\+\_\+eps\+\_\+floor\+\_\+factor = 10.\+0\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Multiplier applied to the EOS minimum energy density to build a lower bound for central energy density. 
+
+If the user provides an axis with values below {\ttfamily central\+\_\+eps\+\_\+floor\+\_\+factor} $\ast$ eos\+\_\+tab.\+eps.\+front(), the solver will clamp to that floor.
+
+Default\+: 10.\+0. \mbox{\Hypertarget{class_compact_star_1_1_t_o_v_solver_aef0082c3335bb939488c8d8b8683e387}\label{class_compact_star_1_1_t_o_v_solver_aef0082c3335bb939488c8d8b8683e387}} 
+\index{CompactStar::TOVSolver@{CompactStar::TOVSolver}!ignored\_counter@{ignored\_counter}}
+\index{ignored\_counter@{ignored\_counter}!CompactStar::TOVSolver@{CompactStar::TOVSolver}}
+\doxysubsubsection{\texorpdfstring{ignored\_counter}{ignored\_counter}}
+{\footnotesize\ttfamily size\+\_\+t Compact\+Star\+::\+TOVSolver\+::ignored\+\_\+counter = 0\hspace{0.3cm}{\ttfamily [protected]}}
+
+Number of points that are ignored because they are in the exclusion region. \mbox{\Hypertarget{class_compact_star_1_1_t_o_v_solver_adecbbcc06e83b3e22bd77386170fef83}\label{class_compact_star_1_1_t_o_v_solver_adecbbcc06e83b3e22bd77386170fef83}} 
+\index{CompactStar::TOVSolver@{CompactStar::TOVSolver}!mix\_exp\_cond\_f@{mix\_exp\_cond\_f}}
+\index{mix\_exp\_cond\_f@{mix\_exp\_cond\_f}!CompactStar::TOVSolver@{CompactStar::TOVSolver}}
+\doxysubsubsection{\texorpdfstring{mix\_exp\_cond\_f}{mix\_exp\_cond\_f}}
+{\footnotesize\ttfamily bool($\ast$ Compact\+Star\+::\+TOVSolver\+::mix\+\_\+exp\+\_\+cond\+\_\+f) (const \mbox{\hyperlink{class_compact_star_1_1_mixed_star}{Mixed\+Star}} \&) = nullptr\hspace{0.3cm}{\ttfamily [protected]}}
+
+Pointer to the condition for exporting the mixed star profile \mbox{\Hypertarget{class_compact_star_1_1_t_o_v_solver_a34c332d72485cd28173839758a81cbab}\label{class_compact_star_1_1_t_o_v_solver_a34c332d72485cd28173839758a81cbab}} 
+\index{CompactStar::TOVSolver@{CompactStar::TOVSolver}!n\_exp\_cond\_f@{n\_exp\_cond\_f}}
+\index{n\_exp\_cond\_f@{n\_exp\_cond\_f}!CompactStar::TOVSolver@{CompactStar::TOVSolver}}
+\doxysubsubsection{\texorpdfstring{n\_exp\_cond\_f}{n\_exp\_cond\_f}}
+{\footnotesize\ttfamily bool($\ast$ Compact\+Star\+::\+TOVSolver\+::n\+\_\+exp\+\_\+cond\+\_\+f) (const \mbox{\hyperlink{class_compact_star_1_1_n_star}{NStar}} \&) = nullptr\hspace{0.3cm}{\ttfamily [protected]}}
+
+Pointer to the condition for exporting the star profile \mbox{\Hypertarget{class_compact_star_1_1_t_o_v_solver_addab6d0500d8bc434f1a7acef3fdb8ac}\label{class_compact_star_1_1_t_o_v_solver_addab6d0500d8bc434f1a7acef3fdb8ac}} 
+\index{CompactStar::TOVSolver@{CompactStar::TOVSolver}!radial\_res@{radial\_res}}
+\index{radial\_res@{radial\_res}!CompactStar::TOVSolver@{CompactStar::TOVSolver}}
+\doxysubsubsection{\texorpdfstring{radial\_res}{radial\_res}}
+{\footnotesize\ttfamily size\+\_\+t Compact\+Star\+::\+TOVSolver\+::radial\+\_\+res = 10000\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+The number of TOV object instances. 
+
+The radial resolution for the solver \mbox{\Hypertarget{class_compact_star_1_1_t_o_v_solver_af7790bf7a832d4efea8d5fa638ab4513}\label{class_compact_star_1_1_t_o_v_solver_af7790bf7a832d4efea8d5fa638ab4513}} 
+\index{CompactStar::TOVSolver@{CompactStar::TOVSolver}!visi\_rho\_i\_p\_spline@{visi\_rho\_i\_p\_spline}}
+\index{visi\_rho\_i\_p\_spline@{visi\_rho\_i\_p\_spline}!CompactStar::TOVSolver@{CompactStar::TOVSolver}}
+\doxysubsubsection{\texorpdfstring{visi\_rho\_i\_p\_spline}{visi\_rho\_i\_p\_spline}}
+{\footnotesize\ttfamily std\+::vector$<$gsl\+\_\+spline $\ast$$>$ Compact\+Star\+::\+TOVSolver\+::visi\+\_\+rho\+\_\+i\+\_\+p\+\_\+spline\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Total baryon number density (function of r) 
+
+This is for the extra rho\textquotesingle{}s (individual species) 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Compact\+Star/\+Core/\mbox{\hyperlink{_t_o_v_solver_8hpp}{TOVSolver.\+hpp}}\item 
+Compact\+Star/\+Core/src/TOVSolver.\+cpp\item 
+Compact\+Star/\+Core/src/TOVSolver\+\_\+\+Old.\+cpp\end{DoxyCompactItemize}

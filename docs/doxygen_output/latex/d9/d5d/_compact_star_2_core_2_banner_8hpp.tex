@@ -1,0 +1,32 @@
+\hypertarget{_compact_star_2_core_2_banner_8hpp}{}\doxysection{Compact\+Star/\+Core/\+Banner.hpp File Reference}
+\label{_compact_star_2_core_2_banner_8hpp}\index{CompactStar/Core/Banner.hpp@{CompactStar/Core/Banner.hpp}}
+
+
+Process-\/wide program banner utilities.  
+
+
+{\ttfamily \#include $<$mutex$>$}\newline
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{_compact_star_2_core_2_banner_8hpp_aa05929e3ae061e66e1439830296e78df}{Compact\+Star\+::\+Show\+Banner\+Once}} ()
+\begin{DoxyCompactList}\small\item\em Print the Compact\+Star banner exactly once per process. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Process-\/wide program banner utilities. 
+
+Provides a one-\/shot banner display that runs automatically before {\ttfamily main()} via a TU-\/scope static in Banner.\+cpp. You can also call Show\+Banner\+Once() manually if desired (e.\+g., in tests). 
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{_compact_star_2_core_2_banner_8hpp_aa05929e3ae061e66e1439830296e78df}\label{_compact_star_2_core_2_banner_8hpp_aa05929e3ae061e66e1439830296e78df}} 
+\index{Banner.hpp@{Banner.hpp}!ShowBannerOnce@{ShowBannerOnce}}
+\index{ShowBannerOnce@{ShowBannerOnce}!Banner.hpp@{Banner.hpp}}
+\doxysubsubsection{\texorpdfstring{ShowBannerOnce()}{ShowBannerOnce()}}
+{\footnotesize\ttfamily void Compact\+Star\+::\+Show\+Banner\+Once (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Print the Compact\+Star banner exactly once per process. 
+
+Safe to call from any thread; subsequent calls are no-\/ops. Normally you do not need to call this directly because Banner.\+cpp defines a TU-\/scope static that triggers it during static initialization (before {\ttfamily main()}). 

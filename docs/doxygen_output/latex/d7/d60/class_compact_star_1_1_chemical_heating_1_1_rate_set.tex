@@ -1,0 +1,30 @@
+\hypertarget{class_compact_star_1_1_chemical_heating_1_1_rate_set}{}\doxysection{Compact\+Star\+::Chemical\+Heating\+::Rate\+Set Class Reference}
+\label{class_compact_star_1_1_chemical_heating_1_1_rate_set}\index{CompactStar::ChemicalHeating::RateSet@{CompactStar::ChemicalHeating::RateSet}}
+
+
+Container of channels; no ownership of geometry or state.  
+
+
+
+
+{\ttfamily \#include $<$Urca.\+hpp$>$}
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_compact_star_1_1_chemical_heating_1_1_rate_set_ad209216055e59791576d7ed903e05648}\label{class_compact_star_1_1_chemical_heating_1_1_rate_set_ad209216055e59791576d7ed903e05648}} 
+void {\bfseries add} (std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{class_compact_star_1_1_chemical_heating_1_1_reaction_channel}{Reaction\+Channel}} $>$ ch)
+\begin{DoxyCompactList}\small\item\em Add a channel (takes ownership). \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_compact_star_1_1_chemical_heating_1_1_rate_set_a9cbbeab91cd2fa81b60c96bd486a063f}\label{class_compact_star_1_1_chemical_heating_1_1_rate_set_a9cbbeab91cd2fa81b60c96bd486a063f}} 
+const std\+::vector$<$ std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{class_compact_star_1_1_chemical_heating_1_1_reaction_channel}{Reaction\+Channel}} $>$ $>$ \& {\bfseries channels} () const
+\begin{DoxyCompactList}\small\item\em Access channels (const). \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Container of channels; no ownership of geometry or state. 
+
+Implementation (Phase 1+) will provide helpers that loop channels and (optionally) perform shell integrations with \mbox{\hyperlink{class_compact_star_1_1_chemical_heating_1_1_geometry_cache}{Geometry\+Cache}}. 
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Compact\+Star/\+Microphysics/\+Rates/Urca.\+hpp\end{DoxyCompactItemize}

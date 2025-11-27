@@ -1,0 +1,227 @@
+\hypertarget{_contour_finder_8hpp_source}{}\doxysection{Contour\+Finder.\+hpp}
+\label{_contour_finder_8hpp_source}\index{dependencies/include/Confind/ContourFinder.hpp@{dependencies/include/Confind/ContourFinder.hpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#ifndef ContourFinder\_H}}
+\DoxyCodeLine{2 \textcolor{preprocessor}{\#define ContourFinder\_H}}
+\DoxyCodeLine{3 }
+\DoxyCodeLine{4 \textcolor{preprocessor}{\#if \_\_has\_include(<omp.h>)}}
+\DoxyCodeLine{5 \textcolor{preprocessor}{  \#include <omp.h>}}
+\DoxyCodeLine{6 \textcolor{preprocessor}{  \#define Z\_OMP 1}}
+\DoxyCodeLine{7 \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{8 \textcolor{preprocessor}{  \#define Z\_OMP 0}}
+\DoxyCodeLine{9 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{10 }
+\DoxyCodeLine{11 \textcolor{preprocessor}{\#include <random>}}
+\DoxyCodeLine{12 }
+\DoxyCodeLine{13 \textcolor{comment}{// Root}}
+\DoxyCodeLine{14 \textcolor{comment}{// \#include <TMultiGraph.h>}}
+\DoxyCodeLine{15 \textcolor{comment}{// \#include <TLegend.h>}}
+\DoxyCodeLine{16 }
+\DoxyCodeLine{17 \textcolor{preprocessor}{\#include <gsl/gsl\_interp2d.h>}}
+\DoxyCodeLine{18 \textcolor{preprocessor}{\#include <gsl/gsl\_spline2d.h>}}
+\DoxyCodeLine{19 }
+\DoxyCodeLine{20 \textcolor{preprocessor}{\#include <\mbox{\hyperlink{_func2_d_8hpp}{Zaki/Math/Func2D.hpp}}>}}
+\DoxyCodeLine{21 \textcolor{preprocessor}{\#include <\mbox{\hyperlink{_mem_func_wrapper_8hpp}{Zaki/Math/MemFuncWrapper.hpp}}>}}
+\DoxyCodeLine{22 \textcolor{preprocessor}{\#include <\mbox{\hyperlink{_math___core_8hpp}{Zaki/Math/Math\_Core.hpp}}>}}
+\DoxyCodeLine{23 \textcolor{preprocessor}{\#include <\mbox{\hyperlink{_data_set_8hpp}{Zaki/Vector/DataSet.hpp}}>}}
+\DoxyCodeLine{24 }
+\DoxyCodeLine{25 }
+\DoxyCodeLine{26 \textcolor{comment}{// Local headers}}
+\DoxyCodeLine{27 \textcolor{preprocessor}{\#include "{}Confind/Cell.hpp"{}}}
+\DoxyCodeLine{28 \textcolor{preprocessor}{\#include "{}Confind/Cont2D.hpp"{}}}
+\DoxyCodeLine{29 }
+\DoxyCodeLine{30 \textcolor{comment}{//==============================================================}}
+\DoxyCodeLine{31 }
+\DoxyCodeLine{32 \textcolor{keyword}{namespace }CONFIND}
+\DoxyCodeLine{33 \{}
+\DoxyCodeLine{34 }
+\DoxyCodeLine{35 \textcolor{comment}{//==============================================================}}
+\DoxyCodeLine{36 \textcolor{keyword}{class }ContourFinder : \textcolor{keyword}{public} Base}
+\DoxyCodeLine{37 \{}
+\DoxyCodeLine{38 }
+\DoxyCodeLine{39   \textcolor{keyword}{friend} \textcolor{keyword}{class }Cell ; }
+\DoxyCodeLine{40  \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{41   \textcolor{keyword}{public}:}
+\DoxyCodeLine{42 }
+\DoxyCodeLine{43     \textcolor{comment}{//............................................}}
+\DoxyCodeLine{45 \textcolor{comment}{}    \mbox{\hyperlink{class_c_o_n_f_i_n_d_1_1_contour_finder_a2fa41a7610871a01525e913cfed14420}{ContourFinder}}() ;}
+\DoxyCodeLine{46     }
+\DoxyCodeLine{48     \mbox{\hyperlink{class_c_o_n_f_i_n_d_1_1_contour_finder_a5f9b1c22dbd63b9967eeefdaaec62977}{\string~ContourFinder}}() ;}
+\DoxyCodeLine{49 }
+\DoxyCodeLine{51     \mbox{\hyperlink{class_c_o_n_f_i_n_d_1_1_contour_finder_a332cd99f89f2944e8c61a17bd2a652ff}{ContourFinder}}(\textcolor{keyword}{const} \mbox{\hyperlink{class_c_o_n_f_i_n_d_1_1_contour_finder}{ContourFinder}} \&zc2) ;}
+\DoxyCodeLine{52 }
+\DoxyCodeLine{54     \mbox{\hyperlink{class_c_o_n_f_i_n_d_1_1_contour_finder}{ContourFinder}}\& \mbox{\hyperlink{class_c_o_n_f_i_n_d_1_1_contour_finder_a172df34df87180955ec3f8f9bfa438e9}{operator=}}(\textcolor{keyword}{const} \mbox{\hyperlink{class_c_o_n_f_i_n_d_1_1_contour_finder}{ContourFinder}} \&zc2) ;}
+\DoxyCodeLine{55     \textcolor{comment}{//............................................}}
+\DoxyCodeLine{56 }
+\DoxyCodeLine{57 }
+\DoxyCodeLine{58     \textcolor{keyword}{enum} Mode}
+\DoxyCodeLine{59     \{}
+\DoxyCodeLine{60       Normal = 0, Fast, Parallel, Ludicrous, Optimal    }
+\DoxyCodeLine{61     \} ;}
+\DoxyCodeLine{62 }
+\DoxyCodeLine{63     \textcolor{comment}{//............................................}}
+\DoxyCodeLine{64     \textcolor{comment}{// Setters}}
+\DoxyCodeLine{65     \textcolor{comment}{//............................................}}
+\DoxyCodeLine{66     \textcolor{keywordtype}{void} SetGrid(\textcolor{keyword}{const} \mbox{\hyperlink{struct_zaki_1_1_math_1_1_grid2_d}{Zaki::Math::Grid2D}}\&)  ;}
+\DoxyCodeLine{67     \textcolor{keywordtype}{void} SetWidth(\textcolor{keyword}{const} \textcolor{keywordtype}{size\_t}\&) ;}
+\DoxyCodeLine{68     \textcolor{keywordtype}{void} SetHeight(\textcolor{keyword}{const} \textcolor{keywordtype}{size\_t}\&) ;}
+\DoxyCodeLine{69     \textcolor{keywordtype}{void} SetDeltas()      ;}
+\DoxyCodeLine{70     \textcolor{keywordtype}{void} SetGridVals(\textcolor{keyword}{const} Mode\& = Fast)    ;}
+\DoxyCodeLine{71     \textcolor{keywordtype}{void} SetGridVals(\mbox{\hyperlink{struct_zaki_1_1_math_1_1_grid_vals__2_d}{Zaki::Math::GridVals\_2D}}*)    ;}
+\DoxyCodeLine{72 }
+\DoxyCodeLine{73     \textcolor{keywordtype}{void} SetFunc(\textcolor{keywordtype}{double} (*f) (\textcolor{keyword}{const} \textcolor{keywordtype}{double}, \textcolor{keyword}{const} \textcolor{keywordtype}{double}) ) ; \textcolor{comment}{// Normal funcs }}
+\DoxyCodeLine{74     \textcolor{keywordtype}{void} SetMemFunc(\mbox{\hyperlink{class_zaki_1_1_math_1_1_func2_d}{Zaki::Math::Func2D}}*) ;  \textcolor{comment}{// Non-\/static mem-\/funcs}}
+\DoxyCodeLine{75     \textcolor{keywordtype}{void} SetContVal(\textcolor{keyword}{const} std::vector<double>\&) ;}
+\DoxyCodeLine{76     \textcolor{keywordtype}{void} SetContVal(\textcolor{keyword}{const} std::vector<double>\&, \textcolor{keyword}{const} std::vector<std::string>\& label) ;}
+\DoxyCodeLine{77     \textcolor{keywordtype}{void} SetScanMode(\textcolor{keyword}{const} \textcolor{keywordtype}{char}) ;}
+\DoxyCodeLine{78     \textcolor{keywordtype}{void} SetOptimizationTrials(\textcolor{keyword}{const} \textcolor{keywordtype}{int}\&) ;}
+\DoxyCodeLine{79     \textcolor{keywordtype}{void} SetThreads(\textcolor{keyword}{const} \textcolor{keywordtype}{int}\&) ;    }
+\DoxyCodeLine{80 }
+\DoxyCodeLine{81     \textcolor{comment}{// Plot options}}
+\DoxyCodeLine{82     \textcolor{keywordtype}{void} SetPlotXLabel(\textcolor{keyword}{const} std::string\&) ;}
+\DoxyCodeLine{83     \textcolor{keywordtype}{void} SetPlotYLabel(\textcolor{keyword}{const} std::string\&) ;}
+\DoxyCodeLine{84     \textcolor{keywordtype}{void} SetPlotXRange(\textcolor{keyword}{const} \mbox{\hyperlink{struct_zaki_1_1_math_1_1_range}{Zaki::Math::Range<double>}}\&) ;}
+\DoxyCodeLine{85     \textcolor{keywordtype}{void} SetPlotYRange(\textcolor{keyword}{const} \mbox{\hyperlink{struct_zaki_1_1_math_1_1_range}{Zaki::Math::Range<double>}}\&) ;}
+\DoxyCodeLine{86     \textcolor{keywordtype}{void} SetPlotLabel(\textcolor{keyword}{const} std::string\&)  ;}
+\DoxyCodeLine{87     \textcolor{keywordtype}{void} SetPlotConnected(\textcolor{keyword}{const} \textcolor{keywordtype}{bool}=\textcolor{keyword}{true}) ;}
+\DoxyCodeLine{88     \textcolor{keywordtype}{void} SetLegendLabels(\textcolor{keyword}{const} std::vector<std::string>\& ); }
+\DoxyCodeLine{89     \textcolor{keywordtype}{void} MakeLegend(\textcolor{keyword}{const} \textcolor{keywordtype}{bool}=\textcolor{keyword}{true}, \textcolor{keyword}{const} \textcolor{keywordtype}{char}* \textcolor{keyword}{const}=\textcolor{keyword}{nullptr}, \textcolor{keyword}{const} \textcolor{keywordtype}{char}* \textcolor{keyword}{const}=\textcolor{keyword}{nullptr}) ;}
+\DoxyCodeLine{90     \textcolor{comment}{//............................................}}
+\DoxyCodeLine{91 }
+\DoxyCodeLine{92     \textcolor{keywordtype}{void} Clear() ;}
+\DoxyCodeLine{93 }
+\DoxyCodeLine{94     \textcolor{comment}{//............................................}}
+\DoxyCodeLine{95     \textcolor{comment}{// Getters}}
+\DoxyCodeLine{96     \textcolor{comment}{//............................................}}
+\DoxyCodeLine{97     \textcolor{keywordtype}{size\_t} GetN\_X()   \textcolor{keyword}{const} ;}
+\DoxyCodeLine{98     \textcolor{keywordtype}{size\_t} GetN\_Y()   \textcolor{keyword}{const} ;}
+\DoxyCodeLine{99     std::string GetXScale() \textcolor{keyword}{const} ;}
+\DoxyCodeLine{100     std::string GetYScale() \textcolor{keyword}{const} ;}
+\DoxyCodeLine{101     std::pair<double, double> GetDeltas()  \textcolor{keyword}{const} ;}
+\DoxyCodeLine{102     \textcolor{keywordtype}{double} GetX\_Min() \textcolor{keyword}{const} ;}
+\DoxyCodeLine{103     \textcolor{keywordtype}{double} GetX\_Max() \textcolor{keyword}{const} ;}
+\DoxyCodeLine{104     \textcolor{keywordtype}{double} GetY\_Min() \textcolor{keyword}{const} ;}
+\DoxyCodeLine{105     \textcolor{keywordtype}{double} GetY\_Max() \textcolor{keyword}{const} ;}
+\DoxyCodeLine{106     \textcolor{keywordtype}{char} GetScanMode() \textcolor{keyword}{const};}
+\DoxyCodeLine{107     }
+\DoxyCodeLine{109     std::vector<Cont2D> \mbox{\hyperlink{class_c_o_n_f_i_n_d_1_1_contour_finder_a304b2dc17d0d215b165d95d4cbd60a1d}{GetContourSet}}() \textcolor{keyword}{const} ;}
+\DoxyCodeLine{110 }
+\DoxyCodeLine{111     std::pair<double, double> ij\_2\_xy(\textcolor{keyword}{const} \textcolor{keywordtype}{size\_t} i, \textcolor{keyword}{const} \textcolor{keywordtype}{size\_t} j) \textcolor{keyword}{const} ;}
+\DoxyCodeLine{112     }
+\DoxyCodeLine{113     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_c_o_n_f_i_n_d_1_1_contour_finder_aa5893f68aaa7af2cc807d120e86644eb}{Print}}() \textcolor{keyword}{const override};}
+\DoxyCodeLine{114     \textcolor{keywordtype}{void} ExportContour(\textcolor{keyword}{const} \mbox{\hyperlink{class_zaki_1_1_string_1_1_directory}{Zaki::String::Directory}}\& f\_name, \textcolor{keyword}{const} Zaki::File::FileMode\& mode) ;}
+\DoxyCodeLine{115 }
+\DoxyCodeLine{116     \textcolor{comment}{// TMultiGraph* GetGraph() ;}}
+\DoxyCodeLine{117     \textcolor{comment}{// TLegend* GetLegend() ;}}
+\DoxyCodeLine{118 }
+\DoxyCodeLine{119     \textcolor{keywordtype}{void} Plot(\textcolor{keyword}{const} \mbox{\hyperlink{class_zaki_1_1_string_1_1_directory}{Zaki::String::Directory}}\& f\_name, \textcolor{keyword}{const} \textcolor{keywordtype}{char}* \textcolor{keyword}{const}=\textcolor{keyword}{nullptr}, }
+\DoxyCodeLine{120               \textcolor{keyword}{const} \textcolor{keywordtype}{char}* \textcolor{keyword}{const}=\textcolor{keyword}{nullptr}, \textcolor{keyword}{const} \textcolor{keywordtype}{char}* \textcolor{keyword}{const}=\textcolor{keyword}{nullptr}) ;}
+\DoxyCodeLine{121 }
+\DoxyCodeLine{122  \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{123   \textcolor{keyword}{private}:}
+\DoxyCodeLine{124 }
+\DoxyCodeLine{125     \textcolor{keywordtype}{void} FindContour(\mbox{\hyperlink{class_c_o_n_f_i_n_d_1_1_cont2_d}{Cont2D}}\& cont) ;}
+\DoxyCodeLine{126     \textcolor{keywordtype}{void} FindContourFast(\mbox{\hyperlink{class_c_o_n_f_i_n_d_1_1_cont2_d}{Cont2D}}\& cont, \textcolor{keywordtype}{double}*) ;}
+\DoxyCodeLine{127     \textcolor{keywordtype}{void} FindNextContours(\textcolor{keywordtype}{double}*) ;}
+\DoxyCodeLine{128     \textcolor{keywordtype}{void} FindContourLudicrous() ;}
+\DoxyCodeLine{129     \textcolor{keywordtype}{void} ThreadNextTaskLudicrous(\mbox{\hyperlink{class_c_o_n_f_i_n_d_1_1_bundle}{Bundle}}\& in\_b, \textcolor{keyword}{const} std::vector<double>\&) ;}
+\DoxyCodeLine{130     \textcolor{keywordtype}{void} ThreadTaskLudicrous(\mbox{\hyperlink{class_c_o_n_f_i_n_d_1_1_bundle}{Bundle}}\& in\_b, std::vector<double>\&) ;}
+\DoxyCodeLine{131     \textcolor{keywordtype}{void} FindContourParallel(\mbox{\hyperlink{class_c_o_n_f_i_n_d_1_1_cont2_d}{Cont2D}}\& cont) ;}
+\DoxyCodeLine{132     \textcolor{keywordtype}{void} FindOptimalMode() ;}
+\DoxyCodeLine{133     \textcolor{keywordtype}{void} ThreadTask(\mbox{\hyperlink{class_c_o_n_f_i_n_d_1_1_bundle}{Bundle}}\& in\_b) ;}
+\DoxyCodeLine{134 }
+\DoxyCodeLine{135     \textcolor{comment}{// flags}}
+\DoxyCodeLine{136     \textcolor{keywordtype}{bool} set\_height\_flag      = false ;}
+\DoxyCodeLine{137     \textcolor{keywordtype}{bool} set\_width\_flag       = false ;}
+\DoxyCodeLine{138     \textcolor{keywordtype}{bool} set\_grid\_flag        = false ;}
+\DoxyCodeLine{139     \textcolor{keywordtype}{bool} set\_grid\_vals\_flag   = false ;}
+\DoxyCodeLine{140     \textcolor{keywordtype}{bool} set\_func\_flag        = false ;}
+\DoxyCodeLine{141     \textcolor{keywordtype}{bool} set\_cont\_val\_flag    = false ;}
+\DoxyCodeLine{142     \textcolor{keywordtype}{bool} set\_mem\_func\_flag    = false ;}
+\DoxyCodeLine{143     \textcolor{keywordtype}{bool} set\_plotX\_label\_flag = false ;}
+\DoxyCodeLine{144     \textcolor{keywordtype}{bool} set\_plotY\_label\_flag = false ;}
+\DoxyCodeLine{145     \textcolor{keywordtype}{bool} set\_plotX\_range\_flag = false ;}
+\DoxyCodeLine{146     \textcolor{keywordtype}{bool} set\_plotY\_range\_flag = false ;}
+\DoxyCodeLine{147     \textcolor{keywordtype}{bool} set\_plot\_label\_flag  = false ;}
+\DoxyCodeLine{148     \textcolor{keywordtype}{bool} set\_plot\_connected\_flag = false ;}
+\DoxyCodeLine{149     \textcolor{keywordtype}{bool} cpy\_cons\_called      = false ;}
+\DoxyCodeLine{150     \textcolor{keywordtype}{bool} set\_scan\_mode\_flage  = false ;}
+\DoxyCodeLine{151     \textcolor{keywordtype}{bool} set\_leg\_lab\_flag     = false ;}
+\DoxyCodeLine{152     \textcolor{keywordtype}{bool} make\_legend\_flag     = false  ;}
+\DoxyCodeLine{153 }
+\DoxyCodeLine{154     \textcolor{keywordtype}{char} scan\_mode = \textcolor{charliteral}{'X'} ; }
+\DoxyCodeLine{155     Mode algorithm ;}
+\DoxyCodeLine{156 }
+\DoxyCodeLine{157     \textcolor{comment}{//............................................}}
+\DoxyCodeLine{159 \textcolor{comment}{}    double (*func) (double, double)= \textcolor{keyword}{nullptr} ;}
+\DoxyCodeLine{161     std::unique\_ptr<Zaki::Math::Func2D> genFuncPtr = nullptr ;}
+\DoxyCodeLine{163     \textcolor{comment}{// TMultiGraph* graph = nullptr ;}}
+\DoxyCodeLine{165 \textcolor{comment}{}    \textcolor{comment}{// TLegend* legend = nullptr ;}}
+\DoxyCodeLine{166     \textcolor{comment}{//............................................}}
+\DoxyCodeLine{167 }
+\DoxyCodeLine{168     std::vector<std::string> legend\_label\_set ;}
+\DoxyCodeLine{169     std::string legend\_header = \textcolor{stringliteral}{"{}Contours"{}} ;}
+\DoxyCodeLine{170     \textcolor{keywordtype}{bool} default\_legend\_opt = true ; }
+\DoxyCodeLine{171 }
+\DoxyCodeLine{172     \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} optimization\_trials = 50 ;}
+\DoxyCodeLine{173     Mode TimeFunc(std::uniform\_real\_distribution<double>\&, }
+\DoxyCodeLine{174                   std::uniform\_real\_distribution<double>\&) ;}
+\DoxyCodeLine{175 }
+\DoxyCodeLine{176     std::default\_random\_engine random\_engine ;}
+\DoxyCodeLine{177 }
+\DoxyCodeLine{178     \mbox{\hyperlink{struct_zaki_1_1_math_1_1_grid2_d}{Zaki::Math::Grid2D}} grid ;}
+\DoxyCodeLine{179     \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} width = 1000, height = 1000 ;}
+\DoxyCodeLine{180     \textcolor{keywordtype}{double} delta\_x, delta\_y ;}
+\DoxyCodeLine{181     std::string x\_label=\textcolor{stringliteral}{"{}X"{}}, y\_label =\textcolor{stringliteral}{"{}Y"{}}, plot\_label=\textcolor{stringliteral}{"{}"{}} ;}
+\DoxyCodeLine{182     \mbox{\hyperlink{struct_zaki_1_1_math_1_1_range}{Zaki::Math::Range<double>}} plot\_x\_range, plot\_y\_range ;}
+\DoxyCodeLine{183     \textcolor{keywordtype}{bool} connected\_plot = false  ;}
+\DoxyCodeLine{184     std::vector<Cont2D> cont\_set ;}
+\DoxyCodeLine{185 }
+\DoxyCodeLine{186     \textcolor{keywordtype}{int} req\_threads = 1 ;}
+\DoxyCodeLine{187     \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} unfound\_contours = 0 ;}
+\DoxyCodeLine{188 \};}
+\DoxyCodeLine{189 }
+\DoxyCodeLine{190 \textcolor{comment}{//==============================================================}}
+\DoxyCodeLine{192 \textcolor{comment}{}\textcolor{keyword}{template}<\textcolor{keyword}{typename} FuncObj, \textcolor{keyword}{typename} MemFuncPtr >}
+\DoxyCodeLine{193 \textcolor{keyword}{class }\mbox{\hyperlink{class_c_o_n_f_i_n_d_1_1_mem_func_cont_wrapper}{MemFuncContWrapper}} : \textcolor{keyword}{public} \mbox{\hyperlink{class_c_o_n_f_i_n_d_1_1_base}{Base}}}
+\DoxyCodeLine{194 \{}
+\DoxyCodeLine{195 }
+\DoxyCodeLine{196   \textcolor{keyword}{private}:}
+\DoxyCodeLine{197     \mbox{\hyperlink{class_c_o_n_f_i_n_d_1_1_contour_finder}{ContourFinder}} cont\_finder;}
+\DoxyCodeLine{198 }
+\DoxyCodeLine{199   \textcolor{keyword}{public}:}
+\DoxyCodeLine{200     \mbox{\hyperlink{class_c_o_n_f_i_n_d_1_1_mem_func_cont_wrapper}{MemFuncContWrapper}}(\textcolor{keyword}{const} FuncObj\& obj, \textcolor{keyword}{const} MemFuncPtr\& memFn)}
+\DoxyCodeLine{201       : \mbox{\hyperlink{class_c_o_n_f_i_n_d_1_1_base}{Base}}(\textcolor{stringliteral}{"{}MemFuncContWrapper"{}}, true)}
+\DoxyCodeLine{202     \{}
+\DoxyCodeLine{203       Z\_LOG\_NOTE(\textcolor{stringliteral}{"{}Member function wrapper initializing..."{}}) ;}
+\DoxyCodeLine{204       cont\_finder.SetMemFunc(\textcolor{keyword}{new} \mbox{\hyperlink{class_zaki_1_1_math_1_1_mem_func_wrapper}{Zaki::Math::MemFuncWrapper}}<FuncObj, \textcolor{keywordtype}{double} (FuncObj::*)(\textcolor{keywordtype}{double}, \textcolor{keywordtype}{double})>(obj, memFn)) ;}
+\DoxyCodeLine{205     \}}
+\DoxyCodeLine{206     \string~MemFuncContWrapper()\{\}}
+\DoxyCodeLine{207 }
+\DoxyCodeLine{208     MemFuncContWrapper(\textcolor{keyword}{const} MemFuncContWrapper\& other)}
+\DoxyCodeLine{209     : \mbox{\hyperlink{class_c_o_n_f_i_n_d_1_1_base_a85cad60ce375d8efed73cfca83449f43}{Base}}(\textcolor{stringliteral}{"{}MemFuncContWrapper"{}}, true), cont\_finder(other.cont\_finder)}
+\DoxyCodeLine{210     \{}
+\DoxyCodeLine{211 \textcolor{preprocessor}{\#if CONFIND\_BASE\_DEBUG\_MODE}}
+\DoxyCodeLine{212         Z\_OBJ\_CCTR(\textcolor{keyword}{this}, (\textcolor{keywordtype}{void}*)(\&other), \textcolor{stringliteral}{"{}MemFuncContWrapper"{}}, \textcolor{stringliteral}{"{}MemFuncContWrapper"{}}) ;}
+\DoxyCodeLine{213 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{214     \}}
+\DoxyCodeLine{215 }
+\DoxyCodeLine{216     \textcolor{keywordtype}{void} UpdateMemFunc(\textcolor{keyword}{const} FuncObj\& obj, \textcolor{keyword}{const} MemFuncPtr\& memFn)}
+\DoxyCodeLine{217     \{}
+\DoxyCodeLine{218       Z\_LOG\_NOTE(\textcolor{stringliteral}{"{}Updating the member function wrapper..."{}}) ;}
+\DoxyCodeLine{219       cont\_finder.SetMemFunc(\textcolor{keyword}{new} \mbox{\hyperlink{class_zaki_1_1_math_1_1_mem_func_wrapper}{Zaki::Math::MemFuncWrapper}}<FuncObj, \textcolor{keywordtype}{double} (FuncObj::*)(\textcolor{keywordtype}{double}, \textcolor{keywordtype}{double})>(obj, memFn)) ;}
+\DoxyCodeLine{220     \}}
+\DoxyCodeLine{221 }
+\DoxyCodeLine{222     ContourFinder* operator-\/>() \{}
+\DoxyCodeLine{223       \textcolor{keywordflow}{return} \&cont\_finder;}
+\DoxyCodeLine{224     \}}
+\DoxyCodeLine{225 \};}
+\DoxyCodeLine{226 \textcolor{comment}{//==============================================================}}
+\DoxyCodeLine{227 }
+\DoxyCodeLine{228 \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{229 \} \textcolor{comment}{// CONFIND namespace}}
+\DoxyCodeLine{230 \textcolor{comment}{//==============================================================}}
+\DoxyCodeLine{231 \textcolor{preprocessor}{\#endif }\textcolor{comment}{/*ContourFinder\_H*/}\textcolor{preprocessor}{}}
+
+\end{DoxyCode}

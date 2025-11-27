@@ -1,0 +1,398 @@
+\hypertarget{_obj_observer_8hpp_source}{}\doxysection{Obj\+Observer.\+hpp}
+\label{_obj_observer_8hpp_source}\index{dependencies/include/Zaki/Util/ObjObserver.hpp@{dependencies/include/Zaki/Util/ObjObserver.hpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{comment}{// -\/*-\/ lsst-\/c++ -\/*-\/}}
+\DoxyCodeLine{2 \textcolor{comment}{/*}}
+\DoxyCodeLine{3 \textcolor{comment}{* Zaki's Common Library}}
+\DoxyCodeLine{4 \textcolor{comment}{* See License file at the top of the source tree.}}
+\DoxyCodeLine{5 \textcolor{comment}{*}}
+\DoxyCodeLine{6 \textcolor{comment}{* Copyright (c) 2023 Mohammadreza Zakeri}}
+\DoxyCodeLine{7 \textcolor{comment}{*}}
+\DoxyCodeLine{8 \textcolor{comment}{* Permission is hereby granted, free of charge, to any person obtaining a copy}}
+\DoxyCodeLine{9 \textcolor{comment}{* of this software and associated documentation files (the "{}Software"{}), to deal}}
+\DoxyCodeLine{10 \textcolor{comment}{* in the Software without restriction, including without limitation the rights}}
+\DoxyCodeLine{11 \textcolor{comment}{* to use, copy, modify, merge, publish, distribute, sublicense, and/or sell}}
+\DoxyCodeLine{12 \textcolor{comment}{* copies of the Software, and to permit persons to whom the Software is}}
+\DoxyCodeLine{13 \textcolor{comment}{* furnished to do so, subject to the following conditions:}}
+\DoxyCodeLine{14 \textcolor{comment}{*}}
+\DoxyCodeLine{15 \textcolor{comment}{* The above copyright notice and this permission notice shall be included in all}}
+\DoxyCodeLine{16 \textcolor{comment}{* copies or substantial portions of the Software.}}
+\DoxyCodeLine{17 \textcolor{comment}{*}}
+\DoxyCodeLine{18 \textcolor{comment}{* THE SOFTWARE IS PROVIDED "{}AS IS"{}, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR}}
+\DoxyCodeLine{19 \textcolor{comment}{* IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,}}
+\DoxyCodeLine{20 \textcolor{comment}{* FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE}}
+\DoxyCodeLine{21 \textcolor{comment}{* AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER}}
+\DoxyCodeLine{22 \textcolor{comment}{* LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,}}
+\DoxyCodeLine{23 \textcolor{comment}{* OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE}}
+\DoxyCodeLine{24 \textcolor{comment}{* SOFTWARE.}}
+\DoxyCodeLine{25 \textcolor{comment}{*/}}
+\DoxyCodeLine{26 }
+\DoxyCodeLine{27 \textcolor{preprocessor}{\#ifndef Zaki\_Util\_ObjObserver\_H}}
+\DoxyCodeLine{28 \textcolor{preprocessor}{\#define Zaki\_Util\_ObjObserver\_H}}
+\DoxyCodeLine{29 }
+\DoxyCodeLine{30 \textcolor{preprocessor}{\#include <iostream>}}
+\DoxyCodeLine{31 \textcolor{preprocessor}{\#include <string>}}
+\DoxyCodeLine{32 \textcolor{preprocessor}{\#include <chrono>}}
+\DoxyCodeLine{33 \textcolor{preprocessor}{\#include <sstream>}}
+\DoxyCodeLine{34 \textcolor{preprocessor}{\#include <vector>}}
+\DoxyCodeLine{35 \textcolor{preprocessor}{\#include <mutex>}}
+\DoxyCodeLine{36 \textcolor{preprocessor}{\#include <memory>} \textcolor{comment}{// std::unique\_ptr}}
+\DoxyCodeLine{37 }
+\DoxyCodeLine{38 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_logger_8hpp}{Zaki/Util/Logger.hpp}}"{}}}
+\DoxyCodeLine{39 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_directory_8hpp}{Zaki/String/Directory.hpp}}"{}}}
+\DoxyCodeLine{40 }
+\DoxyCodeLine{41 \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{42 \textcolor{keyword}{namespace }Zaki::Util}
+\DoxyCodeLine{43 \{}
+\DoxyCodeLine{44 }
+\DoxyCodeLine{45 \textcolor{comment}{//==============================================================}}
+\DoxyCodeLine{46 \textcolor{keyword}{class }\mbox{\hyperlink{class_zaki_1_1_util_1_1_obj_event}{ObjEvent}}}
+\DoxyCodeLine{47 \{}
+\DoxyCodeLine{48   \textcolor{keyword}{protected}:}
+\DoxyCodeLine{49     \textcolor{keyword}{virtual} \mbox{\hyperlink{class_zaki_1_1_util_1_1_obj_event}{ObjEvent}}* IClone() \textcolor{keyword}{const} = 0 ;}
+\DoxyCodeLine{50     \textcolor{keywordtype}{long} \textcolor{keywordtype}{long} obj\_ev\_t = 0 ;}
+\DoxyCodeLine{51 }
+\DoxyCodeLine{52   \textcolor{keyword}{public}:}
+\DoxyCodeLine{53     \mbox{\hyperlink{class_zaki_1_1_util_1_1_obj_event}{ObjEvent}}() \{\} ;}
+\DoxyCodeLine{54 }
+\DoxyCodeLine{55     \textcolor{keyword}{virtual} \mbox{\hyperlink{class_zaki_1_1_util_1_1_obj_event}{\string~ObjEvent}}() \{\} ;}
+\DoxyCodeLine{56 }
+\DoxyCodeLine{57     std::unique\_ptr<ObjEvent> Clone()\textcolor{keyword}{ const }}
+\DoxyCodeLine{58 \textcolor{keyword}{    }\{ \textcolor{keywordflow}{return} std::unique\_ptr<ObjEvent>(IClone()); \}}
+\DoxyCodeLine{59 }
+\DoxyCodeLine{60     \textcolor{keywordtype}{void} SetTime(\textcolor{keyword}{const} \textcolor{keywordtype}{long} \textcolor{keywordtype}{long}\& in\_t) \{ obj\_ev\_t = in\_t ;\}}
+\DoxyCodeLine{61     \textcolor{keywordtype}{long} \textcolor{keywordtype}{long} GetTime()\textcolor{keyword}{ const }\{ \textcolor{keywordflow}{return} obj\_ev\_t;\} }
+\DoxyCodeLine{62 }
+\DoxyCodeLine{63     \textcolor{keyword}{virtual} \textcolor{keyword}{const} std::string Str() \textcolor{keyword}{const} = 0 ;}
+\DoxyCodeLine{64 }
+\DoxyCodeLine{65 \};}
+\DoxyCodeLine{66 }
+\DoxyCodeLine{67 \textcolor{comment}{//==============================================================}}
+\DoxyCodeLine{68 \textcolor{keyword}{class }\mbox{\hyperlink{class_zaki_1_1_util_1_1_obj_create}{ObjCreate}} : \textcolor{keyword}{public} \textcolor{keyword}{virtual} \mbox{\hyperlink{class_zaki_1_1_util_1_1_obj_event}{ObjEvent}}}
+\DoxyCodeLine{69 \{}
+\DoxyCodeLine{70   \textcolor{keyword}{protected}:}
+\DoxyCodeLine{71     \textcolor{keyword}{virtual} \mbox{\hyperlink{class_zaki_1_1_util_1_1_obj_create}{ObjCreate}}* IClone() \textcolor{keyword}{const} = 0 ;}
+\DoxyCodeLine{72 }
+\DoxyCodeLine{73   \textcolor{keyword}{public}:}
+\DoxyCodeLine{74     \mbox{\hyperlink{class_zaki_1_1_util_1_1_obj_create}{ObjCreate}}() \{\} ;}
+\DoxyCodeLine{75     \textcolor{keyword}{virtual} \mbox{\hyperlink{class_zaki_1_1_util_1_1_obj_create}{\string~ObjCreate}}() \{\} ;}
+\DoxyCodeLine{76     \textcolor{comment}{// virtual const std::string Str() const = 0 ;}}
+\DoxyCodeLine{77 \};}
+\DoxyCodeLine{78 }
+\DoxyCodeLine{79 \textcolor{comment}{//==============================================================}}
+\DoxyCodeLine{80 \textcolor{keyword}{class }\mbox{\hyperlink{class_zaki_1_1_util_1_1_obj_bi_event}{ObjBiEvent}} : \textcolor{keyword}{public} \textcolor{keyword}{virtual} \mbox{\hyperlink{class_zaki_1_1_util_1_1_obj_event}{ObjEvent}}}
+\DoxyCodeLine{81 \{}
+\DoxyCodeLine{82   \textcolor{keyword}{friend} \textcolor{keyword}{class }\mbox{\hyperlink{class_zaki_1_1_util_1_1_obj_manager}{ObjManager}} ;}
+\DoxyCodeLine{83 }
+\DoxyCodeLine{84   \textcolor{keyword}{protected}:}
+\DoxyCodeLine{85     \textcolor{keyword}{virtual} \mbox{\hyperlink{class_zaki_1_1_util_1_1_obj_bi_event}{ObjBiEvent}}* IClone() \textcolor{keyword}{const} = 0 ;}
+\DoxyCodeLine{86     std::unique\_ptr<ObjBiEvent> GetReaction() }
+\DoxyCodeLine{87     \{ \textcolor{keywordflow}{return} std::unique\_ptr<ObjBiEvent> (IGetReaction()) ; \}}
+\DoxyCodeLine{88 }
+\DoxyCodeLine{89     \textcolor{keyword}{virtual} \mbox{\hyperlink{class_zaki_1_1_util_1_1_obj_bi_event}{ObjBiEvent}}* IGetReaction() \textcolor{keyword}{const} = 0 ;}
+\DoxyCodeLine{90 }
+\DoxyCodeLine{91     \textcolor{keywordtype}{void}* from = nullptr ;}
+\DoxyCodeLine{92     \textcolor{keywordtype}{void}* to = nullptr ;}
+\DoxyCodeLine{93     std::string name ;}
+\DoxyCodeLine{94 }
+\DoxyCodeLine{95 }
+\DoxyCodeLine{96   \textcolor{keyword}{public}:}
+\DoxyCodeLine{97     \mbox{\hyperlink{class_zaki_1_1_util_1_1_obj_bi_event}{ObjBiEvent}}(\textcolor{keywordtype}{void}* in\_fro, \textcolor{keywordtype}{void}* in\_to, \textcolor{keyword}{const} std::string\& in\_name)}
+\DoxyCodeLine{98     : from(in\_fro) , to(in\_to), name(in\_name) \{\}}
+\DoxyCodeLine{99 }
+\DoxyCodeLine{100     \textcolor{keyword}{virtual} \mbox{\hyperlink{class_zaki_1_1_util_1_1_obj_bi_event}{\string~ObjBiEvent}}() \{\}}
+\DoxyCodeLine{101 }
+\DoxyCodeLine{102     \textcolor{keywordtype}{void}* GetTo() \{\textcolor{keywordflow}{return} to;\}}
+\DoxyCodeLine{103     \textcolor{keywordtype}{void}* GetFrom() \{\textcolor{keywordflow}{return} from;\}}
+\DoxyCodeLine{104 }
+\DoxyCodeLine{105     \textcolor{comment}{// virtual const std::string Str() const = 0 ;}}
+\DoxyCodeLine{106 \};}
+\DoxyCodeLine{107 }
+\DoxyCodeLine{108 \textcolor{comment}{//==============================================================}}
+\DoxyCodeLine{109 \textcolor{keyword}{class }\mbox{\hyperlink{class_zaki_1_1_util_1_1_obj_construct}{ObjConstruct}} : \textcolor{keyword}{public} \mbox{\hyperlink{class_zaki_1_1_util_1_1_obj_create}{ObjCreate}}}
+\DoxyCodeLine{110 \{}
+\DoxyCodeLine{111   \textcolor{keyword}{protected}:}
+\DoxyCodeLine{112     \textcolor{keyword}{virtual} \mbox{\hyperlink{class_zaki_1_1_util_1_1_obj_construct}{ObjConstruct}}* IClone()\textcolor{keyword}{ const override}}
+\DoxyCodeLine{113 \textcolor{keyword}{    }\{}
+\DoxyCodeLine{114       \textcolor{keywordflow}{return} (\textcolor{keyword}{new} \mbox{\hyperlink{class_zaki_1_1_util_1_1_obj_construct}{ObjConstruct}}(*\textcolor{keyword}{this})) ;}
+\DoxyCodeLine{115     \}}
+\DoxyCodeLine{116 }
+\DoxyCodeLine{117   \textcolor{keyword}{public}:}
+\DoxyCodeLine{118     \mbox{\hyperlink{class_zaki_1_1_util_1_1_obj_construct}{ObjConstruct}}() \{\};}
+\DoxyCodeLine{119     \mbox{\hyperlink{class_zaki_1_1_util_1_1_obj_construct}{\string~ObjConstruct}}() \{\};}
+\DoxyCodeLine{120     \textcolor{keyword}{virtual} \textcolor{keyword}{const} std::string Str()\textcolor{keyword}{ const override }\{ \textcolor{keywordflow}{return} \textcolor{stringliteral}{"{}CTR"{}} ;\}}
+\DoxyCodeLine{121 \};}
+\DoxyCodeLine{122 }
+\DoxyCodeLine{123 \textcolor{comment}{//==============================================================}}
+\DoxyCodeLine{124 \textcolor{comment}{// Fixing the forward declration issue with covariance}}
+\DoxyCodeLine{125 \textcolor{keyword}{class }\mbox{\hyperlink{class_zaki_1_1_util_1_1_i_obj_copied_from}{IObjCopiedFrom}} : \textcolor{keyword}{public} \mbox{\hyperlink{class_zaki_1_1_util_1_1_obj_bi_event}{ObjBiEvent}}}
+\DoxyCodeLine{126 \{}
+\DoxyCodeLine{127   \textcolor{keyword}{private}:}
+\DoxyCodeLine{128     \textcolor{comment}{// virtual IObjCopiedTo* IClone() const override }}
+\DoxyCodeLine{129     \textcolor{comment}{// \{}}
+\DoxyCodeLine{130     \textcolor{comment}{//   return (new IObjCopiedTo(*this)) ;}}
+\DoxyCodeLine{131     \textcolor{comment}{// \}}}
+\DoxyCodeLine{132     }
+\DoxyCodeLine{133     \textcolor{comment}{// virtual IObjCopiedTo* IGetReaction() const override \{\} }}
+\DoxyCodeLine{134 }
+\DoxyCodeLine{135     \textcolor{comment}{// virtual const std::string Str() const override }}
+\DoxyCodeLine{136     \textcolor{comment}{// \{ }}
+\DoxyCodeLine{137     \textcolor{comment}{//   return  "{}"{};}}
+\DoxyCodeLine{138     \textcolor{comment}{// \}}}
+\DoxyCodeLine{139 }
+\DoxyCodeLine{140   \textcolor{keyword}{public}:}
+\DoxyCodeLine{141     \mbox{\hyperlink{class_zaki_1_1_util_1_1_i_obj_copied_from}{IObjCopiedFrom}}(\textcolor{keywordtype}{void}* in\_fr, \textcolor{keywordtype}{void}* in\_to, \textcolor{keyword}{const} std::string\& in\_name)}
+\DoxyCodeLine{142       : \mbox{\hyperlink{class_zaki_1_1_util_1_1_obj_bi_event}{ObjBiEvent}}(in\_fr, in\_to, in\_name) \{\}}
+\DoxyCodeLine{143 }
+\DoxyCodeLine{144 \};}
+\DoxyCodeLine{145 }
+\DoxyCodeLine{146 \textcolor{comment}{//==============================================================}}
+\DoxyCodeLine{147 \textcolor{keyword}{class }\mbox{\hyperlink{class_zaki_1_1_util_1_1_obj_copy_construct}{ObjCopyConstruct}} : \textcolor{keyword}{public} \mbox{\hyperlink{class_zaki_1_1_util_1_1_obj_create}{ObjCreate}}, \textcolor{keyword}{public} \mbox{\hyperlink{class_zaki_1_1_util_1_1_obj_bi_event}{ObjBiEvent}}}
+\DoxyCodeLine{148 \{}
+\DoxyCodeLine{149   \textcolor{keyword}{protected}:}
+\DoxyCodeLine{150     \textcolor{keyword}{virtual} \mbox{\hyperlink{class_zaki_1_1_util_1_1_obj_copy_construct}{ObjCopyConstruct}}* IClone()\textcolor{keyword}{ const override }}
+\DoxyCodeLine{151 \textcolor{keyword}{    }\{}
+\DoxyCodeLine{152       \textcolor{keywordflow}{return} (\textcolor{keyword}{new} \mbox{\hyperlink{class_zaki_1_1_util_1_1_obj_copy_construct}{ObjCopyConstruct}}(*\textcolor{keyword}{this})) ;}
+\DoxyCodeLine{153     \}}
+\DoxyCodeLine{154     }
+\DoxyCodeLine{155     \textcolor{keyword}{virtual} \mbox{\hyperlink{class_zaki_1_1_util_1_1_i_obj_copied_from}{IObjCopiedFrom}}* IGetReaction() \textcolor{keyword}{const override} ;}
+\DoxyCodeLine{156     \textcolor{comment}{// \{}}
+\DoxyCodeLine{157     \textcolor{comment}{//   return (new ObjCopiedTo(other\_ptr)) ;}}
+\DoxyCodeLine{158     \textcolor{comment}{// \}}}
+\DoxyCodeLine{159 }
+\DoxyCodeLine{160   \textcolor{keyword}{public}:}
+\DoxyCodeLine{161     \mbox{\hyperlink{class_zaki_1_1_util_1_1_obj_copy_construct}{ObjCopyConstruct}}(\textcolor{keywordtype}{void}* in\_fro, \textcolor{keywordtype}{void}* in\_to, \textcolor{keyword}{const} std::string\& in\_name) }
+\DoxyCodeLine{162     : \mbox{\hyperlink{class_zaki_1_1_util_1_1_obj_bi_event}{ObjBiEvent}}(in\_fro, in\_to, in\_name) }
+\DoxyCodeLine{163     \{ }
+\DoxyCodeLine{164       \textcolor{comment}{// std::cout << "{}\(\backslash\)n From: "{}<<from << "{}, to: "{}<< to << "{}.\(\backslash\)n"{};}}
+\DoxyCodeLine{165     \};}
+\DoxyCodeLine{166     }
+\DoxyCodeLine{167     \mbox{\hyperlink{class_zaki_1_1_util_1_1_obj_copy_construct}{\string~ObjCopyConstruct}}() \{\};}
+\DoxyCodeLine{168 }
+\DoxyCodeLine{169     \textcolor{keyword}{virtual} \textcolor{keyword}{const} std::string Str()\textcolor{keyword}{ const override }}
+\DoxyCodeLine{170 \textcolor{keyword}{    }\{ }
+\DoxyCodeLine{171       std::stringstream ss ;}
+\DoxyCodeLine{172       ss << \textcolor{stringliteral}{"{}CFrom, "{}} << name << \textcolor{stringliteral}{"{}\_"{}} << from ;}
+\DoxyCodeLine{173       \textcolor{keywordflow}{return}  ss.str();}
+\DoxyCodeLine{174     \}}
+\DoxyCodeLine{175 \};}
+\DoxyCodeLine{176 }
+\DoxyCodeLine{177 \textcolor{comment}{//==============================================================}}
+\DoxyCodeLine{178 \textcolor{keyword}{class }\mbox{\hyperlink{class_zaki_1_1_util_1_1_obj_copied_from}{ObjCopiedFrom}} : \textcolor{keyword}{public} \mbox{\hyperlink{class_zaki_1_1_util_1_1_obj_create}{ObjCreate}}, \textcolor{keyword}{public} \mbox{\hyperlink{class_zaki_1_1_util_1_1_i_obj_copied_from}{IObjCopiedFrom}}}
+\DoxyCodeLine{179 \{}
+\DoxyCodeLine{180   \textcolor{keyword}{protected}:}
+\DoxyCodeLine{181     \textcolor{keyword}{virtual} \mbox{\hyperlink{class_zaki_1_1_util_1_1_obj_copied_from}{ObjCopiedFrom}}* IClone()\textcolor{keyword}{ const override }}
+\DoxyCodeLine{182 \textcolor{keyword}{    }\{}
+\DoxyCodeLine{183       \textcolor{keywordflow}{return} (\textcolor{keyword}{new} \mbox{\hyperlink{class_zaki_1_1_util_1_1_obj_copied_from}{ObjCopiedFrom}}(*\textcolor{keyword}{this})) ;}
+\DoxyCodeLine{184     \}}
+\DoxyCodeLine{185 }
+\DoxyCodeLine{186     \textcolor{keyword}{virtual} \mbox{\hyperlink{class_zaki_1_1_util_1_1_obj_copy_construct}{ObjCopyConstruct}}* IGetReaction() \textcolor{keyword}{const override} ; }
+\DoxyCodeLine{187     \textcolor{comment}{// \{}}
+\DoxyCodeLine{188     \textcolor{comment}{//   return (new ObjCopyConstruct(other\_ptr)) ;}}
+\DoxyCodeLine{189     \textcolor{comment}{// \}}}
+\DoxyCodeLine{190 }
+\DoxyCodeLine{191   \textcolor{keyword}{public}:}
+\DoxyCodeLine{192     \mbox{\hyperlink{class_zaki_1_1_util_1_1_obj_copied_from}{ObjCopiedFrom}}(\textcolor{keywordtype}{void}* in\_fro, \textcolor{keywordtype}{void}* in\_to, \textcolor{keyword}{const} std::string in\_to\_name) }
+\DoxyCodeLine{193     : \mbox{\hyperlink{class_zaki_1_1_util_1_1_i_obj_copied_from}{IObjCopiedFrom}}(in\_fro, in\_to, in\_to\_name) \{ \};}
+\DoxyCodeLine{194     }
+\DoxyCodeLine{195     \mbox{\hyperlink{class_zaki_1_1_util_1_1_obj_copied_from}{\string~ObjCopiedFrom}}() \{\};}
+\DoxyCodeLine{196 }
+\DoxyCodeLine{197     \textcolor{keyword}{virtual} \textcolor{keyword}{const} std::string Str()\textcolor{keyword}{ const override }}
+\DoxyCodeLine{198 \textcolor{keyword}{    }\{ }
+\DoxyCodeLine{199       std::stringstream ss ;}
+\DoxyCodeLine{200       ss << \textcolor{stringliteral}{"{}CTo, "{}} << name << \textcolor{stringliteral}{"{}\_"{}} << to ;}
+\DoxyCodeLine{201       \textcolor{keywordflow}{return}  ss.str();}
+\DoxyCodeLine{202     \}}
+\DoxyCodeLine{203 \};}
+\DoxyCodeLine{204 \textcolor{comment}{//==============================================================}}
+\DoxyCodeLine{205 \textcolor{keyword}{class }\mbox{\hyperlink{class_zaki_1_1_util_1_1_obj_destruct}{ObjDestruct}} : \textcolor{keyword}{public} \mbox{\hyperlink{class_zaki_1_1_util_1_1_obj_event}{ObjEvent}}}
+\DoxyCodeLine{206 \{}
+\DoxyCodeLine{207   \textcolor{keyword}{protected}:}
+\DoxyCodeLine{208     \textcolor{keyword}{virtual} \mbox{\hyperlink{class_zaki_1_1_util_1_1_obj_destruct}{ObjDestruct}}* IClone()\textcolor{keyword}{ const override }}
+\DoxyCodeLine{209 \textcolor{keyword}{    }\{}
+\DoxyCodeLine{210       \textcolor{keywordflow}{return} (\textcolor{keyword}{new} \mbox{\hyperlink{class_zaki_1_1_util_1_1_obj_destruct}{ObjDestruct}}(*\textcolor{keyword}{this})) ;}
+\DoxyCodeLine{211     \}}
+\DoxyCodeLine{212 }
+\DoxyCodeLine{213   \textcolor{keyword}{public}:}
+\DoxyCodeLine{214     \mbox{\hyperlink{class_zaki_1_1_util_1_1_obj_destruct}{ObjDestruct}}() \{\};}
+\DoxyCodeLine{215     \mbox{\hyperlink{class_zaki_1_1_util_1_1_obj_destruct}{\string~ObjDestruct}}() \{\} ;}
+\DoxyCodeLine{216     \textcolor{keyword}{virtual} \textcolor{keyword}{const} std::string Str()\textcolor{keyword}{ const override }\{ \textcolor{keywordflow}{return} \textcolor{stringliteral}{"{}DTR"{}} ;\};}
+\DoxyCodeLine{217 \};}
+\DoxyCodeLine{218 }
+\DoxyCodeLine{219 \textcolor{comment}{//==============================================================}}
+\DoxyCodeLine{220 \textcolor{comment}{// Forward declration}}
+\DoxyCodeLine{221 \textcolor{keyword}{class }\mbox{\hyperlink{class_zaki_1_1_util_1_1_obj_entry}{ObjEntry}} ;}
+\DoxyCodeLine{222 \textcolor{keyword}{struct }\mbox{\hyperlink{struct_zaki_1_1_util_1_1_obj_event_entry}{ObjEventEntry}} ;}
+\DoxyCodeLine{223 }
+\DoxyCodeLine{225 \textcolor{keyword}{class }\mbox{\hyperlink{class_zaki_1_1_util_1_1_obj_manager}{ObjManager}} }
+\DoxyCodeLine{226 \{}
+\DoxyCodeLine{227 }
+\DoxyCodeLine{228   \textcolor{keyword}{public}:}
+\DoxyCodeLine{229 }
+\DoxyCodeLine{230     \textcolor{comment}{// Destructor}}
+\DoxyCodeLine{231     \mbox{\hyperlink{class_zaki_1_1_util_1_1_obj_manager}{\string~ObjManager}}() ;}
+\DoxyCodeLine{232 }
+\DoxyCodeLine{233     \textcolor{comment}{// Copy constructor}}
+\DoxyCodeLine{234     \mbox{\hyperlink{class_zaki_1_1_util_1_1_obj_manager}{ObjManager}}(\textcolor{keyword}{const} \mbox{\hyperlink{class_zaki_1_1_util_1_1_obj_manager}{ObjManager}}\&) = delete ;}
+\DoxyCodeLine{235 }
+\DoxyCodeLine{236     \textcolor{keyword}{static} \mbox{\hyperlink{class_zaki_1_1_util_1_1_obj_manager}{ObjManager}}\& Get();}
+\DoxyCodeLine{237 }
+\DoxyCodeLine{238     \textcolor{keyword}{static} \textcolor{keywordtype}{void} Emit(\mbox{\hyperlink{struct_zaki_1_1_util_1_1_obj_event_entry}{ObjEventEntry}}\&);}
+\DoxyCodeLine{239     \textcolor{keyword}{static} \textcolor{keywordtype}{void} SetFile(\textcolor{keyword}{const} \mbox{\hyperlink{class_zaki_1_1_string_1_1_directory}{Zaki::String::Directory}}\&) ;}
+\DoxyCodeLine{240 }
+\DoxyCodeLine{241 }
+\DoxyCodeLine{242   \textcolor{keyword}{private}:}
+\DoxyCodeLine{243 }
+\DoxyCodeLine{244     \textcolor{comment}{// Constructor 1 with the default settings}}
+\DoxyCodeLine{245     \mbox{\hyperlink{class_zaki_1_1_util_1_1_obj_manager}{ObjManager}}() \{ \}}
+\DoxyCodeLine{246     std::string CurrentDateTime(\textcolor{keyword}{const} std::string\& format) \textcolor{keyword}{const} ;}
+\DoxyCodeLine{247 }
+\DoxyCodeLine{248     \textcolor{keywordtype}{void} IEmit(\mbox{\hyperlink{struct_zaki_1_1_util_1_1_obj_event_entry}{ObjEventEntry}}\&) ;}
+\DoxyCodeLine{249     \textcolor{keywordtype}{void} SetTimeOffset(\textcolor{keyword}{const} \textcolor{keywordtype}{long} \textcolor{keywordtype}{long}\&) ;}
+\DoxyCodeLine{250     std::string GetFileHeader() ;}
+\DoxyCodeLine{251     \textcolor{comment}{// Adding a footer to the file}}
+\DoxyCodeLine{252     \textcolor{keywordtype}{void} AddFooter() ;}
+\DoxyCodeLine{253 }
+\DoxyCodeLine{254     \textcolor{keywordtype}{void} Export(\textcolor{keyword}{const} \mbox{\hyperlink{class_zaki_1_1_util_1_1_obj_entry}{ObjEntry}}\&) ;}
+\DoxyCodeLine{255     \mbox{\hyperlink{class_zaki_1_1_string_1_1_directory}{Zaki::String::Directory}} file\_name = \textcolor{stringliteral}{"{}"{}};}
+\DoxyCodeLine{256 }
+\DoxyCodeLine{257     \textcolor{keywordtype}{long} \textcolor{keywordtype}{int} time\_offset = 0 ;}
+\DoxyCodeLine{258     \textcolor{keywordtype}{bool} first\_time\_writing = true ;}
+\DoxyCodeLine{259     \textcolor{keywordtype}{bool} first\_time\_emitting = true ; }
+\DoxyCodeLine{260     \textcolor{keywordtype}{bool} export\_flag = false ;}
+\DoxyCodeLine{261 }
+\DoxyCodeLine{262     std::mutex mtx;}
+\DoxyCodeLine{263     }
+\DoxyCodeLine{264     \textcolor{keyword}{static} \textcolor{keyword}{inline} std::vector<ObjEntry> obj\_list = \{\} ;}
+\DoxyCodeLine{265 }
+\DoxyCodeLine{266 \};}
+\DoxyCodeLine{267 }
+\DoxyCodeLine{268 \textcolor{comment}{//==============================================================}}
+\DoxyCodeLine{269 \textcolor{keyword}{class }\mbox{\hyperlink{class_zaki_1_1_util_1_1_obj_entry}{ObjEntry}}}
+\DoxyCodeLine{270 \{}
+\DoxyCodeLine{271   \textcolor{keyword}{friend} \textcolor{keyword}{class }\mbox{\hyperlink{class_zaki_1_1_util_1_1_obj_manager}{ObjManager}} ;}
+\DoxyCodeLine{272 }
+\DoxyCodeLine{273   \textcolor{keyword}{private}:}
+\DoxyCodeLine{274     \textcolor{keywordtype}{void}* ptr = nullptr ;}
+\DoxyCodeLine{275     std::string name ;}
+\DoxyCodeLine{276     std::vector<std::unique\_ptr<ObjEvent>> events ;}
+\DoxyCodeLine{277 }
+\DoxyCodeLine{278   \textcolor{keyword}{public}:}
+\DoxyCodeLine{279     \mbox{\hyperlink{class_zaki_1_1_util_1_1_obj_entry}{ObjEntry}}(\textcolor{keywordtype}{void}* in\_ptr, \textcolor{keyword}{const} std::string\& in\_name, }
+\DoxyCodeLine{280       std::unique\_ptr<ObjEvent>\& creation\_ev) }
+\DoxyCodeLine{281       : ptr(in\_ptr), name(in\_name)}
+\DoxyCodeLine{282       \{}
+\DoxyCodeLine{283         events.emplace\_back(creation\_ev-\/>Clone()) ;}
+\DoxyCodeLine{284       \}}
+\DoxyCodeLine{285 }
+\DoxyCodeLine{286     \textcolor{keywordtype}{void} AddEvent(\mbox{\hyperlink{class_zaki_1_1_util_1_1_obj_event}{ObjEvent}}* gen\_ev)}
+\DoxyCodeLine{287     \{}
+\DoxyCodeLine{288       events.emplace\_back(gen\_ev-\/>Clone()) ;}
+\DoxyCodeLine{289     \}}
+\DoxyCodeLine{290 }
+\DoxyCodeLine{291   std::string Str()\textcolor{keyword}{ const}}
+\DoxyCodeLine{292 \textcolor{keyword}{  }\{}
+\DoxyCodeLine{293     std::stringstream ss;}
+\DoxyCodeLine{294     ss << name << \textcolor{stringliteral}{"{}\_"{}} << ptr;}
+\DoxyCodeLine{295     \textcolor{keywordflow}{return} ss.str() ;}
+\DoxyCodeLine{296   \}}
+\DoxyCodeLine{297 }
+\DoxyCodeLine{298   \textcolor{comment}{// for std::find}}
+\DoxyCodeLine{299   \textcolor{keywordtype}{bool} operator==(\textcolor{keyword}{const} \mbox{\hyperlink{class_zaki_1_1_util_1_1_obj_entry}{ObjEntry}}\& other)\textcolor{keyword}{ const }}
+\DoxyCodeLine{300 \textcolor{keyword}{  }\{}
+\DoxyCodeLine{301     \textcolor{keywordflow}{return} ptr == other.ptr ;}
+\DoxyCodeLine{302   \}}
+\DoxyCodeLine{303 }
+\DoxyCodeLine{304   \textcolor{keywordtype}{bool} operator==(\textcolor{keywordtype}{void}* other)\textcolor{keyword}{ const }}
+\DoxyCodeLine{305 \textcolor{keyword}{  }\{}
+\DoxyCodeLine{306     \textcolor{keywordflow}{return} ptr == other ;}
+\DoxyCodeLine{307   \}}
+\DoxyCodeLine{308 \};}
+\DoxyCodeLine{309 }
+\DoxyCodeLine{310 \textcolor{comment}{//==============================================================}}
+\DoxyCodeLine{311 \textcolor{keyword}{struct }\mbox{\hyperlink{struct_zaki_1_1_util_1_1_obj_event_entry}{ObjEventEntry}}}
+\DoxyCodeLine{312 \{}
+\DoxyCodeLine{313   \textcolor{keyword}{friend} \textcolor{keyword}{class }\mbox{\hyperlink{class_zaki_1_1_util_1_1_obj_manager}{ObjManager}} ;}
+\DoxyCodeLine{314   \textcolor{keyword}{friend} \textcolor{keyword}{class }\mbox{\hyperlink{class_zaki_1_1_util_1_1_obj_entry}{ObjEntry}}   ;}
+\DoxyCodeLine{315 }
+\DoxyCodeLine{316   \textcolor{keyword}{private}:}
+\DoxyCodeLine{317 }
+\DoxyCodeLine{318     \textcolor{comment}{// void Stop() ;}}
+\DoxyCodeLine{319 }
+\DoxyCodeLine{320     \textcolor{keywordtype}{void}* ptr ;}
+\DoxyCodeLine{321     std::string name ;}
+\DoxyCodeLine{322     std::unique\_ptr<ObjEvent> obj\_ev\_ptr ;}
+\DoxyCodeLine{323     \textcolor{comment}{// long long obj\_ev\_t ;}}
+\DoxyCodeLine{324     }
+\DoxyCodeLine{325     \textcolor{comment}{// bool stopped = false ;}}
+\DoxyCodeLine{326 }
+\DoxyCodeLine{327   \textcolor{keyword}{public}:}
+\DoxyCodeLine{328     \textcolor{comment}{// Constructor 1}}
+\DoxyCodeLine{329     \mbox{\hyperlink{struct_zaki_1_1_util_1_1_obj_event_entry}{ObjEventEntry}}(\textcolor{keywordtype}{void}* in\_ptr, \textcolor{keyword}{const} std::string\& in\_name, \mbox{\hyperlink{class_zaki_1_1_util_1_1_obj_event}{ObjEvent}}* in\_mode)  }
+\DoxyCodeLine{330      : ptr(in\_ptr), name(in\_name)}
+\DoxyCodeLine{331     \{}
+\DoxyCodeLine{332       obj\_ev\_ptr = std::unique\_ptr<ObjEvent>(in\_mode) ;}
+\DoxyCodeLine{333       \textcolor{comment}{// Z\_LOG\_INFO("{}ObjEventEntry constructor!"{}) ;}}
+\DoxyCodeLine{334       \textcolor{comment}{// Setting the objEntry creation time}}
+\DoxyCodeLine{335       obj\_ev\_ptr-\/>SetTime(std::chrono::time\_point\_cast<std::chrono::microseconds>}
+\DoxyCodeLine{336                         (std::chrono::high\_resolution\_clock::now()).time\_since\_epoch().count() ) ;}
+\DoxyCodeLine{337 }
+\DoxyCodeLine{338       \textcolor{comment}{// if(in\_mode == Mode::Create)}}
+\DoxyCodeLine{339       ObjManager::Emit(*\textcolor{keyword}{this}) ;}
+\DoxyCodeLine{340       \textcolor{comment}{// else}}
+\DoxyCodeLine{341       \textcolor{comment}{//   ObjManager::Destruct(*this) ;}}
+\DoxyCodeLine{342     \}}
+\DoxyCodeLine{343 }
+\DoxyCodeLine{344     \textcolor{comment}{// destructor}}
+\DoxyCodeLine{345     \textcolor{comment}{// \string~ObjEntry()}}
+\DoxyCodeLine{346     \textcolor{comment}{// \{}}
+\DoxyCodeLine{347     \textcolor{comment}{//   if(!stopped) Stop() ;}}
+\DoxyCodeLine{348     \textcolor{comment}{// \}}}
+\DoxyCodeLine{349 }
+\DoxyCodeLine{350     \textcolor{comment}{// ObjEntry(const ObjEntry\&) = delete ;}}
+\DoxyCodeLine{351     \textcolor{comment}{// ObjEntry\& operator=(const ObjEntry\&) = delete ;}}
+\DoxyCodeLine{352     \textcolor{comment}{// bool operator==(const ObjEventEntry\& other) const }}
+\DoxyCodeLine{353     \textcolor{comment}{// \{}}
+\DoxyCodeLine{354     \textcolor{comment}{//   return ptr == other.ptr ;}}
+\DoxyCodeLine{355     \textcolor{comment}{// \}}}
+\DoxyCodeLine{356 }
+\DoxyCodeLine{357 }
+\DoxyCodeLine{358 \} ;}
+\DoxyCodeLine{359 }
+\DoxyCodeLine{360 \textcolor{comment}{//==============================================================}}
+\DoxyCodeLine{361 \} \textcolor{comment}{// End of namespace Zaki::Util}}
+\DoxyCodeLine{362 \textcolor{comment}{//==============================================================}}
+\DoxyCodeLine{363 \textcolor{comment}{//                     Object Manager}}
+\DoxyCodeLine{364 }
+\DoxyCodeLine{365 \textcolor{preprocessor}{\#define Z\_OBJ\_CTR\_HIDDEN(PTR, N, L)  Zaki::Util::ObjEventEntry \_\_CONCAT(objEvEntry,L)(PTR, N, new Zaki::Util::ObjConstruct)}}
+\DoxyCodeLine{366 \textcolor{preprocessor}{\#define Z\_OBJ\_CCTR\_HIDDEN(PTR, PTR2, N1, N2, L)  Zaki::Util::ObjEventEntry \_\_CONCAT(objEvEntry,L)(PTR, N1, new Zaki::Util::ObjCopyConstruct(PTR2, PTR, N2))}}
+\DoxyCodeLine{367 \textcolor{preprocessor}{\#define Z\_OBJ\_DTR\_HIDDEN(PTR, N, L)  Zaki::Util::ObjEventEntry \_\_CONCAT(objEvEntry,L)(PTR, N, new Zaki::Util::ObjDestruct)}}
+\DoxyCodeLine{368 }
+\DoxyCodeLine{369 \textcolor{preprocessor}{\#define Z\_OBJ\_CTR(PTR, N)          Z\_OBJ\_CTR\_HIDDEN(PTR, N, \_\_COUNTER\_\_)}}
+\DoxyCodeLine{370 \textcolor{preprocessor}{\#define Z\_OBJ\_CCTR(PTR, PTR2, N1, N2)   Z\_OBJ\_CCTR\_HIDDEN(PTR, PTR2, N1, N2, \_\_COUNTER\_\_)}}
+\DoxyCodeLine{371 \textcolor{preprocessor}{\#define Z\_OBJ\_DTR(PTR, N)          Z\_OBJ\_DTR\_HIDDEN(PTR, N, \_\_COUNTER\_\_)}}
+\DoxyCodeLine{372 }
+\DoxyCodeLine{373 \textcolor{comment}{/*}}
+\DoxyCodeLine{374 \textcolor{comment}{// \#define Z\_OBJ\_CTR(PTR, N) \(\backslash\)}}
+\DoxyCodeLine{375 \textcolor{comment}{//   do \{ \(\backslash\)}}
+\DoxyCodeLine{376 \textcolor{comment}{//     Zaki::Util::ObjEventEntry \_\_CONCAT(objEvEntry,\_\_COUNTER\_\_)(PTR, N, new Zaki::Util::ObjConstruct); \(\backslash\)}}
+\DoxyCodeLine{377 \textcolor{comment}{//     return ; \(\backslash\)}}
+\DoxyCodeLine{378 \textcolor{comment}{//   \} while (0)}}
+\DoxyCodeLine{379 \textcolor{comment}{}}
+\DoxyCodeLine{380 \textcolor{comment}{// \#define Z\_OBJ\_CCTR(PTR, PTR2, N1, N2) \(\backslash\)}}
+\DoxyCodeLine{381 \textcolor{comment}{//   do \{ \(\backslash\)}}
+\DoxyCodeLine{382 \textcolor{comment}{//     Zaki::Util::ObjEventEntry \_\_CONCAT(objEvEntry,\_\_COUNTER\_\_)(PTR, N1, new Zaki::Util::ObjCopyConstruct(PTR2, PTR, N2)); \(\backslash\)}}
+\DoxyCodeLine{383 \textcolor{comment}{//     return ; \(\backslash\)}}
+\DoxyCodeLine{384 \textcolor{comment}{//   \} while (0)}}
+\DoxyCodeLine{385 \textcolor{comment}{}}
+\DoxyCodeLine{386 \textcolor{comment}{// \#define Z\_OBJ\_DTR(PTR, N) \(\backslash\)}}
+\DoxyCodeLine{387 \textcolor{comment}{//   do \{ \(\backslash\)}}
+\DoxyCodeLine{388 \textcolor{comment}{//     Zaki::Util::ObjEventEntry \_\_CONCAT(objEvEntry,\_\_COUNTER\_\_)(PTR, N, new Zaki::Util::ObjDestruct); \(\backslash\)}}
+\DoxyCodeLine{389 \textcolor{comment}{//     return ; \(\backslash\)}}
+\DoxyCodeLine{390 \textcolor{comment}{//   \} while (0)}}
+\DoxyCodeLine{391 \textcolor{comment}{*/}}
+\DoxyCodeLine{392 \textcolor{comment}{//==============================================================}}
+\DoxyCodeLine{393 \textcolor{preprocessor}{\#endif }\textcolor{comment}{/*Zaki\_Util\_ObjObserver\_H*/}\textcolor{preprocessor}{}}
+
+\end{DoxyCode}

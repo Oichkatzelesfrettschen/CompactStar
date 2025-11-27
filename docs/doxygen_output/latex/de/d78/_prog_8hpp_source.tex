@@ -1,0 +1,295 @@
+\hypertarget{_prog_8hpp_source}{}\doxysection{Prog.\+hpp}
+\label{_prog_8hpp_source}\index{CompactStar/Core/Prog.hpp@{CompactStar/Core/Prog.hpp}}
+\mbox{\hyperlink{_prog_8hpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{comment}{// // -\/*-\/ lsst-\/c++ -\/*-\/}}
+\DoxyCodeLine{2 \textcolor{comment}{// /*}}
+\DoxyCodeLine{3 \textcolor{comment}{//  * CompactStar}}
+\DoxyCodeLine{4 \textcolor{comment}{//  * See License file at the top of the source tree.}}
+\DoxyCodeLine{5 \textcolor{comment}{//  *}}
+\DoxyCodeLine{6 \textcolor{comment}{//  * Copyright (c) 2023 Mohammadreza Zakeri}}
+\DoxyCodeLine{7 \textcolor{comment}{//  *}}
+\DoxyCodeLine{8 \textcolor{comment}{//  * Permission is hereby granted, free of charge, to any person obtaining a copy}}
+\DoxyCodeLine{9 \textcolor{comment}{//  * of this software and associated documentation files (the "{}Software"{}), to deal}}
+\DoxyCodeLine{10 \textcolor{comment}{//  * in the Software without restriction, including without limitation the rights}}
+\DoxyCodeLine{11 \textcolor{comment}{//  * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell}}
+\DoxyCodeLine{12 \textcolor{comment}{//  * copies of the Software, and to permit persons to whom the Software is}}
+\DoxyCodeLine{13 \textcolor{comment}{//  * furnished to do so, subject to the following conditions:}}
+\DoxyCodeLine{14 \textcolor{comment}{//  *}}
+\DoxyCodeLine{15 \textcolor{comment}{//  * The above copyright notice and this permission notice shall be included in all}}
+\DoxyCodeLine{16 \textcolor{comment}{//  * copies or substantial portions of the Software.}}
+\DoxyCodeLine{17 \textcolor{comment}{//  *}}
+\DoxyCodeLine{18 \textcolor{comment}{//  * THE SOFTWARE IS PROVIDED "{}AS IS"{}, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR}}
+\DoxyCodeLine{19 \textcolor{comment}{//  * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,}}
+\DoxyCodeLine{20 \textcolor{comment}{//  * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE}}
+\DoxyCodeLine{21 \textcolor{comment}{//  * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER}}
+\DoxyCodeLine{22 \textcolor{comment}{//  * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,}}
+\DoxyCodeLine{23 \textcolor{comment}{//  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE}}
+\DoxyCodeLine{24 \textcolor{comment}{//  * SOFTWARE.}}
+\DoxyCodeLine{25 \textcolor{comment}{//  */}}
+\DoxyCodeLine{26 }
+\DoxyCodeLine{27 \textcolor{comment}{// /**}}
+\DoxyCodeLine{28 \textcolor{comment}{//  * @file Prog.hpp}}
+\DoxyCodeLine{29 \textcolor{comment}{//  * @brief Base program class providing common utilities and directory handling.}}
+\DoxyCodeLine{30 \textcolor{comment}{//  *}}
+\DoxyCodeLine{31 \textcolor{comment}{//  * The Prog class offers a standard interface for application banner display,}}
+\DoxyCodeLine{32 \textcolor{comment}{//  * working directory management, naming, and optional object tracking.}}
+\DoxyCodeLine{33 \textcolor{comment}{//  *}}
+\DoxyCodeLine{34 \textcolor{comment}{//  * @ingroup Core}}
+\DoxyCodeLine{35 \textcolor{comment}{//  * @author Mohammadreza Zakeri}}
+\DoxyCodeLine{36 \textcolor{comment}{//  * @contact M.Zakeri@eku.edu}}
+\DoxyCodeLine{37 \textcolor{comment}{//  */}}
+\DoxyCodeLine{38 \textcolor{comment}{// // Last edit Aug 31, 2021}}
+\DoxyCodeLine{39 \textcolor{comment}{// \#ifndef CompactStar\_Prog\_H}}
+\DoxyCodeLine{40 \textcolor{comment}{// \#define CompactStar\_Prog\_H}}
+\DoxyCodeLine{41 }
+\DoxyCodeLine{42 \textcolor{comment}{// \#include "{}CompactStar/Core/CompactStarConfig.h"{}}}
+\DoxyCodeLine{43 \textcolor{comment}{// \#include <Zaki/Util/Logger.hpp>}}
+\DoxyCodeLine{44 }
+\DoxyCodeLine{45 \textcolor{comment}{// \#include "{}stdio.h"{}}}
+\DoxyCodeLine{46 \textcolor{comment}{// \#include <atomic>}}
+\DoxyCodeLine{47 }
+\DoxyCodeLine{48 \textcolor{comment}{// \#define CompactStar\_PROG\_DEBUG\_MODE 0}}
+\DoxyCodeLine{49 \textcolor{comment}{// //==============================================================}}
+\DoxyCodeLine{50 \textcolor{comment}{// namespace CompactStar}}
+\DoxyCodeLine{51 \textcolor{comment}{// \{}}
+\DoxyCodeLine{52 \textcolor{comment}{// //==============================================================}}
+\DoxyCodeLine{53 \textcolor{comment}{// //                        Prog Class}}
+\DoxyCodeLine{54 \textcolor{comment}{// //==============================================================}}
+\DoxyCodeLine{55 \textcolor{comment}{// /**}}
+\DoxyCodeLine{56 \textcolor{comment}{//  * @class Prog}}
+\DoxyCodeLine{57 \textcolor{comment}{//  * @brief Base class for CompactStar applications.}}
+\DoxyCodeLine{58 \textcolor{comment}{//  *}}
+\DoxyCodeLine{59 \textcolor{comment}{//  * Provides banner display, working directory and name management,}}
+\DoxyCodeLine{60 \textcolor{comment}{//  * and optional instance tracking for derived classes.}}
+\DoxyCodeLine{61 \textcolor{comment}{//  */}}
+\DoxyCodeLine{62 \textcolor{comment}{// class Prog}}
+\DoxyCodeLine{63 \textcolor{comment}{// \{}}
+\DoxyCodeLine{64 \textcolor{comment}{//   //-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{65 \textcolor{comment}{//   protected:}}
+\DoxyCodeLine{66 }
+\DoxyCodeLine{67 \textcolor{comment}{//     /**}}
+\DoxyCodeLine{68 \textcolor{comment}{//      * @brief Display the program banner to stdout.}}
+\DoxyCodeLine{69 \textcolor{comment}{//      *}}
+\DoxyCodeLine{70 \textcolor{comment}{//      * Prints name and version information if available.}}
+\DoxyCodeLine{71 \textcolor{comment}{//      */}}
+\DoxyCodeLine{72 \textcolor{comment}{//     void ShowBanner();}}
+\DoxyCodeLine{73 }
+\DoxyCodeLine{74 \textcolor{comment}{//     /**}}
+\DoxyCodeLine{75 \textcolor{comment}{//      * @brief Count of Prog-\/derived object instances.}}
+\DoxyCodeLine{76 \textcolor{comment}{//      *}}
+\DoxyCodeLine{77 \textcolor{comment}{//      * Used for optional tracking when debug mode is enabled.}}
+\DoxyCodeLine{78 \textcolor{comment}{//      */}}
+\DoxyCodeLine{79 \textcolor{comment}{//     static inline std::atomic<size\_t> counter = 0;}}
+\DoxyCodeLine{80 }
+\DoxyCodeLine{81 \textcolor{comment}{//     /**}}
+\DoxyCodeLine{82 \textcolor{comment}{//      * @brief Current working directory for program outputs.}}
+\DoxyCodeLine{83 \textcolor{comment}{//      */}}
+\DoxyCodeLine{84 \textcolor{comment}{//     Zaki::String::Directory wrk\_dir = "{}"{} ;}}
+\DoxyCodeLine{85 }
+\DoxyCodeLine{86 \textcolor{comment}{//     /**}}
+\DoxyCodeLine{87 \textcolor{comment}{//      * @brief Label or name identifier for the class instance.}}
+\DoxyCodeLine{88 \textcolor{comment}{//      */}}
+\DoxyCodeLine{89 \textcolor{comment}{//     std::string name        = "{}"{} ;}}
+\DoxyCodeLine{90 }
+\DoxyCodeLine{91 \textcolor{comment}{//     /**}}
+\DoxyCodeLine{92 \textcolor{comment}{//      * @brief Flag indicating if the name has been set.}}
+\DoxyCodeLine{93 \textcolor{comment}{//      *}}
+\DoxyCodeLine{94 \textcolor{comment}{//      */}}
+\DoxyCodeLine{95 \textcolor{comment}{//     bool set\_name\_flag = false    ;}}
+\DoxyCodeLine{96 }
+\DoxyCodeLine{97 \textcolor{comment}{//     /**}}
+\DoxyCodeLine{98 \textcolor{comment}{//      * @brief Flag indicating if the working directory has been set.}}
+\DoxyCodeLine{99 \textcolor{comment}{//      */}}
+\DoxyCodeLine{100 \textcolor{comment}{//     bool set\_wrk\_dir\_flag = false ;}}
+\DoxyCodeLine{101 }
+\DoxyCodeLine{102 \textcolor{comment}{//     /**}}
+\DoxyCodeLine{103 \textcolor{comment}{//      * @brief Internal method to set member objects' working directory.}}
+\DoxyCodeLine{104 \textcolor{comment}{//      *}}
+\DoxyCodeLine{105 \textcolor{comment}{//      * @param dir  Directory to assign to member Prog objects.}}
+\DoxyCodeLine{106 \textcolor{comment}{//      * @return     Pointer to this Prog instance for chaining.}}
+\DoxyCodeLine{107 \textcolor{comment}{//      */}}
+\DoxyCodeLine{108 \textcolor{comment}{//     virtual Prog* SetMemWrkDir(const Zaki::String::Directory\&) ;}}
+\DoxyCodeLine{109 }
+\DoxyCodeLine{110 \textcolor{comment}{//   //-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{111 \textcolor{comment}{//   private:}}
+\DoxyCodeLine{112 }
+\DoxyCodeLine{113 \textcolor{comment}{// \#if CompactStar\_PROG\_DEBUG\_MODE}}
+\DoxyCodeLine{114 \textcolor{comment}{//     /**}}
+\DoxyCodeLine{115 \textcolor{comment}{//      * @brief Toggle for object creation/destruction tracking.}}
+\DoxyCodeLine{116 \textcolor{comment}{//      */}}
+\DoxyCodeLine{117 \textcolor{comment}{//     bool track\_objs\_flag = true ;}}
+\DoxyCodeLine{118 \textcolor{comment}{// \#endif}}
+\DoxyCodeLine{119 \textcolor{comment}{//   //-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{120 \textcolor{comment}{//   public:}}
+\DoxyCodeLine{121 }
+\DoxyCodeLine{122 \textcolor{comment}{//     /**}}
+\DoxyCodeLine{123 \textcolor{comment}{//      * @brief Default constructor without name or tracking.}}
+\DoxyCodeLine{124 \textcolor{comment}{//      *}}
+\DoxyCodeLine{125 \textcolor{comment}{//      * Fast instantiation: no name assignment or debug tracking.}}
+\DoxyCodeLine{126 \textcolor{comment}{//      */}}
+\DoxyCodeLine{127 \textcolor{comment}{//     Prog() ;}}
+\DoxyCodeLine{128 }
+\DoxyCodeLine{129 \textcolor{comment}{//     /**}}
+\DoxyCodeLine{130 \textcolor{comment}{//      * @brief Constructor with name only (no tracking).}}
+\DoxyCodeLine{131 \textcolor{comment}{//      *}}
+\DoxyCodeLine{132 \textcolor{comment}{//      * @param prog\_name  Name label for this instance.}}
+\DoxyCodeLine{133 \textcolor{comment}{//      */}}
+\DoxyCodeLine{134 \textcolor{comment}{//     Prog(const std::string\&) ;}}
+\DoxyCodeLine{135 }
+\DoxyCodeLine{136 \textcolor{comment}{//     /**}}
+\DoxyCodeLine{137 \textcolor{comment}{//      * @brief Constructor with name and optional tracking.}}
+\DoxyCodeLine{138 \textcolor{comment}{//      *}}
+\DoxyCodeLine{139 \textcolor{comment}{//      * @param prog\_name       Name label for this instance.}}
+\DoxyCodeLine{140 \textcolor{comment}{//      * @param enable\_tracking If true, instance creation/destruction are tracked.}}
+\DoxyCodeLine{141 \textcolor{comment}{//      * @note Slower than default constructor.}}
+\DoxyCodeLine{142 \textcolor{comment}{//      * @note Use for debugging or when tracking is needed.}}
+\DoxyCodeLine{143 \textcolor{comment}{//      * @note Not recommended for high-\/frequency object creation.}}
+\DoxyCodeLine{144 \textcolor{comment}{//      */}}
+\DoxyCodeLine{145 \textcolor{comment}{//     Prog(const std::string\&, const bool\&) ;}}
+\DoxyCodeLine{146 }
+\DoxyCodeLine{147 \textcolor{comment}{//     /**}}
+\DoxyCodeLine{148 \textcolor{comment}{//      * @brief Destructor for cleanup and potential tracking.}}
+\DoxyCodeLine{149 \textcolor{comment}{//      */}}
+\DoxyCodeLine{150 \textcolor{comment}{//     virtual \string~Prog() ;}}
+\DoxyCodeLine{151 }
+\DoxyCodeLine{152 \textcolor{comment}{//     /**}}
+\DoxyCodeLine{153 \textcolor{comment}{//      * @brief Override global new operator for custom allocations.}}
+\DoxyCodeLine{154 \textcolor{comment}{//      *}}
+\DoxyCodeLine{155 \textcolor{comment}{//      * @param sz  Size in bytes to allocate.}}
+\DoxyCodeLine{156 \textcolor{comment}{//      * @return    Pointer to allocated memory block.}}
+\DoxyCodeLine{157 \textcolor{comment}{//      */}}
+\DoxyCodeLine{158 \textcolor{comment}{//     static void* operator new(size\_t sz) ;}}
+\DoxyCodeLine{159 }
+\DoxyCodeLine{160 \textcolor{comment}{//     /**}}
+\DoxyCodeLine{161 \textcolor{comment}{//      * @brief Override global delete operator for custom deallocations.}}
+\DoxyCodeLine{162 \textcolor{comment}{//      *}}
+\DoxyCodeLine{163 \textcolor{comment}{//      * @param ptr  Memory block to free.}}
+\DoxyCodeLine{164 \textcolor{comment}{//      */}}
+\DoxyCodeLine{165 \textcolor{comment}{//     static void operator delete(void* m);}}
+\DoxyCodeLine{166 }
+\DoxyCodeLine{167 \textcolor{comment}{//     // Setters}}
+\DoxyCodeLine{168 }
+\DoxyCodeLine{169 \textcolor{comment}{//     /**}}
+\DoxyCodeLine{170 \textcolor{comment}{//      * @brief Set the working directory for program outputs.}}
+\DoxyCodeLine{171 \textcolor{comment}{//      *}}
+\DoxyCodeLine{172 \textcolor{comment}{//      * @param dir  Desired working directory path.}}
+\DoxyCodeLine{173 \textcolor{comment}{//      * @return     Pointer to this Prog instance for chaining.}}
+\DoxyCodeLine{174 \textcolor{comment}{//      */}}
+\DoxyCodeLine{175 \textcolor{comment}{//     virtual Prog* SetWrkDir(const Zaki::String::Directory\&) ;}}
+\DoxyCodeLine{176 }
+\DoxyCodeLine{177 \textcolor{comment}{//     /**}}
+\DoxyCodeLine{178 \textcolor{comment}{//      * @brief Assign a name label to this instance.}}
+\DoxyCodeLine{179 \textcolor{comment}{//      *}}
+\DoxyCodeLine{180 \textcolor{comment}{//      * @param prog\_name  Descriptive name for object.}}
+\DoxyCodeLine{181 \textcolor{comment}{//      */}}
+\DoxyCodeLine{182 \textcolor{comment}{//     virtual void SetName(const std::string\&) ;}}
+\DoxyCodeLine{183 }
+\DoxyCodeLine{184 \textcolor{comment}{//     // Getters}}
+\DoxyCodeLine{185 }
+\DoxyCodeLine{186 \textcolor{comment}{//     /**}}
+\DoxyCodeLine{187 \textcolor{comment}{//      * @brief Retrieve the current working directory.}}
+\DoxyCodeLine{188 \textcolor{comment}{//      *}}
+\DoxyCodeLine{189 \textcolor{comment}{//      * @return Working directory path.}}
+\DoxyCodeLine{190 \textcolor{comment}{//      */}}
+\DoxyCodeLine{191 \textcolor{comment}{//     virtual Zaki::String::Directory GetWrkDir() const ;}}
+\DoxyCodeLine{192 }
+\DoxyCodeLine{193 \textcolor{comment}{//     /**}}
+\DoxyCodeLine{194 \textcolor{comment}{//      * @brief Check if the working directory has been set.}}
+\DoxyCodeLine{195 \textcolor{comment}{//      *}}
+\DoxyCodeLine{196 \textcolor{comment}{//      * @return True if SetWrkDir was called.}}
+\DoxyCodeLine{197 \textcolor{comment}{//      */}}
+\DoxyCodeLine{198 \textcolor{comment}{//     bool IsWrkDirSet() const ;}}
+\DoxyCodeLine{199 }
+\DoxyCodeLine{200 \textcolor{comment}{//     /**}}
+\DoxyCodeLine{201 \textcolor{comment}{//      * @brief Get the name label of this instance.}}
+\DoxyCodeLine{202 \textcolor{comment}{//      *}}
+\DoxyCodeLine{203 \textcolor{comment}{//      * @return Name string.}}
+\DoxyCodeLine{204 \textcolor{comment}{//      */}}
+\DoxyCodeLine{205 \textcolor{comment}{//     virtual std::string GetName() const ;}}
+\DoxyCodeLine{206 }
+\DoxyCodeLine{207 \textcolor{comment}{//     /**}}
+\DoxyCodeLine{208 \textcolor{comment}{//      * @brief Print object-\/specific information.}}
+\DoxyCodeLine{209 \textcolor{comment}{//      *}}
+\DoxyCodeLine{210 \textcolor{comment}{//      * Derived classes should override to display status.}}
+\DoxyCodeLine{211 \textcolor{comment}{//      */}}
+\DoxyCodeLine{212 \textcolor{comment}{//     virtual void Print() const ;}}
+\DoxyCodeLine{213 }
+\DoxyCodeLine{214 \textcolor{comment}{//     /**}}
+\DoxyCodeLine{215 \textcolor{comment}{//      * @brief Return string form of this object's pointer.}}
+\DoxyCodeLine{216 \textcolor{comment}{//      *}}
+\DoxyCodeLine{217 \textcolor{comment}{//      * Useful for logging and debugging.}}
+\DoxyCodeLine{218 \textcolor{comment}{//      *}}
+\DoxyCodeLine{219 \textcolor{comment}{//      * @return Hexadecimal pointer string.}}
+\DoxyCodeLine{220 \textcolor{comment}{//      */}}
+\DoxyCodeLine{221 \textcolor{comment}{//     std::string PtrStr() const ;}}
+\DoxyCodeLine{222 }
+\DoxyCodeLine{223 \textcolor{comment}{// \};}}
+\DoxyCodeLine{224 }
+\DoxyCodeLine{225 \textcolor{comment}{// //==============================================================}}
+\DoxyCodeLine{226 \textcolor{comment}{// \} // CompactStar namespace}}
+\DoxyCodeLine{227 \textcolor{comment}{// //==============================================================}}
+\DoxyCodeLine{228 \textcolor{comment}{// \#endif /*CompactStar\_Prog\_H*/}}
+\DoxyCodeLine{229 }
+\DoxyCodeLine{230 \textcolor{comment}{// -\/*-\/ lsst-\/c++ -\/*-\/}}
+\DoxyCodeLine{246 \textcolor{comment}{}\textcolor{preprocessor}{\#ifndef CompactStar\_Prog\_H}}
+\DoxyCodeLine{247 \textcolor{preprocessor}{\#define CompactStar\_Prog\_H}}
+\DoxyCodeLine{248 }
+\DoxyCodeLine{249 \textcolor{preprocessor}{\#include "{}CompactStar/Core/CompactStarConfig.h"{}}}
+\DoxyCodeLine{250 \textcolor{preprocessor}{\#include <\mbox{\hyperlink{_directory_8hpp}{Zaki/String/Directory.hpp}}>}}
+\DoxyCodeLine{251 \textcolor{preprocessor}{\#include <\mbox{\hyperlink{_logger_8hpp}{Zaki/Util/Logger.hpp}}>}}
+\DoxyCodeLine{252 }
+\DoxyCodeLine{253 \textcolor{preprocessor}{\#include <iostream>}}
+\DoxyCodeLine{254 \textcolor{preprocessor}{\#include <sstream>}}
+\DoxyCodeLine{255 \textcolor{preprocessor}{\#include <string>}}
+\DoxyCodeLine{256 }
+\DoxyCodeLine{257 \textcolor{keyword}{namespace }CompactStar}
+\DoxyCodeLine{258 \{}
+\DoxyCodeLine{259 }
+\DoxyCodeLine{272 \textcolor{keyword}{class }\mbox{\hyperlink{class_compact_star_1_1_prog}{Prog}}}
+\DoxyCodeLine{273 \{}
+\DoxyCodeLine{274   \textcolor{keyword}{protected}:}
+\DoxyCodeLine{278     \mbox{\hyperlink{class_zaki_1_1_string_1_1_directory}{Zaki::String::Directory}} \mbox{\hyperlink{class_compact_star_1_1_prog_a22d25d960b2cd5a4525cc5397b8f5edf}{wrk\_dir\_}}\{\textcolor{stringliteral}{"{}"{}}\};}
+\DoxyCodeLine{279 }
+\DoxyCodeLine{283     std::string \mbox{\hyperlink{class_compact_star_1_1_prog_a1d2e93eecd6fe3ac6e9daf428623994a}{name\_}}\{\};}
+\DoxyCodeLine{284 }
+\DoxyCodeLine{288     \textcolor{keywordtype}{bool} \mbox{\hyperlink{class_compact_star_1_1_prog_af5171a725d45aac0d31c1ea27998aa94}{set\_name\_flag\_}}\{\textcolor{keyword}{false}\};}
+\DoxyCodeLine{289     \textcolor{keywordtype}{bool} set\_wrk\_dir\_flag\_\{\textcolor{keyword}{false}\};}
+\DoxyCodeLine{290 }
+\DoxyCodeLine{299     \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_compact_star_1_1_prog_a3857b5dfcd7bcc5ee4ceda86a73289bf}{OnWorkDirChanged}}(\textcolor{keyword}{const} \mbox{\hyperlink{class_zaki_1_1_string_1_1_directory}{Zaki::String::Directory}} \&dir);}
+\DoxyCodeLine{300 }
+\DoxyCodeLine{307     \textcolor{comment}{// [[deprecated("{}Use OnWorkDirChanged instead."{})]]}}
+\DoxyCodeLine{308     \textcolor{comment}{// virtual Prog *SetMemWrkDir(const Zaki::String::Directory \&dir);}}
+\DoxyCodeLine{309 }
+\DoxyCodeLine{310   \textcolor{keyword}{public}:}
+\DoxyCodeLine{313 }
+\DoxyCodeLine{316     \mbox{\hyperlink{class_compact_star_1_1_prog_af268a0883c7628dcd91857602efeb483}{Prog}}() = \textcolor{keywordflow}{default};}
+\DoxyCodeLine{317 }
+\DoxyCodeLine{322     \textcolor{keyword}{explicit} \mbox{\hyperlink{class_compact_star_1_1_prog_a3c1e220a772e9e2cb4c5dbed931fe72d}{Prog}}(\textcolor{keyword}{const} std::string \&prog\_name)}
+\DoxyCodeLine{323         : \mbox{\hyperlink{class_compact_star_1_1_prog_a22d25d960b2cd5a4525cc5397b8f5edf}{wrk\_dir\_}}\{\textcolor{stringliteral}{"{}"{}}\}, \mbox{\hyperlink{class_compact_star_1_1_prog_a1d2e93eecd6fe3ac6e9daf428623994a}{name\_}}\{prog\_name\}, \mbox{\hyperlink{class_compact_star_1_1_prog_af5171a725d45aac0d31c1ea27998aa94}{set\_name\_flag\_}}\{true\} \{\}}
+\DoxyCodeLine{324 }
+\DoxyCodeLine{328     \textcolor{keyword}{virtual} \mbox{\hyperlink{class_compact_star_1_1_prog_acad7c646cdf94e3b68ae4d44ed638889}{\string~Prog}}() = \textcolor{keywordflow}{default};}
+\DoxyCodeLine{330 }
+\DoxyCodeLine{333 }
+\DoxyCodeLine{342     \textcolor{keyword}{virtual} \mbox{\hyperlink{class_compact_star_1_1_prog}{Prog}} *\mbox{\hyperlink{class_compact_star_1_1_prog_a28c50895a9fd2c9390f82a1bb5c1eefe}{SetWrkDir}}(\textcolor{keyword}{const} \mbox{\hyperlink{class_zaki_1_1_string_1_1_directory}{Zaki::String::Directory}} \&dir);}
+\DoxyCodeLine{343 }
+\DoxyCodeLine{348     \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_compact_star_1_1_prog_af5739075331f9d09c256cb2aea800d55}{SetName}}(\textcolor{keyword}{const} std::string \&prog\_name);}
+\DoxyCodeLine{350 }
+\DoxyCodeLine{353 }
+\DoxyCodeLine{359     \textcolor{keyword}{virtual} \mbox{\hyperlink{class_zaki_1_1_string_1_1_directory}{Zaki::String::Directory}} \mbox{\hyperlink{class_compact_star_1_1_prog_a5b9d3f07d67e7ecb54ba0e1332c4f4a4}{GetWrkDir}}() \textcolor{keyword}{const};}
+\DoxyCodeLine{360 }
+\DoxyCodeLine{365     \textcolor{keywordtype}{bool} \mbox{\hyperlink{class_compact_star_1_1_prog_a33e7f7ce593953ffb4c0b409c65c6222}{IsWrkDirSet}}()\textcolor{keyword}{ const }\{ \textcolor{keywordflow}{return} set\_wrk\_dir\_flag\_; \}}
+\DoxyCodeLine{366 }
+\DoxyCodeLine{373     \textcolor{keyword}{virtual} std::string \mbox{\hyperlink{class_compact_star_1_1_prog_a816d8fac5e9f5969c0dce4b298bfc0ed}{GetName}}() \textcolor{keyword}{const};}
+\DoxyCodeLine{375 }
+\DoxyCodeLine{378 }
+\DoxyCodeLine{383     \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_compact_star_1_1_prog_a9bc6fb78da0b60e7231ac2d54513dd61}{Print}}() \textcolor{keyword}{const};}
+\DoxyCodeLine{384 }
+\DoxyCodeLine{389     std::string \mbox{\hyperlink{class_compact_star_1_1_prog_a40079c6ac9af21ba77ea14f64987e11b}{PtrStr}}() \textcolor{keyword}{const};}
+\DoxyCodeLine{391 \};}
+\DoxyCodeLine{392 }
+\DoxyCodeLine{393 \} \textcolor{comment}{// namespace CompactStar}}
+\DoxyCodeLine{394 }
+\DoxyCodeLine{395 \textcolor{preprocessor}{\#endif }\textcolor{comment}{/* CompactStar\_Prog\_H */}\textcolor{preprocessor}{}}
+
+\end{DoxyCode}

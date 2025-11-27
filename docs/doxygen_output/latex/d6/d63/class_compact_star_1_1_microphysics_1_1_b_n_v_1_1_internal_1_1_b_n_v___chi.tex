@@ -1,0 +1,398 @@
+\hypertarget{class_compact_star_1_1_microphysics_1_1_b_n_v_1_1_internal_1_1_b_n_v___chi}{}\doxysection{Compact\+Star\+::Microphysics\+::BNV\+::Internal\+::BNV\+\_\+\+Chi Class Reference}
+\label{class_compact_star_1_1_microphysics_1_1_b_n_v_1_1_internal_1_1_b_n_v___chi}\index{CompactStar::Microphysics::BNV::Internal::BNV\_Chi@{CompactStar::Microphysics::BNV::Internal::BNV\_Chi}}
+Inheritance diagram for Compact\+Star\+::Microphysics\+::BNV\+::Internal\+::BNV\+\_\+\+Chi\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=1.050000cm]{d6/d63/class_compact_star_1_1_microphysics_1_1_b_n_v_1_1_internal_1_1_b_n_v___chi}
+\end{center}
+\end{figure}
+\doxysubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{struct_compact_star_1_1_microphysics_1_1_b_n_v_1_1_internal_1_1_b_n_v___chi_1_1_baryon}{Baryon}}
+\item 
+struct \mbox{\hyperlink{struct_compact_star_1_1_microphysics_1_1_b_n_v_1_1_internal_1_1_b_n_v___chi_1_1_process}{Process}}
+\item 
+struct \mbox{\hyperlink{struct_compact_star_1_1_microphysics_1_1_b_n_v_1_1_internal_1_1_b_n_v___chi_1_1_rate___eps}{Rate\+\_\+\+Eps}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_compact_star_1_1_microphysics_1_1_b_n_v_1_1_internal_1_1_b_n_v___chi_a59723ff37d9b7e0ef05bfc830f297664}\label{class_compact_star_1_1_microphysics_1_1_b_n_v_1_1_internal_1_1_b_n_v___chi_a59723ff37d9b7e0ef05bfc830f297664}} 
+{\bfseries BNV\+\_\+\+Chi} (const \mbox{\hyperlink{struct_compact_star_1_1_microphysics_1_1_b_n_v_1_1_internal_1_1_b_n_v___chi_1_1_process}{Process}} \&in\+\_\+process)
+\item 
+double \mbox{\hyperlink{class_compact_star_1_1_microphysics_1_1_b_n_v_1_1_internal_1_1_b_n_v___chi_af245f6a2e2343fb317a323fc593d41aa}{Vacuum\+\_\+\+Decay\+\_\+\+Br}} (const \mbox{\hyperlink{struct_compact_star_1_1_microphysics_1_1_b_n_v_1_1_internal_1_1_b_n_v___chi_1_1_baryon}{Baryon}} \&B, const double \&in\+\_\+m\+\_\+chi, const double \&in\+\_\+eps\+\_\+lam) const
+\item 
+virtual void \mbox{\hyperlink{class_compact_star_1_1_microphysics_1_1_b_n_v_1_1_internal_1_1_b_n_v___chi_a52dad4da032cde3fa1a4fda5fe1f04a4}{Set\+Model}} (const std\+::string \&in\+\_\+eos\+\_\+model)
+\begin{DoxyCompactList}\small\item\em Sets the EoS model. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_compact_star_1_1_microphysics_1_1_b_n_v_1_1_internal_1_1_b_n_v___chi_a7be86b5f8cb25f58f75a3cedfb3f82a7}\label{class_compact_star_1_1_microphysics_1_1_b_n_v_1_1_internal_1_1_b_n_v___chi_a7be86b5f8cb25f58f75a3cedfb3f82a7}} 
+void {\bfseries Set\+Pulsar} (const \mbox{\hyperlink{class_compact_star_1_1_pulsar}{Compact\+Star\+::\+Pulsar}} \&)
+\begin{DoxyCompactList}\small\item\em Sets the pulsar. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_compact_star_1_1_microphysics_1_1_b_n_v_1_1_internal_1_1_b_n_v___chi_ae262f436f32e004e2f8eac17c3485803}\label{class_compact_star_1_1_microphysics_1_1_b_n_v_1_1_internal_1_1_b_n_v___chi_ae262f436f32e004e2f8eac17c3485803}} 
+void {\bfseries Set\+Chi\+Mass\+Range} (const \mbox{\hyperlink{struct_zaki_1_1_math_1_1_axis}{Zaki\+::\+Math\+::\+Axis}} \&)
+\begin{DoxyCompactList}\small\item\em Sets m\+\_\+chi\+\_\+vals. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_compact_star_1_1_microphysics_1_1_b_n_v_1_1_internal_1_1_b_n_v___chi_af798e28a98375295203bab7f7f1a8b23}{Set\+BNVLimit}} (const double \&in\+\_\+gamma)
+\item 
+virtual void \mbox{\hyperlink{class_compact_star_1_1_microphysics_1_1_b_n_v_1_1_internal_1_1_b_n_v___chi_ac7c1c59926ad01be7f35b6f7b506de9b}{Import\+EOS}} (const \mbox{\hyperlink{class_zaki_1_1_string_1_1_directory}{Zaki\+::\+String\+::\+Directory}} \&eos\+\_\+dir, const std\+::string \&micro\+\_\+dir=\char`\"{}\char`\"{})
+\begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{class_compact_star_1_1_analysis}{Analysis}} during the sequence loop. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_compact_star_1_1_microphysics_1_1_b_n_v_1_1_internal_1_1_b_n_v___chi_a5a3e3ddfc057f09d364dc6412f6428b3}\label{class_compact_star_1_1_microphysics_1_1_b_n_v_1_1_internal_1_1_b_n_v___chi_a5a3e3ddfc057f09d364dc6412f6428b3}} 
+void {\bfseries Gen\+Sequence} () const
+\begin{DoxyCompactList}\small\item\em Generates the TOV sequence. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{class_compact_star_1_1_microphysics_1_1_b_n_v_1_1_internal_1_1_b_n_v___chi_a757844bfe4b402da78f62896d2278360}{Find\+Pulsar}} (const bool \&gen\+\_\+plots=false)
+\begin{DoxyCompactList}\small\item\em Finds the pulsar profile. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_compact_star_1_1_microphysics_1_1_b_n_v_1_1_internal_1_1_b_n_v___chi_af44e7b02ccf75976e8c90711b20d26eb}\label{class_compact_star_1_1_microphysics_1_1_b_n_v_1_1_internal_1_1_b_n_v___chi_af44e7b02ccf75976e8c90711b20d26eb}} 
+void {\bfseries Plot\+\_\+\+Meff\+\_\+\+Radius} ()
+\begin{DoxyCompactList}\small\item\em Plots the effective mass as a function of radius. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_compact_star_1_1_microphysics_1_1_b_n_v_1_1_internal_1_1_b_n_v___chi_afc2f5bd59ef97572390c1d071c562887}\label{class_compact_star_1_1_microphysics_1_1_b_n_v_1_1_internal_1_1_b_n_v___chi_afc2f5bd59ef97572390c1d071c562887}} 
+void {\bfseries Plot\+\_\+\+Rest\+Energy\+\_\+\+Radius} ()
+\begin{DoxyCompactList}\small\item\em Plots the baryon\textquotesingle{}s rest-\/energy as a function of radius. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_compact_star_1_1_microphysics_1_1_b_n_v_1_1_internal_1_1_b_n_v___chi_aba4e26a4e253075bd397c3dcbcb03d21}\label{class_compact_star_1_1_microphysics_1_1_b_n_v_1_1_internal_1_1_b_n_v___chi_aba4e26a4e253075bd397c3dcbcb03d21}} 
+void {\bfseries Plot\+\_\+\+EF\+\_\+\+Radius} ()
+\begin{DoxyCompactList}\small\item\em Plots the Fermi energy as a function of radius. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_compact_star_1_1_microphysics_1_1_b_n_v_1_1_internal_1_1_b_n_v___chi_a3525ffab1c10f276cfd0c68d5386cdb3}\label{class_compact_star_1_1_microphysics_1_1_b_n_v_1_1_internal_1_1_b_n_v___chi_a3525ffab1c10f276cfd0c68d5386cdb3}} 
+void {\bfseries Plot\+\_\+\+Rest\+E\+\_\+\+EF\+\_\+\+Radius} (const \mbox{\hyperlink{struct_compact_star_1_1_microphysics_1_1_b_n_v_1_1_internal_1_1_b_n_v___chi_1_1_baryon}{Baryon}} \&B)
+\begin{DoxyCompactList}\small\item\em Plots both the rest energy and the Fermi energy. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_compact_star_1_1_microphysics_1_1_b_n_v_1_1_internal_1_1_b_n_v___chi_a93eed7c3b1243f484550f92c422fe0db}\label{class_compact_star_1_1_microphysics_1_1_b_n_v_1_1_internal_1_1_b_n_v___chi_a93eed7c3b1243f484550f92c422fe0db}} 
+void {\bfseries Plot\+\_\+\+CM\+\_\+\+E\+\_\+\+Radius} (const \mbox{\hyperlink{struct_compact_star_1_1_microphysics_1_1_b_n_v_1_1_internal_1_1_b_n_v___chi_1_1_baryon}{Baryon}} \&B)
+\begin{DoxyCompactList}\small\item\em Plots both the CM frame energy as a function of radius. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_compact_star_1_1_microphysics_1_1_b_n_v_1_1_internal_1_1_b_n_v___chi_a9f6b6791822bb074c2108ed40ddf5eb2}\label{class_compact_star_1_1_microphysics_1_1_b_n_v_1_1_internal_1_1_b_n_v___chi_a9f6b6791822bb074c2108ed40ddf5eb2}} 
+void {\bfseries Plot\+\_\+\+Estar\+\_\+\+Radius} (const \mbox{\hyperlink{struct_compact_star_1_1_microphysics_1_1_b_n_v_1_1_internal_1_1_b_n_v___chi_1_1_baryon}{Baryon}} \&B)
+\item 
+virtual double \mbox{\hyperlink{class_compact_star_1_1_microphysics_1_1_b_n_v_1_1_internal_1_1_b_n_v___chi_a985e2524a262e1d1777f3fc7fc29a7ce}{Phase\+Space\+\_\+\+Integrand}} (const double \&x)
+\item 
+\mbox{\Hypertarget{class_compact_star_1_1_microphysics_1_1_b_n_v_1_1_internal_1_1_b_n_v___chi_a96c2cf169cb78aa717caed6b2f0bff5c}\label{class_compact_star_1_1_microphysics_1_1_b_n_v_1_1_internal_1_1_b_n_v___chi_a96c2cf169cb78aa717caed6b2f0bff5c}} 
+virtual double {\bfseries Phase\+Space\+\_\+\+Integral} (const \mbox{\hyperlink{struct_compact_star_1_1_microphysics_1_1_b_n_v_1_1_internal_1_1_b_n_v___chi_1_1_baryon}{Baryon}} \&B, const double \&m, const double \&m\+\_\+chi, const double \&Sigma\+\_\+0, const double \&x\+\_\+F)
+\item 
+\mbox{\Hypertarget{class_compact_star_1_1_microphysics_1_1_b_n_v_1_1_internal_1_1_b_n_v___chi_a7784f40af4f3f088ebfad7c5bc3d621f}\label{class_compact_star_1_1_microphysics_1_1_b_n_v_1_1_internal_1_1_b_n_v___chi_a7784f40af4f3f088ebfad7c5bc3d621f}} 
+void {\bfseries Plot\+Vacuum\+Br\+Lim} (const \mbox{\hyperlink{struct_compact_star_1_1_microphysics_1_1_b_n_v_1_1_internal_1_1_b_n_v___chi_1_1_baryon}{Baryon}} \&B)
+\begin{DoxyCompactList}\small\item\em Finds and plots the vacuum branching ratio limits. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_compact_star_1_1_microphysics_1_1_b_n_v_1_1_internal_1_1_b_n_v___chi_a35fc622034542c3f7d1f2d22a9ea3939}\label{class_compact_star_1_1_microphysics_1_1_b_n_v_1_1_internal_1_1_b_n_v___chi_a35fc622034542c3f7d1f2d22a9ea3939}} 
+void {\bfseries Plot\+Vacuum\+Br\+Lim} ()
+\begin{DoxyCompactList}\small\item\em Finds and plots the vacuum branching ratio limits. \end{DoxyCompactList}\item 
+virtual \mbox{\hyperlink{class_zaki_1_1_vector_1_1_data_set}{Zaki\+::\+Vector\+::\+Data\+Set}} \mbox{\hyperlink{class_compact_star_1_1_microphysics_1_1_b_n_v_1_1_internal_1_1_b_n_v___chi_a229f996e0d42940cefd0657f28f1610c}{Rate\+\_\+vs\+\_\+\+Density}} (const double \&m\+\_\+chi, const \mbox{\hyperlink{struct_compact_star_1_1_microphysics_1_1_b_n_v_1_1_internal_1_1_b_n_v___chi_1_1_baryon}{Baryon}} \&B, const bool \&gen\+\_\+plots=false)=0
+\item 
+virtual \mbox{\hyperlink{class_zaki_1_1_vector_1_1_data_set}{Zaki\+::\+Vector\+::\+Data\+Set}} \mbox{\hyperlink{class_compact_star_1_1_microphysics_1_1_b_n_v_1_1_internal_1_1_b_n_v___chi_a86ed6731efa4ad4d7f7cedb9610ae01f}{Rate\+\_\+vs\+\_\+R}} (const double \&m\+\_\+chi, const \mbox{\hyperlink{struct_compact_star_1_1_microphysics_1_1_b_n_v_1_1_internal_1_1_b_n_v___chi_1_1_baryon}{Baryon}} \&B, const bool \&gen\+\_\+plots=false)=0
+\item 
+\mbox{\Hypertarget{class_compact_star_1_1_microphysics_1_1_b_n_v_1_1_internal_1_1_b_n_v___chi_a2cb0461d4a8f82ccc40c462c8e43a375}\label{class_compact_star_1_1_microphysics_1_1_b_n_v_1_1_internal_1_1_b_n_v___chi_a2cb0461d4a8f82ccc40c462c8e43a375}} 
+void {\bfseries Rate\+\_\+vs\+\_\+R} (const double \&m\+\_\+chi)
+\item 
+\mbox{\Hypertarget{class_compact_star_1_1_microphysics_1_1_b_n_v_1_1_internal_1_1_b_n_v___chi_a31e82ad29751f21025ac2ee4f9476626}\label{class_compact_star_1_1_microphysics_1_1_b_n_v_1_1_internal_1_1_b_n_v___chi_a31e82ad29751f21025ac2ee4f9476626}} 
+void {\bfseries Rate\+\_\+vs\+\_\+R} (const std\+::vector$<$ double $>$ \&m\+\_\+chi)
+\item 
+\mbox{\Hypertarget{class_compact_star_1_1_microphysics_1_1_b_n_v_1_1_internal_1_1_b_n_v___chi_a5cfa428e0aff6f47baa527c4bfd21c01}\label{class_compact_star_1_1_microphysics_1_1_b_n_v_1_1_internal_1_1_b_n_v___chi_a5cfa428e0aff6f47baa527c4bfd21c01}} 
+void {\bfseries Rate\+\_\+vs\+\_\+R} (const std\+::vector$<$ double $>$ \&m\+\_\+chi, const \mbox{\hyperlink{struct_compact_star_1_1_microphysics_1_1_b_n_v_1_1_internal_1_1_b_n_v___chi_1_1_baryon}{Baryon}} \&B)
+\item 
+double \mbox{\hyperlink{class_compact_star_1_1_microphysics_1_1_b_n_v_1_1_internal_1_1_b_n_v___chi_a55d084d64ffb4a4284e8069038f48c75}{Get\+Rate}} (const double \&m\+\_\+chi, const \mbox{\hyperlink{struct_compact_star_1_1_microphysics_1_1_b_n_v_1_1_internal_1_1_b_n_v___chi_1_1_baryon}{Baryon}} \&B)
+\begin{DoxyCompactList}\small\item\em Per–baryon B → χ rate integrated over the star (i.\+e. (1/\+B\+\_\+tot) d\+B/dt), in \mbox{[}yr⁻¹\mbox{]}. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{class_compact_star_1_1_microphysics_1_1_b_n_v_1_1_internal_1_1_b_n_v___chi_a39ccef138e979eb3b8ff2848bedffff4}{Get\+Eps\+Lim}} (const double \&m\+\_\+chi, const \mbox{\hyperlink{struct_compact_star_1_1_microphysics_1_1_b_n_v_1_1_internal_1_1_b_n_v___chi_1_1_baryon}{Baryon}} \&B)
+\begin{DoxyCompactList}\small\item\em Return the limit on ε from B → χ integrated over the star, assuming the rate scales ∝ ε². \end{DoxyCompactList}\item 
+\mbox{\hyperlink{struct_compact_star_1_1_microphysics_1_1_b_n_v_1_1_internal_1_1_b_n_v___chi_1_1_rate___eps}{Rate\+\_\+\+Eps}} \mbox{\hyperlink{class_compact_star_1_1_microphysics_1_1_b_n_v_1_1_internal_1_1_b_n_v___chi_a88dda360d5c46ed16b0c833d984663ff}{Get\+Rate\+\_\+\+Eps}} (const double \&m\+\_\+chi, const \mbox{\hyperlink{struct_compact_star_1_1_microphysics_1_1_b_n_v_1_1_internal_1_1_b_n_v___chi_1_1_baryon}{Baryon}} \&B)
+\begin{DoxyCompactList}\small\item\em Integrate the B → χ decay rate over the star and return (i) the total baryon-\/number-\/loss rate per baryon \mbox{[}yr⁻¹\mbox{]} (ii) the corresponding limit on ε for this channel. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_compact_star_1_1_microphysics_1_1_b_n_v_1_1_internal_1_1_b_n_v___chi_a1f61d320130dcc8f77a03ecdbdbf7b90}{Plot\+Rate\+\_\+\+Eps}} (const \mbox{\hyperlink{struct_compact_star_1_1_microphysics_1_1_b_n_v_1_1_internal_1_1_b_n_v___chi_1_1_baryon}{Baryon}} \&B)
+\item 
+void \mbox{\hyperlink{class_compact_star_1_1_microphysics_1_1_b_n_v_1_1_internal_1_1_b_n_v___chi_aef5c67b8cec464aa211f154f7c0aae54}{Plot\+Rate\+\_\+\+Eps}} ()
+\item 
+\mbox{\Hypertarget{class_compact_star_1_1_microphysics_1_1_b_n_v_1_1_internal_1_1_b_n_v___chi_a7dbca6876c7db64c09ca6fc6a7f7719c}\label{class_compact_star_1_1_microphysics_1_1_b_n_v_1_1_internal_1_1_b_n_v___chi_a7dbca6876c7db64c09ca6fc6a7f7719c}} 
+void {\bfseries Export} (const \mbox{\hyperlink{class_zaki_1_1_string_1_1_directory}{Zaki\+::\+String\+::\+Directory}} \&) const
+\begin{DoxyCompactList}\small\item\em Saves the results. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_compact_star_1_1_microphysics_1_1_b_n_v_1_1_internal_1_1_b_n_v___chi_af11909b3b0a22bbeefbbf87058d8088c}\label{class_compact_star_1_1_microphysics_1_1_b_n_v_1_1_internal_1_1_b_n_v___chi_af11909b3b0a22bbeefbbf87058d8088c}} 
+\mbox{\hyperlink{struct_compact_star_1_1_microphysics_1_1_b_n_v_1_1_internal_1_1_b_n_v___chi_1_1_baryon}{Baryon}} {\bfseries neutron}
+\item 
+\mbox{\Hypertarget{class_compact_star_1_1_microphysics_1_1_b_n_v_1_1_internal_1_1_b_n_v___chi_ae37912415b2ec2a3b3363063d877d409}\label{class_compact_star_1_1_microphysics_1_1_b_n_v_1_1_internal_1_1_b_n_v___chi_ae37912415b2ec2a3b3363063d877d409}} 
+\mbox{\hyperlink{struct_compact_star_1_1_microphysics_1_1_b_n_v_1_1_internal_1_1_b_n_v___chi_1_1_baryon}{Baryon}} {\bfseries lambda}
+\item 
+\mbox{\Hypertarget{class_compact_star_1_1_microphysics_1_1_b_n_v_1_1_internal_1_1_b_n_v___chi_af0c8397b54e9581f10e0cbdd404e4fee}\label{class_compact_star_1_1_microphysics_1_1_b_n_v_1_1_internal_1_1_b_n_v___chi_af0c8397b54e9581f10e0cbdd404e4fee}} 
+\mbox{\hyperlink{struct_compact_star_1_1_microphysics_1_1_b_n_v_1_1_internal_1_1_b_n_v___chi_1_1_baryon}{Baryon}} {\bfseries proton}
+\item 
+\mbox{\Hypertarget{class_compact_star_1_1_microphysics_1_1_b_n_v_1_1_internal_1_1_b_n_v___chi_a0702a208e2e944ba3e3377869506a91a}\label{class_compact_star_1_1_microphysics_1_1_b_n_v_1_1_internal_1_1_b_n_v___chi_a0702a208e2e944ba3e3377869506a91a}} 
+\mbox{\hyperlink{struct_compact_star_1_1_microphysics_1_1_b_n_v_1_1_internal_1_1_b_n_v___chi_1_1_baryon}{Baryon}} {\bfseries sigma\+\_\+m}
+\item 
+\mbox{\Hypertarget{class_compact_star_1_1_microphysics_1_1_b_n_v_1_1_internal_1_1_b_n_v___chi_aad6b3ad39e32997c05af1ed1d435b93e}\label{class_compact_star_1_1_microphysics_1_1_b_n_v_1_1_internal_1_1_b_n_v___chi_aad6b3ad39e32997c05af1ed1d435b93e}} 
+\mbox{\hyperlink{struct_compact_star_1_1_microphysics_1_1_b_n_v_1_1_internal_1_1_b_n_v___chi_1_1_process}{Process}} {\bfseries process}
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_compact_star_1_1_microphysics_1_1_b_n_v_1_1_internal_1_1_b_n_v___chi_a78ccda46766422aa082c9fa164ba1afd}\label{class_compact_star_1_1_microphysics_1_1_b_n_v_1_1_internal_1_1_b_n_v___chi_a78ccda46766422aa082c9fa164ba1afd}} 
+virtual \mbox{\hyperlink{struct_compact_star_1_1_microphysics_1_1_b_n_v_1_1_internal_1_1_b_n_v___chi_1_1_process}{Process}} {\bfseries Get\+Specific\+Process} (const \mbox{\hyperlink{struct_compact_star_1_1_microphysics_1_1_b_n_v_1_1_internal_1_1_b_n_v___chi_1_1_baryon}{Baryon}} \&B) const
+\item 
+\mbox{\Hypertarget{class_compact_star_1_1_microphysics_1_1_b_n_v_1_1_internal_1_1_b_n_v___chi_aaa60144fb7ebe9b7a532d90860b09218}\label{class_compact_star_1_1_microphysics_1_1_b_n_v_1_1_internal_1_1_b_n_v___chi_aaa60144fb7ebe9b7a532d90860b09218}} 
+void {\bfseries hidden\+\_\+\+Plot\+\_\+\+Rate\+\_\+vs\+\_\+R} (const \mbox{\hyperlink{struct_compact_star_1_1_microphysics_1_1_b_n_v_1_1_internal_1_1_b_n_v___chi_1_1_baryon}{Baryon}} \&B, const double \&m\+\_\+chi, \mbox{\hyperlink{class_zaki_1_1_vector_1_1_data_set}{Zaki\+::\+Vector\+::\+Data\+Set}} $\ast$ds) const
+\begin{DoxyCompactList}\small\item\em Plots the rate as a function of radius (ds) in units of s$^\wedge$-\/1/fm$^\wedge$3. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_compact_star_1_1_microphysics_1_1_b_n_v_1_1_internal_1_1_b_n_v___chi_a3ff726e89331a067a6c37a41e60b44aa}\label{class_compact_star_1_1_microphysics_1_1_b_n_v_1_1_internal_1_1_b_n_v___chi_a3ff726e89331a067a6c37a41e60b44aa}} 
+void {\bfseries hidden\+\_\+\+Plot\+\_\+\+Rate\+\_\+vs\+\_\+\+Density} (const \mbox{\hyperlink{struct_compact_star_1_1_microphysics_1_1_b_n_v_1_1_internal_1_1_b_n_v___chi_1_1_baryon}{Baryon}} \&B, const double \&m\+\_\+chi, \mbox{\hyperlink{class_zaki_1_1_vector_1_1_data_set}{Zaki\+::\+Vector\+::\+Data\+Set}} $\ast$ds) const
+\begin{DoxyCompactList}\small\item\em Plots the rate as a function of density (ds) in units of s$^\wedge$-\/1/fm$^\wedge$3. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_compact_star_1_1_microphysics_1_1_b_n_v_1_1_internal_1_1_b_n_v___chi_af75fcfc746014aef307d9f2a60e9f90e}{Rate\+\_\+vs\+\_\+R}} (const std\+::vector$<$ double $>$ \&m\+\_\+chi, const \mbox{\hyperlink{struct_compact_star_1_1_microphysics_1_1_b_n_v_1_1_internal_1_1_b_n_v___chi_1_1_baryon}{Baryon}} \&B, const std\+::vector$<$ \mbox{\hyperlink{struct_compact_star_1_1_microphysics_1_1_b_n_v_1_1_internal_1_1_pulsar___limit}{Pulsar\+\_\+\+Limit}} $>$ \&)
+\item 
+void \mbox{\hyperlink{class_compact_star_1_1_microphysics_1_1_b_n_v_1_1_internal_1_1_b_n_v___chi_a8f48fbdd29e192da1ca9541c0566ae3f}{Rate\+\_\+vs\+\_\+R}} (const std\+::vector$<$ double $>$ \&m\+\_\+chi, const std\+::vector$<$ \mbox{\hyperlink{struct_compact_star_1_1_microphysics_1_1_b_n_v_1_1_internal_1_1_pulsar___limit}{Pulsar\+\_\+\+Limit}} $>$ \&)
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_compact_star_1_1_microphysics_1_1_b_n_v_1_1_internal_1_1_b_n_v___chi_adc336a9a2f88855204162d7660c1b5e8}\label{class_compact_star_1_1_microphysics_1_1_b_n_v_1_1_internal_1_1_b_n_v___chi_adc336a9a2f88855204162d7660c1b5e8}} 
+double {\bfseries eps\+\_\+lam} = 1
+\begin{DoxyCompactList}\small\item\em Mixing parameter in fm$^\wedge$\{-\/1\}. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_compact_star_1_1_microphysics_1_1_b_n_v_1_1_internal_1_1_b_n_v___chi_a646058fdc6f0de90390a6136ce505107}\label{class_compact_star_1_1_microphysics_1_1_b_n_v_1_1_internal_1_1_b_n_v___chi_a646058fdc6f0de90390a6136ce505107}} 
+std\+::string {\bfseries model} = \char`\"{}\char`\"{}
+\item 
+\mbox{\Hypertarget{class_compact_star_1_1_microphysics_1_1_b_n_v_1_1_internal_1_1_b_n_v___chi_a77b55d70998ef3900c2090e1fa8267df}\label{class_compact_star_1_1_microphysics_1_1_b_n_v_1_1_internal_1_1_b_n_v___chi_a77b55d70998ef3900c2090e1fa8267df}} 
+double {\bfseries phase\+\_\+int\+\_\+mu\+\_\+chi} = 0
+\item 
+\mbox{\Hypertarget{class_compact_star_1_1_microphysics_1_1_b_n_v_1_1_internal_1_1_b_n_v___chi_a036e3050154e1a9af8c25cbdd0a1ba99}\label{class_compact_star_1_1_microphysics_1_1_b_n_v_1_1_internal_1_1_b_n_v___chi_a036e3050154e1a9af8c25cbdd0a1ba99}} 
+double {\bfseries phase\+\_\+int\+\_\+sigma\+\_\+0} = 0
+\item 
+\mbox{\Hypertarget{class_compact_star_1_1_microphysics_1_1_b_n_v_1_1_internal_1_1_b_n_v___chi_a8624b55793d8838510332d24dfd09eb0}\label{class_compact_star_1_1_microphysics_1_1_b_n_v_1_1_internal_1_1_b_n_v___chi_a8624b55793d8838510332d24dfd09eb0}} 
+\mbox{\hyperlink{class_zaki_1_1_vector_1_1_data_set}{Zaki\+::\+Vector\+::\+Data\+Set}} {\bfseries m\+\_\+\+B\+\_\+ds}
+\begin{DoxyCompactList}\small\item\em Masses must be converted from MeV to fm$^\wedge$-\/1 ? \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_compact_star_1_1_microphysics_1_1_b_n_v_1_1_internal_1_1_b_n_v___chi_ac833ed7c4b0447195596520df1c222d3}\label{class_compact_star_1_1_microphysics_1_1_b_n_v_1_1_internal_1_1_b_n_v___chi_ac833ed7c4b0447195596520df1c222d3}} 
+\mbox{\hyperlink{class_zaki_1_1_vector_1_1_data_set}{Zaki\+::\+Vector\+::\+Data\+Set}} {\bfseries sig0\+\_\+ds}
+\begin{DoxyCompactList}\small\item\em Masses must be converted from MeV to fm$^\wedge$-\/1 ? \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_zaki_1_1_vector_1_1_data_set}{Zaki\+::\+Vector\+::\+Data\+Set}} \mbox{\hyperlink{class_compact_star_1_1_microphysics_1_1_b_n_v_1_1_internal_1_1_b_n_v___chi_aa2551c95685d83657e41da99ee9a5636}{micro\+\_\+r}}
+\item 
+\mbox{\Hypertarget{class_compact_star_1_1_microphysics_1_1_b_n_v_1_1_internal_1_1_b_n_v___chi_a303f7bd2e3353e5451d88953885b6164}\label{class_compact_star_1_1_microphysics_1_1_b_n_v_1_1_internal_1_1_b_n_v___chi_a303f7bd2e3353e5451d88953885b6164}} 
+\mbox{\hyperlink{class_compact_star_1_1_comp_o_s_e___e_o_s}{Compact\+Star\+::\+Comp\+OSE\+\_\+\+EOS}} {\bfseries eos}
+\begin{DoxyCompactList}\small\item\em The EoS. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_zaki_1_1_vector_1_1_data_set}{Zaki\+::\+Vector\+::\+Data\+Set}} \mbox{\hyperlink{class_compact_star_1_1_microphysics_1_1_b_n_v_1_1_internal_1_1_b_n_v___chi_aa47c1817fb2b76bd0d5b9a802809ea6b}{n\+\_\+B}}
+\item 
+\mbox{\Hypertarget{class_compact_star_1_1_microphysics_1_1_b_n_v_1_1_internal_1_1_b_n_v___chi_a9fc5bdd6ceefcfa8bd76b6388f88fd0e}\label{class_compact_star_1_1_microphysics_1_1_b_n_v_1_1_internal_1_1_b_n_v___chi_a9fc5bdd6ceefcfa8bd76b6388f88fd0e}} 
+\mbox{\hyperlink{class_compact_star_1_1_pulsar}{Pulsar}} {\bfseries pulsar}
+\item 
+double \mbox{\hyperlink{class_compact_star_1_1_microphysics_1_1_b_n_v_1_1_internal_1_1_b_n_v___chi_aad8c1213a7ba00109e548c215feb8e0b}{gamma\+\_\+bnv\+\_\+bin\+\_\+lim}} = 1.\+75e-\/10
+\item 
+\mbox{\Hypertarget{class_compact_star_1_1_microphysics_1_1_b_n_v_1_1_internal_1_1_b_n_v___chi_ae24c298b4ad40788ad479024a8fd3f77}\label{class_compact_star_1_1_microphysics_1_1_b_n_v_1_1_internal_1_1_b_n_v___chi_ae24c298b4ad40788ad479024a8fd3f77}} 
+double {\bfseries default\+\_\+eps} = 1e-\/16
+\begin{DoxyCompactList}\small\item\em Default value for the mixing parameter in MeV. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{struct_zaki_1_1_math_1_1_axis}{Zaki\+::\+Math\+::\+Axis}} \mbox{\hyperlink{class_compact_star_1_1_microphysics_1_1_b_n_v_1_1_internal_1_1_b_n_v___chi_a1e9205b0cf7ed06f6137097eb7b9dad4}{m\+\_\+chi\+\_\+vals}}
+\begin{DoxyCompactList}\small\item\em The resolution of plot vs m\+\_\+chi. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_compact_star_1_1_microphysics_1_1_b_n_v_1_1_internal_1_1_b_n_v___chi_a757844bfe4b402da78f62896d2278360}\label{class_compact_star_1_1_microphysics_1_1_b_n_v_1_1_internal_1_1_b_n_v___chi_a757844bfe4b402da78f62896d2278360}} 
+\index{CompactStar::Microphysics::BNV::Internal::BNV\_Chi@{CompactStar::Microphysics::BNV::Internal::BNV\_Chi}!FindPulsar@{FindPulsar}}
+\index{FindPulsar@{FindPulsar}!CompactStar::Microphysics::BNV::Internal::BNV\_Chi@{CompactStar::Microphysics::BNV::Internal::BNV\_Chi}}
+\doxysubsubsection{\texorpdfstring{FindPulsar()}{FindPulsar()}}
+{\footnotesize\ttfamily void Micro\+BNVInt\+::\+BNV\+\_\+\+Chi\+::\+Find\+Pulsar (\begin{DoxyParamCaption}\item[{const bool \&}]{gen\+\_\+plots = {\ttfamily false} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Finds the pulsar profile. 
+
+
+
+Reimplemented in \mbox{\hyperlink{class_compact_star_1_1_microphysics_1_1_b_n_v_1_1_channels_1_1_b_n_v___b___chi___combo_a583ab2d0ecfd5b3deb397c6d5a993f4a}{Compact\+Star\+::\+Microphysics\+::\+BNV\+::\+Channels\+::\+BNV\+\_\+\+B\+\_\+\+Chi\+\_\+\+Combo}}.
+
+\mbox{\Hypertarget{class_compact_star_1_1_microphysics_1_1_b_n_v_1_1_internal_1_1_b_n_v___chi_a39ccef138e979eb3b8ff2848bedffff4}\label{class_compact_star_1_1_microphysics_1_1_b_n_v_1_1_internal_1_1_b_n_v___chi_a39ccef138e979eb3b8ff2848bedffff4}} 
+\index{CompactStar::Microphysics::BNV::Internal::BNV\_Chi@{CompactStar::Microphysics::BNV::Internal::BNV\_Chi}!GetEpsLim@{GetEpsLim}}
+\index{GetEpsLim@{GetEpsLim}!CompactStar::Microphysics::BNV::Internal::BNV\_Chi@{CompactStar::Microphysics::BNV::Internal::BNV\_Chi}}
+\doxysubsubsection{\texorpdfstring{GetEpsLim()}{GetEpsLim()}}
+{\footnotesize\ttfamily double Micro\+BNVInt\+::\+BNV\+\_\+\+Chi\+::\+Get\+Eps\+Lim (\begin{DoxyParamCaption}\item[{const double \&}]{m\+\_\+chi,  }\item[{const \mbox{\hyperlink{struct_compact_star_1_1_microphysics_1_1_b_n_v_1_1_internal_1_1_b_n_v___chi_1_1_baryon}{Baryon}} \&}]{B }\end{DoxyParamCaption})}
+
+
+
+Return the limit on ε from B → χ integrated over the star, assuming the rate scales ∝ ε². 
+
+Returns the limit on eps from B -\/\texorpdfstring{$>$}{>} chi decay rate integrated over the radius and in units of \mbox{[} MeV \mbox{]}
+
+This does exactly what your old code did, but\+:
+\begin{DoxyItemize}
+\item uses pulsar.\+Get\+Profile() → const Star\+Profile$\ast$
+\item pulls columns via pointer helpers
+\item converts M(r) to km
+\item guards against missing profile / zero baryon number
+\end{DoxyItemize}
+
+
+\begin{DoxyParams}{Parameters}
+{\em m\+\_\+chi} & χ mass (same units you use in Rate\+\_\+vs\+\_\+R) \\
+\hline
+{\em B} & baryon channel (n, Λ, …) \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+ε\+\_\+limit in the same units as default\+\_\+eps (your code says “\+Me\+V”) 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_compact_star_1_1_microphysics_1_1_b_n_v_1_1_internal_1_1_b_n_v___chi_a55d084d64ffb4a4284e8069038f48c75}\label{class_compact_star_1_1_microphysics_1_1_b_n_v_1_1_internal_1_1_b_n_v___chi_a55d084d64ffb4a4284e8069038f48c75}} 
+\index{CompactStar::Microphysics::BNV::Internal::BNV\_Chi@{CompactStar::Microphysics::BNV::Internal::BNV\_Chi}!GetRate@{GetRate}}
+\index{GetRate@{GetRate}!CompactStar::Microphysics::BNV::Internal::BNV\_Chi@{CompactStar::Microphysics::BNV::Internal::BNV\_Chi}}
+\doxysubsubsection{\texorpdfstring{GetRate()}{GetRate()}}
+{\footnotesize\ttfamily double Micro\+BNVInt\+::\+BNV\+\_\+\+Chi\+::\+Get\+Rate (\begin{DoxyParamCaption}\item[{const double \&}]{m\+\_\+chi,  }\item[{const \mbox{\hyperlink{struct_compact_star_1_1_microphysics_1_1_b_n_v_1_1_internal_1_1_b_n_v___chi_1_1_baryon}{Baryon}} \&}]{B }\end{DoxyParamCaption})}
+
+
+
+Per–baryon B → χ rate integrated over the star (i.\+e. (1/\+B\+\_\+tot) d\+B/dt), in \mbox{[}yr⁻¹\mbox{]}. 
+
+This is the same physics as your original version, but\+:
+\begin{DoxyItemize}
+\item uses the new pointer-\/returning \mbox{\hyperlink{struct_compact_star_1_1_star_profile}{Star\+Profile}} API
+\item converts M(r) from M\+\_\+sun → km so the GR factor is consistent
+\item guards against missing profile / zero baryon number
+\end{DoxyItemize}
+
+
+\begin{DoxyParams}{Parameters}
+{\em m\+\_\+chi} & χ mass (your internal unit, same as Rate\+\_\+vs\+\_\+R) \\
+\hline
+{\em B} & baryon channel (n, Λ, …) \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+(Ḃ/B) in \mbox{[}yr⁻¹\mbox{]} 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_compact_star_1_1_microphysics_1_1_b_n_v_1_1_internal_1_1_b_n_v___chi_a88dda360d5c46ed16b0c833d984663ff}\label{class_compact_star_1_1_microphysics_1_1_b_n_v_1_1_internal_1_1_b_n_v___chi_a88dda360d5c46ed16b0c833d984663ff}} 
+\index{CompactStar::Microphysics::BNV::Internal::BNV\_Chi@{CompactStar::Microphysics::BNV::Internal::BNV\_Chi}!GetRate\_Eps@{GetRate\_Eps}}
+\index{GetRate\_Eps@{GetRate\_Eps}!CompactStar::Microphysics::BNV::Internal::BNV\_Chi@{CompactStar::Microphysics::BNV::Internal::BNV\_Chi}}
+\doxysubsubsection{\texorpdfstring{GetRate\_Eps()}{GetRate\_Eps()}}
+{\footnotesize\ttfamily Micro\+BNVInt\+::\+BNV\+\_\+\+Chi\+::\+Rate\+\_\+\+Eps Micro\+BNVInt\+::\+BNV\+\_\+\+Chi\+::\+Get\+Rate\+\_\+\+Eps (\begin{DoxyParamCaption}\item[{const double \&}]{m\+\_\+chi,  }\item[{const \mbox{\hyperlink{struct_compact_star_1_1_microphysics_1_1_b_n_v_1_1_internal_1_1_b_n_v___chi_1_1_baryon}{Baryon}} \&}]{B }\end{DoxyParamCaption})}
+
+
+
+Integrate the B → χ decay rate over the star and return (i) the total baryon-\/number-\/loss rate per baryon \mbox{[}yr⁻¹\mbox{]} (ii) the corresponding limit on ε for this channel. 
+
+Returns the rate and limit on eps from B -\/\texorpdfstring{$>$}{>} chi decay rate integrated over the radius and in units of \mbox{[} s$^\wedge$-\/1 \mbox{]} \& MeV
+
+This does\+:
+\begin{DoxyEnumerate}
+\item grab r, M(r), ν(r) from the pulsar’s \mbox{\hyperlink{struct_compact_star_1_1_star_profile}{Star\+Profile}}
+\item get the {\itshape local} decay rate vs radius from Rate\+\_\+vs\+\_\+\+R(m\+\_\+chi, B)
+\item apply GR volume element 4π r² (1 -\/ 2M/r)$^\wedge$(-\/1/2) and redshift e$^\wedge$\{ν\}
+\item convert km³·fm⁻³ → dimensionless via 1e54
+\item integrate over r
+\item convert s⁻¹ → yr⁻¹
+\item divide by total baryon number B\+\_\+tot from the sequence point
+\item rescale ε\+: ε\+\_\+limit = ε₀ √( Γ\+\_\+sd / Γ\+\_\+model ) 
+\end{DoxyEnumerate}\mbox{\Hypertarget{class_compact_star_1_1_microphysics_1_1_b_n_v_1_1_internal_1_1_b_n_v___chi_ac7c1c59926ad01be7f35b6f7b506de9b}\label{class_compact_star_1_1_microphysics_1_1_b_n_v_1_1_internal_1_1_b_n_v___chi_ac7c1c59926ad01be7f35b6f7b506de9b}} 
+\index{CompactStar::Microphysics::BNV::Internal::BNV\_Chi@{CompactStar::Microphysics::BNV::Internal::BNV\_Chi}!ImportEOS@{ImportEOS}}
+\index{ImportEOS@{ImportEOS}!CompactStar::Microphysics::BNV::Internal::BNV\_Chi@{CompactStar::Microphysics::BNV::Internal::BNV\_Chi}}
+\doxysubsubsection{\texorpdfstring{ImportEOS()}{ImportEOS()}}
+{\footnotesize\ttfamily void Micro\+BNVInt\+::\+BNV\+\_\+\+Chi\+::\+Import\+EOS (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_zaki_1_1_string_1_1_directory}{Zaki\+::\+String\+::\+Directory}} \&}]{eos\+\_\+dir,  }\item[{const std\+::string \&}]{micro\+\_\+dir = {\ttfamily \char`\"{}\char`\"{}} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+\mbox{\hyperlink{class_compact_star_1_1_analysis}{Analysis}} during the sequence loop. 
+
+Imports the EOS if micro\+\_\+dir is not input, it will look for it in the same directory as eos\+\_\+dir 
+
+Reimplemented in \mbox{\hyperlink{class_compact_star_1_1_microphysics_1_1_b_n_v_1_1_channels_1_1_b_n_v___b___chi___combo_ab614b6da7b8c45593015fc546ed5a77f}{Compact\+Star\+::\+Microphysics\+::\+BNV\+::\+Channels\+::\+BNV\+\_\+\+B\+\_\+\+Chi\+\_\+\+Combo}}.
+
+\mbox{\Hypertarget{class_compact_star_1_1_microphysics_1_1_b_n_v_1_1_internal_1_1_b_n_v___chi_a985e2524a262e1d1777f3fc7fc29a7ce}\label{class_compact_star_1_1_microphysics_1_1_b_n_v_1_1_internal_1_1_b_n_v___chi_a985e2524a262e1d1777f3fc7fc29a7ce}} 
+\index{CompactStar::Microphysics::BNV::Internal::BNV\_Chi@{CompactStar::Microphysics::BNV::Internal::BNV\_Chi}!PhaseSpace\_Integrand@{PhaseSpace\_Integrand}}
+\index{PhaseSpace\_Integrand@{PhaseSpace\_Integrand}!CompactStar::Microphysics::BNV::Internal::BNV\_Chi@{CompactStar::Microphysics::BNV::Internal::BNV\_Chi}}
+\doxysubsubsection{\texorpdfstring{PhaseSpace\_Integrand()}{PhaseSpace\_Integrand()}}
+{\footnotesize\ttfamily double Micro\+BNVInt\+::\+BNV\+\_\+\+Chi\+::\+Phase\+Space\+\_\+\+Integrand (\begin{DoxyParamCaption}\item[{const double \&}]{x }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Reimplemented in \mbox{\hyperlink{class_compact_star_1_1_microphysics_1_1_b_n_v_1_1_channels_1_1_b_n_v___b___psi___pion_a8a7934f4ea68a2f5b55c4f567f597ff1}{Compact\+Star\+::\+Microphysics\+::\+BNV\+::\+Channels\+::\+BNV\+\_\+\+B\+\_\+\+Psi\+\_\+\+Pion}}.
+
+\mbox{\Hypertarget{class_compact_star_1_1_microphysics_1_1_b_n_v_1_1_internal_1_1_b_n_v___chi_aef5c67b8cec464aa211f154f7c0aae54}\label{class_compact_star_1_1_microphysics_1_1_b_n_v_1_1_internal_1_1_b_n_v___chi_aef5c67b8cec464aa211f154f7c0aae54}} 
+\index{CompactStar::Microphysics::BNV::Internal::BNV\_Chi@{CompactStar::Microphysics::BNV::Internal::BNV\_Chi}!PlotRate\_Eps@{PlotRate\_Eps}}
+\index{PlotRate\_Eps@{PlotRate\_Eps}!CompactStar::Microphysics::BNV::Internal::BNV\_Chi@{CompactStar::Microphysics::BNV::Internal::BNV\_Chi}}
+\doxysubsubsection{\texorpdfstring{PlotRate\_Eps()}{PlotRate\_Eps()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily void Micro\+BNVInt\+::\+BNV\+\_\+\+Chi\+::\+Plot\+Rate\+\_\+\+Eps (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Plots the total rate and the limit on eps as a function of m\+\_\+chi \mbox{\Hypertarget{class_compact_star_1_1_microphysics_1_1_b_n_v_1_1_internal_1_1_b_n_v___chi_a1f61d320130dcc8f77a03ecdbdbf7b90}\label{class_compact_star_1_1_microphysics_1_1_b_n_v_1_1_internal_1_1_b_n_v___chi_a1f61d320130dcc8f77a03ecdbdbf7b90}} 
+\index{CompactStar::Microphysics::BNV::Internal::BNV\_Chi@{CompactStar::Microphysics::BNV::Internal::BNV\_Chi}!PlotRate\_Eps@{PlotRate\_Eps}}
+\index{PlotRate\_Eps@{PlotRate\_Eps}!CompactStar::Microphysics::BNV::Internal::BNV\_Chi@{CompactStar::Microphysics::BNV::Internal::BNV\_Chi}}
+\doxysubsubsection{\texorpdfstring{PlotRate\_Eps()}{PlotRate\_Eps()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily void Micro\+BNVInt\+::\+BNV\+\_\+\+Chi\+::\+Plot\+Rate\+\_\+\+Eps (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{struct_compact_star_1_1_microphysics_1_1_b_n_v_1_1_internal_1_1_b_n_v___chi_1_1_baryon}{Baryon}} \&}]{B }\end{DoxyParamCaption})}
+
+Plots the total rate and the limit on eps as a function of m\+\_\+chi \mbox{\Hypertarget{class_compact_star_1_1_microphysics_1_1_b_n_v_1_1_internal_1_1_b_n_v___chi_a229f996e0d42940cefd0657f28f1610c}\label{class_compact_star_1_1_microphysics_1_1_b_n_v_1_1_internal_1_1_b_n_v___chi_a229f996e0d42940cefd0657f28f1610c}} 
+\index{CompactStar::Microphysics::BNV::Internal::BNV\_Chi@{CompactStar::Microphysics::BNV::Internal::BNV\_Chi}!Rate\_vs\_Density@{Rate\_vs\_Density}}
+\index{Rate\_vs\_Density@{Rate\_vs\_Density}!CompactStar::Microphysics::BNV::Internal::BNV\_Chi@{CompactStar::Microphysics::BNV::Internal::BNV\_Chi}}
+\doxysubsubsection{\texorpdfstring{Rate\_vs\_Density()}{Rate\_vs\_Density()}}
+{\footnotesize\ttfamily virtual \mbox{\hyperlink{class_zaki_1_1_vector_1_1_data_set}{Zaki\+::\+Vector\+::\+Data\+Set}} Compact\+Star\+::\+Microphysics\+::\+BNV\+::\+Internal\+::\+BNV\+\_\+\+Chi\+::\+Rate\+\_\+vs\+\_\+\+Density (\begin{DoxyParamCaption}\item[{const double \&}]{m\+\_\+chi,  }\item[{const \mbox{\hyperlink{struct_compact_star_1_1_microphysics_1_1_b_n_v_1_1_internal_1_1_b_n_v___chi_1_1_baryon}{Baryon}} \&}]{B,  }\item[{const bool \&}]{gen\+\_\+plots = {\ttfamily false} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+Returns rate as a function of density in units of s$^\wedge$-\/1/fm$^\wedge$3 
+
+Implemented in \mbox{\hyperlink{class_compact_star_1_1_microphysics_1_1_b_n_v_1_1_channels_1_1_b_n_v___b___chi___combo_ab7878828983f0cca546f124d7361c538}{Compact\+Star\+::\+Microphysics\+::\+BNV\+::\+Channels\+::\+BNV\+\_\+\+B\+\_\+\+Chi\+\_\+\+Combo}}, \mbox{\hyperlink{class_compact_star_1_1_microphysics_1_1_b_n_v_1_1_channels_1_1_b_n_v___b___chi___photon_a91a56ff34a51c96e22d911fdb3e594a0}{Compact\+Star\+::\+Microphysics\+::\+BNV\+::\+Channels\+::\+BNV\+\_\+\+B\+\_\+\+Chi\+\_\+\+Photon}}, \mbox{\hyperlink{class_compact_star_1_1_microphysics_1_1_b_n_v_1_1_channels_1_1_b_n_v___b___chi___transition_ae4c9f3bbc4f484530e73b0e4029d7699}{Compact\+Star\+::\+Microphysics\+::\+BNV\+::\+Channels\+::\+BNV\+\_\+\+B\+\_\+\+Chi\+\_\+\+Transition}}, and \mbox{\hyperlink{class_compact_star_1_1_microphysics_1_1_b_n_v_1_1_channels_1_1_b_n_v___b___psi___pion_a83bcdcf4029a2e0be7ef2f04e92c95b8}{Compact\+Star\+::\+Microphysics\+::\+BNV\+::\+Channels\+::\+BNV\+\_\+\+B\+\_\+\+Psi\+\_\+\+Pion}}.
+
+\mbox{\Hypertarget{class_compact_star_1_1_microphysics_1_1_b_n_v_1_1_internal_1_1_b_n_v___chi_a86ed6731efa4ad4d7f7cedb9610ae01f}\label{class_compact_star_1_1_microphysics_1_1_b_n_v_1_1_internal_1_1_b_n_v___chi_a86ed6731efa4ad4d7f7cedb9610ae01f}} 
+\index{CompactStar::Microphysics::BNV::Internal::BNV\_Chi@{CompactStar::Microphysics::BNV::Internal::BNV\_Chi}!Rate\_vs\_R@{Rate\_vs\_R}}
+\index{Rate\_vs\_R@{Rate\_vs\_R}!CompactStar::Microphysics::BNV::Internal::BNV\_Chi@{CompactStar::Microphysics::BNV::Internal::BNV\_Chi}}
+\doxysubsubsection{\texorpdfstring{Rate\_vs\_R()}{Rate\_vs\_R()}\hspace{0.1cm}{\footnotesize\ttfamily [1/3]}}
+{\footnotesize\ttfamily virtual \mbox{\hyperlink{class_zaki_1_1_vector_1_1_data_set}{Zaki\+::\+Vector\+::\+Data\+Set}} Compact\+Star\+::\+Microphysics\+::\+BNV\+::\+Internal\+::\+BNV\+\_\+\+Chi\+::\+Rate\+\_\+vs\+\_\+R (\begin{DoxyParamCaption}\item[{const double \&}]{m\+\_\+chi,  }\item[{const \mbox{\hyperlink{struct_compact_star_1_1_microphysics_1_1_b_n_v_1_1_internal_1_1_b_n_v___chi_1_1_baryon}{Baryon}} \&}]{B,  }\item[{const bool \&}]{gen\+\_\+plots = {\ttfamily false} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+Returns rate as a function of radius in units of s$^\wedge$-\/1/fm$^\wedge$3 
+
+Implemented in \mbox{\hyperlink{class_compact_star_1_1_microphysics_1_1_b_n_v_1_1_channels_1_1_b_n_v___b___chi___combo_a2c117bfc0953a2a684f97224b5fd120e}{Compact\+Star\+::\+Microphysics\+::\+BNV\+::\+Channels\+::\+BNV\+\_\+\+B\+\_\+\+Chi\+\_\+\+Combo}}, \mbox{\hyperlink{class_compact_star_1_1_microphysics_1_1_b_n_v_1_1_channels_1_1_b_n_v___b___chi___photon_a1a72d7575b0f3a8d65f2c89ea93b3c66}{Compact\+Star\+::\+Microphysics\+::\+BNV\+::\+Channels\+::\+BNV\+\_\+\+B\+\_\+\+Chi\+\_\+\+Photon}}, \mbox{\hyperlink{class_compact_star_1_1_microphysics_1_1_b_n_v_1_1_channels_1_1_b_n_v___b___chi___transition_a91bc374d343b14d0dec24f730f53f9a3}{Compact\+Star\+::\+Microphysics\+::\+BNV\+::\+Channels\+::\+BNV\+\_\+\+B\+\_\+\+Chi\+\_\+\+Transition}}, and \mbox{\hyperlink{class_compact_star_1_1_microphysics_1_1_b_n_v_1_1_channels_1_1_b_n_v___b___psi___pion_a619b0f2f69a87406a319493678bcf121}{Compact\+Star\+::\+Microphysics\+::\+BNV\+::\+Channels\+::\+BNV\+\_\+\+B\+\_\+\+Psi\+\_\+\+Pion}}.
+
+\mbox{\Hypertarget{class_compact_star_1_1_microphysics_1_1_b_n_v_1_1_internal_1_1_b_n_v___chi_af75fcfc746014aef307d9f2a60e9f90e}\label{class_compact_star_1_1_microphysics_1_1_b_n_v_1_1_internal_1_1_b_n_v___chi_af75fcfc746014aef307d9f2a60e9f90e}} 
+\index{CompactStar::Microphysics::BNV::Internal::BNV\_Chi@{CompactStar::Microphysics::BNV::Internal::BNV\_Chi}!Rate\_vs\_R@{Rate\_vs\_R}}
+\index{Rate\_vs\_R@{Rate\_vs\_R}!CompactStar::Microphysics::BNV::Internal::BNV\_Chi@{CompactStar::Microphysics::BNV::Internal::BNV\_Chi}}
+\doxysubsubsection{\texorpdfstring{Rate\_vs\_R()}{Rate\_vs\_R()}\hspace{0.1cm}{\footnotesize\ttfamily [2/3]}}
+{\footnotesize\ttfamily void Compact\+Star\+::\+Microphysics\+::\+BNV\+::\+Internal\+::\+BNV\+\_\+\+Chi\+::\+Rate\+\_\+vs\+\_\+R (\begin{DoxyParamCaption}\item[{const std\+::vector$<$ double $>$ \&}]{m\+\_\+chi,  }\item[{const \mbox{\hyperlink{struct_compact_star_1_1_microphysics_1_1_b_n_v_1_1_internal_1_1_b_n_v___chi_1_1_baryon}{Baryon}} \&}]{B,  }\item[{const std\+::vector$<$ \mbox{\hyperlink{struct_compact_star_1_1_microphysics_1_1_b_n_v_1_1_internal_1_1_pulsar___limit}{Pulsar\+\_\+\+Limit}} $>$ \&}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+Plots rates for a set of chi\textquotesingle{}s in the same figure as a function of radius in units of s$^\wedge$-\/1/fm$^\wedge$3 for multiple pulsars! \mbox{[} Incomplete \mbox{]} \mbox{\Hypertarget{class_compact_star_1_1_microphysics_1_1_b_n_v_1_1_internal_1_1_b_n_v___chi_a8f48fbdd29e192da1ca9541c0566ae3f}\label{class_compact_star_1_1_microphysics_1_1_b_n_v_1_1_internal_1_1_b_n_v___chi_a8f48fbdd29e192da1ca9541c0566ae3f}} 
+\index{CompactStar::Microphysics::BNV::Internal::BNV\_Chi@{CompactStar::Microphysics::BNV::Internal::BNV\_Chi}!Rate\_vs\_R@{Rate\_vs\_R}}
+\index{Rate\_vs\_R@{Rate\_vs\_R}!CompactStar::Microphysics::BNV::Internal::BNV\_Chi@{CompactStar::Microphysics::BNV::Internal::BNV\_Chi}}
+\doxysubsubsection{\texorpdfstring{Rate\_vs\_R()}{Rate\_vs\_R()}\hspace{0.1cm}{\footnotesize\ttfamily [3/3]}}
+{\footnotesize\ttfamily void Compact\+Star\+::\+Microphysics\+::\+BNV\+::\+Internal\+::\+BNV\+\_\+\+Chi\+::\+Rate\+\_\+vs\+\_\+R (\begin{DoxyParamCaption}\item[{const std\+::vector$<$ double $>$ \&}]{m\+\_\+chi,  }\item[{const std\+::vector$<$ \mbox{\hyperlink{struct_compact_star_1_1_microphysics_1_1_b_n_v_1_1_internal_1_1_pulsar___limit}{Pulsar\+\_\+\+Limit}} $>$ \&}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+Plots rates for a set of chi\textquotesingle{}s in the same figure as a function of radius in units of s$^\wedge$-\/1/fm$^\wedge$3 for multiple pulsars! \mbox{[} Incomplete \mbox{]} \mbox{\Hypertarget{class_compact_star_1_1_microphysics_1_1_b_n_v_1_1_internal_1_1_b_n_v___chi_af798e28a98375295203bab7f7f1a8b23}\label{class_compact_star_1_1_microphysics_1_1_b_n_v_1_1_internal_1_1_b_n_v___chi_af798e28a98375295203bab7f7f1a8b23}} 
+\index{CompactStar::Microphysics::BNV::Internal::BNV\_Chi@{CompactStar::Microphysics::BNV::Internal::BNV\_Chi}!SetBNVLimit@{SetBNVLimit}}
+\index{SetBNVLimit@{SetBNVLimit}!CompactStar::Microphysics::BNV::Internal::BNV\_Chi@{CompactStar::Microphysics::BNV::Internal::BNV\_Chi}}
+\doxysubsubsection{\texorpdfstring{SetBNVLimit()}{SetBNVLimit()}}
+{\footnotesize\ttfamily void Micro\+BNVInt\+::\+BNV\+\_\+\+Chi\+::\+Set\+BNVLimit (\begin{DoxyParamCaption}\item[{const double \&}]{in\+\_\+gamma }\end{DoxyParamCaption})}
+
+Eventually will be replaced when I switch to using binary pulsars sets \textquotesingle{}gamma\+\_\+bnv\+\_\+bin\+\_\+lim\textquotesingle{} in yr$^\wedge$-\/1 \mbox{\Hypertarget{class_compact_star_1_1_microphysics_1_1_b_n_v_1_1_internal_1_1_b_n_v___chi_a52dad4da032cde3fa1a4fda5fe1f04a4}\label{class_compact_star_1_1_microphysics_1_1_b_n_v_1_1_internal_1_1_b_n_v___chi_a52dad4da032cde3fa1a4fda5fe1f04a4}} 
+\index{CompactStar::Microphysics::BNV::Internal::BNV\_Chi@{CompactStar::Microphysics::BNV::Internal::BNV\_Chi}!SetModel@{SetModel}}
+\index{SetModel@{SetModel}!CompactStar::Microphysics::BNV::Internal::BNV\_Chi@{CompactStar::Microphysics::BNV::Internal::BNV\_Chi}}
+\doxysubsubsection{\texorpdfstring{SetModel()}{SetModel()}}
+{\footnotesize\ttfamily void Micro\+BNVInt\+::\+BNV\+\_\+\+Chi\+::\+Set\+Model (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{in\+\_\+eos\+\_\+model }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Sets the EoS model. 
+
+
+
+Reimplemented in \mbox{\hyperlink{class_compact_star_1_1_microphysics_1_1_b_n_v_1_1_channels_1_1_b_n_v___b___chi___combo_a7a745351bdaf78084225215cf7b11d71}{Compact\+Star\+::\+Microphysics\+::\+BNV\+::\+Channels\+::\+BNV\+\_\+\+B\+\_\+\+Chi\+\_\+\+Combo}}.
+
+\mbox{\Hypertarget{class_compact_star_1_1_microphysics_1_1_b_n_v_1_1_internal_1_1_b_n_v___chi_af245f6a2e2343fb317a323fc593d41aa}\label{class_compact_star_1_1_microphysics_1_1_b_n_v_1_1_internal_1_1_b_n_v___chi_af245f6a2e2343fb317a323fc593d41aa}} 
+\index{CompactStar::Microphysics::BNV::Internal::BNV\_Chi@{CompactStar::Microphysics::BNV::Internal::BNV\_Chi}!Vacuum\_Decay\_Br@{Vacuum\_Decay\_Br}}
+\index{Vacuum\_Decay\_Br@{Vacuum\_Decay\_Br}!CompactStar::Microphysics::BNV::Internal::BNV\_Chi@{CompactStar::Microphysics::BNV::Internal::BNV\_Chi}}
+\doxysubsubsection{\texorpdfstring{Vacuum\_Decay\_Br()}{Vacuum\_Decay\_Br()}}
+{\footnotesize\ttfamily double Micro\+BNVInt\+::\+BNV\+\_\+\+Chi\+::\+Vacuum\+\_\+\+Decay\+\_\+\+Br (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{struct_compact_star_1_1_microphysics_1_1_b_n_v_1_1_internal_1_1_b_n_v___chi_1_1_baryon}{Baryon}} \&}]{B,  }\item[{const double \&}]{in\+\_\+m\+\_\+chi,  }\item[{const double \&}]{in\+\_\+eps\+\_\+lam }\end{DoxyParamCaption}) const}
+
+Vacuum rate for B -\/\texorpdfstring{$>$}{>} chi + photon Outputs the decay rate in \mbox{[}s$^\wedge$-\/1\mbox{]} eps\+\_\+lam input is in fm$^\wedge$-\/1 
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{class_compact_star_1_1_microphysics_1_1_b_n_v_1_1_internal_1_1_b_n_v___chi_aad8c1213a7ba00109e548c215feb8e0b}\label{class_compact_star_1_1_microphysics_1_1_b_n_v_1_1_internal_1_1_b_n_v___chi_aad8c1213a7ba00109e548c215feb8e0b}} 
+\index{CompactStar::Microphysics::BNV::Internal::BNV\_Chi@{CompactStar::Microphysics::BNV::Internal::BNV\_Chi}!gamma\_bnv\_bin\_lim@{gamma\_bnv\_bin\_lim}}
+\index{gamma\_bnv\_bin\_lim@{gamma\_bnv\_bin\_lim}!CompactStar::Microphysics::BNV::Internal::BNV\_Chi@{CompactStar::Microphysics::BNV::Internal::BNV\_Chi}}
+\doxysubsubsection{\texorpdfstring{gamma\_bnv\_bin\_lim}{gamma\_bnv\_bin\_lim}}
+{\footnotesize\ttfamily double Compact\+Star\+::\+Microphysics\+::\+BNV\+::\+Internal\+::\+BNV\+\_\+\+Chi\+::gamma\+\_\+bnv\+\_\+bin\+\_\+lim = 1.\+75e-\/10\hspace{0.3cm}{\ttfamily [protected]}}
+
+The 2sigma bound on dot\{B\}/B from pulsar binary orbital period decay rate \mbox{\Hypertarget{class_compact_star_1_1_microphysics_1_1_b_n_v_1_1_internal_1_1_b_n_v___chi_a1e9205b0cf7ed06f6137097eb7b9dad4}\label{class_compact_star_1_1_microphysics_1_1_b_n_v_1_1_internal_1_1_b_n_v___chi_a1e9205b0cf7ed06f6137097eb7b9dad4}} 
+\index{CompactStar::Microphysics::BNV::Internal::BNV\_Chi@{CompactStar::Microphysics::BNV::Internal::BNV\_Chi}!m\_chi\_vals@{m\_chi\_vals}}
+\index{m\_chi\_vals@{m\_chi\_vals}!CompactStar::Microphysics::BNV::Internal::BNV\_Chi@{CompactStar::Microphysics::BNV::Internal::BNV\_Chi}}
+\doxysubsubsection{\texorpdfstring{m\_chi\_vals}{m\_chi\_vals}}
+{\footnotesize\ttfamily \mbox{\hyperlink{struct_zaki_1_1_math_1_1_axis}{Zaki\+::\+Math\+::\+Axis}} Compact\+Star\+::\+Microphysics\+::\+BNV\+::\+Internal\+::\+BNV\+\_\+\+Chi\+::m\+\_\+chi\+\_\+vals\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+The resolution of plot vs m\+\_\+chi. 
+
+The m\+\_\+chi range \mbox{\Hypertarget{class_compact_star_1_1_microphysics_1_1_b_n_v_1_1_internal_1_1_b_n_v___chi_aa2551c95685d83657e41da99ee9a5636}\label{class_compact_star_1_1_microphysics_1_1_b_n_v_1_1_internal_1_1_b_n_v___chi_aa2551c95685d83657e41da99ee9a5636}} 
+\index{CompactStar::Microphysics::BNV::Internal::BNV\_Chi@{CompactStar::Microphysics::BNV::Internal::BNV\_Chi}!micro\_r@{micro\_r}}
+\index{micro\_r@{micro\_r}!CompactStar::Microphysics::BNV::Internal::BNV\_Chi@{CompactStar::Microphysics::BNV::Internal::BNV\_Chi}}
+\doxysubsubsection{\texorpdfstring{micro\_r}{micro\_r}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_zaki_1_1_vector_1_1_data_set}{Zaki\+::\+Vector\+::\+Data\+Set}} Compact\+Star\+::\+Microphysics\+::\+BNV\+::\+Internal\+::\+BNV\+\_\+\+Chi\+::micro\+\_\+r\hspace{0.3cm}{\ttfamily [protected]}}
+
+micro parameters as a function of radius This is set via \char`\"{}\+Find\+Pulsar\char`\"{} \mbox{[}0\mbox{]}\+: r\mbox{[}km\mbox{]}, \mbox{[}1\mbox{]}\+: n\+\_\+n, \mbox{[}2\mbox{]}\+: n\+\_\+lam \mbox{[}3\mbox{]}\+: m\+\_\+n, \mbox{[}4\mbox{]}\+: m\+\_\+lam, \mbox{[}5\mbox{]}\+: sig\+\_\+n, \mbox{[}6\mbox{]}\+: sig\+\_\+lam \mbox{\Hypertarget{class_compact_star_1_1_microphysics_1_1_b_n_v_1_1_internal_1_1_b_n_v___chi_aa47c1817fb2b76bd0d5b9a802809ea6b}\label{class_compact_star_1_1_microphysics_1_1_b_n_v_1_1_internal_1_1_b_n_v___chi_aa47c1817fb2b76bd0d5b9a802809ea6b}} 
+\index{CompactStar::Microphysics::BNV::Internal::BNV\_Chi@{CompactStar::Microphysics::BNV::Internal::BNV\_Chi}!n\_B@{n\_B}}
+\index{n\_B@{n\_B}!CompactStar::Microphysics::BNV::Internal::BNV\_Chi@{CompactStar::Microphysics::BNV::Internal::BNV\_Chi}}
+\doxysubsubsection{\texorpdfstring{n\_B}{n\_B}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_zaki_1_1_vector_1_1_data_set}{Zaki\+::\+Vector\+::\+Data\+Set}} Compact\+Star\+::\+Microphysics\+::\+BNV\+::\+Internal\+::\+BNV\+\_\+\+Chi\+::n\+\_\+B\hspace{0.3cm}{\ttfamily [protected]}}
+
+The individual baryon density \mbox{[}0\mbox{]} \+: \char`\"{}n\+\_\+tot\char`\"{}
+
+\mbox{[}2\mbox{]} \+: \char`\"{}100\char`\"{} 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Compact\+Star/\+Microphysics/\+BNV/\+Internal/BNV\+\_\+\+Chi.\+hpp\item 
+Compact\+Star/\+Microphysics/\+BNV/\+Internal/src/BNV\+\_\+\+Chi.\+cpp\end{DoxyCompactItemize}

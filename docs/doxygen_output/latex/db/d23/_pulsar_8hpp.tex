@@ -1,0 +1,75 @@
+\hypertarget{_pulsar_8hpp}{}\doxysection{Compact\+Star/\+Core/\+Pulsar.hpp File Reference}
+\label{_pulsar_8hpp}\index{CompactStar/Core/Pulsar.hpp@{CompactStar/Core/Pulsar.hpp}}
+
+
+Compact, modern pulsar container built on Star\+Profile + modular physics.  
+
+
+{\ttfamily \#include $<$string$>$}\newline
+{\ttfamily \#include \char`\"{}Compact\+Star/\+Core/\+Prog.\+hpp\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}Compact\+Star/\+Core/\+Seq\+Point.\+hpp\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}Compact\+Star/\+Core/\+Star\+Profile.\+hpp\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}Compact\+Star/\+EOS/\+Comp\+OSE\+\_\+\+EOS.\+hpp\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}Compact\+Star/\+Physics/\+State/\+BNVState.\+hpp\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}Compact\+Star/\+Physics/\+State/\+Spin\+State.\+hpp\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}Compact\+Star/\+Physics/\+State/\+Thermal\+State.\+hpp\char`\"{}}\newline
+\doxysubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{class_compact_star_1_1_pulsar}{Compact\+Star\+::\+Pulsar}}
+\begin{DoxyCompactList}\small\item\em High-\/level pulsar object that bundles structure, spin, thermal, and BNV state. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Compact, modern pulsar container built on Star\+Profile + modular physics. 
+
+Detailed pulsar model including rotational, structural, and thermal physics.
+
+This version of the Pulsar class is {\bfseries{not}} the old monolithic one. It is a thin orchestrator that\+:
+\begin{DoxyItemize}
+\item owns (or is given) a structural profile ({\ttfamily Star\+Profile})
+\item exposes a non-\/owning {\ttfamily Star\+Profile\+View} for physics algorithms
+\item stores observed / kinematic quantities in a {\ttfamily Spin\+State}
+\item stores thermal quantities in a {\ttfamily Thermal\+State}
+\item caches BNV-\/related diagnostics in a {\ttfamily BNVState}
+\item optionally knows about the EOS ({\ttfamily Comp\+OSE\+\_\+\+EOS})
+\item optionally remembers the sequence point ({\ttfamily Seq\+Point}) and its parent sequence
+\end{DoxyItemize}
+
+All actual {\itshape physics} (spin-\/derived quantities, thermal luminosities, BNV spin-\/down bounds, neutrino luminosities, etc.) lives in the lightweight headers\+:
+
+
+\begin{DoxyItemize}
+\item {\ttfamily Compact\+Star/\+Physics/\+Driver/\+Spin/}
+\item {\ttfamily Compact\+Star/\+Physics/\+Driver/\+Thermal/}
+\item {\ttfamily Compact\+Star/\+Physics/\+Driver/\+Chem/}
+\end{DoxyItemize}
+
+so that the Pulsar class does not grow a giant public interface again.
+
+\begin{DoxyAuthor}{Author}
+Mohammadreza Zakeri \href{mailto:M.Zakeri@eku.edu}{\texttt{ M.\+Zakeri@eku.\+edu}}
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+Nov 1, 2025 
+\end{DoxyDate}
+\begin{DoxyVersion}{Version}
+2.\+0
+\end{DoxyVersion}
+\begin{DoxyParagraph}{Design}
+This class is meant to sit {\bfseries{on top of}} the new profile infrastructure ({\ttfamily Star\+Profile}, {\ttfamily Star\+Profile\+View}) and the new physics modules. It should not re-\/implement Urca emissivities, temperature profiles, or spin-\/down limits. It only wires data together and provides convenience wrappers.
+\end{DoxyParagraph}
+
+
+Manages spin evolution, baryon violation constraints, structural profiles from TOV solutions, and cooling via direct and modified Urca neutrino processes as well as photon surface emission. Provides utilities for profiling, plotting, and computing astrophysical observables.
+
+Physical context\+:
+\begin{DoxyItemize}
+\item Direct Urca (DUrca)\+: rapid neutrino cooling when proton fraction exceeds threshold, enabling beta decay and inverse beta processes without spectator nucleons; emissivity ∝ T$^\wedge$6.
+\item Modified Urca (MUrca)\+: slower neutrino cooling involving an additional nucleon spectator, requiring energy-\/momentum conservation with reduced phase space; emissivity ∝ T$^\wedge$8.
+\item Thermal blanket\+: the outer crust region where the heat blanket regulates surface temperature, defined by a density $\sim$1e10 g/cm$^\wedge$3.
+\end{DoxyItemize}
+
+\begin{DoxyAuthor}{Author}
+Mohammadreza Zakeri @contact \href{mailto:M.Zakeri@eku.edu}{\texttt{ M.\+Zakeri@eku.\+edu}} 
+\end{DoxyAuthor}

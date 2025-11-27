@@ -1,0 +1,365 @@
+\hypertarget{class_zaki_1_1_vector_1_1_data_set}{}\doxysection{Zaki\+::Vector\+::Data\+Set Class Reference}
+\label{class_zaki_1_1_vector_1_1_data_set}\index{Zaki::Vector::DataSet@{Zaki::Vector::DataSet}}
+\doxysubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{struct_zaki_1_1_vector_1_1_data_set_1_1_plot_param}{Plot\+Param}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_zaki_1_1_vector_1_1_data_set_acf1afcdf0ddc8b752c12a62d0797adb7}\label{class_zaki_1_1_vector_1_1_data_set_acf1afcdf0ddc8b752c12a62d0797adb7}} 
+void {\bfseries Set\+Wrk\+Dir} (const \mbox{\hyperlink{class_zaki_1_1_string_1_1_directory}{Zaki\+::\+String\+::\+Directory}} \&)
+\begin{DoxyCompactList}\small\item\em Sets the work directory. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_zaki_1_1_vector_1_1_data_set_afcdca23ab5b09272091608c9633786a5}\label{class_zaki_1_1_vector_1_1_data_set_afcdca23ab5b09272091608c9633786a5}} 
+\mbox{\hyperlink{class_zaki_1_1_string_1_1_directory}{Zaki\+::\+String\+::\+Directory}} {\bfseries Get\+Wrk\+Dir} () const
+\begin{DoxyCompactList}\small\item\em Returns the work directory. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_zaki_1_1_vector_1_1_data_set_ad3ec774ce454bf1271f5aa4da0f1b2bd}\label{class_zaki_1_1_vector_1_1_data_set_ad3ec774ce454bf1271f5aa4da0f1b2bd}} 
+{\bfseries Data\+Set} ()
+\begin{DoxyCompactList}\small\item\em Default constructor. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_zaki_1_1_vector_1_1_data_set_a8d718be716fee9c796e41d62dd6d95af}\label{class_zaki_1_1_vector_1_1_data_set_a8d718be716fee9c796e41d62dd6d95af}} 
+{\bfseries Data\+Set} (const \mbox{\hyperlink{struct_zaki_1_1_vector_1_1_data_column}{Data\+Column}} \&in\+\_\+dc)
+\begin{DoxyCompactList}\small\item\em Constructor from a data column. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_zaki_1_1_vector_1_1_data_set_ac266f8c8b00c0aa4aaa0f1e57cd905da}\label{class_zaki_1_1_vector_1_1_data_set_ac266f8c8b00c0aa4aaa0f1e57cd905da}} 
+{\bfseries Data\+Set} (const std\+::vector$<$ \mbox{\hyperlink{struct_zaki_1_1_vector_1_1_data_column}{Data\+Column}} $>$ \&)
+\begin{DoxyCompactList}\small\item\em Constructor from a bunch of data columns. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_zaki_1_1_vector_1_1_data_set_ac66dfb265f44d5c1349bafa1b9922856}\label{class_zaki_1_1_vector_1_1_data_set_ac66dfb265f44d5c1349bafa1b9922856}} 
+{\bfseries Data\+Set} (const \mbox{\hyperlink{class_zaki_1_1_string_1_1_directory}{Zaki\+::\+String\+::\+Directory}} \&w\+\_\+dir, const std\+::string \&file, const std\+::vector$<$ size\+\_\+t $>$ \&col\+\_\+idx=\{\}, const char \&in\+\_\+delim=\textquotesingle{}\textbackslash{}t\textquotesingle{}, const char \&comment\+\_\+symbol=\textquotesingle{}\#\textquotesingle{})
+\begin{DoxyCompactList}\small\item\em Constructor from a file. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_zaki_1_1_vector_1_1_data_set_a614fa7fe1dec16dfab53c913c6319411}\label{class_zaki_1_1_vector_1_1_data_set_a614fa7fe1dec16dfab53c913c6319411}} 
+{\bfseries Data\+Set} (const size\+\_\+t \&column, const size\+\_\+t \&rows)
+\begin{DoxyCompactList}\small\item\em Constructor from known sizes of columns and rows This resizes the number of columns but only reserves space in rows. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_zaki_1_1_vector_1_1_data_set_ab4fe77227a56bb181251a406d7d0aeaa}\label{class_zaki_1_1_vector_1_1_data_set_ab4fe77227a56bb181251a406d7d0aeaa}} 
+{\bfseries $\sim$\+Data\+Set} ()
+\begin{DoxyCompactList}\small\item\em Destructor. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_zaki_1_1_vector_1_1_data_set_a78f20f0e00e01d0f968b080cdc980145}\label{class_zaki_1_1_vector_1_1_data_set_a78f20f0e00e01d0f968b080cdc980145}} 
+{\bfseries Data\+Set} (const \mbox{\hyperlink{class_zaki_1_1_vector_1_1_data_set}{Data\+Set}} \&)
+\begin{DoxyCompactList}\small\item\em Copy Constructor. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_zaki_1_1_vector_1_1_data_set_afc85a3841761ccdda98a57864d9a32e5}{Set\+Precision}} (const int \&prec)
+\begin{DoxyCompactList}\small\item\em Sets the precision for printing numbers. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_zaki_1_1_vector_1_1_data_set_a6134a6cf51ddbfa249f4665313e4cef9}\label{class_zaki_1_1_vector_1_1_data_set_a6134a6cf51ddbfa249f4665313e4cef9}} 
+void {\bfseries Add\+Head} (const std\+::string \&in\+\_\+txt)
+\item 
+\mbox{\Hypertarget{class_zaki_1_1_vector_1_1_data_set_ac707810e146921022e55cd7a6b87e16b}\label{class_zaki_1_1_vector_1_1_data_set_ac707810e146921022e55cd7a6b87e16b}} 
+void {\bfseries Add\+Foot} (const std\+::string \&in\+\_\+txt)
+\item 
+\mbox{\hyperlink{class_zaki_1_1_vector_1_1_data_set}{Data\+Set}} \mbox{\hyperlink{class_zaki_1_1_vector_1_1_data_set_a87ead82791aa2082a22506055bd4927e}{Append}} (const \mbox{\hyperlink{class_zaki_1_1_vector_1_1_data_set}{Data\+Set}} \&) const
+\item 
+void \mbox{\hyperlink{class_zaki_1_1_vector_1_1_data_set_a97ed48a2d3b3033d426c5ac6436244c9}{Add\+Column}} (const std\+::string \&label, const double \&val=0)
+\item 
+void \mbox{\hyperlink{class_zaki_1_1_vector_1_1_data_set_affb66b64b24aa84913026cde828a5a29}{Append\+Row}} (const std\+::vector$<$ double $>$ \&)
+\item 
+\mbox{\Hypertarget{class_zaki_1_1_vector_1_1_data_set_a3ad677232ca3f12b363942464c2d1ad2}\label{class_zaki_1_1_vector_1_1_data_set_a3ad677232ca3f12b363942464c2d1ad2}} 
+std\+::vector$<$ \mbox{\hyperlink{struct_zaki_1_1_vector_1_1_row}{Row}} $>$ {\bfseries Get\+Data\+Rows} (const std\+::vector$<$ int $>$ \&col\+\_\+idx=\{\}) const
+\begin{DoxyCompactList}\small\item\em Gets the transpose of data (only selected columns in col\+\_\+idx) \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_zaki_1_1_vector_1_1_data_set_ab2be98c2d4f705d1745675b7df00fd18}\label{class_zaki_1_1_vector_1_1_data_set_ab2be98c2d4f705d1745675b7df00fd18}} 
+void {\bfseries Set\+Default\+Data\+Size} (const size\+\_\+t)
+\begin{DoxyCompactList}\small\item\em This is used for reserving memory. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_zaki_1_1_vector_1_1_data_set_a037c7dcdca8e499270f22bdc170e1e56}\label{class_zaki_1_1_vector_1_1_data_set_a037c7dcdca8e499270f22bdc170e1e56}} 
+\mbox{\hyperlink{struct_zaki_1_1_vector_1_1_data_column}{Data\+Column}} \& {\bfseries operator\mbox{[}$\,$\mbox{]}} (const int)
+\begin{DoxyCompactList}\small\item\em Overloading \mbox{[}\mbox{]}. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_zaki_1_1_vector_1_1_data_set_ac97c3437ac64bed590e27db0c3d63304}\label{class_zaki_1_1_vector_1_1_data_set_ac97c3437ac64bed590e27db0c3d63304}} 
+\mbox{\hyperlink{struct_zaki_1_1_vector_1_1_data_column}{Data\+Column}} {\bfseries operator\mbox{[}$\,$\mbox{]}} (const int) const
+\begin{DoxyCompactList}\small\item\em Overloading \mbox{[}\mbox{]}. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{struct_zaki_1_1_vector_1_1_data_column}{Data\+Column}} \& \mbox{\hyperlink{class_zaki_1_1_vector_1_1_data_set_ae98236bb1c6d75d8363a147d5e374874}{operator\mbox{[}$\,$\mbox{]}}} (const std\+::string \&in\+\_\+label)
+\item 
+\mbox{\hyperlink{struct_zaki_1_1_vector_1_1_data_column}{Data\+Column}} \mbox{\hyperlink{class_zaki_1_1_vector_1_1_data_set_a708a6c0efae04e60644913779c94cf00}{operator\mbox{[}$\,$\mbox{]}}} (const std\+::string \&in\+\_\+label) const
+\item 
+\mbox{\Hypertarget{class_zaki_1_1_vector_1_1_data_set_ae4b848b23a4fc0ffadde7840ca2ecf1e}\label{class_zaki_1_1_vector_1_1_data_set_ae4b848b23a4fc0ffadde7840ca2ecf1e}} 
+std\+::vector$<$ \mbox{\hyperlink{struct_zaki_1_1_vector_1_1_data_column}{Data\+Column}} $>$ {\bfseries operator\mbox{[}$\,$\mbox{]}} (const std\+::vector$<$ int $>$ \&)
+\begin{DoxyCompactList}\small\item\em Overloading \mbox{[}\mbox{]}. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_zaki_1_1_vector_1_1_data_set_aea0d35b3ef870387c4142502ff43c896}{Trim}} (const size\+\_\+t idx\+\_\+1, const size\+\_\+t idx\+\_\+2)
+\item 
+void \mbox{\hyperlink{class_zaki_1_1_vector_1_1_data_set_a61d3903a461972fa80863e2274283514}{Reserve}} (const size\+\_\+t \&s\+\_\+i, const size\+\_\+t \&s\+\_\+j)
+\item 
+void \mbox{\hyperlink{class_zaki_1_1_vector_1_1_data_set_a88442f0415ebdd4e8b90269d58eb3dff}{Resize}} (const size\+\_\+t \&columns)
+\item 
+void \mbox{\hyperlink{class_zaki_1_1_vector_1_1_data_set_a57f3cc2283914e910ed6ac741148e8ed}{Clear\+Rows}} ()
+\item 
+\mbox{\Hypertarget{class_zaki_1_1_vector_1_1_data_set_a21a0a3f9c582cd187124b73879ff952c}\label{class_zaki_1_1_vector_1_1_data_set_a21a0a3f9c582cd187124b73879ff952c}} 
+void {\bfseries Clear\+Head\+Foot} ()
+\begin{DoxyCompactList}\small\item\em Clears the header and footer texts. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_zaki_1_1_vector_1_1_data_set_a49c05f4f4ee89838d755aa3b591a391e}\label{class_zaki_1_1_vector_1_1_data_set_a49c05f4f4ee89838d755aa3b591a391e}} 
+\mbox{\hyperlink{class_zaki_1_1_vector_1_1_data_set}{Data\+Set}} $\ast$ {\bfseries Import} (const \mbox{\hyperlink{class_zaki_1_1_string_1_1_directory}{Zaki\+::\+String\+::\+Directory}} \&f\+\_\+name, const std\+::vector$<$ size\+\_\+t $>$ \&col\+\_\+idx=\{\}, const char \&in\+\_\+delim=\textquotesingle{}\textbackslash{}t\textquotesingle{}, const char \&comment\+\_\+symbol=\textquotesingle{}\#\textquotesingle{})
+\begin{DoxyCompactList}\small\item\em Imports a data set from a file. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_zaki_1_1_vector_1_1_data_set_ac2d737e6a1b03feff3543fb894137b8d}\label{class_zaki_1_1_vector_1_1_data_set_ac2d737e6a1b03feff3543fb894137b8d}} 
+std\+::vector$<$ size\+\_\+t $>$ {\bfseries Dim} () const
+\begin{DoxyCompactList}\small\item\em Returns the dimensions of the data set\+: \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_zaki_1_1_vector_1_1_data_set_a8e9f315e50997e329a6bb30ba4da0af6}\label{class_zaki_1_1_vector_1_1_data_set_a8e9f315e50997e329a6bb30ba4da0af6}} 
+void {\bfseries Export} (const \mbox{\hyperlink{class_zaki_1_1_string_1_1_directory}{Zaki\+::\+String\+::\+Directory}} \&f\+\_\+name, const std\+::vector$<$ int $>$ \&col\+\_\+idx=\{\}, const char \&in\+\_\+delim=\textquotesingle{}\textbackslash{}t\textquotesingle{}, const Zaki\+::\+File\+::\+File\+Mode fmode=(Zaki\+::\+File\+::\+File\+Mode) 1) const
+\begin{DoxyCompactList}\small\item\em Exports the data set to a file. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_zaki_1_1_vector_1_1_data_set_ab55837706819a6d87761a69ee76a5364}\label{class_zaki_1_1_vector_1_1_data_set_ab55837706819a6d87761a69ee76a5364}} 
+void {\bfseries Interpolate} (const int \&x\+\_\+idx, const int \&y\+\_\+idx)
+\begin{DoxyCompactList}\small\item\em Interpolating y as a function of x. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_zaki_1_1_vector_1_1_data_set_acfa71826f25a97b1a8bb6a4b5b654978}\label{class_zaki_1_1_vector_1_1_data_set_acfa71826f25a97b1a8bb6a4b5b654978}} 
+void {\bfseries Interpolate} (const int \&x\+\_\+idx, const std\+::vector$<$ int $>$ \&y\+\_\+idx)
+\begin{DoxyCompactList}\small\item\em Interpolating y\textquotesingle{}s as a function of x. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_zaki_1_1_vector_1_1_data_set_a25b6ef0884902fbb6e046ed2f0b635d3}\label{class_zaki_1_1_vector_1_1_data_set_a25b6ef0884902fbb6e046ed2f0b635d3}} 
+double {\bfseries Evaluate} (const int \&y\+\_\+idx, const double \&in\+\_\+x) const
+\begin{DoxyCompactList}\small\item\em Evaluates the interpolating function (y) given x. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_zaki_1_1_vector_1_1_data_set_a409f84724444070e0b9f7d451b1db8cf}\label{class_zaki_1_1_vector_1_1_data_set_a409f84724444070e0b9f7d451b1db8cf}} 
+std\+::vector$<$ double $>$ {\bfseries Evaluate} (const int \&y\+\_\+idx, const std\+::vector$<$ double $>$ \&in\+\_\+xs) const
+\begin{DoxyCompactList}\small\item\em Evaluates the interpolating function (y) given a list of x\textquotesingle{}s. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_zaki_1_1_vector_1_1_data_set_add00c00a81a5b2e62a6d54ab08335940}\label{class_zaki_1_1_vector_1_1_data_set_add00c00a81a5b2e62a6d54ab08335940}} 
+\mbox{\hyperlink{struct_zaki_1_1_vector_1_1_data_column}{Data\+Column}} {\bfseries Evaluate} (const int \&y\+\_\+idx, const \mbox{\hyperlink{struct_zaki_1_1_vector_1_1_data_column}{Data\+Column}} \&in\+\_\+xs) const
+\begin{DoxyCompactList}\small\item\em Evaluates the interpolating function (y) given a \mbox{\hyperlink{struct_zaki_1_1_vector_1_1_data_column}{Data\+Column}}. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{class_zaki_1_1_vector_1_1_data_set_a783f89322c2828c71af1a2338a4eb7db}{Derivative}} (const int \&y\+\_\+idx, const double \&in\+\_\+x) const
+\item 
+\mbox{\hyperlink{class_zaki_1_1_vector_1_1_data_set}{Data\+Set}} \mbox{\hyperlink{class_zaki_1_1_vector_1_1_data_set_a6a7be2e4e4ccc9fdfc3c0265fef26391}{Derivative}} (const int \&y\+\_\+idx) const
+\item 
+\mbox{\Hypertarget{class_zaki_1_1_vector_1_1_data_set_a2584153a3f26c966d55871fdf1b161e4}\label{class_zaki_1_1_vector_1_1_data_set_a2584153a3f26c966d55871fdf1b161e4}} 
+double {\bfseries Integrate} (const int \&y\+\_\+idx, const \mbox{\hyperlink{struct_zaki_1_1_math_1_1_range}{Zaki\+::\+Math\+::\+Range}}$<$ double $>$ \&) const
+\begin{DoxyCompactList}\small\item\em Integrates the interpolating function. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_zaki_1_1_vector_1_1_data_set}{Data\+Set}} \mbox{\hyperlink{class_zaki_1_1_vector_1_1_data_set_a5da100b6e1f76dbd551f4523938e3e9f}{operator+}} (const \mbox{\hyperlink{struct_zaki_1_1_vector_1_1_data_column}{Data\+Column}} \&in\+\_\+dc) const
+\begin{DoxyCompactList}\small\item\em Sets integ\+\_\+rel\+\_\+err. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_zaki_1_1_vector_1_1_data_set_ad69bd0bfce284a2fd5c4ac5904f4fb2e}\label{class_zaki_1_1_vector_1_1_data_set_ad69bd0bfce284a2fd5c4ac5904f4fb2e}} 
+\mbox{\hyperlink{class_zaki_1_1_vector_1_1_data_set}{Data\+Set}} {\bfseries operator$\ast$} (const double \&in\+\_\+num) const
+\begin{DoxyCompactList}\small\item\em Multiplying by a number. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_zaki_1_1_vector_1_1_data_set_aa586cc2326f88ab0bf9247a19258457f}\label{class_zaki_1_1_vector_1_1_data_set_aa586cc2326f88ab0bf9247a19258457f}} 
+\mbox{\hyperlink{class_zaki_1_1_vector_1_1_data_set}{Data\+Set}} {\bfseries operator/} (const double \&in\+\_\+num) const
+\begin{DoxyCompactList}\small\item\em Dividing by a number. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_zaki_1_1_vector_1_1_data_set_aa8e5100d8fe2c6eb70f41f234376a69e}\label{class_zaki_1_1_vector_1_1_data_set_aa8e5100d8fe2c6eb70f41f234376a69e}} 
+\mbox{\hyperlink{class_zaki_1_1_vector_1_1_data_set}{Data\+Set}} \& {\bfseries operator=} (const \mbox{\hyperlink{class_zaki_1_1_vector_1_1_data_set}{Data\+Set}} \&other\+\_\+ds)
+\begin{DoxyCompactList}\small\item\em Assignment operator. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_zaki_1_1_vector_1_1_data_set_a0b462fcc7e5a8d3f236732620629f9c7}\label{class_zaki_1_1_vector_1_1_data_set_a0b462fcc7e5a8d3f236732620629f9c7}} 
+\mbox{\hyperlink{class_zaki_1_1_vector_1_1_data_set}{Data\+Set}} \& {\bfseries operator=} (const \mbox{\hyperlink{struct_zaki_1_1_vector_1_1_data_column}{Data\+Column}} \&in\+\_\+dc)
+\item 
+\mbox{\Hypertarget{class_zaki_1_1_vector_1_1_data_set_a04ed77141302a6bfbee365280e0d32ba}\label{class_zaki_1_1_vector_1_1_data_set_a04ed77141302a6bfbee365280e0d32ba}} 
+\mbox{\hyperlink{class_zaki_1_1_vector_1_1_data_set}{Data\+Set}} \& {\bfseries operator=} (const std\+::vector$<$ \mbox{\hyperlink{struct_zaki_1_1_vector_1_1_data_column}{Data\+Column}} $>$ \&in\+\_\+dc)
+\item 
+\mbox{\Hypertarget{class_zaki_1_1_vector_1_1_data_set_aaeae419d5fc4b6ab1669f012f5f93d1a}\label{class_zaki_1_1_vector_1_1_data_set_aaeae419d5fc4b6ab1669f012f5f93d1a}} 
+\mbox{\hyperlink{class_zaki_1_1_vector_1_1_data_set}{Data\+Set}} \& {\bfseries operator+=} (const \mbox{\hyperlink{struct_zaki_1_1_vector_1_1_data_column}{Data\+Column}} \&in\+\_\+dc)
+\begin{DoxyCompactList}\small\item\em Addition assignment operator. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_zaki_1_1_vector_1_1_data_set}{Data\+Set}} \mbox{\hyperlink{class_zaki_1_1_vector_1_1_data_set_a55376b4884293a9316093321b755703c}{Get\+Smooth}} (const short int \&window) const
+\begin{DoxyCompactList}\small\item\em Generates a smoother dataset by moving average. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_zaki_1_1_vector_1_1_data_set_a9ca3f209541823a1062ce5a407152449}{Make\+Smooth}} (const short int \&window)
+\begin{DoxyCompactList}\small\item\em Makes the dataset smoother by moving average. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_zaki_1_1_vector_1_1_data_set_ad2778ee86260ef49e6bb81fa23a86854}\label{class_zaki_1_1_vector_1_1_data_set_ad2778ee86260ef49e6bb81fa23a86854}} 
+void {\bfseries Remove\+Bumps} ()
+\begin{DoxyCompactList}\small\item\em Makes the dataset smoother by removing bumps. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_zaki_1_1_vector_1_1_data_set_a8ab7b52b4e1a814dc371003d4253d7d0}\label{class_zaki_1_1_vector_1_1_data_set_a8ab7b52b4e1a814dc371003d4253d7d0}} 
+void {\bfseries Set\+Plot\+Pars} (const \mbox{\hyperlink{struct_zaki_1_1_vector_1_1_data_set_1_1_plot_param}{Plot\+Param}} \&in\+\_\+plt\+\_\+par)
+\item 
+\mbox{\Hypertarget{class_zaki_1_1_vector_1_1_data_set_a79c8aa41abf67d5bdea63bc0608b9936}\label{class_zaki_1_1_vector_1_1_data_set_a79c8aa41abf67d5bdea63bc0608b9936}} 
+void {\bfseries Plot} (const int \&x\+\_\+idx, const int \&y\+\_\+idx, const \mbox{\hyperlink{class_zaki_1_1_string_1_1_directory}{Zaki\+::\+String\+::\+Directory}} \&f\+\_\+name, const std\+::string \&in\+\_\+title=\char`\"{}\char`\"{})
+\begin{DoxyCompactList}\small\item\em Makes a 2D plot of y vs. x. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_zaki_1_1_vector_1_1_data_set_a162de63d9349bab618311056261d6057}\label{class_zaki_1_1_vector_1_1_data_set_a162de63d9349bab618311056261d6057}} 
+void {\bfseries Plot} (const int \&x\+\_\+idx, const std\+::pair$<$ int, std\+::string $>$ \&y\+\_\+idx, const \mbox{\hyperlink{class_zaki_1_1_string_1_1_directory}{Zaki\+::\+String\+::\+Directory}} \&f\+\_\+name, const std\+::string \&in\+\_\+title=\char`\"{}\char`\"{})
+\begin{DoxyCompactList}\small\item\em Makes a 2D plot of y vs. x with custom label. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_zaki_1_1_vector_1_1_data_set_ac9feedeca8e9f04e40605037035308ef}\label{class_zaki_1_1_vector_1_1_data_set_ac9feedeca8e9f04e40605037035308ef}} 
+void {\bfseries Plot} (const int \&x\+\_\+idx, const std\+::vector$<$ int $>$ \&y\+\_\+idx\+\_\+set, const \mbox{\hyperlink{class_zaki_1_1_string_1_1_directory}{Zaki\+::\+String\+::\+Directory}} \&f\+\_\+name, const std\+::string \&in\+\_\+title=\char`\"{}\char`\"{})
+\begin{DoxyCompactList}\small\item\em Makes a 2D plot of y\textquotesingle{}s vs. x. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_zaki_1_1_vector_1_1_data_set_ab5cf096a44eb1bead3a8be6786c6853d}\label{class_zaki_1_1_vector_1_1_data_set_ab5cf096a44eb1bead3a8be6786c6853d}} 
+void {\bfseries Plot} (const std\+::vector$<$ std\+::pair$<$ int, int $>$ $>$ \&x\+\_\+y\+\_\+idx, const \mbox{\hyperlink{class_zaki_1_1_string_1_1_directory}{Zaki\+::\+String\+::\+Directory}} \&f\+\_\+name, const std\+::string \&in\+\_\+title=\char`\"{}\char`\"{})
+\begin{DoxyCompactList}\small\item\em Makes a 2D plot of y\textquotesingle{}s vs. x\textquotesingle{}s. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_zaki_1_1_vector_1_1_data_set_a91f66360bace2692184e8ba286cead32}\label{class_zaki_1_1_vector_1_1_data_set_a91f66360bace2692184e8ba286cead32}} 
+void {\bfseries Plot} (const int \&x\+\_\+idx, const std\+::vector$<$ std\+::pair$<$ int, std\+::string $>$ $>$ \&y\+\_\+idx\+\_\+set, const \mbox{\hyperlink{class_zaki_1_1_string_1_1_directory}{Zaki\+::\+String\+::\+Directory}} \&f\+\_\+name, const std\+::string \&in\+\_\+title=\char`\"{}\char`\"{})
+\begin{DoxyCompactList}\small\item\em Makes a 2D plot of y\textquotesingle{}s vs. x with custom labels. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_zaki_1_1_vector_1_1_data_set_a20cc3ed4f909d14996dec8536324395e}\label{class_zaki_1_1_vector_1_1_data_set_a20cc3ed4f909d14996dec8536324395e}} 
+void {\bfseries Plot} (const int \&x\+\_\+idx, const std\+::vector$<$ std\+::pair$<$ int, std\+::map$<$ std\+::string, std\+::string $>$ $>$ $>$ \&y\+\_\+idx\+\_\+set, const \mbox{\hyperlink{class_zaki_1_1_string_1_1_directory}{Zaki\+::\+String\+::\+Directory}} \&f\+\_\+name, const std\+::string \&in\+\_\+title=\char`\"{}\char`\"{})
+\begin{DoxyCompactList}\small\item\em Makes a 2D plot of y\textquotesingle{}s vs. x with style options. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_zaki_1_1_vector_1_1_data_set_a5a78d2c397e3992571fea6acd7b608be}\label{class_zaki_1_1_vector_1_1_data_set_a5a78d2c397e3992571fea6acd7b608be}} 
+void {\bfseries Log\+Log\+Plot} (const int \&x\+\_\+idx, const int \&y\+\_\+idx, const \mbox{\hyperlink{class_zaki_1_1_string_1_1_directory}{Zaki\+::\+String\+::\+Directory}} \&f\+\_\+name, const std\+::string \&in\+\_\+title=\char`\"{}\char`\"{})
+\begin{DoxyCompactList}\small\item\em Makes a 2D log-\/log-\/plot of y vs. x. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_zaki_1_1_vector_1_1_data_set_a2b86701e8a48d8a510b9235e244a8b6b}\label{class_zaki_1_1_vector_1_1_data_set_a2b86701e8a48d8a510b9235e244a8b6b}} 
+void {\bfseries Log\+Log\+Plot} (const int \&x\+\_\+idx, const std\+::pair$<$ int, std\+::string $>$ \&y\+\_\+idx, const \mbox{\hyperlink{class_zaki_1_1_string_1_1_directory}{Zaki\+::\+String\+::\+Directory}} \&f\+\_\+name, const std\+::string \&in\+\_\+title=\char`\"{}\char`\"{})
+\begin{DoxyCompactList}\small\item\em Makes a 2D log-\/log-\/plot of y vs. x with custom label. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_zaki_1_1_vector_1_1_data_set_aabe7b8d995df6097a225c3fa223473bf}\label{class_zaki_1_1_vector_1_1_data_set_aabe7b8d995df6097a225c3fa223473bf}} 
+void {\bfseries Log\+Log\+Plot} (const int \&x\+\_\+idx, const std\+::vector$<$ int $>$ \&y\+\_\+idx\+\_\+set, const \mbox{\hyperlink{class_zaki_1_1_string_1_1_directory}{Zaki\+::\+String\+::\+Directory}} \&f\+\_\+name, const std\+::string \&in\+\_\+title=\char`\"{}\char`\"{})
+\begin{DoxyCompactList}\small\item\em Makes a 2D log-\/log-\/plot of y\textquotesingle{}s vs. x. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_zaki_1_1_vector_1_1_data_set_aa7cc03514532c0f3fdd8a77669c8f284}\label{class_zaki_1_1_vector_1_1_data_set_aa7cc03514532c0f3fdd8a77669c8f284}} 
+void {\bfseries Log\+Log\+Plot} (const std\+::vector$<$ std\+::pair$<$ int, int $>$ $>$ \&x\+\_\+y\+\_\+idx, const \mbox{\hyperlink{class_zaki_1_1_string_1_1_directory}{Zaki\+::\+String\+::\+Directory}} \&f\+\_\+name, const std\+::string \&in\+\_\+title=\char`\"{}\char`\"{})
+\begin{DoxyCompactList}\small\item\em Makes a 2D log-\/log-\/plot of y\textquotesingle{}s vs. x\textquotesingle{}s. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_zaki_1_1_vector_1_1_data_set_aaaaee217d28d375595549af724b060f7}\label{class_zaki_1_1_vector_1_1_data_set_aaaaee217d28d375595549af724b060f7}} 
+void {\bfseries Log\+Log\+Plot} (const int \&x\+\_\+idx, const std\+::vector$<$ std\+::pair$<$ int, std\+::string $>$ $>$ \&y\+\_\+idx\+\_\+set, const \mbox{\hyperlink{class_zaki_1_1_string_1_1_directory}{Zaki\+::\+String\+::\+Directory}} \&f\+\_\+name, const std\+::string \&in\+\_\+title=\char`\"{}\char`\"{})
+\begin{DoxyCompactList}\small\item\em Makes a 2D log-\/log-\/plot of y\textquotesingle{}s vs. x with custom labels. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_zaki_1_1_vector_1_1_data_set_a06cdaa4a6c99027fb8aa7c8d60a1e4f7}\label{class_zaki_1_1_vector_1_1_data_set_a06cdaa4a6c99027fb8aa7c8d60a1e4f7}} 
+void {\bfseries Log\+Log\+Plot} (const int \&x\+\_\+idx, const std\+::vector$<$ std\+::pair$<$ int, std\+::map$<$ std\+::string, std\+::string $>$ $>$ $>$ \&y\+\_\+idx\+\_\+set, const \mbox{\hyperlink{class_zaki_1_1_string_1_1_directory}{Zaki\+::\+String\+::\+Directory}} \&f\+\_\+name, const std\+::string \&in\+\_\+title=\char`\"{}\char`\"{})
+\begin{DoxyCompactList}\small\item\em Makes a 2D log-\/log-\/plot of y\textquotesingle{}s vs. x with style options. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_zaki_1_1_vector_1_1_data_set_afd6607123d17ffc563d06c715cc15ff0}\label{class_zaki_1_1_vector_1_1_data_set_afd6607123d17ffc563d06c715cc15ff0}} 
+void {\bfseries Semi\+Log\+XPlot} (const int \&x\+\_\+idx, const int \&y\+\_\+idx, const \mbox{\hyperlink{class_zaki_1_1_string_1_1_directory}{Zaki\+::\+String\+::\+Directory}} \&f\+\_\+name, const std\+::string \&in\+\_\+title=\char`\"{}\char`\"{})
+\begin{DoxyCompactList}\small\item\em Makes a 2D semi-\/log-\/\+X-\/plot of y vs. x. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_zaki_1_1_vector_1_1_data_set_a15e97ccda6f5b9d8f5906f39e80ea909}\label{class_zaki_1_1_vector_1_1_data_set_a15e97ccda6f5b9d8f5906f39e80ea909}} 
+void {\bfseries Semi\+Log\+XPlot} (const int \&x\+\_\+idx, const std\+::pair$<$ int, std\+::string $>$ \&y\+\_\+idx, const \mbox{\hyperlink{class_zaki_1_1_string_1_1_directory}{Zaki\+::\+String\+::\+Directory}} \&f\+\_\+name, const std\+::string \&in\+\_\+title=\char`\"{}\char`\"{})
+\begin{DoxyCompactList}\small\item\em Makes a 2D semi-\/log-\/\+X-\/plot of y vs. x with custom label. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_zaki_1_1_vector_1_1_data_set_a0a1d723e1e140628b3df22598b795f45}\label{class_zaki_1_1_vector_1_1_data_set_a0a1d723e1e140628b3df22598b795f45}} 
+void {\bfseries Semi\+Log\+XPlot} (const int \&x\+\_\+idx, const std\+::vector$<$ int $>$ \&y\+\_\+idx\+\_\+set, const \mbox{\hyperlink{class_zaki_1_1_string_1_1_directory}{Zaki\+::\+String\+::\+Directory}} \&f\+\_\+name, const std\+::string \&in\+\_\+title=\char`\"{}\char`\"{})
+\begin{DoxyCompactList}\small\item\em Makes a 2D semi-\/log-\/\+X-\/plot of y\textquotesingle{}s vs. x. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_zaki_1_1_vector_1_1_data_set_a68b2a99dc869237a7e11b047d921faf2}\label{class_zaki_1_1_vector_1_1_data_set_a68b2a99dc869237a7e11b047d921faf2}} 
+void {\bfseries Semi\+Log\+XPlot} (const std\+::vector$<$ std\+::pair$<$ int, int $>$ $>$ \&x\+\_\+y\+\_\+idx, const \mbox{\hyperlink{class_zaki_1_1_string_1_1_directory}{Zaki\+::\+String\+::\+Directory}} \&f\+\_\+name, const std\+::string \&in\+\_\+title=\char`\"{}\char`\"{})
+\begin{DoxyCompactList}\small\item\em Makes a 2D semi-\/log-\/\+X-\/plot of y\textquotesingle{}s vs. x\textquotesingle{}s. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_zaki_1_1_vector_1_1_data_set_ae1ac417cb446db458ba31edb1e1b3878}\label{class_zaki_1_1_vector_1_1_data_set_ae1ac417cb446db458ba31edb1e1b3878}} 
+void {\bfseries Semi\+Log\+XPlot} (const int \&x\+\_\+idx, const std\+::vector$<$ std\+::pair$<$ int, std\+::string $>$ $>$ \&y\+\_\+idx\+\_\+set, const \mbox{\hyperlink{class_zaki_1_1_string_1_1_directory}{Zaki\+::\+String\+::\+Directory}} \&f\+\_\+name, const std\+::string \&in\+\_\+title=\char`\"{}\char`\"{})
+\begin{DoxyCompactList}\small\item\em Makes a 2D semi-\/log-\/\+X-\/plot of y\textquotesingle{}s vs. x with custom labels. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_zaki_1_1_vector_1_1_data_set_a5c7ebedb54d9311c8d92f34cc12c091d}\label{class_zaki_1_1_vector_1_1_data_set_a5c7ebedb54d9311c8d92f34cc12c091d}} 
+void {\bfseries Semi\+Log\+XPlot} (const int \&x\+\_\+idx, const std\+::vector$<$ std\+::pair$<$ int, std\+::map$<$ std\+::string, std\+::string $>$ $>$ $>$ \&y\+\_\+idx\+\_\+set, const \mbox{\hyperlink{class_zaki_1_1_string_1_1_directory}{Zaki\+::\+String\+::\+Directory}} \&f\+\_\+name, const std\+::string \&in\+\_\+title=\char`\"{}\char`\"{})
+\begin{DoxyCompactList}\small\item\em Makes a 2D semi-\/log-\/\+X-\/plot of y\textquotesingle{}s vs. x with style options. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_zaki_1_1_vector_1_1_data_set_a02cd8772d12c12cf51dafae4edc60639}\label{class_zaki_1_1_vector_1_1_data_set_a02cd8772d12c12cf51dafae4edc60639}} 
+void {\bfseries Semi\+Log\+YPlot} (const int \&x\+\_\+idx, const int \&y\+\_\+idx, const \mbox{\hyperlink{class_zaki_1_1_string_1_1_directory}{Zaki\+::\+String\+::\+Directory}} \&f\+\_\+name, const std\+::string \&in\+\_\+title=\char`\"{}\char`\"{})
+\begin{DoxyCompactList}\small\item\em Makes a 2D semi-\/log-\/\+Y-\/plot of y vs. x. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_zaki_1_1_vector_1_1_data_set_aecf4244d3ae232c69e6d9cdf5f548337}\label{class_zaki_1_1_vector_1_1_data_set_aecf4244d3ae232c69e6d9cdf5f548337}} 
+void {\bfseries Semi\+Log\+YPlot} (const int \&x\+\_\+idx, const std\+::pair$<$ int, std\+::string $>$ \&y\+\_\+idx, const \mbox{\hyperlink{class_zaki_1_1_string_1_1_directory}{Zaki\+::\+String\+::\+Directory}} \&f\+\_\+name, const std\+::string \&in\+\_\+title=\char`\"{}\char`\"{})
+\begin{DoxyCompactList}\small\item\em Makes a 2D semi-\/log-\/\+Y-\/plot of y vs. x with custom label. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_zaki_1_1_vector_1_1_data_set_af2d4e93e6be609ce34e7889128933b65}\label{class_zaki_1_1_vector_1_1_data_set_af2d4e93e6be609ce34e7889128933b65}} 
+void {\bfseries Semi\+Log\+YPlot} (const int \&x\+\_\+idx, const std\+::vector$<$ int $>$ \&y\+\_\+idx\+\_\+set, const \mbox{\hyperlink{class_zaki_1_1_string_1_1_directory}{Zaki\+::\+String\+::\+Directory}} \&f\+\_\+name, const std\+::string \&in\+\_\+title=\char`\"{}\char`\"{})
+\begin{DoxyCompactList}\small\item\em Makes a 2D semi-\/log-\/\+Y-\/plot of y\textquotesingle{}s vs. x. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_zaki_1_1_vector_1_1_data_set_a2f45827bcda48b043f82893d34986722}\label{class_zaki_1_1_vector_1_1_data_set_a2f45827bcda48b043f82893d34986722}} 
+void {\bfseries Semi\+Log\+YPlot} (const std\+::vector$<$ std\+::pair$<$ int, int $>$ $>$ \&x\+\_\+y\+\_\+idx, const \mbox{\hyperlink{class_zaki_1_1_string_1_1_directory}{Zaki\+::\+String\+::\+Directory}} \&f\+\_\+name, const std\+::string \&in\+\_\+title=\char`\"{}\char`\"{})
+\begin{DoxyCompactList}\small\item\em Makes a 2D semi-\/log-\/\+Y-\/plot of y\textquotesingle{}s vs. x\textquotesingle{}s. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_zaki_1_1_vector_1_1_data_set_a5bbbb9183770ab1ce0f20b1bb2d8f4e9}\label{class_zaki_1_1_vector_1_1_data_set_a5bbbb9183770ab1ce0f20b1bb2d8f4e9}} 
+void {\bfseries Semi\+Log\+YPlot} (const int \&x\+\_\+idx, const std\+::vector$<$ std\+::pair$<$ int, std\+::string $>$ $>$ \&y\+\_\+idx\+\_\+set, const \mbox{\hyperlink{class_zaki_1_1_string_1_1_directory}{Zaki\+::\+String\+::\+Directory}} \&f\+\_\+name, const std\+::string \&in\+\_\+title=\char`\"{}\char`\"{})
+\begin{DoxyCompactList}\small\item\em Makes a 2D semi-\/log-\/\+Y-\/plot of y\textquotesingle{}s vs. x with custom labels. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_zaki_1_1_vector_1_1_data_set_aca3de4b40c9cd3859db1516a8e1174e5}\label{class_zaki_1_1_vector_1_1_data_set_aca3de4b40c9cd3859db1516a8e1174e5}} 
+void {\bfseries Semi\+Log\+YPlot} (const int \&x\+\_\+idx, const std\+::vector$<$ std\+::pair$<$ int, std\+::map$<$ std\+::string, std\+::string $>$ $>$ $>$ \&y\+\_\+idx\+\_\+set, const \mbox{\hyperlink{class_zaki_1_1_string_1_1_directory}{Zaki\+::\+String\+::\+Directory}} \&f\+\_\+name, const std\+::string \&in\+\_\+title=\char`\"{}\char`\"{})
+\begin{DoxyCompactList}\small\item\em Makes a 2D semi-\/log-\/\+Y-\/plot of y\textquotesingle{}s vs. x with style options. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_zaki_1_1_vector_1_1_data_set_a00e6cddfa447256773b92009c58807ae}\label{class_zaki_1_1_vector_1_1_data_set_a00e6cddfa447256773b92009c58807ae}} 
+void {\bfseries Reset\+Plot\+Pars} ()
+\begin{DoxyCompactList}\small\item\em Resets \textquotesingle{}plt\+\_\+par\textquotesingle{}. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{class_zaki_1_1_vector_1_1_data_set_a57422f45ac5ed282afcd1f73a4be8bc2}{Solve}} (const int \&x\+\_\+idx, const int \&y\+\_\+idx, const double \&a=0)
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_zaki_1_1_vector_1_1_data_set_a811a7d69f2463660a339e9f687484ca7}\label{class_zaki_1_1_vector_1_1_data_set_a811a7d69f2463660a339e9f687484ca7}} 
+std\+::vector$<$ \mbox{\hyperlink{struct_zaki_1_1_vector_1_1_data_column}{Data\+Column}} $>$ {\bfseries data\+\_\+set}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_zaki_1_1_vector_1_1_data_set_a97ed48a2d3b3033d426c5ac6436244c9}\label{class_zaki_1_1_vector_1_1_data_set_a97ed48a2d3b3033d426c5ac6436244c9}} 
+\index{Zaki::Vector::DataSet@{Zaki::Vector::DataSet}!AddColumn@{AddColumn}}
+\index{AddColumn@{AddColumn}!Zaki::Vector::DataSet@{Zaki::Vector::DataSet}}
+\doxysubsubsection{\texorpdfstring{AddColumn()}{AddColumn()}}
+{\footnotesize\ttfamily void Zaki\+::\+Vector\+::\+Data\+Set\+::\+Add\+Column (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{label,  }\item[{const double \&}]{val = {\ttfamily 0} }\end{DoxyParamCaption})}
+
+Adds an empty column with the input label and fills it up with the value \mbox{\Hypertarget{class_zaki_1_1_vector_1_1_data_set_a87ead82791aa2082a22506055bd4927e}\label{class_zaki_1_1_vector_1_1_data_set_a87ead82791aa2082a22506055bd4927e}} 
+\index{Zaki::Vector::DataSet@{Zaki::Vector::DataSet}!Append@{Append}}
+\index{Append@{Append}!Zaki::Vector::DataSet@{Zaki::Vector::DataSet}}
+\doxysubsubsection{\texorpdfstring{Append()}{Append()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_zaki_1_1_vector_1_1_data_set}{Data\+Set}} Zaki\+::\+Vector\+::\+Data\+Set\+::\+Append (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_zaki_1_1_vector_1_1_data_set}{Data\+Set}} \&}]{ }\end{DoxyParamCaption}) const}
+
+Appends another dataset data to the end of the current dataset. ~\newline
+ \mbox{\Hypertarget{class_zaki_1_1_vector_1_1_data_set_affb66b64b24aa84913026cde828a5a29}\label{class_zaki_1_1_vector_1_1_data_set_affb66b64b24aa84913026cde828a5a29}} 
+\index{Zaki::Vector::DataSet@{Zaki::Vector::DataSet}!AppendRow@{AppendRow}}
+\index{AppendRow@{AppendRow}!Zaki::Vector::DataSet@{Zaki::Vector::DataSet}}
+\doxysubsubsection{\texorpdfstring{AppendRow()}{AppendRow()}}
+{\footnotesize\ttfamily void Zaki\+::\+Vector\+::\+Data\+Set\+::\+Append\+Row (\begin{DoxyParamCaption}\item[{const std\+::vector$<$ double $>$ \&}]{ }\end{DoxyParamCaption})}
+
+Appends a new row to the current dataset must have the same size as the dataset\textquotesingle{}s width \mbox{\Hypertarget{class_zaki_1_1_vector_1_1_data_set_a57f3cc2283914e910ed6ac741148e8ed}\label{class_zaki_1_1_vector_1_1_data_set_a57f3cc2283914e910ed6ac741148e8ed}} 
+\index{Zaki::Vector::DataSet@{Zaki::Vector::DataSet}!ClearRows@{ClearRows}}
+\index{ClearRows@{ClearRows}!Zaki::Vector::DataSet@{Zaki::Vector::DataSet}}
+\doxysubsubsection{\texorpdfstring{ClearRows()}{ClearRows()}}
+{\footnotesize\ttfamily void Zaki\+::\+Vector\+::\+Data\+Set\+::\+Clear\+Rows (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+It clears the rows in data\+\_\+set columns, but keeps the columns! ~\newline
+ \mbox{\Hypertarget{class_zaki_1_1_vector_1_1_data_set_a6a7be2e4e4ccc9fdfc3c0265fef26391}\label{class_zaki_1_1_vector_1_1_data_set_a6a7be2e4e4ccc9fdfc3c0265fef26391}} 
+\index{Zaki::Vector::DataSet@{Zaki::Vector::DataSet}!Derivative@{Derivative}}
+\index{Derivative@{Derivative}!Zaki::Vector::DataSet@{Zaki::Vector::DataSet}}
+\doxysubsubsection{\texorpdfstring{Derivative()}{Derivative()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_zaki_1_1_vector_1_1_data_set}{Data\+Set}} Zaki\+::\+Vector\+::\+Data\+Set\+::\+Derivative (\begin{DoxyParamCaption}\item[{const int \&}]{y\+\_\+idx }\end{DoxyParamCaption}) const}
+
+Calculates the derivative of the interpolating function for all values of \textquotesingle{}x\textquotesingle{}, and returns a dataset with two columns the first column is x, the second is dy/dx \mbox{\Hypertarget{class_zaki_1_1_vector_1_1_data_set_a783f89322c2828c71af1a2338a4eb7db}\label{class_zaki_1_1_vector_1_1_data_set_a783f89322c2828c71af1a2338a4eb7db}} 
+\index{Zaki::Vector::DataSet@{Zaki::Vector::DataSet}!Derivative@{Derivative}}
+\index{Derivative@{Derivative}!Zaki::Vector::DataSet@{Zaki::Vector::DataSet}}
+\doxysubsubsection{\texorpdfstring{Derivative()}{Derivative()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily double Zaki\+::\+Vector\+::\+Data\+Set\+::\+Derivative (\begin{DoxyParamCaption}\item[{const int \&}]{y\+\_\+idx,  }\item[{const double \&}]{in\+\_\+x }\end{DoxyParamCaption}) const}
+
+Calculates the derivative of the interpolating function at a specific point \textquotesingle{}x\textquotesingle{} \mbox{\Hypertarget{class_zaki_1_1_vector_1_1_data_set_a55376b4884293a9316093321b755703c}\label{class_zaki_1_1_vector_1_1_data_set_a55376b4884293a9316093321b755703c}} 
+\index{Zaki::Vector::DataSet@{Zaki::Vector::DataSet}!GetSmooth@{GetSmooth}}
+\index{GetSmooth@{GetSmooth}!Zaki::Vector::DataSet@{Zaki::Vector::DataSet}}
+\doxysubsubsection{\texorpdfstring{GetSmooth()}{GetSmooth()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_zaki_1_1_vector_1_1_data_set}{Data\+Set}} Zaki\+::\+Vector\+::\+Data\+Set\+::\+Get\+Smooth (\begin{DoxyParamCaption}\item[{const short int \&}]{window }\end{DoxyParamCaption}) const}
+
+
+
+Generates a smoother dataset by moving average. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em window} & window for moving average \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Smoother dataset 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_zaki_1_1_vector_1_1_data_set_a9ca3f209541823a1062ce5a407152449}\label{class_zaki_1_1_vector_1_1_data_set_a9ca3f209541823a1062ce5a407152449}} 
+\index{Zaki::Vector::DataSet@{Zaki::Vector::DataSet}!MakeSmooth@{MakeSmooth}}
+\index{MakeSmooth@{MakeSmooth}!Zaki::Vector::DataSet@{Zaki::Vector::DataSet}}
+\doxysubsubsection{\texorpdfstring{MakeSmooth()}{MakeSmooth()}}
+{\footnotesize\ttfamily void Zaki\+::\+Vector\+::\+Data\+Set\+::\+Make\+Smooth (\begin{DoxyParamCaption}\item[{const short int \&}]{window }\end{DoxyParamCaption})}
+
+
+
+Makes the dataset smoother by moving average. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em window} & window for moving average \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_zaki_1_1_vector_1_1_data_set_a5da100b6e1f76dbd551f4523938e3e9f}\label{class_zaki_1_1_vector_1_1_data_set_a5da100b6e1f76dbd551f4523938e3e9f}} 
+\index{Zaki::Vector::DataSet@{Zaki::Vector::DataSet}!operator+@{operator+}}
+\index{operator+@{operator+}!Zaki::Vector::DataSet@{Zaki::Vector::DataSet}}
+\doxysubsubsection{\texorpdfstring{operator+()}{operator+()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_zaki_1_1_vector_1_1_data_set}{Data\+Set}} Zaki\+::\+Vector\+::\+Data\+Set\+::operator+ (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{struct_zaki_1_1_vector_1_1_data_column}{Data\+Column}} \&}]{in\+\_\+dc }\end{DoxyParamCaption}) const}
+
+
+
+Sets integ\+\_\+rel\+\_\+err. 
+
+Adding a column \mbox{\Hypertarget{class_zaki_1_1_vector_1_1_data_set_ae98236bb1c6d75d8363a147d5e374874}\label{class_zaki_1_1_vector_1_1_data_set_ae98236bb1c6d75d8363a147d5e374874}} 
+\index{Zaki::Vector::DataSet@{Zaki::Vector::DataSet}!operator\mbox{[}\mbox{]}@{operator[]}}
+\index{operator\mbox{[}\mbox{]}@{operator[]}!Zaki::Vector::DataSet@{Zaki::Vector::DataSet}}
+\doxysubsubsection{\texorpdfstring{operator[]()}{operator[]()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{struct_zaki_1_1_vector_1_1_data_column}{Data\+Column}} \& Zaki\+::\+Vector\+::\+Data\+Set\+::operator\mbox{[}$\,$\mbox{]} (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{in\+\_\+label }\end{DoxyParamCaption})}
+
+Overloading \mbox{[}\mbox{]}\+: Calling by label Returns the first column matching the input label \mbox{\Hypertarget{class_zaki_1_1_vector_1_1_data_set_a708a6c0efae04e60644913779c94cf00}\label{class_zaki_1_1_vector_1_1_data_set_a708a6c0efae04e60644913779c94cf00}} 
+\index{Zaki::Vector::DataSet@{Zaki::Vector::DataSet}!operator\mbox{[}\mbox{]}@{operator[]}}
+\index{operator\mbox{[}\mbox{]}@{operator[]}!Zaki::Vector::DataSet@{Zaki::Vector::DataSet}}
+\doxysubsubsection{\texorpdfstring{operator[]()}{operator[]()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{struct_zaki_1_1_vector_1_1_data_column}{Data\+Column}} Zaki\+::\+Vector\+::\+Data\+Set\+::operator\mbox{[}$\,$\mbox{]} (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{in\+\_\+label }\end{DoxyParamCaption}) const}
+
+Overloading \mbox{[}\mbox{]} ( const )\+: \+: Calling by label Returns the first column matching the input label \mbox{\Hypertarget{class_zaki_1_1_vector_1_1_data_set_a61d3903a461972fa80863e2274283514}\label{class_zaki_1_1_vector_1_1_data_set_a61d3903a461972fa80863e2274283514}} 
+\index{Zaki::Vector::DataSet@{Zaki::Vector::DataSet}!Reserve@{Reserve}}
+\index{Reserve@{Reserve}!Zaki::Vector::DataSet@{Zaki::Vector::DataSet}}
+\doxysubsubsection{\texorpdfstring{Reserve()}{Reserve()}}
+{\footnotesize\ttfamily void Zaki\+::\+Vector\+::\+Data\+Set\+::\+Reserve (\begin{DoxyParamCaption}\item[{const size\+\_\+t \&}]{s\+\_\+i,  }\item[{const size\+\_\+t \&}]{s\+\_\+j }\end{DoxyParamCaption})}
+
+Reserve uses the resize and reserve methods in std\+::vector This is used when the exact number of columns, and approximate number of rows are known. \mbox{\Hypertarget{class_zaki_1_1_vector_1_1_data_set_a88442f0415ebdd4e8b90269d58eb3dff}\label{class_zaki_1_1_vector_1_1_data_set_a88442f0415ebdd4e8b90269d58eb3dff}} 
+\index{Zaki::Vector::DataSet@{Zaki::Vector::DataSet}!Resize@{Resize}}
+\index{Resize@{Resize}!Zaki::Vector::DataSet@{Zaki::Vector::DataSet}}
+\doxysubsubsection{\texorpdfstring{Resize()}{Resize()}}
+{\footnotesize\ttfamily void Zaki\+::\+Vector\+::\+Data\+Set\+::\+Resize (\begin{DoxyParamCaption}\item[{const size\+\_\+t \&}]{columns }\end{DoxyParamCaption})}
+
+Resizes the data\+\_\+\+Set, and reserves space in spline\+\_\+set This is used when only the number of columns is known \mbox{\Hypertarget{class_zaki_1_1_vector_1_1_data_set_afc85a3841761ccdda98a57864d9a32e5}\label{class_zaki_1_1_vector_1_1_data_set_afc85a3841761ccdda98a57864d9a32e5}} 
+\index{Zaki::Vector::DataSet@{Zaki::Vector::DataSet}!SetPrecision@{SetPrecision}}
+\index{SetPrecision@{SetPrecision}!Zaki::Vector::DataSet@{Zaki::Vector::DataSet}}
+\doxysubsubsection{\texorpdfstring{SetPrecision()}{SetPrecision()}}
+{\footnotesize\ttfamily void Zaki\+::\+Vector\+::\+Data\+Set\+::\+Set\+Precision (\begin{DoxyParamCaption}\item[{const int \&}]{prec }\end{DoxyParamCaption})}
+
+
+
+Sets the precision for printing numbers. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em prec} & number of digits \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_zaki_1_1_vector_1_1_data_set_a57422f45ac5ed282afcd1f73a4be8bc2}\label{class_zaki_1_1_vector_1_1_data_set_a57422f45ac5ed282afcd1f73a4be8bc2}} 
+\index{Zaki::Vector::DataSet@{Zaki::Vector::DataSet}!Solve@{Solve}}
+\index{Solve@{Solve}!Zaki::Vector::DataSet@{Zaki::Vector::DataSet}}
+\doxysubsubsection{\texorpdfstring{Solve()}{Solve()}}
+{\footnotesize\ttfamily double Zaki\+::\+Vector\+::\+Data\+Set\+::\+Solve (\begin{DoxyParamCaption}\item[{const int \&}]{x\+\_\+idx,  }\item[{const int \&}]{y\+\_\+idx,  }\item[{const double \&}]{a = {\ttfamily 0} }\end{DoxyParamCaption})}
+
+Solves for x in \textquotesingle{}y(x) = a\textquotesingle{} using Newton\textquotesingle{}s method default value for a is \textquotesingle{}0\textquotesingle{} \mbox{\Hypertarget{class_zaki_1_1_vector_1_1_data_set_aea0d35b3ef870387c4142502ff43c896}\label{class_zaki_1_1_vector_1_1_data_set_aea0d35b3ef870387c4142502ff43c896}} 
+\index{Zaki::Vector::DataSet@{Zaki::Vector::DataSet}!Trim@{Trim}}
+\index{Trim@{Trim}!Zaki::Vector::DataSet@{Zaki::Vector::DataSet}}
+\doxysubsubsection{\texorpdfstring{Trim()}{Trim()}}
+{\footnotesize\ttfamily void Zaki\+::\+Vector\+::\+Data\+Set\+::\+Trim (\begin{DoxyParamCaption}\item[{const size\+\_\+t}]{idx\+\_\+1,  }\item[{const size\+\_\+t}]{idx\+\_\+2 }\end{DoxyParamCaption})}
+
+Trims the data set to its subset ranging from idx\+\_\+1 -\/-\/\texorpdfstring{$>$}{>} idx\+\_\+2 
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+dependencies/include/\+Zaki/\+Vector/\mbox{\hyperlink{_data_set_8hpp}{Data\+Set.\+hpp}}\end{DoxyCompactItemize}

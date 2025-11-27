@@ -1,0 +1,61 @@
+\hypertarget{_star_builder_8hpp_source}{}\doxysection{Star\+Builder.\+hpp}
+\label{_star_builder_8hpp_source}\index{CompactStar/Core/StarBuilder.hpp@{CompactStar/Core/StarBuilder.hpp}}
+\mbox{\hyperlink{_star_builder_8hpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 }
+\DoxyCodeLine{32 \textcolor{preprocessor}{\#ifndef COMPACTSTAR\_STARBUILDER\_HPP}}
+\DoxyCodeLine{33 \textcolor{preprocessor}{\#define COMPACTSTAR\_STARBUILDER\_HPP}}
+\DoxyCodeLine{34 }
+\DoxyCodeLine{35 \textcolor{preprocessor}{\#include <string>}}
+\DoxyCodeLine{36 \textcolor{preprocessor}{\#include <utility>}}
+\DoxyCodeLine{37 }
+\DoxyCodeLine{38 \textcolor{preprocessor}{\#include <\mbox{\hyperlink{_constants_8hpp}{Zaki/Physics/Constants.hpp}}>}}
+\DoxyCodeLine{39 \textcolor{preprocessor}{\#include <\mbox{\hyperlink{_directory_8hpp}{Zaki/String/Directory.hpp}}>}}
+\DoxyCodeLine{40 \textcolor{preprocessor}{\#include <\mbox{\hyperlink{_data_set_8hpp}{Zaki/Vector/DataSet.hpp}}>}}
+\DoxyCodeLine{41 }
+\DoxyCodeLine{42 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_seq_point_8hpp}{CompactStar/Core/SeqPoint.hpp}}"{}}}
+\DoxyCodeLine{43 }
+\DoxyCodeLine{44 \textcolor{keyword}{namespace }CompactStar}
+\DoxyCodeLine{45 \{}
+\DoxyCodeLine{50 \textcolor{keyword}{namespace }StarBuilder}
+\DoxyCodeLine{51 \{}
+\DoxyCodeLine{52 }
+\DoxyCodeLine{56 \textcolor{keyword}{struct }\mbox{\hyperlink{struct_compact_star_1_1_star_builder_1_1_options}{Options}}}
+\DoxyCodeLine{57 \{}
+\DoxyCodeLine{64     \textcolor{keywordtype}{double} \mbox{\hyperlink{struct_compact_star_1_1_star_builder_1_1_options_ac0746ef6aaec3c143748752ad818d9cc}{blanket\_energy\_density\_km2}} = 7.4237e-\/9;}
+\DoxyCodeLine{65 }
+\DoxyCodeLine{77     \textcolor{keywordtype}{bool} \mbox{\hyperlink{struct_compact_star_1_1_star_builder_1_1_options_ad7cb68018c52cbf632854b068f05b474}{compute\_durca\_mask}} = \textcolor{keyword}{true};}
+\DoxyCodeLine{78 \};}
+\DoxyCodeLine{79 }
+\DoxyCodeLine{86 \textcolor{keyword}{struct }\mbox{\hyperlink{struct_compact_star_1_1_star_builder_1_1_output}{Output}}}
+\DoxyCodeLine{87 \{}
+\DoxyCodeLine{94     \mbox{\hyperlink{class_zaki_1_1_vector_1_1_data_set}{Zaki::Vector::DataSet}} \mbox{\hyperlink{struct_compact_star_1_1_star_builder_1_1_output_a963ad687a739c474c5cf4ac45db65769}{profile}};}
+\DoxyCodeLine{95 }
+\DoxyCodeLine{99     \mbox{\hyperlink{class_compact_star_1_1_seq_point}{SeqPoint}} \mbox{\hyperlink{struct_compact_star_1_1_star_builder_1_1_output_a037b36e628adc7209a3a9e1a53727d61}{seq\_point}};}
+\DoxyCodeLine{100 }
+\DoxyCodeLine{106     \textcolor{keywordtype}{int} \mbox{\hyperlink{struct_compact_star_1_1_star_builder_1_1_output_aae07b312e97811df5a59ae6711055b25}{seq\_index}} = -\/1;}
+\DoxyCodeLine{107 }
+\DoxyCodeLine{112     \textcolor{keywordtype}{double} \mbox{\hyperlink{struct_compact_star_1_1_star_builder_1_1_output_a17289c7fcdecb5bf83f21ab25de5fd83}{eta\_I}} = 0.0;}
+\DoxyCodeLine{113 }
+\DoxyCodeLine{117     \textcolor{keywordtype}{double} \mbox{\hyperlink{struct_compact_star_1_1_star_builder_1_1_output_a8195128158b2cef40fddf4599b226659}{r\_blanket\_km}} = 0.0;}
+\DoxyCodeLine{118 }
+\DoxyCodeLine{122     \textcolor{keywordtype}{int} \mbox{\hyperlink{struct_compact_star_1_1_star_builder_1_1_output_ad5bf815a9e6eb4fccd6b9ad3bad82aa3}{r\_blanket\_idx}} = -\/1;}
+\DoxyCodeLine{123 }
+\DoxyCodeLine{129     \textcolor{keywordtype}{double} \mbox{\hyperlink{struct_compact_star_1_1_star_builder_1_1_output_a79500b7b68c79ca9e9faf0114d7e5108}{r\_durca\_km}} = 0.0;}
+\DoxyCodeLine{130 }
+\DoxyCodeLine{136     \mbox{\hyperlink{struct_zaki_1_1_vector_1_1_data_column}{Zaki::Vector::DataColumn}} \mbox{\hyperlink{struct_compact_star_1_1_star_builder_1_1_output_a05b337cc0121bf4401018abf70fdc64a}{durca\_mask}};}
+\DoxyCodeLine{137 \};}
+\DoxyCodeLine{138 }
+\DoxyCodeLine{164 \textcolor{keywordtype}{int} \mbox{\hyperlink{namespace_compact_star_1_1_star_builder_a3b94da4e460dfad279f5cac1c5300b0d}{BuildFromSequence}}(\textcolor{keyword}{const} \mbox{\hyperlink{class_zaki_1_1_string_1_1_directory}{Zaki::String::Directory}} \&wrk\_dir,}
+\DoxyCodeLine{165                       \textcolor{keyword}{const} \mbox{\hyperlink{class_zaki_1_1_string_1_1_directory}{Zaki::String::Directory}} \&rel\_dir,}
+\DoxyCodeLine{166                       \textcolor{keyword}{const} std::string \&model\_name,}
+\DoxyCodeLine{167                       \textcolor{keywordtype}{double} target\_mass\_Msun,}
+\DoxyCodeLine{168                       \mbox{\hyperlink{struct_compact_star_1_1_star_builder_1_1_output}{Output}} \&out,}
+\DoxyCodeLine{169                       \textcolor{keyword}{const} \mbox{\hyperlink{struct_compact_star_1_1_star_builder_1_1_options}{Options}} \&opt = \mbox{\hyperlink{struct_compact_star_1_1_star_builder_1_1_options}{Options}}());}
+\DoxyCodeLine{170 }
+\DoxyCodeLine{171 \} \textcolor{comment}{// namespace StarBuilder}}
+\DoxyCodeLine{172 \} \textcolor{comment}{// namespace CompactStar}}
+\DoxyCodeLine{173 }
+\DoxyCodeLine{174 \textcolor{preprocessor}{\#endif }\textcolor{comment}{// COMPACTSTAR\_STARBUILDER\_HPP}}
+
+\end{DoxyCode}

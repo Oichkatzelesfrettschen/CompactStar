@@ -1,0 +1,95 @@
+\hypertarget{class_compact_star_1_1eps__pair}{}\doxysection{Compact\+Star\+::eps\+\_\+pair Class Reference}
+\label{class_compact_star_1_1eps__pair}\index{CompactStar::eps\_pair@{CompactStar::eps\_pair}}
+
+
+Class representing a pair of energy density and pressure values for the dark and visible components of a mixed star.  
+
+
+
+
+{\ttfamily \#include $<$TOVSolver.\+hpp$>$}
+
+Inheritance diagram for Compact\+Star\+::eps\+\_\+pair\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{d1/de5/class_compact_star_1_1eps__pair}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_compact_star_1_1eps__pair_a7153556e34b768f262a7b5b309a3c828}{eps\+\_\+pair}} (const double \&in\+\_\+e\+\_\+v, const double \&in\+\_\+e\+\_\+d)
+\item 
+\mbox{\hyperlink{class_compact_star_1_1eps__pair_a967f5e2e23831437d2cb839c3622e836}{eps\+\_\+pair}} (const Coord2D \&in\+\_\+c)
+\item 
+double \mbox{\hyperlink{class_compact_star_1_1eps__pair_ae313b7a55f30d5bae3a5f71c37673e09}{e\+\_\+v}} () const
+\begin{DoxyCompactList}\small\item\em Getter for the visble energy density (x-\/coordinate) \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{class_compact_star_1_1eps__pair_aa620387ac05f51f5b9391e68b57e8c8f}{e\+\_\+d}} () const
+\begin{DoxyCompactList}\small\item\em Getter for the dark energy density (y-\/coordinate) \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Additional Inherited Members}
+
+
+\doxysubsection{Detailed Description}
+Class representing a pair of energy density and pressure values for the dark and visible components of a mixed star. 
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_compact_star_1_1eps__pair_a7153556e34b768f262a7b5b309a3c828}\label{class_compact_star_1_1eps__pair_a7153556e34b768f262a7b5b309a3c828}} 
+\index{CompactStar::eps\_pair@{CompactStar::eps\_pair}!eps\_pair@{eps\_pair}}
+\index{eps\_pair@{eps\_pair}!CompactStar::eps\_pair@{CompactStar::eps\_pair}}
+\doxysubsubsection{\texorpdfstring{eps\_pair()}{eps\_pair()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily Compact\+Star\+::eps\+\_\+pair\+::eps\+\_\+pair (\begin{DoxyParamCaption}\item[{const double \&}]{in\+\_\+e\+\_\+v,  }\item[{const double \&}]{in\+\_\+e\+\_\+d }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Constructor from two double values 
+\begin{DoxyParams}{Parameters}
+{\em in\+\_\+e\+\_\+v} & Energy density of the visible component (x-\/coordinate) \\
+\hline
+{\em in\+\_\+e\+\_\+d} & Energy density of the dark component (y-\/coordinate)\\
+\hline
+\end{DoxyParams}
+The constructor initializes the x and y coordinates of the \mbox{\hyperlink{class_compact_star_1_1eps__pair}{eps\+\_\+pair}} object with the provided energy density values. \mbox{\Hypertarget{class_compact_star_1_1eps__pair_a967f5e2e23831437d2cb839c3622e836}\label{class_compact_star_1_1eps__pair_a967f5e2e23831437d2cb839c3622e836}} 
+\index{CompactStar::eps\_pair@{CompactStar::eps\_pair}!eps\_pair@{eps\_pair}}
+\index{eps\_pair@{eps\_pair}!CompactStar::eps\_pair@{CompactStar::eps\_pair}}
+\doxysubsubsection{\texorpdfstring{eps\_pair()}{eps\_pair()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily Compact\+Star\+::eps\+\_\+pair\+::eps\+\_\+pair (\begin{DoxyParamCaption}\item[{const Coord2D \&}]{in\+\_\+c }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Constructor from a Coord2D object 
+\begin{DoxyParams}{Parameters}
+{\em in\+\_\+c} & Coord2D object containing the energy density values\\
+\hline
+\end{DoxyParams}
+The constructor initializes the x and y coordinates of the \mbox{\hyperlink{class_compact_star_1_1eps__pair}{eps\+\_\+pair}} object with the x and y coordinates of the provided Coord2D object. 
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_compact_star_1_1eps__pair_aa620387ac05f51f5b9391e68b57e8c8f}\label{class_compact_star_1_1eps__pair_aa620387ac05f51f5b9391e68b57e8c8f}} 
+\index{CompactStar::eps\_pair@{CompactStar::eps\_pair}!e\_d@{e\_d}}
+\index{e\_d@{e\_d}!CompactStar::eps\_pair@{CompactStar::eps\_pair}}
+\doxysubsubsection{\texorpdfstring{e\_d()}{e\_d()}}
+{\footnotesize\ttfamily double Compact\+Star\+::eps\+\_\+pair\+::e\+\_\+d (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Getter for the dark energy density (y-\/coordinate) 
+
+\begin{DoxyReturn}{Returns}
+The dark energy density value 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_compact_star_1_1eps__pair_ae313b7a55f30d5bae3a5f71c37673e09}\label{class_compact_star_1_1eps__pair_ae313b7a55f30d5bae3a5f71c37673e09}} 
+\index{CompactStar::eps\_pair@{CompactStar::eps\_pair}!e\_v@{e\_v}}
+\index{e\_v@{e\_v}!CompactStar::eps\_pair@{CompactStar::eps\_pair}}
+\doxysubsubsection{\texorpdfstring{e\_v()}{e\_v()}}
+{\footnotesize\ttfamily double Compact\+Star\+::eps\+\_\+pair\+::e\+\_\+v (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Getter for the visble energy density (x-\/coordinate) 
+
+\begin{DoxyReturn}{Returns}
+The visible energy density value 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Compact\+Star/\+Core/\mbox{\hyperlink{_t_o_v_solver_8hpp}{TOVSolver.\+hpp}}\end{DoxyCompactItemize}

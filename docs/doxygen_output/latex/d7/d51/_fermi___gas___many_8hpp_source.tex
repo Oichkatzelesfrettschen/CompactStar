@@ -1,0 +1,86 @@
+\hypertarget{_fermi___gas___many_8hpp_source}{}\doxysection{Fermi\+\_\+\+Gas\+\_\+\+Many.\+hpp}
+\label{_fermi___gas___many_8hpp_source}\index{CompactStar/EOS/Fermi\_Gas\_Many.hpp@{CompactStar/EOS/Fermi\_Gas\_Many.hpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{comment}{/*}}
+\DoxyCodeLine{2 \textcolor{comment}{  Fermi\_Gas\_Many Model Class Header}}
+\DoxyCodeLine{3 \textcolor{comment}{  Author: [Your Name]}}
+\DoxyCodeLine{4 \textcolor{comment}{  Date: [Current Date]}}
+\DoxyCodeLine{5 \textcolor{comment}{  Description:}}
+\DoxyCodeLine{6 \textcolor{comment}{    This class models the equation of state (EOS) for neutron star matter}}
+\DoxyCodeLine{7 \textcolor{comment}{    by including multiple fermion species (protons, neutrons, electrons, muons).}}
+\DoxyCodeLine{8 \textcolor{comment}{    It calculates the energy density and pressure by finding the number densities}}
+\DoxyCodeLine{9 \textcolor{comment}{    of each particle species that minimize the total energy under the constraints}}
+\DoxyCodeLine{10 \textcolor{comment}{    of electric charge neutrality and baryon number conservation.}}
+\DoxyCodeLine{11 \textcolor{comment}{*/}}
+\DoxyCodeLine{12 }
+\DoxyCodeLine{13 \textcolor{preprocessor}{\#ifndef CompactStar\_Fermi\_Gas\_Many\_HPP}}
+\DoxyCodeLine{14 \textcolor{preprocessor}{\#define CompactStar\_Fermi\_Gas\_Many\_HPP}}
+\DoxyCodeLine{15 }
+\DoxyCodeLine{16 \textcolor{preprocessor}{\#include <vector>}}
+\DoxyCodeLine{17 \textcolor{preprocessor}{\#include <string>}}
+\DoxyCodeLine{18 \textcolor{preprocessor}{\#include <gsl/gsl\_vector.h>}}
+\DoxyCodeLine{19 \textcolor{preprocessor}{\#include <gsl/gsl\_multiroots.h>}}
+\DoxyCodeLine{20 }
+\DoxyCodeLine{21 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_model_8hpp}{Model.hpp}}"{}}}
+\DoxyCodeLine{22 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_particle_8hpp}{Particle.hpp}}"{}} \textcolor{comment}{// Base class for Lepton and Baryon}}
+\DoxyCodeLine{23 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_baryon_8hpp}{Baryon.hpp}}"{}}}
+\DoxyCodeLine{24 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_lepton_8hpp}{Lepton.hpp}}"{}}}
+\DoxyCodeLine{25 }
+\DoxyCodeLine{26 \textcolor{keyword}{namespace }CompactStar \{}
+\DoxyCodeLine{27 }
+\DoxyCodeLine{28 \textcolor{keyword}{class }\mbox{\hyperlink{class_compact_star_1_1_fermi___gas___many}{Fermi\_Gas\_Many}} : \textcolor{keyword}{public} \mbox{\hyperlink{class_compact_star_1_1_model}{Model}} \{}
+\DoxyCodeLine{29 \textcolor{keyword}{private}:}
+\DoxyCodeLine{30     \textcolor{comment}{// Particle instances}}
+\DoxyCodeLine{31     \mbox{\hyperlink{class_compact_star_1_1_baryon}{Baryon}} proton;}
+\DoxyCodeLine{32     \mbox{\hyperlink{class_compact_star_1_1_baryon}{Baryon}} neutron;}
+\DoxyCodeLine{33     \mbox{\hyperlink{class_compact_star_1_1_lepton}{Lepton}} electron;}
+\DoxyCodeLine{34     \textcolor{comment}{// Lepton muon;}}
+\DoxyCodeLine{35 }
+\DoxyCodeLine{36     \textcolor{comment}{// Particle pools}}
+\DoxyCodeLine{37     std::vector<Particle*> baryon\_pool;}
+\DoxyCodeLine{38     std::vector<Particle*> lepton\_pool;}
+\DoxyCodeLine{39 }
+\DoxyCodeLine{40     \textcolor{comment}{// Total baryon density}}
+\DoxyCodeLine{41     \textcolor{keywordtype}{double} rho = 0 ;}
+\DoxyCodeLine{42 }
+\DoxyCodeLine{43     \textcolor{comment}{// Solver variables}}
+\DoxyCodeLine{44     \textcolor{keywordtype}{size\_t} eq\_size;}
+\DoxyCodeLine{45     std::vector<double> root\_guess;}
+\DoxyCodeLine{46     std::vector<double> equilibrium\_eqs;}
+\DoxyCodeLine{47 }
+\DoxyCodeLine{48     \textcolor{comment}{// Methods}}
+\DoxyCodeLine{49     \textcolor{keywordtype}{void} SetEquilibriumEqs();}
+\DoxyCodeLine{50     \textcolor{keywordtype}{double} chem\_equilibrium\_eq ;}
+\DoxyCodeLine{51     \textcolor{keywordtype}{void} UpdateParticles();}
+\DoxyCodeLine{52     \textcolor{keywordtype}{void} FindGuess();}
+\DoxyCodeLine{53 }
+\DoxyCodeLine{54     \textcolor{comment}{// GSL solver functions}}
+\DoxyCodeLine{55     \textcolor{keyword}{static} \textcolor{keywordtype}{int} EquilibriumFunction(\textcolor{keyword}{const} gsl\_vector* x, \textcolor{keywordtype}{void}* params, gsl\_vector* f);}
+\DoxyCodeLine{56 }
+\DoxyCodeLine{57     \textcolor{comment}{// Solver}}
+\DoxyCodeLine{58     \textcolor{keywordtype}{int} SolveEquations();}
+\DoxyCodeLine{59 }
+\DoxyCodeLine{60 \textcolor{keyword}{public}:}
+\DoxyCodeLine{61     \textcolor{comment}{// Constructor and Destructor}}
+\DoxyCodeLine{62     \mbox{\hyperlink{class_compact_star_1_1_fermi___gas___many}{Fermi\_Gas\_Many}}();}
+\DoxyCodeLine{63     \mbox{\hyperlink{class_compact_star_1_1_fermi___gas___many}{\string~Fermi\_Gas\_Many}}();}
+\DoxyCodeLine{64 }
+\DoxyCodeLine{65     \textcolor{comment}{// EOS computation}}
+\DoxyCodeLine{66     \textcolor{keywordtype}{double} EDens(\textcolor{keyword}{const} \textcolor{keywordtype}{double}\& in\_rho) \textcolor{keyword}{override};}
+\DoxyCodeLine{67     \textcolor{keywordtype}{double} Press(\textcolor{keyword}{const} \textcolor{keywordtype}{double}\& in\_rho) \textcolor{keyword}{override};}
+\DoxyCodeLine{68 }
+\DoxyCodeLine{69     \textcolor{comment}{// Energy density of individual particles in g/cm\string^3 }}
+\DoxyCodeLine{70     \textcolor{comment}{// -\/-\/> input rho has units of fm\string^\{-\/3\}}}
+\DoxyCodeLine{71     \textcolor{keywordtype}{double} EDens\_Individual(\mbox{\hyperlink{class_compact_star_1_1_particle}{Particle}}* in\_p) ;}
+\DoxyCodeLine{72 }
+\DoxyCodeLine{73     \textcolor{comment}{// Data output}}
+\DoxyCodeLine{74     std::vector<double> \mbox{\hyperlink{class_compact_star_1_1_fermi___gas___many_a769596fbe5ba8eea5fee49540fd670c8}{EOSRow}}(\textcolor{keyword}{const} \textcolor{keywordtype}{double}\& in\_rho) \textcolor{keyword}{override};}
+\DoxyCodeLine{75     std::string \mbox{\hyperlink{class_compact_star_1_1_fermi___gas___many_aab954c526e8e7eaba1e2198689e97b07}{EOSHeader}}() \textcolor{keyword}{const override};}
+\DoxyCodeLine{76 \};}
+\DoxyCodeLine{77 }
+\DoxyCodeLine{78 \} \textcolor{comment}{// namespace CompactStar}}
+\DoxyCodeLine{79 }
+\DoxyCodeLine{80 \textcolor{preprocessor}{\#endif }\textcolor{comment}{// CompactStar\_Fermi\_Gas\_Many\_HPP}}
+
+\end{DoxyCode}

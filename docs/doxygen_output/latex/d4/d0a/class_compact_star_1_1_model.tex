@@ -1,0 +1,89 @@
+\hypertarget{class_compact_star_1_1_model}{}\doxysection{Compact\+Star\+::Model Class Reference}
+\label{class_compact_star_1_1_model}\index{CompactStar::Model@{CompactStar::Model}}
+Inheritance diagram for Compact\+Star\+::Model\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=10.000000cm]{d4/d0a/class_compact_star_1_1_model}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_compact_star_1_1_model_a0a6340dc9663543a56497bab5a3137c7}\label{class_compact_star_1_1_model_a0a6340dc9663543a56497bab5a3137c7}} 
+{\bfseries Model} (const \mbox{\hyperlink{struct_zaki_1_1_math_1_1_range}{Zaki\+::\+Math\+::\+Range}}$<$ double $>$ \&in\+\_\+valid\+\_\+rho)
+\begin{DoxyCompactList}\small\item\em Input valid ranges of rho. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_compact_star_1_1_model_a9a7a491f81296301bf4004598cf03147}\label{class_compact_star_1_1_model_a9a7a491f81296301bf4004598cf03147}} 
+{\bfseries $\sim$\+Model} ()
+\begin{DoxyCompactList}\small\item\em Destructor. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_compact_star_1_1_model_a2775076a76bcfc9e684e4061a039f311}\label{class_compact_star_1_1_model_a2775076a76bcfc9e684e4061a039f311}} 
+void {\bfseries Set\+Rho\+Range} (const \mbox{\hyperlink{struct_zaki_1_1_math_1_1_range}{Zaki\+::\+Math\+::\+Range}}$<$ double $>$ \&)
+\item 
+\mbox{\Hypertarget{class_compact_star_1_1_model_a790aded3cd68e56bfe5e7730f2d2e8e8}\label{class_compact_star_1_1_model_a790aded3cd68e56bfe5e7730f2d2e8e8}} 
+virtual double {\bfseries EDens} (const double \&in\+\_\+rho)=0
+\item 
+\mbox{\Hypertarget{class_compact_star_1_1_model_aee87151008a31bc9986e692fe17e836b}\label{class_compact_star_1_1_model_aee87151008a31bc9986e692fe17e836b}} 
+virtual double {\bfseries Press} (const double \&in\+\_\+rho)=0
+\item 
+virtual std\+::vector$<$ double $>$ \mbox{\hyperlink{class_compact_star_1_1_model_a993364b332aded0dde14e502b50d90b3}{EOSRow}} (const double \&)
+\begin{DoxyCompactList}\small\item\em This will generate a row of values for EOS. \end{DoxyCompactList}\item 
+virtual std\+::string \mbox{\hyperlink{class_compact_star_1_1_model_aaa76bc6bdb8a2fac18d68fec52f10ad9}{EOSHeader}} () const
+\begin{DoxyCompactList}\small\item\em This will generate the header for EOS. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_compact_star_1_1_model_ac054b1b6c0586d397e89ff93f4604570}\label{class_compact_star_1_1_model_ac054b1b6c0586d397e89ff93f4604570}} 
+\mbox{\hyperlink{struct_zaki_1_1_math_1_1_range}{Zaki\+::\+Math\+::\+Range}}$<$ double $>$ {\bfseries Get\+Valid\+EDens\+Range} ()
+\item 
+\mbox{\Hypertarget{class_compact_star_1_1_model_acbb9269491362a0102458fdb87016010}\label{class_compact_star_1_1_model_acbb9269491362a0102458fdb87016010}} 
+void {\bfseries Export\+EOS} (const \mbox{\hyperlink{class_zaki_1_1_string_1_1_directory}{Zaki\+::\+String\+::\+Directory}} \&) const
+\item 
+\mbox{\Hypertarget{class_compact_star_1_1_model_a6961b1a95a09f5e3cd0131ba74b7cc2a}\label{class_compact_star_1_1_model_a6961b1a95a09f5e3cd0131ba74b7cc2a}} 
+void {\bfseries Find\+EOS} (const size\+\_\+t \&eos\+\_\+pts)
+\begin{DoxyCompactList}\small\item\em Input number of EOS points. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_compact_star_1_1_model_a4ab18fc92373d50ba734cd351de57504}\label{class_compact_star_1_1_model_a4ab18fc92373d50ba734cd351de57504}} 
+std\+::vector$<$ std\+::vector$<$ double $>$ $>$ {\bfseries Get\+EOS} () const
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_compact_star_1_1_model_a6c180d0486644536eea442610e6937b7}\label{class_compact_star_1_1_model_a6c180d0486644536eea442610e6937b7}} 
+std\+::vector$<$ std\+::vector$<$ double $>$ $>$ {\bfseries eos\+\_\+results}
+\item 
+\mbox{\Hypertarget{class_compact_star_1_1_model_a16ef0f4d7cfcc288921602cbe96296d7}\label{class_compact_star_1_1_model_a16ef0f4d7cfcc288921602cbe96296d7}} 
+\mbox{\hyperlink{struct_zaki_1_1_math_1_1_range}{Zaki\+::\+Math\+::\+Range}}$<$ double $>$ {\bfseries valid\+\_\+rho}
+\end{DoxyCompactItemize}
+\doxysubsection*{Additional Inherited Members}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_compact_star_1_1_model_aaa76bc6bdb8a2fac18d68fec52f10ad9}\label{class_compact_star_1_1_model_aaa76bc6bdb8a2fac18d68fec52f10ad9}} 
+\index{CompactStar::Model@{CompactStar::Model}!EOSHeader@{EOSHeader}}
+\index{EOSHeader@{EOSHeader}!CompactStar::Model@{CompactStar::Model}}
+\doxysubsubsection{\texorpdfstring{EOSHeader()}{EOSHeader()}}
+{\footnotesize\ttfamily std\+::string Compact\+Star\+::\+Model\+::\+EOSHeader (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+This will generate the header for EOS. 
+
+
+
+Reimplemented in \mbox{\hyperlink{class_compact_star_1_1_sigma_omega_rho__npemu_a525cc3bf3f342f029bec79fdc24d9ddc}{Compact\+Star\+::\+Sigma\+Omega\+Rho\+\_\+npemu}}, \mbox{\hyperlink{class_compact_star_1_1_fermi___gas___many_aab954c526e8e7eaba1e2198689e97b07}{Compact\+Star\+::\+Fermi\+\_\+\+Gas\+\_\+\+Many}}, \mbox{\hyperlink{class_compact_star_1_1_sigma_omega_rho_a7162c8d0d8ff202fb7b9021bc1e7add2}{Compact\+Star\+::\+Sigma\+Omega\+Rho}}, and \mbox{\hyperlink{class_compact_star_1_1_sigma_omega_rho__nstar_a5624974e21b0429210e03c54cec7a96c}{Compact\+Star\+::\+Sigma\+Omega\+Rho\+\_\+nstar}}.
+
+\mbox{\Hypertarget{class_compact_star_1_1_model_a993364b332aded0dde14e502b50d90b3}\label{class_compact_star_1_1_model_a993364b332aded0dde14e502b50d90b3}} 
+\index{CompactStar::Model@{CompactStar::Model}!EOSRow@{EOSRow}}
+\index{EOSRow@{EOSRow}!CompactStar::Model@{CompactStar::Model}}
+\doxysubsubsection{\texorpdfstring{EOSRow()}{EOSRow()}}
+{\footnotesize\ttfamily std\+::vector$<$ double $>$ Compact\+Star\+::\+Model\+::\+EOSRow (\begin{DoxyParamCaption}\item[{const double \&}]{rho\+\_\+i }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+This will generate a row of values for EOS. 
+
+
+
+Reimplemented in \mbox{\hyperlink{class_compact_star_1_1_sigma_omega_rho__npemu_a7e24bddcff8992ba3097980d38a3aac1}{Compact\+Star\+::\+Sigma\+Omega\+Rho\+\_\+npemu}}, \mbox{\hyperlink{class_compact_star_1_1_sigma_omega_rho_a425f306208f5c22a6e3c4c1a4b9e257f}{Compact\+Star\+::\+Sigma\+Omega\+Rho}}, \mbox{\hyperlink{class_compact_star_1_1_sigma_omega_rho__nstar_a5476e58f2c843809d755118c3b7ef93b}{Compact\+Star\+::\+Sigma\+Omega\+Rho\+\_\+nstar}}, and \mbox{\hyperlink{class_compact_star_1_1_fermi___gas___many_a769596fbe5ba8eea5fee49540fd670c8}{Compact\+Star\+::\+Fermi\+\_\+\+Gas\+\_\+\+Many}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Compact\+Star/\+EOS/\mbox{\hyperlink{_model_8hpp}{Model.\+hpp}}\item 
+Compact\+Star/\+EOS/src/Model.\+cpp\end{DoxyCompactItemize}

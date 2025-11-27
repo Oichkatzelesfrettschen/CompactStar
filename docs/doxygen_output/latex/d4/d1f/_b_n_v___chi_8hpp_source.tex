@@ -1,0 +1,290 @@
+\hypertarget{_b_n_v___chi_8hpp_source}{}\doxysection{BNV\+\_\+\+Chi.\+hpp}
+\label{_b_n_v___chi_8hpp_source}\index{CompactStar/Microphysics/BNV/Internal/BNV\_Chi.hpp@{CompactStar/Microphysics/BNV/Internal/BNV\_Chi.hpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{comment}{// -\/*-\/ lsst-\/c++ -\/*-\/}}
+\DoxyCodeLine{2 \textcolor{comment}{/*}}
+\DoxyCodeLine{3 \textcolor{comment}{ * CompactStar}}
+\DoxyCodeLine{4 \textcolor{comment}{ * See License file at the top of the source tree.}}
+\DoxyCodeLine{5 \textcolor{comment}{ *}}
+\DoxyCodeLine{6 \textcolor{comment}{ * Copyright (c) 2023 Mohammadreza Zakeri}}
+\DoxyCodeLine{7 \textcolor{comment}{ *}}
+\DoxyCodeLine{8 \textcolor{comment}{ * Permission is hereby granted, free of charge, to any person obtaining a copy}}
+\DoxyCodeLine{9 \textcolor{comment}{ * of this software and associated documentation files (the "{}Software"{}), to deal}}
+\DoxyCodeLine{10 \textcolor{comment}{ * in the Software without restriction, including without limitation the rights}}
+\DoxyCodeLine{11 \textcolor{comment}{ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell}}
+\DoxyCodeLine{12 \textcolor{comment}{ * copies of the Software, and to permit persons to whom the Software is}}
+\DoxyCodeLine{13 \textcolor{comment}{ * furnished to do so, subject to the following conditions:}}
+\DoxyCodeLine{14 \textcolor{comment}{ *}}
+\DoxyCodeLine{15 \textcolor{comment}{ * The above copyright notice and this permission notice shall be included in all}}
+\DoxyCodeLine{16 \textcolor{comment}{ * copies or substantial portions of the Software.}}
+\DoxyCodeLine{17 \textcolor{comment}{ *}}
+\DoxyCodeLine{18 \textcolor{comment}{ * THE SOFTWARE IS PROVIDED "{}AS IS"{}, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR}}
+\DoxyCodeLine{19 \textcolor{comment}{ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,}}
+\DoxyCodeLine{20 \textcolor{comment}{ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE}}
+\DoxyCodeLine{21 \textcolor{comment}{ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER}}
+\DoxyCodeLine{22 \textcolor{comment}{ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,}}
+\DoxyCodeLine{23 \textcolor{comment}{ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE}}
+\DoxyCodeLine{24 \textcolor{comment}{ * SOFTWARE.}}
+\DoxyCodeLine{25 \textcolor{comment}{ */}}
+\DoxyCodeLine{26 }
+\DoxyCodeLine{38 \textcolor{comment}{// -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{39 \textcolor{comment}{//               Created on Mar 15, 2023}}
+\DoxyCodeLine{40 \textcolor{comment}{// This abstract class is made for analyzing BNV}}
+\DoxyCodeLine{41 \textcolor{comment}{// processes that produce Chi from mixing, e.g,}}
+\DoxyCodeLine{42 \textcolor{comment}{//  B -\/-\/> Chi, B -\/-\/> Chi + photon,}}
+\DoxyCodeLine{43 \textcolor{comment}{//  B + P -\/-\/> Chi + P, etc.}}
+\DoxyCodeLine{44 \textcolor{comment}{// -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{45 \textcolor{preprocessor}{\#ifndef CompactStar\_Microphysics\_BNV\_Int\_Chi\_H}}
+\DoxyCodeLine{46 \textcolor{preprocessor}{\#define CompactStar\_Microphysics\_BNV\_Int\_Chi\_H}}
+\DoxyCodeLine{47 }
+\DoxyCodeLine{48 \textcolor{preprocessor}{\#include <\mbox{\hyperlink{_data_set_8hpp}{Zaki/Vector/DataSet.hpp}}>}}
+\DoxyCodeLine{49 }
+\DoxyCodeLine{50 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_pulsar_8hpp}{CompactStar/Core/Pulsar.hpp}}"{}}}
+\DoxyCodeLine{51 \textcolor{preprocessor}{\#include <\mbox{\hyperlink{_comp_o_s_e___e_o_s_8hpp}{CompactStar/EOS/CompOSE\_EOS.hpp}}>}}
+\DoxyCodeLine{52 }
+\DoxyCodeLine{53 \textcolor{comment}{//==============================================================}}
+\DoxyCodeLine{54 \textcolor{keyword}{namespace }CompactStar::Microphysics::BNV::Internal}
+\DoxyCodeLine{55 \{}
+\DoxyCodeLine{56 }
+\DoxyCodeLine{57 \textcolor{keyword}{struct }\mbox{\hyperlink{struct_compact_star_1_1_microphysics_1_1_b_n_v_1_1_internal_1_1_pulsar___limit}{Pulsar\_Limit}}}
+\DoxyCodeLine{58 \{}
+\DoxyCodeLine{59     \mbox{\hyperlink{class_compact_star_1_1_pulsar}{CompactStar::Pulsar}} p;}
+\DoxyCodeLine{60     std::vector<double> lim;}
+\DoxyCodeLine{61 }
+\DoxyCodeLine{62     \mbox{\hyperlink{struct_compact_star_1_1_microphysics_1_1_b_n_v_1_1_internal_1_1_pulsar___limit}{Pulsar\_Limit}}(\textcolor{keyword}{const} \mbox{\hyperlink{class_compact_star_1_1_pulsar}{CompactStar::Pulsar}} \&in\_p,}
+\DoxyCodeLine{63                  \textcolor{keyword}{const} std::vector<double> \&in\_lim)}
+\DoxyCodeLine{64         : p(in\_p), lim(in\_lim)}
+\DoxyCodeLine{65     \{}
+\DoxyCodeLine{66     \}}
+\DoxyCodeLine{67 }
+\DoxyCodeLine{68     \textcolor{comment}{// Pulsar\_Limit(const CompactStar::Pulsar\& in\_p,}}
+\DoxyCodeLine{69     \textcolor{comment}{//              std::vector<double> in\_lim )}}
+\DoxyCodeLine{70     \textcolor{comment}{//              : p(in\_p), lim(in\_lim)}}
+\DoxyCodeLine{71     \textcolor{comment}{// \{\}}}
+\DoxyCodeLine{72 \};}
+\DoxyCodeLine{73 }
+\DoxyCodeLine{74 \textcolor{comment}{//==============================================================}}
+\DoxyCodeLine{75 \textcolor{keyword}{class }\mbox{\hyperlink{class_compact_star_1_1_microphysics_1_1_b_n_v_1_1_internal_1_1_b_n_v___chi}{BNV\_Chi}} : \textcolor{keyword}{public} \mbox{\hyperlink{class_compact_star_1_1_prog}{Prog}}}
+\DoxyCodeLine{76 \{}
+\DoxyCodeLine{77   \textcolor{keyword}{public}:}
+\DoxyCodeLine{78     \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{79     \textcolor{keyword}{struct }\mbox{\hyperlink{struct_compact_star_1_1_microphysics_1_1_b_n_v_1_1_internal_1_1_b_n_v___chi_1_1_baryon}{Baryon}}}
+\DoxyCodeLine{80     \{}
+\DoxyCodeLine{82         std::string \mbox{\hyperlink{struct_compact_star_1_1_microphysics_1_1_b_n_v_1_1_internal_1_1_b_n_v___chi_1_1_baryon_aa4ec80c0e68d2bdad90118476046c2c2}{name}} = \textcolor{stringliteral}{"{}"{}};}
+\DoxyCodeLine{83 }
+\DoxyCodeLine{85         std::string \mbox{\hyperlink{struct_compact_star_1_1_microphysics_1_1_b_n_v_1_1_internal_1_1_b_n_v___chi_1_1_baryon_a8c6112bb412c598afab0adc59f4ee654}{short\_name}} = \textcolor{stringliteral}{"{}"{}};}
+\DoxyCodeLine{86 }
+\DoxyCodeLine{88         std::string \mbox{\hyperlink{struct_compact_star_1_1_microphysics_1_1_b_n_v_1_1_internal_1_1_b_n_v___chi_1_1_baryon_a2690312d2921adbd28b5b2e20134d442}{label}} = \textcolor{stringliteral}{"{}"{}};}
+\DoxyCodeLine{89 }
+\DoxyCodeLine{91         std::string \mbox{\hyperlink{struct_compact_star_1_1_microphysics_1_1_b_n_v_1_1_internal_1_1_b_n_v___chi_1_1_baryon_af0d522a50adced21a1bab481ee8a4883}{TeX\_name}} = \textcolor{stringliteral}{"{}"{}};}
+\DoxyCodeLine{92 }
+\DoxyCodeLine{94         \textcolor{keywordtype}{double} \mbox{\hyperlink{struct_compact_star_1_1_microphysics_1_1_b_n_v_1_1_internal_1_1_b_n_v___chi_1_1_baryon_a8e928ea82f424f6ff7e3b7c912f45f93}{mass}} = 0;}
+\DoxyCodeLine{95 }
+\DoxyCodeLine{97         \textcolor{keywordtype}{double} \mbox{\hyperlink{struct_compact_star_1_1_microphysics_1_1_b_n_v_1_1_internal_1_1_b_n_v___chi_1_1_baryon_aa47925d97cc085f1dcb5c7619abf4d5e}{g}} = 0;}
+\DoxyCodeLine{98 }
+\DoxyCodeLine{100         \textcolor{keywordtype}{double} \mbox{\hyperlink{struct_compact_star_1_1_microphysics_1_1_b_n_v_1_1_internal_1_1_b_n_v___chi_1_1_baryon_a902c9e964409335e4e5ae6cea503f464}{tau}} = 0;}
+\DoxyCodeLine{101 }
+\DoxyCodeLine{102         \mbox{\hyperlink{struct_compact_star_1_1_microphysics_1_1_b_n_v_1_1_internal_1_1_b_n_v___chi_1_1_baryon}{Baryon}}() \{\}}
+\DoxyCodeLine{103         \mbox{\hyperlink{struct_compact_star_1_1_microphysics_1_1_b_n_v_1_1_internal_1_1_b_n_v___chi_1_1_baryon}{Baryon}}(\textcolor{keyword}{const} std::string \&in\_name,}
+\DoxyCodeLine{104                \textcolor{keyword}{const} std::string \&in\_TeX\_name,}
+\DoxyCodeLine{105                \textcolor{keyword}{const} std::string \&in\_short\_name,}
+\DoxyCodeLine{106                \textcolor{keyword}{const} std::string \&in\_label,}
+\DoxyCodeLine{107                \textcolor{keyword}{const} \textcolor{keywordtype}{double} \&in\_mass,}
+\DoxyCodeLine{108                \textcolor{keyword}{const} \textcolor{keywordtype}{double} \&in\_g,}
+\DoxyCodeLine{109                \textcolor{keyword}{const} \textcolor{keywordtype}{double} \&in\_tau)}
+\DoxyCodeLine{110             : \mbox{\hyperlink{struct_compact_star_1_1_microphysics_1_1_b_n_v_1_1_internal_1_1_b_n_v___chi_1_1_baryon_aa4ec80c0e68d2bdad90118476046c2c2}{name}}(in\_name),}
+\DoxyCodeLine{111               \mbox{\hyperlink{struct_compact_star_1_1_microphysics_1_1_b_n_v_1_1_internal_1_1_b_n_v___chi_1_1_baryon_af0d522a50adced21a1bab481ee8a4883}{TeX\_name}}(in\_TeX\_name),}
+\DoxyCodeLine{112               \mbox{\hyperlink{struct_compact_star_1_1_microphysics_1_1_b_n_v_1_1_internal_1_1_b_n_v___chi_1_1_baryon_a8c6112bb412c598afab0adc59f4ee654}{short\_name}}(in\_short\_name),}
+\DoxyCodeLine{113               \mbox{\hyperlink{struct_compact_star_1_1_microphysics_1_1_b_n_v_1_1_internal_1_1_b_n_v___chi_1_1_baryon_a2690312d2921adbd28b5b2e20134d442}{label}}(in\_label),}
+\DoxyCodeLine{114               \mbox{\hyperlink{struct_compact_star_1_1_microphysics_1_1_b_n_v_1_1_internal_1_1_b_n_v___chi_1_1_baryon_a8e928ea82f424f6ff7e3b7c912f45f93}{mass}}(in\_mass),}
+\DoxyCodeLine{115               \mbox{\hyperlink{struct_compact_star_1_1_microphysics_1_1_b_n_v_1_1_internal_1_1_b_n_v___chi_1_1_baryon_aa47925d97cc085f1dcb5c7619abf4d5e}{g}}(in\_g), \mbox{\hyperlink{struct_compact_star_1_1_microphysics_1_1_b_n_v_1_1_internal_1_1_b_n_v___chi_1_1_baryon_a902c9e964409335e4e5ae6cea503f464}{tau}}(in\_tau)}
+\DoxyCodeLine{116         \{}
+\DoxyCodeLine{117         \}}
+\DoxyCodeLine{118     \};}
+\DoxyCodeLine{119 }
+\DoxyCodeLine{120     \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{121   \textcolor{keyword}{protected}:}
+\DoxyCodeLine{122     \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{123     \textcolor{keyword}{struct }\mbox{\hyperlink{struct_compact_star_1_1_microphysics_1_1_b_n_v_1_1_internal_1_1_b_n_v___chi_1_1_rate___eps}{Rate\_Eps}}}
+\DoxyCodeLine{124     \{}
+\DoxyCodeLine{125         \textcolor{keywordtype}{double} rate;}
+\DoxyCodeLine{126         \textcolor{keywordtype}{double} eps;}
+\DoxyCodeLine{127     \};}
+\DoxyCodeLine{128     \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{129     \textcolor{keyword}{struct }\mbox{\hyperlink{struct_compact_star_1_1_microphysics_1_1_b_n_v_1_1_internal_1_1_b_n_v___chi_1_1_process}{Process}}}
+\DoxyCodeLine{130     \{}
+\DoxyCodeLine{131         \textcolor{keyword}{const} std::string name;}
+\DoxyCodeLine{132         \textcolor{keyword}{const} std::string TeX;}
+\DoxyCodeLine{133 }
+\DoxyCodeLine{134         \mbox{\hyperlink{struct_compact_star_1_1_microphysics_1_1_b_n_v_1_1_internal_1_1_b_n_v___chi_1_1_process}{Process}}(\textcolor{keyword}{const} std::string \&name, \textcolor{keyword}{const} std::string \&TeX)}
+\DoxyCodeLine{135             : name(name), TeX(TeX) \{\}}
+\DoxyCodeLine{136 }
+\DoxyCodeLine{137         std::string GetName()\textcolor{keyword}{ const}}
+\DoxyCodeLine{138 \textcolor{keyword}{        }\{}
+\DoxyCodeLine{139             \textcolor{keywordflow}{return} name;}
+\DoxyCodeLine{140         \}}
+\DoxyCodeLine{141 }
+\DoxyCodeLine{142         std::string GetTeX()\textcolor{keyword}{ const}}
+\DoxyCodeLine{143 \textcolor{keyword}{        }\{}
+\DoxyCodeLine{144             \textcolor{keywordflow}{return} TeX;}
+\DoxyCodeLine{145         \}}
+\DoxyCodeLine{146     \};}
+\DoxyCodeLine{147     \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{148     \textcolor{keyword}{virtual} \mbox{\hyperlink{struct_compact_star_1_1_microphysics_1_1_b_n_v_1_1_internal_1_1_b_n_v___chi_1_1_process}{Process}} GetSpecificProcess(\textcolor{keyword}{const} \mbox{\hyperlink{struct_compact_star_1_1_microphysics_1_1_b_n_v_1_1_internal_1_1_b_n_v___chi_1_1_baryon}{Baryon}} \&B)\textcolor{keyword}{ const}}
+\DoxyCodeLine{149 \textcolor{keyword}{    }\{}
+\DoxyCodeLine{150         \textcolor{keywordflow}{return} process;}
+\DoxyCodeLine{151     \}}
+\DoxyCodeLine{152     \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{153 }
+\DoxyCodeLine{154     \textcolor{comment}{// double g\_lam = -\/1.22 ;}}
+\DoxyCodeLine{155 }
+\DoxyCodeLine{157     \textcolor{keywordtype}{double} \mbox{\hyperlink{class_compact_star_1_1_microphysics_1_1_b_n_v_1_1_internal_1_1_b_n_v___chi_adc336a9a2f88855204162d7660c1b5e8}{eps\_lam}} = 1;}
+\DoxyCodeLine{158 }
+\DoxyCodeLine{159     std::string model = \textcolor{stringliteral}{"{}"{}};}
+\DoxyCodeLine{160 }
+\DoxyCodeLine{161     \textcolor{comment}{// double PhaseSpace\_Integrand(const double\& x, const double\& mu\_chi,}}
+\DoxyCodeLine{162     \textcolor{comment}{//                             const double\& sigma\_0) ;}}
+\DoxyCodeLine{163     \textcolor{keywordtype}{double} phase\_int\_mu\_chi = 0;}
+\DoxyCodeLine{164     \textcolor{keywordtype}{double} phase\_int\_sigma\_0 = 0;}
+\DoxyCodeLine{165 }
+\DoxyCodeLine{167     \mbox{\hyperlink{class_zaki_1_1_vector_1_1_data_set}{Zaki::Vector::DataSet}} \mbox{\hyperlink{class_compact_star_1_1_microphysics_1_1_b_n_v_1_1_internal_1_1_b_n_v___chi_a8624b55793d8838510332d24dfd09eb0}{m\_B\_ds}};}
+\DoxyCodeLine{168 }
+\DoxyCodeLine{170     \mbox{\hyperlink{class_zaki_1_1_vector_1_1_data_set}{Zaki::Vector::DataSet}} \mbox{\hyperlink{class_compact_star_1_1_microphysics_1_1_b_n_v_1_1_internal_1_1_b_n_v___chi_ac833ed7c4b0447195596520df1c222d3}{sig0\_ds}};}
+\DoxyCodeLine{171 }
+\DoxyCodeLine{176     \mbox{\hyperlink{class_zaki_1_1_vector_1_1_data_set}{Zaki::Vector::DataSet}} \mbox{\hyperlink{class_compact_star_1_1_microphysics_1_1_b_n_v_1_1_internal_1_1_b_n_v___chi_aa2551c95685d83657e41da99ee9a5636}{micro\_r}};}
+\DoxyCodeLine{177 }
+\DoxyCodeLine{179     \mbox{\hyperlink{class_compact_star_1_1_comp_o_s_e___e_o_s}{CompactStar::CompOSE\_EOS}} \mbox{\hyperlink{class_compact_star_1_1_microphysics_1_1_b_n_v_1_1_internal_1_1_b_n_v___chi_a303f7bd2e3353e5451d88953885b6164}{eos}};}
+\DoxyCodeLine{180 }
+\DoxyCodeLine{185     \mbox{\hyperlink{class_zaki_1_1_vector_1_1_data_set}{Zaki::Vector::DataSet}} \mbox{\hyperlink{class_compact_star_1_1_microphysics_1_1_b_n_v_1_1_internal_1_1_b_n_v___chi_aa47c1817fb2b76bd0d5b9a802809ea6b}{n\_B}};}
+\DoxyCodeLine{186 }
+\DoxyCodeLine{187     \mbox{\hyperlink{class_compact_star_1_1_pulsar}{Pulsar}} pulsar;}
+\DoxyCodeLine{188 }
+\DoxyCodeLine{191     \textcolor{comment}{// double gamma\_bnv\_bin\_lim = 7.83129*1e-\/10 ;}}
+\DoxyCodeLine{192     \textcolor{keywordtype}{double} \mbox{\hyperlink{class_compact_star_1_1_microphysics_1_1_b_n_v_1_1_internal_1_1_b_n_v___chi_aad8c1213a7ba00109e548c215feb8e0b}{gamma\_bnv\_bin\_lim}} = 1.75e-\/10;}
+\DoxyCodeLine{193 }
+\DoxyCodeLine{195     \textcolor{keywordtype}{double} \mbox{\hyperlink{class_compact_star_1_1_microphysics_1_1_b_n_v_1_1_internal_1_1_b_n_v___chi_ae24c298b4ad40788ad479024a8fd3f77}{default\_eps}} = 1e-\/16;}
+\DoxyCodeLine{196 }
+\DoxyCodeLine{198     \textcolor{comment}{// int m\_chi\_res = 2*1380 ;}}
+\DoxyCodeLine{199 }
+\DoxyCodeLine{201     \mbox{\hyperlink{struct_zaki_1_1_math_1_1_axis}{Zaki::Math::Axis}} \mbox{\hyperlink{class_compact_star_1_1_microphysics_1_1_b_n_v_1_1_internal_1_1_b_n_v___chi_a1e9205b0cf7ed06f6137097eb7b9dad4}{m\_chi\_vals}};}
+\DoxyCodeLine{202 }
+\DoxyCodeLine{204     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_compact_star_1_1_microphysics_1_1_b_n_v_1_1_internal_1_1_b_n_v___chi_aaa60144fb7ebe9b7a532d90860b09218}{hidden\_Plot\_Rate\_vs\_R}}(\textcolor{keyword}{const} \mbox{\hyperlink{struct_compact_star_1_1_microphysics_1_1_b_n_v_1_1_internal_1_1_b_n_v___chi_1_1_baryon}{Baryon}} \&B,}
+\DoxyCodeLine{205                                \textcolor{keyword}{const} \textcolor{keywordtype}{double} \&m\_chi,}
+\DoxyCodeLine{206                                \mbox{\hyperlink{class_zaki_1_1_vector_1_1_data_set}{Zaki::Vector::DataSet}} *ds) \textcolor{keyword}{const};}
+\DoxyCodeLine{207 }
+\DoxyCodeLine{209     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_compact_star_1_1_microphysics_1_1_b_n_v_1_1_internal_1_1_b_n_v___chi_a3ff726e89331a067a6c37a41e60b44aa}{hidden\_Plot\_Rate\_vs\_Density}}(\textcolor{keyword}{const} \mbox{\hyperlink{struct_compact_star_1_1_microphysics_1_1_b_n_v_1_1_internal_1_1_b_n_v___chi_1_1_baryon}{Baryon}} \&B,}
+\DoxyCodeLine{210                                      \textcolor{keyword}{const} \textcolor{keywordtype}{double} \&m\_chi,}
+\DoxyCodeLine{211                                      \mbox{\hyperlink{class_zaki_1_1_vector_1_1_data_set}{Zaki::Vector::DataSet}} *ds) \textcolor{keyword}{const};}
+\DoxyCodeLine{212 }
+\DoxyCodeLine{217     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_compact_star_1_1_microphysics_1_1_b_n_v_1_1_internal_1_1_b_n_v___chi_af75fcfc746014aef307d9f2a60e9f90e}{Rate\_vs\_R}}(\textcolor{keyword}{const} std::vector<double> \&m\_chi,}
+\DoxyCodeLine{218                    \textcolor{keyword}{const} \mbox{\hyperlink{struct_compact_star_1_1_microphysics_1_1_b_n_v_1_1_internal_1_1_b_n_v___chi_1_1_baryon}{Baryon}} \&B,}
+\DoxyCodeLine{219                    \textcolor{keyword}{const} std::vector<Pulsar\_Limit> \&);}
+\DoxyCodeLine{220 }
+\DoxyCodeLine{225     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_compact_star_1_1_microphysics_1_1_b_n_v_1_1_internal_1_1_b_n_v___chi_a8f48fbdd29e192da1ca9541c0566ae3f}{Rate\_vs\_R}}(\textcolor{keyword}{const} std::vector<double> \&m\_chi,}
+\DoxyCodeLine{226                    \textcolor{keyword}{const} std::vector<Pulsar\_Limit> \&);}
+\DoxyCodeLine{227 }
+\DoxyCodeLine{228   \textcolor{keyword}{public}:}
+\DoxyCodeLine{229     \mbox{\hyperlink{struct_compact_star_1_1_microphysics_1_1_b_n_v_1_1_internal_1_1_b_n_v___chi_1_1_baryon}{Baryon}} neutron;}
+\DoxyCodeLine{230     \mbox{\hyperlink{struct_compact_star_1_1_microphysics_1_1_b_n_v_1_1_internal_1_1_b_n_v___chi_1_1_baryon}{Baryon}} lambda;}
+\DoxyCodeLine{231     \mbox{\hyperlink{struct_compact_star_1_1_microphysics_1_1_b_n_v_1_1_internal_1_1_b_n_v___chi_1_1_baryon}{Baryon}} proton;}
+\DoxyCodeLine{232     \mbox{\hyperlink{struct_compact_star_1_1_microphysics_1_1_b_n_v_1_1_internal_1_1_b_n_v___chi_1_1_baryon}{Baryon}} sigma\_m;}
+\DoxyCodeLine{233 }
+\DoxyCodeLine{234     \mbox{\hyperlink{struct_compact_star_1_1_microphysics_1_1_b_n_v_1_1_internal_1_1_b_n_v___chi_1_1_process}{Process}} process;}
+\DoxyCodeLine{235 }
+\DoxyCodeLine{236     \mbox{\hyperlink{class_compact_star_1_1_microphysics_1_1_b_n_v_1_1_internal_1_1_b_n_v___chi}{BNV\_Chi}}(\textcolor{keyword}{const} \mbox{\hyperlink{struct_compact_star_1_1_microphysics_1_1_b_n_v_1_1_internal_1_1_b_n_v___chi_1_1_process}{Process}} \&in\_process);}
+\DoxyCodeLine{237     \mbox{\hyperlink{class_compact_star_1_1_microphysics_1_1_b_n_v_1_1_internal_1_1_b_n_v___chi}{\string~BNV\_Chi}}();}
+\DoxyCodeLine{238 }
+\DoxyCodeLine{242     \textcolor{keywordtype}{double} \mbox{\hyperlink{class_compact_star_1_1_microphysics_1_1_b_n_v_1_1_internal_1_1_b_n_v___chi_af245f6a2e2343fb317a323fc593d41aa}{Vacuum\_Decay\_Br}}(\textcolor{keyword}{const} \mbox{\hyperlink{struct_compact_star_1_1_microphysics_1_1_b_n_v_1_1_internal_1_1_b_n_v___chi_1_1_baryon}{Baryon}} \&B,}
+\DoxyCodeLine{243                            \textcolor{keyword}{const} \textcolor{keywordtype}{double} \&in\_m\_chi,}
+\DoxyCodeLine{244                            \textcolor{keyword}{const} \textcolor{keywordtype}{double} \&in\_eps\_lam) \textcolor{keyword}{const};}
+\DoxyCodeLine{245 }
+\DoxyCodeLine{247     \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_compact_star_1_1_microphysics_1_1_b_n_v_1_1_internal_1_1_b_n_v___chi_a52dad4da032cde3fa1a4fda5fe1f04a4}{SetModel}}(\textcolor{keyword}{const} std::string \&in\_eos\_model);}
+\DoxyCodeLine{248 }
+\DoxyCodeLine{250     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_compact_star_1_1_microphysics_1_1_b_n_v_1_1_internal_1_1_b_n_v___chi_a7be86b5f8cb25f58f75a3cedfb3f82a7}{SetPulsar}}(\textcolor{keyword}{const} \mbox{\hyperlink{class_compact_star_1_1_pulsar}{CompactStar::Pulsar}} \&);}
+\DoxyCodeLine{251 }
+\DoxyCodeLine{253     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_compact_star_1_1_microphysics_1_1_b_n_v_1_1_internal_1_1_b_n_v___chi_ae262f436f32e004e2f8eac17c3485803}{SetChiMassRange}}(\textcolor{keyword}{const} \mbox{\hyperlink{struct_zaki_1_1_math_1_1_axis}{Zaki::Math::Axis}} \&);}
+\DoxyCodeLine{254 }
+\DoxyCodeLine{258     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_compact_star_1_1_microphysics_1_1_b_n_v_1_1_internal_1_1_b_n_v___chi_af798e28a98375295203bab7f7f1a8b23}{SetBNVLimit}}(\textcolor{keyword}{const} \textcolor{keywordtype}{double} \&in\_gamma);}
+\DoxyCodeLine{259 }
+\DoxyCodeLine{261     \textcolor{comment}{// void Analyze(NStar* in\_star) override;}}
+\DoxyCodeLine{262     \textcolor{comment}{// void Analyze(MixedStar* in\_star) override \{\}}}
+\DoxyCodeLine{263 }
+\DoxyCodeLine{267     \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_compact_star_1_1_microphysics_1_1_b_n_v_1_1_internal_1_1_b_n_v___chi_ac7c1c59926ad01be7f35b6f7b506de9b}{ImportEOS}}(\textcolor{keyword}{const} \mbox{\hyperlink{class_zaki_1_1_string_1_1_directory}{Zaki::String::Directory}} \&eos\_dir,}
+\DoxyCodeLine{268                            \textcolor{keyword}{const} std::string \&micro\_dir = \textcolor{stringliteral}{"{}"{}});}
+\DoxyCodeLine{269 }
+\DoxyCodeLine{271     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_compact_star_1_1_microphysics_1_1_b_n_v_1_1_internal_1_1_b_n_v___chi_a5a3e3ddfc057f09d364dc6412f6428b3}{GenSequence}}() \textcolor{keyword}{const};}
+\DoxyCodeLine{272 }
+\DoxyCodeLine{274     \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_compact_star_1_1_microphysics_1_1_b_n_v_1_1_internal_1_1_b_n_v___chi_a757844bfe4b402da78f62896d2278360}{FindPulsar}}(\textcolor{keyword}{const} \textcolor{keywordtype}{bool} \&gen\_plots = \textcolor{keyword}{false});}
+\DoxyCodeLine{275 }
+\DoxyCodeLine{277     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_compact_star_1_1_microphysics_1_1_b_n_v_1_1_internal_1_1_b_n_v___chi_af44e7b02ccf75976e8c90711b20d26eb}{Plot\_Meff\_Radius}}();}
+\DoxyCodeLine{278 }
+\DoxyCodeLine{280     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_compact_star_1_1_microphysics_1_1_b_n_v_1_1_internal_1_1_b_n_v___chi_afc2f5bd59ef97572390c1d071c562887}{Plot\_RestEnergy\_Radius}}();}
+\DoxyCodeLine{281 }
+\DoxyCodeLine{283     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_compact_star_1_1_microphysics_1_1_b_n_v_1_1_internal_1_1_b_n_v___chi_aba4e26a4e253075bd397c3dcbcb03d21}{Plot\_EF\_Radius}}();}
+\DoxyCodeLine{284 }
+\DoxyCodeLine{286     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_compact_star_1_1_microphysics_1_1_b_n_v_1_1_internal_1_1_b_n_v___chi_a3525ffab1c10f276cfd0c68d5386cdb3}{Plot\_RestE\_EF\_Radius}}(\textcolor{keyword}{const} \mbox{\hyperlink{struct_compact_star_1_1_microphysics_1_1_b_n_v_1_1_internal_1_1_b_n_v___chi_1_1_baryon}{Baryon}} \&B);}
+\DoxyCodeLine{287 }
+\DoxyCodeLine{289     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_compact_star_1_1_microphysics_1_1_b_n_v_1_1_internal_1_1_b_n_v___chi_a93eed7c3b1243f484550f92c422fe0db}{Plot\_CM\_E\_Radius}}(\textcolor{keyword}{const} \mbox{\hyperlink{struct_compact_star_1_1_microphysics_1_1_b_n_v_1_1_internal_1_1_b_n_v___chi_1_1_baryon}{Baryon}} \&B);}
+\DoxyCodeLine{290 }
+\DoxyCodeLine{291     \textcolor{comment}{// Plots both E* band in the nm frame as a function of radius}}
+\DoxyCodeLine{292     \textcolor{keywordtype}{void} Plot\_Estar\_Radius(\textcolor{keyword}{const} \mbox{\hyperlink{struct_compact_star_1_1_microphysics_1_1_b_n_v_1_1_internal_1_1_b_n_v___chi_1_1_baryon}{Baryon}} \&B);}
+\DoxyCodeLine{293 }
+\DoxyCodeLine{294     \textcolor{keyword}{virtual} \textcolor{keywordtype}{double} PhaseSpace\_Integrand(\textcolor{keyword}{const} \textcolor{keywordtype}{double} \&x);}
+\DoxyCodeLine{295     \textcolor{keyword}{virtual} \textcolor{keywordtype}{double} PhaseSpace\_Integral(\textcolor{keyword}{const} \mbox{\hyperlink{struct_compact_star_1_1_microphysics_1_1_b_n_v_1_1_internal_1_1_b_n_v___chi_1_1_baryon}{Baryon}} \&B,}
+\DoxyCodeLine{296                                        \textcolor{keyword}{const} \textcolor{keywordtype}{double} \&m,}
+\DoxyCodeLine{297                                        \textcolor{keyword}{const} \textcolor{keywordtype}{double} \&m\_chi,}
+\DoxyCodeLine{298                                        \textcolor{keyword}{const} \textcolor{keywordtype}{double} \&Sigma\_0,}
+\DoxyCodeLine{299                                        \textcolor{keyword}{const} \textcolor{keywordtype}{double} \&x\_F);}
+\DoxyCodeLine{300 }
+\DoxyCodeLine{302     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_compact_star_1_1_microphysics_1_1_b_n_v_1_1_internal_1_1_b_n_v___chi_a35fc622034542c3f7d1f2d22a9ea3939}{PlotVacuumBrLim}}(\textcolor{keyword}{const} \mbox{\hyperlink{struct_compact_star_1_1_microphysics_1_1_b_n_v_1_1_internal_1_1_b_n_v___chi_1_1_baryon}{Baryon}} \&B);}
+\DoxyCodeLine{303 }
+\DoxyCodeLine{305     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_compact_star_1_1_microphysics_1_1_b_n_v_1_1_internal_1_1_b_n_v___chi_a35fc622034542c3f7d1f2d22a9ea3939}{PlotVacuumBrLim}}();}
+\DoxyCodeLine{306 }
+\DoxyCodeLine{309     \textcolor{keyword}{virtual} \mbox{\hyperlink{class_zaki_1_1_vector_1_1_data_set}{Zaki::Vector::DataSet}} \mbox{\hyperlink{class_compact_star_1_1_microphysics_1_1_b_n_v_1_1_internal_1_1_b_n_v___chi_a229f996e0d42940cefd0657f28f1610c}{Rate\_vs\_Density}}(}
+\DoxyCodeLine{310         \textcolor{keyword}{const} \textcolor{keywordtype}{double} \&m\_chi,}
+\DoxyCodeLine{311         \textcolor{keyword}{const} \mbox{\hyperlink{struct_compact_star_1_1_microphysics_1_1_b_n_v_1_1_internal_1_1_b_n_v___chi_1_1_baryon}{Baryon}} \&B,}
+\DoxyCodeLine{312         \textcolor{keyword}{const} \textcolor{keywordtype}{bool} \&gen\_plots = \textcolor{keyword}{false}) = 0;}
+\DoxyCodeLine{313 }
+\DoxyCodeLine{316     \textcolor{keyword}{virtual} \mbox{\hyperlink{class_zaki_1_1_vector_1_1_data_set}{Zaki::Vector::DataSet}} \mbox{\hyperlink{class_compact_star_1_1_microphysics_1_1_b_n_v_1_1_internal_1_1_b_n_v___chi_a86ed6731efa4ad4d7f7cedb9610ae01f}{Rate\_vs\_R}}(\textcolor{keyword}{const} \textcolor{keywordtype}{double} \&m\_chi,}
+\DoxyCodeLine{317                                             \textcolor{keyword}{const} \mbox{\hyperlink{struct_compact_star_1_1_microphysics_1_1_b_n_v_1_1_internal_1_1_b_n_v___chi_1_1_baryon}{Baryon}} \&B,}
+\DoxyCodeLine{318                                             \textcolor{keyword}{const} \textcolor{keywordtype}{bool} \&gen\_plots = \textcolor{keyword}{false}) = 0;}
+\DoxyCodeLine{319 }
+\DoxyCodeLine{320     \textcolor{comment}{// Plots rate}}
+\DoxyCodeLine{321     \textcolor{comment}{// as a function of radius in units of s\string^-\/1/fm\string^3}}
+\DoxyCodeLine{322     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_compact_star_1_1_microphysics_1_1_b_n_v_1_1_internal_1_1_b_n_v___chi_af75fcfc746014aef307d9f2a60e9f90e}{Rate\_vs\_R}}(\textcolor{keyword}{const} \textcolor{keywordtype}{double} \&m\_chi);}
+\DoxyCodeLine{323 }
+\DoxyCodeLine{324     \textcolor{comment}{// Plots rates for a set of chi's in the same figure}}
+\DoxyCodeLine{325     \textcolor{comment}{// as a function of radius in units of s\string^-\/1/fm\string^3}}
+\DoxyCodeLine{326     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_compact_star_1_1_microphysics_1_1_b_n_v_1_1_internal_1_1_b_n_v___chi_af75fcfc746014aef307d9f2a60e9f90e}{Rate\_vs\_R}}(\textcolor{keyword}{const} std::vector<double> \&m\_chi);}
+\DoxyCodeLine{327 }
+\DoxyCodeLine{328     \textcolor{comment}{// Plots rates for a set of chi's in the same figure}}
+\DoxyCodeLine{329     \textcolor{comment}{// as a function of radius in units of s\string^-\/1/fm\string^3}}
+\DoxyCodeLine{330     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_compact_star_1_1_microphysics_1_1_b_n_v_1_1_internal_1_1_b_n_v___chi_af75fcfc746014aef307d9f2a60e9f90e}{Rate\_vs\_R}}(\textcolor{keyword}{const} std::vector<double> \&m\_chi,}
+\DoxyCodeLine{331                    \textcolor{keyword}{const} \mbox{\hyperlink{struct_compact_star_1_1_microphysics_1_1_b_n_v_1_1_internal_1_1_b_n_v___chi_1_1_baryon}{Baryon}} \&B);}
+\DoxyCodeLine{332 }
+\DoxyCodeLine{333     \textcolor{comment}{// This function returns the (per baryon) rate for}}
+\DoxyCodeLine{334     \textcolor{comment}{//  B -\/> chi decay integrated over the radius}}
+\DoxyCodeLine{335     \textcolor{comment}{//  and in units of [ yr\string^-\/1 ]}}
+\DoxyCodeLine{336     \textcolor{keywordtype}{double} \mbox{\hyperlink{class_compact_star_1_1_microphysics_1_1_b_n_v_1_1_internal_1_1_b_n_v___chi_a55d084d64ffb4a4284e8069038f48c75}{GetRate}}(\textcolor{keyword}{const} \textcolor{keywordtype}{double} \&m\_chi,}
+\DoxyCodeLine{337                    \textcolor{keyword}{const} \mbox{\hyperlink{struct_compact_star_1_1_microphysics_1_1_b_n_v_1_1_internal_1_1_b_n_v___chi_1_1_baryon}{Baryon}} \&B);}
+\DoxyCodeLine{338 }
+\DoxyCodeLine{342     \textcolor{keywordtype}{double} \mbox{\hyperlink{class_compact_star_1_1_microphysics_1_1_b_n_v_1_1_internal_1_1_b_n_v___chi_a39ccef138e979eb3b8ff2848bedffff4}{GetEpsLim}}(\textcolor{keyword}{const} \textcolor{keywordtype}{double} \&m\_chi,}
+\DoxyCodeLine{343                      \textcolor{keyword}{const} \mbox{\hyperlink{struct_compact_star_1_1_microphysics_1_1_b_n_v_1_1_internal_1_1_b_n_v___chi_1_1_baryon}{Baryon}} \&B);}
+\DoxyCodeLine{344 }
+\DoxyCodeLine{348     \mbox{\hyperlink{struct_compact_star_1_1_microphysics_1_1_b_n_v_1_1_internal_1_1_b_n_v___chi_1_1_rate___eps}{Rate\_Eps}} \mbox{\hyperlink{class_compact_star_1_1_microphysics_1_1_b_n_v_1_1_internal_1_1_b_n_v___chi_a88dda360d5c46ed16b0c833d984663ff}{GetRate\_Eps}}(\textcolor{keyword}{const} \textcolor{keywordtype}{double} \&m\_chi,}
+\DoxyCodeLine{349                          \textcolor{keyword}{const} \mbox{\hyperlink{struct_compact_star_1_1_microphysics_1_1_b_n_v_1_1_internal_1_1_b_n_v___chi_1_1_baryon}{Baryon}} \&B);}
+\DoxyCodeLine{350 }
+\DoxyCodeLine{353     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_compact_star_1_1_microphysics_1_1_b_n_v_1_1_internal_1_1_b_n_v___chi_aef5c67b8cec464aa211f154f7c0aae54}{PlotRate\_Eps}}(\textcolor{keyword}{const} \mbox{\hyperlink{struct_compact_star_1_1_microphysics_1_1_b_n_v_1_1_internal_1_1_b_n_v___chi_1_1_baryon}{Baryon}} \&B);}
+\DoxyCodeLine{354 }
+\DoxyCodeLine{357     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_compact_star_1_1_microphysics_1_1_b_n_v_1_1_internal_1_1_b_n_v___chi_aef5c67b8cec464aa211f154f7c0aae54}{PlotRate\_Eps}}();}
+\DoxyCodeLine{358 }
+\DoxyCodeLine{360     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_compact_star_1_1_microphysics_1_1_b_n_v_1_1_internal_1_1_b_n_v___chi_a7dbca6876c7db64c09ca6fc6a7f7719c}{Export}}(\textcolor{keyword}{const} \mbox{\hyperlink{class_zaki_1_1_string_1_1_directory}{Zaki::String::Directory}} \&) \textcolor{keyword}{const};}
+\DoxyCodeLine{361 \};}
+\DoxyCodeLine{362 }
+\DoxyCodeLine{363 \textcolor{comment}{//==============================================================}}
+\DoxyCodeLine{364 \} \textcolor{comment}{// namespace CompactStar::Microphysics::BNV::Internal}}
+\DoxyCodeLine{365 \textcolor{comment}{//==============================================================}}
+\DoxyCodeLine{366 \textcolor{preprocessor}{\#endif }\textcolor{comment}{/*CompactStar\_Microphysics\_BNV\_Int\_Chi\_H*/}\textcolor{preprocessor}{}}
+
+\end{DoxyCode}

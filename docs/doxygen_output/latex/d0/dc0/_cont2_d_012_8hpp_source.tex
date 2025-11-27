@@ -1,0 +1,102 @@
+\hypertarget{_cont2_d_012_8hpp_source}{}\doxysection{Cont2D 2.hpp}
+\label{_cont2_d_012_8hpp_source}\index{dependencies/include/Confind/Cont2D 2.hpp@{dependencies/include/Confind/Cont2D 2.hpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#ifndef CONFIND\_Cont2D\_H}}
+\DoxyCodeLine{2 \textcolor{preprocessor}{\#define CONFIND\_Cont2D\_H}}
+\DoxyCodeLine{3 }
+\DoxyCodeLine{4 \textcolor{comment}{// \#if \_\_has\_include(<omp.h>)}}
+\DoxyCodeLine{5 \textcolor{comment}{//   \#include <omp.h>}}
+\DoxyCodeLine{6 \textcolor{comment}{//   \#define Z\_OMP 1}}
+\DoxyCodeLine{7 \textcolor{comment}{// \#else}}
+\DoxyCodeLine{8 \textcolor{comment}{//   \#define Z\_OMP 0}}
+\DoxyCodeLine{9 \textcolor{comment}{// \#endif}}
+\DoxyCodeLine{10 }
+\DoxyCodeLine{11 \textcolor{comment}{// \#include <random>}}
+\DoxyCodeLine{12 }
+\DoxyCodeLine{13 \textcolor{comment}{// Root}}
+\DoxyCodeLine{14 \textcolor{comment}{// \#include <TMultiGraph.h>}}
+\DoxyCodeLine{15 \textcolor{comment}{// \#include <TLegend.h>}}
+\DoxyCodeLine{16 }
+\DoxyCodeLine{17 }
+\DoxyCodeLine{18 \textcolor{preprocessor}{\#include <\mbox{\hyperlink{_coordinate_8hpp}{Zaki/Physics/Coordinate.hpp}}>}}
+\DoxyCodeLine{19 \textcolor{comment}{// \#include <Zaki/Math/MemFuncWrapper.hpp>}}
+\DoxyCodeLine{20 \textcolor{comment}{// \#include <Zaki/Math/Math\_Core.hpp>}}
+\DoxyCodeLine{21 \textcolor{preprocessor}{\#include <\mbox{\hyperlink{_vec_saver_8hpp}{Zaki/File/VecSaver.hpp}}>}}
+\DoxyCodeLine{22 }
+\DoxyCodeLine{23 \textcolor{preprocessor}{\#include "{}Confind/Base.hpp"{}}}
+\DoxyCodeLine{24 }
+\DoxyCodeLine{25 \textcolor{keyword}{namespace }CONFIND}
+\DoxyCodeLine{26 \{}
+\DoxyCodeLine{27 }
+\DoxyCodeLine{28 \textcolor{comment}{//==============================================================}}
+\DoxyCodeLine{29 \textcolor{keyword}{class }\mbox{\hyperlink{class_c_o_n_f_i_n_d_1_1_cont2_d}{Cont2D}} : \textcolor{keyword}{public} \mbox{\hyperlink{class_c_o_n_f_i_n_d_1_1_base}{Base}}}
+\DoxyCodeLine{30 \{}
+\DoxyCodeLine{31 }
+\DoxyCodeLine{32   \textcolor{keyword}{friend} \textcolor{keyword}{class }\mbox{\hyperlink{class_c_o_n_f_i_n_d_1_1_contour_finder}{ContourFinder}}  ;}
+\DoxyCodeLine{33   \textcolor{keyword}{friend} std::ostream  \& operator<<(std::ostream \&os, \textcolor{keyword}{const} \mbox{\hyperlink{class_c_o_n_f_i_n_d_1_1_cont2_d}{Cont2D}}\& p);}
+\DoxyCodeLine{34   \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{35   \textcolor{keyword}{public}:}
+\DoxyCodeLine{36     }
+\DoxyCodeLine{37     \textcolor{comment}{// Constructor}}
+\DoxyCodeLine{38     \mbox{\hyperlink{class_c_o_n_f_i_n_d_1_1_cont2_d}{Cont2D}}(\textcolor{keywordtype}{double}) ;}
+\DoxyCodeLine{39 }
+\DoxyCodeLine{40     \textcolor{comment}{// Copy Constructor}}
+\DoxyCodeLine{41     \mbox{\hyperlink{class_c_o_n_f_i_n_d_1_1_cont2_d}{Cont2D}}(\textcolor{keyword}{const} \mbox{\hyperlink{class_c_o_n_f_i_n_d_1_1_cont2_d}{Cont2D}}\&) ;}
+\DoxyCodeLine{42 }
+\DoxyCodeLine{43     \textcolor{keywordtype}{void} SetColor(\textcolor{keyword}{const} \mbox{\hyperlink{struct_c_o_n_f_i_n_d_1_1_color}{CONFIND::Color}}\&) ;}
+\DoxyCodeLine{44     \textcolor{keywordtype}{void} SetColor(\textcolor{keyword}{const} \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int}\&) ;}
+\DoxyCodeLine{45     \textcolor{keywordtype}{void} SetFound(\textcolor{keyword}{const} \textcolor{keywordtype}{bool}=\textcolor{keyword}{true}) ;}
+\DoxyCodeLine{46     \textcolor{keywordtype}{void} SetLabel(\textcolor{keyword}{const} std::string\&) ;}
+\DoxyCodeLine{47 }
+\DoxyCodeLine{48     \mbox{\hyperlink{struct_c_o_n_f_i_n_d_1_1_color}{CONFIND::Color}} GetColor() \textcolor{keyword}{const} ;}
+\DoxyCodeLine{49     \textcolor{keywordtype}{double} GetVal() \textcolor{keyword}{const} ;}
+\DoxyCodeLine{50     \textcolor{keywordtype}{bool} GetFound() \textcolor{keyword}{const} ;}
+\DoxyCodeLine{51 }
+\DoxyCodeLine{52     \textcolor{comment}{// temproray public}}
+\DoxyCodeLine{53     \textcolor{keywordtype}{void} AddPts(\textcolor{keyword}{const} std::vector<Zaki::Physics::Coord3D>\&) ;}
+\DoxyCodeLine{54     \textcolor{keywordtype}{void} RMDuplicates() ;}
+\DoxyCodeLine{55     \mbox{\hyperlink{struct_zaki_1_1_physics_1_1_coord3_d}{Zaki::Physics::Coord3D}} operator[](\textcolor{keyword}{const} \textcolor{keywordtype}{size\_t}\&) \textcolor{keyword}{const} ;}
+\DoxyCodeLine{56     \mbox{\hyperlink{class_c_o_n_f_i_n_d_1_1_cont2_d}{Cont2D}} operator+(\textcolor{keyword}{const} \mbox{\hyperlink{class_c_o_n_f_i_n_d_1_1_cont2_d}{Cont2D}}\& c) \textcolor{keyword}{const} ;}
+\DoxyCodeLine{57     \textcolor{keywordtype}{void} operator+=(\textcolor{keyword}{const} \mbox{\hyperlink{class_c_o_n_f_i_n_d_1_1_cont2_d}{Cont2D}}\& c) ;}
+\DoxyCodeLine{58     \textcolor{keywordtype}{size\_t} size() \textcolor{keyword}{const} ;}
+\DoxyCodeLine{59     \textcolor{keywordtype}{void} SortNew() ;}
+\DoxyCodeLine{60 }
+\DoxyCodeLine{61     \mbox{\hyperlink{class_zaki_1_1_math_1_1_curve2_d}{Zaki::Math::Curve2D}} ConvertToCurve2D() ;}
+\DoxyCodeLine{62 }
+\DoxyCodeLine{64     \mbox{\hyperlink{class_zaki_1_1_vector_1_1_data_set}{Zaki::Vector::DataSet}} \mbox{\hyperlink{class_c_o_n_f_i_n_d_1_1_cont2_d_a61f279d4812edff97c698f3a5daf3032}{ConvertToDataSet}}() ;}
+\DoxyCodeLine{65 }
+\DoxyCodeLine{66 }
+\DoxyCodeLine{67   \textcolor{keyword}{private}:}
+\DoxyCodeLine{68     \textcolor{keywordtype}{double} val;}
+\DoxyCodeLine{69     std::vector<Zaki::Physics::Coord3D> pts;}
+\DoxyCodeLine{70     \mbox{\hyperlink{struct_c_o_n_f_i_n_d_1_1_color}{CONFIND::Color}} color ;}
+\DoxyCodeLine{71     std::string label ;}
+\DoxyCodeLine{72 }
+\DoxyCodeLine{73     \textcolor{keywordtype}{bool} set\_label\_flag = false ;}
+\DoxyCodeLine{74     \textcolor{keywordtype}{bool} is\_found\_flag = false ;}
+\DoxyCodeLine{75 }
+\DoxyCodeLine{76 }
+\DoxyCodeLine{77     \textcolor{comment}{// The most bottom\_left point (used for sorting)}}
+\DoxyCodeLine{78     \mbox{\hyperlink{struct_zaki_1_1_physics_1_1_coord3_d}{Zaki::Physics::Coord3D}} bottom\_left ;}
+\DoxyCodeLine{79     \textcolor{keywordtype}{int} Orientation(\textcolor{keyword}{const} \mbox{\hyperlink{struct_zaki_1_1_physics_1_1_coord3_d}{Zaki::Physics::Coord3D}}\&, \textcolor{keyword}{const} \mbox{\hyperlink{struct_zaki_1_1_physics_1_1_coord3_d}{Zaki::Physics::Coord3D}}\&, \textcolor{keyword}{const} \mbox{\hyperlink{struct_zaki_1_1_physics_1_1_coord3_d}{Zaki::Physics::Coord3D}}\&) \textcolor{keyword}{const};}
+\DoxyCodeLine{80 }
+\DoxyCodeLine{81 }
+\DoxyCodeLine{82     \textcolor{keywordtype}{void} Export(\textcolor{keyword}{const} \mbox{\hyperlink{class_zaki_1_1_string_1_1_directory}{Zaki::String::Directory}}\& f\_name, \textcolor{keyword}{const} Zaki::File::FileMode\& mode) ;}
+\DoxyCodeLine{83 }
+\DoxyCodeLine{84     \textcolor{keywordtype}{void} Sort() ;}
+\DoxyCodeLine{85 }
+\DoxyCodeLine{86     \textcolor{keywordtype}{bool} comp\_Orient(\textcolor{keyword}{const} \mbox{\hyperlink{struct_zaki_1_1_physics_1_1_coord3_d}{Zaki::Physics::Coord3D}} \&, \textcolor{keyword}{const} \mbox{\hyperlink{struct_zaki_1_1_physics_1_1_coord3_d}{Zaki::Physics::Coord3D}} \&) \textcolor{keyword}{const}; }
+\DoxyCodeLine{87     \textcolor{keywordtype}{bool} sort\_cw = true ;}
+\DoxyCodeLine{88     \textcolor{keywordtype}{bool} already\_sorted = false ;}
+\DoxyCodeLine{89     \textcolor{keywordtype}{void} Clear() ; }
+\DoxyCodeLine{90 \};}
+\DoxyCodeLine{91 }
+\DoxyCodeLine{92 std::ostream\& operator << ( std::ostream \&output, \textcolor{keyword}{const} \mbox{\hyperlink{class_c_o_n_f_i_n_d_1_1_cont2_d}{Cont2D}}\& c ) ;}
+\DoxyCodeLine{93 \textcolor{comment}{//==============================================================}}
+\DoxyCodeLine{94 }
+\DoxyCodeLine{95 \} \textcolor{comment}{// CONFIND namespace}}
+\DoxyCodeLine{96 \textcolor{comment}{//==============================================================}}
+\DoxyCodeLine{97 \textcolor{preprocessor}{\#endif }\textcolor{comment}{/*CONFIND\_Cont2D\_H*/}\textcolor{preprocessor}{}}
+
+\end{DoxyCode}

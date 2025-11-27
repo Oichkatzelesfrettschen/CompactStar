@@ -1,0 +1,343 @@
+\hypertarget{_n_star_8hpp_source}{}\doxysection{NStar.\+hpp}
+\label{_n_star_8hpp_source}\index{CompactStar/Core/NStar.hpp@{CompactStar/Core/NStar.hpp}}
+\mbox{\hyperlink{_n_star_8hpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{comment}{// -\/*-\/ lsst-\/c++ -\/*-\/}}
+\DoxyCodeLine{2 \textcolor{comment}{/*}}
+\DoxyCodeLine{3 \textcolor{comment}{ * CompactStar}}
+\DoxyCodeLine{4 \textcolor{comment}{ * See License file at the top of the source tree.}}
+\DoxyCodeLine{5 \textcolor{comment}{ *}}
+\DoxyCodeLine{6 \textcolor{comment}{ * Copyright (c) 2025}}
+\DoxyCodeLine{7 \textcolor{comment}{ *   Mohammadreza Zakeri}}
+\DoxyCodeLine{8 \textcolor{comment}{ *}}
+\DoxyCodeLine{9 \textcolor{comment}{ * Permission is hereby granted, free of charge, to any person obtaining a copy}}
+\DoxyCodeLine{10 \textcolor{comment}{ * of this software and associated documentation files (the "{}Software"{}), to deal}}
+\DoxyCodeLine{11 \textcolor{comment}{ * in the Software without restriction, including without limitation the rights}}
+\DoxyCodeLine{12 \textcolor{comment}{ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell}}
+\DoxyCodeLine{13 \textcolor{comment}{ * copies of the Software, and to permit persons to whom the Software is}}
+\DoxyCodeLine{14 \textcolor{comment}{ * furnished to do so, subject to the following conditions:}}
+\DoxyCodeLine{15 \textcolor{comment}{ *}}
+\DoxyCodeLine{16 \textcolor{comment}{ * The above copyright notice and this permission notice shall be included in all}}
+\DoxyCodeLine{17 \textcolor{comment}{ * copies or substantial portions of the Software.}}
+\DoxyCodeLine{18 \textcolor{comment}{ *}}
+\DoxyCodeLine{19 \textcolor{comment}{ * THE SOFTWARE IS PROVIDED "{}AS IS"{}, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR}}
+\DoxyCodeLine{20 \textcolor{comment}{ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,}}
+\DoxyCodeLine{21 \textcolor{comment}{ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE}}
+\DoxyCodeLine{22 \textcolor{comment}{ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER}}
+\DoxyCodeLine{23 \textcolor{comment}{ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,}}
+\DoxyCodeLine{24 \textcolor{comment}{ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE}}
+\DoxyCodeLine{25 \textcolor{comment}{ * SOFTWARE.}}
+\DoxyCodeLine{26 \textcolor{comment}{ */}}
+\DoxyCodeLine{27 }
+\DoxyCodeLine{42 \textcolor{comment}{// Last edit Oct 31, 2025}}
+\DoxyCodeLine{43 }
+\DoxyCodeLine{44 \textcolor{preprocessor}{\#ifndef CompactStar\_NStar\_H}}
+\DoxyCodeLine{45 \textcolor{preprocessor}{\#define CompactStar\_NStar\_H}}
+\DoxyCodeLine{46 }
+\DoxyCodeLine{47 \textcolor{preprocessor}{\#include <\mbox{\hyperlink{_directory_8hpp}{Zaki/String/Directory.hpp}}>}}
+\DoxyCodeLine{48 \textcolor{preprocessor}{\#include <\mbox{\hyperlink{_data_set_8hpp}{Zaki/Vector/DataSet.hpp}}>}}
+\DoxyCodeLine{49 \textcolor{comment}{// \#include <chrono>}}
+\DoxyCodeLine{50 \textcolor{comment}{// \#include <cstdio>}}
+\DoxyCodeLine{51 \textcolor{comment}{// \#include <ctime>}}
+\DoxyCodeLine{52 \textcolor{comment}{// \#include <string>}}
+\DoxyCodeLine{53 }
+\DoxyCodeLine{54 \textcolor{preprocessor}{\#include <string\_view>}}
+\DoxyCodeLine{55 \textcolor{preprocessor}{\#include <vector>}}
+\DoxyCodeLine{56 }
+\DoxyCodeLine{57 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_prog_8hpp}{CompactStar/Core/Prog.hpp}}"{}}}
+\DoxyCodeLine{58 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_rotation_solver_8hpp}{CompactStar/Core/RotationSolver.hpp}}"{}}}
+\DoxyCodeLine{59 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_seq_point_8hpp}{CompactStar/Core/SeqPoint.hpp}}"{}}}
+\DoxyCodeLine{60 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_star_profile_8hpp}{CompactStar/Core/StarProfile.hpp}}"{}}}
+\DoxyCodeLine{61 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_comp_o_s_e___e_o_s_8hpp}{CompactStar/EOS/CompOSE\_EOS.hpp}}"{}}}
+\DoxyCodeLine{62 }
+\DoxyCodeLine{63 \textcolor{keyword}{namespace }CompactStar}
+\DoxyCodeLine{64 \{}
+\DoxyCodeLine{65 }
+\DoxyCodeLine{66 \textcolor{comment}{// Forward declarations}}
+\DoxyCodeLine{67 \textcolor{keyword}{struct }TOVPoint;}
+\DoxyCodeLine{68 \textcolor{keyword}{class }TOVSolver;}
+\DoxyCodeLine{69 \textcolor{keyword}{class }RotationSolver;}
+\DoxyCodeLine{70 \textcolor{keyword}{class }Sequence;}
+\DoxyCodeLine{71 }
+\DoxyCodeLine{72 \textcolor{comment}{//==============================================================}}
+\DoxyCodeLine{73 \textcolor{comment}{//                        NStar Class}}
+\DoxyCodeLine{74 \textcolor{comment}{//==============================================================}}
+\DoxyCodeLine{83 \textcolor{comment}{}\textcolor{keyword}{class }\mbox{\hyperlink{class_compact_star_1_1_n_star}{NStar}} : \textcolor{keyword}{public} \mbox{\hyperlink{class_compact_star_1_1_prog}{Prog}}}
+\DoxyCodeLine{84 \{}
+\DoxyCodeLine{85     \textcolor{keyword}{friend} \textcolor{keyword}{class }\mbox{\hyperlink{class_compact_star_1_1_rotation_solver}{RotationSolver}};}
+\DoxyCodeLine{86     \textcolor{keyword}{friend} \textcolor{keyword}{class }\mbox{\hyperlink{class_compact_star_1_1_t_o_v_solver}{TOVSolver}};}
+\DoxyCodeLine{87     \textcolor{keyword}{friend} \textcolor{keyword}{class }\mbox{\hyperlink{class_compact_star_1_1_sequence}{Sequence}};}
+\DoxyCodeLine{88 }
+\DoxyCodeLine{89   \textcolor{keyword}{private}:}
+\DoxyCodeLine{90     \textcolor{comment}{// -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{91     \textcolor{comment}{// 1) Legacy storage (pre-\/StarProfile)}}
+\DoxyCodeLine{92     \textcolor{comment}{// -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{94 \textcolor{comment}{}    \textcolor{comment}{// Zaki::Vector::DataSet ds;}}
+\DoxyCodeLine{95 }
+\DoxyCodeLine{97     \mbox{\hyperlink{class_zaki_1_1_vector_1_1_data_set}{Zaki::Vector::DataSet}} B\_integrand;}
+\DoxyCodeLine{98 }
+\DoxyCodeLine{100     \textcolor{keywordtype}{bool} surface\_ready = \textcolor{keyword}{false};}
+\DoxyCodeLine{101 }
+\DoxyCodeLine{103     \mbox{\hyperlink{class_compact_star_1_1_rotation_solver}{RotationSolver}} rot\_solver;}
+\DoxyCodeLine{104 }
+\DoxyCodeLine{106     \textcolor{comment}{// SeqPoint sequence;}}
+\DoxyCodeLine{107 }
+\DoxyCodeLine{109     \textcolor{keywordtype}{double} MomI = 0.0;}
+\DoxyCodeLine{110 }
+\DoxyCodeLine{112     \textcolor{comment}{// int profile\_precision = 9;}}
+\DoxyCodeLine{113 }
+\DoxyCodeLine{125     \textcolor{comment}{// enum class Col : int}}
+\DoxyCodeLine{126     \textcolor{comment}{// \{}}
+\DoxyCodeLine{127     \textcolor{comment}{//  R = 0,}}
+\DoxyCodeLine{128     \textcolor{comment}{//  M = 1,}}
+\DoxyCodeLine{129     \textcolor{comment}{//  NuPrime = 2,}}
+\DoxyCodeLine{130     \textcolor{comment}{//  P = 3,}}
+\DoxyCodeLine{131     \textcolor{comment}{//  Eps = 4,}}
+\DoxyCodeLine{132     \textcolor{comment}{//  Rho = 5,}}
+\DoxyCodeLine{133     \textcolor{comment}{//  Nu = 6}}
+\DoxyCodeLine{134     \textcolor{comment}{// \};}}
+\DoxyCodeLine{135     \textcolor{comment}{// static constexpr std::size\_t kFixedCols = 7;}}
+\DoxyCodeLine{136     \textcolor{comment}{// static constexpr int idx(Col c) noexcept \{ return static\_cast<int>(c); \}}}
+\DoxyCodeLine{137 }
+\DoxyCodeLine{138     \textcolor{comment}{// const Zaki::Vector::DataColumn \&col(Col c) const noexcept \{ return ds[idx(c)]; \}}}
+\DoxyCodeLine{139     \textcolor{comment}{// Zaki::Vector::DataColumn \&col(Col c) noexcept \{ return ds[idx(c)]; \}}}
+\DoxyCodeLine{140 }
+\DoxyCodeLine{142     \textcolor{comment}{// std::vector<int> rho\_i\_idx;}}
+\DoxyCodeLine{143 }
+\DoxyCodeLine{155     \textcolor{keywordtype}{void} OnWorkDirChanged(\textcolor{keyword}{const} \mbox{\hyperlink{class_zaki_1_1_string_1_1_directory}{Zaki::String::Directory}} \&dir) \textcolor{keyword}{override};}
+\DoxyCodeLine{156 }
+\DoxyCodeLine{160     \textcolor{keywordtype}{void} BuildFromTOV(\textcolor{keyword}{const} std::vector<TOVPoint> \&in\_tov,}
+\DoxyCodeLine{161                       \textcolor{keyword}{const} std::vector<std::string> *species\_labels = \textcolor{keyword}{nullptr});}
+\DoxyCodeLine{162 }
+\DoxyCodeLine{163     \textcolor{comment}{// -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{164     \textcolor{comment}{// 2) New unified structural / metric / composition profile}}
+\DoxyCodeLine{165     \textcolor{comment}{// -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{167 \textcolor{comment}{}    \mbox{\hyperlink{struct_compact_star_1_1_star_profile}{StarProfile}} prof\_;}
+\DoxyCodeLine{168 }
+\DoxyCodeLine{170     \mbox{\hyperlink{class_compact_star_1_1_comp_o_s_e___e_o_s}{CompOSE\_EOS}} *eos\_ = \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{171 }
+\DoxyCodeLine{180     \textcolor{keywordtype}{void} InitInterpolantsFromProfile\_();}
+\DoxyCodeLine{181 }
+\DoxyCodeLine{182   \textcolor{keyword}{public}:}
+\DoxyCodeLine{183     \textcolor{comment}{// -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{184     \textcolor{comment}{// 3) Ctors / Dtor}}
+\DoxyCodeLine{185     \textcolor{comment}{// -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{186     \mbox{\hyperlink{class_compact_star_1_1_n_star}{NStar}}();}
+\DoxyCodeLine{187     \textcolor{keyword}{explicit} \mbox{\hyperlink{class_compact_star_1_1_n_star}{NStar}}(\textcolor{keyword}{const} std::vector<TOVPoint> \&in\_tov\_results);}
+\DoxyCodeLine{188     \mbox{\hyperlink{class_compact_star_1_1_n_star}{NStar}}(\textcolor{keyword}{const} std::vector<TOVPoint> \&in\_tov,}
+\DoxyCodeLine{189           \textcolor{keyword}{const} std::vector<std::string> \&species\_labels);}
+\DoxyCodeLine{190     \mbox{\hyperlink{class_compact_star_1_1_n_star_ab82930b6b701531a4ee6a4cae4047226}{\string~NStar}}();}
+\DoxyCodeLine{191 }
+\DoxyCodeLine{192     \mbox{\hyperlink{class_compact_star_1_1_n_star}{NStar}}(\textcolor{keyword}{const} \mbox{\hyperlink{class_compact_star_1_1_n_star}{NStar}} \&) = \textcolor{keyword}{delete};}
+\DoxyCodeLine{193     \mbox{\hyperlink{class_compact_star_1_1_n_star}{NStar}} \&operator=(\textcolor{keyword}{const} \mbox{\hyperlink{class_compact_star_1_1_n_star}{NStar}} \&) = \textcolor{keyword}{delete};}
+\DoxyCodeLine{194 }
+\DoxyCodeLine{195     \textcolor{comment}{// -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{196     \textcolor{comment}{// 4) EOS management}}
+\DoxyCodeLine{197     \textcolor{comment}{// -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{198     \textcolor{keywordtype}{void} AttachEOS(\mbox{\hyperlink{class_compact_star_1_1_comp_o_s_e___e_o_s}{CompOSE\_EOS}} *eos) \{ eos\_ = eos; \}}
+\DoxyCodeLine{199     \mbox{\hyperlink{class_compact_star_1_1_comp_o_s_e___e_o_s}{CompOSE\_EOS}} *GetEOS()\textcolor{keyword}{ const }\{ \textcolor{keywordflow}{return} eos\_; \}}
+\DoxyCodeLine{200 }
+\DoxyCodeLine{201     \textcolor{comment}{// -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{202     \textcolor{comment}{// 5) Legacy TOV init path (keep)}}
+\DoxyCodeLine{203     \textcolor{comment}{// -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{204     \textcolor{keywordtype}{void} InitFromTOVSolver(\textcolor{keyword}{const} \mbox{\hyperlink{class_compact_star_1_1_t_o_v_solver}{TOVSolver}} *in\_tov\_solver);}
+\DoxyCodeLine{205     \textcolor{keywordtype}{void} Append(\textcolor{keyword}{const} \mbox{\hyperlink{struct_compact_star_1_1_t_o_v_point}{TOVPoint}} \&in\_tov\_pts);}
+\DoxyCodeLine{209     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_compact_star_1_1_n_star_a7f6668485389cc055e4a6961391a0d9e}{PrintProfileColumnSizes}}() \textcolor{keyword}{const};}
+\DoxyCodeLine{210 }
+\DoxyCodeLine{211     \textcolor{keywordtype}{void} FinalizeSurface();}
+\DoxyCodeLine{212     [[nodiscard]] \textcolor{keywordtype}{bool} IsSurfaceFinalized() \textcolor{keyword}{const} \textcolor{keyword}{noexcept} \{ \textcolor{keywordflow}{return} surface\_ready; \}}
+\DoxyCodeLine{213 }
+\DoxyCodeLine{215     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_compact_star_1_1_n_star_a59f790b90655725850bca28979252fc4}{Reset}}();}
+\DoxyCodeLine{216 }
+\DoxyCodeLine{217     \textcolor{comment}{// -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{218     \textcolor{comment}{// 6) NEW: profile-\/based solving / importing (preferred)}}
+\DoxyCodeLine{219     \textcolor{comment}{// -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{228 \textcolor{comment}{}    \textcolor{keywordtype}{int} \mbox{\hyperlink{class_compact_star_1_1_n_star_a8ae85e3f2ea447d49d29aa29055d25c5}{SolveTOV\_Profile}}(\textcolor{keyword}{const} \mbox{\hyperlink{class_compact_star_1_1_comp_o_s_e___e_o_s}{CompOSE\_EOS}} \&eos, \textcolor{keywordtype}{double} target\_M\_solar);}
+\DoxyCodeLine{229 }
+\DoxyCodeLine{233     \textcolor{keywordtype}{int} \mbox{\hyperlink{class_compact_star_1_1_n_star_af5aadcc857e1cce3dcb6a99cc4a6636d}{SolveTOV\_Profile}}(\textcolor{keywordtype}{double} target\_M\_solar)}
+\DoxyCodeLine{234     \{}
+\DoxyCodeLine{235         \textcolor{keywordflow}{if} (!eos\_)}
+\DoxyCodeLine{236             \textcolor{keywordflow}{return} 0;}
+\DoxyCodeLine{237         \textcolor{keywordflow}{return} \mbox{\hyperlink{class_compact_star_1_1_n_star_a8ae85e3f2ea447d49d29aa29055d25c5}{SolveTOV\_Profile}}(*eos\_, target\_M\_solar);}
+\DoxyCodeLine{238     \}}
+\DoxyCodeLine{239 }
+\DoxyCodeLine{243     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_compact_star_1_1_n_star_aeb3615640e1d6fb5e228c33f06aa8209}{ImportProfile\_Profile}}(\textcolor{keyword}{const} std::string \&model\_name,}
+\DoxyCodeLine{244                                \textcolor{keyword}{const} \mbox{\hyperlink{class_zaki_1_1_string_1_1_directory}{Zaki::String::Directory}} \&dir);}
+\DoxyCodeLine{245 }
+\DoxyCodeLine{249     \textcolor{keyword}{const} \mbox{\hyperlink{struct_compact_star_1_1_star_profile}{StarProfile}} \&\mbox{\hyperlink{class_compact_star_1_1_n_star_ad207f0cdc0633ea9204e5ad4cef5e2fd}{Profile}}()\textcolor{keyword}{ const }\{ \textcolor{keywordflow}{return} prof\_; \}}
+\DoxyCodeLine{250 }
+\DoxyCodeLine{254     \mbox{\hyperlink{struct_compact_star_1_1_star_profile_view}{StarProfileView}} \mbox{\hyperlink{class_compact_star_1_1_n_star_ac322d23a57965902bc0738def29dd20f}{View}}()\textcolor{keyword}{ const }\{ \textcolor{keywordflow}{return} \{\&prof\_\}; \}}
+\DoxyCodeLine{255 }
+\DoxyCodeLine{256     \textcolor{comment}{// -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{257     \textcolor{comment}{// 7) High-\/level properties (prefer profile, fallback to legacy)}}
+\DoxyCodeLine{258     \textcolor{comment}{// -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{259 }
+\DoxyCodeLine{263     \textcolor{comment}{// [[nodiscard]] SeqPoint GetSequence() const \{ return sequence; \}}}
+\DoxyCodeLine{264 }
+\DoxyCodeLine{267     \textcolor{keyword}{const} \mbox{\hyperlink{class_compact_star_1_1_seq_point}{SeqPoint}} \&\mbox{\hyperlink{class_compact_star_1_1_n_star_a5b198d2e784a64ecbbdc0b3436471e36}{GetSequence}}() const noexcept;}
+\DoxyCodeLine{268 }
+\DoxyCodeLine{271     \mbox{\hyperlink{class_compact_star_1_1_seq_point}{SeqPoint}} \&\mbox{\hyperlink{class_compact_star_1_1_n_star_a5b198d2e784a64ecbbdc0b3436471e36}{GetSequence}}() noexcept;}
+\DoxyCodeLine{272 }
+\DoxyCodeLine{276     [[nodiscard]] \textcolor{keywordtype}{double} \mbox{\hyperlink{class_compact_star_1_1_n_star_a2b1294f932636fbff21690b2712f11a2}{RadiusSurface}}() const noexcept}
+\DoxyCodeLine{277     \{}
+\DoxyCodeLine{278         \textcolor{keywordflow}{if} (!prof\_.\mbox{\hyperlink{struct_compact_star_1_1_star_profile_a7b96f6da1096bce884d26fb4ca48fe0c}{empty}}() \&\& prof\_.\mbox{\hyperlink{struct_compact_star_1_1_star_profile_abfc49d2e02cf8638568e740282481928}{R}} > 0.0)}
+\DoxyCodeLine{279             \textcolor{keywordflow}{return} prof\_.\mbox{\hyperlink{struct_compact_star_1_1_star_profile_abfc49d2e02cf8638568e740282481928}{R}};}
+\DoxyCodeLine{280         \textcolor{keywordflow}{return} \mbox{\hyperlink{class_compact_star_1_1_n_star_a5b198d2e784a64ecbbdc0b3436471e36}{GetSequence}}().\mbox{\hyperlink{class_compact_star_1_1_seq_point_a68c1a5f589acd078100b6d015f94ef40}{r}};}
+\DoxyCodeLine{281     \}}
+\DoxyCodeLine{282 }
+\DoxyCodeLine{286     [[nodiscard]] \textcolor{keywordtype}{double} \mbox{\hyperlink{class_compact_star_1_1_n_star_a92c53461f39be76aa591f3395bd6a91a}{MassSurface}}() const noexcept}
+\DoxyCodeLine{287     \{}
+\DoxyCodeLine{288         \textcolor{keywordflow}{if} (!prof\_.\mbox{\hyperlink{struct_compact_star_1_1_star_profile_a7b96f6da1096bce884d26fb4ca48fe0c}{empty}}() \&\& prof\_.\mbox{\hyperlink{struct_compact_star_1_1_star_profile_a45976f38173ad03dd3c9eb5426e64fbc}{M}} > 0.0)}
+\DoxyCodeLine{289             \textcolor{keywordflow}{return} prof\_.\mbox{\hyperlink{struct_compact_star_1_1_star_profile_a45976f38173ad03dd3c9eb5426e64fbc}{M}};}
+\DoxyCodeLine{290         \textcolor{keywordflow}{return} \mbox{\hyperlink{class_compact_star_1_1_n_star_a5b198d2e784a64ecbbdc0b3436471e36}{GetSequence}}().\mbox{\hyperlink{class_compact_star_1_1_seq_point_aac3e5ddc0344b1c1d796349e8793b0a8}{m}};}
+\DoxyCodeLine{291     \}}
+\DoxyCodeLine{292 }
+\DoxyCodeLine{299     [[nodiscard]] std::size\_t \mbox{\hyperlink{class_compact_star_1_1_n_star_a39481f7840c390feba464ace8cb5e123}{Size}}() const noexcept}
+\DoxyCodeLine{300     \{}
+\DoxyCodeLine{301         \textcolor{keywordflow}{if} (!prof\_.\mbox{\hyperlink{struct_compact_star_1_1_star_profile_a7b96f6da1096bce884d26fb4ca48fe0c}{empty}}())}
+\DoxyCodeLine{302             \textcolor{keywordflow}{return} prof\_.\mbox{\hyperlink{struct_compact_star_1_1_star_profile_a4ed746f95b50357a8854791feb757438}{size}}();}
+\DoxyCodeLine{303 }
+\DoxyCodeLine{304         \textcolor{comment}{// legacy branch}}
+\DoxyCodeLine{305         \textcolor{comment}{// auto ds\_dims = ds.Dim();}}
+\DoxyCodeLine{306         \textcolor{comment}{// if (!ds\_dims.empty())}}
+\DoxyCodeLine{307         \textcolor{comment}{//  return ds[0].Size();}}
+\DoxyCodeLine{308 }
+\DoxyCodeLine{309         \textcolor{keywordflow}{return} 0;}
+\DoxyCodeLine{310     \}}
+\DoxyCodeLine{311 }
+\DoxyCodeLine{312     \textcolor{comment}{// -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{313     \textcolor{comment}{// 8) Per-\/species handling}}
+\DoxyCodeLine{314     \textcolor{comment}{// -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{318 \textcolor{comment}{}    [[nodiscard]] \textcolor{keywordtype}{bool} \mbox{\hyperlink{class_compact_star_1_1_n_star_aca82b4c3e64f2364828b1192b6cd6730}{HasRho\_i}}(std::string\_view label) \textcolor{keyword}{const} \textcolor{keyword}{noexcept}}
+\DoxyCodeLine{319     \{}
+\DoxyCodeLine{320         \textcolor{comment}{// profile-\/aware check (preferred)}}
+\DoxyCodeLine{321         \textcolor{keywordflow}{if} (!prof\_.\mbox{\hyperlink{struct_compact_star_1_1_star_profile_a7b96f6da1096bce884d26fb4ca48fe0c}{empty}}() \&\& prof\_.\mbox{\hyperlink{struct_compact_star_1_1_star_profile_a0bb40bacac3138a8284f0bca0c97c4d5}{HasSpecies}}(std::string(label)))}
+\DoxyCodeLine{322             \textcolor{keywordflow}{return} \textcolor{keyword}{true};}
+\DoxyCodeLine{323 }
+\DoxyCodeLine{324         \textcolor{comment}{// legacy: we don’t have label→index here, so we can’t be exact}}
+\DoxyCodeLine{325         \textcolor{keywordflow}{return} \textcolor{keyword}{false};}
+\DoxyCodeLine{326     \}}
+\DoxyCodeLine{327 }
+\DoxyCodeLine{333     \textcolor{comment}{// 1) CONST VERSION}}
+\DoxyCodeLine{334     \textcolor{comment}{// profile-\/aware, read-\/only}}
+\DoxyCodeLine{335     \textcolor{keyword}{const} \mbox{\hyperlink{struct_zaki_1_1_vector_1_1_data_column}{Zaki::Vector::DataColumn}} *}
+\DoxyCodeLine{336     \mbox{\hyperlink{class_compact_star_1_1_n_star_a38687262ca05c5eaf98bedf3d7822e3f}{GetRho\_i}}(\textcolor{keyword}{const} std::string\_view \&label) \textcolor{keyword}{const};}
+\DoxyCodeLine{337     \textcolor{comment}{// \{}}
+\DoxyCodeLine{338     \textcolor{comment}{//  if (prof\_.empty())}}
+\DoxyCodeLine{339     \textcolor{comment}{//      return nullptr;}}
+\DoxyCodeLine{340 }
+\DoxyCodeLine{341     \textcolor{comment}{//  // assume StarProfile has: const DataColumn *GetSpeciesPtr(const std::string \&) const}}
+\DoxyCodeLine{342     \textcolor{comment}{//  return prof\_.GetSpeciesPtr(std::string(label));}}
+\DoxyCodeLine{343     \textcolor{comment}{// \}}}
+\DoxyCodeLine{344 }
+\DoxyCodeLine{348     \textcolor{comment}{// 2) MUTABLE VERSION}}
+\DoxyCodeLine{349     \textcolor{comment}{// profile-\/aware, returns non-\/const column}}
+\DoxyCodeLine{350     \mbox{\hyperlink{struct_zaki_1_1_vector_1_1_data_column}{Zaki::Vector::DataColumn}} *\mbox{\hyperlink{class_compact_star_1_1_n_star_a55c554d244d4ae352e77f1bd73e56659}{GetRho\_i}}(\textcolor{keyword}{const} std::string \&label)}
+\DoxyCodeLine{351     \{}
+\DoxyCodeLine{352         \textcolor{keywordflow}{if} (prof\_.\mbox{\hyperlink{struct_compact_star_1_1_star_profile_a7b96f6da1096bce884d26fb4ca48fe0c}{empty}}())}
+\DoxyCodeLine{353             \textcolor{keywordflow}{return} \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{354 }
+\DoxyCodeLine{355         \textcolor{comment}{// assume StarProfile has: DataColumn *GetSpeciesPtr(const std::string \&)}}
+\DoxyCodeLine{356         \textcolor{keywordflow}{return} prof\_.\mbox{\hyperlink{struct_compact_star_1_1_star_profile_a40267c9458957caf98a29e34e8286b13}{GetSpeciesPtr}}(label);}
+\DoxyCodeLine{357     \}}
+\DoxyCodeLine{358 }
+\DoxyCodeLine{359     \textcolor{comment}{// -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{360     \textcolor{comment}{// 9) Rotation / moment of inertia (keep)}}
+\DoxyCodeLine{361     \textcolor{comment}{// -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{362     [[nodiscard]] \textcolor{keywordtype}{double} \mbox{\hyperlink{class_compact_star_1_1_n_star_adc383e0f69703cca5c40052f8c8b930f}{Find\_MomInertia}}();}
+\DoxyCodeLine{363 }
+\DoxyCodeLine{364     \textcolor{comment}{// -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{365     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_compact_star_1_1_n_star_a53262063f5ebdf66305911864f160325}{EvaluateNu}}();}
+\DoxyCodeLine{366 }
+\DoxyCodeLine{367     \textcolor{comment}{// -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{368     \textcolor{comment}{// 10) Export (keep)}}
+\DoxyCodeLine{369     \textcolor{comment}{// -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{370     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_compact_star_1_1_n_star_a7e8121742a5ab0a98acc77cf4ce35f1f}{SetProfilePrecision}}(\textcolor{keyword}{const} \textcolor{keywordtype}{int} \&profile\_precision);}
+\DoxyCodeLine{371     \textcolor{keywordtype}{void} Export(\textcolor{keyword}{const} \mbox{\hyperlink{class_zaki_1_1_string_1_1_directory}{Zaki::String::Directory}} \&in\_dir);}
+\DoxyCodeLine{372 }
+\DoxyCodeLine{373     \textcolor{comment}{// =========================================================}}
+\DoxyCodeLine{374     \textcolor{comment}{// ===== INTERPOLATED ACCESSORS (profile-\/first) ============}}
+\DoxyCodeLine{375     \textcolor{comment}{// =========================================================}}
+\DoxyCodeLine{376 }
+\DoxyCodeLine{378     \textcolor{keywordtype}{double} \mbox{\hyperlink{class_compact_star_1_1_n_star_a7522b74b1b082ff0862a57f9f7703561}{GetMetricNu}}(\textcolor{keyword}{const} \textcolor{keywordtype}{double} \&in\_r) \textcolor{keyword}{const};}
+\DoxyCodeLine{379 }
+\DoxyCodeLine{381     \textcolor{keywordtype}{double} \mbox{\hyperlink{class_compact_star_1_1_n_star_a5983e327225a2d9bf1c11592709afbe5}{GetMass}}(\textcolor{keyword}{const} \textcolor{keywordtype}{double} \&in\_r) \textcolor{keyword}{const};}
+\DoxyCodeLine{382 }
+\DoxyCodeLine{384     \textcolor{keywordtype}{double} \mbox{\hyperlink{class_compact_star_1_1_n_star_a86f04df9aa261da387398f63371baf57}{GetBaryonDensity}}(\textcolor{keyword}{const} \textcolor{keywordtype}{double} \&in\_r) \textcolor{keyword}{const};}
+\DoxyCodeLine{385 }
+\DoxyCodeLine{387     \textcolor{keywordtype}{double} \mbox{\hyperlink{class_compact_star_1_1_n_star_a5da824f90b5a39023f37922b6b9bb2c1}{GetEnergyDensity}}(\textcolor{keyword}{const} \textcolor{keywordtype}{double} \&in\_r) \textcolor{keyword}{const};}
+\DoxyCodeLine{388 }
+\DoxyCodeLine{390     \textcolor{keywordtype}{double} \mbox{\hyperlink{class_compact_star_1_1_n_star_a7fb82d8677545986c2a75b73ac1d5f12}{GetPressure}}(\textcolor{keyword}{const} \textcolor{keywordtype}{double} \&in\_r) \textcolor{keyword}{const};}
+\DoxyCodeLine{391 }
+\DoxyCodeLine{393     \textcolor{keywordtype}{double} \mbox{\hyperlink{class_compact_star_1_1_n_star_a63ffc5c2e0dd96f5244a9e819393c53c}{BaryonNumIntegrand}}(\textcolor{keywordtype}{double} in\_r) \textcolor{keyword}{const};}
+\DoxyCodeLine{394     \textcolor{comment}{// -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{395     \textcolor{comment}{// 11) ===== LEGACY ds-\/BASED GETTERS (commented, to be replaced) =====}}
+\DoxyCodeLine{396     \textcolor{comment}{// -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{397     \textcolor{comment}{// These are the ones you can grep in VSCode and replace with}}
+\DoxyCodeLine{398     \textcolor{comment}{// Profile().Get(...), Profile().GetPressure(), etc.}}
+\DoxyCodeLine{399 }
+\DoxyCodeLine{400     \textcolor{comment}{// [[nodiscard]] double GetMass(const double\& in\_r) const;}}
+\DoxyCodeLine{401     \textcolor{comment}{// Zaki::Vector::DataColumn*       GetMass() noexcept;}}
+\DoxyCodeLine{402     \textcolor{comment}{// const Zaki::Vector::DataColumn* GetMass() const noexcept;}}
+\DoxyCodeLine{403 }
+\DoxyCodeLine{404     \textcolor{comment}{// [[nodiscard]] double GetRho(const double\& in\_r) const noexcept;}}
+\DoxyCodeLine{405     \textcolor{comment}{// Zaki::Vector::DataColumn*       GetRho() noexcept;}}
+\DoxyCodeLine{406     \textcolor{comment}{// const Zaki::Vector::DataColumn* GetRho() const noexcept;}}
+\DoxyCodeLine{407 }
+\DoxyCodeLine{408     \textcolor{comment}{// [[nodiscard]] double GetEps(const double\& in\_r) const noexcept;}}
+\DoxyCodeLine{409     \textcolor{comment}{// Zaki::Vector::DataColumn*       GetEps() noexcept;}}
+\DoxyCodeLine{410     \textcolor{comment}{// const Zaki::Vector::DataColumn* GetEps() const noexcept;}}
+\DoxyCodeLine{411 }
+\DoxyCodeLine{412     \textcolor{comment}{// [[nodiscard]] double GetPress(const double\& in\_r) const noexcept;}}
+\DoxyCodeLine{413     \textcolor{comment}{// Zaki::Vector::DataColumn*       GetPress() noexcept;}}
+\DoxyCodeLine{414     \textcolor{comment}{// const Zaki::Vector::DataColumn* GetPress() const noexcept;}}
+\DoxyCodeLine{415 }
+\DoxyCodeLine{416     \textcolor{comment}{// [[nodiscard]] double GetNu(const double\& in\_r) const;}}
+\DoxyCodeLine{417     \textcolor{comment}{// Zaki::Vector::DataColumn*       GetNu() noexcept;}}
+\DoxyCodeLine{418     \textcolor{comment}{// const Zaki::Vector::DataColumn* GetNu() const noexcept;}}
+\DoxyCodeLine{419 }
+\DoxyCodeLine{420     \textcolor{comment}{// Zaki::Vector::DataColumn*       GetRadius() noexcept;}}
+\DoxyCodeLine{421     \textcolor{comment}{// const Zaki::Vector::DataColumn* GetRadius() const noexcept;}}
+\DoxyCodeLine{422 }
+\DoxyCodeLine{423     \textcolor{comment}{// double BaryonNumIntegrand(double in\_r) const;}}
+\DoxyCodeLine{424 \};}
+\DoxyCodeLine{425 }
+\DoxyCodeLine{426 \textcolor{comment}{//==============================================================}}
+\DoxyCodeLine{427 \textcolor{comment}{//              Candidate removals / replacements}}
+\DoxyCodeLine{428 \textcolor{comment}{//==============================================================}}
+\DoxyCodeLine{429 \textcolor{comment}{/*}}
+\DoxyCodeLine{430 \textcolor{comment}{ * Replace these calls in your codebase:}}
+\DoxyCodeLine{431 \textcolor{comment}{ *}}
+\DoxyCodeLine{432 \textcolor{comment}{ * 1) GetMass(...) / GetMass()}}
+\DoxyCodeLine{433 \textcolor{comment}{ *      → Profile().GetMass()}}
+\DoxyCodeLine{434 \textcolor{comment}{ *      → Profile().M   (surface)}}
+\DoxyCodeLine{435 \textcolor{comment}{ *}}
+\DoxyCodeLine{436 \textcolor{comment}{ * 2) GetRho(...) / GetRho()}}
+\DoxyCodeLine{437 \textcolor{comment}{ *      → Profile().GetBaryonDensity()}}
+\DoxyCodeLine{438 \textcolor{comment}{ *}}
+\DoxyCodeLine{439 \textcolor{comment}{ * 3) GetEps(...) / GetEps()}}
+\DoxyCodeLine{440 \textcolor{comment}{ *      → Profile().GetEnergyDensity()}}
+\DoxyCodeLine{441 \textcolor{comment}{ *}}
+\DoxyCodeLine{442 \textcolor{comment}{ * 4) GetPress(...) / GetPress()}}
+\DoxyCodeLine{443 \textcolor{comment}{ *      → Profile().GetPressure()}}
+\DoxyCodeLine{444 \textcolor{comment}{ *}}
+\DoxyCodeLine{445 \textcolor{comment}{ * 5) GetNu(...) / GetNu()}}
+\DoxyCodeLine{446 \textcolor{comment}{ *      → Profile().GetMetricNu()}}
+\DoxyCodeLine{447 \textcolor{comment}{ *}}
+\DoxyCodeLine{448 \textcolor{comment}{ * 6) GetRadius()}}
+\DoxyCodeLine{449 \textcolor{comment}{ *      → Profile().GetRadius()}}
+\DoxyCodeLine{450 \textcolor{comment}{ *}}
+\DoxyCodeLine{451 \textcolor{comment}{ * 7) BaryonNumIntegrand(...)}}
+\DoxyCodeLine{452 \textcolor{comment}{ *      → move to a thermal/BNV helper that takes StarProfileView and uses only}}
+\DoxyCodeLine{453 \textcolor{comment}{ *        safe accessors (HasColumn(...) before Get(...)).}}
+\DoxyCodeLine{454 \textcolor{comment}{ *}}
+\DoxyCodeLine{455 \textcolor{comment}{ * NOTE: species}}
+\DoxyCodeLine{456 \textcolor{comment}{ *  -\/ old code can stay on NStar::GetRho\_i(...)}}
+\DoxyCodeLine{457 \textcolor{comment}{ *  -\/ new code should do: nstar.Profile().GetSpecies("{}n"{}) (now safe)}}
+\DoxyCodeLine{458 \textcolor{comment}{ */}}
+\DoxyCodeLine{459 }
+\DoxyCodeLine{460 \} \textcolor{comment}{// namespace CompactStar}}
+\DoxyCodeLine{461 }
+\DoxyCodeLine{462 \textcolor{preprocessor}{\#endif }\textcolor{comment}{/* CompactStar\_NStar\_H */}\textcolor{preprocessor}{}}
+
+\end{DoxyCode}

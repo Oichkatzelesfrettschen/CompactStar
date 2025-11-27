@@ -1,0 +1,24 @@
+\hypertarget{_geometry_cache_8hpp}{}\doxysection{Compact\+Star/\+Physics/\+Evolution/\+Geometry\+Cache.hpp File Reference}
+\label{_geometry_cache_8hpp}\index{CompactStar/Physics/Evolution/GeometryCache.hpp@{CompactStar/Physics/Evolution/GeometryCache.hpp}}
+
+
+Precomputed geometric weights and masks for fast radial integration.  
+
+
+{\ttfamily \#include $<$cstddef$>$}\newline
+{\ttfamily \#include $<$vector$>$}\newline
+\doxysubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{class_compact_star_1_1_chemical_heating_1_1_geometry_cache}{Compact\+Star\+::\+Chemical\+Heating\+::\+Geometry\+Cache}}
+\begin{DoxyCompactList}\small\item\em Stores radial weights and simple structure flags for integrals. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Precomputed geometric weights and masks for fast radial integration. 
+
+Geometry\+Cache builds redshift/volume weights once per star\+:
+\begin{DoxyItemize}
+\item $w_C(r)=4\pi r^2 e^{\Lambda(r)}$ (heat capacity integrals)
+\item $w_\nu(r)=4\pi r^2 e^{\Lambda(r)+2\nu(r)}$ (luminosities at infinity) 
+\end{DoxyItemize}

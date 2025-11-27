@@ -1,0 +1,168 @@
+\hypertarget{struct_compact_star_1_1_chemical_heating_1_1_config}{}\doxysection{Compact\+Star\+::Chemical\+Heating\+::Config Struct Reference}
+\label{struct_compact_star_1_1_chemical_heating_1_1_config}\index{CompactStar::ChemicalHeating::Config@{CompactStar::ChemicalHeating::Config}}
+
+
+Configures a single evolution run.  
+
+
+
+
+{\ttfamily \#include $<$Config.\+hpp$>$}
+
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{_config_8hpp_a095bc4bf317dab5e4ca6d0b0b6903074}{Stepper\+Type}} \mbox{\hyperlink{struct_compact_star_1_1_chemical_heating_1_1_config_a96d831e7dbd73ff323cf04fe4dbe6eb4}{stepper}} = \mbox{\hyperlink{_config_8hpp_a095bc4bf317dab5e4ca6d0b0b6903074a14a72850b24c13d12d4e2370e682a181}{Stepper\+Type\+::\+MSBDF}}
+\item 
+double \mbox{\hyperlink{struct_compact_star_1_1_chemical_heating_1_1_config_aa4c5a55a22eec91096e8269ee1fee904}{rtol}} = 1e-\/6
+\item 
+double \mbox{\hyperlink{struct_compact_star_1_1_chemical_heating_1_1_config_a9ab080ebab90bac0056c8d9efae16811}{atol}} = 1e-\/10
+\item 
+std\+::size\+\_\+t \mbox{\hyperlink{struct_compact_star_1_1_chemical_heating_1_1_config_adc7bfd08af04b106258234b837c45100}{max\+\_\+steps}} = 1000000
+\item 
+double \mbox{\hyperlink{struct_compact_star_1_1_chemical_heating_1_1_config_a802e2c0f0f1a6108efc9b7b56ca07d44}{dt\+\_\+save}} = 1.\+0e2
+\item 
+\mbox{\Hypertarget{struct_compact_star_1_1_chemical_heating_1_1_config_a5245537a387cc68f0fc121cbf87676b4}\label{struct_compact_star_1_1_chemical_heating_1_1_config_a5245537a387cc68f0fc121cbf87676b4}} 
+bool {\bfseries save\+\_\+intermediate} = true
+\item 
+bool \mbox{\hyperlink{struct_compact_star_1_1_chemical_heating_1_1_config_a981017e0fdf9259d1233d8774f8162a9}{use\+\_\+isothermal\+\_\+core}} = true
+\item 
+bool \mbox{\hyperlink{struct_compact_star_1_1_chemical_heating_1_1_config_a7dde396850ab77828fd7bc88f8258bc7}{enable\+\_\+\+MU}} = true
+\item 
+bool \mbox{\hyperlink{struct_compact_star_1_1_chemical_heating_1_1_config_aa8c21f9a31a682bbd2ededf1e371a00d}{enable\+\_\+\+DU}} = true
+\item 
+bool \mbox{\hyperlink{struct_compact_star_1_1_chemical_heating_1_1_config_a90b01acfdb0e8b164c653fde2a7e27a9}{enable\+\_\+\+PBF}} = false
+\item 
+bool \mbox{\hyperlink{struct_compact_star_1_1_chemical_heating_1_1_config_a6e831d28330e46940e5061a0af77a5f8}{enable\+\_\+\+BNV}} = false
+\item 
+bool \mbox{\hyperlink{struct_compact_star_1_1_chemical_heating_1_1_config_a98aa949e2d033e5083a67dccdd75df7b}{enable\+\_\+rotochem\+\_\+driver}} = false
+\item 
+bool \mbox{\hyperlink{struct_compact_star_1_1_chemical_heating_1_1_config_a6389ac3ff371bd22f0da04c9704b90a8}{couple\+\_\+spin}} = false
+\item 
+\mbox{\Hypertarget{struct_compact_star_1_1_chemical_heating_1_1_config_a592bd6b6748af673eb24770504ea0cb8}\label{struct_compact_star_1_1_chemical_heating_1_1_config_a592bd6b6748af673eb24770504ea0cb8}} 
+\mbox{\hyperlink{_config_8hpp_add99b1e3c709af78e4545e2c253c1739}{Envelope\+Model}} {\bfseries envelope} = Envelope\+Model\+::\+Iron
+\item 
+double \mbox{\hyperlink{struct_compact_star_1_1_chemical_heating_1_1_config_a81d66c29673f812c4c7c404f8badd5f1}{envelope\+\_\+xi}} = 0.\+0
+\item 
+\mbox{\Hypertarget{struct_compact_star_1_1_chemical_heating_1_1_config_a57c3bce13c1053e03ebdc2e108eff169}\label{struct_compact_star_1_1_chemical_heating_1_1_config_a57c3bce13c1053e03ebdc2e108eff169}} 
+bool {\bfseries superfluid\+\_\+n} = false
+\item 
+\mbox{\Hypertarget{struct_compact_star_1_1_chemical_heating_1_1_config_aaee1fd7dd4240b254391fdcff9b18ff7}\label{struct_compact_star_1_1_chemical_heating_1_1_config_aaee1fd7dd4240b254391fdcff9b18ff7}} 
+bool {\bfseries superfluid\+\_\+p} = false
+\item 
+std\+::size\+\_\+t \mbox{\hyperlink{struct_compact_star_1_1_chemical_heating_1_1_config_a47dfcf9e24eba298ad1bf3c6ad3f4de8}{n\+\_\+eta}} = 1
+\item 
+\mbox{\Hypertarget{struct_compact_star_1_1_chemical_heating_1_1_config_a3e65226fa00db186b10f3838128ce82d}\label{struct_compact_star_1_1_chemical_heating_1_1_config_a3e65226fa00db186b10f3838128ce82d}} 
+std\+::string {\bfseries unit\+\_\+policy} = \char`\"{}cgs\+\_\+with\+\_\+\+Gc1\char`\"{}
+\item 
+std\+::string \mbox{\hyperlink{struct_compact_star_1_1_chemical_heating_1_1_config_a1d9a11e88b84103d71c9d8c47442179e}{run\+\_\+label}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Configures a single evolution run. 
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{struct_compact_star_1_1_chemical_heating_1_1_config_a9ab080ebab90bac0056c8d9efae16811}\label{struct_compact_star_1_1_chemical_heating_1_1_config_a9ab080ebab90bac0056c8d9efae16811}} 
+\index{CompactStar::ChemicalHeating::Config@{CompactStar::ChemicalHeating::Config}!atol@{atol}}
+\index{atol@{atol}!CompactStar::ChemicalHeating::Config@{CompactStar::ChemicalHeating::Config}}
+\doxysubsubsection{\texorpdfstring{atol}{atol}}
+{\footnotesize\ttfamily double Compact\+Star\+::\+Chemical\+Heating\+::\+Config\+::atol = 1e-\/10}
+
+Absolute tolerance. ~\newline
+ \mbox{\Hypertarget{struct_compact_star_1_1_chemical_heating_1_1_config_a6389ac3ff371bd22f0da04c9704b90a8}\label{struct_compact_star_1_1_chemical_heating_1_1_config_a6389ac3ff371bd22f0da04c9704b90a8}} 
+\index{CompactStar::ChemicalHeating::Config@{CompactStar::ChemicalHeating::Config}!couple\_spin@{couple\_spin}}
+\index{couple\_spin@{couple\_spin}!CompactStar::ChemicalHeating::Config@{CompactStar::ChemicalHeating::Config}}
+\doxysubsubsection{\texorpdfstring{couple\_spin}{couple\_spin}}
+{\footnotesize\ttfamily bool Compact\+Star\+::\+Chemical\+Heating\+::\+Config\+::couple\+\_\+spin = false}
+
+Include $\Omega$ in the state. ~\newline
+ \mbox{\Hypertarget{struct_compact_star_1_1_chemical_heating_1_1_config_a802e2c0f0f1a6108efc9b7b56ca07d44}\label{struct_compact_star_1_1_chemical_heating_1_1_config_a802e2c0f0f1a6108efc9b7b56ca07d44}} 
+\index{CompactStar::ChemicalHeating::Config@{CompactStar::ChemicalHeating::Config}!dt\_save@{dt\_save}}
+\index{dt\_save@{dt\_save}!CompactStar::ChemicalHeating::Config@{CompactStar::ChemicalHeating::Config}}
+\doxysubsubsection{\texorpdfstring{dt\_save}{dt\_save}}
+{\footnotesize\ttfamily double Compact\+Star\+::\+Chemical\+Heating\+::\+Config\+::dt\+\_\+save = 1.\+0e2}
+
+Spacing of saved samples (s). \mbox{\Hypertarget{struct_compact_star_1_1_chemical_heating_1_1_config_a6e831d28330e46940e5061a0af77a5f8}\label{struct_compact_star_1_1_chemical_heating_1_1_config_a6e831d28330e46940e5061a0af77a5f8}} 
+\index{CompactStar::ChemicalHeating::Config@{CompactStar::ChemicalHeating::Config}!enable\_BNV@{enable\_BNV}}
+\index{enable\_BNV@{enable\_BNV}!CompactStar::ChemicalHeating::Config@{CompactStar::ChemicalHeating::Config}}
+\doxysubsubsection{\texorpdfstring{enable\_BNV}{enable\_BNV}}
+{\footnotesize\ttfamily bool Compact\+Star\+::\+Chemical\+Heating\+::\+Config\+::enable\+\_\+\+BNV = false}
+
+Baryon-\/number violating processes. ~\newline
+ \mbox{\Hypertarget{struct_compact_star_1_1_chemical_heating_1_1_config_aa8c21f9a31a682bbd2ededf1e371a00d}\label{struct_compact_star_1_1_chemical_heating_1_1_config_aa8c21f9a31a682bbd2ededf1e371a00d}} 
+\index{CompactStar::ChemicalHeating::Config@{CompactStar::ChemicalHeating::Config}!enable\_DU@{enable\_DU}}
+\index{enable\_DU@{enable\_DU}!CompactStar::ChemicalHeating::Config@{CompactStar::ChemicalHeating::Config}}
+\doxysubsubsection{\texorpdfstring{enable\_DU}{enable\_DU}}
+{\footnotesize\ttfamily bool Compact\+Star\+::\+Chemical\+Heating\+::\+Config\+::enable\+\_\+\+DU = true}
+
+Direct Urca emissivity/reactions. ~\newline
+ \mbox{\Hypertarget{struct_compact_star_1_1_chemical_heating_1_1_config_a7dde396850ab77828fd7bc88f8258bc7}\label{struct_compact_star_1_1_chemical_heating_1_1_config_a7dde396850ab77828fd7bc88f8258bc7}} 
+\index{CompactStar::ChemicalHeating::Config@{CompactStar::ChemicalHeating::Config}!enable\_MU@{enable\_MU}}
+\index{enable\_MU@{enable\_MU}!CompactStar::ChemicalHeating::Config@{CompactStar::ChemicalHeating::Config}}
+\doxysubsubsection{\texorpdfstring{enable\_MU}{enable\_MU}}
+{\footnotesize\ttfamily bool Compact\+Star\+::\+Chemical\+Heating\+::\+Config\+::enable\+\_\+\+MU = true}
+
+Modified Urca emissivity/reactions. ~\newline
+ \mbox{\Hypertarget{struct_compact_star_1_1_chemical_heating_1_1_config_a90b01acfdb0e8b164c653fde2a7e27a9}\label{struct_compact_star_1_1_chemical_heating_1_1_config_a90b01acfdb0e8b164c653fde2a7e27a9}} 
+\index{CompactStar::ChemicalHeating::Config@{CompactStar::ChemicalHeating::Config}!enable\_PBF@{enable\_PBF}}
+\index{enable\_PBF@{enable\_PBF}!CompactStar::ChemicalHeating::Config@{CompactStar::ChemicalHeating::Config}}
+\doxysubsubsection{\texorpdfstring{enable\_PBF}{enable\_PBF}}
+{\footnotesize\ttfamily bool Compact\+Star\+::\+Chemical\+Heating\+::\+Config\+::enable\+\_\+\+PBF = false}
+
+Pair-\/breaking/formation emission. ~\newline
+ \mbox{\Hypertarget{struct_compact_star_1_1_chemical_heating_1_1_config_a98aa949e2d033e5083a67dccdd75df7b}\label{struct_compact_star_1_1_chemical_heating_1_1_config_a98aa949e2d033e5083a67dccdd75df7b}} 
+\index{CompactStar::ChemicalHeating::Config@{CompactStar::ChemicalHeating::Config}!enable\_rotochem\_driver@{enable\_rotochem\_driver}}
+\index{enable\_rotochem\_driver@{enable\_rotochem\_driver}!CompactStar::ChemicalHeating::Config@{CompactStar::ChemicalHeating::Config}}
+\doxysubsubsection{\texorpdfstring{enable\_rotochem\_driver}{enable\_rotochem\_driver}}
+{\footnotesize\ttfamily bool Compact\+Star\+::\+Chemical\+Heating\+::\+Config\+::enable\+\_\+rotochem\+\_\+driver = false}
+
+Spin-\/down driver for $\eta$. ~\newline
+ \mbox{\Hypertarget{struct_compact_star_1_1_chemical_heating_1_1_config_a81d66c29673f812c4c7c404f8badd5f1}\label{struct_compact_star_1_1_chemical_heating_1_1_config_a81d66c29673f812c4c7c404f8badd5f1}} 
+\index{CompactStar::ChemicalHeating::Config@{CompactStar::ChemicalHeating::Config}!envelope\_xi@{envelope\_xi}}
+\index{envelope\_xi@{envelope\_xi}!CompactStar::ChemicalHeating::Config@{CompactStar::ChemicalHeating::Config}}
+\doxysubsubsection{\texorpdfstring{envelope\_xi}{envelope\_xi}}
+{\footnotesize\ttfamily double Compact\+Star\+::\+Chemical\+Heating\+::\+Config\+::envelope\+\_\+xi = 0.\+0}
+
+Light-\/element column parameter (if used). \mbox{\Hypertarget{struct_compact_star_1_1_chemical_heating_1_1_config_adc7bfd08af04b106258234b837c45100}\label{struct_compact_star_1_1_chemical_heating_1_1_config_adc7bfd08af04b106258234b837c45100}} 
+\index{CompactStar::ChemicalHeating::Config@{CompactStar::ChemicalHeating::Config}!max\_steps@{max\_steps}}
+\index{max\_steps@{max\_steps}!CompactStar::ChemicalHeating::Config@{CompactStar::ChemicalHeating::Config}}
+\doxysubsubsection{\texorpdfstring{max\_steps}{max\_steps}}
+{\footnotesize\ttfamily std\+::size\+\_\+t Compact\+Star\+::\+Chemical\+Heating\+::\+Config\+::max\+\_\+steps = 1000000}
+
+Safety cap on steps. \mbox{\Hypertarget{struct_compact_star_1_1_chemical_heating_1_1_config_a47dfcf9e24eba298ad1bf3c6ad3f4de8}\label{struct_compact_star_1_1_chemical_heating_1_1_config_a47dfcf9e24eba298ad1bf3c6ad3f4de8}} 
+\index{CompactStar::ChemicalHeating::Config@{CompactStar::ChemicalHeating::Config}!n\_eta@{n\_eta}}
+\index{n\_eta@{n\_eta}!CompactStar::ChemicalHeating::Config@{CompactStar::ChemicalHeating::Config}}
+\doxysubsubsection{\texorpdfstring{n\_eta}{n\_eta}}
+{\footnotesize\ttfamily std\+::size\+\_\+t Compact\+Star\+::\+Chemical\+Heating\+::\+Config\+::n\+\_\+eta = 1}
+
+Number of $\eta_i$ components. \mbox{\Hypertarget{struct_compact_star_1_1_chemical_heating_1_1_config_aa4c5a55a22eec91096e8269ee1fee904}\label{struct_compact_star_1_1_chemical_heating_1_1_config_aa4c5a55a22eec91096e8269ee1fee904}} 
+\index{CompactStar::ChemicalHeating::Config@{CompactStar::ChemicalHeating::Config}!rtol@{rtol}}
+\index{rtol@{rtol}!CompactStar::ChemicalHeating::Config@{CompactStar::ChemicalHeating::Config}}
+\doxysubsubsection{\texorpdfstring{rtol}{rtol}}
+{\footnotesize\ttfamily double Compact\+Star\+::\+Chemical\+Heating\+::\+Config\+::rtol = 1e-\/6}
+
+Relative tolerance. ~\newline
+ \mbox{\Hypertarget{struct_compact_star_1_1_chemical_heating_1_1_config_a1d9a11e88b84103d71c9d8c47442179e}\label{struct_compact_star_1_1_chemical_heating_1_1_config_a1d9a11e88b84103d71c9d8c47442179e}} 
+\index{CompactStar::ChemicalHeating::Config@{CompactStar::ChemicalHeating::Config}!run\_label@{run\_label}}
+\index{run\_label@{run\_label}!CompactStar::ChemicalHeating::Config@{CompactStar::ChemicalHeating::Config}}
+\doxysubsubsection{\texorpdfstring{run\_label}{run\_label}}
+{\footnotesize\ttfamily std\+::string Compact\+Star\+::\+Chemical\+Heating\+::\+Config\+::run\+\_\+label}
+
+Free-\/form label for outputs. \mbox{\Hypertarget{struct_compact_star_1_1_chemical_heating_1_1_config_a96d831e7dbd73ff323cf04fe4dbe6eb4}\label{struct_compact_star_1_1_chemical_heating_1_1_config_a96d831e7dbd73ff323cf04fe4dbe6eb4}} 
+\index{CompactStar::ChemicalHeating::Config@{CompactStar::ChemicalHeating::Config}!stepper@{stepper}}
+\index{stepper@{stepper}!CompactStar::ChemicalHeating::Config@{CompactStar::ChemicalHeating::Config}}
+\doxysubsubsection{\texorpdfstring{stepper}{stepper}}
+{\footnotesize\ttfamily \mbox{\hyperlink{_config_8hpp_a095bc4bf317dab5e4ca6d0b0b6903074}{Stepper\+Type}} Compact\+Star\+::\+Chemical\+Heating\+::\+Config\+::stepper = \mbox{\hyperlink{_config_8hpp_a095bc4bf317dab5e4ca6d0b0b6903074a14a72850b24c13d12d4e2370e682a181}{Stepper\+Type\+::\+MSBDF}}}
+
+Time stepper choice. \mbox{\Hypertarget{struct_compact_star_1_1_chemical_heating_1_1_config_a981017e0fdf9259d1233d8774f8162a9}\label{struct_compact_star_1_1_chemical_heating_1_1_config_a981017e0fdf9259d1233d8774f8162a9}} 
+\index{CompactStar::ChemicalHeating::Config@{CompactStar::ChemicalHeating::Config}!use\_isothermal\_core@{use\_isothermal\_core}}
+\index{use\_isothermal\_core@{use\_isothermal\_core}!CompactStar::ChemicalHeating::Config@{CompactStar::ChemicalHeating::Config}}
+\doxysubsubsection{\texorpdfstring{use\_isothermal\_core}{use\_isothermal\_core}}
+{\footnotesize\ttfamily bool Compact\+Star\+::\+Chemical\+Heating\+::\+Config\+::use\+\_\+isothermal\+\_\+core = true}
+
+Assume isothermal interior (standard). 
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Compact\+Star/\+Chemical\+Heating/\mbox{\hyperlink{_config_8hpp}{Config.\+hpp}}\end{DoxyCompactItemize}

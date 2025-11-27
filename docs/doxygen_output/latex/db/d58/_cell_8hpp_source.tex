@@ -1,0 +1,241 @@
+\hypertarget{_cell_8hpp_source}{}\doxysection{Cell.\+hpp}
+\label{_cell_8hpp_source}\index{dependencies/include/Confind/Cell.hpp@{dependencies/include/Confind/Cell.hpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#ifndef Cell\_H}}
+\DoxyCodeLine{2 \textcolor{preprocessor}{\#define Cell\_H}}
+\DoxyCodeLine{3 }
+\DoxyCodeLine{4 \textcolor{preprocessor}{\#include <array>}}
+\DoxyCodeLine{5 }
+\DoxyCodeLine{6 \textcolor{preprocessor}{\#include <\mbox{\hyperlink{_coordinate_8hpp}{Zaki/Physics/Coordinate.hpp}}>}}
+\DoxyCodeLine{7 }
+\DoxyCodeLine{8 \textcolor{preprocessor}{\#include "{}Confind/Base.hpp"{}}}
+\DoxyCodeLine{9 }
+\DoxyCodeLine{10 \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{11 \textcolor{keyword}{namespace }CONFIND}
+\DoxyCodeLine{12 \{}
+\DoxyCodeLine{13 }
+\DoxyCodeLine{14 \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{15 \textcolor{comment}{// Forward declaration}}
+\DoxyCodeLine{16 \textcolor{keyword}{class }Bundle ;}
+\DoxyCodeLine{17 \textcolor{keyword}{class }ContourFinder ;}
+\DoxyCodeLine{18 \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{19 }
+\DoxyCodeLine{20 \textcolor{comment}{//==============================================================}}
+\DoxyCodeLine{21 \textcolor{keyword}{struct }vertex}
+\DoxyCodeLine{22 \{}
+\DoxyCodeLine{23   \mbox{\hyperlink{struct_zaki_1_1_physics_1_1_coord3_d}{Zaki::Physics::Coord3D}} xyz   ;}
+\DoxyCodeLine{24 }
+\DoxyCodeLine{25   \textcolor{comment}{// status with respect to a level ( 1: above, 0: on, -\/1: below)}}
+\DoxyCodeLine{26   \textcolor{keywordtype}{int} status(\textcolor{keyword}{const} \textcolor{keywordtype}{double}\& lvl)\textcolor{keyword}{ const}}
+\DoxyCodeLine{27 \textcolor{keyword}{  }\{}
+\DoxyCodeLine{28     \textcolor{keywordflow}{if} ( xyz.z > lvl)}
+\DoxyCodeLine{29     \{}
+\DoxyCodeLine{30       \textcolor{keywordflow}{return} 1 ;}
+\DoxyCodeLine{31     \}}
+\DoxyCodeLine{32     \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} ( xyz.z < lvl)}
+\DoxyCodeLine{33     \{}
+\DoxyCodeLine{34       \textcolor{keywordflow}{return} -\/1 ;}
+\DoxyCodeLine{35     \}}
+\DoxyCodeLine{36     \textcolor{keywordflow}{else}}
+\DoxyCodeLine{37       \textcolor{keywordflow}{return} 0 ;}
+\DoxyCodeLine{38   \}}
+\DoxyCodeLine{39 }
+\DoxyCodeLine{40 \} ;}
+\DoxyCodeLine{41 \textcolor{comment}{//==============================================================}}
+\DoxyCodeLine{42 \textcolor{keyword}{struct }triangle}
+\DoxyCodeLine{43 \{}
+\DoxyCodeLine{44   \textcolor{comment}{// std::vector<vertex> v   ;}}
+\DoxyCodeLine{45   \textcolor{comment}{// vertex v[3] ;}}
+\DoxyCodeLine{46   std::array<vertex, 3> v;}
+\DoxyCodeLine{47 }
+\DoxyCodeLine{48   triangle(\textcolor{keyword}{const} vertex\& v\_1, \textcolor{keyword}{const} vertex\& v\_2, \textcolor{keyword}{const} vertex\& v\_3) }
+\DoxyCodeLine{49     : v(\{v\_1, v\_2, v\_3\}) \{\} ;}
+\DoxyCodeLine{50 }
+\DoxyCodeLine{51   \textcolor{keywordtype}{int} status(\textcolor{keyword}{const} \textcolor{keywordtype}{double}\& cont)\textcolor{keyword}{ const}}
+\DoxyCodeLine{52 \textcolor{keyword}{  }\{}
+\DoxyCodeLine{53     std::vector<int> set = \{ v[0].status(cont), v[1].status(cont), v[2].status(cont)\} ;}
+\DoxyCodeLine{54     \textcolor{keywordtype}{int} sum    = set[0] + set[1] + set[2] ;}
+\DoxyCodeLine{55     \textcolor{keywordtype}{int} mul    = set[0] * set[1] * set[2] ;}
+\DoxyCodeLine{56 }
+\DoxyCodeLine{57     \textcolor{keywordflow}{if} ( mul == 1 )}
+\DoxyCodeLine{58     \{}
+\DoxyCodeLine{59       \textcolor{comment}{// Two possibilities only:  (-\/1, -\/1, +1) or (+1, +1, +1)}}
+\DoxyCodeLine{60       \textcolor{keywordflow}{if}( sum == -\/1) \textcolor{comment}{// -\/-\/> (-\/1, -\/1, +1)}}
+\DoxyCodeLine{61       \textcolor{comment}{// (c-\/3) Two vertices lie below and one above the contour level: (-\/1, -\/1, +1)}}
+\DoxyCodeLine{62         \textcolor{keywordflow}{return} 3;}
+\DoxyCodeLine{63       \textcolor{keywordflow}{else} \textcolor{comment}{// -\/-\/> (+1, +1, +1): }}
+\DoxyCodeLine{64       \textcolor{comment}{// (j-\/10) All the vertices lie above the contour level.}}
+\DoxyCodeLine{65         \textcolor{keywordflow}{return} 10;}
+\DoxyCodeLine{66     \}}
+\DoxyCodeLine{67 }
+\DoxyCodeLine{68     \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} ( mul == -\/1 )}
+\DoxyCodeLine{69     \{}
+\DoxyCodeLine{70       \textcolor{comment}{// Two possibilities only:  (+1, +1, -\/1) or (-\/1, -\/1, -\/1)}}
+\DoxyCodeLine{71       \textcolor{keywordflow}{if}( sum == 1) \textcolor{comment}{// -\/-\/> (+1, +1, -\/1)}}
+\DoxyCodeLine{72       \textcolor{comment}{// (f-\/6)  One vertex lies below and two above the contour level: (-\/1, +1, +1)}}
+\DoxyCodeLine{73         \textcolor{keywordflow}{return} 6;}
+\DoxyCodeLine{74       \textcolor{keywordflow}{else} \textcolor{comment}{// -\/-\/> (-\/1, -\/1, -\/1): }}
+\DoxyCodeLine{75       \textcolor{comment}{// (a-\/1) All the vertices lie below the contour level.}}
+\DoxyCodeLine{76         \textcolor{keywordflow}{return} 1;}
+\DoxyCodeLine{77     \}}
+\DoxyCodeLine{78     }
+\DoxyCodeLine{79     \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} ( sum == 2 ) \textcolor{comment}{// : (1, 1, 0)}}
+\DoxyCodeLine{80     \textcolor{comment}{// i) One vertex lies on and two above the contour level.}}
+\DoxyCodeLine{81       \textcolor{keywordflow}{return} 9;}
+\DoxyCodeLine{82     \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} ( sum == -\/2 ) \textcolor{comment}{// : (-\/1, -\/1, 0)}}
+\DoxyCodeLine{83     \textcolor{comment}{// b) One vertex lies on and two below the contour level.}}
+\DoxyCodeLine{84       \textcolor{keywordflow}{return} 2;}
+\DoxyCodeLine{85 }
+\DoxyCodeLine{86     \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} ( sum == 1 ) \textcolor{comment}{// : (+1, 0, 0)}}
+\DoxyCodeLine{87     \textcolor{comment}{// h) Two vertices lie on and one above the contour level.}}
+\DoxyCodeLine{88       \textcolor{keywordflow}{return} 8;}
+\DoxyCodeLine{89     \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} ( sum == -\/1 ) \textcolor{comment}{// : (-\/1, 0, 0)}}
+\DoxyCodeLine{90     \textcolor{comment}{// d) Two vertices lie on and one below the contour level.}}
+\DoxyCodeLine{91       \textcolor{keywordflow}{return} 4;}
+\DoxyCodeLine{92 }
+\DoxyCodeLine{93     \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (set[0] != 0 || set[1] != 0 || set[2]!= 0 )}
+\DoxyCodeLine{94     \textcolor{comment}{// e) One vertex lies below, one on and one above the contour level.}}
+\DoxyCodeLine{95       \textcolor{keywordflow}{return} 5;}
+\DoxyCodeLine{96 }
+\DoxyCodeLine{97     \textcolor{comment}{// g) Three vertices lie on the contour level.}}
+\DoxyCodeLine{98     \textcolor{keywordflow}{else}}
+\DoxyCodeLine{99       \textcolor{keywordflow}{return} 7 ; }
+\DoxyCodeLine{100 }
+\DoxyCodeLine{101   \}}
+\DoxyCodeLine{102 \} ;}
+\DoxyCodeLine{103 }
+\DoxyCodeLine{104 \textcolor{comment}{//==============================================================}}
+\DoxyCodeLine{105 \textcolor{keyword}{class }Cell : \textcolor{keyword}{public} Base}
+\DoxyCodeLine{106 \{}
+\DoxyCodeLine{107   \textcolor{keyword}{friend} \textcolor{keyword}{class }ContourFinder ;}
+\DoxyCodeLine{108   \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{109 }
+\DoxyCodeLine{110   \textcolor{keyword}{public}:}
+\DoxyCodeLine{111     }
+\DoxyCodeLine{112     \textcolor{comment}{// Constructor}}
+\DoxyCodeLine{113     \textcolor{comment}{// Default}}
+\DoxyCodeLine{114     Cell() ;}
+\DoxyCodeLine{115 }
+\DoxyCodeLine{116     \textcolor{comment}{// Takes: X\_idx, delta\_X, Y\_idx, delta\_Y}}
+\DoxyCodeLine{117     Cell(\textcolor{keyword}{const} \textcolor{keywordtype}{size\_t}\& i\_x, \textcolor{keyword}{const} \textcolor{keywordtype}{double}\& lx, \textcolor{keyword}{const} \textcolor{keywordtype}{size\_t}\& i\_y, \textcolor{keyword}{const} \textcolor{keywordtype}{double}\& ly);}
+\DoxyCodeLine{118 }
+\DoxyCodeLine{119     \textcolor{comment}{// Takes: X\_idx, delta\_X, Y\_idx, delta\_Y, Pointer to Bundle, contour value}}
+\DoxyCodeLine{120     Cell(\textcolor{keyword}{const} \textcolor{keywordtype}{size\_t}\& i\_x, \textcolor{keyword}{const} \textcolor{keywordtype}{double}\& lx, \textcolor{keyword}{const} \textcolor{keywordtype}{size\_t}\& i\_y, \textcolor{keyword}{const} \textcolor{keywordtype}{double}\& ly,}
+\DoxyCodeLine{121           Bundle*, \textcolor{keyword}{const} \textcolor{keywordtype}{double}\& c) ;}
+\DoxyCodeLine{122 }
+\DoxyCodeLine{123     \textcolor{comment}{// Copy constructor }}
+\DoxyCodeLine{124     Cell(\textcolor{keyword}{const} Cell \&c2) = delete ;}
+\DoxyCodeLine{125     }
+\DoxyCodeLine{126     \textcolor{comment}{// Assignment operator}}
+\DoxyCodeLine{127     Cell\& operator=(\textcolor{keyword}{const} Cell \&c2) = delete ;}
+\DoxyCodeLine{128 }
+\DoxyCodeLine{129     \textcolor{comment}{// Destructor}}
+\DoxyCodeLine{130     \string~Cell() ;}
+\DoxyCodeLine{131 }
+\DoxyCodeLine{132     \textcolor{comment}{//............................................}}
+\DoxyCodeLine{133     \textcolor{comment}{// Setters}}
+\DoxyCodeLine{134     \textcolor{comment}{//............................................}}
+\DoxyCodeLine{135     \textcolor{keywordtype}{void} SetIdx(\textcolor{keyword}{const} \textcolor{keywordtype}{size\_t}\&, \textcolor{keyword}{const} \textcolor{keywordtype}{size\_t}\&)       ;}
+\DoxyCodeLine{136     \textcolor{keywordtype}{void} SetSize(\textcolor{keyword}{const} \textcolor{keywordtype}{double}\&, \textcolor{keyword}{const} \textcolor{keywordtype}{double}\&)      ;}
+\DoxyCodeLine{137     \textcolor{keywordtype}{void} SetVertex(\textcolor{keyword}{const} \textcolor{keywordtype}{size\_t}\&, \textcolor{keyword}{const} \textcolor{keywordtype}{double}\&, \textcolor{keyword}{const} \textcolor{keywordtype}{double}\&, \textcolor{keyword}{const} \textcolor{keywordtype}{double}\&)   ;}
+\DoxyCodeLine{138     \textcolor{keywordtype}{void} SetVertex(\textcolor{keyword}{const} \textcolor{keywordtype}{size\_t}\&, \textcolor{keyword}{const} \mbox{\hyperlink{struct_zaki_1_1_physics_1_1_coord3_d}{Zaki::Physics::Coord3D}}\&)    ;}
+\DoxyCodeLine{139     \textcolor{keywordtype}{void} SetVertexZ(\textcolor{keyword}{const} \textcolor{keywordtype}{size\_t}\&, \textcolor{keyword}{const} \textcolor{keywordtype}{double}\&)   ;}
+\DoxyCodeLine{140     \textcolor{keywordtype}{void} SetTriangles() ;}
+\DoxyCodeLine{141     \textcolor{keywordtype}{void} SetBundlePtr(Bundle* contPtrIn) ;}
+\DoxyCodeLine{142     \textcolor{keywordtype}{void} SetContourValue(\textcolor{keyword}{const} \textcolor{keywordtype}{double}\&) ;}
+\DoxyCodeLine{143     \textcolor{comment}{//............................................}}
+\DoxyCodeLine{144 }
+\DoxyCodeLine{145     \textcolor{keywordtype}{void} FindVerts() ;}
+\DoxyCodeLine{146     \textcolor{keywordtype}{void} EvalCenter() ;}
+\DoxyCodeLine{147 }
+\DoxyCodeLine{148     \textcolor{comment}{// evaluates the function values}}
+\DoxyCodeLine{149     \textcolor{keywordtype}{double} EvalFunc(\textcolor{keyword}{const} \textcolor{keywordtype}{double}\& x, \textcolor{keyword}{const} \textcolor{keywordtype}{double}\& y) ; }
+\DoxyCodeLine{150 }
+\DoxyCodeLine{151     \textcolor{comment}{//............................................}}
+\DoxyCodeLine{152     \textcolor{comment}{// Getters}}
+\DoxyCodeLine{153     \textcolor{comment}{//............................................}}
+\DoxyCodeLine{154     std::pair<size\_t, size\_t> GetIdx()   \textcolor{keyword}{const}  ;}
+\DoxyCodeLine{155     \textcolor{comment}{// std::vector<Triangle> GetTriangles()   ;}}
+\DoxyCodeLine{156     vertex operator[](\textcolor{keyword}{const} \textcolor{keywordtype}{size\_t}) \textcolor{keyword}{const} ; \textcolor{comment}{// Selecting the i-\/th vertex}}
+\DoxyCodeLine{157     \textcolor{comment}{// Triangle GetDown()  ;   // idx = 0}}
+\DoxyCodeLine{158     \textcolor{comment}{// Triangle GetRight() ;   // idx = 1}}
+\DoxyCodeLine{159     \textcolor{comment}{// Triangle GetUp()   ;   // idx = 2}}
+\DoxyCodeLine{160     \textcolor{comment}{// Triangle GetLeft()  ;   // idx = 3}}
+\DoxyCodeLine{161 }
+\DoxyCodeLine{162     \textcolor{comment}{// size\_t GetXIdx()   const ;}}
+\DoxyCodeLine{163     \textcolor{comment}{// size\_t GetYIdx()   const ;}}
+\DoxyCodeLine{164     \textcolor{keywordtype}{double} GetLX()     \textcolor{keyword}{const} ;}
+\DoxyCodeLine{165     \textcolor{keywordtype}{double} GetLY()     \textcolor{keyword}{const} ;  }
+\DoxyCodeLine{166     }
+\DoxyCodeLine{167     \textcolor{keywordtype}{double} GetFuncVals(\textcolor{keyword}{const} \textcolor{keywordtype}{size\_t}\&) \textcolor{keyword}{const} ;}
+\DoxyCodeLine{168     \textcolor{keywordtype}{double} GetContourValue() \textcolor{keyword}{const} ;}
+\DoxyCodeLine{169     \textcolor{keyword}{const} std::vector<Zaki::Physics::Coord3D>\& GetContourCoords() \textcolor{keyword}{const} ;}
+\DoxyCodeLine{170     \textcolor{keywordtype}{int} GetStatus() ;}
+\DoxyCodeLine{171     \textcolor{comment}{//............................................}}
+\DoxyCodeLine{172 }
+\DoxyCodeLine{173 }
+\DoxyCodeLine{174   \textcolor{keyword}{private}:}
+\DoxyCodeLine{175 }
+\DoxyCodeLine{176     \textcolor{comment}{// Grid minimum x \& y}}
+\DoxyCodeLine{177     \textcolor{keywordtype}{double} G\_x\_min, G\_y\_min ;}
+\DoxyCodeLine{178     }
+\DoxyCodeLine{179     \textcolor{comment}{// Cell minimum x \& y}}
+\DoxyCodeLine{180     \textcolor{keywordtype}{double} x\_min, y\_min ;}
+\DoxyCodeLine{181 }
+\DoxyCodeLine{182     \textcolor{comment}{// size\_t idx\_x, idx\_y;}}
+\DoxyCodeLine{183     \textcolor{keywordtype}{double} l\_x, l\_y ;}
+\DoxyCodeLine{184     std::pair<size\_t, size\_t> idx  ;}
+\DoxyCodeLine{185     \textcolor{keywordtype}{double} contour\_val             ;}
+\DoxyCodeLine{186 }
+\DoxyCodeLine{187     \textcolor{keyword}{enum} CellPts}
+\DoxyCodeLine{188     \{}
+\DoxyCodeLine{189       Center=0, B\_Left, B\_Right, T\_Right, T\_Left}
+\DoxyCodeLine{190     \};}
+\DoxyCodeLine{191 }
+\DoxyCodeLine{192     \textcolor{comment}{// 1 : bottom-\/left, 2: bottom-\/right, 3: top-\/right, 4: top-\/left, 0: center}}
+\DoxyCodeLine{193     std::array<vertex, 5> verts\_set = \{\{ \{\{0, 0, 0\}\},}
+\DoxyCodeLine{194                                       \{\{0, 0, 0\}\},}
+\DoxyCodeLine{195                                       \{\{0, 0, 0\}\},}
+\DoxyCodeLine{196                                       \{\{0, 0, 0\}\},}
+\DoxyCodeLine{197                                       \{\{0, 0, 0\}\} \}\};}
+\DoxyCodeLine{198     }
+\DoxyCodeLine{199     std::vector<triangle> triangle\_set ;}
+\DoxyCodeLine{200     std::vector<Zaki::Physics::Coord3D> contour\_coords;}
+\DoxyCodeLine{201 }
+\DoxyCodeLine{202     Bundle* BundlePtr = nullptr ;}
+\DoxyCodeLine{203 }
+\DoxyCodeLine{204     \textcolor{comment}{// flags}}
+\DoxyCodeLine{205     \textcolor{keywordtype}{bool} set\_idx\_flag             = false ;}
+\DoxyCodeLine{206     std::array<bool,5> set\_vertex\_flag  = \{\{\textcolor{keyword}{false}, \textcolor{keyword}{false}, \textcolor{keyword}{false}, \textcolor{keyword}{false}, \textcolor{keyword}{false}\}\} ;}
+\DoxyCodeLine{207     std::array<bool,4> set\_vertexZ\_flag = \{\{\textcolor{keyword}{false}, \textcolor{keyword}{false}, \textcolor{keyword}{false}, \textcolor{keyword}{false}\}\} ;}
+\DoxyCodeLine{208     \textcolor{keywordtype}{bool} set\_bundle\_ptr\_flag      = false ;}
+\DoxyCodeLine{209     \textcolor{keywordtype}{bool} set\_size\_flag            = false ;}
+\DoxyCodeLine{210     \textcolor{keywordtype}{bool} found\_verts\_flag         = false ;}
+\DoxyCodeLine{211     \textcolor{keywordtype}{bool} set\_contour\_val\_flag     = false ;}
+\DoxyCodeLine{212     \textcolor{keywordtype}{bool} set\_full\_constructor     = false ;}
+\DoxyCodeLine{213 }
+\DoxyCodeLine{214     \textcolor{comment}{//..........................................................................}}
+\DoxyCodeLine{215 }
+\DoxyCodeLine{216     \textcolor{keywordtype}{double} EvalSimpleFunc(\textcolor{keyword}{const} \textcolor{keywordtype}{double}\& x, \textcolor{keyword}{const} \textcolor{keywordtype}{double}\& y) ;}
+\DoxyCodeLine{217     \textcolor{keywordtype}{double} EvalMemFunc(\textcolor{keyword}{const} \textcolor{keywordtype}{double}\& x, \textcolor{keyword}{const} \textcolor{keywordtype}{double}\& y)    ;}
+\DoxyCodeLine{218 }
+\DoxyCodeLine{219     \textcolor{comment}{// Case 4: d) One vertex lies below and two on the contour level. (-\/1, 0, 0)}}
+\DoxyCodeLine{220     \textcolor{comment}{// Case 8: h) Two vertices lie on and one above the contour level. (+1, 0, 0)}}
+\DoxyCodeLine{221     \textcolor{keywordtype}{void} case48(\textcolor{keyword}{const} triangle\&)     ; }
+\DoxyCodeLine{222 }
+\DoxyCodeLine{223     \textcolor{comment}{// Case 3: c) Two vertices lie below and one above the contour level.}}
+\DoxyCodeLine{224     \textcolor{comment}{// Case 6: f) One vertex lies below and two above the contour level.}}
+\DoxyCodeLine{225     \textcolor{keywordtype}{void} case36(\textcolor{keyword}{const} triangle\&, \textcolor{keyword}{const} \textcolor{keywordtype}{int}\&)  ;  \textcolor{comment}{// (-\/1, -\/1, +1), (-\/1, +1, +1)}}
+\DoxyCodeLine{226 }
+\DoxyCodeLine{227     \textcolor{comment}{// Case 5: e) One vertex lies below, one on and one above the contour level.}}
+\DoxyCodeLine{228     \textcolor{keywordtype}{void} case5(\textcolor{keyword}{const} triangle\&) ;}
+\DoxyCodeLine{229 \};}
+\DoxyCodeLine{230 }
+\DoxyCodeLine{231 \textcolor{comment}{//==============================================================}}
+\DoxyCodeLine{232 \} \textcolor{comment}{// CONFIND namespace}}
+\DoxyCodeLine{233 \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{234 }
+\DoxyCodeLine{235 \textcolor{preprocessor}{\#endif }\textcolor{comment}{/*Contour\_H*/}\textcolor{preprocessor}{}}
+
+\end{DoxyCode}

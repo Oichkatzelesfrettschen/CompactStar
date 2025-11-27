@@ -1,0 +1,208 @@
+\hypertarget{class_compact_star_1_1_particle}{}\doxysection{Compact\+Star\+::Particle Class Reference}
+\label{class_compact_star_1_1_particle}\index{CompactStar::Particle@{CompactStar::Particle}}
+Inheritance diagram for Compact\+Star\+::Particle\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{d4/da4/class_compact_star_1_1_particle}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_compact_star_1_1_particle_a0019921f3f6e31b15315f462e2035fdc}\label{class_compact_star_1_1_particle_a0019921f3f6e31b15315f462e2035fdc}} 
+{\bfseries Particle} (const int \&\mbox{\hyperlink{class_compact_star_1_1_particle_aba3e80e01a7efbf3bc8bce2129ef5a8a}{idx}}, const double \&charge, const double \&mass, const double \&isospin)
+\item 
+\mbox{\Hypertarget{class_compact_star_1_1_particle_a56e058c8ac9bd246b7e006d66e27142b}\label{class_compact_star_1_1_particle_a56e058c8ac9bd246b7e006d66e27142b}} 
+{\bfseries $\sim$\+Particle} ()
+\begin{DoxyCompactList}\small\item\em Destructor. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_compact_star_1_1_particle_a7e4a29fafbbc62005564684e183f1d02}\label{class_compact_star_1_1_particle_a7e4a29fafbbc62005564684e183f1d02}} 
+{\bfseries Particle} (const \mbox{\hyperlink{class_compact_star_1_1_particle}{Particle}} \&)=delete
+\begin{DoxyCompactList}\small\item\em Copy constructor. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_compact_star_1_1_particle_a11a29e91422d8e6aa0b592b90ebb3caf}\label{class_compact_star_1_1_particle_a11a29e91422d8e6aa0b592b90ebb3caf}} 
+\mbox{\hyperlink{class_compact_star_1_1_particle}{Particle}} \& {\bfseries operator=} (const \mbox{\hyperlink{class_compact_star_1_1_particle}{Particle}} \&)=delete
+\begin{DoxyCompactList}\small\item\em Assignment operator. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_compact_star_1_1_particle_a72c24a1d35950d097454aa97913ee6ac}\label{class_compact_star_1_1_particle_a72c24a1d35950d097454aa97913ee6ac}} 
+virtual double {\bfseries Dmu} (const int \&\mbox{\hyperlink{class_compact_star_1_1_particle_aba3e80e01a7efbf3bc8bce2129ef5a8a}{idx}})
+\begin{DoxyCompactList}\small\item\em Derivative of the chemical potential. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{class_compact_star_1_1_particle_aa433068f029c57e0feb5b44e01db3aa1}{DMu\+\_\+\+DRho}} ()
+\begin{DoxyCompactList}\small\item\em Derivative of the chemical potential wrt Rho. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_compact_star_1_1_particle_af969e036c4afc7ec62634e4d11a617f8}\label{class_compact_star_1_1_particle_af969e036c4afc7ec62634e4d11a617f8}} 
+void {\bfseries Set\+Rho} (const double \&rho)
+\begin{DoxyCompactList}\small\item\em This sets the number density. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_compact_star_1_1_particle_a7968d4f74da6e0239d86eaea46f1e2a5}\label{class_compact_star_1_1_particle_a7968d4f74da6e0239d86eaea46f1e2a5}} 
+double {\bfseries k} () const
+\begin{DoxyCompactList}\small\item\em Fermi momentum. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_compact_star_1_1_particle_abdbe611c29b97d03ba3e6bc1f4813ce1}\label{class_compact_star_1_1_particle_abdbe611c29b97d03ba3e6bc1f4813ce1}} 
+double {\bfseries k2} () const
+\begin{DoxyCompactList}\small\item\em Fermi momentum squared. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_compact_star_1_1_particle_ad62fd41f123b9e1ae63db47f62383d85}\label{class_compact_star_1_1_particle_ad62fd41f123b9e1ae63db47f62383d85}} 
+virtual double {\bfseries ETerm} () const
+\begin{DoxyCompactList}\small\item\em Contribution to the energy. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_compact_star_1_1_particle_a962d8d0fa497f7e335d6100970fe3eda}\label{class_compact_star_1_1_particle_a962d8d0fa497f7e335d6100970fe3eda}} 
+virtual double {\bfseries PTerm} () const
+\begin{DoxyCompactList}\small\item\em Contribution to the pressure. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_compact_star_1_1_particle_ab74dcc86a69dccf09311f25fc93737c3}{Print}} () const override
+\begin{DoxyCompactList}\small\item\em Prints particle info. \end{DoxyCompactList}\item 
+virtual int \mbox{\hyperlink{class_compact_star_1_1_particle_a2237d88d797f917ff937648639eb965a}{Pool\+Add}} ()=0
+\item 
+virtual int \mbox{\hyperlink{class_compact_star_1_1_particle_ab5e9207bf39cc79aa54b89e6ce0e5d0f}{Pool\+Remove}} ()=0
+\item 
+void \mbox{\hyperlink{class_compact_star_1_1_particle_ab835fb0216debec6213f8a0bfbfd439b}{Set\+\_\+\+Mu}} (const double \&mu\+\_\+in)
+\begin{DoxyCompactList}\small\item\em Set the chemical potential. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_compact_star_1_1_particle_ade2a30772c19fada1f9f3d5b7dc1e47e}\label{class_compact_star_1_1_particle_ade2a30772c19fada1f9f3d5b7dc1e47e}} 
+virtual double {\bfseries Mu} ()
+\begin{DoxyCompactList}\small\item\em Get the chemical potential. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_compact_star_1_1_particle_aa6d5c65ba1510a9e896e9a2615b96f90}\label{class_compact_star_1_1_particle_aa6d5c65ba1510a9e896e9a2615b96f90}} 
+void {\bfseries Set\+\_\+\+Rho\+\_\+\+From\+\_\+\+Mu} ()
+\begin{DoxyCompactList}\small\item\em Update number density based on chemical potential. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_compact_star_1_1_particle_a55427e3aeb97bd8f311711368621ec1e}\label{class_compact_star_1_1_particle_a55427e3aeb97bd8f311711368621ec1e}} 
+double {\bfseries Get\+Rho} () const
+\begin{DoxyCompactList}\small\item\em Get number density. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static \mbox{\hyperlink{class_compact_star_1_1_particle}{Compact\+Star\+::\+Particle}} $\ast$ \mbox{\hyperlink{class_compact_star_1_1_particle_a39f9d84ddace00fc43592d5c1c4a9fec}{Find}} (const int \&\mbox{\hyperlink{class_compact_star_1_1_particle_aba3e80e01a7efbf3bc8bce2129ef5a8a}{idx}})
+\begin{DoxyCompactList}\small\item\em Returns the total baryon density. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_compact_star_1_1_particle_acd6f799796accf3f418f0acc63ac8c7d}\label{class_compact_star_1_1_particle_acd6f799796accf3f418f0acc63ac8c7d}} 
+static void {\bfseries Empty\+Pool} ()
+\begin{DoxyCompactList}\small\item\em Empties the total particle pool (leptons \& baryons) \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_compact_star_1_1_particle_a0743f35fe16d498ca13d21ed94319ee8}\label{class_compact_star_1_1_particle_a0743f35fe16d498ca13d21ed94319ee8}} 
+const double {\bfseries Q}
+\begin{DoxyCompactList}\small\item\em Electric charge. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_compact_star_1_1_particle_a97fa5f9c5bc158cf3b6edaacc33e4ffa}\label{class_compact_star_1_1_particle_a97fa5f9c5bc158cf3b6edaacc33e4ffa}} 
+const double {\bfseries M}
+\begin{DoxyCompactList}\small\item\em Mass. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_compact_star_1_1_particle_a0d58e22e03047b49219798ec109d9a81}\label{class_compact_star_1_1_particle_a0d58e22e03047b49219798ec109d9a81}} 
+const double {\bfseries I3}
+\begin{DoxyCompactList}\small\item\em Third component of isospin. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_compact_star_1_1_particle_a5c46b172de72aa5cb7006bbaa2afbe63}\label{class_compact_star_1_1_particle_a5c46b172de72aa5cb7006bbaa2afbe63}} 
+double {\bfseries mu}
+\begin{DoxyCompactList}\small\item\em Chemical potential. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_compact_star_1_1_particle_ab7c9fac36abcf6e73694ad2f85e57846}\label{class_compact_star_1_1_particle_ab7c9fac36abcf6e73694ad2f85e57846}} 
+double {\bfseries Rho}
+\begin{DoxyCompactList}\small\item\em number density \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_compact_star_1_1_particle_a526df824adf4f9c8599d26e8a2eea050}\label{class_compact_star_1_1_particle_a526df824adf4f9c8599d26e8a2eea050}} 
+\mbox{\hyperlink{struct_zaki_1_1_math_1_1_range}{Zaki\+::\+Math\+::\+Range}}$<$ double $>$ {\bfseries inclusion} = \{0, 0\}
+\begin{DoxyCompactList}\small\item\em List of pointers to all created baryons. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_compact_star_1_1_particle_aba3e80e01a7efbf3bc8bce2129ef5a8a}\label{class_compact_star_1_1_particle_aba3e80e01a7efbf3bc8bce2129ef5a8a}} 
+int {\bfseries idx}
+\begin{DoxyCompactList}\small\item\em Unique particle index. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_compact_star_1_1_particle_abcf797e5d481fb10aecfe9943767fbd1}{number\+\_\+density\+\_\+flag}} = false
+\begin{DoxyCompactList}\small\item\em The overall parameters that are fixed by the nuclear properties. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Static Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_compact_star_1_1_particle_aefb450ccded4777a46bd883a4d9f0787}\label{class_compact_star_1_1_particle_aefb450ccded4777a46bd883a4d9f0787}} 
+static std\+::vector$<$ \mbox{\hyperlink{class_compact_star_1_1_particle}{Particle}} $\ast$ $>$ {\bfseries P\+\_\+\+List}
+\begin{DoxyCompactList}\small\item\em List of pointers to all created particles. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_compact_star_1_1_particle_a078f84fcf37f3fcfb60a4770cced7eae}\label{class_compact_star_1_1_particle_a078f84fcf37f3fcfb60a4770cced7eae}} 
+static std\+::mutex {\bfseries mtx}
+\begin{DoxyCompactList}\small\item\em Lock in case of multi-\/threading. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Friends}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_compact_star_1_1_particle_ab3372927f88ab372bb3407297d89309a}\label{class_compact_star_1_1_particle_ab3372927f88ab372bb3407297d89309a}} 
+class {\bfseries Sigma\+Omega\+Rho}
+\item 
+\mbox{\Hypertarget{class_compact_star_1_1_particle_a7d4445ff547cd36156e273986650dccd}\label{class_compact_star_1_1_particle_a7d4445ff547cd36156e273986650dccd}} 
+class {\bfseries Sigma\+Omega\+Rho\+\_\+npemu}
+\item 
+\mbox{\Hypertarget{class_compact_star_1_1_particle_a0a2cc131a1f38bf82e015e09cc9b7cb8}\label{class_compact_star_1_1_particle_a0a2cc131a1f38bf82e015e09cc9b7cb8}} 
+class {\bfseries Sigma\+Omega\+Rho\+\_\+nstar}
+\item 
+\mbox{\Hypertarget{class_compact_star_1_1_particle_a71ab40c5d07903a8db15d8e10cbe720a}\label{class_compact_star_1_1_particle_a71ab40c5d07903a8db15d8e10cbe720a}} 
+class {\bfseries Fermi\+\_\+\+Gas\+\_\+\+Many}
+\end{DoxyCompactItemize}
+\doxysubsection*{Additional Inherited Members}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_compact_star_1_1_particle_aa433068f029c57e0feb5b44e01db3aa1}\label{class_compact_star_1_1_particle_aa433068f029c57e0feb5b44e01db3aa1}} 
+\index{CompactStar::Particle@{CompactStar::Particle}!DMu\_DRho@{DMu\_DRho}}
+\index{DMu\_DRho@{DMu\_DRho}!CompactStar::Particle@{CompactStar::Particle}}
+\doxysubsubsection{\texorpdfstring{DMu\_DRho()}{DMu\_DRho()}}
+{\footnotesize\ttfamily double Compact\+Star\+::\+Particle\+::\+DMu\+\_\+\+DRho (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Derivative of the chemical potential wrt Rho. 
+
+Derivative of the chemical potential wrt rho. \mbox{\Hypertarget{class_compact_star_1_1_particle_a39f9d84ddace00fc43592d5c1c4a9fec}\label{class_compact_star_1_1_particle_a39f9d84ddace00fc43592d5c1c4a9fec}} 
+\index{CompactStar::Particle@{CompactStar::Particle}!Find@{Find}}
+\index{Find@{Find}!CompactStar::Particle@{CompactStar::Particle}}
+\doxysubsubsection{\texorpdfstring{Find()}{Find()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_compact_star_1_1_particle}{Compact\+Star\+::\+Particle}} $\ast$ Compact\+Star\+::\+Particle\+::\+Find (\begin{DoxyParamCaption}\item[{const int \&}]{idx }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Returns the total baryon density. 
+
+Returns a pointer to the particle with index = idx returns null if idx is not availble \mbox{\Hypertarget{class_compact_star_1_1_particle_a2237d88d797f917ff937648639eb965a}\label{class_compact_star_1_1_particle_a2237d88d797f917ff937648639eb965a}} 
+\index{CompactStar::Particle@{CompactStar::Particle}!PoolAdd@{PoolAdd}}
+\index{PoolAdd@{PoolAdd}!CompactStar::Particle@{CompactStar::Particle}}
+\doxysubsubsection{\texorpdfstring{PoolAdd()}{PoolAdd()}}
+{\footnotesize\ttfamily virtual int Compact\+Star\+::\+Particle\+::\+Pool\+Add (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+Adds the particle to the pool of particles under consideration Useful for dynamically changing the pool without needing heap allocation of particles. Returns -\/1 if not successful and 0 if successful 
+
+Implemented in \mbox{\hyperlink{class_compact_star_1_1_baryon_ad0d0acfe5fdf16842986067225df8568}{Compact\+Star\+::\+Baryon}}, and \mbox{\hyperlink{class_compact_star_1_1_lepton_a46bdf17edf59e88b9d10331e8b953eb5}{Compact\+Star\+::\+Lepton}}.
+
+\mbox{\Hypertarget{class_compact_star_1_1_particle_ab5e9207bf39cc79aa54b89e6ce0e5d0f}\label{class_compact_star_1_1_particle_ab5e9207bf39cc79aa54b89e6ce0e5d0f}} 
+\index{CompactStar::Particle@{CompactStar::Particle}!PoolRemove@{PoolRemove}}
+\index{PoolRemove@{PoolRemove}!CompactStar::Particle@{CompactStar::Particle}}
+\doxysubsubsection{\texorpdfstring{PoolRemove()}{PoolRemove()}}
+{\footnotesize\ttfamily virtual int Compact\+Star\+::\+Particle\+::\+Pool\+Remove (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+Removes the particle from the pool of particles under consideration Returns -\/1 if not successful and 0 if successful 
+
+Implemented in \mbox{\hyperlink{class_compact_star_1_1_baryon_a059a7c7d76baf67278154c17c8189383}{Compact\+Star\+::\+Baryon}}, and \mbox{\hyperlink{class_compact_star_1_1_lepton_afba4c6c7315b9106117667a2ef4737bb}{Compact\+Star\+::\+Lepton}}.
+
+\mbox{\Hypertarget{class_compact_star_1_1_particle_ab74dcc86a69dccf09311f25fc93737c3}\label{class_compact_star_1_1_particle_ab74dcc86a69dccf09311f25fc93737c3}} 
+\index{CompactStar::Particle@{CompactStar::Particle}!Print@{Print}}
+\index{Print@{Print}!CompactStar::Particle@{CompactStar::Particle}}
+\doxysubsubsection{\texorpdfstring{Print()}{Print()}}
+{\footnotesize\ttfamily void Compact\+Star\+::\+Particle\+::\+Print (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Prints particle info. 
+
+
+
+Reimplemented from \mbox{\hyperlink{class_compact_star_1_1_prog_a9bc6fb78da0b60e7231ac2d54513dd61}{Compact\+Star\+::\+Prog}}.
+
+\mbox{\Hypertarget{class_compact_star_1_1_particle_ab835fb0216debec6213f8a0bfbfd439b}\label{class_compact_star_1_1_particle_ab835fb0216debec6213f8a0bfbfd439b}} 
+\index{CompactStar::Particle@{CompactStar::Particle}!Set\_Mu@{Set\_Mu}}
+\index{Set\_Mu@{Set\_Mu}!CompactStar::Particle@{CompactStar::Particle}}
+\doxysubsubsection{\texorpdfstring{Set\_Mu()}{Set\_Mu()}}
+{\footnotesize\ttfamily void Compact\+Star\+::\+Particle\+::\+Set\+\_\+\+Mu (\begin{DoxyParamCaption}\item[{const double \&}]{mu\+\_\+in }\end{DoxyParamCaption})}
+
+
+
+Set the chemical potential. 
+
+Chemical potential. 
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{class_compact_star_1_1_particle_abcf797e5d481fb10aecfe9943767fbd1}\label{class_compact_star_1_1_particle_abcf797e5d481fb10aecfe9943767fbd1}} 
+\index{CompactStar::Particle@{CompactStar::Particle}!number\_density\_flag@{number\_density\_flag}}
+\index{number\_density\_flag@{number\_density\_flag}!CompactStar::Particle@{CompactStar::Particle}}
+\doxysubsubsection{\texorpdfstring{number\_density\_flag}{number\_density\_flag}}
+{\footnotesize\ttfamily bool Compact\+Star\+::\+Particle\+::number\+\_\+density\+\_\+flag = false\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+The overall parameters that are fixed by the nuclear properties. 
+
+Flag to keep track of number\+\_\+densities \& whether they are all set or no 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Compact\+Star/\+EOS/\mbox{\hyperlink{_particle_8hpp}{Particle.\+hpp}}\item 
+Compact\+Star/\+EOS/src/Particle.\+cpp\end{DoxyCompactItemize}

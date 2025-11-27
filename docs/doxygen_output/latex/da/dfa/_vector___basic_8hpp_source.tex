@@ -1,0 +1,109 @@
+\hypertarget{_vector___basic_8hpp_source}{}\doxysection{Vector\+\_\+\+Basic.\+hpp}
+\label{_vector___basic_8hpp_source}\index{dependencies/include/Zaki/Vector/Vector\_Basic.hpp@{dependencies/include/Zaki/Vector/Vector\_Basic.hpp}}
+\mbox{\hyperlink{_vector___basic_8hpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{comment}{// -\/*-\/ lsst-\/c++ -\/*-\/}}
+\DoxyCodeLine{2 \textcolor{comment}{/*}}
+\DoxyCodeLine{3 \textcolor{comment}{* Zaki's Common Library}}
+\DoxyCodeLine{4 \textcolor{comment}{* See License file at the top of the source tree.}}
+\DoxyCodeLine{5 \textcolor{comment}{*}}
+\DoxyCodeLine{6 \textcolor{comment}{* Copyright (c) 2023 Mohammadreza Zakeri}}
+\DoxyCodeLine{7 \textcolor{comment}{*}}
+\DoxyCodeLine{8 \textcolor{comment}{* Permission is hereby granted, free of charge, to any person obtaining a copy}}
+\DoxyCodeLine{9 \textcolor{comment}{* of this software and associated documentation files (the "{}Software"{}), to deal}}
+\DoxyCodeLine{10 \textcolor{comment}{* in the Software without restriction, including without limitation the rights}}
+\DoxyCodeLine{11 \textcolor{comment}{* to use, copy, modify, merge, publish, distribute, sublicense, and/or sell}}
+\DoxyCodeLine{12 \textcolor{comment}{* copies of the Software, and to permit persons to whom the Software is}}
+\DoxyCodeLine{13 \textcolor{comment}{* furnished to do so, subject to the following conditions:}}
+\DoxyCodeLine{14 \textcolor{comment}{*}}
+\DoxyCodeLine{15 \textcolor{comment}{* The above copyright notice and this permission notice shall be included in all}}
+\DoxyCodeLine{16 \textcolor{comment}{* copies or substantial portions of the Software.}}
+\DoxyCodeLine{17 \textcolor{comment}{*}}
+\DoxyCodeLine{18 \textcolor{comment}{* THE SOFTWARE IS PROVIDED "{}AS IS"{}, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR}}
+\DoxyCodeLine{19 \textcolor{comment}{* IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,}}
+\DoxyCodeLine{20 \textcolor{comment}{* FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE}}
+\DoxyCodeLine{21 \textcolor{comment}{* AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER}}
+\DoxyCodeLine{22 \textcolor{comment}{* LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,}}
+\DoxyCodeLine{23 \textcolor{comment}{* OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE}}
+\DoxyCodeLine{24 \textcolor{comment}{* SOFTWARE.}}
+\DoxyCodeLine{25 \textcolor{comment}{*/}}
+\DoxyCodeLine{26 }
+\DoxyCodeLine{39 \textcolor{preprocessor}{\#ifndef Zaki\_Vector\_Basic\_H}}
+\DoxyCodeLine{40 \textcolor{preprocessor}{\#define Zaki\_Vector\_Basic\_H}}
+\DoxyCodeLine{41 }
+\DoxyCodeLine{42 \textcolor{comment}{// Functions for vector manipulations}}
+\DoxyCodeLine{43 }
+\DoxyCodeLine{44 \textcolor{preprocessor}{\#include <algorithm>}}
+\DoxyCodeLine{45 \textcolor{preprocessor}{\#include <vector>}}
+\DoxyCodeLine{46 }
+\DoxyCodeLine{47 \textcolor{comment}{//==============================================================}}
+\DoxyCodeLine{48 \textcolor{keyword}{namespace }Zaki::Vector}
+\DoxyCodeLine{49 \{}
+\DoxyCodeLine{50 }
+\DoxyCodeLine{51 \textcolor{comment}{//==============================================================}}
+\DoxyCodeLine{52 \textcolor{comment}{// Checks if an element exists in the list.}}
+\DoxyCodeLine{53 \textcolor{keyword}{template} <\textcolor{keyword}{class} T> }
+\DoxyCodeLine{54 \textcolor{keywordtype}{bool} Exists(\textcolor{keyword}{const} T\& Element, \textcolor{keyword}{const} std::vector<T>\& Vec) }
+\DoxyCodeLine{55 \{}
+\DoxyCodeLine{56     \textcolor{keywordflow}{if} (std::find(Vec.begin(), Vec.end(), Element) != Vec.end())}
+\DoxyCodeLine{57         \textcolor{keywordflow}{return} true ;}
+\DoxyCodeLine{58 }
+\DoxyCodeLine{59     \textcolor{keywordflow}{return} false ;}
+\DoxyCodeLine{60 \}}
+\DoxyCodeLine{61 }
+\DoxyCodeLine{62 \textcolor{comment}{//==============================================================}}
+\DoxyCodeLine{65 \textcolor{comment}{}\textcolor{keyword}{template} <\textcolor{keyword}{class} T, \textcolor{keyword}{class} U> }
+\DoxyCodeLine{66 \textcolor{keywordtype}{int} \mbox{\hyperlink{_vector___basic_8hpp_ab813c896ccaa724e7f1dc9eb970ed62c}{GetIdx}}(\textcolor{keyword}{const} T\& Element, \textcolor{keyword}{const} std::vector<U>\& Vec)}
+\DoxyCodeLine{67 \{}
+\DoxyCodeLine{68     \textcolor{keyword}{auto} it = std::find(Vec.begin(), Vec.end(), Element) ;}
+\DoxyCodeLine{69  }
+\DoxyCodeLine{70     \textcolor{comment}{// If element was found}}
+\DoxyCodeLine{71     \textcolor{keywordflow}{if} (it != Vec.end())}
+\DoxyCodeLine{72     \{}
+\DoxyCodeLine{73         \textcolor{keywordflow}{return} it -\/ Vec.begin() ;}
+\DoxyCodeLine{74     \}}
+\DoxyCodeLine{75     \textcolor{keywordflow}{else} }
+\DoxyCodeLine{76     \{}
+\DoxyCodeLine{77         \textcolor{comment}{// If the element is not present in the vector}}
+\DoxyCodeLine{78         \textcolor{keywordflow}{return} -\/1 ;}
+\DoxyCodeLine{79     \}}
+\DoxyCodeLine{80 \}}
+\DoxyCodeLine{81 }
+\DoxyCodeLine{82 \textcolor{comment}{//==============================================================}}
+\DoxyCodeLine{83 \textcolor{comment}{// Adds element to a list if it doesn't already exists.}}
+\DoxyCodeLine{84 \textcolor{keyword}{template} <\textcolor{keyword}{class} T>}
+\DoxyCodeLine{85 \textcolor{keywordtype}{void} Add(std::vector<T>\& lst, \textcolor{keyword}{const} T \&ele)}
+\DoxyCodeLine{86 \textcolor{comment}{// Add an element to a vector, }}
+\DoxyCodeLine{87 \textcolor{comment}{// only if it doesn't already exist.}}
+\DoxyCodeLine{88 \{}
+\DoxyCodeLine{89     \textcolor{keywordflow}{if}(!Exists(ele ,lst))  lst.push\_back(ele) ;}
+\DoxyCodeLine{90 \}}
+\DoxyCodeLine{91 }
+\DoxyCodeLine{92 \textcolor{comment}{//==============================================================}}
+\DoxyCodeLine{93 \textcolor{comment}{// Removes a list of elements from a T type list}}
+\DoxyCodeLine{94 \textcolor{keyword}{template} <\textcolor{keyword}{class} T> }
+\DoxyCodeLine{95 \textcolor{keywordtype}{void} Remove(std::vector<T>\& list, \textcolor{keyword}{const} std::vector<int>\& rm\_index\_list)}
+\DoxyCodeLine{96 \textcolor{comment}{// Removing certain members of a vector, }}
+\DoxyCodeLine{97 \textcolor{comment}{// given another vector containing an index set.}}
+\DoxyCodeLine{98 \{}
+\DoxyCodeLine{99         \textcolor{keywordtype}{int}    j = 0 ;}
+\DoxyCodeLine{100     \textcolor{keywordflow}{for}(\textcolor{keywordtype}{size\_t} i = 0 ; i < list.size() ; ++i)}
+\DoxyCodeLine{101     \{}
+\DoxyCodeLine{102         \textcolor{keywordflow}{if}( Exists((\textcolor{keywordtype}{int}) i+j, rm\_index\_list))}
+\DoxyCodeLine{103         \{}
+\DoxyCodeLine{104             list.erase(list.begin()+i) ;}
+\DoxyCodeLine{105             i-\/-\/                        ;}
+\DoxyCodeLine{106             j++                        ;}
+\DoxyCodeLine{107         \}}
+\DoxyCodeLine{108     \}}
+\DoxyCodeLine{109 \}}
+\DoxyCodeLine{110 }
+\DoxyCodeLine{111 \textcolor{comment}{//==============================================================}}
+\DoxyCodeLine{112 }
+\DoxyCodeLine{113 \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{114 \} \textcolor{comment}{// End of namespace Zaki::Vector}}
+\DoxyCodeLine{115 \textcolor{comment}{//==============================================================}}
+\DoxyCodeLine{116 }
+\DoxyCodeLine{117 \textcolor{preprocessor}{\#endif }\textcolor{comment}{/*Zaki\_Vector\_Basic\_H*/}\textcolor{preprocessor}{}}
+
+\end{DoxyCode}

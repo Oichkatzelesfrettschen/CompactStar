@@ -1,0 +1,316 @@
+\hypertarget{class_compact_star_1_1_seq_point}{}\doxysection{Compact\+Star\+::Seq\+Point Class Reference}
+\label{class_compact_star_1_1_seq_point}\index{CompactStar::SeqPoint@{CompactStar::SeqPoint}}
+
+
+Holds a single data point in a star sequence.  
+
+
+
+
+{\ttfamily \#include $<$Seq\+Point.\+hpp$>$}
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_compact_star_1_1_seq_point_a460914e79970ee2840985fecf459e049}\label{class_compact_star_1_1_seq_point_a460914e79970ee2840985fecf459e049}} 
+{\bfseries Seq\+Point} ()=default
+\begin{DoxyCompactList}\small\item\em Default constructor (zero-\/initialize all fields). \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_compact_star_1_1_seq_point_a7d3b6a449ec7f73d4b685e917e988f59}{Seq\+Point}} (double in\+\_\+ec, double in\+\_\+m, double in\+\_\+r, double in\+\_\+pc, double in\+\_\+b, double in\+\_\+I)
+\begin{DoxyCompactList}\small\item\em Parameterized constructor. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_compact_star_1_1_seq_point_a829a39c4c2da2e827a374f574f5aace2}{Seq\+Point}} (const std\+::vector$<$ double $>$ \&row)
+\begin{DoxyCompactList}\small\item\em Construct from a row vector {\ttfamily \mbox{[}ec, m, r, pc, b, I\mbox{]}}. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_compact_star_1_1_seq_point}{Seq\+Point}} \& \mbox{\hyperlink{class_compact_star_1_1_seq_point_ad2e072118a010a0859944fcaccc9c6e0}{operator=}} (const std\+::vector$<$ double $>$ \&row)
+\begin{DoxyCompactList}\small\item\em Assignment from a row vector {\ttfamily \mbox{[}ec, m, r, pc, b, I\mbox{]}}. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_compact_star_1_1_seq_point_ac6dadb1cb94acf21a3453a0055fdaff8}{Seq\+Point}} (std\+::initializer\+\_\+list$<$ double $>$ list)
+\begin{DoxyCompactList}\small\item\em Initializer-\/list constructor. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_compact_star_1_1_seq_point}{Seq\+Point}} \& \mbox{\hyperlink{class_compact_star_1_1_seq_point_ae98e81678613ee9963f8b036214057f4}{operator=}} (std\+::initializer\+\_\+list$<$ double $>$ list)
+\begin{DoxyCompactList}\small\item\em Assignment from an initializer list. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_compact_star_1_1_seq_point_aea3f17097ce4a553f2d25006e9690574}\label{class_compact_star_1_1_seq_point_aea3f17097ce4a553f2d25006e9690574}} 
+void {\bfseries clear} ()
+\begin{DoxyCompactList}\small\item\em Reset all fields to zero. \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{class_compact_star_1_1_seq_point_ad011ef3fc4be7164403486f04e90cac7}{Str}} () const
+\begin{DoxyCompactList}\small\item\em Format fields as a single tab-\/delimited string. \end{DoxyCompactList}\item 
+std\+::vector$<$ double $>$ \mbox{\hyperlink{class_compact_star_1_1_seq_point_af5f6a6480e22049ef628c9c1bf529847}{To\+Row}} () const
+\begin{DoxyCompactList}\small\item\em Convert to a packed vector {\ttfamily \mbox{[}ec, m, r, pc, b, I\mbox{]}}. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_compact_star_1_1_seq_point}{Seq\+Point}} \mbox{\hyperlink{class_compact_star_1_1_seq_point_ae70c6c791a41dc4e6bc4032c10c9cd3a}{operator+}} (const \mbox{\hyperlink{class_compact_star_1_1_seq_point}{Seq\+Point}} \&rhs) const
+\begin{DoxyCompactList}\small\item\em Component-\/wise addition. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_compact_star_1_1_seq_point}{Seq\+Point}} \& \mbox{\hyperlink{class_compact_star_1_1_seq_point_a1707db2457368c0d849d5724732f7b51}{operator+=}} (const \mbox{\hyperlink{class_compact_star_1_1_seq_point}{Seq\+Point}} \&rhs)
+\begin{DoxyCompactList}\small\item\em Component-\/wise in-\/place addition. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_compact_star_1_1_seq_point}{Seq\+Point}} \mbox{\hyperlink{class_compact_star_1_1_seq_point_a457be260b52f920af5f576d97dee04d7}{operator$\ast$}} (double s) const
+\begin{DoxyCompactList}\small\item\em Scalar multiplication. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_compact_star_1_1_seq_point}{Seq\+Point}} \& \mbox{\hyperlink{class_compact_star_1_1_seq_point_a8685a3166437ca114fee8b1ed6fe7809}{operator$\ast$=}} (double s)
+\begin{DoxyCompactList}\small\item\em In-\/place scalar multiplication. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static \mbox{\hyperlink{class_compact_star_1_1_seq_point}{Seq\+Point}} \mbox{\hyperlink{class_compact_star_1_1_seq_point_a2213321094f39fdbeb68e2a987173a5e}{From\+Row}} (const std\+::vector$<$ double $>$ \&row)
+\begin{DoxyCompactList}\small\item\em Factory\+: construct from a row vector {\ttfamily \mbox{[}ec, m, r, pc, b, I\mbox{]}}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_compact_star_1_1_seq_point_a5c2f83e3243384f3ad31fd67626efb34}\label{class_compact_star_1_1_seq_point_a5c2f83e3243384f3ad31fd67626efb34}} 
+double {\bfseries ec} = 0.\+0
+\begin{DoxyCompactList}\small\item\em Central energy density. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_compact_star_1_1_seq_point_aac3e5ddc0344b1c1d796349e8793b0a8}\label{class_compact_star_1_1_seq_point_aac3e5ddc0344b1c1d796349e8793b0a8}} 
+double {\bfseries m} = 0.\+0
+\begin{DoxyCompactList}\small\item\em Gravitational mass (M\+\_\+\textbackslash{}odot). \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_compact_star_1_1_seq_point_a68c1a5f589acd078100b6d015f94ef40}\label{class_compact_star_1_1_seq_point_a68c1a5f589acd078100b6d015f94ef40}} 
+double {\bfseries r} = 0.\+0
+\begin{DoxyCompactList}\small\item\em Radius (km). \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_compact_star_1_1_seq_point_aee457020f84d04f106f7fcc9bf3c9814}\label{class_compact_star_1_1_seq_point_aee457020f84d04f106f7fcc9bf3c9814}} 
+double {\bfseries pc} = 0.\+0
+\begin{DoxyCompactList}\small\item\em Central pressure. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_compact_star_1_1_seq_point_a2699ebe377e636db80801125885d4cd0}\label{class_compact_star_1_1_seq_point_a2699ebe377e636db80801125885d4cd0}} 
+double {\bfseries b} = 0.\+0
+\begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{class_compact_star_1_1_baryon}{Baryon}} number integral. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_compact_star_1_1_seq_point_addc0aa6c519d4410c041452124665209}\label{class_compact_star_1_1_seq_point_addc0aa6c519d4410c041452124665209}} 
+double {\bfseries I} = 0.\+0
+\begin{DoxyCompactList}\small\item\em Moment of inertia. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Static Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_compact_star_1_1_seq_point_ae1e4db463fe1308f9591bdf0b8adcb0a}\label{class_compact_star_1_1_seq_point_ae1e4db463fe1308f9591bdf0b8adcb0a}} 
+static constexpr std\+::size\+\_\+t {\bfseries k\+Size} = 6
+\begin{DoxyCompactList}\small\item\em Number of scalar fields expected in a serialized row. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Holds a single data point in a star sequence. 
+
+\hypertarget{class_compact_star_1_1_seq_point_autotoc_md2}{}\doxyparagraph{Stored quantities (double)\+:}\label{class_compact_star_1_1_seq_point_autotoc_md2}
+
+\begin{DoxyItemize}
+\item {\ttfamily ec} \+: central energy density (code units; often 1/km² or cgs—match your solver)
+\item {\ttfamily m} \+: gravitational mass at the surface (M\+\_\+\textbackslash{}odot)
+\item {\ttfamily r} \+: circumferential radius at the surface (km)
+\item {\ttfamily pc} \+: central pressure (same unit system as your solver output)
+\item {\ttfamily b} \+: baryon number integral (dimensionless or code units, per your convention)
+\item {\ttfamily I} \+: moment of inertia (e.\+g., g·cm² or km³, depending on internal units)
+\end{DoxyItemize}
+
+This class is intentionally minimal and trivially copyable so it can be passed by value in vectors/containers and written to text rows easily. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_compact_star_1_1_seq_point_a7d3b6a449ec7f73d4b685e917e988f59}\label{class_compact_star_1_1_seq_point_a7d3b6a449ec7f73d4b685e917e988f59}} 
+\index{CompactStar::SeqPoint@{CompactStar::SeqPoint}!SeqPoint@{SeqPoint}}
+\index{SeqPoint@{SeqPoint}!CompactStar::SeqPoint@{CompactStar::SeqPoint}}
+\doxysubsubsection{\texorpdfstring{SeqPoint()}{SeqPoint()}\hspace{0.1cm}{\footnotesize\ttfamily [1/3]}}
+{\footnotesize\ttfamily Compact\+Star\+::\+Seq\+Point\+::\+Seq\+Point (\begin{DoxyParamCaption}\item[{double}]{in\+\_\+ec,  }\item[{double}]{in\+\_\+m,  }\item[{double}]{in\+\_\+r,  }\item[{double}]{in\+\_\+pc,  }\item[{double}]{in\+\_\+b,  }\item[{double}]{in\+\_\+I }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Parameterized constructor. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em in\+\_\+ec} & Energy density (central). \\
+\hline
+{\em in\+\_\+m} & Gravitational mass (M\+\_\+\textbackslash{}odot). \\
+\hline
+{\em in\+\_\+r} & Radius (km). \\
+\hline
+{\em in\+\_\+pc} & Central pressure. \\
+\hline
+{\em in\+\_\+b} & \mbox{\hyperlink{class_compact_star_1_1_baryon}{Baryon}} number integral. \\
+\hline
+{\em in\+\_\+I} & Moment of inertia. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_compact_star_1_1_seq_point_a829a39c4c2da2e827a374f574f5aace2}\label{class_compact_star_1_1_seq_point_a829a39c4c2da2e827a374f574f5aace2}} 
+\index{CompactStar::SeqPoint@{CompactStar::SeqPoint}!SeqPoint@{SeqPoint}}
+\index{SeqPoint@{SeqPoint}!CompactStar::SeqPoint@{CompactStar::SeqPoint}}
+\doxysubsubsection{\texorpdfstring{SeqPoint()}{SeqPoint()}\hspace{0.1cm}{\footnotesize\ttfamily [2/3]}}
+{\footnotesize\ttfamily Compact\+Star\+::\+Seq\+Point\+::\+Seq\+Point (\begin{DoxyParamCaption}\item[{const std\+::vector$<$ double $>$ \&}]{row }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [explicit]}}
+
+
+
+Construct from a row vector {\ttfamily \mbox{[}ec, m, r, pc, b, I\mbox{]}}. 
+
+If the input size is not exactly {\ttfamily k\+Size}, the object is zeroed. (If you want hard failure, replace the behavior with an assert or exception.)
+
+
+\begin{DoxyParams}{Parameters}
+{\em row} & Vector of length 6. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_compact_star_1_1_seq_point_ac6dadb1cb94acf21a3453a0055fdaff8}\label{class_compact_star_1_1_seq_point_ac6dadb1cb94acf21a3453a0055fdaff8}} 
+\index{CompactStar::SeqPoint@{CompactStar::SeqPoint}!SeqPoint@{SeqPoint}}
+\index{SeqPoint@{SeqPoint}!CompactStar::SeqPoint@{CompactStar::SeqPoint}}
+\doxysubsubsection{\texorpdfstring{SeqPoint()}{SeqPoint()}\hspace{0.1cm}{\footnotesize\ttfamily [3/3]}}
+{\footnotesize\ttfamily Compact\+Star\+::\+Seq\+Point\+::\+Seq\+Point (\begin{DoxyParamCaption}\item[{std\+::initializer\+\_\+list$<$ double $>$}]{list }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Initializer-\/list constructor. 
+
+If the input size is not exactly {\ttfamily k\+Size}, the object is zeroed. (If you want hard failure, replace the behavior with an assert or exception.)
+
+
+\begin{DoxyParams}{Parameters}
+{\em list} & Initializer list of length 6. \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_compact_star_1_1_seq_point_a2213321094f39fdbeb68e2a987173a5e}\label{class_compact_star_1_1_seq_point_a2213321094f39fdbeb68e2a987173a5e}} 
+\index{CompactStar::SeqPoint@{CompactStar::SeqPoint}!FromRow@{FromRow}}
+\index{FromRow@{FromRow}!CompactStar::SeqPoint@{CompactStar::SeqPoint}}
+\doxysubsubsection{\texorpdfstring{FromRow()}{FromRow()}}
+{\footnotesize\ttfamily static \mbox{\hyperlink{class_compact_star_1_1_seq_point}{Seq\+Point}} Compact\+Star\+::\+Seq\+Point\+::\+From\+Row (\begin{DoxyParamCaption}\item[{const std\+::vector$<$ double $>$ \&}]{row }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+
+
+Factory\+: construct from a row vector {\ttfamily \mbox{[}ec, m, r, pc, b, I\mbox{]}}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em row} & Vector of length 6. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A new \mbox{\hyperlink{class_compact_star_1_1_seq_point}{Seq\+Point}} (zeroed if size mismatch). 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_compact_star_1_1_seq_point_a457be260b52f920af5f576d97dee04d7}\label{class_compact_star_1_1_seq_point_a457be260b52f920af5f576d97dee04d7}} 
+\index{CompactStar::SeqPoint@{CompactStar::SeqPoint}!operator$\ast$@{operator$\ast$}}
+\index{operator$\ast$@{operator$\ast$}!CompactStar::SeqPoint@{CompactStar::SeqPoint}}
+\doxysubsubsection{\texorpdfstring{operator$\ast$()}{operator*()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_compact_star_1_1_seq_point}{Seq\+Point}} Compact\+Star\+::\+Seq\+Point\+::operator$\ast$ (\begin{DoxyParamCaption}\item[{double}]{s }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Scalar multiplication. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em s} & Scalar multiplier. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Scaled sequence point. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_compact_star_1_1_seq_point_a8685a3166437ca114fee8b1ed6fe7809}\label{class_compact_star_1_1_seq_point_a8685a3166437ca114fee8b1ed6fe7809}} 
+\index{CompactStar::SeqPoint@{CompactStar::SeqPoint}!operator$\ast$=@{operator$\ast$=}}
+\index{operator$\ast$=@{operator$\ast$=}!CompactStar::SeqPoint@{CompactStar::SeqPoint}}
+\doxysubsubsection{\texorpdfstring{operator$\ast$=()}{operator*=()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_compact_star_1_1_seq_point}{Seq\+Point}} \& Compact\+Star\+::\+Seq\+Point\+::operator$\ast$= (\begin{DoxyParamCaption}\item[{double}]{s }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+In-\/place scalar multiplication. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em s} & Scalar multiplier. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+$\ast$this. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_compact_star_1_1_seq_point_ae70c6c791a41dc4e6bc4032c10c9cd3a}\label{class_compact_star_1_1_seq_point_ae70c6c791a41dc4e6bc4032c10c9cd3a}} 
+\index{CompactStar::SeqPoint@{CompactStar::SeqPoint}!operator+@{operator+}}
+\index{operator+@{operator+}!CompactStar::SeqPoint@{CompactStar::SeqPoint}}
+\doxysubsubsection{\texorpdfstring{operator+()}{operator+()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_compact_star_1_1_seq_point}{Seq\+Point}} Compact\+Star\+::\+Seq\+Point\+::operator+ (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_compact_star_1_1_seq_point}{Seq\+Point}} \&}]{rhs }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Component-\/wise addition. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em rhs} & Other sequence point. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Sum of fields, element-\/wise. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_compact_star_1_1_seq_point_a1707db2457368c0d849d5724732f7b51}\label{class_compact_star_1_1_seq_point_a1707db2457368c0d849d5724732f7b51}} 
+\index{CompactStar::SeqPoint@{CompactStar::SeqPoint}!operator+=@{operator+=}}
+\index{operator+=@{operator+=}!CompactStar::SeqPoint@{CompactStar::SeqPoint}}
+\doxysubsubsection{\texorpdfstring{operator+=()}{operator+=()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_compact_star_1_1_seq_point}{Seq\+Point}} \& Compact\+Star\+::\+Seq\+Point\+::operator+= (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_compact_star_1_1_seq_point}{Seq\+Point}} \&}]{rhs }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Component-\/wise in-\/place addition. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em rhs} & Other sequence point. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+$\ast$this. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_compact_star_1_1_seq_point_ad2e072118a010a0859944fcaccc9c6e0}\label{class_compact_star_1_1_seq_point_ad2e072118a010a0859944fcaccc9c6e0}} 
+\index{CompactStar::SeqPoint@{CompactStar::SeqPoint}!operator=@{operator=}}
+\index{operator=@{operator=}!CompactStar::SeqPoint@{CompactStar::SeqPoint}}
+\doxysubsubsection{\texorpdfstring{operator=()}{operator=()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_compact_star_1_1_seq_point}{Seq\+Point}} \& Compact\+Star\+::\+Seq\+Point\+::operator= (\begin{DoxyParamCaption}\item[{const std\+::vector$<$ double $>$ \&}]{row }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Assignment from a row vector {\ttfamily \mbox{[}ec, m, r, pc, b, I\mbox{]}}. 
+
+If the input size is not exactly {\ttfamily k\+Size}, the object is zeroed. (If you want hard failure, replace the behavior with an assert or exception.)
+
+
+\begin{DoxyParams}{Parameters}
+{\em row} & Vector of length 6. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+$\ast$this. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_compact_star_1_1_seq_point_ae98e81678613ee9963f8b036214057f4}\label{class_compact_star_1_1_seq_point_ae98e81678613ee9963f8b036214057f4}} 
+\index{CompactStar::SeqPoint@{CompactStar::SeqPoint}!operator=@{operator=}}
+\index{operator=@{operator=}!CompactStar::SeqPoint@{CompactStar::SeqPoint}}
+\doxysubsubsection{\texorpdfstring{operator=()}{operator=()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_compact_star_1_1_seq_point}{Seq\+Point}} \& Compact\+Star\+::\+Seq\+Point\+::operator= (\begin{DoxyParamCaption}\item[{std\+::initializer\+\_\+list$<$ double $>$}]{list }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Assignment from an initializer list. 
+
+If the input size is not exactly {\ttfamily k\+Size}, the object is zeroed. (If you want hard failure, replace the behavior with an assert or exception.)
+
+
+\begin{DoxyParams}{Parameters}
+{\em list} & Initializer list of length 6. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+$\ast$this. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_compact_star_1_1_seq_point_ad011ef3fc4be7164403486f04e90cac7}\label{class_compact_star_1_1_seq_point_ad011ef3fc4be7164403486f04e90cac7}} 
+\index{CompactStar::SeqPoint@{CompactStar::SeqPoint}!Str@{Str}}
+\index{Str@{Str}!CompactStar::SeqPoint@{CompactStar::SeqPoint}}
+\doxysubsubsection{\texorpdfstring{Str()}{Str()}}
+{\footnotesize\ttfamily std\+::string Compact\+Star\+::\+Seq\+Point\+::\+Str (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Format fields as a single tab-\/delimited string. 
+
+\begin{DoxyReturn}{Returns}
+Tab-\/delimited scientific notation string.
+\end{DoxyReturn}
+Order\+: {\ttfamily ec, m, r, pc, b, I}. \mbox{\Hypertarget{class_compact_star_1_1_seq_point_af5f6a6480e22049ef628c9c1bf529847}\label{class_compact_star_1_1_seq_point_af5f6a6480e22049ef628c9c1bf529847}} 
+\index{CompactStar::SeqPoint@{CompactStar::SeqPoint}!ToRow@{ToRow}}
+\index{ToRow@{ToRow}!CompactStar::SeqPoint@{CompactStar::SeqPoint}}
+\doxysubsubsection{\texorpdfstring{ToRow()}{ToRow()}}
+{\footnotesize\ttfamily std\+::vector$<$ double $>$ Compact\+Star\+::\+Seq\+Point\+::\+To\+Row (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Convert to a packed vector {\ttfamily \mbox{[}ec, m, r, pc, b, I\mbox{]}}. 
+
+\begin{DoxyReturn}{Returns}
+std\+::vector$<$double$>$ with k\+Size entries. 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Compact\+Star/\+Core/\mbox{\hyperlink{_seq_point_8hpp}{Seq\+Point.\+hpp}}\end{DoxyCompactItemize}

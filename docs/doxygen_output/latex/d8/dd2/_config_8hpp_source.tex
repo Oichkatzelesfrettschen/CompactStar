@@ -1,0 +1,102 @@
+\hypertarget{_config_8hpp_source}{}\doxysection{Config.\+hpp}
+\label{_config_8hpp_source}\index{CompactStar/ChemicalHeating/Config.hpp@{CompactStar/ChemicalHeating/Config.hpp}}
+\mbox{\hyperlink{_config_8hpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{comment}{// -\/*-\/ lsst-\/c++ -\/*-\/}}
+\DoxyCodeLine{2 \textcolor{comment}{/*}}
+\DoxyCodeLine{3 \textcolor{comment}{ * CompactStar}}
+\DoxyCodeLine{4 \textcolor{comment}{ * See License file at the top of the source tree.}}
+\DoxyCodeLine{5 \textcolor{comment}{ *}}
+\DoxyCodeLine{6 \textcolor{comment}{ * Copyright (c) 2025 Mohammadreza Zakeri}}
+\DoxyCodeLine{7 \textcolor{comment}{ *}}
+\DoxyCodeLine{8 \textcolor{comment}{ * Permission is hereby granted, free of charge, to any person obtaining a copy}}
+\DoxyCodeLine{9 \textcolor{comment}{ * of this software and associated documentation files (the "{}Software"{}), to deal}}
+\DoxyCodeLine{10 \textcolor{comment}{ * in the Software without restriction, including without limitation the rights}}
+\DoxyCodeLine{11 \textcolor{comment}{ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell}}
+\DoxyCodeLine{12 \textcolor{comment}{ * copies of the Software, and to permit persons to whom the Software is}}
+\DoxyCodeLine{13 \textcolor{comment}{ * furnished to do so, subject to the following conditions:}}
+\DoxyCodeLine{14 \textcolor{comment}{ *}}
+\DoxyCodeLine{15 \textcolor{comment}{ * The above copyright notice and this permission notice shall be included in all}}
+\DoxyCodeLine{16 \textcolor{comment}{ * copies or substantial portions of the Software.}}
+\DoxyCodeLine{17 \textcolor{comment}{ *}}
+\DoxyCodeLine{18 \textcolor{comment}{ * THE SOFTWARE IS PROVIDED "{}AS IS"{}, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR}}
+\DoxyCodeLine{19 \textcolor{comment}{ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,}}
+\DoxyCodeLine{20 \textcolor{comment}{ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE}}
+\DoxyCodeLine{21 \textcolor{comment}{ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER}}
+\DoxyCodeLine{22 \textcolor{comment}{ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,}}
+\DoxyCodeLine{23 \textcolor{comment}{ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE}}
+\DoxyCodeLine{24 \textcolor{comment}{ * SOFTWARE.}}
+\DoxyCodeLine{25 \textcolor{comment}{ */}}
+\DoxyCodeLine{26 }
+\DoxyCodeLine{36 \textcolor{preprocessor}{\#ifndef CompactStar\_ChemicalHeating\_Config\_H}}
+\DoxyCodeLine{37 \textcolor{preprocessor}{\#define CompactStar\_ChemicalHeating\_Config\_H}}
+\DoxyCodeLine{38 }
+\DoxyCodeLine{39 \textcolor{preprocessor}{\#include <cstddef>}}
+\DoxyCodeLine{40 \textcolor{preprocessor}{\#include <string>}}
+\DoxyCodeLine{41 \textcolor{preprocessor}{\#include <vector>}}
+\DoxyCodeLine{42 }
+\DoxyCodeLine{43 \textcolor{keyword}{namespace }CompactStar}
+\DoxyCodeLine{44 \{}
+\DoxyCodeLine{45 \textcolor{keyword}{namespace }ChemicalHeating}
+\DoxyCodeLine{46 \{}
+\DoxyCodeLine{47 }
+\DoxyCodeLine{48 \textcolor{comment}{//==============================================================}}
+\DoxyCodeLine{53 \textcolor{comment}{}\textcolor{keyword}{enum class} \mbox{\hyperlink{_config_8hpp_a095bc4bf317dab5e4ca6d0b0b6903074}{StepperType}}}
+\DoxyCodeLine{54 \{}
+\DoxyCodeLine{55     \mbox{\hyperlink{_config_8hpp_a095bc4bf317dab5e4ca6d0b0b6903074a651742901a96ccc36ad193073cb71b4a}{RKF45}}, }
+\DoxyCodeLine{56     \mbox{\hyperlink{_config_8hpp_a095bc4bf317dab5e4ca6d0b0b6903074a14a72850b24c13d12d4e2370e682a181}{MSBDF}}  }
+\DoxyCodeLine{57 \};}
+\DoxyCodeLine{58 }
+\DoxyCodeLine{59 \textcolor{comment}{//==============================================================}}
+\DoxyCodeLine{64 \textcolor{comment}{}\textcolor{keyword}{enum class} \mbox{\hyperlink{_config_8hpp_add99b1e3c709af78e4545e2c253c1739}{EnvelopeModel}}}
+\DoxyCodeLine{65 \{}
+\DoxyCodeLine{66     Iron,}
+\DoxyCodeLine{67     Accreted,}
+\DoxyCodeLine{68     \mbox{\hyperlink{_config_8hpp_add99b1e3c709af78e4545e2c253c1739a90589c47f06eb971d548591f23c285af}{Custom}} }
+\DoxyCodeLine{69 \};}
+\DoxyCodeLine{70 \textcolor{comment}{//==============================================================}}
+\DoxyCodeLine{71 }
+\DoxyCodeLine{72 \textcolor{comment}{//==============================================================}}
+\DoxyCodeLine{77 \textcolor{comment}{}\textcolor{keyword}{struct }\mbox{\hyperlink{struct_compact_star_1_1_chemical_heating_1_1_config}{Config}}}
+\DoxyCodeLine{78 \{}
+\DoxyCodeLine{79     \textcolor{comment}{// -\/-\/-\/-\/ Integrator -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{80     \mbox{\hyperlink{_config_8hpp_a095bc4bf317dab5e4ca6d0b0b6903074}{StepperType}} \mbox{\hyperlink{struct_compact_star_1_1_chemical_heating_1_1_config_a96d831e7dbd73ff323cf04fe4dbe6eb4}{stepper}} = StepperType::MSBDF; }
+\DoxyCodeLine{81     \textcolor{keywordtype}{double} \mbox{\hyperlink{struct_compact_star_1_1_chemical_heating_1_1_config_aa4c5a55a22eec91096e8269ee1fee904}{rtol}} = 1e-\/6;                       }
+\DoxyCodeLine{82     \textcolor{keywordtype}{double} \mbox{\hyperlink{struct_compact_star_1_1_chemical_heating_1_1_config_a9ab080ebab90bac0056c8d9efae16811}{atol}} = 1e-\/10;                      }
+\DoxyCodeLine{83     std::size\_t \mbox{\hyperlink{struct_compact_star_1_1_chemical_heating_1_1_config_adc7bfd08af04b106258234b837c45100}{max\_steps}} = 1000000;         }
+\DoxyCodeLine{85     \textcolor{comment}{// -\/-\/-\/-\/ Output -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{86     \textcolor{keywordtype}{double} \mbox{\hyperlink{struct_compact_star_1_1_chemical_heating_1_1_config_a802e2c0f0f1a6108efc9b7b56ca07d44}{dt\_save}} = 1.0e2; }
+\DoxyCodeLine{87     \textcolor{keywordtype}{bool} save\_intermediate = \textcolor{keyword}{true};}
+\DoxyCodeLine{88 }
+\DoxyCodeLine{89     \textcolor{comment}{// -\/-\/-\/-\/ Physics toggles -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{90     \textcolor{keywordtype}{bool} \mbox{\hyperlink{struct_compact_star_1_1_chemical_heating_1_1_config_a981017e0fdf9259d1233d8774f8162a9}{use\_isothermal\_core}} = \textcolor{keyword}{true};  }
+\DoxyCodeLine{91     \textcolor{keywordtype}{bool} \mbox{\hyperlink{struct_compact_star_1_1_chemical_heating_1_1_config_a7dde396850ab77828fd7bc88f8258bc7}{enable\_MU}} = \textcolor{keyword}{true};              }
+\DoxyCodeLine{92     \textcolor{keywordtype}{bool} \mbox{\hyperlink{struct_compact_star_1_1_chemical_heating_1_1_config_aa8c21f9a31a682bbd2ededf1e371a00d}{enable\_DU}} = \textcolor{keyword}{true};              }
+\DoxyCodeLine{93     \textcolor{keywordtype}{bool} \mbox{\hyperlink{struct_compact_star_1_1_chemical_heating_1_1_config_a90b01acfdb0e8b164c653fde2a7e27a9}{enable\_PBF}} = \textcolor{keyword}{false};           }
+\DoxyCodeLine{94     \textcolor{keywordtype}{bool} \mbox{\hyperlink{struct_compact_star_1_1_chemical_heating_1_1_config_a6e831d28330e46940e5061a0af77a5f8}{enable\_BNV}} = \textcolor{keyword}{false};           }
+\DoxyCodeLine{95     \textcolor{keywordtype}{bool} \mbox{\hyperlink{struct_compact_star_1_1_chemical_heating_1_1_config_a98aa949e2d033e5083a67dccdd75df7b}{enable\_rotochem\_driver}} = \textcolor{keyword}{false}; }
+\DoxyCodeLine{96     \textcolor{keywordtype}{bool} \mbox{\hyperlink{struct_compact_star_1_1_chemical_heating_1_1_config_a6389ac3ff371bd22f0da04c9704b90a8}{couple\_spin}} = \textcolor{keyword}{false};             }
+\DoxyCodeLine{98     \textcolor{comment}{// -\/-\/-\/-\/ Envelope and gaps -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{99     \mbox{\hyperlink{_config_8hpp_add99b1e3c709af78e4545e2c253c1739}{EnvelopeModel}} envelope = EnvelopeModel::Iron;}
+\DoxyCodeLine{100     \textcolor{keywordtype}{double} \mbox{\hyperlink{struct_compact_star_1_1_chemical_heating_1_1_config_a81d66c29673f812c4c7c404f8badd5f1}{envelope\_xi}} = 0.0; }
+\DoxyCodeLine{101     \textcolor{keywordtype}{bool} superfluid\_n = \textcolor{keyword}{false};}
+\DoxyCodeLine{102     \textcolor{keywordtype}{bool} superfluid\_p = \textcolor{keyword}{false};}
+\DoxyCodeLine{103 }
+\DoxyCodeLine{104     \textcolor{comment}{// -\/-\/-\/-\/ Chemical imbalances -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{105     std::size\_t \mbox{\hyperlink{struct_compact_star_1_1_chemical_heating_1_1_config_a47dfcf9e24eba298ad1bf3c6ad3f4de8}{n\_eta}} = 1; }
+\DoxyCodeLine{107     \textcolor{comment}{// -\/-\/-\/-\/ Units policy (documentation only; conversions handled in impl) -\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{108     std::string unit\_policy = \textcolor{stringliteral}{"{}cgs\_with\_Gc1"{}};}
+\DoxyCodeLine{109 }
+\DoxyCodeLine{110     \textcolor{comment}{// -\/-\/-\/-\/ Misc -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{111     std::string \mbox{\hyperlink{struct_compact_star_1_1_chemical_heating_1_1_config_a1d9a11e88b84103d71c9d8c47442179e}{run\_label}}; }
+\DoxyCodeLine{112 \};}
+\DoxyCodeLine{113 \textcolor{comment}{//==============================================================}}
+\DoxyCodeLine{114 }
+\DoxyCodeLine{115 \} \textcolor{comment}{// namespace ChemicalHeating}}
+\DoxyCodeLine{116 \textcolor{comment}{//==============================================================}}
+\DoxyCodeLine{117 \} \textcolor{comment}{// namespace CompactStar}}
+\DoxyCodeLine{118 \textcolor{comment}{//==============================================================}}
+\DoxyCodeLine{119 }
+\DoxyCodeLine{120 \textcolor{preprocessor}{\#endif }\textcolor{comment}{/* CompactStar\_ChemicalHeating\_Config\_H */}\textcolor{preprocessor}{}}
+
+\end{DoxyCode}

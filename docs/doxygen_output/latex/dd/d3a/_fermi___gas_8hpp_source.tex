@@ -1,0 +1,66 @@
+\hypertarget{_fermi___gas_8hpp_source}{}\doxysection{Fermi\+\_\+\+Gas.\+hpp}
+\label{_fermi___gas_8hpp_source}\index{CompactStar/EOS/Fermi\_Gas.hpp@{CompactStar/EOS/Fermi\_Gas.hpp}}
+\mbox{\hyperlink{_fermi___gas_8hpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{comment}{// -\/*-\/ lsst-\/c++ -\/*-\/}}
+\DoxyCodeLine{2 \textcolor{comment}{/*}}
+\DoxyCodeLine{3 \textcolor{comment}{ * CompactStar}}
+\DoxyCodeLine{4 \textcolor{comment}{ * See License file at the top of the source tree.}}
+\DoxyCodeLine{5 \textcolor{comment}{ *}}
+\DoxyCodeLine{6 \textcolor{comment}{ * Copyright (c) 2023 Mohammadreza Zakeri}}
+\DoxyCodeLine{7 \textcolor{comment}{ *}}
+\DoxyCodeLine{8 \textcolor{comment}{ * Permission is hereby granted, free of charge, to any person obtaining a copy}}
+\DoxyCodeLine{9 \textcolor{comment}{ * of this software and associated documentation files (the "{}Software"{}), to deal}}
+\DoxyCodeLine{10 \textcolor{comment}{ * in the Software without restriction, including without limitation the rights}}
+\DoxyCodeLine{11 \textcolor{comment}{ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell}}
+\DoxyCodeLine{12 \textcolor{comment}{ * copies of the Software, and to permit persons to whom the Software is}}
+\DoxyCodeLine{13 \textcolor{comment}{ * furnished to do so, subject to the following conditions:}}
+\DoxyCodeLine{14 \textcolor{comment}{ *}}
+\DoxyCodeLine{15 \textcolor{comment}{ * The above copyright notice and this permission notice shall be included in all}}
+\DoxyCodeLine{16 \textcolor{comment}{ * copies or substantial portions of the Software.}}
+\DoxyCodeLine{17 \textcolor{comment}{ *}}
+\DoxyCodeLine{18 \textcolor{comment}{ * THE SOFTWARE IS PROVIDED "{}AS IS"{}, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR}}
+\DoxyCodeLine{19 \textcolor{comment}{ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,}}
+\DoxyCodeLine{20 \textcolor{comment}{ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE}}
+\DoxyCodeLine{21 \textcolor{comment}{ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER}}
+\DoxyCodeLine{22 \textcolor{comment}{ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,}}
+\DoxyCodeLine{23 \textcolor{comment}{ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE}}
+\DoxyCodeLine{24 \textcolor{comment}{ * SOFTWARE.}}
+\DoxyCodeLine{25 \textcolor{comment}{ */}}
+\DoxyCodeLine{26 }
+\DoxyCodeLine{38 \textcolor{comment}{// Created on Apr 26, 2022}}
+\DoxyCodeLine{39 \textcolor{preprocessor}{\#ifndef CompactStar\_Fermi\_Gas\_H}}
+\DoxyCodeLine{40 \textcolor{preprocessor}{\#define CompactStar\_Fermi\_Gas\_H}}
+\DoxyCodeLine{41 }
+\DoxyCodeLine{42 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_model_8hpp}{CompactStar/EOS/Model.hpp}}"{}}}
+\DoxyCodeLine{43 }
+\DoxyCodeLine{44 \textcolor{comment}{//==============================================================}}
+\DoxyCodeLine{45 \textcolor{keyword}{namespace }CompactStar}
+\DoxyCodeLine{46 \{}
+\DoxyCodeLine{47 }
+\DoxyCodeLine{48 \textcolor{comment}{//==============================================================}}
+\DoxyCodeLine{49 \textcolor{keyword}{class }\mbox{\hyperlink{class_compact_star_1_1_fermi___gas}{Fermi\_Gas}} : \textcolor{keyword}{public} \mbox{\hyperlink{class_compact_star_1_1_model}{Model}}}
+\DoxyCodeLine{50 \{}
+\DoxyCodeLine{51     \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{52   \textcolor{keyword}{private}:}
+\DoxyCodeLine{54     \textcolor{keywordtype}{double} m;}
+\DoxyCodeLine{55 }
+\DoxyCodeLine{56     \textcolor{comment}{// We may implement temperature later.}}
+\DoxyCodeLine{57     \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{58   \textcolor{keyword}{public}:}
+\DoxyCodeLine{60     \mbox{\hyperlink{class_compact_star_1_1_fermi___gas}{Fermi\_Gas}}(\textcolor{keyword}{const} \textcolor{keywordtype}{double} \&in\_m);}
+\DoxyCodeLine{61 }
+\DoxyCodeLine{62     \mbox{\hyperlink{class_compact_star_1_1_fermi___gas_a6090b663aa1ea0839eb861c7541ae5a2}{\string~Fermi\_Gas}}();}
+\DoxyCodeLine{63 }
+\DoxyCodeLine{64     \textcolor{keywordtype}{double} EDens(\textcolor{keyword}{const} \textcolor{keywordtype}{double} \&) \textcolor{keyword}{override};}
+\DoxyCodeLine{65     \textcolor{keywordtype}{double} Press(\textcolor{keyword}{const} \textcolor{keywordtype}{double} \&) \textcolor{keyword}{override};}
+\DoxyCodeLine{66 }
+\DoxyCodeLine{68     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_compact_star_1_1_fermi___gas_ad02801aa252b735e142a4c2a01a0cb2a}{SetParams}}(\textcolor{keyword}{const} \textcolor{keywordtype}{double} \&in\_m);}
+\DoxyCodeLine{69 \};}
+\DoxyCodeLine{70 }
+\DoxyCodeLine{71 \textcolor{comment}{//==============================================================}}
+\DoxyCodeLine{72 \} \textcolor{comment}{// namespace CompactStar}}
+\DoxyCodeLine{73 \textcolor{comment}{//==============================================================}}
+\DoxyCodeLine{74 \textcolor{preprocessor}{\#endif }\textcolor{comment}{/*CompactStar\_Fermi\_Gas\_H*/}\textcolor{preprocessor}{}}
+
+\end{DoxyCode}

@@ -1,0 +1,894 @@
+\hypertarget{_math___core_8hpp_source}{}\doxysection{Math\+\_\+\+Core.\+hpp}
+\label{_math___core_8hpp_source}\index{dependencies/include/Zaki/Math/Math\_Core.hpp@{dependencies/include/Zaki/Math/Math\_Core.hpp}}
+\mbox{\hyperlink{_math___core_8hpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{comment}{// -\/*-\/ lsst-\/c++ -\/*-\/}}
+\DoxyCodeLine{2 \textcolor{comment}{/*}}
+\DoxyCodeLine{3 \textcolor{comment}{* Zaki's Common Library}}
+\DoxyCodeLine{4 \textcolor{comment}{* See License file at the top of the source tree.}}
+\DoxyCodeLine{5 \textcolor{comment}{*}}
+\DoxyCodeLine{6 \textcolor{comment}{* Copyright (c) 2023 Mohammadreza Zakeri}}
+\DoxyCodeLine{7 \textcolor{comment}{*}}
+\DoxyCodeLine{8 \textcolor{comment}{* Permission is hereby granted, free of charge, to any person obtaining a copy}}
+\DoxyCodeLine{9 \textcolor{comment}{* of this software and associated documentation files (the "{}Software"{}), to deal}}
+\DoxyCodeLine{10 \textcolor{comment}{* in the Software without restriction, including without limitation the rights}}
+\DoxyCodeLine{11 \textcolor{comment}{* to use, copy, modify, merge, publish, distribute, sublicense, and/or sell}}
+\DoxyCodeLine{12 \textcolor{comment}{* copies of the Software, and to permit persons to whom the Software is}}
+\DoxyCodeLine{13 \textcolor{comment}{* furnished to do so, subject to the following conditions:}}
+\DoxyCodeLine{14 \textcolor{comment}{*}}
+\DoxyCodeLine{15 \textcolor{comment}{* The above copyright notice and this permission notice shall be included in all}}
+\DoxyCodeLine{16 \textcolor{comment}{* copies or substantial portions of the Software.}}
+\DoxyCodeLine{17 \textcolor{comment}{*}}
+\DoxyCodeLine{18 \textcolor{comment}{* THE SOFTWARE IS PROVIDED "{}AS IS"{}, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR}}
+\DoxyCodeLine{19 \textcolor{comment}{* IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,}}
+\DoxyCodeLine{20 \textcolor{comment}{* FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE}}
+\DoxyCodeLine{21 \textcolor{comment}{* AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER}}
+\DoxyCodeLine{22 \textcolor{comment}{* LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,}}
+\DoxyCodeLine{23 \textcolor{comment}{* OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE}}
+\DoxyCodeLine{24 \textcolor{comment}{* SOFTWARE.}}
+\DoxyCodeLine{25 \textcolor{comment}{*/}}
+\DoxyCodeLine{26 }
+\DoxyCodeLine{39 \textcolor{preprocessor}{\#ifndef Zaki\_Math\_Basic\_H}}
+\DoxyCodeLine{40 \textcolor{preprocessor}{\#define Zaki\_Math\_Basic\_H}}
+\DoxyCodeLine{41 }
+\DoxyCodeLine{42 \textcolor{preprocessor}{\#include <iostream>}}
+\DoxyCodeLine{43 \textcolor{preprocessor}{\#include <vector>}}
+\DoxyCodeLine{44 }
+\DoxyCodeLine{45 \textcolor{preprocessor}{\#include <gsl/gsl\_interp2d.h>}}
+\DoxyCodeLine{46 \textcolor{preprocessor}{\#include <gsl/gsl\_spline2d.h>}}
+\DoxyCodeLine{47 }
+\DoxyCodeLine{48 \textcolor{comment}{// \#include "{}Zaki/Util/Logger.hpp"{}}}
+\DoxyCodeLine{49 \textcolor{comment}{// \#include "{}Zaki/String/Directory.hpp"{}}}
+\DoxyCodeLine{50 \textcolor{comment}{// \#include "{}Zaki/File/VecSaver.hpp"{}}}
+\DoxyCodeLine{51 \textcolor{comment}{// \#include <Zaki/File/CSVIterator.hpp> }}
+\DoxyCodeLine{52 }
+\DoxyCodeLine{53 \textcolor{comment}{// \#include <matplotlibcpp.hpp>}}
+\DoxyCodeLine{54 \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{55 \textcolor{keyword}{namespace }Zaki::Vector}
+\DoxyCodeLine{56 \{}
+\DoxyCodeLine{57   \textcolor{keyword}{class }DataSet ;}
+\DoxyCodeLine{58 \}}
+\DoxyCodeLine{59 }
+\DoxyCodeLine{60 \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{61 \textcolor{keyword}{namespace }Zaki::Physics}
+\DoxyCodeLine{62 \{}
+\DoxyCodeLine{63   \textcolor{keyword}{class }Coord3D ;}
+\DoxyCodeLine{64 \}}
+\DoxyCodeLine{65 }
+\DoxyCodeLine{66 \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{67 \textcolor{keyword}{namespace }Zaki::String}
+\DoxyCodeLine{68 \{}
+\DoxyCodeLine{69   \textcolor{keyword}{class }Directory ;}
+\DoxyCodeLine{70 \}}
+\DoxyCodeLine{71 }
+\DoxyCodeLine{72 \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{73 \textcolor{keyword}{namespace }Zaki::Math}
+\DoxyCodeLine{74 \{}
+\DoxyCodeLine{75 }
+\DoxyCodeLine{76 \textcolor{comment}{//==============================================================}}
+\DoxyCodeLine{78 \textcolor{comment}{}\textcolor{keywordtype}{int} \mbox{\hyperlink{_math___core_8hpp_a8b2500daa2f2370ce05b7faba1fc5c27}{DoubleFac}}(\textcolor{keywordtype}{int} n) ;}
+\DoxyCodeLine{79 }
+\DoxyCodeLine{80 \textcolor{comment}{//==============================================================}}
+\DoxyCodeLine{81 \textcolor{comment}{//        Forward Declarations}}
+\DoxyCodeLine{82 \textcolor{comment}{//==============================================================}}
+\DoxyCodeLine{83 }
+\DoxyCodeLine{84 \textcolor{keyword}{class }\mbox{\hyperlink{class_zaki_1_1_math_1_1_quantity}{Quantity}} ; }
+\DoxyCodeLine{85 }
+\DoxyCodeLine{86 \textcolor{comment}{//..................................................}}
+\DoxyCodeLine{87 \textcolor{comment}{//                Addition (+)}}
+\DoxyCodeLine{88 \textcolor{comment}{//..................................................}}
+\DoxyCodeLine{90 \textcolor{comment}{}\mbox{\hyperlink{class_zaki_1_1_math_1_1_quantity}{Quantity}} \mbox{\hyperlink{_math___core_8hpp_a34e0954374f5849d439d97d8271925fb}{operator+}}(\textcolor{keyword}{const} \mbox{\hyperlink{class_zaki_1_1_math_1_1_quantity}{Quantity}}\& Q\_L, \textcolor{keyword}{const} \mbox{\hyperlink{class_zaki_1_1_math_1_1_quantity}{Quantity}}\& Q\_R) ;}
+\DoxyCodeLine{91 }
+\DoxyCodeLine{93 \mbox{\hyperlink{class_zaki_1_1_math_1_1_quantity}{Quantity}} \mbox{\hyperlink{_math___core_8hpp_a34e0954374f5849d439d97d8271925fb}{operator+}}(\textcolor{keyword}{const} \textcolor{keywordtype}{double}\&, \textcolor{keyword}{const} \mbox{\hyperlink{class_zaki_1_1_math_1_1_quantity}{Quantity}}\& Q\_R) ;}
+\DoxyCodeLine{94 }
+\DoxyCodeLine{96 \mbox{\hyperlink{class_zaki_1_1_math_1_1_quantity}{Quantity}} \mbox{\hyperlink{_math___core_8hpp_a34e0954374f5849d439d97d8271925fb}{operator+}}(\textcolor{keyword}{const} \mbox{\hyperlink{class_zaki_1_1_math_1_1_quantity}{Quantity}}\& Q\_L, \textcolor{keyword}{const} \textcolor{keywordtype}{double}\&) ;}
+\DoxyCodeLine{97 }
+\DoxyCodeLine{99 \textcolor{comment}{// Quantity operator+(const int\&, const Quantity\& Q\_R) ;}}
+\DoxyCodeLine{100 }
+\DoxyCodeLine{102 \textcolor{comment}{// Quantity operator+(const Quantity\& Q\_R, const int\&) ;}}
+\DoxyCodeLine{103 \textcolor{comment}{//..................................................}}
+\DoxyCodeLine{104 \textcolor{comment}{//                Subtraction (-\/)}}
+\DoxyCodeLine{105 \textcolor{comment}{//..................................................}}
+\DoxyCodeLine{107 \textcolor{comment}{}\mbox{\hyperlink{class_zaki_1_1_math_1_1_quantity}{Quantity}} \mbox{\hyperlink{_math___core_8hpp_a9b3800954c993f3acddc75dca886c015}{operator-\/}}(\textcolor{keyword}{const} \mbox{\hyperlink{class_zaki_1_1_math_1_1_quantity}{Quantity}}\& Q\_L, \textcolor{keyword}{const} \mbox{\hyperlink{class_zaki_1_1_math_1_1_quantity}{Quantity}}\& Q\_R) ;}
+\DoxyCodeLine{108 }
+\DoxyCodeLine{110 \mbox{\hyperlink{class_zaki_1_1_math_1_1_quantity}{Quantity}} \mbox{\hyperlink{_math___core_8hpp_a9b3800954c993f3acddc75dca886c015}{operator-\/}}(\textcolor{keyword}{const} \textcolor{keywordtype}{double}\&, \textcolor{keyword}{const} \mbox{\hyperlink{class_zaki_1_1_math_1_1_quantity}{Quantity}}\& Q\_R) ;}
+\DoxyCodeLine{111 }
+\DoxyCodeLine{113 \mbox{\hyperlink{class_zaki_1_1_math_1_1_quantity}{Quantity}} \mbox{\hyperlink{_math___core_8hpp_a9b3800954c993f3acddc75dca886c015}{operator-\/}}(\textcolor{keyword}{const} \mbox{\hyperlink{class_zaki_1_1_math_1_1_quantity}{Quantity}}\& Q\_L, \textcolor{keyword}{const} \textcolor{keywordtype}{double}\&) ;}
+\DoxyCodeLine{114 }
+\DoxyCodeLine{116 \textcolor{comment}{// Quantity operator-\/(const int\&, const Quantity\& Q\_R) ;}}
+\DoxyCodeLine{117 }
+\DoxyCodeLine{119 \textcolor{comment}{// Quantity operator-\/(const Quantity\& Q\_R, const int\&) ;}}
+\DoxyCodeLine{120 }
+\DoxyCodeLine{121 \textcolor{comment}{//..................................................}}
+\DoxyCodeLine{122 \textcolor{comment}{//              Multiplication (*)}}
+\DoxyCodeLine{123 \textcolor{comment}{//..................................................}}
+\DoxyCodeLine{125 \textcolor{comment}{}\mbox{\hyperlink{class_zaki_1_1_math_1_1_quantity}{Quantity}} \mbox{\hyperlink{_math___core_8hpp_a53a431638eb7a4142cb86f4e4b1dd06b}{operator*}}(\textcolor{keyword}{const} \mbox{\hyperlink{class_zaki_1_1_math_1_1_quantity}{Quantity}}\& Q\_L, \textcolor{keyword}{const} \mbox{\hyperlink{class_zaki_1_1_math_1_1_quantity}{Quantity}}\& Q\_R) ;}
+\DoxyCodeLine{126 }
+\DoxyCodeLine{128 \mbox{\hyperlink{class_zaki_1_1_math_1_1_quantity}{Quantity}} \mbox{\hyperlink{_math___core_8hpp_a53a431638eb7a4142cb86f4e4b1dd06b}{operator*}}(\textcolor{keyword}{const} \textcolor{keywordtype}{double}\&, \textcolor{keyword}{const} \mbox{\hyperlink{class_zaki_1_1_math_1_1_quantity}{Quantity}}\& Q\_R) ;}
+\DoxyCodeLine{129 }
+\DoxyCodeLine{131 \mbox{\hyperlink{class_zaki_1_1_math_1_1_quantity}{Quantity}} \mbox{\hyperlink{_math___core_8hpp_a53a431638eb7a4142cb86f4e4b1dd06b}{operator*}}(\textcolor{keyword}{const} \mbox{\hyperlink{class_zaki_1_1_math_1_1_quantity}{Quantity}}\& Q\_L, \textcolor{keyword}{const} \textcolor{keywordtype}{double}\&) ;}
+\DoxyCodeLine{132 }
+\DoxyCodeLine{134 \textcolor{comment}{// Quantity operator*(const int\&, const Quantity\& Q\_R) ;}}
+\DoxyCodeLine{135 }
+\DoxyCodeLine{137 \textcolor{comment}{// Quantity operator*(const Quantity\& Q\_R, const int\&) ;}}
+\DoxyCodeLine{138 \textcolor{comment}{//..................................................}}
+\DoxyCodeLine{139 \textcolor{comment}{//                  Division (/)}}
+\DoxyCodeLine{140 \textcolor{comment}{//..................................................}}
+\DoxyCodeLine{142 \textcolor{comment}{}\mbox{\hyperlink{class_zaki_1_1_math_1_1_quantity}{Quantity}} \mbox{\hyperlink{_math___core_8hpp_a936713b9297ee54531916eab15d46ee8}{operator/}}(\textcolor{keyword}{const} \mbox{\hyperlink{class_zaki_1_1_math_1_1_quantity}{Quantity}}\& Q\_L, \textcolor{keyword}{const} \mbox{\hyperlink{class_zaki_1_1_math_1_1_quantity}{Quantity}}\& Q\_R) ;}
+\DoxyCodeLine{143 }
+\DoxyCodeLine{145 \mbox{\hyperlink{class_zaki_1_1_math_1_1_quantity}{Quantity}} \mbox{\hyperlink{_math___core_8hpp_a936713b9297ee54531916eab15d46ee8}{operator/}}(\textcolor{keyword}{const} \textcolor{keywordtype}{double}\&, \textcolor{keyword}{const} \mbox{\hyperlink{class_zaki_1_1_math_1_1_quantity}{Quantity}}\& Q\_R) ;}
+\DoxyCodeLine{146 }
+\DoxyCodeLine{148 \mbox{\hyperlink{class_zaki_1_1_math_1_1_quantity}{Quantity}} \mbox{\hyperlink{_math___core_8hpp_a936713b9297ee54531916eab15d46ee8}{operator/}}(\textcolor{keyword}{const} \mbox{\hyperlink{class_zaki_1_1_math_1_1_quantity}{Quantity}}\& Q\_L, \textcolor{keyword}{const} \textcolor{keywordtype}{double}\&) ;}
+\DoxyCodeLine{149 }
+\DoxyCodeLine{151 \textcolor{comment}{// Quantity operator/(const int\&, const Quantity\& Q\_R) ;}}
+\DoxyCodeLine{152 }
+\DoxyCodeLine{154 \textcolor{comment}{// Quantity operator/(const Quantity\& Q\_R, const int\&) ;}}
+\DoxyCodeLine{155 }
+\DoxyCodeLine{156 \textcolor{comment}{//..................................................}}
+\DoxyCodeLine{157 \textcolor{comment}{//               Exponentiation (exp)}}
+\DoxyCodeLine{158 \textcolor{comment}{//..................................................}}
+\DoxyCodeLine{159 \textcolor{comment}{// Quantity exp(const Quantity\&) ;}}
+\DoxyCodeLine{160 }
+\DoxyCodeLine{161 \textcolor{comment}{//==============================================================}}
+\DoxyCodeLine{162 \textcolor{comment}{//==============================================================}}
+\DoxyCodeLine{163 \textcolor{keyword}{class }\mbox{\hyperlink{class_zaki_1_1_math_1_1_quantity}{Quantity}}}
+\DoxyCodeLine{164 \{}
+\DoxyCodeLine{165   \textcolor{keyword}{public}:}
+\DoxyCodeLine{166   \textcolor{comment}{//==============================================================}}
+\DoxyCodeLine{167   \textcolor{comment}{//        Friend functions}}
+\DoxyCodeLine{168   \textcolor{comment}{//..................................................}}
+\DoxyCodeLine{169   \textcolor{keyword}{friend}}
+\DoxyCodeLine{170   \mbox{\hyperlink{class_zaki_1_1_math_1_1_quantity}{Quantity}} \mbox{\hyperlink{class_zaki_1_1_math_1_1_quantity_a9d8332bbc867af4f306c71cf81034ca6}{operator-\/}}(\textcolor{keyword}{const} \mbox{\hyperlink{class_zaki_1_1_math_1_1_quantity}{Quantity}}\& Q\_L, \textcolor{keyword}{const} \mbox{\hyperlink{class_zaki_1_1_math_1_1_quantity}{Quantity}}\& Q\_R) ;}
+\DoxyCodeLine{171 }
+\DoxyCodeLine{172   \textcolor{keyword}{friend}}
+\DoxyCodeLine{173   \mbox{\hyperlink{class_zaki_1_1_math_1_1_quantity}{Quantity}} \mbox{\hyperlink{class_zaki_1_1_math_1_1_quantity_ae13cc98a1eaa28b0a72578e263ab8030}{operator-\/}}(\textcolor{keyword}{const} \textcolor{keywordtype}{double}\&, \textcolor{keyword}{const} \mbox{\hyperlink{class_zaki_1_1_math_1_1_quantity}{Quantity}}\& Q\_R) ;}
+\DoxyCodeLine{174 }
+\DoxyCodeLine{175   \textcolor{keyword}{friend}}
+\DoxyCodeLine{176   \mbox{\hyperlink{class_zaki_1_1_math_1_1_quantity}{Quantity}} \mbox{\hyperlink{class_zaki_1_1_math_1_1_quantity_a51672efbb4d16ef7484f00816af6b3cb}{operator-\/}}(\textcolor{keyword}{const} \mbox{\hyperlink{class_zaki_1_1_math_1_1_quantity}{Quantity}}\& Q\_R, \textcolor{keyword}{const} \textcolor{keywordtype}{double}\&) ;}
+\DoxyCodeLine{177   \textcolor{comment}{//..................................................}}
+\DoxyCodeLine{178   \textcolor{keyword}{friend}}
+\DoxyCodeLine{179   \mbox{\hyperlink{class_zaki_1_1_math_1_1_quantity}{Quantity}} \mbox{\hyperlink{class_zaki_1_1_math_1_1_quantity_a52c7b95f7cea1911fa9c13ab1c32644d}{operator+}}(\textcolor{keyword}{const} \mbox{\hyperlink{class_zaki_1_1_math_1_1_quantity}{Quantity}}\& Q\_L, \textcolor{keyword}{const} \mbox{\hyperlink{class_zaki_1_1_math_1_1_quantity}{Quantity}}\& Q\_R) ;}
+\DoxyCodeLine{180 }
+\DoxyCodeLine{181   \textcolor{keyword}{friend}}
+\DoxyCodeLine{182   \mbox{\hyperlink{class_zaki_1_1_math_1_1_quantity}{Quantity}} \mbox{\hyperlink{class_zaki_1_1_math_1_1_quantity_a19cff63e110e38c43c990971f400b692}{operator+}}(\textcolor{keyword}{const} \textcolor{keywordtype}{double}\&, \textcolor{keyword}{const} \mbox{\hyperlink{class_zaki_1_1_math_1_1_quantity}{Quantity}}\& Q\_R) ;}
+\DoxyCodeLine{183 }
+\DoxyCodeLine{184   \textcolor{keyword}{friend}}
+\DoxyCodeLine{185   \mbox{\hyperlink{class_zaki_1_1_math_1_1_quantity}{Quantity}} \mbox{\hyperlink{class_zaki_1_1_math_1_1_quantity_a20ddea6d26cffba56c512ab85e6b0827}{operator+}}(\textcolor{keyword}{const} \mbox{\hyperlink{class_zaki_1_1_math_1_1_quantity}{Quantity}}\& Q\_R, \textcolor{keyword}{const} \textcolor{keywordtype}{double}\&) ;}
+\DoxyCodeLine{186 }
+\DoxyCodeLine{187   \textcolor{comment}{// friend}}
+\DoxyCodeLine{188   \textcolor{comment}{// Quantity operator+(const int\&, const Quantity\& Q\_R) ;}}
+\DoxyCodeLine{189 }
+\DoxyCodeLine{190   \textcolor{comment}{// friend}}
+\DoxyCodeLine{191   \textcolor{comment}{// Quantity operator+(const Quantity\& Q\_R, const int\&) ;}}
+\DoxyCodeLine{192 }
+\DoxyCodeLine{193   \textcolor{comment}{//..................................................}}
+\DoxyCodeLine{194   \textcolor{keyword}{friend}}
+\DoxyCodeLine{195   \mbox{\hyperlink{class_zaki_1_1_math_1_1_quantity}{Quantity}} \mbox{\hyperlink{class_zaki_1_1_math_1_1_quantity_a0731c78f742b00aaf8a6032225dffa83}{operator*}}(\textcolor{keyword}{const} \mbox{\hyperlink{class_zaki_1_1_math_1_1_quantity}{Quantity}}\& Q\_L, \textcolor{keyword}{const} \mbox{\hyperlink{class_zaki_1_1_math_1_1_quantity}{Quantity}}\& Q\_R) ;}
+\DoxyCodeLine{196 }
+\DoxyCodeLine{197   \textcolor{keyword}{friend}}
+\DoxyCodeLine{198   \mbox{\hyperlink{class_zaki_1_1_math_1_1_quantity}{Quantity}} \mbox{\hyperlink{class_zaki_1_1_math_1_1_quantity_ae9835423d192bd1c2d4e1ea591c965d0}{operator*}}(\textcolor{keyword}{const} \textcolor{keywordtype}{double}\&, \textcolor{keyword}{const} \mbox{\hyperlink{class_zaki_1_1_math_1_1_quantity}{Quantity}}\& Q\_R) ;}
+\DoxyCodeLine{199 }
+\DoxyCodeLine{200   \textcolor{keyword}{friend}}
+\DoxyCodeLine{201   \mbox{\hyperlink{class_zaki_1_1_math_1_1_quantity}{Quantity}} \mbox{\hyperlink{class_zaki_1_1_math_1_1_quantity_a72e137ac4f52e04c467d476e2e6df693}{operator*}}(\textcolor{keyword}{const} \mbox{\hyperlink{class_zaki_1_1_math_1_1_quantity}{Quantity}}\& Q\_R, \textcolor{keyword}{const} \textcolor{keywordtype}{double}\&) ;}
+\DoxyCodeLine{202 }
+\DoxyCodeLine{203   \textcolor{comment}{// friend}}
+\DoxyCodeLine{204   \textcolor{comment}{// Quantity operator*(const int\&, const Quantity\& Q\_R) ;}}
+\DoxyCodeLine{205 }
+\DoxyCodeLine{206   \textcolor{comment}{// friend}}
+\DoxyCodeLine{207   \textcolor{comment}{// Quantity operator*(const Quantity\& Q\_R, const int\&) ;}}
+\DoxyCodeLine{208   \textcolor{comment}{//..................................................}}
+\DoxyCodeLine{209   }
+\DoxyCodeLine{210   \textcolor{keyword}{friend}}
+\DoxyCodeLine{211   \mbox{\hyperlink{class_zaki_1_1_math_1_1_quantity}{Quantity}} \mbox{\hyperlink{class_zaki_1_1_math_1_1_quantity_ab4cbe84dcf8a6f59d84752e2333dc8bb}{operator/}}(\textcolor{keyword}{const} \mbox{\hyperlink{class_zaki_1_1_math_1_1_quantity}{Quantity}}\& Q\_L, \textcolor{keyword}{const} \mbox{\hyperlink{class_zaki_1_1_math_1_1_quantity}{Quantity}}\& Q\_R) ;}
+\DoxyCodeLine{212 }
+\DoxyCodeLine{213   \textcolor{keyword}{friend}}
+\DoxyCodeLine{214   \mbox{\hyperlink{class_zaki_1_1_math_1_1_quantity}{Quantity}} \mbox{\hyperlink{class_zaki_1_1_math_1_1_quantity_a731d61d122bc1eb2a0521be09c85d76c}{operator/}}(\textcolor{keyword}{const} \textcolor{keywordtype}{double}\&, \textcolor{keyword}{const} \mbox{\hyperlink{class_zaki_1_1_math_1_1_quantity}{Quantity}}\& Q\_R) ;}
+\DoxyCodeLine{215 }
+\DoxyCodeLine{216   \textcolor{keyword}{friend}}
+\DoxyCodeLine{217   \mbox{\hyperlink{class_zaki_1_1_math_1_1_quantity}{Quantity}} \mbox{\hyperlink{class_zaki_1_1_math_1_1_quantity_a2f6417788ade41d6e479da7ef1878f5d}{operator/}}(\textcolor{keyword}{const} \mbox{\hyperlink{class_zaki_1_1_math_1_1_quantity}{Quantity}}\& Q\_R, \textcolor{keyword}{const} \textcolor{keywordtype}{double}\&) ;}
+\DoxyCodeLine{218 }
+\DoxyCodeLine{219   \textcolor{comment}{// friend}}
+\DoxyCodeLine{220   \textcolor{comment}{// Quantity operator/(const int\&, const Quantity\& Q\_R) ;}}
+\DoxyCodeLine{221 }
+\DoxyCodeLine{222   \textcolor{comment}{// friend}}
+\DoxyCodeLine{223   \textcolor{comment}{// Quantity operator/(const Quantity\& Q\_R, const int\&) ;}}
+\DoxyCodeLine{224 }
+\DoxyCodeLine{225   \textcolor{comment}{//..................................................}}
+\DoxyCodeLine{226   \textcolor{comment}{// friend}}
+\DoxyCodeLine{227   \textcolor{comment}{// Quantity exp(const Quantity\&) ;}}
+\DoxyCodeLine{228 }
+\DoxyCodeLine{229   \textcolor{comment}{//==============================================================}}
+\DoxyCodeLine{230 }
+\DoxyCodeLine{231   \textcolor{keywordtype}{long} \textcolor{keywordtype}{double} val, err ;}
+\DoxyCodeLine{232   \textcolor{keywordtype}{int} sigFig = 1 ;}
+\DoxyCodeLine{233 }
+\DoxyCodeLine{235   \textcolor{comment}{// Quantity operator+(const Quantity\& in\_Q) const ;}}
+\DoxyCodeLine{236   \textcolor{comment}{// Quantity operator+(const double\&) const ;}}
+\DoxyCodeLine{237   \mbox{\hyperlink{class_zaki_1_1_math_1_1_quantity}{Quantity}}\& \mbox{\hyperlink{class_zaki_1_1_math_1_1_quantity_aa727a1e1c00955ec98fdb677fe18d569}{operator+=}}(\textcolor{keyword}{const} \mbox{\hyperlink{class_zaki_1_1_math_1_1_quantity}{Quantity}}\& in\_Q) ;}
+\DoxyCodeLine{238   \mbox{\hyperlink{class_zaki_1_1_math_1_1_quantity}{Quantity}}\& \mbox{\hyperlink{class_zaki_1_1_math_1_1_quantity_aa727a1e1c00955ec98fdb677fe18d569}{operator+=}}(\textcolor{keyword}{const} \textcolor{keywordtype}{double}\&) ;}
+\DoxyCodeLine{239 }
+\DoxyCodeLine{241   \textcolor{comment}{// Quantity operator-\/(const Quantity\& in\_Q) const ;}}
+\DoxyCodeLine{242   \textcolor{comment}{// Quantity operator-\/(const double\&) const ;}}
+\DoxyCodeLine{243   \mbox{\hyperlink{class_zaki_1_1_math_1_1_quantity}{Quantity}}\& \mbox{\hyperlink{class_zaki_1_1_math_1_1_quantity_a9f6898cd3e8860e230489424950a7de6}{operator-\/=}}(\textcolor{keyword}{const} \mbox{\hyperlink{class_zaki_1_1_math_1_1_quantity}{Quantity}}\& in\_Q) ;}
+\DoxyCodeLine{244   \mbox{\hyperlink{class_zaki_1_1_math_1_1_quantity}{Quantity}}\& \mbox{\hyperlink{class_zaki_1_1_math_1_1_quantity_a9f6898cd3e8860e230489424950a7de6}{operator-\/=}}(\textcolor{keyword}{const} \textcolor{keywordtype}{double}\&) ;}
+\DoxyCodeLine{245 }
+\DoxyCodeLine{247   \textcolor{comment}{// Quantity operator*(const Quantity\& in\_Q) const ;}}
+\DoxyCodeLine{248   \textcolor{comment}{// Quantity operator*(const double\&) const ;}}
+\DoxyCodeLine{249   \mbox{\hyperlink{class_zaki_1_1_math_1_1_quantity}{Quantity}}\& \mbox{\hyperlink{class_zaki_1_1_math_1_1_quantity_afbcf3f788f1c737f067914cfba9ce94a}{operator*=}}(\textcolor{keyword}{const} \mbox{\hyperlink{class_zaki_1_1_math_1_1_quantity}{Quantity}}\& in\_Q) ;}
+\DoxyCodeLine{250   \mbox{\hyperlink{class_zaki_1_1_math_1_1_quantity}{Quantity}}\& \mbox{\hyperlink{class_zaki_1_1_math_1_1_quantity_afbcf3f788f1c737f067914cfba9ce94a}{operator*=}}(\textcolor{keyword}{const} \textcolor{keywordtype}{double}\&) ;}
+\DoxyCodeLine{251 }
+\DoxyCodeLine{253   \textcolor{comment}{// Quantity operator/(const Quantity\& in\_Q) const ;}}
+\DoxyCodeLine{254   \textcolor{comment}{// Quantity operator/(const double\&) const ;}}
+\DoxyCodeLine{255   \mbox{\hyperlink{class_zaki_1_1_math_1_1_quantity}{Quantity}}\& \mbox{\hyperlink{class_zaki_1_1_math_1_1_quantity_a9ddec1332407257904844829b2198c55}{operator/=}}(\textcolor{keyword}{const} \mbox{\hyperlink{class_zaki_1_1_math_1_1_quantity}{Quantity}}\& in\_Q) ;}
+\DoxyCodeLine{256   \mbox{\hyperlink{class_zaki_1_1_math_1_1_quantity}{Quantity}}\& \mbox{\hyperlink{class_zaki_1_1_math_1_1_quantity_a9ddec1332407257904844829b2198c55}{operator/=}}(\textcolor{keyword}{const} \textcolor{keywordtype}{double}\&) ;}
+\DoxyCodeLine{257 }
+\DoxyCodeLine{259   \mbox{\hyperlink{class_zaki_1_1_math_1_1_quantity}{Quantity}} \mbox{\hyperlink{class_zaki_1_1_math_1_1_quantity_a59790d71a214ebca4c26ada246c07ec2}{Pow}}(\textcolor{keyword}{const} \textcolor{keywordtype}{double}\&) \textcolor{keyword}{const} ;}
+\DoxyCodeLine{260 }
+\DoxyCodeLine{261 }
+\DoxyCodeLine{263   \mbox{\hyperlink{class_zaki_1_1_math_1_1_quantity_a0832f321276d64ac35d9718ad8795256}{Quantity}}() ;}
+\DoxyCodeLine{264 }
+\DoxyCodeLine{266   \mbox{\hyperlink{class_zaki_1_1_math_1_1_quantity_a61e6149599f4730acd376475d98a29a9}{Quantity}}(\textcolor{keyword}{const} \textcolor{keywordtype}{double}\& in\_val, \textcolor{keyword}{const} \textcolor{keywordtype}{double}\& in\_err, \textcolor{keyword}{const} \textcolor{keywordtype}{int}\& sigFig=1) ;}
+\DoxyCodeLine{267 }
+\DoxyCodeLine{269   \mbox{\hyperlink{class_zaki_1_1_math_1_1_quantity_a54b90b6ec28ffd772c837dcce4364643}{Quantity}}(\textcolor{keyword}{const} \textcolor{keywordtype}{int}\& in\_val, \textcolor{keyword}{const} \textcolor{keywordtype}{double}\& in\_err, \textcolor{keyword}{const} \textcolor{keywordtype}{int}\& sigFig=1) ;}
+\DoxyCodeLine{270 }
+\DoxyCodeLine{272   \mbox{\hyperlink{class_zaki_1_1_math_1_1_quantity_ae6d281422f34d89ae7965214d92e4d82}{Quantity}}(\textcolor{keyword}{const} \textcolor{keywordtype}{double}\& in\_val, \textcolor{keyword}{const} \textcolor{keywordtype}{int}\& in\_err, \textcolor{keyword}{const} \textcolor{keywordtype}{int}\& sigFig=1) ;}
+\DoxyCodeLine{273 }
+\DoxyCodeLine{275   \mbox{\hyperlink{class_zaki_1_1_math_1_1_quantity_a5f833d9d16f1de72fb48cbccedcfdc04}{Quantity}}(\textcolor{keyword}{const} \textcolor{keywordtype}{int}\& in\_val, \textcolor{keyword}{const} \textcolor{keywordtype}{int}\& in\_err, \textcolor{keyword}{const} \textcolor{keywordtype}{int}\& sigFig=1) ;}
+\DoxyCodeLine{276 }
+\DoxyCodeLine{278   \mbox{\hyperlink{class_zaki_1_1_math_1_1_quantity_a09b369aa2df14acc17e2d83a1d22790c}{Quantity}}(\textcolor{keyword}{const} \textcolor{keywordtype}{long} \textcolor{keywordtype}{double}\& in\_val, \textcolor{keyword}{const} \textcolor{keywordtype}{long} \textcolor{keywordtype}{double}\& in\_err, \textcolor{keyword}{const} \textcolor{keywordtype}{int}\& sigFig=1) ;}
+\DoxyCodeLine{279 }
+\DoxyCodeLine{280   \textcolor{comment}{// /// Constructor 5}}
+\DoxyCodeLine{281   \textcolor{comment}{// Quantity(const std::vector<double>\& in\_val\_err, const int\& sigFig=1) ;}}
+\DoxyCodeLine{282 \};}
+\DoxyCodeLine{283 }
+\DoxyCodeLine{284 \textcolor{comment}{//==============================================================}}
+\DoxyCodeLine{285 \textcolor{keyword}{template} <\textcolor{keyword}{typename} T>}
+\DoxyCodeLine{286 \textcolor{keyword}{struct }\mbox{\hyperlink{struct_zaki_1_1_math_1_1_range}{Range}}}
+\DoxyCodeLine{287 \{}
+\DoxyCodeLine{288   T min, max ;}
+\DoxyCodeLine{289 }
+\DoxyCodeLine{290   \mbox{\hyperlink{struct_zaki_1_1_math_1_1_range}{Range}}() : min(0), max(0) \{\}}
+\DoxyCodeLine{291   \mbox{\hyperlink{struct_zaki_1_1_math_1_1_range}{Range}}(T in\_min, T in\_max) : min(in\_min), max(in\_max) \{\}}
+\DoxyCodeLine{292 }
+\DoxyCodeLine{293   T Len() \{ \textcolor{keywordflow}{return} max -\/ min ; \}}
+\DoxyCodeLine{294   T LenAbs() \{\textcolor{keywordflow}{return} abs(max -\/ min) ; \}}
+\DoxyCodeLine{295 \};}
+\DoxyCodeLine{296 }
+\DoxyCodeLine{297 \textcolor{comment}{//==============================================================}}
+\DoxyCodeLine{298 \textcolor{keyword}{struct }\mbox{\hyperlink{struct_zaki_1_1_math_1_1_axis}{Axis}}}
+\DoxyCodeLine{299 \{}
+\DoxyCodeLine{300   \mbox{\hyperlink{struct_zaki_1_1_math_1_1_range}{Range<double>}} range ; }
+\DoxyCodeLine{301   \textcolor{keywordtype}{long} \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} res ;}
+\DoxyCodeLine{302   std::string scale ;}
+\DoxyCodeLine{303   \textcolor{keywordtype}{double} Min()\textcolor{keyword}{ const }\{ \textcolor{keywordflow}{return} range.min; \}}
+\DoxyCodeLine{304   \textcolor{keywordtype}{double} Max()\textcolor{keyword}{ const }\{ \textcolor{keywordflow}{return} range.max; \}}
+\DoxyCodeLine{305 }
+\DoxyCodeLine{306   \textcolor{keywordtype}{double} operator[](\textcolor{keyword}{const} \textcolor{keywordtype}{size\_t}\& i) \textcolor{keyword}{const} ;}
+\DoxyCodeLine{307 }
+\DoxyCodeLine{308 \};}
+\DoxyCodeLine{309 }
+\DoxyCodeLine{310 \textcolor{comment}{//==============================================================}}
+\DoxyCodeLine{311 \textcolor{keyword}{struct }\mbox{\hyperlink{struct_zaki_1_1_math_1_1_grid2_d}{Grid2D}}}
+\DoxyCodeLine{312 \{}
+\DoxyCodeLine{313   \mbox{\hyperlink{struct_zaki_1_1_math_1_1_axis}{Axis}} xAxis ;}
+\DoxyCodeLine{314   \mbox{\hyperlink{struct_zaki_1_1_math_1_1_axis}{Axis}} yAxis ;}
+\DoxyCodeLine{315 \};}
+\DoxyCodeLine{316 }
+\DoxyCodeLine{317 \textcolor{comment}{//==============================================================}}
+\DoxyCodeLine{318 }
+\DoxyCodeLine{319 }
+\DoxyCodeLine{320 \textcolor{comment}{//==============================================================}}
+\DoxyCodeLine{321 \textcolor{keyword}{struct }\mbox{\hyperlink{struct_zaki_1_1_math_1_1_coord2_d}{Coord2D}}}
+\DoxyCodeLine{322 \{}
+\DoxyCodeLine{323   \textcolor{keywordtype}{double} x, y ;}
+\DoxyCodeLine{324 }
+\DoxyCodeLine{325   \mbox{\hyperlink{struct_zaki_1_1_math_1_1_coord2_d}{Coord2D}}(\textcolor{keyword}{const} \textcolor{keywordtype}{double}\& in\_x, \textcolor{keyword}{const} \textcolor{keywordtype}{double}\& in\_y)}
+\DoxyCodeLine{326         : x(in\_x), y(in\_y) \{\}}
+\DoxyCodeLine{327 }
+\DoxyCodeLine{329   \mbox{\hyperlink{struct_zaki_1_1_math_1_1_coord2_d_a8f9b9406f85784ecf29d43f15820e35a}{Coord2D}}(\textcolor{keyword}{const} \mbox{\hyperlink{struct_zaki_1_1_physics_1_1_coord3_d}{Zaki::Physics::Coord3D}}\& in\_p) ;}
+\DoxyCodeLine{330 }
+\DoxyCodeLine{331 }
+\DoxyCodeLine{332   std::string Str() \textcolor{keyword}{const} ;}
+\DoxyCodeLine{333 }
+\DoxyCodeLine{335   \mbox{\hyperlink{struct_zaki_1_1_math_1_1_coord2_d}{Coord2D}} \mbox{\hyperlink{struct_zaki_1_1_math_1_1_coord2_d_a367be45b5d093dea9332cce2a4dce28f}{operator-\/}}() \textcolor{keyword}{const} ;}
+\DoxyCodeLine{336 }
+\DoxyCodeLine{338   \mbox{\hyperlink{struct_zaki_1_1_math_1_1_coord2_d}{Coord2D}} \mbox{\hyperlink{struct_zaki_1_1_math_1_1_coord2_d_a905f9807957000d0c1297d32fb7f1b1b}{operator-\/}}(\textcolor{keyword}{const} \mbox{\hyperlink{struct_zaki_1_1_math_1_1_coord2_d}{Coord2D}}\&) ;}
+\DoxyCodeLine{339   }
+\DoxyCodeLine{341   \mbox{\hyperlink{struct_zaki_1_1_math_1_1_coord2_d}{Coord2D}} \mbox{\hyperlink{struct_zaki_1_1_math_1_1_coord2_d_a325d0d26339dd2efb61df30ac7ea3b21}{operator+}}(\textcolor{keyword}{const} \mbox{\hyperlink{struct_zaki_1_1_math_1_1_coord2_d}{Coord2D}}\&) ;}
+\DoxyCodeLine{342 }
+\DoxyCodeLine{344   \mbox{\hyperlink{struct_zaki_1_1_math_1_1_coord2_d}{Coord2D}}\& \mbox{\hyperlink{struct_zaki_1_1_math_1_1_coord2_d_a1545846ae474c7244798cdcb09acc0fe}{operator+=}}(\textcolor{keyword}{const} \mbox{\hyperlink{struct_zaki_1_1_math_1_1_coord2_d}{Coord2D}}\&) ;}
+\DoxyCodeLine{345 }
+\DoxyCodeLine{347   \mbox{\hyperlink{struct_zaki_1_1_math_1_1_coord2_d}{Coord2D}}\& \mbox{\hyperlink{struct_zaki_1_1_math_1_1_coord2_d_a0724dc1ae17d6108a1aefdd1364afaf8}{operator-\/=}}(\textcolor{keyword}{const} \mbox{\hyperlink{struct_zaki_1_1_math_1_1_coord2_d}{Coord2D}}\&) ;}
+\DoxyCodeLine{348 }
+\DoxyCodeLine{350   \mbox{\hyperlink{struct_zaki_1_1_math_1_1_coord2_d}{Coord2D}}\& \mbox{\hyperlink{struct_zaki_1_1_math_1_1_coord2_d_a9dcbd62a381960190422e2de003e575f}{operator*=}}(\textcolor{keyword}{const} \textcolor{keywordtype}{double}\&) ;}
+\DoxyCodeLine{351 }
+\DoxyCodeLine{353   \mbox{\hyperlink{struct_zaki_1_1_math_1_1_coord2_d}{Coord2D}}\& \mbox{\hyperlink{struct_zaki_1_1_math_1_1_coord2_d_adbb144ef36e689f621baf35d5ec3e853}{operator/=}}(\textcolor{keyword}{const} \textcolor{keywordtype}{double}\&) ;}
+\DoxyCodeLine{354 \};}
+\DoxyCodeLine{355 \textcolor{comment}{//==============================================================}}
+\DoxyCodeLine{356 \textcolor{comment}{//              Coord2D Operator Overloading}}
+\DoxyCodeLine{357 \textcolor{comment}{//==============================================================}}
+\DoxyCodeLine{359 \textcolor{comment}{}\mbox{\hyperlink{struct_zaki_1_1_math_1_1_coord2_d}{Coord2D}} \mbox{\hyperlink{_math___core_8hpp_a9b3800954c993f3acddc75dca886c015}{operator-\/}}(\textcolor{keyword}{const} \textcolor{keywordtype}{double}\&, \textcolor{keyword}{const} \mbox{\hyperlink{struct_zaki_1_1_math_1_1_coord2_d}{Coord2D}}\&) ;}
+\DoxyCodeLine{360 }
+\DoxyCodeLine{362 \mbox{\hyperlink{struct_zaki_1_1_math_1_1_coord2_d}{Coord2D}} \mbox{\hyperlink{_math___core_8hpp_a9b3800954c993f3acddc75dca886c015}{operator-\/}}(\textcolor{keyword}{const} \mbox{\hyperlink{struct_zaki_1_1_math_1_1_coord2_d}{Coord2D}}\&, \textcolor{keyword}{const} \textcolor{keywordtype}{double}\&) ;}
+\DoxyCodeLine{363 }
+\DoxyCodeLine{365 \mbox{\hyperlink{struct_zaki_1_1_math_1_1_coord2_d}{Coord2D}} \mbox{\hyperlink{_math___core_8hpp_a34e0954374f5849d439d97d8271925fb}{operator+}}(\textcolor{keyword}{const} \textcolor{keywordtype}{double}\&, \textcolor{keyword}{const} \mbox{\hyperlink{struct_zaki_1_1_math_1_1_coord2_d}{Coord2D}}\&) ;}
+\DoxyCodeLine{366 }
+\DoxyCodeLine{368 \mbox{\hyperlink{struct_zaki_1_1_math_1_1_coord2_d}{Coord2D}} \mbox{\hyperlink{_math___core_8hpp_a34e0954374f5849d439d97d8271925fb}{operator+}}(\textcolor{keyword}{const} \mbox{\hyperlink{struct_zaki_1_1_math_1_1_coord2_d}{Coord2D}}\&, \textcolor{keyword}{const} \textcolor{keywordtype}{double}\&) ;}
+\DoxyCodeLine{369 }
+\DoxyCodeLine{371 \mbox{\hyperlink{struct_zaki_1_1_math_1_1_coord2_d}{Coord2D}} \mbox{\hyperlink{_math___core_8hpp_a53a431638eb7a4142cb86f4e4b1dd06b}{operator*}}(\textcolor{keyword}{const} \textcolor{keywordtype}{double}\&, \textcolor{keyword}{const} \mbox{\hyperlink{struct_zaki_1_1_math_1_1_coord2_d}{Coord2D}}\&) ;}
+\DoxyCodeLine{372 }
+\DoxyCodeLine{374 \mbox{\hyperlink{struct_zaki_1_1_math_1_1_coord2_d}{Coord2D}} \mbox{\hyperlink{_math___core_8hpp_a53a431638eb7a4142cb86f4e4b1dd06b}{operator*}}(\textcolor{keyword}{const} \mbox{\hyperlink{struct_zaki_1_1_math_1_1_coord2_d}{Coord2D}}\&, \textcolor{keyword}{const} \textcolor{keywordtype}{double}\&) ;}
+\DoxyCodeLine{375 }
+\DoxyCodeLine{377 \mbox{\hyperlink{struct_zaki_1_1_math_1_1_coord2_d}{Coord2D}} \mbox{\hyperlink{_math___core_8hpp_a936713b9297ee54531916eab15d46ee8}{operator/}}(\textcolor{keyword}{const} \textcolor{keywordtype}{double}\&, \textcolor{keyword}{const} \mbox{\hyperlink{struct_zaki_1_1_math_1_1_coord2_d}{Coord2D}}\&) ;}
+\DoxyCodeLine{378 }
+\DoxyCodeLine{380 \mbox{\hyperlink{struct_zaki_1_1_math_1_1_coord2_d}{Coord2D}} \mbox{\hyperlink{_math___core_8hpp_a936713b9297ee54531916eab15d46ee8}{operator/}}(\textcolor{keyword}{const} \mbox{\hyperlink{struct_zaki_1_1_math_1_1_coord2_d}{Coord2D}}\&, \textcolor{keyword}{const} \textcolor{keywordtype}{double}\&) ;}
+\DoxyCodeLine{381 }
+\DoxyCodeLine{382 \textcolor{comment}{//==============================================================}}
+\DoxyCodeLine{383 \textcolor{keyword}{class }\mbox{\hyperlink{class_zaki_1_1_math_1_1_segment}{Segment}}}
+\DoxyCodeLine{384 \{}
+\DoxyCodeLine{385   \textcolor{keyword}{public}:}
+\DoxyCodeLine{386     \mbox{\hyperlink{struct_zaki_1_1_math_1_1_coord2_d}{Coord2D}} p1, p2 ;}
+\DoxyCodeLine{387 }
+\DoxyCodeLine{389     \mbox{\hyperlink{class_zaki_1_1_math_1_1_segment_a60162dab87d58a65028ff7640d410852}{Segment}}(\textcolor{keyword}{const} \mbox{\hyperlink{struct_zaki_1_1_math_1_1_coord2_d}{Coord2D}}\& p1, \textcolor{keyword}{const} \mbox{\hyperlink{struct_zaki_1_1_math_1_1_coord2_d}{Coord2D}}\& p2) ;}
+\DoxyCodeLine{390 }
+\DoxyCodeLine{393     \mbox{\hyperlink{class_zaki_1_1_math_1_1_segment_a414368d97e7c1058171135b28bdeeac5}{Segment}}(\textcolor{keyword}{const} \mbox{\hyperlink{struct_zaki_1_1_physics_1_1_coord3_d}{Zaki::Physics::Coord3D}}\& p1, \textcolor{keyword}{const} \mbox{\hyperlink{struct_zaki_1_1_physics_1_1_coord3_d}{Zaki::Physics::Coord3D}}\& p2) ;}
+\DoxyCodeLine{394 }
+\DoxyCodeLine{396     \textcolor{keywordtype}{bool} \mbox{\hyperlink{class_zaki_1_1_math_1_1_segment_a3169506b8cd73cec01367901abf0b25f}{InDomain}}(\textcolor{keyword}{const} \textcolor{keywordtype}{double}\& \mbox{\hyperlink{class_zaki_1_1_math_1_1_segment_a94d108d3fdc38f81f09b5e45276742ca}{x}}) \textcolor{keyword}{const} ;}
+\DoxyCodeLine{397 }
+\DoxyCodeLine{399     \textcolor{keywordtype}{bool} \mbox{\hyperlink{class_zaki_1_1_math_1_1_segment_a38a4b230741e0a5da89a6c56482dec7b}{InDomain}}(\textcolor{keyword}{const} \mbox{\hyperlink{struct_zaki_1_1_math_1_1_coord2_d}{Coord2D}}\& p) \textcolor{keyword}{const} ;}
+\DoxyCodeLine{400 }
+\DoxyCodeLine{402     \textcolor{keywordtype}{bool} \mbox{\hyperlink{class_zaki_1_1_math_1_1_segment_a4112c9c8247cd1523d2ebae937a4c671}{InImage}}(\textcolor{keyword}{const} \textcolor{keywordtype}{double}\& \mbox{\hyperlink{class_zaki_1_1_math_1_1_segment_a83f8f5a7e5e60fcb35cda213dc4ea36c}{y}}) \textcolor{keyword}{const} ;}
+\DoxyCodeLine{403 }
+\DoxyCodeLine{405     \textcolor{keywordtype}{bool} \mbox{\hyperlink{class_zaki_1_1_math_1_1_segment_ad93c91a00ad33f0565fdf367b4a7cd9d}{InImage}}(\textcolor{keyword}{const} \mbox{\hyperlink{struct_zaki_1_1_math_1_1_coord2_d}{Coord2D}}\& p) \textcolor{keyword}{const} ;}
+\DoxyCodeLine{406 }
+\DoxyCodeLine{408     \textcolor{keywordtype}{double} \mbox{\hyperlink{class_zaki_1_1_math_1_1_segment_a83f8f5a7e5e60fcb35cda213dc4ea36c}{y}}(\textcolor{keyword}{const} \textcolor{keywordtype}{double}\& \mbox{\hyperlink{class_zaki_1_1_math_1_1_segment_a94d108d3fdc38f81f09b5e45276742ca}{x}}) \textcolor{keyword}{const} ;}
+\DoxyCodeLine{409 }
+\DoxyCodeLine{411     \textcolor{keywordtype}{double} \mbox{\hyperlink{class_zaki_1_1_math_1_1_segment_a94d108d3fdc38f81f09b5e45276742ca}{x}}(\textcolor{keyword}{const} \textcolor{keywordtype}{double}\& \mbox{\hyperlink{class_zaki_1_1_math_1_1_segment_a83f8f5a7e5e60fcb35cda213dc4ea36c}{y}}) \textcolor{keyword}{const} ;}
+\DoxyCodeLine{412 }
+\DoxyCodeLine{414     \textcolor{keywordtype}{double} \mbox{\hyperlink{class_zaki_1_1_math_1_1_segment_a3ff83f8b8c063774709fd77b59886b26}{m}}() \textcolor{keyword}{const} ;}
+\DoxyCodeLine{415 }
+\DoxyCodeLine{419     \mbox{\hyperlink{struct_zaki_1_1_math_1_1_coord2_d}{Coord2D}} \mbox{\hyperlink{class_zaki_1_1_math_1_1_segment_a9053241e953e8853ea57b572c5cdcf99}{P}}(\textcolor{keyword}{const} \textcolor{keywordtype}{double}\& lambda) \textcolor{keyword}{const} ;}
+\DoxyCodeLine{420 }
+\DoxyCodeLine{422     \textcolor{keywordtype}{bool} \mbox{\hyperlink{class_zaki_1_1_math_1_1_segment_a968fe8d6b640206fc4f20ed0e5f56aa8}{IsExclusivelyAboveSeg}}(\textcolor{keyword}{const} \mbox{\hyperlink{struct_zaki_1_1_math_1_1_coord2_d}{Coord2D}}\& p) \textcolor{keyword}{const} ;}
+\DoxyCodeLine{423 }
+\DoxyCodeLine{425     \textcolor{keywordtype}{bool} \mbox{\hyperlink{class_zaki_1_1_math_1_1_segment_a00d0b223df903461d035ad815322e909}{IsExclusivelyBelowSeg}}(\textcolor{keyword}{const} \mbox{\hyperlink{struct_zaki_1_1_math_1_1_coord2_d}{Coord2D}}\& p) \textcolor{keyword}{const} ;}
+\DoxyCodeLine{426 }
+\DoxyCodeLine{428     \textcolor{keywordtype}{bool} \mbox{\hyperlink{class_zaki_1_1_math_1_1_segment_aeb8a7503fba4442fcc1a72d3a0bb9db1}{IsExclusivelyLeftSeg}}(\textcolor{keyword}{const} \mbox{\hyperlink{struct_zaki_1_1_math_1_1_coord2_d}{Coord2D}}\& p) \textcolor{keyword}{const} ;}
+\DoxyCodeLine{429 }
+\DoxyCodeLine{431     \textcolor{keywordtype}{bool} \mbox{\hyperlink{class_zaki_1_1_math_1_1_segment_a700ed6d7b56db4d299092c3789f54d1b}{IsExclusivelyRightSeg}}(\textcolor{keyword}{const} \mbox{\hyperlink{struct_zaki_1_1_math_1_1_coord2_d}{Coord2D}}\& p) \textcolor{keyword}{const} ;}
+\DoxyCodeLine{432 }
+\DoxyCodeLine{434     \textcolor{keywordtype}{bool} \mbox{\hyperlink{class_zaki_1_1_math_1_1_segment_a599f363ef2a5be067ad602184e70f11c}{IsOnSeg}}(\textcolor{keyword}{const} \mbox{\hyperlink{struct_zaki_1_1_math_1_1_coord2_d}{Coord2D}}\& p) \textcolor{keyword}{const} ;}
+\DoxyCodeLine{435 }
+\DoxyCodeLine{437     \mbox{\hyperlink{struct_zaki_1_1_math_1_1_coord2_d}{Coord2D}} \mbox{\hyperlink{class_zaki_1_1_math_1_1_segment_a12394eb8e3191a104e6b8d2d2e0f4146}{GetIntersection}}(\textcolor{keyword}{const} \mbox{\hyperlink{class_zaki_1_1_math_1_1_segment}{Segment}}\& other) \textcolor{keyword}{const} ;}
+\DoxyCodeLine{438     \mbox{\hyperlink{struct_zaki_1_1_math_1_1_coord2_d}{Coord2D}} \mbox{\hyperlink{class_zaki_1_1_math_1_1_segment_a12394eb8e3191a104e6b8d2d2e0f4146}{GetIntersection}}(\textcolor{keyword}{const} \mbox{\hyperlink{struct_zaki_1_1_math_1_1_coord2_d}{Coord2D}}\& p3, \textcolor{keyword}{const} \mbox{\hyperlink{struct_zaki_1_1_math_1_1_coord2_d}{Coord2D}}\& p4) \textcolor{keyword}{const} ;}
+\DoxyCodeLine{439     \mbox{\hyperlink{struct_zaki_1_1_math_1_1_coord2_d}{Coord2D}} \mbox{\hyperlink{class_zaki_1_1_math_1_1_segment_a12394eb8e3191a104e6b8d2d2e0f4146}{GetIntersection}}(\textcolor{keyword}{const} \textcolor{keywordtype}{double}\& x3, \textcolor{keyword}{const} \textcolor{keywordtype}{double}\& y3, }
+\DoxyCodeLine{440                     \textcolor{keyword}{const} \textcolor{keywordtype}{double}\& x4, \textcolor{keyword}{const} \textcolor{keywordtype}{double}\& y4) \textcolor{keyword}{const} ;}
+\DoxyCodeLine{441 }
+\DoxyCodeLine{442     \textcolor{keywordtype}{bool} Intersects(\textcolor{keyword}{const} \mbox{\hyperlink{class_zaki_1_1_math_1_1_segment}{Segment}}\& other) \textcolor{keyword}{const} ;}
+\DoxyCodeLine{443     \textcolor{keywordtype}{bool} Intersects(\textcolor{keyword}{const} \mbox{\hyperlink{struct_zaki_1_1_math_1_1_coord2_d}{Coord2D}}\& p3, \textcolor{keyword}{const} \mbox{\hyperlink{struct_zaki_1_1_math_1_1_coord2_d}{Coord2D}}\& p4) \textcolor{keyword}{const} ;}
+\DoxyCodeLine{444     \textcolor{keywordtype}{bool} Intersects(\textcolor{keyword}{const} \textcolor{keywordtype}{double}\& x3, \textcolor{keyword}{const} \textcolor{keywordtype}{double}\& y3, }
+\DoxyCodeLine{445                     \textcolor{keyword}{const} \textcolor{keywordtype}{double}\& x4, \textcolor{keyword}{const} \textcolor{keywordtype}{double}\& y4) \textcolor{keyword}{const} ;}
+\DoxyCodeLine{446 \} ;}
+\DoxyCodeLine{447 }
+\DoxyCodeLine{448 \textcolor{comment}{//==============================================================}}
+\DoxyCodeLine{449 \textcolor{comment}{//                        Curve2D}}
+\DoxyCodeLine{450 \textcolor{comment}{//==============================================================}}
+\DoxyCodeLine{451 \textcolor{keyword}{class }\mbox{\hyperlink{class_zaki_1_1_math_1_1_curve2_d}{Curve2D}}}
+\DoxyCodeLine{452 \{}
+\DoxyCodeLine{453   \textcolor{comment}{// static\_assert(std::is\_base\_of<Coord2D, T>::value, }}
+\DoxyCodeLine{454   \textcolor{comment}{//               "{}Curve2D: Class must derive from Coord2D."{});}}
+\DoxyCodeLine{455 }
+\DoxyCodeLine{456   \textcolor{keyword}{public}:}
+\DoxyCodeLine{457   std::vector<Coord2D> pts ;}
+\DoxyCodeLine{458   std::string label = \textcolor{stringliteral}{"{}"{}} ;}
+\DoxyCodeLine{459 }
+\DoxyCodeLine{460   \mbox{\hyperlink{class_zaki_1_1_math_1_1_curve2_d}{Curve2D}}(\textcolor{keyword}{const} std::string\& in\_label=\textcolor{stringliteral}{"{}"{}}) }
+\DoxyCodeLine{461     : label(in\_label) }
+\DoxyCodeLine{462     \{\}}
+\DoxyCodeLine{463 }
+\DoxyCodeLine{464   \mbox{\hyperlink{class_zaki_1_1_math_1_1_curve2_d}{Curve2D}}(\textcolor{keyword}{const} std::vector<Coord2D>\& in\_pts, }
+\DoxyCodeLine{465           \textcolor{keyword}{const} std::string\& in\_label=\textcolor{stringliteral}{"{}"{}}) }
+\DoxyCodeLine{466           : pts(in\_pts), label(in\_label) }
+\DoxyCodeLine{467     \{\}}
+\DoxyCodeLine{468 }
+\DoxyCodeLine{470   \textcolor{keywordtype}{void} \mbox{\hyperlink{class_zaki_1_1_math_1_1_curve2_d_a71d9e035134b5ff1c8baef9e7e255176}{SetLabel}}(\textcolor{keyword}{const} std::string\&) ;}
+\DoxyCodeLine{471 }
+\DoxyCodeLine{473   std::string \mbox{\hyperlink{class_zaki_1_1_math_1_1_curve2_d_a3fe23f24dee6a432fbc99b2640e4c6e6}{GetLabel}}() \textcolor{keyword}{const} ;}
+\DoxyCodeLine{474 }
+\DoxyCodeLine{476   \textcolor{keywordtype}{void} \mbox{\hyperlink{class_zaki_1_1_math_1_1_curve2_d_a85568b7dbbfd2e2da183214fd211852a}{Import}}(\textcolor{keyword}{const} \mbox{\hyperlink{class_zaki_1_1_string_1_1_directory}{Zaki::String::Directory}}\& in\_file) ;}
+\DoxyCodeLine{477 }
+\DoxyCodeLine{478   \textcolor{keywordtype}{void} Append(\textcolor{keyword}{const} \mbox{\hyperlink{struct_zaki_1_1_math_1_1_coord2_d}{Coord2D}}\& in\_p)}
+\DoxyCodeLine{479   \{}
+\DoxyCodeLine{480     pts.emplace\_back(in\_p) ;}
+\DoxyCodeLine{481   \}}
+\DoxyCodeLine{482 }
+\DoxyCodeLine{484   \textcolor{keywordtype}{void} \mbox{\hyperlink{class_zaki_1_1_math_1_1_curve2_d_abf5c18aa14f5ec1975cbdf64afd23561}{Plot}}(\textcolor{keyword}{const} \mbox{\hyperlink{class_zaki_1_1_string_1_1_directory}{Zaki::String::Directory}}\& f\_name, }
+\DoxyCodeLine{485             \textcolor{keyword}{const} std::string\& in\_title = \textcolor{stringliteral}{"{}"{}}) ;}
+\DoxyCodeLine{486 }
+\DoxyCodeLine{488   \textcolor{keyword}{static} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_zaki_1_1_math_1_1_curve2_d_ad53f7f6fe713ad4f01583187c50ee91c}{Plot}}(\textcolor{keyword}{const} std::vector<Curve2D>\& , }
+\DoxyCodeLine{489                   \textcolor{keyword}{const} \mbox{\hyperlink{class_zaki_1_1_string_1_1_directory}{Zaki::String::Directory}}\& f\_name, }
+\DoxyCodeLine{490                   \textcolor{keyword}{const} std::string\& in\_title = \textcolor{stringliteral}{"{}"{}}) ;}
+\DoxyCodeLine{491 }
+\DoxyCodeLine{492   \textcolor{keywordtype}{size\_t} Size() \textcolor{keyword}{const} ;}
+\DoxyCodeLine{493   \textcolor{keywordtype}{void} Reserve(\textcolor{keyword}{const} \textcolor{keywordtype}{size\_t}\&) ;}
+\DoxyCodeLine{494 }
+\DoxyCodeLine{496   \mbox{\hyperlink{struct_zaki_1_1_math_1_1_coord2_d}{Coord2D}}\& \mbox{\hyperlink{class_zaki_1_1_math_1_1_curve2_d_a9e1c479308bc4324e5d4adbf9f1d11c2}{operator[] }}(\textcolor{keyword}{const} \textcolor{keywordtype}{int}) ; }
+\DoxyCodeLine{497 }
+\DoxyCodeLine{499   \mbox{\hyperlink{struct_zaki_1_1_math_1_1_coord2_d}{Coord2D}} \mbox{\hyperlink{class_zaki_1_1_math_1_1_curve2_d_a9e1c479308bc4324e5d4adbf9f1d11c2}{operator[] }}(\textcolor{keyword}{const} \textcolor{keywordtype}{int}) \textcolor{keyword}{const} ;}
+\DoxyCodeLine{500 }
+\DoxyCodeLine{501   std::vector<double> GetXVals() \textcolor{keyword}{const} ;}
+\DoxyCodeLine{502   std::vector<double> GetYVals() \textcolor{keyword}{const} ;}
+\DoxyCodeLine{503 }
+\DoxyCodeLine{505   \mbox{\hyperlink{class_zaki_1_1_math_1_1_curve2_d}{Curve2D}} \mbox{\hyperlink{class_zaki_1_1_math_1_1_curve2_d_ab98e1ee29ea49450d6594b7fa8f6a1ce}{GetSmooth}}(\textcolor{keyword}{const} \textcolor{keywordtype}{short} \textcolor{keywordtype}{int}\& window) \textcolor{keyword}{const} ;}
+\DoxyCodeLine{506 }
+\DoxyCodeLine{509   \textcolor{keywordtype}{void} \mbox{\hyperlink{class_zaki_1_1_math_1_1_curve2_d_aefdfc320b05dd58f51ea81e7025bfcf0}{MakeSmooth}}(\textcolor{keyword}{const} \textcolor{keywordtype}{short} \textcolor{keywordtype}{int}\& window) ;}
+\DoxyCodeLine{510 }
+\DoxyCodeLine{512   std::vector<Segment> \mbox{\hyperlink{class_zaki_1_1_math_1_1_curve2_d_ae57ffd4e23e370eee9451076510bc42e}{Segmentize}}() \textcolor{keyword}{const} ;}
+\DoxyCodeLine{513 }
+\DoxyCodeLine{515   std::vector<Coord2D> \mbox{\hyperlink{class_zaki_1_1_math_1_1_curve2_d_acf9041b66eb2b4f6c69e25b19522fc8b}{Intersection}}(\textcolor{keyword}{const} \mbox{\hyperlink{class_zaki_1_1_math_1_1_curve2_d}{Curve2D}}\& other) \textcolor{keyword}{const} ;}
+\DoxyCodeLine{516 }
+\DoxyCodeLine{518   \textcolor{keywordtype}{void} \mbox{\hyperlink{class_zaki_1_1_math_1_1_curve2_d_a701b6843f617a4d9e96c47e83ff07591}{Export}}(\textcolor{keyword}{const} \mbox{\hyperlink{class_zaki_1_1_string_1_1_directory}{Zaki::String::Directory}}\&) \textcolor{keyword}{const} ;}
+\DoxyCodeLine{519   }
+\DoxyCodeLine{521   \textcolor{keywordtype}{size\_t} \mbox{\hyperlink{class_zaki_1_1_math_1_1_curve2_d_aee7a027587413764defb8632fc848103}{GetIdx}}(\textcolor{keyword}{const} \mbox{\hyperlink{struct_zaki_1_1_math_1_1_coord2_d}{Coord2D}}\& in\_p) \textcolor{keyword}{const} ;}
+\DoxyCodeLine{522 }
+\DoxyCodeLine{524   std::pair<Curve2D, Curve2D> \mbox{\hyperlink{class_zaki_1_1_math_1_1_curve2_d_ad26d1790a884569c301103444f178560}{Bisect}}(\textcolor{keyword}{const} \mbox{\hyperlink{struct_zaki_1_1_math_1_1_coord2_d}{Coord2D}}\& in\_p) \textcolor{keyword}{const} ;}
+\DoxyCodeLine{525 \};}
+\DoxyCodeLine{526 }
+\DoxyCodeLine{527 \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{528 \textcolor{comment}{// // Deduction guide for deduction of template arguments}}
+\DoxyCodeLine{529 \textcolor{comment}{// Curve2D() -\/> Curve2D<Coord2D>;}}
+\DoxyCodeLine{530 \textcolor{comment}{// Curve2D(const std::string\& in\_label) -\/> Curve2D<Coord2D>;}}
+\DoxyCodeLine{531 \textcolor{comment}{// Curve2D(const std::vector<Coord2D>\& in\_pts) -\/> Curve2D<Coord2D>;}}
+\DoxyCodeLine{532 \textcolor{comment}{// Curve2D(const std::vector<Coord2D>\& in\_pts, }}
+\DoxyCodeLine{533 \textcolor{comment}{//           const std::string\& in\_label) -\/> Curve2D<Coord2D>;}}
+\DoxyCodeLine{534 \textcolor{comment}{// //-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{535 \textcolor{comment}{// // Transforms the curve into a set of segments}}
+\DoxyCodeLine{536 \textcolor{comment}{// template <class T>}}
+\DoxyCodeLine{537 \textcolor{comment}{// std::vector<Segment> Curve2D<T>::Segmentize() const }}
+\DoxyCodeLine{538 \textcolor{comment}{// \{}}
+\DoxyCodeLine{539 \textcolor{comment}{//   std::vector<Segment> tmp\_seg ;}}
+\DoxyCodeLine{540 \textcolor{comment}{//   tmp\_seg.reserve(pts.size()-\/1) ;}}
+\DoxyCodeLine{541 }
+\DoxyCodeLine{542 \textcolor{comment}{//   for (size\_t i = 0; i < pts.size()-\/1; i++)}}
+\DoxyCodeLine{543 \textcolor{comment}{//   \{}}
+\DoxyCodeLine{544 \textcolor{comment}{//     tmp\_seg.emplace\_back(pts[i], pts[i+1]) ;}}
+\DoxyCodeLine{545 \textcolor{comment}{//   \}}}
+\DoxyCodeLine{546   }
+\DoxyCodeLine{547 \textcolor{comment}{//   return tmp\_seg ;}}
+\DoxyCodeLine{548 \textcolor{comment}{// \}}}
+\DoxyCodeLine{549 }
+\DoxyCodeLine{550 \textcolor{comment}{// //-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{551 \textcolor{comment}{// // Finds all the intersection points}}
+\DoxyCodeLine{552 \textcolor{comment}{// template <class T>}}
+\DoxyCodeLine{553 \textcolor{comment}{// std::vector<T> Curve2D<T>::Intersection(const Curve2D<T>\& other) const }}
+\DoxyCodeLine{554 \textcolor{comment}{// \{}}
+\DoxyCodeLine{555 \textcolor{comment}{//   std::vector<T> inter\_set ;}}
+\DoxyCodeLine{556 }
+\DoxyCodeLine{557 \textcolor{comment}{//   std::vector<Segment> this\_seg = Segmentize() ;}}
+\DoxyCodeLine{558 \textcolor{comment}{//   std::vector<Segment> other\_seg = other.Segmentize() ;}}
+\DoxyCodeLine{559 }
+\DoxyCodeLine{560 \textcolor{comment}{//   for (size\_t i = 0; i < this\_seg.size(); i++)}}
+\DoxyCodeLine{561 \textcolor{comment}{//   \{}}
+\DoxyCodeLine{562 \textcolor{comment}{//     for (size\_t j = 0; j < other\_seg.size(); j++)}}
+\DoxyCodeLine{563 \textcolor{comment}{//     \{}}
+\DoxyCodeLine{564 \textcolor{comment}{//       if ( this\_seg[i].Intersects(other\_seg[j]) )}}
+\DoxyCodeLine{565 \textcolor{comment}{//         inter\_set.emplace\_back(this\_seg[i].GetIntersection(other\_seg[j])) ;}}
+\DoxyCodeLine{566 \textcolor{comment}{//     \}}}
+\DoxyCodeLine{567 \textcolor{comment}{//   \}}}
+\DoxyCodeLine{568   }
+\DoxyCodeLine{569 \textcolor{comment}{//   return inter\_set ;}}
+\DoxyCodeLine{570 \textcolor{comment}{// \}}}
+\DoxyCodeLine{571 \textcolor{comment}{// //-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{572 \textcolor{comment}{// template <class T>}}
+\DoxyCodeLine{573 \textcolor{comment}{// std::pair<Curve2D<T>, Curve2D<T>> Curve2D<T>::Bisect(const T\& in\_p) const}}
+\DoxyCodeLine{574 \textcolor{comment}{// \{}}
+\DoxyCodeLine{575 \textcolor{comment}{//   std::size\_t const cut\_idx = GetIdx(in\_p) ;}}
+\DoxyCodeLine{576 }
+\DoxyCodeLine{577 \textcolor{comment}{//   Curve2D split\_lo(\{pts.begin(), pts.begin() + cut\_idx\},}}
+\DoxyCodeLine{578 \textcolor{comment}{//                     label+"{}\_1"{}) ;}}
+\DoxyCodeLine{579 \textcolor{comment}{//   Curve2D split\_hi(\{pts.begin() + cut\_idx, pts.end()\}, }}
+\DoxyCodeLine{580 \textcolor{comment}{//                     label+"{}\_2"{}) ;}}
+\DoxyCodeLine{581 }
+\DoxyCodeLine{582 \textcolor{comment}{//  return \{split\_lo, split\_hi\} ;}}
+\DoxyCodeLine{583 \textcolor{comment}{// \}}}
+\DoxyCodeLine{584 }
+\DoxyCodeLine{585 \textcolor{comment}{// //-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{586 \textcolor{comment}{// /// Sets the label}}
+\DoxyCodeLine{587 \textcolor{comment}{// template <class T>}}
+\DoxyCodeLine{588 \textcolor{comment}{// void Curve2D<T>::SetLabel(const std::string\& in\_label) }}
+\DoxyCodeLine{589 \textcolor{comment}{// \{}}
+\DoxyCodeLine{590 \textcolor{comment}{//   label = in\_label ;}}
+\DoxyCodeLine{591 \textcolor{comment}{// \}}}
+\DoxyCodeLine{592 }
+\DoxyCodeLine{593 \textcolor{comment}{// //-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{594 \textcolor{comment}{// /// Returns the label}}
+\DoxyCodeLine{595 \textcolor{comment}{// template <class T>}}
+\DoxyCodeLine{596 \textcolor{comment}{// std::string Curve2D<T>::GetLabel() const }}
+\DoxyCodeLine{597 \textcolor{comment}{// \{}}
+\DoxyCodeLine{598 \textcolor{comment}{//   return label ;}}
+\DoxyCodeLine{599 \textcolor{comment}{// \}}}
+\DoxyCodeLine{600 }
+\DoxyCodeLine{601 \textcolor{comment}{// //-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{602 \textcolor{comment}{// // Imports the curve points}}
+\DoxyCodeLine{603 \textcolor{comment}{// template <class T>}}
+\DoxyCodeLine{604 \textcolor{comment}{// void Curve2D<T>::Import(const Zaki::String::Directory\& in\_file)}}
+\DoxyCodeLine{605 \textcolor{comment}{// \{}}
+\DoxyCodeLine{606 \textcolor{comment}{//   Z\_LOG\_INFO("{}Importing file..."{}) ;}}
+\DoxyCodeLine{607 \textcolor{comment}{//   // .........................................................}}
+\DoxyCodeLine{608 \textcolor{comment}{//   //                  Opening the file}}
+\DoxyCodeLine{609 \textcolor{comment}{//   // .........................................................}}
+\DoxyCodeLine{610 \textcolor{comment}{//   std::ifstream     file(in\_file.Str());}}
+\DoxyCodeLine{611 \textcolor{comment}{//   // Error opening the file}}
+\DoxyCodeLine{612 \textcolor{comment}{//   if (file.fail()) }}
+\DoxyCodeLine{613 \textcolor{comment}{//   \{}}
+\DoxyCodeLine{614 \textcolor{comment}{//     Z\_LOG\_ERROR("{}File '"{}+(in\_file).Str() +"{}' cannot be opened!"{}) ;}}
+\DoxyCodeLine{615 \textcolor{comment}{//     Z\_LOG\_ERROR("{}Importing file failed!"{}) ;}}
+\DoxyCodeLine{616 \textcolor{comment}{//     exit(EXIT\_FAILURE) ;}}
+\DoxyCodeLine{617 \textcolor{comment}{//   \}}}
+\DoxyCodeLine{618 \textcolor{comment}{//   // .........................................................}}
+\DoxyCodeLine{619 \textcolor{comment}{//   // Clearing the data\_set:}}
+\DoxyCodeLine{620 \textcolor{comment}{//   pts.clear() ;}}
+\DoxyCodeLine{621 \textcolor{comment}{//   // .........................................................}}
+\DoxyCodeLine{622 \textcolor{comment}{//   //                  Reading the file}}
+\DoxyCodeLine{623 \textcolor{comment}{//   // .........................................................}}
+\DoxyCodeLine{624 \textcolor{comment}{//   for(Zaki::File::CSVIterator loop(file, '\(\backslash\)t'); loop != Zaki::File::CSVIterator(); ++loop)}}
+\DoxyCodeLine{625 \textcolor{comment}{//   \{}}
+\DoxyCodeLine{626 \textcolor{comment}{//     // ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++}}
+\DoxyCodeLine{627 \textcolor{comment}{//     // Ignore empty lines (spaces and tabs are not empty!)}}
+\DoxyCodeLine{628 \textcolor{comment}{//     if ((*loop).size() == 0)}}
+\DoxyCodeLine{629 \textcolor{comment}{//     \{}}
+\DoxyCodeLine{630 \textcolor{comment}{//       // line\_num++ ;}}
+\DoxyCodeLine{631 \textcolor{comment}{//       continue ;}}
+\DoxyCodeLine{632 \textcolor{comment}{//     \}}}
+\DoxyCodeLine{633 }
+\DoxyCodeLine{634 \textcolor{comment}{//     // // Ignore comment (starts with '\#') lines}}
+\DoxyCodeLine{635 \textcolor{comment}{//     // if (Zaki::String::Strip((*loop)[0], ' ')[0] == '\#')}}
+\DoxyCodeLine{636 \textcolor{comment}{//     // \{}}
+\DoxyCodeLine{637 \textcolor{comment}{//     //   // line\_num++ ;}}
+\DoxyCodeLine{638 \textcolor{comment}{//     //   continue ;}}
+\DoxyCodeLine{639 \textcolor{comment}{//     // \}}}
+\DoxyCodeLine{640 }
+\DoxyCodeLine{641 \textcolor{comment}{//     // Read the label (starts with '\#') line}}
+\DoxyCodeLine{642 \textcolor{comment}{//     if (Zaki::String::Strip((*loop)[0], ' ')[0] == '\#')}}
+\DoxyCodeLine{643 \textcolor{comment}{//     \{}}
+\DoxyCodeLine{644 \textcolor{comment}{//       // line\_num++ ;}}
+\DoxyCodeLine{645 \textcolor{comment}{//       label = Zaki::String::Strip((*loop)[1], ' ')[0] ;}}
+\DoxyCodeLine{646 \textcolor{comment}{//       continue ;}}
+\DoxyCodeLine{647 \textcolor{comment}{//     \}}}
+\DoxyCodeLine{648 \textcolor{comment}{//     // ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++}}
+\DoxyCodeLine{649 \textcolor{comment}{//     // importing all of the columns:}}
+\DoxyCodeLine{650 \textcolor{comment}{//     if ((*loop).size() != 2)}}
+\DoxyCodeLine{651 \textcolor{comment}{//     \{}}
+\DoxyCodeLine{652 \textcolor{comment}{//       Z\_LOG\_ERROR("{}Importing file failed: Two columns are needed!"{}) ;}}
+\DoxyCodeLine{653 \textcolor{comment}{//       exit(EXIT\_FAILURE) ;}}
+\DoxyCodeLine{654 \textcolor{comment}{//     \}}}
+\DoxyCodeLine{655 }
+\DoxyCodeLine{656 \textcolor{comment}{//     pts.emplace\_back( std::atof((*loop)[0].c\_str()), }}
+\DoxyCodeLine{657 \textcolor{comment}{//                       std::atof((*loop)[1].c\_str()) ) ;}}
+\DoxyCodeLine{658 \textcolor{comment}{//   \}}}
+\DoxyCodeLine{659 \textcolor{comment}{// \}}}
+\DoxyCodeLine{660 }
+\DoxyCodeLine{661 \textcolor{comment}{// //-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{662 \textcolor{comment}{// template <class T>}}
+\DoxyCodeLine{663 \textcolor{comment}{// size\_t Curve2D<T>::Size() const }}
+\DoxyCodeLine{664 \textcolor{comment}{// \{}}
+\DoxyCodeLine{665 \textcolor{comment}{//   return pts.size() ;}}
+\DoxyCodeLine{666 \textcolor{comment}{// \}}}
+\DoxyCodeLine{667 }
+\DoxyCodeLine{668 \textcolor{comment}{// //-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{669 \textcolor{comment}{// template <class T>}}
+\DoxyCodeLine{670 \textcolor{comment}{// void Curve2D<T>::Reserve(const size\_t\& in\_size) }}
+\DoxyCodeLine{671 \textcolor{comment}{// \{}}
+\DoxyCodeLine{672 \textcolor{comment}{//   pts.reserve(in\_size) ;}}
+\DoxyCodeLine{673 \textcolor{comment}{// \}}}
+\DoxyCodeLine{674 }
+\DoxyCodeLine{675 \textcolor{comment}{// //-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{676 \textcolor{comment}{// /// Overloading []}}
+\DoxyCodeLine{677 \textcolor{comment}{// template <class T>}}
+\DoxyCodeLine{678 \textcolor{comment}{// T\& Curve2D<T>::operator[] (const int in\_i)  }}
+\DoxyCodeLine{679 \textcolor{comment}{// \{}}
+\DoxyCodeLine{680 \textcolor{comment}{// if (in\_i >= 0)}}
+\DoxyCodeLine{681 \textcolor{comment}{//   \{}}
+\DoxyCodeLine{682 \textcolor{comment}{//     if ( in\_i < pts.size() )}}
+\DoxyCodeLine{683 \textcolor{comment}{//       return pts[(size\_t)in\_i] ;}}
+\DoxyCodeLine{684 \textcolor{comment}{//     else}}
+\DoxyCodeLine{685 \textcolor{comment}{//     \{}}
+\DoxyCodeLine{686 \textcolor{comment}{//       Z\_LOG\_ERROR("{}Index out of range!"{}) ;}}
+\DoxyCodeLine{687 \textcolor{comment}{//       return pts[0] ;}}
+\DoxyCodeLine{688 \textcolor{comment}{//     \}}}
+\DoxyCodeLine{689 \textcolor{comment}{//   \}}}
+\DoxyCodeLine{690 \textcolor{comment}{//   // Negative index (similar to Mathematica)}}
+\DoxyCodeLine{691 \textcolor{comment}{//   else}}
+\DoxyCodeLine{692 \textcolor{comment}{//   \{}}
+\DoxyCodeLine{693 \textcolor{comment}{//     if ( in\_i >= -\/pts.size() )}}
+\DoxyCodeLine{694 \textcolor{comment}{//       return pts[pts.size()+ in\_i] ;}}
+\DoxyCodeLine{695 \textcolor{comment}{//     else}}
+\DoxyCodeLine{696 \textcolor{comment}{//     \{}}
+\DoxyCodeLine{697 \textcolor{comment}{//       Z\_LOG\_ERROR("{}Index out of range!"{}) ;}}
+\DoxyCodeLine{698 \textcolor{comment}{//       return pts[0] ;}}
+\DoxyCodeLine{699 \textcolor{comment}{//     \}}}
+\DoxyCodeLine{700 \textcolor{comment}{//   \}}}
+\DoxyCodeLine{701 \textcolor{comment}{// \}}}
+\DoxyCodeLine{702 }
+\DoxyCodeLine{703 \textcolor{comment}{// //-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{704 \textcolor{comment}{// /// Overloading [] ( const )}}
+\DoxyCodeLine{705 \textcolor{comment}{// template <class T>}}
+\DoxyCodeLine{706 \textcolor{comment}{// T Curve2D<T>::operator[] (const int in\_i) const }}
+\DoxyCodeLine{707 \textcolor{comment}{// \{}}
+\DoxyCodeLine{708 \textcolor{comment}{//  if (in\_i >= 0)}}
+\DoxyCodeLine{709 \textcolor{comment}{//   \{}}
+\DoxyCodeLine{710 \textcolor{comment}{//     if ( in\_i < pts.size() )}}
+\DoxyCodeLine{711 \textcolor{comment}{//       return pts[(size\_t)in\_i] ;}}
+\DoxyCodeLine{712 \textcolor{comment}{//     else}}
+\DoxyCodeLine{713 \textcolor{comment}{//     \{}}
+\DoxyCodeLine{714 \textcolor{comment}{//       Z\_LOG\_ERROR("{}Index out of range!"{}) ;}}
+\DoxyCodeLine{715 \textcolor{comment}{//       return pts[0] ;}}
+\DoxyCodeLine{716 \textcolor{comment}{//     \}}}
+\DoxyCodeLine{717 \textcolor{comment}{//   \}}}
+\DoxyCodeLine{718 \textcolor{comment}{//   // Negative index (similar to Mathematica)}}
+\DoxyCodeLine{719 \textcolor{comment}{//   else}}
+\DoxyCodeLine{720 \textcolor{comment}{//   \{}}
+\DoxyCodeLine{721 \textcolor{comment}{//     if ( in\_i >= -\/pts.size() )}}
+\DoxyCodeLine{722 \textcolor{comment}{//       return pts[pts.size()+ in\_i] ;}}
+\DoxyCodeLine{723 \textcolor{comment}{//     else}}
+\DoxyCodeLine{724 \textcolor{comment}{//     \{}}
+\DoxyCodeLine{725 \textcolor{comment}{//       Z\_LOG\_ERROR("{}Index out of range!"{}) ;}}
+\DoxyCodeLine{726 \textcolor{comment}{//       return pts[0] ;}}
+\DoxyCodeLine{727 \textcolor{comment}{//     \}}}
+\DoxyCodeLine{728 \textcolor{comment}{//   \}}}
+\DoxyCodeLine{729 \textcolor{comment}{// \}}}
+\DoxyCodeLine{730 }
+\DoxyCodeLine{731 \textcolor{comment}{// //-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{732 \textcolor{comment}{// template <class T>}}
+\DoxyCodeLine{733 \textcolor{comment}{// std::vector<double> Curve2D<T>::GetXVals() const }}
+\DoxyCodeLine{734 \textcolor{comment}{// \{}}
+\DoxyCodeLine{735 \textcolor{comment}{//   std::vector<double> tmp(pts.size()) ;}}
+\DoxyCodeLine{736 }
+\DoxyCodeLine{737 \textcolor{comment}{//   for (size\_t i = 0; i < pts.size(); i++)}}
+\DoxyCodeLine{738 \textcolor{comment}{//   \{}}
+\DoxyCodeLine{739 \textcolor{comment}{//     tmp[i] = pts[i].x ;}}
+\DoxyCodeLine{740 \textcolor{comment}{//   \}}}
+\DoxyCodeLine{741   }
+\DoxyCodeLine{742 \textcolor{comment}{//   return tmp ;}}
+\DoxyCodeLine{743 \textcolor{comment}{// \}}}
+\DoxyCodeLine{744 }
+\DoxyCodeLine{745 \textcolor{comment}{// //-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{746 \textcolor{comment}{// template <class T>}}
+\DoxyCodeLine{747 \textcolor{comment}{// std::vector<double> Curve2D<T>::GetYVals() const }}
+\DoxyCodeLine{748 \textcolor{comment}{// \{}}
+\DoxyCodeLine{749 \textcolor{comment}{//   std::vector<double> tmp(pts.size()) ;}}
+\DoxyCodeLine{750 }
+\DoxyCodeLine{751 \textcolor{comment}{//   for (size\_t i = 0; i < pts.size(); i++)}}
+\DoxyCodeLine{752 \textcolor{comment}{//   \{}}
+\DoxyCodeLine{753 \textcolor{comment}{//     tmp[i] = pts[i].y ;}}
+\DoxyCodeLine{754 \textcolor{comment}{//   \}}}
+\DoxyCodeLine{755   }
+\DoxyCodeLine{756 \textcolor{comment}{//   return tmp ;}}
+\DoxyCodeLine{757 \textcolor{comment}{// \}}}
+\DoxyCodeLine{758 }
+\DoxyCodeLine{759 \textcolor{comment}{// //-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{760 \textcolor{comment}{// template <class T>}}
+\DoxyCodeLine{761 \textcolor{comment}{// Zaki::Math::Curve2D<T> Curve2D<T>::GetSmooth(const short int\& window) const}}
+\DoxyCodeLine{762 \textcolor{comment}{// \{}}
+\DoxyCodeLine{763 \textcolor{comment}{//   Zaki::Math::Curve2D out(label+"{}\_smooth"{}) ;}}
+\DoxyCodeLine{764 \textcolor{comment}{//   out.Reserve(Size()) ;}}
+\DoxyCodeLine{765 }
+\DoxyCodeLine{766 \textcolor{comment}{//   // Zaki::Math::Coord2D moving\_ave\_val(0,0) ;}}
+\DoxyCodeLine{767 \textcolor{comment}{//   T moving\_ave\_val(0,0) ;}}
+\DoxyCodeLine{768 }
+\DoxyCodeLine{769 \textcolor{comment}{//   for (size\_t i = 0; i < Size() -\/ window + 1 ; i++)}}
+\DoxyCodeLine{770 \textcolor{comment}{//   \{}}
+\DoxyCodeLine{771 \textcolor{comment}{//     for (size\_t j = 0; j < window; j++)}}
+\DoxyCodeLine{772 \textcolor{comment}{//     \{}}
+\DoxyCodeLine{773 \textcolor{comment}{//       moving\_ave\_val += operator[](i + j) ;}}
+\DoxyCodeLine{774 \textcolor{comment}{//     \}}}
+\DoxyCodeLine{775 \textcolor{comment}{//     moving\_ave\_val /= window ;}}
+\DoxyCodeLine{776 }
+\DoxyCodeLine{777 \textcolor{comment}{//     out.Append(moving\_ave\_val) ;}}
+\DoxyCodeLine{778 }
+\DoxyCodeLine{779 \textcolor{comment}{//     moving\_ave\_val = \{ 0, 0\} ;}}
+\DoxyCodeLine{780 \textcolor{comment}{//   \}}}
+\DoxyCodeLine{781   }
+\DoxyCodeLine{782 \textcolor{comment}{//   return out ;}}
+\DoxyCodeLine{783 \textcolor{comment}{// \}}}
+\DoxyCodeLine{784 }
+\DoxyCodeLine{785 \textcolor{comment}{// //-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{786 \textcolor{comment}{// template <class T>}}
+\DoxyCodeLine{787 \textcolor{comment}{// void Curve2D<T>::MakeSmooth(const short int\& window)}}
+\DoxyCodeLine{788 \textcolor{comment}{// \{}}
+\DoxyCodeLine{789 \textcolor{comment}{//   Zaki::Math::Curve2D<T> out ;}}
+\DoxyCodeLine{790 \textcolor{comment}{//   out.Reserve(Size()) ;}}
+\DoxyCodeLine{791 }
+\DoxyCodeLine{792 \textcolor{comment}{//   // Zaki::Math::Coord2D moving\_ave\_val(0,0) ;}}
+\DoxyCodeLine{793 \textcolor{comment}{//   T moving\_ave\_val(0,0) ;}}
+\DoxyCodeLine{794 }
+\DoxyCodeLine{795 }
+\DoxyCodeLine{796 \textcolor{comment}{//   for (size\_t i = 0; i < Size() -\/ window + 1 ; i++)}}
+\DoxyCodeLine{797 \textcolor{comment}{//   \{}}
+\DoxyCodeLine{798 \textcolor{comment}{//     for (size\_t j = 0; j < window; j++)}}
+\DoxyCodeLine{799 \textcolor{comment}{//     \{}}
+\DoxyCodeLine{800 \textcolor{comment}{//       moving\_ave\_val += operator[](i + j) ;}}
+\DoxyCodeLine{801 \textcolor{comment}{//     \}}}
+\DoxyCodeLine{802 \textcolor{comment}{//     moving\_ave\_val /= window ;}}
+\DoxyCodeLine{803 }
+\DoxyCodeLine{804 \textcolor{comment}{//     out.Append(moving\_ave\_val) ;}}
+\DoxyCodeLine{805 }
+\DoxyCodeLine{806 \textcolor{comment}{//     moving\_ave\_val = \{ 0, 0\} ;}}
+\DoxyCodeLine{807 \textcolor{comment}{//   \}}}
+\DoxyCodeLine{808   }
+\DoxyCodeLine{809 \textcolor{comment}{//   *this = out ;}}
+\DoxyCodeLine{810 \textcolor{comment}{// \}}}
+\DoxyCodeLine{811 }
+\DoxyCodeLine{812 \textcolor{comment}{// //-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{813 \textcolor{comment}{// // Makes a 2D plot of multiple curves}}
+\DoxyCodeLine{814 \textcolor{comment}{// template <class T>}}
+\DoxyCodeLine{815 \textcolor{comment}{// void Curve2D<T>::Plot(const std::vector<Curve2D<T>>\& in\_curves, }}
+\DoxyCodeLine{816 \textcolor{comment}{//           const Zaki::String::Directory\& f\_name, }}
+\DoxyCodeLine{817 \textcolor{comment}{//           const std::string\& in\_title) }}
+\DoxyCodeLine{818 \textcolor{comment}{// \{}}
+\DoxyCodeLine{819 \textcolor{comment}{//   for (auto \&\&c : in\_curves)}}
+\DoxyCodeLine{820 \textcolor{comment}{//   \{}}
+\DoxyCodeLine{821 \textcolor{comment}{//     matplotlibcpp::plot(c.GetXVals(), c.GetYVals()) ; }}
+\DoxyCodeLine{822 \textcolor{comment}{//   \}}}
+\DoxyCodeLine{823 }
+\DoxyCodeLine{824 \textcolor{comment}{//   // matplotlibcpp::xlabel(label) ;}}
+\DoxyCodeLine{825 \textcolor{comment}{//   // matplotlibcpp::ylabel(label) ;}}
+\DoxyCodeLine{826 }
+\DoxyCodeLine{827 \textcolor{comment}{//   if (in\_title != "{}"{})}}
+\DoxyCodeLine{828 \textcolor{comment}{//     matplotlibcpp::title(in\_title) ;}}
+\DoxyCodeLine{829 }
+\DoxyCodeLine{830 \textcolor{comment}{//   matplotlibcpp::savefig((f\_name).Str());}}
+\DoxyCodeLine{831 \textcolor{comment}{//   matplotlibcpp::clf() ;}}
+\DoxyCodeLine{832 \textcolor{comment}{// \}}}
+\DoxyCodeLine{833 }
+\DoxyCodeLine{834 \textcolor{comment}{// //-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{835 \textcolor{comment}{// // Makes a 2D plot of pts}}
+\DoxyCodeLine{836 \textcolor{comment}{// template <class T>}}
+\DoxyCodeLine{837 \textcolor{comment}{// void Curve2D<T>::Plot(const Zaki::String::Directory\& f\_name, }}
+\DoxyCodeLine{838 \textcolor{comment}{//                     const std::string\& in\_title) }}
+\DoxyCodeLine{839 \textcolor{comment}{// \{}}
+\DoxyCodeLine{840 \textcolor{comment}{//   matplotlibcpp::plot(GetXVals(), GetYVals());}}
+\DoxyCodeLine{841 }
+\DoxyCodeLine{842 \textcolor{comment}{//   // matplotlibcpp::xlabel(label) ;}}
+\DoxyCodeLine{843 \textcolor{comment}{//   // matplotlibcpp::ylabel(label) ;}}
+\DoxyCodeLine{844 }
+\DoxyCodeLine{845 \textcolor{comment}{//   if (in\_title != "{}"{})}}
+\DoxyCodeLine{846 \textcolor{comment}{//     matplotlibcpp::title(in\_title) ;}}
+\DoxyCodeLine{847 }
+\DoxyCodeLine{848 \textcolor{comment}{//   matplotlibcpp::savefig((f\_name).Str());}}
+\DoxyCodeLine{849 \textcolor{comment}{//   matplotlibcpp::clf() ;}}
+\DoxyCodeLine{850 \textcolor{comment}{// \}}}
+\DoxyCodeLine{851 }
+\DoxyCodeLine{852 \textcolor{comment}{// //-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{853 \textcolor{comment}{// // Exports the curve points}}
+\DoxyCodeLine{854 \textcolor{comment}{// template <class T>}}
+\DoxyCodeLine{855 \textcolor{comment}{// void Curve2D<T>::Export(const Zaki::String::Directory\& in\_file) const}}
+\DoxyCodeLine{856 \textcolor{comment}{// \{}}
+\DoxyCodeLine{857 \textcolor{comment}{//   Zaki::File::VecSaver v\_saver(in\_file) ;}}
+\DoxyCodeLine{858 \textcolor{comment}{//   v\_saver.SetHeader("{}\(\backslash\)t"{} + label) ;}}
+\DoxyCodeLine{859 \textcolor{comment}{//   v\_saver.Export1D(pts) ;}}
+\DoxyCodeLine{860 \textcolor{comment}{// \}}}
+\DoxyCodeLine{861 }
+\DoxyCodeLine{862 \textcolor{comment}{// //-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{863 \textcolor{comment}{// // Returns the index to the closest point to in\_p}}
+\DoxyCodeLine{864 \textcolor{comment}{// template <class T>}}
+\DoxyCodeLine{865 \textcolor{comment}{// size\_t Curve2D<T>::GetIdx(const T\& in\_p) const}}
+\DoxyCodeLine{866 \textcolor{comment}{// \{}}
+\DoxyCodeLine{867 \textcolor{comment}{//   double min\_dist = (pts[0].x -\/ in\_p.x)*(pts[0].x -\/ in\_p.x) }}
+\DoxyCodeLine{868 \textcolor{comment}{//                     + (pts[0].y -\/ in\_p.y)*(pts[0].y -\/ in\_p.y) ;}}
+\DoxyCodeLine{869 }
+\DoxyCodeLine{870 \textcolor{comment}{//   size\_t tmp\_idx = 0 ;}}
+\DoxyCodeLine{871 \textcolor{comment}{//   for (size\_t i = 1; i < pts.size(); i++)}}
+\DoxyCodeLine{872 \textcolor{comment}{//   \{}}
+\DoxyCodeLine{873 \textcolor{comment}{//     double current\_dist = (pts[i].x -\/ in\_p.x)*(pts[i].x -\/ in\_p.x) }}
+\DoxyCodeLine{874 \textcolor{comment}{//                         + (pts[i].y -\/ in\_p.y)*(pts[i].y -\/ in\_p.y) ;}}
+\DoxyCodeLine{875 \textcolor{comment}{//     if ( current\_dist < min\_dist)}}
+\DoxyCodeLine{876 \textcolor{comment}{//     \{}}
+\DoxyCodeLine{877 \textcolor{comment}{//       tmp\_idx = i ;}}
+\DoxyCodeLine{878 \textcolor{comment}{//       min\_dist = current\_dist ;}}
+\DoxyCodeLine{879 \textcolor{comment}{//     \}}}
+\DoxyCodeLine{880 \textcolor{comment}{//   \}}}
+\DoxyCodeLine{881   }
+\DoxyCodeLine{882 \textcolor{comment}{//   return tmp\_idx ;}}
+\DoxyCodeLine{883 \textcolor{comment}{// \}}}
+\DoxyCodeLine{884 \textcolor{comment}{// //-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{885 }
+\DoxyCodeLine{886 \textcolor{comment}{//==============================================================}}
+\DoxyCodeLine{887 \textcolor{keyword}{enum class} Excl\_Cond}
+\DoxyCodeLine{888 \{}
+\DoxyCodeLine{889   ABOVE = 0, BELOW = 1, ON = 2, ON\_ABOVE = 3, ON\_BELOW = 4}
+\DoxyCodeLine{890 \};}
+\DoxyCodeLine{891 }
+\DoxyCodeLine{892 \textcolor{comment}{//==============================================================}}
+\DoxyCodeLine{893 \textcolor{keyword}{class }\mbox{\hyperlink{class_zaki_1_1_math_1_1_cond___segment}{Cond\_Segment}} : \textcolor{keyword}{public} \mbox{\hyperlink{class_zaki_1_1_math_1_1_segment}{Segment}}}
+\DoxyCodeLine{894 \{}
+\DoxyCodeLine{895   \textcolor{keyword}{public}:}
+\DoxyCodeLine{896     \textcolor{comment}{// Segment seg ;}}
+\DoxyCodeLine{897     Excl\_Cond ex\_con ; }
+\DoxyCodeLine{898 }
+\DoxyCodeLine{899     \mbox{\hyperlink{class_zaki_1_1_math_1_1_cond___segment}{Cond\_Segment}}(\textcolor{keyword}{const} \mbox{\hyperlink{struct_zaki_1_1_math_1_1_coord2_d}{Coord2D}}\& in\_p1, }
+\DoxyCodeLine{900                 \textcolor{keyword}{const} \mbox{\hyperlink{struct_zaki_1_1_math_1_1_coord2_d}{Coord2D}}\& in\_p2,}
+\DoxyCodeLine{901                 \textcolor{keyword}{const} Excl\_Cond\& in\_ex\_con) ;}
+\DoxyCodeLine{902 }
+\DoxyCodeLine{903     \mbox{\hyperlink{class_zaki_1_1_math_1_1_cond___segment}{Cond\_Segment}}(\textcolor{keyword}{const} \mbox{\hyperlink{class_zaki_1_1_math_1_1_segment}{Segment}}\& in\_seg, }
+\DoxyCodeLine{904     \textcolor{keyword}{const} Excl\_Cond\& in\_ex\_con) ;}
+\DoxyCodeLine{905 }
+\DoxyCodeLine{906     \textcolor{keywordtype}{bool} IsExcluded(\textcolor{keyword}{const} \mbox{\hyperlink{struct_zaki_1_1_math_1_1_coord2_d}{Coord2D}}\& in\_p) ;}
+\DoxyCodeLine{907 \};}
+\DoxyCodeLine{908 }
+\DoxyCodeLine{909 \textcolor{comment}{//==============================================================}}
+\DoxyCodeLine{910 \textcolor{comment}{// Doesn't have to be closed, but it has to be }}
+\DoxyCodeLine{911 \textcolor{comment}{//  a convex polygon!}}
+\DoxyCodeLine{912 \textcolor{keyword}{class }\mbox{\hyperlink{class_zaki_1_1_math_1_1_cond___polygon}{Cond\_Polygon}}}
+\DoxyCodeLine{913 \{}
+\DoxyCodeLine{914   \textcolor{keyword}{private}:}
+\DoxyCodeLine{915     std::vector<Cond\_Segment> c\_segs ;}
+\DoxyCodeLine{916 }
+\DoxyCodeLine{917   \textcolor{keyword}{public}: }
+\DoxyCodeLine{918     \mbox{\hyperlink{class_zaki_1_1_math_1_1_cond___polygon}{Cond\_Polygon}}() ;}
+\DoxyCodeLine{919     \mbox{\hyperlink{class_zaki_1_1_math_1_1_cond___polygon}{Cond\_Polygon}}(\textcolor{keyword}{const} std::vector<Cond\_Segment>\& in\_c\_segs) ;}
+\DoxyCodeLine{920 }
+\DoxyCodeLine{921     \textcolor{keywordtype}{void} AddSegment(\textcolor{keyword}{const} \mbox{\hyperlink{struct_zaki_1_1_math_1_1_coord2_d}{Coord2D}}\& in\_p1, }
+\DoxyCodeLine{922                     \textcolor{keyword}{const} \mbox{\hyperlink{struct_zaki_1_1_math_1_1_coord2_d}{Coord2D}}\& in\_p2,}
+\DoxyCodeLine{923                     \textcolor{keyword}{const} Excl\_Cond\& in\_ex\_con) ;}
+\DoxyCodeLine{924 }
+\DoxyCodeLine{925     \textcolor{keywordtype}{void} AddSegment(\textcolor{keyword}{const} \mbox{\hyperlink{class_zaki_1_1_math_1_1_segment}{Segment}}\& in\_seg, }
+\DoxyCodeLine{926                     \textcolor{keyword}{const} Excl\_Cond\& in\_ex\_con) ;}
+\DoxyCodeLine{927 }
+\DoxyCodeLine{928     \textcolor{keywordtype}{void} AddSegment(\textcolor{keyword}{const} \mbox{\hyperlink{class_zaki_1_1_math_1_1_cond___segment}{Cond\_Segment}}\& in\_c\_seg) ;}
+\DoxyCodeLine{929 }
+\DoxyCodeLine{930     \textcolor{keywordtype}{bool} IsExcluded(\textcolor{keyword}{const} \mbox{\hyperlink{struct_zaki_1_1_math_1_1_coord2_d}{Coord2D}}\& in\_p) ;}
+\DoxyCodeLine{931 }
+\DoxyCodeLine{932 \};}
+\DoxyCodeLine{933 \textcolor{comment}{//==============================================================}}
+\DoxyCodeLine{934 \textcolor{comment}{//                GridVals\_2D}}
+\DoxyCodeLine{935 \textcolor{comment}{//==============================================================}}
+\DoxyCodeLine{936 \textcolor{keyword}{struct }\mbox{\hyperlink{struct_zaki_1_1_math_1_1_grid_vals__2_d}{GridVals\_2D}}}
+\DoxyCodeLine{937 \{}
+\DoxyCodeLine{938   \textcolor{keyword}{private}:}
+\DoxyCodeLine{939     gsl\_spline2d *spline = nullptr ;}
+\DoxyCodeLine{940     gsl\_interp\_accel *x\_acc = nullptr ;}
+\DoxyCodeLine{941     gsl\_interp\_accel *y\_acc = nullptr ;}
+\DoxyCodeLine{942     std::vector<double> x\_vals ;}
+\DoxyCodeLine{943     std::vector<double> y\_vals ;}
+\DoxyCodeLine{944     \textcolor{keyword}{const} gsl\_interp2d\_type *m\_GSL\_interp2d\_type = gsl\_interp2d\_bilinear ;}
+\DoxyCodeLine{945 }
+\DoxyCodeLine{946   \textcolor{keyword}{public}:}
+\DoxyCodeLine{947   \textcolor{keywordtype}{double}* m\_GridValArr = nullptr ;}
+\DoxyCodeLine{948 }
+\DoxyCodeLine{949   }
+\DoxyCodeLine{951   \textcolor{keywordtype}{size\_t} \mbox{\hyperlink{struct_zaki_1_1_math_1_1_grid_vals__2_d_abdae54ecac7664214ef658c5bd175e3d}{n\_x}}, n\_y ;}
+\DoxyCodeLine{952 }
+\DoxyCodeLine{953 }
+\DoxyCodeLine{956   \mbox{\hyperlink{struct_zaki_1_1_math_1_1_grid_vals__2_d_a978c639db18bb2e954125ec6c6d7ae96}{GridVals\_2D}}(\textcolor{keyword}{const} \mbox{\hyperlink{class_zaki_1_1_vector_1_1_data_set}{Zaki::Vector::DataSet}}\& in\_ds, }
+\DoxyCodeLine{957             \textcolor{keyword}{const} \textcolor{keywordtype}{int}\& x\_idx, \textcolor{keyword}{const} \textcolor{keywordtype}{int}\& y\_idx, }
+\DoxyCodeLine{958             \textcolor{keyword}{const} \textcolor{keywordtype}{int}\& z\_val\_idx) ;}
+\DoxyCodeLine{959 }
+\DoxyCodeLine{962   \mbox{\hyperlink{struct_zaki_1_1_math_1_1_grid_vals__2_d_a914057318b274e79c22d214d363c295f}{GridVals\_2D}}(\textcolor{keyword}{const} \mbox{\hyperlink{class_zaki_1_1_vector_1_1_data_set}{Zaki::Vector::DataSet}}\& in\_ds, }
+\DoxyCodeLine{963               \textcolor{keyword}{const} \textcolor{keywordtype}{int}\& x\_idx, \textcolor{keyword}{const} \textcolor{keywordtype}{size\_t}\& x\_res, }
+\DoxyCodeLine{964               \textcolor{keyword}{const} \textcolor{keywordtype}{int}\& y\_idx, \textcolor{keyword}{const} \textcolor{keywordtype}{size\_t}\& y\_res, }
+\DoxyCodeLine{965               \textcolor{keyword}{const} \textcolor{keywordtype}{int}\& z\_val\_idx, }
+\DoxyCodeLine{966               \textcolor{keyword}{const} \textcolor{keywordtype}{double}\& def\_val=-\/1) ;}
+\DoxyCodeLine{967 }
+\DoxyCodeLine{968   \mbox{\hyperlink{struct_zaki_1_1_math_1_1_grid_vals__2_d}{\string~GridVals\_2D}}() ;}
+\DoxyCodeLine{969 }
+\DoxyCodeLine{970   \textcolor{keywordtype}{void} Interpolate(\textcolor{keyword}{const} \mbox{\hyperlink{struct_zaki_1_1_math_1_1_grid2_d}{Zaki::Math::Grid2D}}\& in\_g2d) ;}
+\DoxyCodeLine{971 }
+\DoxyCodeLine{972   \textcolor{keywordtype}{double} Evaluate(\textcolor{keyword}{const} \textcolor{keywordtype}{double}\& in\_x, \textcolor{keyword}{const} \textcolor{keywordtype}{double}\& in\_y) ;}
+\DoxyCodeLine{973 \};}
+\DoxyCodeLine{974 }
+\DoxyCodeLine{975 \textcolor{comment}{//==============================================================}}
+\DoxyCodeLine{976 \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{977 \} \textcolor{comment}{// End of namespace Zaki::Math}}
+\DoxyCodeLine{978 \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{979 }
+\DoxyCodeLine{980 std::ostream\& operator << ( std::ostream \&, \textcolor{keyword}{const} \mbox{\hyperlink{class_zaki_1_1_math_1_1_quantity}{Zaki::Math::Quantity}}\&);}
+\DoxyCodeLine{981 std::ostream\& operator << (std::ostream \&, \textcolor{keyword}{const} \mbox{\hyperlink{struct_zaki_1_1_math_1_1_range}{Zaki::Math::Range<double>}}\&) ;}
+\DoxyCodeLine{982 std::ostream\& operator << (std::ostream \&, \textcolor{keyword}{const} \mbox{\hyperlink{struct_zaki_1_1_math_1_1_range}{Zaki::Math::Range<double>}}\&) ;}
+\DoxyCodeLine{983 std::ostream\& operator << (std::ostream \&, \textcolor{keyword}{const} \mbox{\hyperlink{struct_zaki_1_1_math_1_1_range}{Zaki::Math::Range<int>}}\&) ;}
+\DoxyCodeLine{984 std::ostream\& operator << ( std::ostream \&, \textcolor{keyword}{const} \mbox{\hyperlink{struct_zaki_1_1_math_1_1_coord2_d}{Zaki::Math::Coord2D}}\&);}
+\DoxyCodeLine{985 std::ostream\& operator << ( std::ostream \&, \textcolor{keyword}{const} \mbox{\hyperlink{class_zaki_1_1_math_1_1_segment}{Zaki::Math::Segment}}\&);}
+\DoxyCodeLine{986 \textcolor{comment}{//==============================================================}}
+\DoxyCodeLine{987 \textcolor{preprocessor}{\#endif }\textcolor{comment}{/*Zaki\_Math\_Basic\_H*/}\textcolor{preprocessor}{}}
+
+\end{DoxyCode}

@@ -1,0 +1,545 @@
+\hypertarget{class_compact_star_1_1_mixed_star}{}\doxysection{Compact\+Star\+::Mixed\+Star Class Reference}
+\label{class_compact_star_1_1_mixed_star}\index{CompactStar::MixedStar@{CompactStar::MixedStar}}
+
+
+Represents a star composed of both visible and dark matter.  
+
+
+
+
+{\ttfamily \#include $<$Mixed\+Star.\+hpp$>$}
+
+Inheritance diagram for Compact\+Star\+::Mixed\+Star\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{d3/d3d/class_compact_star_1_1_mixed_star}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_compact_star_1_1_mixed_star_a78c4f2ae72f52e172837efa533511fb3}\label{class_compact_star_1_1_mixed_star_a78c4f2ae72f52e172837efa533511fb3}} 
+{\bfseries Mixed\+Star} ()
+\begin{DoxyCompactList}\small\item\em Default constructor for the \mbox{\hyperlink{class_compact_star_1_1_mixed_star}{Mixed\+Star}} class. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_compact_star_1_1_mixed_star_a3957866659f942009bbec015b9277a90}{Mixed\+Star}} (const size\+\_\+t \&in\+\_\+v\+\_\+idx, const size\+\_\+t \&in\+\_\+d\+\_\+idx, const std\+::vector$<$ \mbox{\hyperlink{struct_compact_star_1_1_t_o_v_point}{TOVPoint}} $>$ \&in\+\_\+tov\+\_\+results, const std\+::vector$<$ \mbox{\hyperlink{struct_compact_star_1_1_t_o_v_point}{TOVPoint}} $>$ \&in\+\_\+dark\+\_\+tov\+\_\+results)
+\begin{DoxyCompactList}\small\item\em Initializes the \mbox{\hyperlink{class_compact_star_1_1_mixed_star}{Mixed\+Star}} with TOV solutions. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_compact_star_1_1_mixed_star_a05ab0d36cdf0fbedf6905c1adcc57664}\label{class_compact_star_1_1_mixed_star_a05ab0d36cdf0fbedf6905c1adcc57664}} 
+void {\bfseries Init\+Visible} (const \mbox{\hyperlink{class_compact_star_1_1_t_o_v_solver}{TOVSolver}} $\ast$in\+\_\+tov\+\_\+solver)
+\begin{DoxyCompactList}\small\item\em Initializes the visible dataset with TOV solutions. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_compact_star_1_1_mixed_star_a893e364b6bf44ee6e8e8f0b444ce6199}\label{class_compact_star_1_1_mixed_star_a893e364b6bf44ee6e8e8f0b444ce6199}} 
+void {\bfseries Init\+Dark} (const \mbox{\hyperlink{class_compact_star_1_1_t_o_v_solver}{TOVSolver}} $\ast$in\+\_\+tov\+\_\+solver)
+\begin{DoxyCompactList}\small\item\em Initializes the dark dataset with TOV solutions. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_compact_star_1_1_mixed_star_a655ba16f51772b0b13c33455865d0f97}{Append\+\_\+\+Core}} (const \mbox{\hyperlink{struct_compact_star_1_1_t_o_v_point}{TOVPoint}} \&in\+\_\+tov\+\_\+pts, const \mbox{\hyperlink{struct_compact_star_1_1_t_o_v_point}{TOVPoint}} \&in\+\_\+dark\+\_\+tov\+\_\+pts)
+\begin{DoxyCompactList}\small\item\em Appends TOV points to the core region of the mixed star. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_compact_star_1_1_mixed_star_a76dfd87cfba1fee6dce33ef9f774ca93}{Append\+\_\+\+Dark\+\_\+\+Mantle}} (const \mbox{\hyperlink{struct_compact_star_1_1_t_o_v_point}{TOVPoint}} \&in\+\_\+dark\+\_\+tov\+\_\+pts)
+\begin{DoxyCompactList}\small\item\em Appends TOV points to the mantle region of the mixed star from the dark solutions. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_compact_star_1_1_mixed_star_a815830016aa015b4ce36ccfe7dd31bcf}{Append\+\_\+\+Visible\+\_\+\+Mantle}} (const \mbox{\hyperlink{struct_compact_star_1_1_t_o_v_point}{TOVPoint}} \&in\+\_\+tov\+\_\+pts)
+\begin{DoxyCompactList}\small\item\em Appends TOV points to the mantle region of the mixed star from the visible solutions. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_compact_star_1_1_mixed_star_aef24810c26d8c6cbd038c15ef4749b25}{Surface\+Is\+Reached}} (const size\+\_\+t \&in\+\_\+v\+\_\+idx, const size\+\_\+t \&in\+\_\+d\+\_\+idx)
+\item 
+void \mbox{\hyperlink{class_compact_star_1_1_mixed_star_ad10c3a29931eba3c6445c9426ec633d3}{Reset}} ()
+\begin{DoxyCompactList}\small\item\em Reserving the needed space for all datacolumns. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_compact_star_1_1_mixed_star_a41a65d34b789eeea4da503cb85d77b8e}{$\sim$\+Mixed\+Star}} ()
+\begin{DoxyCompactList}\small\item\em Constructor from file. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_compact_star_1_1_mixed_star_a3972e212413cb65d07c9585b11c72e1d}{Mixed\+Star}} (const \mbox{\hyperlink{class_compact_star_1_1_mixed_star}{Mixed\+Star}} \&)=delete
+\begin{DoxyCompactList}\small\item\em Copy constructor for the \mbox{\hyperlink{class_compact_star_1_1_mixed_star}{Mixed\+Star}} class. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_compact_star_1_1_mixed_star}{Mixed\+Star}} \& \mbox{\hyperlink{class_compact_star_1_1_mixed_star_a24c059c1d5533f0eaedcc40f9d13161d}{operator=}} (const \mbox{\hyperlink{class_compact_star_1_1_mixed_star}{Mixed\+Star}} \&)=delete
+\begin{DoxyCompactList}\small\item\em Assignment operator for the \mbox{\hyperlink{class_compact_star_1_1_mixed_star}{Mixed\+Star}} class. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_compact_star_1_1_mixed_star_affde5c61d936f50a21ab876fc6cb399f}\label{class_compact_star_1_1_mixed_star_affde5c61d936f50a21ab876fc6cb399f}} 
+double {\bfseries Get\+Mass\+\_\+\+Visible} (const double \&in\+\_\+r) const
+\begin{DoxyCompactList}\small\item\em Returns the mass of the visible component at a given radius. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_compact_star_1_1_mixed_star_a0fd8ec8e5d7fb47baa6c49d06ce058a3}\label{class_compact_star_1_1_mixed_star_a0fd8ec8e5d7fb47baa6c49d06ce058a3}} 
+\mbox{\hyperlink{struct_zaki_1_1_vector_1_1_data_column}{Zaki\+::\+Vector\+::\+Data\+Column}} $\ast$ {\bfseries Get\+Mass\+\_\+\+Visible} ()
+\begin{DoxyCompactList}\small\item\em Returns the mass of the visible component as a function of radius. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_compact_star_1_1_mixed_star_a1023bd06724ee6d40909094ced971842}\label{class_compact_star_1_1_mixed_star_a1023bd06724ee6d40909094ced971842}} 
+double {\bfseries Get\+Mass\+\_\+\+Dark} (const double \&in\+\_\+r) const
+\begin{DoxyCompactList}\small\item\em Returns the mass of the dark component at a given radius. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_compact_star_1_1_mixed_star_ae44a9aa20af7ccb02eff5d5e634b2f35}\label{class_compact_star_1_1_mixed_star_ae44a9aa20af7ccb02eff5d5e634b2f35}} 
+\mbox{\hyperlink{struct_zaki_1_1_vector_1_1_data_column}{Zaki\+::\+Vector\+::\+Data\+Column}} $\ast$ {\bfseries Get\+Mass\+\_\+\+Dark} ()
+\begin{DoxyCompactList}\small\item\em Returns the mass of the dark component as a function of radius. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{class_compact_star_1_1_mixed_star_a3c4ac101f2c9c207aa07027ff36c0a4e}{Get\+Mass\+\_\+\+Total}} (const double \&in\+\_\+r) const
+\begin{DoxyCompactList}\small\item\em Returns the total mass of the mixed star at a given radius. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{struct_zaki_1_1_vector_1_1_data_column}{Zaki\+::\+Vector\+::\+Data\+Column}} $\ast$ \mbox{\hyperlink{class_compact_star_1_1_mixed_star_a82e28516da6b2f777c4fb2035d9c41e1}{Get\+Mass\+\_\+\+Total}} ()
+\begin{DoxyCompactList}\small\item\em Returns the total mass of the mixed star as a function of radius. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{class_compact_star_1_1_mixed_star_a0a879d64f8306cd6d05131b27d2f356f}{Get\+Rho\+\_\+\+Visible}} (const double \&in\+\_\+r) const
+\begin{DoxyCompactList}\small\item\em Returns the visible baryon number density at a given radius. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{struct_zaki_1_1_vector_1_1_data_column}{Zaki\+::\+Vector\+::\+Data\+Column}} $\ast$ \mbox{\hyperlink{class_compact_star_1_1_mixed_star_a426168a85c8f785580d9ad7620af6b1a}{Get\+Rho\+\_\+\+Visible}} ()
+\begin{DoxyCompactList}\small\item\em Returns the visible baryon number density as a function of radius. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{struct_zaki_1_1_vector_1_1_data_column}{Zaki\+::\+Vector\+::\+Data\+Column}} $\ast$ \mbox{\hyperlink{class_compact_star_1_1_mixed_star_a20c5e258792a5a277993a70dffa2ff1a}{Get\+Rho\+\_\+i\+\_\+\+Visible}} (const std\+::string \&in\+\_\+label)
+\begin{DoxyCompactList}\small\item\em Returns the visible baryon number density fm$^\wedge$\{-\/3\} for a specific species at a given radius. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{class_compact_star_1_1_mixed_star_aeaa7ffa52c00d660fd02ce1126c4319a}{Get\+Rho\+\_\+\+Dark}} (const double \&in\+\_\+r) const
+\begin{DoxyCompactList}\small\item\em Returns the dark baryon number density at a given radius. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_compact_star_1_1_mixed_star_a0a3bb2ea50e7e29b028c094234ec4f3f}\label{class_compact_star_1_1_mixed_star_a0a3bb2ea50e7e29b028c094234ec4f3f}} 
+\mbox{\hyperlink{struct_zaki_1_1_vector_1_1_data_column}{Zaki\+::\+Vector\+::\+Data\+Column}} $\ast$ {\bfseries Get\+Rho\+\_\+\+Dark} ()
+\begin{DoxyCompactList}\small\item\em Returns the dark baryon number density as a function of radius. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{class_compact_star_1_1_mixed_star_a0a145d577d758c84af3c4ea8bb732be8}{Get\+Eps\+\_\+\+Visible}} (const double \&in\+\_\+r) const
+\begin{DoxyCompactList}\small\item\em Returns the energy density at a given radius. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_compact_star_1_1_mixed_star_a19367fa44591b1cd642dd8e12137ba2e}\label{class_compact_star_1_1_mixed_star_a19367fa44591b1cd642dd8e12137ba2e}} 
+\mbox{\hyperlink{struct_zaki_1_1_vector_1_1_data_column}{Zaki\+::\+Vector\+::\+Data\+Column}} $\ast$ {\bfseries Get\+Eps\+\_\+\+Visible} ()
+\begin{DoxyCompactList}\small\item\em Returns the visible energy density as a function of radius. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{class_compact_star_1_1_mixed_star_a5f0989aea6321928f510d5a0ff0d65fc}{Get\+Eps\+\_\+\+Dark}} (const double \&in\+\_\+r) const
+\begin{DoxyCompactList}\small\item\em Returns the dark energy density at a given radius. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_compact_star_1_1_mixed_star_a7345fa0bbd999c315ba400e008898a83}\label{class_compact_star_1_1_mixed_star_a7345fa0bbd999c315ba400e008898a83}} 
+\mbox{\hyperlink{struct_zaki_1_1_vector_1_1_data_column}{Zaki\+::\+Vector\+::\+Data\+Column}} $\ast$ {\bfseries Get\+Eps\+\_\+\+Dark} ()
+\begin{DoxyCompactList}\small\item\em Returns the dark energy density as a function of radius. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{class_compact_star_1_1_mixed_star_ad02562a89c9610782d6b8eb307c2f581}{Get\+Press\+\_\+\+Visible}} (const double \&in\+\_\+r) const
+\begin{DoxyCompactList}\small\item\em Returns the visible pressure at a given radius. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_compact_star_1_1_mixed_star_a8c9d1b17c75126906c17761f38d56a6f}\label{class_compact_star_1_1_mixed_star_a8c9d1b17c75126906c17761f38d56a6f}} 
+\mbox{\hyperlink{struct_zaki_1_1_vector_1_1_data_column}{Zaki\+::\+Vector\+::\+Data\+Column}} $\ast$ {\bfseries Get\+Press\+\_\+\+Visible} ()
+\begin{DoxyCompactList}\small\item\em Returns the visible pressure as a function of radius. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{class_compact_star_1_1_mixed_star_a256ec094ce38fe03d566439fc123cee9}{Get\+Press\+\_\+\+Dark}} (const double \&in\+\_\+r) const
+\begin{DoxyCompactList}\small\item\em Returns the dark pressure at a given radius. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_compact_star_1_1_mixed_star_a14dc210ff0054d153dc35d3f8ebd0758}\label{class_compact_star_1_1_mixed_star_a14dc210ff0054d153dc35d3f8ebd0758}} 
+\mbox{\hyperlink{struct_zaki_1_1_vector_1_1_data_column}{Zaki\+::\+Vector\+::\+Data\+Column}} $\ast$ {\bfseries Get\+Press\+\_\+\+Dark} ()
+\begin{DoxyCompactList}\small\item\em Returns the dark pressure as a function of radius. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_compact_star_1_1_mixed_seq_point}{Mixed\+Seq\+Point}} \mbox{\hyperlink{class_compact_star_1_1_mixed_star_a8e465205c0fe4c79314c6714fb36a0a1}{Get\+Sequence}} () const
+\begin{DoxyCompactList}\small\item\em Returns the sequence point of the mixed star. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_compact_star_1_1_mixed_star_a30d58d91c99073ac8622451789c2e22e}\label{class_compact_star_1_1_mixed_star_a30d58d91c99073ac8622451789c2e22e}} 
+void {\bfseries Evaluate\+Nu} ()
+\begin{DoxyCompactList}\small\item\em Evaluates the metric function by integrating nu\textquotesingle{}(r) over the radius. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{class_compact_star_1_1_mixed_star_a05282e9dddc0d9c17fb83c856084c717}{Get\+Nu}} (const double \&in\+\_\+r) const
+\begin{DoxyCompactList}\small\item\em Returns the metric function at a given radius. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_compact_star_1_1_mixed_star_aa1ae955e945bb52d262981b7b1f870e2}\label{class_compact_star_1_1_mixed_star_aa1ae955e945bb52d262981b7b1f870e2}} 
+\mbox{\hyperlink{struct_zaki_1_1_vector_1_1_data_column}{Zaki\+::\+Vector\+::\+Data\+Column}} $\ast$ {\bfseries Get\+Nu} ()
+\begin{DoxyCompactList}\small\item\em Returns the metric function as a function of radius. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{struct_zaki_1_1_vector_1_1_data_column}{Zaki\+::\+Vector\+::\+Data\+Column}} $\ast$ \mbox{\hyperlink{class_compact_star_1_1_mixed_star_a8c947ec4dbf807f90e60eb6082b44b0e}{Get\+Radius\+\_\+\+Visible}} ()
+\begin{DoxyCompactList}\small\item\em Returns a pointer to the visible radius dataset. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_compact_star_1_1_mixed_star_aee13a7105b6d611e0f49133093443f23}\label{class_compact_star_1_1_mixed_star_aee13a7105b6d611e0f49133093443f23}} 
+\mbox{\hyperlink{struct_zaki_1_1_vector_1_1_data_column}{Zaki\+::\+Vector\+::\+Data\+Column}} $\ast$ {\bfseries Get\+Radius\+\_\+\+Dark} ()
+\begin{DoxyCompactList}\small\item\em Returns a pointer to the dark radius dataset. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_compact_star_1_1_mixed_star_a3c0508b35060b0b8eb6c701c9a8cfee0}\label{class_compact_star_1_1_mixed_star_a3c0508b35060b0b8eb6c701c9a8cfee0}} 
+\mbox{\hyperlink{struct_zaki_1_1_vector_1_1_data_column}{Zaki\+::\+Vector\+::\+Data\+Column}} $\ast$ {\bfseries Get\+Radius} ()
+\begin{DoxyCompactList}\small\item\em Returns a pointer to the radius dataset of the mixed star. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{class_compact_star_1_1_mixed_star_a54c3b74932e4891ffd3de04d9653e983}{Baryon\+Num\+Integrand}} (double in\+\_\+r)
+\begin{DoxyCompactList}\small\item\em Returns the value for visible baryon number integrand at a given radius. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{class_compact_star_1_1_mixed_star_a33dd3f6dcea243e9cc6f2f96e4379191}{Find\+\_\+\+Baryon\+Num\+\_\+\+Visible}} (const double \&in\+\_\+r)
+\begin{DoxyCompactList}\small\item\em Returns the visible baryon number at a given radius. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{class_compact_star_1_1_mixed_star_aa145a84e8176353fba90f277b5786882}{Find\+\_\+\+Baryon\+Num\+\_\+\+Visible}} ()
+\begin{DoxyCompactList}\small\item\em Returns the total visible baryon number. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{class_compact_star_1_1_mixed_star_a4a7adcf6b506c93788aeee041183bfc1}{Baryon\+Num\+Integrand\+\_\+\+Dark}} (double in\+\_\+r)
+\begin{DoxyCompactList}\small\item\em Returns the value for dark baryon number integrand at a given radius. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{class_compact_star_1_1_mixed_star_a930260071319744a63569fdaae19c824}{Find\+\_\+\+Baryon\+Num\+\_\+\+Dark}} (const double \&in\+\_\+r)
+\begin{DoxyCompactList}\small\item\em Returns the dark baryon number at a given radius. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_compact_star_1_1_mixed_star_ad68cea3ed5857376e8a449f9d146be3f}\label{class_compact_star_1_1_mixed_star_ad68cea3ed5857376e8a449f9d146be3f}} 
+double {\bfseries Find\+\_\+\+Baryon\+Num\+\_\+\+Dark} ()
+\begin{DoxyCompactList}\small\item\em Returns the total dark baryon number. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_compact_star_1_1_mixed_star_a2b428b3b78814d74d05f9084f61be077}\label{class_compact_star_1_1_mixed_star_a2b428b3b78814d74d05f9084f61be077}} 
+double {\bfseries Find\+\_\+\+Mom\+Inertia} ()
+\begin{DoxyCompactList}\small\item\em Returns the total moment of inertia of the mixed star. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_compact_star_1_1_mixed_star_aae48e580cf49107604ba456dfd8c6df6}{Export}} (const \mbox{\hyperlink{class_zaki_1_1_string_1_1_directory}{Zaki\+::\+String\+::\+Directory}} \&in\+\_\+dir)
+\begin{DoxyCompactList}\small\item\em Exports the mixed star profile to a file. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Friends}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_compact_star_1_1_mixed_star_abdb640718f1cbc515cf50f6080956fa1}\label{class_compact_star_1_1_mixed_star_abdb640718f1cbc515cf50f6080956fa1}} 
+class {\bfseries Rotation\+Solver}
+\item 
+\mbox{\Hypertarget{class_compact_star_1_1_mixed_star_af2df1eb3a7bf81a86d582637d3f00689}\label{class_compact_star_1_1_mixed_star_af2df1eb3a7bf81a86d582637d3f00689}} 
+class {\bfseries TOVSolver}
+\item 
+\mbox{\Hypertarget{class_compact_star_1_1_mixed_star_a91e5c2de192abec7d214524523287213}\label{class_compact_star_1_1_mixed_star_a91e5c2de192abec7d214524523287213}} 
+class {\bfseries Mixed\+Sequence}
+\end{DoxyCompactItemize}
+\doxysubsection*{Additional Inherited Members}
+
+
+\doxysubsection{Detailed Description}
+Represents a star composed of both visible and dark matter. 
+
+Encapsulates the core and mantle regions of an admixed star, stores TOV solutions, supports data analysis (e.\+g., moment of inertia), and exports computed profiles.
+
+The class is designed to work with the \mbox{\hyperlink{class_compact_star_1_1_t_o_v_solver}{TOVSolver}} and \mbox{\hyperlink{class_compact_star_1_1_rotation_solver}{Rotation\+Solver}} classes. It provides methods to initialize, append TOV points, and compute various properties such as mass, baryon number, and moment of inertia. It also allows for the evaluation of the metric function and its derivative. The class is capable of exporting the mixed star profile to a file.
+
+\begin{DoxyAuthor}{Author}
+Mohammadreza Zakeri 
+\end{DoxyAuthor}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_compact_star_1_1_mixed_star_a3957866659f942009bbec015b9277a90}\label{class_compact_star_1_1_mixed_star_a3957866659f942009bbec015b9277a90}} 
+\index{CompactStar::MixedStar@{CompactStar::MixedStar}!MixedStar@{MixedStar}}
+\index{MixedStar@{MixedStar}!CompactStar::MixedStar@{CompactStar::MixedStar}}
+\doxysubsubsection{\texorpdfstring{MixedStar()}{MixedStar()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily Compact\+Star\+::\+Mixed\+Star\+::\+Mixed\+Star (\begin{DoxyParamCaption}\item[{const size\+\_\+t \&}]{in\+\_\+v\+\_\+idx,  }\item[{const size\+\_\+t \&}]{in\+\_\+d\+\_\+idx,  }\item[{const std\+::vector$<$ \mbox{\hyperlink{struct_compact_star_1_1_t_o_v_point}{TOVPoint}} $>$ \&}]{in\+\_\+tov\+\_\+results,  }\item[{const std\+::vector$<$ \mbox{\hyperlink{struct_compact_star_1_1_t_o_v_point}{TOVPoint}} $>$ \&}]{in\+\_\+dark\+\_\+tov\+\_\+results }\end{DoxyParamCaption})}
+
+
+
+Initializes the \mbox{\hyperlink{class_compact_star_1_1_mixed_star}{Mixed\+Star}} with TOV solutions. 
+
+Constructor from TOV Solutions 
+\begin{DoxyParams}{Parameters}
+{\em in\+\_\+v\+\_\+idx} & Index of the visible TOV solution. \\
+\hline
+{\em in\+\_\+d\+\_\+idx} & Index of the dark TOV solution. \\
+\hline
+{\em in\+\_\+tov\+\_\+results} & Vector of TOV points for the visible solution. \\
+\hline
+{\em in\+\_\+dark\+\_\+tov\+\_\+results} & Vector of TOV points for the dark solution. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_compact_star_1_1_mixed_star_a41a65d34b789eeea4da503cb85d77b8e}\label{class_compact_star_1_1_mixed_star_a41a65d34b789eeea4da503cb85d77b8e}} 
+\index{CompactStar::MixedStar@{CompactStar::MixedStar}!````~MixedStar@{$\sim$MixedStar}}
+\index{````~MixedStar@{$\sim$MixedStar}!CompactStar::MixedStar@{CompactStar::MixedStar}}
+\doxysubsubsection{\texorpdfstring{$\sim$MixedStar()}{~MixedStar()}}
+{\footnotesize\ttfamily Compact\+Star\+::\+Mixed\+Star\+::$\sim$\+Mixed\+Star (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Constructor from file. 
+
+Destructor for the \mbox{\hyperlink{class_compact_star_1_1_mixed_star}{Mixed\+Star}} class. \mbox{\Hypertarget{class_compact_star_1_1_mixed_star_a3972e212413cb65d07c9585b11c72e1d}\label{class_compact_star_1_1_mixed_star_a3972e212413cb65d07c9585b11c72e1d}} 
+\index{CompactStar::MixedStar@{CompactStar::MixedStar}!MixedStar@{MixedStar}}
+\index{MixedStar@{MixedStar}!CompactStar::MixedStar@{CompactStar::MixedStar}}
+\doxysubsubsection{\texorpdfstring{MixedStar()}{MixedStar()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily Compact\+Star\+::\+Mixed\+Star\+::\+Mixed\+Star (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_compact_star_1_1_mixed_star}{Mixed\+Star}} \&}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [delete]}}
+
+
+
+Copy constructor for the \mbox{\hyperlink{class_compact_star_1_1_mixed_star}{Mixed\+Star}} class. 
+
+This constructor is deleted to prevent copying of the \mbox{\hyperlink{class_compact_star_1_1_mixed_star}{Mixed\+Star}} object. 
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_compact_star_1_1_mixed_star_a655ba16f51772b0b13c33455865d0f97}\label{class_compact_star_1_1_mixed_star_a655ba16f51772b0b13c33455865d0f97}} 
+\index{CompactStar::MixedStar@{CompactStar::MixedStar}!Append\_Core@{Append\_Core}}
+\index{Append\_Core@{Append\_Core}!CompactStar::MixedStar@{CompactStar::MixedStar}}
+\doxysubsubsection{\texorpdfstring{Append\_Core()}{Append\_Core()}}
+{\footnotesize\ttfamily void Compact\+Star\+::\+Mixed\+Star\+::\+Append\+\_\+\+Core (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{struct_compact_star_1_1_t_o_v_point}{TOVPoint}} \&}]{in\+\_\+tov\+\_\+pts,  }\item[{const \mbox{\hyperlink{struct_compact_star_1_1_t_o_v_point}{TOVPoint}} \&}]{in\+\_\+dark\+\_\+tov\+\_\+pts }\end{DoxyParamCaption})}
+
+
+
+Appends TOV points to the core region of the mixed star. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em in\+\_\+tov\+\_\+pts} & Vector of TOV points for the visible solution. \\
+\hline
+{\em in\+\_\+dark\+\_\+tov\+\_\+pts} & Vector of TOV points for the dark solution. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_compact_star_1_1_mixed_star_a76dfd87cfba1fee6dce33ef9f774ca93}\label{class_compact_star_1_1_mixed_star_a76dfd87cfba1fee6dce33ef9f774ca93}} 
+\index{CompactStar::MixedStar@{CompactStar::MixedStar}!Append\_Dark\_Mantle@{Append\_Dark\_Mantle}}
+\index{Append\_Dark\_Mantle@{Append\_Dark\_Mantle}!CompactStar::MixedStar@{CompactStar::MixedStar}}
+\doxysubsubsection{\texorpdfstring{Append\_Dark\_Mantle()}{Append\_Dark\_Mantle()}}
+{\footnotesize\ttfamily void Compact\+Star\+::\+Mixed\+Star\+::\+Append\+\_\+\+Dark\+\_\+\+Mantle (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{struct_compact_star_1_1_t_o_v_point}{TOVPoint}} \&}]{in\+\_\+dark\+\_\+tov\+\_\+pts }\end{DoxyParamCaption})}
+
+
+
+Appends TOV points to the mantle region of the mixed star from the dark solutions. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em in\+\_\+dark\+\_\+tov\+\_\+pts} & Vector of TOV points for the dark solution. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_compact_star_1_1_mixed_star_a815830016aa015b4ce36ccfe7dd31bcf}\label{class_compact_star_1_1_mixed_star_a815830016aa015b4ce36ccfe7dd31bcf}} 
+\index{CompactStar::MixedStar@{CompactStar::MixedStar}!Append\_Visible\_Mantle@{Append\_Visible\_Mantle}}
+\index{Append\_Visible\_Mantle@{Append\_Visible\_Mantle}!CompactStar::MixedStar@{CompactStar::MixedStar}}
+\doxysubsubsection{\texorpdfstring{Append\_Visible\_Mantle()}{Append\_Visible\_Mantle()}}
+{\footnotesize\ttfamily void Compact\+Star\+::\+Mixed\+Star\+::\+Append\+\_\+\+Visible\+\_\+\+Mantle (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{struct_compact_star_1_1_t_o_v_point}{TOVPoint}} \&}]{in\+\_\+tov\+\_\+pts }\end{DoxyParamCaption})}
+
+
+
+Appends TOV points to the mantle region of the mixed star from the visible solutions. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em in\+\_\+tov\+\_\+pts} & Vector of TOV points for the visible solution. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_compact_star_1_1_mixed_star_a54c3b74932e4891ffd3de04d9653e983}\label{class_compact_star_1_1_mixed_star_a54c3b74932e4891ffd3de04d9653e983}} 
+\index{CompactStar::MixedStar@{CompactStar::MixedStar}!BaryonNumIntegrand@{BaryonNumIntegrand}}
+\index{BaryonNumIntegrand@{BaryonNumIntegrand}!CompactStar::MixedStar@{CompactStar::MixedStar}}
+\doxysubsubsection{\texorpdfstring{BaryonNumIntegrand()}{BaryonNumIntegrand()}}
+{\footnotesize\ttfamily double Compact\+Star\+::\+Mixed\+Star\+::\+Baryon\+Num\+Integrand (\begin{DoxyParamCaption}\item[{double}]{in\+\_\+r }\end{DoxyParamCaption})}
+
+
+
+Returns the value for visible baryon number integrand at a given radius. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em in\+\_\+r} & The radius at which to evaluate the baryon number integrand. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_compact_star_1_1_mixed_star_a4a7adcf6b506c93788aeee041183bfc1}\label{class_compact_star_1_1_mixed_star_a4a7adcf6b506c93788aeee041183bfc1}} 
+\index{CompactStar::MixedStar@{CompactStar::MixedStar}!BaryonNumIntegrand\_Dark@{BaryonNumIntegrand\_Dark}}
+\index{BaryonNumIntegrand\_Dark@{BaryonNumIntegrand\_Dark}!CompactStar::MixedStar@{CompactStar::MixedStar}}
+\doxysubsubsection{\texorpdfstring{BaryonNumIntegrand\_Dark()}{BaryonNumIntegrand\_Dark()}}
+{\footnotesize\ttfamily double Compact\+Star\+::\+Mixed\+Star\+::\+Baryon\+Num\+Integrand\+\_\+\+Dark (\begin{DoxyParamCaption}\item[{double}]{in\+\_\+r }\end{DoxyParamCaption})}
+
+
+
+Returns the value for dark baryon number integrand at a given radius. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em in\+\_\+r} & The radius at which to evaluate the baryon number integrand. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_compact_star_1_1_mixed_star_aae48e580cf49107604ba456dfd8c6df6}\label{class_compact_star_1_1_mixed_star_aae48e580cf49107604ba456dfd8c6df6}} 
+\index{CompactStar::MixedStar@{CompactStar::MixedStar}!Export@{Export}}
+\index{Export@{Export}!CompactStar::MixedStar@{CompactStar::MixedStar}}
+\doxysubsubsection{\texorpdfstring{Export()}{Export()}}
+{\footnotesize\ttfamily void Compact\+Star\+::\+Mixed\+Star\+::\+Export (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_zaki_1_1_string_1_1_directory}{Zaki\+::\+String\+::\+Directory}} \&}]{in\+\_\+dir }\end{DoxyParamCaption})}
+
+
+
+Exports the mixed star profile to a file. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em in\+\_\+dir} & The directory where the profile should be exported. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_compact_star_1_1_mixed_star_a930260071319744a63569fdaae19c824}\label{class_compact_star_1_1_mixed_star_a930260071319744a63569fdaae19c824}} 
+\index{CompactStar::MixedStar@{CompactStar::MixedStar}!Find\_BaryonNum\_Dark@{Find\_BaryonNum\_Dark}}
+\index{Find\_BaryonNum\_Dark@{Find\_BaryonNum\_Dark}!CompactStar::MixedStar@{CompactStar::MixedStar}}
+\doxysubsubsection{\texorpdfstring{Find\_BaryonNum\_Dark()}{Find\_BaryonNum\_Dark()}}
+{\footnotesize\ttfamily double Compact\+Star\+::\+Mixed\+Star\+::\+Find\+\_\+\+Baryon\+Num\+\_\+\+Dark (\begin{DoxyParamCaption}\item[{const double \&}]{in\+\_\+r }\end{DoxyParamCaption})}
+
+
+
+Returns the dark baryon number at a given radius. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em in\+\_\+r} & The radius at which to evaluate the baryon number. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_compact_star_1_1_mixed_star_aa145a84e8176353fba90f277b5786882}\label{class_compact_star_1_1_mixed_star_aa145a84e8176353fba90f277b5786882}} 
+\index{CompactStar::MixedStar@{CompactStar::MixedStar}!Find\_BaryonNum\_Visible@{Find\_BaryonNum\_Visible}}
+\index{Find\_BaryonNum\_Visible@{Find\_BaryonNum\_Visible}!CompactStar::MixedStar@{CompactStar::MixedStar}}
+\doxysubsubsection{\texorpdfstring{Find\_BaryonNum\_Visible()}{Find\_BaryonNum\_Visible()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily double Compact\+Star\+::\+Mixed\+Star\+::\+Find\+\_\+\+Baryon\+Num\+\_\+\+Visible (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Returns the total visible baryon number. 
+
+Visible baryon number \mbox{\Hypertarget{class_compact_star_1_1_mixed_star_a33dd3f6dcea243e9cc6f2f96e4379191}\label{class_compact_star_1_1_mixed_star_a33dd3f6dcea243e9cc6f2f96e4379191}} 
+\index{CompactStar::MixedStar@{CompactStar::MixedStar}!Find\_BaryonNum\_Visible@{Find\_BaryonNum\_Visible}}
+\index{Find\_BaryonNum\_Visible@{Find\_BaryonNum\_Visible}!CompactStar::MixedStar@{CompactStar::MixedStar}}
+\doxysubsubsection{\texorpdfstring{Find\_BaryonNum\_Visible()}{Find\_BaryonNum\_Visible()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily double Compact\+Star\+::\+Mixed\+Star\+::\+Find\+\_\+\+Baryon\+Num\+\_\+\+Visible (\begin{DoxyParamCaption}\item[{const double \&}]{in\+\_\+r }\end{DoxyParamCaption})}
+
+
+
+Returns the visible baryon number at a given radius. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em in\+\_\+r} & The radius at which to evaluate the baryon number. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_compact_star_1_1_mixed_star_a5f0989aea6321928f510d5a0ff0d65fc}\label{class_compact_star_1_1_mixed_star_a5f0989aea6321928f510d5a0ff0d65fc}} 
+\index{CompactStar::MixedStar@{CompactStar::MixedStar}!GetEps\_Dark@{GetEps\_Dark}}
+\index{GetEps\_Dark@{GetEps\_Dark}!CompactStar::MixedStar@{CompactStar::MixedStar}}
+\doxysubsubsection{\texorpdfstring{GetEps\_Dark()}{GetEps\_Dark()}}
+{\footnotesize\ttfamily double Compact\+Star\+::\+Mixed\+Star\+::\+Get\+Eps\+\_\+\+Dark (\begin{DoxyParamCaption}\item[{const double \&}]{in\+\_\+r }\end{DoxyParamCaption}) const}
+
+
+
+Returns the dark energy density at a given radius. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em in\+\_\+r} & The radius at which to evaluate the energy density. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_compact_star_1_1_mixed_star_a0a145d577d758c84af3c4ea8bb732be8}\label{class_compact_star_1_1_mixed_star_a0a145d577d758c84af3c4ea8bb732be8}} 
+\index{CompactStar::MixedStar@{CompactStar::MixedStar}!GetEps\_Visible@{GetEps\_Visible}}
+\index{GetEps\_Visible@{GetEps\_Visible}!CompactStar::MixedStar@{CompactStar::MixedStar}}
+\doxysubsubsection{\texorpdfstring{GetEps\_Visible()}{GetEps\_Visible()}}
+{\footnotesize\ttfamily double Compact\+Star\+::\+Mixed\+Star\+::\+Get\+Eps\+\_\+\+Visible (\begin{DoxyParamCaption}\item[{const double \&}]{in\+\_\+r }\end{DoxyParamCaption}) const}
+
+
+
+Returns the energy density at a given radius. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em in\+\_\+r} & The radius at which to evaluate the energy density. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_compact_star_1_1_mixed_star_a82e28516da6b2f777c4fb2035d9c41e1}\label{class_compact_star_1_1_mixed_star_a82e28516da6b2f777c4fb2035d9c41e1}} 
+\index{CompactStar::MixedStar@{CompactStar::MixedStar}!GetMass\_Total@{GetMass\_Total}}
+\index{GetMass\_Total@{GetMass\_Total}!CompactStar::MixedStar@{CompactStar::MixedStar}}
+\doxysubsubsection{\texorpdfstring{GetMass\_Total()}{GetMass\_Total()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{struct_zaki_1_1_vector_1_1_data_column}{Zaki\+::\+Vector\+::\+Data\+Column}} $\ast$ Compact\+Star\+::\+Mixed\+Star\+::\+Get\+Mass\+\_\+\+Total (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Returns the total mass of the mixed star as a function of radius. 
+
+Returns a data column holding total mass values extending from the origin to the surface of the star \mbox{\Hypertarget{class_compact_star_1_1_mixed_star_a3c4ac101f2c9c207aa07027ff36c0a4e}\label{class_compact_star_1_1_mixed_star_a3c4ac101f2c9c207aa07027ff36c0a4e}} 
+\index{CompactStar::MixedStar@{CompactStar::MixedStar}!GetMass\_Total@{GetMass\_Total}}
+\index{GetMass\_Total@{GetMass\_Total}!CompactStar::MixedStar@{CompactStar::MixedStar}}
+\doxysubsubsection{\texorpdfstring{GetMass\_Total()}{GetMass\_Total()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily double Compact\+Star\+::\+Mixed\+Star\+::\+Get\+Mass\+\_\+\+Total (\begin{DoxyParamCaption}\item[{const double \&}]{in\+\_\+r }\end{DoxyParamCaption}) const}
+
+
+
+Returns the total mass of the mixed star at a given radius. 
+
+The total mass is the sum of the visible and dark masses. 
+\begin{DoxyParams}{Parameters}
+{\em in\+\_\+r} & The radius at which to evaluate the total mass. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_compact_star_1_1_mixed_star_a05282e9dddc0d9c17fb83c856084c717}\label{class_compact_star_1_1_mixed_star_a05282e9dddc0d9c17fb83c856084c717}} 
+\index{CompactStar::MixedStar@{CompactStar::MixedStar}!GetNu@{GetNu}}
+\index{GetNu@{GetNu}!CompactStar::MixedStar@{CompactStar::MixedStar}}
+\doxysubsubsection{\texorpdfstring{GetNu()}{GetNu()}}
+{\footnotesize\ttfamily double Compact\+Star\+::\+Mixed\+Star\+::\+Get\+Nu (\begin{DoxyParamCaption}\item[{const double \&}]{in\+\_\+r }\end{DoxyParamCaption}) const}
+
+
+
+Returns the metric function at a given radius. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em in\+\_\+r} & The radius at which to evaluate the metric function. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_compact_star_1_1_mixed_star_a256ec094ce38fe03d566439fc123cee9}\label{class_compact_star_1_1_mixed_star_a256ec094ce38fe03d566439fc123cee9}} 
+\index{CompactStar::MixedStar@{CompactStar::MixedStar}!GetPress\_Dark@{GetPress\_Dark}}
+\index{GetPress\_Dark@{GetPress\_Dark}!CompactStar::MixedStar@{CompactStar::MixedStar}}
+\doxysubsubsection{\texorpdfstring{GetPress\_Dark()}{GetPress\_Dark()}}
+{\footnotesize\ttfamily double Compact\+Star\+::\+Mixed\+Star\+::\+Get\+Press\+\_\+\+Dark (\begin{DoxyParamCaption}\item[{const double \&}]{in\+\_\+r }\end{DoxyParamCaption}) const}
+
+
+
+Returns the dark pressure at a given radius. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em in\+\_\+r} & The radius at which to evaluate the pressure. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_compact_star_1_1_mixed_star_ad02562a89c9610782d6b8eb307c2f581}\label{class_compact_star_1_1_mixed_star_ad02562a89c9610782d6b8eb307c2f581}} 
+\index{CompactStar::MixedStar@{CompactStar::MixedStar}!GetPress\_Visible@{GetPress\_Visible}}
+\index{GetPress\_Visible@{GetPress\_Visible}!CompactStar::MixedStar@{CompactStar::MixedStar}}
+\doxysubsubsection{\texorpdfstring{GetPress\_Visible()}{GetPress\_Visible()}}
+{\footnotesize\ttfamily double Compact\+Star\+::\+Mixed\+Star\+::\+Get\+Press\+\_\+\+Visible (\begin{DoxyParamCaption}\item[{const double \&}]{in\+\_\+r }\end{DoxyParamCaption}) const}
+
+
+
+Returns the visible pressure at a given radius. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em in\+\_\+r} & The radius at which to evaluate the pressure. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_compact_star_1_1_mixed_star_a8c947ec4dbf807f90e60eb6082b44b0e}\label{class_compact_star_1_1_mixed_star_a8c947ec4dbf807f90e60eb6082b44b0e}} 
+\index{CompactStar::MixedStar@{CompactStar::MixedStar}!GetRadius\_Visible@{GetRadius\_Visible}}
+\index{GetRadius\_Visible@{GetRadius\_Visible}!CompactStar::MixedStar@{CompactStar::MixedStar}}
+\doxysubsubsection{\texorpdfstring{GetRadius\_Visible()}{GetRadius\_Visible()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{struct_zaki_1_1_vector_1_1_data_column}{Zaki\+::\+Vector\+::\+Data\+Column}} $\ast$ Compact\+Star\+::\+Mixed\+Star\+::\+Get\+Radius\+\_\+\+Visible (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Returns a pointer to the visible radius dataset. 
+
+Returns the visible radius dataset. \mbox{\Hypertarget{class_compact_star_1_1_mixed_star_aeaa7ffa52c00d660fd02ce1126c4319a}\label{class_compact_star_1_1_mixed_star_aeaa7ffa52c00d660fd02ce1126c4319a}} 
+\index{CompactStar::MixedStar@{CompactStar::MixedStar}!GetRho\_Dark@{GetRho\_Dark}}
+\index{GetRho\_Dark@{GetRho\_Dark}!CompactStar::MixedStar@{CompactStar::MixedStar}}
+\doxysubsubsection{\texorpdfstring{GetRho\_Dark()}{GetRho\_Dark()}}
+{\footnotesize\ttfamily double Compact\+Star\+::\+Mixed\+Star\+::\+Get\+Rho\+\_\+\+Dark (\begin{DoxyParamCaption}\item[{const double \&}]{in\+\_\+r }\end{DoxyParamCaption}) const}
+
+
+
+Returns the dark baryon number density at a given radius. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em in\+\_\+r} & The radius at which to evaluate the baryon number density. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_compact_star_1_1_mixed_star_a20c5e258792a5a277993a70dffa2ff1a}\label{class_compact_star_1_1_mixed_star_a20c5e258792a5a277993a70dffa2ff1a}} 
+\index{CompactStar::MixedStar@{CompactStar::MixedStar}!GetRho\_i\_Visible@{GetRho\_i\_Visible}}
+\index{GetRho\_i\_Visible@{GetRho\_i\_Visible}!CompactStar::MixedStar@{CompactStar::MixedStar}}
+\doxysubsubsection{\texorpdfstring{GetRho\_i\_Visible()}{GetRho\_i\_Visible()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{struct_zaki_1_1_vector_1_1_data_column}{Zaki\+::\+Vector\+::\+Data\+Column}} $\ast$ Compact\+Star\+::\+Mixed\+Star\+::\+Get\+Rho\+\_\+i\+\_\+\+Visible (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{in\+\_\+label }\end{DoxyParamCaption})}
+
+
+
+Returns the visible baryon number density fm$^\wedge$\{-\/3\} for a specific species at a given radius. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em in\+\_\+r} & The radius at which to evaluate the baryon number density. \\
+\hline
+{\em in\+\_\+label} & The label of the baryon species (e.\+g., \char`\"{}n\char`\"{}, \char`\"{}p\char`\"{}, \char`\"{}e\char`\"{}). \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_compact_star_1_1_mixed_star_a426168a85c8f785580d9ad7620af6b1a}\label{class_compact_star_1_1_mixed_star_a426168a85c8f785580d9ad7620af6b1a}} 
+\index{CompactStar::MixedStar@{CompactStar::MixedStar}!GetRho\_Visible@{GetRho\_Visible}}
+\index{GetRho\_Visible@{GetRho\_Visible}!CompactStar::MixedStar@{CompactStar::MixedStar}}
+\doxysubsubsection{\texorpdfstring{GetRho\_Visible()}{GetRho\_Visible()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{struct_zaki_1_1_vector_1_1_data_column}{Zaki\+::\+Vector\+::\+Data\+Column}} $\ast$ Compact\+Star\+::\+Mixed\+Star\+::\+Get\+Rho\+\_\+\+Visible (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Returns the visible baryon number density as a function of radius. 
+
+The baryon number density is the number of baryons per unit volume. \mbox{\Hypertarget{class_compact_star_1_1_mixed_star_a0a879d64f8306cd6d05131b27d2f356f}\label{class_compact_star_1_1_mixed_star_a0a879d64f8306cd6d05131b27d2f356f}} 
+\index{CompactStar::MixedStar@{CompactStar::MixedStar}!GetRho\_Visible@{GetRho\_Visible}}
+\index{GetRho\_Visible@{GetRho\_Visible}!CompactStar::MixedStar@{CompactStar::MixedStar}}
+\doxysubsubsection{\texorpdfstring{GetRho\_Visible()}{GetRho\_Visible()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily double Compact\+Star\+::\+Mixed\+Star\+::\+Get\+Rho\+\_\+\+Visible (\begin{DoxyParamCaption}\item[{const double \&}]{in\+\_\+r }\end{DoxyParamCaption}) const}
+
+
+
+Returns the visible baryon number density at a given radius. 
+
+Visible baryon number density as a function of radius 
+\begin{DoxyParams}{Parameters}
+{\em in\+\_\+r} & The radius at which to evaluate the baryon number density. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_compact_star_1_1_mixed_star_a8e465205c0fe4c79314c6714fb36a0a1}\label{class_compact_star_1_1_mixed_star_a8e465205c0fe4c79314c6714fb36a0a1}} 
+\index{CompactStar::MixedStar@{CompactStar::MixedStar}!GetSequence@{GetSequence}}
+\index{GetSequence@{GetSequence}!CompactStar::MixedStar@{CompactStar::MixedStar}}
+\doxysubsubsection{\texorpdfstring{GetSequence()}{GetSequence()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_compact_star_1_1_mixed_seq_point}{Compact\+Star\+::\+Mixed\+Seq\+Point}} Compact\+Star\+::\+Mixed\+Star\+::\+Get\+Sequence (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Returns the sequence point of the mixed star. 
+
+Returns \textquotesingle{}sequence\textquotesingle{} \mbox{\Hypertarget{class_compact_star_1_1_mixed_star_a24c059c1d5533f0eaedcc40f9d13161d}\label{class_compact_star_1_1_mixed_star_a24c059c1d5533f0eaedcc40f9d13161d}} 
+\index{CompactStar::MixedStar@{CompactStar::MixedStar}!operator=@{operator=}}
+\index{operator=@{operator=}!CompactStar::MixedStar@{CompactStar::MixedStar}}
+\doxysubsubsection{\texorpdfstring{operator=()}{operator=()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_compact_star_1_1_mixed_star}{Mixed\+Star}} \& Compact\+Star\+::\+Mixed\+Star\+::operator= (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_compact_star_1_1_mixed_star}{Mixed\+Star}} \&}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [delete]}}
+
+
+
+Assignment operator for the \mbox{\hyperlink{class_compact_star_1_1_mixed_star}{Mixed\+Star}} class. 
+
+This operator is deleted to prevent assignment of the \mbox{\hyperlink{class_compact_star_1_1_mixed_star}{Mixed\+Star}} object. \mbox{\Hypertarget{class_compact_star_1_1_mixed_star_ad10c3a29931eba3c6445c9426ec633d3}\label{class_compact_star_1_1_mixed_star_ad10c3a29931eba3c6445c9426ec633d3}} 
+\index{CompactStar::MixedStar@{CompactStar::MixedStar}!Reset@{Reset}}
+\index{Reset@{Reset}!CompactStar::MixedStar@{CompactStar::MixedStar}}
+\doxysubsubsection{\texorpdfstring{Reset()}{Reset()}}
+{\footnotesize\ttfamily void Compact\+Star\+::\+Mixed\+Star\+::\+Reset (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Reserving the needed space for all datacolumns. 
+
+Similar to the destructor
+
+Resets the mixed star to its initial state. \mbox{\Hypertarget{class_compact_star_1_1_mixed_star_aef24810c26d8c6cbd038c15ef4749b25}\label{class_compact_star_1_1_mixed_star_aef24810c26d8c6cbd038c15ef4749b25}} 
+\index{CompactStar::MixedStar@{CompactStar::MixedStar}!SurfaceIsReached@{SurfaceIsReached}}
+\index{SurfaceIsReached@{SurfaceIsReached}!CompactStar::MixedStar@{CompactStar::MixedStar}}
+\doxysubsubsection{\texorpdfstring{SurfaceIsReached()}{SurfaceIsReached()}}
+{\footnotesize\ttfamily void Compact\+Star\+::\+Mixed\+Star\+::\+Surface\+Is\+Reached (\begin{DoxyParamCaption}\item[{const size\+\_\+t \&}]{in\+\_\+v\+\_\+idx,  }\item[{const size\+\_\+t \&}]{in\+\_\+d\+\_\+idx }\end{DoxyParamCaption})}
+
+This has to be run so the class knows when to initialize all the splines 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Compact\+Star/\+Core/\mbox{\hyperlink{_mixed_star_8hpp}{Mixed\+Star.\+hpp}}\item 
+Compact\+Star/\+Core/src/Mixed\+Star.\+cpp\end{DoxyCompactItemize}

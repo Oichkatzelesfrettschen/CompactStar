@@ -1,0 +1,46 @@
+\hypertarget{class_zaki_1_1_file_1_1_vec_saver}{}\doxysection{Zaki\+::File\+::Vec\+Saver Class Reference}
+\label{class_zaki_1_1_file_1_1_vec_saver}\index{Zaki::File::VecSaver@{Zaki::File::VecSaver}}
+
+
+{\ttfamily \#include $<$Vec\+Saver.\+hpp$>$}
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_zaki_1_1_file_1_1_vec_saver_a9ad2ecd9951c42085a6a64ff92e53d3f}\label{class_zaki_1_1_file_1_1_vec_saver_a9ad2ecd9951c42085a6a64ff92e53d3f}} 
+{\bfseries Vec\+Saver} (const \mbox{\hyperlink{class_zaki_1_1_string_1_1_directory}{Zaki\+::\+String\+::\+Directory}} \&in\+\_\+fname)
+\item 
+\mbox{\Hypertarget{class_zaki_1_1_file_1_1_vec_saver_a3bf3dfbc8dba45018b70118e3ccd599b}\label{class_zaki_1_1_file_1_1_vec_saver_a3bf3dfbc8dba45018b70118e3ccd599b}} 
+{\bfseries Vec\+Saver} (const \mbox{\hyperlink{class_zaki_1_1_string_1_1_directory}{Zaki\+::\+String\+::\+Directory}} \&in\+\_\+fname, const File\+Mode \&in\+\_\+mode)
+\item 
+\mbox{\Hypertarget{class_zaki_1_1_file_1_1_vec_saver_a435bbd4b1c529670dd8d59744b256b45}\label{class_zaki_1_1_file_1_1_vec_saver_a435bbd4b1c529670dd8d59744b256b45}} 
+\mbox{\hyperlink{class_zaki_1_1_file_1_1_vec_saver}{Vec\+Saver}} \& {\bfseries Set\+File\+Name} (const \mbox{\hyperlink{class_zaki_1_1_string_1_1_directory}{Zaki\+::\+String\+::\+Directory}} \&in\+\_\+fname)
+\item 
+\mbox{\Hypertarget{class_zaki_1_1_file_1_1_vec_saver_a7691a524c5057e3938bc3952c98cb2d3}\label{class_zaki_1_1_file_1_1_vec_saver_a7691a524c5057e3938bc3952c98cb2d3}} 
+\mbox{\hyperlink{class_zaki_1_1_file_1_1_vec_saver}{Vec\+Saver}} \& {\bfseries Set\+Mode} (const File\+Mode \&in\+\_\+mode)
+\item 
+\mbox{\Hypertarget{class_zaki_1_1_file_1_1_vec_saver_ad3a9df30d8a6f0beab4bb9573f1180b0}\label{class_zaki_1_1_file_1_1_vec_saver_ad3a9df30d8a6f0beab4bb9573f1180b0}} 
+\mbox{\hyperlink{class_zaki_1_1_file_1_1_vec_saver}{Vec\+Saver}} \& {\bfseries Set\+Header} (const std\+::string \&in\+\_\+head)
+\item 
+\mbox{\Hypertarget{class_zaki_1_1_file_1_1_vec_saver_ae87b8ad6a2b3ad9f5275648545a006fe}\label{class_zaki_1_1_file_1_1_vec_saver_ae87b8ad6a2b3ad9f5275648545a006fe}} 
+\mbox{\hyperlink{class_zaki_1_1_file_1_1_vec_saver}{Vec\+Saver}} \& {\bfseries Set\+Footer} (const std\+::string \&in\+\_\+foot)
+\item 
+\mbox{\Hypertarget{class_zaki_1_1_file_1_1_vec_saver_a5844980cea4e0e0c60ed11f1752ad9c3}\label{class_zaki_1_1_file_1_1_vec_saver_a5844980cea4e0e0c60ed11f1752ad9c3}} 
+void {\bfseries Set\+Precision} (const int \&digits)
+\item 
+\mbox{\Hypertarget{class_zaki_1_1_file_1_1_vec_saver_a81e65327dcd9c31a4745f2f208571051}\label{class_zaki_1_1_file_1_1_vec_saver_a81e65327dcd9c31a4745f2f208571051}} 
+{\footnotesize template$<$typename T $>$ }\\void {\bfseries Export1D} (const std\+::vector$<$ T $>$ \&)
+\item 
+\mbox{\Hypertarget{class_zaki_1_1_file_1_1_vec_saver_afd0e3dd89df06921f932bb55e5b17a4d}\label{class_zaki_1_1_file_1_1_vec_saver_afd0e3dd89df06921f932bb55e5b17a4d}} 
+{\footnotesize template$<$typename T $>$ }\\void {\bfseries Export2D} (const std\+::vector$<$ std\+::vector$<$ T $>$ $>$ \&, const char $\ast$delim=\char`\"{},\char`\"{})
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Exports data into files with a specified delimiter.
+
+This class exports data into a file with a given delimiter. The data types can be float, double, integer, char, string or of a generic class type with a \textquotesingle{}Str()\textquotesingle{} method implemented. 
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+dependencies/include/\+Zaki/\+File/\mbox{\hyperlink{_vec_saver_8hpp}{Vec\+Saver.\+hpp}}\end{DoxyCompactItemize}

@@ -1,0 +1,89 @@
+\hypertarget{class_compact_star_1_1_chemical_heating_1_1_star_context}{}\doxysection{Compact\+Star\+::Chemical\+Heating\+::Star\+Context Class Reference}
+\label{class_compact_star_1_1_chemical_heating_1_1_star_context}\index{CompactStar::ChemicalHeating::StarContext@{CompactStar::ChemicalHeating::StarContext}}
+
+
+Immutable, per-\/star adapter exposing cached geometry and composition.  
+
+
+
+
+{\ttfamily \#include $<$Star\+Context.\+hpp$>$}
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_compact_star_1_1_chemical_heating_1_1_star_context_ad4d6a9d10ec2160d3211c6e373eb14b5}{Star\+Context}} (const \mbox{\hyperlink{class_compact_star_1_1_n_star}{Compact\+Star\+::\+NStar}} \&ns, const Compact\+Star\+::\+EOS\+::\+Model $\ast$eos=0)
+\begin{DoxyCompactList}\small\item\em Construct from a precomputed neutron-\/star profile. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{Indent}\textbf{ Basic geometry and grids}\par
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_compact_star_1_1_chemical_heating_1_1_star_context_a510cf16f26dc16373492284dd9942bab}\label{class_compact_star_1_1_chemical_heating_1_1_star_context_a510cf16f26dc16373492284dd9942bab}} 
+std\+::size\+\_\+t {\bfseries Size} () const
+\begin{DoxyCompactList}\small\item\em Number of radial samples in the profile grid. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_compact_star_1_1_chemical_heating_1_1_star_context_a29a4b0d0cd6c63c867f7532e0da06a5e}\label{class_compact_star_1_1_chemical_heating_1_1_star_context_a29a4b0d0cd6c63c867f7532e0da06a5e}} 
+const \mbox{\hyperlink{struct_zaki_1_1_vector_1_1_data_column}{Zaki\+::\+Vector\+::\+Data\+Column}} $\ast$ {\bfseries Radius} () const
+\begin{DoxyCompactList}\small\item\em Radius column (km). \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_compact_star_1_1_chemical_heating_1_1_star_context_a4b7977dfdb4a002a4f0d0befb6c23151}\label{class_compact_star_1_1_chemical_heating_1_1_star_context_a4b7977dfdb4a002a4f0d0befb6c23151}} 
+const \mbox{\hyperlink{struct_zaki_1_1_vector_1_1_data_column}{Zaki\+::\+Vector\+::\+Data\+Column}} $\ast$ {\bfseries Nu} () const
+\begin{DoxyCompactList}\small\item\em Metric exponent $\nu(r)$ where $g_{tt}=e^{2\nu}$. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_compact_star_1_1_chemical_heating_1_1_star_context_a80e9b2e19dacfe60893a47ec009bb94b}\label{class_compact_star_1_1_chemical_heating_1_1_star_context_a80e9b2e19dacfe60893a47ec009bb94b}} 
+const \mbox{\hyperlink{struct_zaki_1_1_vector_1_1_data_column}{Zaki\+::\+Vector\+::\+Data\+Column}} $\ast$ {\bfseries Exp\+Lambda} () const
+\begin{DoxyCompactList}\small\item\em $e^{\Lambda(r)}$ if present (derived from mass and radius otherwise). \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_compact_star_1_1_chemical_heating_1_1_star_context_a0d1d28afff33ccf673bc718e8c937280}\label{class_compact_star_1_1_chemical_heating_1_1_star_context_a0d1d28afff33ccf673bc718e8c937280}} 
+const \mbox{\hyperlink{struct_zaki_1_1_vector_1_1_data_column}{Zaki\+::\+Vector\+::\+Data\+Column}} $\ast$ {\bfseries Mass} () const
+\begin{DoxyCompactList}\small\item\em Gravitational mass profile (M\+\_\+ $\odot$ or internal units). \end{DoxyCompactList}\end{DoxyCompactItemize}
+\end{Indent}
+\begin{Indent}\textbf{ Thermodynamic background (optional; forwarded from Core/\+EOS)}\par
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_compact_star_1_1_chemical_heating_1_1_star_context_ab6f4d3292622640386c38b0212ff2765}\label{class_compact_star_1_1_chemical_heating_1_1_star_context_ab6f4d3292622640386c38b0212ff2765}} 
+const \mbox{\hyperlink{struct_zaki_1_1_vector_1_1_data_column}{Zaki\+::\+Vector\+::\+Data\+Column}} $\ast$ {\bfseries Baryon\+Density} () const
+\begin{DoxyCompactList}\small\item\em Total baryon number density $n_b(r)$ (fm$^\wedge$\{-\/3\}) if available. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_compact_star_1_1_chemical_heating_1_1_star_context_a2b4f8db34130457d90be1eaf6ea51e71}\label{class_compact_star_1_1_chemical_heating_1_1_star_context_a2b4f8db34130457d90be1eaf6ea51e71}} 
+const \mbox{\hyperlink{struct_zaki_1_1_vector_1_1_data_column}{Zaki\+::\+Vector\+::\+Data\+Column}} $\ast$ {\bfseries Proton\+Fraction} () const
+\begin{DoxyCompactList}\small\item\em Proton fraction $Y_p(r)$ or nullptr if not available. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\end{Indent}
+\begin{Indent}\textbf{ Global scalars}\par
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_compact_star_1_1_chemical_heating_1_1_star_context_af05070bc668aafdd8cf8cf44ee495660}\label{class_compact_star_1_1_chemical_heating_1_1_star_context_af05070bc668aafdd8cf8cf44ee495660}} 
+double {\bfseries Radius\+Surface} () const
+\begin{DoxyCompactList}\small\item\em Circumferential radius at the surface (km). \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_compact_star_1_1_chemical_heating_1_1_star_context_a4fd46e69276eb6417898fb15d8ca5011}\label{class_compact_star_1_1_chemical_heating_1_1_star_context_a4fd46e69276eb6417898fb15d8ca5011}} 
+double {\bfseries Mass\+Surface} () const
+\begin{DoxyCompactList}\small\item\em Gravitational mass at the surface (same units as Mass column). \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_compact_star_1_1_chemical_heating_1_1_star_context_a47aae5bc02bd2db6758519d82a6f1da1}\label{class_compact_star_1_1_chemical_heating_1_1_star_context_a47aae5bc02bd2db6758519d82a6f1da1}} 
+double {\bfseries Exp\+Nu\+Surface} () const
+\begin{DoxyCompactList}\small\item\em Surface redshift factor $e^{\nu(R)}$. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\end{Indent}
+
+
+\doxysubsection{Detailed Description}
+Immutable, per-\/star adapter exposing cached geometry and composition. 
+
+Constructed from an existing {\ttfamily \mbox{\hyperlink{class_compact_star_1_1_n_star}{Compact\+Star\+::\+NStar}}} and (optionally) an EOS object. Provides fast getters for radius grid, metric factors e^{\nu}, e^{\Lambda}, and commonly used columns (density, proton fraction, etc.) by forwarding to Core datasets. Geometry-\/only computations that do not change during evolution can be cached here at construction time (done in \mbox{\hyperlink{class_compact_star_1_1_chemical_heating_1_1_geometry_cache}{Geometry\+Cache}}). 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_compact_star_1_1_chemical_heating_1_1_star_context_ad4d6a9d10ec2160d3211c6e373eb14b5}\label{class_compact_star_1_1_chemical_heating_1_1_star_context_ad4d6a9d10ec2160d3211c6e373eb14b5}} 
+\index{CompactStar::ChemicalHeating::StarContext@{CompactStar::ChemicalHeating::StarContext}!StarContext@{StarContext}}
+\index{StarContext@{StarContext}!CompactStar::ChemicalHeating::StarContext@{CompactStar::ChemicalHeating::StarContext}}
+\doxysubsubsection{\texorpdfstring{StarContext()}{StarContext()}}
+{\footnotesize\ttfamily Compact\+Star\+::\+Chemical\+Heating\+::\+Star\+Context\+::\+Star\+Context (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_compact_star_1_1_n_star}{Compact\+Star\+::\+NStar}} \&}]{ns,  }\item[{const Compact\+Star\+::\+EOS\+::\+Model $\ast$}]{eos = {\ttfamily 0} }\end{DoxyParamCaption})}
+
+
+
+Construct from a precomputed neutron-\/star profile. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em ns} & Reference to an initialized {\ttfamily \mbox{\hyperlink{class_compact_star_1_1_n_star}{Compact\+Star\+::\+NStar}}}. \\
+\hline
+{\em eos} & Optional pointer to an EOS object for composition queries (may be null). \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Compact\+Star/\+Physics/\+Evolution/\mbox{\hyperlink{_star_context_8hpp}{Star\+Context.\+hpp}}\item 
+Compact\+Star/\+Physics/\+Evolution/src/\mbox{\hyperlink{_star_context_8cpp}{Star\+Context.\+cpp}}\end{DoxyCompactItemize}

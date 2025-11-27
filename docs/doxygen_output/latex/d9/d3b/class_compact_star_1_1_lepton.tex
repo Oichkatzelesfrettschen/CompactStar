@@ -1,0 +1,80 @@
+\hypertarget{class_compact_star_1_1_lepton}{}\doxysection{Compact\+Star\+::Lepton Class Reference}
+\label{class_compact_star_1_1_lepton}\index{CompactStar::Lepton@{CompactStar::Lepton}}
+Inheritance diagram for Compact\+Star\+::Lepton\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{d9/d3b/class_compact_star_1_1_lepton}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_compact_star_1_1_lepton_abc9529fe8194aa90db9530454f302947}\label{class_compact_star_1_1_lepton_abc9529fe8194aa90db9530454f302947}} 
+{\bfseries Lepton} (const int \&\mbox{\hyperlink{class_compact_star_1_1_particle_aba3e80e01a7efbf3bc8bce2129ef5a8a}{idx}}, const double \&charge, const double \&mass)
+\item 
+\mbox{\Hypertarget{class_compact_star_1_1_lepton_a1831ee7dd4188d53fad41dd9255f0cdf}\label{class_compact_star_1_1_lepton_a1831ee7dd4188d53fad41dd9255f0cdf}} 
+{\bfseries $\sim$\+Lepton} ()
+\begin{DoxyCompactList}\small\item\em Destructor. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_compact_star_1_1_lepton_aec186b5bcd09aacbb8e9e8448823f87a}\label{class_compact_star_1_1_lepton_aec186b5bcd09aacbb8e9e8448823f87a}} 
+{\bfseries Lepton} (const \mbox{\hyperlink{class_compact_star_1_1_lepton}{Lepton}} \&)=delete
+\begin{DoxyCompactList}\small\item\em Copy constructor. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_compact_star_1_1_lepton_aedb25dde00ac7279a3066385fc203109}\label{class_compact_star_1_1_lepton_aedb25dde00ac7279a3066385fc203109}} 
+\mbox{\hyperlink{class_compact_star_1_1_lepton}{Lepton}} \& {\bfseries operator=} (const \mbox{\hyperlink{class_compact_star_1_1_lepton}{Lepton}} \&)=delete
+\begin{DoxyCompactList}\small\item\em Assignment operator. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_compact_star_1_1_lepton_a46bdf17edf59e88b9d10331e8b953eb5}{Pool\+Add}} () override
+\item 
+int \mbox{\hyperlink{class_compact_star_1_1_lepton_afba4c6c7315b9106117667a2ef4737bb}{Pool\+Remove}} () override
+\end{DoxyCompactItemize}
+\doxysubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_compact_star_1_1_lepton_abb5aa479d50818d65b19e414d6f0371a}\label{class_compact_star_1_1_lepton_abb5aa479d50818d65b19e414d6f0371a}} 
+static void {\bfseries Print\+All} ()
+\begin{DoxyCompactList}\small\item\em Shows the number of leptons. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_compact_star_1_1_lepton_a45e0f446ca1e7228e65bfd3cfa9377f7}\label{class_compact_star_1_1_lepton_a45e0f446ca1e7228e65bfd3cfa9377f7}} 
+static void {\bfseries Empty\+LPool} ()
+\begin{DoxyCompactList}\small\item\em Empties the lepton\textquotesingle{}s pool. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Friends}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_compact_star_1_1_lepton_ab3372927f88ab372bb3407297d89309a}\label{class_compact_star_1_1_lepton_ab3372927f88ab372bb3407297d89309a}} 
+class {\bfseries Sigma\+Omega\+Rho}
+\item 
+\mbox{\Hypertarget{class_compact_star_1_1_lepton_a7d4445ff547cd36156e273986650dccd}\label{class_compact_star_1_1_lepton_a7d4445ff547cd36156e273986650dccd}} 
+class {\bfseries Sigma\+Omega\+Rho\+\_\+npemu}
+\item 
+\mbox{\Hypertarget{class_compact_star_1_1_lepton_a0a2cc131a1f38bf82e015e09cc9b7cb8}\label{class_compact_star_1_1_lepton_a0a2cc131a1f38bf82e015e09cc9b7cb8}} 
+class {\bfseries Sigma\+Omega\+Rho\+\_\+nstar}
+\end{DoxyCompactItemize}
+\doxysubsection*{Additional Inherited Members}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_compact_star_1_1_lepton_a46bdf17edf59e88b9d10331e8b953eb5}\label{class_compact_star_1_1_lepton_a46bdf17edf59e88b9d10331e8b953eb5}} 
+\index{CompactStar::Lepton@{CompactStar::Lepton}!PoolAdd@{PoolAdd}}
+\index{PoolAdd@{PoolAdd}!CompactStar::Lepton@{CompactStar::Lepton}}
+\doxysubsubsection{\texorpdfstring{PoolAdd()}{PoolAdd()}}
+{\footnotesize\ttfamily int Compact\+Star\+::\+Lepton\+::\+Pool\+Add (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+Adds the lepton to the pool of leptons under consideration Useful for dynamically changing the pool without needing heap allocation of particles. Returns -\/1 if not successful and 0 if successful 
+
+Implements \mbox{\hyperlink{class_compact_star_1_1_particle_a2237d88d797f917ff937648639eb965a}{Compact\+Star\+::\+Particle}}.
+
+\mbox{\Hypertarget{class_compact_star_1_1_lepton_afba4c6c7315b9106117667a2ef4737bb}\label{class_compact_star_1_1_lepton_afba4c6c7315b9106117667a2ef4737bb}} 
+\index{CompactStar::Lepton@{CompactStar::Lepton}!PoolRemove@{PoolRemove}}
+\index{PoolRemove@{PoolRemove}!CompactStar::Lepton@{CompactStar::Lepton}}
+\doxysubsubsection{\texorpdfstring{PoolRemove()}{PoolRemove()}}
+{\footnotesize\ttfamily int Compact\+Star\+::\+Lepton\+::\+Pool\+Remove (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+Removes the lepton from the pool of leptons under consideration Returns -\/1 if not successful and 0 if successful
+
+Removes the lepton from the pool of leptons Returns -\/1 if not successful and 0 if successful 
+
+Implements \mbox{\hyperlink{class_compact_star_1_1_particle_ab5e9207bf39cc79aa54b89e6ce0e5d0f}{Compact\+Star\+::\+Particle}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Compact\+Star/\+EOS/\mbox{\hyperlink{_lepton_8hpp}{Lepton.\+hpp}}\item 
+Compact\+Star/\+EOS/src/Lepton.\+cpp\end{DoxyCompactItemize}

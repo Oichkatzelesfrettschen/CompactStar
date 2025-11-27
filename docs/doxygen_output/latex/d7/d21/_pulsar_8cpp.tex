@@ -1,0 +1,27 @@
+\hypertarget{_pulsar_8cpp}{}\doxysection{Compact\+Star/\+Core/src/\+Pulsar.cpp File Reference}
+\label{_pulsar_8cpp}\index{CompactStar/Core/src/Pulsar.cpp@{CompactStar/Core/src/Pulsar.cpp}}
+
+
+Source for the lightweight, modular Pulsar class.  
+
+
+{\ttfamily \#include \char`\"{}Compact\+Star/\+Core/\+Pulsar.\+hpp\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}Compact\+Star/\+Core/\+Star\+Builder.\+hpp\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}Compact\+Star/\+Core/\+Star\+Profile.\+hpp\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}Compact\+Star/\+Physics/\+Driver/\+Spin/\+Magnetic\+Dipole.\+hpp\char`\"{}}\newline
+
+
+\doxysubsection{Detailed Description}
+Source for the lightweight, modular Pulsar class. 
+
+This implementation corresponds to the {\bfseries{new}} Pulsar interface in {\ttfamily \mbox{\hyperlink{_pulsar_8hpp}{Compact\+Star/\+Core/\+Pulsar.\+hpp}}}, i.\+e. the one that\+:
+
+
+\begin{DoxyItemize}
+\item owns a {\ttfamily Star\+Profile} ({\ttfamily prof\+\_\+})
+\item exposes a {\ttfamily Star\+Profile\+View} ({\ttfamily view\+\_\+})
+\item stores spin/thermal/\+BNV state in tiny PODs
+\item delegates {\itshape all actual physics} to the headers in {\ttfamily Compact\+Star/\+Physics/}
+\end{DoxyItemize}
+
+The goal is to keep this file SHORT. Anything that starts looking like \char`\"{}derive emissivity as a function of radius\char`\"{} goes into {\ttfamily Physics/\+Thermal.\+cpp} (or the header-\/only version of it). 

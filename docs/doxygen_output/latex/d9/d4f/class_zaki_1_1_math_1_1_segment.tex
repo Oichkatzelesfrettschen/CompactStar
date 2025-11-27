@@ -1,0 +1,104 @@
+\hypertarget{class_zaki_1_1_math_1_1_segment}{}\doxysection{Zaki\+::Math\+::Segment Class Reference}
+\label{class_zaki_1_1_math_1_1_segment}\index{Zaki::Math::Segment@{Zaki::Math::Segment}}
+Inheritance diagram for Zaki\+::Math\+::Segment\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{d9/d4f/class_zaki_1_1_math_1_1_segment}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_zaki_1_1_math_1_1_segment_a60162dab87d58a65028ff7640d410852}\label{class_zaki_1_1_math_1_1_segment_a60162dab87d58a65028ff7640d410852}} 
+{\bfseries Segment} (const \mbox{\hyperlink{struct_zaki_1_1_math_1_1_coord2_d}{Coord2D}} \&p1, const \mbox{\hyperlink{struct_zaki_1_1_math_1_1_coord2_d}{Coord2D}} \&p2)
+\begin{DoxyCompactList}\small\item\em Constructor from two points. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_zaki_1_1_math_1_1_segment_a414368d97e7c1058171135b28bdeeac5}{Segment}} (const \mbox{\hyperlink{struct_zaki_1_1_physics_1_1_coord3_d}{Zaki\+::\+Physics\+::\+Coord3D}} \&p1, const \mbox{\hyperlink{struct_zaki_1_1_physics_1_1_coord3_d}{Zaki\+::\+Physics\+::\+Coord3D}} \&p2)
+\item 
+\mbox{\Hypertarget{class_zaki_1_1_math_1_1_segment_a3169506b8cd73cec01367901abf0b25f}\label{class_zaki_1_1_math_1_1_segment_a3169506b8cd73cec01367901abf0b25f}} 
+bool {\bfseries In\+Domain} (const double \&\mbox{\hyperlink{class_zaki_1_1_math_1_1_segment_a94d108d3fdc38f81f09b5e45276742ca}{x}}) const
+\begin{DoxyCompactList}\small\item\em Checks if \textquotesingle{}x\textquotesingle{} is in its domain. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_zaki_1_1_math_1_1_segment_a38a4b230741e0a5da89a6c56482dec7b}\label{class_zaki_1_1_math_1_1_segment_a38a4b230741e0a5da89a6c56482dec7b}} 
+bool {\bfseries In\+Domain} (const \mbox{\hyperlink{struct_zaki_1_1_math_1_1_coord2_d}{Coord2D}} \&p) const
+\begin{DoxyCompactList}\small\item\em Checks if \textquotesingle{}p\textquotesingle{} is in its domain. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_zaki_1_1_math_1_1_segment_a4112c9c8247cd1523d2ebae937a4c671}\label{class_zaki_1_1_math_1_1_segment_a4112c9c8247cd1523d2ebae937a4c671}} 
+bool {\bfseries In\+Image} (const double \&\mbox{\hyperlink{class_zaki_1_1_math_1_1_segment_a83f8f5a7e5e60fcb35cda213dc4ea36c}{y}}) const
+\begin{DoxyCompactList}\small\item\em Checks if \textquotesingle{}y\textquotesingle{} is in its image. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_zaki_1_1_math_1_1_segment_ad93c91a00ad33f0565fdf367b4a7cd9d}\label{class_zaki_1_1_math_1_1_segment_ad93c91a00ad33f0565fdf367b4a7cd9d}} 
+bool {\bfseries In\+Image} (const \mbox{\hyperlink{struct_zaki_1_1_math_1_1_coord2_d}{Coord2D}} \&p) const
+\begin{DoxyCompactList}\small\item\em Checks if \textquotesingle{}p\textquotesingle{} is in its image. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_zaki_1_1_math_1_1_segment_a83f8f5a7e5e60fcb35cda213dc4ea36c}\label{class_zaki_1_1_math_1_1_segment_a83f8f5a7e5e60fcb35cda213dc4ea36c}} 
+double {\bfseries y} (const double \&\mbox{\hyperlink{class_zaki_1_1_math_1_1_segment_a94d108d3fdc38f81f09b5e45276742ca}{x}}) const
+\begin{DoxyCompactList}\small\item\em Returns y(x) \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_zaki_1_1_math_1_1_segment_a94d108d3fdc38f81f09b5e45276742ca}\label{class_zaki_1_1_math_1_1_segment_a94d108d3fdc38f81f09b5e45276742ca}} 
+double {\bfseries x} (const double \&\mbox{\hyperlink{class_zaki_1_1_math_1_1_segment_a83f8f5a7e5e60fcb35cda213dc4ea36c}{y}}) const
+\begin{DoxyCompactList}\small\item\em Returns x(y) \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_zaki_1_1_math_1_1_segment_a3ff83f8b8c063774709fd77b59886b26}\label{class_zaki_1_1_math_1_1_segment_a3ff83f8b8c063774709fd77b59886b26}} 
+double {\bfseries m} () const
+\begin{DoxyCompactList}\small\item\em Returns the slope. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{struct_zaki_1_1_math_1_1_coord2_d}{Coord2D}} \mbox{\hyperlink{class_zaki_1_1_math_1_1_segment_a9053241e953e8853ea57b572c5cdcf99}{P}} (const double \&lambda) const
+\item 
+\mbox{\Hypertarget{class_zaki_1_1_math_1_1_segment_a968fe8d6b640206fc4f20ed0e5f56aa8}\label{class_zaki_1_1_math_1_1_segment_a968fe8d6b640206fc4f20ed0e5f56aa8}} 
+bool {\bfseries Is\+Exclusively\+Above\+Seg} (const \mbox{\hyperlink{struct_zaki_1_1_math_1_1_coord2_d}{Coord2D}} \&p) const
+\begin{DoxyCompactList}\small\item\em Is point \textquotesingle{}p\textquotesingle{} above this segment? \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_zaki_1_1_math_1_1_segment_a00d0b223df903461d035ad815322e909}\label{class_zaki_1_1_math_1_1_segment_a00d0b223df903461d035ad815322e909}} 
+bool {\bfseries Is\+Exclusively\+Below\+Seg} (const \mbox{\hyperlink{struct_zaki_1_1_math_1_1_coord2_d}{Coord2D}} \&p) const
+\begin{DoxyCompactList}\small\item\em Is point \textquotesingle{}p\textquotesingle{} below this segment? \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_zaki_1_1_math_1_1_segment_aeb8a7503fba4442fcc1a72d3a0bb9db1}\label{class_zaki_1_1_math_1_1_segment_aeb8a7503fba4442fcc1a72d3a0bb9db1}} 
+bool {\bfseries Is\+Exclusively\+Left\+Seg} (const \mbox{\hyperlink{struct_zaki_1_1_math_1_1_coord2_d}{Coord2D}} \&p) const
+\begin{DoxyCompactList}\small\item\em Is point \textquotesingle{}p\textquotesingle{} to the left of this segment? \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_zaki_1_1_math_1_1_segment_a700ed6d7b56db4d299092c3789f54d1b}\label{class_zaki_1_1_math_1_1_segment_a700ed6d7b56db4d299092c3789f54d1b}} 
+bool {\bfseries Is\+Exclusively\+Right\+Seg} (const \mbox{\hyperlink{struct_zaki_1_1_math_1_1_coord2_d}{Coord2D}} \&p) const
+\begin{DoxyCompactList}\small\item\em Is point \textquotesingle{}p\textquotesingle{} to the right of this segment? \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_zaki_1_1_math_1_1_segment_a599f363ef2a5be067ad602184e70f11c}\label{class_zaki_1_1_math_1_1_segment_a599f363ef2a5be067ad602184e70f11c}} 
+bool {\bfseries Is\+On\+Seg} (const \mbox{\hyperlink{struct_zaki_1_1_math_1_1_coord2_d}{Coord2D}} \&p) const
+\begin{DoxyCompactList}\small\item\em Is point \textquotesingle{}p\textquotesingle{} on this segment? \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_zaki_1_1_math_1_1_segment_a12394eb8e3191a104e6b8d2d2e0f4146}\label{class_zaki_1_1_math_1_1_segment_a12394eb8e3191a104e6b8d2d2e0f4146}} 
+\mbox{\hyperlink{struct_zaki_1_1_math_1_1_coord2_d}{Coord2D}} {\bfseries Get\+Intersection} (const \mbox{\hyperlink{class_zaki_1_1_math_1_1_segment}{Segment}} \&other) const
+\begin{DoxyCompactList}\small\item\em These don\textquotesingle{}t check if intersection is within the domain! \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_zaki_1_1_math_1_1_segment_a21f03cf5f1f40149224e9ffc800308b6}\label{class_zaki_1_1_math_1_1_segment_a21f03cf5f1f40149224e9ffc800308b6}} 
+\mbox{\hyperlink{struct_zaki_1_1_math_1_1_coord2_d}{Coord2D}} {\bfseries Get\+Intersection} (const \mbox{\hyperlink{struct_zaki_1_1_math_1_1_coord2_d}{Coord2D}} \&p3, const \mbox{\hyperlink{struct_zaki_1_1_math_1_1_coord2_d}{Coord2D}} \&p4) const
+\item 
+\mbox{\Hypertarget{class_zaki_1_1_math_1_1_segment_a3845d901e2627196136a07030bf28cfa}\label{class_zaki_1_1_math_1_1_segment_a3845d901e2627196136a07030bf28cfa}} 
+\mbox{\hyperlink{struct_zaki_1_1_math_1_1_coord2_d}{Coord2D}} {\bfseries Get\+Intersection} (const double \&x3, const double \&y3, const double \&x4, const double \&y4) const
+\item 
+\mbox{\Hypertarget{class_zaki_1_1_math_1_1_segment_a66329406bf784b9cb70458c52fa5a214}\label{class_zaki_1_1_math_1_1_segment_a66329406bf784b9cb70458c52fa5a214}} 
+bool {\bfseries Intersects} (const \mbox{\hyperlink{class_zaki_1_1_math_1_1_segment}{Segment}} \&other) const
+\item 
+\mbox{\Hypertarget{class_zaki_1_1_math_1_1_segment_a987314de68c954d79333ca1ee07cab24}\label{class_zaki_1_1_math_1_1_segment_a987314de68c954d79333ca1ee07cab24}} 
+bool {\bfseries Intersects} (const \mbox{\hyperlink{struct_zaki_1_1_math_1_1_coord2_d}{Coord2D}} \&p3, const \mbox{\hyperlink{struct_zaki_1_1_math_1_1_coord2_d}{Coord2D}} \&p4) const
+\item 
+\mbox{\Hypertarget{class_zaki_1_1_math_1_1_segment_ae59f976d6c6e37cf739743608a53e491}\label{class_zaki_1_1_math_1_1_segment_ae59f976d6c6e37cf739743608a53e491}} 
+bool {\bfseries Intersects} (const double \&x3, const double \&y3, const double \&x4, const double \&y4) const
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_zaki_1_1_math_1_1_segment_af3ea8d11f6b86dfab99589a96c01a524}\label{class_zaki_1_1_math_1_1_segment_af3ea8d11f6b86dfab99589a96c01a524}} 
+\mbox{\hyperlink{struct_zaki_1_1_math_1_1_coord2_d}{Coord2D}} {\bfseries p1}
+\item 
+\mbox{\Hypertarget{class_zaki_1_1_math_1_1_segment_ae33bae13e72908c14107d7a88953a765}\label{class_zaki_1_1_math_1_1_segment_ae33bae13e72908c14107d7a88953a765}} 
+\mbox{\hyperlink{struct_zaki_1_1_math_1_1_coord2_d}{Coord2D}} {\bfseries p2}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_zaki_1_1_math_1_1_segment_a414368d97e7c1058171135b28bdeeac5}\label{class_zaki_1_1_math_1_1_segment_a414368d97e7c1058171135b28bdeeac5}} 
+\index{Zaki::Math::Segment@{Zaki::Math::Segment}!Segment@{Segment}}
+\index{Segment@{Segment}!Zaki::Math::Segment@{Zaki::Math::Segment}}
+\doxysubsubsection{\texorpdfstring{Segment()}{Segment()}}
+{\footnotesize\ttfamily Zaki\+::\+Math\+::\+Segment\+::\+Segment (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{struct_zaki_1_1_physics_1_1_coord3_d}{Zaki\+::\+Physics\+::\+Coord3D}} \&}]{p1,  }\item[{const \mbox{\hyperlink{struct_zaki_1_1_physics_1_1_coord3_d}{Zaki\+::\+Physics\+::\+Coord3D}} \&}]{p2 }\end{DoxyParamCaption})}
+
+Constructor from two 3D points (it projects on the first two components) 
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_zaki_1_1_math_1_1_segment_a9053241e953e8853ea57b572c5cdcf99}\label{class_zaki_1_1_math_1_1_segment_a9053241e953e8853ea57b572c5cdcf99}} 
+\index{Zaki::Math::Segment@{Zaki::Math::Segment}!P@{P}}
+\index{P@{P}!Zaki::Math::Segment@{Zaki::Math::Segment}}
+\doxysubsubsection{\texorpdfstring{P()}{P()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{struct_zaki_1_1_math_1_1_coord2_d}{Coord2D}} Zaki\+::\+Math\+::\+Segment\+::P (\begin{DoxyParamCaption}\item[{const double \&}]{lambda }\end{DoxyParamCaption}) const}
+
+Returns the coordinate for parameter 0 \texorpdfstring{$<$}{<}= lambda \texorpdfstring{$<$}{<}= 1 P(0) = P\+\_\+1, P(1) = P\+\_\+2 
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+dependencies/include/\+Zaki/\+Math/\mbox{\hyperlink{_math___core_8hpp}{Math\+\_\+\+Core.\+hpp}}\end{DoxyCompactItemize}

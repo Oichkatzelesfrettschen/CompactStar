@@ -1,0 +1,85 @@
+\hypertarget{_func2_d_8hpp_source}{}\doxysection{Func2\+D.\+hpp}
+\label{_func2_d_8hpp_source}\index{dependencies/include/Zaki/Math/Func2D.hpp@{dependencies/include/Zaki/Math/Func2D.hpp}}
+\mbox{\hyperlink{_func2_d_8hpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{comment}{// -\/*-\/ lsst-\/c++ -\/*-\/}}
+\DoxyCodeLine{2 \textcolor{comment}{/*}}
+\DoxyCodeLine{3 \textcolor{comment}{* Zaki's Common Library}}
+\DoxyCodeLine{4 \textcolor{comment}{* See License file at the top of the source tree.}}
+\DoxyCodeLine{5 \textcolor{comment}{*}}
+\DoxyCodeLine{6 \textcolor{comment}{* Copyright (c) 2023 Mohammadreza Zakeri}}
+\DoxyCodeLine{7 \textcolor{comment}{*}}
+\DoxyCodeLine{8 \textcolor{comment}{* Permission is hereby granted, free of charge, to any person obtaining a copy}}
+\DoxyCodeLine{9 \textcolor{comment}{* of this software and associated documentation files (the "{}Software"{}), to deal}}
+\DoxyCodeLine{10 \textcolor{comment}{* in the Software without restriction, including without limitation the rights}}
+\DoxyCodeLine{11 \textcolor{comment}{* to use, copy, modify, merge, publish, distribute, sublicense, and/or sell}}
+\DoxyCodeLine{12 \textcolor{comment}{* copies of the Software, and to permit persons to whom the Software is}}
+\DoxyCodeLine{13 \textcolor{comment}{* furnished to do so, subject to the following conditions:}}
+\DoxyCodeLine{14 \textcolor{comment}{*}}
+\DoxyCodeLine{15 \textcolor{comment}{* The above copyright notice and this permission notice shall be included in all}}
+\DoxyCodeLine{16 \textcolor{comment}{* copies or substantial portions of the Software.}}
+\DoxyCodeLine{17 \textcolor{comment}{*}}
+\DoxyCodeLine{18 \textcolor{comment}{* THE SOFTWARE IS PROVIDED "{}AS IS"{}, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR}}
+\DoxyCodeLine{19 \textcolor{comment}{* IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,}}
+\DoxyCodeLine{20 \textcolor{comment}{* FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE}}
+\DoxyCodeLine{21 \textcolor{comment}{* AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER}}
+\DoxyCodeLine{22 \textcolor{comment}{* LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,}}
+\DoxyCodeLine{23 \textcolor{comment}{* OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE}}
+\DoxyCodeLine{24 \textcolor{comment}{* SOFTWARE.}}
+\DoxyCodeLine{25 \textcolor{comment}{*/}}
+\DoxyCodeLine{26 }
+\DoxyCodeLine{39 \textcolor{preprocessor}{\#ifndef Zaki\_Math\_Func2D\_H}}
+\DoxyCodeLine{40 \textcolor{preprocessor}{\#define Zaki\_Math\_Func2D\_H}}
+\DoxyCodeLine{41 }
+\DoxyCodeLine{42 \textcolor{preprocessor}{\#include <memory>}}
+\DoxyCodeLine{43 }
+\DoxyCodeLine{44 \textcolor{comment}{//==============================================================}}
+\DoxyCodeLine{45 \textcolor{keyword}{namespace }Zaki::Math}
+\DoxyCodeLine{46 \{}
+\DoxyCodeLine{47 }
+\DoxyCodeLine{48 \textcolor{comment}{//==============================================================}}
+\DoxyCodeLine{49 \textcolor{keyword}{class }\mbox{\hyperlink{class_zaki_1_1_math_1_1_general_object}{GeneralObject}}}
+\DoxyCodeLine{50 \{}
+\DoxyCodeLine{51   \textcolor{keyword}{public}:}
+\DoxyCodeLine{52     \mbox{\hyperlink{class_zaki_1_1_math_1_1_general_object}{GeneralObject}}() ;}
+\DoxyCodeLine{53     \textcolor{keyword}{virtual} \mbox{\hyperlink{class_zaki_1_1_math_1_1_general_object}{GeneralObject}}* Clone() = 0 ;}
+\DoxyCodeLine{54     \textcolor{keyword}{virtual} \mbox{\hyperlink{class_zaki_1_1_math_1_1_general_object}{\string~GeneralObject}}() ;}
+\DoxyCodeLine{55 \};}
+\DoxyCodeLine{56 \textcolor{comment}{//==============================================================}}
+\DoxyCodeLine{57 \textcolor{keyword}{class }\mbox{\hyperlink{class_zaki_1_1_math_1_1_func2_d}{Func2D}}}
+\DoxyCodeLine{58 \{}
+\DoxyCodeLine{59   \textcolor{keyword}{protected}:}
+\DoxyCodeLine{60     \textcolor{keyword}{virtual} \mbox{\hyperlink{class_zaki_1_1_math_1_1_func2_d}{Func2D}}* IClone() \textcolor{keyword}{const} = 0 ;}
+\DoxyCodeLine{61     \textcolor{comment}{// \{}}
+\DoxyCodeLine{62     \textcolor{comment}{//   return nullptr ;}}
+\DoxyCodeLine{63     \textcolor{comment}{// \};}}
+\DoxyCodeLine{64     \textcolor{comment}{// virtual Func2D* IThis() = 0 ;}}
+\DoxyCodeLine{65 }
+\DoxyCodeLine{66 }
+\DoxyCodeLine{67   \textcolor{keyword}{public}:}
+\DoxyCodeLine{68     \mbox{\hyperlink{class_zaki_1_1_math_1_1_func2_d}{Func2D}}() ;}
+\DoxyCodeLine{69 }
+\DoxyCodeLine{70     \textcolor{keyword}{virtual} \mbox{\hyperlink{class_zaki_1_1_math_1_1_func2_d}{\string~Func2D}}() ;}
+\DoxyCodeLine{71     std::unique\_ptr<Func2D> Clone()\textcolor{keyword}{ const }}
+\DoxyCodeLine{72 \textcolor{keyword}{    }\{ \textcolor{keywordflow}{return} std::unique\_ptr<Func2D>(IClone()); \}}
+\DoxyCodeLine{73 }
+\DoxyCodeLine{74     \textcolor{comment}{// std::unique\_ptr<Func2D> This() }}
+\DoxyCodeLine{75     \textcolor{comment}{// \{ return std::unique\_ptr<Func2D>(IThis()); \}}}
+\DoxyCodeLine{76 }
+\DoxyCodeLine{77     \textcolor{keyword}{virtual} \textcolor{keywordtype}{double} Eval(\textcolor{keyword}{const} \textcolor{keywordtype}{double} x, \textcolor{keyword}{const} \textcolor{keywordtype}{double} y) = 0 ;}
+\DoxyCodeLine{78     std::string PtrStr() \textcolor{keyword}{const} ;}
+\DoxyCodeLine{79     \textcolor{comment}{// virtual void* GetObj() = 0 ;}}
+\DoxyCodeLine{80     \textcolor{comment}{// virtual void UpdateObj(void*) = 0 ;}}
+\DoxyCodeLine{81 }
+\DoxyCodeLine{82     \textcolor{comment}{// virtual GeneralObject* GetGenObj() = 0;}}
+\DoxyCodeLine{83 }
+\DoxyCodeLine{84 \};}
+\DoxyCodeLine{85 \textcolor{comment}{//==============================================================}}
+\DoxyCodeLine{86 }
+\DoxyCodeLine{87 \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{88 \} \textcolor{comment}{// End of namespace Zaki::Math}}
+\DoxyCodeLine{89 \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{90 }
+\DoxyCodeLine{91 \textcolor{preprocessor}{\#endif }\textcolor{comment}{/*Zaki\_Math\_Func2D\_H*/}\textcolor{preprocessor}{}}
+
+\end{DoxyCode}

@@ -1,0 +1,119 @@
+\hypertarget{_directory_8hpp_source}{}\doxysection{Directory.\+hpp}
+\label{_directory_8hpp_source}\index{dependencies/include/Zaki/String/Directory.hpp@{dependencies/include/Zaki/String/Directory.hpp}}
+\mbox{\hyperlink{_directory_8hpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{comment}{// -\/*-\/ lsst-\/c++ -\/*-\/}}
+\DoxyCodeLine{2 \textcolor{comment}{/*}}
+\DoxyCodeLine{3 \textcolor{comment}{* Zaki's Common Library}}
+\DoxyCodeLine{4 \textcolor{comment}{* See License file at the top of the source tree.}}
+\DoxyCodeLine{5 \textcolor{comment}{*}}
+\DoxyCodeLine{6 \textcolor{comment}{* Copyright (c) 2023 Mohammadreza Zakeri}}
+\DoxyCodeLine{7 \textcolor{comment}{*}}
+\DoxyCodeLine{8 \textcolor{comment}{* Permission is hereby granted, free of charge, to any person obtaining a copy}}
+\DoxyCodeLine{9 \textcolor{comment}{* of this software and associated documentation files (the "{}Software"{}), to deal}}
+\DoxyCodeLine{10 \textcolor{comment}{* in the Software without restriction, including without limitation the rights}}
+\DoxyCodeLine{11 \textcolor{comment}{* to use, copy, modify, merge, publish, distribute, sublicense, and/or sell}}
+\DoxyCodeLine{12 \textcolor{comment}{* copies of the Software, and to permit persons to whom the Software is}}
+\DoxyCodeLine{13 \textcolor{comment}{* furnished to do so, subject to the following conditions:}}
+\DoxyCodeLine{14 \textcolor{comment}{*}}
+\DoxyCodeLine{15 \textcolor{comment}{* The above copyright notice and this permission notice shall be included in all}}
+\DoxyCodeLine{16 \textcolor{comment}{* copies or substantial portions of the Software.}}
+\DoxyCodeLine{17 \textcolor{comment}{*}}
+\DoxyCodeLine{18 \textcolor{comment}{* THE SOFTWARE IS PROVIDED "{}AS IS"{}, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR}}
+\DoxyCodeLine{19 \textcolor{comment}{* IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,}}
+\DoxyCodeLine{20 \textcolor{comment}{* FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE}}
+\DoxyCodeLine{21 \textcolor{comment}{* AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER}}
+\DoxyCodeLine{22 \textcolor{comment}{* LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,}}
+\DoxyCodeLine{23 \textcolor{comment}{* OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE}}
+\DoxyCodeLine{24 \textcolor{comment}{* SOFTWARE.}}
+\DoxyCodeLine{25 \textcolor{comment}{*/}}
+\DoxyCodeLine{26 }
+\DoxyCodeLine{39 \textcolor{preprocessor}{\#ifndef Zaki\_String\_Directory\_H}}
+\DoxyCodeLine{40 \textcolor{preprocessor}{\#define Zaki\_String\_Directory\_H}}
+\DoxyCodeLine{41 }
+\DoxyCodeLine{42 \textcolor{preprocessor}{\#include "{}string"{}}}
+\DoxyCodeLine{43 \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{44 \textcolor{keyword}{namespace }Zaki::String}
+\DoxyCodeLine{45 \{}
+\DoxyCodeLine{46 }
+\DoxyCodeLine{47 \textcolor{comment}{//==============================================================}}
+\DoxyCodeLine{48 }
+\DoxyCodeLine{49 \textcolor{keyword}{class }\mbox{\hyperlink{class_zaki_1_1_string_1_1_directory}{Directory}}}
+\DoxyCodeLine{50 \{}
+\DoxyCodeLine{51 }
+\DoxyCodeLine{52   \textcolor{keyword}{public}:}
+\DoxyCodeLine{53     \mbox{\hyperlink{class_zaki_1_1_string_1_1_directory}{Directory}}(\textcolor{keyword}{const} std::string\& in\_path) }
+\DoxyCodeLine{54       : full\_path(in\_path)}
+\DoxyCodeLine{55     \{}
+\DoxyCodeLine{56       \textcolor{comment}{// if(*(full\_path.end()-\/1) == '/')}}
+\DoxyCodeLine{57       \textcolor{comment}{// \{}}
+\DoxyCodeLine{58       \textcolor{comment}{//   // strip the extra backslash from the end}}
+\DoxyCodeLine{59       \textcolor{comment}{//   full\_path = full\_path.substr(0, full\_path.find\_last\_of("{}/"{})) ;}}
+\DoxyCodeLine{60       \textcolor{comment}{// \}}}
+\DoxyCodeLine{61 }
+\DoxyCodeLine{62       \textcolor{comment}{// if(*full\_path.begin() == '/')}}
+\DoxyCodeLine{63       \textcolor{comment}{// \{}}
+\DoxyCodeLine{64       \textcolor{comment}{//   // strip the extra backslash from the beginning}}
+\DoxyCodeLine{65       \textcolor{comment}{//   full\_path = full\_path.substr(1) ;}}
+\DoxyCodeLine{66       \textcolor{comment}{// \}}}
+\DoxyCodeLine{67     \};}
+\DoxyCodeLine{68 }
+\DoxyCodeLine{69     \textcolor{comment}{// Overloading for const char* input}}
+\DoxyCodeLine{70     \mbox{\hyperlink{class_zaki_1_1_string_1_1_directory}{Directory}}(\textcolor{keyword}{const} \textcolor{keywordtype}{char}* in\_path) }
+\DoxyCodeLine{71       : full\_path(in\_path)}
+\DoxyCodeLine{72     \{}
+\DoxyCodeLine{73       \textcolor{comment}{// if(*(full\_path.end()-\/1) == '/')}}
+\DoxyCodeLine{74       \textcolor{comment}{//   // strip the extra backslash from the end}}
+\DoxyCodeLine{75       \textcolor{comment}{//   full\_path = full\_path.substr(0, full\_path.find\_last\_of("{}/"{})) ;}}
+\DoxyCodeLine{76 }
+\DoxyCodeLine{77       \textcolor{comment}{// if(*full\_path.begin() == '/')}}
+\DoxyCodeLine{78       \textcolor{comment}{// \{}}
+\DoxyCodeLine{79       \textcolor{comment}{//   // strip the extra backslash from the beginning:}}
+\DoxyCodeLine{80       \textcolor{comment}{//   full\_path = full\_path.substr(1) ;}}
+\DoxyCodeLine{81       \textcolor{comment}{// \}}}
+\DoxyCodeLine{82     \};}
+\DoxyCodeLine{83 }
+\DoxyCodeLine{84     \textcolor{comment}{// Setters}}
+\DoxyCodeLine{85     \textcolor{keywordtype}{void} SetPath(\textcolor{keyword}{const} std::string\&) ;}
+\DoxyCodeLine{86 }
+\DoxyCodeLine{87     \textcolor{comment}{// Getters}}
+\DoxyCodeLine{89 \textcolor{comment}{}    \textcolor{keyword}{static} \mbox{\hyperlink{class_zaki_1_1_string_1_1_directory}{Directory}} \mbox{\hyperlink{class_zaki_1_1_string_1_1_directory_a2cb3edad92cc57f264b5820de0346cca}{ThisFileDir}}(\textcolor{keyword}{const} \textcolor{keywordtype}{char}*) ;}
+\DoxyCodeLine{90 }
+\DoxyCodeLine{92     \textcolor{keyword}{static} \mbox{\hyperlink{class_zaki_1_1_string_1_1_directory}{Directory}} \mbox{\hyperlink{class_zaki_1_1_string_1_1_directory_a01eaa45c25d6b8a630f19d5377c0a209}{ThisFile}}(\textcolor{keyword}{const} \textcolor{keywordtype}{char}*) ;}
+\DoxyCodeLine{93 }
+\DoxyCodeLine{94     \textcolor{comment}{// Non-\/static versions}}
+\DoxyCodeLine{96 \textcolor{comment}{}    \mbox{\hyperlink{class_zaki_1_1_string_1_1_directory}{Directory}} \mbox{\hyperlink{class_zaki_1_1_string_1_1_directory_a8a3d1c401d7718cf54090351c848006e}{ThisFileDir}}() \textcolor{keyword}{const} ;}
+\DoxyCodeLine{97 }
+\DoxyCodeLine{99     \mbox{\hyperlink{class_zaki_1_1_string_1_1_directory}{Directory}} \mbox{\hyperlink{class_zaki_1_1_string_1_1_directory_a8c8f2343d9aa26e2a2d196251ef5af6d}{ThisFile}}() \textcolor{keyword}{const} ;}
+\DoxyCodeLine{100 }
+\DoxyCodeLine{101     \mbox{\hyperlink{class_zaki_1_1_string_1_1_directory}{Directory}} NoExt() \textcolor{keyword}{const} ;}
+\DoxyCodeLine{102     \mbox{\hyperlink{class_zaki_1_1_string_1_1_directory}{Directory}} ParentDir() \textcolor{keyword}{const} ;}
+\DoxyCodeLine{103     std::string GetPath() \textcolor{keyword}{const} ;}
+\DoxyCodeLine{104     std::string Str() \textcolor{keyword}{const} ;}
+\DoxyCodeLine{105     \textcolor{keywordtype}{void} Print() \textcolor{keyword}{const} ;}
+\DoxyCodeLine{106 }
+\DoxyCodeLine{107     \mbox{\hyperlink{class_zaki_1_1_string_1_1_directory}{Directory}} operator+(\textcolor{keyword}{const} std::string\&) \textcolor{keyword}{const};}
+\DoxyCodeLine{108     \mbox{\hyperlink{class_zaki_1_1_string_1_1_directory}{Directory}} operator+(\textcolor{keyword}{const} \textcolor{keywordtype}{char}*) \textcolor{keyword}{const};}
+\DoxyCodeLine{109     \mbox{\hyperlink{class_zaki_1_1_string_1_1_directory}{Directory}} operator+(\textcolor{keyword}{const} \mbox{\hyperlink{class_zaki_1_1_string_1_1_directory}{Directory}}\&) \textcolor{keyword}{const};}
+\DoxyCodeLine{110     \textcolor{comment}{// Overloading postfix -\/-\/ operator}}
+\DoxyCodeLine{111     \mbox{\hyperlink{class_zaki_1_1_string_1_1_directory}{Directory}} operator-\/-\/(\textcolor{keywordtype}{int}) ;}
+\DoxyCodeLine{112 }
+\DoxyCodeLine{114     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_zaki_1_1_string_1_1_directory_aa2b0cc30ba8ad3d2abc506ec69f668b0}{Create}}() \textcolor{keyword}{const} ;}
+\DoxyCodeLine{115 }
+\DoxyCodeLine{116   \textcolor{keyword}{private}:}
+\DoxyCodeLine{117     std::string full\_path = \textcolor{stringliteral}{"{}"{}};}
+\DoxyCodeLine{118 }
+\DoxyCodeLine{119 \};}
+\DoxyCodeLine{120 \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{121 \textcolor{comment}{//==============================================================}}
+\DoxyCodeLine{122 \textcolor{comment}{//                  ostream << overloading}}
+\DoxyCodeLine{123 std::ostream\& operator << (std::ostream \&output, \textcolor{keyword}{const} \mbox{\hyperlink{class_zaki_1_1_string_1_1_directory}{Zaki::String::Directory}}\&) ;}
+\DoxyCodeLine{124 }
+\DoxyCodeLine{125 \textcolor{comment}{//==============================================================}}
+\DoxyCodeLine{126 \} \textcolor{comment}{// End of namespace Zaki::String}}
+\DoxyCodeLine{127 \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{128 }
+\DoxyCodeLine{129 \textcolor{comment}{//==============================================================}}
+\DoxyCodeLine{130 \textcolor{preprocessor}{\#endif }\textcolor{comment}{/*Zaki\_String\_Directory\_H*/}\textcolor{preprocessor}{}}
+
+\end{DoxyCode}

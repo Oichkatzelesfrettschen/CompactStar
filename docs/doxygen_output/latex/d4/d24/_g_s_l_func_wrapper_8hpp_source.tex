@@ -1,0 +1,83 @@
+\hypertarget{_g_s_l_func_wrapper_8hpp_source}{}\doxysection{GSLFunc\+Wrapper.\+hpp}
+\label{_g_s_l_func_wrapper_8hpp_source}\index{dependencies/include/Zaki/Math/GSLFuncWrapper.hpp@{dependencies/include/Zaki/Math/GSLFuncWrapper.hpp}}
+\mbox{\hyperlink{_g_s_l_func_wrapper_8hpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{comment}{// -\/*-\/ lsst-\/c++ -\/*-\/}}
+\DoxyCodeLine{2 \textcolor{comment}{/*}}
+\DoxyCodeLine{3 \textcolor{comment}{* Zaki's Common Library}}
+\DoxyCodeLine{4 \textcolor{comment}{* See License file at the top of the source tree.}}
+\DoxyCodeLine{5 \textcolor{comment}{*}}
+\DoxyCodeLine{6 \textcolor{comment}{* Copyright (c) 2023 Mohammadreza Zakeri}}
+\DoxyCodeLine{7 \textcolor{comment}{*}}
+\DoxyCodeLine{8 \textcolor{comment}{* Permission is hereby granted, free of charge, to any person obtaining a copy}}
+\DoxyCodeLine{9 \textcolor{comment}{* of this software and associated documentation files (the "{}Software"{}), to deal}}
+\DoxyCodeLine{10 \textcolor{comment}{* in the Software without restriction, including without limitation the rights}}
+\DoxyCodeLine{11 \textcolor{comment}{* to use, copy, modify, merge, publish, distribute, sublicense, and/or sell}}
+\DoxyCodeLine{12 \textcolor{comment}{* copies of the Software, and to permit persons to whom the Software is}}
+\DoxyCodeLine{13 \textcolor{comment}{* furnished to do so, subject to the following conditions:}}
+\DoxyCodeLine{14 \textcolor{comment}{*}}
+\DoxyCodeLine{15 \textcolor{comment}{* The above copyright notice and this permission notice shall be included in all}}
+\DoxyCodeLine{16 \textcolor{comment}{* copies or substantial portions of the Software.}}
+\DoxyCodeLine{17 \textcolor{comment}{*}}
+\DoxyCodeLine{18 \textcolor{comment}{* THE SOFTWARE IS PROVIDED "{}AS IS"{}, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR}}
+\DoxyCodeLine{19 \textcolor{comment}{* IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,}}
+\DoxyCodeLine{20 \textcolor{comment}{* FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE}}
+\DoxyCodeLine{21 \textcolor{comment}{* AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER}}
+\DoxyCodeLine{22 \textcolor{comment}{* LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,}}
+\DoxyCodeLine{23 \textcolor{comment}{* OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE}}
+\DoxyCodeLine{24 \textcolor{comment}{* SOFTWARE.}}
+\DoxyCodeLine{25 \textcolor{comment}{*/}}
+\DoxyCodeLine{26 }
+\DoxyCodeLine{39 \textcolor{preprocessor}{\#ifndef Zaki\_Math\_GSLFuncWrapper\_H}}
+\DoxyCodeLine{40 \textcolor{preprocessor}{\#define Zaki\_Math\_GSLFuncWrapper\_H}}
+\DoxyCodeLine{41 }
+\DoxyCodeLine{42 \textcolor{preprocessor}{\#include <gsl/gsl\_math.h>}}
+\DoxyCodeLine{43 }
+\DoxyCodeLine{44 \textcolor{comment}{// Zaki::Util}}
+\DoxyCodeLine{45 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_logger_8hpp}{Zaki/Util/Logger.hpp}}"{}}}
+\DoxyCodeLine{46 }
+\DoxyCodeLine{47 \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{48 \textcolor{keyword}{namespace }Zaki::Math}
+\DoxyCodeLine{49 \{}
+\DoxyCodeLine{50 }
+\DoxyCodeLine{51 \textcolor{comment}{//==============================================================}}
+\DoxyCodeLine{52 \textcolor{keyword}{template}<\textcolor{keyword}{typename} FuncObj, \textcolor{keyword}{typename} MemFuncPtr >}
+\DoxyCodeLine{53 \textcolor{keyword}{class }\mbox{\hyperlink{class_zaki_1_1_math_1_1_g_s_l_func_wrapper}{GSLFuncWrapper}} : \textcolor{keyword}{public} gsl\_function }
+\DoxyCodeLine{54 \{}
+\DoxyCodeLine{55   \textcolor{keyword}{public}:}
+\DoxyCodeLine{57     \mbox{\hyperlink{class_zaki_1_1_math_1_1_g_s_l_func_wrapper_a847d3da920e1b021fb832b92165a030c}{GSLFuncWrapper}}()}
+\DoxyCodeLine{58     \{}
+\DoxyCodeLine{59       function = \&GSLFuncWrapper::invoke;}
+\DoxyCodeLine{60       params=\textcolor{keyword}{this};}
+\DoxyCodeLine{61     \}}
+\DoxyCodeLine{62 }
+\DoxyCodeLine{64     \mbox{\hyperlink{class_zaki_1_1_math_1_1_g_s_l_func_wrapper_a77aa459c11708097fcd50da8f535b6f2}{GSLFuncWrapper}}(FuncObj* objPtr, \textcolor{keyword}{const} MemFuncPtr\& memFn)}
+\DoxyCodeLine{65       : fObjPtr(objPtr), fMemFunc( memFn )}
+\DoxyCodeLine{66     \{}
+\DoxyCodeLine{67       function = \&GSLFuncWrapper::invoke;}
+\DoxyCodeLine{68       params=\textcolor{keyword}{this};}
+\DoxyCodeLine{69     \}}
+\DoxyCodeLine{70 }
+\DoxyCodeLine{71     \textcolor{keywordtype}{void} SetMemberFunc(FuncObj* objPtr, \textcolor{keyword}{const} MemFuncPtr\& memFn) }
+\DoxyCodeLine{72     \{}
+\DoxyCodeLine{73       fObjPtr   = objPtr ;}
+\DoxyCodeLine{74       fMemFunc  = memFn  ;}
+\DoxyCodeLine{75     \}}
+\DoxyCodeLine{76 }
+\DoxyCodeLine{77   \textcolor{keyword}{private}:}
+\DoxyCodeLine{78     FuncObj* fObjPtr = nullptr ;}
+\DoxyCodeLine{79     MemFuncPtr fMemFunc = nullptr ;}
+\DoxyCodeLine{80     \textcolor{keywordtype}{double} Eval(\textcolor{keyword}{const} \textcolor{keywordtype}{double} x) \{ \textcolor{keywordflow}{return} (fObjPtr-\/>*fMemFunc)(x) ;\}}
+\DoxyCodeLine{81 }
+\DoxyCodeLine{82     \textcolor{keyword}{static} \textcolor{keywordtype}{double} invoke(\textcolor{keywordtype}{double} x, \textcolor{keywordtype}{void} *params) \{}
+\DoxyCodeLine{83       \textcolor{keywordflow}{return} \textcolor{keyword}{static\_cast<}\mbox{\hyperlink{class_zaki_1_1_math_1_1_g_s_l_func_wrapper_a847d3da920e1b021fb832b92165a030c}{GSLFuncWrapper}}*\textcolor{keyword}{>}(params)-\/>Eval(x);}
+\DoxyCodeLine{84   \}}
+\DoxyCodeLine{85 \};}
+\DoxyCodeLine{86 }
+\DoxyCodeLine{87 \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{88 \} \textcolor{comment}{// End of namespace Zaki::Math}}
+\DoxyCodeLine{89 \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{90 \textcolor{comment}{//==============================================================}}
+\DoxyCodeLine{91 \textcolor{preprocessor}{\#endif }\textcolor{comment}{/*Zaki\_Math\_GSLFuncWrapper\_H*/}\textcolor{preprocessor}{}}
+
+\end{DoxyCode}

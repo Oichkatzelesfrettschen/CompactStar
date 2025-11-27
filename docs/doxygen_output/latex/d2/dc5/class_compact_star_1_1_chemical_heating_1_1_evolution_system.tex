@@ -1,0 +1,46 @@
+\hypertarget{class_compact_star_1_1_chemical_heating_1_1_evolution_system}{}\doxysection{Compact\+Star\+::Chemical\+Heating\+::Evolution\+System Class Reference}
+\label{class_compact_star_1_1_chemical_heating_1_1_evolution_system}\index{CompactStar::ChemicalHeating::EvolutionSystem@{CompactStar::ChemicalHeating::EvolutionSystem}}
+
+
+GSL-\/compatible RHS functor (interfaces only in Phase 0).  
+
+
+
+
+{\ttfamily \#include $<$System.\+hpp$>$}
+
+\doxysubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{struct_compact_star_1_1_chemical_heating_1_1_evolution_system_1_1_context}{Context}}
+\begin{DoxyCompactList}\small\item\em Bundles read-\/only references to the model components. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_compact_star_1_1_chemical_heating_1_1_evolution_system_a6315f399cc742dd2c743832aabb66665}\label{class_compact_star_1_1_chemical_heating_1_1_evolution_system_a6315f399cc742dd2c743832aabb66665}} 
+{\bfseries Evolution\+System} (const \mbox{\hyperlink{struct_compact_star_1_1_chemical_heating_1_1_evolution_system_1_1_context}{Context}} \&ctx)
+\begin{DoxyCompactList}\small\item\em Construct with a fully-\/populated \mbox{\hyperlink{struct_compact_star_1_1_chemical_heating_1_1_evolution_system_1_1_context}{Context}}. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_compact_star_1_1_chemical_heating_1_1_evolution_system_a9e015fdf5586e8361e7f404a7e58ed0b}{operator()}} (double t, const double y\mbox{[}$\,$\mbox{]}, double dydt\mbox{[}$\,$\mbox{]}) const
+\begin{DoxyCompactList}\small\item\em Evaluate RHS $\dot{y} = f(t,y)$. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+GSL-\/compatible RHS functor (interfaces only in Phase 0). 
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_compact_star_1_1_chemical_heating_1_1_evolution_system_a9e015fdf5586e8361e7f404a7e58ed0b}\label{class_compact_star_1_1_chemical_heating_1_1_evolution_system_a9e015fdf5586e8361e7f404a7e58ed0b}} 
+\index{CompactStar::ChemicalHeating::EvolutionSystem@{CompactStar::ChemicalHeating::EvolutionSystem}!operator()@{operator()}}
+\index{operator()@{operator()}!CompactStar::ChemicalHeating::EvolutionSystem@{CompactStar::ChemicalHeating::EvolutionSystem}}
+\doxysubsubsection{\texorpdfstring{operator()()}{operator()()}}
+{\footnotesize\ttfamily int Compact\+Star\+::\+Chemical\+Heating\+::\+Evolution\+System\+::operator() (\begin{DoxyParamCaption}\item[{double}]{t,  }\item[{const double}]{y\mbox{[}$\,$\mbox{]},  }\item[{double}]{dydt\mbox{[}$\,$\mbox{]} }\end{DoxyParamCaption}) const}
+
+
+
+Evaluate RHS $\dot{y} = f(t,y)$. 
+
+Signature mirrors GSL callbacks (no includes here). Implementation will\+: 1) convert $T^\infty \to T(r)$ via redshift, 2) assemble integrals for 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Compact\+Star/\+Physics/\+Evolution/System.\+hpp\item 
+Compact\+Star/\+Physics/\+Evolution/src/System.\+cpp\end{DoxyCompactItemize}

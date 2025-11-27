@@ -1,0 +1,175 @@
+\hypertarget{_memory_manager_8hpp_source}{}\doxysection{Memory\+Manager.\+hpp}
+\label{_memory_manager_8hpp_source}\index{dependencies/include/Zaki/Util/MemoryManager.hpp@{dependencies/include/Zaki/Util/MemoryManager.hpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{comment}{// -\/*-\/ lsst-\/c++ -\/*-\/}}
+\DoxyCodeLine{2 \textcolor{comment}{/*}}
+\DoxyCodeLine{3 \textcolor{comment}{* Zaki's Common Library}}
+\DoxyCodeLine{4 \textcolor{comment}{* See License file at the top of the source tree.}}
+\DoxyCodeLine{5 \textcolor{comment}{*}}
+\DoxyCodeLine{6 \textcolor{comment}{* Copyright (c) 2023 Mohammadreza Zakeri}}
+\DoxyCodeLine{7 \textcolor{comment}{*}}
+\DoxyCodeLine{8 \textcolor{comment}{* Permission is hereby granted, free of charge, to any person obtaining a copy}}
+\DoxyCodeLine{9 \textcolor{comment}{* of this software and associated documentation files (the "{}Software"{}), to deal}}
+\DoxyCodeLine{10 \textcolor{comment}{* in the Software without restriction, including without limitation the rights}}
+\DoxyCodeLine{11 \textcolor{comment}{* to use, copy, modify, merge, publish, distribute, sublicense, and/or sell}}
+\DoxyCodeLine{12 \textcolor{comment}{* copies of the Software, and to permit persons to whom the Software is}}
+\DoxyCodeLine{13 \textcolor{comment}{* furnished to do so, subject to the following conditions:}}
+\DoxyCodeLine{14 \textcolor{comment}{*}}
+\DoxyCodeLine{15 \textcolor{comment}{* The above copyright notice and this permission notice shall be included in all}}
+\DoxyCodeLine{16 \textcolor{comment}{* copies or substantial portions of the Software.}}
+\DoxyCodeLine{17 \textcolor{comment}{*}}
+\DoxyCodeLine{18 \textcolor{comment}{* THE SOFTWARE IS PROVIDED "{}AS IS"{}, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR}}
+\DoxyCodeLine{19 \textcolor{comment}{* IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,}}
+\DoxyCodeLine{20 \textcolor{comment}{* FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE}}
+\DoxyCodeLine{21 \textcolor{comment}{* AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER}}
+\DoxyCodeLine{22 \textcolor{comment}{* LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,}}
+\DoxyCodeLine{23 \textcolor{comment}{* OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE}}
+\DoxyCodeLine{24 \textcolor{comment}{* SOFTWARE.}}
+\DoxyCodeLine{25 \textcolor{comment}{*/}}
+\DoxyCodeLine{26 }
+\DoxyCodeLine{27 \textcolor{preprocessor}{\#ifndef Zaki\_Util\_MemoryManager\_H}}
+\DoxyCodeLine{28 \textcolor{preprocessor}{\#define Zaki\_Util\_MemoryManager\_H}}
+\DoxyCodeLine{29 }
+\DoxyCodeLine{30 \textcolor{preprocessor}{\#include <iostream>}}
+\DoxyCodeLine{31 \textcolor{preprocessor}{\#include <string>}}
+\DoxyCodeLine{32 \textcolor{preprocessor}{\#include <fstream>}}
+\DoxyCodeLine{33 \textcolor{preprocessor}{\#include <mutex>}}
+\DoxyCodeLine{34 }
+\DoxyCodeLine{35 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_logger_8hpp}{Zaki/Util/Logger.hpp}}"{}}}
+\DoxyCodeLine{36 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_string___basic_8hpp}{Zaki/String/String\_Basic.hpp}}"{}}}
+\DoxyCodeLine{37 }
+\DoxyCodeLine{38 \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{39 \textcolor{keyword}{namespace }Zaki::Util}
+\DoxyCodeLine{40 \{}
+\DoxyCodeLine{41 }
+\DoxyCodeLine{42 \textcolor{comment}{// Forward declration}}
+\DoxyCodeLine{43 \textcolor{keyword}{struct }MemEntry ;}
+\DoxyCodeLine{44 }
+\DoxyCodeLine{45 \textcolor{comment}{//==============================================================}}
+\DoxyCodeLine{46 \textcolor{comment}{// Singleton log manager class}}
+\DoxyCodeLine{47 \textcolor{keyword}{class }\mbox{\hyperlink{class_zaki_1_1_util_1_1_mem_manager}{MemManager}} }
+\DoxyCodeLine{48 \{}
+\DoxyCodeLine{49 }
+\DoxyCodeLine{50   \textcolor{keyword}{public}:}
+\DoxyCodeLine{51 }
+\DoxyCodeLine{52     \textcolor{comment}{// Destructor}}
+\DoxyCodeLine{53     \mbox{\hyperlink{class_zaki_1_1_util_1_1_mem_manager}{\string~MemManager}}() ;}
+\DoxyCodeLine{54 }
+\DoxyCodeLine{55     \textcolor{comment}{// Copy constructor}}
+\DoxyCodeLine{56     \mbox{\hyperlink{class_zaki_1_1_util_1_1_mem_manager}{MemManager}}(\textcolor{keyword}{const} \mbox{\hyperlink{class_zaki_1_1_util_1_1_mem_manager}{MemManager}}\&) = delete ;}
+\DoxyCodeLine{57 }
+\DoxyCodeLine{58     \textcolor{keyword}{static} \mbox{\hyperlink{class_zaki_1_1_util_1_1_mem_manager}{MemManager}}\& Get();}
+\DoxyCodeLine{59 }
+\DoxyCodeLine{60     \textcolor{keyword}{static} \textcolor{keywordtype}{void} New(\textcolor{keyword}{const} \mbox{\hyperlink{struct_zaki_1_1_util_1_1_mem_entry}{MemEntry}}\&);}
+\DoxyCodeLine{61     \textcolor{keyword}{static} \textcolor{keywordtype}{void} Delete(\mbox{\hyperlink{struct_zaki_1_1_util_1_1_mem_entry}{MemEntry}}\&);}
+\DoxyCodeLine{62 }
+\DoxyCodeLine{63 }
+\DoxyCodeLine{64   \textcolor{keyword}{private}:}
+\DoxyCodeLine{65 }
+\DoxyCodeLine{66     \textcolor{comment}{// Constructor 1 with the default settings}}
+\DoxyCodeLine{67     \mbox{\hyperlink{class_zaki_1_1_util_1_1_mem_manager}{MemManager}}() \{ \}}
+\DoxyCodeLine{68 }
+\DoxyCodeLine{69     \textcolor{keywordtype}{void} INew(\textcolor{keyword}{const} \mbox{\hyperlink{struct_zaki_1_1_util_1_1_mem_entry}{MemEntry}}\&) ;}
+\DoxyCodeLine{70     \textcolor{keywordtype}{void} IDelete(\mbox{\hyperlink{struct_zaki_1_1_util_1_1_mem_entry}{MemEntry}}\&) ;}
+\DoxyCodeLine{71 }
+\DoxyCodeLine{72     std::mutex mtx;}
+\DoxyCodeLine{73     \textcolor{keyword}{static} \textcolor{keyword}{inline} std::vector<MemEntry> heap\_allocated = \{\} ; }
+\DoxyCodeLine{74     \textcolor{keywordtype}{long} \textcolor{keywordtype}{int} total\_mem\_size = 0 ;}
+\DoxyCodeLine{75 }
+\DoxyCodeLine{76 \};}
+\DoxyCodeLine{77 }
+\DoxyCodeLine{78 \textcolor{comment}{//==============================================================}}
+\DoxyCodeLine{79 \textcolor{keyword}{struct }\mbox{\hyperlink{struct_zaki_1_1_util_1_1_mem_entry}{MemEntry}}}
+\DoxyCodeLine{80 \{}
+\DoxyCodeLine{81   \textcolor{keyword}{friend} \textcolor{keyword}{class }\mbox{\hyperlink{class_zaki_1_1_util_1_1_mem_manager}{MemManager}} ;}
+\DoxyCodeLine{82 }
+\DoxyCodeLine{83   \textcolor{keyword}{public}:}
+\DoxyCodeLine{84     \textcolor{keyword}{enum class} Mode}
+\DoxyCodeLine{85     \{}
+\DoxyCodeLine{86       Delete=0, New}
+\DoxyCodeLine{87     \};}
+\DoxyCodeLine{88 }
+\DoxyCodeLine{89   \textcolor{keyword}{private}:}
+\DoxyCodeLine{90 }
+\DoxyCodeLine{91     \textcolor{keywordtype}{void} Free()}
+\DoxyCodeLine{92     \{}
+\DoxyCodeLine{93       Z\_LOG\_NOTE(\textcolor{stringliteral}{"{}Freeing heap allocated memory at: "{}}+ Str() + \textcolor{stringliteral}{"{}."{}});}
+\DoxyCodeLine{94       free(ptr);}
+\DoxyCodeLine{95     \}}
+\DoxyCodeLine{96 }
+\DoxyCodeLine{97     \textcolor{keywordtype}{void} FailMessage()}
+\DoxyCodeLine{98     \{}
+\DoxyCodeLine{99       Z\_LOG\_NOTE(\textcolor{stringliteral}{"{}Failed attempt to free a pointer at '"{}} +}
+\DoxyCodeLine{100                   Str() + \textcolor{stringliteral}{"{}' that wasn't allocated."{}});}
+\DoxyCodeLine{101     \}}
+\DoxyCodeLine{102 }
+\DoxyCodeLine{103     std::string Str()\textcolor{keyword}{ const}}
+\DoxyCodeLine{104 \textcolor{keyword}{    }\{}
+\DoxyCodeLine{105       std::stringstream ss;}
+\DoxyCodeLine{106       ss << ptr;}
+\DoxyCodeLine{107       \textcolor{keywordflow}{return} ss.str() ;}
+\DoxyCodeLine{108     \}}
+\DoxyCodeLine{109 }
+\DoxyCodeLine{110     \textcolor{keywordtype}{void}* ptr ;}
+\DoxyCodeLine{111     \textcolor{keywordtype}{size\_t} size = 0 ;}
+\DoxyCodeLine{112     \textcolor{comment}{// Mode mem\_mode;}}
+\DoxyCodeLine{113 }
+\DoxyCodeLine{114   \textcolor{keyword}{public}:}
+\DoxyCodeLine{115     \textcolor{comment}{// Constructor 1}}
+\DoxyCodeLine{116     \mbox{\hyperlink{struct_zaki_1_1_util_1_1_mem_entry}{MemEntry}}(\textcolor{keywordtype}{void}* in\_ptr, \textcolor{keyword}{const} Mode\& in\_mode)  }
+\DoxyCodeLine{117      : ptr(in\_ptr)}
+\DoxyCodeLine{118     \{}
+\DoxyCodeLine{119       \textcolor{keywordflow}{if}(in\_mode == Mode::New)}
+\DoxyCodeLine{120         MemManager::New(*\textcolor{keyword}{this}) ;}
+\DoxyCodeLine{121       \textcolor{keywordflow}{else}}
+\DoxyCodeLine{122         MemManager::Delete(*\textcolor{keyword}{this}) ;}
+\DoxyCodeLine{123     \}}
+\DoxyCodeLine{124 }
+\DoxyCodeLine{125     \textcolor{comment}{// Constructor 2}}
+\DoxyCodeLine{126     \mbox{\hyperlink{struct_zaki_1_1_util_1_1_mem_entry}{MemEntry}}(\textcolor{keywordtype}{void}* in\_ptr, \textcolor{keyword}{const} Mode\& in\_mode, \textcolor{keyword}{const} \textcolor{keywordtype}{size\_t}\& in\_size)  }
+\DoxyCodeLine{127      : ptr(in\_ptr), size(in\_size)}
+\DoxyCodeLine{128     \{}
+\DoxyCodeLine{129       \textcolor{keywordflow}{if}(in\_mode == Mode::New)}
+\DoxyCodeLine{130         MemManager::New(*\textcolor{keyword}{this}) ;}
+\DoxyCodeLine{131       \textcolor{keywordflow}{else}}
+\DoxyCodeLine{132         MemManager::Delete(*\textcolor{keyword}{this}) ;}
+\DoxyCodeLine{133     \}}
+\DoxyCodeLine{134 }
+\DoxyCodeLine{135     \textcolor{comment}{// MemEntry(const MemEntry\&) = delete ;}}
+\DoxyCodeLine{136     \textcolor{comment}{// MemEntry\& operator=(const MemEntry\&) = delete ;}}
+\DoxyCodeLine{137     \textcolor{keywordtype}{bool} operator==(\textcolor{keyword}{const} \mbox{\hyperlink{struct_zaki_1_1_util_1_1_mem_entry}{MemEntry}}\& other)\textcolor{keyword}{ const }}
+\DoxyCodeLine{138 \textcolor{keyword}{    }\{}
+\DoxyCodeLine{139       \textcolor{keywordflow}{return} ptr == other.ptr ;}
+\DoxyCodeLine{140     \}}
+\DoxyCodeLine{141 }
+\DoxyCodeLine{142 }
+\DoxyCodeLine{143 \} ;}
+\DoxyCodeLine{144 }
+\DoxyCodeLine{145 \textcolor{comment}{//==============================================================}}
+\DoxyCodeLine{146 \} \textcolor{comment}{// End of namespace Zaki::Util}}
+\DoxyCodeLine{147 \textcolor{comment}{//==============================================================}}
+\DoxyCodeLine{148 \textcolor{comment}{//                     Memory Manager}}
+\DoxyCodeLine{149 }
+\DoxyCodeLine{150 \textcolor{preprocessor}{\#define Z\_NEW\_HIDDEN(PTR, SIZE, L)  Zaki::Util::MemEntry \_\_CONCAT(memEntry,L)(PTR, Zaki::Util::MemEntry::Mode::New, SIZE)}}
+\DoxyCodeLine{151 \textcolor{preprocessor}{\#define Z\_DELETE\_HIDDEN(PTR, L)  Zaki::Util::MemEntry \_\_CONCAT(memEntry,L)(PTR, Zaki::Util::MemEntry::Mode::Delete)}}
+\DoxyCodeLine{152 }
+\DoxyCodeLine{153 \textcolor{preprocessor}{\#define Z\_NEW(PTR, SIZE)  Z\_NEW\_HIDDEN(PTR, SIZE, \_\_COUNTER\_\_)}}
+\DoxyCodeLine{154 \textcolor{preprocessor}{\#define Z\_DELETE(PTR)  Z\_DELETE\_HIDDEN(PTR, \_\_COUNTER\_\_)}}
+\DoxyCodeLine{155 }
+\DoxyCodeLine{156 \textcolor{comment}{/* \#define Z\_NEW(PTR) \(\backslash\)}}
+\DoxyCodeLine{157 \textcolor{comment}{//       do \{ \(\backslash\)}}
+\DoxyCodeLine{158 \textcolor{comment}{//        Zaki::Util::MemEntry \_\_CONCAT(memEntry,\_\_COUNTER\_\_)(PTR, Zaki::Util::MemEntry::Mode::New, SIZE); \(\backslash\)}}
+\DoxyCodeLine{159 \textcolor{comment}{//        return ; \(\backslash\)}}
+\DoxyCodeLine{160 \textcolor{comment}{//        \} while (0)}}
+\DoxyCodeLine{161 \textcolor{comment}{}}
+\DoxyCodeLine{162 \textcolor{comment}{// \#define Z\_DELETE(PTR) \(\backslash\)}}
+\DoxyCodeLine{163 \textcolor{comment}{//       do \{ \(\backslash\)}}
+\DoxyCodeLine{164 \textcolor{comment}{//        Zaki::Util::MemEntry \_\_CONCAT(memEntry,\_\_COUNTER\_\_)(PTR, Zaki::Util::MemEntry::Mode::Delete); \(\backslash\)}}
+\DoxyCodeLine{165 \textcolor{comment}{//        return ; \(\backslash\)}}
+\DoxyCodeLine{166 \textcolor{comment}{//        \} while (0)}}
+\DoxyCodeLine{167 \textcolor{comment}{ */}}
+\DoxyCodeLine{168 \textcolor{comment}{//==============================================================}}
+\DoxyCodeLine{169 \textcolor{preprocessor}{\#endif }\textcolor{comment}{/*Zaki\_Util\_MemoryManager\_H*/}\textcolor{preprocessor}{}}
+
+\end{DoxyCode}

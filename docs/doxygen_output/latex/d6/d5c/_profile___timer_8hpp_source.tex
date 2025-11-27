@@ -1,0 +1,195 @@
+\hypertarget{_profile___timer_8hpp_source}{}\doxysection{Profile\+\_\+\+Timer.\+hpp}
+\label{_profile___timer_8hpp_source}\index{dependencies/include/Zaki/Util/Profile\_Timer.hpp@{dependencies/include/Zaki/Util/Profile\_Timer.hpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{comment}{// -\/*-\/ lsst-\/c++ -\/*-\/}}
+\DoxyCodeLine{2 \textcolor{comment}{/*}}
+\DoxyCodeLine{3 \textcolor{comment}{* Zaki's Common Library}}
+\DoxyCodeLine{4 \textcolor{comment}{* See License file at the top of the source tree.}}
+\DoxyCodeLine{5 \textcolor{comment}{*}}
+\DoxyCodeLine{6 \textcolor{comment}{* Copyright (c) 2023 Mohammadreza Zakeri}}
+\DoxyCodeLine{7 \textcolor{comment}{*}}
+\DoxyCodeLine{8 \textcolor{comment}{* Permission is hereby granted, free of charge, to any person obtaining a copy}}
+\DoxyCodeLine{9 \textcolor{comment}{* of this software and associated documentation files (the "{}Software"{}), to deal}}
+\DoxyCodeLine{10 \textcolor{comment}{* in the Software without restriction, including without limitation the rights}}
+\DoxyCodeLine{11 \textcolor{comment}{* to use, copy, modify, merge, publish, distribute, sublicense, and/or sell}}
+\DoxyCodeLine{12 \textcolor{comment}{* copies of the Software, and to permit persons to whom the Software is}}
+\DoxyCodeLine{13 \textcolor{comment}{* furnished to do so, subject to the following conditions:}}
+\DoxyCodeLine{14 \textcolor{comment}{*}}
+\DoxyCodeLine{15 \textcolor{comment}{* The above copyright notice and this permission notice shall be included in all}}
+\DoxyCodeLine{16 \textcolor{comment}{* copies or substantial portions of the Software.}}
+\DoxyCodeLine{17 \textcolor{comment}{*}}
+\DoxyCodeLine{18 \textcolor{comment}{* THE SOFTWARE IS PROVIDED "{}AS IS"{}, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR}}
+\DoxyCodeLine{19 \textcolor{comment}{* IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,}}
+\DoxyCodeLine{20 \textcolor{comment}{* FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE}}
+\DoxyCodeLine{21 \textcolor{comment}{* AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER}}
+\DoxyCodeLine{22 \textcolor{comment}{* LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,}}
+\DoxyCodeLine{23 \textcolor{comment}{* OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE}}
+\DoxyCodeLine{24 \textcolor{comment}{* SOFTWARE.}}
+\DoxyCodeLine{25 \textcolor{comment}{*/}}
+\DoxyCodeLine{26 }
+\DoxyCodeLine{27 \textcolor{preprocessor}{\#ifndef Zaki\_Util\_Profile\_Timer\_H}}
+\DoxyCodeLine{28 \textcolor{preprocessor}{\#define Zaki\_Util\_Profile\_Timer\_H}}
+\DoxyCodeLine{29 }
+\DoxyCodeLine{30 \textcolor{preprocessor}{\#include <string>}}
+\DoxyCodeLine{31 \textcolor{preprocessor}{\#include <chrono>}}
+\DoxyCodeLine{32 \textcolor{preprocessor}{\#include <vector>}}
+\DoxyCodeLine{33 \textcolor{preprocessor}{\#include <fstream>}}
+\DoxyCodeLine{34 \textcolor{preprocessor}{\#include <mutex>}}
+\DoxyCodeLine{35 \textcolor{preprocessor}{\#include <thread>}}
+\DoxyCodeLine{36 }
+\DoxyCodeLine{37 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_directory_8hpp}{Zaki/String/Directory.hpp}}"{}}}
+\DoxyCodeLine{38 }
+\DoxyCodeLine{39 \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{40 \textcolor{keyword}{namespace }Zaki::Util}
+\DoxyCodeLine{41 \{}
+\DoxyCodeLine{42 \textcolor{comment}{//==============================================================}}
+\DoxyCodeLine{43 \textcolor{keyword}{struct }\mbox{\hyperlink{struct_zaki_1_1_util_1_1_profile}{Profile}}}
+\DoxyCodeLine{44 \{}
+\DoxyCodeLine{45     std::string name ;}
+\DoxyCodeLine{46     \textcolor{keywordtype}{double} duration ;}
+\DoxyCodeLine{47     std::vector<int> idx ;}
+\DoxyCodeLine{48 }
+\DoxyCodeLine{49     \textcolor{comment}{// Constructor 1}}
+\DoxyCodeLine{50     \mbox{\hyperlink{struct_zaki_1_1_util_1_1_profile}{Profile}}(\textcolor{keyword}{const} std::string\& in\_name, \textcolor{keywordtype}{double} in\_dur,}
+\DoxyCodeLine{51             \textcolor{keyword}{const} std::vector<int> in\_idx) }
+\DoxyCodeLine{52         : name(in\_name), duration(in\_dur), idx(in\_idx) \{\} }
+\DoxyCodeLine{53 \};}
+\DoxyCodeLine{54 }
+\DoxyCodeLine{55 \textcolor{comment}{//==============================================================}}
+\DoxyCodeLine{56 \textcolor{comment}{//                     Singleton design}}
+\DoxyCodeLine{57 \textcolor{keyword}{class }\mbox{\hyperlink{class_zaki_1_1_util_1_1_time_profile_manager}{TimeProfileManager}}}
+\DoxyCodeLine{58 \{}
+\DoxyCodeLine{59 }
+\DoxyCodeLine{60     \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{61     \textcolor{keyword}{private}:}
+\DoxyCodeLine{62 }
+\DoxyCodeLine{63     std::string     m\_SessionName   = \textcolor{stringliteral}{"{}None"{}};}
+\DoxyCodeLine{64     std::ofstream   m\_OutputStream;}
+\DoxyCodeLine{65     \textcolor{keywordtype}{int}             m\_ProfileCount = 0;}
+\DoxyCodeLine{66     std::mutex      m\_Lock;}
+\DoxyCodeLine{67     \textcolor{keywordtype}{bool}            m\_ActiveSession = \textcolor{keyword}{false};}
+\DoxyCodeLine{68     \textcolor{keywordtype}{bool}            m\_ActiveSpecialSession = false ;}
+\DoxyCodeLine{69     std::vector<double> special\_values ;}
+\DoxyCodeLine{70 }
+\DoxyCodeLine{71     \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{72     \mbox{\hyperlink{class_zaki_1_1_util_1_1_time_profile_manager}{TimeProfileManager}}() \{\}}
+\DoxyCodeLine{73     \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{74     \textcolor{keywordtype}{void} IEndSession() ;}
+\DoxyCodeLine{75     \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{76     \textcolor{keywordtype}{void} IBeginSession(\textcolor{keyword}{const} std::string\&, \textcolor{keyword}{const} \mbox{\hyperlink{class_zaki_1_1_string_1_1_directory}{Zaki::String::Directory}}\& = \textcolor{stringliteral}{"{}Time\_Profile\_Results.dat"{}}) ;}
+\DoxyCodeLine{77     \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{78     \textcolor{keywordtype}{void} IEndSpecialSession() ;}
+\DoxyCodeLine{79     \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{80     \textcolor{keywordtype}{void} IBeginSpecialSession(\textcolor{keyword}{const} std::string\&, \textcolor{keyword}{const} \mbox{\hyperlink{class_zaki_1_1_string_1_1_directory}{Zaki::String::Directory}}\& = \textcolor{stringliteral}{"{}Time\_Profile\_Special\_Results.dat"{}}) ;}
+\DoxyCodeLine{81     \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{82     std::vector<double> IGetSpecialValues() ;}
+\DoxyCodeLine{83     \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{84     }
+\DoxyCodeLine{85     \textcolor{keyword}{public}:}
+\DoxyCodeLine{86 }
+\DoxyCodeLine{87     \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{88     \mbox{\hyperlink{class_zaki_1_1_util_1_1_time_profile_manager}{\string~TimeProfileManager}}()}
+\DoxyCodeLine{89     \{}
+\DoxyCodeLine{90         EndSession();}
+\DoxyCodeLine{91     \}}
+\DoxyCodeLine{92 }
+\DoxyCodeLine{93     \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{94     \textcolor{keyword}{static} \textcolor{keywordtype}{void} BeginSession(\textcolor{keyword}{const} std::string\&, \textcolor{keyword}{const} \mbox{\hyperlink{class_zaki_1_1_string_1_1_directory}{Zaki::String::Directory}}\& = \textcolor{stringliteral}{"{}Time\_Profile\_Results.dat"{}}) ;}
+\DoxyCodeLine{95     \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{96     \textcolor{keyword}{static} \textcolor{keywordtype}{void} EndSession() ;}
+\DoxyCodeLine{97     \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{98     \textcolor{keyword}{static} \textcolor{keywordtype}{void} BeginSpecialSession(\textcolor{keyword}{const} std::string\&, \textcolor{keyword}{const} \mbox{\hyperlink{class_zaki_1_1_string_1_1_directory}{Zaki::String::Directory}}\& =\textcolor{stringliteral}{"{}Time\_Profile\_Special\_Results.dat"{}}) ;}
+\DoxyCodeLine{99     \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{100     \textcolor{keyword}{static} \textcolor{keywordtype}{void} EndSpecialSession() ;}
+\DoxyCodeLine{101     \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{102     \textcolor{keyword}{static} std::vector<double> GetSpecialValues() ;}
+\DoxyCodeLine{103     \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{104     \textcolor{keywordtype}{void} WriteProfile(\textcolor{keyword}{const} \mbox{\hyperlink{struct_zaki_1_1_util_1_1_profile}{Profile}}\& oper);}
+\DoxyCodeLine{105     \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{106     \textcolor{keywordtype}{void} WriteHeader() ;}
+\DoxyCodeLine{107     \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{108     \textcolor{keywordtype}{void} WriteFooter() ;}
+\DoxyCodeLine{109     \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{110     \textcolor{keyword}{static} \mbox{\hyperlink{class_zaki_1_1_util_1_1_time_profile_manager}{TimeProfileManager}}\& Get() ;}
+\DoxyCodeLine{111     \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{112 \};}
+\DoxyCodeLine{113 }
+\DoxyCodeLine{114 \textcolor{comment}{//==============================================================}}
+\DoxyCodeLine{115 \textcolor{keyword}{class }\mbox{\hyperlink{class_zaki_1_1_util_1_1_profile_timer}{ProfileTimer}}}
+\DoxyCodeLine{116 \{}
+\DoxyCodeLine{117     \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{118     \textcolor{keyword}{private}:}
+\DoxyCodeLine{119 }
+\DoxyCodeLine{120     \mbox{\hyperlink{struct_zaki_1_1_util_1_1_profile}{Profile}} prof ;}
+\DoxyCodeLine{121     std::chrono::time\_point<std::chrono::high\_resolution\_clock> startTimePt ;}
+\DoxyCodeLine{122     \textcolor{keywordtype}{bool} stopped = false ;}
+\DoxyCodeLine{123 }
+\DoxyCodeLine{124     \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{125     \textcolor{keyword}{public}:}
+\DoxyCodeLine{126 }
+\DoxyCodeLine{127     \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{128     \mbox{\hyperlink{class_zaki_1_1_util_1_1_profile_timer}{ProfileTimer}}(\textcolor{keyword}{const} std::string\& in\_scope, \textcolor{keyword}{const} std::vector<int>\& in\_idx) }
+\DoxyCodeLine{129         : prof(in\_scope, 0, in\_idx)}
+\DoxyCodeLine{130     \{}
+\DoxyCodeLine{131         startTimePt = std::chrono::high\_resolution\_clock::now() ;}
+\DoxyCodeLine{132     \}}
+\DoxyCodeLine{133     }
+\DoxyCodeLine{134     \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{135     \mbox{\hyperlink{class_zaki_1_1_util_1_1_profile_timer}{ProfileTimer}}(\textcolor{keyword}{const} std::string\& in\_scope) }
+\DoxyCodeLine{136         : prof(in\_scope, 0, \{\})}
+\DoxyCodeLine{137     \{}
+\DoxyCodeLine{138         startTimePt = std::chrono::high\_resolution\_clock::now() ;}
+\DoxyCodeLine{139     \}}
+\DoxyCodeLine{140     }
+\DoxyCodeLine{141     \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{142     \mbox{\hyperlink{class_zaki_1_1_util_1_1_profile_timer}{\string~ProfileTimer}}() ;}
+\DoxyCodeLine{143 }
+\DoxyCodeLine{144     \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{145     \textcolor{keywordtype}{void} Stop() ;}
+\DoxyCodeLine{146 \};}
+\DoxyCodeLine{147 }
+\DoxyCodeLine{148 \textcolor{comment}{//==============================================================}}
+\DoxyCodeLine{149 \textcolor{comment}{//                  ostream << overloading}}
+\DoxyCodeLine{150 std::ostream\& operator << (std::ostream \&output, \mbox{\hyperlink{struct_zaki_1_1_util_1_1_profile}{Profile}} p) ;}
+\DoxyCodeLine{151 }
+\DoxyCodeLine{152 \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{153 \} \textcolor{comment}{// End of namespace Zaki::Util}}
+\DoxyCodeLine{154 \textcolor{comment}{//==============================================================}}
+\DoxyCodeLine{155 \textcolor{comment}{//                    Profiling Macros}}
+\DoxyCodeLine{156 \textcolor{comment}{//==============================================================}}
+\DoxyCodeLine{157 }
+\DoxyCodeLine{158 \textcolor{preprocessor}{\#if defined(\_MSC\_VER)}}
+\DoxyCodeLine{159 \textcolor{preprocessor}{\#define Z\_PRETTY\_FUNCTION \_\_FUNCSIG\_\_}}
+\DoxyCodeLine{160 \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{161 \textcolor{preprocessor}{\#define Z\_PRETTY\_FUNCTION \_\_PRETTY\_FUNCTION\_\_}}
+\DoxyCodeLine{162 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{163 \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{164 \textcolor{preprocessor}{\#define PROF\_TIMING 1}}
+\DoxyCodeLine{165 \textcolor{preprocessor}{\#if PROF\_TIMING}}
+\DoxyCodeLine{166 \textcolor{preprocessor}{    \#define Z\_TIME\_PROFILE\_HIDDEN(name, set, L) Zaki::Util::ProfileTimer \_\_CONCAT(prof\_timer,L)(name, set)}}
+\DoxyCodeLine{167 \textcolor{preprocessor}{    \#define Z\_TIME\_PROFILE\_SIMPLE\_HIDDEN(name, L) Zaki::Util::ProfileTimer \_\_CONCAT(prof\_timer,L)(name)}}
+\DoxyCodeLine{168 \textcolor{preprocessor}{    \#define Z\_TIME\_PROFILE(name, set) Z\_TIME\_PROFILE\_HIDDEN(name, set, \_\_COUNTER\_\_)}}
+\DoxyCodeLine{169 \textcolor{preprocessor}{    \#define Z\_TIME\_PROFILE\_SIMPLE(name) Z\_TIME\_PROFILE\_SIMPLE\_HIDDEN(name, \_\_COUNTER\_\_) }}
+\DoxyCodeLine{170 \textcolor{comment}{/*}}
+\DoxyCodeLine{171 \textcolor{comment}{    // \#define Z\_TIME\_PROFILE(name, set) \(\backslash\)}}
+\DoxyCodeLine{172 \textcolor{comment}{    // do \{ \(\backslash\)}}
+\DoxyCodeLine{173 \textcolor{comment}{    //     Zaki::Util::ProfileTimer \_\_CONCAT(prof\_timer, \_\_COUNTER\_\_)(name, set); \(\backslash\)}}
+\DoxyCodeLine{174 \textcolor{comment}{    //     return ; \(\backslash\)}}
+\DoxyCodeLine{175 \textcolor{comment}{    // \} while (0)}}
+\DoxyCodeLine{176 \textcolor{comment}{    }}
+\DoxyCodeLine{177 \textcolor{comment}{    // \#define Z\_TIME\_PROFILE\_SIMPLE(name) \(\backslash\)}}
+\DoxyCodeLine{178 \textcolor{comment}{    // do \{ \(\backslash\)}}
+\DoxyCodeLine{179 \textcolor{comment}{    //     Zaki::Util::ProfileTimer Zaki::Util::ProfileTimer \_\_CONCAT(prof\_timer,\_\_COUNTER\_\_)(name); \(\backslash\)}}
+\DoxyCodeLine{180 \textcolor{comment}{    //     return ; \(\backslash\)}}
+\DoxyCodeLine{181 \textcolor{comment}{    // \} while (0)}}
+\DoxyCodeLine{182 \textcolor{comment}{*/}}
+\DoxyCodeLine{183 \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{184 \textcolor{preprocessor}{    \#define Z\_TIME\_PROFILE(name, set)}}
+\DoxyCodeLine{185 \textcolor{preprocessor}{    \#define Z\_TIME\_PROFILE\_SIMPLE(name)}}
+\DoxyCodeLine{186 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{187 }
+\DoxyCodeLine{188 \textcolor{comment}{//==============================================================}}
+\DoxyCodeLine{189 \textcolor{preprocessor}{\#endif }\textcolor{comment}{/*Zaki\_Util\_Profile\_Timer\_H*/}\textcolor{preprocessor}{}}
+
+\end{DoxyCode}

@@ -1,0 +1,257 @@
+\hypertarget{_date_time_8hpp_source}{}\doxysection{Date\+Time.\+hpp}
+\label{_date_time_8hpp_source}\index{dependencies/include/Zaki/Physics/DateTime.hpp@{dependencies/include/Zaki/Physics/DateTime.hpp}}
+\mbox{\hyperlink{_date_time_8hpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{comment}{// -\/*-\/ lsst-\/c++ -\/*-\/}}
+\DoxyCodeLine{2 \textcolor{comment}{/*}}
+\DoxyCodeLine{3 \textcolor{comment}{* Zaki's Common Library}}
+\DoxyCodeLine{4 \textcolor{comment}{* See License file at the top of the source tree.}}
+\DoxyCodeLine{5 \textcolor{comment}{*}}
+\DoxyCodeLine{6 \textcolor{comment}{* Copyright (c) 2023 Mohammadreza Zakeri}}
+\DoxyCodeLine{7 \textcolor{comment}{*}}
+\DoxyCodeLine{8 \textcolor{comment}{* Permission is hereby granted, free of charge, to any person obtaining a copy}}
+\DoxyCodeLine{9 \textcolor{comment}{* of this software and associated documentation files (the "{}Software"{}), to deal}}
+\DoxyCodeLine{10 \textcolor{comment}{* in the Software without restriction, including without limitation the rights}}
+\DoxyCodeLine{11 \textcolor{comment}{* to use, copy, modify, merge, publish, distribute, sublicense, and/or sell}}
+\DoxyCodeLine{12 \textcolor{comment}{* copies of the Software, and to permit persons to whom the Software is}}
+\DoxyCodeLine{13 \textcolor{comment}{* furnished to do so, subject to the following conditions:}}
+\DoxyCodeLine{14 \textcolor{comment}{*}}
+\DoxyCodeLine{15 \textcolor{comment}{* The above copyright notice and this permission notice shall be included in all}}
+\DoxyCodeLine{16 \textcolor{comment}{* copies or substantial portions of the Software.}}
+\DoxyCodeLine{17 \textcolor{comment}{*}}
+\DoxyCodeLine{18 \textcolor{comment}{* THE SOFTWARE IS PROVIDED "{}AS IS"{}, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR}}
+\DoxyCodeLine{19 \textcolor{comment}{* IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,}}
+\DoxyCodeLine{20 \textcolor{comment}{* FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE}}
+\DoxyCodeLine{21 \textcolor{comment}{* AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER}}
+\DoxyCodeLine{22 \textcolor{comment}{* LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,}}
+\DoxyCodeLine{23 \textcolor{comment}{* OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE}}
+\DoxyCodeLine{24 \textcolor{comment}{* SOFTWARE.}}
+\DoxyCodeLine{25 \textcolor{comment}{*/}}
+\DoxyCodeLine{26 }
+\DoxyCodeLine{40 \textcolor{preprocessor}{\#ifndef Zaki\_Physics\_DateTime\_H}}
+\DoxyCodeLine{41 \textcolor{preprocessor}{\#define Zaki\_Physics\_DateTime\_H}}
+\DoxyCodeLine{42 }
+\DoxyCodeLine{43 \textcolor{preprocessor}{\#include <iostream>}}
+\DoxyCodeLine{44 }
+\DoxyCodeLine{45 \textcolor{comment}{//==============================================================}}
+\DoxyCodeLine{46 \textcolor{keyword}{namespace }Zaki::Physics}
+\DoxyCodeLine{47 \{}
+\DoxyCodeLine{48 }
+\DoxyCodeLine{49 \textcolor{comment}{//==============================================================}}
+\DoxyCodeLine{50 \textcolor{comment}{// Time}}
+\DoxyCodeLine{51 \textcolor{keyword}{struct }\mbox{\hyperlink{struct_zaki_1_1_physics_1_1_clock}{Clock}}}
+\DoxyCodeLine{52 \{}
+\DoxyCodeLine{53     \textcolor{keywordtype}{int} h       ;}
+\DoxyCodeLine{54     \textcolor{keywordtype}{int} min     ;}
+\DoxyCodeLine{55     \textcolor{keywordtype}{float} sec  ;}
+\DoxyCodeLine{56 }
+\DoxyCodeLine{57     \textcolor{comment}{//..........................}}
+\DoxyCodeLine{58     \textcolor{comment}{// Constructor 0}}
+\DoxyCodeLine{59     \mbox{\hyperlink{struct_zaki_1_1_physics_1_1_clock}{Clock}}() \{\} }
+\DoxyCodeLine{60 }
+\DoxyCodeLine{61     \textcolor{comment}{// Constructor 1}}
+\DoxyCodeLine{62     \mbox{\hyperlink{struct_zaki_1_1_physics_1_1_clock}{Clock}}(\textcolor{keyword}{const} \textcolor{keywordtype}{int}\& h\_in, \textcolor{keyword}{const} \textcolor{keywordtype}{int}\& min\_in, \textcolor{keyword}{const} \textcolor{keywordtype}{float}\& sec\_in) : }
+\DoxyCodeLine{63     h(h\_in), min(min\_in), sec(sec\_in) \{\};}
+\DoxyCodeLine{64 }
+\DoxyCodeLine{65     \textcolor{comment}{// Constructor 2}}
+\DoxyCodeLine{66     \mbox{\hyperlink{struct_zaki_1_1_physics_1_1_clock}{Clock}}(\textcolor{keyword}{const} \textcolor{keywordtype}{double}\& hour\_f) }
+\DoxyCodeLine{67     \{}
+\DoxyCodeLine{68       inputHour(hour\_f) ;}
+\DoxyCodeLine{69     \}}
+\DoxyCodeLine{70 }
+\DoxyCodeLine{71     \textcolor{comment}{//..........................}}
+\DoxyCodeLine{72 }
+\DoxyCodeLine{73     \textcolor{keywordtype}{void} inputHour(\textcolor{keyword}{const} \textcolor{keywordtype}{double}\& hour\_f) ;}
+\DoxyCodeLine{74 }
+\DoxyCodeLine{75     \textcolor{keywordtype}{double} getHours()\textcolor{keyword}{ const}}
+\DoxyCodeLine{76 \textcolor{keyword}{    }\{  \textcolor{keywordflow}{return} h + min * 1.0 / 60 + sec * 1.0 / 3600 ; \}}
+\DoxyCodeLine{77 }
+\DoxyCodeLine{78     \textcolor{comment}{//..................................................}}
+\DoxyCodeLine{79     \textcolor{comment}{// Operator overloading}}
+\DoxyCodeLine{80     \textcolor{comment}{// +}}
+\DoxyCodeLine{81     \mbox{\hyperlink{struct_zaki_1_1_physics_1_1_clock}{Clock}} operator+(\textcolor{keyword}{const} \mbox{\hyperlink{struct_zaki_1_1_physics_1_1_clock}{Clock}}\& c)\textcolor{keyword}{ const}}
+\DoxyCodeLine{82 \textcolor{keyword}{    }\{}
+\DoxyCodeLine{83         \mbox{\hyperlink{struct_zaki_1_1_physics_1_1_clock}{Clock}} out\_c ;}
+\DoxyCodeLine{84         out\_c.inputHour(getHours() + c.getHours()) ;}
+\DoxyCodeLine{85         \textcolor{keywordflow}{return} out\_c ;}
+\DoxyCodeLine{86     \}}
+\DoxyCodeLine{87 }
+\DoxyCodeLine{88     \textcolor{comment}{// +}}
+\DoxyCodeLine{89     \mbox{\hyperlink{struct_zaki_1_1_physics_1_1_clock}{Clock}} operator+(\textcolor{keyword}{const} \textcolor{keywordtype}{double}\& in\_hour)\textcolor{keyword}{ const}}
+\DoxyCodeLine{90 \textcolor{keyword}{    }\{}
+\DoxyCodeLine{91         \mbox{\hyperlink{struct_zaki_1_1_physics_1_1_clock}{Clock}} out\_c ;}
+\DoxyCodeLine{92         out\_c.inputHour(getHours() + in\_hour) ;}
+\DoxyCodeLine{93         \textcolor{keywordflow}{return} out\_c ;}
+\DoxyCodeLine{94     \}}
+\DoxyCodeLine{95     \textcolor{comment}{//.............}}
+\DoxyCodeLine{96     \textcolor{comment}{// -\/}}
+\DoxyCodeLine{97     \mbox{\hyperlink{struct_zaki_1_1_physics_1_1_clock}{Clock}} operator-\/(\textcolor{keyword}{const} \mbox{\hyperlink{struct_zaki_1_1_physics_1_1_clock}{Clock}}\& c)\textcolor{keyword}{ const}}
+\DoxyCodeLine{98 \textcolor{keyword}{    }\{}
+\DoxyCodeLine{99         \mbox{\hyperlink{struct_zaki_1_1_physics_1_1_clock}{Clock}} out\_c ;}
+\DoxyCodeLine{100         out\_c.inputHour(getHours() -\/ c.getHours()) ;}
+\DoxyCodeLine{101         \textcolor{keywordflow}{return} out\_c ;}
+\DoxyCodeLine{102     \}}
+\DoxyCodeLine{103     \textcolor{comment}{// -\/}}
+\DoxyCodeLine{104     \mbox{\hyperlink{struct_zaki_1_1_physics_1_1_clock}{Clock}} operator-\/(\textcolor{keyword}{const} \textcolor{keywordtype}{double}\& in\_hour)\textcolor{keyword}{ const}}
+\DoxyCodeLine{105 \textcolor{keyword}{    }\{}
+\DoxyCodeLine{106         \mbox{\hyperlink{struct_zaki_1_1_physics_1_1_clock}{Clock}} out\_c ;}
+\DoxyCodeLine{107         out\_c.inputHour(getHours() -\/ in\_hour) ;}
+\DoxyCodeLine{108         \textcolor{keywordflow}{return} out\_c ;}
+\DoxyCodeLine{109     \}}
+\DoxyCodeLine{110     \textcolor{comment}{//.............}}
+\DoxyCodeLine{111     \textcolor{comment}{// ==}}
+\DoxyCodeLine{112     \textcolor{keywordtype}{bool} operator==(\textcolor{keyword}{const} \mbox{\hyperlink{struct_zaki_1_1_physics_1_1_clock}{Clock}}\& c)\textcolor{keyword}{ const}}
+\DoxyCodeLine{113 \textcolor{keyword}{    }\{}
+\DoxyCodeLine{114         \textcolor{keywordflow}{return} (h == c.h \&\& min == c.min \&\& sec == c.sec) ;}
+\DoxyCodeLine{115     \}}
+\DoxyCodeLine{116     \textcolor{comment}{// ==}}
+\DoxyCodeLine{117     \textcolor{keywordtype}{bool} operator==(\textcolor{keyword}{const} \textcolor{keywordtype}{double}\& in\_hour)\textcolor{keyword}{ const}}
+\DoxyCodeLine{118 \textcolor{keyword}{    }\{}
+\DoxyCodeLine{119         \textcolor{keywordflow}{return} in\_hour == getHours();}
+\DoxyCodeLine{120     \}}
+\DoxyCodeLine{121     \textcolor{comment}{//.............}}
+\DoxyCodeLine{122     \textcolor{comment}{// >}}
+\DoxyCodeLine{123     \textcolor{keywordtype}{bool} operator>(\textcolor{keyword}{const} \mbox{\hyperlink{struct_zaki_1_1_physics_1_1_clock}{Clock}}\& c)\textcolor{keyword}{ const}}
+\DoxyCodeLine{124 \textcolor{keyword}{    }\{ \textcolor{keywordflow}{return} getHours() > c.getHours(); \}}
+\DoxyCodeLine{125     \textcolor{comment}{// >}}
+\DoxyCodeLine{126     \textcolor{keywordtype}{bool} operator>(\textcolor{keyword}{const} \textcolor{keywordtype}{double}\& in\_hour)\textcolor{keyword}{ const}}
+\DoxyCodeLine{127 \textcolor{keyword}{    }\{ \textcolor{keywordflow}{return} getHours() > in\_hour; \}}
+\DoxyCodeLine{128     \textcolor{comment}{//.............}}
+\DoxyCodeLine{129     \textcolor{comment}{// <}}
+\DoxyCodeLine{130     \textcolor{keywordtype}{bool} operator<(\textcolor{keyword}{const} \mbox{\hyperlink{struct_zaki_1_1_physics_1_1_clock}{Clock}}\& c)\textcolor{keyword}{ const}}
+\DoxyCodeLine{131 \textcolor{keyword}{    }\{ \textcolor{keywordflow}{return} getHours() < c.getHours(); \}}
+\DoxyCodeLine{132     \textcolor{comment}{// <}}
+\DoxyCodeLine{133     \textcolor{keywordtype}{bool} operator<(\textcolor{keyword}{const} \textcolor{keywordtype}{double}\& in\_hour)\textcolor{keyword}{ const}}
+\DoxyCodeLine{134 \textcolor{keyword}{    }\{ \textcolor{keywordflow}{return} getHours() < in\_hour; \}}
+\DoxyCodeLine{135     \textcolor{comment}{//.............}}
+\DoxyCodeLine{136     \textcolor{comment}{// >=}}
+\DoxyCodeLine{137     \textcolor{keywordtype}{bool} operator>=(\textcolor{keyword}{const} \mbox{\hyperlink{struct_zaki_1_1_physics_1_1_clock}{Clock}}\& c)\textcolor{keyword}{ const}}
+\DoxyCodeLine{138 \textcolor{keyword}{    }\{ \textcolor{keywordflow}{return} getHours() >= c.getHours(); \}}
+\DoxyCodeLine{139     \textcolor{comment}{// >=}}
+\DoxyCodeLine{140     \textcolor{keywordtype}{bool} operator>=(\textcolor{keyword}{const} \textcolor{keywordtype}{double}\& in\_hour)\textcolor{keyword}{ const}}
+\DoxyCodeLine{141 \textcolor{keyword}{    }\{ \textcolor{keywordflow}{return} getHours() >= in\_hour; \}}
+\DoxyCodeLine{142     \textcolor{comment}{//.............}}
+\DoxyCodeLine{143     \textcolor{comment}{// <=}}
+\DoxyCodeLine{144     \textcolor{keywordtype}{bool} operator<=(\textcolor{keyword}{const} \mbox{\hyperlink{struct_zaki_1_1_physics_1_1_clock}{Clock}}\& c)\textcolor{keyword}{ const}}
+\DoxyCodeLine{145 \textcolor{keyword}{    }\{ \textcolor{keywordflow}{return} getHours() <= c.getHours(); \}}
+\DoxyCodeLine{146     \textcolor{comment}{// <=}}
+\DoxyCodeLine{147     \textcolor{keywordtype}{bool} operator<=(\textcolor{keyword}{const} \textcolor{keywordtype}{double}\& in\_hour)\textcolor{keyword}{ const}}
+\DoxyCodeLine{148 \textcolor{keyword}{    }\{ \textcolor{keywordflow}{return} getHours() <= in\_hour; \}}
+\DoxyCodeLine{149     \textcolor{comment}{//..................................................}}
+\DoxyCodeLine{150 \};}
+\DoxyCodeLine{151 }
+\DoxyCodeLine{152 \textcolor{comment}{//==============================================================}}
+\DoxyCodeLine{153 \textcolor{comment}{// Gregorian Date}}
+\DoxyCodeLine{154 \textcolor{keyword}{struct }\mbox{\hyperlink{struct_zaki_1_1_physics_1_1_date}{Date}}}
+\DoxyCodeLine{155 \{}
+\DoxyCodeLine{156     \textcolor{comment}{// Negative year would be BCE}}
+\DoxyCodeLine{157     \textcolor{keywordtype}{int} yr      ;}
+\DoxyCodeLine{158     \textcolor{keywordtype}{int} mo    ;}
+\DoxyCodeLine{159     \textcolor{keywordtype}{int} day   ;}
+\DoxyCodeLine{160 }
+\DoxyCodeLine{161     \mbox{\hyperlink{struct_zaki_1_1_physics_1_1_clock}{Clock}} cl ;}
+\DoxyCodeLine{162     }
+\DoxyCodeLine{163     \textcolor{comment}{// Constructor 0}}
+\DoxyCodeLine{164     \mbox{\hyperlink{struct_zaki_1_1_physics_1_1_date}{Date}}() \{\}}
+\DoxyCodeLine{165 }
+\DoxyCodeLine{166     \textcolor{comment}{// Constructor 1}}
+\DoxyCodeLine{167     \mbox{\hyperlink{struct_zaki_1_1_physics_1_1_date}{Date}}(\textcolor{keyword}{const} \textcolor{keywordtype}{int}\& yr, \textcolor{keyword}{const} \textcolor{keywordtype}{int}\& mo, \textcolor{keyword}{const} \textcolor{keywordtype}{int}\& day, \textcolor{keyword}{const} \mbox{\hyperlink{struct_zaki_1_1_physics_1_1_clock}{Clock}}\& cl) ;}
+\DoxyCodeLine{168 }
+\DoxyCodeLine{169     \textcolor{comment}{// Constructor 2}}
+\DoxyCodeLine{170     \textcolor{comment}{// Sets clock to 0:0:0}}
+\DoxyCodeLine{171     \mbox{\hyperlink{struct_zaki_1_1_physics_1_1_date}{Date}}(\textcolor{keyword}{const} \textcolor{keywordtype}{int}\& yr, \textcolor{keyword}{const} \textcolor{keywordtype}{int}\& mo, \textcolor{keyword}{const} \textcolor{keywordtype}{int}\& day) ;}
+\DoxyCodeLine{172 }
+\DoxyCodeLine{173     \textcolor{keywordtype}{bool} operator>(\textcolor{keyword}{const} \mbox{\hyperlink{struct_zaki_1_1_physics_1_1_date}{Date}}\& other)\textcolor{keyword}{ const}}
+\DoxyCodeLine{174 \textcolor{keyword}{    }\{ \textcolor{keywordflow}{return} JD() > other.JD(); \}}
+\DoxyCodeLine{175 }
+\DoxyCodeLine{176     \textcolor{keywordtype}{bool} operator>=(\textcolor{keyword}{const} \mbox{\hyperlink{struct_zaki_1_1_physics_1_1_date}{Date}}\& other)\textcolor{keyword}{ const}}
+\DoxyCodeLine{177 \textcolor{keyword}{    }\{ \textcolor{keywordflow}{return} JD() >= other.JD(); \}}
+\DoxyCodeLine{178 }
+\DoxyCodeLine{179     \textcolor{keywordtype}{bool} operator<(\textcolor{keyword}{const} \mbox{\hyperlink{struct_zaki_1_1_physics_1_1_date}{Date}}\& other)\textcolor{keyword}{ const}}
+\DoxyCodeLine{180 \textcolor{keyword}{    }\{ \textcolor{keywordflow}{return} JD() < other.JD(); \}}
+\DoxyCodeLine{181 }
+\DoxyCodeLine{182     \textcolor{keywordtype}{bool} operator<=(\textcolor{keyword}{const} \mbox{\hyperlink{struct_zaki_1_1_physics_1_1_date}{Date}}\& other)\textcolor{keyword}{ const}}
+\DoxyCodeLine{183 \textcolor{keyword}{    }\{ \textcolor{keywordflow}{return} JD() <= other.JD(); \}}
+\DoxyCodeLine{184 }
+\DoxyCodeLine{185     \textcolor{keywordtype}{bool} operator==(\textcolor{keyword}{const} \mbox{\hyperlink{struct_zaki_1_1_physics_1_1_date}{Date}}\& other)\textcolor{keyword}{ const}}
+\DoxyCodeLine{186 \textcolor{keyword}{    }\{ \textcolor{keywordflow}{return} JD() == other.JD(); \}}
+\DoxyCodeLine{187 }
+\DoxyCodeLine{188     \textcolor{keywordtype}{double} operator+(\textcolor{keyword}{const} \mbox{\hyperlink{struct_zaki_1_1_physics_1_1_date}{Date}}\& other)\textcolor{keyword}{ const}}
+\DoxyCodeLine{189 \textcolor{keyword}{    }\{ \textcolor{keywordflow}{return} JD() + other.JD(); \}}
+\DoxyCodeLine{190 }
+\DoxyCodeLine{191     \textcolor{keywordtype}{double} operator+(\textcolor{keyword}{const} \textcolor{keywordtype}{double}\& other)\textcolor{keyword}{ const}}
+\DoxyCodeLine{192 \textcolor{keyword}{    }\{ \textcolor{keywordflow}{return} JD() + other; \}}
+\DoxyCodeLine{193 }
+\DoxyCodeLine{194     \textcolor{keywordtype}{double} operator-\/(\textcolor{keyword}{const} \mbox{\hyperlink{struct_zaki_1_1_physics_1_1_date}{Date}}\& other)\textcolor{keyword}{ const}}
+\DoxyCodeLine{195 \textcolor{keyword}{    }\{ \textcolor{keywordflow}{return} JD() -\/ other.JD(); \}}
+\DoxyCodeLine{196 }
+\DoxyCodeLine{197     \textcolor{comment}{//...........................................}}
+\DoxyCodeLine{198     \textcolor{comment}{// Julian dates}}
+\DoxyCodeLine{199     \textcolor{comment}{// Ref: https://en.wikipedia.org/wiki/Julian\_day}}
+\DoxyCodeLine{200     \textcolor{comment}{//...........................................}}
+\DoxyCodeLine{201     \textcolor{comment}{// The Julian Day number is the number of days elapsed since}}
+\DoxyCodeLine{202     \textcolor{comment}{//  noon (12:00) on January 1, 4713 BC.}}
+\DoxyCodeLine{203     \textcolor{keywordtype}{double} JD() \textcolor{keyword}{const} ;}
+\DoxyCodeLine{204 }
+\DoxyCodeLine{205     \textcolor{comment}{// Reduced JD, Epoch: 12h Nov 16, 1858}}
+\DoxyCodeLine{206     \textcolor{comment}{// RedJD = JD − 2400000}}
+\DoxyCodeLine{207     \textcolor{keywordtype}{double} RedJD() \textcolor{keyword}{const} ;}
+\DoxyCodeLine{208 }
+\DoxyCodeLine{209     \textcolor{comment}{// Modified JD, Epoch: 0h Nov 17, 1858}}
+\DoxyCodeLine{210     \textcolor{comment}{// Introduced by SAO in 1957}}
+\DoxyCodeLine{211     \textcolor{comment}{// ModJD = JD − 2400000.5}}
+\DoxyCodeLine{212     \textcolor{keywordtype}{double} ModJD() \textcolor{keyword}{const} ;}
+\DoxyCodeLine{213 }
+\DoxyCodeLine{214     \textcolor{comment}{// Truncated JD, Epoch: 0h May 24, 1968}}
+\DoxyCodeLine{215     \textcolor{comment}{// Introduced by NASA in 1979}}
+\DoxyCodeLine{216     \textcolor{comment}{// TrunJD = floor(JD − 2440000.5)}}
+\DoxyCodeLine{217     \textcolor{keywordtype}{double} TrunJD() \textcolor{keyword}{const} ;}
+\DoxyCodeLine{218 }
+\DoxyCodeLine{219     \textcolor{comment}{// UnixTDay is similar to Unix time but it's in days}}
+\DoxyCodeLine{220     \textcolor{comment}{// Epoch: 0h Jan 1, 1970}}
+\DoxyCodeLine{221     \textcolor{comment}{// UnixTDay = JD − 2440587.5}}
+\DoxyCodeLine{222     \textcolor{keywordtype}{double} UnixTDay() \textcolor{keyword}{const} ;}
+\DoxyCodeLine{223 }
+\DoxyCodeLine{224     \textcolor{comment}{// Unix Time, Epoch: 0h Jan 1, 1970}}
+\DoxyCodeLine{225     \textcolor{comment}{// Count of seconds (excluding leap seconds)}}
+\DoxyCodeLine{226     \textcolor{comment}{// Astronomical almanac for the year 2001, 2000, p. K2}}
+\DoxyCodeLine{227     \textcolor{comment}{// UnixT = (JD − 2440587.5) × 86400}}
+\DoxyCodeLine{228     \textcolor{keywordtype}{double} UnixT() \textcolor{keyword}{const} ;}
+\DoxyCodeLine{229 }
+\DoxyCodeLine{230     \textcolor{comment}{// RootT95 is similar to Unix time}}
+\DoxyCodeLine{231     \textcolor{comment}{// but it starts from 1995 which is }}
+\DoxyCodeLine{232     \textcolor{comment}{// for plotting purposes in root.}}
+\DoxyCodeLine{233     \textcolor{comment}{// Epoch: 0h Jan 1, 1995}}
+\DoxyCodeLine{234     \textcolor{comment}{// RootT95 = JD − \{1995, 1, 1, \{0,0,0\}\}.JD()}}
+\DoxyCodeLine{235     \textcolor{keywordtype}{double} RootT95() \textcolor{keyword}{const} ;}
+\DoxyCodeLine{236     \textcolor{comment}{//...........................................}}
+\DoxyCodeLine{237 }
+\DoxyCodeLine{238     std::string StrForm(\textcolor{keyword}{const} std::string\& format) \textcolor{keyword}{const} ;}
+\DoxyCodeLine{239 }
+\DoxyCodeLine{240 \};}
+\DoxyCodeLine{241 \textcolor{comment}{//==============================================================}}
+\DoxyCodeLine{242 \textcolor{keyword}{struct }\mbox{\hyperlink{struct_zaki_1_1_physics_1_1_date_interval}{DateInterval}}}
+\DoxyCodeLine{243 \{}
+\DoxyCodeLine{244     \mbox{\hyperlink{struct_zaki_1_1_physics_1_1_date}{Date}} start, end;}
+\DoxyCodeLine{245 }
+\DoxyCodeLine{246     \textcolor{keywordtype}{double} duration()}
+\DoxyCodeLine{247     \{}
+\DoxyCodeLine{248       \textcolor{keywordflow}{return} end -\/ start ;}
+\DoxyCodeLine{249     \}}
+\DoxyCodeLine{250 \};}
+\DoxyCodeLine{251 }
+\DoxyCodeLine{252 \textcolor{comment}{//==============================================================}}
+\DoxyCodeLine{253 \textcolor{comment}{//                  ostream << overloading}}
+\DoxyCodeLine{254 std::ostream\& operator << (std::ostream \&output, \textcolor{keyword}{const} \mbox{\hyperlink{struct_zaki_1_1_physics_1_1_date}{Zaki::Physics::Date}}\&) ;}
+\DoxyCodeLine{255 std::ostream\& operator << (std::ostream \&output, \textcolor{keyword}{const} \mbox{\hyperlink{struct_zaki_1_1_physics_1_1_date_interval}{Zaki::Physics::DateInterval}}\&) ;}
+\DoxyCodeLine{256 std::ostream\& operator << (std::ostream \&output, \textcolor{keyword}{const} \mbox{\hyperlink{struct_zaki_1_1_physics_1_1_clock}{Zaki::Physics::Clock}}\&) ;}
+\DoxyCodeLine{257 \textcolor{comment}{//==============================================================}}
+\DoxyCodeLine{258 }
+\DoxyCodeLine{259 \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{260 \} \textcolor{comment}{// End of namespace Zaki::Physics}}
+\DoxyCodeLine{261 \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{262 }
+\DoxyCodeLine{263 }
+\DoxyCodeLine{264 \textcolor{preprocessor}{\#endif }\textcolor{comment}{/*Zaki\_Physics\_DateTime\_H*/}\textcolor{preprocessor}{}}
+
+\end{DoxyCode}

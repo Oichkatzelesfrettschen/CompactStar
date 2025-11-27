@@ -1,0 +1,198 @@
+\hypertarget{_comp_o_s_e___e_o_s_8hpp_source}{}\doxysection{Comp\+OSE\+\_\+\+EOS.\+hpp}
+\label{_comp_o_s_e___e_o_s_8hpp_source}\index{CompactStar/EOS/CompOSE\_EOS.hpp@{CompactStar/EOS/CompOSE\_EOS.hpp}}
+\mbox{\hyperlink{_comp_o_s_e___e_o_s_8hpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{comment}{// -\/*-\/ lsst-\/c++ -\/*-\/}}
+\DoxyCodeLine{2 \textcolor{comment}{/*}}
+\DoxyCodeLine{3 \textcolor{comment}{ * CompactStar}}
+\DoxyCodeLine{4 \textcolor{comment}{ * See License file at the top of the source tree.}}
+\DoxyCodeLine{5 \textcolor{comment}{ *}}
+\DoxyCodeLine{6 \textcolor{comment}{ * Copyright (c) 2023 Mohammadreza Zakeri}}
+\DoxyCodeLine{7 \textcolor{comment}{ *}}
+\DoxyCodeLine{8 \textcolor{comment}{ * Permission is hereby granted, free of charge, to any person obtaining a copy}}
+\DoxyCodeLine{9 \textcolor{comment}{ * of this software and associated documentation files (the "{}Software"{}), to deal}}
+\DoxyCodeLine{10 \textcolor{comment}{ * in the Software without restriction, including without limitation the rights}}
+\DoxyCodeLine{11 \textcolor{comment}{ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell}}
+\DoxyCodeLine{12 \textcolor{comment}{ * copies of the Software, and to permit persons to whom the Software is}}
+\DoxyCodeLine{13 \textcolor{comment}{ * furnished to do so, subject to the following conditions:}}
+\DoxyCodeLine{14 \textcolor{comment}{ *}}
+\DoxyCodeLine{15 \textcolor{comment}{ * The above copyright notice and this permission notice shall be included in all}}
+\DoxyCodeLine{16 \textcolor{comment}{ * copies or substantial portions of the Software.}}
+\DoxyCodeLine{17 \textcolor{comment}{ *}}
+\DoxyCodeLine{18 \textcolor{comment}{ * THE SOFTWARE IS PROVIDED "{}AS IS"{}, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR}}
+\DoxyCodeLine{19 \textcolor{comment}{ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,}}
+\DoxyCodeLine{20 \textcolor{comment}{ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE}}
+\DoxyCodeLine{21 \textcolor{comment}{ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER}}
+\DoxyCodeLine{22 \textcolor{comment}{ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,}}
+\DoxyCodeLine{23 \textcolor{comment}{ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE}}
+\DoxyCodeLine{24 \textcolor{comment}{ * SOFTWARE.}}
+\DoxyCodeLine{25 \textcolor{comment}{ */}}
+\DoxyCodeLine{26 }
+\DoxyCodeLine{38 \textcolor{comment}{// -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{39 \textcolor{comment}{//                        CompOSE\_EOS Class}}
+\DoxyCodeLine{40 \textcolor{comment}{// -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{41 \textcolor{comment}{// Created on October 29, 2022}}
+\DoxyCodeLine{42 \textcolor{comment}{//}}
+\DoxyCodeLine{43 \textcolor{comment}{// Purpose:}}
+\DoxyCodeLine{44 \textcolor{comment}{//  To simplify working with the files for the equation of}}
+\DoxyCodeLine{45 \textcolor{comment}{//  states from the CompOSE website:}}
+\DoxyCodeLine{46 \textcolor{comment}{//        compose.obspm.fr}}
+\DoxyCodeLine{47 \textcolor{comment}{// -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{48 }
+\DoxyCodeLine{49 \textcolor{preprocessor}{\#ifndef CompactStar\_CompOSE\_EOS\_H}}
+\DoxyCodeLine{50 \textcolor{preprocessor}{\#define CompactStar\_CompOSE\_EOS\_H}}
+\DoxyCodeLine{51 }
+\DoxyCodeLine{52 \textcolor{preprocessor}{\#include <map>}}
+\DoxyCodeLine{53 }
+\DoxyCodeLine{54 \textcolor{preprocessor}{\#include <\mbox{\hyperlink{_data_set_8hpp}{Zaki/Vector/DataSet.hpp}}>}}
+\DoxyCodeLine{55 }
+\DoxyCodeLine{56 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_prog_8hpp}{CompactStar/Core/Prog.hpp}}"{}}}
+\DoxyCodeLine{57 }
+\DoxyCodeLine{58 \textcolor{comment}{//==============================================================}}
+\DoxyCodeLine{59 }
+\DoxyCodeLine{60 \textcolor{keyword}{namespace }CompactStar}
+\DoxyCodeLine{61 \{}
+\DoxyCodeLine{62 }
+\DoxyCodeLine{63 \textcolor{comment}{//==============================================================}}
+\DoxyCodeLine{66 \textcolor{comment}{}\textcolor{keyword}{enum class} \mbox{\hyperlink{_comp_o_s_e___e_o_s_8hpp_a3b77b0ffc2178836bd34b6d37c8337f0}{Dir\_Type}}}
+\DoxyCodeLine{67 \{}
+\DoxyCodeLine{68     relative = 0,}
+\DoxyCodeLine{69     absolute = 1}
+\DoxyCodeLine{70 \};}
+\DoxyCodeLine{71 }
+\DoxyCodeLine{72 \textcolor{comment}{//==============================================================}}
+\DoxyCodeLine{73 \textcolor{keyword}{class }\mbox{\hyperlink{class_compact_star_1_1_comp_o_s_e___e_o_s}{CompOSE\_EOS}} : \textcolor{keyword}{public} \mbox{\hyperlink{class_compact_star_1_1_prog}{Prog}}}
+\DoxyCodeLine{74 \{}
+\DoxyCodeLine{75     \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{76   \textcolor{keyword}{private}:}
+\DoxyCodeLine{78     \textcolor{keywordtype}{bool} has\_crust = \textcolor{keyword}{false};}
+\DoxyCodeLine{79 }
+\DoxyCodeLine{81     \textcolor{keywordtype}{int} crust\_core\_x\_idx = -\/1;}
+\DoxyCodeLine{82 }
+\DoxyCodeLine{84     \textcolor{keywordtype}{double} crust\_core\_x\_den = -\/1;}
+\DoxyCodeLine{85 }
+\DoxyCodeLine{87     \textcolor{keywordtype}{double} m\_n, m\_p;}
+\DoxyCodeLine{88 }
+\DoxyCodeLine{93     \mbox{\hyperlink{class_zaki_1_1_vector_1_1_data_set}{Zaki::Vector::DataSet}} eos;}
+\DoxyCodeLine{94 }
+\DoxyCodeLine{96     \mbox{\hyperlink{class_zaki_1_1_vector_1_1_data_set}{Zaki::Vector::DataSet}} m\_eff;}
+\DoxyCodeLine{97 }
+\DoxyCodeLine{99     \mbox{\hyperlink{class_zaki_1_1_vector_1_1_data_set}{Zaki::Vector::DataSet}} V\_eff;}
+\DoxyCodeLine{100 }
+\DoxyCodeLine{102     \mbox{\hyperlink{class_zaki_1_1_vector_1_1_data_set}{Zaki::Vector::DataSet}} U;}
+\DoxyCodeLine{103 }
+\DoxyCodeLine{105     \textcolor{keywordtype}{size\_t} grid\_size = 0;}
+\DoxyCodeLine{106 }
+\DoxyCodeLine{108     \textcolor{keywordtype}{size\_t} therm\_size = 3;}
+\DoxyCodeLine{109 }
+\DoxyCodeLine{111     \textcolor{keywordtype}{size\_t} comp\_size = 0;}
+\DoxyCodeLine{112 }
+\DoxyCodeLine{114     \textcolor{keyword}{enum class} EOS\_Idx}
+\DoxyCodeLine{115     \{}
+\DoxyCodeLine{116         e = 0,}
+\DoxyCodeLine{117         p = 1,}
+\DoxyCodeLine{118         n = 2}
+\DoxyCodeLine{119     \};}
+\DoxyCodeLine{120 }
+\DoxyCodeLine{121     \textcolor{keyword}{struct }CompOSE\_Particle}
+\DoxyCodeLine{122     \{}
+\DoxyCodeLine{124         std::string name\_;}
+\DoxyCodeLine{125 }
+\DoxyCodeLine{127         \textcolor{keywordtype}{double} m;}
+\DoxyCodeLine{128 }
+\DoxyCodeLine{130         CompOSE\_Particle(\textcolor{keyword}{const} std::string \&in\_name,}
+\DoxyCodeLine{131                          \textcolor{keyword}{const} \textcolor{keywordtype}{double} \&in\_m)}
+\DoxyCodeLine{132             : name\_(in\_name), m(in\_m)}
+\DoxyCodeLine{133         \{}
+\DoxyCodeLine{134         \}}
+\DoxyCodeLine{135     \};}
+\DoxyCodeLine{136 }
+\DoxyCodeLine{137     \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{138   \textcolor{keyword}{public}:}
+\DoxyCodeLine{142     \textcolor{keyword}{const} \textcolor{keyword}{static} std::map<int, CompOSE\_Particle> \mbox{\hyperlink{class_compact_star_1_1_comp_o_s_e___e_o_s_a5c14fe1d5fe168cffd13d3b7357fa2f6}{Compose\_Dict}};}
+\DoxyCodeLine{143 }
+\DoxyCodeLine{145     \mbox{\hyperlink{class_compact_star_1_1_comp_o_s_e___e_o_s_a69294cdb7f100d43ef256b60870012bf}{CompOSE\_EOS}}();}
+\DoxyCodeLine{146 }
+\DoxyCodeLine{148     \mbox{\hyperlink{class_compact_star_1_1_comp_o_s_e___e_o_s_aff096f02b3073284d19ca5be7a29a6a4}{\string~CompOSE\_EOS}}();}
+\DoxyCodeLine{149 }
+\DoxyCodeLine{151     \mbox{\hyperlink{class_compact_star_1_1_comp_o_s_e___e_o_s_ad7b13a50bac8420b119bb53e32569d58}{CompOSE\_EOS}}(\textcolor{keyword}{const} \mbox{\hyperlink{class_compact_star_1_1_comp_o_s_e___e_o_s}{CompOSE\_EOS}} \&) = \textcolor{keyword}{delete};}
+\DoxyCodeLine{152 }
+\DoxyCodeLine{154     \mbox{\hyperlink{class_compact_star_1_1_comp_o_s_e___e_o_s}{CompOSE\_EOS}} \&\mbox{\hyperlink{class_compact_star_1_1_comp_o_s_e___e_o_s_a581f2d9b504c3c43e61c7a2864d2365d}{operator=}}(\textcolor{keyword}{const} \mbox{\hyperlink{class_compact_star_1_1_comp_o_s_e___e_o_s}{CompOSE\_EOS}} \&) = \textcolor{keyword}{delete};}
+\DoxyCodeLine{155 }
+\DoxyCodeLine{157     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_compact_star_1_1_comp_o_s_e___e_o_s_afe7d21be984409881ea2f13be1b5f742}{SetCrustCoreXDensity}}(\textcolor{keyword}{const} \textcolor{keywordtype}{double} \&);}
+\DoxyCodeLine{158 }
+\DoxyCodeLine{162     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_compact_star_1_1_comp_o_s_e___e_o_s_a69954e2c50f72ced0cb0471669025a59}{ImportGrid}}(\textcolor{keyword}{const} \mbox{\hyperlink{class_zaki_1_1_string_1_1_directory}{Zaki::String::Directory}} \&in\_dir,}
+\DoxyCodeLine{163                     \textcolor{comment}{// const bool\& gen\_plots=false,}}
+\DoxyCodeLine{164                     \textcolor{keyword}{const} \mbox{\hyperlink{_comp_o_s_e___e_o_s_8hpp_a3b77b0ffc2178836bd34b6d37c8337f0}{Dir\_Type}} in\_dir\_type = Dir\_Type::relative);}
+\DoxyCodeLine{165 }
+\DoxyCodeLine{169     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_compact_star_1_1_comp_o_s_e___e_o_s_a98864af7d8ebb18055e3156c7bb8e8cc}{ImportThermo}}(\textcolor{keyword}{const} \mbox{\hyperlink{class_zaki_1_1_string_1_1_directory}{Zaki::String::Directory}} \&in\_dir,}
+\DoxyCodeLine{170                       \textcolor{keyword}{const} \textcolor{keywordtype}{bool} \&gen\_plots = \textcolor{keyword}{false},}
+\DoxyCodeLine{171                       \textcolor{keyword}{const} \mbox{\hyperlink{_comp_o_s_e___e_o_s_8hpp_a3b77b0ffc2178836bd34b6d37c8337f0}{Dir\_Type}} in\_dir\_type = Dir\_Type::relative);}
+\DoxyCodeLine{172 }
+\DoxyCodeLine{176     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_compact_star_1_1_comp_o_s_e___e_o_s_af6d37332b642a1c45920aa675ee7beeb}{ImportCompo}}(\textcolor{keyword}{const} \mbox{\hyperlink{class_zaki_1_1_string_1_1_directory}{Zaki::String::Directory}} \&in\_dir,}
+\DoxyCodeLine{177                      \textcolor{keyword}{const} \textcolor{keywordtype}{bool} \&gen\_plots = \textcolor{keyword}{false},}
+\DoxyCodeLine{178                      \textcolor{keyword}{const} \mbox{\hyperlink{_comp_o_s_e___e_o_s_8hpp_a3b77b0ffc2178836bd34b6d37c8337f0}{Dir\_Type}} in\_dir\_type = Dir\_Type::relative);}
+\DoxyCodeLine{179 }
+\DoxyCodeLine{183     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_compact_star_1_1_comp_o_s_e___e_o_s_a81f3efabc8b428d75996bb4cd74bf1f5}{ImportMicro}}(\textcolor{keyword}{const} \mbox{\hyperlink{class_zaki_1_1_string_1_1_directory}{Zaki::String::Directory}} \&in\_dir,}
+\DoxyCodeLine{184                      \textcolor{keyword}{const} \textcolor{keywordtype}{bool} \&gen\_plots = \textcolor{keyword}{false},}
+\DoxyCodeLine{185                      \textcolor{keyword}{const} \mbox{\hyperlink{_comp_o_s_e___e_o_s_8hpp_a3b77b0ffc2178836bd34b6d37c8337f0}{Dir\_Type}} in\_dir\_type = Dir\_Type::relative);}
+\DoxyCodeLine{186 }
+\DoxyCodeLine{190     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_compact_star_1_1_comp_o_s_e___e_o_s_ad5e209fdba493cec26fdf6664c4a1994}{ExtendMeffToCrust}}(\textcolor{keyword}{const} \mbox{\hyperlink{class_zaki_1_1_string_1_1_directory}{Zaki::String::Directory}} \&in\_dir,}
+\DoxyCodeLine{191                            \textcolor{keyword}{const} std::string \&f\_name,}
+\DoxyCodeLine{192                            \textcolor{keyword}{const} \textcolor{keywordtype}{bool} \&gen\_plots = \textcolor{keyword}{false},}
+\DoxyCodeLine{193                            \textcolor{keyword}{const} \mbox{\hyperlink{_comp_o_s_e___e_o_s_8hpp_a3b77b0ffc2178836bd34b6d37c8337f0}{Dir\_Type}} in\_dir\_type = Dir\_Type::absolute);}
+\DoxyCodeLine{194 }
+\DoxyCodeLine{198     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_compact_star_1_1_comp_o_s_e___e_o_s_ab775338e673a62defcab69778169faba}{ExtendVeffToCrust}}(\textcolor{keyword}{const} \mbox{\hyperlink{class_zaki_1_1_string_1_1_directory}{Zaki::String::Directory}} \&in\_dir,}
+\DoxyCodeLine{199                            \textcolor{keyword}{const} std::string \&f\_name,}
+\DoxyCodeLine{200                            \textcolor{keyword}{const} \textcolor{keywordtype}{bool} \&gen\_plots = \textcolor{keyword}{false},}
+\DoxyCodeLine{201                            \textcolor{keyword}{const} \mbox{\hyperlink{_comp_o_s_e___e_o_s_8hpp_a3b77b0ffc2178836bd34b6d37c8337f0}{Dir\_Type}} in\_dir\_type = Dir\_Type::absolute);}
+\DoxyCodeLine{202 }
+\DoxyCodeLine{206     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_compact_star_1_1_comp_o_s_e___e_o_s_a3810f179cf272d15a510a7f44d70a700}{ExtendUeffToCrust}}(\textcolor{keyword}{const} \mbox{\hyperlink{class_zaki_1_1_string_1_1_directory}{Zaki::String::Directory}} \&in\_dir,}
+\DoxyCodeLine{207                            \textcolor{keyword}{const} std::string \&f\_name,}
+\DoxyCodeLine{208                            \textcolor{keyword}{const} \textcolor{keywordtype}{bool} \&gen\_plots = \textcolor{keyword}{false},}
+\DoxyCodeLine{209                            \textcolor{keyword}{const} \mbox{\hyperlink{_comp_o_s_e___e_o_s_8hpp_a3b77b0ffc2178836bd34b6d37c8337f0}{Dir\_Type}} in\_dir\_type = Dir\_Type::absolute);}
+\DoxyCodeLine{210 }
+\DoxyCodeLine{214     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_compact_star_1_1_comp_o_s_e___e_o_s_a3f3e798714a3023b9c5ac1024c8ffe57}{ImportEOS}}(\textcolor{keyword}{const} \mbox{\hyperlink{class_zaki_1_1_string_1_1_directory}{Zaki::String::Directory}} \&in\_file,}
+\DoxyCodeLine{215                    \textcolor{keyword}{const} \textcolor{keywordtype}{bool} \&gen\_plots = \textcolor{keyword}{false});}
+\DoxyCodeLine{216 }
+\DoxyCodeLine{217     \mbox{\hyperlink{class_zaki_1_1_vector_1_1_data_set}{Zaki::Vector::DataSet}} GetEOS() \textcolor{keyword}{const};}
+\DoxyCodeLine{218     \mbox{\hyperlink{struct_zaki_1_1_vector_1_1_data_column}{Zaki::Vector::DataColumn}} GetEOS(\textcolor{keyword}{const} \textcolor{keywordtype}{int} \&idx) \textcolor{keyword}{const};}
+\DoxyCodeLine{219     \mbox{\hyperlink{struct_zaki_1_1_vector_1_1_data_column}{Zaki::Vector::DataColumn}} GetEOS(\textcolor{keyword}{const} std::string \&label) \textcolor{keyword}{const};}
+\DoxyCodeLine{220 }
+\DoxyCodeLine{222     \mbox{\hyperlink{class_zaki_1_1_vector_1_1_data_set}{Zaki::Vector::DataSet}} \mbox{\hyperlink{class_compact_star_1_1_comp_o_s_e___e_o_s_a387429e4f2a3e8bc19998c0bdb9cc217}{GetMeff}}() \textcolor{keyword}{const};}
+\DoxyCodeLine{223 }
+\DoxyCodeLine{225     \mbox{\hyperlink{struct_zaki_1_1_vector_1_1_data_column}{Zaki::Vector::DataColumn}} \mbox{\hyperlink{class_compact_star_1_1_comp_o_s_e___e_o_s_a387429e4f2a3e8bc19998c0bdb9cc217}{GetMeff}}(\textcolor{keyword}{const} \textcolor{keywordtype}{int} \&idx) \textcolor{keyword}{const};}
+\DoxyCodeLine{226 }
+\DoxyCodeLine{228     \mbox{\hyperlink{struct_zaki_1_1_vector_1_1_data_column}{Zaki::Vector::DataColumn}} \mbox{\hyperlink{class_compact_star_1_1_comp_o_s_e___e_o_s_a387429e4f2a3e8bc19998c0bdb9cc217}{GetMeff}}(\textcolor{keyword}{const} std::string \&label) \textcolor{keyword}{const};}
+\DoxyCodeLine{229 }
+\DoxyCodeLine{231     \mbox{\hyperlink{class_zaki_1_1_vector_1_1_data_set}{Zaki::Vector::DataSet}} \mbox{\hyperlink{class_compact_star_1_1_comp_o_s_e___e_o_s_ac8c737f7bb3f50321a3299d0df790664}{GetVeff}}() \textcolor{keyword}{const};}
+\DoxyCodeLine{232 }
+\DoxyCodeLine{234     \mbox{\hyperlink{struct_zaki_1_1_vector_1_1_data_column}{Zaki::Vector::DataColumn}} \mbox{\hyperlink{class_compact_star_1_1_comp_o_s_e___e_o_s_ac8c737f7bb3f50321a3299d0df790664}{GetVeff}}(\textcolor{keyword}{const} \textcolor{keywordtype}{int} \&idx) \textcolor{keyword}{const};}
+\DoxyCodeLine{235 }
+\DoxyCodeLine{237     \mbox{\hyperlink{struct_zaki_1_1_vector_1_1_data_column}{Zaki::Vector::DataColumn}} \mbox{\hyperlink{class_compact_star_1_1_comp_o_s_e___e_o_s_ac8c737f7bb3f50321a3299d0df790664}{GetVeff}}(\textcolor{keyword}{const} std::string \&label) \textcolor{keyword}{const};}
+\DoxyCodeLine{238 }
+\DoxyCodeLine{240     \mbox{\hyperlink{class_zaki_1_1_vector_1_1_data_set}{Zaki::Vector::DataSet}} \mbox{\hyperlink{class_compact_star_1_1_comp_o_s_e___e_o_s_a05610b540301ceaa7ce0206dfd575516}{GetU}}() \textcolor{keyword}{const};}
+\DoxyCodeLine{241 }
+\DoxyCodeLine{243     \mbox{\hyperlink{struct_zaki_1_1_vector_1_1_data_column}{Zaki::Vector::DataColumn}} \mbox{\hyperlink{class_compact_star_1_1_comp_o_s_e___e_o_s_a05610b540301ceaa7ce0206dfd575516}{GetU}}(\textcolor{keyword}{const} \textcolor{keywordtype}{int} \&idx) \textcolor{keyword}{const};}
+\DoxyCodeLine{244 }
+\DoxyCodeLine{246     \mbox{\hyperlink{struct_zaki_1_1_vector_1_1_data_column}{Zaki::Vector::DataColumn}} \mbox{\hyperlink{class_compact_star_1_1_comp_o_s_e___e_o_s_a05610b540301ceaa7ce0206dfd575516}{GetU}}(\textcolor{keyword}{const} std::string \&label) \textcolor{keyword}{const};}
+\DoxyCodeLine{247 }
+\DoxyCodeLine{249     \textcolor{keywordtype}{double} \mbox{\hyperlink{class_compact_star_1_1_comp_o_s_e___e_o_s_a94662ec9c99f4d3764f716c584a3e5cc}{GetNeutronMass}}() \textcolor{keyword}{const};}
+\DoxyCodeLine{250 }
+\DoxyCodeLine{252     \textcolor{keywordtype}{double} \mbox{\hyperlink{class_compact_star_1_1_comp_o_s_e___e_o_s_ac3e552b5e260a5fb749788d677ea41ca}{GetProtonMass}}() \textcolor{keyword}{const};}
+\DoxyCodeLine{253 }
+\DoxyCodeLine{256     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_compact_star_1_1_comp_o_s_e___e_o_s_a05945045e8b79e59667fdfb51ed7d213}{PlotFermiE}}(\textcolor{keyword}{const} \mbox{\hyperlink{class_zaki_1_1_string_1_1_directory}{Zaki::String::Directory}} \&in\_dir,}
+\DoxyCodeLine{257                     \textcolor{keyword}{const} \mbox{\hyperlink{_comp_o_s_e___e_o_s_8hpp_a3b77b0ffc2178836bd34b6d37c8337f0}{Dir\_Type}} in\_dir\_type = Dir\_Type::absolute) \textcolor{keyword}{const};}
+\DoxyCodeLine{258 }
+\DoxyCodeLine{261     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_compact_star_1_1_comp_o_s_e___e_o_s_a47c40ce427e0b4507479d9a6e2e28021}{ExportFermiE}}(\textcolor{keyword}{const} \mbox{\hyperlink{class_zaki_1_1_string_1_1_directory}{Zaki::String::Directory}} \&in\_dir,}
+\DoxyCodeLine{262                       \textcolor{keyword}{const} \mbox{\hyperlink{_comp_o_s_e___e_o_s_8hpp_a3b77b0ffc2178836bd34b6d37c8337f0}{Dir\_Type}} in\_dir\_type = Dir\_Type::absolute) \textcolor{keyword}{const};}
+\DoxyCodeLine{263 }
+\DoxyCodeLine{265     \mbox{\hyperlink{class_zaki_1_1_vector_1_1_data_set}{Zaki::Vector::DataSet}} \mbox{\hyperlink{class_compact_star_1_1_comp_o_s_e___e_o_s_aa34d8d844baea235385de04124f2f36c}{GetFermiE}}() \textcolor{keyword}{const};}
+\DoxyCodeLine{266 \};}
+\DoxyCodeLine{267 }
+\DoxyCodeLine{268 \textcolor{comment}{//==============================================================}}
+\DoxyCodeLine{269 \} \textcolor{comment}{// namespace CompactStar}}
+\DoxyCodeLine{270 \textcolor{comment}{//==============================================================}}
+\DoxyCodeLine{271 \textcolor{preprocessor}{\#endif }\textcolor{comment}{/*CompactStar\_CompOSE\_EOS\_H*/}\textcolor{preprocessor}{}}
+
+\end{DoxyCode}

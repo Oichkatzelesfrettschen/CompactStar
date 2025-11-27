@@ -1,0 +1,37 @@
+\hypertarget{_i_driver_8hpp}{}\doxysection{Compact\+Star/\+Physics/\+Driver/\+IDriver.hpp File Reference}
+\label{_i_driver_8hpp}\index{CompactStar/Physics/Driver/IDriver.hpp@{CompactStar/Physics/Driver/IDriver.hpp}}
+
+
+Interface for evolution drivers that contribute to the RHS d\+Y/dt.  
+
+
+{\ttfamily \#include $<$array$>$}\newline
+{\ttfamily \#include $<$span$>$}\newline
+{\ttfamily \#include $<$string$>$}\newline
+{\ttfamily \#include \char`\"{}Compact\+Star/\+Physics/\+State/\+Tags.\+hpp\char`\"{}}\newline
+\doxysubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_i_driver}{Compact\+Star\+::\+Physics\+::\+IDriver}}
+\begin{DoxyCompactList}\small\item\em Abstract interface for all evolution drivers. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Interface for evolution drivers that contribute to the RHS d\+Y/dt. 
+
+A driver\+:
+\begin{DoxyItemize}
+\item declares which state blocks it reads (Depends\+On)
+\item declares which state blocks it updates (Updates)
+\item accumulates its contribution to the global RHS via Accumulate\+RHS(...)
+\end{DoxyItemize}
+
+Examples\+:
+\begin{DoxyItemize}
+\item Driver\+::\+Spin\+::\+Magnetic\+Dipole (Spin → Spin)
+\item Driver\+::\+Chem\+::\+Rotochemical (Spin → Chem)
+\item Driver\+::\+Thermal\+::\+Neutrino\+Cooling (Thermal → Thermal)
+\item Driver\+::\+Thermal\+::\+Heating\+From\+Chem (Chem, Thermal → Thermal)
+\end{DoxyItemize}
+
+Implementations should be pure functions of (t, Y, ctx, options) and must accumulate (add) into d\+Y/dt, never overwrite it. 

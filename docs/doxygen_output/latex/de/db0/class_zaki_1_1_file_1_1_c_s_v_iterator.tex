@@ -1,0 +1,168 @@
+\hypertarget{class_zaki_1_1_file_1_1_c_s_v_iterator}{}\doxysection{Zaki\+::File\+::CSVIterator Class Reference}
+\label{class_zaki_1_1_file_1_1_c_s_v_iterator}\index{Zaki::File::CSVIterator@{Zaki::File::CSVIterator}}
+
+
+{\ttfamily \#include $<$CSVIterator.\+hpp$>$}
+
+\doxysubsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_zaki_1_1_file_1_1_c_s_v_iterator_a8a72db8b101cd61ff034b26e8e94756f}\label{class_zaki_1_1_file_1_1_c_s_v_iterator_a8a72db8b101cd61ff034b26e8e94756f}} 
+typedef std\+::input\+\_\+iterator\+\_\+tag {\bfseries iterator\+\_\+category}
+\item 
+\mbox{\Hypertarget{class_zaki_1_1_file_1_1_c_s_v_iterator_ab2821c7389848eac122dc164d4938a2c}\label{class_zaki_1_1_file_1_1_c_s_v_iterator_ab2821c7389848eac122dc164d4938a2c}} 
+typedef \mbox{\hyperlink{class_zaki_1_1_file_1_1_c_s_v_row}{CSVRow}} {\bfseries value\+\_\+type}
+\item 
+\mbox{\Hypertarget{class_zaki_1_1_file_1_1_c_s_v_iterator_ac5fc1186e012fd9cd46bc14445cc4c37}\label{class_zaki_1_1_file_1_1_c_s_v_iterator_ac5fc1186e012fd9cd46bc14445cc4c37}} 
+typedef std\+::size\+\_\+t {\bfseries difference\+\_\+type}
+\item 
+\mbox{\Hypertarget{class_zaki_1_1_file_1_1_c_s_v_iterator_a6000bac7d4c91d43b5692ae7802ca78a}\label{class_zaki_1_1_file_1_1_c_s_v_iterator_a6000bac7d4c91d43b5692ae7802ca78a}} 
+typedef \mbox{\hyperlink{class_zaki_1_1_file_1_1_c_s_v_row}{CSVRow}} $\ast$ {\bfseries pointer}
+\item 
+\mbox{\Hypertarget{class_zaki_1_1_file_1_1_c_s_v_iterator_a242579856e6752524e182f8ec3cce5fd}\label{class_zaki_1_1_file_1_1_c_s_v_iterator_a242579856e6752524e182f8ec3cce5fd}} 
+typedef \mbox{\hyperlink{class_zaki_1_1_file_1_1_c_s_v_row}{CSVRow}} \& {\bfseries reference}
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_zaki_1_1_file_1_1_c_s_v_iterator_a1c4053ebab7e9b70b8baf41e409f1e6e}{CSVIterator}} ()
+\item 
+\mbox{\hyperlink{class_zaki_1_1_file_1_1_c_s_v_iterator_ae0ec27bf8fa6d89eaac74e1e41e4ee99}{CSVIterator}} (std\+::istream \&str, const char \&in\+\_\+delim=\textquotesingle{},\textquotesingle{})
+\item 
+void \mbox{\hyperlink{class_zaki_1_1_file_1_1_c_s_v_iterator_a0082a9b0b4fc5a56d2a4b6447879c0fb}{Set\+Delim}} (const char \&in\+\_\+delim)
+\item 
+\mbox{\hyperlink{class_zaki_1_1_file_1_1_c_s_v_iterator}{CSVIterator}} \& \mbox{\hyperlink{class_zaki_1_1_file_1_1_c_s_v_iterator_a2d04f0122edb8a33b81c2df58d38986d}{operator++}} ()
+\item 
+\mbox{\hyperlink{class_zaki_1_1_file_1_1_c_s_v_iterator}{CSVIterator}} \mbox{\hyperlink{class_zaki_1_1_file_1_1_c_s_v_iterator_a194418ca58f2844527555d5aa4a7bbc9}{operator++}} (int n)
+\item 
+\mbox{\Hypertarget{class_zaki_1_1_file_1_1_c_s_v_iterator_a7c9e1336dd827c6fdf3fd4f71a7f363c}\label{class_zaki_1_1_file_1_1_c_s_v_iterator_a7c9e1336dd827c6fdf3fd4f71a7f363c}} 
+\mbox{\hyperlink{class_zaki_1_1_file_1_1_c_s_v_row}{CSVRow}} const \& {\bfseries operator$\ast$} () const
+\item 
+\mbox{\Hypertarget{class_zaki_1_1_file_1_1_c_s_v_iterator_ad954f08545ea71cada28a0594f6df9e5}\label{class_zaki_1_1_file_1_1_c_s_v_iterator_ad954f08545ea71cada28a0594f6df9e5}} 
+\mbox{\hyperlink{class_zaki_1_1_file_1_1_c_s_v_row}{CSVRow}} const $\ast$ {\bfseries operator-\/$>$} () const
+\item 
+bool \mbox{\hyperlink{class_zaki_1_1_file_1_1_c_s_v_iterator_aa3056ac837ff24f91587a353740126ff}{operator==}} (\mbox{\hyperlink{class_zaki_1_1_file_1_1_c_s_v_iterator}{CSVIterator}} const \&rhs)
+\item 
+bool \mbox{\hyperlink{class_zaki_1_1_file_1_1_c_s_v_iterator_abbbe4e01b8092752a74171f729463c29}{operator!=}} (\mbox{\hyperlink{class_zaki_1_1_file_1_1_c_s_v_iterator}{CSVIterator}} const \&rhs)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Parses input files such as CVS, TSV, etc.
+
+This class uses \mbox{\hyperlink{class_zaki_1_1_file_1_1_c_s_v_row}{CSVRow}} to read and parse an input file line-\/by-\/line given a delimiter.
+
+\begin{DoxySeeAlso}{See also}
+\mbox{\hyperlink{class_zaki_1_1_file_1_1_c_s_v_row}{CSVRow}} 
+\end{DoxySeeAlso}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_zaki_1_1_file_1_1_c_s_v_iterator_a1c4053ebab7e9b70b8baf41e409f1e6e}\label{class_zaki_1_1_file_1_1_c_s_v_iterator_a1c4053ebab7e9b70b8baf41e409f1e6e}} 
+\index{Zaki::File::CSVIterator@{Zaki::File::CSVIterator}!CSVIterator@{CSVIterator}}
+\index{CSVIterator@{CSVIterator}!Zaki::File::CSVIterator@{Zaki::File::CSVIterator}}
+\doxysubsubsection{\texorpdfstring{CSVIterator()}{CSVIterator()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily Zaki\+::\+File\+::\+CSVIterator\+::\+CSVIterator (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Default Constructor. \mbox{\Hypertarget{class_zaki_1_1_file_1_1_c_s_v_iterator_ae0ec27bf8fa6d89eaac74e1e41e4ee99}\label{class_zaki_1_1_file_1_1_c_s_v_iterator_ae0ec27bf8fa6d89eaac74e1e41e4ee99}} 
+\index{Zaki::File::CSVIterator@{Zaki::File::CSVIterator}!CSVIterator@{CSVIterator}}
+\index{CSVIterator@{CSVIterator}!Zaki::File::CSVIterator@{Zaki::File::CSVIterator}}
+\doxysubsubsection{\texorpdfstring{CSVIterator()}{CSVIterator()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily Zaki\+::\+File\+::\+CSVIterator\+::\+CSVIterator (\begin{DoxyParamCaption}\item[{std\+::istream \&}]{str,  }\item[{const char \&}]{in\+\_\+delim = {\ttfamily \textquotesingle{},\textquotesingle{}} }\end{DoxyParamCaption})}
+
+Second Constructor.
+
+If no delimiter is specified, comma will be assumed (CSV).
+
+
+\begin{DoxyParams}{Parameters}
+{\em str} & input file \\
+\hline
+{\em in\+\_\+delim} & delimiter \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_zaki_1_1_file_1_1_c_s_v_iterator_abbbe4e01b8092752a74171f729463c29}\label{class_zaki_1_1_file_1_1_c_s_v_iterator_abbbe4e01b8092752a74171f729463c29}} 
+\index{Zaki::File::CSVIterator@{Zaki::File::CSVIterator}!operator"!=@{operator"!=}}
+\index{operator"!=@{operator"!=}!Zaki::File::CSVIterator@{Zaki::File::CSVIterator}}
+\doxysubsubsection{\texorpdfstring{operator"!=()}{operator!=()}}
+{\footnotesize\ttfamily bool Zaki\+::\+File\+::\+CSVIterator\+::operator!= (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_zaki_1_1_file_1_1_c_s_v_iterator}{CSVIterator}} const \&}]{rhs }\end{DoxyParamCaption})}
+
+Inequality comparison operator.
+
+
+\begin{DoxyParams}{Parameters}
+{\em rhs} & the other \mbox{\hyperlink{class_zaki_1_1_file_1_1_c_s_v_iterator}{CSVIterator}} on the R.\+H.\+S \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if the CSVIterators are not equal 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_zaki_1_1_file_1_1_c_s_v_iterator_a2d04f0122edb8a33b81c2df58d38986d}\label{class_zaki_1_1_file_1_1_c_s_v_iterator_a2d04f0122edb8a33b81c2df58d38986d}} 
+\index{Zaki::File::CSVIterator@{Zaki::File::CSVIterator}!operator++@{operator++}}
+\index{operator++@{operator++}!Zaki::File::CSVIterator@{Zaki::File::CSVIterator}}
+\doxysubsubsection{\texorpdfstring{operator++()}{operator++()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_zaki_1_1_file_1_1_c_s_v_iterator}{CSVIterator}} \& Zaki\+::\+File\+::\+CSVIterator\+::operator++ (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Pre Increment operator.
+
+
+\begin{DoxyParams}{Parameters}
+{\em in\+\_\+delim} & delimiter \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+incremented CVSIterator 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_zaki_1_1_file_1_1_c_s_v_iterator_a194418ca58f2844527555d5aa4a7bbc9}\label{class_zaki_1_1_file_1_1_c_s_v_iterator_a194418ca58f2844527555d5aa4a7bbc9}} 
+\index{Zaki::File::CSVIterator@{Zaki::File::CSVIterator}!operator++@{operator++}}
+\index{operator++@{operator++}!Zaki::File::CSVIterator@{Zaki::File::CSVIterator}}
+\doxysubsubsection{\texorpdfstring{operator++()}{operator++()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_zaki_1_1_file_1_1_c_s_v_iterator}{CSVIterator}} Zaki\+::\+File\+::\+CSVIterator\+::operator++ (\begin{DoxyParamCaption}\item[{int}]{n }\end{DoxyParamCaption})}
+
+Post Increment operator.
+
+
+\begin{DoxyParams}{Parameters}
+{\em n} & the integer amount to increment \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+incremented CVSIterator 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_zaki_1_1_file_1_1_c_s_v_iterator_aa3056ac837ff24f91587a353740126ff}\label{class_zaki_1_1_file_1_1_c_s_v_iterator_aa3056ac837ff24f91587a353740126ff}} 
+\index{Zaki::File::CSVIterator@{Zaki::File::CSVIterator}!operator==@{operator==}}
+\index{operator==@{operator==}!Zaki::File::CSVIterator@{Zaki::File::CSVIterator}}
+\doxysubsubsection{\texorpdfstring{operator==()}{operator==()}}
+{\footnotesize\ttfamily bool Zaki\+::\+File\+::\+CSVIterator\+::operator== (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_zaki_1_1_file_1_1_c_s_v_iterator}{CSVIterator}} const \&}]{rhs }\end{DoxyParamCaption})}
+
+Equality comparison operator.
+
+
+\begin{DoxyParams}{Parameters}
+{\em rhs} & the other \mbox{\hyperlink{class_zaki_1_1_file_1_1_c_s_v_iterator}{CSVIterator}} on the R.\+H.\+S \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if the CSVIterators are equal 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_zaki_1_1_file_1_1_c_s_v_iterator_a0082a9b0b4fc5a56d2a4b6447879c0fb}\label{class_zaki_1_1_file_1_1_c_s_v_iterator_a0082a9b0b4fc5a56d2a4b6447879c0fb}} 
+\index{Zaki::File::CSVIterator@{Zaki::File::CSVIterator}!SetDelim@{SetDelim}}
+\index{SetDelim@{SetDelim}!Zaki::File::CSVIterator@{Zaki::File::CSVIterator}}
+\doxysubsubsection{\texorpdfstring{SetDelim()}{SetDelim()}}
+{\footnotesize\ttfamily void Zaki\+::\+File\+::\+CSVIterator\+::\+Set\+Delim (\begin{DoxyParamCaption}\item[{const char \&}]{in\+\_\+delim }\end{DoxyParamCaption})}
+
+Sets the delimiter.
+
+
+\begin{DoxyParams}{Parameters}
+{\em in\+\_\+delim} & delimiter \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+dependencies/include/\+Zaki/\+File/\mbox{\hyperlink{_c_s_v_iterator_8hpp}{CSVIterator.\+hpp}}\end{DoxyCompactItemize}

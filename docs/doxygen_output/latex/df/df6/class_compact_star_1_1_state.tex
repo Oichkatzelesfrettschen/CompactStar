@@ -1,0 +1,123 @@
+\hypertarget{class_compact_star_1_1_state}{}\doxysection{Compact\+Star\+::State Class Reference}
+\label{class_compact_star_1_1_state}\index{CompactStar::State@{CompactStar::State}}
+
+
+Abstract base for all ODE “states” (chemical, thermal, spin, …).  
+
+
+
+
+{\ttfamily \#include $<$Chem\+State.\+hpp$>$}
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_compact_star_1_1_state_a130febe93078c8ddaa3c26d30231ebb0}\label{class_compact_star_1_1_state_a130febe93078c8ddaa3c26d30231ebb0}} 
+virtual const char $\ast$ {\bfseries Name} () const =0
+\begin{DoxyCompactList}\small\item\em Short human-\/readable identifier (e.\+g., \char`\"{}\+Chemical\+State\char`\"{}). \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_compact_star_1_1_state_ac4b6b422925154bb3aa31632554b65ff}\label{class_compact_star_1_1_state_ac4b6b422925154bb3aa31632554b65ff}} 
+virtual std\+::size\+\_\+t {\bfseries Size} () const =0
+\begin{DoxyCompactList}\small\item\em Number of scalar degrees of freedom (the length of the flat y-\/vector). \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_compact_star_1_1_state_a1908fba8001d6684319674355803f0dc}\label{class_compact_star_1_1_state_a1908fba8001d6684319674355803f0dc}} 
+virtual double $\ast$ {\bfseries Data} ()=0
+\begin{DoxyCompactList}\small\item\em Pointer to the first element of the contiguous state vector (mutable). \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_compact_star_1_1_state_a86d3b7efa92f48d02be6646a457cc0fd}\label{class_compact_star_1_1_state_a86d3b7efa92f48d02be6646a457cc0fd}} 
+virtual const double $\ast$ {\bfseries Data} () const =0
+\begin{DoxyCompactList}\small\item\em Pointer to the first element of the contiguous state vector (const). \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{class_compact_star_1_1_state_a119edf6b4fbda2655afebbaaadc60cc5}{Resize}} (std\+::size\+\_\+t N)=0
+\begin{DoxyCompactList}\small\item\em Resize the state to match a spatial grid of length {\ttfamily N}. \end{DoxyCompactList}\item 
+virtual std\+::size\+\_\+t \mbox{\hyperlink{class_compact_star_1_1_state_a083735dd09942c0e702cf45918a4ab95}{Grid\+Size}} () const
+\begin{DoxyCompactList}\small\item\em Number of spatial cells represented (if applicable). \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{class_compact_star_1_1_state_a6bd40ae7b89d8b3f5bd77de959925181}{Clear}} ()=0
+\begin{DoxyCompactList}\small\item\em Clear contents to a well-\/defined state (usually zeros). \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{class_compact_star_1_1_state_a65c521d97c79f2ec86ce6cf240e8a847}{Sanity\+Check}} () const
+\begin{DoxyCompactList}\small\item\em Lightweight diagnostics. Emit Z\+\_\+\+LOG\+\_\+$\ast$ for anomalies. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{class_compact_star_1_1_state_a364c3640e904726fb1a0be3b4df11613}{Export\+Columns}} (\mbox{\hyperlink{class_zaki_1_1_vector_1_1_data_set}{Zaki\+::\+Vector\+::\+Data\+Set}} \&ds, const std\+::string \&prefix) const
+\begin{DoxyCompactList}\small\item\em Append state-\/owned columns to a Data\+Set for debugging/\+IO. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Abstract base for all ODE “states” (chemical, thermal, spin, …). 
+
+Concrete subclasses must\+:
+\begin{DoxyItemize}
+\item provide a {\bfseries{contiguous}} storage exposed via \mbox{\hyperlink{class_compact_star_1_1_state_a1908fba8001d6684319674355803f0dc}{Data()}}/\+Size(),
+\item implement fixed-\/size setup via Resize(\+N) (where N is usually the radial grid size),
+\item implement Na\+N/range checks in \mbox{\hyperlink{class_compact_star_1_1_state_a65c521d97c79f2ec86ce6cf240e8a847}{Sanity\+Check()}}.
+\end{DoxyItemize}
+
+Optional (but recommended)\+:
+\begin{DoxyItemize}
+\item \mbox{\hyperlink{class_compact_star_1_1_state_a364c3640e904726fb1a0be3b4df11613}{Export\+Columns()}}\+: append labeled columns to a Data\+Set for debug/\+IO. 
+\end{DoxyItemize}
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_compact_star_1_1_state_a6bd40ae7b89d8b3f5bd77de959925181}\label{class_compact_star_1_1_state_a6bd40ae7b89d8b3f5bd77de959925181}} 
+\index{CompactStar::State@{CompactStar::State}!Clear@{Clear}}
+\index{Clear@{Clear}!CompactStar::State@{CompactStar::State}}
+\doxysubsubsection{\texorpdfstring{Clear()}{Clear()}}
+{\footnotesize\ttfamily virtual void Compact\+Star\+::\+State\+::\+Clear (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Clear contents to a well-\/defined state (usually zeros). 
+
+Implementations should not deallocate; keep capacity to avoid churn. \mbox{\Hypertarget{class_compact_star_1_1_state_a364c3640e904726fb1a0be3b4df11613}\label{class_compact_star_1_1_state_a364c3640e904726fb1a0be3b4df11613}} 
+\index{CompactStar::State@{CompactStar::State}!ExportColumns@{ExportColumns}}
+\index{ExportColumns@{ExportColumns}!CompactStar::State@{CompactStar::State}}
+\doxysubsubsection{\texorpdfstring{ExportColumns()}{ExportColumns()}}
+{\footnotesize\ttfamily virtual void Compact\+Star\+::\+State\+::\+Export\+Columns (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_zaki_1_1_vector_1_1_data_set}{Zaki\+::\+Vector\+::\+Data\+Set}} \&}]{ds,  }\item[{const std\+::string \&}]{prefix }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Append state-\/owned columns to a Data\+Set for debugging/\+IO. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em ds} & Data\+Set to append into. \\
+\hline
+{\em prefix} & Column name prefix (e.\+g., \char`\"{}chem.\char`\"{} or \char`\"{}therm.\char`\"{}).\\
+\hline
+\end{DoxyParams}
+The base implementation is a no-\/op. Concrete states should\+:
+\begin{DoxyItemize}
+\item create semantically labeled columns (e.\+g., \char`\"{}eta\char`\"{}, \char`\"{}\+Tinf\char`\"{}, \char`\"{}\+Omega\char`\"{}),
+\item ensure each appended column has {\bfseries{the same row count}} as the radius grid,
+\item avoid exporting transient/internal buffers. 
+\end{DoxyItemize}\mbox{\Hypertarget{class_compact_star_1_1_state_a083735dd09942c0e702cf45918a4ab95}\label{class_compact_star_1_1_state_a083735dd09942c0e702cf45918a4ab95}} 
+\index{CompactStar::State@{CompactStar::State}!GridSize@{GridSize}}
+\index{GridSize@{GridSize}!CompactStar::State@{CompactStar::State}}
+\doxysubsubsection{\texorpdfstring{GridSize()}{GridSize()}}
+{\footnotesize\ttfamily virtual std\+::size\+\_\+t Compact\+Star\+::\+State\+::\+Grid\+Size (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Number of spatial cells represented (if applicable). 
+
+Default returns \mbox{\hyperlink{class_compact_star_1_1_state_ac4b6b422925154bb3aa31632554b65ff}{Size()}}; override when you pack multiple DOFs per cell. \mbox{\Hypertarget{class_compact_star_1_1_state_a119edf6b4fbda2655afebbaaadc60cc5}\label{class_compact_star_1_1_state_a119edf6b4fbda2655afebbaaadc60cc5}} 
+\index{CompactStar::State@{CompactStar::State}!Resize@{Resize}}
+\index{Resize@{Resize}!CompactStar::State@{CompactStar::State}}
+\doxysubsubsection{\texorpdfstring{Resize()}{Resize()}}
+{\footnotesize\ttfamily virtual void Compact\+Star\+::\+State\+::\+Resize (\begin{DoxyParamCaption}\item[{std\+::size\+\_\+t}]{N }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Resize the state to match a spatial grid of length {\ttfamily N}. 
+
+For multi-\/\+DOF-\/per-\/cell layouts, implement your own mapping but keep the {\itshape contiguous} invariant for \mbox{\hyperlink{class_compact_star_1_1_state_a1908fba8001d6684319674355803f0dc}{Data()}}/\+Size().
+
+Must be called {\bfseries{before}} integration begins. Resizing during stepping is undefined. \mbox{\Hypertarget{class_compact_star_1_1_state_a65c521d97c79f2ec86ce6cf240e8a847}\label{class_compact_star_1_1_state_a65c521d97c79f2ec86ce6cf240e8a847}} 
+\index{CompactStar::State@{CompactStar::State}!SanityCheck@{SanityCheck}}
+\index{SanityCheck@{SanityCheck}!CompactStar::State@{CompactStar::State}}
+\doxysubsubsection{\texorpdfstring{SanityCheck()}{SanityCheck()}}
+{\footnotesize\ttfamily virtual void Compact\+Star\+::\+State\+::\+Sanity\+Check (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Lightweight diagnostics. Emit Z\+\_\+\+LOG\+\_\+$\ast$ for anomalies. 
+
+Default implementation checks for Na\+Ns/inf and logs a warning. Override to add range/unit checks (e.\+g., T\texorpdfstring{$>$}{>}0, $\vert$η$\vert$\texorpdfstring{$<$}{<}η\+\_\+max, etc.). 
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Compact\+Star/\+Chemical\+Heating/Chem\+State.\+hpp\end{DoxyCompactItemize}

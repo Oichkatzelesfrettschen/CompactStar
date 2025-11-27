@@ -1,0 +1,125 @@
+\hypertarget{class_compact_star_1_1_t_o_v_solver___thread}{}\doxysection{Compact\+Star\+::TOVSolver\+\_\+\+Thread Class Reference}
+\label{class_compact_star_1_1_t_o_v_solver___thread}\index{CompactStar::TOVSolver\_Thread@{CompactStar::TOVSolver\_Thread}}
+Inheritance diagram for Compact\+Star\+::TOVSolver\+\_\+\+Thread\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{de/dcd/class_compact_star_1_1_t_o_v_solver___thread}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_compact_star_1_1_t_o_v_solver___thread_a8cdd0b80e084d9c88723b420d4585f37}\label{class_compact_star_1_1_t_o_v_solver___thread_a8cdd0b80e084d9c88723b420d4585f37}} 
+{\bfseries TOVSolver\+\_\+\+Thread} (const short unsigned int \&in\+\_\+task\+\_\+id)
+\item 
+\mbox{\Hypertarget{class_compact_star_1_1_t_o_v_solver___thread_a8b01621c0b08121ad5bf119628ea99ed}\label{class_compact_star_1_1_t_o_v_solver___thread_a8b01621c0b08121ad5bf119628ea99ed}} 
+void {\bfseries Set\+Seq\+File\+Name} (const std\+::string \&in\+\_\+file)
+\item 
+\mbox{\Hypertarget{class_compact_star_1_1_t_o_v_solver___thread_a905094ac0dbef7171a09ae903b09dfcc}\label{class_compact_star_1_1_t_o_v_solver___thread_a905094ac0dbef7171a09ae903b09dfcc}} 
+{\bfseries TOVSolver\+\_\+\+Thread} (const \mbox{\hyperlink{class_compact_star_1_1_t_o_v_solver___thread}{TOVSolver\+\_\+\+Thread}} \&)=delete
+\begin{DoxyCompactList}\small\item\em Copy Constructor. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_compact_star_1_1_t_o_v_solver___thread_af65e694b465d0c85b2ddd2c52893db96}\label{class_compact_star_1_1_t_o_v_solver___thread_af65e694b465d0c85b2ddd2c52893db96}} 
+\mbox{\hyperlink{class_compact_star_1_1_t_o_v_solver___thread}{TOVSolver\+\_\+\+Thread}} \& {\bfseries operator=} (const \mbox{\hyperlink{class_compact_star_1_1_t_o_v_solver___thread}{TOVSolver\+\_\+\+Thread}} \&)=delete
+\begin{DoxyCompactList}\small\item\em Assignment operator. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_compact_star_1_1_t_o_v_solver___thread_a3e5ed61c9c44c898a97079b8df9c8760}{On\+Work\+Dir\+Changed}} (const \mbox{\hyperlink{class_zaki_1_1_string_1_1_directory}{Zaki\+::\+String\+::\+Directory}} \&dir) override
+\begin{DoxyCompactList}\small\item\em Propagate the new working directory to internal members. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_compact_star_1_1_t_o_v_solver___thread_a027f700c453c57b23025cc4f56dbb225}{Export\+Mixed\+Sequence}} (const \mbox{\hyperlink{class_zaki_1_1_string_1_1_directory}{Zaki\+::\+String\+::\+Directory}} \&) override
+\begin{DoxyCompactList}\small\item\em Exports the mixed sequence. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_compact_star_1_1_t_o_v_solver___thread_adb0223898581ce67774853a70cec89ee}{Export\+Mixed\+Star\+Profile}} (const size\+\_\+t \&v\+\_\+idx, const size\+\_\+t \&d\+\_\+idx, const \mbox{\hyperlink{class_zaki_1_1_string_1_1_directory}{Zaki\+::\+String\+::\+Directory}} \&) override
+\begin{DoxyCompactList}\small\item\em Exports the mixed star profile. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_compact_star_1_1_t_o_v_solver___thread_a691ddda39de47375b04c279aa63ce05c}{Surface\+Is\+Reached}} (const size\+\_\+t \&v\+\_\+idx, const size\+\_\+t \&d\+\_\+idx) override
+\item 
+void \mbox{\hyperlink{class_compact_star_1_1_t_o_v_solver___thread_a77fe3da3ea656d68d6e070f0060df996}{Print\+Status}} (const size\+\_\+t \&v\+\_\+idx, const size\+\_\+t \&d\+\_\+idx, const size\+\_\+t \&v\+\_\+res, const size\+\_\+t \&d\+\_\+res) override
+\item 
+\mbox{\Hypertarget{class_compact_star_1_1_t_o_v_solver___thread_ad0e4937782b2a1871235e6dd5027f127}\label{class_compact_star_1_1_t_o_v_solver___thread_ad0e4937782b2a1871235e6dd5027f127}} 
+void {\bfseries Set\+Min\+Idx\+Offset} (const size\+\_\+t \&in\+\_\+idx)
+\begin{DoxyCompactList}\small\item\em Sets min\+\_\+idx\+\_\+offset. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_compact_star_1_1_t_o_v_solver___thread_a8b137494129751c755d892b83f9c1f01}\label{class_compact_star_1_1_t_o_v_solver___thread_a8b137494129751c755d892b83f9c1f01}} 
+static \mbox{\hyperlink{class_compact_star_1_1_mixed_sequence}{Mixed\+Sequence}} {\bfseries Get\+Sequence} ()
+\begin{DoxyCompactList}\small\item\em Returns mixed\+\_\+seq\+\_\+static. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Additional Inherited Members}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_compact_star_1_1_t_o_v_solver___thread_a027f700c453c57b23025cc4f56dbb225}\label{class_compact_star_1_1_t_o_v_solver___thread_a027f700c453c57b23025cc4f56dbb225}} 
+\index{CompactStar::TOVSolver\_Thread@{CompactStar::TOVSolver\_Thread}!ExportMixedSequence@{ExportMixedSequence}}
+\index{ExportMixedSequence@{ExportMixedSequence}!CompactStar::TOVSolver\_Thread@{CompactStar::TOVSolver\_Thread}}
+\doxysubsubsection{\texorpdfstring{ExportMixedSequence()}{ExportMixedSequence()}}
+{\footnotesize\ttfamily void TOVSolver\+\_\+\+Thread\+::\+Export\+Mixed\+Sequence (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_zaki_1_1_string_1_1_directory}{Zaki\+::\+String\+::\+Directory}} \&}]{in\+\_\+dir }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Exports the mixed sequence. 
+
+
+
+Reimplemented from \mbox{\hyperlink{class_compact_star_1_1_t_o_v_solver_ad7cd0f4a7c5ec67e393d3c6dcbeb041e}{Compact\+Star\+::\+TOVSolver}}.
+
+\mbox{\Hypertarget{class_compact_star_1_1_t_o_v_solver___thread_adb0223898581ce67774853a70cec89ee}\label{class_compact_star_1_1_t_o_v_solver___thread_adb0223898581ce67774853a70cec89ee}} 
+\index{CompactStar::TOVSolver\_Thread@{CompactStar::TOVSolver\_Thread}!ExportMixedStarProfile@{ExportMixedStarProfile}}
+\index{ExportMixedStarProfile@{ExportMixedStarProfile}!CompactStar::TOVSolver\_Thread@{CompactStar::TOVSolver\_Thread}}
+\doxysubsubsection{\texorpdfstring{ExportMixedStarProfile()}{ExportMixedStarProfile()}}
+{\footnotesize\ttfamily void TOVSolver\+\_\+\+Thread\+::\+Export\+Mixed\+Star\+Profile (\begin{DoxyParamCaption}\item[{const size\+\_\+t \&}]{v\+\_\+idx,  }\item[{const size\+\_\+t \&}]{d\+\_\+idx,  }\item[{const \mbox{\hyperlink{class_zaki_1_1_string_1_1_directory}{Zaki\+::\+String\+::\+Directory}} \&}]{in\+\_\+dir }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Exports the mixed star profile. 
+
+
+
+Reimplemented from \mbox{\hyperlink{class_compact_star_1_1_t_o_v_solver_acae54e33e0f32db0f87a71a642acde26}{Compact\+Star\+::\+TOVSolver}}.
+
+\mbox{\Hypertarget{class_compact_star_1_1_t_o_v_solver___thread_a3e5ed61c9c44c898a97079b8df9c8760}\label{class_compact_star_1_1_t_o_v_solver___thread_a3e5ed61c9c44c898a97079b8df9c8760}} 
+\index{CompactStar::TOVSolver\_Thread@{CompactStar::TOVSolver\_Thread}!OnWorkDirChanged@{OnWorkDirChanged}}
+\index{OnWorkDirChanged@{OnWorkDirChanged}!CompactStar::TOVSolver\_Thread@{CompactStar::TOVSolver\_Thread}}
+\doxysubsubsection{\texorpdfstring{OnWorkDirChanged()}{OnWorkDirChanged()}}
+{\footnotesize\ttfamily void TOVSolver\+\_\+\+Thread\+::\+On\+Work\+Dir\+Changed (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_zaki_1_1_string_1_1_directory}{Zaki\+::\+String\+::\+Directory}} \&}]{dir }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Propagate the new working directory to internal members. 
+
+Sets the work directory for the member objects.
+
+Called automatically by \mbox{\hyperlink{class_compact_star_1_1_prog_a28c50895a9fd2c9390f82a1bb5c1eefe}{Set\+Wrk\+Dir()}} after this object\textquotesingle{}s own working directory is updated and created on disk.
+
+Derived classes override this method to push the directory into member objects that also produce output files.
+
+
+\begin{DoxyParams}{Parameters}
+{\em dir} & Newly assigned working directory. \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented from \mbox{\hyperlink{class_compact_star_1_1_t_o_v_solver_adffee3ac13c04d67e63bdc6909d4a48b}{Compact\+Star\+::\+TOVSolver}}.
+
+\mbox{\Hypertarget{class_compact_star_1_1_t_o_v_solver___thread_a77fe3da3ea656d68d6e070f0060df996}\label{class_compact_star_1_1_t_o_v_solver___thread_a77fe3da3ea656d68d6e070f0060df996}} 
+\index{CompactStar::TOVSolver\_Thread@{CompactStar::TOVSolver\_Thread}!PrintStatus@{PrintStatus}}
+\index{PrintStatus@{PrintStatus}!CompactStar::TOVSolver\_Thread@{CompactStar::TOVSolver\_Thread}}
+\doxysubsubsection{\texorpdfstring{PrintStatus()}{PrintStatus()}}
+{\footnotesize\ttfamily void TOVSolver\+\_\+\+Thread\+::\+Print\+Status (\begin{DoxyParamCaption}\item[{const size\+\_\+t \&}]{v\+\_\+idx,  }\item[{const size\+\_\+t \&}]{d\+\_\+idx,  }\item[{const size\+\_\+t \&}]{v\+\_\+res,  }\item[{const size\+\_\+t \&}]{d\+\_\+res }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Reimplemented from \mbox{\hyperlink{class_compact_star_1_1_t_o_v_solver}{Compact\+Star\+::\+TOVSolver}}.
+
+\mbox{\Hypertarget{class_compact_star_1_1_t_o_v_solver___thread_a691ddda39de47375b04c279aa63ce05c}\label{class_compact_star_1_1_t_o_v_solver___thread_a691ddda39de47375b04c279aa63ce05c}} 
+\index{CompactStar::TOVSolver\_Thread@{CompactStar::TOVSolver\_Thread}!SurfaceIsReached@{SurfaceIsReached}}
+\index{SurfaceIsReached@{SurfaceIsReached}!CompactStar::TOVSolver\_Thread@{CompactStar::TOVSolver\_Thread}}
+\doxysubsubsection{\texorpdfstring{SurfaceIsReached()}{SurfaceIsReached()}}
+{\footnotesize\ttfamily void TOVSolver\+\_\+\+Thread\+::\+Surface\+Is\+Reached (\begin{DoxyParamCaption}\item[{const size\+\_\+t \&}]{v\+\_\+idx,  }\item[{const size\+\_\+t \&}]{d\+\_\+idx }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Reimplemented from \mbox{\hyperlink{class_compact_star_1_1_t_o_v_solver}{Compact\+Star\+::\+TOVSolver}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Compact\+Star/\+Core/\mbox{\hyperlink{_t_o_v_solver___thread_8hpp}{TOVSolver\+\_\+\+Thread.\+hpp}}\item 
+Compact\+Star/\+Core/src/TOVSolver\+\_\+\+Thread.\+cpp\end{DoxyCompactItemize}

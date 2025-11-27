@@ -1,0 +1,127 @@
+\hypertarget{class_compact_star_1_1_baryon}{}\doxysection{Compact\+Star\+::Baryon Class Reference}
+\label{class_compact_star_1_1_baryon}\index{CompactStar::Baryon@{CompactStar::Baryon}}
+Inheritance diagram for Compact\+Star\+::Baryon\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{d9/d31/class_compact_star_1_1_baryon}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_compact_star_1_1_baryon_a91db9f5954541df9300cd8e1a0a08dc5}\label{class_compact_star_1_1_baryon_a91db9f5954541df9300cd8e1a0a08dc5}} 
+{\bfseries Baryon} (const \mbox{\hyperlink{class_compact_star_1_1_baryon}{Baryon}} \&)=delete
+\begin{DoxyCompactList}\small\item\em Copy constructor. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_compact_star_1_1_baryon_add0db942844c5e7d686943c2152f9c54}\label{class_compact_star_1_1_baryon_add0db942844c5e7d686943c2152f9c54}} 
+\mbox{\hyperlink{class_compact_star_1_1_baryon}{Baryon}} \& {\bfseries operator=} (const \mbox{\hyperlink{class_compact_star_1_1_baryon}{Baryon}} \&)=delete
+\begin{DoxyCompactList}\small\item\em Assignment operator. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_compact_star_1_1_baryon_a101e130974d3b05fcd9ed62e0ea8d684}\label{class_compact_star_1_1_baryon_a101e130974d3b05fcd9ed62e0ea8d684}} 
+double {\bfseries Mu} (const double \&gsig) const
+\begin{DoxyCompactList}\small\item\em Chemical potential. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_compact_star_1_1_baryon_a297a2d6b793edca35f5488d165fa94fb}\label{class_compact_star_1_1_baryon_a297a2d6b793edca35f5488d165fa94fb}} 
+double {\bfseries ETerm} (const double \&gsig) const
+\begin{DoxyCompactList}\small\item\em Contribution to the energy. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_compact_star_1_1_baryon_aedb2b5984de622516fe4796135a8cefb}\label{class_compact_star_1_1_baryon_aedb2b5984de622516fe4796135a8cefb}} 
+double {\bfseries PTerm} (const double \&gsig) const
+\begin{DoxyCompactList}\small\item\em Contribution to the pressure. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{class_compact_star_1_1_baryon_a7821e5840f84449e452fa26324041a2a}{Dmu}} (const int \&in\+\_\+idx, const double \&gsig)
+\begin{DoxyCompactList}\small\item\em Derivative of the chemical potential for baryons. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_compact_star_1_1_baryon_ad0d0acfe5fdf16842986067225df8568}{Pool\+Add}} () override
+\item 
+int \mbox{\hyperlink{class_compact_star_1_1_baryon_a059a7c7d76baf67278154c17c8189383}{Pool\+Remove}} () override
+\end{DoxyCompactItemize}
+\doxysubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_compact_star_1_1_baryon_af020b72d8c9160e2829769bb776a5bf4}\label{class_compact_star_1_1_baryon_af020b72d8c9160e2829769bb776a5bf4}} 
+static void {\bfseries Set\+Pars} (const \mbox{\hyperlink{struct_compact_star_1_1_sigma_omega_par}{Sigma\+Omega\+Par}} \&in\+\_\+pars)
+\begin{DoxyCompactList}\small\item\em Setting the overall parameters of the model. \end{DoxyCompactList}\item 
+static double \mbox{\hyperlink{class_compact_star_1_1_baryon_a7767a726a2031cd0b356ed37b54ca9c0}{gp\+Omega}} ()
+\begin{DoxyCompactList}\small\item\em This sets the B-\/number density. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_compact_star_1_1_baryon_a6356f4a3e0a2f37b322d1cd0d9eb508c}\label{class_compact_star_1_1_baryon_a6356f4a3e0a2f37b322d1cd0d9eb508c}} 
+static double {\bfseries gp\+Rho03} ()
+\begin{DoxyCompactList}\small\item\em Returns the value of \mbox{[} g\+\_\+rho(proton) $\ast$ rho\+\_\+03 \mbox{]}. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_compact_star_1_1_baryon_a6e29ee237722d333757aa04c437cd133}\label{class_compact_star_1_1_baryon_a6e29ee237722d333757aa04c437cd133}} 
+static double {\bfseries Get\+Baryon\+Rho} ()
+\begin{DoxyCompactList}\small\item\em Returns the total baryon density. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_compact_star_1_1_baryon_a2447b6e13679a10b2293fb779b75473c}\label{class_compact_star_1_1_baryon_a2447b6e13679a10b2293fb779b75473c}} 
+static double {\bfseries gsig\+Eq} (const double \&gsig)
+\begin{DoxyCompactList}\small\item\em Equation describing g\+\_\+sigma $\ast$ sigma. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_compact_star_1_1_baryon_a996019efbdea9c351c4f3d6986a100ba}\label{class_compact_star_1_1_baryon_a996019efbdea9c351c4f3d6986a100ba}} 
+static void {\bfseries Print\+All} ()
+\begin{DoxyCompactList}\small\item\em Shows the number of baryons. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_compact_star_1_1_baryon_a848ae7370ea50e9e5762e42c16bf784a}\label{class_compact_star_1_1_baryon_a848ae7370ea50e9e5762e42c16bf784a}} 
+static double {\bfseries Dgsig} (const int \&in\+\_\+idx, const double \&gsig)
+\begin{DoxyCompactList}\small\item\em Derivative of the g\+\_\+sig $\ast$ sigma equation. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_compact_star_1_1_baryon_a95b66bc995b974eb9d284785b100625e}\label{class_compact_star_1_1_baryon_a95b66bc995b974eb9d284785b100625e}} 
+static void {\bfseries Empty\+BPool} ()
+\begin{DoxyCompactList}\small\item\em Empties the baryon\textquotesingle{}s pool. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Friends}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_compact_star_1_1_baryon_ab3372927f88ab372bb3407297d89309a}\label{class_compact_star_1_1_baryon_ab3372927f88ab372bb3407297d89309a}} 
+class {\bfseries Sigma\+Omega\+Rho}
+\item 
+\mbox{\Hypertarget{class_compact_star_1_1_baryon_a7d4445ff547cd36156e273986650dccd}\label{class_compact_star_1_1_baryon_a7d4445ff547cd36156e273986650dccd}} 
+class {\bfseries Sigma\+Omega\+Rho\+\_\+npemu}
+\item 
+\mbox{\Hypertarget{class_compact_star_1_1_baryon_a0a2cc131a1f38bf82e015e09cc9b7cb8}\label{class_compact_star_1_1_baryon_a0a2cc131a1f38bf82e015e09cc9b7cb8}} 
+class {\bfseries Sigma\+Omega\+Rho\+\_\+nstar}
+\item 
+\mbox{\Hypertarget{class_compact_star_1_1_baryon_a71ab40c5d07903a8db15d8e10cbe720a}\label{class_compact_star_1_1_baryon_a71ab40c5d07903a8db15d8e10cbe720a}} 
+class {\bfseries Fermi\+\_\+\+Gas\+\_\+\+Many}
+\end{DoxyCompactItemize}
+\doxysubsection*{Additional Inherited Members}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_compact_star_1_1_baryon_a7821e5840f84449e452fa26324041a2a}\label{class_compact_star_1_1_baryon_a7821e5840f84449e452fa26324041a2a}} 
+\index{CompactStar::Baryon@{CompactStar::Baryon}!Dmu@{Dmu}}
+\index{Dmu@{Dmu}!CompactStar::Baryon@{CompactStar::Baryon}}
+\doxysubsubsection{\texorpdfstring{Dmu()}{Dmu()}}
+{\footnotesize\ttfamily double Compact\+Star\+::\+Baryon\+::\+Dmu (\begin{DoxyParamCaption}\item[{const int \&}]{in\+\_\+idx,  }\item[{const double \&}]{gsig }\end{DoxyParamCaption})}
+
+
+
+Derivative of the chemical potential for baryons. 
+
+Derivative of the chemical potential. \mbox{\Hypertarget{class_compact_star_1_1_baryon_a7767a726a2031cd0b356ed37b54ca9c0}\label{class_compact_star_1_1_baryon_a7767a726a2031cd0b356ed37b54ca9c0}} 
+\index{CompactStar::Baryon@{CompactStar::Baryon}!gpOmega@{gpOmega}}
+\index{gpOmega@{gpOmega}!CompactStar::Baryon@{CompactStar::Baryon}}
+\doxysubsubsection{\texorpdfstring{gpOmega()}{gpOmega()}}
+{\footnotesize\ttfamily double Compact\+Star\+::\+Baryon\+::gp\+Omega (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+This sets the B-\/number density. 
+
+Returns the value of \mbox{[} g\+\_\+omega(proton) $\ast$ omega\+\_\+0 \mbox{]}.
+
+Returns the value of \mbox{[} g\+\_\+omega(proton) $\ast$ omega\+\_\+0 \mbox{]} \mbox{\Hypertarget{class_compact_star_1_1_baryon_ad0d0acfe5fdf16842986067225df8568}\label{class_compact_star_1_1_baryon_ad0d0acfe5fdf16842986067225df8568}} 
+\index{CompactStar::Baryon@{CompactStar::Baryon}!PoolAdd@{PoolAdd}}
+\index{PoolAdd@{PoolAdd}!CompactStar::Baryon@{CompactStar::Baryon}}
+\doxysubsubsection{\texorpdfstring{PoolAdd()}{PoolAdd()}}
+{\footnotesize\ttfamily int Compact\+Star\+::\+Baryon\+::\+Pool\+Add (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+Adds the baryon to the pool of baryons under consideration Useful for dynamically changing the pool without needing heap allocation of particles. Returns -\/1 if not successful and 0 if successful 
+
+Implements \mbox{\hyperlink{class_compact_star_1_1_particle_a2237d88d797f917ff937648639eb965a}{Compact\+Star\+::\+Particle}}.
+
+\mbox{\Hypertarget{class_compact_star_1_1_baryon_a059a7c7d76baf67278154c17c8189383}\label{class_compact_star_1_1_baryon_a059a7c7d76baf67278154c17c8189383}} 
+\index{CompactStar::Baryon@{CompactStar::Baryon}!PoolRemove@{PoolRemove}}
+\index{PoolRemove@{PoolRemove}!CompactStar::Baryon@{CompactStar::Baryon}}
+\doxysubsubsection{\texorpdfstring{PoolRemove()}{PoolRemove()}}
+{\footnotesize\ttfamily int Compact\+Star\+::\+Baryon\+::\+Pool\+Remove (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+Removes the baryon from the pool of baryons under consideration Returns -\/1 if not successful and 0 if successful
+
+Removes the \mbox{\hyperlink{class_compact_star_1_1_baryon}{Baryon}} from the pool of Baryons Returns -\/1 if not successful and 0 if successful 
+
+Implements \mbox{\hyperlink{class_compact_star_1_1_particle_ab5e9207bf39cc79aa54b89e6ce0e5d0f}{Compact\+Star\+::\+Particle}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Compact\+Star/\+EOS/\mbox{\hyperlink{_baryon_8hpp}{Baryon.\+hpp}}\item 
+Compact\+Star/\+EOS/src/Baryon.\+cpp\end{DoxyCompactItemize}

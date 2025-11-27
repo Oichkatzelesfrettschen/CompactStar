@@ -1,0 +1,93 @@
+\hypertarget{struct_compact_star_1_1_baryon___lim}{}\doxysection{Compact\+Star\+::Baryon\+\_\+\+Lim Struct Reference}
+\label{struct_compact_star_1_1_baryon___lim}\index{CompactStar::Baryon\_Lim@{CompactStar::Baryon\_Lim}}
+
+
+Tracks baryon number violation (BNV) constraints for a species.  
+
+
+
+
+{\ttfamily \#include $<$Pulsar\+\_\+old.\+hpp$>$}
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{struct_compact_star_1_1_baryon___lim_a7cb0b9e0af9e92d03404d900e5d6d4e3}{Baryon\+\_\+\+Lim}} (const std\+::string \&in\+\_\+name, const double \&in\+\_\+fraction, const double \&in\+\_\+b\+\_\+dot)
+\begin{DoxyCompactList}\small\item\em Construct a \mbox{\hyperlink{struct_compact_star_1_1_baryon___lim}{Baryon\+\_\+\+Lim}} object. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+std\+::string \mbox{\hyperlink{struct_compact_star_1_1_baryon___lim_a6cfabcfd128ad300a4773b067a3ba650}{name}}
+\item 
+double \mbox{\hyperlink{struct_compact_star_1_1_baryon___lim_a647dce984e0837b2dbbd75c83fe14832}{fraction}}
+\item 
+double \mbox{\hyperlink{struct_compact_star_1_1_baryon___lim_aed27a440d99aa965f729e650604782d4}{b\+\_\+dot}}
+\item 
+double \mbox{\hyperlink{struct_compact_star_1_1_baryon___lim_ae3d13da66deec4c75e2b38839efb594c}{limit}} = 0
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Tracks baryon number violation (BNV) constraints for a species. 
+
+Models the fractional abundance and BNV rate of a baryon species within the star, including gravitational redshift of rates and experimental/theoretical limits.
+
+Physical definitions\+:
+\begin{DoxyItemize}
+\item fraction\+: number density fraction of species relative to total baryon density.
+\item b\+\_\+dot\+: proper-\/time baryon number change rate including redshift factor e$^\wedge$\{nu(r)\}, accounting for slower clocks deeper in the gravitational well.
+\item limit\+: upper bound on BNV rate from particle physics experiments (e.\+g., di-\/nucleon decay). 
+\end{DoxyItemize}
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{struct_compact_star_1_1_baryon___lim_a7cb0b9e0af9e92d03404d900e5d6d4e3}\label{struct_compact_star_1_1_baryon___lim_a7cb0b9e0af9e92d03404d900e5d6d4e3}} 
+\index{CompactStar::Baryon\_Lim@{CompactStar::Baryon\_Lim}!Baryon\_Lim@{Baryon\_Lim}}
+\index{Baryon\_Lim@{Baryon\_Lim}!CompactStar::Baryon\_Lim@{CompactStar::Baryon\_Lim}}
+\doxysubsubsection{\texorpdfstring{Baryon\_Lim()}{Baryon\_Lim()}}
+{\footnotesize\ttfamily Compact\+Star\+::\+Baryon\+\_\+\+Lim\+::\+Baryon\+\_\+\+Lim (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{in\+\_\+name,  }\item[{const double \&}]{in\+\_\+fraction,  }\item[{const double \&}]{in\+\_\+b\+\_\+dot }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Construct a \mbox{\hyperlink{struct_compact_star_1_1_baryon___lim}{Baryon\+\_\+\+Lim}} object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em in\+\_\+name} & Name of baryon species. \\
+\hline
+{\em in\+\_\+fraction} & Fractional abundance. \\
+\hline
+{\em in\+\_\+b\+\_\+dot} & Proper-\/time BNV rate including redshift. \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{struct_compact_star_1_1_baryon___lim_aed27a440d99aa965f729e650604782d4}\label{struct_compact_star_1_1_baryon___lim_aed27a440d99aa965f729e650604782d4}} 
+\index{CompactStar::Baryon\_Lim@{CompactStar::Baryon\_Lim}!b\_dot@{b\_dot}}
+\index{b\_dot@{b\_dot}!CompactStar::Baryon\_Lim@{CompactStar::Baryon\_Lim}}
+\doxysubsubsection{\texorpdfstring{b\_dot}{b\_dot}}
+{\footnotesize\ttfamily double Compact\+Star\+::\+Baryon\+\_\+\+Lim\+::b\+\_\+dot}
+
+Redshifted baryon number violation rate \mbox{[}s$^\wedge$-\/1\mbox{]}. \mbox{\Hypertarget{struct_compact_star_1_1_baryon___lim_a647dce984e0837b2dbbd75c83fe14832}\label{struct_compact_star_1_1_baryon___lim_a647dce984e0837b2dbbd75c83fe14832}} 
+\index{CompactStar::Baryon\_Lim@{CompactStar::Baryon\_Lim}!fraction@{fraction}}
+\index{fraction@{fraction}!CompactStar::Baryon\_Lim@{CompactStar::Baryon\_Lim}}
+\doxysubsubsection{\texorpdfstring{fraction}{fraction}}
+{\footnotesize\ttfamily double Compact\+Star\+::\+Baryon\+\_\+\+Lim\+::fraction}
+
+Fractional abundance in neutron star interior. \mbox{\Hypertarget{struct_compact_star_1_1_baryon___lim_ae3d13da66deec4c75e2b38839efb594c}\label{struct_compact_star_1_1_baryon___lim_ae3d13da66deec4c75e2b38839efb594c}} 
+\index{CompactStar::Baryon\_Lim@{CompactStar::Baryon\_Lim}!limit@{limit}}
+\index{limit@{limit}!CompactStar::Baryon\_Lim@{CompactStar::Baryon\_Lim}}
+\doxysubsubsection{\texorpdfstring{limit}{limit}}
+{\footnotesize\ttfamily double Compact\+Star\+::\+Baryon\+\_\+\+Lim\+::limit = 0}
+
+Experimental/theoretical upper limit on BNV rate. \mbox{\Hypertarget{struct_compact_star_1_1_baryon___lim_a6cfabcfd128ad300a4773b067a3ba650}\label{struct_compact_star_1_1_baryon___lim_a6cfabcfd128ad300a4773b067a3ba650}} 
+\index{CompactStar::Baryon\_Lim@{CompactStar::Baryon\_Lim}!name@{name}}
+\index{name@{name}!CompactStar::Baryon\_Lim@{CompactStar::Baryon\_Lim}}
+\doxysubsubsection{\texorpdfstring{name}{name}}
+{\footnotesize\ttfamily std\+::string Compact\+Star\+::\+Baryon\+\_\+\+Lim\+::name}
+
+\mbox{\hyperlink{class_compact_star_1_1_baryon}{Baryon}} species name (e.\+g., \char`\"{}\+Neutron\char`\"{}, \char`\"{}\+Lambda\char`\"{}). 
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Compact\+Star/\+Core/Pulsar\+\_\+old.\+hpp\end{DoxyCompactItemize}

@@ -1,0 +1,21 @@
+\hypertarget{_star_context_8hpp}{}\doxysection{Compact\+Star/\+Physics/\+Evolution/\+Star\+Context.hpp File Reference}
+\label{_star_context_8hpp}\index{CompactStar/Physics/Evolution/StarContext.hpp@{CompactStar/Physics/Evolution/StarContext.hpp}}
+
+
+Read-\/only bridge to Core structures (NStar, EOS, Rotation\+Solver) for evolution.  
+
+
+{\ttfamily \#include $<$cstddef$>$}\newline
+{\ttfamily \#include $<$string$>$}\newline
+{\ttfamily \#include $<$vector$>$}\newline
+\doxysubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{class_compact_star_1_1_chemical_heating_1_1_star_context}{Compact\+Star\+::\+Chemical\+Heating\+::\+Star\+Context}}
+\begin{DoxyCompactList}\small\item\em Immutable, per-\/star adapter exposing cached geometry and composition. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Read-\/only bridge to Core structures (NStar, EOS, Rotation\+Solver) for evolution. 
+
+Star\+Context centralizes access to geometry, composition, and metric quantities derived from a precomputed neutron-\/star profile. It {\itshape does not} run TOV or rotation; it only exposes cached, interpolation-\/friendly views needed during RHS evaluations. 

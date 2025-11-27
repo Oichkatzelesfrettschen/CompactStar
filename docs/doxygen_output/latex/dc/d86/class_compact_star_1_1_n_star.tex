@@ -1,0 +1,262 @@
+\hypertarget{class_compact_star_1_1_n_star}{}\doxysection{Compact\+Star\+::NStar Class Reference}
+\label{class_compact_star_1_1_n_star}\index{CompactStar::NStar@{CompactStar::NStar}}
+
+
+Neutron-\/star container for TOV solutions, rotation, and export.  
+
+
+
+
+{\ttfamily \#include $<$NStar.\+hpp$>$}
+
+Inheritance diagram for Compact\+Star\+::NStar\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{dc/d86/class_compact_star_1_1_n_star}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_compact_star_1_1_n_star_a4c6b6a3557791bed8ccfcf82e755e6b2}\label{class_compact_star_1_1_n_star_a4c6b6a3557791bed8ccfcf82e755e6b2}} 
+{\bfseries NStar} (const std\+::vector$<$ \mbox{\hyperlink{struct_compact_star_1_1_t_o_v_point}{TOVPoint}} $>$ \&in\+\_\+tov\+\_\+results)
+\item 
+\mbox{\Hypertarget{class_compact_star_1_1_n_star_aaf4e10cadc7eb365c75ecf80932ba760}\label{class_compact_star_1_1_n_star_aaf4e10cadc7eb365c75ecf80932ba760}} 
+{\bfseries NStar} (const std\+::vector$<$ \mbox{\hyperlink{struct_compact_star_1_1_t_o_v_point}{TOVPoint}} $>$ \&in\+\_\+tov, const std\+::vector$<$ std\+::string $>$ \&species\+\_\+labels)
+\item 
+\mbox{\Hypertarget{class_compact_star_1_1_n_star_ab82930b6b701531a4ee6a4cae4047226}\label{class_compact_star_1_1_n_star_ab82930b6b701531a4ee6a4cae4047226}} 
+{\bfseries $\sim$\+NStar} ()
+\begin{DoxyCompactList}\small\item\em Destructor. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_compact_star_1_1_n_star_a12929f7709857da2cf06e477040a26d4}\label{class_compact_star_1_1_n_star_a12929f7709857da2cf06e477040a26d4}} 
+{\bfseries NStar} (const \mbox{\hyperlink{class_compact_star_1_1_n_star}{NStar}} \&)=delete
+\item 
+\mbox{\Hypertarget{class_compact_star_1_1_n_star_a9f3fbc47f38d451cca406511d5a28d82}\label{class_compact_star_1_1_n_star_a9f3fbc47f38d451cca406511d5a28d82}} 
+\mbox{\hyperlink{class_compact_star_1_1_n_star}{NStar}} \& {\bfseries operator=} (const \mbox{\hyperlink{class_compact_star_1_1_n_star}{NStar}} \&)=delete
+\item 
+\mbox{\Hypertarget{class_compact_star_1_1_n_star_a4d9db828354c2b759bc3699f9abbfaeb}\label{class_compact_star_1_1_n_star_a4d9db828354c2b759bc3699f9abbfaeb}} 
+void {\bfseries Attach\+EOS} (\mbox{\hyperlink{class_compact_star_1_1_comp_o_s_e___e_o_s}{Comp\+OSE\+\_\+\+EOS}} $\ast$eos)
+\item 
+\mbox{\Hypertarget{class_compact_star_1_1_n_star_af3c259b409e86cf5a5839a5612ca0768}\label{class_compact_star_1_1_n_star_af3c259b409e86cf5a5839a5612ca0768}} 
+\mbox{\hyperlink{class_compact_star_1_1_comp_o_s_e___e_o_s}{Comp\+OSE\+\_\+\+EOS}} $\ast$ {\bfseries Get\+EOS} () const
+\item 
+\mbox{\Hypertarget{class_compact_star_1_1_n_star_a6ac28610f2c05d16d2615b7a3e016c7d}\label{class_compact_star_1_1_n_star_a6ac28610f2c05d16d2615b7a3e016c7d}} 
+void {\bfseries Init\+From\+TOVSolver} (const \mbox{\hyperlink{class_compact_star_1_1_t_o_v_solver}{TOVSolver}} $\ast$in\+\_\+tov\+\_\+solver)
+\item 
+\mbox{\Hypertarget{class_compact_star_1_1_n_star_aa485a6c9e7cd2d4cb2258153156a691d}\label{class_compact_star_1_1_n_star_aa485a6c9e7cd2d4cb2258153156a691d}} 
+void {\bfseries Append} (const \mbox{\hyperlink{struct_compact_star_1_1_t_o_v_point}{TOVPoint}} \&in\+\_\+tov\+\_\+pts)
+\item 
+\mbox{\Hypertarget{class_compact_star_1_1_n_star_a7f6668485389cc055e4a6961391a0d9e}\label{class_compact_star_1_1_n_star_a7f6668485389cc055e4a6961391a0d9e}} 
+void {\bfseries Print\+Profile\+Column\+Sizes} () const
+\begin{DoxyCompactList}\small\item\em Debug helper\+: print column labels and sizes. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_compact_star_1_1_n_star_ac97d5d77471cfa6755230cda76378cec}\label{class_compact_star_1_1_n_star_ac97d5d77471cfa6755230cda76378cec}} 
+void {\bfseries Finalize\+Surface} ()
+\item 
+\mbox{\Hypertarget{class_compact_star_1_1_n_star_a1012987efa0473703cabfbb3db4c17ab}\label{class_compact_star_1_1_n_star_a1012987efa0473703cabfbb3db4c17ab}} 
+bool {\bfseries Is\+Surface\+Finalized} () const noexcept
+\item 
+void \mbox{\hyperlink{class_compact_star_1_1_n_star_a59f790b90655725850bca28979252fc4}{Reset}} ()
+\begin{DoxyCompactList}\small\item\em Reset B\+\_\+integrand, sequence, flags, and profile to an empty state. Invalidates all profile views. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_compact_star_1_1_n_star_a8ae85e3f2ea447d49d29aa29055d25c5}{Solve\+TOV\+\_\+\+Profile}} (const \mbox{\hyperlink{class_compact_star_1_1_comp_o_s_e___e_o_s}{Comp\+OSE\+\_\+\+EOS}} \&eos, double target\+\_\+\+M\+\_\+solar)
+\begin{DoxyCompactList}\small\item\em Solve TOV and store result in internal \mbox{\hyperlink{struct_compact_star_1_1_star_profile}{Star\+Profile}}. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_compact_star_1_1_n_star_af5aadcc857e1cce3dcb6a99cc4a6636d}\label{class_compact_star_1_1_n_star_af5aadcc857e1cce3dcb6a99cc4a6636d}} 
+int {\bfseries Solve\+TOV\+\_\+\+Profile} (double target\+\_\+\+M\+\_\+solar)
+\begin{DoxyCompactList}\small\item\em Solve TOV using the attached EOS and store in internal profile. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_compact_star_1_1_n_star_aeb3615640e1d6fb5e228c33f06aa8209}\label{class_compact_star_1_1_n_star_aeb3615640e1d6fb5e228c33f06aa8209}} 
+void {\bfseries Import\+Profile\+\_\+\+Profile} (const std\+::string \&model\+\_\+name, const \mbox{\hyperlink{class_zaki_1_1_string_1_1_directory}{Zaki\+::\+String\+::\+Directory}} \&dir)
+\begin{DoxyCompactList}\small\item\em Import a precomputed \mbox{\hyperlink{struct_compact_star_1_1_star_profile}{Star\+Profile}} from disk and store internally. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_compact_star_1_1_n_star_ad207f0cdc0633ea9204e5ad4cef5e2fd}\label{class_compact_star_1_1_n_star_ad207f0cdc0633ea9204e5ad4cef5e2fd}} 
+const \mbox{\hyperlink{struct_compact_star_1_1_star_profile}{Star\+Profile}} \& {\bfseries Profile} () const
+\begin{DoxyCompactList}\small\item\em Access the owned structural profile (safe). \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_compact_star_1_1_n_star_ac322d23a57965902bc0738def29dd20f}\label{class_compact_star_1_1_n_star_ac322d23a57965902bc0738def29dd20f}} 
+\mbox{\hyperlink{struct_compact_star_1_1_star_profile_view}{Star\+Profile\+View}} {\bfseries View} () const
+\begin{DoxyCompactList}\small\item\em Get a non-\/owning view into the structural profile. \end{DoxyCompactList}\item 
+const \mbox{\hyperlink{class_compact_star_1_1_seq_point}{Seq\+Point}} \& \mbox{\hyperlink{class_compact_star_1_1_n_star_a5b198d2e784a64ecbbdc0b3436471e36}{Get\+Sequence}} () const noexcept
+\begin{DoxyCompactList}\small\item\em Retrieve the computed sequence point (legacy). \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_compact_star_1_1_seq_point}{Seq\+Point}} \& \mbox{\hyperlink{class_compact_star_1_1_n_star_a0644e086cc0a4bffd877747efbe83b3a}{Get\+Sequence}} () noexcept
+\item 
+\mbox{\Hypertarget{class_compact_star_1_1_n_star_a2b1294f932636fbff21690b2712f11a2}\label{class_compact_star_1_1_n_star_a2b1294f932636fbff21690b2712f11a2}} 
+double {\bfseries Radius\+Surface} () const noexcept
+\begin{DoxyCompactList}\small\item\em Get radius at star surface. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_compact_star_1_1_n_star_a92c53461f39be76aa591f3395bd6a91a}\label{class_compact_star_1_1_n_star_a92c53461f39be76aa591f3395bd6a91a}} 
+double {\bfseries Mass\+Surface} () const noexcept
+\begin{DoxyCompactList}\small\item\em Get mass at star surface. \end{DoxyCompactList}\item 
+std\+::size\+\_\+t \mbox{\hyperlink{class_compact_star_1_1_n_star_a39481f7840c390feba464ace8cb5e123}{Size}} () const noexcept
+\begin{DoxyCompactList}\small\item\em Get number of radial grid points. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_compact_star_1_1_n_star_aca82b4c3e64f2364828b1192b6cd6730}\label{class_compact_star_1_1_n_star_aca82b4c3e64f2364828b1192b6cd6730}} 
+bool {\bfseries Has\+Rho\+\_\+i} (std\+::string\+\_\+view label) const noexcept
+\begin{DoxyCompactList}\small\item\em Check if density data exists for a labeled species (profile-\/aware). \end{DoxyCompactList}\item 
+const \mbox{\hyperlink{struct_zaki_1_1_vector_1_1_data_column}{Zaki\+::\+Vector\+::\+Data\+Column}} $\ast$ \mbox{\hyperlink{class_compact_star_1_1_n_star_a38687262ca05c5eaf98bedf3d7822e3f}{Get\+Rho\+\_\+i}} (const std\+::string\+\_\+view \&label) const
+\begin{DoxyCompactList}\small\item\em Get baryon density Data\+Column for a labeled species (profile-\/aware). \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_compact_star_1_1_n_star_a55c554d244d4ae352e77f1bd73e56659}\label{class_compact_star_1_1_n_star_a55c554d244d4ae352e77f1bd73e56659}} 
+\mbox{\hyperlink{struct_zaki_1_1_vector_1_1_data_column}{Zaki\+::\+Vector\+::\+Data\+Column}} $\ast$ {\bfseries Get\+Rho\+\_\+i} (const std\+::string \&label)
+\begin{DoxyCompactList}\small\item\em Mutable version of species access. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_compact_star_1_1_n_star_adc383e0f69703cca5c40052f8c8b930f}\label{class_compact_star_1_1_n_star_adc383e0f69703cca5c40052f8c8b930f}} 
+double {\bfseries Find\+\_\+\+Mom\+Inertia} ()
+\begin{DoxyCompactList}\small\item\em Total moment of inertia (in km$^\wedge$3) \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_compact_star_1_1_n_star_a53262063f5ebdf66305911864f160325}\label{class_compact_star_1_1_n_star_a53262063f5ebdf66305911864f160325}} 
+void {\bfseries Evaluate\+Nu} ()
+\begin{DoxyCompactList}\small\item\em Evaluate the metric function. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_compact_star_1_1_n_star_a7e8121742a5ab0a98acc77cf4ce35f1f}{Set\+Profile\+Precision}} (const int \&profile\+\_\+precision)
+\item 
+\mbox{\Hypertarget{class_compact_star_1_1_n_star_a8dfcdbadff40d1bef9e6dc27107fc42d}\label{class_compact_star_1_1_n_star_a8dfcdbadff40d1bef9e6dc27107fc42d}} 
+void {\bfseries Export} (const \mbox{\hyperlink{class_zaki_1_1_string_1_1_directory}{Zaki\+::\+String\+::\+Directory}} \&in\+\_\+dir)
+\item 
+double \mbox{\hyperlink{class_compact_star_1_1_n_star_a7522b74b1b082ff0862a57f9f7703561}{Get\+Metric\+Nu}} (const double \&in\+\_\+r) const
+\begin{DoxyCompactList}\small\item\em Metric function ν(r) \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{class_compact_star_1_1_n_star_a5983e327225a2d9bf1c11592709afbe5}{Get\+Mass}} (const double \&in\+\_\+r) const
+\begin{DoxyCompactList}\small\item\em Mass m(r) \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{class_compact_star_1_1_n_star_a86f04df9aa261da387398f63371baf57}{Get\+Baryon\+Density}} (const double \&in\+\_\+r) const
+\begin{DoxyCompactList}\small\item\em Total baryon density n\+\_\+\+B(r) \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{class_compact_star_1_1_n_star_a5da824f90b5a39023f37922b6b9bb2c1}{Get\+Energy\+Density}} (const double \&in\+\_\+r) const
+\begin{DoxyCompactList}\small\item\em Energy density ε(r) \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{class_compact_star_1_1_n_star_a7fb82d8677545986c2a75b73ac1d5f12}{Get\+Pressure}} (const double \&in\+\_\+r) const
+\begin{DoxyCompactList}\small\item\em Pressure p(r) \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_compact_star_1_1_n_star_a63ffc5c2e0dd96f5244a9e819393c53c}\label{class_compact_star_1_1_n_star_a63ffc5c2e0dd96f5244a9e819393c53c}} 
+double {\bfseries Baryon\+Num\+Integrand} (double in\+\_\+r) const
+\begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{class_compact_star_1_1_baryon}{Baryon}} number integrand 4π r$^\wedge$2 n\+\_\+B / sqrt(1-\/2M/r) \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Friends}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_compact_star_1_1_n_star_abdb640718f1cbc515cf50f6080956fa1}\label{class_compact_star_1_1_n_star_abdb640718f1cbc515cf50f6080956fa1}} 
+class {\bfseries Rotation\+Solver}
+\item 
+\mbox{\Hypertarget{class_compact_star_1_1_n_star_af2df1eb3a7bf81a86d582637d3f00689}\label{class_compact_star_1_1_n_star_af2df1eb3a7bf81a86d582637d3f00689}} 
+class {\bfseries TOVSolver}
+\item 
+\mbox{\Hypertarget{class_compact_star_1_1_n_star_a26271d5afaff6e6d3f00c055c63d0b24}\label{class_compact_star_1_1_n_star_a26271d5afaff6e6d3f00c055c63d0b24}} 
+class {\bfseries Sequence}
+\end{DoxyCompactItemize}
+\doxysubsection*{Additional Inherited Members}
+
+
+\doxysubsection{Detailed Description}
+Neutron-\/star container for TOV solutions, rotation, and export. 
+
+Transitional “phase 2” class\+:
+\begin{DoxyItemize}
+\item {\bfseries{new}} path\+: TOV → \mbox{\hyperlink{struct_compact_star_1_1_star_profile}{Star\+Profile}} (preferred)
+\item {\bfseries{old}} path\+: TOV → ds (kept, but marked for replacement) 
+\end{DoxyItemize}
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_compact_star_1_1_n_star_a86f04df9aa261da387398f63371baf57}\label{class_compact_star_1_1_n_star_a86f04df9aa261da387398f63371baf57}} 
+\index{CompactStar::NStar@{CompactStar::NStar}!GetBaryonDensity@{GetBaryonDensity}}
+\index{GetBaryonDensity@{GetBaryonDensity}!CompactStar::NStar@{CompactStar::NStar}}
+\doxysubsubsection{\texorpdfstring{GetBaryonDensity()}{GetBaryonDensity()}}
+{\footnotesize\ttfamily double Compact\+Star\+::\+NStar\+::\+Get\+Baryon\+Density (\begin{DoxyParamCaption}\item[{const double \&}]{in\+\_\+r }\end{DoxyParamCaption}) const}
+
+
+
+Total baryon density n\+\_\+\+B(r) 
+
+\mbox{\hyperlink{class_compact_star_1_1_baryon}{Baryon}} number density (fm$^\wedge$\{-\/3\}) as a function of radius. \mbox{\Hypertarget{class_compact_star_1_1_n_star_a5da824f90b5a39023f37922b6b9bb2c1}\label{class_compact_star_1_1_n_star_a5da824f90b5a39023f37922b6b9bb2c1}} 
+\index{CompactStar::NStar@{CompactStar::NStar}!GetEnergyDensity@{GetEnergyDensity}}
+\index{GetEnergyDensity@{GetEnergyDensity}!CompactStar::NStar@{CompactStar::NStar}}
+\doxysubsubsection{\texorpdfstring{GetEnergyDensity()}{GetEnergyDensity()}}
+{\footnotesize\ttfamily double Compact\+Star\+::\+NStar\+::\+Get\+Energy\+Density (\begin{DoxyParamCaption}\item[{const double \&}]{in\+\_\+r }\end{DoxyParamCaption}) const}
+
+
+
+Energy density ε(r) 
+
+Energy density (in km$^\wedge$\{-\/2\}) as a function of radius. \mbox{\Hypertarget{class_compact_star_1_1_n_star_a5983e327225a2d9bf1c11592709afbe5}\label{class_compact_star_1_1_n_star_a5983e327225a2d9bf1c11592709afbe5}} 
+\index{CompactStar::NStar@{CompactStar::NStar}!GetMass@{GetMass}}
+\index{GetMass@{GetMass}!CompactStar::NStar@{CompactStar::NStar}}
+\doxysubsubsection{\texorpdfstring{GetMass()}{GetMass()}}
+{\footnotesize\ttfamily double Compact\+Star\+::\+NStar\+::\+Get\+Mass (\begin{DoxyParamCaption}\item[{const double \&}]{in\+\_\+r }\end{DoxyParamCaption}) const}
+
+
+
+Mass m(r) 
+
+Mass (in km) as a function of radius. \mbox{\Hypertarget{class_compact_star_1_1_n_star_a7522b74b1b082ff0862a57f9f7703561}\label{class_compact_star_1_1_n_star_a7522b74b1b082ff0862a57f9f7703561}} 
+\index{CompactStar::NStar@{CompactStar::NStar}!GetMetricNu@{GetMetricNu}}
+\index{GetMetricNu@{GetMetricNu}!CompactStar::NStar@{CompactStar::NStar}}
+\doxysubsubsection{\texorpdfstring{GetMetricNu()}{GetMetricNu()}}
+{\footnotesize\ttfamily double Compact\+Star\+::\+NStar\+::\+Get\+Metric\+Nu (\begin{DoxyParamCaption}\item[{const double \&}]{in\+\_\+r }\end{DoxyParamCaption}) const}
+
+
+
+Metric function ν(r) 
+
+Metric function as a function of radius (in km) \mbox{\Hypertarget{class_compact_star_1_1_n_star_a7fb82d8677545986c2a75b73ac1d5f12}\label{class_compact_star_1_1_n_star_a7fb82d8677545986c2a75b73ac1d5f12}} 
+\index{CompactStar::NStar@{CompactStar::NStar}!GetPressure@{GetPressure}}
+\index{GetPressure@{GetPressure}!CompactStar::NStar@{CompactStar::NStar}}
+\doxysubsubsection{\texorpdfstring{GetPressure()}{GetPressure()}}
+{\footnotesize\ttfamily double Compact\+Star\+::\+NStar\+::\+Get\+Pressure (\begin{DoxyParamCaption}\item[{const double \&}]{in\+\_\+r }\end{DoxyParamCaption}) const}
+
+
+
+Pressure p(r) 
+
+Pressure (in km$^\wedge$\{-\/2\}) as a function of radius. \mbox{\Hypertarget{class_compact_star_1_1_n_star_a38687262ca05c5eaf98bedf3d7822e3f}\label{class_compact_star_1_1_n_star_a38687262ca05c5eaf98bedf3d7822e3f}} 
+\index{CompactStar::NStar@{CompactStar::NStar}!GetRho\_i@{GetRho\_i}}
+\index{GetRho\_i@{GetRho\_i}!CompactStar::NStar@{CompactStar::NStar}}
+\doxysubsubsection{\texorpdfstring{GetRho\_i()}{GetRho\_i()}}
+{\footnotesize\ttfamily const \mbox{\hyperlink{struct_zaki_1_1_vector_1_1_data_column}{Zaki\+::\+Vector\+::\+Data\+Column}} $\ast$ Compact\+Star\+::\+NStar\+::\+Get\+Rho\+\_\+i (\begin{DoxyParamCaption}\item[{const std\+::string\+\_\+view \&}]{label }\end{DoxyParamCaption}) const}
+
+
+
+Get baryon density Data\+Column for a labeled species (profile-\/aware). 
+
+\begin{DoxyReturn}{Returns}
+pointer to column or nullptr if not found. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_compact_star_1_1_n_star_a5b198d2e784a64ecbbdc0b3436471e36}\label{class_compact_star_1_1_n_star_a5b198d2e784a64ecbbdc0b3436471e36}} 
+\index{CompactStar::NStar@{CompactStar::NStar}!GetSequence@{GetSequence}}
+\index{GetSequence@{GetSequence}!CompactStar::NStar@{CompactStar::NStar}}
+\doxysubsubsection{\texorpdfstring{GetSequence()}{GetSequence()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily const \mbox{\hyperlink{class_compact_star_1_1_seq_point}{Compact\+Star\+::\+Seq\+Point}} \& Compact\+Star\+::\+NStar\+::\+Get\+Sequence (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [noexcept]}}
+
+
+
+Retrieve the computed sequence point (legacy). 
+
+brief Return const reference to the sequence point (from the profile). details If the profile is empty, returns a static empty \mbox{\hyperlink{class_compact_star_1_1_seq_point}{Seq\+Point}}. \mbox{\Hypertarget{class_compact_star_1_1_n_star_a0644e086cc0a4bffd877747efbe83b3a}\label{class_compact_star_1_1_n_star_a0644e086cc0a4bffd877747efbe83b3a}} 
+\index{CompactStar::NStar@{CompactStar::NStar}!GetSequence@{GetSequence}}
+\index{GetSequence@{GetSequence}!CompactStar::NStar@{CompactStar::NStar}}
+\doxysubsubsection{\texorpdfstring{GetSequence()}{GetSequence()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_compact_star_1_1_seq_point}{Compact\+Star\+::\+Seq\+Point}} \& Compact\+Star\+::\+NStar\+::\+Get\+Sequence (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [noexcept]}}
+
+brief Mutable access to the sequence point (from the profile). details Use this if you want to tweak B, I, etc. after finalize. \mbox{\Hypertarget{class_compact_star_1_1_n_star_a59f790b90655725850bca28979252fc4}\label{class_compact_star_1_1_n_star_a59f790b90655725850bca28979252fc4}} 
+\index{CompactStar::NStar@{CompactStar::NStar}!Reset@{Reset}}
+\index{Reset@{Reset}!CompactStar::NStar@{CompactStar::NStar}}
+\doxysubsubsection{\texorpdfstring{Reset()}{Reset()}}
+{\footnotesize\ttfamily void Compact\+Star\+::\+NStar\+::\+Reset (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Reset B\+\_\+integrand, sequence, flags, and profile to an empty state. Invalidates all profile views. 
+
+Similar to the destructor. \mbox{\Hypertarget{class_compact_star_1_1_n_star_a7e8121742a5ab0a98acc77cf4ce35f1f}\label{class_compact_star_1_1_n_star_a7e8121742a5ab0a98acc77cf4ce35f1f}} 
+\index{CompactStar::NStar@{CompactStar::NStar}!SetProfilePrecision@{SetProfilePrecision}}
+\index{SetProfilePrecision@{SetProfilePrecision}!CompactStar::NStar@{CompactStar::NStar}}
+\doxysubsubsection{\texorpdfstring{SetProfilePrecision()}{SetProfilePrecision()}}
+{\footnotesize\ttfamily void Compact\+Star\+::\+NStar\+::\+Set\+Profile\+Precision (\begin{DoxyParamCaption}\item[{const int \&}]{in\+\_\+prec }\end{DoxyParamCaption})}
+
+Precision for printing the profile by default it is set to \textquotesingle{}9\textquotesingle{} digits \mbox{\Hypertarget{class_compact_star_1_1_n_star_a39481f7840c390feba464ace8cb5e123}\label{class_compact_star_1_1_n_star_a39481f7840c390feba464ace8cb5e123}} 
+\index{CompactStar::NStar@{CompactStar::NStar}!Size@{Size}}
+\index{Size@{Size}!CompactStar::NStar@{CompactStar::NStar}}
+\doxysubsubsection{\texorpdfstring{Size()}{Size()}}
+{\footnotesize\ttfamily std\+::size\+\_\+t Compact\+Star\+::\+NStar\+::\+Size (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
+
+
+
+Get number of radial grid points. 
+
+Uses the safe helpers you added\+: first we check {\ttfamily prof\+\_\+.\+empty()}, then we fall back to the legacy {\ttfamily ds} if necessary. \mbox{\Hypertarget{class_compact_star_1_1_n_star_a8ae85e3f2ea447d49d29aa29055d25c5}\label{class_compact_star_1_1_n_star_a8ae85e3f2ea447d49d29aa29055d25c5}} 
+\index{CompactStar::NStar@{CompactStar::NStar}!SolveTOV\_Profile@{SolveTOV\_Profile}}
+\index{SolveTOV\_Profile@{SolveTOV\_Profile}!CompactStar::NStar@{CompactStar::NStar}}
+\doxysubsubsection{\texorpdfstring{SolveTOV\_Profile()}{SolveTOV\_Profile()}}
+{\footnotesize\ttfamily int Compact\+Star\+::\+NStar\+::\+Solve\+TOV\+\_\+\+Profile (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_compact_star_1_1_comp_o_s_e___e_o_s}{Comp\+OSE\+\_\+\+EOS}} \&}]{eos,  }\item[{double}]{target\+\_\+\+M\+\_\+solar }\end{DoxyParamCaption})}
+
+
+
+Solve TOV and store result in internal \mbox{\hyperlink{struct_compact_star_1_1_star_profile}{Star\+Profile}}. 
+
+Implementation in .cpp should call your new {\ttfamily TOVSolver\+::\+Solve\+To\+Profile(...)} (or equivalent) that now fills radius, mass, p, eps, rho, nu, and (optionally) lambda, and also registers species via {\ttfamily Add\+Species(...)}. 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Compact\+Star/\+Core/\mbox{\hyperlink{_n_star_8hpp}{NStar.\+hpp}}\item 
+Compact\+Star/\+Core/src/NStar.\+cpp\end{DoxyCompactItemize}

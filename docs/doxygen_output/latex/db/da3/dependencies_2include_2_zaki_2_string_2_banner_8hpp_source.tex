@@ -1,0 +1,173 @@
+\hypertarget{dependencies_2include_2_zaki_2_string_2_banner_8hpp_source}{}\doxysection{Banner.\+hpp}
+\label{dependencies_2include_2_zaki_2_string_2_banner_8hpp_source}\index{dependencies/include/Zaki/String/Banner.hpp@{dependencies/include/Zaki/String/Banner.hpp}}
+\mbox{\hyperlink{dependencies_2include_2_zaki_2_string_2_banner_8hpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{comment}{// -\/*-\/ lsst-\/c++ -\/*-\/}}
+\DoxyCodeLine{2 \textcolor{comment}{/*}}
+\DoxyCodeLine{3 \textcolor{comment}{* Zaki's Common Library}}
+\DoxyCodeLine{4 \textcolor{comment}{* See License file at the top of the source tree.}}
+\DoxyCodeLine{5 \textcolor{comment}{*}}
+\DoxyCodeLine{6 \textcolor{comment}{* Copyright (c) 2023 Mohammadreza Zakeri}}
+\DoxyCodeLine{7 \textcolor{comment}{*}}
+\DoxyCodeLine{8 \textcolor{comment}{* Permission is hereby granted, free of charge, to any person obtaining a copy}}
+\DoxyCodeLine{9 \textcolor{comment}{* of this software and associated documentation files (the "{}Software"{}), to deal}}
+\DoxyCodeLine{10 \textcolor{comment}{* in the Software without restriction, including without limitation the rights}}
+\DoxyCodeLine{11 \textcolor{comment}{* to use, copy, modify, merge, publish, distribute, sublicense, and/or sell}}
+\DoxyCodeLine{12 \textcolor{comment}{* copies of the Software, and to permit persons to whom the Software is}}
+\DoxyCodeLine{13 \textcolor{comment}{* furnished to do so, subject to the following conditions:}}
+\DoxyCodeLine{14 \textcolor{comment}{*}}
+\DoxyCodeLine{15 \textcolor{comment}{* The above copyright notice and this permission notice shall be included in all}}
+\DoxyCodeLine{16 \textcolor{comment}{* copies or substantial portions of the Software.}}
+\DoxyCodeLine{17 \textcolor{comment}{*}}
+\DoxyCodeLine{18 \textcolor{comment}{* THE SOFTWARE IS PROVIDED "{}AS IS"{}, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR}}
+\DoxyCodeLine{19 \textcolor{comment}{* IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,}}
+\DoxyCodeLine{20 \textcolor{comment}{* FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE}}
+\DoxyCodeLine{21 \textcolor{comment}{* AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER}}
+\DoxyCodeLine{22 \textcolor{comment}{* LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,}}
+\DoxyCodeLine{23 \textcolor{comment}{* OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE}}
+\DoxyCodeLine{24 \textcolor{comment}{* SOFTWARE.}}
+\DoxyCodeLine{25 \textcolor{comment}{*/}}
+\DoxyCodeLine{26 }
+\DoxyCodeLine{39 \textcolor{preprocessor}{\#ifndef Zaki\_String\_Banner\_H}}
+\DoxyCodeLine{40 \textcolor{preprocessor}{\#define Zaki\_String\_Banner\_H}}
+\DoxyCodeLine{41 }
+\DoxyCodeLine{42 \textcolor{preprocessor}{\#include "{}string"{}}}
+\DoxyCodeLine{43 \textcolor{preprocessor}{\#include "{}vector"{}}}
+\DoxyCodeLine{44 }
+\DoxyCodeLine{45 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_text_box_8hpp}{Zaki/String/TextBox.hpp}}"{}}}
+\DoxyCodeLine{46 }
+\DoxyCodeLine{47 \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{48 \textcolor{keyword}{namespace }Zaki::String}
+\DoxyCodeLine{49 \{}
+\DoxyCodeLine{50 }
+\DoxyCodeLine{51 \textcolor{comment}{//==============================================================}}
+\DoxyCodeLine{52   \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{53   \textcolor{keyword}{struct }\mbox{\hyperlink{struct_zaki_1_1_string_1_1_content}{Content}}}
+\DoxyCodeLine{54   \{}
+\DoxyCodeLine{55     \textcolor{keywordtype}{size\_t} index = 0 ;}
+\DoxyCodeLine{56     }
+\DoxyCodeLine{57     \mbox{\hyperlink{struct_zaki_1_1_string_1_1_content}{Content}}(\textcolor{keyword}{const} \textcolor{keywordtype}{size\_t}\& idx) : index(idx) \{\}}
+\DoxyCodeLine{58 }
+\DoxyCodeLine{59     \textcolor{keyword}{virtual} std::string Str() \textcolor{keyword}{const} = 0;}
+\DoxyCodeLine{60 }
+\DoxyCodeLine{61     \textcolor{keyword}{virtual} \mbox{\hyperlink{struct_zaki_1_1_string_1_1_content}{\string~Content}}() \{\}}
+\DoxyCodeLine{62   \};}
+\DoxyCodeLine{63 }
+\DoxyCodeLine{64   \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{65   \textcolor{keyword}{struct }\mbox{\hyperlink{struct_zaki_1_1_string_1_1_version}{Version}} : \textcolor{keyword}{public} \mbox{\hyperlink{struct_zaki_1_1_string_1_1_content}{Content}}}
+\DoxyCodeLine{66   \{}
+\DoxyCodeLine{67     std::string num;}
+\DoxyCodeLine{68     std::string date;}
+\DoxyCodeLine{69 }
+\DoxyCodeLine{70     \textcolor{comment}{// constructor}}
+\DoxyCodeLine{71     \mbox{\hyperlink{struct_zaki_1_1_string_1_1_version}{Version}}(\textcolor{keyword}{const} \textcolor{keywordtype}{char}* in\_num, \textcolor{keyword}{const} \textcolor{keywordtype}{char}* in\_date, \textcolor{keyword}{const} \textcolor{keywordtype}{size\_t}\& idx=0) }
+\DoxyCodeLine{72       :\mbox{\hyperlink{struct_zaki_1_1_string_1_1_content}{Content}}(idx), num(in\_num), date(in\_date) \{\}}
+\DoxyCodeLine{73 }
+\DoxyCodeLine{74     std::string Str()\textcolor{keyword}{ const override}}
+\DoxyCodeLine{75 \textcolor{keyword}{    }\{}
+\DoxyCodeLine{76       \textcolor{keywordflow}{return} \textcolor{stringliteral}{"{}Version "{}} + num + \textcolor{stringliteral}{"{}         "{}} + date ;}
+\DoxyCodeLine{77     \}}
+\DoxyCodeLine{78 }
+\DoxyCodeLine{79   \};}
+\DoxyCodeLine{80 }
+\DoxyCodeLine{81   \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{82   \textcolor{keyword}{struct }\mbox{\hyperlink{struct_zaki_1_1_string_1_1_website}{Website}} : \textcolor{keyword}{public} \mbox{\hyperlink{struct_zaki_1_1_string_1_1_content}{Content}}}
+\DoxyCodeLine{83   \{}
+\DoxyCodeLine{84     std::string label;}
+\DoxyCodeLine{85     std::string link ;}
+\DoxyCodeLine{86 }
+\DoxyCodeLine{87     \textcolor{comment}{// constructor}}
+\DoxyCodeLine{88     \mbox{\hyperlink{struct_zaki_1_1_string_1_1_website}{Website}}(\textcolor{keyword}{const} \textcolor{keywordtype}{char}* in\_lab, \textcolor{keyword}{const} \textcolor{keywordtype}{char}* in\_link, \textcolor{keywordtype}{size\_t} idx=0) }
+\DoxyCodeLine{89       : \mbox{\hyperlink{struct_zaki_1_1_string_1_1_content}{Content}}(idx), label(in\_lab), link(in\_link)\{\}}
+\DoxyCodeLine{90 }
+\DoxyCodeLine{91     std::string Str()\textcolor{keyword}{ const override }}
+\DoxyCodeLine{92 \textcolor{keyword}{    }\{}
+\DoxyCodeLine{93       \textcolor{keywordflow}{return} label + \textcolor{stringliteral}{"{}: "{}} + link ;}
+\DoxyCodeLine{94     \}}
+\DoxyCodeLine{95   \};}
+\DoxyCodeLine{96 }
+\DoxyCodeLine{97   \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{98     \textcolor{keyword}{struct }\mbox{\hyperlink{struct_zaki_1_1_string_1_1_author}{Author}} : \textcolor{keyword}{public} \mbox{\hyperlink{struct_zaki_1_1_string_1_1_content}{Content}}}
+\DoxyCodeLine{99   \{}
+\DoxyCodeLine{100     std::string first\_name;}
+\DoxyCodeLine{101     std::string last\_name ;}
+\DoxyCodeLine{102 }
+\DoxyCodeLine{103     \textcolor{comment}{// constructor}}
+\DoxyCodeLine{104     \mbox{\hyperlink{struct_zaki_1_1_string_1_1_author}{Author}}(\textcolor{keyword}{const} \textcolor{keywordtype}{char}* in\_first, \textcolor{keyword}{const} \textcolor{keywordtype}{char}* in\_last, \textcolor{keywordtype}{size\_t} idx=0) }
+\DoxyCodeLine{105       : \mbox{\hyperlink{struct_zaki_1_1_string_1_1_content}{Content}}(idx), first\_name(in\_first), last\_name(in\_last) \{\}}
+\DoxyCodeLine{106 }
+\DoxyCodeLine{107     std::string Str()\textcolor{keyword}{ const override }}
+\DoxyCodeLine{108 \textcolor{keyword}{    }\{}
+\DoxyCodeLine{109       \textcolor{keywordflow}{return} \textcolor{stringliteral}{"{}Created by "{}} + ToString(first\_name[0]) + \textcolor{stringliteral}{"{}. "{}} + last\_name ;}
+\DoxyCodeLine{110     \}}
+\DoxyCodeLine{111   \};}
+\DoxyCodeLine{112 }
+\DoxyCodeLine{113   \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{114   \textcolor{keyword}{struct }\mbox{\hyperlink{struct_zaki_1_1_string_1_1_program_name}{ProgramName}} : \textcolor{keyword}{public} \mbox{\hyperlink{struct_zaki_1_1_string_1_1_content}{Content}}}
+\DoxyCodeLine{115   \{}
+\DoxyCodeLine{116     std::string name;}
+\DoxyCodeLine{117 }
+\DoxyCodeLine{118     \textcolor{comment}{// constructor}}
+\DoxyCodeLine{119     \mbox{\hyperlink{struct_zaki_1_1_string_1_1_program_name}{ProgramName}}(\textcolor{keyword}{const} \textcolor{keywordtype}{char}* in\_name, \textcolor{keywordtype}{size\_t} idx=0) }
+\DoxyCodeLine{120       : \mbox{\hyperlink{struct_zaki_1_1_string_1_1_content}{Content}}(idx), name(in\_name)\{\}}
+\DoxyCodeLine{121 }
+\DoxyCodeLine{122 }
+\DoxyCodeLine{123     std::string Str()\textcolor{keyword}{ const override }}
+\DoxyCodeLine{124 \textcolor{keyword}{    }\{}
+\DoxyCodeLine{125       \textcolor{keywordflow}{return} \textcolor{stringliteral}{"{}Welcome to "{}} + name ;}
+\DoxyCodeLine{126     \}}
+\DoxyCodeLine{127   \};}
+\DoxyCodeLine{128 }
+\DoxyCodeLine{129   \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{130     \textcolor{keyword}{struct }\mbox{\hyperlink{struct_zaki_1_1_string_1_1_misc}{Misc}} : \textcolor{keyword}{public} \mbox{\hyperlink{struct_zaki_1_1_string_1_1_content}{Content}}}
+\DoxyCodeLine{131   \{}
+\DoxyCodeLine{132     std::string item;}
+\DoxyCodeLine{133 }
+\DoxyCodeLine{134     \textcolor{comment}{// constructor}}
+\DoxyCodeLine{135     \mbox{\hyperlink{struct_zaki_1_1_string_1_1_misc}{Misc}}(\textcolor{keyword}{const} \textcolor{keywordtype}{char}* in\_item, \textcolor{keywordtype}{size\_t} idx=0) }
+\DoxyCodeLine{136       :\mbox{\hyperlink{struct_zaki_1_1_string_1_1_content}{Content}}(idx), item(in\_item) \{ \}}
+\DoxyCodeLine{137 }
+\DoxyCodeLine{138 }
+\DoxyCodeLine{139     std::string Str()\textcolor{keyword}{ const override }}
+\DoxyCodeLine{140 \textcolor{keyword}{    }\{}
+\DoxyCodeLine{141       \textcolor{keywordflow}{return} item ;}
+\DoxyCodeLine{142     \}}
+\DoxyCodeLine{143   \};}
+\DoxyCodeLine{144 }
+\DoxyCodeLine{145   \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{146   \textcolor{keyword}{class }\mbox{\hyperlink{class_zaki_1_1_string_1_1_banner}{Banner}}}
+\DoxyCodeLine{147   \{}
+\DoxyCodeLine{148 }
+\DoxyCodeLine{149   \textcolor{keyword}{public}:}
+\DoxyCodeLine{150     \mbox{\hyperlink{class_zaki_1_1_string_1_1_banner}{Banner}}();}
+\DoxyCodeLine{151     \mbox{\hyperlink{class_zaki_1_1_string_1_1_banner}{Banner}}(\mbox{\hyperlink{struct_zaki_1_1_string_1_1_program_name}{ProgramName}}*, \mbox{\hyperlink{struct_zaki_1_1_string_1_1_version}{Version}}*, \mbox{\hyperlink{struct_zaki_1_1_string_1_1_author}{Author}}*, \mbox{\hyperlink{struct_zaki_1_1_string_1_1_website}{Website}}*);}
+\DoxyCodeLine{152 }
+\DoxyCodeLine{153     \textcolor{comment}{// void SetName(const char*) ;}}
+\DoxyCodeLine{154     \textcolor{comment}{// void SetAuthor(const char*) ;}}
+\DoxyCodeLine{155     \textcolor{comment}{// void SetVersion(const Version) ;}}
+\DoxyCodeLine{156     \textcolor{comment}{// void SetWebsite(const Website) ;}}
+\DoxyCodeLine{157     \textcolor{keywordtype}{void} AddContent(\mbox{\hyperlink{struct_zaki_1_1_string_1_1_content}{Content}}*) ;}
+\DoxyCodeLine{158     \textcolor{keywordtype}{void} SortContents() ;}
+\DoxyCodeLine{159 }
+\DoxyCodeLine{160     \mbox{\hyperlink{class_zaki_1_1_string_1_1_text_box}{TextBox}}* GetTextBox() ;}
+\DoxyCodeLine{161     \textcolor{keywordtype}{void} Show() ;}
+\DoxyCodeLine{162 }
+\DoxyCodeLine{163   \textcolor{keyword}{private}:}
+\DoxyCodeLine{164     \textcolor{comment}{// std::string name ;}}
+\DoxyCodeLine{165     \mbox{\hyperlink{class_zaki_1_1_string_1_1_text_box}{TextBox}} text\_box ;  }
+\DoxyCodeLine{166     \textcolor{comment}{// Version version ;}}
+\DoxyCodeLine{167     \textcolor{comment}{// std::string author ;}}
+\DoxyCodeLine{168     \textcolor{comment}{// std::vector<std::string> extra\_txt ;}}
+\DoxyCodeLine{169     \textcolor{comment}{// Website website ;}}
+\DoxyCodeLine{170     std::vector<Content*> contents;}
+\DoxyCodeLine{171   \};}
+\DoxyCodeLine{172   \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{173 }
+\DoxyCodeLine{174 \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{175 \} \textcolor{comment}{// End of namespace Zaki::String}}
+\DoxyCodeLine{176 \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{177 }
+\DoxyCodeLine{178 \textcolor{comment}{//==============================================================}}
+\DoxyCodeLine{179 \textcolor{preprocessor}{\#endif }\textcolor{comment}{/*Zaki\_String\_Banner\_H*/}\textcolor{preprocessor}{}}
+
+\end{DoxyCode}

@@ -15,7 +15,7 @@ add_compile_options(-pthread)
 
 # For using gnuplot in the future
 # find_package(Boost REQUIRED COMPONENTS
-#     iostreams system filesystem
+# iostreams system filesystem
 # )
 
 # set(root_cmake_path "/opt/local/libexec/root6/share/root/cmake")
@@ -23,12 +23,11 @@ add_compile_options(-pthread)
 # find_package(ROOT REQUIRED)
 
 # set(ROOT_LIBS
-#     ROOT::Core
-#     ROOT::Gpad
-#     ROOT::Graf
-#     ROOT::Hist
+# ROOT::Core
+# ROOT::Gpad
+# ROOT::Graf
+# ROOT::Hist
 # )
-
 find_package(GSL REQUIRED)
 
 set(DEP_LIB_DIR ${CMAKE_CURRENT_SOURCE_DIR}/dependencies/lib)
@@ -39,6 +38,19 @@ set(CONFIND_LIB ${DEP_LIB_DIR}/Confind/${CMAKE_SYSTEM_NAME}/${CMAKE_HOST_SYSTEM_
 
 # list(APPEND CMAKE_PREFIX_PATH $ENV{ROOTSYS})
 
+# -----------------------------
+# Python / NumPy configuration
+# -----------------------------
+# Prefer Conda/Miniforge Python if we're in a conda env.
+if(DEFINED ENV{CONDA_PREFIX})
+    # This will be something like /Users/keeper/miniforge3
+    set(Python3_ROOT_DIR "$ENV{CONDA_PREFIX}")
+
+    # Make the executable explicit; cache so it persists between runs.
+    set(Python3_EXECUTABLE "$ENV{CONDA_PREFIX}/bin/python"
+        CACHE FILEPATH "Python 3 executable from active conda environment" FORCE)
+endif()
+
 # for matplotlib:
 find_package(Python3 COMPONENTS Interpreter Development NumPy REQUIRED)
 
@@ -47,6 +59,7 @@ find_package(Python3 COMPONENTS Interpreter Development NumPy REQUIRED)
 configure_file(CompactStarConfig.h.in ${CMAKE_CURRENT_SOURCE_DIR}/CompactStar/Core/CompactStarConfig.h)
 
 find_package(OpenMP REQUIRED)
+
 IF(OPENMP_FOUND)
     SET(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} ${OpenMP_C_FLAGS}")
     SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${OpenMP_CXX_FLAGS}")
@@ -57,35 +70,39 @@ add_subdirectory(CompactStar)
 add_library(CompactStar STATIC ${CompactStar_SRC_Files})
 set_target_properties(CompactStar PROPERTIES VERSION ${PROJECT_VERSION})
 
-target_include_directories(CompactStar 
-                            PUBLIC
-                            ${CMAKE_CURRENT_SOURCE_DIR}
-                            ${GSL_INCLUDE_DIRS}
-                            ${DEP_INC_DIR}
-                            # ${ROOT_INCLUDE_DIRS}
-                            OpenMP::OpenMP_CXX
-                            )
+target_include_directories(CompactStar
+    PUBLIC
+    ${CMAKE_CURRENT_SOURCE_DIR}
+    ${GSL_INCLUDE_DIRS}
+    ${DEP_INC_DIR}
 
-target_link_libraries(CompactStar PUBLIC 
-                        ${ZAKI_LIB} 
-                        # ${ROOT_LIBS}
-                        ${CONFIND_LIB}
-                        GSL::gsl
-                        GSL::gslcblas
-                        Python3::Python # for matplotlib
-                        Python3::Module # for matplotlib
-                        Python3::NumPy
-                        # Boost::iostreams
-                        # Boost::system
-                        # Boost::filesystem
-                        ) 
-                            
+    # ${ROOT_INCLUDE_DIRS}
+    # OpenMP::OpenMP_CXX
+)
+
+target_link_libraries(CompactStar PUBLIC
+    ${ZAKI_LIB}
+
+    # ${ROOT_LIBS}
+    ${CONFIND_LIB}
+    GSL::gsl
+    GSL::gslcblas
+    Python3::Python # for matplotlib
+    Python3::Module # for matplotlib
+    Python3::NumPy
+    OpenMP::OpenMP_CXX
+
+    # Boost::iostreams
+    # Boost::system
+    # Boost::filesystem
+)
+
 install(TARGETS CompactStar DESTINATION lib)
 
 install(DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}/dependencies/include"
-        DESTINATION dependencies)
-install(DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}/dependencies/lib" 
-        DESTINATION dependencies)
+    DESTINATION dependencies)
+install(DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}/dependencies/lib"
+    DESTINATION dependencies)
 
 install(FILES "${CMAKE_CURRENT_SOURCE_DIR}/License" DESTINATION Docs)
 
@@ -93,29 +110,27 @@ install(FILES "${CMAKE_CURRENT_SOURCE_DIR}/License" DESTINATION Docs)
 option(GEN_DOCS "Generate documents using doxygen." OFF)
 
 if(GEN_DOCS)
-    execute_process (
+    execute_process(
         COMMAND
-        doxygen ${CMAKE_CURRENT_SOURCE_DIR}/doxygen/Doxyfile
+        doxygen ${CMAKE_CURRENT_SOURCE_DIR}/docs/Doxyfile
         WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
     )
 endif()
 
 # install(DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}/doxygen/html" DESTINATION Docs)
-
 add_subdirectory(main)
 
 # foreach(src ${CompactStar_main_SRC_Files})
-#     add_executable(${src} "main/${src}.cpp")  
-#     target_link_libraries(${src} PUBLIC CompactStar)
-#     target_include_directories(${src} PUBLIC  
-#                                 ${CMAKE_CURRENT_SOURCE_DIR}/include
-#                                 ${GSL_INCLUDE_DIRS}
-#                                 ${DEP_INC_DIR}
-#                                 )
-#     install(FILES "main/${src}.cpp" DESTINATION main)
-#     install(TARGETS ${src} DESTINATION main/${src})
+# add_executable(${src} "main/${src}.cpp")
+# target_link_libraries(${src} PUBLIC CompactStar)
+# target_include_directories(${src} PUBLIC
+# ${CMAKE_CURRENT_SOURCE_DIR}/include
+# ${GSL_INCLUDE_DIRS}
+# ${DEP_INC_DIR}
+# )
+# install(FILES "main/${src}.cpp" DESTINATION main)
+# install(TARGETS ${src} DESTINATION main/${src})
 # endforeach()
-
 include(InstallRequiredSystemLibraries)
 set(CPACK_RESOURCE_FILE_LICENSE "${CMAKE_CURRENT_SOURCE_DIR}/License.txt")
 set(CPACK_PACKAGE_VERSION_MAJOR "${CompactStar_VERSION_MAJOR}")

@@ -1,0 +1,81 @@
+File Structure Suggestion:
+
+
+CompactStar/
+├─ CMakeLists.txt
+├─ Core/                         # app-agnostic scaffolding
+│  ├─ Banner.[hpp|cpp]
+│  ├─ Prog.[hpp|cpp]
+│  ├─ TaskManager.[hpp|cpp]
+│  ├─ StarBuilder.[hpp|cpp]
+│  ├─ StarProfile.[hpp|cpp]
+│  ├─ NStar.[hpp|cpp]
+│  ├─ Pulsar.[hpp|cpp]
+│  ├─ RotationSolver.[hpp|cpp]
+│  ├─ TOVSolver.[hpp|cpp]
+│  ├─ TOVSolver_Thread.[hpp|cpp]
+│  └─ Analysis.[hpp|cpp]
+│
+├─ EOS/                          # as-is (minor header renames ok)
+│  ├─ *.hpp
+│  └─ src/*.cpp
+│
+├─ Physics/
+│  ├─ State/                     # “what the star is” (minimal coupling here)
+│  │  ├─ SpinState.[hpp|cpp]         # Ω, Ė_rot, I(ρ), etc.
+│  │  ├─ ThermalState.[hpp|cpp]      # T̃ (redshifted), Lν, Lγ, C_v …
+│  │  ├─ ChemState.[hpp|cpp]         # η_e, η_μ, composition deltas
+│  │  └─ BNVState.[hpp|cpp]          # optional: n_BNV, stored yields, etc.
+│  │
+│  ├─ Driver/                    # “what pushes which states”
+│  │  ├─ IDriver.hpp                 # pure interface (see below)
+│  │  ├─ Coupling.hpp               # declarative: depends_on / updates
+│  │  ├─ Spin/
+│  │  │  ├─ MagneticDipole.[hpp|cpp]   # MDR torque dΩ/dt
+│  │  │  ├─ AccretionTorque.[hpp|cpp]  # (optional)
+│  │  │  └─ BNVSpinTorque.[hpp|cpp]    # if your BNV gives a net torque
+│  │  ├─ Chem/
+│  │  │  ├─ WeakRestoration.[hpp|cpp]  # Urca / modified Urca relaxation
+│  │  │  ├─ Rotochemical.[hpp|cpp]     # spin compression term → dη/dt
+│  │  │  └─ BNVSource.[hpp|cpp]        # direct BNV injection → dη/dt, heating
+│  │  └─ Thermal/
+│  │     ├─ PhotonCooling.[hpp|cpp]
+│  │     ├─ NeutrinoCooling.[hpp|cpp]
+│  │     └─ HeatingFromChem.[hpp|cpp]  # Γη terms → dT̃/dt
+│  │
+│  └─ Evolution/                 # “how we time-step”
+│     ├─ System.[hpp|cpp]            # assembles RHS from drivers+states
+│     ├─ Graph.[hpp|cpp]             # dependency DAG resolver (see below)
+│     ├─ Integrator/
+│     │  ├─ IIntegrator.hpp
+│     │  └─ GSLIntegrator.[hpp|cpp]  # your IntegratorGSL, renamed
+│     ├─ Observers/
+│     │  ├─ IObserver.hpp
+│     │  ├─ LogObserver.[hpp|cpp]
+│     │  └─ CheckpointObserver.[hpp|cpp]
+│     ├─ GeometryCache.[hpp|cpp]     # from ChemicalHeating/
+│     └─ StarContext.[hpp|cpp]       # from ChemicalHeating/, generalized
+│
+├─ Microphysics/                 # reusable microphysics & rates
+│  ├─ EOSHooks.[hpp|cpp]             # thin adaptors to EOS (ρ→I, C_v, etc.)
+│  ├─ Rates/
+│  │  ├─ Urca.[hpp|cpp]              # direct & modified; superfluid gates later
+│  │  ├─ PairBreaking.[hpp|cpp]      # (if/when you add)
+│  │  └─ Emissivities.[hpp|cpp]
+│  └─ BNV/                           # move your current BNV/ here
+│     ├─ Channels/
+│     │  ├─ B_Chi_Transition.[hpp|cpp]
+│     │  ├─ B_Chi_Photon.[hpp|cpp]
+│     │  ├─ B_Chi_Combo.[hpp|cpp]
+│     │  └─ B_Psi_Pion.[hpp|cpp]
+│     ├─ Sequence.[hpp|cpp]
+│     └─ (analysis helpers kept if generally useful)
+│
+├─ Extensions/                   # optional modules (kept separate)
+│  ├─ MixedStar/
+│  │  └─ DarkCore_Analysis.[hpp|cpp]
+│  └─ LightDM/
+│     └─ LightDM_Scalar_Density.[hpp|cpp]
+│
+└─ Utilities/                    # tiny cross-cutting helpers (optional)
+   └─ SeqPoint.[hpp|cpp]         # if not better kept in Core

@@ -1,0 +1,196 @@
+\hypertarget{_chemical_heating_2_chem_state_8hpp_source}{}\doxysection{Chem\+State.\+hpp}
+\label{_chemical_heating_2_chem_state_8hpp_source}\index{CompactStar/ChemicalHeating/ChemState.hpp@{CompactStar/ChemicalHeating/ChemState.hpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{comment}{// // -\/*-\/ lsst-\/c++ -\/*-\/}}
+\DoxyCodeLine{2 \textcolor{comment}{// /*}}
+\DoxyCodeLine{3 \textcolor{comment}{//  * CompactStar}}
+\DoxyCodeLine{4 \textcolor{comment}{//  * See License file at the top of the source tree.}}
+\DoxyCodeLine{5 \textcolor{comment}{//  *}}
+\DoxyCodeLine{6 \textcolor{comment}{//  * Copyright (c) 2025 Mohammadreza Zakeri}}
+\DoxyCodeLine{7 \textcolor{comment}{//  *}}
+\DoxyCodeLine{8 \textcolor{comment}{//  * Permission is hereby granted, free of charge, to any person obtaining a copy}}
+\DoxyCodeLine{9 \textcolor{comment}{//  * of this software and associated documentation files (the "{}Software"{}), to deal}}
+\DoxyCodeLine{10 \textcolor{comment}{//  * in the Software without restriction, including without limitation the rights}}
+\DoxyCodeLine{11 \textcolor{comment}{//  * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell}}
+\DoxyCodeLine{12 \textcolor{comment}{//  * copies of the Software, and to permit persons to whom the Software is}}
+\DoxyCodeLine{13 \textcolor{comment}{//  * furnished to do so, subject to the following conditions:}}
+\DoxyCodeLine{14 \textcolor{comment}{//  *}}
+\DoxyCodeLine{15 \textcolor{comment}{//  * The above copyright notice and this permission notice shall be included in all}}
+\DoxyCodeLine{16 \textcolor{comment}{//  * copies or substantial portions of the Software.}}
+\DoxyCodeLine{17 \textcolor{comment}{//  *}}
+\DoxyCodeLine{18 \textcolor{comment}{//  * THE SOFTWARE IS PROVIDED "{}AS IS"{}, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR}}
+\DoxyCodeLine{19 \textcolor{comment}{//  * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,}}
+\DoxyCodeLine{20 \textcolor{comment}{//  * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE}}
+\DoxyCodeLine{21 \textcolor{comment}{//  * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER}}
+\DoxyCodeLine{22 \textcolor{comment}{//  * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,}}
+\DoxyCodeLine{23 \textcolor{comment}{//  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE}}
+\DoxyCodeLine{24 \textcolor{comment}{//  * SOFTWARE.}}
+\DoxyCodeLine{25 \textcolor{comment}{//  */}}
+\DoxyCodeLine{26 }
+\DoxyCodeLine{27 \textcolor{comment}{// /**}}
+\DoxyCodeLine{28 \textcolor{comment}{//  * @file EvolutionState.hpp}}
+\DoxyCodeLine{29 \textcolor{comment}{//  * @brief Time-\/evolution state vector for chemical/thermal evolution.}}
+\DoxyCodeLine{30 \textcolor{comment}{//  *}}
+\DoxyCodeLine{31 \textcolor{comment}{//  * Holds the minimal ODE state: redshifted internal temperature T\string^∞, an array of}}
+\DoxyCodeLine{32 \textcolor{comment}{//  * chemical imbalances \(\backslash\)f\$\(\backslash\)eta\_i\(\backslash\)f\$ (e.g., \(\backslash\)f\$\(\backslash\)eta\_\{npe\}, \(\backslash\)eta\_\{np\(\backslash\)mu\}\(\backslash\)f\$), and}}
+\DoxyCodeLine{33 \textcolor{comment}{//  * optionally the spin frequency \(\backslash\)f\$\(\backslash\)Omega\(\backslash\)f\$ if coupled.}}
+\DoxyCodeLine{34 \textcolor{comment}{//  *}}
+\DoxyCodeLine{35 \textcolor{comment}{//  * All temperatures here are **redshifted** unless documented otherwise.}}
+\DoxyCodeLine{36 \textcolor{comment}{//  *}}
+\DoxyCodeLine{37 \textcolor{comment}{//  * @ingroup ChemicalHeating}}
+\DoxyCodeLine{38 \textcolor{comment}{//  * @author}}
+\DoxyCodeLine{39 \textcolor{comment}{//  *  Mohammadreza Zakeri (M.Zakeri@eku.edu)}}
+\DoxyCodeLine{40 \textcolor{comment}{//  */}}
+\DoxyCodeLine{41 \textcolor{comment}{// \#ifndef CompactStar\_ChemicalHeating\_EvolutionState\_H}}
+\DoxyCodeLine{42 \textcolor{comment}{// \#define CompactStar\_ChemicalHeating\_EvolutionState\_H}}
+\DoxyCodeLine{43 }
+\DoxyCodeLine{44 \textcolor{comment}{// \#include <string>}}
+\DoxyCodeLine{45 \textcolor{comment}{// \#include <vector>}}
+\DoxyCodeLine{46 }
+\DoxyCodeLine{47 \textcolor{comment}{// //==============================================================}}
+\DoxyCodeLine{48 \textcolor{comment}{// namespace CompactStar}}
+\DoxyCodeLine{49 \textcolor{comment}{// \{}}
+\DoxyCodeLine{50 \textcolor{comment}{// //==============================================================}}
+\DoxyCodeLine{51 \textcolor{comment}{// namespace ChemicalHeating}}
+\DoxyCodeLine{52 \textcolor{comment}{// \{}}
+\DoxyCodeLine{53 }
+\DoxyCodeLine{54 \textcolor{comment}{// //==============================================================}}
+\DoxyCodeLine{55 \textcolor{comment}{// //                      EvolutionState Struct}}
+\DoxyCodeLine{56 \textcolor{comment}{// //==============================================================}}
+\DoxyCodeLine{57 \textcolor{comment}{// /**}}
+\DoxyCodeLine{58 \textcolor{comment}{//  * @struct EvolutionState}}
+\DoxyCodeLine{59 \textcolor{comment}{//  * @brief ODE state and metadata carried between integration steps.}}
+\DoxyCodeLine{60 \textcolor{comment}{//  */}}
+\DoxyCodeLine{61 \textcolor{comment}{// struct EvolutionState}}
+\DoxyCodeLine{62 \textcolor{comment}{// \{}}
+\DoxyCodeLine{63 \textcolor{comment}{//  /** @brief Coordinate time (s) measured by a distant observer. */}}
+\DoxyCodeLine{64 \textcolor{comment}{//  double t = 0.0;}}
+\DoxyCodeLine{65 }
+\DoxyCodeLine{66 \textcolor{comment}{//  /** @brief Redshifted (isothermal-\/core) temperature \(\backslash\)f\$T\string^\(\backslash\)infty\(\backslash\)f\$ in K. */}}
+\DoxyCodeLine{67 \textcolor{comment}{//  double Tinf = 0.0;}}
+\DoxyCodeLine{68 }
+\DoxyCodeLine{69 \textcolor{comment}{//  /**}}
+\DoxyCodeLine{70 \textcolor{comment}{//   * @brief Chemical imbalance vector \(\backslash\)f\$\(\backslash\)boldsymbol\{\(\backslash\)eta\}\(\backslash\)f\$ in energy units (e.g., erg).}}
+\DoxyCodeLine{71 \textcolor{comment}{//   *}}
+\DoxyCodeLine{72 \textcolor{comment}{//   * Ordering and meaning are configured in Config; typical entries include}}
+\DoxyCodeLine{73 \textcolor{comment}{//   * \(\backslash\)f\$\(\backslash\)eta\_\{npe\}\(\backslash\)f\$ and \(\backslash\)f\$\(\backslash\)eta\_\{np\(\backslash\)mu\}\(\backslash\)f\$.}}
+\DoxyCodeLine{74 \textcolor{comment}{//   */}}
+\DoxyCodeLine{75 \textcolor{comment}{//  std::vector<double> eta;}}
+\DoxyCodeLine{76 }
+\DoxyCodeLine{77 \textcolor{comment}{//  /**}}
+\DoxyCodeLine{78 \textcolor{comment}{//   * @brief Spin frequency \(\backslash\)f\$\(\backslash\)Omega\(\backslash\)f\$ in rad/s.}}
+\DoxyCodeLine{79 \textcolor{comment}{//   * Optional—used only if the evolution is coupled to a torque law.}}
+\DoxyCodeLine{80 \textcolor{comment}{//   */}}
+\DoxyCodeLine{81 \textcolor{comment}{//  double Omega = 0.0;}}
+\DoxyCodeLine{82 }
+\DoxyCodeLine{83 \textcolor{comment}{//  /** @brief Step counter (monotone, for diagnostics). */}}
+\DoxyCodeLine{84 \textcolor{comment}{//  unsigned long step = 0;}}
+\DoxyCodeLine{85 }
+\DoxyCodeLine{86 \textcolor{comment}{//  /** @brief Free-\/form label for provenance or run ID. */}}
+\DoxyCodeLine{87 \textcolor{comment}{//  std::string tag;}}
+\DoxyCodeLine{88 \textcolor{comment}{// \};}}
+\DoxyCodeLine{89 \textcolor{comment}{// //==============================================================}}
+\DoxyCodeLine{90 \textcolor{comment}{// \} // namespace ChemicalHeating}}
+\DoxyCodeLine{91 \textcolor{comment}{// //==============================================================}}
+\DoxyCodeLine{92 \textcolor{comment}{// \} // namespace CompactStar}}
+\DoxyCodeLine{93 \textcolor{comment}{// //==============================================================}}
+\DoxyCodeLine{94 }
+\DoxyCodeLine{95 \textcolor{comment}{// \#endif /* CompactStar\_ChemicalHeating\_EvolutionState\_H */}}
+\DoxyCodeLine{96 }
+\DoxyCodeLine{97 \textcolor{comment}{// -\/*-\/ lsst-\/c++ -\/*-\/}}
+\DoxyCodeLine{98 \textcolor{comment}{/*}}
+\DoxyCodeLine{99 \textcolor{comment}{ * CompactStar}}
+\DoxyCodeLine{100 \textcolor{comment}{ * See License file at the top of the source tree.}}
+\DoxyCodeLine{101 \textcolor{comment}{ *}}
+\DoxyCodeLine{102 \textcolor{comment}{ * Copyright (c) 2025 Mohammadreza Zakeri}}
+\DoxyCodeLine{103 \textcolor{comment}{ *}}
+\DoxyCodeLine{104 \textcolor{comment}{ * MIT License (see LICENSE at repo root)}}
+\DoxyCodeLine{105 \textcolor{comment}{ */}}
+\DoxyCodeLine{106 }
+\DoxyCodeLine{130 \textcolor{preprocessor}{\#ifndef COMPACTSTAR\_EVOLUTION\_STATE\_HPP}}
+\DoxyCodeLine{131 \textcolor{preprocessor}{\#define COMPACTSTAR\_EVOLUTION\_STATE\_HPP}}
+\DoxyCodeLine{132 }
+\DoxyCodeLine{133 \textcolor{preprocessor}{\#include <cmath>}}
+\DoxyCodeLine{134 \textcolor{preprocessor}{\#include <cstddef>}}
+\DoxyCodeLine{135 \textcolor{preprocessor}{\#include <limits>}}
+\DoxyCodeLine{136 \textcolor{preprocessor}{\#include <string>}}
+\DoxyCodeLine{137 \textcolor{preprocessor}{\#include <vector>}}
+\DoxyCodeLine{138 }
+\DoxyCodeLine{139 \textcolor{preprocessor}{\#include <Zaki/Util/Instrumentor.hpp>} \textcolor{comment}{// Z\_LOG\_INFO/WARNING/ERROR, PROFILE\_FUNCTION}}
+\DoxyCodeLine{140 \textcolor{preprocessor}{\#include <\mbox{\hyperlink{_data_set_8hpp}{Zaki/Vector/DataSet.hpp}}>}     \textcolor{comment}{// Forward-\/compatible with your DataSet columns}}
+\DoxyCodeLine{141 }
+\DoxyCodeLine{142 \textcolor{keyword}{namespace }CompactStar}
+\DoxyCodeLine{143 \{}
+\DoxyCodeLine{144 }
+\DoxyCodeLine{150 \textcolor{keyword}{struct }\mbox{\hyperlink{struct_compact_star_1_1_step_meta}{StepMeta}}}
+\DoxyCodeLine{151 \{}
+\DoxyCodeLine{153     \textcolor{keywordtype}{double} \mbox{\hyperlink{struct_compact_star_1_1_step_meta_a32cdd3eeb0a00c2b80614b6af9e52804}{t}} = 0.0;}
+\DoxyCodeLine{155     \textcolor{keywordtype}{double} \mbox{\hyperlink{struct_compact_star_1_1_step_meta_a9aef455fb11e44a282e07bdce0efec6d}{dt}} = 0.0;}
+\DoxyCodeLine{157     \textcolor{keywordtype}{long} \mbox{\hyperlink{struct_compact_star_1_1_step_meta_a21d840fc0d07b4de5aa47e2ae7e2438a}{step}} = 0;}
+\DoxyCodeLine{158 \};}
+\DoxyCodeLine{159 }
+\DoxyCodeLine{171 \textcolor{keyword}{class }\mbox{\hyperlink{class_compact_star_1_1_state}{State}}}
+\DoxyCodeLine{172 \{}
+\DoxyCodeLine{173   \textcolor{keyword}{public}:}
+\DoxyCodeLine{174     \textcolor{keyword}{virtual} \mbox{\hyperlink{class_compact_star_1_1_state}{\string~State}}() = \textcolor{keywordflow}{default};}
+\DoxyCodeLine{175 }
+\DoxyCodeLine{177     \textcolor{keyword}{virtual} \textcolor{keyword}{const} \textcolor{keywordtype}{char} *\mbox{\hyperlink{class_compact_star_1_1_state_a130febe93078c8ddaa3c26d30231ebb0}{Name}}() \textcolor{keyword}{const} = 0;}
+\DoxyCodeLine{178 }
+\DoxyCodeLine{180     \textcolor{keyword}{virtual} std::size\_t \mbox{\hyperlink{class_compact_star_1_1_state_ac4b6b422925154bb3aa31632554b65ff}{Size}}() \textcolor{keyword}{const} = 0;}
+\DoxyCodeLine{181 }
+\DoxyCodeLine{183     \textcolor{keyword}{virtual} \textcolor{keywordtype}{double} *\mbox{\hyperlink{class_compact_star_1_1_state_a1908fba8001d6684319674355803f0dc}{Data}}() = 0;}
+\DoxyCodeLine{184 }
+\DoxyCodeLine{186     \textcolor{keyword}{virtual} \textcolor{keyword}{const} \textcolor{keywordtype}{double} *\mbox{\hyperlink{class_compact_star_1_1_state_a86d3b7efa92f48d02be6646a457cc0fd}{Data}}() \textcolor{keyword}{const} = 0;}
+\DoxyCodeLine{187 }
+\DoxyCodeLine{196     \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_compact_star_1_1_state_a119edf6b4fbda2655afebbaaadc60cc5}{Resize}}(std::size\_t N) = 0;}
+\DoxyCodeLine{197 }
+\DoxyCodeLine{203     \textcolor{keyword}{virtual} std::size\_t \mbox{\hyperlink{class_compact_star_1_1_state_a083735dd09942c0e702cf45918a4ab95}{GridSize}}()\textcolor{keyword}{ const }\{ \textcolor{keywordflow}{return} \mbox{\hyperlink{class_compact_star_1_1_state_ac4b6b422925154bb3aa31632554b65ff}{Size}}(); \}}
+\DoxyCodeLine{204 }
+\DoxyCodeLine{210     \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_compact_star_1_1_state_a6bd40ae7b89d8b3f5bd77de959925181}{Clear}}() = 0;}
+\DoxyCodeLine{211 }
+\DoxyCodeLine{218     \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_compact_star_1_1_state_a65c521d97c79f2ec86ce6cf240e8a847}{SanityCheck}}()\textcolor{keyword}{ const}}
+\DoxyCodeLine{219 \textcolor{keyword}{    }\{}
+\DoxyCodeLine{220         PROFILE\_FUNCTION();}
+\DoxyCodeLine{221         \textcolor{keyword}{const} std::size\_t n = \mbox{\hyperlink{class_compact_star_1_1_state_ac4b6b422925154bb3aa31632554b65ff}{Size}}();}
+\DoxyCodeLine{222         \textcolor{keyword}{const} \textcolor{keywordtype}{double} *y = \mbox{\hyperlink{class_compact_star_1_1_state_a1908fba8001d6684319674355803f0dc}{Data}}();}
+\DoxyCodeLine{223         \textcolor{keywordflow}{if} (!y || n == 0)}
+\DoxyCodeLine{224         \{}
+\DoxyCodeLine{225             Z\_LOG\_WARNING(std::string(\textcolor{stringliteral}{"{}State::SanityCheck: empty state in "{}}) + \mbox{\hyperlink{class_compact_star_1_1_state_a130febe93078c8ddaa3c26d30231ebb0}{Name}}());}
+\DoxyCodeLine{226             \textcolor{keywordflow}{return};}
+\DoxyCodeLine{227         \}}
+\DoxyCodeLine{228 }
+\DoxyCodeLine{229         \textcolor{keywordtype}{bool} has\_nan = \textcolor{keyword}{false}, has\_inf = \textcolor{keyword}{false};}
+\DoxyCodeLine{230         \textcolor{keywordflow}{for} (std::size\_t i = 0; i < n; ++i)}
+\DoxyCodeLine{231         \{}
+\DoxyCodeLine{232             \textcolor{keywordflow}{if} (std::isnan(y[i]))}
+\DoxyCodeLine{233             \{}
+\DoxyCodeLine{234                 has\_nan = \textcolor{keyword}{true};}
+\DoxyCodeLine{235                 \textcolor{keywordflow}{break};}
+\DoxyCodeLine{236             \}}
+\DoxyCodeLine{237             \textcolor{keywordflow}{if} (!std::isfinite(y[i]))}
+\DoxyCodeLine{238             \{}
+\DoxyCodeLine{239                 has\_inf = \textcolor{keyword}{true};}
+\DoxyCodeLine{240                 \textcolor{keywordflow}{break};}
+\DoxyCodeLine{241             \}}
+\DoxyCodeLine{242         \}}
+\DoxyCodeLine{243         \textcolor{keywordflow}{if} (has\_nan)}
+\DoxyCodeLine{244             Z\_LOG\_ERROR(std::string(\textcolor{stringliteral}{"{}SanityCheck["{}}) + \mbox{\hyperlink{class_compact_star_1_1_state_a130febe93078c8ddaa3c26d30231ebb0}{Name}}() + \textcolor{stringliteral}{"{}]: NaN detected."{}});}
+\DoxyCodeLine{245         \textcolor{keywordflow}{if} (has\_inf)}
+\DoxyCodeLine{246             Z\_LOG\_ERROR(std::string(\textcolor{stringliteral}{"{}SanityCheck["{}}) + \mbox{\hyperlink{class_compact_star_1_1_state_a130febe93078c8ddaa3c26d30231ebb0}{Name}}() + \textcolor{stringliteral}{"{}]: Inf detected."{}});}
+\DoxyCodeLine{247         \textcolor{keywordflow}{if} (!has\_nan \&\& !has\_inf)}
+\DoxyCodeLine{248             Z\_LOG\_INFO(std::string(\textcolor{stringliteral}{"{}SanityCheck["{}}) + \mbox{\hyperlink{class_compact_star_1_1_state_a130febe93078c8ddaa3c26d30231ebb0}{Name}}() + \textcolor{stringliteral}{"{}]: OK (n="{}} + std::to\_string(n) + \textcolor{stringliteral}{"{})."{}});}
+\DoxyCodeLine{249     \}}
+\DoxyCodeLine{250 }
+\DoxyCodeLine{262     \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_compact_star_1_1_state_a364c3640e904726fb1a0be3b4df11613}{ExportColumns}}(\mbox{\hyperlink{class_zaki_1_1_vector_1_1_data_set}{Zaki::Vector::DataSet}} \&ds, \textcolor{keyword}{const} std::string \&prefix)\textcolor{keyword}{ const}}
+\DoxyCodeLine{263 \textcolor{keyword}{    }\{}
+\DoxyCodeLine{264         (void)ds;}
+\DoxyCodeLine{265         (void)prefix; \textcolor{comment}{// no-\/op in base}}
+\DoxyCodeLine{266     \}}
+\DoxyCodeLine{267 \};}
+\DoxyCodeLine{268 }
+\DoxyCodeLine{269 \} \textcolor{comment}{// namespace CompactStar}}
+\DoxyCodeLine{270 }
+\DoxyCodeLine{271 \textcolor{preprocessor}{\#endif }\textcolor{comment}{// COMPACTSTAR\_EVOLUTION\_STATE\_HPP}}
+
+\end{DoxyCode}

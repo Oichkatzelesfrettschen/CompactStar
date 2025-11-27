@@ -1,0 +1,202 @@
+\hypertarget{_pulsar_8hpp_source}{}\doxysection{Pulsar.\+hpp}
+\label{_pulsar_8hpp_source}\index{CompactStar/Core/Pulsar.hpp@{CompactStar/Core/Pulsar.hpp}}
+\mbox{\hyperlink{_pulsar_8hpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 }
+\DoxyCodeLine{38 \textcolor{preprocessor}{\#ifndef CompactStar\_Pulsar\_H}}
+\DoxyCodeLine{39 \textcolor{preprocessor}{\#define CompactStar\_Pulsar\_H}}
+\DoxyCodeLine{40 }
+\DoxyCodeLine{41 \textcolor{preprocessor}{\#include <string>}}
+\DoxyCodeLine{42 }
+\DoxyCodeLine{43 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_prog_8hpp}{CompactStar/Core/Prog.hpp}}"{}}}
+\DoxyCodeLine{44 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_seq_point_8hpp}{CompactStar/Core/SeqPoint.hpp}}"{}}}
+\DoxyCodeLine{45 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_star_profile_8hpp}{CompactStar/Core/StarProfile.hpp}}"{}}}
+\DoxyCodeLine{46 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_comp_o_s_e___e_o_s_8hpp}{CompactStar/EOS/CompOSE\_EOS.hpp}}"{}}}
+\DoxyCodeLine{47 }
+\DoxyCodeLine{48 \textcolor{comment}{// modular physics/state headers}}
+\DoxyCodeLine{49 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_b_n_v_state_8hpp}{CompactStar/Physics/State/BNVState.hpp}}"{}}}
+\DoxyCodeLine{50 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_spin_state_8hpp}{CompactStar/Physics/State/SpinState.hpp}}"{}}}
+\DoxyCodeLine{51 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_thermal_state_8hpp}{CompactStar/Physics/State/ThermalState.hpp}}"{}}}
+\DoxyCodeLine{52 }
+\DoxyCodeLine{53 \textcolor{keyword}{namespace }CompactStar}
+\DoxyCodeLine{54 \{}
+\DoxyCodeLine{55 }
+\DoxyCodeLine{77 \textcolor{keyword}{class }\mbox{\hyperlink{class_compact_star_1_1_pulsar}{Pulsar}} : \textcolor{keyword}{public} \mbox{\hyperlink{class_compact_star_1_1_prog}{Prog}}}
+\DoxyCodeLine{78 \{}
+\DoxyCodeLine{79   \textcolor{keyword}{private}:}
+\DoxyCodeLine{80     \textcolor{comment}{// -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{81     \textcolor{comment}{//  Structural data}}
+\DoxyCodeLine{82     \textcolor{comment}{// -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{90 \textcolor{comment}{}    \mbox{\hyperlink{struct_compact_star_1_1_star_profile}{StarProfile}} prof\_;}
+\DoxyCodeLine{91 }
+\DoxyCodeLine{99     \mbox{\hyperlink{struct_compact_star_1_1_star_profile_view}{StarProfileView}} view\_;}
+\DoxyCodeLine{100 }
+\DoxyCodeLine{104     \mbox{\hyperlink{class_zaki_1_1_math_1_1_quantity}{Zaki::Math::Quantity}} mp; }
+\DoxyCodeLine{105     \textcolor{comment}{// -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{106     \textcolor{comment}{//  Sequence / EOS}}
+\DoxyCodeLine{107     \textcolor{comment}{// -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{114 \textcolor{comment}{}    \mbox{\hyperlink{class_compact_star_1_1_seq_point}{SeqPoint}} seq\_point\_;}
+\DoxyCodeLine{115 }
+\DoxyCodeLine{122     \textcolor{keyword}{const} \mbox{\hyperlink{class_zaki_1_1_vector_1_1_data_set}{Zaki::Vector::DataSet}} *seq\_profile\_ = \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{123 }
+\DoxyCodeLine{127     \mbox{\hyperlink{class_compact_star_1_1_comp_o_s_e___e_o_s}{CompOSE\_EOS}} *eos\_ = \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{128 }
+\DoxyCodeLine{129     \textcolor{comment}{// -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{130     \textcolor{comment}{//  Physics state}}
+\DoxyCodeLine{131     \textcolor{comment}{// -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{137 \textcolor{comment}{}    \mbox{\hyperlink{struct_compact_star_1_1_spin_state}{SpinState}} spin\_;}
+\DoxyCodeLine{138 }
+\DoxyCodeLine{142     \mbox{\hyperlink{struct_compact_star_1_1_thermal_state}{ThermalState}} thermal\_;}
+\DoxyCodeLine{143 }
+\DoxyCodeLine{149     \mbox{\hyperlink{struct_compact_star_1_1_b_n_v_state}{BNVState}} bnv\_;}
+\DoxyCodeLine{150 }
+\DoxyCodeLine{151   \textcolor{keyword}{public}:}
+\DoxyCodeLine{152     \textcolor{comment}{// -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{153     \textcolor{comment}{//  Ctors / Dtor}}
+\DoxyCodeLine{154     \textcolor{comment}{// -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{155 }
+\DoxyCodeLine{163     \mbox{\hyperlink{class_compact_star_1_1_pulsar_aa8e5083c30a7bbe59f3db9277c05e769}{Pulsar}}();}
+\DoxyCodeLine{164 }
+\DoxyCodeLine{169     \textcolor{keyword}{explicit} \mbox{\hyperlink{class_compact_star_1_1_pulsar_aa8e5083c30a7bbe59f3db9277c05e769}{Pulsar}}(\textcolor{keyword}{const} std::string \&name);}
+\DoxyCodeLine{170 }
+\DoxyCodeLine{177     \mbox{\hyperlink{class_compact_star_1_1_pulsar_aa8e5083c30a7bbe59f3db9277c05e769}{Pulsar}}(\textcolor{keyword}{const} std::string \&name,}
+\DoxyCodeLine{178            \textcolor{keyword}{const} \mbox{\hyperlink{class_zaki_1_1_math_1_1_quantity}{Zaki::Math::Quantity}} \&mass,}
+\DoxyCodeLine{179            \textcolor{keyword}{const} \mbox{\hyperlink{struct_compact_star_1_1_spin_state}{SpinState}} \&spin);}
+\DoxyCodeLine{180 }
+\DoxyCodeLine{190     \mbox{\hyperlink{class_compact_star_1_1_pulsar_aa8e5083c30a7bbe59f3db9277c05e769}{Pulsar}}(\textcolor{keyword}{const} std::string \&name,}
+\DoxyCodeLine{191            \textcolor{keyword}{const} \mbox{\hyperlink{class_zaki_1_1_math_1_1_quantity}{Zaki::Math::Quantity}} \&mass,}
+\DoxyCodeLine{192            \textcolor{keyword}{const} \mbox{\hyperlink{class_zaki_1_1_math_1_1_quantity}{Zaki::Math::Quantity}} \&spin\_p,}
+\DoxyCodeLine{193            \textcolor{keyword}{const} \mbox{\hyperlink{class_zaki_1_1_math_1_1_quantity}{Zaki::Math::Quantity}} \&spin\_pdot);}
+\DoxyCodeLine{194 }
+\DoxyCodeLine{198     \mbox{\hyperlink{class_compact_star_1_1_pulsar_a23f6bf4e493f5970afa53c9881c75f3e}{\string~Pulsar}}() = \textcolor{keywordflow}{default};}
+\DoxyCodeLine{199 }
+\DoxyCodeLine{200     \textcolor{comment}{// -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{201     \textcolor{comment}{//  EOS / profile setup}}
+\DoxyCodeLine{202     \textcolor{comment}{// -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{203 }
+\DoxyCodeLine{209     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_compact_star_1_1_pulsar_a4da6eefe7e3da41b24a330d8587c4e7e}{AttachEOS}}(\mbox{\hyperlink{class_compact_star_1_1_comp_o_s_e___e_o_s}{CompOSE\_EOS}} *e) \{ eos\_ = e; \}}
+\DoxyCodeLine{210 }
+\DoxyCodeLine{215     \mbox{\hyperlink{class_compact_star_1_1_comp_o_s_e___e_o_s}{CompOSE\_EOS}} *\mbox{\hyperlink{class_compact_star_1_1_pulsar_a63acf24ba4d73ed43975b3a0f98a3444}{GetEOS}}()\textcolor{keyword}{ const }\{ \textcolor{keywordflow}{return} eos\_; \}}
+\DoxyCodeLine{216 }
+\DoxyCodeLine{228     \textcolor{keywordtype}{int} \mbox{\hyperlink{class_compact_star_1_1_pulsar_ac9898a0d66b950119e8eff8d27a15bcf}{FindProfile}}(\textcolor{keyword}{const} std::string \&model\_name,}
+\DoxyCodeLine{229                     \textcolor{keyword}{const} \mbox{\hyperlink{class_zaki_1_1_string_1_1_directory}{Zaki::String::Directory}} \&in\_dir = \textcolor{stringliteral}{"{}"{}});}
+\DoxyCodeLine{230 }
+\DoxyCodeLine{239     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_compact_star_1_1_pulsar_a7d1fd708248d018199d1813cd3217cae}{ImportProfile}}(\textcolor{keyword}{const} std::string \&model\_name,}
+\DoxyCodeLine{240                        \textcolor{keyword}{const} \mbox{\hyperlink{class_zaki_1_1_string_1_1_directory}{Zaki::String::Directory}} \&in\_dir = \textcolor{stringliteral}{"{}"{}});}
+\DoxyCodeLine{241 }
+\DoxyCodeLine{246     \textcolor{keyword}{const} \mbox{\hyperlink{struct_compact_star_1_1_star_profile}{StarProfile}} *\mbox{\hyperlink{class_compact_star_1_1_pulsar_a93fa1bce0fee1dfcaf3c488a61282c11}{GetProfile}}()\textcolor{keyword}{ const }\{ \textcolor{keywordflow}{return} \&prof\_; \}}
+\DoxyCodeLine{247 }
+\DoxyCodeLine{255     \mbox{\hyperlink{struct_compact_star_1_1_star_profile_view}{StarProfileView}} \mbox{\hyperlink{class_compact_star_1_1_pulsar_a27e3d4218747afca8372edc1359ecae8}{GetProfileView}}()\textcolor{keyword}{ const }\{ \textcolor{keywordflow}{return} view\_; \}}
+\DoxyCodeLine{256 }
+\DoxyCodeLine{262     \mbox{\hyperlink{class_zaki_1_1_math_1_1_quantity}{Zaki::Math::Quantity}} \mbox{\hyperlink{class_compact_star_1_1_pulsar_a8bf48f63afab8d6b6c69ab9480f1f773}{GetMass}}()\textcolor{keyword}{ const }\{ \textcolor{keywordflow}{return} mp; \}}
+\DoxyCodeLine{263 }
+\DoxyCodeLine{269     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_compact_star_1_1_pulsar_a904a6fb35defc737c27fc8386974dd68}{SetMass}}(\textcolor{keyword}{const} \mbox{\hyperlink{class_zaki_1_1_math_1_1_quantity}{Zaki::Math::Quantity}} \&in\_mp) \{ mp = in\_mp; \}}
+\DoxyCodeLine{270 }
+\DoxyCodeLine{274     \mbox{\hyperlink{class_zaki_1_1_math_1_1_quantity}{Zaki::Math::Quantity}} \mbox{\hyperlink{class_compact_star_1_1_pulsar_a31450ca0b07ddd1d9d03332926da7807}{GetSpinP}}()\textcolor{keyword}{ const}}
+\DoxyCodeLine{275 \textcolor{keyword}{    }\{}
+\DoxyCodeLine{276         \textcolor{keywordflow}{return} spin\_.\mbox{\hyperlink{struct_compact_star_1_1_spin_state_a1237035c29d40aff2b8827df476d0782}{P}};}
+\DoxyCodeLine{277     \}}
+\DoxyCodeLine{278 }
+\DoxyCodeLine{282     \mbox{\hyperlink{class_zaki_1_1_math_1_1_quantity}{Zaki::Math::Quantity}} GetSpinPDot()\textcolor{keyword}{ const}}
+\DoxyCodeLine{283 \textcolor{keyword}{    }\{}
+\DoxyCodeLine{284         \textcolor{keywordflow}{return} spin\_.\mbox{\hyperlink{struct_compact_star_1_1_spin_state_a7a54878a65c1d815d692a6abc4939cd3}{Pdot}};}
+\DoxyCodeLine{285     \}}
+\DoxyCodeLine{286 }
+\DoxyCodeLine{287     \textcolor{comment}{// distance lives in SpinState, but we expose it here}}
+\DoxyCodeLine{291 \textcolor{comment}{}    \mbox{\hyperlink{class_zaki_1_1_math_1_1_quantity}{Zaki::Math::Quantity}} GetDistance()\textcolor{keyword}{ const}}
+\DoxyCodeLine{292 \textcolor{keyword}{    }\{}
+\DoxyCodeLine{293         \textcolor{keywordflow}{return} spin\_.\mbox{\hyperlink{struct_compact_star_1_1_spin_state_a0e1ea09e3923cff1792a808f90019171}{d}};}
+\DoxyCodeLine{294     \}}
+\DoxyCodeLine{295 }
+\DoxyCodeLine{299     \mbox{\hyperlink{class_zaki_1_1_math_1_1_quantity}{Zaki::Math::Quantity}} GetProperMotion()\textcolor{keyword}{ const}}
+\DoxyCodeLine{300 \textcolor{keyword}{    }\{}
+\DoxyCodeLine{301         \textcolor{keywordflow}{return} spin\_.\mbox{\hyperlink{struct_compact_star_1_1_spin_state_a8503ae626987ba5abeac191b12aecdc2}{mu}};}
+\DoxyCodeLine{302     \}}
+\DoxyCodeLine{303 }
+\DoxyCodeLine{307     \mbox{\hyperlink{class_zaki_1_1_math_1_1_quantity}{Zaki::Math::Quantity}} GetSpinPDot\_over\_P()\textcolor{keyword}{ const}}
+\DoxyCodeLine{308 \textcolor{keyword}{    }\{}
+\DoxyCodeLine{309         \textcolor{comment}{// guard against P = 0 just in case}}
+\DoxyCodeLine{310         \textcolor{keywordflow}{if} (spin\_.\mbox{\hyperlink{struct_compact_star_1_1_spin_state_a1237035c29d40aff2b8827df476d0782}{P}}.val == 0.0)}
+\DoxyCodeLine{311         \{}
+\DoxyCodeLine{312             \textcolor{keywordflow}{return} \{0.0, 0.0\};}
+\DoxyCodeLine{313         \}}
+\DoxyCodeLine{314         \textcolor{keywordflow}{return} spin\_.\mbox{\hyperlink{struct_compact_star_1_1_spin_state_a7a54878a65c1d815d692a6abc4939cd3}{Pdot}} / spin\_.\mbox{\hyperlink{struct_compact_star_1_1_spin_state_a1237035c29d40aff2b8827df476d0782}{P}};}
+\DoxyCodeLine{315     \}}
+\DoxyCodeLine{316 }
+\DoxyCodeLine{317     \textcolor{comment}{// -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{318     \textcolor{comment}{//  Sequence interface}}
+\DoxyCodeLine{319     \textcolor{comment}{// -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{320 }
+\DoxyCodeLine{325     \textcolor{keywordtype}{void} SetSeqPoint(\textcolor{keyword}{const} SeqPoint \&sp) \{ seq\_point\_ = sp; \}}
+\DoxyCodeLine{326 }
+\DoxyCodeLine{331     SeqPoint GetSeqPoint()\textcolor{keyword}{ const }\{ \textcolor{keywordflow}{return} seq\_point\_; \}}
+\DoxyCodeLine{332 }
+\DoxyCodeLine{337     \textcolor{keywordtype}{void} SetSeqProfile(\textcolor{keyword}{const} \mbox{\hyperlink{class_zaki_1_1_vector_1_1_data_set}{Zaki::Vector::DataSet}} *ds) \{ seq\_profile\_ = ds; \}}
+\DoxyCodeLine{338 }
+\DoxyCodeLine{343     \textcolor{keyword}{const} \mbox{\hyperlink{class_zaki_1_1_vector_1_1_data_set}{Zaki::Vector::DataSet}} *GetSeqProfile()\textcolor{keyword}{ const }\{ \textcolor{keywordflow}{return} seq\_profile\_; \}}
+\DoxyCodeLine{344 }
+\DoxyCodeLine{345     \textcolor{comment}{// -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{346     \textcolor{comment}{//  Spin interface}}
+\DoxyCodeLine{347     \textcolor{comment}{// -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{348 }
+\DoxyCodeLine{353     \textcolor{keywordtype}{void} SetSpinP(\textcolor{keyword}{const} \mbox{\hyperlink{class_zaki_1_1_math_1_1_quantity}{Zaki::Math::Quantity}} \&P) \{ spin\_.\mbox{\hyperlink{struct_compact_star_1_1_spin_state_a1237035c29d40aff2b8827df476d0782}{P}} = P; \}}
+\DoxyCodeLine{354 }
+\DoxyCodeLine{359     \textcolor{keywordtype}{void} SetSpinPDot(\textcolor{keyword}{const} \mbox{\hyperlink{class_zaki_1_1_math_1_1_quantity}{Zaki::Math::Quantity}} \&Pd) \{ spin\_.\mbox{\hyperlink{struct_compact_star_1_1_spin_state_a7a54878a65c1d815d692a6abc4939cd3}{Pdot}} = Pd; \}}
+\DoxyCodeLine{360 }
+\DoxyCodeLine{365     \textcolor{keywordtype}{void} SetDistance(\textcolor{keyword}{const} \mbox{\hyperlink{class_zaki_1_1_math_1_1_quantity}{Zaki::Math::Quantity}} \&d) \{ spin\_.\mbox{\hyperlink{struct_compact_star_1_1_spin_state_a0e1ea09e3923cff1792a808f90019171}{d}} = d; \}}
+\DoxyCodeLine{366 }
+\DoxyCodeLine{371     \textcolor{keywordtype}{void} SetProperMotion(\textcolor{keyword}{const} \mbox{\hyperlink{class_zaki_1_1_math_1_1_quantity}{Zaki::Math::Quantity}} \&mu) \{ spin\_.\mbox{\hyperlink{struct_compact_star_1_1_spin_state_a8503ae626987ba5abeac191b12aecdc2}{mu}} = mu; \}}
+\DoxyCodeLine{372 }
+\DoxyCodeLine{377     SpinState GetSpinState()\textcolor{keyword}{ const }\{ \textcolor{keywordflow}{return} spin\_; \}}
+\DoxyCodeLine{378 }
+\DoxyCodeLine{386     \textcolor{keywordtype}{double} GetCharacteristicAge() \textcolor{keyword}{const};}
+\DoxyCodeLine{387     \textcolor{comment}{// \{}}
+\DoxyCodeLine{388     \textcolor{comment}{//  return Spin::CharacteristicAge(spin\_);}}
+\DoxyCodeLine{389     \textcolor{comment}{// \}}}
+\DoxyCodeLine{390 }
+\DoxyCodeLine{399     \textcolor{keywordtype}{double} GetDipoleFieldEstimate() \textcolor{keyword}{const};}
+\DoxyCodeLine{400     \textcolor{comment}{// \{}}
+\DoxyCodeLine{401     \textcolor{comment}{//  return view\_.valid() ? Spin::DipoleFieldEstimate(spin\_, view\_) : 0.0;}}
+\DoxyCodeLine{402     \textcolor{comment}{// \}}}
+\DoxyCodeLine{403 }
+\DoxyCodeLine{404     \textcolor{comment}{// -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{405     \textcolor{comment}{//  Thermal interface}}
+\DoxyCodeLine{406     \textcolor{comment}{// -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{407 }
+\DoxyCodeLine{412     \textcolor{keywordtype}{void} SetThermalState(\textcolor{keyword}{const} ThermalState \&t) \{ thermal\_ = t; \}}
+\DoxyCodeLine{413 }
+\DoxyCodeLine{418     ThermalState GetThermalState()\textcolor{keyword}{ const }\{ \textcolor{keywordflow}{return} thermal\_; \}}
+\DoxyCodeLine{419 }
+\DoxyCodeLine{428     \textcolor{comment}{// double GetSurfacePhotonLuminosity() const}}
+\DoxyCodeLine{429     \textcolor{comment}{// \{}}
+\DoxyCodeLine{430     \textcolor{comment}{//  return view\_.valid() ? Thermal::SurfacePhotonLuminosity(view\_, thermal\_) : 0.0;}}
+\DoxyCodeLine{431     \textcolor{comment}{// \}}}
+\DoxyCodeLine{432 }
+\DoxyCodeLine{440     \textcolor{comment}{// double GetTotalNeutrinoLuminosity() const}}
+\DoxyCodeLine{441     \textcolor{comment}{// \{}}
+\DoxyCodeLine{442     \textcolor{comment}{//  return view\_.valid() ? Thermal::TotalNeutrinoLuminosity(view\_, thermal\_) : 0.0;}}
+\DoxyCodeLine{443     \textcolor{comment}{// \}}}
+\DoxyCodeLine{444 }
+\DoxyCodeLine{445     \textcolor{comment}{// -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{446     \textcolor{comment}{//  BNV interface}}
+\DoxyCodeLine{447     \textcolor{comment}{// -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{448 }
+\DoxyCodeLine{457     \textcolor{comment}{// double ComputeBNVSpinDownLimit()}}
+\DoxyCodeLine{458     \textcolor{comment}{// \{}}
+\DoxyCodeLine{459     \textcolor{comment}{//  if (!view\_.valid())}}
+\DoxyCodeLine{460     \textcolor{comment}{//      return 0.0;}}
+\DoxyCodeLine{461     \textcolor{comment}{//  bnv\_.spin\_down\_limit = BNV::SpinDownLimit(view\_, spin\_);}}
+\DoxyCodeLine{462     \textcolor{comment}{//  return bnv\_.spin\_down\_limit;}}
+\DoxyCodeLine{463     \textcolor{comment}{// \}}}
+\DoxyCodeLine{464 }
+\DoxyCodeLine{472     \textcolor{keywordtype}{double} GetBNVSpinDownLimit()\textcolor{keyword}{ const}}
+\DoxyCodeLine{473 \textcolor{keyword}{    }\{}
+\DoxyCodeLine{474         \textcolor{keywordflow}{return} bnv\_.\mbox{\hyperlink{struct_compact_star_1_1_b_n_v_state_a2ae45875eab097423109c7ca3ac0b56c}{spin\_down\_limit}};}
+\DoxyCodeLine{475     \}}
+\DoxyCodeLine{476 \};}
+\DoxyCodeLine{477 }
+\DoxyCodeLine{478 \} \textcolor{comment}{// namespace CompactStar}}
+\DoxyCodeLine{479 }
+\DoxyCodeLine{480 \textcolor{preprocessor}{\#endif }\textcolor{comment}{/* CompactStar\_Pulsar\_H */}\textcolor{preprocessor}{}}
+
+\end{DoxyCode}

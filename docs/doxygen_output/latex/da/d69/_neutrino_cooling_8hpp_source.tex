@@ -1,0 +1,72 @@
+\hypertarget{_neutrino_cooling_8hpp_source}{}\doxysection{Neutrino\+Cooling.\+hpp}
+\label{_neutrino_cooling_8hpp_source}\index{CompactStar/Physics/Driver/Thermal/NeutrinoCooling.hpp@{CompactStar/Physics/Driver/Thermal/NeutrinoCooling.hpp}}
+\mbox{\hyperlink{_neutrino_cooling_8hpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{comment}{// -\/*-\/ lsst-\/c++ -\/*-\/}}
+\DoxyCodeLine{2 \textcolor{comment}{/*}}
+\DoxyCodeLine{3 \textcolor{comment}{ * CompactStar}}
+\DoxyCodeLine{4 \textcolor{comment}{ * See License file at the top of the source tree.}}
+\DoxyCodeLine{5 \textcolor{comment}{ *}}
+\DoxyCodeLine{6 \textcolor{comment}{ * Copyright (c) 2025 Mohammadreza Zakeri}}
+\DoxyCodeLine{7 \textcolor{comment}{ *}}
+\DoxyCodeLine{8 \textcolor{comment}{ * MIT License — see LICENSE at repo root.}}
+\DoxyCodeLine{9 \textcolor{comment}{ */}}
+\DoxyCodeLine{10 }
+\DoxyCodeLine{23 \textcolor{preprocessor}{\#ifndef CompactStar\_Physics\_Driver\_Thermal\_NeutrinoCooling\_H}}
+\DoxyCodeLine{24 \textcolor{preprocessor}{\#define CompactStar\_Physics\_Driver\_Thermal\_NeutrinoCooling\_H}}
+\DoxyCodeLine{25 }
+\DoxyCodeLine{26 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_i_driver_8hpp}{CompactStar/Physics/Driver/IDriver.hpp}}"{}}}
+\DoxyCodeLine{27 \textcolor{preprocessor}{\#include <array>}}
+\DoxyCodeLine{28 \textcolor{preprocessor}{\#include <span>}}
+\DoxyCodeLine{29 \textcolor{preprocessor}{\#include <string>}}
+\DoxyCodeLine{30 }
+\DoxyCodeLine{31 \textcolor{keyword}{namespace }CompactStar::Physics::Driver::Thermal}
+\DoxyCodeLine{32 \{}
+\DoxyCodeLine{33 }
+\DoxyCodeLine{41 \textcolor{keyword}{class }\mbox{\hyperlink{class_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_neutrino_cooling}{NeutrinoCooling}} final : \textcolor{keyword}{public} \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_i_driver}{IDriver}}}
+\DoxyCodeLine{42 \{}
+\DoxyCodeLine{43   \textcolor{keyword}{public}:}
+\DoxyCodeLine{44     \textcolor{keyword}{struct }\mbox{\hyperlink{struct_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_neutrino_cooling_1_1_options}{Options}}}
+\DoxyCodeLine{45     \{}
+\DoxyCodeLine{46         \textcolor{keywordtype}{bool} include\_direct\_urca = \textcolor{keyword}{true};}
+\DoxyCodeLine{47         \textcolor{keywordtype}{bool} include\_modified\_urca = \textcolor{keyword}{true};}
+\DoxyCodeLine{48         \textcolor{keywordtype}{bool} \mbox{\hyperlink{struct_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_neutrino_cooling_1_1_options_a6f5e5291a5b0360ef53d05f0255010db}{include\_pair\_breaking}} = \textcolor{keyword}{false}; }
+\DoxyCodeLine{49         \textcolor{keywordtype}{double} \mbox{\hyperlink{struct_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_neutrino_cooling_1_1_options_a59de0098d47f8473fa382b6b4ac209ac}{global\_scale}} = 1.0;          }
+\DoxyCodeLine{50     \};}
+\DoxyCodeLine{51 }
+\DoxyCodeLine{52     \textcolor{keyword}{explicit} \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_neutrino_cooling}{NeutrinoCooling}}(\mbox{\hyperlink{struct_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_neutrino_cooling_1_1_options}{Options}} opts = \{\}) : opts\_(opts) \{\}}
+\DoxyCodeLine{53 }
+\DoxyCodeLine{54     \textcolor{comment}{// -\/-\/-\/ IDriver interface -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{55     std::string \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_neutrino_cooling_ae1d299290511e369d2003833f9c74aae}{Name}}()\textcolor{keyword}{ const override }\{ \textcolor{keywordflow}{return} \textcolor{stringliteral}{"{}NeutrinoCooling"{}}; \}}
+\DoxyCodeLine{56 }
+\DoxyCodeLine{57     std::span<const State::StateTag> \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_neutrino_cooling_a84bda6a5dd4718cea02067ddc0d9d2f5}{DependsOn}}()\textcolor{keyword}{ const override}}
+\DoxyCodeLine{58 \textcolor{keyword}{    }\{}
+\DoxyCodeLine{59         \textcolor{comment}{// Thermal is required; Chem may be read internally via ctx if rates need η.}}
+\DoxyCodeLine{60         \textcolor{keyword}{static} \textcolor{keyword}{constexpr} std::array<State::StateTag, 1> deps\{State::StateTag::Thermal\};}
+\DoxyCodeLine{61         \textcolor{keywordflow}{return} deps;}
+\DoxyCodeLine{62     \}}
+\DoxyCodeLine{63 }
+\DoxyCodeLine{64     std::span<const State::StateTag> \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_neutrino_cooling_aa617d91eaad9d418559b6bde6f8e11f2}{Updates}}()\textcolor{keyword}{ const override}}
+\DoxyCodeLine{65 \textcolor{keyword}{    }\{}
+\DoxyCodeLine{66         \textcolor{keyword}{static} \textcolor{keyword}{constexpr} std::array<State::StateTag, 1> ups\{State::StateTag::Thermal\};}
+\DoxyCodeLine{67         \textcolor{keywordflow}{return} ups;}
+\DoxyCodeLine{68     \}}
+\DoxyCodeLine{69 }
+\DoxyCodeLine{70     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_neutrino_cooling_ad3c3e40c162184605b4e27915423c65c}{AccumulateRHS}}(\textcolor{keywordtype}{double} t,}
+\DoxyCodeLine{71                        \textcolor{keyword}{const} Evolution::StateVector \&Y,}
+\DoxyCodeLine{72                        Evolution::RHSAccumulator \&dYdt,}
+\DoxyCodeLine{73                        \textcolor{keyword}{const} Evolution::StarContext \&ctx) \textcolor{keyword}{const override};}
+\DoxyCodeLine{74 }
+\DoxyCodeLine{75     \textcolor{comment}{// -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{76     \textcolor{keyword}{const} \mbox{\hyperlink{struct_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_neutrino_cooling_1_1_options}{Options}} \&GetOptions()\textcolor{keyword}{ const }\{ \textcolor{keywordflow}{return} opts\_; \}}
+\DoxyCodeLine{77     \textcolor{keywordtype}{void} SetOptions(\textcolor{keyword}{const} Options \&o) \{ opts\_ = o; \}}
+\DoxyCodeLine{78 }
+\DoxyCodeLine{79   \textcolor{keyword}{private}:}
+\DoxyCodeLine{80     Options opts\_;}
+\DoxyCodeLine{81 \};}
+\DoxyCodeLine{82 }
+\DoxyCodeLine{83 \} \textcolor{comment}{// namespace CompactStar::Physics::Driver::Thermal}}
+\DoxyCodeLine{84 }
+\DoxyCodeLine{85 \textcolor{preprocessor}{\#endif }\textcolor{comment}{/* CompactStar\_Physics\_Driver\_Thermal\_NeutrinoCooling\_H */}\textcolor{preprocessor}{}}
+
+\end{DoxyCode}

@@ -1,0 +1,149 @@
+\hypertarget{_bundle_012_8hpp_source}{}\doxysection{Bundle 2.hpp}
+\label{_bundle_012_8hpp_source}\index{dependencies/include/Confind/Bundle 2.hpp@{dependencies/include/Confind/Bundle 2.hpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#ifndef CONFIND\_Bundle\_H}}
+\DoxyCodeLine{2 \textcolor{preprocessor}{\#define CONFIND\_Bundle\_H}}
+\DoxyCodeLine{3 }
+\DoxyCodeLine{4 \textcolor{comment}{// \#if \_\_has\_include(<omp.h>)}}
+\DoxyCodeLine{5 \textcolor{comment}{//   \#include <omp.h>}}
+\DoxyCodeLine{6 \textcolor{comment}{//   \#define Z\_OMP 1}}
+\DoxyCodeLine{7 \textcolor{comment}{// \#else}}
+\DoxyCodeLine{8 \textcolor{comment}{//   \#define Z\_OMP 0}}
+\DoxyCodeLine{9 \textcolor{comment}{// \#endif}}
+\DoxyCodeLine{10 }
+\DoxyCodeLine{11 \textcolor{comment}{// \#include <random>}}
+\DoxyCodeLine{12 }
+\DoxyCodeLine{13 \textcolor{comment}{// Root}}
+\DoxyCodeLine{14 \textcolor{comment}{// \#include <TMultiGraph.h>}}
+\DoxyCodeLine{15 \textcolor{comment}{// \#include <TLegend.h>}}
+\DoxyCodeLine{16 }
+\DoxyCodeLine{17 }
+\DoxyCodeLine{18 \textcolor{preprocessor}{\#include <\mbox{\hyperlink{_func2_d_8hpp}{Zaki/Math/Func2D.hpp}}>}}
+\DoxyCodeLine{19 \textcolor{preprocessor}{\#include <Zaki/Util/ObjObserver.hpp>}}
+\DoxyCodeLine{20 \textcolor{preprocessor}{\#include <\mbox{\hyperlink{_math___core_8hpp}{Zaki/Math/Math\_Core.hpp}}>}}
+\DoxyCodeLine{21 \textcolor{comment}{// \#include <Zaki/File/VecSaver.hpp>}}
+\DoxyCodeLine{22 }
+\DoxyCodeLine{23 }
+\DoxyCodeLine{24 \textcolor{comment}{// Local headers}}
+\DoxyCodeLine{25 \textcolor{comment}{// \#include "{}Confind/Cell.hpp"{}}}
+\DoxyCodeLine{26 \textcolor{preprocessor}{\#include "{}Confind/Cont2D.hpp"{}}}
+\DoxyCodeLine{27 \textcolor{preprocessor}{\#include "{}Confind/Base.hpp"{}}}
+\DoxyCodeLine{28 }
+\DoxyCodeLine{29 \textcolor{keyword}{namespace }CONFIND}
+\DoxyCodeLine{30 \{}
+\DoxyCodeLine{31 }
+\DoxyCodeLine{32 \textcolor{comment}{//==============================================================}}
+\DoxyCodeLine{33 \textcolor{comment}{// Bundle Class is used for sending information to each thread}}
+\DoxyCodeLine{34 \textcolor{comment}{//  in a multi-\/threaded scenario to avoid racing.}}
+\DoxyCodeLine{35 \textcolor{keyword}{class }\mbox{\hyperlink{class_c_o_n_f_i_n_d_1_1_bundle}{Bundle}} : \textcolor{keyword}{public} \mbox{\hyperlink{class_c_o_n_f_i_n_d_1_1_base}{Base}}}
+\DoxyCodeLine{36 \{}
+\DoxyCodeLine{37   \textcolor{keyword}{friend} \textcolor{keyword}{class }\mbox{\hyperlink{class_c_o_n_f_i_n_d_1_1_contour_finder}{ContourFinder}};}
+\DoxyCodeLine{38   \textcolor{keyword}{friend} \textcolor{keyword}{class }\mbox{\hyperlink{class_c_o_n_f_i_n_d_1_1_cell}{Cell}};}
+\DoxyCodeLine{39 }
+\DoxyCodeLine{40   \textcolor{keyword}{public}:}
+\DoxyCodeLine{41     \textcolor{comment}{// Constructor 0}}
+\DoxyCodeLine{42     \mbox{\hyperlink{class_c_o_n_f_i_n_d_1_1_bundle}{Bundle}}() : \mbox{\hyperlink{class_c_o_n_f_i_n_d_1_1_base_a85cad60ce375d8efed73cfca83449f43}{Base}}(\textcolor{stringliteral}{"{}Bundle"{}}, \textcolor{keyword}{true}), Con(0)}
+\DoxyCodeLine{43     \{}
+\DoxyCodeLine{44         Z\_LOG\_NOTE(\textcolor{stringliteral}{"{}Bundle constructor: from "{}} + \mbox{\hyperlink{class_c_o_n_f_i_n_d_1_1_base_a88f23d3226eadfb0085c9a220726efd2}{PtrStr}}() + \textcolor{stringliteral}{"{}."{}}) ;}
+\DoxyCodeLine{45     \}}
+\DoxyCodeLine{46 }
+\DoxyCodeLine{47     \textcolor{comment}{// Constructor 1}}
+\DoxyCodeLine{48     \mbox{\hyperlink{class_c_o_n_f_i_n_d_1_1_bundle}{Bundle}}(\textcolor{keyword}{const} \mbox{\hyperlink{struct_zaki_1_1_math_1_1_grid2_d}{Zaki::Math::Grid2D}}\& in\_g, \textcolor{keyword}{const} \mbox{\hyperlink{class_c_o_n_f_i_n_d_1_1_cont2_d}{Cont2D}}\& in\_c,}
+\DoxyCodeLine{49     \textcolor{keyword}{const} std::unique\_ptr<Zaki::Math::Func2D>\& in\_mf) }
+\DoxyCodeLine{50         : \mbox{\hyperlink{class_c_o_n_f_i_n_d_1_1_base_a85cad60ce375d8efed73cfca83449f43}{Base}}(\textcolor{stringliteral}{"{}Bundle"{}}, \textcolor{keyword}{true}), Grid(in\_g), Con(in\_c)}
+\DoxyCodeLine{51     \{}
+\DoxyCodeLine{52         Z\_LOG\_NOTE(\textcolor{stringliteral}{"{}Bundle constructor: from "{}} + \mbox{\hyperlink{class_c_o_n_f_i_n_d_1_1_base_a88f23d3226eadfb0085c9a220726efd2}{PtrStr}}() + \textcolor{stringliteral}{"{}."{}}) ;}
+\DoxyCodeLine{53       \textcolor{keywordflow}{if}(in\_mf)}
+\DoxyCodeLine{54         MemFunc = in\_mf-\/>Clone() ;}
+\DoxyCodeLine{55     \}}
+\DoxyCodeLine{56 }
+\DoxyCodeLine{57     \textcolor{comment}{// Constructor 2}}
+\DoxyCodeLine{58     \mbox{\hyperlink{class_c_o_n_f_i_n_d_1_1_bundle}{Bundle}}(\textcolor{keyword}{const} \mbox{\hyperlink{struct_zaki_1_1_math_1_1_grid2_d}{Zaki::Math::Grid2D}}\& in\_g, \textcolor{keyword}{const} \mbox{\hyperlink{class_c_o_n_f_i_n_d_1_1_cont2_d}{Cont2D}}\& in\_c,}
+\DoxyCodeLine{59     \textcolor{keywordtype}{double} (*in\_f)(\textcolor{keyword}{const} \textcolor{keywordtype}{double}, \textcolor{keyword}{const} \textcolor{keywordtype}{double})) }
+\DoxyCodeLine{60         : \mbox{\hyperlink{class_c_o_n_f_i_n_d_1_1_base_a85cad60ce375d8efed73cfca83449f43}{Base}}(\textcolor{stringliteral}{"{}Bundle"{}}, \textcolor{keyword}{true}), Grid(in\_g), Con(in\_c), Func(in\_f)}
+\DoxyCodeLine{61     \{}
+\DoxyCodeLine{62         Z\_LOG\_NOTE(\textcolor{stringliteral}{"{}Bundle constructor: from "{}} + \mbox{\hyperlink{class_c_o_n_f_i_n_d_1_1_base_a88f23d3226eadfb0085c9a220726efd2}{PtrStr}}() + \textcolor{stringliteral}{"{}."{}}) ;}
+\DoxyCodeLine{63     \}}
+\DoxyCodeLine{64 }
+\DoxyCodeLine{65     \textcolor{comment}{// Constructor 3}}
+\DoxyCodeLine{66     \mbox{\hyperlink{class_c_o_n_f_i_n_d_1_1_bundle}{Bundle}}(\textcolor{keyword}{const} \mbox{\hyperlink{struct_zaki_1_1_math_1_1_grid2_d}{Zaki::Math::Grid2D}}\& in\_g, \textcolor{keyword}{const} \mbox{\hyperlink{class_c_o_n_f_i_n_d_1_1_cont2_d}{Cont2D}}\& in\_c,}
+\DoxyCodeLine{67     \textcolor{keyword}{const} std::unique\_ptr<Zaki::Math::Func2D>\& in\_mf,}
+\DoxyCodeLine{68     \textcolor{keywordtype}{double} (*in\_f)(\textcolor{keyword}{const} \textcolor{keywordtype}{double}, \textcolor{keyword}{const} \textcolor{keywordtype}{double})) }
+\DoxyCodeLine{69         : \mbox{\hyperlink{class_c_o_n_f_i_n_d_1_1_base_a85cad60ce375d8efed73cfca83449f43}{Base}}(\textcolor{stringliteral}{"{}Bundle"{}}, \textcolor{keyword}{true}), Grid(in\_g), Con(in\_c), Func(in\_f)}
+\DoxyCodeLine{70     \{}
+\DoxyCodeLine{71         Z\_LOG\_NOTE(\textcolor{stringliteral}{"{}Bundle constructor: from "{}} + \mbox{\hyperlink{class_c_o_n_f_i_n_d_1_1_base_a88f23d3226eadfb0085c9a220726efd2}{PtrStr}}() + \textcolor{stringliteral}{"{}."{}}) ;}
+\DoxyCodeLine{72       \textcolor{keywordflow}{if}(in\_mf)}
+\DoxyCodeLine{73         MemFunc = in\_mf-\/>Clone() ;}
+\DoxyCodeLine{74     \}}
+\DoxyCodeLine{75     }
+\DoxyCodeLine{76     \textcolor{comment}{// Constructor 4}}
+\DoxyCodeLine{77     \mbox{\hyperlink{class_c_o_n_f_i_n_d_1_1_bundle}{Bundle}}(\textcolor{keyword}{const} \mbox{\hyperlink{struct_zaki_1_1_math_1_1_grid2_d}{Zaki::Math::Grid2D}}\& in\_g,}
+\DoxyCodeLine{78     \textcolor{keyword}{const} std::unique\_ptr<Zaki::Math::Func2D>\& in\_mf,}
+\DoxyCodeLine{79     \textcolor{keywordtype}{double} (*in\_f)(\textcolor{keyword}{const} \textcolor{keywordtype}{double}, \textcolor{keyword}{const} \textcolor{keywordtype}{double})) }
+\DoxyCodeLine{80         : \mbox{\hyperlink{class_c_o_n_f_i_n_d_1_1_base_a85cad60ce375d8efed73cfca83449f43}{Base}}(\textcolor{stringliteral}{"{}Bundle"{}}, \textcolor{keyword}{true}), Grid(in\_g), Con(0), Func(in\_f)}
+\DoxyCodeLine{81     \{}
+\DoxyCodeLine{82         Z\_LOG\_NOTE(\textcolor{stringliteral}{"{}Bundle constructor: from "{}} + \mbox{\hyperlink{class_c_o_n_f_i_n_d_1_1_base_a88f23d3226eadfb0085c9a220726efd2}{PtrStr}}() + \textcolor{stringliteral}{"{}."{}}) ;}
+\DoxyCodeLine{83       \textcolor{keywordflow}{if}(in\_mf)}
+\DoxyCodeLine{84         MemFunc = in\_mf-\/>Clone() ;}
+\DoxyCodeLine{85     \}}
+\DoxyCodeLine{86 }
+\DoxyCodeLine{87     \textcolor{comment}{// Copy constructor}}
+\DoxyCodeLine{88     \mbox{\hyperlink{class_c_o_n_f_i_n_d_1_1_bundle}{Bundle}}(\textcolor{keyword}{const} \mbox{\hyperlink{class_c_o_n_f_i_n_d_1_1_bundle}{Bundle}}\& other)}
+\DoxyCodeLine{89       : \mbox{\hyperlink{class_c_o_n_f_i_n_d_1_1_base_a85cad60ce375d8efed73cfca83449f43}{Base}}(\textcolor{stringliteral}{"{}Bundle"{}}, \textcolor{keyword}{true}), Grid(other.Grid), Con(other.Con), Func(other.Func)}
+\DoxyCodeLine{90     \{}
+\DoxyCodeLine{91       Z\_LOG\_NOTE(\textcolor{stringliteral}{"{}Bundle copy constructor: from "{}} }
+\DoxyCodeLine{92               + other.\mbox{\hyperlink{class_c_o_n_f_i_n_d_1_1_base_a88f23d3226eadfb0085c9a220726efd2}{PtrStr}}() + \textcolor{stringliteral}{"{} -\/-\/> "{}} + \mbox{\hyperlink{class_c_o_n_f_i_n_d_1_1_base_a88f23d3226eadfb0085c9a220726efd2}{PtrStr}}() + \textcolor{stringliteral}{"{}."{}}) ;}
+\DoxyCodeLine{93 }
+\DoxyCodeLine{94 \textcolor{preprocessor}{\#if CONFIND\_BASE\_DEBUG\_MODE}}
+\DoxyCodeLine{95       Z\_OBJ\_CCTR(\textcolor{keyword}{this}, (\textcolor{keywordtype}{void}*)(\&other), \textcolor{stringliteral}{"{}Bundle"{}}, \textcolor{stringliteral}{"{}Bundle"{}}) ;}
+\DoxyCodeLine{96 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{97 }
+\DoxyCodeLine{98         \textcolor{keywordflow}{if}(other.MemFunc)}
+\DoxyCodeLine{99         MemFunc = other.MemFunc-\/>Clone() ;}
+\DoxyCodeLine{100 }
+\DoxyCodeLine{101     \}}
+\DoxyCodeLine{102 }
+\DoxyCodeLine{103     \mbox{\hyperlink{class_c_o_n_f_i_n_d_1_1_bundle}{\string~Bundle}}()}
+\DoxyCodeLine{104     \{}
+\DoxyCodeLine{105         Z\_LOG\_NOTE(\textcolor{stringliteral}{"{}Bundle destructor: from "{}}+ \mbox{\hyperlink{class_c_o_n_f_i_n_d_1_1_base_a88f23d3226eadfb0085c9a220726efd2}{PtrStr}}() + \textcolor{stringliteral}{"{}."{}}) ;}
+\DoxyCodeLine{106     \}}
+\DoxyCodeLine{107     }
+\DoxyCodeLine{108     \textcolor{keywordtype}{void} AddCont(\textcolor{keyword}{const} \mbox{\hyperlink{class_c_o_n_f_i_n_d_1_1_cont2_d}{Cont2D}}\& in\_c) \{ Con = in\_c; \}}
+\DoxyCodeLine{109     \textcolor{keywordtype}{void} AddGrid(\textcolor{keyword}{const} \mbox{\hyperlink{struct_zaki_1_1_math_1_1_grid2_d}{Zaki::Math::Grid2D}}\& in\_g) \{ Grid = in\_g; \}}
+\DoxyCodeLine{110 }
+\DoxyCodeLine{111     \textcolor{keywordtype}{void} AddMemFunc(\textcolor{keyword}{const} std::unique\_ptr<Zaki::Math::Func2D>\& in\_mf) }
+\DoxyCodeLine{112     \{ }
+\DoxyCodeLine{113       \textcolor{keywordflow}{if}(in\_mf)}
+\DoxyCodeLine{114         MemFunc  = in\_mf-\/>Clone(); }
+\DoxyCodeLine{115       \textcolor{keywordflow}{else}}
+\DoxyCodeLine{116         Z\_LOG\_NOTE(\textcolor{stringliteral}{"{}Input member function is nullptr!"{}}) ;}
+\DoxyCodeLine{117     \}}
+\DoxyCodeLine{118     }
+\DoxyCodeLine{119     \textcolor{keywordtype}{void} AddFunc(\textcolor{keywordtype}{double} (*in\_f)(\textcolor{keyword}{const} \textcolor{keywordtype}{double}, \textcolor{keyword}{const} \textcolor{keywordtype}{double})) }
+\DoxyCodeLine{120     \{ }
+\DoxyCodeLine{121       \textcolor{keywordflow}{if}(in\_f)}
+\DoxyCodeLine{122         Func = in\_f;}
+\DoxyCodeLine{123       \textcolor{keywordflow}{else}}
+\DoxyCodeLine{124         Z\_LOG\_NOTE(\textcolor{stringliteral}{"{}Input function is nullptr!"{}}) ;}
+\DoxyCodeLine{125     \}}
+\DoxyCodeLine{126 }
+\DoxyCodeLine{127     \mbox{\hyperlink{class_c_o_n_f_i_n_d_1_1_cont2_d}{Cont2D}} GetCont() \{\textcolor{keywordflow}{return} Con;\}}
+\DoxyCodeLine{128       }
+\DoxyCodeLine{129   \textcolor{keyword}{private}:}
+\DoxyCodeLine{130     \mbox{\hyperlink{struct_zaki_1_1_math_1_1_grid2_d}{Zaki::Math::Grid2D}} Grid;}
+\DoxyCodeLine{131     \mbox{\hyperlink{class_c_o_n_f_i_n_d_1_1_cont2_d}{Cont2D}} Con ;}
+\DoxyCodeLine{132     std::unique\_ptr<Zaki::Math::Func2D> MemFunc = \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{133     double (*Func)(\textcolor{keyword}{const} double, \textcolor{keyword}{const} double) = \textcolor{keyword}{nullptr} ;}
+\DoxyCodeLine{134     \textcolor{comment}{// std::unique\_ptr<double (*)(const double, const double)> func ;}}
+\DoxyCodeLine{135 }
+\DoxyCodeLine{136 \};}
+\DoxyCodeLine{137 }
+\DoxyCodeLine{138 \textcolor{comment}{//==============================================================}}
+\DoxyCodeLine{139 }
+\DoxyCodeLine{140 \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{141 \} \textcolor{comment}{// CONFIND namespace}}
+\DoxyCodeLine{142 \textcolor{comment}{//==============================================================}}
+\DoxyCodeLine{143 \textcolor{preprocessor}{\#endif }\textcolor{comment}{/*CONFIND\_Bundle\_H*/}\textcolor{preprocessor}{}}
+
+\end{DoxyCode}

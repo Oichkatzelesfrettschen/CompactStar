@@ -1,0 +1,120 @@
+\hypertarget{_baryon_8hpp_source}{}\doxysection{Baryon.\+hpp}
+\label{_baryon_8hpp_source}\index{CompactStar/EOS/Baryon.hpp@{CompactStar/EOS/Baryon.hpp}}
+\mbox{\hyperlink{_baryon_8hpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{comment}{// -\/*-\/ lsst-\/c++ -\/*-\/}}
+\DoxyCodeLine{2 \textcolor{comment}{/*}}
+\DoxyCodeLine{3 \textcolor{comment}{ * CompactStar}}
+\DoxyCodeLine{4 \textcolor{comment}{ * See License file at the top of the source tree.}}
+\DoxyCodeLine{5 \textcolor{comment}{ *}}
+\DoxyCodeLine{6 \textcolor{comment}{ * Copyright (c) 2023 Mohammadreza Zakeri}}
+\DoxyCodeLine{7 \textcolor{comment}{ *}}
+\DoxyCodeLine{8 \textcolor{comment}{ * Permission is hereby granted, free of charge, to any person obtaining a copy}}
+\DoxyCodeLine{9 \textcolor{comment}{ * of this software and associated documentation files (the "{}Software"{}), to deal}}
+\DoxyCodeLine{10 \textcolor{comment}{ * in the Software without restriction, including without limitation the rights}}
+\DoxyCodeLine{11 \textcolor{comment}{ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell}}
+\DoxyCodeLine{12 \textcolor{comment}{ * copies of the Software, and to permit persons to whom the Software is}}
+\DoxyCodeLine{13 \textcolor{comment}{ * furnished to do so, subject to the following conditions:}}
+\DoxyCodeLine{14 \textcolor{comment}{ *}}
+\DoxyCodeLine{15 \textcolor{comment}{ * The above copyright notice and this permission notice shall be included in all}}
+\DoxyCodeLine{16 \textcolor{comment}{ * copies or substantial portions of the Software.}}
+\DoxyCodeLine{17 \textcolor{comment}{ *}}
+\DoxyCodeLine{18 \textcolor{comment}{ * THE SOFTWARE IS PROVIDED "{}AS IS"{}, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR}}
+\DoxyCodeLine{19 \textcolor{comment}{ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,}}
+\DoxyCodeLine{20 \textcolor{comment}{ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE}}
+\DoxyCodeLine{21 \textcolor{comment}{ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER}}
+\DoxyCodeLine{22 \textcolor{comment}{ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,}}
+\DoxyCodeLine{23 \textcolor{comment}{ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE}}
+\DoxyCodeLine{24 \textcolor{comment}{ * SOFTWARE.}}
+\DoxyCodeLine{25 \textcolor{comment}{ */}}
+\DoxyCodeLine{26 }
+\DoxyCodeLine{38 \textcolor{comment}{// Last edit BEFORE Aug 6}}
+\DoxyCodeLine{39 \textcolor{preprocessor}{\#ifndef CompactStar\_Baryon\_H}}
+\DoxyCodeLine{40 \textcolor{preprocessor}{\#define CompactStar\_Baryon\_H}}
+\DoxyCodeLine{41 }
+\DoxyCodeLine{42 \textcolor{preprocessor}{\#include <mutex>}}
+\DoxyCodeLine{43 }
+\DoxyCodeLine{44 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_particle_8hpp}{CompactStar/EOS/Particle.hpp}}"{}}}
+\DoxyCodeLine{45 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_sigma_omega_par_8hpp}{CompactStar/EOS/SigmaOmegaPar.hpp}}"{}}}
+\DoxyCodeLine{46 \textcolor{comment}{//==============================================================}}
+\DoxyCodeLine{47 \textcolor{keyword}{namespace }CompactStar}
+\DoxyCodeLine{48 \{}
+\DoxyCodeLine{49 }
+\DoxyCodeLine{50 \textcolor{comment}{//==============================================================}}
+\DoxyCodeLine{51 \textcolor{keyword}{class }\mbox{\hyperlink{class_compact_star_1_1_baryon}{Baryon}} : \textcolor{keyword}{public} \mbox{\hyperlink{class_compact_star_1_1_particle}{Particle}}}
+\DoxyCodeLine{52 \{}
+\DoxyCodeLine{53     \textcolor{keyword}{friend} \textcolor{keyword}{class }\mbox{\hyperlink{class_compact_star_1_1_sigma_omega_rho}{SigmaOmegaRho}};}
+\DoxyCodeLine{54     \textcolor{keyword}{friend} \textcolor{keyword}{class }\mbox{\hyperlink{class_compact_star_1_1_sigma_omega_rho__npemu}{SigmaOmegaRho\_npemu}};}
+\DoxyCodeLine{55     \textcolor{keyword}{friend} \textcolor{keyword}{class }\mbox{\hyperlink{class_compact_star_1_1_sigma_omega_rho__nstar}{SigmaOmegaRho\_nstar}};}
+\DoxyCodeLine{56     \textcolor{keyword}{friend} \textcolor{keyword}{class }\mbox{\hyperlink{class_compact_star_1_1_fermi___gas___many}{Fermi\_Gas\_Many}};}
+\DoxyCodeLine{57     \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{58   \textcolor{keyword}{private}:}
+\DoxyCodeLine{60     \textcolor{comment}{// double RhoB ;}}
+\DoxyCodeLine{61 }
+\DoxyCodeLine{63     \textcolor{keyword}{static} \textcolor{keyword}{inline} std::vector<Baryon *> B\_List;}
+\DoxyCodeLine{64 }
+\DoxyCodeLine{66     \textcolor{comment}{// static inline std::mutex mtx ;}}
+\DoxyCodeLine{67 }
+\DoxyCodeLine{69     \textcolor{keyword}{static} \textcolor{keyword}{inline} \mbox{\hyperlink{struct_compact_star_1_1_sigma_omega_par}{SigmaOmegaPar}} pars;}
+\DoxyCodeLine{70 }
+\DoxyCodeLine{72     \textcolor{comment}{// bool rho\_flag = false ;}}
+\DoxyCodeLine{73 }
+\DoxyCodeLine{75     \textcolor{keyword}{const} \textcolor{keywordtype}{double} x\_ome = 1;}
+\DoxyCodeLine{76 }
+\DoxyCodeLine{78     \textcolor{keyword}{const} \textcolor{keywordtype}{double} x\_rho = 1;}
+\DoxyCodeLine{79 }
+\DoxyCodeLine{81     \textcolor{keyword}{const} \textcolor{keywordtype}{double} x\_sig = 1;}
+\DoxyCodeLine{82 }
+\DoxyCodeLine{83     \textcolor{keyword}{static} \textcolor{keywordtype}{double} D\_I\_1\_a(\textcolor{keyword}{const} \textcolor{keywordtype}{double} \&\mbox{\hyperlink{class_compact_star_1_1_particle_a7968d4f74da6e0239d86eaea46f1e2a5}{k}}, \textcolor{keyword}{const} \textcolor{keywordtype}{double} \&a);}
+\DoxyCodeLine{84 }
+\DoxyCodeLine{85     \mbox{\hyperlink{class_compact_star_1_1_baryon}{Baryon}}(\textcolor{keyword}{const} \textcolor{keywordtype}{int} \&\mbox{\hyperlink{class_compact_star_1_1_particle_aba3e80e01a7efbf3bc8bce2129ef5a8a}{idx}}, \textcolor{keyword}{const} \textcolor{keywordtype}{double} \&charge, \textcolor{keyword}{const} \textcolor{keywordtype}{double} \&mass,}
+\DoxyCodeLine{86            \textcolor{keyword}{const} \textcolor{keywordtype}{double} \&isospin);}
+\DoxyCodeLine{87 }
+\DoxyCodeLine{88     \mbox{\hyperlink{class_compact_star_1_1_baryon}{Baryon}}(\textcolor{keyword}{const} \textcolor{keywordtype}{int} \&\mbox{\hyperlink{class_compact_star_1_1_particle_aba3e80e01a7efbf3bc8bce2129ef5a8a}{idx}}, \textcolor{keyword}{const} \textcolor{keywordtype}{double} \&charge, \textcolor{keyword}{const} \textcolor{keywordtype}{double} \&mass,}
+\DoxyCodeLine{89            \textcolor{keyword}{const} \textcolor{keywordtype}{double} \&isospin, \textcolor{keyword}{const} \textcolor{keywordtype}{double} \&in\_x\_ome,}
+\DoxyCodeLine{90            \textcolor{keyword}{const} \textcolor{keywordtype}{double} \&in\_x\_rho, \textcolor{keyword}{const} \textcolor{keywordtype}{double} \&in\_x\_sig);}
+\DoxyCodeLine{91 }
+\DoxyCodeLine{92     \mbox{\hyperlink{class_compact_star_1_1_baryon}{\string~Baryon}}();}
+\DoxyCodeLine{93     \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{94   \textcolor{keyword}{public}:}
+\DoxyCodeLine{96     \mbox{\hyperlink{class_compact_star_1_1_baryon_a91db9f5954541df9300cd8e1a0a08dc5}{Baryon}}(\textcolor{keyword}{const} \mbox{\hyperlink{class_compact_star_1_1_baryon}{Baryon}} \&) = \textcolor{keyword}{delete};}
+\DoxyCodeLine{97 }
+\DoxyCodeLine{99     \mbox{\hyperlink{class_compact_star_1_1_baryon}{Baryon}} \&\mbox{\hyperlink{class_compact_star_1_1_baryon_add0db942844c5e7d686943c2152f9c54}{operator=}}(\textcolor{keyword}{const} \mbox{\hyperlink{class_compact_star_1_1_baryon}{Baryon}} \&) = \textcolor{keyword}{delete};}
+\DoxyCodeLine{100 }
+\DoxyCodeLine{102     \textcolor{keyword}{static} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_compact_star_1_1_baryon_af020b72d8c9160e2829769bb776a5bf4}{SetPars}}(\textcolor{keyword}{const} \mbox{\hyperlink{struct_compact_star_1_1_sigma_omega_par}{SigmaOmegaPar}} \&in\_pars);}
+\DoxyCodeLine{103 }
+\DoxyCodeLine{105     \textcolor{comment}{// void SetRho(const double\& rho\_B) ;}}
+\DoxyCodeLine{106 }
+\DoxyCodeLine{108     \textcolor{keyword}{static} \textcolor{keywordtype}{double} \mbox{\hyperlink{class_compact_star_1_1_baryon_a7767a726a2031cd0b356ed37b54ca9c0}{gpOmega}}();}
+\DoxyCodeLine{109 }
+\DoxyCodeLine{111     \textcolor{keyword}{static} \textcolor{keywordtype}{double} \mbox{\hyperlink{class_compact_star_1_1_baryon_a6356f4a3e0a2f37b322d1cd0d9eb508c}{gpRho03}}();}
+\DoxyCodeLine{112 }
+\DoxyCodeLine{114     \textcolor{keyword}{static} \textcolor{keywordtype}{double} \mbox{\hyperlink{class_compact_star_1_1_baryon_a6e29ee237722d333757aa04c437cd133}{GetBaryonRho}}();}
+\DoxyCodeLine{115 }
+\DoxyCodeLine{117     \textcolor{keywordtype}{double} \mbox{\hyperlink{class_compact_star_1_1_particle_ade2a30772c19fada1f9f3d5b7dc1e47e}{Mu}}(\textcolor{keyword}{const} \textcolor{keywordtype}{double} \&gsig) \textcolor{keyword}{const};}
+\DoxyCodeLine{118 }
+\DoxyCodeLine{120     \textcolor{keyword}{static} \textcolor{keywordtype}{double} \mbox{\hyperlink{class_compact_star_1_1_baryon_a2447b6e13679a10b2293fb779b75473c}{gsigEq}}(\textcolor{keyword}{const} \textcolor{keywordtype}{double} \&gsig);}
+\DoxyCodeLine{121 }
+\DoxyCodeLine{123     \textcolor{keywordtype}{double} \mbox{\hyperlink{class_compact_star_1_1_particle_ad62fd41f123b9e1ae63db47f62383d85}{ETerm}}(\textcolor{keyword}{const} \textcolor{keywordtype}{double} \&gsig) \textcolor{keyword}{const};}
+\DoxyCodeLine{124 }
+\DoxyCodeLine{126     \textcolor{keywordtype}{double} \mbox{\hyperlink{class_compact_star_1_1_particle_a962d8d0fa497f7e335d6100970fe3eda}{PTerm}}(\textcolor{keyword}{const} \textcolor{keywordtype}{double} \&gsig) \textcolor{keyword}{const};}
+\DoxyCodeLine{127 }
+\DoxyCodeLine{129     \textcolor{keyword}{static} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_compact_star_1_1_baryon_a996019efbdea9c351c4f3d6986a100ba}{PrintAll}}();}
+\DoxyCodeLine{130 }
+\DoxyCodeLine{132     \textcolor{keywordtype}{double} \mbox{\hyperlink{class_compact_star_1_1_baryon_a7821e5840f84449e452fa26324041a2a}{Dmu}}(\textcolor{keyword}{const} \textcolor{keywordtype}{int} \&in\_idx, \textcolor{keyword}{const} \textcolor{keywordtype}{double} \&gsig);}
+\DoxyCodeLine{133 }
+\DoxyCodeLine{135     \textcolor{keyword}{static} \textcolor{keywordtype}{double} \mbox{\hyperlink{class_compact_star_1_1_baryon_a848ae7370ea50e9e5762e42c16bf784a}{Dgsig}}(\textcolor{keyword}{const} \textcolor{keywordtype}{int} \&in\_idx, \textcolor{keyword}{const} \textcolor{keywordtype}{double} \&gsig);}
+\DoxyCodeLine{136 }
+\DoxyCodeLine{141     \textcolor{keywordtype}{int} \mbox{\hyperlink{class_compact_star_1_1_baryon_ad0d0acfe5fdf16842986067225df8568}{PoolAdd}}() \textcolor{keyword}{override};}
+\DoxyCodeLine{142 }
+\DoxyCodeLine{145     \textcolor{keywordtype}{int} \mbox{\hyperlink{class_compact_star_1_1_baryon_a059a7c7d76baf67278154c17c8189383}{PoolRemove}}() \textcolor{keyword}{override};}
+\DoxyCodeLine{146 }
+\DoxyCodeLine{148     \textcolor{keyword}{static} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_compact_star_1_1_baryon_a95b66bc995b974eb9d284785b100625e}{EmptyBPool}}();}
+\DoxyCodeLine{149 \};}
+\DoxyCodeLine{150 }
+\DoxyCodeLine{151 \textcolor{comment}{//==============================================================}}
+\DoxyCodeLine{152 \} \textcolor{comment}{// namespace CompactStar}}
+\DoxyCodeLine{153 \textcolor{comment}{//==============================================================}}
+\DoxyCodeLine{154 \textcolor{preprocessor}{\#endif }\textcolor{comment}{/*CompactStar\_Baryon\_H*/}\textcolor{preprocessor}{}}
+
+\end{DoxyCode}

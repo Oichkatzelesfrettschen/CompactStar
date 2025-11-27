@@ -1,0 +1,37 @@
+\hypertarget{_n_star_8hpp}{}\doxysection{Compact\+Star/\+Core/\+NStar.hpp File Reference}
+\label{_n_star_8hpp}\index{CompactStar/Core/NStar.hpp@{CompactStar/Core/NStar.hpp}}
+
+
+Neutron-\/star class (phase 2)\+: legacy Data\+Set API + unified, SAFE Star\+Profile.  
+
+
+{\ttfamily \#include $<$Zaki/\+String/\+Directory.\+hpp$>$}\newline
+{\ttfamily \#include $<$Zaki/\+Vector/\+Data\+Set.\+hpp$>$}\newline
+{\ttfamily \#include $<$string\+\_\+view$>$}\newline
+{\ttfamily \#include $<$vector$>$}\newline
+{\ttfamily \#include \char`\"{}Compact\+Star/\+Core/\+Prog.\+hpp\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}Compact\+Star/\+Core/\+Rotation\+Solver.\+hpp\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}Compact\+Star/\+Core/\+Seq\+Point.\+hpp\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}Compact\+Star/\+Core/\+Star\+Profile.\+hpp\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}Compact\+Star/\+EOS/\+Comp\+OSE\+\_\+\+EOS.\+hpp\char`\"{}}\newline
+\doxysubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{class_compact_star_1_1_n_star}{Compact\+Star\+::\+NStar}}
+\begin{DoxyCompactList}\small\item\em Neutron-\/star container for TOV solutions, rotation, and export. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Neutron-\/star class (phase 2)\+: legacy Data\+Set API + unified, SAFE Star\+Profile. 
+
+This version\+:
+\begin{DoxyItemize}
+\item uses your latest Star\+Profile (with safety checks, Has\+Column, Has\+Species, etc.),
+\item keeps the legacy ds-\/based API but comments out the ones we want to migrate away from,
+\item prefers Star\+Profile (profile path) when it is non-\/empty,
+\item falls back to legacy (ds + Seq\+Point) otherwise.
+\end{DoxyItemize}
+
+\begin{DoxyAuthor}{Author}
+Mohammadreza Zakeri @contact \href{mailto:M.Zakeri@eku.edu}{\texttt{ M.\+Zakeri@eku.\+edu}} 
+\end{DoxyAuthor}

@@ -1,0 +1,135 @@
+\hypertarget{_particle_8hpp_source}{}\doxysection{Particle.\+hpp}
+\label{_particle_8hpp_source}\index{CompactStar/EOS/Particle.hpp@{CompactStar/EOS/Particle.hpp}}
+\mbox{\hyperlink{_particle_8hpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{comment}{// -\/*-\/ lsst-\/c++ -\/*-\/}}
+\DoxyCodeLine{2 \textcolor{comment}{/*}}
+\DoxyCodeLine{3 \textcolor{comment}{ * CompactStar}}
+\DoxyCodeLine{4 \textcolor{comment}{ * See License file at the top of the source tree.}}
+\DoxyCodeLine{5 \textcolor{comment}{ *}}
+\DoxyCodeLine{6 \textcolor{comment}{ * Copyright (c) 2023 Mohammadreza Zakeri}}
+\DoxyCodeLine{7 \textcolor{comment}{ *}}
+\DoxyCodeLine{8 \textcolor{comment}{ * Permission is hereby granted, free of charge, to any person obtaining a copy}}
+\DoxyCodeLine{9 \textcolor{comment}{ * of this software and associated documentation files (the "{}Software"{}), to deal}}
+\DoxyCodeLine{10 \textcolor{comment}{ * in the Software without restriction, including without limitation the rights}}
+\DoxyCodeLine{11 \textcolor{comment}{ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell}}
+\DoxyCodeLine{12 \textcolor{comment}{ * copies of the Software, and to permit persons to whom the Software is}}
+\DoxyCodeLine{13 \textcolor{comment}{ * furnished to do so, subject to the following conditions:}}
+\DoxyCodeLine{14 \textcolor{comment}{ *}}
+\DoxyCodeLine{15 \textcolor{comment}{ * The above copyright notice and this permission notice shall be included in all}}
+\DoxyCodeLine{16 \textcolor{comment}{ * copies or substantial portions of the Software.}}
+\DoxyCodeLine{17 \textcolor{comment}{ *}}
+\DoxyCodeLine{18 \textcolor{comment}{ * THE SOFTWARE IS PROVIDED "{}AS IS"{}, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR}}
+\DoxyCodeLine{19 \textcolor{comment}{ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,}}
+\DoxyCodeLine{20 \textcolor{comment}{ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE}}
+\DoxyCodeLine{21 \textcolor{comment}{ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER}}
+\DoxyCodeLine{22 \textcolor{comment}{ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,}}
+\DoxyCodeLine{23 \textcolor{comment}{ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE}}
+\DoxyCodeLine{24 \textcolor{comment}{ * SOFTWARE.}}
+\DoxyCodeLine{25 \textcolor{comment}{ */}}
+\DoxyCodeLine{26 }
+\DoxyCodeLine{38 \textcolor{comment}{// Last edit BEFORE Aug 6}}
+\DoxyCodeLine{39 \textcolor{preprocessor}{\#ifndef CompactStar\_Particle\_H}}
+\DoxyCodeLine{40 \textcolor{preprocessor}{\#define CompactStar\_Particle\_H}}
+\DoxyCodeLine{41 }
+\DoxyCodeLine{42 \textcolor{preprocessor}{\#include <mutex>}}
+\DoxyCodeLine{43 }
+\DoxyCodeLine{44 \textcolor{preprocessor}{\#include <\mbox{\hyperlink{_math___core_8hpp}{Zaki/Math/Math\_Core.hpp}}>}}
+\DoxyCodeLine{45 }
+\DoxyCodeLine{46 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_prog_8hpp}{CompactStar/Core/Prog.hpp}}"{}}}
+\DoxyCodeLine{47 \textcolor{comment}{// \#include "{}CompactStar/EOS/SigmaOmegaPar.hpp"{}}}
+\DoxyCodeLine{48 \textcolor{comment}{//==============================================================}}
+\DoxyCodeLine{49 \textcolor{keyword}{namespace }CompactStar}
+\DoxyCodeLine{50 \{}
+\DoxyCodeLine{51 }
+\DoxyCodeLine{52 \textcolor{comment}{//==============================================================}}
+\DoxyCodeLine{53 \textcolor{keyword}{class }\mbox{\hyperlink{class_compact_star_1_1_particle}{Particle}} : \textcolor{keyword}{public} \mbox{\hyperlink{class_compact_star_1_1_prog}{Prog}}}
+\DoxyCodeLine{54 \{}
+\DoxyCodeLine{55     \textcolor{keyword}{friend} \textcolor{keyword}{class }\mbox{\hyperlink{class_compact_star_1_1_sigma_omega_rho}{SigmaOmegaRho}};}
+\DoxyCodeLine{56     \textcolor{keyword}{friend} \textcolor{keyword}{class }\mbox{\hyperlink{class_compact_star_1_1_sigma_omega_rho__npemu}{SigmaOmegaRho\_npemu}};}
+\DoxyCodeLine{57     \textcolor{keyword}{friend} \textcolor{keyword}{class }\mbox{\hyperlink{class_compact_star_1_1_sigma_omega_rho__nstar}{SigmaOmegaRho\_nstar}};}
+\DoxyCodeLine{58     \textcolor{keyword}{friend} \textcolor{keyword}{class }\mbox{\hyperlink{class_compact_star_1_1_fermi___gas___many}{Fermi\_Gas\_Many}};}
+\DoxyCodeLine{59     \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{60   \textcolor{keyword}{protected}:}
+\DoxyCodeLine{62     \textcolor{keywordtype}{double} \mbox{\hyperlink{class_compact_star_1_1_particle_a5c46b172de72aa5cb7006bbaa2afbe63}{mu}}; \textcolor{comment}{// Added to store the chemical potential}}
+\DoxyCodeLine{63 }
+\DoxyCodeLine{65     \textcolor{keywordtype}{double} \mbox{\hyperlink{class_compact_star_1_1_particle_ab7c9fac36abcf6e73694ad2f85e57846}{Rho}};}
+\DoxyCodeLine{66 }
+\DoxyCodeLine{68     \mbox{\hyperlink{struct_zaki_1_1_math_1_1_range}{Zaki::Math::Range<double>}} \mbox{\hyperlink{class_compact_star_1_1_particle_a526df824adf4f9c8599d26e8a2eea050}{inclusion}} = \{0, 0\};}
+\DoxyCodeLine{69 }
+\DoxyCodeLine{71     \textcolor{keyword}{static} \textcolor{keyword}{inline} std::vector<Particle *> \mbox{\hyperlink{class_compact_star_1_1_particle_aefb450ccded4777a46bd883a4d9f0787}{P\_List}};}
+\DoxyCodeLine{72 }
+\DoxyCodeLine{74     \textcolor{keyword}{static} \textcolor{keyword}{inline} std::mutex \mbox{\hyperlink{class_compact_star_1_1_particle_a078f84fcf37f3fcfb60a4770cced7eae}{mtx}};}
+\DoxyCodeLine{75 }
+\DoxyCodeLine{77     \textcolor{keywordtype}{int} \mbox{\hyperlink{class_compact_star_1_1_particle_aba3e80e01a7efbf3bc8bce2129ef5a8a}{idx}};}
+\DoxyCodeLine{78 }
+\DoxyCodeLine{80     \textcolor{comment}{// static inline SigmaOmegaPar pars ;}}
+\DoxyCodeLine{81 }
+\DoxyCodeLine{83     \textcolor{keywordtype}{bool} \mbox{\hyperlink{class_compact_star_1_1_particle_abcf797e5d481fb10aecfe9943767fbd1}{number\_density\_flag}} = \textcolor{keyword}{false};}
+\DoxyCodeLine{84 }
+\DoxyCodeLine{85     \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{86   \textcolor{keyword}{public}:}
+\DoxyCodeLine{88     \textcolor{keyword}{const} \textcolor{keywordtype}{double} \mbox{\hyperlink{class_compact_star_1_1_particle_a0743f35fe16d498ca13d21ed94319ee8}{Q}};}
+\DoxyCodeLine{89 }
+\DoxyCodeLine{91     \textcolor{keyword}{const} \textcolor{keywordtype}{double} \mbox{\hyperlink{class_compact_star_1_1_particle_a97fa5f9c5bc158cf3b6edaacc33e4ffa}{M}};}
+\DoxyCodeLine{92 }
+\DoxyCodeLine{94     \textcolor{keyword}{const} \textcolor{keywordtype}{double} \mbox{\hyperlink{class_compact_star_1_1_particle_a0d58e22e03047b49219798ec109d9a81}{I3}};}
+\DoxyCodeLine{95 }
+\DoxyCodeLine{96     \mbox{\hyperlink{class_compact_star_1_1_particle}{Particle}}(\textcolor{keyword}{const} \textcolor{keywordtype}{int} \&\mbox{\hyperlink{class_compact_star_1_1_particle_aba3e80e01a7efbf3bc8bce2129ef5a8a}{idx}}, \textcolor{keyword}{const} \textcolor{keywordtype}{double} \&charge,}
+\DoxyCodeLine{97              \textcolor{keyword}{const} \textcolor{keywordtype}{double} \&mass,}
+\DoxyCodeLine{98              \textcolor{keyword}{const} \textcolor{keywordtype}{double} \&isospin);}
+\DoxyCodeLine{99 }
+\DoxyCodeLine{100     \mbox{\hyperlink{class_compact_star_1_1_particle_a56e058c8ac9bd246b7e006d66e27142b}{\string~Particle}}();}
+\DoxyCodeLine{101 }
+\DoxyCodeLine{103     \mbox{\hyperlink{class_compact_star_1_1_particle_a7e4a29fafbbc62005564684e183f1d02}{Particle}}(\textcolor{keyword}{const} \mbox{\hyperlink{class_compact_star_1_1_particle}{Particle}} \&) = \textcolor{keyword}{delete};}
+\DoxyCodeLine{104 }
+\DoxyCodeLine{106     \mbox{\hyperlink{class_compact_star_1_1_particle}{Particle}} \&\mbox{\hyperlink{class_compact_star_1_1_particle_a11a29e91422d8e6aa0b592b90ebb3caf}{operator=}}(\textcolor{keyword}{const} \mbox{\hyperlink{class_compact_star_1_1_particle}{Particle}} \&) = \textcolor{keyword}{delete};}
+\DoxyCodeLine{107 }
+\DoxyCodeLine{109     \textcolor{comment}{// is this correct??}}
+\DoxyCodeLine{110     \textcolor{keyword}{virtual} \textcolor{keywordtype}{double} \mbox{\hyperlink{class_compact_star_1_1_particle_a72c24a1d35950d097454aa97913ee6ac}{Dmu}}(\textcolor{keyword}{const} \textcolor{keywordtype}{int} \&\mbox{\hyperlink{class_compact_star_1_1_particle_aba3e80e01a7efbf3bc8bce2129ef5a8a}{idx}});}
+\DoxyCodeLine{111 }
+\DoxyCodeLine{113     \textcolor{keywordtype}{double} \mbox{\hyperlink{class_compact_star_1_1_particle_aa433068f029c57e0feb5b44e01db3aa1}{DMu\_DRho}}();}
+\DoxyCodeLine{114 }
+\DoxyCodeLine{116     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_compact_star_1_1_particle_af969e036c4afc7ec62634e4d11a617f8}{SetRho}}(\textcolor{keyword}{const} \textcolor{keywordtype}{double} \&rho);}
+\DoxyCodeLine{117 }
+\DoxyCodeLine{119     \textcolor{keywordtype}{double} \mbox{\hyperlink{class_compact_star_1_1_particle_a7968d4f74da6e0239d86eaea46f1e2a5}{k}}() \textcolor{keyword}{const};}
+\DoxyCodeLine{120 }
+\DoxyCodeLine{122     \textcolor{keywordtype}{double} \mbox{\hyperlink{class_compact_star_1_1_particle_abdbe611c29b97d03ba3e6bc1f4813ce1}{k2}}() \textcolor{keyword}{const};}
+\DoxyCodeLine{123 }
+\DoxyCodeLine{124     \textcolor{comment}{// /// Chemical potential}}
+\DoxyCodeLine{125     \textcolor{comment}{// virtual double Mu() ;}}
+\DoxyCodeLine{126 }
+\DoxyCodeLine{128     \textcolor{keyword}{virtual} \textcolor{keywordtype}{double} \mbox{\hyperlink{class_compact_star_1_1_particle_ad62fd41f123b9e1ae63db47f62383d85}{ETerm}}() \textcolor{keyword}{const};}
+\DoxyCodeLine{129 }
+\DoxyCodeLine{131     \textcolor{keyword}{virtual} \textcolor{keywordtype}{double} \mbox{\hyperlink{class_compact_star_1_1_particle_a962d8d0fa497f7e335d6100970fe3eda}{PTerm}}() \textcolor{keyword}{const};}
+\DoxyCodeLine{132 }
+\DoxyCodeLine{134     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_compact_star_1_1_particle_ab74dcc86a69dccf09311f25fc93737c3}{Print}}() \textcolor{keyword}{const override};}
+\DoxyCodeLine{135 }
+\DoxyCodeLine{137     \textcolor{comment}{// static double GetBaryonRho() ;}}
+\DoxyCodeLine{138 }
+\DoxyCodeLine{141     \textcolor{keyword}{static} \mbox{\hyperlink{class_compact_star_1_1_particle}{CompactStar::Particle}} *\mbox{\hyperlink{class_compact_star_1_1_particle_a39f9d84ddace00fc43592d5c1c4a9fec}{Find}}(\textcolor{keyword}{const} \textcolor{keywordtype}{int} \&\mbox{\hyperlink{class_compact_star_1_1_particle_aba3e80e01a7efbf3bc8bce2129ef5a8a}{idx}});}
+\DoxyCodeLine{142 }
+\DoxyCodeLine{147     \textcolor{keyword}{virtual} \textcolor{keywordtype}{int} \mbox{\hyperlink{class_compact_star_1_1_particle_a2237d88d797f917ff937648639eb965a}{PoolAdd}}() = 0;}
+\DoxyCodeLine{148 }
+\DoxyCodeLine{151     \textcolor{keyword}{virtual} \textcolor{keywordtype}{int} \mbox{\hyperlink{class_compact_star_1_1_particle_ab5e9207bf39cc79aa54b89e6ce0e5d0f}{PoolRemove}}() = 0;}
+\DoxyCodeLine{152 }
+\DoxyCodeLine{154     \textcolor{keyword}{static} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_compact_star_1_1_particle_acd6f799796accf3f418f0acc63ac8c7d}{EmptyPool}}();}
+\DoxyCodeLine{155 }
+\DoxyCodeLine{157     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_compact_star_1_1_particle_ab835fb0216debec6213f8a0bfbfd439b}{Set\_Mu}}(\textcolor{keyword}{const} \textcolor{keywordtype}{double} \&mu\_in);}
+\DoxyCodeLine{158 }
+\DoxyCodeLine{160     \textcolor{keyword}{virtual} \textcolor{keywordtype}{double} \mbox{\hyperlink{class_compact_star_1_1_particle_ade2a30772c19fada1f9f3d5b7dc1e47e}{Mu}}();}
+\DoxyCodeLine{161 }
+\DoxyCodeLine{163     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_compact_star_1_1_particle_aa6d5c65ba1510a9e896e9a2615b96f90}{Set\_Rho\_From\_Mu}}();}
+\DoxyCodeLine{164 }
+\DoxyCodeLine{166     \textcolor{keywordtype}{double} \mbox{\hyperlink{class_compact_star_1_1_particle_a55427e3aeb97bd8f311711368621ec1e}{GetRho}}() \textcolor{keyword}{const};}
+\DoxyCodeLine{167 }
+\DoxyCodeLine{168     \textcolor{comment}{// /// Get particle name}}
+\DoxyCodeLine{169     \textcolor{comment}{// std::string Name() const;}}
+\DoxyCodeLine{170 \};}
+\DoxyCodeLine{171 }
+\DoxyCodeLine{172 \textcolor{comment}{//==============================================================}}
+\DoxyCodeLine{173 \} \textcolor{comment}{// namespace CompactStar}}
+\DoxyCodeLine{174 \textcolor{comment}{//==============================================================}}
+\DoxyCodeLine{175 \textcolor{preprocessor}{\#endif }\textcolor{comment}{/*CompactStar\_Particle\_H*/}\textcolor{preprocessor}{}}
+
+\end{DoxyCode}
