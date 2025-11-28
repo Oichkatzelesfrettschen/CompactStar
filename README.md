@@ -77,164 +77,36 @@ Provided by the new Core module:
 
 ```
 CompactStar/
-├── CMakeLists.txt
-├── Core/
-│   ├── CMakeLists.txt
-│   ├── Analysis.hpp
-│   ├── Banner.hpp
-│   ├── CompactStarConfig.h
-│   ├── CompactStarConfig 2.h
-│   ├── MixedStar.hpp
-│   ├── NStar.hpp
-│   ├── Prog.hpp
-│   ├── Pulsar.hpp
-│   ├── Pulsar_old.hpp
-│   ├── RotationSolver.hpp
-│   ├── SeqPoint.hpp
-│   ├── StarBuilder.hpp
-│   ├── StarProfile.hpp
-│   ├── TaskManager.hpp
-│   ├── TOVSolver.hpp
-│   ├── TOVSolver_Thread.hpp
-│   └── src/
-│       ├── Analysis.cpp
-│       ├── Banner.cpp
-│       ├── MixedStar.cpp
-│       ├── NStar.cpp
-│       ├── Prog.cpp
-│       ├── Pulsar.cpp
-│       ├── Pulsar_old.cpp
-│       ├── RotationSolver.cpp
-│       ├── StarBuilder.cpp
-│       ├── StarProfile.cpp
-│       ├── TaskManager.cpp
-│       ├── TOVSolver.cpp
-│       └── TOVSolver_Old.cpp
-├── EOS/
-│   ├── CMakeLists.txt
-│   ├── Baryon.hpp
-│   ├── Common.hpp
-│   ├── CompOSE_EOS.hpp
-│   ├── CoulombLattice.hpp
-│   ├── Fermi_Gas.hpp
-│   ├── Fermi_Gas_Many.hpp
-│   ├── Lepton.hpp
-│   ├── Model.hpp
-│   ├── Particle.hpp
-│   ├── Polytrope.hpp
-│   ├── SigmaOmega.hpp
-│   ├── SigmaOmegaPar.hpp
-│   ├── SigmaOmegaRho.hpp
-│   ├── SigmaOmegaRho_nstar.hpp
-│   └── src/
-│       ├── Baryon.cpp
-│       ├── Common.cpp
-│       ├── CompOSE_EOS.cpp
-│       ├── CoulombLattice.cpp
-│       ├── Fermi_Gas.cpp
-│       ├── Fermi_Gas_Many.cpp
-│       ├── Lepton.cpp
-│       ├── Model.cpp
-│       ├── Particle.cpp
-│       ├── Polytrope.cpp
-│       ├── SigmaOmega.cpp
-│       ├── SigmaOmegaPar.cpp
-│       ├── SigmaOmegaRho.cpp
-│       └── SigmaOmegaRho_nstar.cpp
-├── Extensions/
-│   ├── CMakeLists.txt
-│   ├── LightDM/
-│   │   ├── CMakeLists.txt
-│   │   ├── LightDM_Scalar_Density.hpp
-│   │   └── src/
-│   │       └── LightDM_Scalar_Density.cpp
-│   └── MixedStar/
-│       ├── CMakeLists.txt
-│       ├── DarkCore_Analysis.hpp
-│       └── src/
-│           └── DarkCore_Analysis.cpp
-├── Microphysics/
-│   ├── CMakeLists.txt
-│   ├── BNV/
-│   │   ├── CMakeLists.txt
-│   │   ├── Analysis/
-│   │   │   ├── CMakeLists.txt
-│   │   │   ├── BNV_Analysis.hpp
-│   │   │   ├── BNV_Sequence.hpp
-│   │   │   ├── Decay_Analysis.hpp
-│   │   │   └── src/
-│   │   │       ├── BNV_Analysis.cpp
-│   │   │       ├── BNV_Sequence.cpp
-│   │   │       └── Decay_Analysis.cpp
-│   │   ├── Channels/
-│   │   │   ├── CMakeLists.txt
-│   │   │   ├── BNV_B_Chi_Combo.hpp
-│   │   │   ├── BNV_B_Chi_Photon.hpp
-│   │   │   ├── BNV_B_Chi_Transition.hpp
-│   │   │   ├── BNV_B_Psi_Pion.hpp
-│   │   │   └── src/
-│   │   │       ├── BNV_B_Chi_Combo.cpp
-│   │   │       ├── BNV_B_Chi_Photon.cpp
-│   │   │       ├── BNV_B_Chi_Transition.cpp
-│   │   │       └── BNV_B_Psi_Pion.cpp
-│   │   └── Internal/
-│   │       ├── CMakeLists.txt
-│   │       ├── BNV_Chi.hpp
-│   │       └── src/
-│   │           └── BNV_Chi.cpp
-│   └── Rates/
-│       ├── CMakeLists.txt
-│       └── Urca.hpp
-├── Physics/
-│   ├── CMakeLists.txt
-│   ├── BNV.hpp
-│   ├── Thermal.hpp
-│   ├── Driver/
-│   │   ├── CMakeLists.txt
-│   │   ├── Coupling.hpp
-│   │   ├── IDriver.hpp
-│   │   ├── Chem/
-│   │   │   ├── CMakeLists.txt
-│   │   │   ├── BNVSource.hpp
-│   │   │   ├── Rotochemical.hpp
-│   │   │   └── WeakRestoration.hpp
-│   │   ├── Spin/
-│   │   │   ├── CMakeLists.txt
-│   │   │   ├── AccretionTorque.hpp
-│   │   │   ├── BNVSpinTorque.hpp
-│   │   │   └── MagneticDipole.hpp
-│   │   └── Thermal/
-│   │       ├── CMakeLists.txt
-│   │       ├── HeatingFromChem.hpp
-│   │       ├── NeutrinoCooling.hpp
-│   │       └── PhotonCooling.hpp
-│   ├── Evolution/
-│   │   ├── CMakeLists.txt
-│   │   ├── GeometryCache.hpp
-│   │   ├── Graph.hpp
-│   │   ├── StarContext.hpp
-│   │   ├── System.hpp
-│   │   ├── Integrator/
-│   │   │   ├── CMakeLists.txt
-│   │   │   ├── GSLIntegrator.hpp
-│   │   │   └── src/
-│   │   │       └── GSLIntegrator.cpp
-│   │   ├── Observers/
-│   │   │   ├── CMakeLists.txt
-│   │   │   ├── CheckpointObserver.hpp
-│   │   │   ├── IObserver.hpp
-│   │   │   └── LogObserver.hpp
-│   │   └── src/
-│   │       ├── GeometryCache.cpp
-│   │       ├── StarContext.cpp
-│   │       └── System.cpp
-│   └── State/
-│       ├── CMakeLists.txt
-│       ├── BNVState.hpp
-│       ├── ChemState.hpp
-│       ├── SpinState.hpp
-│       └── ThermalState.hpp
-
+├── Core/                           # Math, physics primitives, TOV/Hartle solvers, star builders
+│   ├── src/                        # Implementations for Core classes
+│   └── (various headers)           # NStar, Pulsar, RotationSolver, StarBuilder, etc.
+│
+├── EOS/                            # Equation of state models and infrastructure
+│   └── src/                        # EOS implementations (CompOSE, Fermi gas, sigma-omega models)
+│
+├── Physics/                        # Full evolution engine (thermal + spin + chemical + BNV coupling)
+│   ├── Driver/                     # Thermal, chemical, and spin drivers (pluggable modules)
+│   │   ├── Chem/                   # Rotochemical, weak restoration, BNV chemical sources
+│   │   ├── Spin/                   # Spin-down, accretion, BNV torque models
+│   │   └── Thermal/                # Cooling/heating channels
+│   ├── Evolution/                  # Integrators, observers, system assembly
+│   │   ├── Integrator/             # GSL integrator bindings
+│   │   └── Observers/              # Logging, checkpointing, diagnostics
+│   └── State/                      # ThermalState, SpinState, ChemState, BNVState
+│
+├── Microphysics/                   # Reaction-level particle physics (BNV, Urca, etc.)
+│   ├── BNV/                        # Baryon-number-violating models
+│   │   ├── Analysis/               # BNV diagnostic tools, sequences, decay analysis
+│   │   ├── Channels/               # BNV reaction channels
+│   │   └── Internal/               # BNV particle/field definitions
+│   └── Rates/                      # Urca and related microphysical rates
+│
+├── Extensions/                     # Optional add-ons beyond the core framework
+│   ├── LightDM/                    # Light dark-matter scalar density models
+│   └── MixedStar/                  # Dark–visible mixed star analysis extensions
+│
+├── CMakeLists.txt                  # Build system
+└── (other top-level support files)
 ```
 
 ---
