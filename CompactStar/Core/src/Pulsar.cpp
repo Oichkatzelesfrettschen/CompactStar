@@ -47,7 +47,7 @@ Pulsar::Pulsar()
 // ------------------------------------------------------------
 Pulsar::Pulsar(const std::string &name,
 			   const Zaki::Math::Quantity &mass,
-			   const SpinState &spin)
+			   const Physics::State::SpinState &spin)
 	: Prog(name),
 	  mp(mass),
 	  spin_(spin)
@@ -63,12 +63,19 @@ Pulsar::Pulsar(const std::string &name,
 	: Pulsar(
 		  name,
 		  mass,
-		  SpinState{
-			  .P = spin_p,
-			  .Pdot = spin_pdot,
-			  .mu = {0.0, 0.0}, // you didn’t pass these
-			  .d = {0.0, 0.0}	// so set to 0
-		  })
+		  [spin_p, spin_pdot]()
+		  {
+			  CompactStar::Physics::State::SpinState s;
+			  s.P = spin_p;
+			  s.Pdot = spin_pdot;
+			  s.mu = {0.0, 0.0};
+			  s.d = {0.0, 0.0};
+
+			  s.Resize(1);
+			  s.Omega() = 2.0 * M_PI / spin_p.val;
+
+			  return s;
+		  }())
 {
 }
 

@@ -26,7 +26,7 @@
  * };
  * @endcode
  *
- * @see CompactStar::Physics::IDriver
+ * @see CompactStar::Physics::Driver::IDriver
  * @see CompactStar::Physics::Evolution::System
  *
  * @author
@@ -46,8 +46,9 @@ namespace CompactStar::Physics::State
  * @enum StateTag
  * @brief Enumerates high-level dynamic subsystems ("state blocks") of the model.
  *
- * Each distinct `StateTag` corresponds to one substate in the global
- * `StateVector` managed by the evolution system.
+ * Each distinct `StateTag` corresponds to one concrete state block
+ * (SpinState, ThermalState, ChemState, BNVState, …) in Physics/State,
+ * which the evolution System packs into the global StateVector.
  */
 enum class StateTag : unsigned int
 {

@@ -134,19 +134,19 @@ class Pulsar : public Prog
 	 *
 	 * Contains (P), (dot{P}), proper motion, and distance.
 	 */
-	SpinState spin_;
+	Physics::State::SpinState spin_;
 
 	/**
 	 * @brief Thermal state: core, blanket, and surface temperatures [K].
 	 */
-	ThermalState thermal_;
+	Physics::State::ThermalState thermal_;
 
 	/**
 	 * @brief Cached BNV-related quantities.
 	 *
 	 * e.g. \f$\eta_I\f$ and spin-down BNV bound.
 	 */
-	BNVState bnv_;
+	Physics::State::BNVState bnv_;
 
   public:
 	// ------------------------------------------------------------
@@ -176,7 +176,7 @@ class Pulsar : public Prog
 	 */
 	Pulsar(const std::string &name,
 		   const Zaki::Math::Quantity &mass,
-		   const SpinState &spin);
+		   const Physics::State::SpinState &spin);
 
 	/**
 	 * @brief Backward-compatible constructor (old style).
@@ -374,7 +374,7 @@ class Pulsar : public Prog
 	 * @brief Get the full spin/kinematic state.
 	 * @return SpinState by value.
 	 */
-	SpinState GetSpinState() const { return spin_; }
+	Physics::State::SpinState GetSpinState() const { return spin_; }
 
 	/**
 	 * @brief Convenience wrapper for the characteristic age \(\tau_c = P/(2\dot{P})\).
@@ -409,13 +409,13 @@ class Pulsar : public Prog
 	 * @brief Set the thermal state (core / blanket / surface temperatures).
 	 * @param t Thermal state.
 	 */
-	void SetThermalState(const ThermalState &t) { thermal_ = t; }
+	void SetThermalState(const Physics::State::ThermalState &t) { thermal_ = t; }
 
 	/**
 	 * @brief Get the current thermal state.
 	 * @return ThermalState by value.
 	 */
-	ThermalState GetThermalState() const { return thermal_; }
+	Physics::State::ThermalState GetThermalState() const { return thermal_; }
 
 	/**
 	 * @brief Redshifted photon luminosity from the surface.
@@ -471,7 +471,11 @@ class Pulsar : public Prog
 	 */
 	double GetBNVSpinDownLimit() const
 	{
-		return bnv_.spin_down_limit;
+		// return bnv_.spin_down_limit;
+		// Safe even if BNVState has not been resized yet.
+		if (bnv_.NumComponents() < 2)
+			return 0.0;
+		return bnv_.SpinDownLimit();
 	}
 };
 

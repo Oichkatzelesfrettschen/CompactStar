@@ -3,53 +3,126 @@
  * CompactStar
  * See License file at the top of the source tree.
  *
- * Copyright (c) 2025 Mohammadreza Zakeri
+ * Copyright (c) 2025
+ * Mohammadreza Zakeri
  *
- * Permission is hereby granted, free of charge, to any person obtaining a copy
- * of this software and associated documentation files (the "Software"), to deal
- * in the Software without restriction, including without limitation the rights
- * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
- * copies of the Software, and to permit persons to whom the Software is
- * furnished to do so, subject to the following conditions:
- *
- * The above copyright notice and this permission notice shall be included in all
- * copies or substantial portions of the Software.
- *
- * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
- * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
- * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
- * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
- * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
- * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
- * SOFTWARE.
+ * MIT License — see LICENSE at repo root.
  */
+
 /**
  * @file BNVState.hpp
- * @brief Optional cache/state for BNV-related derived quantities.
- * @ingroup Physics
+ * @brief Dynamic or cached quantities associated with baryon-number violation.
  *
- * @author Mohammadreza Zakeri
- * Contact: M.Zakeri@eku.edu
+ * This state block provides storage for BNV-related diagnostics or dynamic
+ * variables that may appear in BNV evolution drivers (e.g. ψ-population
+ * evolution, effective η-like variables, or observationally relevant
+ * meta-parameters).
+ *
+ * Depending on your BNV model, this may store:
+ *  - a small vector of ODE-evolved quantities, or
+ *  - a cached set of derived diagnostic values (non-ODE),
+ * or both.
+ *
+ * Present version implements a simple ODE-compatible state with two components:
+ *   1. η_I              — dimensionless imbalance parameter (model-specific)
+ *   2. spin_down_limit  — Γ_BNV limit inferred from pulsar spin-down
+ *
+ * Additional DOFs can be added without touching the evolution core.
+ *
+ * @ingroup PhysicsState
  */
-#ifndef CompactStar_BNVState_H
-#define CompactStar_BNVState_H
 
-namespace CompactStar
+#ifndef CompactStar_Physics_State_BNVState_H
+#define CompactStar_Physics_State_BNVState_H
+
+#include <cstddef>
+#include <vector>
+
+#include "CompactStar/Physics/State/State.hpp"
+
+namespace CompactStar::Physics::State
 {
+
 /**
- * @struct BNVState
- * @brief Cached BNV diagnostics for a star.
- * @ingroup Physics
+ * @class BNVState
+ * @brief State block for BNV-related dynamical or cached variables.
  *
- * @author Mohammadreza Zakeri
- * Contact: M.Zakeri@eku.edu
+ * This class behaves exactly like ChemState/ThermalState in terms of
+ * interface: a resizable contiguous vector of doubles exposed to the
+ * evolution system and its drivers.
+ *
+ * Physical meaning of each component is determined by your BNV model.
  */
-struct BNVState
+class BNVState : public State
 {
-	double eta_I = 0.0;			  ///< Dimensionless \f$\eta_I\f$ (paper-specific).
-	double spin_down_limit = 0.0; ///< \f\Gamma_{\mathrm{BNV}}\f bound from spin-down [1/yr].
+  public:
+	// -------------------------------------------------------------
+	// Required interface from State
+	// -------------------------------------------------------------
+
+	const char *Name() const override { return "BNVState"; }
+
+	std::size_t Size() const override { return values_.size(); }
+
+	double *Data() override
+	{
+		return values_.empty() ? nullptr : values_.data();
+	}
+
+	const double *Data() const override
+	{
+		return values_.empty() ? nullptr : values_.data();
+	}
+
+	/**
+	 * @brief Resize underlying DOF vector to @p N entries.
+	 *
+	 * Default layout:
+	 *   N = 2
+	 *     index 0 → η_I
+	 *     index 1 → spin_down_limit
+	 *
+	 * You may expand this vector when implementing more elaborate BNV models.
+	 */
+	void Resize(std::size_t N) override
+	{
+		values_.assign(N, 0.0);
+	}
+
+	std::size_t GridSize() const override { return values_.size(); }
+
+	/// Zero out all values (capacity preserved).
+	void Clear() override
+	{
+		for (double &x : values_)
+			x = 0.0;
+	}
+
+	// -------------------------------------------------------------
+	// Convenience accessors
+	// -------------------------------------------------------------
+
+	/// Return number of BNV state components.
+	std::size_t NumComponents() const { return values_.size(); }
+
+	/// Access component i (mutable).
+	double &Value(std::size_t i) { return values_.at(i); }
+
+	/// Access component i (const).
+	const double &Value(std::size_t i) const { return values_.at(i); }
+
+	// Named accessors for the two canonical components
+	double &EtaI() { return values_.at(0); }
+	double &SpinDownLimit() { return values_.at(1); }
+
+	const double &EtaI() const { return values_.at(0); }
+	const double &SpinDownLimit() const { return values_.at(1); }
+
+  private:
+	/// Contiguous DOF vector, semantics determined by BNV model.
+	std::vector<double> values_;
 };
 
-} // namespace CompactStar
+} // namespace CompactStar::Physics::State
 
-#endif /* CompactStar_BNVState_H */
+#endif /* CompactStar_Physics_State_BNVState_H */

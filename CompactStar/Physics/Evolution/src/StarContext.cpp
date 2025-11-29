@@ -4,7 +4,7 @@
  * @brief See StarContext.hpp. Thin adapters over NStar/EOS.
  */
 
-#include "CompactStar/ChemicalHeating/StarContext.hpp"
+#include "CompactStar/Physics/Evolution/StarContext.hpp"
 
 #include "CompactStar/Core/NStar.hpp" // NStar, SeqPoint
 // Concrete EOS base header
@@ -12,9 +12,9 @@
 
 #include <Zaki/Vector/DataSet.hpp>
 
-namespace CompactStar
+namespace CompactStar::Physics
 {
-namespace ChemicalHeating
+namespace Evolution
 {
 //==============================================================
 //                   StarContext Class
@@ -92,5 +92,5 @@ double StarContext::ExpNuSurface() const
 }
 //--------------------------------------------------------------
 
-} // namespace ChemicalHeating
-} // namespace CompactStar
+} // namespace Evolution
+} // namespace CompactStar::Physics

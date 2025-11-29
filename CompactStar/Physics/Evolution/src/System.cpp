@@ -8,14 +8,14 @@
 
 #include <Zaki/Vector/DataSet.hpp>
 
-#include "CompactStar/ChemicalHeating/Config.hpp"
 #include "CompactStar/ChemicalHeating/Envelope.hpp"
 #include "CompactStar/ChemicalHeating/EvolutionState.hpp"
 #include "CompactStar/ChemicalHeating/EvolutionSystem.hpp"
 #include "CompactStar/ChemicalHeating/GeometryCache.hpp"
 #include "CompactStar/ChemicalHeating/Microphysics.hpp"
-#include "CompactStar/ChemicalHeating/RateChannels.hpp"
-#include "CompactStar/ChemicalHeating/StarContext.hpp"
+// #include "CompactStar/ChemicalHeating/RateChannels.hpp"
+#include "CompactStar/Physics/Evolution/EvolutionConfig.hpp"
+#include "CompactStar/Physics/Evolution/StarContext.hpp"
 
 #include <cmath>
 #include <cstddef>

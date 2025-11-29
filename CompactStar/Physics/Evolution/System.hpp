@@ -25,37 +25,45 @@
  */
 
 /**
- * @file EvolutionSystem.hpp
+ * @file System.hpp
  * @brief Right-hand side (RHS) functor for the ODE system dY/dt.
  *
  * The RHS assembles volume integrals using GeometryCache and RateSet, and computes
  * time derivatives for \f$T^\infty\f$ and \f$\boldsymbol{\eta}\f$ (and optionally \f$\Omega\f$).
  * Designed to be wrapped by a GSL driver in @c IntegratorGSL.
  *
- * @ingroup ChemicalHeating
+ * @ingroup Physics
  */
-#ifndef CompactStar_ChemicalHeating_EvolutionSystem_H
-#define CompactStar_ChemicalHeating_EvolutionSystem_H
+#ifndef CompactStar_Physics_Evolution_System_H
+#define CompactStar_Physics_Evolution_System_H
 
 #include <vector>
 
 namespace CompactStar
 {
-namespace ChemicalHeating
+namespace Physics
+{
+namespace Thermal
+{
+class IEnvelope;
+}
+namespace Evolution
 {
 class StarContext;
 class GeometryCache;
-class Microphysics;
-class IEnvelope;
-class RateSet;
+// class Microphysics;
+// class RateSet;
 struct EvolutionState;
 struct Config;
-} // namespace ChemicalHeating
+} // namespace Evolution
+} // namespace Physics
 } // namespace CompactStar
 
 namespace CompactStar
 {
-namespace ChemicalHeating
+namespace Physics
+{
+namespace Evolution
 {
 
 //==============================================================
@@ -75,9 +83,9 @@ class EvolutionSystem
 	{
 		const StarContext *star = 0;
 		const GeometryCache *geo = 0;
-		const Microphysics *micro = 0;
-		const IEnvelope *envelope = 0;
-		const RateSet *rates = 0;
+		// const Microphysics *micro = 0;
+		const Thermal::IEnvelope *envelope = 0;
+		// const RateSet *rates = 0;
 		const Config *cfg = 0;
 	};
 
@@ -103,8 +111,10 @@ class EvolutionSystem
 	Context m_ctx;
 };
 //==============================================================
-} // namespace ChemicalHeating
+} // namespace Evolution
+//==============================================================
+} // namespace Physics
 //==============================================================
 } // namespace CompactStar
 //==============================================================
-#endif /* CompactStar_ChemicalHeating_EvolutionSystem_H */
+#endif /* CompactStar_Physics_Evolution_System_H */

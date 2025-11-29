@@ -33,16 +33,41 @@
  * @author Mohammadreza Zakeri
  * Contact: M.Zakeri@eku.edu
  */
-#ifndef CompactStar_Thermal_H
-#define CompactStar_Thermal_H
+#ifndef CompactStar_Physics_Thermal_H
+#define CompactStar_Physics_Thermal_H
 
 #include "CompactStar/Core/StarProfile.hpp"
 #include "CompactStar/Physics/State/ThermalState.hpp"
 
 namespace CompactStar
 {
+namespace Physics
+{
 namespace Thermal
 {
+
+/**
+ * @class IEnvelope
+ * @brief Strategy for Tb -> Ts mapping (thermal boundary condition).
+ *
+ * Given base-of-envelope temperature Tb, surface gravity g14, and a light-element
+ * parameter xi, returns the local surface temperature Ts.
+ */
+class IEnvelope
+{
+  public:
+	virtual ~IEnvelope() = default;
+
+	/**
+	 * @brief Map base temperature to surface temperature.
+	 * @param Tb   Base-of-envelope temperature [K], local frame.
+	 * @param g14  Surface gravity in units of 1e14 cm s^-2.
+	 * @param xi   Light-element/light-element column parameter.
+	 * @return Local surface temperature Ts [K].
+	 */
+	virtual double Ts_from_Tb(double Tb, double g14, double xi) const = 0;
+};
+
 /**
  * @brief Redshifted photon luminosity \(L_\infty\) from the surface.
  * @ingroup Physics
@@ -57,7 +82,7 @@ namespace Thermal
  * @note If you prefer to use a \(T_\infty\)-based fit (e.g., \(T_\infty^{2.42}\)),
  *       implement a sibling function instead of overloading this one.
  */
-double SurfacePhotonLuminosity(StarProfileView view, const ThermalState &state);
+double SurfacePhotonLuminosity(StarProfileView view, const State::ThermalState &state);
 
 /**
  * @brief Direct Urca neutrino emissivity \(Q_\nu^{\text{DUrca}}(r)\).
@@ -72,7 +97,7 @@ double SurfacePhotonLuminosity(StarProfileView view, const ThermalState &state);
  * @return Emissivity prefactor at r (exclude the \(T^6\) factor).
  */
 double DUrcaEmissivityPrefactor(StarProfileView view,
-								const ThermalState &state,
+								const State::ThermalState &state,
 								double r_km);
 
 /**
@@ -84,7 +109,7 @@ double DUrcaEmissivityPrefactor(StarProfileView view,
  * @return Emissivity prefactor at r (exclude the \(T^8\) factor).
  */
 double MUrcaEmissivityPrefactor(StarProfileView view,
-								const ThermalState &state,
+								const State::ThermalState &state,
 								double r_km);
 
 /**
@@ -98,9 +123,10 @@ double MUrcaEmissivityPrefactor(StarProfileView view,
  * @param state  Thermal state.
  * @return Redshifted neutrino luminosity [erg s\(^{-1}\)].
  */
-double TotalNeutrinoLuminosity(StarProfileView view, const ThermalState &state);
+double TotalNeutrinoLuminosity(StarProfileView view, const State::ThermalState &state);
 
 } // namespace Thermal
+} // namespace Physics
 } // namespace CompactStar
 
-#endif /* CompactStar_Thermal_H */
+#endif /* CompactStar_Physics_Thermal_H */

@@ -1,4 +1,5 @@
 set(CompactStar_Physics_State_headers
+    State.hpp
     SpinState.hpp
     ThermalState.hpp
     BNVState.hpp

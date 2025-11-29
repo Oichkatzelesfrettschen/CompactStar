@@ -32,29 +32,31 @@
  *  - \f$w_C(r)=4\pi r^2 e^{\Lambda(r)}\f$   (heat capacity integrals)
  *  - \f$w_\nu(r)=4\pi r^2 e^{\Lambda(r)+2\nu(r)}\f$ (luminosities at infinity)
  *
- * @ingroup ChemicalHeating
+ * @ingroup Physics
  */
-#ifndef CompactStar_ChemicalHeating_GeometryCache_H
-#define CompactStar_ChemicalHeating_GeometryCache_H
+#ifndef CompactStar_Physics_Evolution_GeometryCache_H
+#define CompactStar_Physics_Evolution_GeometryCache_H
 
 #include <cstddef>
 #include <vector>
 
+// namespace CompactStar
+// {
+// namespace ChemicalHeating
+// {
+// class StarContext;
+// }
+// } // namespace CompactStar
+
+//==============================================================
 namespace CompactStar
 {
-namespace ChemicalHeating
+namespace Physics
 {
+namespace Evolution
+{
+
 class StarContext;
-}
-} // namespace CompactStar
-
-//==============================================================
-namespace CompactStar
-{
-//==============================================================
-namespace ChemicalHeating
-{
-
 //==============================================================
 //                      GeometryCache Class
 //==============================================================
@@ -89,9 +91,11 @@ class GeometryCache
 	std::vector<double> m_wNu;
 };
 //==============================================================
-} // namespace ChemicalHeating
+} // namespace Evolution
+//==============================================================
+} // namespace Physics
 //==============================================================
 } // namespace CompactStar
 //==============================================================
 
-#endif /* CompactStar_ChemicalHeating_GeometryCache_H */
+#endif /* CompactStar_Physics_Evolution_GeometryCache_H */

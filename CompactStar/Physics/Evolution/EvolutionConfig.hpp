@@ -31,10 +31,10 @@
  * Includes integrator tolerances, enabled physics channels, envelope and gap
  * choices, output cadence, and initial conditions (sizes only; values live in EvolutionState).
  *
- * @ingroup ChemicalHeating
+ * @ingroup Physics
  */
-#ifndef CompactStar_ChemicalHeating_Config_H
-#define CompactStar_ChemicalHeating_Config_H
+#ifndef CompactStar_Physics_Evolution_Config_H
+#define CompactStar_Physics_Evolution_Config_H
 
 #include <cstddef>
 #include <string>
@@ -42,7 +42,9 @@
 
 namespace CompactStar
 {
-namespace ChemicalHeating
+namespace Physics
+{
+namespace Evolution
 {
 
 //==============================================================
@@ -111,10 +113,11 @@ struct Config
 	std::string run_label; /*!< Free-form label for outputs. */
 };
 //==============================================================
-
-} // namespace ChemicalHeating
+} // namespace Evolution
+//=============================================================
+} // namespace Physics
 //==============================================================
 } // namespace CompactStar
 //==============================================================
 
-#endif /* CompactStar_ChemicalHeating_Config_H */
+#endif /* CompactStar_Physics_Evolution_Config_H */

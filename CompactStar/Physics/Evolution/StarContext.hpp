@@ -32,10 +32,10 @@
  * derived from a precomputed neutron-star profile. It *does not* run TOV or rotation;
  * it only exposes cached, interpolation-friendly views needed during RHS evaluations.
  *
- * @ingroup ChemicalHeating
+ * @ingroup Physics
  */
-#ifndef CompactStar_ChemicalHeating_StarContext_H
-#define CompactStar_ChemicalHeating_StarContext_H
+#ifndef CompactStar_Physics_Evolution_StarContext_H
+#define CompactStar_Physics_Evolution_StarContext_H
 
 #include <cstddef>
 #include <string>
@@ -62,7 +62,9 @@ class Model;
 
 namespace CompactStar
 {
-namespace ChemicalHeating
+namespace Physics
+{
+namespace Evolution
 {
 
 //==============================================================
@@ -141,8 +143,10 @@ class StarContext
 	const Zaki::Vector::DataColumn *m_yp = 0;
 };
 //==============================================================
-} // namespace ChemicalHeating
+} // namespace Evolution
+//==============================================================
+} // namespace Physics
 //==============================================================
 } // namespace CompactStar
 //==============================================================
-#endif /* CompactStar_ChemicalHeating_StarContext_H */
+#endif /* CompactStar_Physics_Evolution_StarContext_H */

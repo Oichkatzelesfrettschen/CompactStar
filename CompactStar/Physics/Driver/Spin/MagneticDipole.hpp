@@ -3,63 +3,122 @@
  * CompactStar
  * See License file at the top of the source tree.
  *
- * Copyright (c) 2025 Mohammadreza Zakeri
+ * Copyright (c) 2025
+ * Mohammadreza Zakeri
  *
- * Permission is hereby granted, free of charge, to any person obtaining a copy
- * of this software and associated documentation files (the "Software"), to deal
- * in the Software without restriction, including without limitation the rights
- * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
- * copies of the Software, and to permit persons to whom the Software is
- * furnished to do so, subject to the following conditions:
- *
- * The above copyright notice and this permission notice shall be included in all
- * copies or substantial portions of the Software.
- *
- * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
- * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
- * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
- * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
- * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
- * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
- * SOFTWARE.
+ * MIT License — see LICENSE at repo root.
  */
-/**
- * @file Spin.hpp
- * @brief Spin-related derived quantities for pulsars.
- * @ingroup Physics
- *
- * @author Mohammadreza Zakeri
- * Contact: M.Zakeri@eku.edu
- */
-#ifndef CompactStar_Spin_H
-#define CompactStar_Spin_H
 
-#include "CompactStar/Core/StarProfile.hpp"
+/**
+ * @file MagneticDipole.hpp
+ * @brief Spin-down driver for vacuum-like magnetic dipole radiation.
+ *
+ * This driver implements a simple torque law of the form
+ *   \dot{\Omega} = -K \Omega^n
+ * with configurable braking index n and prefactor K. In more realistic
+ * setups K can be built from B, R, I, and an obliquity angle using the
+ * StarContext and SpinState.
+ *
+ * Directory-based namespace: CompactStar::Physics::Driver::Spin
+ *
+ * @ingroup Driver
+ */
+
+#ifndef CompactStar_Physics_Driver_Spin_MagneticDipole_H
+#define CompactStar_Physics_Driver_Spin_MagneticDipole_H
+
+#include <array>
+#include <span>
+#include <string>
+
+#include "CompactStar/Physics/Driver/IDriver.hpp"
 #include "CompactStar/Physics/State/SpinState.hpp"
+#include "CompactStar/Physics/State/Tags.hpp"
 
 namespace CompactStar::Physics::Driver::Spin
 {
-	/**
-	 * @brief Characteristic age \(\tau_c = P/(2\dot{P})\).
-	 * @ingroup Physics
-	 * @param s Spin state (uses P and Pdot).
-	 * @return \(\tau_c\) in seconds.
-	 */
-	double CharacteristicAge(const SpinState &s);
+
+/**
+ * @class MagneticDipole
+ * @brief Evolution driver for spin-down via magnetic dipole torque.
+ *
+ * **Depends on:** Spin
+ * **Updates:**    Spin
+ *
+ * The current implementation assumes that the primary evolved spin DOF is
+ * stored in `SpinState::Omega()` (component 0 of the internal vector).
+ *
+ * A minimal model is:
+ *   \dot{\Omega} = -K \Omega^n
+ * where `K` and `n` are provided via Options. More detailed models can
+ * read B, I, R, etc. from `StarContext` and/or `SpinState`.
+ */
+class MagneticDipole final : public IDriver
+{
+  public:
+	struct Options
+	{
+		/// Braking index n in \dot{\Omega} = -K \Omega^n (default 3 for pure dipole).
+		double braking_index = 3.0;
+
+		/// Prefactor K in \dot{\Omega} = -K \Omega^n (user units; to be calibrated).
+		double K_prefactor = 0.0;
+
+		/// If true, allow K to be modified using I(M,R,...) from the context.
+		bool use_moment_of_inertia = false;
+	};
+
+	explicit MagneticDipole(Options opts = {}) : opts_(opts) {}
+
+	// ------------------------------------------------------------------
+	// IDriver interface
+	// ------------------------------------------------------------------
+
+	std::string Name() const override { return "MagneticDipole"; }
+
+	std::span<const State::StateTag> DependsOn() const override
+	{
+		static constexpr std::array<State::StateTag, 1> deps{
+			State::StateTag::Spin};
+		return deps;
+	}
+
+	std::span<const State::StateTag> Updates() const override
+	{
+		static constexpr std::array<State::StateTag, 1> ups{
+			State::StateTag::Spin};
+		return ups;
+	}
 
 	/**
-	 * @brief Magnetic field estimate for a dipole-in-vacuum model.
-	 * @ingroup Physics
+	 * @brief Add magnetic-dipole spin-down contribution to dY/dt.
 	 *
-	 * Commonly \(B \sim 3.2\times10^{19} \sqrt{P\,\dot{P}}\ \mathrm{G}\) with model factors.
-	 * This function is a placeholder for your preferred normalization and moments of inertia.
+	 * Conceptual model:
+	 *   - Extract SpinState from the composite `Y` (via StateTag::Spin).
+	 *   - Read the evolved spin DOF Ω = spin.Omega().
+	 *   - Compute \dot{\Omega} = -K \Omega^n with K,n from `opts_`
+	 *     and/or from `ctx` (e.g. moment of inertia I(M,R)).
+	 *   - Add this contribution into the Spin block of `dYdt`.
 	 *
-	 * @param s    Spin state.
-	 * @param view Structural profile (for I(M,R) if you include it).
-	 * @return Estimated equatorial surface field [G].
+	 * Actual extraction of SpinState and indexing into the Spin block
+	 * is delegated to `Evolution::StateVector` / `RHSAccumulator`.
 	 */
-	double DipoleFieldEstimate(const SpinState &s, StarProfileView view);
+	void AccumulateRHS(double t,
+					   const Evolution::StateVector &Y,
+					   Evolution::RHSAccumulator &dYdt,
+					   const Evolution::StarContext &ctx) const override;
+
+	// ------------------------------------------------------------------
+	// Options access
+	// ------------------------------------------------------------------
+
+	const Options &GetOptions() const { return opts_; }
+	void SetOptions(const Options &o) { opts_ = o; }
+
+  private:
+	Options opts_;
+};
 
 } // namespace CompactStar::Physics::Driver::Spin
 
-#endif /* CompactStar_Spin_H */
+#endif /* CompactStar_Physics_Driver_Spin_MagneticDipole_H */

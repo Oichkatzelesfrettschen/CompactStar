@@ -3,54 +3,147 @@
  * CompactStar
  * See License file at the top of the source tree.
  *
- * Copyright (c) 2025 Mohammadreza Zakeri
+ * Copyright (c) 2025
+ * Mohammadreza Zakeri
  *
- * Permission is hereby granted, free of charge, to any person obtaining a copy
- * of this software and associated documentation files (the "Software"), to deal
- * in the Software without restriction, including without limitation the rights
- * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
- * copies of the Software, and to permit persons to whom the Software is
- * furnished to do so, subject to the following conditions:
- *
- * The above copyright notice and this permission notice shall be included in all
- * copies or substantial portions of the Software.
- *
- * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
- * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
- * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
- * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
- * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
- * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
- * SOFTWARE.
+ * MIT License — see LICENSE at repo root.
  */
+
 /**
  * @file ThermalState.hpp
- * @brief Thermal state variables for a compact star.
- * @ingroup Physics
+ * @brief Thermal evolution state block for a compact star.
  *
- * @author Mohammadreza Zakeri
- * Contact: M.Zakeri@eku.edu
+ * This class provides the **dynamical thermal degrees of freedom** used by the
+ * evolution system (typically the redshifted internal temperature T∞, or
+ * multiple temperature components if needed), as well as optional auxiliary
+ * temperatures used by microphysics or cooling models.
+ *
+ * Directory-based namespace: CompactStar::Physics::State
+ *
+ * @ingroup PhysicsState
+ *
+ * ### Design
+ * - The evolution DOFs live in a contiguous vector (`values_`).
+ * - A typical minimal configuration has just one DOF = T∞.
+ * - Subclasses or callers may configure multiple components by calling Resize().
+ *
+ * ### Auxiliary variables
+ * The local-frame temperatures (T_core, T_blanket, T_surf) are **not**
+ * part of the ODE vector. They are cached values used by cooling models,
+ * envelopes, emissivity computations, and diagnostics.
  */
 
-#ifndef CompactStar_ThermalState_H
-#define CompactStar_ThermalState_H
+#ifndef CompactStar_Physics_State_ThermalState_H
+#define CompactStar_Physics_State_ThermalState_H
 
-namespace CompactStar
+#include <cstddef>
+#include <vector>
+
+#include "CompactStar/Physics/State/State.hpp"
+
+namespace CompactStar::Physics::State
 {
+
 /**
- * @struct ThermalState
- * @brief Local (non-redshifted) temperatures at key regions.
- * @ingroup Physics
+ * @class ThermalState
+ * @brief Dynamical thermal DOFs + cached physical temperatures.
  *
- * Temperatures are in kelvin as measured in the local fluid frame.
+ * The ODE part (values_) is what evolution drivers operate on. By default
+ * callers usually use a single DOF representing the **redshifted internal
+ * temperature** T∞. If more thermal components (e.g. multi-zone models)
+ * are needed, callers simply call Resize(N).
+ *
+ * The auxiliary fields store physically meaningful temperatures in the
+ * **local fluid frame**, which microphysics and cooling models often require.
  */
-struct ThermalState
+class ThermalState : public State
 {
-	double T_core = 0.0;	///< Core temperature [K].
-	double T_blanket = 0.0; ///< Heat-blanket temperature [K] (ρ~1e10 g/cm^3).
-	double T_surf = 0.0;	///< Surface temperature [K].
+  public:
+	// ------------------------------------------------------------------
+	// Required interface from State
+	// ------------------------------------------------------------------
+
+	const char *Name() const override { return "ThermalState"; }
+
+	/// Number of ODE thermal components.
+	std::size_t Size() const override { return values_.size(); }
+
+	/// Mutable pointer to contiguous ODE data.
+	double *Data() override
+	{
+		return values_.empty() ? nullptr : values_.data();
+	}
+
+	/// Const pointer to contiguous ODE data.
+	const double *Data() const override
+	{
+		return values_.empty() ? nullptr : values_.data();
+	}
+
+	/**
+	 * @brief Resize the ODE thermal vector to N components.
+	 *
+	 * Typical choice:
+	 *   N = 1 → single DOF = T∞
+	 *
+	 * More components can be added for multi-zone thermal evolution models.
+	 */
+	void Resize(std::size_t N) override
+	{
+		values_.assign(N, 0.0);
+	}
+
+	/// Grid size == number of thermal DOFs in this simple layout.
+	std::size_t GridSize() const override { return values_.size(); }
+
+	/// Zero the thermal DOFs (capacity preserved).
+	void Clear() override
+	{
+		for (double &x : values_)
+			x = 0.0;
+	}
+
+	// ------------------------------------------------------------------
+	// Convenience accessors for ODE DOFs
+	// ------------------------------------------------------------------
+
+	/// Number of thermal DOFs.
+	std::size_t NumComponents() const { return values_.size(); }
+
+	/// Mutable access to i-th component.
+	double &Value(std::size_t i) { return values_.at(i); }
+
+	/// Const access to i-th component.
+	const double &Value(std::size_t i) const { return values_.at(i); }
+
+	/**
+	 * @brief Convenience accessor for the primary thermal DOF (usually T∞).
+	 *
+	 * By convention, component 0 is the **redshifted isothermal-core temperature**.
+	 */
+	double &Tinf() { return values_.at(0); }
+
+	/// Const accessor for T∞.
+	const double &Tinf() const { return values_.at(0); }
+
+	// ------------------------------------------------------------------
+	// Auxiliary temperatures (NOT part of the ODE vector)
+	// ------------------------------------------------------------------
+
+	/// Local-frame core temperature [K].
+	double T_core = 0.0;
+
+	/// Local-frame blanket temperature [K] (ρ ~ 10^10 g/cm³).
+	double T_blanket = 0.0;
+
+	/// Local-frame surface temperature [K].
+	double T_surf = 0.0;
+
+  private:
+	/// Contiguous ODE thermal components (e.g. T∞, or multi-zone T1,T2,...).
+	std::vector<double> values_;
 };
 
-} // namespace CompactStar
+} // namespace CompactStar::Physics::State
 
-#endif /* CompactStar_ThermalState_H */
+#endif /* CompactStar_Physics_State_ThermalState_H */
