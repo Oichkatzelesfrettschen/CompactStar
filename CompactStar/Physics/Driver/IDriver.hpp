@@ -3,7 +3,8 @@
  * CompactStar
  * See License file at the top of the source tree.
  *
- * Copyright (c) 2025 Mohammadreza Zakeri
+ * Copyright (c) 2025
+ * Mohammadreza Zakeri
  *
  * MIT License — see LICENSE at repo root.
  */
@@ -32,9 +33,8 @@
 #ifndef CompactStar_Physics_Driver_IDriver_H
 #define CompactStar_Physics_Driver_IDriver_H
 
-#include <array>
-#include <span>
 #include <string>
+#include <vector>
 
 #include "CompactStar/Physics/State/Tags.hpp" // defines enum class StateTag
 
@@ -50,7 +50,7 @@ class StarContext;	  ///< Geometry, EOS hooks, microphysics caches, etc.
 } // namespace Evolution
 
 /**
- * @class IDriver
+ * @class IDDriver
  * @brief Abstract interface for all evolution drivers.
  *
  * Drivers contribute terms to the RHS dY/dt for one or more state components.
@@ -69,16 +69,18 @@ class IDriver
 	/**
 	 * @brief Which state blocks this driver reads.
 	 *
-	 * Return a span to a static array (e.g., `static constexpr std::array<StateTag,2> {...}`).
+	 * Drivers should return a reference to a static container (e.g. a
+	 * static const std::vector<StateTag>).
 	 */
-	virtual std::span<const State::StateTag> DependsOn() const = 0;
+	virtual const std::vector<State::StateTag> &DependsOn() const = 0;
 
 	/**
 	 * @brief Which state blocks this driver updates (adds contributions to).
 	 *
-	 * Return a span to a static array (e.g., `static constexpr std::array<StateTag,1> {...}`).
+	 * Drivers should return a reference to a static container (e.g. a
+	 * static const std::vector<StateTag>).
 	 */
-	virtual std::span<const State::StateTag> Updates() const = 0;
+	virtual const std::vector<State::StateTag> &Updates() const = 0;
 
 	/**
 	 * @brief Add this driver’s contribution to the global RHS dY/dt.

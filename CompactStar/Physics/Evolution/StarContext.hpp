@@ -83,6 +83,9 @@ namespace Evolution
 class StarContext
 {
   public:
+	/// Default constructor (invalid context).
+	StarContext() = default;
+
 	/**
 	 * @brief Construct from a precomputed neutron-star profile.
 	 * @param ns   Reference to an initialized @c CompactStar::NStar.

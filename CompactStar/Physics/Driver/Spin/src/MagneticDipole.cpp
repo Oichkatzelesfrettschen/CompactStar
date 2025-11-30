@@ -24,7 +24,9 @@
 // -----------------------------------------------------------------------------
 
 #include "CompactStar/Physics/Driver/Spin/MagneticDipole.hpp"
-
+#include "CompactStar/Physics/Evolution/RHSAccumulator.hpp"
+#include "CompactStar/Physics/Evolution/StarContext.hpp"
+#include "CompactStar/Physics/Evolution/StateVector.hpp"
 #include <cmath> // std::pow, std::abs
 
 #include <Zaki/Util/Instrumentor.hpp> // Z_LOG_INFO/WARNING/ERROR, PROFILE_FUNCTION

@@ -21,15 +21,14 @@
  *
  * Directory-based namespace: CompactStar::Physics::Driver::Spin
  *
- * @ingroup Driver
+ * @ingroup PhysicsDriverSpin
  */
 
 #ifndef CompactStar_Physics_Driver_Spin_MagneticDipole_H
 #define CompactStar_Physics_Driver_Spin_MagneticDipole_H
 
-#include <array>
-#include <span>
 #include <string>
+#include <vector>
 
 #include "CompactStar/Physics/Driver/IDriver.hpp"
 #include "CompactStar/Physics/State/SpinState.hpp"
@@ -59,33 +58,45 @@ class MagneticDipole final : public IDriver
 	struct Options
 	{
 		/// Braking index n in \dot{\Omega} = -K \Omega^n (default 3 for pure dipole).
-		double braking_index = 3.0;
+		double braking_index;
 
 		/// Prefactor K in \dot{\Omega} = -K \Omega^n (user units; to be calibrated).
-		double K_prefactor = 0.0;
+		double K_prefactor;
 
 		/// If true, allow K to be modified using I(M,R,...) from the context.
-		bool use_moment_of_inertia = false;
+		bool use_moment_of_inertia;
 	};
 
-	explicit MagneticDipole(Options opts = {}) : opts_(opts) {}
+	/// Default-construct with reasonable defaults (n=3, K=0, no I-scaling).
+	MagneticDipole()
+		: opts_{3.0, 0.0, false}
+	{
+	}
+
+	/// Construct with explicit options.
+	explicit MagneticDipole(const Options &opts)
+		: opts_(opts)
+	{
+	}
 
 	// ------------------------------------------------------------------
-	// IDriver interface
+	//  IDriver interface
 	// ------------------------------------------------------------------
 
 	std::string Name() const override { return "MagneticDipole"; }
 
-	std::span<const State::StateTag> DependsOn() const override
+	const std::vector<State::StateTag> &DependsOn() const override
 	{
-		static constexpr std::array<State::StateTag, 1> deps{
+		// Spin-only dependency for now.
+		static const std::vector<State::StateTag> deps{
 			State::StateTag::Spin};
 		return deps;
 	}
 
-	std::span<const State::StateTag> Updates() const override
+	const std::vector<State::StateTag> &Updates() const override
 	{
-		static constexpr std::array<State::StateTag, 1> ups{
+		// Only the Spin block is updated by this driver.
+		static const std::vector<State::StateTag> ups{
 			State::StateTag::Spin};
 		return ups;
 	}
@@ -109,7 +120,7 @@ class MagneticDipole final : public IDriver
 					   const Evolution::StarContext &ctx) const override;
 
 	// ------------------------------------------------------------------
-	// Options access
+	//  Options access
 	// ------------------------------------------------------------------
 
 	const Options &GetOptions() const { return opts_; }

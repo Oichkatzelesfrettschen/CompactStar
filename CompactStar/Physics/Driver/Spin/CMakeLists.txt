@@ -7,6 +7,7 @@ set(CompactStar_Physics_Driver_Spin_headers
 install(FILES ${CompactStar_Physics_Driver_Spin_headers} DESTINATION include/CompactStar/Physics/Driver/Spin)
 
 set(CompactStar_Physics_Driver_Spin_sources
+    CompactStar/Physics/Driver/Spin/src/MagneticDipole.cpp
 
     PARENT_SCOPE
 )

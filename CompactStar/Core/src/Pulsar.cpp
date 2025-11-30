@@ -19,7 +19,7 @@
 #include "CompactStar/Core/StarBuilder.hpp"
 #include "CompactStar/Core/StarProfile.hpp"
 #include "CompactStar/Physics/Driver/Spin/MagneticDipole.hpp"
-
+#include "CompactStar/Physics/Spin.hpp"
 namespace CompactStar
 {
 
@@ -196,7 +196,7 @@ void Pulsar::ImportProfile(const std::string &model_name,
 // Returns the estimated equatorial dipole field [G].
 double Pulsar::GetDipoleFieldEstimate() const
 {
-	return view_.valid() ? PhysDriv::Spin::DipoleFieldEstimate(spin_, view_) : 0.0;
+	return view_.valid() ? Physics::Spin::DipoleFieldEstimate(spin_, view_) : 0.0;
 }
 //------------------------------------------------------
 // Convenience wrapper for the characteristic age \(\tau_c = P/(2\dot{P})\).
@@ -204,7 +204,7 @@ double Pulsar::GetDipoleFieldEstimate() const
 // Returns 0.0 if \(\dot{P}=0\).
 double Pulsar::GetCharacteristicAge() const
 {
-	return PhysDriv::Spin::CharacteristicAge(spin_);
+	return Physics::Spin::CharacteristicAge(spin_);
 }
 
 //======================================================================
