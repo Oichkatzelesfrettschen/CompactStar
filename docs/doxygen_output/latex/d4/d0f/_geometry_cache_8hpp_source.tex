@@ -28,54 +28,58 @@
 \DoxyCodeLine{24 \textcolor{comment}{ * SOFTWARE.}}
 \DoxyCodeLine{25 \textcolor{comment}{ */}}
 \DoxyCodeLine{26 }
-\DoxyCodeLine{37 \textcolor{preprocessor}{\#ifndef CompactStar\_ChemicalHeating\_GeometryCache\_H}}
-\DoxyCodeLine{38 \textcolor{preprocessor}{\#define CompactStar\_ChemicalHeating\_GeometryCache\_H}}
+\DoxyCodeLine{37 \textcolor{preprocessor}{\#ifndef CompactStar\_Physics\_Evolution\_GeometryCache\_H}}
+\DoxyCodeLine{38 \textcolor{preprocessor}{\#define CompactStar\_Physics\_Evolution\_GeometryCache\_H}}
 \DoxyCodeLine{39 }
 \DoxyCodeLine{40 \textcolor{preprocessor}{\#include <cstddef>}}
 \DoxyCodeLine{41 \textcolor{preprocessor}{\#include <vector>}}
 \DoxyCodeLine{42 }
-\DoxyCodeLine{43 \textcolor{keyword}{namespace }CompactStar}
-\DoxyCodeLine{44 \{}
-\DoxyCodeLine{45 \textcolor{keyword}{namespace }ChemicalHeating}
-\DoxyCodeLine{46 \{}
-\DoxyCodeLine{47 \textcolor{keyword}{class }StarContext;}
-\DoxyCodeLine{48 \}}
-\DoxyCodeLine{49 \} \textcolor{comment}{// namespace CompactStar}}
+\DoxyCodeLine{43 \textcolor{comment}{// namespace CompactStar}}
+\DoxyCodeLine{44 \textcolor{comment}{// \{}}
+\DoxyCodeLine{45 \textcolor{comment}{// namespace ChemicalHeating}}
+\DoxyCodeLine{46 \textcolor{comment}{// \{}}
+\DoxyCodeLine{47 \textcolor{comment}{// class StarContext;}}
+\DoxyCodeLine{48 \textcolor{comment}{// \}}}
+\DoxyCodeLine{49 \textcolor{comment}{// \} // namespace CompactStar}}
 \DoxyCodeLine{50 }
 \DoxyCodeLine{51 \textcolor{comment}{//==============================================================}}
 \DoxyCodeLine{52 \textcolor{keyword}{namespace }CompactStar}
 \DoxyCodeLine{53 \{}
-\DoxyCodeLine{54 \textcolor{comment}{//==============================================================}}
-\DoxyCodeLine{55 \textcolor{keyword}{namespace }ChemicalHeating}
-\DoxyCodeLine{56 \{}
-\DoxyCodeLine{57 }
-\DoxyCodeLine{58 \textcolor{comment}{//==============================================================}}
-\DoxyCodeLine{59 \textcolor{comment}{//                      GeometryCache Class}}
+\DoxyCodeLine{54 \textcolor{keyword}{namespace }Physics}
+\DoxyCodeLine{55 \{}
+\DoxyCodeLine{56 \textcolor{keyword}{namespace }Evolution}
+\DoxyCodeLine{57 \{}
+\DoxyCodeLine{58 }
+\DoxyCodeLine{59 \textcolor{keyword}{class }StarContext;}
 \DoxyCodeLine{60 \textcolor{comment}{//==============================================================}}
-\DoxyCodeLine{65 \textcolor{comment}{}\textcolor{keyword}{class }\mbox{\hyperlink{class_compact_star_1_1_chemical_heating_1_1_geometry_cache}{GeometryCache}}}
-\DoxyCodeLine{66 \{}
-\DoxyCodeLine{67   \textcolor{keyword}{public}:}
-\DoxyCodeLine{72     \textcolor{keyword}{explicit} \mbox{\hyperlink{class_compact_star_1_1_chemical_heating_1_1_geometry_cache}{GeometryCache}}(\textcolor{keyword}{const} \mbox{\hyperlink{class_compact_star_1_1_chemical_heating_1_1_star_context}{StarContext}} \&ctx);}
-\DoxyCodeLine{73 }
-\DoxyCodeLine{75     [[nodiscard]] std::size\_t \mbox{\hyperlink{class_compact_star_1_1_chemical_heating_1_1_geometry_cache_a667e9d632837d73b115ab6527c4ec117}{Size}}() \textcolor{keyword}{const};}
-\DoxyCodeLine{76 }
-\DoxyCodeLine{78     \textcolor{keyword}{const} std::vector<double> \&\mbox{\hyperlink{class_compact_star_1_1_chemical_heating_1_1_geometry_cache_a9c99086728c8f4f517cfab19f94f0bcd}{WC}}() \textcolor{keyword}{const};}
-\DoxyCodeLine{79 }
-\DoxyCodeLine{81     \textcolor{keyword}{const} std::vector<double> \&\mbox{\hyperlink{class_compact_star_1_1_chemical_heating_1_1_geometry_cache_af84c63de79b6fc3d8f50490ecc20f8bb}{WNu}}() \textcolor{keyword}{const};}
-\DoxyCodeLine{82 }
-\DoxyCodeLine{84     \textcolor{keyword}{const} std::vector<double> \&\mbox{\hyperlink{class_compact_star_1_1_chemical_heating_1_1_geometry_cache_ade9d6bc121225447725160d762a84dd3}{Radius}}() \textcolor{keyword}{const};}
-\DoxyCodeLine{85 }
-\DoxyCodeLine{86   \textcolor{keyword}{private}:}
-\DoxyCodeLine{87     std::vector<double> m\_r;}
-\DoxyCodeLine{88     std::vector<double> m\_wC;}
-\DoxyCodeLine{89     std::vector<double> m\_wNu;}
-\DoxyCodeLine{90 \};}
-\DoxyCodeLine{91 \textcolor{comment}{//==============================================================}}
-\DoxyCodeLine{92 \} \textcolor{comment}{// namespace ChemicalHeating}}
+\DoxyCodeLine{61 \textcolor{comment}{//                      GeometryCache Class}}
+\DoxyCodeLine{62 \textcolor{comment}{//==============================================================}}
+\DoxyCodeLine{67 \textcolor{comment}{}\textcolor{keyword}{class }\mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_geometry_cache}{GeometryCache}}}
+\DoxyCodeLine{68 \{}
+\DoxyCodeLine{69   \textcolor{keyword}{public}:}
+\DoxyCodeLine{74     \textcolor{keyword}{explicit} \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_geometry_cache}{GeometryCache}}(\textcolor{keyword}{const} \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_star_context}{StarContext}} \&ctx);}
+\DoxyCodeLine{75 }
+\DoxyCodeLine{77     [[nodiscard]] std::size\_t \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_geometry_cache_a667e9d632837d73b115ab6527c4ec117}{Size}}() \textcolor{keyword}{const};}
+\DoxyCodeLine{78 }
+\DoxyCodeLine{80     \textcolor{keyword}{const} std::vector<double> \&\mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_geometry_cache_a9c99086728c8f4f517cfab19f94f0bcd}{WC}}() \textcolor{keyword}{const};}
+\DoxyCodeLine{81 }
+\DoxyCodeLine{83     \textcolor{keyword}{const} std::vector<double> \&\mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_geometry_cache_af84c63de79b6fc3d8f50490ecc20f8bb}{WNu}}() \textcolor{keyword}{const};}
+\DoxyCodeLine{84 }
+\DoxyCodeLine{86     \textcolor{keyword}{const} std::vector<double> \&\mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_geometry_cache_ade9d6bc121225447725160d762a84dd3}{Radius}}() \textcolor{keyword}{const};}
+\DoxyCodeLine{87 }
+\DoxyCodeLine{88   \textcolor{keyword}{private}:}
+\DoxyCodeLine{89     std::vector<double> m\_r;}
+\DoxyCodeLine{90     std::vector<double> m\_wC;}
+\DoxyCodeLine{91     std::vector<double> m\_wNu;}
+\DoxyCodeLine{92 \};}
 \DoxyCodeLine{93 \textcolor{comment}{//==============================================================}}
-\DoxyCodeLine{94 \} \textcolor{comment}{// namespace CompactStar}}
+\DoxyCodeLine{94 \} \textcolor{comment}{// namespace Evolution}}
 \DoxyCodeLine{95 \textcolor{comment}{//==============================================================}}
-\DoxyCodeLine{96 }
-\DoxyCodeLine{97 \textcolor{preprocessor}{\#endif }\textcolor{comment}{/* CompactStar\_ChemicalHeating\_GeometryCache\_H */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{96 \} \textcolor{comment}{// namespace Physics}}
+\DoxyCodeLine{97 \textcolor{comment}{//==============================================================}}
+\DoxyCodeLine{98 \} \textcolor{comment}{// namespace CompactStar}}
+\DoxyCodeLine{99 \textcolor{comment}{//==============================================================}}
+\DoxyCodeLine{100 }
+\DoxyCodeLine{101 \textcolor{preprocessor}{\#endif }\textcolor{comment}{/* CompactStar\_Physics\_Evolution\_GeometryCache\_H */}\textcolor{preprocessor}{}}
 
 \end{DoxyCode}

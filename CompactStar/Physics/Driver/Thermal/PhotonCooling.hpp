@@ -17,7 +17,7 @@
  * RHS term −L_γ/C_eff. Envelope physics (T_core↔T_surf relations) should be
  * provided by the context/microphysics layer.
  *
- * @ingroup PhysicsDriverThermal
+ * @ingroup PhysicsDriver
  */
 
 #ifndef CompactStar_Physics_Driver_Thermal_PhotonCooling_H

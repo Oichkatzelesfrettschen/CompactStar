@@ -2,19 +2,34 @@
 \label{_b_n_v_state_8hpp}\index{CompactStar/Physics/State/BNVState.hpp@{CompactStar/Physics/State/BNVState.hpp}}
 
 
-Optional cache/state for BNV-\/related derived quantities.  
+Dynamic or cached quantities associated with baryon-\/number violation.  
 
 
+{\ttfamily \#include $<$cstddef$>$}\newline
+{\ttfamily \#include $<$vector$>$}\newline
+{\ttfamily \#include \char`\"{}Compact\+Star/\+Physics/\+State/\+State.\+hpp\char`\"{}}\newline
 \doxysubsection*{Classes}
 \begin{DoxyCompactItemize}
 \item 
-struct \mbox{\hyperlink{struct_compact_star_1_1_b_n_v_state}{Compact\+Star\+::\+BNVState}}
-\begin{DoxyCompactList}\small\item\em Cached BNV diagnostics for a star. \end{DoxyCompactList}\end{DoxyCompactItemize}
+class \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_state_1_1_b_n_v_state}{Compact\+Star\+::\+Physics\+::\+State\+::\+BNVState}}
+\begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_state_1_1_state}{State}} block for BNV-\/related dynamical or cached variables. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}
-Optional cache/state for BNV-\/related derived quantities. 
+Dynamic or cached quantities associated with baryon-\/number violation. 
 
-\begin{DoxyAuthor}{Author}
-Mohammadreza Zakeri Contact\+: \href{mailto:M.Zakeri@eku.edu}{\texttt{ M.\+Zakeri@eku.\+edu}} 
-\end{DoxyAuthor}
+This state block provides storage for BNV-\/related diagnostics or dynamic variables that may appear in BNV evolution drivers (e.\+g. ψ-\/population evolution, effective η-\/like variables, or observationally relevant meta-\/parameters).
+
+Depending on your BNV model, this may store\+:
+\begin{DoxyItemize}
+\item a small vector of ODE-\/evolved quantities, or
+\item a cached set of derived diagnostic values (non-\/\+ODE), or both.
+\end{DoxyItemize}
+
+Present version implements a simple ODE-\/compatible state with two components\+:
+\begin{DoxyEnumerate}
+\item η\+\_\+I — dimensionless imbalance parameter (model-\/specific)
+\item spin\+\_\+down\+\_\+limit — Γ\+\_\+\+BNV limit inferred from pulsar spin-\/down
+\end{DoxyEnumerate}
+
+Additional DOFs can be added without touching the evolution core. 

@@ -17,7 +17,7 @@
  * cooling term. Superfluid suppression, thresholds, and composition masks are
  * delegated to Microphysics and the context.
  *
- * @ingroup PhysicsDriverThermal
+ * @ingroup PhysicsDriver
  */
 
 #ifndef CompactStar_Physics_Driver_Thermal_NeutrinoCooling_H

@@ -27,22 +27,24 @@
  *  - Drivers receive a const StateVector& in AccumulateRHS() and use it
  *    to read whatever blocks they depend on.
  *
- * @ingroup Physics
+ * @ingroup PhysicsEvolution
  */
 
 #ifndef CompactStar_Physics_Evolution_StateVector_H
 #define CompactStar_Physics_Evolution_StateVector_H
 
 #include <array>
-#include <stdexcept>
-#include <string>
 
-#include "CompactStar/Physics/State/BNVState.hpp"
-#include "CompactStar/Physics/State/ChemState.hpp"
-#include "CompactStar/Physics/State/SpinState.hpp"
 #include "CompactStar/Physics/State/State.hpp"
 #include "CompactStar/Physics/State/Tags.hpp"
-#include "CompactStar/Physics/State/ThermalState.hpp"
+
+namespace CompactStar::Physics::State
+{
+class SpinState;
+class ThermalState;
+class ChemState;
+class BNVState;
+} // namespace CompactStar::Physics::State
 
 namespace CompactStar::Physics::Evolution
 {
@@ -87,10 +89,7 @@ class StateVector
 	// ---------------------------------------------------------------------
 
 	/// Construct an empty registry (no tags registered).
-	StateVector()
-	{
-		blocks_.fill(nullptr);
-	}
+	StateVector();
 
 	/// Default destructor.
 	~StateVector() = default;
@@ -108,10 +107,7 @@ class StateVector
 	 * This simply stores the pointer; it does not take ownership.
 	 * Re-registering the same tag overwrites the previous pointer.
 	 */
-	void Register(Physics::State::StateTag tag, Physics::State::State &state)
-	{
-		blocks_[Index(tag)] = &state;
-	}
+	void Register(Physics::State::StateTag tag, Physics::State::State &state);
 
 	// ---------------------------------------------------------------------
 	//  Generic accessors
@@ -122,34 +118,14 @@ class StateVector
 	 *
 	 * @throws std::runtime_error if the tag has not been registered.
 	 */
-	const Physics::State::State &Get(Physics::State::StateTag tag) const
-	{
-		const auto *ptr = blocks_[Index(tag)];
-		if (!ptr)
-		{
-			throw std::runtime_error("StateVector::Get: requested tag '" +
-									 std::string(Physics::State::ToString(tag)) +
-									 "' is not registered.");
-		}
-		return *ptr;
-	}
+	const Physics::State::State &Get(Physics::State::StateTag tag) const;
 
 	/**
 	 * @brief Get a mutable reference to the State associated with @p tag.
 	 *
 	 * @throws std::runtime_error if the tag has not been registered.
 	 */
-	Physics::State::State &Get(Physics::State::StateTag tag)
-	{
-		auto *ptr = blocks_[Index(tag)];
-		if (!ptr)
-		{
-			throw std::runtime_error("StateVector::Get: requested tag '" +
-									 std::string(Physics::State::ToString(tag)) +
-									 "' is not registered.");
-		}
-		return *ptr;
-	}
+	Physics::State::State &Get(Physics::State::StateTag tag);
 
 	// ---------------------------------------------------------------------
 	//  Typed convenience accessors
@@ -159,60 +135,28 @@ class StateVector
 	// If the dynamic type does not match, std::bad_cast is thrown.
 
 	/// Const SpinState accessor (tag = StateTag::Spin).
-	const Physics::State::SpinState &GetSpin() const
-	{
-		const auto &base = Get(Physics::State::StateTag::Spin);
-		return dynamic_cast<const Physics::State::SpinState &>(base);
-	}
+	const Physics::State::SpinState &GetSpin() const;
 
 	/// Mutable SpinState accessor (tag = StateTag::Spin).
-	Physics::State::SpinState &GetSpin()
-	{
-		auto &base = Get(Physics::State::StateTag::Spin);
-		return dynamic_cast<Physics::State::SpinState &>(base);
-	}
+	Physics::State::SpinState &GetSpin();
 
 	/// Const ThermalState accessor (tag = StateTag::Thermal).
-	const Physics::State::ThermalState &GetThermal() const
-	{
-		const auto &base = Get(Physics::State::StateTag::Thermal);
-		return dynamic_cast<const Physics::State::ThermalState &>(base);
-	}
+	const Physics::State::ThermalState &GetThermal() const;
 
 	/// Mutable ThermalState accessor (tag = StateTag::Thermal).
-	Physics::State::ThermalState &GetThermal()
-	{
-		auto &base = Get(Physics::State::StateTag::Thermal);
-		return dynamic_cast<Physics::State::ThermalState &>(base);
-	}
+	Physics::State::ThermalState &GetThermal();
 
 	/// Const ChemState accessor (tag = StateTag::Chem).
-	const Physics::State::ChemState &GetChem() const
-	{
-		const auto &base = Get(Physics::State::StateTag::Chem);
-		return dynamic_cast<const Physics::State::ChemState &>(base);
-	}
+	const Physics::State::ChemState &GetChem() const;
 
 	/// Mutable ChemState accessor (tag = StateTag::Chem).
-	Physics::State::ChemState &GetChem()
-	{
-		auto &base = Get(Physics::State::StateTag::Chem);
-		return dynamic_cast<Physics::State::ChemState &>(base);
-	}
+	Physics::State::ChemState &GetChem();
 
 	/// Const BNVState accessor (tag = StateTag::BNV).
-	const Physics::State::BNVState &GetBNV() const
-	{
-		const auto &base = Get(Physics::State::StateTag::BNV);
-		return dynamic_cast<const Physics::State::BNVState &>(base);
-	}
+	const Physics::State::BNVState &GetBNV() const;
 
 	/// Mutable BNVState accessor (tag = StateTag::BNV).
-	Physics::State::BNVState &GetBNV()
-	{
-		auto &base = Get(Physics::State::StateTag::BNV);
-		return dynamic_cast<Physics::State::BNVState &>(base);
-	}
+	Physics::State::BNVState &GetBNV();
 
   private:
 	// ---------------------------------------------------------------------

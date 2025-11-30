@@ -1,0 +1,39 @@
+\hypertarget{_r_h_s_accumulator_8hpp}{}\doxysection{Compact\+Star/\+Physics/\+Evolution/\+RHSAccumulator.hpp File Reference}
+\label{_r_h_s_accumulator_8hpp}\index{CompactStar/Physics/Evolution/RHSAccumulator.hpp@{CompactStar/Physics/Evolution/RHSAccumulator.hpp}}
+
+
+Helper for accumulating contributions to d\+Y/dt per state block.  
+
+
+{\ttfamily \#include $<$array$>$}\newline
+{\ttfamily \#include $<$cstddef$>$}\newline
+{\ttfamily \#include $<$stdexcept$>$}\newline
+{\ttfamily \#include $<$string$>$}\newline
+{\ttfamily \#include $<$vector$>$}\newline
+{\ttfamily \#include \char`\"{}Compact\+Star/\+Physics/\+State/\+Tags.\+hpp\char`\"{}}\newline
+\doxysubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_r_h_s_accumulator}{Compact\+Star\+::\+Physics\+::\+Evolution\+::\+RHSAccumulator}}
+\begin{DoxyCompactList}\small\item\em Write-\/only accumulator for d\+Y/dt components, keyed by State\+Tag. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Helper for accumulating contributions to d\+Y/dt per state block. 
+
+This class stores a tagged collection of RHS segments, one per State\+Tag. Drivers add contributions using (tag, component) indices, and the evolution system can later apply these to the corresponding State objects.
+
+Design goals\+:
+\begin{DoxyItemize}
+\item Tag-\/aware accumulation\+: Add\+To(\+State\+Tag, component, value).
+\item Configurable block sizes per tag.
+\item Zero-\/cost clear between RHS evaluations.
+\end{DoxyItemize}
+
+In a typical evolution setup\+:
+\begin{DoxyItemize}
+\item System calls Configure(tag, size) for each active state block.
+\item Before assembling the RHS, System calls \mbox{\hyperlink{_chem_state_8hpp_ac2fdf117e3886bbce4baa56a77d3e9cc}{Clear()}}.
+\item Each driver adds its contributions via Add\+To(...).
+\item Once all drivers have run, System uses Block(tag) to access the assembled RHS for that state and update the associated State object. 
+\end{DoxyItemize}

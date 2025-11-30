@@ -18,7 +18,7 @@ var searchData=
   ['bnv_5frate_5fseq_15',['BNV_Rate_Seq',['../d1/dbf/struct_compact_star_1_1_microphysics_1_1_b_n_v_1_1_analysis_1_1_b_n_v___rate___seq.html',1,'CompactStar::Microphysics::BNV::Analysis']]],
   ['bnv_5fsequence_16',['BNV_Sequence',['../da/d11/class_compact_star_1_1_microphysics_1_1_b_n_v_1_1_analysis_1_1_b_n_v___sequence.html',1,'CompactStar::Microphysics::BNV::Analysis']]],
   ['bnv_5ftime_17',['BNV_Time',['../dd/d87/struct_compact_star_1_1_b_n_v___time.html',1,'CompactStar::BNV_Time'],['../d8/de5/struct_compact_star_1_1_microphysics_1_1_b_n_v_1_1_analysis_1_1_b_n_v___time.html',1,'CompactStar::Microphysics::BNV::Analysis::BNV_Time']]],
-  ['bnvstate_18',['BNVState',['../d4/dd2/struct_compact_star_1_1_b_n_v_state.html',1,'CompactStar']]],
+  ['bnvstate_18',['BNVState',['../d8/d9a/class_compact_star_1_1_physics_1_1_state_1_1_b_n_v_state.html',1,'CompactStar::Physics::State']]],
   ['brakingidx_5fpars_19',['BrakingIdx_Pars',['../d5/d92/struct_braking_idx___pars.html',1,'']]],
   ['bundle_20',['Bundle',['../df/d50/class_c_o_n_f_i_n_d_1_1_bundle.html',1,'CONFIND']]]
 ];

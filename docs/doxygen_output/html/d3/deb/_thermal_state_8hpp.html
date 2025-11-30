@@ -75,24 +75,38 @@ $(function() {
 <div class="header">
   <div class="summary">
 <a href="#nested-classes">Classes</a>  </div>
-  <div class="headertitle"><div class="title">ThermalState.hpp File Reference</div></div>
+  <div class="headertitle"><div class="title">ThermalState.hpp File Reference<div class="ingroups"><a class="el" href="../../dc/d77/group___physics_state.html">Physics state module</a></div></div></div>
 </div><!--header-->
 <div class="contents">
 
-<p>Thermal state variables for a compact star.  
+<p>Thermal evolution state block for a compact star.  
 <a href="#details">More...</a></p>
-
+<div class="textblock"><code>#include &lt;cstddef&gt;</code><br />
+<code>#include &lt;vector&gt;</code><br />
+<code>#include &quot;<a class="el" href="../../d5/d5d/_state_8hpp_source.html">CompactStar/Physics/State/State.hpp</a>&quot;</code><br />
+</div>
 <p><a href="../../d3/deb/_thermal_state_8hpp_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="nested-classes" name="nested-classes"></a>
 Classes</h2></td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d4/d97/struct_compact_star_1_1_thermal_state.html">CompactStar::ThermalState</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Local (non-redshifted) temperatures at key regions.  <a href="../../d4/d97/struct_compact_star_1_1_thermal_state.html#details">More...</a><br /></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../de/d39/class_compact_star_1_1_physics_1_1_state_1_1_thermal_state.html">CompactStar::Physics::State::ThermalState</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Dynamical thermal DOFs + cached physical temperatures.  <a href="../../de/d39/class_compact_star_1_1_physics_1_1_state_1_1_thermal_state.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Thermal state variables for a compact star. </p>
-<dl class="section author"><dt>Author</dt><dd>Mohammadreza Zakeri Contact: <a href="#" onclick="location.href='mai'+'lto:'+'M.Z'+'ak'+'eri'+'@e'+'ku.'+'ed'+'u'; return false;">M.Zak<span class="obfuscator">.nosp@m.</span>eri@<span class="obfuscator">.nosp@m.</span>eku.e<span class="obfuscator">.nosp@m.</span>du</a> </dd></dl>
+<div class="textblock"><p>Thermal evolution state block for a compact star. </p>
+<p>This class provides the <b>dynamical thermal degrees of freedom</b> used by the evolution system (typically the redshifted internal temperature T∞, or multiple temperature components if needed), as well as optional auxiliary temperatures used by microphysics or cooling models.</p>
+<p>Directory-based namespace: CompactStar::Physics::State</p>
+<h3><a class="anchor" id="autotoc_md3"></a>
+Design</h3>
+<ul>
+<li>The evolution DOFs live in a contiguous vector (<code>values_</code>).</li>
+<li>A typical minimal configuration has just one DOF = T∞.</li>
+<li>Subclasses or callers may configure multiple components by calling Resize().</li>
+</ul>
+<h3><a class="anchor" id="autotoc_md4"></a>
+Auxiliary variables</h3>
+<p>The local-frame temperatures (T_core, T_blanket, T_surf) are <b>not</b> part of the ODE vector. They are cached values used by cooling models, envelopes, emissivity computations, and diagnostics. </p>
 </div></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

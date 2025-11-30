@@ -10,36 +10,6 @@
 
 \pagestyle{empty}
 \begin{document}
-$T_b \to T_s$
-\pagebreak
-
-$\eta$
-\pagebreak
-
-$\Omega$
-\pagebreak
-
-$\eta_i$
-\pagebreak
-
-$T_b(r\approx R)$
-\pagebreak
-
-$T_s$
-\pagebreak
-
-$10^{14}\,\mathrm{cm\,s^{-2}}$
-\pagebreak
-
-$c_V(r,T)$
-\pagebreak
-
-$c_V$
-\pagebreak
-
-$0 \le R \le 1$
-\pagebreak
-
 $\eta_I$
 \pagebreak
 
@@ -71,6 +41,30 @@ $H$
 \pagebreak
 
 $\Gamma_{\mathrm{BNV}}$
+\pagebreak
+
+$T_b \to T_s$
+\pagebreak
+
+$\eta$
+\pagebreak
+
+$\Omega$
+\pagebreak
+
+$\eta_i$
+\pagebreak
+
+$T^\infty$
+\pagebreak
+
+$\boldsymbol{\eta}$
+\pagebreak
+
+$\dot{y} = f(t,y)$
+\pagebreak
+
+$T^\infty \to T(r)$
 \pagebreak
 
 $w_C(r)=4\pi r^2 e^{\Lambda(r)}$
@@ -109,16 +103,39 @@ $Y_p(r)$
 $e^{\nu(R)}$
 \pagebreak
 
-$T^\infty$
+$\eta_{npe}, \eta_{np\mu}$
 \pagebreak
 
-$\boldsymbol{\eta}$
+$\eta_i\f vector).
+    - No time, no spin, no tags — those live in StepMeta or other states.
+    - Layout is a flat contiguous array compatible with the global ODE vector.
+    - Size is configured once via Resize(N) prior to integration.
+  
+   Typical usage:
+    - Rotochemical and BNV chemical drivers read/write components through
+      the packed y-vector managed by the evolution system.
+  
+   @ingroup PhysicsState
+ */
+
+
+
+
+
+
+
+
+
+namespace CompactStar::Physics::State
+{
+
+/**
+   @class ChemState
+   @brief Contiguous state block for chemical imbalances $
 \pagebreak
 
-$\dot{y} = f(t,y)$
-\pagebreak
-
-$T^\infty \to T(r)$
+$\eta_{npe}\f,
+   $
 \pagebreak
 
 $\ddot{f}$

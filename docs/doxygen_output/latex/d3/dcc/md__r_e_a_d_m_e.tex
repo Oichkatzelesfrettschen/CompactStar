@@ -1,17 +1,176 @@
-{\bfseries{Compact\+Star}} is a modular C++ framework for modeling the structure of compact stars, including neutron stars and dark-\/visible admixed configurations. ~\newline
- It supports both tabulated and analytical equations of state (EOS), and includes solvers for the Tolman–\+Oppenheimer–\+Volkoff (TOV) and Hartle equations.
+{\bfseries{Compact\+Star}} is a high-\/performance, modular C++ framework for modeling the microphysics, structure, and evolution of compact stars—neutron stars, hybrid stars, and dark–visible admixed configurations.
 
-The code is designed for flexibility and extensibility, with integrated modules for physics, mathematics, file I/O, and analysis of astrophysical data.\hypertarget{md__r_e_a_d_m_e_autotoc_md4}{}\doxysection{Features}\label{md__r_e_a_d_m_e_autotoc_md4}
+Originally designed for dense-\/matter astrophysics research, the codebase has expanded into a full computational platform with\+:
+
 
 \begin{DoxyItemize}
-\item Supports tabulated and analytical EOS formats
-\item Solves relativistic stellar structure equations (TOV \& Hartle)
-\item Models hybrid stars with visible and dark matter
-\item Built-\/in support for sequences, contours, and profile exports
-\item Lightweight dependencies (GSL, C++17)
-\item Modular structure for easy extension
-\end{DoxyItemize}\hypertarget{md__r_e_a_d_m_e_autotoc_md5}{}\doxysection{Author}\label{md__r_e_a_d_m_e_autotoc_md5}
-Mohammadreza Zakeri ~\newline
+\item relativistic stellar structure solvers (TOV + Hartle),
+\item thermal + chemical evolution engines,
+\item baryon-\/number–violating (BNV) processes and exotic heating channels,
+\item spin evolution,
+\item sequences, contours, and bulk EOS analysis,
+\item a modernized Core module providing math, physics, datasets, file I/O, and analysis utilities.
+\end{DoxyItemize}
+
+Compact\+Star is written in {\bfseries{C++17}}, designed for {\bfseries{flexibility, reproducibility, and extensibility}}, and integrates cleanly into HPC workflows.
+
+\DoxyHorRuler{0}
+\hypertarget{md__r_e_a_d_m_e_autotoc_md7}{}\doxysection{Core Capabilities}\label{md__r_e_a_d_m_e_autotoc_md7}
+\hypertarget{md__r_e_a_d_m_e_autotoc_md8}{}\doxysubsubsection{Stellar Structure}\label{md__r_e_a_d_m_e_autotoc_md8}
+
+\begin{DoxyItemize}
+\item {\bfseries{TOVSolver}}\+: static Tolman–\+Oppenheimer–\+Volkoff integration for any tabulated or analytical EOS.
+\item {\bfseries{TOVSolver\+\_\+\+Thread}}\+: multithreaded parallel wrapper for generating full sequences.
+\item {\bfseries{Hartle\+Solver}}\+: slow-\/rotation solver for frame-\/dragging and O(Ω²) structure perturbations.
+\item Computes mass–radius curves, moment of inertia, compactness, redshift, and structural profiles.
+\end{DoxyItemize}\hypertarget{md__r_e_a_d_m_e_autotoc_md9}{}\doxysubsubsection{Equations of State}\label{md__r_e_a_d_m_e_autotoc_md9}
+
+\begin{DoxyItemize}
+\item Supports tabulated, analytical, and hybrid/multiphase EOS formats.
+\item Built-\/in EOS readers, interpolation, thermodynamic derivatives.
+\item Clean interfaces for adding microphysical modules (effective masses, symmetry energy, thresholds).
+\end{DoxyItemize}\hypertarget{md__r_e_a_d_m_e_autotoc_md10}{}\doxysubsubsection{Thermal \& Chemical Evolution}\label{md__r_e_a_d_m_e_autotoc_md10}
+
+\begin{DoxyItemize}
+\item Fully implements the Reisenegger–\+Fernández rotochemical heating formalism.
+\item Time evolution of\+:
+\begin{DoxyItemize}
+\item internal temperature T∞,
+\item chemical imbalances η,
+\item neutrino luminosities,
+\item heating vs cooling balance,
+\item photon output.
+\end{DoxyItemize}
+\end{DoxyItemize}\hypertarget{md__r_e_a_d_m_e_autotoc_md11}{}\doxysubsubsection{BNV Heating (\+Baryon Number Violation)}\label{md__r_e_a_d_m_e_autotoc_md11}
+
+\begin{DoxyItemize}
+\item Dedicated BNVState and reaction-\/rate infrastructure.
+\item User-\/defined particle-\/physics models plug in cleanly via the Driver abstraction.
+\item Supports energy injection, matter depletion, and thermal feedback.
+\end{DoxyItemize}\hypertarget{md__r_e_a_d_m_e_autotoc_md12}{}\doxysubsubsection{Spin Evolution}\label{md__r_e_a_d_m_e_autotoc_md12}
+
+\begin{DoxyItemize}
+\item Magnetic-\/dipole braking, custom torque laws, and coupling to chemical/thermal evolution.
+\item Integrates naturally with Hartle structure corrections.
+\end{DoxyItemize}\hypertarget{md__r_e_a_d_m_e_autotoc_md13}{}\doxysubsubsection{Sequences, Contours \& Analysis}\label{md__r_e_a_d_m_e_autotoc_md13}
+
+\begin{DoxyItemize}
+\item Sequence generator for\+:
+\begin{DoxyItemize}
+\item mass–radius,
+\item I(\+M), M(\+R),
+\item baryon-\/mass contours,
+\item Kepler frequency estimates.
+\end{DoxyItemize}
+\item Contour and profile exporter (csv, json, dataset format).
+\item Tools for generating stability curves and parameter-\/space scans.
+\end{DoxyItemize}\hypertarget{md__r_e_a_d_m_e_autotoc_md14}{}\doxysubsubsection{Core Mathematics, Physics, and Datasets}\label{md__r_e_a_d_m_e_autotoc_md14}
+Provided by the new Core module\+:
+
+
+\begin{DoxyItemize}
+\item Custom Vector, Dataset, Profile, and Table types.
+\item Numerical methods (ODE solvers, root finders, bracketing, interpolation).
+\item Physics helpers (Fermi momenta, chemical potentials, redshift relations).
+\item ZLOG-\/based logging system.
+\item File I/O utilities for exporting star profiles, evolution histories, and grids.
+\end{DoxyItemize}
+
+\DoxyHorRuler{0}
+\hypertarget{md__r_e_a_d_m_e_autotoc_md16}{}\doxysection{Project Structure}\label{md__r_e_a_d_m_e_autotoc_md16}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{CompactStar/}
+\DoxyCodeLine{├── Core/                           \# Math, physics primitives, TOV/Hartle solvers, star builders}
+\DoxyCodeLine{│   ├── src/                        \# Implementations for Core classes}
+\DoxyCodeLine{│   └── (various headers)           \# NStar, Pulsar, RotationSolver, StarBuilder, etc.}
+\DoxyCodeLine{│}
+\DoxyCodeLine{├── EOS/                            \# Equation of state models and infrastructure}
+\DoxyCodeLine{│   └── src/                        \# EOS implementations (CompOSE, Fermi gas, sigma-\/omega models)}
+\DoxyCodeLine{│}
+\DoxyCodeLine{├── Physics/                        \# Full evolution engine (thermal + spin + chemical + BNV coupling)}
+\DoxyCodeLine{│   ├── Driver/                     \# Thermal, chemical, and spin drivers (pluggable modules)}
+\DoxyCodeLine{│   │   ├── Chem/                   \# Rotochemical, weak restoration, BNV chemical sources}
+\DoxyCodeLine{│   │   ├── Spin/                   \# Spin-\/down, accretion, BNV torque models}
+\DoxyCodeLine{│   │   └── Thermal/                \# Cooling/heating channels}
+\DoxyCodeLine{│   ├── Evolution/                  \# Integrators, observers, system assembly}
+\DoxyCodeLine{│   │   ├── Integrator/             \# GSL integrator bindings}
+\DoxyCodeLine{│   │   └── Observers/              \# Logging, checkpointing, diagnostics}
+\DoxyCodeLine{│   └── State/                      \# ThermalState, SpinState, ChemState, BNVState}
+\DoxyCodeLine{│}
+\DoxyCodeLine{├── Microphysics/                   \# Reaction-\/level particle physics (BNV, Urca, etc.)}
+\DoxyCodeLine{│   ├── BNV/                        \# Baryon-\/number-\/violating models}
+\DoxyCodeLine{│   │   ├── Analysis/               \# BNV diagnostic tools, sequences, decay analysis}
+\DoxyCodeLine{│   │   ├── Channels/               \# BNV reaction channels}
+\DoxyCodeLine{│   │   └── Internal/               \# BNV particle/field definitions}
+\DoxyCodeLine{│   └── Rates/                      \# Urca and related microphysical rates}
+\DoxyCodeLine{│}
+\DoxyCodeLine{├── Extensions/                     \# Optional add-\/ons beyond the core framework}
+\DoxyCodeLine{│   ├── LightDM/                    \# Light dark-\/matter scalar density models}
+\DoxyCodeLine{│   └── MixedStar/                  \# Dark–visible mixed star analysis extensions}
+\DoxyCodeLine{│}
+\DoxyCodeLine{├── CMakeLists.txt                  \# Build system}
+\DoxyCodeLine{└── (other top-\/level support files)}
+
+\end{DoxyCode}
+
+
+\DoxyHorRuler{0}
+\hypertarget{md__r_e_a_d_m_e_autotoc_md18}{}\doxysection{Features}\label{md__r_e_a_d_m_e_autotoc_md18}
+
+\begin{DoxyItemize}
+\item Tabulated + analytical EOS support
+\item Relativistic structure (TOV + Hartle)
+\item Rotochemical heating
+\item BNV heating models
+\item Spin–thermal–chemical coupling
+\item Stellar sequences and contour tools
+\item High-\/level API for parameter scans
+\item Lightweight dependencies (C++17, GSL)
+\end{DoxyItemize}
+
+\DoxyHorRuler{0}
+\hypertarget{md__r_e_a_d_m_e_autotoc_md20}{}\doxysection{Building}\label{md__r_e_a_d_m_e_autotoc_md20}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{mkdir build}
+\DoxyCodeLine{cd build}
+\DoxyCodeLine{cmake ..}
+\DoxyCodeLine{make -\/j}
+
+\end{DoxyCode}
+
+
+Optional flags\+:
+
+
+\begin{DoxyItemize}
+\item {\ttfamily -\/DUSE\+\_\+\+OPENMP=ON}
+\item {\ttfamily -\/DUSE\+\_\+\+PYTHON=ON}
+\item {\ttfamily -\/DCS\+\_\+\+ENABLE\+\_\+\+PROFILING=ON}
+\end{DoxyItemize}
+
+\DoxyHorRuler{0}
+\hypertarget{md__r_e_a_d_m_e_autotoc_md22}{}\doxysection{Documentation}\label{md__r_e_a_d_m_e_autotoc_md22}
+Compact\+Star uses {\bfseries{Doxygen}} documentation. ~\newline
+ To build\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{mkdir build \&\& cd build}
+\DoxyCodeLine{cmake .. -\/DBUILD\_DOCS=ON}
+\DoxyCodeLine{make docs}
+
+\end{DoxyCode}
+
+
+\DoxyHorRuler{0}
+\hypertarget{md__r_e_a_d_m_e_autotoc_md24}{}\doxysection{Author}\label{md__r_e_a_d_m_e_autotoc_md24}
+{\bfseries{Mohammadreza Zakeri}} ~\newline
  Assistant Professor of Physics ~\newline
  Eastern Kentucky University ~\newline
- 📧 \href{mailto:M.Zakeri@eku.edu}{\texttt{ M.\+Zakeri@eku.\+edu}} 
+ 📧 \href{mailto:M.Zakeri@eku.edu}{\texttt{ M.\+Zakeri@eku.\+edu}}
+
+\DoxyHorRuler{0}
+\hypertarget{md__r_e_a_d_m_e_autotoc_md26}{}\doxysection{Citation}\label{md__r_e_a_d_m_e_autotoc_md26}
+If you use Compact\+Star in published research, please cite this repository and the author. 

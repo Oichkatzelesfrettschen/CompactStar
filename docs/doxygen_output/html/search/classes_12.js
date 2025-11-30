@@ -2,7 +2,7 @@ var searchData=
 [
   ['taskmanager_0',['TaskManager',['../df/d41/class_compact_star_1_1_task_manager.html',1,'CompactStar']]],
   ['textbox_1',['TextBox',['../de/de6/class_zaki_1_1_string_1_1_text_box.html',1,'Zaki::String']]],
-  ['thermalstate_2',['ThermalState',['../d4/d97/struct_compact_star_1_1_thermal_state.html',1,'CompactStar']]],
+  ['thermalstate_2',['ThermalState',['../de/d39/class_compact_star_1_1_physics_1_1_state_1_1_thermal_state.html',1,'CompactStar::Physics::State']]],
   ['timemanager_3',['TimeManager',['../d5/de5/class_zaki_1_1_util_1_1_time_manager.html',1,'Zaki::Util']]],
   ['timeprofilemanager_4',['TimeProfileManager',['../df/d54/class_zaki_1_1_util_1_1_time_profile_manager.html',1,'Zaki::Util']]],
   ['timer_5',['Timer',['../d1/df9/class_zaki_1_1_util_1_1_timer.html',1,'Zaki::Util']]],

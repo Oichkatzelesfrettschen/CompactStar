@@ -23,21 +23,24 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-
 /**
- * @file System.hpp
+ * @defgroup PhysicsEvolution Physics evolution module
+ * @brief Time evolution of neutron-star states (thermal, spin, chem, BNV).
+ */
+/**
+ * @file EvolutionSystem.hpp
  * @brief Right-hand side (RHS) functor for the ODE system dY/dt.
  *
  * The RHS assembles volume integrals using GeometryCache and RateSet, and computes
  * time derivatives for \f$T^\infty\f$ and \f$\boldsymbol{\eta}\f$ (and optionally \f$\Omega\f$).
  * Designed to be wrapped by a GSL driver in @c IntegratorGSL.
  *
- * @ingroup Physics
+ * @ingroup PhysicsEvolution
  */
-#ifndef CompactStar_Physics_Evolution_System_H
-#define CompactStar_Physics_Evolution_System_H
+#ifndef CompactStar_Physics_Evolution_EvolutionSystem_H
+#define CompactStar_Physics_Evolution_EvolutionSystem_H
 
-#include <vector>
+// #include <vector>
 
 namespace CompactStar
 {
@@ -50,10 +53,10 @@ class IEnvelope;
 namespace Evolution
 {
 class StarContext;
+class StateVector;
 class GeometryCache;
-// class Microphysics;
+class RHSAccumulator;
 // class RateSet;
-struct EvolutionState;
 struct Config;
 } // namespace Evolution
 } // namespace Physics
@@ -81,16 +84,17 @@ class EvolutionSystem
 	 */
 	struct Context
 	{
-		const StarContext *star = 0;
-		const GeometryCache *geo = 0;
-		// const Microphysics *micro = 0;
-		const Thermal::IEnvelope *envelope = 0;
-		// const RateSet *rates = 0;
-		const Config *cfg = 0;
+		const StarContext *star = nullptr;
+		const GeometryCache *geo = nullptr;
+		const Thermal::IEnvelope *envelope = nullptr;
+		const Config *cfg = nullptr;
+		// maybe Microphysics, RateSet later, still static
 	};
 
 	/** @brief Construct with a fully-populated Context. */
-	explicit EvolutionSystem(const Context &ctx);
+	explicit EvolutionSystem(const Context &ctx,
+							 StateVector &state,
+							 RHSAccumulator &rhs);
 
 	/**
 	 * @brief Evaluate RHS \f$\dot{y} = f(t,y)\f$.
@@ -109,6 +113,8 @@ class EvolutionSystem
 
   private:
 	Context m_ctx;
+	StateVector &m_state;  // dynamic: how we interpret y[]
+	RHSAccumulator &m_rhs; // dynamic: scratch for dY/dt
 };
 //==============================================================
 } // namespace Evolution
@@ -117,4 +123,4 @@ class EvolutionSystem
 //==============================================================
 } // namespace CompactStar
 //==============================================================
-#endif /* CompactStar_Physics_Evolution_System_H */
+#endif /* CompactStar_Physics_Evolution_EvolutionSystem_H */

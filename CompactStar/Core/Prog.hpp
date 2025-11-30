@@ -229,6 +229,10 @@
 
 // -*- lsst-c++ -*-
 /**
+ * @defgroup Core CompactStar's core module
+ * @brief Contains the core classes and utilities for CompactStar.
+ */
+/**
  * @file Prog.hpp
  * @brief Lightweight base providing naming and work-directory handling.
  *

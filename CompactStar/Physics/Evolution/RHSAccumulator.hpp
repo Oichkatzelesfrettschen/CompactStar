@@ -101,7 +101,7 @@ class RHSAccumulator
 	/**
 	 * @brief Check whether a block for @p tag has been configured.
 	 */
-	bool IsConfigured(Physics::State::StateTag tag) const
+	[[nodiscard]] bool IsConfigured(Physics::State::StateTag tag) const
 	{
 		return blocks_[Index(tag)].configured;
 	}
@@ -168,7 +168,7 @@ class RHSAccumulator
 	 *
 	 * @throws std::runtime_error if the tag has not been configured.
 	 */
-	const std::vector<double> &Block(Physics::State::StateTag tag) const
+	[[nodiscard]] const std::vector<double> &Block(Physics::State::StateTag tag) const
 	{
 		const auto &block = blocks_[Index(tag)];
 		if (!block.configured)

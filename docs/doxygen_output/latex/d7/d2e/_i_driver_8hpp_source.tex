@@ -7,50 +7,49 @@
 \DoxyCodeLine{3 \textcolor{comment}{ * CompactStar}}
 \DoxyCodeLine{4 \textcolor{comment}{ * See License file at the top of the source tree.}}
 \DoxyCodeLine{5 \textcolor{comment}{ *}}
-\DoxyCodeLine{6 \textcolor{comment}{ * Copyright (c) 2025 Mohammadreza Zakeri}}
-\DoxyCodeLine{7 \textcolor{comment}{ *}}
-\DoxyCodeLine{8 \textcolor{comment}{ * MIT License — see LICENSE at repo root.}}
-\DoxyCodeLine{9 \textcolor{comment}{ */}}
-\DoxyCodeLine{10 }
-\DoxyCodeLine{32 \textcolor{preprocessor}{\#ifndef CompactStar\_Physics\_Driver\_IDriver\_H}}
-\DoxyCodeLine{33 \textcolor{preprocessor}{\#define CompactStar\_Physics\_Driver\_IDriver\_H}}
-\DoxyCodeLine{34 }
-\DoxyCodeLine{35 \textcolor{preprocessor}{\#include <array>}}
-\DoxyCodeLine{36 \textcolor{preprocessor}{\#include <span>}}
-\DoxyCodeLine{37 \textcolor{preprocessor}{\#include <string>}}
+\DoxyCodeLine{6 \textcolor{comment}{ * Copyright (c) 2025}}
+\DoxyCodeLine{7 \textcolor{comment}{ * Mohammadreza Zakeri}}
+\DoxyCodeLine{8 \textcolor{comment}{ *}}
+\DoxyCodeLine{9 \textcolor{comment}{ * MIT License — see LICENSE at repo root.}}
+\DoxyCodeLine{10 \textcolor{comment}{ */}}
+\DoxyCodeLine{36 \textcolor{preprocessor}{\#ifndef CompactStar\_Physics\_Driver\_IDriver\_H}}
+\DoxyCodeLine{37 \textcolor{preprocessor}{\#define CompactStar\_Physics\_Driver\_IDriver\_H}}
 \DoxyCodeLine{38 }
-\DoxyCodeLine{39 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_tags_8hpp}{CompactStar/Physics/State/Tags.hpp}}"{}} \textcolor{comment}{// defines enum class StateTag}}
-\DoxyCodeLine{40 }
-\DoxyCodeLine{41 \textcolor{keyword}{namespace }CompactStar::Physics}
-\DoxyCodeLine{42 \{}
+\DoxyCodeLine{39 \textcolor{preprocessor}{\#include <string>}}
+\DoxyCodeLine{40 \textcolor{preprocessor}{\#include <vector>}}
+\DoxyCodeLine{41 }
+\DoxyCodeLine{42 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_tags_8hpp}{CompactStar/Physics/State/Tags.hpp}}"{}} \textcolor{comment}{// defines enum class StateTag}}
 \DoxyCodeLine{43 }
-\DoxyCodeLine{44 \textcolor{comment}{// Forward declarations to avoid heavy includes here}}
-\DoxyCodeLine{45 \textcolor{keyword}{namespace }Evolution}
-\DoxyCodeLine{46 \{}
-\DoxyCodeLine{47 \textcolor{keyword}{class }StateVector;    }
-\DoxyCodeLine{48 \textcolor{keyword}{class }RHSAccumulator; }
-\DoxyCodeLine{49 \textcolor{keyword}{class }StarContext;    }
-\DoxyCodeLine{50 \} \textcolor{comment}{// namespace Evolution}}
-\DoxyCodeLine{51 }
-\DoxyCodeLine{59 \textcolor{keyword}{class }\mbox{\hyperlink{class_compact_star_1_1_physics_1_1_i_driver}{IDriver}}}
-\DoxyCodeLine{60 \{}
-\DoxyCodeLine{61   \textcolor{keyword}{public}:}
-\DoxyCodeLine{62     \textcolor{keyword}{virtual} \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_i_driver}{\string~IDriver}}() = \textcolor{keywordflow}{default};}
-\DoxyCodeLine{63 }
-\DoxyCodeLine{67     \textcolor{keyword}{virtual} std::string \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_i_driver_a1337b0292d71b672785c37ba4d7e8564}{Name}}() \textcolor{keyword}{const} = 0;}
-\DoxyCodeLine{68 }
-\DoxyCodeLine{74     \textcolor{keyword}{virtual} std::span<const State::StateTag> \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_i_driver_a1bc750160d5a6ae9fe0aba2673703549}{DependsOn}}() \textcolor{keyword}{const} = 0;}
-\DoxyCodeLine{75 }
-\DoxyCodeLine{81     \textcolor{keyword}{virtual} std::span<const State::StateTag> \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_i_driver_a0862f87840d73c57161af298c840c48e}{Updates}}() \textcolor{keyword}{const} = 0;}
-\DoxyCodeLine{82 }
-\DoxyCodeLine{94     \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_i_driver_a8f6a4dd41179102863ea109d24e68bf4}{AccumulateRHS}}(\textcolor{keywordtype}{double} t,}
-\DoxyCodeLine{95                                \textcolor{keyword}{const} Evolution::StateVector \&Y,}
-\DoxyCodeLine{96                                Evolution::RHSAccumulator \&dYdt,}
-\DoxyCodeLine{97                                \textcolor{keyword}{const} Evolution::StarContext \&ctx) \textcolor{keyword}{const} = 0;}
-\DoxyCodeLine{98 \};}
-\DoxyCodeLine{99 }
-\DoxyCodeLine{100 \} \textcolor{comment}{// namespace CompactStar::Physics}}
-\DoxyCodeLine{101 }
-\DoxyCodeLine{102 \textcolor{preprocessor}{\#endif }\textcolor{comment}{/* CompactStar\_Physics\_Driver\_IDriver\_H */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{44 \textcolor{keyword}{namespace }CompactStar::Physics}
+\DoxyCodeLine{45 \{}
+\DoxyCodeLine{46 }
+\DoxyCodeLine{47 \textcolor{comment}{// Forward declarations to avoid heavy includes here}}
+\DoxyCodeLine{48 \textcolor{keyword}{namespace }Evolution}
+\DoxyCodeLine{49 \{}
+\DoxyCodeLine{50 \textcolor{keyword}{class }StateVector;    }
+\DoxyCodeLine{51 \textcolor{keyword}{class }RHSAccumulator; }
+\DoxyCodeLine{52 \textcolor{keyword}{class }StarContext;    }
+\DoxyCodeLine{53 \} \textcolor{comment}{// namespace Evolution}}
+\DoxyCodeLine{54 }
+\DoxyCodeLine{62 \textcolor{keyword}{class }\mbox{\hyperlink{class_compact_star_1_1_physics_1_1_i_driver}{IDriver}}}
+\DoxyCodeLine{63 \{}
+\DoxyCodeLine{64   \textcolor{keyword}{public}:}
+\DoxyCodeLine{65     \textcolor{keyword}{virtual} \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_i_driver}{\string~IDriver}}() = \textcolor{keywordflow}{default};}
+\DoxyCodeLine{66 }
+\DoxyCodeLine{70     \textcolor{keyword}{virtual} std::string \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_i_driver_a1337b0292d71b672785c37ba4d7e8564}{Name}}() \textcolor{keyword}{const} = 0;}
+\DoxyCodeLine{71 }
+\DoxyCodeLine{78     \textcolor{keyword}{virtual} \textcolor{keyword}{const} std::vector<State::StateTag> \&\mbox{\hyperlink{class_compact_star_1_1_physics_1_1_i_driver_a813f52e0fad2ee496611eb6a18114354}{DependsOn}}() \textcolor{keyword}{const} = 0;}
+\DoxyCodeLine{79 }
+\DoxyCodeLine{86     \textcolor{keyword}{virtual} \textcolor{keyword}{const} std::vector<State::StateTag> \&\mbox{\hyperlink{class_compact_star_1_1_physics_1_1_i_driver_a24a531cb99a43313f30018d1687241a7}{Updates}}() \textcolor{keyword}{const} = 0;}
+\DoxyCodeLine{87 }
+\DoxyCodeLine{99     \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_i_driver_a8f6a4dd41179102863ea109d24e68bf4}{AccumulateRHS}}(\textcolor{keywordtype}{double} t,}
+\DoxyCodeLine{100                                \textcolor{keyword}{const} \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_state_vector}{Evolution::StateVector}} \&Y,}
+\DoxyCodeLine{101                                \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_r_h_s_accumulator}{Evolution::RHSAccumulator}} \&dYdt,}
+\DoxyCodeLine{102                                \textcolor{keyword}{const} \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_star_context}{Evolution::StarContext}} \&ctx) \textcolor{keyword}{const} = 0;}
+\DoxyCodeLine{103 \};}
+\DoxyCodeLine{104 }
+\DoxyCodeLine{105 \} \textcolor{comment}{// namespace CompactStar::Physics}}
+\DoxyCodeLine{106 }
+\DoxyCodeLine{107 \textcolor{preprocessor}{\#endif }\textcolor{comment}{/* CompactStar\_Physics\_Driver\_IDriver\_H */}\textcolor{preprocessor}{}}
 
 \end{DoxyCode}

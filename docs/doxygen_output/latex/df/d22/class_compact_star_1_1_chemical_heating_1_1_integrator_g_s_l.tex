@@ -13,8 +13,8 @@ Thin RAII wrapper around gsl\+\_\+odeiv2 (impl added in Phase 1).
 \begin{DoxyCompactItemize}
 \item 
 \mbox{\Hypertarget{class_compact_star_1_1_chemical_heating_1_1_integrator_g_s_l_a26c11c0684e373a4b51c4c96e4048c74}\label{class_compact_star_1_1_chemical_heating_1_1_integrator_g_s_l_a26c11c0684e373a4b51c4c96e4048c74}} 
-{\bfseries Integrator\+GSL} (const \mbox{\hyperlink{class_compact_star_1_1_chemical_heating_1_1_evolution_system}{Evolution\+System}} \&sys, const \mbox{\hyperlink{struct_compact_star_1_1_chemical_heating_1_1_config}{Config}} \&cfg)
-\begin{DoxyCompactList}\small\item\em Construct from RHS and configuration (uses \mbox{\hyperlink{struct_compact_star_1_1_chemical_heating_1_1_config}{Config}} tolerances/stepper). \end{DoxyCompactList}\item 
+{\bfseries Integrator\+GSL} (const Evolution\+System \&sys, const Config \&cfg)
+\begin{DoxyCompactList}\small\item\em Construct from RHS and configuration (uses Config tolerances/stepper). \end{DoxyCompactList}\item 
 bool \mbox{\hyperlink{class_compact_star_1_1_chemical_heating_1_1_integrator_g_s_l_a956622fde5f2bb21198ef5e990825254}{integrate}} (double t0, double t1, Evolution\+State \&state, \mbox{\hyperlink{class_compact_star_1_1_chemical_heating_1_1_observer}{Observer}} \&obs) const
 \begin{DoxyCompactList}\small\item\em Integrate from t0 to t1, saving every {\ttfamily cfg.\+dt\+\_\+save} via the \mbox{\hyperlink{class_compact_star_1_1_chemical_heating_1_1_observer}{Observer}}. \end{DoxyCompactList}\end{DoxyCompactItemize}
 

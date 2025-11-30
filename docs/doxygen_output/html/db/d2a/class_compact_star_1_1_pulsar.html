@@ -104,9 +104,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a5cb7115b2776edaff09d348cf8834f8a"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/d2a/class_compact_star_1_1_pulsar.html#a5cb7115b2776edaff09d348cf8834f8a">Pulsar</a> (const std::string &amp;name)</td></tr>
 <tr class="memdesc:a5cb7115b2776edaff09d348cf8834f8a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct a <a class="el" href="../../db/d2a/class_compact_star_1_1_pulsar.html" title="High-level pulsar object that bundles structure, spin, thermal, and BNV state.">Pulsar</a> with a name (for logging via <a class="el" href="../../de/d1a/class_compact_star_1_1_prog.html">Prog</a>).  <a href="../../db/d2a/class_compact_star_1_1_pulsar.html#a5cb7115b2776edaff09d348cf8834f8a">More...</a><br /></td></tr>
 <tr class="separator:a5cb7115b2776edaff09d348cf8834f8a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5f22dc38acd7db9ff7f495e01b33927e"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/d2a/class_compact_star_1_1_pulsar.html#a5f22dc38acd7db9ff7f495e01b33927e">Pulsar</a> (const std::string &amp;name, const <a class="el" href="../../d9/dcd/class_zaki_1_1_math_1_1_quantity.html">Zaki::Math::Quantity</a> &amp;mass, const <a class="el" href="../../d0/dd0/struct_compact_star_1_1_spin_state.html">SpinState</a> &amp;spin)</td></tr>
-<tr class="memdesc:a5f22dc38acd7db9ff7f495e01b33927e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct from name, mass, and an explicit spin state.  <a href="../../db/d2a/class_compact_star_1_1_pulsar.html#a5f22dc38acd7db9ff7f495e01b33927e">More...</a><br /></td></tr>
-<tr class="separator:a5f22dc38acd7db9ff7f495e01b33927e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa7ad736a7ff8069cc7d7623608e79f47"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/d2a/class_compact_star_1_1_pulsar.html#aa7ad736a7ff8069cc7d7623608e79f47">Pulsar</a> (const std::string &amp;name, const <a class="el" href="../../d9/dcd/class_zaki_1_1_math_1_1_quantity.html">Zaki::Math::Quantity</a> &amp;mass, const Physics::State::SpinState &amp;spin)</td></tr>
+<tr class="memdesc:aa7ad736a7ff8069cc7d7623608e79f47"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct from name, mass, and an explicit spin state.  <a href="../../db/d2a/class_compact_star_1_1_pulsar.html#aa7ad736a7ff8069cc7d7623608e79f47">More...</a><br /></td></tr>
+<tr class="separator:aa7ad736a7ff8069cc7d7623608e79f47"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:acc83e0db90485a23dd3e409f9581ade0"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/d2a/class_compact_star_1_1_pulsar.html#acc83e0db90485a23dd3e409f9581ade0">Pulsar</a> (const std::string &amp;name, const <a class="el" href="../../d9/dcd/class_zaki_1_1_math_1_1_quantity.html">Zaki::Math::Quantity</a> &amp;mass, const <a class="el" href="../../d9/dcd/class_zaki_1_1_math_1_1_quantity.html">Zaki::Math::Quantity</a> &amp;spin_p, const <a class="el" href="../../d9/dcd/class_zaki_1_1_math_1_1_quantity.html">Zaki::Math::Quantity</a> &amp;spin_pdot)</td></tr>
 <tr class="memdesc:acc83e0db90485a23dd3e409f9581ade0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Backward-compatible constructor (old style).  <a href="../../db/d2a/class_compact_star_1_1_pulsar.html#acc83e0db90485a23dd3e409f9581ade0">More...</a><br /></td></tr>
 <tr class="separator:acc83e0db90485a23dd3e409f9581ade0"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -212,9 +212,9 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><b>set_wrk_dir_flag_</b>
 Responsibilities</h3>
 <ul>
 <li>Owns (or imports) a <b>structural profile</b> (<code><a class="el" href="../../d4/d7b/struct_compact_star_1_1_star_profile.html" title="Structural / metric / composition data for a compact-star configuration.">StarProfile</a></code>) and exposes it as a view.</li>
-<li>Stores <b>observed spin parameters</b> in a <code><a class="el" href="../../d0/dd0/struct_compact_star_1_1_spin_state.html" title="Observed spin and kinematic parameters.">SpinState</a></code>.</li>
-<li>Stores <b>thermal parameters</b> in a <code><a class="el" href="../../d4/d97/struct_compact_star_1_1_thermal_state.html" title="Local (non-redshifted) temperatures at key regions.">ThermalState</a></code>.</li>
-<li>Stores <b>BNV diagnostics</b> in a <code><a class="el" href="../../d4/dd2/struct_compact_star_1_1_b_n_v_state.html" title="Cached BNV diagnostics for a star.">BNVState</a></code>.</li>
+<li>Stores <b>observed spin parameters</b> in a <code>SpinState</code>.</li>
+<li>Stores <b>thermal parameters</b> in a <code>ThermalState</code>.</li>
+<li>Stores <b>BNV diagnostics</b> in a <code>BNVState</code>.</li>
 <li>Optionally attaches an <b>EOS</b>.</li>
 <li>Optionally remembers its <b>sequence point</b> (<code><a class="el" href="../../d4/dbf/class_compact_star_1_1_seq_point.html" title="Holds a single data point in a star sequence.">SeqPoint</a></code>) and the parent <b>sequence profile</b> (for mass–radius sequences, evolutionary tracks, etc.).</li>
 </ul>
@@ -299,8 +299,8 @@ Non-Responsibilities</h3>
 
 </div>
 </div>
-<a id="a5f22dc38acd7db9ff7f495e01b33927e" name="a5f22dc38acd7db9ff7f495e01b33927e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a5f22dc38acd7db9ff7f495e01b33927e">&#9670;&#160;</a></span>Pulsar() <span class="overload">[3/4]</span></h2>
+<a id="aa7ad736a7ff8069cc7d7623608e79f47" name="aa7ad736a7ff8069cc7d7623608e79f47"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa7ad736a7ff8069cc7d7623608e79f47">&#9670;&#160;</a></span>Pulsar() <span class="overload">[3/4]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -320,7 +320,7 @@ Non-Responsibilities</h3>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const <a class="el" href="../../d0/dd0/struct_compact_star_1_1_spin_state.html">SpinState</a> &amp;&#160;</td>
+          <td class="paramtype">const Physics::State::SpinState &amp;&#160;</td>
           <td class="paramname"><em>spin</em>&#160;</td>
         </tr>
         <tr>
@@ -332,7 +332,7 @@ Non-Responsibilities</h3>
 </div><div class="memdoc">
 
 <p>Construct from name, mass, and an explicit spin state. </p>
-<p>This is the “new” form: structure info (mass) stays here, spin info lives in a <a class="el" href="../../d0/dd0/struct_compact_star_1_1_spin_state.html" title="Observed spin and kinematic parameters.">SpinState</a>. </p>
+<p>This is the “new” form: structure info (mass) stays here, spin info lives in a SpinState. </p>
 
 </div>
 </div>
@@ -377,7 +377,7 @@ Non-Responsibilities</h3>
 <p>Backward-compatible constructor (old style). </p>
 <p>backward-compatible ctor</p>
 <p>Lets you do: <a class="el" href="../../db/d2a/class_compact_star_1_1_pulsar.html" title="High-level pulsar object that bundles structure, spin, thermal, and BNV state.">Pulsar</a>("J0348...", {2.01,0.04}, {P, dP}, {Pdot, dPdot})</p>
-<p>Internally this just builds a <a class="el" href="../../d0/dd0/struct_compact_star_1_1_spin_state.html" title="Observed spin and kinematic parameters.">SpinState</a> and forwards to the (name, mass, <a class="el" href="../../d0/dd0/struct_compact_star_1_1_spin_state.html" title="Observed spin and kinematic parameters.">SpinState</a>) ctor. </p>
+<p>Internally this just builds a SpinState and forwards to the (name, mass, SpinState) ctor. </p>
 
 </div>
 </div>

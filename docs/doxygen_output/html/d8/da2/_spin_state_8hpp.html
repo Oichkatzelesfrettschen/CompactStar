@@ -73,27 +73,26 @@ $(function() {
 </div>
 </div><!-- top -->
 <div class="header">
-  <div class="summary">
-<a href="#nested-classes">Classes</a>  </div>
-  <div class="headertitle"><div class="title">SpinState.hpp File Reference</div></div>
+  <div class="headertitle"><div class="title">SpinState.hpp File Reference<div class="ingroups"><a class="el" href="../../dc/d77/group___physics_state.html">Physics state module</a></div></div></div>
 </div><!--header-->
 <div class="contents">
 
-<p>Spin/kinematic observables for a compact star.  
+<p>Spin/kinematic state block + observables for a compact star.  
 <a href="#details">More...</a></p>
-<div class="textblock"><code>#include &lt;<a class="el" href="../../d8/de6/_math___core_8hpp_source.html">Zaki/Math/Math_Core.hpp</a>&gt;</code><br />
+<div class="textblock"><code>#include &lt;cstddef&gt;</code><br />
+<code>#include &lt;vector&gt;</code><br />
+<code>#include &lt;<a class="el" href="../../d8/de6/_math___core_8hpp_source.html">Zaki/Math/Math_Core.hpp</a>&gt;</code><br />
+<code>#include &quot;<a class="el" href="../../d5/d5d/_state_8hpp_source.html">CompactStar/Physics/State/State.hpp</a>&quot;</code><br />
 </div>
 <p><a href="../../d8/da2/_spin_state_8hpp_source.html">Go to the source code of this file.</a></p>
-<table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="nested-classes" name="nested-classes"></a>
-Classes</h2></td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d0/dd0/struct_compact_star_1_1_spin_state.html">CompactStar::SpinState</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Observed spin and kinematic parameters.  <a href="../../d0/dd0/struct_compact_star_1_1_spin_state.html#details">More...</a><br /></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Spin/kinematic observables for a compact star. </p>
-<dl class="section author"><dt>Author</dt><dd>Mohammadreza Zakeri Contact: <a href="#" onclick="location.href='mai'+'lto:'+'M.Z'+'ak'+'eri'+'@e'+'ku.'+'ed'+'u'; return false;">M.Zak<span class="obfuscator">.nosp@m.</span>eri@<span class="obfuscator">.nosp@m.</span>eku.e<span class="obfuscator">.nosp@m.</span>du</a> </dd></dl>
+<div class="textblock"><p>Spin/kinematic state block + observables for a compact star. </p>
+<p>This class serves two closely related roles:</p><ul>
+<li>provides a <b>dynamic state block</b> for spin evolution (e.g. Ω), exposed to the ODE integrator via the State base interface;</li>
+<li>stores <b>observational spin/kinematic quantities</b> (P, Pdot, μ, d) as <a class="el" href="../../d9/dcd/class_zaki_1_1_math_1_1_quantity.html" title="Division of a Quantity by a int.">Zaki::Math::Quantity</a> for use in BNV bounds, torque models, etc.</li>
+</ul>
+<p>Directory-based namespace: CompactStar::Physics::State</p>
+<dl class="section author"><dt>Author</dt><dd>Mohammadreza Zakeri (<a href="#" onclick="location.href='mai'+'lto:'+'M.Z'+'ak'+'eri'+'@e'+'ku.'+'ed'+'u'; return false;">M.Zak<span class="obfuscator">.nosp@m.</span>eri@<span class="obfuscator">.nosp@m.</span>eku.e<span class="obfuscator">.nosp@m.</span>du</a>) </dd></dl>
 </div></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

@@ -2,19 +2,29 @@
 \label{_thermal_state_8hpp}\index{CompactStar/Physics/State/ThermalState.hpp@{CompactStar/Physics/State/ThermalState.hpp}}
 
 
-Thermal state variables for a compact star.  
+Thermal evolution state block for a compact star.  
 
 
+{\ttfamily \#include $<$cstddef$>$}\newline
+{\ttfamily \#include $<$vector$>$}\newline
+{\ttfamily \#include \char`\"{}Compact\+Star/\+Physics/\+State/\+State.\+hpp\char`\"{}}\newline
 \doxysubsection*{Classes}
 \begin{DoxyCompactItemize}
 \item 
-struct \mbox{\hyperlink{struct_compact_star_1_1_thermal_state}{Compact\+Star\+::\+Thermal\+State}}
-\begin{DoxyCompactList}\small\item\em Local (non-\/redshifted) temperatures at key regions. \end{DoxyCompactList}\end{DoxyCompactItemize}
+class \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_state_1_1_thermal_state}{Compact\+Star\+::\+Physics\+::\+State\+::\+Thermal\+State}}
+\begin{DoxyCompactList}\small\item\em Dynamical thermal DOFs + cached physical temperatures. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}
-Thermal state variables for a compact star. 
+Thermal evolution state block for a compact star. 
 
-\begin{DoxyAuthor}{Author}
-Mohammadreza Zakeri Contact\+: \href{mailto:M.Zakeri@eku.edu}{\texttt{ M.\+Zakeri@eku.\+edu}} 
-\end{DoxyAuthor}
+This class provides the {\bfseries{dynamical thermal degrees of freedom}} used by the evolution system (typically the redshifted internal temperature T∞, or multiple temperature components if needed), as well as optional auxiliary temperatures used by microphysics or cooling models.
+
+Directory-\/based namespace\+: Compact\+Star\+::\+Physics\+::\+State\hypertarget{_thermal_state_8hpp_autotoc_md3}{}\doxyparagraph{Design}\label{_thermal_state_8hpp_autotoc_md3}
+
+\begin{DoxyItemize}
+\item The evolution DOFs live in a contiguous vector ({\ttfamily values\+\_\+}).
+\item A typical minimal configuration has just one DOF = T∞.
+\item Subclasses or callers may configure multiple components by calling Resize().
+\end{DoxyItemize}\hypertarget{_thermal_state_8hpp_autotoc_md4}{}\doxyparagraph{Auxiliary variables}\label{_thermal_state_8hpp_autotoc_md4}
+The local-\/frame temperatures (T\+\_\+core, T\+\_\+blanket, T\+\_\+surf) are {\bfseries{not}} part of the ODE vector. They are cached values used by cooling models, envelopes, emissivity computations, and diagnostics. 

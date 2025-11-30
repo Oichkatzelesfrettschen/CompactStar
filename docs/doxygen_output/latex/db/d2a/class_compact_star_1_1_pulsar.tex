@@ -22,7 +22,7 @@ Inheritance diagram for Compact\+Star\+::Pulsar\+:\begin{figure}[H]
 \begin{DoxyCompactList}\small\item\em Default constructor. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{class_compact_star_1_1_pulsar_a5cb7115b2776edaff09d348cf8834f8a}{Pulsar}} (const std\+::string \&name)
 \begin{DoxyCompactList}\small\item\em Construct a \mbox{\hyperlink{class_compact_star_1_1_pulsar}{Pulsar}} with a name (for logging via \mbox{\hyperlink{class_compact_star_1_1_prog}{Prog}}). \end{DoxyCompactList}\item 
-\mbox{\hyperlink{class_compact_star_1_1_pulsar_a5f22dc38acd7db9ff7f495e01b33927e}{Pulsar}} (const std\+::string \&name, const \mbox{\hyperlink{class_zaki_1_1_math_1_1_quantity}{Zaki\+::\+Math\+::\+Quantity}} \&mass, const \mbox{\hyperlink{struct_compact_star_1_1_spin_state}{Spin\+State}} \&spin)
+\mbox{\hyperlink{class_compact_star_1_1_pulsar_aa7ad736a7ff8069cc7d7623608e79f47}{Pulsar}} (const std\+::string \&name, const \mbox{\hyperlink{class_zaki_1_1_math_1_1_quantity}{Zaki\+::\+Math\+::\+Quantity}} \&mass, const Physics\+::\+State\+::\+Spin\+State \&spin)
 \begin{DoxyCompactList}\small\item\em Construct from name, mass, and an explicit spin state. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{class_compact_star_1_1_pulsar_acc83e0db90485a23dd3e409f9581ade0}{Pulsar}} (const std\+::string \&name, const \mbox{\hyperlink{class_zaki_1_1_math_1_1_quantity}{Zaki\+::\+Math\+::\+Quantity}} \&mass, const \mbox{\hyperlink{class_zaki_1_1_math_1_1_quantity}{Zaki\+::\+Math\+::\+Quantity}} \&spin\+\_\+p, const \mbox{\hyperlink{class_zaki_1_1_math_1_1_quantity}{Zaki\+::\+Math\+::\+Quantity}} \&spin\+\_\+pdot)
 \begin{DoxyCompactList}\small\item\em Backward-\/compatible constructor (old style). \end{DoxyCompactList}\item 
@@ -64,9 +64,9 @@ Comprehensive pulsar representation with rotation, structure, composition, and t
 
 \begin{DoxyItemize}
 \item Owns (or imports) a {\bfseries{structural profile}} ({\ttfamily \mbox{\hyperlink{struct_compact_star_1_1_star_profile}{Star\+Profile}}}) and exposes it as a view.
-\item Stores {\bfseries{observed spin parameters}} in a {\ttfamily \mbox{\hyperlink{struct_compact_star_1_1_spin_state}{Spin\+State}}}.
-\item Stores {\bfseries{thermal parameters}} in a {\ttfamily \mbox{\hyperlink{struct_compact_star_1_1_thermal_state}{Thermal\+State}}}.
-\item Stores {\bfseries{BNV diagnostics}} in a {\ttfamily \mbox{\hyperlink{struct_compact_star_1_1_b_n_v_state}{BNVState}}}.
+\item Stores {\bfseries{observed spin parameters}} in a {\ttfamily Spin\+State}.
+\item Stores {\bfseries{thermal parameters}} in a {\ttfamily Thermal\+State}.
+\item Stores {\bfseries{BNV diagnostics}} in a {\ttfamily BNVState}.
 \item Optionally attaches an {\bfseries{EOS}}.
 \item Optionally remembers its {\bfseries{sequence point}} ({\ttfamily \mbox{\hyperlink{class_compact_star_1_1_seq_point}{Seq\+Point}}}) and the parent {\bfseries{sequence profile}} (for mass–radius sequences, evolutionary tracks, etc.).
 \end{DoxyItemize}\hypertarget{class_compact_star_1_1_pulsar_autotoc_md1}{}\doxyparagraph{Non-\/\+Responsibilities}\label{class_compact_star_1_1_pulsar_autotoc_md1}
@@ -129,17 +129,17 @@ Named constructor.
 {\em name} & Name for logging / workspace. \\
 \hline
 \end{DoxyParams}
-\mbox{\Hypertarget{class_compact_star_1_1_pulsar_a5f22dc38acd7db9ff7f495e01b33927e}\label{class_compact_star_1_1_pulsar_a5f22dc38acd7db9ff7f495e01b33927e}} 
+\mbox{\Hypertarget{class_compact_star_1_1_pulsar_aa7ad736a7ff8069cc7d7623608e79f47}\label{class_compact_star_1_1_pulsar_aa7ad736a7ff8069cc7d7623608e79f47}} 
 \index{CompactStar::Pulsar@{CompactStar::Pulsar}!Pulsar@{Pulsar}}
 \index{Pulsar@{Pulsar}!CompactStar::Pulsar@{CompactStar::Pulsar}}
 \doxysubsubsection{\texorpdfstring{Pulsar()}{Pulsar()}\hspace{0.1cm}{\footnotesize\ttfamily [3/4]}}
-{\footnotesize\ttfamily Compact\+Star\+::\+Pulsar\+::\+Pulsar (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{name,  }\item[{const \mbox{\hyperlink{class_zaki_1_1_math_1_1_quantity}{Zaki\+::\+Math\+::\+Quantity}} \&}]{mass,  }\item[{const \mbox{\hyperlink{struct_compact_star_1_1_spin_state}{Spin\+State}} \&}]{spin }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily Compact\+Star\+::\+Pulsar\+::\+Pulsar (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{name,  }\item[{const \mbox{\hyperlink{class_zaki_1_1_math_1_1_quantity}{Zaki\+::\+Math\+::\+Quantity}} \&}]{mass,  }\item[{const Physics\+::\+State\+::\+Spin\+State \&}]{spin }\end{DoxyParamCaption})}
 
 
 
 Construct from name, mass, and an explicit spin state. 
 
-This is the “new” form\+: structure info (mass) stays here, spin info lives in a \mbox{\hyperlink{struct_compact_star_1_1_spin_state}{Spin\+State}}. \mbox{\Hypertarget{class_compact_star_1_1_pulsar_acc83e0db90485a23dd3e409f9581ade0}\label{class_compact_star_1_1_pulsar_acc83e0db90485a23dd3e409f9581ade0}} 
+This is the “new” form\+: structure info (mass) stays here, spin info lives in a Spin\+State. \mbox{\Hypertarget{class_compact_star_1_1_pulsar_acc83e0db90485a23dd3e409f9581ade0}\label{class_compact_star_1_1_pulsar_acc83e0db90485a23dd3e409f9581ade0}} 
 \index{CompactStar::Pulsar@{CompactStar::Pulsar}!Pulsar@{Pulsar}}
 \index{Pulsar@{Pulsar}!CompactStar::Pulsar@{CompactStar::Pulsar}}
 \doxysubsubsection{\texorpdfstring{Pulsar()}{Pulsar()}\hspace{0.1cm}{\footnotesize\ttfamily [4/4]}}
@@ -153,7 +153,7 @@ backward-\/compatible ctor
 
 Lets you do\+: \mbox{\hyperlink{class_compact_star_1_1_pulsar}{Pulsar}}(\char`\"{}\+J0348...\char`\"{}, \{2.\+01,0.\+04\}, \{P, dP\}, \{Pdot, d\+Pdot\})
 
-Internally this just builds a \mbox{\hyperlink{struct_compact_star_1_1_spin_state}{Spin\+State}} and forwards to the (name, mass, \mbox{\hyperlink{struct_compact_star_1_1_spin_state}{Spin\+State}}) ctor. 
+Internally this just builds a Spin\+State and forwards to the (name, mass, Spin\+State) ctor. 
 
 \doxysubsection{Member Function Documentation}
 \mbox{\Hypertarget{class_compact_star_1_1_pulsar_a4da6eefe7e3da41b24a330d8587c4e7e}\label{class_compact_star_1_1_pulsar_a4da6eefe7e3da41b24a330d8587c4e7e}} 

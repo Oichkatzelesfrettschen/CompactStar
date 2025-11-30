@@ -75,24 +75,36 @@ $(function() {
 <div class="header">
   <div class="summary">
 <a href="#nested-classes">Classes</a>  </div>
-  <div class="headertitle"><div class="title">BNVState.hpp File Reference</div></div>
+  <div class="headertitle"><div class="title">BNVState.hpp File Reference<div class="ingroups"><a class="el" href="../../dc/d77/group___physics_state.html">Physics state module</a></div></div></div>
 </div><!--header-->
 <div class="contents">
 
-<p>Optional cache/state for BNV-related derived quantities.  
+<p>Dynamic or cached quantities associated with baryon-number violation.  
 <a href="#details">More...</a></p>
-
+<div class="textblock"><code>#include &lt;cstddef&gt;</code><br />
+<code>#include &lt;vector&gt;</code><br />
+<code>#include &quot;<a class="el" href="../../d5/d5d/_state_8hpp_source.html">CompactStar/Physics/State/State.hpp</a>&quot;</code><br />
+</div>
 <p><a href="../../d4/db1/_b_n_v_state_8hpp_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="nested-classes" name="nested-classes"></a>
 Classes</h2></td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d4/dd2/struct_compact_star_1_1_b_n_v_state.html">CompactStar::BNVState</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Cached BNV diagnostics for a star.  <a href="../../d4/dd2/struct_compact_star_1_1_b_n_v_state.html#details">More...</a><br /></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d8/d9a/class_compact_star_1_1_physics_1_1_state_1_1_b_n_v_state.html">CompactStar::Physics::State::BNVState</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="../../d4/d69/class_compact_star_1_1_physics_1_1_state_1_1_state.html" title="Abstract base class for any dynamic physics state block.">State</a> block for BNV-related dynamical or cached variables.  <a href="../../d8/d9a/class_compact_star_1_1_physics_1_1_state_1_1_b_n_v_state.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Optional cache/state for BNV-related derived quantities. </p>
-<dl class="section author"><dt>Author</dt><dd>Mohammadreza Zakeri Contact: <a href="#" onclick="location.href='mai'+'lto:'+'M.Z'+'ak'+'eri'+'@e'+'ku.'+'ed'+'u'; return false;">M.Zak<span class="obfuscator">.nosp@m.</span>eri@<span class="obfuscator">.nosp@m.</span>eku.e<span class="obfuscator">.nosp@m.</span>du</a> </dd></dl>
+<div class="textblock"><p>Dynamic or cached quantities associated with baryon-number violation. </p>
+<p>This state block provides storage for BNV-related diagnostics or dynamic variables that may appear in BNV evolution drivers (e.g. ψ-population evolution, effective η-like variables, or observationally relevant meta-parameters).</p>
+<p>Depending on your BNV model, this may store:</p><ul>
+<li>a small vector of ODE-evolved quantities, or</li>
+<li>a cached set of derived diagnostic values (non-ODE), or both.</li>
+</ul>
+<p>Present version implements a simple ODE-compatible state with two components:</p><ol type="1">
+<li>η_I — dimensionless imbalance parameter (model-specific)</li>
+<li>spin_down_limit — Γ_BNV limit inferred from pulsar spin-down</li>
+</ol>
+<p>Additional DOFs can be added without touching the evolution core. </p>
 </div></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

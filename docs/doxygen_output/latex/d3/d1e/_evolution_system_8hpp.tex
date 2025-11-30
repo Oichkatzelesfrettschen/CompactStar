@@ -1,0 +1,20 @@
+\hypertarget{_evolution_system_8hpp}{}\doxysection{Compact\+Star/\+Physics/\+Evolution/\+Evolution\+System.hpp File Reference}
+\label{_evolution_system_8hpp}\index{CompactStar/Physics/Evolution/EvolutionSystem.hpp@{CompactStar/Physics/Evolution/EvolutionSystem.hpp}}
+
+
+Right-\/hand side (RHS) functor for the ODE system d\+Y/dt.  
+
+
+\doxysubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_evolution_system}{Compact\+Star\+::\+Physics\+::\+Evolution\+::\+Evolution\+System}}
+\begin{DoxyCompactList}\small\item\em GSL-\/compatible RHS functor (interfaces only in Phase 0). \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{struct_compact_star_1_1_physics_1_1_evolution_1_1_evolution_system_1_1_context}{Compact\+Star\+::\+Physics\+::\+Evolution\+::\+Evolution\+System\+::\+Context}}
+\begin{DoxyCompactList}\small\item\em Bundles read-\/only references to the model components. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Right-\/hand side (RHS) functor for the ODE system d\+Y/dt. 
+
+The RHS assembles volume integrals using Geometry\+Cache and Rate\+Set, and computes time derivatives for $T^\infty$ and $\boldsymbol{\eta}$ (and optionally $\Omega$). Designed to be wrapped by a GSL driver in {\ttfamily Integrator\+GSL}. 

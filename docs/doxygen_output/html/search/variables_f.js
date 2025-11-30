@@ -10,6 +10,6 @@ var searchData=
   ['radial_7',['radial',['../d4/d7b/struct_compact_star_1_1_star_profile.html#a8378261b8df3b639cd4b9a40fd201148',1,'CompactStar::StarProfile']]],
   ['radial_5fres_8',['radial_res',['../dd/d3c/class_compact_star_1_1_t_o_v_solver.html#addab6d0500d8bc434f1a7acef3fdb8ac',1,'CompactStar::TOVSolver']]],
   ['rho_9',['Rho',['../d4/da4/class_compact_star_1_1_particle.html#ab7c9fac36abcf6e73694ad2f85e57846',1,'CompactStar::Particle']]],
-  ['rtol_10',['rtol',['../dd/d11/struct_compact_star_1_1_chemical_heating_1_1_config.html#aa4c5a55a22eec91096e8269ee1fee904',1,'CompactStar::ChemicalHeating::Config']]],
-  ['run_5flabel_11',['run_label',['../dd/d11/struct_compact_star_1_1_chemical_heating_1_1_config.html#a1d9a11e88b84103d71c9d8c47442179e',1,'CompactStar::ChemicalHeating::Config']]]
+  ['rtol_10',['rtol',['../d5/d7b/struct_compact_star_1_1_physics_1_1_evolution_1_1_config.html#a81accd13af408d61ec9f4d8913452d2f',1,'CompactStar::Physics::Evolution::Config']]],
+  ['run_5flabel_11',['run_label',['../d5/d7b/struct_compact_star_1_1_physics_1_1_evolution_1_1_config.html#af7573276349dec83c48d0278eae576fc',1,'CompactStar::Physics::Evolution::Config']]]
 ];

@@ -32,7 +32,7 @@
  *  - \f$w_C(r)=4\pi r^2 e^{\Lambda(r)}\f$   (heat capacity integrals)
  *  - \f$w_\nu(r)=4\pi r^2 e^{\Lambda(r)+2\nu(r)}\f$ (luminosities at infinity)
  *
- * @ingroup Physics
+ * @ingroup PhysicsEvolution
  */
 #ifndef CompactStar_Physics_Evolution_GeometryCache_H
 #define CompactStar_Physics_Evolution_GeometryCache_H

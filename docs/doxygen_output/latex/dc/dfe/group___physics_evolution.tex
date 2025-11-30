@@ -1,0 +1,25 @@
+\hypertarget{group___physics_evolution}{}\doxysection{Physics evolution module}
+\label{group___physics_evolution}\index{Physics evolution module@{Physics evolution module}}
+
+
+Time evolution of neutron-\/star states (thermal, spin, chem, BNV).  
+
+
+\doxysubsection*{Files}
+\begin{DoxyCompactItemize}
+\item 
+file \mbox{\hyperlink{_evolution_system_8hpp}{Evolution\+System.\+hpp}}
+\begin{DoxyCompactList}\small\item\em Right-\/hand side (RHS) functor for the ODE system d\+Y/dt. \end{DoxyCompactList}\item 
+file \mbox{\hyperlink{_geometry_cache_8hpp}{Geometry\+Cache.\+hpp}}
+\begin{DoxyCompactList}\small\item\em Precomputed geometric weights and masks for fast radial integration. \end{DoxyCompactList}\item 
+file \mbox{\hyperlink{_r_h_s_accumulator_8hpp}{RHSAccumulator.\+hpp}}
+\begin{DoxyCompactList}\small\item\em Helper for accumulating contributions to d\+Y/dt per state block. \end{DoxyCompactList}\item 
+file \mbox{\hyperlink{_star_context_8hpp}{Star\+Context.\+hpp}}
+\begin{DoxyCompactList}\small\item\em Read-\/only bridge to Core structures (NStar, EOS, Rotation\+Solver) for the evolution module. \end{DoxyCompactList}\item 
+file \mbox{\hyperlink{_state_vector_8hpp}{State\+Vector.\+hpp}}
+\begin{DoxyCompactList}\small\item\em Composite view over sub-\/states (Spin/\+Thermal/\+Chem/\+BNV/…). \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Time evolution of neutron-\/star states (thermal, spin, chem, BNV). 
+

@@ -1,0 +1,185 @@
+\hypertarget{class_compact_star_1_1_physics_1_1_state_1_1_thermal_state}{}\doxysection{Compact\+Star\+::Physics\+::State\+::Thermal\+State Class Reference}
+\label{class_compact_star_1_1_physics_1_1_state_1_1_thermal_state}\index{CompactStar::Physics::State::ThermalState@{CompactStar::Physics::State::ThermalState}}
+
+
+Dynamical thermal DOFs + cached physical temperatures.  
+
+
+
+
+{\ttfamily \#include $<$Thermal\+State.\+hpp$>$}
+
+Inheritance diagram for Compact\+Star\+::Physics\+::State\+::Thermal\+State\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{de/d39/class_compact_star_1_1_physics_1_1_state_1_1_thermal_state}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+const char $\ast$ \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_state_1_1_thermal_state_a35507eb8ed8d3b3646649257f4f2a851}{Name}} () const override
+\begin{DoxyCompactList}\small\item\em Short state name for logging (e.\+g. \char`\"{}\+Chem\+State\char`\"{}). \end{DoxyCompactList}\item 
+std\+::size\+\_\+t \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_state_1_1_thermal_state_a2b4321c1aadef35f0694453e7d5283d0}{Size}} () const override
+\begin{DoxyCompactList}\small\item\em Number of ODE thermal components. \end{DoxyCompactList}\item 
+double $\ast$ \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_state_1_1_thermal_state_a56663f05d57cd2dd0b6d2d014d6050c5}{Data}} () override
+\begin{DoxyCompactList}\small\item\em Mutable pointer to contiguous ODE data. \end{DoxyCompactList}\item 
+const double $\ast$ \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_state_1_1_thermal_state_a9a997f16b7281ec8e2fad96dedad4e02}{Data}} () const override
+\begin{DoxyCompactList}\small\item\em Const pointer to contiguous ODE data. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_state_1_1_thermal_state_a066eb839acd4f0a6fbf21be8d3be2cbc}{Resize}} (std\+::size\+\_\+t N) override
+\begin{DoxyCompactList}\small\item\em Resize the ODE thermal vector to N components. \end{DoxyCompactList}\item 
+std\+::size\+\_\+t \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_state_1_1_thermal_state_a296ef406fa8af1b3ef7c886ce1e6f892}{Grid\+Size}} () const override
+\begin{DoxyCompactList}\small\item\em Grid size == number of thermal DOFs in this simple layout. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_state_1_1_thermal_state_ab0c832d00d24302914153386cc6344f6}{Clear}} () override
+\begin{DoxyCompactList}\small\item\em Zero the thermal DOFs (capacity preserved). \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_compact_star_1_1_physics_1_1_state_1_1_thermal_state_a2c4a41586be4447c22399ddc23a50090}\label{class_compact_star_1_1_physics_1_1_state_1_1_thermal_state_a2c4a41586be4447c22399ddc23a50090}} 
+std\+::size\+\_\+t {\bfseries Num\+Components} () const
+\begin{DoxyCompactList}\small\item\em Number of thermal DOFs. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_compact_star_1_1_physics_1_1_state_1_1_thermal_state_a7b1ba0397fe18c362cfea2862a3945e8}\label{class_compact_star_1_1_physics_1_1_state_1_1_thermal_state_a7b1ba0397fe18c362cfea2862a3945e8}} 
+double \& {\bfseries Value} (std\+::size\+\_\+t i)
+\begin{DoxyCompactList}\small\item\em Mutable access to i-\/th component. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_compact_star_1_1_physics_1_1_state_1_1_thermal_state_a8385b3f119f4e3039b7f7a9d93924b06}\label{class_compact_star_1_1_physics_1_1_state_1_1_thermal_state_a8385b3f119f4e3039b7f7a9d93924b06}} 
+const double \& {\bfseries Value} (std\+::size\+\_\+t i) const
+\begin{DoxyCompactList}\small\item\em Const access to i-\/th component. \end{DoxyCompactList}\item 
+double \& \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_state_1_1_thermal_state_a15bf0d0ef000c399b78f6e2dc800bf94}{Tinf}} ()
+\begin{DoxyCompactList}\small\item\em Convenience accessor for the primary thermal DOF (usually T∞). \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_compact_star_1_1_physics_1_1_state_1_1_thermal_state_a45e8610f66efa5168fc42dfc9039a3d4}\label{class_compact_star_1_1_physics_1_1_state_1_1_thermal_state_a45e8610f66efa5168fc42dfc9039a3d4}} 
+const double \& {\bfseries Tinf} () const
+\begin{DoxyCompactList}\small\item\em Const accessor for T∞. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_compact_star_1_1_physics_1_1_state_1_1_thermal_state_a23f7a072c1578382f06799d04bff0aae}\label{class_compact_star_1_1_physics_1_1_state_1_1_thermal_state_a23f7a072c1578382f06799d04bff0aae}} 
+double {\bfseries T\+\_\+core} = 0.\+0
+\begin{DoxyCompactList}\small\item\em Local-\/frame core temperature \mbox{[}K\mbox{]}. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_compact_star_1_1_physics_1_1_state_1_1_thermal_state_a3ad6e5266a113586c04574f183aefb6d}\label{class_compact_star_1_1_physics_1_1_state_1_1_thermal_state_a3ad6e5266a113586c04574f183aefb6d}} 
+double {\bfseries T\+\_\+blanket} = 0.\+0
+\begin{DoxyCompactList}\small\item\em Local-\/frame blanket temperature \mbox{[}K\mbox{]} (ρ $\sim$ 10$^\wedge$10 g/cm³). \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_compact_star_1_1_physics_1_1_state_1_1_thermal_state_a0a72a4cfb9fca8b86fc10434ce4facb6}\label{class_compact_star_1_1_physics_1_1_state_1_1_thermal_state_a0a72a4cfb9fca8b86fc10434ce4facb6}} 
+double {\bfseries T\+\_\+surf} = 0.\+0
+\begin{DoxyCompactList}\small\item\em Local-\/frame surface temperature \mbox{[}K\mbox{]}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Dynamical thermal DOFs + cached physical temperatures. 
+
+The ODE part (values\+\_\+) is what evolution drivers operate on. By default callers usually use a single DOF representing the {\bfseries{redshifted internal temperature}} T∞. If more thermal components (e.\+g. multi-\/zone models) are needed, callers simply call Resize(\+N).
+
+The auxiliary fields store physically meaningful temperatures in the {\bfseries{local fluid frame}}, which microphysics and cooling models often require. 
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_compact_star_1_1_physics_1_1_state_1_1_thermal_state_ab0c832d00d24302914153386cc6344f6}\label{class_compact_star_1_1_physics_1_1_state_1_1_thermal_state_ab0c832d00d24302914153386cc6344f6}} 
+\index{CompactStar::Physics::State::ThermalState@{CompactStar::Physics::State::ThermalState}!Clear@{Clear}}
+\index{Clear@{Clear}!CompactStar::Physics::State::ThermalState@{CompactStar::Physics::State::ThermalState}}
+\doxysubsubsection{\texorpdfstring{Clear()}{Clear()}}
+{\footnotesize\ttfamily void Compact\+Star\+::\+Physics\+::\+State\+::\+Thermal\+State\+::\+Clear (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Zero the thermal DOFs (capacity preserved). 
+
+
+
+Implements \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_state_1_1_state_ae531732a02445f1378be8a13837691e8}{Compact\+Star\+::\+Physics\+::\+State\+::\+State}}.
+
+\mbox{\Hypertarget{class_compact_star_1_1_physics_1_1_state_1_1_thermal_state_a9a997f16b7281ec8e2fad96dedad4e02}\label{class_compact_star_1_1_physics_1_1_state_1_1_thermal_state_a9a997f16b7281ec8e2fad96dedad4e02}} 
+\index{CompactStar::Physics::State::ThermalState@{CompactStar::Physics::State::ThermalState}!Data@{Data}}
+\index{Data@{Data}!CompactStar::Physics::State::ThermalState@{CompactStar::Physics::State::ThermalState}}
+\doxysubsubsection{\texorpdfstring{Data()}{Data()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily const double $\ast$ Compact\+Star\+::\+Physics\+::\+State\+::\+Thermal\+State\+::\+Data (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Const pointer to contiguous ODE data. 
+
+
+
+Implements \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_state_1_1_state_aaad6830e6e0884665af0379f80b0d075}{Compact\+Star\+::\+Physics\+::\+State\+::\+State}}.
+
+\mbox{\Hypertarget{class_compact_star_1_1_physics_1_1_state_1_1_thermal_state_a56663f05d57cd2dd0b6d2d014d6050c5}\label{class_compact_star_1_1_physics_1_1_state_1_1_thermal_state_a56663f05d57cd2dd0b6d2d014d6050c5}} 
+\index{CompactStar::Physics::State::ThermalState@{CompactStar::Physics::State::ThermalState}!Data@{Data}}
+\index{Data@{Data}!CompactStar::Physics::State::ThermalState@{CompactStar::Physics::State::ThermalState}}
+\doxysubsubsection{\texorpdfstring{Data()}{Data()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily double $\ast$ Compact\+Star\+::\+Physics\+::\+State\+::\+Thermal\+State\+::\+Data (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Mutable pointer to contiguous ODE data. 
+
+
+
+Implements \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_state_1_1_state_ad8fd8cf0dd2001eed6f81ea0e5458f30}{Compact\+Star\+::\+Physics\+::\+State\+::\+State}}.
+
+\mbox{\Hypertarget{class_compact_star_1_1_physics_1_1_state_1_1_thermal_state_a296ef406fa8af1b3ef7c886ce1e6f892}\label{class_compact_star_1_1_physics_1_1_state_1_1_thermal_state_a296ef406fa8af1b3ef7c886ce1e6f892}} 
+\index{CompactStar::Physics::State::ThermalState@{CompactStar::Physics::State::ThermalState}!GridSize@{GridSize}}
+\index{GridSize@{GridSize}!CompactStar::Physics::State::ThermalState@{CompactStar::Physics::State::ThermalState}}
+\doxysubsubsection{\texorpdfstring{GridSize()}{GridSize()}}
+{\footnotesize\ttfamily std\+::size\+\_\+t Compact\+Star\+::\+Physics\+::\+State\+::\+Thermal\+State\+::\+Grid\+Size (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Grid size == number of thermal DOFs in this simple layout. 
+
+
+
+Reimplemented from \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_state_1_1_state_a26c2a63bb521c916f9ffb681e15028b8}{Compact\+Star\+::\+Physics\+::\+State\+::\+State}}.
+
+\mbox{\Hypertarget{class_compact_star_1_1_physics_1_1_state_1_1_thermal_state_a35507eb8ed8d3b3646649257f4f2a851}\label{class_compact_star_1_1_physics_1_1_state_1_1_thermal_state_a35507eb8ed8d3b3646649257f4f2a851}} 
+\index{CompactStar::Physics::State::ThermalState@{CompactStar::Physics::State::ThermalState}!Name@{Name}}
+\index{Name@{Name}!CompactStar::Physics::State::ThermalState@{CompactStar::Physics::State::ThermalState}}
+\doxysubsubsection{\texorpdfstring{Name()}{Name()}}
+{\footnotesize\ttfamily const char $\ast$ Compact\+Star\+::\+Physics\+::\+State\+::\+Thermal\+State\+::\+Name (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Short state name for logging (e.\+g. \char`\"{}\+Chem\+State\char`\"{}). 
+
+
+
+Implements \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_state_1_1_state_adb2c0a210afb045ea8cf1e96e3b0c6ed}{Compact\+Star\+::\+Physics\+::\+State\+::\+State}}.
+
+\mbox{\Hypertarget{class_compact_star_1_1_physics_1_1_state_1_1_thermal_state_a066eb839acd4f0a6fbf21be8d3be2cbc}\label{class_compact_star_1_1_physics_1_1_state_1_1_thermal_state_a066eb839acd4f0a6fbf21be8d3be2cbc}} 
+\index{CompactStar::Physics::State::ThermalState@{CompactStar::Physics::State::ThermalState}!Resize@{Resize}}
+\index{Resize@{Resize}!CompactStar::Physics::State::ThermalState@{CompactStar::Physics::State::ThermalState}}
+\doxysubsubsection{\texorpdfstring{Resize()}{Resize()}}
+{\footnotesize\ttfamily void Compact\+Star\+::\+Physics\+::\+State\+::\+Thermal\+State\+::\+Resize (\begin{DoxyParamCaption}\item[{std\+::size\+\_\+t}]{N }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Resize the ODE thermal vector to N components. 
+
+Typical choice\+: N = 1 → single DOF = T∞
+
+More components can be added for multi-\/zone thermal evolution models. 
+
+Implements \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_state_1_1_state_a67305cd2b43b22a5503b62326c00584f}{Compact\+Star\+::\+Physics\+::\+State\+::\+State}}.
+
+\mbox{\Hypertarget{class_compact_star_1_1_physics_1_1_state_1_1_thermal_state_a2b4321c1aadef35f0694453e7d5283d0}\label{class_compact_star_1_1_physics_1_1_state_1_1_thermal_state_a2b4321c1aadef35f0694453e7d5283d0}} 
+\index{CompactStar::Physics::State::ThermalState@{CompactStar::Physics::State::ThermalState}!Size@{Size}}
+\index{Size@{Size}!CompactStar::Physics::State::ThermalState@{CompactStar::Physics::State::ThermalState}}
+\doxysubsubsection{\texorpdfstring{Size()}{Size()}}
+{\footnotesize\ttfamily std\+::size\+\_\+t Compact\+Star\+::\+Physics\+::\+State\+::\+Thermal\+State\+::\+Size (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Number of ODE thermal components. 
+
+
+
+Implements \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_state_1_1_state_a7d41a392de8417100b45ebfb19298eae}{Compact\+Star\+::\+Physics\+::\+State\+::\+State}}.
+
+\mbox{\Hypertarget{class_compact_star_1_1_physics_1_1_state_1_1_thermal_state_a15bf0d0ef000c399b78f6e2dc800bf94}\label{class_compact_star_1_1_physics_1_1_state_1_1_thermal_state_a15bf0d0ef000c399b78f6e2dc800bf94}} 
+\index{CompactStar::Physics::State::ThermalState@{CompactStar::Physics::State::ThermalState}!Tinf@{Tinf}}
+\index{Tinf@{Tinf}!CompactStar::Physics::State::ThermalState@{CompactStar::Physics::State::ThermalState}}
+\doxysubsubsection{\texorpdfstring{Tinf()}{Tinf()}}
+{\footnotesize\ttfamily double \& Compact\+Star\+::\+Physics\+::\+State\+::\+Thermal\+State\+::\+Tinf (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Convenience accessor for the primary thermal DOF (usually T∞). 
+
+By convention, component 0 is the {\bfseries{redshifted isothermal-\/core temperature}}. 
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Compact\+Star/\+Physics/\+State/\mbox{\hyperlink{_thermal_state_8hpp}{Thermal\+State.\+hpp}}\end{DoxyCompactItemize}

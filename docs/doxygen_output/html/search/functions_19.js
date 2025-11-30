@@ -16,9 +16,11 @@ var searchData=
   ['_7epolytrope_13',['~Polytrope',['../dd/d81/class_compact_star_1_1_polytrope.html#aec0fb09ac1b6be6bdba4a90f4a29044d',1,'CompactStar::Polytrope']]],
   ['_7eprog_14',['~Prog',['../de/d1a/class_compact_star_1_1_prog.html#acad7c646cdf94e3b68ae4d44ed638889',1,'CompactStar::Prog']]],
   ['_7epulsar_15',['~Pulsar',['../db/d2a/class_compact_star_1_1_pulsar.html#a23f6bf4e493f5970afa53c9881c75f3e',1,'CompactStar::Pulsar']]],
-  ['_7esequence_16',['~Sequence',['../dc/d3d/class_compact_star_1_1_sequence.html#a28b57a73d8b4fefdaf1819256ff95d64',1,'CompactStar::Sequence']]],
-  ['_7esigmaomega_17',['~SigmaOmega',['../d7/d1b/class_compact_star_1_1_sigma_omega.html#ab47a5d1fd98be27d8c8537840d0d9e51',1,'CompactStar::SigmaOmega']]],
-  ['_7esigmaomegarho_18',['~SigmaOmegaRho',['../d8/d71/class_compact_star_1_1_sigma_omega_rho.html#a0c32590ee2967e35aeee28aa862ae5e9',1,'CompactStar::SigmaOmegaRho']]],
-  ['_7esigmaomegarho_5fnpemu_19',['~SigmaOmegaRho_npemu',['../da/d9c/class_compact_star_1_1_sigma_omega_rho__npemu.html#a68cc4d4b985c1f3e1107176485727393',1,'CompactStar::SigmaOmegaRho_npemu']]],
-  ['_7esigmaomegarho_5fnstar_20',['~SigmaOmegaRho_nstar',['../d4/d7e/class_compact_star_1_1_sigma_omega_rho__nstar.html#ade4f3b08cdc37e26504bb4c615a59fe0',1,'CompactStar::SigmaOmegaRho_nstar']]]
+  ['_7erhsaccumulator_16',['~RHSAccumulator',['../d6/d26/class_compact_star_1_1_physics_1_1_evolution_1_1_r_h_s_accumulator.html#a7e9cb0be04da1f731601932d241fba6a',1,'CompactStar::Physics::Evolution::RHSAccumulator']]],
+  ['_7esequence_17',['~Sequence',['../dc/d3d/class_compact_star_1_1_sequence.html#a28b57a73d8b4fefdaf1819256ff95d64',1,'CompactStar::Sequence']]],
+  ['_7esigmaomega_18',['~SigmaOmega',['../d7/d1b/class_compact_star_1_1_sigma_omega.html#ab47a5d1fd98be27d8c8537840d0d9e51',1,'CompactStar::SigmaOmega']]],
+  ['_7esigmaomegarho_19',['~SigmaOmegaRho',['../d8/d71/class_compact_star_1_1_sigma_omega_rho.html#a0c32590ee2967e35aeee28aa862ae5e9',1,'CompactStar::SigmaOmegaRho']]],
+  ['_7esigmaomegarho_5fnpemu_20',['~SigmaOmegaRho_npemu',['../da/d9c/class_compact_star_1_1_sigma_omega_rho__npemu.html#a68cc4d4b985c1f3e1107176485727393',1,'CompactStar::SigmaOmegaRho_npemu']]],
+  ['_7esigmaomegarho_5fnstar_21',['~SigmaOmegaRho_nstar',['../d4/d7e/class_compact_star_1_1_sigma_omega_rho__nstar.html#ade4f3b08cdc37e26504bb4c615a59fe0',1,'CompactStar::SigmaOmegaRho_nstar']]],
+  ['_7estatevector_22',['~StateVector',['../da/d36/class_compact_star_1_1_physics_1_1_evolution_1_1_state_vector.html#a069c56ac4eebc92da42b007d41c4c8d2',1,'CompactStar::Physics::Evolution::StateVector']]]
 ];

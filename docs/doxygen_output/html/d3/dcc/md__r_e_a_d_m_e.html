@@ -72,25 +72,163 @@ $(function() {
   <div class="headertitle"><div class="title">CompactStar </div></div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><p><b>CompactStar</b> is a modular C++ framework for modeling the structure of compact stars, including neutron stars and dark-visible admixed configurations. <br  />
- It supports both tabulated and analytical equations of state (EOS), and includes solvers for the Tolman–Oppenheimer–Volkoff (TOV) and Hartle equations.</p>
-<p>The code is designed for flexibility and extensibility, with integrated modules for physics, mathematics, file I/O, and analysis of astrophysical data.</p>
-<h1><a class="anchor" id="autotoc_md4"></a>
+<div class="textblock"><p><b>CompactStar</b> is a high-performance, modular C++ framework for modeling the microphysics, structure, and evolution of compact stars—neutron stars, hybrid stars, and dark–visible admixed configurations.</p>
+<p>Originally designed for dense-matter astrophysics research, the codebase has expanded into a full computational platform with:</p>
+<ul>
+<li>relativistic stellar structure solvers (TOV + Hartle),</li>
+<li>thermal + chemical evolution engines,</li>
+<li>baryon-number–violating (BNV) processes and exotic heating channels,</li>
+<li>spin evolution,</li>
+<li>sequences, contours, and bulk EOS analysis,</li>
+<li>a modernized Core module providing math, physics, datasets, file I/O, and analysis utilities.</li>
+</ul>
+<p>CompactStar is written in <b>C++17</b>, designed for <b>flexibility, reproducibility, and extensibility</b>, and integrates cleanly into HPC workflows.</p>
+<hr  />
+<h1><a class="anchor" id="autotoc_md7"></a>
+Core Capabilities</h1>
+<h3><a class="anchor" id="autotoc_md8"></a>
+Stellar Structure</h3>
+<ul>
+<li><b>TOVSolver</b>: static Tolman–Oppenheimer–Volkoff integration for any tabulated or analytical EOS.</li>
+<li><b>TOVSolver_Thread</b>: multithreaded parallel wrapper for generating full sequences.</li>
+<li><b>HartleSolver</b>: slow-rotation solver for frame-dragging and O(Ω²) structure perturbations.</li>
+<li>Computes mass–radius curves, moment of inertia, compactness, redshift, and structural profiles.</li>
+</ul>
+<h3><a class="anchor" id="autotoc_md9"></a>
+Equations of State</h3>
+<ul>
+<li>Supports tabulated, analytical, and hybrid/multiphase EOS formats.</li>
+<li>Built-in EOS readers, interpolation, thermodynamic derivatives.</li>
+<li>Clean interfaces for adding microphysical modules (effective masses, symmetry energy, thresholds).</li>
+</ul>
+<h3><a class="anchor" id="autotoc_md10"></a>
+Thermal &amp; Chemical Evolution</h3>
+<ul>
+<li>Fully implements the Reisenegger–Fernández rotochemical heating formalism.</li>
+<li>Time evolution of:<ul>
+<li>internal temperature T∞,</li>
+<li>chemical imbalances η,</li>
+<li>neutrino luminosities,</li>
+<li>heating vs cooling balance,</li>
+<li>photon output.</li>
+</ul>
+</li>
+</ul>
+<h3><a class="anchor" id="autotoc_md11"></a>
+BNV Heating (Baryon Number Violation)</h3>
+<ul>
+<li>Dedicated BNVState and reaction-rate infrastructure.</li>
+<li>User-defined particle-physics models plug in cleanly via the Driver abstraction.</li>
+<li>Supports energy injection, matter depletion, and thermal feedback.</li>
+</ul>
+<h3><a class="anchor" id="autotoc_md12"></a>
+Spin Evolution</h3>
+<ul>
+<li>Magnetic-dipole braking, custom torque laws, and coupling to chemical/thermal evolution.</li>
+<li>Integrates naturally with Hartle structure corrections.</li>
+</ul>
+<h3><a class="anchor" id="autotoc_md13"></a>
+Sequences, Contours &amp; Analysis</h3>
+<ul>
+<li>Sequence generator for:<ul>
+<li>mass–radius,</li>
+<li>I(M), M(R),</li>
+<li>baryon-mass contours,</li>
+<li>Kepler frequency estimates.</li>
+</ul>
+</li>
+<li>Contour and profile exporter (csv, json, dataset format).</li>
+<li>Tools for generating stability curves and parameter-space scans.</li>
+</ul>
+<h3><a class="anchor" id="autotoc_md14"></a>
+Core Mathematics, Physics, and Datasets</h3>
+<p>Provided by the new Core module:</p>
+<ul>
+<li>Custom Vector, Dataset, Profile, and Table types.</li>
+<li>Numerical methods (ODE solvers, root finders, bracketing, interpolation).</li>
+<li>Physics helpers (Fermi momenta, chemical potentials, redshift relations).</li>
+<li>ZLOG-based logging system.</li>
+<li>File I/O utilities for exporting star profiles, evolution histories, and grids.</li>
+</ul>
+<hr  />
+<h1><a class="anchor" id="autotoc_md16"></a>
+Project Structure</h1>
+<div class="fragment"><div class="line">CompactStar/</div>
+<div class="line">├── Core/                           # Math, physics primitives, TOV/Hartle solvers, star builders</div>
+<div class="line">│   ├── src/                        # Implementations for Core classes</div>
+<div class="line">│   └── (various headers)           # NStar, Pulsar, RotationSolver, StarBuilder, etc.</div>
+<div class="line">│</div>
+<div class="line">├── EOS/                            # Equation of state models and infrastructure</div>
+<div class="line">│   └── src/                        # EOS implementations (CompOSE, Fermi gas, sigma-omega models)</div>
+<div class="line">│</div>
+<div class="line">├── Physics/                        # Full evolution engine (thermal + spin + chemical + BNV coupling)</div>
+<div class="line">│   ├── Driver/                     # Thermal, chemical, and spin drivers (pluggable modules)</div>
+<div class="line">│   │   ├── Chem/                   # Rotochemical, weak restoration, BNV chemical sources</div>
+<div class="line">│   │   ├── Spin/                   # Spin-down, accretion, BNV torque models</div>
+<div class="line">│   │   └── Thermal/                # Cooling/heating channels</div>
+<div class="line">│   ├── Evolution/                  # Integrators, observers, system assembly</div>
+<div class="line">│   │   ├── Integrator/             # GSL integrator bindings</div>
+<div class="line">│   │   └── Observers/              # Logging, checkpointing, diagnostics</div>
+<div class="line">│   └── State/                      # ThermalState, SpinState, ChemState, BNVState</div>
+<div class="line">│</div>
+<div class="line">├── Microphysics/                   # Reaction-level particle physics (BNV, Urca, etc.)</div>
+<div class="line">│   ├── BNV/                        # Baryon-number-violating models</div>
+<div class="line">│   │   ├── Analysis/               # BNV diagnostic tools, sequences, decay analysis</div>
+<div class="line">│   │   ├── Channels/               # BNV reaction channels</div>
+<div class="line">│   │   └── Internal/               # BNV particle/field definitions</div>
+<div class="line">│   └── Rates/                      # Urca and related microphysical rates</div>
+<div class="line">│</div>
+<div class="line">├── Extensions/                     # Optional add-ons beyond the core framework</div>
+<div class="line">│   ├── LightDM/                    # Light dark-matter scalar density models</div>
+<div class="line">│   └── MixedStar/                  # Dark–visible mixed star analysis extensions</div>
+<div class="line">│</div>
+<div class="line">├── CMakeLists.txt                  # Build system</div>
+<div class="line">└── (other top-level support files)</div>
+</div><!-- fragment --><hr  />
+<h1><a class="anchor" id="autotoc_md18"></a>
 Features</h1>
 <ul>
-<li>Supports tabulated and analytical EOS formats</li>
-<li>Solves relativistic stellar structure equations (TOV &amp; Hartle)</li>
-<li>Models hybrid stars with visible and dark matter</li>
-<li>Built-in support for sequences, contours, and profile exports</li>
-<li>Lightweight dependencies (GSL, C++17)</li>
-<li>Modular structure for easy extension</li>
+<li>Tabulated + analytical EOS support</li>
+<li>Relativistic structure (TOV + Hartle)</li>
+<li>Rotochemical heating</li>
+<li>BNV heating models</li>
+<li>Spin–thermal–chemical coupling</li>
+<li>Stellar sequences and contour tools</li>
+<li>High-level API for parameter scans</li>
+<li>Lightweight dependencies (C++17, GSL)</li>
 </ul>
-<h1><a class="anchor" id="autotoc_md5"></a>
+<hr  />
+<h1><a class="anchor" id="autotoc_md20"></a>
+Building</h1>
+<div class="fragment"><div class="line">mkdir build</div>
+<div class="line">cd build</div>
+<div class="line">cmake ..</div>
+<div class="line">make -j</div>
+</div><!-- fragment --><p>Optional flags:</p>
+<ul>
+<li><code>-DUSE_OPENMP=ON</code></li>
+<li><code>-DUSE_PYTHON=ON</code></li>
+<li><code>-DCS_ENABLE_PROFILING=ON</code></li>
+</ul>
+<hr  />
+<h1><a class="anchor" id="autotoc_md22"></a>
+Documentation</h1>
+<p>CompactStar uses <b>Doxygen</b> documentation. <br  />
+ To build:</p>
+<div class="fragment"><div class="line">mkdir build &amp;&amp; cd build</div>
+<div class="line">cmake .. -DBUILD_DOCS=ON</div>
+<div class="line">make docs</div>
+</div><!-- fragment --><hr  />
+<h1><a class="anchor" id="autotoc_md24"></a>
 Author</h1>
-<p>Mohammadreza Zakeri <br  />
+<p><b>Mohammadreza Zakeri</b> <br  />
  Assistant Professor of Physics <br  />
  Eastern Kentucky University <br  />
- 📧 <a href="#" onclick="location.href='mai'+'lto:'+'M.Z'+'ak'+'eri'+'@e'+'ku.'+'ed'+'u'; return false;">M.Zak<span class="obfuscator">.nosp@m.</span>eri@<span class="obfuscator">.nosp@m.</span>eku.e<span class="obfuscator">.nosp@m.</span>du</a> </p>
+ 📧 <a href="#" onclick="location.href='mai'+'lto:'+'M.Z'+'ak'+'eri'+'@e'+'ku.'+'ed'+'u'; return false;">M.Zak<span class="obfuscator">.nosp@m.</span>eri@<span class="obfuscator">.nosp@m.</span>eku.e<span class="obfuscator">.nosp@m.</span>du</a></p>
+<hr  />
+<h1><a class="anchor" id="autotoc_md26"></a>
+Citation</h1>
+<p>If you use CompactStar in published research, please cite this repository and the author. </p>
 </div></div><!-- contents -->
 </div><!-- PageDoc -->
 <!-- start footer part -->

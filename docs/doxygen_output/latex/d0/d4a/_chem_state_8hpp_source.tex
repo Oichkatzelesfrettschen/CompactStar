@@ -1,0 +1,79 @@
+\hypertarget{_chem_state_8hpp_source}{}\doxysection{Chem\+State.\+hpp}
+\label{_chem_state_8hpp_source}\index{CompactStar/Physics/State/ChemState.hpp@{CompactStar/Physics/State/ChemState.hpp}}
+\mbox{\hyperlink{_chem_state_8hpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{comment}{// -\/*-\/ lsst-\/c++ -\/*-\/}}
+\DoxyCodeLine{2 \textcolor{comment}{/*}}
+\DoxyCodeLine{3 \textcolor{comment}{ * CompactStar}}
+\DoxyCodeLine{4 \textcolor{comment}{ * See License file at the top of the source tree.}}
+\DoxyCodeLine{5 \textcolor{comment}{ *}}
+\DoxyCodeLine{6 \textcolor{comment}{ * Copyright (c) 2025}}
+\DoxyCodeLine{7 \textcolor{comment}{ * Mohammadreza Zakeri}}
+\DoxyCodeLine{8 \textcolor{comment}{ *}}
+\DoxyCodeLine{9 \textcolor{comment}{ * MIT License — see LICENSE at repo root.}}
+\DoxyCodeLine{10 \textcolor{comment}{ */}}
+\DoxyCodeLine{11 }
+\DoxyCodeLine{33 \textcolor{preprocessor}{\#ifndef CompactStar\_Physics\_State\_ChemState\_H}}
+\DoxyCodeLine{34 \textcolor{preprocessor}{\#define CompactStar\_Physics\_State\_ChemState\_H}}
+\DoxyCodeLine{35 }
+\DoxyCodeLine{36 \textcolor{preprocessor}{\#include <cstddef>}}
+\DoxyCodeLine{37 \textcolor{preprocessor}{\#include <vector>}}
+\DoxyCodeLine{38 }
+\DoxyCodeLine{39 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_state_8hpp}{CompactStar/Physics/State/State.hpp}}"{}}}
+\DoxyCodeLine{40 }
+\DoxyCodeLine{41 \textcolor{keyword}{namespace }CompactStar::Physics::State}
+\DoxyCodeLine{42 \{}
+\DoxyCodeLine{43 }
+\DoxyCodeLine{56 \textcolor{keyword}{class }ChemState : \textcolor{keyword}{public} State}
+\DoxyCodeLine{57 \{}
+\DoxyCodeLine{58   \textcolor{keyword}{public}:}
+\DoxyCodeLine{59     \textcolor{comment}{// -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{60     \textcolor{comment}{// Required State interface}}
+\DoxyCodeLine{61     \textcolor{comment}{// -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{62 }
+\DoxyCodeLine{64     \textcolor{keyword}{const} \textcolor{keywordtype}{char} *Name()\textcolor{keyword}{ const override }\{ \textcolor{keywordflow}{return} \textcolor{stringliteral}{"{}ChemState"{}}; \}}
+\DoxyCodeLine{65 }
+\DoxyCodeLine{67     std::size\_t Size()\textcolor{keyword}{ const override }\{ \textcolor{keywordflow}{return} eta\_.size(); \}}
+\DoxyCodeLine{68 }
+\DoxyCodeLine{70     \textcolor{keywordtype}{double} *Data()\textcolor{keyword}{ override}}
+\DoxyCodeLine{71 \textcolor{keyword}{    }\{}
+\DoxyCodeLine{72         \textcolor{keywordflow}{return} eta\_.empty() ? nullptr : eta\_.data();}
+\DoxyCodeLine{73     \}}
+\DoxyCodeLine{74 }
+\DoxyCodeLine{76     \textcolor{keyword}{const} \textcolor{keywordtype}{double} *Data()\textcolor{keyword}{ const override}}
+\DoxyCodeLine{77 \textcolor{keyword}{    }\{}
+\DoxyCodeLine{78         \textcolor{keywordflow}{return} eta\_.empty() ? nullptr : eta\_.data();}
+\DoxyCodeLine{79     \}}
+\DoxyCodeLine{80 }
+\DoxyCodeLine{87     \textcolor{keywordtype}{void} Resize(std::size\_t N)\textcolor{keyword}{ override}}
+\DoxyCodeLine{88 \textcolor{keyword}{    }\{}
+\DoxyCodeLine{89         eta\_.assign(N, 0.0);}
+\DoxyCodeLine{90     \}}
+\DoxyCodeLine{91 }
+\DoxyCodeLine{93     std::size\_t \mbox{\hyperlink{_chem_state_8hpp_a5b3b88c3313b6d61ae18c2224841081d}{GridSize}}()\textcolor{keyword}{ const override }\{ \textcolor{keywordflow}{return} eta\_.size(); \}}
+\DoxyCodeLine{94 }
+\DoxyCodeLine{96     \textcolor{keywordtype}{void} \mbox{\hyperlink{_chem_state_8hpp_ac2fdf117e3886bbce4baa56a77d3e9cc}{Clear}}()\textcolor{keyword}{ override}}
+\DoxyCodeLine{97 \textcolor{keyword}{    }\{}
+\DoxyCodeLine{98         \textcolor{keywordflow}{for} (\textcolor{keywordtype}{double} \&x : eta\_)}
+\DoxyCodeLine{99             x = 0.0;}
+\DoxyCodeLine{100     \}}
+\DoxyCodeLine{101 }
+\DoxyCodeLine{102     \textcolor{comment}{// -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{103     \textcolor{comment}{// Convenience accessors}}
+\DoxyCodeLine{104     \textcolor{comment}{// -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{105 }
+\DoxyCodeLine{107     std::size\_t \mbox{\hyperlink{_chem_state_8hpp_a53d81624f03725345e5e83949046ba2c}{NumComponents}}()\textcolor{keyword}{ const }\{ \textcolor{keywordflow}{return} eta\_.size(); \}}
+\DoxyCodeLine{108 }
+\DoxyCodeLine{110     \textcolor{keywordtype}{double} \&\mbox{\hyperlink{_chem_state_8hpp_a186adce6c8871bd2d0803fff25be23ac}{Eta}}(std::size\_t i) \{ \textcolor{keywordflow}{return} eta\_.at(i); \}}
+\DoxyCodeLine{111 }
+\DoxyCodeLine{113     \textcolor{keyword}{const} \textcolor{keywordtype}{double} \&\mbox{\hyperlink{_chem_state_8hpp_a186adce6c8871bd2d0803fff25be23ac}{Eta}}(std::size\_t i)\textcolor{keyword}{ const }\{ \textcolor{keywordflow}{return} eta\_.at(i); \}}
+\DoxyCodeLine{114 }
+\DoxyCodeLine{115   \textcolor{keyword}{private}:}
+\DoxyCodeLine{117     std::vector<double> eta\_;}
+\DoxyCodeLine{118 \};}
+\DoxyCodeLine{119 }
+\DoxyCodeLine{120 \} \textcolor{comment}{// namespace CompactStar::Physics::State}}
+\DoxyCodeLine{121 }
+\DoxyCodeLine{122 \textcolor{preprocessor}{\#endif }\textcolor{comment}{/* CompactStar\_Physics\_State\_ChemState\_H */}\textcolor{preprocessor}{}}
+
+\end{DoxyCode}

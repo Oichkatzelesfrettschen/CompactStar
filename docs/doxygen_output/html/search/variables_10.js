@@ -11,7 +11,6 @@ var searchData=
   ['sig0_5fds_8',['sig0_ds',['../dc/dd8/class_compact_star_1_1_light_d_m___scalar___density.html#ad86e89de172f0d293a62797ea15eeb0f',1,'CompactStar::LightDM_Scalar_Density::sig0_ds()'],['../d6/d63/class_compact_star_1_1_microphysics_1_1_b_n_v_1_1_internal_1_1_b_n_v___chi.html#ac833ed7c4b0447195596520df1c222d3',1,'CompactStar::Microphysics::BNV::Internal::BNV_Chi::sig0_ds()']]],
   ['species_5fidx_9',['species_idx',['../d4/d7b/struct_compact_star_1_1_star_profile.html#a7efa32f76545381b88a9caeb63a162fe',1,'CompactStar::StarProfile']]],
   ['species_5flabels_10',['species_labels',['../d4/d7b/struct_compact_star_1_1_star_profile.html#a967a39c4c0e0d0326048837900a2be31',1,'CompactStar::StarProfile']]],
-  ['spin_5fdown_5flimit_11',['spin_down_limit',['../d4/dd2/struct_compact_star_1_1_b_n_v_state.html#a2ae45875eab097423109c7ca3ac0b56c',1,'CompactStar::BNVState']]],
-  ['step_12',['step',['../db/d2f/struct_compact_star_1_1_step_meta.html#a21d840fc0d07b4de5aa47e2ae7e2438a',1,'CompactStar::StepMeta']]],
-  ['stepper_13',['stepper',['../dd/d11/struct_compact_star_1_1_chemical_heating_1_1_config.html#a96d831e7dbd73ff323cf04fe4dbe6eb4',1,'CompactStar::ChemicalHeating::Config']]]
+  ['step_11',['step',['../d2/d06/struct_compact_star_1_1_physics_1_1_state_1_1_step_meta.html#af1efce5cf8852ffdbc474b24939a0cd0',1,'CompactStar::Physics::State::StepMeta']]],
+  ['stepper_12',['stepper',['../d5/d7b/struct_compact_star_1_1_physics_1_1_evolution_1_1_config.html#ae283786bfb5c27a7d4b0a48375e30294',1,'CompactStar::Physics::Evolution::Config']]]
 ];

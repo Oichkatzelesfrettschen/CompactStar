@@ -29,9 +29,9 @@
  * @brief User-configurable options for chemical/thermal evolution runs.
  *
  * Includes integrator tolerances, enabled physics channels, envelope and gap
- * choices, output cadence, and initial conditions (sizes only; values live in EvolutionState).
+ * choices, output cadence, and initial conditions (sizes only; values live in the tagged State blocks managed by StateVector).
  *
- * @ingroup Physics
+ * @ingroup PhysicsEvolution
  */
 #ifndef CompactStar_Physics_Evolution_Config_H
 #define CompactStar_Physics_Evolution_Config_H

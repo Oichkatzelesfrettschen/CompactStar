@@ -1,0 +1,170 @@
+\hypertarget{class_compact_star_1_1_physics_1_1_state_1_1_b_n_v_state}{}\doxysection{Compact\+Star\+::Physics\+::State\+::BNVState Class Reference}
+\label{class_compact_star_1_1_physics_1_1_state_1_1_b_n_v_state}\index{CompactStar::Physics::State::BNVState@{CompactStar::Physics::State::BNVState}}
+
+
+\mbox{\hyperlink{class_compact_star_1_1_physics_1_1_state_1_1_state}{State}} block for BNV-\/related dynamical or cached variables.  
+
+
+
+
+{\ttfamily \#include $<$BNVState.\+hpp$>$}
+
+Inheritance diagram for Compact\+Star\+::Physics\+::State\+::BNVState\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{d8/d9a/class_compact_star_1_1_physics_1_1_state_1_1_b_n_v_state}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+const char $\ast$ \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_state_1_1_b_n_v_state_ab6f1d71d82eef427a12068b7fe33d32b}{Name}} () const override
+\begin{DoxyCompactList}\small\item\em Short state name for logging (e.\+g. \char`\"{}\+Chem\+State\char`\"{}). \end{DoxyCompactList}\item 
+std\+::size\+\_\+t \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_state_1_1_b_n_v_state_a4e4b91b6d7daee924ea596d200506204}{Size}} () const override
+\begin{DoxyCompactList}\small\item\em Number of scalar degrees of freedom. \end{DoxyCompactList}\item 
+double $\ast$ \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_state_1_1_b_n_v_state_a866cb3c4b916f5dfbae61ba7b283f5af}{Data}} () override
+\begin{DoxyCompactList}\small\item\em Mutable pointer to underlying contiguous memory. \end{DoxyCompactList}\item 
+const double $\ast$ \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_state_1_1_b_n_v_state_a401fc37de48499f5c14e0cf70e89cb6d}{Data}} () const override
+\begin{DoxyCompactList}\small\item\em Const pointer to underlying contiguous memory. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_state_1_1_b_n_v_state_a46016b61959adab3b42c7be24bdfabff}{Resize}} (std\+::size\+\_\+t N) override
+\begin{DoxyCompactList}\small\item\em Resize underlying DOF vector to {\ttfamily N} entries. \end{DoxyCompactList}\item 
+std\+::size\+\_\+t \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_state_1_1_b_n_v_state_a5daeb377d1b61112b0490cfdf681df8b}{Grid\+Size}} () const override
+\begin{DoxyCompactList}\small\item\em Number of spatial grid cells represented. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_state_1_1_b_n_v_state_a4cbce3755a27f7f2bd19fadb40ef400d}{Clear}} () override
+\begin{DoxyCompactList}\small\item\em Zero out all values (capacity preserved). \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_compact_star_1_1_physics_1_1_state_1_1_b_n_v_state_a0138ef8ca0d66e6c20a3934ad3a0b37c}\label{class_compact_star_1_1_physics_1_1_state_1_1_b_n_v_state_a0138ef8ca0d66e6c20a3934ad3a0b37c}} 
+std\+::size\+\_\+t {\bfseries Num\+Components} () const
+\begin{DoxyCompactList}\small\item\em Return number of BNV state components. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_compact_star_1_1_physics_1_1_state_1_1_b_n_v_state_a7f2091096981a01b7623f24391774245}\label{class_compact_star_1_1_physics_1_1_state_1_1_b_n_v_state_a7f2091096981a01b7623f24391774245}} 
+double \& {\bfseries Value} (std\+::size\+\_\+t i)
+\begin{DoxyCompactList}\small\item\em Access component i (mutable). \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_compact_star_1_1_physics_1_1_state_1_1_b_n_v_state_a2ce4116c10ca3a35d15645798610ffc3}\label{class_compact_star_1_1_physics_1_1_state_1_1_b_n_v_state_a2ce4116c10ca3a35d15645798610ffc3}} 
+const double \& {\bfseries Value} (std\+::size\+\_\+t i) const
+\begin{DoxyCompactList}\small\item\em Access component i (const). \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_compact_star_1_1_physics_1_1_state_1_1_b_n_v_state_af051520405eb916d35fd2cba564f1acf}\label{class_compact_star_1_1_physics_1_1_state_1_1_b_n_v_state_af051520405eb916d35fd2cba564f1acf}} 
+double \& {\bfseries EtaI} ()
+\item 
+\mbox{\Hypertarget{class_compact_star_1_1_physics_1_1_state_1_1_b_n_v_state_a3ea3b65f410d1bcb5d0af47bf6de2544}\label{class_compact_star_1_1_physics_1_1_state_1_1_b_n_v_state_a3ea3b65f410d1bcb5d0af47bf6de2544}} 
+double \& {\bfseries Spin\+Down\+Limit} ()
+\item 
+\mbox{\Hypertarget{class_compact_star_1_1_physics_1_1_state_1_1_b_n_v_state_a05a66f8954441016b22179bdfb581609}\label{class_compact_star_1_1_physics_1_1_state_1_1_b_n_v_state_a05a66f8954441016b22179bdfb581609}} 
+const double \& {\bfseries EtaI} () const
+\item 
+\mbox{\Hypertarget{class_compact_star_1_1_physics_1_1_state_1_1_b_n_v_state_aa70e08fca3e84bdf9c738e2b51f8ee4e}\label{class_compact_star_1_1_physics_1_1_state_1_1_b_n_v_state_aa70e08fca3e84bdf9c738e2b51f8ee4e}} 
+const double \& {\bfseries Spin\+Down\+Limit} () const
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\mbox{\hyperlink{class_compact_star_1_1_physics_1_1_state_1_1_state}{State}} block for BNV-\/related dynamical or cached variables. 
+
+This class behaves exactly like Chem\+State/\+Thermal\+State in terms of interface\+: a resizable contiguous vector of doubles exposed to the evolution system and its drivers.
+
+Physical meaning of each component is determined by your BNV model. 
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_compact_star_1_1_physics_1_1_state_1_1_b_n_v_state_a4cbce3755a27f7f2bd19fadb40ef400d}\label{class_compact_star_1_1_physics_1_1_state_1_1_b_n_v_state_a4cbce3755a27f7f2bd19fadb40ef400d}} 
+\index{CompactStar::Physics::State::BNVState@{CompactStar::Physics::State::BNVState}!Clear@{Clear}}
+\index{Clear@{Clear}!CompactStar::Physics::State::BNVState@{CompactStar::Physics::State::BNVState}}
+\doxysubsubsection{\texorpdfstring{Clear()}{Clear()}}
+{\footnotesize\ttfamily void Compact\+Star\+::\+Physics\+::\+State\+::\+BNVState\+::\+Clear (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Zero out all values (capacity preserved). 
+
+
+
+Implements \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_state_1_1_state_ae531732a02445f1378be8a13837691e8}{Compact\+Star\+::\+Physics\+::\+State\+::\+State}}.
+
+\mbox{\Hypertarget{class_compact_star_1_1_physics_1_1_state_1_1_b_n_v_state_a401fc37de48499f5c14e0cf70e89cb6d}\label{class_compact_star_1_1_physics_1_1_state_1_1_b_n_v_state_a401fc37de48499f5c14e0cf70e89cb6d}} 
+\index{CompactStar::Physics::State::BNVState@{CompactStar::Physics::State::BNVState}!Data@{Data}}
+\index{Data@{Data}!CompactStar::Physics::State::BNVState@{CompactStar::Physics::State::BNVState}}
+\doxysubsubsection{\texorpdfstring{Data()}{Data()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily const double $\ast$ Compact\+Star\+::\+Physics\+::\+State\+::\+BNVState\+::\+Data (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Const pointer to underlying contiguous memory. 
+
+
+
+Implements \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_state_1_1_state_aaad6830e6e0884665af0379f80b0d075}{Compact\+Star\+::\+Physics\+::\+State\+::\+State}}.
+
+\mbox{\Hypertarget{class_compact_star_1_1_physics_1_1_state_1_1_b_n_v_state_a866cb3c4b916f5dfbae61ba7b283f5af}\label{class_compact_star_1_1_physics_1_1_state_1_1_b_n_v_state_a866cb3c4b916f5dfbae61ba7b283f5af}} 
+\index{CompactStar::Physics::State::BNVState@{CompactStar::Physics::State::BNVState}!Data@{Data}}
+\index{Data@{Data}!CompactStar::Physics::State::BNVState@{CompactStar::Physics::State::BNVState}}
+\doxysubsubsection{\texorpdfstring{Data()}{Data()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily double $\ast$ Compact\+Star\+::\+Physics\+::\+State\+::\+BNVState\+::\+Data (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Mutable pointer to underlying contiguous memory. 
+
+
+
+Implements \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_state_1_1_state_ad8fd8cf0dd2001eed6f81ea0e5458f30}{Compact\+Star\+::\+Physics\+::\+State\+::\+State}}.
+
+\mbox{\Hypertarget{class_compact_star_1_1_physics_1_1_state_1_1_b_n_v_state_a5daeb377d1b61112b0490cfdf681df8b}\label{class_compact_star_1_1_physics_1_1_state_1_1_b_n_v_state_a5daeb377d1b61112b0490cfdf681df8b}} 
+\index{CompactStar::Physics::State::BNVState@{CompactStar::Physics::State::BNVState}!GridSize@{GridSize}}
+\index{GridSize@{GridSize}!CompactStar::Physics::State::BNVState@{CompactStar::Physics::State::BNVState}}
+\doxysubsubsection{\texorpdfstring{GridSize()}{GridSize()}}
+{\footnotesize\ttfamily std\+::size\+\_\+t Compact\+Star\+::\+Physics\+::\+State\+::\+BNVState\+::\+Grid\+Size (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Number of spatial grid cells represented. 
+
+Many states map 1 DOF per cell; override for multi-\/\+DOF-\/per-\/cell. 
+
+Reimplemented from \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_state_1_1_state_a26c2a63bb521c916f9ffb681e15028b8}{Compact\+Star\+::\+Physics\+::\+State\+::\+State}}.
+
+\mbox{\Hypertarget{class_compact_star_1_1_physics_1_1_state_1_1_b_n_v_state_ab6f1d71d82eef427a12068b7fe33d32b}\label{class_compact_star_1_1_physics_1_1_state_1_1_b_n_v_state_ab6f1d71d82eef427a12068b7fe33d32b}} 
+\index{CompactStar::Physics::State::BNVState@{CompactStar::Physics::State::BNVState}!Name@{Name}}
+\index{Name@{Name}!CompactStar::Physics::State::BNVState@{CompactStar::Physics::State::BNVState}}
+\doxysubsubsection{\texorpdfstring{Name()}{Name()}}
+{\footnotesize\ttfamily const char $\ast$ Compact\+Star\+::\+Physics\+::\+State\+::\+BNVState\+::\+Name (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Short state name for logging (e.\+g. \char`\"{}\+Chem\+State\char`\"{}). 
+
+
+
+Implements \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_state_1_1_state_adb2c0a210afb045ea8cf1e96e3b0c6ed}{Compact\+Star\+::\+Physics\+::\+State\+::\+State}}.
+
+\mbox{\Hypertarget{class_compact_star_1_1_physics_1_1_state_1_1_b_n_v_state_a46016b61959adab3b42c7be24bdfabff}\label{class_compact_star_1_1_physics_1_1_state_1_1_b_n_v_state_a46016b61959adab3b42c7be24bdfabff}} 
+\index{CompactStar::Physics::State::BNVState@{CompactStar::Physics::State::BNVState}!Resize@{Resize}}
+\index{Resize@{Resize}!CompactStar::Physics::State::BNVState@{CompactStar::Physics::State::BNVState}}
+\doxysubsubsection{\texorpdfstring{Resize()}{Resize()}}
+{\footnotesize\ttfamily void Compact\+Star\+::\+Physics\+::\+State\+::\+BNVState\+::\+Resize (\begin{DoxyParamCaption}\item[{std\+::size\+\_\+t}]{N }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Resize underlying DOF vector to {\ttfamily N} entries. 
+
+Default layout\+: N = 2 index 0 → η\+\_\+I index 1 → spin\+\_\+down\+\_\+limit
+
+You may expand this vector when implementing more elaborate BNV models. 
+
+Implements \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_state_1_1_state_a67305cd2b43b22a5503b62326c00584f}{Compact\+Star\+::\+Physics\+::\+State\+::\+State}}.
+
+\mbox{\Hypertarget{class_compact_star_1_1_physics_1_1_state_1_1_b_n_v_state_a4e4b91b6d7daee924ea596d200506204}\label{class_compact_star_1_1_physics_1_1_state_1_1_b_n_v_state_a4e4b91b6d7daee924ea596d200506204}} 
+\index{CompactStar::Physics::State::BNVState@{CompactStar::Physics::State::BNVState}!Size@{Size}}
+\index{Size@{Size}!CompactStar::Physics::State::BNVState@{CompactStar::Physics::State::BNVState}}
+\doxysubsubsection{\texorpdfstring{Size()}{Size()}}
+{\footnotesize\ttfamily std\+::size\+\_\+t Compact\+Star\+::\+Physics\+::\+State\+::\+BNVState\+::\+Size (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Number of scalar degrees of freedom. 
+
+
+
+Implements \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_state_1_1_state_a7d41a392de8417100b45ebfb19298eae}{Compact\+Star\+::\+Physics\+::\+State\+::\+State}}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Compact\+Star/\+Physics/\+State/\mbox{\hyperlink{_b_n_v_state_8hpp}{BNVState.\+hpp}}\end{DoxyCompactItemize}

@@ -21,12 +21,12 @@ var searchData=
   ['sigmaomegarho_5fnpemu_18',['SigmaOmegaRho_npemu',['../da/d9c/class_compact_star_1_1_sigma_omega_rho__npemu.html',1,'CompactStar']]],
   ['sigmaomegarho_5fnstar_19',['SigmaOmegaRho_nstar',['../d4/d7e/class_compact_star_1_1_sigma_omega_rho__nstar.html',1,'CompactStar']]],
   ['solution_20',['Solution',['../d4/dbf/struct_zaki_1_1_math_1_1_n_dim_cont_level_1_1_solution.html',1,'Zaki::Math::NDimContLevel']]],
-  ['spinstate_21',['SpinState',['../d0/dd0/struct_compact_star_1_1_spin_state.html',1,'CompactStar']]],
-  ['splineidx_22',['SplineIdx',['../d8/d52/struct_zaki_1_1_vector_1_1_spline_idx.html',1,'Zaki::Vector']]],
-  ['splineset_23',['SplineSet',['../d5/d3e/struct_zaki_1_1_vector_1_1_spline_set.html',1,'Zaki::Vector']]],
-  ['starcontext_24',['StarContext',['../d0/d28/class_compact_star_1_1_chemical_heating_1_1_star_context.html',1,'CompactStar::ChemicalHeating']]],
-  ['starprofile_25',['StarProfile',['../d4/d7b/struct_compact_star_1_1_star_profile.html',1,'CompactStar']]],
-  ['starprofileview_26',['StarProfileView',['../d9/de1/struct_compact_star_1_1_star_profile_view.html',1,'CompactStar']]],
-  ['state_27',['State',['../df/df6/class_compact_star_1_1_state.html',1,'CompactStar']]],
-  ['stepmeta_28',['StepMeta',['../db/d2f/struct_compact_star_1_1_step_meta.html',1,'CompactStar']]]
+  ['splineidx_21',['SplineIdx',['../d8/d52/struct_zaki_1_1_vector_1_1_spline_idx.html',1,'Zaki::Vector']]],
+  ['splineset_22',['SplineSet',['../d5/d3e/struct_zaki_1_1_vector_1_1_spline_set.html',1,'Zaki::Vector']]],
+  ['starcontext_23',['StarContext',['../d9/d42/class_compact_star_1_1_physics_1_1_evolution_1_1_star_context.html',1,'CompactStar::Physics::Evolution']]],
+  ['starprofile_24',['StarProfile',['../d4/d7b/struct_compact_star_1_1_star_profile.html',1,'CompactStar']]],
+  ['starprofileview_25',['StarProfileView',['../d9/de1/struct_compact_star_1_1_star_profile_view.html',1,'CompactStar']]],
+  ['state_26',['State',['../d4/d69/class_compact_star_1_1_physics_1_1_state_1_1_state.html',1,'CompactStar::Physics::State']]],
+  ['statevector_27',['StateVector',['../da/d36/class_compact_star_1_1_physics_1_1_evolution_1_1_state_vector.html',1,'CompactStar::Physics::Evolution']]],
+  ['stepmeta_28',['StepMeta',['../d2/d06/struct_compact_star_1_1_physics_1_1_state_1_1_step_meta.html',1,'CompactStar::Physics::State']]]
 ];

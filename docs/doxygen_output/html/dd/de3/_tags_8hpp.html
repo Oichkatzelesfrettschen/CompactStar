@@ -76,7 +76,7 @@ $(function() {
   <div class="summary">
 <a href="#enum-members">Enumerations</a> &#124;
 <a href="#func-members">Functions</a>  </div>
-  <div class="headertitle"><div class="title">Tags.hpp File Reference</div></div>
+  <div class="headertitle"><div class="title">Tags.hpp File Reference<div class="ingroups"><a class="el" href="../../dc/d77/group___physics_state.html">Physics state module</a></div></div></div>
 </div><!--header-->
 <div class="contents">
 
@@ -119,7 +119,7 @@ Functions</h2></td></tr>
 <div class="line">    StateTag::Spin,</div>
 <div class="line">    StateTag::Thermal</div>
 <div class="line">};</div>
-</div><!-- fragment --><dl class="section see"><dt>See also</dt><dd><a class="el" href="../../da/dd4/class_compact_star_1_1_physics_1_1_i_driver.html" title="Abstract interface for all evolution drivers.">CompactStar::Physics::IDriver</a> </dd>
+</div><!-- fragment --><dl class="section see"><dt>See also</dt><dd>CompactStar::Physics::Driver::IDriver </dd>
 <dd>
 CompactStar::Physics::Evolution::System</dd></dl>
 <dl class="section author"><dt>Author</dt><dd>Mohammadreza Zakeri (<a href="#" onclick="location.href='mai'+'lto:'+'M.Z'+'ak'+'eri'+'@e'+'ku.'+'ed'+'u'; return false;">M.Zak<span class="obfuscator">.nosp@m.</span>eri@<span class="obfuscator">.nosp@m.</span>eku.e<span class="obfuscator">.nosp@m.</span>du</a>) </dd></dl>
@@ -145,7 +145,7 @@ CompactStar::Physics::Evolution::System</dd></dl>
 </div><div class="memdoc">
 
 <p>Enumerates high-level dynamic subsystems ("state blocks") of the model. </p>
-<p>Each distinct <code>StateTag</code> corresponds to one substate in the global <code>StateVector</code> managed by the evolution system. </p>
+<p>Each distinct <code>StateTag</code> corresponds to one concrete state block (SpinState, ThermalState, ChemState, BNVState, …) in Physics/State, which the evolution System packs into the global StateVector. </p>
 <table class="fieldtable">
 <tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="af14f5554b0d9be50c5ea718733bc424baf5a6a925d4084ae58bd71a8a95a84ba7" name="af14f5554b0d9be50c5ea718733bc424baf5a6a925d4084ae58bd71a8a95a84ba7"></a>Spin&#160;</td><td class="fielddoc"><p>Rotational degree of freedom (Ω, Ω̇, I, etc.) </p>
 </td></tr>

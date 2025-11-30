@@ -16,7 +16,7 @@
  * the stellar volume and normalized by the effective heat capacity. Chemical
  * *evolution* (dη/dt) is handled by separate drivers (e.g., WeakRestoration).
  *
- * @ingroup PhysicsDriverThermal
+ * @ingroup PhysicsDriver
  * @author
  *   Mohammadreza Zakeri (M.Zakeri@eku.edu)
  */

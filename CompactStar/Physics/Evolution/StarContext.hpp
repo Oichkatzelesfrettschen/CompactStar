@@ -26,13 +26,14 @@
 
 /**
  * @file StarContext.hpp
- * @brief Read-only bridge to Core structures (NStar, EOS, RotationSolver) for evolution.
+ * @brief Read-only bridge to Core structures (NStar, EOS, RotationSolver)
+ * 		  for the evolution module.
  *
  * StarContext centralizes access to geometry, composition, and metric quantities
  * derived from a precomputed neutron-star profile. It *does not* run TOV or rotation;
  * it only exposes cached, interpolation-friendly views needed during RHS evaluations.
  *
- * @ingroup Physics
+ * @ingroup PhysicsEvolution
  */
 #ifndef CompactStar_Physics_Evolution_StarContext_H
 #define CompactStar_Physics_Evolution_StarContext_H

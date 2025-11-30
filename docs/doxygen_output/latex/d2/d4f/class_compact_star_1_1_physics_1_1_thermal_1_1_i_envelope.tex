@@ -1,0 +1,51 @@
+\hypertarget{class_compact_star_1_1_physics_1_1_thermal_1_1_i_envelope}{}\doxysection{Compact\+Star\+::Physics\+::Thermal\+::IEnvelope Class Reference}
+\label{class_compact_star_1_1_physics_1_1_thermal_1_1_i_envelope}\index{CompactStar::Physics::Thermal::IEnvelope@{CompactStar::Physics::Thermal::IEnvelope}}
+
+
+Strategy for Tb -\/\texorpdfstring{$>$}{>} Ts mapping (thermal boundary condition).  
+
+
+
+
+{\ttfamily \#include $<$Thermal.\+hpp$>$}
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+virtual double \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_thermal_1_1_i_envelope_a6b3c2a7f21b6e30158b680717a3b2419}{Ts\+\_\+from\+\_\+\+Tb}} (double Tb, double g14, double xi) const =0
+\begin{DoxyCompactList}\small\item\em Map base temperature to surface temperature. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Strategy for Tb -\/\texorpdfstring{$>$}{>} Ts mapping (thermal boundary condition). 
+
+Given base-\/of-\/envelope temperature Tb, surface gravity g14, and a light-\/element parameter xi, returns the local surface temperature Ts. 
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_compact_star_1_1_physics_1_1_thermal_1_1_i_envelope_a6b3c2a7f21b6e30158b680717a3b2419}\label{class_compact_star_1_1_physics_1_1_thermal_1_1_i_envelope_a6b3c2a7f21b6e30158b680717a3b2419}} 
+\index{CompactStar::Physics::Thermal::IEnvelope@{CompactStar::Physics::Thermal::IEnvelope}!Ts\_from\_Tb@{Ts\_from\_Tb}}
+\index{Ts\_from\_Tb@{Ts\_from\_Tb}!CompactStar::Physics::Thermal::IEnvelope@{CompactStar::Physics::Thermal::IEnvelope}}
+\doxysubsubsection{\texorpdfstring{Ts\_from\_Tb()}{Ts\_from\_Tb()}}
+{\footnotesize\ttfamily virtual double Compact\+Star\+::\+Physics\+::\+Thermal\+::\+IEnvelope\+::\+Ts\+\_\+from\+\_\+\+Tb (\begin{DoxyParamCaption}\item[{double}]{Tb,  }\item[{double}]{g14,  }\item[{double}]{xi }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Map base temperature to surface temperature. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Tb} & Base-\/of-\/envelope temperature \mbox{[}K\mbox{]}, local frame. \\
+\hline
+{\em g14} & Surface gravity in units of 1e14 cm s$^\wedge$-\/2. \\
+\hline
+{\em xi} & Light-\/element/light-\/element column parameter. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Local surface temperature Ts \mbox{[}K\mbox{]}. 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Compact\+Star/\+Physics/\mbox{\hyperlink{_thermal_8hpp}{Thermal.\+hpp}}\end{DoxyCompactItemize}

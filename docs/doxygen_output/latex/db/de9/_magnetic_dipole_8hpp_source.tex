@@ -7,40 +7,87 @@
 \DoxyCodeLine{3 \textcolor{comment}{ * CompactStar}}
 \DoxyCodeLine{4 \textcolor{comment}{ * See License file at the top of the source tree.}}
 \DoxyCodeLine{5 \textcolor{comment}{ *}}
-\DoxyCodeLine{6 \textcolor{comment}{ * Copyright (c) 2025 Mohammadreza Zakeri}}
-\DoxyCodeLine{7 \textcolor{comment}{ *}}
-\DoxyCodeLine{8 \textcolor{comment}{ * Permission is hereby granted, free of charge, to any person obtaining a copy}}
-\DoxyCodeLine{9 \textcolor{comment}{ * of this software and associated documentation files (the "{}Software"{}), to deal}}
-\DoxyCodeLine{10 \textcolor{comment}{ * in the Software without restriction, including without limitation the rights}}
-\DoxyCodeLine{11 \textcolor{comment}{ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell}}
-\DoxyCodeLine{12 \textcolor{comment}{ * copies of the Software, and to permit persons to whom the Software is}}
-\DoxyCodeLine{13 \textcolor{comment}{ * furnished to do so, subject to the following conditions:}}
-\DoxyCodeLine{14 \textcolor{comment}{ *}}
-\DoxyCodeLine{15 \textcolor{comment}{ * The above copyright notice and this permission notice shall be included in all}}
-\DoxyCodeLine{16 \textcolor{comment}{ * copies or substantial portions of the Software.}}
-\DoxyCodeLine{17 \textcolor{comment}{ *}}
-\DoxyCodeLine{18 \textcolor{comment}{ * THE SOFTWARE IS PROVIDED "{}AS IS"{}, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR}}
-\DoxyCodeLine{19 \textcolor{comment}{ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,}}
-\DoxyCodeLine{20 \textcolor{comment}{ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE}}
-\DoxyCodeLine{21 \textcolor{comment}{ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER}}
-\DoxyCodeLine{22 \textcolor{comment}{ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,}}
-\DoxyCodeLine{23 \textcolor{comment}{ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE}}
-\DoxyCodeLine{24 \textcolor{comment}{ * SOFTWARE.}}
-\DoxyCodeLine{25 \textcolor{comment}{ */}}
-\DoxyCodeLine{34 \textcolor{preprocessor}{\#ifndef CompactStar\_Spin\_H}}
-\DoxyCodeLine{35 \textcolor{preprocessor}{\#define CompactStar\_Spin\_H}}
+\DoxyCodeLine{6 \textcolor{comment}{ * Copyright (c) 2025}}
+\DoxyCodeLine{7 \textcolor{comment}{ * Mohammadreza Zakeri}}
+\DoxyCodeLine{8 \textcolor{comment}{ *}}
+\DoxyCodeLine{9 \textcolor{comment}{ * MIT License — see LICENSE at repo root.}}
+\DoxyCodeLine{10 \textcolor{comment}{ */}}
+\DoxyCodeLine{11 }
+\DoxyCodeLine{27 \textcolor{preprocessor}{\#ifndef CompactStar\_Physics\_Driver\_Spin\_MagneticDipole\_H}}
+\DoxyCodeLine{28 \textcolor{preprocessor}{\#define CompactStar\_Physics\_Driver\_Spin\_MagneticDipole\_H}}
+\DoxyCodeLine{29 }
+\DoxyCodeLine{30 \textcolor{preprocessor}{\#include <string>}}
+\DoxyCodeLine{31 \textcolor{preprocessor}{\#include <vector>}}
+\DoxyCodeLine{32 }
+\DoxyCodeLine{33 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_i_driver_8hpp}{CompactStar/Physics/Driver/IDriver.hpp}}"{}}}
+\DoxyCodeLine{34 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_spin_state_8hpp}{CompactStar/Physics/State/SpinState.hpp}}"{}}}
+\DoxyCodeLine{35 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_tags_8hpp}{CompactStar/Physics/State/Tags.hpp}}"{}}}
 \DoxyCodeLine{36 }
-\DoxyCodeLine{37 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_star_profile_8hpp}{CompactStar/Core/StarProfile.hpp}}"{}}}
-\DoxyCodeLine{38 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_spin_state_8hpp}{CompactStar/Physics/State/SpinState.hpp}}"{}}}
+\DoxyCodeLine{37 \textcolor{keyword}{namespace }CompactStar::Physics::Driver::Spin}
+\DoxyCodeLine{38 \{}
 \DoxyCodeLine{39 }
-\DoxyCodeLine{40 \textcolor{keyword}{namespace }CompactStar::Physics::Driver::Spin}
-\DoxyCodeLine{41 \{}
-\DoxyCodeLine{48     \textcolor{keywordtype}{double} CharacteristicAge(\textcolor{keyword}{const} SpinState \&s);}
-\DoxyCodeLine{49 }
-\DoxyCodeLine{61     \textcolor{keywordtype}{double} DipoleFieldEstimate(\textcolor{keyword}{const} SpinState \&s, StarProfileView view);}
+\DoxyCodeLine{55 \textcolor{keyword}{class }MagneticDipole final : \textcolor{keyword}{public} IDriver}
+\DoxyCodeLine{56 \{}
+\DoxyCodeLine{57   \textcolor{keyword}{public}:}
+\DoxyCodeLine{58     \textcolor{keyword}{struct }Options}
+\DoxyCodeLine{59     \{}
+\DoxyCodeLine{61         \textcolor{keywordtype}{double} braking\_index;}
 \DoxyCodeLine{62 }
-\DoxyCodeLine{63 \} \textcolor{comment}{// namespace CompactStar::Physics::Driver::Spin}}
-\DoxyCodeLine{64 }
-\DoxyCodeLine{65 \textcolor{preprocessor}{\#endif }\textcolor{comment}{/* CompactStar\_Spin\_H */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{64         \textcolor{keywordtype}{double} K\_prefactor;}
+\DoxyCodeLine{65 }
+\DoxyCodeLine{67         \textcolor{keywordtype}{bool} use\_moment\_of\_inertia;}
+\DoxyCodeLine{68     \};}
+\DoxyCodeLine{69 }
+\DoxyCodeLine{71     MagneticDipole()}
+\DoxyCodeLine{72         : opts\_\{3.0, 0.0, false\}}
+\DoxyCodeLine{73     \{}
+\DoxyCodeLine{74     \}}
+\DoxyCodeLine{75 }
+\DoxyCodeLine{77     \textcolor{keyword}{explicit} MagneticDipole(\textcolor{keyword}{const} Options \&opts)}
+\DoxyCodeLine{78         : opts\_(opts)}
+\DoxyCodeLine{79     \{}
+\DoxyCodeLine{80     \}}
+\DoxyCodeLine{81 }
+\DoxyCodeLine{82     \textcolor{comment}{// -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{83     \textcolor{comment}{//  IDriver interface}}
+\DoxyCodeLine{84     \textcolor{comment}{// -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{85 }
+\DoxyCodeLine{86     std::string Name()\textcolor{keyword}{ const override }\{ \textcolor{keywordflow}{return} \textcolor{stringliteral}{"{}MagneticDipole"{}}; \}}
+\DoxyCodeLine{87 }
+\DoxyCodeLine{88     \textcolor{keyword}{const} std::vector<State::StateTag> \&DependsOn()\textcolor{keyword}{ const override}}
+\DoxyCodeLine{89 \textcolor{keyword}{    }\{}
+\DoxyCodeLine{90         \textcolor{comment}{// Spin-\/only dependency for now.}}
+\DoxyCodeLine{91         \textcolor{keyword}{static} \textcolor{keyword}{const} std::vector<State::StateTag> deps\{}
+\DoxyCodeLine{92             State::StateTag::Spin\};}
+\DoxyCodeLine{93         \textcolor{keywordflow}{return} deps;}
+\DoxyCodeLine{94     \}}
+\DoxyCodeLine{95 }
+\DoxyCodeLine{96     \textcolor{keyword}{const} std::vector<State::StateTag> \&Updates()\textcolor{keyword}{ const override}}
+\DoxyCodeLine{97 \textcolor{keyword}{    }\{}
+\DoxyCodeLine{98         \textcolor{comment}{// Only the Spin block is updated by this driver.}}
+\DoxyCodeLine{99         \textcolor{keyword}{static} \textcolor{keyword}{const} std::vector<State::StateTag> ups\{}
+\DoxyCodeLine{100             State::StateTag::Spin\};}
+\DoxyCodeLine{101         \textcolor{keywordflow}{return} ups;}
+\DoxyCodeLine{102     \}}
+\DoxyCodeLine{103 }
+\DoxyCodeLine{117     \textcolor{keywordtype}{void} AccumulateRHS(\textcolor{keywordtype}{double} t,}
+\DoxyCodeLine{118                        \textcolor{keyword}{const} Evolution::StateVector \&Y,}
+\DoxyCodeLine{119                        Evolution::RHSAccumulator \&dYdt,}
+\DoxyCodeLine{120                        \textcolor{keyword}{const} Evolution::StarContext \&ctx) \textcolor{keyword}{const override};}
+\DoxyCodeLine{121 }
+\DoxyCodeLine{122     \textcolor{comment}{// -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{123     \textcolor{comment}{//  Options access}}
+\DoxyCodeLine{124     \textcolor{comment}{// -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{125 }
+\DoxyCodeLine{126     \textcolor{keyword}{const} Options \&GetOptions()\textcolor{keyword}{ const }\{ \textcolor{keywordflow}{return} opts\_; \}}
+\DoxyCodeLine{127     \textcolor{keywordtype}{void} SetOptions(\textcolor{keyword}{const} Options \&o) \{ opts\_ = o; \}}
+\DoxyCodeLine{128 }
+\DoxyCodeLine{129   \textcolor{keyword}{private}:}
+\DoxyCodeLine{130     Options opts\_;}
+\DoxyCodeLine{131 \};}
+\DoxyCodeLine{132 }
+\DoxyCodeLine{133 \} \textcolor{comment}{// namespace CompactStar::Physics::Driver::Spin}}
+\DoxyCodeLine{134 }
+\DoxyCodeLine{135 \textcolor{preprocessor}{\#endif }\textcolor{comment}{/* CompactStar\_Physics\_Driver\_Spin\_MagneticDipole\_H */}\textcolor{preprocessor}{}}
 
 \end{DoxyCode}

@@ -27,31 +27,43 @@
 \DoxyCodeLine{23 \textcolor{comment}{ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE}}
 \DoxyCodeLine{24 \textcolor{comment}{ * SOFTWARE.}}
 \DoxyCodeLine{25 \textcolor{comment}{ */}}
-\DoxyCodeLine{36 \textcolor{preprocessor}{\#ifndef CompactStar\_Thermal\_H}}
-\DoxyCodeLine{37 \textcolor{preprocessor}{\#define CompactStar\_Thermal\_H}}
+\DoxyCodeLine{36 \textcolor{preprocessor}{\#ifndef CompactStar\_Physics\_Thermal\_H}}
+\DoxyCodeLine{37 \textcolor{preprocessor}{\#define CompactStar\_Physics\_Thermal\_H}}
 \DoxyCodeLine{38 }
 \DoxyCodeLine{39 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_star_profile_8hpp}{CompactStar/Core/StarProfile.hpp}}"{}}}
 \DoxyCodeLine{40 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_thermal_state_8hpp}{CompactStar/Physics/State/ThermalState.hpp}}"{}}}
 \DoxyCodeLine{41 }
 \DoxyCodeLine{42 \textcolor{keyword}{namespace }CompactStar}
 \DoxyCodeLine{43 \{}
-\DoxyCodeLine{44 \textcolor{keyword}{namespace }\mbox{\hyperlink{_tags_8hpp_af14f5554b0d9be50c5ea718733bc424bafdf1e200d60089abcb4a4c80ecd2bb75}{Thermal}}}
+\DoxyCodeLine{44 \textcolor{keyword}{namespace }Physics}
 \DoxyCodeLine{45 \{}
-\DoxyCodeLine{60 \textcolor{keywordtype}{double} \mbox{\hyperlink{_thermal_8hpp_a1e75db48508e26d19425e70cdd8a38aa}{SurfacePhotonLuminosity}}(\mbox{\hyperlink{struct_compact_star_1_1_star_profile_view}{StarProfileView}} view, \textcolor{keyword}{const} \mbox{\hyperlink{struct_compact_star_1_1_thermal_state}{ThermalState}} \&state);}
-\DoxyCodeLine{61 }
-\DoxyCodeLine{74 \textcolor{keywordtype}{double} \mbox{\hyperlink{_thermal_8hpp_acfb6cd0cb51240aaed92d67440919f3d}{DUrcaEmissivityPrefactor}}(\mbox{\hyperlink{struct_compact_star_1_1_star_profile_view}{StarProfileView}} view,}
-\DoxyCodeLine{75                                 \textcolor{keyword}{const} \mbox{\hyperlink{struct_compact_star_1_1_thermal_state}{ThermalState}} \&state,}
-\DoxyCodeLine{76                                 \textcolor{keywordtype}{double} r\_km);}
-\DoxyCodeLine{77 }
-\DoxyCodeLine{86 \textcolor{keywordtype}{double} \mbox{\hyperlink{_thermal_8hpp_a13e57a293664988c46b8e73df9a45bff}{MUrcaEmissivityPrefactor}}(\mbox{\hyperlink{struct_compact_star_1_1_star_profile_view}{StarProfileView}} view,}
-\DoxyCodeLine{87                                 \textcolor{keyword}{const} \mbox{\hyperlink{struct_compact_star_1_1_thermal_state}{ThermalState}} \&state,}
-\DoxyCodeLine{88                                 \textcolor{keywordtype}{double} r\_km);}
-\DoxyCodeLine{89 }
-\DoxyCodeLine{101 \textcolor{keywordtype}{double} \mbox{\hyperlink{_thermal_8hpp_ada68743cc297d11e89ba465f2a9955a4}{TotalNeutrinoLuminosity}}(\mbox{\hyperlink{struct_compact_star_1_1_star_profile_view}{StarProfileView}} view, \textcolor{keyword}{const} \mbox{\hyperlink{struct_compact_star_1_1_thermal_state}{ThermalState}} \&state);}
+\DoxyCodeLine{46 \textcolor{keyword}{namespace }\mbox{\hyperlink{_tags_8hpp_af14f5554b0d9be50c5ea718733bc424bafdf1e200d60089abcb4a4c80ecd2bb75}{Thermal}}}
+\DoxyCodeLine{47 \{}
+\DoxyCodeLine{48 }
+\DoxyCodeLine{56 \textcolor{keyword}{class }\mbox{\hyperlink{class_compact_star_1_1_physics_1_1_thermal_1_1_i_envelope}{IEnvelope}}}
+\DoxyCodeLine{57 \{}
+\DoxyCodeLine{58   \textcolor{keyword}{public}:}
+\DoxyCodeLine{59     \textcolor{keyword}{virtual} \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_thermal_1_1_i_envelope}{\string~IEnvelope}}() = \textcolor{keywordflow}{default};}
+\DoxyCodeLine{60 }
+\DoxyCodeLine{68     \textcolor{keyword}{virtual} \textcolor{keywordtype}{double} \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_thermal_1_1_i_envelope_a6b3c2a7f21b6e30158b680717a3b2419}{Ts\_from\_Tb}}(\textcolor{keywordtype}{double} Tb, \textcolor{keywordtype}{double} g14, \textcolor{keywordtype}{double} xi) \textcolor{keyword}{const} = 0;}
+\DoxyCodeLine{69 \};}
+\DoxyCodeLine{70 }
+\DoxyCodeLine{85 \textcolor{keywordtype}{double} \mbox{\hyperlink{_thermal_8hpp_a3d8c95254cfe47948385053e64e5751b}{SurfacePhotonLuminosity}}(\mbox{\hyperlink{struct_compact_star_1_1_star_profile_view}{StarProfileView}} view, \textcolor{keyword}{const} \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_state_1_1_thermal_state}{State::ThermalState}} \&state);}
+\DoxyCodeLine{86 }
+\DoxyCodeLine{99 \textcolor{keywordtype}{double} \mbox{\hyperlink{_thermal_8hpp_a45dbe48bf7090bad81ec3ad8c31a643a}{DUrcaEmissivityPrefactor}}(\mbox{\hyperlink{struct_compact_star_1_1_star_profile_view}{StarProfileView}} view,}
+\DoxyCodeLine{100                                 \textcolor{keyword}{const} \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_state_1_1_thermal_state}{State::ThermalState}} \&state,}
+\DoxyCodeLine{101                                 \textcolor{keywordtype}{double} r\_km);}
 \DoxyCodeLine{102 }
-\DoxyCodeLine{103 \} \textcolor{comment}{// namespace Thermal}}
-\DoxyCodeLine{104 \} \textcolor{comment}{// namespace CompactStar}}
-\DoxyCodeLine{105 }
-\DoxyCodeLine{106 \textcolor{preprocessor}{\#endif }\textcolor{comment}{/* CompactStar\_Thermal\_H */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{111 \textcolor{keywordtype}{double} \mbox{\hyperlink{_thermal_8hpp_a88c5c3bccb040991bbbb72fd57971f5b}{MUrcaEmissivityPrefactor}}(\mbox{\hyperlink{struct_compact_star_1_1_star_profile_view}{StarProfileView}} view,}
+\DoxyCodeLine{112                                 \textcolor{keyword}{const} \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_state_1_1_thermal_state}{State::ThermalState}} \&state,}
+\DoxyCodeLine{113                                 \textcolor{keywordtype}{double} r\_km);}
+\DoxyCodeLine{114 }
+\DoxyCodeLine{126 \textcolor{keywordtype}{double} \mbox{\hyperlink{_thermal_8hpp_abd551ddb3c0bfa1e6bc761dd0cab0060}{TotalNeutrinoLuminosity}}(\mbox{\hyperlink{struct_compact_star_1_1_star_profile_view}{StarProfileView}} view, \textcolor{keyword}{const} \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_state_1_1_thermal_state}{State::ThermalState}} \&state);}
+\DoxyCodeLine{127 }
+\DoxyCodeLine{128 \} \textcolor{comment}{// namespace Thermal}}
+\DoxyCodeLine{129 \} \textcolor{comment}{// namespace Physics}}
+\DoxyCodeLine{130 \} \textcolor{comment}{// namespace CompactStar}}
+\DoxyCodeLine{131 }
+\DoxyCodeLine{132 \textcolor{preprocessor}{\#endif }\textcolor{comment}{/* CompactStar\_Physics\_Thermal\_H */}\textcolor{preprocessor}{}}
 
 \end{DoxyCode}

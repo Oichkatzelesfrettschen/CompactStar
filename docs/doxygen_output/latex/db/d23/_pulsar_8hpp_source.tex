@@ -44,11 +44,11 @@
 \DoxyCodeLine{129     \textcolor{comment}{// -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
 \DoxyCodeLine{130     \textcolor{comment}{//  Physics state}}
 \DoxyCodeLine{131     \textcolor{comment}{// -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
-\DoxyCodeLine{137 \textcolor{comment}{}    \mbox{\hyperlink{struct_compact_star_1_1_spin_state}{SpinState}} spin\_;}
+\DoxyCodeLine{137 \textcolor{comment}{}    Physics::State::SpinState spin\_;}
 \DoxyCodeLine{138 }
-\DoxyCodeLine{142     \mbox{\hyperlink{struct_compact_star_1_1_thermal_state}{ThermalState}} thermal\_;}
+\DoxyCodeLine{142     \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_state_1_1_thermal_state}{Physics::State::ThermalState}} thermal\_;}
 \DoxyCodeLine{143 }
-\DoxyCodeLine{149     \mbox{\hyperlink{struct_compact_star_1_1_b_n_v_state}{BNVState}} bnv\_;}
+\DoxyCodeLine{149     \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_state_1_1_b_n_v_state}{Physics::State::BNVState}} bnv\_;}
 \DoxyCodeLine{150 }
 \DoxyCodeLine{151   \textcolor{keyword}{public}:}
 \DoxyCodeLine{152     \textcolor{comment}{// -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
@@ -61,7 +61,7 @@
 \DoxyCodeLine{170 }
 \DoxyCodeLine{177     \mbox{\hyperlink{class_compact_star_1_1_pulsar_aa8e5083c30a7bbe59f3db9277c05e769}{Pulsar}}(\textcolor{keyword}{const} std::string \&name,}
 \DoxyCodeLine{178            \textcolor{keyword}{const} \mbox{\hyperlink{class_zaki_1_1_math_1_1_quantity}{Zaki::Math::Quantity}} \&mass,}
-\DoxyCodeLine{179            \textcolor{keyword}{const} \mbox{\hyperlink{struct_compact_star_1_1_spin_state}{SpinState}} \&spin);}
+\DoxyCodeLine{179            \textcolor{keyword}{const} Physics::State::SpinState \&spin);}
 \DoxyCodeLine{180 }
 \DoxyCodeLine{190     \mbox{\hyperlink{class_compact_star_1_1_pulsar_aa8e5083c30a7bbe59f3db9277c05e769}{Pulsar}}(\textcolor{keyword}{const} std::string \&name,}
 \DoxyCodeLine{191            \textcolor{keyword}{const} \mbox{\hyperlink{class_zaki_1_1_math_1_1_quantity}{Zaki::Math::Quantity}} \&mass,}
@@ -94,33 +94,33 @@
 \DoxyCodeLine{270 }
 \DoxyCodeLine{274     \mbox{\hyperlink{class_zaki_1_1_math_1_1_quantity}{Zaki::Math::Quantity}} \mbox{\hyperlink{class_compact_star_1_1_pulsar_a31450ca0b07ddd1d9d03332926da7807}{GetSpinP}}()\textcolor{keyword}{ const}}
 \DoxyCodeLine{275 \textcolor{keyword}{    }\{}
-\DoxyCodeLine{276         \textcolor{keywordflow}{return} spin\_.\mbox{\hyperlink{struct_compact_star_1_1_spin_state_a1237035c29d40aff2b8827df476d0782}{P}};}
+\DoxyCodeLine{276         \textcolor{keywordflow}{return} spin\_.P;}
 \DoxyCodeLine{277     \}}
 \DoxyCodeLine{278 }
 \DoxyCodeLine{282     \mbox{\hyperlink{class_zaki_1_1_math_1_1_quantity}{Zaki::Math::Quantity}} GetSpinPDot()\textcolor{keyword}{ const}}
 \DoxyCodeLine{283 \textcolor{keyword}{    }\{}
-\DoxyCodeLine{284         \textcolor{keywordflow}{return} spin\_.\mbox{\hyperlink{struct_compact_star_1_1_spin_state_a7a54878a65c1d815d692a6abc4939cd3}{Pdot}};}
+\DoxyCodeLine{284         \textcolor{keywordflow}{return} spin\_.Pdot;}
 \DoxyCodeLine{285     \}}
 \DoxyCodeLine{286 }
 \DoxyCodeLine{287     \textcolor{comment}{// distance lives in SpinState, but we expose it here}}
 \DoxyCodeLine{291 \textcolor{comment}{}    \mbox{\hyperlink{class_zaki_1_1_math_1_1_quantity}{Zaki::Math::Quantity}} GetDistance()\textcolor{keyword}{ const}}
 \DoxyCodeLine{292 \textcolor{keyword}{    }\{}
-\DoxyCodeLine{293         \textcolor{keywordflow}{return} spin\_.\mbox{\hyperlink{struct_compact_star_1_1_spin_state_a0e1ea09e3923cff1792a808f90019171}{d}};}
+\DoxyCodeLine{293         \textcolor{keywordflow}{return} spin\_.d;}
 \DoxyCodeLine{294     \}}
 \DoxyCodeLine{295 }
 \DoxyCodeLine{299     \mbox{\hyperlink{class_zaki_1_1_math_1_1_quantity}{Zaki::Math::Quantity}} GetProperMotion()\textcolor{keyword}{ const}}
 \DoxyCodeLine{300 \textcolor{keyword}{    }\{}
-\DoxyCodeLine{301         \textcolor{keywordflow}{return} spin\_.\mbox{\hyperlink{struct_compact_star_1_1_spin_state_a8503ae626987ba5abeac191b12aecdc2}{mu}};}
+\DoxyCodeLine{301         \textcolor{keywordflow}{return} spin\_.mu;}
 \DoxyCodeLine{302     \}}
 \DoxyCodeLine{303 }
 \DoxyCodeLine{307     \mbox{\hyperlink{class_zaki_1_1_math_1_1_quantity}{Zaki::Math::Quantity}} GetSpinPDot\_over\_P()\textcolor{keyword}{ const}}
 \DoxyCodeLine{308 \textcolor{keyword}{    }\{}
 \DoxyCodeLine{309         \textcolor{comment}{// guard against P = 0 just in case}}
-\DoxyCodeLine{310         \textcolor{keywordflow}{if} (spin\_.\mbox{\hyperlink{struct_compact_star_1_1_spin_state_a1237035c29d40aff2b8827df476d0782}{P}}.val == 0.0)}
+\DoxyCodeLine{310         \textcolor{keywordflow}{if} (spin\_.P.val == 0.0)}
 \DoxyCodeLine{311         \{}
 \DoxyCodeLine{312             \textcolor{keywordflow}{return} \{0.0, 0.0\};}
 \DoxyCodeLine{313         \}}
-\DoxyCodeLine{314         \textcolor{keywordflow}{return} spin\_.\mbox{\hyperlink{struct_compact_star_1_1_spin_state_a7a54878a65c1d815d692a6abc4939cd3}{Pdot}} / spin\_.\mbox{\hyperlink{struct_compact_star_1_1_spin_state_a1237035c29d40aff2b8827df476d0782}{P}};}
+\DoxyCodeLine{314         \textcolor{keywordflow}{return} spin\_.Pdot / spin\_.P;}
 \DoxyCodeLine{315     \}}
 \DoxyCodeLine{316 }
 \DoxyCodeLine{317     \textcolor{comment}{// -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
@@ -139,15 +139,15 @@
 \DoxyCodeLine{346     \textcolor{comment}{//  Spin interface}}
 \DoxyCodeLine{347     \textcolor{comment}{// -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
 \DoxyCodeLine{348 }
-\DoxyCodeLine{353     \textcolor{keywordtype}{void} SetSpinP(\textcolor{keyword}{const} \mbox{\hyperlink{class_zaki_1_1_math_1_1_quantity}{Zaki::Math::Quantity}} \&P) \{ spin\_.\mbox{\hyperlink{struct_compact_star_1_1_spin_state_a1237035c29d40aff2b8827df476d0782}{P}} = P; \}}
+\DoxyCodeLine{353     \textcolor{keywordtype}{void} SetSpinP(\textcolor{keyword}{const} \mbox{\hyperlink{class_zaki_1_1_math_1_1_quantity}{Zaki::Math::Quantity}} \&P) \{ spin\_.P = P; \}}
 \DoxyCodeLine{354 }
-\DoxyCodeLine{359     \textcolor{keywordtype}{void} SetSpinPDot(\textcolor{keyword}{const} \mbox{\hyperlink{class_zaki_1_1_math_1_1_quantity}{Zaki::Math::Quantity}} \&Pd) \{ spin\_.\mbox{\hyperlink{struct_compact_star_1_1_spin_state_a7a54878a65c1d815d692a6abc4939cd3}{Pdot}} = Pd; \}}
+\DoxyCodeLine{359     \textcolor{keywordtype}{void} SetSpinPDot(\textcolor{keyword}{const} \mbox{\hyperlink{class_zaki_1_1_math_1_1_quantity}{Zaki::Math::Quantity}} \&Pd) \{ spin\_.Pdot = Pd; \}}
 \DoxyCodeLine{360 }
-\DoxyCodeLine{365     \textcolor{keywordtype}{void} SetDistance(\textcolor{keyword}{const} \mbox{\hyperlink{class_zaki_1_1_math_1_1_quantity}{Zaki::Math::Quantity}} \&d) \{ spin\_.\mbox{\hyperlink{struct_compact_star_1_1_spin_state_a0e1ea09e3923cff1792a808f90019171}{d}} = d; \}}
+\DoxyCodeLine{365     \textcolor{keywordtype}{void} SetDistance(\textcolor{keyword}{const} \mbox{\hyperlink{class_zaki_1_1_math_1_1_quantity}{Zaki::Math::Quantity}} \&d) \{ spin\_.d = d; \}}
 \DoxyCodeLine{366 }
-\DoxyCodeLine{371     \textcolor{keywordtype}{void} SetProperMotion(\textcolor{keyword}{const} \mbox{\hyperlink{class_zaki_1_1_math_1_1_quantity}{Zaki::Math::Quantity}} \&mu) \{ spin\_.\mbox{\hyperlink{struct_compact_star_1_1_spin_state_a8503ae626987ba5abeac191b12aecdc2}{mu}} = mu; \}}
+\DoxyCodeLine{371     \textcolor{keywordtype}{void} SetProperMotion(\textcolor{keyword}{const} \mbox{\hyperlink{class_zaki_1_1_math_1_1_quantity}{Zaki::Math::Quantity}} \&mu) \{ spin\_.mu = mu; \}}
 \DoxyCodeLine{372 }
-\DoxyCodeLine{377     SpinState GetSpinState()\textcolor{keyword}{ const }\{ \textcolor{keywordflow}{return} spin\_; \}}
+\DoxyCodeLine{377     Physics::State::SpinState GetSpinState()\textcolor{keyword}{ const }\{ \textcolor{keywordflow}{return} spin\_; \}}
 \DoxyCodeLine{378 }
 \DoxyCodeLine{386     \textcolor{keywordtype}{double} GetCharacteristicAge() \textcolor{keyword}{const};}
 \DoxyCodeLine{387     \textcolor{comment}{// \{}}
@@ -163,9 +163,9 @@
 \DoxyCodeLine{405     \textcolor{comment}{//  Thermal interface}}
 \DoxyCodeLine{406     \textcolor{comment}{// -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
 \DoxyCodeLine{407 }
-\DoxyCodeLine{412     \textcolor{keywordtype}{void} SetThermalState(\textcolor{keyword}{const} ThermalState \&t) \{ thermal\_ = t; \}}
+\DoxyCodeLine{412     \textcolor{keywordtype}{void} SetThermalState(\textcolor{keyword}{const} Physics::State::ThermalState \&t) \{ thermal\_ = t; \}}
 \DoxyCodeLine{413 }
-\DoxyCodeLine{418     ThermalState GetThermalState()\textcolor{keyword}{ const }\{ \textcolor{keywordflow}{return} thermal\_; \}}
+\DoxyCodeLine{418     Physics::State::ThermalState GetThermalState()\textcolor{keyword}{ const }\{ \textcolor{keywordflow}{return} thermal\_; \}}
 \DoxyCodeLine{419 }
 \DoxyCodeLine{428     \textcolor{comment}{// double GetSurfacePhotonLuminosity() const}}
 \DoxyCodeLine{429     \textcolor{comment}{// \{}}
@@ -191,12 +191,16 @@
 \DoxyCodeLine{464 }
 \DoxyCodeLine{472     \textcolor{keywordtype}{double} GetBNVSpinDownLimit()\textcolor{keyword}{ const}}
 \DoxyCodeLine{473 \textcolor{keyword}{    }\{}
-\DoxyCodeLine{474         \textcolor{keywordflow}{return} bnv\_.\mbox{\hyperlink{struct_compact_star_1_1_b_n_v_state_a2ae45875eab097423109c7ca3ac0b56c}{spin\_down\_limit}};}
-\DoxyCodeLine{475     \}}
-\DoxyCodeLine{476 \};}
-\DoxyCodeLine{477 }
-\DoxyCodeLine{478 \} \textcolor{comment}{// namespace CompactStar}}
-\DoxyCodeLine{479 }
-\DoxyCodeLine{480 \textcolor{preprocessor}{\#endif }\textcolor{comment}{/* CompactStar\_Pulsar\_H */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{474         \textcolor{comment}{// return bnv\_.spin\_down\_limit;}}
+\DoxyCodeLine{475         \textcolor{comment}{// Safe even if BNVState has not been resized yet.}}
+\DoxyCodeLine{476         \textcolor{keywordflow}{if} (bnv\_.\mbox{\hyperlink{class_compact_star_1_1_physics_1_1_state_1_1_b_n_v_state_a0138ef8ca0d66e6c20a3934ad3a0b37c}{NumComponents}}() < 2)}
+\DoxyCodeLine{477             \textcolor{keywordflow}{return} 0.0;}
+\DoxyCodeLine{478         \textcolor{keywordflow}{return} bnv\_.SpinDownLimit();}
+\DoxyCodeLine{479     \}}
+\DoxyCodeLine{480 \};}
+\DoxyCodeLine{481 }
+\DoxyCodeLine{482 \} \textcolor{comment}{// namespace CompactStar}}
+\DoxyCodeLine{483 }
+\DoxyCodeLine{484 \textcolor{preprocessor}{\#endif }\textcolor{comment}{/* CompactStar\_Pulsar\_H */}\textcolor{preprocessor}{}}
 
 \end{DoxyCode}

@@ -1,0 +1,85 @@
+\hypertarget{_chem_state_8hpp}{}\doxysection{Compact\+Star/\+Physics/\+State/\+Chem\+State.hpp File Reference}
+\label{_chem_state_8hpp}\index{CompactStar/Physics/State/ChemState.hpp@{CompactStar/Physics/State/ChemState.hpp}}
+
+
+ODE state block for chemical imbalances used by evolution drivers.  
+
+
+{\ttfamily \#include $<$cstddef$>$}\newline
+{\ttfamily \#include $<$vector$>$}\newline
+{\ttfamily \#include \char`\"{}Compact\+Star/\+Physics/\+State/\+State.\+hpp\char`\"{}}\newline
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{_chem_state_8hpp_ac0f0aa45e74d299490cca6d6f5af050e}\label{_chem_state_8hpp_ac0f0aa45e74d299490cca6d6f5af050e}} 
+void {\bfseries Resize} (std\+::size\+\_\+t N) override
+\item 
+\mbox{\Hypertarget{_chem_state_8hpp_a5b3b88c3313b6d61ae18c2224841081d}\label{_chem_state_8hpp_a5b3b88c3313b6d61ae18c2224841081d}} 
+std\+::size\+\_\+t {\bfseries Grid\+Size} () const override
+\begin{DoxyCompactList}\small\item\em For this simple layout, \char`\"{}grid size\char`\"{} coincides with the number of components. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{_chem_state_8hpp_ac2fdf117e3886bbce4baa56a77d3e9cc}\label{_chem_state_8hpp_ac2fdf117e3886bbce4baa56a77d3e9cc}} 
+void {\bfseries Clear} () override
+\begin{DoxyCompactList}\small\item\em Reset all components to zero (does not release capacity). \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{_chem_state_8hpp_a53d81624f03725345e5e83949046ba2c}\label{_chem_state_8hpp_a53d81624f03725345e5e83949046ba2c}} 
+std\+::size\+\_\+t {\bfseries Num\+Components} () const
+\begin{DoxyCompactList}\small\item\em Return the number of chemical-\/imbalance components. \end{DoxyCompactList}\item 
+double \& \mbox{\hyperlink{_chem_state_8hpp_a186adce6c8871bd2d0803fff25be23ac}{Eta}} (std\+::size\+\_\+t i)
+\begin{DoxyCompactList}\small\item\em Mutable access to the i-\/th chemical imbalance $\eta_i$. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+ODE state block for chemical imbalances used by evolution drivers. 
+
+Represents the dynamical degrees of freedom associated with departures from beta-\/equilibrium, typically written as a vector of chemical imbalances $\eta_i$ (e.\+g., $\eta_{npe}, \eta_{np\mu}$).
+
+Design notes\+:
+\begin{DoxyItemize}
+\item Stores only the {\itshape dynamic} variables (the $\eta_i\f vector).
+    - No time, no spin, no tags — those live in StepMeta or other states.
+    - Layout is a flat contiguous array compatible with the global ODE vector.
+    - Size is configured once via Resize(N) prior to integration.
+  
+   Typical usage:
+    - Rotochemical and BNV chemical drivers read/write components through
+      the packed y-vector managed by the evolution system.
+  
+   @ingroup PhysicsState
+ */
+
+
+
+
+
+
+
+
+
+namespace CompactStar::Physics::State
+{
+
+/**
+   @class ChemState
+   @brief Contiguous state block for chemical imbalances $\textbackslash{}eta\+\_\+i\textbackslash{}f\$.
+\end{DoxyItemize}
+
+The components are stored as a simple 1D vector; their physical meaning (which index corresponds to which reaction channel such as $\eta_{npe}\f,
+   $\textbackslash{}eta\+\_\+\{np\textbackslash{}mu\}\textbackslash{}f, etc.) is defined by the drivers/microphysics layer, not by this class.
+
+Units of $\eta_i$ are typically energy (e.\+g. erg), but this is not enforced here. $\ast$/ class Chem\+State \+: public State \{ public\+: // -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/ // Required State interface // -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/
+
+Short human-\/readable identifier for logging. const char $\ast$\+Name() const override \{ return \char`\"{}\+Chem\+State\char`\"{}; \}
+
+Number of scalar degrees of freedom (number of 
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{_chem_state_8hpp_a186adce6c8871bd2d0803fff25be23ac}\label{_chem_state_8hpp_a186adce6c8871bd2d0803fff25be23ac}} 
+\index{ChemState.hpp@{ChemState.hpp}!Eta@{Eta}}
+\index{Eta@{Eta}!ChemState.hpp@{ChemState.hpp}}
+\doxysubsubsection{\texorpdfstring{Eta()}{Eta()}}
+{\footnotesize\ttfamily const double \& Eta (\begin{DoxyParamCaption}\item[{std\+::size\+\_\+t}]{i }\end{DoxyParamCaption})}
+
+
+
+Mutable access to the i-\/th chemical imbalance $\eta_i$. 
+
+Const access to the i-\/th chemical imbalance $\eta_i$. 

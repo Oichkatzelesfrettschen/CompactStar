@@ -1,0 +1,179 @@
+\hypertarget{class_compact_star_1_1_physics_1_1_state_1_1_state}{}\doxysection{Compact\+Star\+::Physics\+::State\+::State Class Reference}
+\label{class_compact_star_1_1_physics_1_1_state_1_1_state}\index{CompactStar::Physics::State::State@{CompactStar::Physics::State::State}}
+
+
+Abstract base class for any dynamic physics state block.  
+
+
+
+
+{\ttfamily \#include $<$State.\+hpp$>$}
+
+Inheritance diagram for Compact\+Star\+::Physics\+::State\+::State\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{d4/d69/class_compact_star_1_1_physics_1_1_state_1_1_state}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+virtual const char $\ast$ \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_state_1_1_state_adb2c0a210afb045ea8cf1e96e3b0c6ed}{Name}} () const =0
+\begin{DoxyCompactList}\small\item\em Short state name for logging (e.\+g. \char`\"{}\+Chem\+State\char`\"{}). \end{DoxyCompactList}\item 
+virtual std\+::size\+\_\+t \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_state_1_1_state_a7d41a392de8417100b45ebfb19298eae}{Size}} () const =0
+\begin{DoxyCompactList}\small\item\em Number of scalar degrees of freedom. \end{DoxyCompactList}\item 
+virtual double $\ast$ \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_state_1_1_state_ad8fd8cf0dd2001eed6f81ea0e5458f30}{Data}} ()=0
+\begin{DoxyCompactList}\small\item\em Mutable pointer to underlying contiguous memory. \end{DoxyCompactList}\item 
+virtual const double $\ast$ \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_state_1_1_state_aaad6830e6e0884665af0379f80b0d075}{Data}} () const =0
+\begin{DoxyCompactList}\small\item\em Const pointer to underlying contiguous memory. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_state_1_1_state_a67305cd2b43b22a5503b62326c00584f}{Resize}} (std\+::size\+\_\+t N)=0
+\begin{DoxyCompactList}\small\item\em Resize internal storage to N DOFs. \end{DoxyCompactList}\item 
+virtual std\+::size\+\_\+t \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_state_1_1_state_a26c2a63bb521c916f9ffb681e15028b8}{Grid\+Size}} () const
+\begin{DoxyCompactList}\small\item\em Number of spatial grid cells represented. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_state_1_1_state_ae531732a02445f1378be8a13837691e8}{Clear}} ()=0
+\begin{DoxyCompactList}\small\item\em Reset contents to a well-\/defined state (usually all zeros). \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_compact_star_1_1_physics_1_1_state_1_1_state_ac9892ca481397cba4afe2da9cd9a50a6}\label{class_compact_star_1_1_physics_1_1_state_1_1_state_ac9892ca481397cba4afe2da9cd9a50a6}} 
+virtual void {\bfseries Sanity\+Check} () const
+\begin{DoxyCompactList}\small\item\em Check for Na\+Ns/\+Inf in the state vector and log results. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_state_1_1_state_aec8b76c96d1cccda2a0d186ba473eb21}{Export\+Columns}} (\mbox{\hyperlink{class_zaki_1_1_vector_1_1_data_set}{Zaki\+::\+Vector\+::\+Data\+Set}} \&ds, const std\+::string \&prefix) const
+\begin{DoxyCompactList}\small\item\em Append columns to a Data\+Set for debug or file output. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Abstract base class for any dynamic physics state block. 
+
+Requirements for subclasses\+:
+\begin{DoxyItemize}
+\item Provide a contiguous block of doubles via \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_state_1_1_state_ad8fd8cf0dd2001eed6f81ea0e5458f30}{Data()}}.
+\item Provide the number of DOFs via \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_state_1_1_state_a7d41a392de8417100b45ebfb19298eae}{Size()}}.
+\item Implement Resize(\+N) before integration.
+\item Implement \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_state_1_1_state_ae531732a02445f1378be8a13837691e8}{Clear()}} to reinitialize safely.
+\end{DoxyItemize}
+
+Optional\+:
+\begin{DoxyItemize}
+\item Implement \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_state_1_1_state_aec8b76c96d1cccda2a0d186ba473eb21}{Export\+Columns()}} for debug I/O.
+\item Override \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_state_1_1_state_ac9892ca481397cba4afe2da9cd9a50a6}{Sanity\+Check()}} to enforce physical bounds (T\texorpdfstring{$>$}{>}0, etc.). 
+\end{DoxyItemize}
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_compact_star_1_1_physics_1_1_state_1_1_state_ae531732a02445f1378be8a13837691e8}\label{class_compact_star_1_1_physics_1_1_state_1_1_state_ae531732a02445f1378be8a13837691e8}} 
+\index{CompactStar::Physics::State::State@{CompactStar::Physics::State::State}!Clear@{Clear}}
+\index{Clear@{Clear}!CompactStar::Physics::State::State@{CompactStar::Physics::State::State}}
+\doxysubsubsection{\texorpdfstring{Clear()}{Clear()}}
+{\footnotesize\ttfamily virtual void Compact\+Star\+::\+Physics\+::\+State\+::\+State\+::\+Clear (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Reset contents to a well-\/defined state (usually all zeros). 
+
+
+
+Implemented in \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_state_1_1_b_n_v_state_a4cbce3755a27f7f2bd19fadb40ef400d}{Compact\+Star\+::\+Physics\+::\+State\+::\+BNVState}}, and \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_state_1_1_thermal_state_ab0c832d00d24302914153386cc6344f6}{Compact\+Star\+::\+Physics\+::\+State\+::\+Thermal\+State}}.
+
+\mbox{\Hypertarget{class_compact_star_1_1_physics_1_1_state_1_1_state_aaad6830e6e0884665af0379f80b0d075}\label{class_compact_star_1_1_physics_1_1_state_1_1_state_aaad6830e6e0884665af0379f80b0d075}} 
+\index{CompactStar::Physics::State::State@{CompactStar::Physics::State::State}!Data@{Data}}
+\index{Data@{Data}!CompactStar::Physics::State::State@{CompactStar::Physics::State::State}}
+\doxysubsubsection{\texorpdfstring{Data()}{Data()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily virtual const double $\ast$ Compact\+Star\+::\+Physics\+::\+State\+::\+State\+::\+Data (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Const pointer to underlying contiguous memory. 
+
+
+
+Implemented in \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_state_1_1_b_n_v_state_a401fc37de48499f5c14e0cf70e89cb6d}{Compact\+Star\+::\+Physics\+::\+State\+::\+BNVState}}, and \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_state_1_1_thermal_state_a9a997f16b7281ec8e2fad96dedad4e02}{Compact\+Star\+::\+Physics\+::\+State\+::\+Thermal\+State}}.
+
+\mbox{\Hypertarget{class_compact_star_1_1_physics_1_1_state_1_1_state_ad8fd8cf0dd2001eed6f81ea0e5458f30}\label{class_compact_star_1_1_physics_1_1_state_1_1_state_ad8fd8cf0dd2001eed6f81ea0e5458f30}} 
+\index{CompactStar::Physics::State::State@{CompactStar::Physics::State::State}!Data@{Data}}
+\index{Data@{Data}!CompactStar::Physics::State::State@{CompactStar::Physics::State::State}}
+\doxysubsubsection{\texorpdfstring{Data()}{Data()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily virtual double $\ast$ Compact\+Star\+::\+Physics\+::\+State\+::\+State\+::\+Data (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Mutable pointer to underlying contiguous memory. 
+
+
+
+Implemented in \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_state_1_1_b_n_v_state_a866cb3c4b916f5dfbae61ba7b283f5af}{Compact\+Star\+::\+Physics\+::\+State\+::\+BNVState}}, and \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_state_1_1_thermal_state_a56663f05d57cd2dd0b6d2d014d6050c5}{Compact\+Star\+::\+Physics\+::\+State\+::\+Thermal\+State}}.
+
+\mbox{\Hypertarget{class_compact_star_1_1_physics_1_1_state_1_1_state_aec8b76c96d1cccda2a0d186ba473eb21}\label{class_compact_star_1_1_physics_1_1_state_1_1_state_aec8b76c96d1cccda2a0d186ba473eb21}} 
+\index{CompactStar::Physics::State::State@{CompactStar::Physics::State::State}!ExportColumns@{ExportColumns}}
+\index{ExportColumns@{ExportColumns}!CompactStar::Physics::State::State@{CompactStar::Physics::State::State}}
+\doxysubsubsection{\texorpdfstring{ExportColumns()}{ExportColumns()}}
+{\footnotesize\ttfamily virtual void Compact\+Star\+::\+Physics\+::\+State\+::\+State\+::\+Export\+Columns (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_zaki_1_1_vector_1_1_data_set}{Zaki\+::\+Vector\+::\+Data\+Set}} \&}]{ds,  }\item[{const std\+::string \&}]{prefix }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Append columns to a Data\+Set for debug or file output. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em ds} & Target dataset. \\
+\hline
+{\em prefix} & Column prefix (e.\+g. \char`\"{}chem.\char`\"{}, \char`\"{}therm.\char`\"{}). \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_compact_star_1_1_physics_1_1_state_1_1_state_a26c2a63bb521c916f9ffb681e15028b8}\label{class_compact_star_1_1_physics_1_1_state_1_1_state_a26c2a63bb521c916f9ffb681e15028b8}} 
+\index{CompactStar::Physics::State::State@{CompactStar::Physics::State::State}!GridSize@{GridSize}}
+\index{GridSize@{GridSize}!CompactStar::Physics::State::State@{CompactStar::Physics::State::State}}
+\doxysubsubsection{\texorpdfstring{GridSize()}{GridSize()}}
+{\footnotesize\ttfamily virtual std\+::size\+\_\+t Compact\+Star\+::\+Physics\+::\+State\+::\+State\+::\+Grid\+Size (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Number of spatial grid cells represented. 
+
+Many states map 1 DOF per cell; override for multi-\/\+DOF-\/per-\/cell. 
+
+Reimplemented in \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_state_1_1_b_n_v_state_a5daeb377d1b61112b0490cfdf681df8b}{Compact\+Star\+::\+Physics\+::\+State\+::\+BNVState}}, and \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_state_1_1_thermal_state_a296ef406fa8af1b3ef7c886ce1e6f892}{Compact\+Star\+::\+Physics\+::\+State\+::\+Thermal\+State}}.
+
+\mbox{\Hypertarget{class_compact_star_1_1_physics_1_1_state_1_1_state_adb2c0a210afb045ea8cf1e96e3b0c6ed}\label{class_compact_star_1_1_physics_1_1_state_1_1_state_adb2c0a210afb045ea8cf1e96e3b0c6ed}} 
+\index{CompactStar::Physics::State::State@{CompactStar::Physics::State::State}!Name@{Name}}
+\index{Name@{Name}!CompactStar::Physics::State::State@{CompactStar::Physics::State::State}}
+\doxysubsubsection{\texorpdfstring{Name()}{Name()}}
+{\footnotesize\ttfamily virtual const char $\ast$ Compact\+Star\+::\+Physics\+::\+State\+::\+State\+::\+Name (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Short state name for logging (e.\+g. \char`\"{}\+Chem\+State\char`\"{}). 
+
+
+
+Implemented in \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_state_1_1_b_n_v_state_ab6f1d71d82eef427a12068b7fe33d32b}{Compact\+Star\+::\+Physics\+::\+State\+::\+BNVState}}, and \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_state_1_1_thermal_state_a35507eb8ed8d3b3646649257f4f2a851}{Compact\+Star\+::\+Physics\+::\+State\+::\+Thermal\+State}}.
+
+\mbox{\Hypertarget{class_compact_star_1_1_physics_1_1_state_1_1_state_a67305cd2b43b22a5503b62326c00584f}\label{class_compact_star_1_1_physics_1_1_state_1_1_state_a67305cd2b43b22a5503b62326c00584f}} 
+\index{CompactStar::Physics::State::State@{CompactStar::Physics::State::State}!Resize@{Resize}}
+\index{Resize@{Resize}!CompactStar::Physics::State::State@{CompactStar::Physics::State::State}}
+\doxysubsubsection{\texorpdfstring{Resize()}{Resize()}}
+{\footnotesize\ttfamily virtual void Compact\+Star\+::\+Physics\+::\+State\+::\+State\+::\+Resize (\begin{DoxyParamCaption}\item[{std\+::size\+\_\+t}]{N }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Resize internal storage to N DOFs. 
+
+Must be called BEFORE integration. After integration begins, changing size is undefined behavior. 
+
+Implemented in \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_state_1_1_b_n_v_state_a46016b61959adab3b42c7be24bdfabff}{Compact\+Star\+::\+Physics\+::\+State\+::\+BNVState}}, and \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_state_1_1_thermal_state_a066eb839acd4f0a6fbf21be8d3be2cbc}{Compact\+Star\+::\+Physics\+::\+State\+::\+Thermal\+State}}.
+
+\mbox{\Hypertarget{class_compact_star_1_1_physics_1_1_state_1_1_state_a7d41a392de8417100b45ebfb19298eae}\label{class_compact_star_1_1_physics_1_1_state_1_1_state_a7d41a392de8417100b45ebfb19298eae}} 
+\index{CompactStar::Physics::State::State@{CompactStar::Physics::State::State}!Size@{Size}}
+\index{Size@{Size}!CompactStar::Physics::State::State@{CompactStar::Physics::State::State}}
+\doxysubsubsection{\texorpdfstring{Size()}{Size()}}
+{\footnotesize\ttfamily virtual std\+::size\+\_\+t Compact\+Star\+::\+Physics\+::\+State\+::\+State\+::\+Size (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Number of scalar degrees of freedom. 
+
+
+
+Implemented in \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_state_1_1_b_n_v_state_a4e4b91b6d7daee924ea596d200506204}{Compact\+Star\+::\+Physics\+::\+State\+::\+BNVState}}, and \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_state_1_1_thermal_state_a2b4321c1aadef35f0694453e7d5283d0}{Compact\+Star\+::\+Physics\+::\+State\+::\+Thermal\+State}}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Compact\+Star/\+Physics/\+State/\mbox{\hyperlink{_state_8hpp}{State.\+hpp}}\end{DoxyCompactItemize}

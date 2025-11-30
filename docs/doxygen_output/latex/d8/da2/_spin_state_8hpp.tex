@@ -2,20 +2,26 @@
 \label{_spin_state_8hpp}\index{CompactStar/Physics/State/SpinState.hpp@{CompactStar/Physics/State/SpinState.hpp}}
 
 
-Spin/kinematic observables for a compact star.  
+Spin/kinematic state block + observables for a compact star.  
 
 
+{\ttfamily \#include $<$cstddef$>$}\newline
+{\ttfamily \#include $<$vector$>$}\newline
 {\ttfamily \#include $<$Zaki/\+Math/\+Math\+\_\+\+Core.\+hpp$>$}\newline
-\doxysubsection*{Classes}
-\begin{DoxyCompactItemize}
-\item 
-struct \mbox{\hyperlink{struct_compact_star_1_1_spin_state}{Compact\+Star\+::\+Spin\+State}}
-\begin{DoxyCompactList}\small\item\em Observed spin and kinematic parameters. \end{DoxyCompactList}\end{DoxyCompactItemize}
+{\ttfamily \#include \char`\"{}Compact\+Star/\+Physics/\+State/\+State.\+hpp\char`\"{}}\newline
 
 
 \doxysubsection{Detailed Description}
-Spin/kinematic observables for a compact star. 
+Spin/kinematic state block + observables for a compact star. 
+
+This class serves two closely related roles\+:
+\begin{DoxyItemize}
+\item provides a {\bfseries{dynamic state block}} for spin evolution (e.\+g. Ω), exposed to the ODE integrator via the State base interface;
+\item stores {\bfseries{observational spin/kinematic quantities}} (P, Pdot, μ, d) as \mbox{\hyperlink{class_zaki_1_1_math_1_1_quantity}{Zaki\+::\+Math\+::\+Quantity}} for use in BNV bounds, torque models, etc.
+\end{DoxyItemize}
+
+Directory-\/based namespace\+: Compact\+Star\+::\+Physics\+::\+State
 
 \begin{DoxyAuthor}{Author}
-Mohammadreza Zakeri Contact\+: \href{mailto:M.Zakeri@eku.edu}{\texttt{ M.\+Zakeri@eku.\+edu}} 
+Mohammadreza Zakeri (\href{mailto:M.Zakeri@eku.edu}{\texttt{ M.\+Zakeri@eku.\+edu}}) 
 \end{DoxyAuthor}

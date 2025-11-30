@@ -1,0 +1,36 @@
+\hypertarget{_state_8hpp}{}\doxysection{Compact\+Star/\+Physics/\+State/\+State.hpp File Reference}
+\label{_state_8hpp}\index{CompactStar/Physics/State/State.hpp@{CompactStar/Physics/State/State.hpp}}
+
+
+Abstract ODE state interface for physics sub-\/states.  
+
+
+{\ttfamily \#include $<$cmath$>$}\newline
+{\ttfamily \#include $<$cstddef$>$}\newline
+{\ttfamily \#include $<$string$>$}\newline
+{\ttfamily \#include $<$vector$>$}\newline
+{\ttfamily \#include $<$Zaki/\+Util/\+Instrumentor.\+hpp$>$}\newline
+{\ttfamily \#include $<$Zaki/\+Vector/\+Data\+Set.\+hpp$>$}\newline
+\doxysubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{struct_compact_star_1_1_physics_1_1_state_1_1_step_meta}{Compact\+Star\+::\+Physics\+::\+State\+::\+Step\+Meta}}
+\begin{DoxyCompactList}\small\item\em Diagnostic metadata for a single attempted integration step. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_state_1_1_state}{Compact\+Star\+::\+Physics\+::\+State\+::\+State}}
+\begin{DoxyCompactList}\small\item\em Abstract base class for any dynamic physics state block. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Abstract ODE state interface for physics sub-\/states. 
+
+This file defines\+:
+\begin{DoxyItemize}
+\item Step\+Meta\+: metadata describing an attempted integration step.
+\item State \+: base class for all physics state blocks contributing dynamic DOFs to the global ODE vector.
+\end{DoxyItemize}
+
+Directory-\/based namespace\+: Compact\+Star\+::\+Physics\+::\+State
+
+Subclasses\+: Chem\+State, Thermal\+State, Spin\+State, BNVState, ...
+
+These define the physical variables involved in neutron-\/star evolution. The Evolution system flattens and integrates these states, but does not define or own their internal structure. 

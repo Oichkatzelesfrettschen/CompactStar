@@ -6,8 +6,8 @@ var searchData=
   ['mag2_3',['mag2',['../d8/dc2/struct_zaki_1_1_physics_1_1_x_y_z_vector.html#ac20a24d3765631dbd12ba9b975c7208c',1,'Zaki::Physics::XYZVector']]],
   ['magfield_4',['MagField',['../da/d11/class_compact_star_1_1_microphysics_1_1_b_n_v_1_1_analysis_1_1_b_n_v___sequence.html#a741b03f23996d4f2692df28670030099',1,'CompactStar::Microphysics::BNV::Analysis::BNV_Sequence']]],
   ['makesmooth_5',['MakeSmooth',['../d4/d8d/class_zaki_1_1_math_1_1_curve2_d.html#aefdfc320b05dd58f51ea81e7025bfcf0',1,'Zaki::Math::Curve2D::MakeSmooth()'],['../d3/dd3/struct_zaki_1_1_vector_1_1_data_column.html#a21347e0a3b61b440b847ff13db5e53f0',1,'Zaki::Vector::DataColumn::MakeSmooth()'],['../d2/d43/class_zaki_1_1_vector_1_1_data_set.html#a9ca3f209541823a1062ce5a407152449',1,'Zaki::Vector::DataSet::MakeSmooth()']]],
-  ['mass_6',['Mass',['../d0/d28/class_compact_star_1_1_chemical_heating_1_1_star_context.html#a0d1d28afff33ccf673bc718e8c937280',1,'CompactStar::ChemicalHeating::StarContext']]],
-  ['masssurface_7',['MassSurface',['../dc/d86/class_compact_star_1_1_n_star.html#a92c53461f39be76aa591f3395bd6a91a',1,'CompactStar::NStar::MassSurface()'],['../d0/d28/class_compact_star_1_1_chemical_heating_1_1_star_context.html#a4fd46e69276eb6417898fb15d8ca5011',1,'CompactStar::ChemicalHeating::StarContext::MassSurface()']]],
+  ['mass_6',['Mass',['../d9/d42/class_compact_star_1_1_physics_1_1_evolution_1_1_star_context.html#ad5915364679ddd7e26d9996c5a21c56d',1,'CompactStar::Physics::Evolution::StarContext']]],
+  ['masssurface_7',['MassSurface',['../dc/d86/class_compact_star_1_1_n_star.html#a92c53461f39be76aa591f3395bd6a91a',1,'CompactStar::NStar::MassSurface()'],['../d9/d42/class_compact_star_1_1_physics_1_1_evolution_1_1_star_context.html#a669582110bc36249497fb5cf1ae46ff0',1,'CompactStar::Physics::Evolution::StarContext::MassSurface()']]],
   ['max_8',['Max',['../d3/dd3/struct_zaki_1_1_vector_1_1_data_column.html#ae24c5666266781ff92a7d2547bd5d922',1,'Zaki::Vector::DataColumn']]],
   ['maxidx_9',['MaxIdx',['../d3/dd3/struct_zaki_1_1_vector_1_1_data_column.html#a2cf21f630d5b524efe5651e5d426ccf7',1,'Zaki::Vector::DataColumn']]],
   ['min_10',['Min',['../d3/dd3/struct_zaki_1_1_vector_1_1_data_column.html#ae1722007722eb7d928800ef851df6934',1,'Zaki::Vector::DataColumn']]],
@@ -17,5 +17,5 @@ var searchData=
   ['model_14',['Model',['../d4/d0a/class_compact_star_1_1_model.html#a0a6340dc9663543a56497bab5a3137c7',1,'CompactStar::Model']]],
   ['mu_15',['mu',['../d9/de0/struct_binary___params.html#affa4262c39f0670a7b4c57cb30200c32',1,'Binary_Params']]],
   ['mu_16',['Mu',['../d9/d31/class_compact_star_1_1_baryon.html#a101e130974d3b05fcd9ed62e0ea8d684',1,'CompactStar::Baryon::Mu()'],['../d4/da4/class_compact_star_1_1_particle.html#ade2a30772c19fada1f9f3d5b7dc1e47e',1,'CompactStar::Particle::Mu()']]],
-  ['murcaemissivityprefactor_17',['MUrcaEmissivityPrefactor',['../d4/dc0/_thermal_8hpp.html#a13e57a293664988c46b8e73df9a45bff',1,'CompactStar::Thermal']]]
+  ['murcaemissivityprefactor_17',['MUrcaEmissivityPrefactor',['../d4/dc0/_thermal_8hpp.html#a88c5c3bccb040991bbbb72fd57971f5b',1,'CompactStar::Physics::Thermal']]]
 ];

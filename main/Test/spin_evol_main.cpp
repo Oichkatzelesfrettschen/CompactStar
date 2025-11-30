@@ -68,7 +68,7 @@ int main()
 	// ---------------------------------------------------------------------
 	SpinDrv::MagneticDipole::Options opts;
 	opts.braking_index = 3.0;			// canonical dipole
-	opts.K_prefactor = 1.0e-20;			// toy value; tune as needed
+	opts.K_prefactor = 1.0e-10;			// toy value; tune as needed
 	opts.use_moment_of_inertia = false; // not using ctx for K yet
 
 	SpinDrv::MagneticDipole driver(opts);
@@ -90,7 +90,7 @@ int main()
 	for (std::size_t step = 0; step <= n_steps; ++step)
 	{
 		// Output current time and spin frequency
-		std::cout << t << " " << spin.Omega() << "\n";
+		std::cout << "(" << t << ", " << spin.Omega() << ")\t";
 
 		// Clear RHS, ask driver to contribute, then update Ω
 		dYdt.Clear();

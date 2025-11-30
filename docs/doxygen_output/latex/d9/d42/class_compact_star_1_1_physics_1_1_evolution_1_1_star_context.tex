@@ -1,0 +1,92 @@
+\hypertarget{class_compact_star_1_1_physics_1_1_evolution_1_1_star_context}{}\doxysection{Compact\+Star\+::Physics\+::Evolution\+::Star\+Context Class Reference}
+\label{class_compact_star_1_1_physics_1_1_evolution_1_1_star_context}\index{CompactStar::Physics::Evolution::StarContext@{CompactStar::Physics::Evolution::StarContext}}
+
+
+Immutable, per-\/star adapter exposing cached geometry and composition.  
+
+
+
+
+{\ttfamily \#include $<$Star\+Context.\+hpp$>$}
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_compact_star_1_1_physics_1_1_evolution_1_1_star_context_ab27dfa3cd8109547ef0f347ed674cf85}\label{class_compact_star_1_1_physics_1_1_evolution_1_1_star_context_ab27dfa3cd8109547ef0f347ed674cf85}} 
+{\bfseries Star\+Context} ()=default
+\begin{DoxyCompactList}\small\item\em Default constructor (invalid context). \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_star_context_ae210b14deed99cedc7e2218bc682b8ad}{Star\+Context}} (const \mbox{\hyperlink{class_compact_star_1_1_n_star}{Compact\+Star\+::\+NStar}} \&ns, const Compact\+Star\+::\+EOS\+::\+Model $\ast$eos=0)
+\begin{DoxyCompactList}\small\item\em Construct from a precomputed neutron-\/star profile. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{Indent}\textbf{ Basic geometry and grids}\par
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_compact_star_1_1_physics_1_1_evolution_1_1_star_context_afcc4b85c86e2bdd9fe0210ea124fa53a}\label{class_compact_star_1_1_physics_1_1_evolution_1_1_star_context_afcc4b85c86e2bdd9fe0210ea124fa53a}} 
+std\+::size\+\_\+t {\bfseries Size} () const
+\begin{DoxyCompactList}\small\item\em Number of radial samples in the profile grid. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_compact_star_1_1_physics_1_1_evolution_1_1_star_context_ae367f2d7eb043bde1fcbc49a30b4d03f}\label{class_compact_star_1_1_physics_1_1_evolution_1_1_star_context_ae367f2d7eb043bde1fcbc49a30b4d03f}} 
+const \mbox{\hyperlink{struct_zaki_1_1_vector_1_1_data_column}{Zaki\+::\+Vector\+::\+Data\+Column}} $\ast$ {\bfseries Radius} () const
+\begin{DoxyCompactList}\small\item\em Radius column (km). \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_compact_star_1_1_physics_1_1_evolution_1_1_star_context_a40b97b068da2afcd4ec30490de825e8f}\label{class_compact_star_1_1_physics_1_1_evolution_1_1_star_context_a40b97b068da2afcd4ec30490de825e8f}} 
+const \mbox{\hyperlink{struct_zaki_1_1_vector_1_1_data_column}{Zaki\+::\+Vector\+::\+Data\+Column}} $\ast$ {\bfseries Nu} () const
+\begin{DoxyCompactList}\small\item\em Metric exponent $\nu(r)$ where $g_{tt}=e^{2\nu}$. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_compact_star_1_1_physics_1_1_evolution_1_1_star_context_a641c163d01ac5b0027af3168a5f50d1c}\label{class_compact_star_1_1_physics_1_1_evolution_1_1_star_context_a641c163d01ac5b0027af3168a5f50d1c}} 
+const \mbox{\hyperlink{struct_zaki_1_1_vector_1_1_data_column}{Zaki\+::\+Vector\+::\+Data\+Column}} $\ast$ {\bfseries Exp\+Lambda} () const
+\begin{DoxyCompactList}\small\item\em $e^{\Lambda(r)}$ if present (derived from mass and radius otherwise). \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_compact_star_1_1_physics_1_1_evolution_1_1_star_context_ad5915364679ddd7e26d9996c5a21c56d}\label{class_compact_star_1_1_physics_1_1_evolution_1_1_star_context_ad5915364679ddd7e26d9996c5a21c56d}} 
+const \mbox{\hyperlink{struct_zaki_1_1_vector_1_1_data_column}{Zaki\+::\+Vector\+::\+Data\+Column}} $\ast$ {\bfseries Mass} () const
+\begin{DoxyCompactList}\small\item\em Gravitational mass profile (M\+\_\+ $\odot$ or internal units). \end{DoxyCompactList}\end{DoxyCompactItemize}
+\end{Indent}
+\begin{Indent}\textbf{ Thermodynamic background (optional; forwarded from Core/\+EOS)}\par
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_compact_star_1_1_physics_1_1_evolution_1_1_star_context_a95225261475e0e3256348b5581fbf792}\label{class_compact_star_1_1_physics_1_1_evolution_1_1_star_context_a95225261475e0e3256348b5581fbf792}} 
+const \mbox{\hyperlink{struct_zaki_1_1_vector_1_1_data_column}{Zaki\+::\+Vector\+::\+Data\+Column}} $\ast$ {\bfseries Baryon\+Density} () const
+\begin{DoxyCompactList}\small\item\em Total baryon number density $n_b(r)$ (fm$^\wedge$\{-\/3\}) if available. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_compact_star_1_1_physics_1_1_evolution_1_1_star_context_a74d298c4e3e0dcb4832e7e386307b259}\label{class_compact_star_1_1_physics_1_1_evolution_1_1_star_context_a74d298c4e3e0dcb4832e7e386307b259}} 
+const \mbox{\hyperlink{struct_zaki_1_1_vector_1_1_data_column}{Zaki\+::\+Vector\+::\+Data\+Column}} $\ast$ {\bfseries Proton\+Fraction} () const
+\begin{DoxyCompactList}\small\item\em Proton fraction $Y_p(r)$ or nullptr if not available. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\end{Indent}
+\begin{Indent}\textbf{ Global scalars}\par
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_compact_star_1_1_physics_1_1_evolution_1_1_star_context_af6fb20f678a782fa4104b39ce0d68f9b}\label{class_compact_star_1_1_physics_1_1_evolution_1_1_star_context_af6fb20f678a782fa4104b39ce0d68f9b}} 
+double {\bfseries Radius\+Surface} () const
+\begin{DoxyCompactList}\small\item\em Circumferential radius at the surface (km). \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_compact_star_1_1_physics_1_1_evolution_1_1_star_context_a669582110bc36249497fb5cf1ae46ff0}\label{class_compact_star_1_1_physics_1_1_evolution_1_1_star_context_a669582110bc36249497fb5cf1ae46ff0}} 
+double {\bfseries Mass\+Surface} () const
+\begin{DoxyCompactList}\small\item\em Gravitational mass at the surface (same units as Mass column). \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_compact_star_1_1_physics_1_1_evolution_1_1_star_context_a2d80e28892a24f43682eb5fa01685458}\label{class_compact_star_1_1_physics_1_1_evolution_1_1_star_context_a2d80e28892a24f43682eb5fa01685458}} 
+double {\bfseries Exp\+Nu\+Surface} () const
+\begin{DoxyCompactList}\small\item\em Surface redshift factor $e^{\nu(R)}$. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\end{Indent}
+
+
+\doxysubsection{Detailed Description}
+Immutable, per-\/star adapter exposing cached geometry and composition. 
+
+Constructed from an existing {\ttfamily \mbox{\hyperlink{class_compact_star_1_1_n_star}{Compact\+Star\+::\+NStar}}} and (optionally) an EOS object. Provides fast getters for radius grid, metric factors e^{\nu}, e^{\Lambda}, and commonly used columns (density, proton fraction, etc.) by forwarding to Core datasets. Geometry-\/only computations that do not change during evolution can be cached here at construction time (done in \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_geometry_cache}{Geometry\+Cache}}). 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_compact_star_1_1_physics_1_1_evolution_1_1_star_context_ae210b14deed99cedc7e2218bc682b8ad}\label{class_compact_star_1_1_physics_1_1_evolution_1_1_star_context_ae210b14deed99cedc7e2218bc682b8ad}} 
+\index{CompactStar::Physics::Evolution::StarContext@{CompactStar::Physics::Evolution::StarContext}!StarContext@{StarContext}}
+\index{StarContext@{StarContext}!CompactStar::Physics::Evolution::StarContext@{CompactStar::Physics::Evolution::StarContext}}
+\doxysubsubsection{\texorpdfstring{StarContext()}{StarContext()}}
+{\footnotesize\ttfamily Compact\+Star\+::\+Physics\+::\+Evolution\+::\+Star\+Context\+::\+Star\+Context (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_compact_star_1_1_n_star}{Compact\+Star\+::\+NStar}} \&}]{ns,  }\item[{const Compact\+Star\+::\+EOS\+::\+Model $\ast$}]{eos = {\ttfamily 0} }\end{DoxyParamCaption})}
+
+
+
+Construct from a precomputed neutron-\/star profile. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em ns} & Reference to an initialized {\ttfamily \mbox{\hyperlink{class_compact_star_1_1_n_star}{Compact\+Star\+::\+NStar}}}. \\
+\hline
+{\em eos} & Optional pointer to an EOS object for composition queries (may be null). \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Compact\+Star/\+Physics/\+Evolution/\mbox{\hyperlink{_star_context_8hpp}{Star\+Context.\+hpp}}\item 
+Compact\+Star/\+Physics/\+Evolution/src/\mbox{\hyperlink{_star_context_8cpp}{Star\+Context.\+cpp}}\end{DoxyCompactItemize}

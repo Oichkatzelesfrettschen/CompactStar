@@ -8,11 +8,11 @@ var searchData=
   ['m_5fchi_5fvals_5',['m_chi_vals',['../d6/d63/class_compact_star_1_1_microphysics_1_1_b_n_v_1_1_internal_1_1_b_n_v___chi.html#a1e9205b0cf7ed06f6137097eb7b9dad4',1,'CompactStar::Microphysics::BNV::Internal::BNV_Chi']]],
   ['m_5fp_6',['M_p',['../d9/de0/struct_binary___params.html#a61e66e052aed2e56e754b70b1f27b859',1,'Binary_Params']]],
   ['mass_7',['mass',['../d4/da6/struct_compact_star_1_1_light_d_m___scalar___density_1_1_baryon.html#aea6c538101c7afe8c3fd27d73f58fed7',1,'CompactStar::LightDM_Scalar_Density::Baryon::mass()'],['../d8/d2f/struct_compact_star_1_1_microphysics_1_1_b_n_v_1_1_internal_1_1_b_n_v___chi_1_1_baryon.html#a8e928ea82f424f6ff7e3b7c912f45f93',1,'CompactStar::Microphysics::BNV::Internal::BNV_Chi::Baryon::mass()']]],
-  ['max_5fsteps_8',['max_steps',['../dd/d11/struct_compact_star_1_1_chemical_heating_1_1_config.html#adc7bfd08af04b106258234b837c45100',1,'CompactStar::ChemicalHeating::Config']]],
+  ['max_5fsteps_8',['max_steps',['../d5/d7b/struct_compact_star_1_1_physics_1_1_evolution_1_1_config.html#aab3086a741f75d60f631d5b5648df469',1,'CompactStar::Physics::Evolution::Config']]],
   ['micro_5fr_9',['micro_r',['../dc/dd8/class_compact_star_1_1_light_d_m___scalar___density.html#ae6290012323ab098b1d1d0a32b3ffe2a',1,'CompactStar::LightDM_Scalar_Density::micro_r()'],['../d6/d63/class_compact_star_1_1_microphysics_1_1_b_n_v_1_1_internal_1_1_b_n_v___chi.html#aa2551c95685d83657e41da99ee9a5636',1,'CompactStar::Microphysics::BNV::Internal::BNV_Chi::micro_r()']]],
   ['mix_5fexp_5fcond_5ff_10',['mix_exp_cond_f',['../dd/d3c/class_compact_star_1_1_t_o_v_solver.html#adecbbcc06e83b3e22bd77386170fef83',1,'CompactStar::TOVSolver']]],
   ['mtx_11',['mtx',['../d4/da4/class_compact_star_1_1_particle.html#a078f84fcf37f3fcfb60a4770cced7eae',1,'CompactStar::Particle']]],
-  ['mu_12',['mu',['../d4/da4/class_compact_star_1_1_particle.html#a5c46b172de72aa5cb7006bbaa2afbe63',1,'CompactStar::Particle::mu()'],['../d0/dd0/struct_compact_star_1_1_spin_state.html#a8503ae626987ba5abeac191b12aecdc2',1,'CompactStar::SpinState::mu()']]],
+  ['mu_12',['mu',['../d4/da4/class_compact_star_1_1_particle.html#a5c46b172de72aa5cb7006bbaa2afbe63',1,'CompactStar::Particle']]],
   ['mu_5falpha_13',['mu_alpha',['../d9/de0/struct_binary___params.html#a5f729638abe99754ccae8b73543376b4',1,'Binary_Params']]],
   ['mu_5fdelta_14',['mu_delta',['../d9/de0/struct_binary___params.html#a61dd2948f03b7d260083224989db064c',1,'Binary_Params']]],
   ['mu_5ftot_15',['mu_tot',['../d9/de0/struct_binary___params.html#a265e8c3a76aef025abdb798bb518987a',1,'Binary_Params']]]

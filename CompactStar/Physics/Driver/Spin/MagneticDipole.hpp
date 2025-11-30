@@ -21,7 +21,7 @@
  *
  * Directory-based namespace: CompactStar::Physics::Driver::Spin
  *
- * @ingroup PhysicsDriverSpin
+ * @ingroup PhysicsDriver
  */
 
 #ifndef CompactStar_Physics_Driver_Spin_MagneticDipole_H

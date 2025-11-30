@@ -6,34 +6,43 @@ Baryon-\/number-\/violation utilities built on profiles + spin state.
 
 
 {\ttfamily \#include \char`\"{}Compact\+Star/\+Core/\+Star\+Profile.\+hpp\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}Compact\+Star/\+Physics/\+State/\+BNVState.\+hpp\char`\"{}}\newline
 {\ttfamily \#include \char`\"{}Compact\+Star/\+Physics/\+State/\+Spin\+State.\+hpp\char`\"{}}\newline
 \doxysubsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
-double \mbox{\hyperlink{_b_n_v_8hpp_a3001ef28c39ffdd90557b326180f4636}{Compact\+Star\+::\+BNV\+::\+Spin\+Down\+Limit}} (Star\+Profile\+View view, const Spin\+State \&s)
-\begin{DoxyCompactList}\small\item\em Spin-\/down energy budget bound on the total BNV rate. \end{DoxyCompactList}\end{DoxyCompactItemize}
+double \mbox{\hyperlink{_b_n_v_8hpp_a0d89ca57a51bd76528b6ef9919d49521}{Compact\+Star\+::\+Physics\+::\+BNV\+::\+Spin\+Down\+Limit}} (Star\+Profile\+View view, const \+::\+Compact\+Star\+::\+Physics\+::\+State\+::\+Spin\+State \&s)
+\begin{DoxyCompactList}\small\item\em Spin-\/down energy budget bound on the total BNV rate. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{_b_n_v_8hpp_a004900e17981c9ca6b94498f2a3c36ae}{Compact\+Star\+::\+Physics\+::\+BNV\+::\+Update\+Spin\+Down\+Limit}} (Star\+Profile\+View view, const \+::\+Compact\+Star\+::\+Physics\+::\+State\+::\+Spin\+State \&s, Physics\+::\+State\+::\+BNVState \&bnv)
+\begin{DoxyCompactList}\small\item\em Compute the spin-\/down bound and store it in a BNVState block. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}
 Baryon-\/number-\/violation utilities built on profiles + spin state. 
 
+Provides helper routines to estimate bounds on the total BNV rate from pulsar spin-\/down, and to populate the BNVState block with corresponding diagnostics (e.\+g. Γ\+\_\+\+BNV limits).
+
+Directory-\/based namespace\+: Compact\+Star\+::\+Physics\+::\+BNV
+
 \begin{DoxyAuthor}{Author}
-Mohammadreza Zakeri Contact\+: \href{mailto:M.Zakeri@eku.edu}{\texttt{ M.\+Zakeri@eku.\+edu}} 
+Mohammadreza Zakeri (\href{mailto:M.Zakeri@eku.edu}{\texttt{ M.\+Zakeri@eku.\+edu}}) 
 \end{DoxyAuthor}
 
 
 \doxysubsection{Function Documentation}
-\mbox{\Hypertarget{_b_n_v_8hpp_a3001ef28c39ffdd90557b326180f4636}\label{_b_n_v_8hpp_a3001ef28c39ffdd90557b326180f4636}} 
+\mbox{\Hypertarget{_b_n_v_8hpp_a0d89ca57a51bd76528b6ef9919d49521}\label{_b_n_v_8hpp_a0d89ca57a51bd76528b6ef9919d49521}} 
 \index{BNV.hpp@{BNV.hpp}!SpinDownLimit@{SpinDownLimit}}
 \index{SpinDownLimit@{SpinDownLimit}!BNV.hpp@{BNV.hpp}}
 \doxysubsubsection{\texorpdfstring{SpinDownLimit()}{SpinDownLimit()}}
-{\footnotesize\ttfamily double Compact\+Star\+::\+BNV\+::\+Spin\+Down\+Limit (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_compact_star_1_1_star_profile_view}{Star\+Profile\+View}}}]{view,  }\item[{const \mbox{\hyperlink{struct_compact_star_1_1_spin_state}{Spin\+State}} \&}]{s }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily double Compact\+Star\+::\+Physics\+::\+BNV\+::\+Spin\+Down\+Limit (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_compact_star_1_1_star_profile_view}{Star\+Profile\+View}}}]{view,  }\item[{const \+::\+Compact\+Star\+::\+Physics\+::\+State\+::\+Spin\+State \&}]{s }\end{DoxyParamCaption})}
 
 
 
 Spin-\/down energy budget bound on the total BNV rate. 
 
 Computes an upper limit on $\Gamma_{\mathrm{BNV}}$ by requiring the BNV heating power not to exceed the observed spin-\/down power (model assumptions apply).
+
+This is a pure utility function and does not modify any state blocks.
 
 
 \begin{DoxyParams}{Parameters}
@@ -45,3 +54,26 @@ Computes an upper limit on $\Gamma_{\mathrm{BNV}}$ by requiring the BNV heating 
 \begin{DoxyReturn}{Returns}
 Upper bound on $\Gamma_{\mathrm{BNV}}$ \mbox{[}1/yr\mbox{]}. 
 \end{DoxyReturn}
+\mbox{\Hypertarget{_b_n_v_8hpp_a004900e17981c9ca6b94498f2a3c36ae}\label{_b_n_v_8hpp_a004900e17981c9ca6b94498f2a3c36ae}} 
+\index{BNV.hpp@{BNV.hpp}!UpdateSpinDownLimit@{UpdateSpinDownLimit}}
+\index{UpdateSpinDownLimit@{UpdateSpinDownLimit}!BNV.hpp@{BNV.hpp}}
+\doxysubsubsection{\texorpdfstring{UpdateSpinDownLimit()}{UpdateSpinDownLimit()}}
+{\footnotesize\ttfamily void Compact\+Star\+::\+Physics\+::\+BNV\+::\+Update\+Spin\+Down\+Limit (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_compact_star_1_1_star_profile_view}{Star\+Profile\+View}}}]{view,  }\item[{const \+::\+Compact\+Star\+::\+Physics\+::\+State\+::\+Spin\+State \&}]{s,  }\item[{\mbox{\hyperlink{class_compact_star_1_1_physics_1_1_state_1_1_b_n_v_state}{Physics\+::\+State\+::\+BNVState}} \&}]{bnv }\end{DoxyParamCaption})}
+
+
+
+Compute the spin-\/down bound and store it in a BNVState block. 
+
+Convenience wrapper around Spin\+Down\+Limit(...) that writes the resulting bound into the BNV evolution/diagnostic state. This keeps BNV-\/related quantities available to drivers and observers without recomputing them.
+
+By convention, the spin-\/down limit is stored in bnv.\+Spin\+Down\+Limit() matching the accessor provided by Physics\+::\+State\+::\+BNVState.
+
+
+\begin{DoxyParams}{Parameters}
+{\em view} & Structural profile view (may use I(\+M,\+R) if available). \\
+\hline
+{\em s} & Spin state (uses P, Pdot). \\
+\hline
+{\em bnv} & BNV state block to update (Spin\+Down\+Limit() field is set). \\
+\hline
+\end{DoxyParams}

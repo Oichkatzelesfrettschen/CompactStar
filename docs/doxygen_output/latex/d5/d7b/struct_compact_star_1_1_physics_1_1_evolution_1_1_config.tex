@@ -1,0 +1,168 @@
+\hypertarget{struct_compact_star_1_1_physics_1_1_evolution_1_1_config}{}\doxysection{Compact\+Star\+::Physics\+::Evolution\+::Config Struct Reference}
+\label{struct_compact_star_1_1_physics_1_1_evolution_1_1_config}\index{CompactStar::Physics::Evolution::Config@{CompactStar::Physics::Evolution::Config}}
+
+
+Configures a single evolution run.  
+
+
+
+
+{\ttfamily \#include $<$Evolution\+Config.\+hpp$>$}
+
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+Stepper\+Type \mbox{\hyperlink{struct_compact_star_1_1_physics_1_1_evolution_1_1_config_ae283786bfb5c27a7d4b0a48375e30294}{stepper}} = Stepper\+Type\+::\+MSBDF
+\item 
+double \mbox{\hyperlink{struct_compact_star_1_1_physics_1_1_evolution_1_1_config_a81accd13af408d61ec9f4d8913452d2f}{rtol}} = 1e-\/6
+\item 
+double \mbox{\hyperlink{struct_compact_star_1_1_physics_1_1_evolution_1_1_config_af2ff1bf36cca9c19839186ecdbc89ff5}{atol}} = 1e-\/10
+\item 
+std\+::size\+\_\+t \mbox{\hyperlink{struct_compact_star_1_1_physics_1_1_evolution_1_1_config_aab3086a741f75d60f631d5b5648df469}{max\+\_\+steps}} = 1000000
+\item 
+double \mbox{\hyperlink{struct_compact_star_1_1_physics_1_1_evolution_1_1_config_a818995597d187fafd862ee02a43fdc33}{dt\+\_\+save}} = 1.\+0e2
+\item 
+\mbox{\Hypertarget{struct_compact_star_1_1_physics_1_1_evolution_1_1_config_a448bf3953e2c4909786beb744a4fb89d}\label{struct_compact_star_1_1_physics_1_1_evolution_1_1_config_a448bf3953e2c4909786beb744a4fb89d}} 
+bool {\bfseries save\+\_\+intermediate} = true
+\item 
+bool \mbox{\hyperlink{struct_compact_star_1_1_physics_1_1_evolution_1_1_config_ae36a398df8b8b82ee10c0d239e676258}{use\+\_\+isothermal\+\_\+core}} = true
+\item 
+bool \mbox{\hyperlink{struct_compact_star_1_1_physics_1_1_evolution_1_1_config_a7624adf437ec708f60daecd87f279683}{enable\+\_\+\+MU}} = true
+\item 
+bool \mbox{\hyperlink{struct_compact_star_1_1_physics_1_1_evolution_1_1_config_ae65371fa782bb834f6dbbbb7b0916ae8}{enable\+\_\+\+DU}} = true
+\item 
+bool \mbox{\hyperlink{struct_compact_star_1_1_physics_1_1_evolution_1_1_config_a935b14c5e1168067b5122059c6ea441f}{enable\+\_\+\+PBF}} = false
+\item 
+bool \mbox{\hyperlink{struct_compact_star_1_1_physics_1_1_evolution_1_1_config_a2aa7e969c648e1e115879b00df71dba7}{enable\+\_\+\+BNV}} = false
+\item 
+bool \mbox{\hyperlink{struct_compact_star_1_1_physics_1_1_evolution_1_1_config_a7aa038ac3c3e393f3854a7b39fe67309}{enable\+\_\+rotochem\+\_\+driver}} = false
+\item 
+bool \mbox{\hyperlink{struct_compact_star_1_1_physics_1_1_evolution_1_1_config_afb3eba73bbc39057f6f04d905b0cc27b}{couple\+\_\+spin}} = false
+\item 
+\mbox{\Hypertarget{struct_compact_star_1_1_physics_1_1_evolution_1_1_config_afaf335ececb43540fec904cd694a7dd5}\label{struct_compact_star_1_1_physics_1_1_evolution_1_1_config_afaf335ececb43540fec904cd694a7dd5}} 
+Envelope\+Model {\bfseries envelope} = Envelope\+Model\+::\+Iron
+\item 
+double \mbox{\hyperlink{struct_compact_star_1_1_physics_1_1_evolution_1_1_config_a956575775d60221464dd6732798fa247}{envelope\+\_\+xi}} = 0.\+0
+\item 
+\mbox{\Hypertarget{struct_compact_star_1_1_physics_1_1_evolution_1_1_config_abe7b18882c30cc1b4ed49db3a3ef0cb3}\label{struct_compact_star_1_1_physics_1_1_evolution_1_1_config_abe7b18882c30cc1b4ed49db3a3ef0cb3}} 
+bool {\bfseries superfluid\+\_\+n} = false
+\item 
+\mbox{\Hypertarget{struct_compact_star_1_1_physics_1_1_evolution_1_1_config_aa4601e07c871835f48ef2eff98fc2eea}\label{struct_compact_star_1_1_physics_1_1_evolution_1_1_config_aa4601e07c871835f48ef2eff98fc2eea}} 
+bool {\bfseries superfluid\+\_\+p} = false
+\item 
+std\+::size\+\_\+t \mbox{\hyperlink{struct_compact_star_1_1_physics_1_1_evolution_1_1_config_ab2e24ae85b3b6f4d3b2496fde7d61a9d}{n\+\_\+eta}} = 1
+\item 
+\mbox{\Hypertarget{struct_compact_star_1_1_physics_1_1_evolution_1_1_config_a1c3cc96651c726d6a76c5ae20c067393}\label{struct_compact_star_1_1_physics_1_1_evolution_1_1_config_a1c3cc96651c726d6a76c5ae20c067393}} 
+std\+::string {\bfseries unit\+\_\+policy} = \char`\"{}cgs\+\_\+with\+\_\+\+Gc1\char`\"{}
+\item 
+std\+::string \mbox{\hyperlink{struct_compact_star_1_1_physics_1_1_evolution_1_1_config_af7573276349dec83c48d0278eae576fc}{run\+\_\+label}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Configures a single evolution run. 
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{struct_compact_star_1_1_physics_1_1_evolution_1_1_config_af2ff1bf36cca9c19839186ecdbc89ff5}\label{struct_compact_star_1_1_physics_1_1_evolution_1_1_config_af2ff1bf36cca9c19839186ecdbc89ff5}} 
+\index{CompactStar::Physics::Evolution::Config@{CompactStar::Physics::Evolution::Config}!atol@{atol}}
+\index{atol@{atol}!CompactStar::Physics::Evolution::Config@{CompactStar::Physics::Evolution::Config}}
+\doxysubsubsection{\texorpdfstring{atol}{atol}}
+{\footnotesize\ttfamily double Compact\+Star\+::\+Physics\+::\+Evolution\+::\+Config\+::atol = 1e-\/10}
+
+Absolute tolerance. ~\newline
+ \mbox{\Hypertarget{struct_compact_star_1_1_physics_1_1_evolution_1_1_config_afb3eba73bbc39057f6f04d905b0cc27b}\label{struct_compact_star_1_1_physics_1_1_evolution_1_1_config_afb3eba73bbc39057f6f04d905b0cc27b}} 
+\index{CompactStar::Physics::Evolution::Config@{CompactStar::Physics::Evolution::Config}!couple\_spin@{couple\_spin}}
+\index{couple\_spin@{couple\_spin}!CompactStar::Physics::Evolution::Config@{CompactStar::Physics::Evolution::Config}}
+\doxysubsubsection{\texorpdfstring{couple\_spin}{couple\_spin}}
+{\footnotesize\ttfamily bool Compact\+Star\+::\+Physics\+::\+Evolution\+::\+Config\+::couple\+\_\+spin = false}
+
+Include $\Omega$ in the state. ~\newline
+ \mbox{\Hypertarget{struct_compact_star_1_1_physics_1_1_evolution_1_1_config_a818995597d187fafd862ee02a43fdc33}\label{struct_compact_star_1_1_physics_1_1_evolution_1_1_config_a818995597d187fafd862ee02a43fdc33}} 
+\index{CompactStar::Physics::Evolution::Config@{CompactStar::Physics::Evolution::Config}!dt\_save@{dt\_save}}
+\index{dt\_save@{dt\_save}!CompactStar::Physics::Evolution::Config@{CompactStar::Physics::Evolution::Config}}
+\doxysubsubsection{\texorpdfstring{dt\_save}{dt\_save}}
+{\footnotesize\ttfamily double Compact\+Star\+::\+Physics\+::\+Evolution\+::\+Config\+::dt\+\_\+save = 1.\+0e2}
+
+Spacing of saved samples (s). \mbox{\Hypertarget{struct_compact_star_1_1_physics_1_1_evolution_1_1_config_a2aa7e969c648e1e115879b00df71dba7}\label{struct_compact_star_1_1_physics_1_1_evolution_1_1_config_a2aa7e969c648e1e115879b00df71dba7}} 
+\index{CompactStar::Physics::Evolution::Config@{CompactStar::Physics::Evolution::Config}!enable\_BNV@{enable\_BNV}}
+\index{enable\_BNV@{enable\_BNV}!CompactStar::Physics::Evolution::Config@{CompactStar::Physics::Evolution::Config}}
+\doxysubsubsection{\texorpdfstring{enable\_BNV}{enable\_BNV}}
+{\footnotesize\ttfamily bool Compact\+Star\+::\+Physics\+::\+Evolution\+::\+Config\+::enable\+\_\+\+BNV = false}
+
+Baryon-\/number violating processes. ~\newline
+ \mbox{\Hypertarget{struct_compact_star_1_1_physics_1_1_evolution_1_1_config_ae65371fa782bb834f6dbbbb7b0916ae8}\label{struct_compact_star_1_1_physics_1_1_evolution_1_1_config_ae65371fa782bb834f6dbbbb7b0916ae8}} 
+\index{CompactStar::Physics::Evolution::Config@{CompactStar::Physics::Evolution::Config}!enable\_DU@{enable\_DU}}
+\index{enable\_DU@{enable\_DU}!CompactStar::Physics::Evolution::Config@{CompactStar::Physics::Evolution::Config}}
+\doxysubsubsection{\texorpdfstring{enable\_DU}{enable\_DU}}
+{\footnotesize\ttfamily bool Compact\+Star\+::\+Physics\+::\+Evolution\+::\+Config\+::enable\+\_\+\+DU = true}
+
+Direct Urca emissivity/reactions. ~\newline
+ \mbox{\Hypertarget{struct_compact_star_1_1_physics_1_1_evolution_1_1_config_a7624adf437ec708f60daecd87f279683}\label{struct_compact_star_1_1_physics_1_1_evolution_1_1_config_a7624adf437ec708f60daecd87f279683}} 
+\index{CompactStar::Physics::Evolution::Config@{CompactStar::Physics::Evolution::Config}!enable\_MU@{enable\_MU}}
+\index{enable\_MU@{enable\_MU}!CompactStar::Physics::Evolution::Config@{CompactStar::Physics::Evolution::Config}}
+\doxysubsubsection{\texorpdfstring{enable\_MU}{enable\_MU}}
+{\footnotesize\ttfamily bool Compact\+Star\+::\+Physics\+::\+Evolution\+::\+Config\+::enable\+\_\+\+MU = true}
+
+Modified Urca emissivity/reactions. ~\newline
+ \mbox{\Hypertarget{struct_compact_star_1_1_physics_1_1_evolution_1_1_config_a935b14c5e1168067b5122059c6ea441f}\label{struct_compact_star_1_1_physics_1_1_evolution_1_1_config_a935b14c5e1168067b5122059c6ea441f}} 
+\index{CompactStar::Physics::Evolution::Config@{CompactStar::Physics::Evolution::Config}!enable\_PBF@{enable\_PBF}}
+\index{enable\_PBF@{enable\_PBF}!CompactStar::Physics::Evolution::Config@{CompactStar::Physics::Evolution::Config}}
+\doxysubsubsection{\texorpdfstring{enable\_PBF}{enable\_PBF}}
+{\footnotesize\ttfamily bool Compact\+Star\+::\+Physics\+::\+Evolution\+::\+Config\+::enable\+\_\+\+PBF = false}
+
+Pair-\/breaking/formation emission. ~\newline
+ \mbox{\Hypertarget{struct_compact_star_1_1_physics_1_1_evolution_1_1_config_a7aa038ac3c3e393f3854a7b39fe67309}\label{struct_compact_star_1_1_physics_1_1_evolution_1_1_config_a7aa038ac3c3e393f3854a7b39fe67309}} 
+\index{CompactStar::Physics::Evolution::Config@{CompactStar::Physics::Evolution::Config}!enable\_rotochem\_driver@{enable\_rotochem\_driver}}
+\index{enable\_rotochem\_driver@{enable\_rotochem\_driver}!CompactStar::Physics::Evolution::Config@{CompactStar::Physics::Evolution::Config}}
+\doxysubsubsection{\texorpdfstring{enable\_rotochem\_driver}{enable\_rotochem\_driver}}
+{\footnotesize\ttfamily bool Compact\+Star\+::\+Physics\+::\+Evolution\+::\+Config\+::enable\+\_\+rotochem\+\_\+driver = false}
+
+Spin-\/down driver for $\eta$. ~\newline
+ \mbox{\Hypertarget{struct_compact_star_1_1_physics_1_1_evolution_1_1_config_a956575775d60221464dd6732798fa247}\label{struct_compact_star_1_1_physics_1_1_evolution_1_1_config_a956575775d60221464dd6732798fa247}} 
+\index{CompactStar::Physics::Evolution::Config@{CompactStar::Physics::Evolution::Config}!envelope\_xi@{envelope\_xi}}
+\index{envelope\_xi@{envelope\_xi}!CompactStar::Physics::Evolution::Config@{CompactStar::Physics::Evolution::Config}}
+\doxysubsubsection{\texorpdfstring{envelope\_xi}{envelope\_xi}}
+{\footnotesize\ttfamily double Compact\+Star\+::\+Physics\+::\+Evolution\+::\+Config\+::envelope\+\_\+xi = 0.\+0}
+
+Light-\/element column parameter (if used). \mbox{\Hypertarget{struct_compact_star_1_1_physics_1_1_evolution_1_1_config_aab3086a741f75d60f631d5b5648df469}\label{struct_compact_star_1_1_physics_1_1_evolution_1_1_config_aab3086a741f75d60f631d5b5648df469}} 
+\index{CompactStar::Physics::Evolution::Config@{CompactStar::Physics::Evolution::Config}!max\_steps@{max\_steps}}
+\index{max\_steps@{max\_steps}!CompactStar::Physics::Evolution::Config@{CompactStar::Physics::Evolution::Config}}
+\doxysubsubsection{\texorpdfstring{max\_steps}{max\_steps}}
+{\footnotesize\ttfamily std\+::size\+\_\+t Compact\+Star\+::\+Physics\+::\+Evolution\+::\+Config\+::max\+\_\+steps = 1000000}
+
+Safety cap on steps. \mbox{\Hypertarget{struct_compact_star_1_1_physics_1_1_evolution_1_1_config_ab2e24ae85b3b6f4d3b2496fde7d61a9d}\label{struct_compact_star_1_1_physics_1_1_evolution_1_1_config_ab2e24ae85b3b6f4d3b2496fde7d61a9d}} 
+\index{CompactStar::Physics::Evolution::Config@{CompactStar::Physics::Evolution::Config}!n\_eta@{n\_eta}}
+\index{n\_eta@{n\_eta}!CompactStar::Physics::Evolution::Config@{CompactStar::Physics::Evolution::Config}}
+\doxysubsubsection{\texorpdfstring{n\_eta}{n\_eta}}
+{\footnotesize\ttfamily std\+::size\+\_\+t Compact\+Star\+::\+Physics\+::\+Evolution\+::\+Config\+::n\+\_\+eta = 1}
+
+Number of $\eta_i$ components. \mbox{\Hypertarget{struct_compact_star_1_1_physics_1_1_evolution_1_1_config_a81accd13af408d61ec9f4d8913452d2f}\label{struct_compact_star_1_1_physics_1_1_evolution_1_1_config_a81accd13af408d61ec9f4d8913452d2f}} 
+\index{CompactStar::Physics::Evolution::Config@{CompactStar::Physics::Evolution::Config}!rtol@{rtol}}
+\index{rtol@{rtol}!CompactStar::Physics::Evolution::Config@{CompactStar::Physics::Evolution::Config}}
+\doxysubsubsection{\texorpdfstring{rtol}{rtol}}
+{\footnotesize\ttfamily double Compact\+Star\+::\+Physics\+::\+Evolution\+::\+Config\+::rtol = 1e-\/6}
+
+Relative tolerance. ~\newline
+ \mbox{\Hypertarget{struct_compact_star_1_1_physics_1_1_evolution_1_1_config_af7573276349dec83c48d0278eae576fc}\label{struct_compact_star_1_1_physics_1_1_evolution_1_1_config_af7573276349dec83c48d0278eae576fc}} 
+\index{CompactStar::Physics::Evolution::Config@{CompactStar::Physics::Evolution::Config}!run\_label@{run\_label}}
+\index{run\_label@{run\_label}!CompactStar::Physics::Evolution::Config@{CompactStar::Physics::Evolution::Config}}
+\doxysubsubsection{\texorpdfstring{run\_label}{run\_label}}
+{\footnotesize\ttfamily std\+::string Compact\+Star\+::\+Physics\+::\+Evolution\+::\+Config\+::run\+\_\+label}
+
+Free-\/form label for outputs. \mbox{\Hypertarget{struct_compact_star_1_1_physics_1_1_evolution_1_1_config_ae283786bfb5c27a7d4b0a48375e30294}\label{struct_compact_star_1_1_physics_1_1_evolution_1_1_config_ae283786bfb5c27a7d4b0a48375e30294}} 
+\index{CompactStar::Physics::Evolution::Config@{CompactStar::Physics::Evolution::Config}!stepper@{stepper}}
+\index{stepper@{stepper}!CompactStar::Physics::Evolution::Config@{CompactStar::Physics::Evolution::Config}}
+\doxysubsubsection{\texorpdfstring{stepper}{stepper}}
+{\footnotesize\ttfamily Stepper\+Type Compact\+Star\+::\+Physics\+::\+Evolution\+::\+Config\+::stepper = Stepper\+Type\+::\+MSBDF}
+
+Time stepper choice. \mbox{\Hypertarget{struct_compact_star_1_1_physics_1_1_evolution_1_1_config_ae36a398df8b8b82ee10c0d239e676258}\label{struct_compact_star_1_1_physics_1_1_evolution_1_1_config_ae36a398df8b8b82ee10c0d239e676258}} 
+\index{CompactStar::Physics::Evolution::Config@{CompactStar::Physics::Evolution::Config}!use\_isothermal\_core@{use\_isothermal\_core}}
+\index{use\_isothermal\_core@{use\_isothermal\_core}!CompactStar::Physics::Evolution::Config@{CompactStar::Physics::Evolution::Config}}
+\doxysubsubsection{\texorpdfstring{use\_isothermal\_core}{use\_isothermal\_core}}
+{\footnotesize\ttfamily bool Compact\+Star\+::\+Physics\+::\+Evolution\+::\+Config\+::use\+\_\+isothermal\+\_\+core = true}
+
+Assume isothermal interior (standard). 
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Compact\+Star/\+Physics/\+Evolution/Evolution\+Config.\+hpp\end{DoxyCompactItemize}

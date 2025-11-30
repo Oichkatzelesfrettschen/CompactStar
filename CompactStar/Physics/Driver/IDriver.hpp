@@ -8,7 +8,10 @@
  *
  * MIT License — see LICENSE at repo root.
  */
-
+/**
+ * @defgroup PhysicsDriver Physics evolution driver module
+ * @brief Evolution drivers that contribute to the RHS dY/dt.
+ */
 /**
  * @file IDriver.hpp
  * @brief Interface for evolution drivers that contribute to the RHS dY/dt.

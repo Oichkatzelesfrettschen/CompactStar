@@ -1,0 +1,114 @@
+\hypertarget{_state_vector_8hpp_source}{}\doxysection{State\+Vector.\+hpp}
+\label{_state_vector_8hpp_source}\index{CompactStar/Physics/Evolution/StateVector.hpp@{CompactStar/Physics/Evolution/StateVector.hpp}}
+\mbox{\hyperlink{_state_vector_8hpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{comment}{// -\/*-\/ lsst-\/c++ -\/*-\/}}
+\DoxyCodeLine{2 \textcolor{comment}{/*}}
+\DoxyCodeLine{3 \textcolor{comment}{ * CompactStar}}
+\DoxyCodeLine{4 \textcolor{comment}{ * See License file at the top of the source tree.}}
+\DoxyCodeLine{5 \textcolor{comment}{ *}}
+\DoxyCodeLine{6 \textcolor{comment}{ * Copyright (c) 2025}}
+\DoxyCodeLine{7 \textcolor{comment}{ * Mohammadreza Zakeri}}
+\DoxyCodeLine{8 \textcolor{comment}{ *}}
+\DoxyCodeLine{9 \textcolor{comment}{ * MIT License — see LICENSE at repo root.}}
+\DoxyCodeLine{10 \textcolor{comment}{ */}}
+\DoxyCodeLine{11 }
+\DoxyCodeLine{33 \textcolor{preprocessor}{\#ifndef CompactStar\_Physics\_Evolution\_StateVector\_H}}
+\DoxyCodeLine{34 \textcolor{preprocessor}{\#define CompactStar\_Physics\_Evolution\_StateVector\_H}}
+\DoxyCodeLine{35 }
+\DoxyCodeLine{36 \textcolor{preprocessor}{\#include <array>}}
+\DoxyCodeLine{37 }
+\DoxyCodeLine{38 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_state_8hpp}{CompactStar/Physics/State/State.hpp}}"{}}}
+\DoxyCodeLine{39 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_tags_8hpp}{CompactStar/Physics/State/Tags.hpp}}"{}}}
+\DoxyCodeLine{40 }
+\DoxyCodeLine{41 \textcolor{keyword}{namespace }CompactStar::Physics::State}
+\DoxyCodeLine{42 \{}
+\DoxyCodeLine{43 \textcolor{keyword}{class }SpinState;}
+\DoxyCodeLine{44 \textcolor{keyword}{class }ThermalState;}
+\DoxyCodeLine{45 \textcolor{keyword}{class }ChemState;}
+\DoxyCodeLine{46 \textcolor{keyword}{class }BNVState;}
+\DoxyCodeLine{47 \} \textcolor{comment}{// namespace CompactStar::Physics::State}}
+\DoxyCodeLine{48 }
+\DoxyCodeLine{49 \textcolor{keyword}{namespace }CompactStar::Physics::Evolution}
+\DoxyCodeLine{50 \{}
+\DoxyCodeLine{51 }
+\DoxyCodeLine{52 \textcolor{comment}{// -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{53 \textcolor{comment}{//  Helpers}}
+\DoxyCodeLine{54 \textcolor{comment}{// -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{55 }
+\DoxyCodeLine{61 \textcolor{keyword}{inline} \textcolor{keyword}{constexpr} std::size\_t \mbox{\hyperlink{_state_vector_8hpp_a5ac7d5119f023b69a7e8f8770e7f15cf}{NumStateTags}}()}
+\DoxyCodeLine{62 \{}
+\DoxyCodeLine{63     \textcolor{keyword}{using }\mbox{\hyperlink{_tags_8hpp_af14f5554b0d9be50c5ea718733bc424b}{Physics::State::StateTag}};}
+\DoxyCodeLine{64     \textcolor{keywordflow}{return} \textcolor{keyword}{static\_cast<}std::size\_t\textcolor{keyword}{>}(StateTag::Custom) + 1;}
+\DoxyCodeLine{65 \}}
+\DoxyCodeLine{66 }
+\DoxyCodeLine{67 \textcolor{comment}{// -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{68 \textcolor{comment}{//  StateVector}}
+\DoxyCodeLine{69 \textcolor{comment}{// -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{70 }
+\DoxyCodeLine{84 \textcolor{keyword}{class }\mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_state_vector}{StateVector}}}
+\DoxyCodeLine{85 \{}
+\DoxyCodeLine{86   \textcolor{keyword}{public}:}
+\DoxyCodeLine{87     \textcolor{comment}{// -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{88     \textcolor{comment}{//  Ctors / Dtor}}
+\DoxyCodeLine{89     \textcolor{comment}{// -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{90 }
+\DoxyCodeLine{92     \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_state_vector_a07af864c363a72667fe13d581bf58234}{StateVector}}();}
+\DoxyCodeLine{93 }
+\DoxyCodeLine{95     \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_state_vector_a069c56ac4eebc92da42b007d41c4c8d2}{\string~StateVector}}() = \textcolor{keywordflow}{default};}
+\DoxyCodeLine{96 }
+\DoxyCodeLine{97     \textcolor{comment}{// -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{98     \textcolor{comment}{//  Registration}}
+\DoxyCodeLine{99     \textcolor{comment}{// -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{100 }
+\DoxyCodeLine{110     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_state_vector_a4331dc2a18a709f883a859fa87bccdca}{Register}}(\mbox{\hyperlink{_tags_8hpp_af14f5554b0d9be50c5ea718733bc424b}{Physics::State::StateTag}} tag, \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_state_1_1_state}{Physics::State::State}} \&state);}
+\DoxyCodeLine{111 }
+\DoxyCodeLine{112     \textcolor{comment}{// -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{113     \textcolor{comment}{//  Generic accessors}}
+\DoxyCodeLine{114     \textcolor{comment}{// -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{115 }
+\DoxyCodeLine{121     \textcolor{keyword}{const} \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_state_1_1_state}{Physics::State::State}} \&\mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_state_vector_ad0c25d09c30da11a571304808205ca2d}{Get}}(\mbox{\hyperlink{_tags_8hpp_af14f5554b0d9be50c5ea718733bc424b}{Physics::State::StateTag}} tag) \textcolor{keyword}{const};}
+\DoxyCodeLine{122 }
+\DoxyCodeLine{128     \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_state_1_1_state}{Physics::State::State}} \&\mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_state_vector_ad0c25d09c30da11a571304808205ca2d}{Get}}(\mbox{\hyperlink{_tags_8hpp_af14f5554b0d9be50c5ea718733bc424b}{Physics::State::StateTag}} tag);}
+\DoxyCodeLine{129 }
+\DoxyCodeLine{130     \textcolor{comment}{// -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{131     \textcolor{comment}{//  Typed convenience accessors}}
+\DoxyCodeLine{132     \textcolor{comment}{// -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{133     \textcolor{comment}{// These assume that the corresponding tag has been registered with an}}
+\DoxyCodeLine{134     \textcolor{comment}{// object of the correct dynamic type (SpinState, ThermalState, ...).}}
+\DoxyCodeLine{135     \textcolor{comment}{// If the dynamic type does not match, std::bad\_cast is thrown.}}
+\DoxyCodeLine{136 }
+\DoxyCodeLine{138     \textcolor{keyword}{const} Physics::State::SpinState \&\mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_state_vector_ab0732cb853cd40b3588d96d21d34aac7}{GetSpin}}() \textcolor{keyword}{const};}
+\DoxyCodeLine{139 }
+\DoxyCodeLine{141     Physics::State::SpinState \&\mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_state_vector_ab0732cb853cd40b3588d96d21d34aac7}{GetSpin}}();}
+\DoxyCodeLine{142 }
+\DoxyCodeLine{144     \textcolor{keyword}{const} \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_state_1_1_thermal_state}{Physics::State::ThermalState}} \&\mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_state_vector_a838a0cbea3cbd1c89fdbb50533d46228}{GetThermal}}() \textcolor{keyword}{const};}
+\DoxyCodeLine{145 }
+\DoxyCodeLine{147     \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_state_1_1_thermal_state}{Physics::State::ThermalState}} \&\mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_state_vector_a838a0cbea3cbd1c89fdbb50533d46228}{GetThermal}}();}
+\DoxyCodeLine{148 }
+\DoxyCodeLine{150     \textcolor{keyword}{const} Physics::State::ChemState \&\mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_state_vector_a3d1da67fec07db9f99c3220119208c60}{GetChem}}() \textcolor{keyword}{const};}
+\DoxyCodeLine{151 }
+\DoxyCodeLine{153     Physics::State::ChemState \&\mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_state_vector_a3d1da67fec07db9f99c3220119208c60}{GetChem}}();}
+\DoxyCodeLine{154 }
+\DoxyCodeLine{156     \textcolor{keyword}{const} \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_state_1_1_b_n_v_state}{Physics::State::BNVState}} \&\mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_state_vector_a80c4a9d219aa81f9f7a4a8ee1c2de066}{GetBNV}}() \textcolor{keyword}{const};}
+\DoxyCodeLine{157 }
+\DoxyCodeLine{159     \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_state_1_1_b_n_v_state}{Physics::State::BNVState}} \&\mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_state_vector_a80c4a9d219aa81f9f7a4a8ee1c2de066}{GetBNV}}();}
+\DoxyCodeLine{160 }
+\DoxyCodeLine{161   \textcolor{keyword}{private}:}
+\DoxyCodeLine{162     \textcolor{comment}{// -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{163     \textcolor{comment}{//  Internal helpers}}
+\DoxyCodeLine{164     \textcolor{comment}{// -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{165 }
+\DoxyCodeLine{167     \textcolor{keyword}{static} \textcolor{keyword}{constexpr} std::size\_t Index(\mbox{\hyperlink{_tags_8hpp_af14f5554b0d9be50c5ea718733bc424b}{Physics::State::StateTag}} tag)}
+\DoxyCodeLine{168     \{}
+\DoxyCodeLine{169         \textcolor{keywordflow}{return} \textcolor{keyword}{static\_cast<}std::size\_t\textcolor{keyword}{>}(tag);}
+\DoxyCodeLine{170     \}}
+\DoxyCodeLine{171 }
+\DoxyCodeLine{173     std::array<\mbox{\hyperlink{class_compact_star_1_1_physics_1_1_state_1_1_state}{Physics::State::State}} *, \mbox{\hyperlink{_state_vector_8hpp_a5ac7d5119f023b69a7e8f8770e7f15cf}{NumStateTags}}()> blocks\_;}
+\DoxyCodeLine{174 \};}
+\DoxyCodeLine{175 }
+\DoxyCodeLine{176 \} \textcolor{comment}{// namespace CompactStar::Physics::Evolution}}
+\DoxyCodeLine{177 }
+\DoxyCodeLine{178 \textcolor{preprocessor}{\#endif }\textcolor{comment}{/* CompactStar\_Physics\_Evolution\_StateVector\_H */}\textcolor{preprocessor}{}}
+
+\end{DoxyCode}

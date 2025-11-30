@@ -8,7 +8,10 @@
  *
  * MIT License — see LICENSE at repo root.
  */
-
+/**
+ * @defgroup PhysicsState Physics state module
+ * @brief Physical states of the star (thermal, spin, chem, BNV).
+ */
 /**
  * @file State.hpp
  * @brief Abstract ODE state interface for physics sub-states.

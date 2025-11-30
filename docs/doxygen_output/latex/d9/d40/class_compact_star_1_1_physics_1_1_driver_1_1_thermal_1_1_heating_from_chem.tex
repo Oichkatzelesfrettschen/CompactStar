@@ -32,7 +32,7 @@ std\+::span$<$ const \mbox{\hyperlink{_tags_8hpp_af14f5554b0d9be50c5ea718733bc42
 \begin{DoxyCompactList}\small\item\em Which state blocks this driver reads. \end{DoxyCompactList}\item 
 std\+::span$<$ const \mbox{\hyperlink{_tags_8hpp_af14f5554b0d9be50c5ea718733bc424b}{State\+::\+State\+Tag}} $>$ \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_heating_from_chem_a40751d8be9aebf75f3302b0b9bd2bd63}{Updates}} () const override
 \begin{DoxyCompactList}\small\item\em Which state blocks this driver updates (adds contributions to). \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_heating_from_chem_a5f9f22c76959e7eb907e5c6997598093}{Accumulate\+RHS}} (double t, const Evolution\+::\+State\+Vector \&Y, Evolution\+::\+RHSAccumulator \&d\+Ydt, const Evolution\+::\+Star\+Context \&ctx) const override
+void \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_heating_from_chem_a5f9f22c76959e7eb907e5c6997598093}{Accumulate\+RHS}} (double t, const \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_state_vector}{Evolution\+::\+State\+Vector}} \&Y, \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_r_h_s_accumulator}{Evolution\+::\+RHSAccumulator}} \&d\+Ydt, const \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_star_context}{Evolution\+::\+Star\+Context}} \&ctx) const override
 \begin{DoxyCompactList}\small\item\em Add this driver’s contribution to the global RHS d\+Y/dt. \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{class_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_heating_from_chem_acfda4da6e6471ff4944a29aa1820aa24}\label{class_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_heating_from_chem_acfda4da6e6471ff4944a29aa1820aa24}} 
 const \mbox{\hyperlink{struct_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_heating_from_chem_1_1_options}{Options}} \& {\bfseries Get\+Options} () const
@@ -54,7 +54,7 @@ The microphysics for Γ\+\_\+i should be accessed via the Star\+Context and/or M
 \index{CompactStar::Physics::Driver::Thermal::HeatingFromChem@{CompactStar::Physics::Driver::Thermal::HeatingFromChem}!AccumulateRHS@{AccumulateRHS}}
 \index{AccumulateRHS@{AccumulateRHS}!CompactStar::Physics::Driver::Thermal::HeatingFromChem@{CompactStar::Physics::Driver::Thermal::HeatingFromChem}}
 \doxysubsubsection{\texorpdfstring{AccumulateRHS()}{AccumulateRHS()}}
-{\footnotesize\ttfamily void Compact\+Star\+::\+Physics\+::\+Driver\+::\+Thermal\+::\+Heating\+From\+Chem\+::\+Accumulate\+RHS (\begin{DoxyParamCaption}\item[{double}]{t,  }\item[{const Evolution\+::\+State\+Vector \&}]{Y,  }\item[{Evolution\+::\+RHSAccumulator \&}]{d\+Ydt,  }\item[{const Evolution\+::\+Star\+Context \&}]{ctx }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+{\footnotesize\ttfamily void Compact\+Star\+::\+Physics\+::\+Driver\+::\+Thermal\+::\+Heating\+From\+Chem\+::\+Accumulate\+RHS (\begin{DoxyParamCaption}\item[{double}]{t,  }\item[{const \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_state_vector}{Evolution\+::\+State\+Vector}} \&}]{Y,  }\item[{\mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_r_h_s_accumulator}{Evolution\+::\+RHSAccumulator}} \&}]{d\+Ydt,  }\item[{const \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_star_context}{Evolution\+::\+Star\+Context}} \&}]{ctx }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
 
 
 
@@ -87,9 +87,9 @@ Implements \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_i_driver_a8f6a4dd
 
 Which state blocks this driver reads. 
 
-Return a span to a static array (e.\+g., {\ttfamily static constexpr std\+::array\texorpdfstring{$<$}{<}State\+Tag,2\texorpdfstring{$>$}{>} \{...\}}). 
+Drivers should return a reference to a static container (e.\+g. a static const std\+::vector$<$\+State\+Tag$>$). 
 
-Implements \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_i_driver_a1bc750160d5a6ae9fe0aba2673703549}{Compact\+Star\+::\+Physics\+::\+IDriver}}.
+Implements \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_i_driver_a813f52e0fad2ee496611eb6a18114354}{Compact\+Star\+::\+Physics\+::\+IDriver}}.
 
 \mbox{\Hypertarget{class_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_heating_from_chem_af91c809a426103a5e2df8077d21c6ed1}\label{class_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_heating_from_chem_af91c809a426103a5e2df8077d21c6ed1}} 
 \index{CompactStar::Physics::Driver::Thermal::HeatingFromChem@{CompactStar::Physics::Driver::Thermal::HeatingFromChem}!Name@{Name}}
@@ -115,9 +115,9 @@ Implements \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_i_driver_a1337b02
 
 Which state blocks this driver updates (adds contributions to). 
 
-Return a span to a static array (e.\+g., {\ttfamily static constexpr std\+::array\texorpdfstring{$<$}{<}State\+Tag,1\texorpdfstring{$>$}{>} \{...\}}). 
+Drivers should return a reference to a static container (e.\+g. a static const std\+::vector$<$\+State\+Tag$>$). 
 
-Implements \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_i_driver_a0862f87840d73c57161af298c840c48e}{Compact\+Star\+::\+Physics\+::\+IDriver}}.
+Implements \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_i_driver_a24a531cb99a43313f30018d1687241a7}{Compact\+Star\+::\+Physics\+::\+IDriver}}.
 
 
 

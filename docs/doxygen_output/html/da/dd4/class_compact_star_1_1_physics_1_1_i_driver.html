@@ -79,11 +79,6 @@ $(function() {
   <div class="headertitle"><div class="title">CompactStar::Physics::IDriver Class Reference<span class="mlabels"><span class="mlabel">abstract</span></span></div></div>
 </div><!--header-->
 <div class="contents">
-
-<p>Abstract interface for all evolution drivers.  
- <a href="../../da/dd4/class_compact_star_1_1_physics_1_1_i_driver.html#details">More...</a></p>
-
-<p><code>#include &lt;<a class="el" href="../../d7/d2e/_i_driver_8hpp_source.html">IDriver.hpp</a>&gt;</code></p>
 <div class="dynheader">
 Inheritance diagram for CompactStar::Physics::IDriver:</div>
 <div class="dyncontent">
@@ -101,20 +96,17 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a1337b0292d71b672785c37ba4d7e8564"><td class="memItemLeft" align="right" valign="top">virtual std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/dd4/class_compact_star_1_1_physics_1_1_i_driver.html#a1337b0292d71b672785c37ba4d7e8564">Name</a> () const =0</td></tr>
 <tr class="memdesc:a1337b0292d71b672785c37ba4d7e8564"><td class="mdescLeft">&#160;</td><td class="mdescRight">Human-readable name for diagnostics/logging.  <a href="../../da/dd4/class_compact_star_1_1_physics_1_1_i_driver.html#a1337b0292d71b672785c37ba4d7e8564">More...</a><br /></td></tr>
 <tr class="separator:a1337b0292d71b672785c37ba4d7e8564"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1bc750160d5a6ae9fe0aba2673703549"><td class="memItemLeft" align="right" valign="top">virtual std::span&lt; const <a class="el" href="../../dd/de3/_tags_8hpp.html#af14f5554b0d9be50c5ea718733bc424b">State::StateTag</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/dd4/class_compact_star_1_1_physics_1_1_i_driver.html#a1bc750160d5a6ae9fe0aba2673703549">DependsOn</a> () const =0</td></tr>
-<tr class="memdesc:a1bc750160d5a6ae9fe0aba2673703549"><td class="mdescLeft">&#160;</td><td class="mdescRight">Which state blocks this driver reads.  <a href="../../da/dd4/class_compact_star_1_1_physics_1_1_i_driver.html#a1bc750160d5a6ae9fe0aba2673703549">More...</a><br /></td></tr>
-<tr class="separator:a1bc750160d5a6ae9fe0aba2673703549"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0862f87840d73c57161af298c840c48e"><td class="memItemLeft" align="right" valign="top">virtual std::span&lt; const <a class="el" href="../../dd/de3/_tags_8hpp.html#af14f5554b0d9be50c5ea718733bc424b">State::StateTag</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/dd4/class_compact_star_1_1_physics_1_1_i_driver.html#a0862f87840d73c57161af298c840c48e">Updates</a> () const =0</td></tr>
-<tr class="memdesc:a0862f87840d73c57161af298c840c48e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Which state blocks this driver updates (adds contributions to).  <a href="../../da/dd4/class_compact_star_1_1_physics_1_1_i_driver.html#a0862f87840d73c57161af298c840c48e">More...</a><br /></td></tr>
-<tr class="separator:a0862f87840d73c57161af298c840c48e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8f6a4dd41179102863ea109d24e68bf4"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/dd4/class_compact_star_1_1_physics_1_1_i_driver.html#a8f6a4dd41179102863ea109d24e68bf4">AccumulateRHS</a> (double t, const Evolution::StateVector &amp;Y, Evolution::RHSAccumulator &amp;dYdt, const Evolution::StarContext &amp;ctx) const =0</td></tr>
+<tr class="memitem:a813f52e0fad2ee496611eb6a18114354"><td class="memItemLeft" align="right" valign="top">virtual const std::vector&lt; <a class="el" href="../../dd/de3/_tags_8hpp.html#af14f5554b0d9be50c5ea718733bc424b">State::StateTag</a> &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/dd4/class_compact_star_1_1_physics_1_1_i_driver.html#a813f52e0fad2ee496611eb6a18114354">DependsOn</a> () const =0</td></tr>
+<tr class="memdesc:a813f52e0fad2ee496611eb6a18114354"><td class="mdescLeft">&#160;</td><td class="mdescRight">Which state blocks this driver reads.  <a href="../../da/dd4/class_compact_star_1_1_physics_1_1_i_driver.html#a813f52e0fad2ee496611eb6a18114354">More...</a><br /></td></tr>
+<tr class="separator:a813f52e0fad2ee496611eb6a18114354"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a24a531cb99a43313f30018d1687241a7"><td class="memItemLeft" align="right" valign="top">virtual const std::vector&lt; <a class="el" href="../../dd/de3/_tags_8hpp.html#af14f5554b0d9be50c5ea718733bc424b">State::StateTag</a> &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/dd4/class_compact_star_1_1_physics_1_1_i_driver.html#a24a531cb99a43313f30018d1687241a7">Updates</a> () const =0</td></tr>
+<tr class="memdesc:a24a531cb99a43313f30018d1687241a7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Which state blocks this driver updates (adds contributions to).  <a href="../../da/dd4/class_compact_star_1_1_physics_1_1_i_driver.html#a24a531cb99a43313f30018d1687241a7">More...</a><br /></td></tr>
+<tr class="separator:a24a531cb99a43313f30018d1687241a7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8f6a4dd41179102863ea109d24e68bf4"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/dd4/class_compact_star_1_1_physics_1_1_i_driver.html#a8f6a4dd41179102863ea109d24e68bf4">AccumulateRHS</a> (double t, const <a class="el" href="../../da/d36/class_compact_star_1_1_physics_1_1_evolution_1_1_state_vector.html">Evolution::StateVector</a> &amp;Y, <a class="el" href="../../d6/d26/class_compact_star_1_1_physics_1_1_evolution_1_1_r_h_s_accumulator.html">Evolution::RHSAccumulator</a> &amp;dYdt, const <a class="el" href="../../d9/d42/class_compact_star_1_1_physics_1_1_evolution_1_1_star_context.html">Evolution::StarContext</a> &amp;ctx) const =0</td></tr>
 <tr class="memdesc:a8f6a4dd41179102863ea109d24e68bf4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Add this driver’s contribution to the global RHS dY/dt.  <a href="../../da/dd4/class_compact_star_1_1_physics_1_1_i_driver.html#a8f6a4dd41179102863ea109d24e68bf4">More...</a><br /></td></tr>
 <tr class="separator:a8f6a4dd41179102863ea109d24e68bf4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Abstract interface for all evolution drivers. </p>
-<p>Drivers contribute terms to the RHS dY/dt for one or more state components. They may <em>read</em> other components (dependencies) to compute their update. </p>
-</div><h2 class="groupheader">Member Function Documentation</h2>
+<h2 class="groupheader">Member Function Documentation</h2>
 <a id="a8f6a4dd41179102863ea109d24e68bf4" name="a8f6a4dd41179102863ea109d24e68bf4"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a8f6a4dd41179102863ea109d24e68bf4">&#9670;&#160;</a></span>AccumulateRHS()</h2>
 
@@ -133,19 +125,19 @@ Public Member Functions</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const Evolution::StateVector &amp;&#160;</td>
+          <td class="paramtype">const <a class="el" href="../../da/d36/class_compact_star_1_1_physics_1_1_evolution_1_1_state_vector.html">Evolution::StateVector</a> &amp;&#160;</td>
           <td class="paramname"><em>Y</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">Evolution::RHSAccumulator &amp;&#160;</td>
+          <td class="paramtype"><a class="el" href="../../d6/d26/class_compact_star_1_1_physics_1_1_evolution_1_1_r_h_s_accumulator.html">Evolution::RHSAccumulator</a> &amp;&#160;</td>
           <td class="paramname"><em>dYdt</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const Evolution::StarContext &amp;&#160;</td>
+          <td class="paramtype">const <a class="el" href="../../d9/d42/class_compact_star_1_1_physics_1_1_evolution_1_1_star_context.html">Evolution::StarContext</a> &amp;&#160;</td>
           <td class="paramname"><em>ctx</em>&#160;</td>
         </tr>
         <tr>
@@ -177,8 +169,8 @@ Public Member Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="a1bc750160d5a6ae9fe0aba2673703549" name="a1bc750160d5a6ae9fe0aba2673703549"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a1bc750160d5a6ae9fe0aba2673703549">&#9670;&#160;</a></span>DependsOn()</h2>
+<a id="a813f52e0fad2ee496611eb6a18114354" name="a813f52e0fad2ee496611eb6a18114354"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a813f52e0fad2ee496611eb6a18114354">&#9670;&#160;</a></span>DependsOn()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -187,7 +179,7 @@ Public Member Functions</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">virtual std::span&lt; const <a class="el" href="../../dd/de3/_tags_8hpp.html#af14f5554b0d9be50c5ea718733bc424b">State::StateTag</a> &gt; CompactStar::Physics::IDriver::DependsOn </td>
+          <td class="memname">virtual const std::vector&lt; <a class="el" href="../../dd/de3/_tags_8hpp.html#af14f5554b0d9be50c5ea718733bc424b">State::StateTag</a> &gt; &amp; CompactStar::Physics::IDriver::DependsOn </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td> const</td>
@@ -201,7 +193,7 @@ Public Member Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Which state blocks this driver reads. </p>
-<p>Return a span to a static array (e.g., <code>static constexpr std::array&lt;StateTag,2&gt; {...}</code>). </p>
+<p>Drivers should return a reference to a static container (e.g. a static const std::vector&lt;StateTag&gt;). </p>
 
 <p>Implemented in <a class="el" href="../../d9/d40/class_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_heating_from_chem.html#a9913eff798bd1896243a978d1e5c9cc1">CompactStar::Physics::Driver::Thermal::HeatingFromChem</a>, <a class="el" href="../../d7/daf/class_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_neutrino_cooling.html#a84bda6a5dd4718cea02067ddc0d9d2f5">CompactStar::Physics::Driver::Thermal::NeutrinoCooling</a>, and <a class="el" href="../../d8/df7/class_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_photon_cooling.html#a727e70e4e7ae99d1711d2d44b12b8150">CompactStar::Physics::Driver::Thermal::PhotonCooling</a>.</p>
 
@@ -236,8 +228,8 @@ Public Member Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="a0862f87840d73c57161af298c840c48e" name="a0862f87840d73c57161af298c840c48e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a0862f87840d73c57161af298c840c48e">&#9670;&#160;</a></span>Updates()</h2>
+<a id="a24a531cb99a43313f30018d1687241a7" name="a24a531cb99a43313f30018d1687241a7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a24a531cb99a43313f30018d1687241a7">&#9670;&#160;</a></span>Updates()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -246,7 +238,7 @@ Public Member Functions</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">virtual std::span&lt; const <a class="el" href="../../dd/de3/_tags_8hpp.html#af14f5554b0d9be50c5ea718733bc424b">State::StateTag</a> &gt; CompactStar::Physics::IDriver::Updates </td>
+          <td class="memname">virtual const std::vector&lt; <a class="el" href="../../dd/de3/_tags_8hpp.html#af14f5554b0d9be50c5ea718733bc424b">State::StateTag</a> &gt; &amp; CompactStar::Physics::IDriver::Updates </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td> const</td>
@@ -260,7 +252,7 @@ Public Member Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Which state blocks this driver updates (adds contributions to). </p>
-<p>Return a span to a static array (e.g., <code>static constexpr std::array&lt;StateTag,1&gt; {...}</code>). </p>
+<p>Drivers should return a reference to a static container (e.g. a static const std::vector&lt;StateTag&gt;). </p>
 
 <p>Implemented in <a class="el" href="../../d9/d40/class_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_heating_from_chem.html#a40751d8be9aebf75f3302b0b9bd2bd63">CompactStar::Physics::Driver::Thermal::HeatingFromChem</a>, <a class="el" href="../../d7/daf/class_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_neutrino_cooling.html#aa617d91eaad9d418559b6bde6f8e11f2">CompactStar::Physics::Driver::Thermal::NeutrinoCooling</a>, and <a class="el" href="../../d8/df7/class_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_photon_cooling.html#a75fda0abed33a37355c02b0072c35ee6">CompactStar::Physics::Driver::Thermal::PhotonCooling</a>.</p>
 
