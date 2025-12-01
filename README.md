@@ -111,6 +111,87 @@ CompactStar/
 
 ---
 
+# State Interface Architecture
+
+CompactStar’s evolution engine treats each physical subsystem  
+(Spin, Thermal, Chem, BNV, …) as a **state block** derived from a single
+abstract base class `State`. This base class defines a small, uniform
+interface:
+
+- `Size()`
+- `Data()`
+- `PackTo()`
+- `UnpackFrom()`
+- `Resize()`
+- `Clear()`
+
+but **it intentionally does not define storage**.  
+Each derived state type owns its own internal representation.
+
+---
+
+## Why the base class does _not_ own `values_`
+
+Different state types have very different physical and numerical needs:
+
+- **SpinState** stores Ω-like variables in a simple vector
+- **ThermalState** may evolve one or many temperature components
+- **ChemState** evolves a vector of η chemical imbalances
+- **BNVState** may evolve anything from 1 to many exotic parameters
+- Future modules may require 2D grids, GPU buffers, or nested structures
+
+If the base class forced a single storage container (e.g. `std::vector<double>`),
+it would prevent advanced future models or force awkward workarounds.
+
+Leaving storage fully up to the derived class gives:
+
+- full flexibility for arbitrary physics models, present and future
+- decoupling between “how data is stored” and “how evolution operates”
+- identical external interface for all states
+- zero-cost abstraction: the solver only sees contiguous segments via `Data()`
+
+Every state remains free to choose **any internal representation**, as long as it
+can supply a contiguous DOF view to the evolution engine.
+
+---
+
+## Packing and Unpacking: How Evolution Works
+
+During time evolution, the framework assembles one global ODE vector:
+
+```
+y = [ Spin DOFs | Thermal DOFs | Chem DOFs | BNV DOFs | ... ]
+```
+
+Each state block implements:
+
+- **PackTo(y, offset)**: copy internal DOFs into the global vector
+- **UnpackFrom(y, offset)**: restore DOFs after the solver updates `y[]`
+
+This enables:
+
+- arbitrary ordering of state blocks
+- custom block sizes
+- clean separation between the physics model and GSL/Sundials interfaces
+- modular drivers that specify dependencies via `StateTag`
+
+---
+
+## Summary
+
+This architecture:
+
+- maximizes extensibility
+- cleanly supports heterogeneous physics blocks
+- keeps the evolution solver generic and future-proof
+- avoids premature commitment to a fixed layout
+- simplifies driver implementation
+
+For additional detail, see the comments in  
+`CompactStar/Physics/State/State.hpp`.
+
+---
+
 # Features
 
 - Tabulated + analytical EOS support

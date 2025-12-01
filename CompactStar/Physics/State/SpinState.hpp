@@ -77,6 +77,13 @@ namespace CompactStar::Physics::State
  *
  * These are **not** part of the ODE state vector; they are side data
  * used by BNV utilities, torque prescriptions, etc.
+ *
+ * @note Storage (the `values_` vector) deliberately lives in this derived
+ *       class rather than in the State base class.  This design allows
+ *       future state types to use non-contiguous, multi-zone, or
+ *       externally owned layouts while still exposing the uniform
+ *       PackTo/UnpackFrom interface required by the evolution framework.
+ *       See @ref CompactStar::Physics::State::State for details.
  */
 class SpinState : public State
 {
@@ -125,6 +132,26 @@ class SpinState : public State
 		for (double &x : values_)
 			x = 0.0;
 	}
+
+	// ------------------------------------------------------------------
+	// packing / unpacking
+	// ------------------------------------------------------------------
+
+	/**
+	 * @brief Pack the dynamic spin DOFs into a contiguous buffer.
+	 *
+	 * The buffer @p dest must have space for at least Size() doubles.
+	 * This simply copies the internal values_ vector into dest[0..Size()-1].
+	 */
+	void PackTo(double *dest) const override;
+
+	/**
+	 * @brief Unpack the dynamic spin DOFs from a contiguous buffer.
+	 *
+	 * The buffer @p src must contain at least Size() doubles. The internal
+	 * values_ vector is resized to Size() if necessary and filled from src.
+	 */
+	void UnpackFrom(const double *src) override;
 
 	// ------------------------------------------------------------------
 	// Convenience accessors for dynamic DOFs

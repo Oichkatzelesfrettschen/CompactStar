@@ -52,6 +52,13 @@ namespace CompactStar::Physics::State
  * evolution system and its drivers.
  *
  * Physical meaning of each component is determined by your BNV model.
+ *
+ * @note Storage (the `values_` vector) deliberately lives in this derived
+ *       class rather than in the State base class.  This design allows
+ *       future state types to use non-contiguous, multi-zone, or
+ *       externally owned layouts while still exposing the uniform
+ *       PackTo/UnpackFrom interface required by the evolution framework.
+ *       See @ref CompactStar::Physics::State::State for details.
  */
 class BNVState : public State
 {
@@ -98,6 +105,15 @@ class BNVState : public State
 			x = 0.0;
 	}
 
+	// ------------------------------------------------------------------
+	// Packing/unpacking for global ODE vector
+	// ------------------------------------------------------------------
+
+	/// Copy the internal ODE components into a flat buffer.
+	void PackTo(double *dest) const override;
+
+	/// Populate internal ODE components from a flat buffer.
+	void UnpackFrom(const double *src) override;
 	// -------------------------------------------------------------
 	// Convenience accessors
 	// -------------------------------------------------------------

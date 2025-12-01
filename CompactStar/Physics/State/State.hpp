@@ -33,7 +33,32 @@
  *
  * @ingroup PhysicsState
  */
-
+/**
+ * @note Design rationale:
+ *
+ *   The State base class intentionally does *not* provide storage
+ *   (e.g. no `std::vector<double> values_` here).  This is deliberate:
+ *
+ *     - Some states store a simple contiguous vector (Spin/Thermal/Chem/BNV).
+ *     - Future state types may store grid-based data, compressed data,
+ *       external views, or multi-zone structures.
+ *
+ *   By keeping State as a *pure interface*, the evolution system
+ *   interacts with all state blocks uniformly:
+ *
+ *        Size()        → number of DOFs
+ *        Data()        → contiguous pointer
+ *        PackTo()      → flatten into global y[]
+ *        UnpackFrom()  → restore from global y[]
+ *
+ *   Each derived class is free to choose its internal representation
+ *   as long as it exposes the contiguous view required by the
+ *   evolution framework.
+ *
+ *   This keeps the core evolution machinery flexible and future-proof,
+ *   while allowing physics modules to use whatever internal layout
+ *   they need.
+ */
 #ifndef CompactStar_Physics_State_State_H
 #define CompactStar_Physics_State_State_H
 
@@ -127,6 +152,25 @@ class State
 	/// Reset contents to a well-defined state (usually all zeros).
 	virtual void Clear() = 0;
 
+	// ---------------------------------------------------------------------
+	//  Packing / Unpacking interface
+	// ---------------------------------------------------------------------
+
+	/**
+	 * @brief Pack this state into a contiguous double buffer.
+	 *
+	 * The buffer @p dest must have space for at least Size() doubles.
+	 * Implementations must write exactly Size() entries.
+	 */
+	virtual void PackTo(double *dest) const = 0;
+
+	/**
+	 * @brief Unpack this state from a contiguous double buffer.
+	 *
+	 * The buffer @p src must contain at least Size() entries that were
+	 * previously produced by PackTo() (for the same state layout).
+	 */
+	virtual void UnpackFrom(const double *src) = 0;
 	// ------------------------------------------------------------------
 	// Diagnostics
 	// ------------------------------------------------------------------
