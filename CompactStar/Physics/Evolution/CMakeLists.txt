@@ -8,6 +8,7 @@ set(CompactStar_Physics_Evolution_headers
     RHSAccumulator.hpp
     StarContext.hpp
     StateVector.hpp
+    StateLayout.hpp
 )
 
 install(FILES ${CompactStar_Physics_Evolution_headers} DESTINATION include/CompactStar/Physics/Evolution)
@@ -15,6 +16,7 @@ install(FILES ${CompactStar_Physics_Evolution_headers} DESTINATION include/Compa
 set(CompactStar_Physics_Evolution_sources
     CompactStar/Physics/Evolution/src/StateVector.cpp
     CompactStar/Physics/Evolution/src/EvolutionSystem.cpp
+    CompactStar/Physics/Evolution/src/StateLayout.cpp
 
     PARENT_SCOPE
 )
