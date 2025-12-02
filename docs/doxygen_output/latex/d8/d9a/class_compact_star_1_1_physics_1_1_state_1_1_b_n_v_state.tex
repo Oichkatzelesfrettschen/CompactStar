@@ -32,9 +32,13 @@ std\+::size\+\_\+t \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_state_1_1
 \begin{DoxyCompactList}\small\item\em Number of spatial grid cells represented. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_state_1_1_b_n_v_state_a4cbce3755a27f7f2bd19fadb40ef400d}{Clear}} () override
 \begin{DoxyCompactList}\small\item\em Zero out all values (capacity preserved). \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_state_1_1_b_n_v_state_a06f92845a5ae6bf1abd1f955b70bd533}{Pack\+To}} (double $\ast$dest) const override
+\begin{DoxyCompactList}\small\item\em Copy the internal ODE components into a flat buffer. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_state_1_1_b_n_v_state_a8f3a53be98215a94c80a46a779571d9f}{Unpack\+From}} (const double $\ast$src) override
+\begin{DoxyCompactList}\small\item\em Populate internal ODE components from a flat buffer. \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{class_compact_star_1_1_physics_1_1_state_1_1_b_n_v_state_a0138ef8ca0d66e6c20a3934ad3a0b37c}\label{class_compact_star_1_1_physics_1_1_state_1_1_b_n_v_state_a0138ef8ca0d66e6c20a3934ad3a0b37c}} 
 std\+::size\+\_\+t {\bfseries Num\+Components} () const
-\begin{DoxyCompactList}\small\item\em Return number of BNV state components. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Return number of \mbox{\hyperlink{namespace_compact_star_1_1_physics_1_1_b_n_v}{BNV}} state components. \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{class_compact_star_1_1_physics_1_1_state_1_1_b_n_v_state_a7f2091096981a01b7623f24391774245}\label{class_compact_star_1_1_physics_1_1_state_1_1_b_n_v_state_a7f2091096981a01b7623f24391774245}} 
 double \& {\bfseries Value} (std\+::size\+\_\+t i)
 \begin{DoxyCompactList}\small\item\em Access component i (mutable). \end{DoxyCompactList}\item 
@@ -60,7 +64,12 @@ const double \& {\bfseries Spin\+Down\+Limit} () const
 
 This class behaves exactly like Chem\+State/\+Thermal\+State in terms of interface\+: a resizable contiguous vector of doubles exposed to the evolution system and its drivers.
 
-Physical meaning of each component is determined by your BNV model. 
+Physical meaning of each component is determined by your \mbox{\hyperlink{namespace_compact_star_1_1_physics_1_1_b_n_v}{BNV}} model.
+
+\begin{DoxyNote}{Note}
+Storage (the {\ttfamily values\+\_\+} vector) deliberately lives in this derived class rather than in the \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_state_1_1_state}{State}} base class. This design allows future state types to use non-\/contiguous, multi-\/zone, or externally owned layouts while still exposing the uniform Pack\+To/\+Unpack\+From interface required by the evolution framework. See \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_state_1_1_state}{Compact\+Star\+::\+Physics\+::\+State\+::\+State}} for details. 
+\end{DoxyNote}
+
 
 \doxysubsection{Member Function Documentation}
 \mbox{\Hypertarget{class_compact_star_1_1_physics_1_1_state_1_1_b_n_v_state_a4cbce3755a27f7f2bd19fadb40ef400d}\label{class_compact_star_1_1_physics_1_1_state_1_1_b_n_v_state_a4cbce3755a27f7f2bd19fadb40ef400d}} 
@@ -133,6 +142,20 @@ Short state name for logging (e.\+g. \char`\"{}\+Chem\+State\char`\"{}).
 
 Implements \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_state_1_1_state_adb2c0a210afb045ea8cf1e96e3b0c6ed}{Compact\+Star\+::\+Physics\+::\+State\+::\+State}}.
 
+\mbox{\Hypertarget{class_compact_star_1_1_physics_1_1_state_1_1_b_n_v_state_a06f92845a5ae6bf1abd1f955b70bd533}\label{class_compact_star_1_1_physics_1_1_state_1_1_b_n_v_state_a06f92845a5ae6bf1abd1f955b70bd533}} 
+\index{CompactStar::Physics::State::BNVState@{CompactStar::Physics::State::BNVState}!PackTo@{PackTo}}
+\index{PackTo@{PackTo}!CompactStar::Physics::State::BNVState@{CompactStar::Physics::State::BNVState}}
+\doxysubsubsection{\texorpdfstring{PackTo()}{PackTo()}}
+{\footnotesize\ttfamily void BNVState\+::\+Pack\+To (\begin{DoxyParamCaption}\item[{double $\ast$}]{dest }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Copy the internal ODE components into a flat buffer. 
+
+
+
+Implements \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_state_1_1_state_a541e92639dd1000d18fa3b68483fd502}{Compact\+Star\+::\+Physics\+::\+State\+::\+State}}.
+
 \mbox{\Hypertarget{class_compact_star_1_1_physics_1_1_state_1_1_b_n_v_state_a46016b61959adab3b42c7be24bdfabff}\label{class_compact_star_1_1_physics_1_1_state_1_1_b_n_v_state_a46016b61959adab3b42c7be24bdfabff}} 
 \index{CompactStar::Physics::State::BNVState@{CompactStar::Physics::State::BNVState}!Resize@{Resize}}
 \index{Resize@{Resize}!CompactStar::Physics::State::BNVState@{CompactStar::Physics::State::BNVState}}
@@ -145,7 +168,7 @@ Resize underlying DOF vector to {\ttfamily N} entries.
 
 Default layout\+: N = 2 index 0 → η\+\_\+I index 1 → spin\+\_\+down\+\_\+limit
 
-You may expand this vector when implementing more elaborate BNV models. 
+You may expand this vector when implementing more elaborate \mbox{\hyperlink{namespace_compact_star_1_1_physics_1_1_b_n_v}{BNV}} models. 
 
 Implements \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_state_1_1_state_a67305cd2b43b22a5503b62326c00584f}{Compact\+Star\+::\+Physics\+::\+State\+::\+State}}.
 
@@ -163,8 +186,23 @@ Number of scalar degrees of freedom.
 
 Implements \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_state_1_1_state_a7d41a392de8417100b45ebfb19298eae}{Compact\+Star\+::\+Physics\+::\+State\+::\+State}}.
 
+\mbox{\Hypertarget{class_compact_star_1_1_physics_1_1_state_1_1_b_n_v_state_a8f3a53be98215a94c80a46a779571d9f}\label{class_compact_star_1_1_physics_1_1_state_1_1_b_n_v_state_a8f3a53be98215a94c80a46a779571d9f}} 
+\index{CompactStar::Physics::State::BNVState@{CompactStar::Physics::State::BNVState}!UnpackFrom@{UnpackFrom}}
+\index{UnpackFrom@{UnpackFrom}!CompactStar::Physics::State::BNVState@{CompactStar::Physics::State::BNVState}}
+\doxysubsubsection{\texorpdfstring{UnpackFrom()}{UnpackFrom()}}
+{\footnotesize\ttfamily void BNVState\+::\+Unpack\+From (\begin{DoxyParamCaption}\item[{const double $\ast$}]{src }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
 
 
-The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+
+Populate internal ODE components from a flat buffer. 
+
+
+
+Implements \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_state_1_1_state_a9d29b545a578c4857388b1aa92b4e993}{Compact\+Star\+::\+Physics\+::\+State\+::\+State}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 
-Compact\+Star/\+Physics/\+State/\mbox{\hyperlink{_b_n_v_state_8hpp}{BNVState.\+hpp}}\end{DoxyCompactItemize}
+Compact\+Star/\+Physics/\+State/\mbox{\hyperlink{_b_n_v_state_8hpp}{BNVState.\+hpp}}\item 
+Compact\+Star/\+Physics/\+State/src/BNVState.\+cpp\end{DoxyCompactItemize}

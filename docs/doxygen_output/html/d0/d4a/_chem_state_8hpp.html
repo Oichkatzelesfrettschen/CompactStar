@@ -100,6 +100,14 @@ std::size_t&#160;</td><td class="memItemRight" valign="bottom"><b>GridSize</b> (
 void&#160;</td><td class="memItemRight" valign="bottom"><b>Clear</b> () override</td></tr>
 <tr class="memdesc:ac2fdf117e3886bbce4baa56a77d3e9cc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Reset all components to zero (does not release capacity). <br /></td></tr>
 <tr class="separator:ac2fdf117e3886bbce4baa56a77d3e9cc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3f6089e2db736965f021e2165ae39933"><td class="memItemLeft" align="right" valign="top"><a id="a3f6089e2db736965f021e2165ae39933" name="a3f6089e2db736965f021e2165ae39933"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>PackTo</b> (double *dest) const override</td></tr>
+<tr class="memdesc:a3f6089e2db736965f021e2165ae39933"><td class="mdescLeft">&#160;</td><td class="mdescRight">Copy the internal ODE components into a flat buffer. <br /></td></tr>
+<tr class="separator:a3f6089e2db736965f021e2165ae39933"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af4c43758909d4e294d63b7d067eae761"><td class="memItemLeft" align="right" valign="top"><a id="af4c43758909d4e294d63b7d067eae761" name="af4c43758909d4e294d63b7d067eae761"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>UnpackFrom</b> (const double *src) override</td></tr>
+<tr class="memdesc:af4c43758909d4e294d63b7d067eae761"><td class="mdescLeft">&#160;</td><td class="mdescRight">Populate internal ODE components from a flat buffer. <br /></td></tr>
+<tr class="separator:af4c43758909d4e294d63b7d067eae761"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a53d81624f03725345e5e83949046ba2c"><td class="memItemLeft" align="right" valign="top"><a id="a53d81624f03725345e5e83949046ba2c" name="a53d81624f03725345e5e83949046ba2c"></a>
 std::size_t&#160;</td><td class="memItemRight" valign="bottom"><b>NumComponents</b> () const</td></tr>
 <tr class="memdesc:a53d81624f03725345e5e83949046ba2c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return the number of chemical-imbalance components. <br /></td></tr>
@@ -141,7 +149,8 @@ namespace CompactStar::Physics::State
 </ul>
 <p>The components are stored as a simple 1D vector; their physical meaning (which index corresponds to which reaction channel such as <picture><source srcset="../../form_33_dark.png" media="(prefers-color-scheme: dark)"/><img class="formulaInl" alt="$\eta_{npe}\f,
    $" src="../../form_33.png"/></picture>\eta_{np\mu}\f, etc.) is defined by the drivers/microphysics layer, not by this class.</p>
-<p>Units of <picture><source srcset="../../form_14_dark.png" media="(prefers-color-scheme: dark)"/><img class="formulaInl" alt="$\eta_i$" src="../../form_14.png"/></picture> are typically energy (e.g. erg), but this is not enforced here. */ class ChemState : public State { public: // ------------------------------------------------------------------ // Required State interface // ------------------------------------------------------------------</p>
+<p>Units of <picture><source srcset="../../form_14_dark.png" media="(prefers-color-scheme: dark)"/><img class="formulaInl" alt="$\eta_i$" src="../../form_14.png"/></picture> are typically energy (e.g. erg), but this is not enforced here.</p>
+<dl class="section note"><dt>Note</dt><dd>Storage (the `values_` vector) deliberately lives in this derived class rather than in the State base class. This design allows future state types to use non-contiguous, multi-zone, or externally owned layouts while still exposing the uniform PackTo/UnpackFrom interface required by the evolution framework. See <a class="el" href="../../d4/d69/class_compact_star_1_1_physics_1_1_state_1_1_state.html">CompactStar::Physics::State::State</a> for details. */ class ChemState : public State { public: // ------------------------------------------------------------------ // Required State interface // ------------------------------------------------------------------</dd></dl>
 <p>Short human-readable identifier for logging. const char *Name() const override { return "ChemState"; }</p>
 <p>Number of scalar degrees of freedom (number of </p>
 </div><h2 class="groupheader">Function Documentation</h2>

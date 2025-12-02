@@ -1,0 +1,42 @@
+\hypertarget{_state_layout_8hpp}{}\doxysection{Compact\+Star/\+Physics/\+Evolution/\+State\+Layout.hpp File Reference}
+\label{_state_layout_8hpp}\index{CompactStar/Physics/Evolution/StateLayout.hpp@{CompactStar/Physics/Evolution/StateLayout.hpp}}
+
+
+Mapping between flat ODE vector indices and State\+Tag blocks.  
+
+
+{\ttfamily \#include $<$array$>$}\newline
+{\ttfamily \#include $<$cstddef$>$}\newline
+{\ttfamily \#include $<$initializer\+\_\+list$>$}\newline
+{\ttfamily \#include \char`\"{}Compact\+Star/\+Physics/\+Evolution/\+State\+Vector.\+hpp\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}Compact\+Star/\+Physics/\+State/\+Tags.\+hpp\char`\"{}}\newline
+\doxysubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_state_layout}{Compact\+Star\+::\+Physics\+::\+Evolution\+::\+State\+Layout}}
+\begin{DoxyCompactList}\small\item\em Records offsets and sizes of each State\+Tag block in the flat ODE vector. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{struct_compact_star_1_1_physics_1_1_evolution_1_1_state_layout_1_1_block}{Compact\+Star\+::\+Physics\+::\+Evolution\+::\+State\+Layout\+::\+Block}}
+\begin{DoxyCompactList}\small\item\em Layout information for a single State\+Tag block. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Namespaces}
+\begin{DoxyCompactItemize}
+\item 
+namespace \mbox{\hyperlink{namespace_compact_star_1_1_physics_1_1_evolution}{Compact\+Star\+::\+Physics\+::\+Evolution}}
+\begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{namespace_compact_star_1_1_physics_1_1_evolution}{Evolution}} engine for time-\/dependent neutron-\/star physics. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Mapping between flat ODE vector indices and State\+Tag blocks. 
+
+The evolution system uses a single flat ODE vector y\mbox{[}\mbox{]} (and dydt\mbox{[}\mbox{]}) that concatenates all active state blocks (Spin\+State, Thermal\+State, Chem\+State, BNVState, ...). State\+Layout records\+:
+
+
+\begin{DoxyItemize}
+\item which State\+Tag blocks are active,
+\item where each block starts in y\mbox{[}\mbox{]} (offset),
+\item how many components each block has (size),
+\item the total dimension of the system.
+\end{DoxyItemize}
+
+Typical usage\+: 1) Build and register State blocks in a State\+Vector. 2) Call State\+Layout\+::\+Configure(state, \{State\+Tag\+::\+Thermal, State\+Tag\+::\+Chem, ...\}). 3) Use Offset(tag) and Block\+Size(tag) when packing/unpacking y\mbox{[}\mbox{]}.
+
+This keeps the \char`\"{}wiring\char`\"{} between tagged State blocks and their positions in the global ODE vector explicit and easy to audit. 

@@ -12,116 +12,123 @@
 \DoxyCodeLine{8 \textcolor{comment}{ *}}
 \DoxyCodeLine{9 \textcolor{comment}{ * MIT License — see LICENSE at repo root.}}
 \DoxyCodeLine{10 \textcolor{comment}{ */}}
-\DoxyCodeLine{37 \textcolor{preprocessor}{\#ifndef CompactStar\_Physics\_State\_State\_H}}
-\DoxyCodeLine{38 \textcolor{preprocessor}{\#define CompactStar\_Physics\_State\_State\_H}}
-\DoxyCodeLine{39 }
-\DoxyCodeLine{40 \textcolor{preprocessor}{\#include <cmath>}}
-\DoxyCodeLine{41 \textcolor{preprocessor}{\#include <cstddef>}}
-\DoxyCodeLine{42 \textcolor{preprocessor}{\#include <string>}}
-\DoxyCodeLine{43 \textcolor{preprocessor}{\#include <vector>}}
-\DoxyCodeLine{44 }
-\DoxyCodeLine{45 \textcolor{preprocessor}{\#include <Zaki/Util/Instrumentor.hpp>} \textcolor{comment}{// Z\_LOG\_*, PROFILE\_FUNCTION}}
-\DoxyCodeLine{46 \textcolor{preprocessor}{\#include <\mbox{\hyperlink{_data_set_8hpp}{Zaki/Vector/DataSet.hpp}}>}     \textcolor{comment}{// For ExportColumns()}}
-\DoxyCodeLine{47 }
-\DoxyCodeLine{48 \textcolor{keyword}{namespace }CompactStar::Physics::State}
-\DoxyCodeLine{49 \{}
-\DoxyCodeLine{50 }
-\DoxyCodeLine{51 \textcolor{comment}{//======================================================================}}
-\DoxyCodeLine{52 \textcolor{comment}{//                             StepMeta}}
-\DoxyCodeLine{53 \textcolor{comment}{//======================================================================}}
-\DoxyCodeLine{54 }
-\DoxyCodeLine{61 \textcolor{keyword}{struct }\mbox{\hyperlink{struct_compact_star_1_1_physics_1_1_state_1_1_step_meta}{StepMeta}}}
-\DoxyCodeLine{62 \{}
-\DoxyCodeLine{64     \textcolor{keywordtype}{double} \mbox{\hyperlink{struct_compact_star_1_1_physics_1_1_state_1_1_step_meta_a4faedc8ad42498f6aa00f63524287ac1}{t}} = 0.0;}
-\DoxyCodeLine{65 }
-\DoxyCodeLine{67     \textcolor{keywordtype}{double} \mbox{\hyperlink{struct_compact_star_1_1_physics_1_1_state_1_1_step_meta_a02808cc7100ded60bdc1e4a416ebd5e6}{dt}} = 0.0;}
-\DoxyCodeLine{68 }
-\DoxyCodeLine{70     \textcolor{keywordtype}{long} \mbox{\hyperlink{struct_compact_star_1_1_physics_1_1_state_1_1_step_meta_af1efce5cf8852ffdbc474b24939a0cd0}{step}} = 0;}
-\DoxyCodeLine{71 \};}
+\DoxyCodeLine{62 \textcolor{preprocessor}{\#ifndef CompactStar\_Physics\_State\_State\_H}}
+\DoxyCodeLine{63 \textcolor{preprocessor}{\#define CompactStar\_Physics\_State\_State\_H}}
+\DoxyCodeLine{64 }
+\DoxyCodeLine{65 \textcolor{preprocessor}{\#include <cmath>}}
+\DoxyCodeLine{66 \textcolor{preprocessor}{\#include <cstddef>}}
+\DoxyCodeLine{67 \textcolor{preprocessor}{\#include <string>}}
+\DoxyCodeLine{68 \textcolor{preprocessor}{\#include <vector>}}
+\DoxyCodeLine{69 }
+\DoxyCodeLine{70 \textcolor{preprocessor}{\#include <Zaki/Util/Instrumentor.hpp>} \textcolor{comment}{// Z\_LOG\_*, PROFILE\_FUNCTION}}
+\DoxyCodeLine{71 \textcolor{preprocessor}{\#include <\mbox{\hyperlink{_data_set_8hpp}{Zaki/Vector/DataSet.hpp}}>}     \textcolor{comment}{// For ExportColumns()}}
 \DoxyCodeLine{72 }
-\DoxyCodeLine{73 \textcolor{comment}{//======================================================================}}
-\DoxyCodeLine{74 \textcolor{comment}{//                               State}}
-\DoxyCodeLine{75 \textcolor{comment}{//======================================================================}}
-\DoxyCodeLine{76 }
-\DoxyCodeLine{91 \textcolor{keyword}{class }\mbox{\hyperlink{class_compact_star_1_1_physics_1_1_state_1_1_state}{State}}}
-\DoxyCodeLine{92 \{}
-\DoxyCodeLine{93   \textcolor{keyword}{public}:}
-\DoxyCodeLine{94     \textcolor{keyword}{virtual} \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_state_1_1_state}{\string~State}}() = \textcolor{keywordflow}{default};}
-\DoxyCodeLine{95 }
-\DoxyCodeLine{96     \textcolor{comment}{// -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
-\DoxyCodeLine{97     \textcolor{comment}{// Mandatory interface}}
-\DoxyCodeLine{98     \textcolor{comment}{// -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
-\DoxyCodeLine{99 }
-\DoxyCodeLine{101     \textcolor{keyword}{virtual} \textcolor{keyword}{const} \textcolor{keywordtype}{char} *\mbox{\hyperlink{class_compact_star_1_1_physics_1_1_state_1_1_state_adb2c0a210afb045ea8cf1e96e3b0c6ed}{Name}}() \textcolor{keyword}{const} = 0;}
-\DoxyCodeLine{102 }
-\DoxyCodeLine{104     \textcolor{keyword}{virtual} std::size\_t \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_state_1_1_state_a7d41a392de8417100b45ebfb19298eae}{Size}}() \textcolor{keyword}{const} = 0;}
-\DoxyCodeLine{105 }
-\DoxyCodeLine{107     \textcolor{keyword}{virtual} \textcolor{keywordtype}{double} *\mbox{\hyperlink{class_compact_star_1_1_physics_1_1_state_1_1_state_ad8fd8cf0dd2001eed6f81ea0e5458f30}{Data}}() = 0;}
-\DoxyCodeLine{108 }
-\DoxyCodeLine{110     \textcolor{keyword}{virtual} \textcolor{keyword}{const} \textcolor{keywordtype}{double} *\mbox{\hyperlink{class_compact_star_1_1_physics_1_1_state_1_1_state_aaad6830e6e0884665af0379f80b0d075}{Data}}() \textcolor{keyword}{const} = 0;}
-\DoxyCodeLine{111 }
-\DoxyCodeLine{118     \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_state_1_1_state_a67305cd2b43b22a5503b62326c00584f}{Resize}}(std::size\_t N) = 0;}
-\DoxyCodeLine{119 }
-\DoxyCodeLine{125     \textcolor{keyword}{virtual} std::size\_t \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_state_1_1_state_a26c2a63bb521c916f9ffb681e15028b8}{GridSize}}()\textcolor{keyword}{ const }\{ \textcolor{keywordflow}{return} \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_state_1_1_state_a7d41a392de8417100b45ebfb19298eae}{Size}}(); \}}
-\DoxyCodeLine{126 }
-\DoxyCodeLine{128     \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_state_1_1_state_ae531732a02445f1378be8a13837691e8}{Clear}}() = 0;}
-\DoxyCodeLine{129 }
-\DoxyCodeLine{130     \textcolor{comment}{// -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
-\DoxyCodeLine{131     \textcolor{comment}{// Diagnostics}}
-\DoxyCodeLine{132     \textcolor{comment}{// -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{73 \textcolor{keyword}{namespace }\mbox{\hyperlink{namespace_compact_star_1_1_physics_1_1_state}{CompactStar::Physics::State}}}
+\DoxyCodeLine{74 \{}
+\DoxyCodeLine{75 }
+\DoxyCodeLine{76 \textcolor{comment}{//======================================================================}}
+\DoxyCodeLine{77 \textcolor{comment}{//                             StepMeta}}
+\DoxyCodeLine{78 \textcolor{comment}{//======================================================================}}
+\DoxyCodeLine{79 }
+\DoxyCodeLine{86 \textcolor{keyword}{struct }\mbox{\hyperlink{struct_compact_star_1_1_physics_1_1_state_1_1_step_meta}{StepMeta}}}
+\DoxyCodeLine{87 \{}
+\DoxyCodeLine{89     \textcolor{keywordtype}{double} \mbox{\hyperlink{struct_compact_star_1_1_physics_1_1_state_1_1_step_meta_a4faedc8ad42498f6aa00f63524287ac1}{t}} = 0.0;}
+\DoxyCodeLine{90 }
+\DoxyCodeLine{92     \textcolor{keywordtype}{double} \mbox{\hyperlink{struct_compact_star_1_1_physics_1_1_state_1_1_step_meta_a02808cc7100ded60bdc1e4a416ebd5e6}{dt}} = 0.0;}
+\DoxyCodeLine{93 }
+\DoxyCodeLine{95     \textcolor{keywordtype}{long} \mbox{\hyperlink{struct_compact_star_1_1_physics_1_1_state_1_1_step_meta_af1efce5cf8852ffdbc474b24939a0cd0}{step}} = 0;}
+\DoxyCodeLine{96 \};}
+\DoxyCodeLine{97 }
+\DoxyCodeLine{98 \textcolor{comment}{//======================================================================}}
+\DoxyCodeLine{99 \textcolor{comment}{//                               State}}
+\DoxyCodeLine{100 \textcolor{comment}{//======================================================================}}
+\DoxyCodeLine{101 }
+\DoxyCodeLine{116 \textcolor{keyword}{class }\mbox{\hyperlink{class_compact_star_1_1_physics_1_1_state_1_1_state}{State}}}
+\DoxyCodeLine{117 \{}
+\DoxyCodeLine{118   \textcolor{keyword}{public}:}
+\DoxyCodeLine{119     \textcolor{keyword}{virtual} \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_state_1_1_state}{\string~State}}() = \textcolor{keywordflow}{default};}
+\DoxyCodeLine{120 }
+\DoxyCodeLine{121     \textcolor{comment}{// -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{122     \textcolor{comment}{// Mandatory interface}}
+\DoxyCodeLine{123     \textcolor{comment}{// -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{124 }
+\DoxyCodeLine{126     \textcolor{keyword}{virtual} \textcolor{keyword}{const} \textcolor{keywordtype}{char} *\mbox{\hyperlink{class_compact_star_1_1_physics_1_1_state_1_1_state_adb2c0a210afb045ea8cf1e96e3b0c6ed}{Name}}() \textcolor{keyword}{const} = 0;}
+\DoxyCodeLine{127 }
+\DoxyCodeLine{129     \textcolor{keyword}{virtual} std::size\_t \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_state_1_1_state_a7d41a392de8417100b45ebfb19298eae}{Size}}() \textcolor{keyword}{const} = 0;}
+\DoxyCodeLine{130 }
+\DoxyCodeLine{132     \textcolor{keyword}{virtual} \textcolor{keywordtype}{double} *\mbox{\hyperlink{class_compact_star_1_1_physics_1_1_state_1_1_state_ad8fd8cf0dd2001eed6f81ea0e5458f30}{Data}}() = 0;}
 \DoxyCodeLine{133 }
-\DoxyCodeLine{137     \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_state_1_1_state_ac9892ca481397cba4afe2da9cd9a50a6}{SanityCheck}}()\textcolor{keyword}{ const}}
-\DoxyCodeLine{138 \textcolor{keyword}{    }\{}
-\DoxyCodeLine{139         PROFILE\_FUNCTION();}
-\DoxyCodeLine{140 }
-\DoxyCodeLine{141         \textcolor{keyword}{const} std::size\_t n = \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_state_1_1_state_a7d41a392de8417100b45ebfb19298eae}{Size}}();}
-\DoxyCodeLine{142         \textcolor{keyword}{const} \textcolor{keywordtype}{double} *y = \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_state_1_1_state_ad8fd8cf0dd2001eed6f81ea0e5458f30}{Data}}();}
-\DoxyCodeLine{143 }
-\DoxyCodeLine{144         \textcolor{keywordflow}{if} (!y || n == 0)}
-\DoxyCodeLine{145         \{}
-\DoxyCodeLine{146             Z\_LOG\_WARNING(std::string(\textcolor{stringliteral}{"{}SanityCheck: empty state in "{}}) + \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_state_1_1_state_adb2c0a210afb045ea8cf1e96e3b0c6ed}{Name}}());}
-\DoxyCodeLine{147             \textcolor{keywordflow}{return};}
-\DoxyCodeLine{148         \}}
-\DoxyCodeLine{149 }
-\DoxyCodeLine{150         \textcolor{keywordtype}{bool} has\_nan = \textcolor{keyword}{false}, has\_inf = \textcolor{keyword}{false};}
-\DoxyCodeLine{151         \textcolor{keywordflow}{for} (std::size\_t i = 0; i < n; ++i)}
-\DoxyCodeLine{152         \{}
-\DoxyCodeLine{153             \textcolor{keywordflow}{if} (std::isnan(y[i]))}
-\DoxyCodeLine{154             \{}
-\DoxyCodeLine{155                 has\_nan = \textcolor{keyword}{true};}
-\DoxyCodeLine{156                 \textcolor{keywordflow}{break};}
-\DoxyCodeLine{157             \}}
-\DoxyCodeLine{158             \textcolor{keywordflow}{if} (!std::isfinite(y[i]))}
-\DoxyCodeLine{159             \{}
-\DoxyCodeLine{160                 has\_inf = \textcolor{keyword}{true};}
-\DoxyCodeLine{161                 \textcolor{keywordflow}{break};}
-\DoxyCodeLine{162             \}}
-\DoxyCodeLine{163         \}}
-\DoxyCodeLine{164 }
-\DoxyCodeLine{165         \textcolor{keywordflow}{if} (has\_nan)}
-\DoxyCodeLine{166             Z\_LOG\_ERROR(std::string(\textcolor{stringliteral}{"{}SanityCheck["{}}) + \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_state_1_1_state_adb2c0a210afb045ea8cf1e96e3b0c6ed}{Name}}() + \textcolor{stringliteral}{"{}]: NaN detected"{}});}
-\DoxyCodeLine{167         \textcolor{keywordflow}{if} (has\_inf)}
-\DoxyCodeLine{168             Z\_LOG\_ERROR(std::string(\textcolor{stringliteral}{"{}SanityCheck["{}}) + \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_state_1_1_state_adb2c0a210afb045ea8cf1e96e3b0c6ed}{Name}}() + \textcolor{stringliteral}{"{}]: Inf detected"{}});}
-\DoxyCodeLine{169         \textcolor{keywordflow}{if} (!has\_nan \&\& !has\_inf)}
-\DoxyCodeLine{170             Z\_LOG\_INFO(std::string(\textcolor{stringliteral}{"{}SanityCheck["{}}) + \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_state_1_1_state_adb2c0a210afb045ea8cf1e96e3b0c6ed}{Name}}() + \textcolor{stringliteral}{"{}]: OK ("{}} +}
-\DoxyCodeLine{171                        std::to\_string(n) + \textcolor{stringliteral}{"{} DOFs)"{}});}
-\DoxyCodeLine{172     \}}
-\DoxyCodeLine{173 }
+\DoxyCodeLine{135     \textcolor{keyword}{virtual} \textcolor{keyword}{const} \textcolor{keywordtype}{double} *\mbox{\hyperlink{class_compact_star_1_1_physics_1_1_state_1_1_state_aaad6830e6e0884665af0379f80b0d075}{Data}}() \textcolor{keyword}{const} = 0;}
+\DoxyCodeLine{136 }
+\DoxyCodeLine{143     \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_state_1_1_state_a67305cd2b43b22a5503b62326c00584f}{Resize}}(std::size\_t N) = 0;}
+\DoxyCodeLine{144 }
+\DoxyCodeLine{150     \textcolor{keyword}{virtual} std::size\_t \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_state_1_1_state_a26c2a63bb521c916f9ffb681e15028b8}{GridSize}}()\textcolor{keyword}{ const }\{ \textcolor{keywordflow}{return} \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_state_1_1_state_a7d41a392de8417100b45ebfb19298eae}{Size}}(); \}}
+\DoxyCodeLine{151 }
+\DoxyCodeLine{153     \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_state_1_1_state_ae531732a02445f1378be8a13837691e8}{Clear}}() = 0;}
+\DoxyCodeLine{154 }
+\DoxyCodeLine{155     \textcolor{comment}{// -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{156     \textcolor{comment}{//  Packing / Unpacking interface}}
+\DoxyCodeLine{157     \textcolor{comment}{// -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{158 }
+\DoxyCodeLine{165     \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_state_1_1_state_a541e92639dd1000d18fa3b68483fd502}{PackTo}}(\textcolor{keywordtype}{double} *dest) \textcolor{keyword}{const} = 0;}
+\DoxyCodeLine{166 }
+\DoxyCodeLine{173     \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_state_1_1_state_a9d29b545a578c4857388b1aa92b4e993}{UnpackFrom}}(\textcolor{keyword}{const} \textcolor{keywordtype}{double} *src) = 0;}
 \DoxyCodeLine{174     \textcolor{comment}{// -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
-\DoxyCodeLine{175     \textcolor{comment}{// Optional I/O}}
+\DoxyCodeLine{175     \textcolor{comment}{// Diagnostics}}
 \DoxyCodeLine{176     \textcolor{comment}{// -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
 \DoxyCodeLine{177 }
-\DoxyCodeLine{184     \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_state_1_1_state_aec8b76c96d1cccda2a0d186ba473eb21}{ExportColumns}}(\mbox{\hyperlink{class_zaki_1_1_vector_1_1_data_set}{Zaki::Vector::DataSet}} \&ds,}
-\DoxyCodeLine{185                                \textcolor{keyword}{const} std::string \&prefix)\textcolor{keyword}{ const}}
-\DoxyCodeLine{186 \textcolor{keyword}{    }\{}
-\DoxyCodeLine{187         (void)ds;}
-\DoxyCodeLine{188         (void)prefix;}
-\DoxyCodeLine{189         \textcolor{comment}{// Base implementation: no-\/op.}}
-\DoxyCodeLine{190     \}}
-\DoxyCodeLine{191 \};}
-\DoxyCodeLine{192 }
-\DoxyCodeLine{193 \} \textcolor{comment}{// namespace CompactStar::Physics::State}}
-\DoxyCodeLine{194 }
-\DoxyCodeLine{195 \textcolor{preprocessor}{\#endif }\textcolor{comment}{// CompactStar\_Physics\_State\_State\_H}}
+\DoxyCodeLine{181     \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_state_1_1_state_ac9892ca481397cba4afe2da9cd9a50a6}{SanityCheck}}()\textcolor{keyword}{ const}}
+\DoxyCodeLine{182 \textcolor{keyword}{    }\{}
+\DoxyCodeLine{183         PROFILE\_FUNCTION();}
+\DoxyCodeLine{184 }
+\DoxyCodeLine{185         \textcolor{keyword}{const} std::size\_t n = \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_state_1_1_state_a7d41a392de8417100b45ebfb19298eae}{Size}}();}
+\DoxyCodeLine{186         \textcolor{keyword}{const} \textcolor{keywordtype}{double} *y = \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_state_1_1_state_ad8fd8cf0dd2001eed6f81ea0e5458f30}{Data}}();}
+\DoxyCodeLine{187 }
+\DoxyCodeLine{188         \textcolor{keywordflow}{if} (!y || n == 0)}
+\DoxyCodeLine{189         \{}
+\DoxyCodeLine{190             Z\_LOG\_WARNING(std::string(\textcolor{stringliteral}{"{}SanityCheck: empty state in "{}}) + \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_state_1_1_state_adb2c0a210afb045ea8cf1e96e3b0c6ed}{Name}}());}
+\DoxyCodeLine{191             \textcolor{keywordflow}{return};}
+\DoxyCodeLine{192         \}}
+\DoxyCodeLine{193 }
+\DoxyCodeLine{194         \textcolor{keywordtype}{bool} has\_nan = \textcolor{keyword}{false}, has\_inf = \textcolor{keyword}{false};}
+\DoxyCodeLine{195         \textcolor{keywordflow}{for} (std::size\_t i = 0; i < n; ++i)}
+\DoxyCodeLine{196         \{}
+\DoxyCodeLine{197             \textcolor{keywordflow}{if} (std::isnan(y[i]))}
+\DoxyCodeLine{198             \{}
+\DoxyCodeLine{199                 has\_nan = \textcolor{keyword}{true};}
+\DoxyCodeLine{200                 \textcolor{keywordflow}{break};}
+\DoxyCodeLine{201             \}}
+\DoxyCodeLine{202             \textcolor{keywordflow}{if} (!std::isfinite(y[i]))}
+\DoxyCodeLine{203             \{}
+\DoxyCodeLine{204                 has\_inf = \textcolor{keyword}{true};}
+\DoxyCodeLine{205                 \textcolor{keywordflow}{break};}
+\DoxyCodeLine{206             \}}
+\DoxyCodeLine{207         \}}
+\DoxyCodeLine{208 }
+\DoxyCodeLine{209         \textcolor{keywordflow}{if} (has\_nan)}
+\DoxyCodeLine{210             Z\_LOG\_ERROR(std::string(\textcolor{stringliteral}{"{}SanityCheck["{}}) + \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_state_1_1_state_adb2c0a210afb045ea8cf1e96e3b0c6ed}{Name}}() + \textcolor{stringliteral}{"{}]: NaN detected"{}});}
+\DoxyCodeLine{211         \textcolor{keywordflow}{if} (has\_inf)}
+\DoxyCodeLine{212             Z\_LOG\_ERROR(std::string(\textcolor{stringliteral}{"{}SanityCheck["{}}) + \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_state_1_1_state_adb2c0a210afb045ea8cf1e96e3b0c6ed}{Name}}() + \textcolor{stringliteral}{"{}]: Inf detected"{}});}
+\DoxyCodeLine{213         \textcolor{keywordflow}{if} (!has\_nan \&\& !has\_inf)}
+\DoxyCodeLine{214             Z\_LOG\_INFO(std::string(\textcolor{stringliteral}{"{}SanityCheck["{}}) + \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_state_1_1_state_adb2c0a210afb045ea8cf1e96e3b0c6ed}{Name}}() + \textcolor{stringliteral}{"{}]: OK ("{}} +}
+\DoxyCodeLine{215                        std::to\_string(n) + \textcolor{stringliteral}{"{} DOFs)"{}});}
+\DoxyCodeLine{216     \}}
+\DoxyCodeLine{217 }
+\DoxyCodeLine{218     \textcolor{comment}{// -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{219     \textcolor{comment}{// Optional I/O}}
+\DoxyCodeLine{220     \textcolor{comment}{// -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{221 }
+\DoxyCodeLine{228     \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_state_1_1_state_aec8b76c96d1cccda2a0d186ba473eb21}{ExportColumns}}(\mbox{\hyperlink{class_zaki_1_1_vector_1_1_data_set}{Zaki::Vector::DataSet}} \&ds,}
+\DoxyCodeLine{229                                \textcolor{keyword}{const} std::string \&prefix)\textcolor{keyword}{ const}}
+\DoxyCodeLine{230 \textcolor{keyword}{    }\{}
+\DoxyCodeLine{231         (void)ds;}
+\DoxyCodeLine{232         (void)prefix;}
+\DoxyCodeLine{233         \textcolor{comment}{// Base implementation: no-\/op.}}
+\DoxyCodeLine{234     \}}
+\DoxyCodeLine{235 \};}
+\DoxyCodeLine{236 }
+\DoxyCodeLine{237 \} \textcolor{comment}{// namespace CompactStar::Physics::State}}
+\DoxyCodeLine{238 }
+\DoxyCodeLine{239 \textcolor{preprocessor}{\#endif }\textcolor{comment}{// CompactStar\_Physics\_State\_State\_H}}
 
 \end{DoxyCode}

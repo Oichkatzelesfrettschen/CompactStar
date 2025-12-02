@@ -20,6 +20,12 @@ std\+::size\+\_\+t {\bfseries Grid\+Size} () const override
 \mbox{\Hypertarget{_chem_state_8hpp_ac2fdf117e3886bbce4baa56a77d3e9cc}\label{_chem_state_8hpp_ac2fdf117e3886bbce4baa56a77d3e9cc}} 
 void {\bfseries Clear} () override
 \begin{DoxyCompactList}\small\item\em Reset all components to zero (does not release capacity). \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{_chem_state_8hpp_a3f6089e2db736965f021e2165ae39933}\label{_chem_state_8hpp_a3f6089e2db736965f021e2165ae39933}} 
+void {\bfseries Pack\+To} (double $\ast$dest) const override
+\begin{DoxyCompactList}\small\item\em Copy the internal ODE components into a flat buffer. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{_chem_state_8hpp_af4c43758909d4e294d63b7d067eae761}\label{_chem_state_8hpp_af4c43758909d4e294d63b7d067eae761}} 
+void {\bfseries Unpack\+From} (const double $\ast$src) override
+\begin{DoxyCompactList}\small\item\em Populate internal ODE components from a flat buffer. \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{_chem_state_8hpp_a53d81624f03725345e5e83949046ba2c}\label{_chem_state_8hpp_a53d81624f03725345e5e83949046ba2c}} 
 std\+::size\+\_\+t {\bfseries Num\+Components} () const
 \begin{DoxyCompactList}\small\item\em Return the number of chemical-\/imbalance components. \end{DoxyCompactList}\item 
@@ -65,8 +71,11 @@ namespace CompactStar::Physics::State
 The components are stored as a simple 1D vector; their physical meaning (which index corresponds to which reaction channel such as $\eta_{npe}\f,
    $\textbackslash{}eta\+\_\+\{np\textbackslash{}mu\}\textbackslash{}f, etc.) is defined by the drivers/microphysics layer, not by this class.
 
-Units of $\eta_i$ are typically energy (e.\+g. erg), but this is not enforced here. $\ast$/ class Chem\+State \+: public State \{ public\+: // -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/ // Required State interface // -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/
+Units of $\eta_i$ are typically energy (e.\+g. erg), but this is not enforced here.
 
+\begin{DoxyNote}{Note}
+Storage (the \`{}values\+\_\+\`{} vector) deliberately lives in this derived class rather than in the State base class. This design allows future state types to use non-\/contiguous, multi-\/zone, or externally owned layouts while still exposing the uniform Pack\+To/\+Unpack\+From interface required by the evolution framework. See \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_state_1_1_state}{Compact\+Star\+::\+Physics\+::\+State\+::\+State}} for details. $\ast$/ class Chem\+State \+: public State \{ public\+: // -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/ // Required State interface // -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/
+\end{DoxyNote}
 Short human-\/readable identifier for logging. const char $\ast$\+Name() const override \{ return \char`\"{}\+Chem\+State\char`\"{}; \}
 
 Number of scalar degrees of freedom (number of 

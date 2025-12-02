@@ -32,6 +32,10 @@ virtual std\+::size\+\_\+t \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_s
 \begin{DoxyCompactList}\small\item\em Number of spatial grid cells represented. \end{DoxyCompactList}\item 
 virtual void \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_state_1_1_state_ae531732a02445f1378be8a13837691e8}{Clear}} ()=0
 \begin{DoxyCompactList}\small\item\em Reset contents to a well-\/defined state (usually all zeros). \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_state_1_1_state_a541e92639dd1000d18fa3b68483fd502}{Pack\+To}} (double $\ast$dest) const =0
+\begin{DoxyCompactList}\small\item\em Pack this state into a contiguous double buffer. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_state_1_1_state_a9d29b545a578c4857388b1aa92b4e993}{Unpack\+From}} (const double $\ast$src)=0
+\begin{DoxyCompactList}\small\item\em Unpack this state from a contiguous double buffer. \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{class_compact_star_1_1_physics_1_1_state_1_1_state_ac9892ca481397cba4afe2da9cd9a50a6}\label{class_compact_star_1_1_physics_1_1_state_1_1_state_ac9892ca481397cba4afe2da9cd9a50a6}} 
 virtual void {\bfseries Sanity\+Check} () const
 \begin{DoxyCompactList}\small\item\em Check for Na\+Ns/\+Inf in the state vector and log results. \end{DoxyCompactList}\item 
@@ -144,6 +148,20 @@ Short state name for logging (e.\+g. \char`\"{}\+Chem\+State\char`\"{}).
 
 Implemented in \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_state_1_1_b_n_v_state_ab6f1d71d82eef427a12068b7fe33d32b}{Compact\+Star\+::\+Physics\+::\+State\+::\+BNVState}}, and \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_state_1_1_thermal_state_a35507eb8ed8d3b3646649257f4f2a851}{Compact\+Star\+::\+Physics\+::\+State\+::\+Thermal\+State}}.
 
+\mbox{\Hypertarget{class_compact_star_1_1_physics_1_1_state_1_1_state_a541e92639dd1000d18fa3b68483fd502}\label{class_compact_star_1_1_physics_1_1_state_1_1_state_a541e92639dd1000d18fa3b68483fd502}} 
+\index{CompactStar::Physics::State::State@{CompactStar::Physics::State::State}!PackTo@{PackTo}}
+\index{PackTo@{PackTo}!CompactStar::Physics::State::State@{CompactStar::Physics::State::State}}
+\doxysubsubsection{\texorpdfstring{PackTo()}{PackTo()}}
+{\footnotesize\ttfamily virtual void Compact\+Star\+::\+Physics\+::\+State\+::\+State\+::\+Pack\+To (\begin{DoxyParamCaption}\item[{double $\ast$}]{dest }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Pack this state into a contiguous double buffer. 
+
+The buffer {\ttfamily dest} must have space for at least \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_state_1_1_state_a7d41a392de8417100b45ebfb19298eae}{Size()}} doubles. Implementations must write exactly \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_state_1_1_state_a7d41a392de8417100b45ebfb19298eae}{Size()}} entries. 
+
+Implemented in \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_state_1_1_b_n_v_state_a06f92845a5ae6bf1abd1f955b70bd533}{Compact\+Star\+::\+Physics\+::\+State\+::\+BNVState}}, and \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_state_1_1_thermal_state_ac7bec4ecf0446c99cc03f134ea927de5}{Compact\+Star\+::\+Physics\+::\+State\+::\+Thermal\+State}}.
+
 \mbox{\Hypertarget{class_compact_star_1_1_physics_1_1_state_1_1_state_a67305cd2b43b22a5503b62326c00584f}\label{class_compact_star_1_1_physics_1_1_state_1_1_state_a67305cd2b43b22a5503b62326c00584f}} 
 \index{CompactStar::Physics::State::State@{CompactStar::Physics::State::State}!Resize@{Resize}}
 \index{Resize@{Resize}!CompactStar::Physics::State::State@{CompactStar::Physics::State::State}}
@@ -171,6 +189,20 @@ Number of scalar degrees of freedom.
 
 
 Implemented in \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_state_1_1_b_n_v_state_a4e4b91b6d7daee924ea596d200506204}{Compact\+Star\+::\+Physics\+::\+State\+::\+BNVState}}, and \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_state_1_1_thermal_state_a2b4321c1aadef35f0694453e7d5283d0}{Compact\+Star\+::\+Physics\+::\+State\+::\+Thermal\+State}}.
+
+\mbox{\Hypertarget{class_compact_star_1_1_physics_1_1_state_1_1_state_a9d29b545a578c4857388b1aa92b4e993}\label{class_compact_star_1_1_physics_1_1_state_1_1_state_a9d29b545a578c4857388b1aa92b4e993}} 
+\index{CompactStar::Physics::State::State@{CompactStar::Physics::State::State}!UnpackFrom@{UnpackFrom}}
+\index{UnpackFrom@{UnpackFrom}!CompactStar::Physics::State::State@{CompactStar::Physics::State::State}}
+\doxysubsubsection{\texorpdfstring{UnpackFrom()}{UnpackFrom()}}
+{\footnotesize\ttfamily virtual void Compact\+Star\+::\+Physics\+::\+State\+::\+State\+::\+Unpack\+From (\begin{DoxyParamCaption}\item[{const double $\ast$}]{src }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Unpack this state from a contiguous double buffer. 
+
+The buffer {\ttfamily src} must contain at least \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_state_1_1_state_a7d41a392de8417100b45ebfb19298eae}{Size()}} entries that were previously produced by \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_state_1_1_state_a541e92639dd1000d18fa3b68483fd502}{Pack\+To()}} (for the same state layout). 
+
+Implemented in \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_state_1_1_b_n_v_state_a8f3a53be98215a94c80a46a779571d9f}{Compact\+Star\+::\+Physics\+::\+State\+::\+BNVState}}, and \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_state_1_1_thermal_state_ab8014f8c46f4262c9f3c64b3c071b87a}{Compact\+Star\+::\+Physics\+::\+State\+::\+Thermal\+State}}.
 
 
 

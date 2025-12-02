@@ -37,6 +37,14 @@
 #include "CompactStar/Core/StarProfile.hpp"
 #include "CompactStar/Physics/State/SpinState.hpp"
 
+/**
+ * @namespace CompactStar::Physics::Spin
+ * @brief Spin-related physics utilities (characteristic age, dipole fields).
+ *
+ * This namespace holds lightweight, stateless functions for spin diagnostics
+ * using SpinState + structural profiles. Evolution drivers live separately
+ * under Physics::Driver::Spin.
+ */
 namespace CompactStar::Physics::Spin
 {
 /**

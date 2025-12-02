@@ -35,71 +35,63 @@
 \DoxyCodeLine{40 \textcolor{preprocessor}{\#include <string>}}
 \DoxyCodeLine{41 \textcolor{preprocessor}{\#include <vector>}}
 \DoxyCodeLine{42 }
-\DoxyCodeLine{43 \textcolor{keyword}{namespace }CompactStar}
-\DoxyCodeLine{44 \{}
-\DoxyCodeLine{45 \textcolor{keyword}{namespace }Physics}
-\DoxyCodeLine{46 \{}
-\DoxyCodeLine{47 \textcolor{keyword}{namespace }Evolution}
-\DoxyCodeLine{48 \{}
-\DoxyCodeLine{49 }
-\DoxyCodeLine{50 \textcolor{comment}{//==============================================================}}
-\DoxyCodeLine{55 \textcolor{comment}{}\textcolor{keyword}{enum class} StepperType}
-\DoxyCodeLine{56 \{}
-\DoxyCodeLine{57     RKF45, }
-\DoxyCodeLine{58     MSBDF  }
-\DoxyCodeLine{59 \};}
-\DoxyCodeLine{60 }
-\DoxyCodeLine{61 \textcolor{comment}{//==============================================================}}
-\DoxyCodeLine{66 \textcolor{comment}{}\textcolor{keyword}{enum class} EnvelopeModel}
-\DoxyCodeLine{67 \{}
-\DoxyCodeLine{68     Iron,}
-\DoxyCodeLine{69     Accreted,}
-\DoxyCodeLine{70     Custom }
-\DoxyCodeLine{71 \};}
-\DoxyCodeLine{72 \textcolor{comment}{//==============================================================}}
-\DoxyCodeLine{73 }
-\DoxyCodeLine{74 \textcolor{comment}{//==============================================================}}
-\DoxyCodeLine{79 \textcolor{comment}{}\textcolor{keyword}{struct }\mbox{\hyperlink{struct_compact_star_1_1_physics_1_1_evolution_1_1_config}{Config}}}
-\DoxyCodeLine{80 \{}
-\DoxyCodeLine{81     \textcolor{comment}{// -\/-\/-\/-\/ Integrator -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
-\DoxyCodeLine{82     StepperType \mbox{\hyperlink{struct_compact_star_1_1_physics_1_1_evolution_1_1_config_ae283786bfb5c27a7d4b0a48375e30294}{stepper}} = StepperType::MSBDF; }
-\DoxyCodeLine{83     \textcolor{keywordtype}{double} \mbox{\hyperlink{struct_compact_star_1_1_physics_1_1_evolution_1_1_config_a81accd13af408d61ec9f4d8913452d2f}{rtol}} = 1e-\/6;                       }
-\DoxyCodeLine{84     \textcolor{keywordtype}{double} \mbox{\hyperlink{struct_compact_star_1_1_physics_1_1_evolution_1_1_config_af2ff1bf36cca9c19839186ecdbc89ff5}{atol}} = 1e-\/10;                      }
-\DoxyCodeLine{85     std::size\_t \mbox{\hyperlink{struct_compact_star_1_1_physics_1_1_evolution_1_1_config_aab3086a741f75d60f631d5b5648df469}{max\_steps}} = 1000000;         }
-\DoxyCodeLine{87     \textcolor{comment}{// -\/-\/-\/-\/ Output -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
-\DoxyCodeLine{88     \textcolor{keywordtype}{double} \mbox{\hyperlink{struct_compact_star_1_1_physics_1_1_evolution_1_1_config_a818995597d187fafd862ee02a43fdc33}{dt\_save}} = 1.0e2; }
-\DoxyCodeLine{89     \textcolor{keywordtype}{bool} save\_intermediate = \textcolor{keyword}{true};}
-\DoxyCodeLine{90 }
-\DoxyCodeLine{91     \textcolor{comment}{// -\/-\/-\/-\/ Physics toggles -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
-\DoxyCodeLine{92     \textcolor{keywordtype}{bool} \mbox{\hyperlink{struct_compact_star_1_1_physics_1_1_evolution_1_1_config_ae36a398df8b8b82ee10c0d239e676258}{use\_isothermal\_core}} = \textcolor{keyword}{true};  }
-\DoxyCodeLine{93     \textcolor{keywordtype}{bool} \mbox{\hyperlink{struct_compact_star_1_1_physics_1_1_evolution_1_1_config_a7624adf437ec708f60daecd87f279683}{enable\_MU}} = \textcolor{keyword}{true};              }
-\DoxyCodeLine{94     \textcolor{keywordtype}{bool} \mbox{\hyperlink{struct_compact_star_1_1_physics_1_1_evolution_1_1_config_ae65371fa782bb834f6dbbbb7b0916ae8}{enable\_DU}} = \textcolor{keyword}{true};              }
-\DoxyCodeLine{95     \textcolor{keywordtype}{bool} \mbox{\hyperlink{struct_compact_star_1_1_physics_1_1_evolution_1_1_config_a935b14c5e1168067b5122059c6ea441f}{enable\_PBF}} = \textcolor{keyword}{false};           }
-\DoxyCodeLine{96     \textcolor{keywordtype}{bool} \mbox{\hyperlink{struct_compact_star_1_1_physics_1_1_evolution_1_1_config_a2aa7e969c648e1e115879b00df71dba7}{enable\_BNV}} = \textcolor{keyword}{false};           }
-\DoxyCodeLine{97     \textcolor{keywordtype}{bool} \mbox{\hyperlink{struct_compact_star_1_1_physics_1_1_evolution_1_1_config_a7aa038ac3c3e393f3854a7b39fe67309}{enable\_rotochem\_driver}} = \textcolor{keyword}{false}; }
-\DoxyCodeLine{98     \textcolor{keywordtype}{bool} \mbox{\hyperlink{struct_compact_star_1_1_physics_1_1_evolution_1_1_config_afb3eba73bbc39057f6f04d905b0cc27b}{couple\_spin}} = \textcolor{keyword}{false};             }
-\DoxyCodeLine{100     \textcolor{comment}{// -\/-\/-\/-\/ Envelope and gaps -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
-\DoxyCodeLine{101     EnvelopeModel envelope = EnvelopeModel::Iron;}
-\DoxyCodeLine{102     \textcolor{keywordtype}{double} \mbox{\hyperlink{struct_compact_star_1_1_physics_1_1_evolution_1_1_config_a956575775d60221464dd6732798fa247}{envelope\_xi}} = 0.0; }
-\DoxyCodeLine{103     \textcolor{keywordtype}{bool} superfluid\_n = \textcolor{keyword}{false};}
-\DoxyCodeLine{104     \textcolor{keywordtype}{bool} superfluid\_p = \textcolor{keyword}{false};}
-\DoxyCodeLine{105 }
-\DoxyCodeLine{106     \textcolor{comment}{// -\/-\/-\/-\/ Chemical imbalances -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
-\DoxyCodeLine{107     std::size\_t \mbox{\hyperlink{struct_compact_star_1_1_physics_1_1_evolution_1_1_config_ab2e24ae85b3b6f4d3b2496fde7d61a9d}{n\_eta}} = 1; }
-\DoxyCodeLine{109     \textcolor{comment}{// -\/-\/-\/-\/ Units policy (documentation only; conversions handled in impl) -\/-\/-\/-\/-\/-\/}}
-\DoxyCodeLine{110     std::string unit\_policy = \textcolor{stringliteral}{"{}cgs\_with\_Gc1"{}};}
-\DoxyCodeLine{111 }
-\DoxyCodeLine{112     \textcolor{comment}{// -\/-\/-\/-\/ Misc -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
-\DoxyCodeLine{113     std::string \mbox{\hyperlink{struct_compact_star_1_1_physics_1_1_evolution_1_1_config_af7573276349dec83c48d0278eae576fc}{run\_label}}; }
-\DoxyCodeLine{114 \};}
-\DoxyCodeLine{115 \textcolor{comment}{//==============================================================}}
-\DoxyCodeLine{116 \} \textcolor{comment}{// namespace Evolution}}
-\DoxyCodeLine{117 \textcolor{comment}{//=============================================================}}
-\DoxyCodeLine{118 \} \textcolor{comment}{// namespace Physics}}
-\DoxyCodeLine{119 \textcolor{comment}{//==============================================================}}
-\DoxyCodeLine{120 \} \textcolor{comment}{// namespace CompactStar}}
-\DoxyCodeLine{121 \textcolor{comment}{//==============================================================}}
-\DoxyCodeLine{122 }
-\DoxyCodeLine{123 \textcolor{preprocessor}{\#endif }\textcolor{comment}{/* CompactStar\_Physics\_Evolution\_Config\_H */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{57 \textcolor{keyword}{namespace }\mbox{\hyperlink{namespace_compact_star_1_1_physics_1_1_evolution}{CompactStar::Physics::Evolution}}}
+\DoxyCodeLine{58 \{}
+\DoxyCodeLine{59 }
+\DoxyCodeLine{60 \textcolor{comment}{//==============================================================}}
+\DoxyCodeLine{65 \textcolor{comment}{}\textcolor{keyword}{enum class} \mbox{\hyperlink{namespace_compact_star_1_1_physics_1_1_evolution_a0319e48cd15f3f7460b2432fd507fd34}{StepperType}}}
+\DoxyCodeLine{66 \{}
+\DoxyCodeLine{67     \mbox{\hyperlink{namespace_compact_star_1_1_physics_1_1_evolution_a0319e48cd15f3f7460b2432fd507fd34a651742901a96ccc36ad193073cb71b4a}{RKF45}}, }
+\DoxyCodeLine{68     \mbox{\hyperlink{namespace_compact_star_1_1_physics_1_1_evolution_a0319e48cd15f3f7460b2432fd507fd34a14a72850b24c13d12d4e2370e682a181}{MSBDF}}  }
+\DoxyCodeLine{69 \};}
+\DoxyCodeLine{70 }
+\DoxyCodeLine{71 \textcolor{comment}{//==============================================================}}
+\DoxyCodeLine{76 \textcolor{comment}{}\textcolor{keyword}{enum class} \mbox{\hyperlink{namespace_compact_star_1_1_physics_1_1_evolution_a77ec205aab45375896e1afc074f535bc}{EnvelopeModel}}}
+\DoxyCodeLine{77 \{}
+\DoxyCodeLine{78     Iron,}
+\DoxyCodeLine{79     Accreted,}
+\DoxyCodeLine{80     \mbox{\hyperlink{namespace_compact_star_1_1_physics_1_1_evolution_a77ec205aab45375896e1afc074f535bca90589c47f06eb971d548591f23c285af}{Custom}} }
+\DoxyCodeLine{81 \};}
+\DoxyCodeLine{82 \textcolor{comment}{//==============================================================}}
+\DoxyCodeLine{83 }
+\DoxyCodeLine{84 \textcolor{comment}{//==============================================================}}
+\DoxyCodeLine{89 \textcolor{comment}{}\textcolor{keyword}{struct }\mbox{\hyperlink{struct_compact_star_1_1_physics_1_1_evolution_1_1_config}{Config}}}
+\DoxyCodeLine{90 \{}
+\DoxyCodeLine{91     \textcolor{comment}{// -\/-\/-\/-\/ Integrator -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{92     \mbox{\hyperlink{namespace_compact_star_1_1_physics_1_1_evolution_a0319e48cd15f3f7460b2432fd507fd34}{StepperType}} \mbox{\hyperlink{struct_compact_star_1_1_physics_1_1_evolution_1_1_config_ae283786bfb5c27a7d4b0a48375e30294}{stepper}} = \mbox{\hyperlink{namespace_compact_star_1_1_physics_1_1_evolution_a0319e48cd15f3f7460b2432fd507fd34a14a72850b24c13d12d4e2370e682a181}{StepperType::MSBDF}}; }
+\DoxyCodeLine{93     \textcolor{keywordtype}{double} \mbox{\hyperlink{struct_compact_star_1_1_physics_1_1_evolution_1_1_config_a81accd13af408d61ec9f4d8913452d2f}{rtol}} = 1e-\/6;                       }
+\DoxyCodeLine{94     \textcolor{keywordtype}{double} \mbox{\hyperlink{struct_compact_star_1_1_physics_1_1_evolution_1_1_config_af2ff1bf36cca9c19839186ecdbc89ff5}{atol}} = 1e-\/10;                      }
+\DoxyCodeLine{95     std::size\_t \mbox{\hyperlink{struct_compact_star_1_1_physics_1_1_evolution_1_1_config_aab3086a741f75d60f631d5b5648df469}{max\_steps}} = 1000000;         }
+\DoxyCodeLine{97     \textcolor{comment}{// -\/-\/-\/-\/ Output -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{98     \textcolor{keywordtype}{double} \mbox{\hyperlink{struct_compact_star_1_1_physics_1_1_evolution_1_1_config_a818995597d187fafd862ee02a43fdc33}{dt\_save}} = 1.0e2; }
+\DoxyCodeLine{99     \textcolor{keywordtype}{bool} save\_intermediate = \textcolor{keyword}{true};}
+\DoxyCodeLine{100 }
+\DoxyCodeLine{101     \textcolor{comment}{// -\/-\/-\/-\/ Physics toggles -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{102     \textcolor{keywordtype}{bool} \mbox{\hyperlink{struct_compact_star_1_1_physics_1_1_evolution_1_1_config_ae36a398df8b8b82ee10c0d239e676258}{use\_isothermal\_core}} = \textcolor{keyword}{true};  }
+\DoxyCodeLine{103     \textcolor{keywordtype}{bool} \mbox{\hyperlink{struct_compact_star_1_1_physics_1_1_evolution_1_1_config_a7624adf437ec708f60daecd87f279683}{enable\_MU}} = \textcolor{keyword}{true};              }
+\DoxyCodeLine{104     \textcolor{keywordtype}{bool} \mbox{\hyperlink{struct_compact_star_1_1_physics_1_1_evolution_1_1_config_ae65371fa782bb834f6dbbbb7b0916ae8}{enable\_DU}} = \textcolor{keyword}{true};              }
+\DoxyCodeLine{105     \textcolor{keywordtype}{bool} \mbox{\hyperlink{struct_compact_star_1_1_physics_1_1_evolution_1_1_config_a935b14c5e1168067b5122059c6ea441f}{enable\_PBF}} = \textcolor{keyword}{false};           }
+\DoxyCodeLine{106     \textcolor{keywordtype}{bool} \mbox{\hyperlink{struct_compact_star_1_1_physics_1_1_evolution_1_1_config_a2aa7e969c648e1e115879b00df71dba7}{enable\_BNV}} = \textcolor{keyword}{false};           }
+\DoxyCodeLine{107     \textcolor{keywordtype}{bool} \mbox{\hyperlink{struct_compact_star_1_1_physics_1_1_evolution_1_1_config_a7aa038ac3c3e393f3854a7b39fe67309}{enable\_rotochem\_driver}} = \textcolor{keyword}{false}; }
+\DoxyCodeLine{108     \textcolor{keywordtype}{bool} \mbox{\hyperlink{struct_compact_star_1_1_physics_1_1_evolution_1_1_config_afb3eba73bbc39057f6f04d905b0cc27b}{couple\_spin}} = \textcolor{keyword}{false};             }
+\DoxyCodeLine{110     \textcolor{comment}{// -\/-\/-\/-\/ Envelope and gaps -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{111     \mbox{\hyperlink{namespace_compact_star_1_1_physics_1_1_evolution_a77ec205aab45375896e1afc074f535bc}{EnvelopeModel}} envelope = EnvelopeModel::Iron;}
+\DoxyCodeLine{112     \textcolor{keywordtype}{double} \mbox{\hyperlink{struct_compact_star_1_1_physics_1_1_evolution_1_1_config_a956575775d60221464dd6732798fa247}{envelope\_xi}} = 0.0; }
+\DoxyCodeLine{113     \textcolor{keywordtype}{bool} superfluid\_n = \textcolor{keyword}{false};}
+\DoxyCodeLine{114     \textcolor{keywordtype}{bool} superfluid\_p = \textcolor{keyword}{false};}
+\DoxyCodeLine{115 }
+\DoxyCodeLine{116     \textcolor{comment}{// -\/-\/-\/-\/ Chemical imbalances -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{117     std::size\_t \mbox{\hyperlink{struct_compact_star_1_1_physics_1_1_evolution_1_1_config_ab2e24ae85b3b6f4d3b2496fde7d61a9d}{n\_eta}} = 1; }
+\DoxyCodeLine{119     \textcolor{comment}{// -\/-\/-\/-\/ Units policy (documentation only; conversions handled in impl) -\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{120     std::string unit\_policy = \textcolor{stringliteral}{"{}cgs\_with\_Gc1"{}};}
+\DoxyCodeLine{121 }
+\DoxyCodeLine{122     \textcolor{comment}{// -\/-\/-\/-\/ Misc -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{123     std::string \mbox{\hyperlink{struct_compact_star_1_1_physics_1_1_evolution_1_1_config_af7573276349dec83c48d0278eae576fc}{run\_label}}; }
+\DoxyCodeLine{124 \};}
+\DoxyCodeLine{125 \textcolor{comment}{//==============================================================}}
+\DoxyCodeLine{126 \} \textcolor{comment}{// namespace CompactStar::Physics::Evolution}}
+\DoxyCodeLine{127 \textcolor{comment}{//==============================================================}}
+\DoxyCodeLine{128 }
+\DoxyCodeLine{129 \textcolor{preprocessor}{\#endif }\textcolor{comment}{/* CompactStar\_Physics\_Evolution\_Config\_H */}\textcolor{preprocessor}{}}
 
 \end{DoxyCode}

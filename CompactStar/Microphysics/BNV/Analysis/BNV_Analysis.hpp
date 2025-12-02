@@ -45,6 +45,13 @@
 #include "CompactStar/Core/Analysis.hpp"
 
 //==============================================================
+/**
+ * @namespace CompactStar::Microphysics::BNV::Analysis
+ * @brief Analysis tools for baryon-number-violating reaction models.
+ *
+ * Provides decay-rate evaluators, diagnostic utilities, sequence tools,
+ * and derived quantities for checking BNV phenomenology in compact stars.
+ */
 namespace CompactStar::Microphysics::BNV::Analysis
 {
 

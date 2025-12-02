@@ -13,5 +13,5 @@ var searchData=
   ['dmu_10',['Dmu',['../d9/d31/class_compact_star_1_1_baryon.html#a7821e5840f84449e452fa26324041a2a',1,'CompactStar::Baryon::Dmu()'],['../d4/da4/class_compact_star_1_1_particle.html#a72c24a1d35950d097454aa97913ee6ac',1,'CompactStar::Particle::Dmu(const int &amp;idx)']]],
   ['dmu_5fdrho_11',['DMu_DRho',['../d4/da4/class_compact_star_1_1_particle.html#aa433068f029c57e0feb5b44e01db3aa1',1,'CompactStar::Particle']]],
   ['doublefac_12',['DoubleFac',['../d8/de6/_math___core_8hpp.html#a8b2500daa2f2370ce05b7faba1fc5c27',1,'Zaki::Math']]],
-  ['durcaemissivityprefactor_13',['DUrcaEmissivityPrefactor',['../d4/dc0/_thermal_8hpp.html#a45dbe48bf7090bad81ec3ad8c31a643a',1,'CompactStar::Physics::Thermal']]]
+  ['durcaemissivityprefactor_13',['DUrcaEmissivityPrefactor',['../db/da9/namespace_compact_star_1_1_physics_1_1_thermal.html#a45dbe48bf7090bad81ec3ad8c31a643a',1,'CompactStar::Physics::Thermal']]]
 ];

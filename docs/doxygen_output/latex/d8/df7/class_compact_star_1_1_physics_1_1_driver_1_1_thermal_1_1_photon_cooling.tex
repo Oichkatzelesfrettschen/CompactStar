@@ -28,9 +28,9 @@ struct \mbox{\hyperlink{struct_compact_star_1_1_physics_1_1_driver_1_1_thermal_1
 \item 
 std\+::string \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_photon_cooling_a9953abae9587b8953309a1ecb9066cf3}{Name}} () const override
 \begin{DoxyCompactList}\small\item\em Human-\/readable name for diagnostics/logging. \end{DoxyCompactList}\item 
-std\+::span$<$ const \mbox{\hyperlink{_tags_8hpp_af14f5554b0d9be50c5ea718733bc424b}{State\+::\+State\+Tag}} $>$ \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_photon_cooling_a727e70e4e7ae99d1711d2d44b12b8150}{Depends\+On}} () const override
+std\+::span$<$ const \mbox{\hyperlink{namespace_compact_star_1_1_physics_1_1_state_af14f5554b0d9be50c5ea718733bc424b}{State\+::\+State\+Tag}} $>$ \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_photon_cooling_a727e70e4e7ae99d1711d2d44b12b8150}{Depends\+On}} () const override
 \begin{DoxyCompactList}\small\item\em Which state blocks this driver reads. \end{DoxyCompactList}\item 
-std\+::span$<$ const \mbox{\hyperlink{_tags_8hpp_af14f5554b0d9be50c5ea718733bc424b}{State\+::\+State\+Tag}} $>$ \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_photon_cooling_a75fda0abed33a37355c02b0072c35ee6}{Updates}} () const override
+std\+::span$<$ const \mbox{\hyperlink{namespace_compact_star_1_1_physics_1_1_state_af14f5554b0d9be50c5ea718733bc424b}{State\+::\+State\+Tag}} $>$ \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_photon_cooling_a75fda0abed33a37355c02b0072c35ee6}{Updates}} () const override
 \begin{DoxyCompactList}\small\item\em Which state blocks this driver updates (adds contributions to). \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_photon_cooling_a9b6e2a592f8473860e317c9102edc831}{Accumulate\+RHS}} (double t, const \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_state_vector}{Evolution\+::\+State\+Vector}} \&Y, \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_r_h_s_accumulator}{Evolution\+::\+RHSAccumulator}} \&d\+Ydt, const \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_star_context}{Evolution\+::\+Star\+Context}} \&ctx) const override
 \begin{DoxyCompactList}\small\item\em Add this driver’s contribution to the global RHS d\+Y/dt. \end{DoxyCompactList}\item 
@@ -45,7 +45,7 @@ void {\bfseries Set\+Options} (const \mbox{\hyperlink{struct_compact_star_1_1_ph
 \doxysubsection{Detailed Description}
 Adds −\+L\+\_\+γ/\+C\+\_\+eff to the thermal RHS (redshifted frame). 
 
-{\bfseries{Depends on\+:}} Thermal {\bfseries{Updates\+:}} Thermal 
+{\bfseries{Depends on\+:}} \mbox{\hyperlink{namespace_compact_star_1_1_physics_1_1_thermal}{Thermal}} {\bfseries{Updates\+:}} \mbox{\hyperlink{namespace_compact_star_1_1_physics_1_1_thermal}{Thermal}} 
 
 \doxysubsection{Member Function Documentation}
 \mbox{\Hypertarget{class_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_photon_cooling_a9b6e2a592f8473860e317c9102edc831}\label{class_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_photon_cooling_a9b6e2a592f8473860e317c9102edc831}} 
@@ -58,7 +58,7 @@ Adds −\+L\+\_\+γ/\+C\+\_\+eff to the thermal RHS (redshifted frame).
 
 Add this driver’s contribution to the global RHS d\+Y/dt. 
 
-Implementations must {\itshape accumulate} into {\ttfamily d\+Ydt} (i.\+e., add), and must not assume any specific call order beyond what the Evolution graph resolves.
+Implementations must {\itshape accumulate} into {\ttfamily d\+Ydt} (i.\+e., add), and must not assume any specific call order beyond what the \mbox{\hyperlink{namespace_compact_star_1_1_physics_1_1_evolution}{Evolution}} graph resolves.
 
 
 \begin{DoxyParams}{Parameters}
@@ -79,7 +79,7 @@ Implements \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_i_driver_a8f6a4dd
 \index{CompactStar::Physics::Driver::Thermal::PhotonCooling@{CompactStar::Physics::Driver::Thermal::PhotonCooling}!DependsOn@{DependsOn}}
 \index{DependsOn@{DependsOn}!CompactStar::Physics::Driver::Thermal::PhotonCooling@{CompactStar::Physics::Driver::Thermal::PhotonCooling}}
 \doxysubsubsection{\texorpdfstring{DependsOn()}{DependsOn()}}
-{\footnotesize\ttfamily std\+::span$<$ const \mbox{\hyperlink{_tags_8hpp_af14f5554b0d9be50c5ea718733bc424b}{State\+::\+State\+Tag}} $>$ Compact\+Star\+::\+Physics\+::\+Driver\+::\+Thermal\+::\+Photon\+Cooling\+::\+Depends\+On (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+{\footnotesize\ttfamily std\+::span$<$ const \mbox{\hyperlink{namespace_compact_star_1_1_physics_1_1_state_af14f5554b0d9be50c5ea718733bc424b}{State\+::\+State\+Tag}} $>$ Compact\+Star\+::\+Physics\+::\+Driver\+::\+Thermal\+::\+Photon\+Cooling\+::\+Depends\+On (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
 
 
 
@@ -107,7 +107,7 @@ Implements \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_i_driver_a1337b02
 \index{CompactStar::Physics::Driver::Thermal::PhotonCooling@{CompactStar::Physics::Driver::Thermal::PhotonCooling}!Updates@{Updates}}
 \index{Updates@{Updates}!CompactStar::Physics::Driver::Thermal::PhotonCooling@{CompactStar::Physics::Driver::Thermal::PhotonCooling}}
 \doxysubsubsection{\texorpdfstring{Updates()}{Updates()}}
-{\footnotesize\ttfamily std\+::span$<$ const \mbox{\hyperlink{_tags_8hpp_af14f5554b0d9be50c5ea718733bc424b}{State\+::\+State\+Tag}} $>$ Compact\+Star\+::\+Physics\+::\+Driver\+::\+Thermal\+::\+Photon\+Cooling\+::\+Updates (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+{\footnotesize\ttfamily std\+::span$<$ const \mbox{\hyperlink{namespace_compact_star_1_1_physics_1_1_state_af14f5554b0d9be50c5ea718733bc424b}{State\+::\+State\+Tag}} $>$ Compact\+Star\+::\+Physics\+::\+Driver\+::\+Thermal\+::\+Photon\+Cooling\+::\+Updates (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
 
 
 

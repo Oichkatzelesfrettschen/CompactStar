@@ -42,13 +42,13 @@
 \DoxyCodeLine{57     std::span<const State::StateTag> \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_neutrino_cooling_a84bda6a5dd4718cea02067ddc0d9d2f5}{DependsOn}}()\textcolor{keyword}{ const override}}
 \DoxyCodeLine{58 \textcolor{keyword}{    }\{}
 \DoxyCodeLine{59         \textcolor{comment}{// Thermal is required; Chem may be read internally via ctx if rates need η.}}
-\DoxyCodeLine{60         \textcolor{keyword}{static} \textcolor{keyword}{constexpr} std::array<State::StateTag, 1> deps\{State::StateTag::Thermal\};}
+\DoxyCodeLine{60         \textcolor{keyword}{static} \textcolor{keyword}{constexpr} std::array<State::StateTag, 1> deps\{\mbox{\hyperlink{namespace_compact_star_1_1_physics_1_1_state_af14f5554b0d9be50c5ea718733bc424bafdf1e200d60089abcb4a4c80ecd2bb75}{State::StateTag::Thermal}}\};}
 \DoxyCodeLine{61         \textcolor{keywordflow}{return} deps;}
 \DoxyCodeLine{62     \}}
 \DoxyCodeLine{63 }
 \DoxyCodeLine{64     std::span<const State::StateTag> \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_neutrino_cooling_aa617d91eaad9d418559b6bde6f8e11f2}{Updates}}()\textcolor{keyword}{ const override}}
 \DoxyCodeLine{65 \textcolor{keyword}{    }\{}
-\DoxyCodeLine{66         \textcolor{keyword}{static} \textcolor{keyword}{constexpr} std::array<State::StateTag, 1> ups\{State::StateTag::Thermal\};}
+\DoxyCodeLine{66         \textcolor{keyword}{static} \textcolor{keyword}{constexpr} std::array<State::StateTag, 1> ups\{\mbox{\hyperlink{namespace_compact_star_1_1_physics_1_1_state_af14f5554b0d9be50c5ea718733bc424bafdf1e200d60089abcb4a4c80ecd2bb75}{State::StateTag::Thermal}}\};}
 \DoxyCodeLine{67         \textcolor{keywordflow}{return} ups;}
 \DoxyCodeLine{68     \}}
 \DoxyCodeLine{69 }

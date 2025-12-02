@@ -27,6 +27,7 @@ var searchData=
   ['starprofile_24',['StarProfile',['../d4/d7b/struct_compact_star_1_1_star_profile.html',1,'CompactStar']]],
   ['starprofileview_25',['StarProfileView',['../d9/de1/struct_compact_star_1_1_star_profile_view.html',1,'CompactStar']]],
   ['state_26',['State',['../d4/d69/class_compact_star_1_1_physics_1_1_state_1_1_state.html',1,'CompactStar::Physics::State']]],
-  ['statevector_27',['StateVector',['../da/d36/class_compact_star_1_1_physics_1_1_evolution_1_1_state_vector.html',1,'CompactStar::Physics::Evolution']]],
-  ['stepmeta_28',['StepMeta',['../d2/d06/struct_compact_star_1_1_physics_1_1_state_1_1_step_meta.html',1,'CompactStar::Physics::State']]]
+  ['statelayout_27',['StateLayout',['../d8/ddc/class_compact_star_1_1_physics_1_1_evolution_1_1_state_layout.html',1,'CompactStar::Physics::Evolution']]],
+  ['statevector_28',['StateVector',['../da/d36/class_compact_star_1_1_physics_1_1_evolution_1_1_state_vector.html',1,'CompactStar::Physics::Evolution']]],
+  ['stepmeta_29',['StepMeta',['../d2/d06/struct_compact_star_1_1_physics_1_1_state_1_1_step_meta.html',1,'CompactStar::Physics::State']]]
 ];

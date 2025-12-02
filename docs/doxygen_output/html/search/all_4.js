@@ -35,5 +35,5 @@ var searchData=
   ['dt_32',['dt',['../d2/d06/struct_compact_star_1_1_physics_1_1_state_1_1_step_meta.html#a02808cc7100ded60bdc1e4a416ebd5e6',1,'CompactStar::Physics::State::StepMeta']]],
   ['dt_5fsave_33',['dt_save',['../d5/d7b/struct_compact_star_1_1_physics_1_1_evolution_1_1_config.html#a818995597d187fafd862ee02a43fdc33',1,'CompactStar::Physics::Evolution::Config']]],
   ['durca_5fmask_34',['durca_mask',['../d2/db0/struct_compact_star_1_1_star_builder_1_1_output.html#a05b337cc0121bf4401018abf70fdc64a',1,'CompactStar::StarBuilder::Output']]],
-  ['durcaemissivityprefactor_35',['DUrcaEmissivityPrefactor',['../d4/dc0/_thermal_8hpp.html#a45dbe48bf7090bad81ec3ad8c31a643a',1,'CompactStar::Physics::Thermal']]]
+  ['durcaemissivityprefactor_35',['DUrcaEmissivityPrefactor',['../db/da9/namespace_compact_star_1_1_physics_1_1_thermal.html#a45dbe48bf7090bad81ec3ad8c31a643a',1,'CompactStar::Physics::Thermal']]]
 ];

@@ -38,75 +38,83 @@
 \DoxyCodeLine{52 }
 \DoxyCodeLine{53 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_state_8hpp}{CompactStar/Physics/State/State.hpp}}"{}}}
 \DoxyCodeLine{54 }
-\DoxyCodeLine{55 \textcolor{keyword}{namespace }CompactStar::Physics::State}
+\DoxyCodeLine{55 \textcolor{keyword}{namespace }\mbox{\hyperlink{namespace_compact_star_1_1_physics_1_1_state}{CompactStar::Physics::State}}}
 \DoxyCodeLine{56 \{}
 \DoxyCodeLine{57 }
-\DoxyCodeLine{81 \textcolor{keyword}{class }SpinState : \textcolor{keyword}{public} State}
-\DoxyCodeLine{82 \{}
-\DoxyCodeLine{83   \textcolor{keyword}{public}:}
-\DoxyCodeLine{84     \textcolor{comment}{// -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
-\DoxyCodeLine{85     \textcolor{comment}{// Required State interface}}
-\DoxyCodeLine{86     \textcolor{comment}{// -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
-\DoxyCodeLine{87 }
-\DoxyCodeLine{89     \textcolor{keyword}{const} \textcolor{keywordtype}{char} *Name()\textcolor{keyword}{ const override }\{ \textcolor{keywordflow}{return} \textcolor{stringliteral}{"{}SpinState"{}}; \}}
-\DoxyCodeLine{90 }
-\DoxyCodeLine{92     std::size\_t Size()\textcolor{keyword}{ const override }\{ \textcolor{keywordflow}{return} values\_.size(); \}}
-\DoxyCodeLine{93 }
-\DoxyCodeLine{95     \textcolor{keywordtype}{double} *Data()\textcolor{keyword}{ override}}
-\DoxyCodeLine{96 \textcolor{keyword}{    }\{}
-\DoxyCodeLine{97         \textcolor{keywordflow}{return} values\_.empty() ? nullptr : values\_.data();}
-\DoxyCodeLine{98     \}}
-\DoxyCodeLine{99 }
-\DoxyCodeLine{101     \textcolor{keyword}{const} \textcolor{keywordtype}{double} *Data()\textcolor{keyword}{ const override}}
-\DoxyCodeLine{102 \textcolor{keyword}{    }\{}
-\DoxyCodeLine{103         \textcolor{keywordflow}{return} values\_.empty() ? nullptr : values\_.data();}
-\DoxyCodeLine{104     \}}
-\DoxyCodeLine{105 }
-\DoxyCodeLine{114     \textcolor{keywordtype}{void} Resize(std::size\_t N)\textcolor{keyword}{ override}}
-\DoxyCodeLine{115 \textcolor{keyword}{    }\{}
-\DoxyCodeLine{116         values\_.assign(N, 0.0);}
-\DoxyCodeLine{117     \}}
-\DoxyCodeLine{118 }
-\DoxyCodeLine{120     std::size\_t \mbox{\hyperlink{_chem_state_8hpp_a5b3b88c3313b6d61ae18c2224841081d}{GridSize}}()\textcolor{keyword}{ const override }\{ \textcolor{keywordflow}{return} values\_.size(); \}}
-\DoxyCodeLine{121 }
-\DoxyCodeLine{123     \textcolor{keywordtype}{void} \mbox{\hyperlink{_chem_state_8hpp_ac2fdf117e3886bbce4baa56a77d3e9cc}{Clear}}()\textcolor{keyword}{ override}}
-\DoxyCodeLine{124 \textcolor{keyword}{    }\{}
-\DoxyCodeLine{125         \textcolor{keywordflow}{for} (\textcolor{keywordtype}{double} \&x : values\_)}
-\DoxyCodeLine{126             x = 0.0;}
-\DoxyCodeLine{127     \}}
+\DoxyCodeLine{88 \textcolor{keyword}{class }SpinState : \textcolor{keyword}{public} State}
+\DoxyCodeLine{89 \{}
+\DoxyCodeLine{90   \textcolor{keyword}{public}:}
+\DoxyCodeLine{91     \textcolor{comment}{// -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{92     \textcolor{comment}{// Required State interface}}
+\DoxyCodeLine{93     \textcolor{comment}{// -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{94 }
+\DoxyCodeLine{96     \textcolor{keyword}{const} \textcolor{keywordtype}{char} *Name()\textcolor{keyword}{ const override }\{ \textcolor{keywordflow}{return} \textcolor{stringliteral}{"{}SpinState"{}}; \}}
+\DoxyCodeLine{97 }
+\DoxyCodeLine{99     std::size\_t Size()\textcolor{keyword}{ const override }\{ \textcolor{keywordflow}{return} values\_.size(); \}}
+\DoxyCodeLine{100 }
+\DoxyCodeLine{102     \textcolor{keywordtype}{double} *Data()\textcolor{keyword}{ override}}
+\DoxyCodeLine{103 \textcolor{keyword}{    }\{}
+\DoxyCodeLine{104         \textcolor{keywordflow}{return} values\_.empty() ? nullptr : values\_.data();}
+\DoxyCodeLine{105     \}}
+\DoxyCodeLine{106 }
+\DoxyCodeLine{108     \textcolor{keyword}{const} \textcolor{keywordtype}{double} *Data()\textcolor{keyword}{ const override}}
+\DoxyCodeLine{109 \textcolor{keyword}{    }\{}
+\DoxyCodeLine{110         \textcolor{keywordflow}{return} values\_.empty() ? nullptr : values\_.data();}
+\DoxyCodeLine{111     \}}
+\DoxyCodeLine{112 }
+\DoxyCodeLine{121     \textcolor{keywordtype}{void} Resize(std::size\_t N)\textcolor{keyword}{ override}}
+\DoxyCodeLine{122 \textcolor{keyword}{    }\{}
+\DoxyCodeLine{123         values\_.assign(N, 0.0);}
+\DoxyCodeLine{124     \}}
+\DoxyCodeLine{125 }
+\DoxyCodeLine{127     std::size\_t \mbox{\hyperlink{_chem_state_8hpp_a5b3b88c3313b6d61ae18c2224841081d}{GridSize}}()\textcolor{keyword}{ const override }\{ \textcolor{keywordflow}{return} values\_.size(); \}}
 \DoxyCodeLine{128 }
-\DoxyCodeLine{129     \textcolor{comment}{// -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
-\DoxyCodeLine{130     \textcolor{comment}{// Convenience accessors for dynamic DOFs}}
-\DoxyCodeLine{131     \textcolor{comment}{// -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
-\DoxyCodeLine{132 }
-\DoxyCodeLine{134     std::size\_t \mbox{\hyperlink{_chem_state_8hpp_a53d81624f03725345e5e83949046ba2c}{NumComponents}}()\textcolor{keyword}{ const }\{ \textcolor{keywordflow}{return} values\_.size(); \}}
+\DoxyCodeLine{130     \textcolor{keywordtype}{void} \mbox{\hyperlink{_chem_state_8hpp_ac2fdf117e3886bbce4baa56a77d3e9cc}{Clear}}()\textcolor{keyword}{ override}}
+\DoxyCodeLine{131 \textcolor{keyword}{    }\{}
+\DoxyCodeLine{132         \textcolor{keywordflow}{for} (\textcolor{keywordtype}{double} \&x : values\_)}
+\DoxyCodeLine{133             x = 0.0;}
+\DoxyCodeLine{134     \}}
 \DoxyCodeLine{135 }
-\DoxyCodeLine{137     \textcolor{keywordtype}{double} \&Value(std::size\_t i) \{ \textcolor{keywordflow}{return} values\_.at(i); \}}
-\DoxyCodeLine{138 }
-\DoxyCodeLine{140     \textcolor{keyword}{const} \textcolor{keywordtype}{double} \&Value(std::size\_t i)\textcolor{keyword}{ const }\{ \textcolor{keywordflow}{return} values\_.at(i); \}}
-\DoxyCodeLine{141 }
-\DoxyCodeLine{148     \textcolor{keywordtype}{double} \&Omega() \{ \textcolor{keywordflow}{return} values\_.at(0); \}}
-\DoxyCodeLine{149 }
-\DoxyCodeLine{151     \textcolor{keyword}{const} \textcolor{keywordtype}{double} \&Omega()\textcolor{keyword}{ const }\{ \textcolor{keywordflow}{return} values\_.at(0); \}}
-\DoxyCodeLine{152 }
-\DoxyCodeLine{153     \textcolor{comment}{// -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
-\DoxyCodeLine{154     \textcolor{comment}{// Observational / kinematic quantities (not part of Data())}}
-\DoxyCodeLine{155     \textcolor{comment}{// -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
-\DoxyCodeLine{156 }
-\DoxyCodeLine{158     \mbox{\hyperlink{class_zaki_1_1_math_1_1_quantity}{Zaki::Math::Quantity}} P;}
+\DoxyCodeLine{136     \textcolor{comment}{// -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{137     \textcolor{comment}{// packing / unpacking}}
+\DoxyCodeLine{138     \textcolor{comment}{// -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{139 }
+\DoxyCodeLine{146     \textcolor{keywordtype}{void} \mbox{\hyperlink{_chem_state_8hpp_a3f6089e2db736965f021e2165ae39933}{PackTo}}(\textcolor{keywordtype}{double} *dest) \textcolor{keyword}{const override};}
+\DoxyCodeLine{147 }
+\DoxyCodeLine{154     \textcolor{keywordtype}{void} \mbox{\hyperlink{_chem_state_8hpp_af4c43758909d4e294d63b7d067eae761}{UnpackFrom}}(\textcolor{keyword}{const} \textcolor{keywordtype}{double} *src) \textcolor{keyword}{override};}
+\DoxyCodeLine{155 }
+\DoxyCodeLine{156     \textcolor{comment}{// -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{157     \textcolor{comment}{// Convenience accessors for dynamic DOFs}}
+\DoxyCodeLine{158     \textcolor{comment}{// -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
 \DoxyCodeLine{159 }
-\DoxyCodeLine{161     \mbox{\hyperlink{class_zaki_1_1_math_1_1_quantity}{Zaki::Math::Quantity}} Pdot;}
+\DoxyCodeLine{161     std::size\_t \mbox{\hyperlink{_chem_state_8hpp_a53d81624f03725345e5e83949046ba2c}{NumComponents}}()\textcolor{keyword}{ const }\{ \textcolor{keywordflow}{return} values\_.size(); \}}
 \DoxyCodeLine{162 }
-\DoxyCodeLine{164     \mbox{\hyperlink{class_zaki_1_1_math_1_1_quantity}{Zaki::Math::Quantity}} mu;}
+\DoxyCodeLine{164     \textcolor{keywordtype}{double} \&Value(std::size\_t i) \{ \textcolor{keywordflow}{return} values\_.at(i); \}}
 \DoxyCodeLine{165 }
-\DoxyCodeLine{167     \mbox{\hyperlink{class_zaki_1_1_math_1_1_quantity}{Zaki::Math::Quantity}} d;}
+\DoxyCodeLine{167     \textcolor{keyword}{const} \textcolor{keywordtype}{double} \&Value(std::size\_t i)\textcolor{keyword}{ const }\{ \textcolor{keywordflow}{return} values\_.at(i); \}}
 \DoxyCodeLine{168 }
-\DoxyCodeLine{169   \textcolor{keyword}{private}:}
-\DoxyCodeLine{171     std::vector<double> values\_;}
-\DoxyCodeLine{172 \};}
-\DoxyCodeLine{173 }
-\DoxyCodeLine{174 \} \textcolor{comment}{// namespace CompactStar::Physics::State}}
-\DoxyCodeLine{175 }
-\DoxyCodeLine{176 \textcolor{preprocessor}{\#endif }\textcolor{comment}{/* CompactStar\_Physics\_State\_SpinState\_H */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{175     \textcolor{keywordtype}{double} \&Omega() \{ \textcolor{keywordflow}{return} values\_.at(0); \}}
+\DoxyCodeLine{176 }
+\DoxyCodeLine{178     \textcolor{keyword}{const} \textcolor{keywordtype}{double} \&Omega()\textcolor{keyword}{ const }\{ \textcolor{keywordflow}{return} values\_.at(0); \}}
+\DoxyCodeLine{179 }
+\DoxyCodeLine{180     \textcolor{comment}{// -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{181     \textcolor{comment}{// Observational / kinematic quantities (not part of Data())}}
+\DoxyCodeLine{182     \textcolor{comment}{// -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{183 }
+\DoxyCodeLine{185     \mbox{\hyperlink{class_zaki_1_1_math_1_1_quantity}{Zaki::Math::Quantity}} P;}
+\DoxyCodeLine{186 }
+\DoxyCodeLine{188     \mbox{\hyperlink{class_zaki_1_1_math_1_1_quantity}{Zaki::Math::Quantity}} Pdot;}
+\DoxyCodeLine{189 }
+\DoxyCodeLine{191     \mbox{\hyperlink{class_zaki_1_1_math_1_1_quantity}{Zaki::Math::Quantity}} mu;}
+\DoxyCodeLine{192 }
+\DoxyCodeLine{194     \mbox{\hyperlink{class_zaki_1_1_math_1_1_quantity}{Zaki::Math::Quantity}} d;}
+\DoxyCodeLine{195 }
+\DoxyCodeLine{196   \textcolor{keyword}{private}:}
+\DoxyCodeLine{198     std::vector<double> values\_;}
+\DoxyCodeLine{199 \};}
+\DoxyCodeLine{200 }
+\DoxyCodeLine{201 \} \textcolor{comment}{// namespace CompactStar::Physics::State}}
+\DoxyCodeLine{202 }
+\DoxyCodeLine{203 \textcolor{preprocessor}{\#endif }\textcolor{comment}{/* CompactStar\_Physics\_State\_SpinState\_H */}\textcolor{preprocessor}{}}
 
 \end{DoxyCode}

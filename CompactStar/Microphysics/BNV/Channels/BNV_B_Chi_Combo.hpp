@@ -48,6 +48,14 @@
 #include <CompactStar/Microphysics/BNV/Internal/BNV_Chi.hpp>
 
 //==============================================================
+/**
+ * @namespace CompactStar::Microphysics::BNV::Channels
+ * @brief Concrete BNV reaction channels and matrix elements.
+ *
+ * This namespace contains physics for specific baryon-number-violating
+ * transitions (n → χ + γ, n → χ + π, etc.), including partial widths and
+ * kinematics used by BNV heating models.
+ */
 namespace CompactStar::Microphysics::BNV::Channels
 {
 
@@ -106,6 +114,6 @@ class BNV_B_Chi_Combo : public Internal::BNV_Chi
 };
 
 //==============================================================
-} // namespace CompactStar
+} // namespace CompactStar::Microphysics::BNV::Channels
 //==============================================================
 #endif /*CompactStar_BNV_B_Chi_Combo_H*/

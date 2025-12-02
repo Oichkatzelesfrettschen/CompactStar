@@ -69,7 +69,7 @@ $(function() {
 
 <div id="nav-path" class="navpath">
   <ul>
-<li class="navelem"><b>CompactStar</b></li><li class="navelem"><b>Physics</b></li><li class="navelem"><b>State</b></li><li class="navelem"><a class="el" href="../../d4/d69/class_compact_star_1_1_physics_1_1_state_1_1_state.html">State</a></li>  </ul>
+<li class="navelem"><b>CompactStar</b></li><li class="navelem"><b>Physics</b></li><li class="navelem"><a class="el" href="../../da/d7b/namespace_compact_star_1_1_physics_1_1_state.html">State</a></li><li class="navelem"><a class="el" href="../../d4/d69/class_compact_star_1_1_physics_1_1_state_1_1_state.html">State</a></li>  </ul>
 </div>
 </div><!-- top -->
 <div class="header">
@@ -118,6 +118,12 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:ae531732a02445f1378be8a13837691e8"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d4/d69/class_compact_star_1_1_physics_1_1_state_1_1_state.html#ae531732a02445f1378be8a13837691e8">Clear</a> ()=0</td></tr>
 <tr class="memdesc:ae531732a02445f1378be8a13837691e8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Reset contents to a well-defined state (usually all zeros).  <a href="../../d4/d69/class_compact_star_1_1_physics_1_1_state_1_1_state.html#ae531732a02445f1378be8a13837691e8">More...</a><br /></td></tr>
 <tr class="separator:ae531732a02445f1378be8a13837691e8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a541e92639dd1000d18fa3b68483fd502"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d4/d69/class_compact_star_1_1_physics_1_1_state_1_1_state.html#a541e92639dd1000d18fa3b68483fd502">PackTo</a> (double *dest) const =0</td></tr>
+<tr class="memdesc:a541e92639dd1000d18fa3b68483fd502"><td class="mdescLeft">&#160;</td><td class="mdescRight">Pack this state into a contiguous double buffer.  <a href="../../d4/d69/class_compact_star_1_1_physics_1_1_state_1_1_state.html#a541e92639dd1000d18fa3b68483fd502">More...</a><br /></td></tr>
+<tr class="separator:a541e92639dd1000d18fa3b68483fd502"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9d29b545a578c4857388b1aa92b4e993"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d4/d69/class_compact_star_1_1_physics_1_1_state_1_1_state.html#a9d29b545a578c4857388b1aa92b4e993">UnpackFrom</a> (const double *src)=0</td></tr>
+<tr class="memdesc:a9d29b545a578c4857388b1aa92b4e993"><td class="mdescLeft">&#160;</td><td class="mdescRight">Unpack this state from a contiguous double buffer.  <a href="../../d4/d69/class_compact_star_1_1_physics_1_1_state_1_1_state.html#a9d29b545a578c4857388b1aa92b4e993">More...</a><br /></td></tr>
+<tr class="separator:a9d29b545a578c4857388b1aa92b4e993"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac9892ca481397cba4afe2da9cd9a50a6"><td class="memItemLeft" align="right" valign="top"><a id="ac9892ca481397cba4afe2da9cd9a50a6" name="ac9892ca481397cba4afe2da9cd9a50a6"></a>
 virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>SanityCheck</b> () const</td></tr>
 <tr class="memdesc:ac9892ca481397cba4afe2da9cd9a50a6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check for NaNs/Inf in the state vector and log results. <br /></td></tr>
@@ -330,6 +336,37 @@ virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>SanityCheck</
 
 </div>
 </div>
+<a id="a541e92639dd1000d18fa3b68483fd502" name="a541e92639dd1000d18fa3b68483fd502"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a541e92639dd1000d18fa3b68483fd502">&#9670;&#160;</a></span>PackTo()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual void CompactStar::Physics::State::State::PackTo </td>
+          <td>(</td>
+          <td class="paramtype">double *&#160;</td>
+          <td class="paramname"><em>dest</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Pack this state into a contiguous double buffer. </p>
+<p>The buffer <code>dest</code> must have space for at least <a class="el" href="../../d4/d69/class_compact_star_1_1_physics_1_1_state_1_1_state.html#a7d41a392de8417100b45ebfb19298eae" title="Number of scalar degrees of freedom.">Size()</a> doubles. Implementations must write exactly <a class="el" href="../../d4/d69/class_compact_star_1_1_physics_1_1_state_1_1_state.html#a7d41a392de8417100b45ebfb19298eae" title="Number of scalar degrees of freedom.">Size()</a> entries. </p>
+
+<p>Implemented in <a class="el" href="../../d8/d9a/class_compact_star_1_1_physics_1_1_state_1_1_b_n_v_state.html#a06f92845a5ae6bf1abd1f955b70bd533">CompactStar::Physics::State::BNVState</a>, and <a class="el" href="../../de/d39/class_compact_star_1_1_physics_1_1_state_1_1_thermal_state.html#ac7bec4ecf0446c99cc03f134ea927de5">CompactStar::Physics::State::ThermalState</a>.</p>
+
+</div>
+</div>
 <a id="a67305cd2b43b22a5503b62326c00584f" name="a67305cd2b43b22a5503b62326c00584f"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a67305cd2b43b22a5503b62326c00584f">&#9670;&#160;</a></span>Resize()</h2>
 
@@ -387,6 +424,37 @@ virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>SanityCheck</
 <p>Number of scalar degrees of freedom. </p>
 
 <p>Implemented in <a class="el" href="../../d8/d9a/class_compact_star_1_1_physics_1_1_state_1_1_b_n_v_state.html#a4e4b91b6d7daee924ea596d200506204">CompactStar::Physics::State::BNVState</a>, and <a class="el" href="../../de/d39/class_compact_star_1_1_physics_1_1_state_1_1_thermal_state.html#a2b4321c1aadef35f0694453e7d5283d0">CompactStar::Physics::State::ThermalState</a>.</p>
+
+</div>
+</div>
+<a id="a9d29b545a578c4857388b1aa92b4e993" name="a9d29b545a578c4857388b1aa92b4e993"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9d29b545a578c4857388b1aa92b4e993">&#9670;&#160;</a></span>UnpackFrom()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual void CompactStar::Physics::State::State::UnpackFrom </td>
+          <td>(</td>
+          <td class="paramtype">const double *&#160;</td>
+          <td class="paramname"><em>src</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Unpack this state from a contiguous double buffer. </p>
+<p>The buffer <code>src</code> must contain at least <a class="el" href="../../d4/d69/class_compact_star_1_1_physics_1_1_state_1_1_state.html#a7d41a392de8417100b45ebfb19298eae" title="Number of scalar degrees of freedom.">Size()</a> entries that were previously produced by <a class="el" href="../../d4/d69/class_compact_star_1_1_physics_1_1_state_1_1_state.html#a541e92639dd1000d18fa3b68483fd502" title="Pack this state into a contiguous double buffer.">PackTo()</a> (for the same state layout). </p>
+
+<p>Implemented in <a class="el" href="../../d8/d9a/class_compact_star_1_1_physics_1_1_state_1_1_b_n_v_state.html#a8f3a53be98215a94c80a46a779571d9f">CompactStar::Physics::State::BNVState</a>, and <a class="el" href="../../de/d39/class_compact_star_1_1_physics_1_1_state_1_1_thermal_state.html#ab8014f8c46f4262c9f3c64b3c071b87a">CompactStar::Physics::State::ThermalState</a>.</p>
 
 </div>
 </div>

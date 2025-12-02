@@ -32,6 +32,10 @@ std\+::size\+\_\+t \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_state_1_1
 \begin{DoxyCompactList}\small\item\em Grid size == number of thermal DOFs in this simple layout. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_state_1_1_thermal_state_ab0c832d00d24302914153386cc6344f6}{Clear}} () override
 \begin{DoxyCompactList}\small\item\em Zero the thermal DOFs (capacity preserved). \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_state_1_1_thermal_state_ac7bec4ecf0446c99cc03f134ea927de5}{Pack\+To}} (double $\ast$dest) const override
+\begin{DoxyCompactList}\small\item\em Copy the internal ODE components into a flat buffer. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_state_1_1_thermal_state_ab8014f8c46f4262c9f3c64b3c071b87a}{Unpack\+From}} (const double $\ast$src) override
+\begin{DoxyCompactList}\small\item\em Populate internal ODE components from a flat buffer. \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{class_compact_star_1_1_physics_1_1_state_1_1_thermal_state_a2c4a41586be4447c22399ddc23a50090}\label{class_compact_star_1_1_physics_1_1_state_1_1_thermal_state_a2c4a41586be4447c22399ddc23a50090}} 
 std\+::size\+\_\+t {\bfseries Num\+Components} () const
 \begin{DoxyCompactList}\small\item\em Number of thermal DOFs. \end{DoxyCompactList}\item 
@@ -65,7 +69,12 @@ Dynamical thermal DOFs + cached physical temperatures.
 
 The ODE part (values\+\_\+) is what evolution drivers operate on. By default callers usually use a single DOF representing the {\bfseries{redshifted internal temperature}} T∞. If more thermal components (e.\+g. multi-\/zone models) are needed, callers simply call Resize(\+N).
 
-The auxiliary fields store physically meaningful temperatures in the {\bfseries{local fluid frame}}, which microphysics and cooling models often require. 
+The auxiliary fields store physically meaningful temperatures in the {\bfseries{local fluid frame}}, which microphysics and cooling models often require.
+
+\begin{DoxyNote}{Note}
+Storage (the {\ttfamily values\+\_\+} vector) deliberately lives in this derived class rather than in the \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_state_1_1_state}{State}} base class. This design allows future state types to use non-\/contiguous, multi-\/zone, or externally owned layouts while still exposing the uniform Pack\+To/\+Unpack\+From interface required by the evolution framework. See \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_state_1_1_state}{Compact\+Star\+::\+Physics\+::\+State\+::\+State}} for details. 
+\end{DoxyNote}
+
 
 \doxysubsection{Member Function Documentation}
 \mbox{\Hypertarget{class_compact_star_1_1_physics_1_1_state_1_1_thermal_state_ab0c832d00d24302914153386cc6344f6}\label{class_compact_star_1_1_physics_1_1_state_1_1_thermal_state_ab0c832d00d24302914153386cc6344f6}} 
@@ -138,6 +147,20 @@ Short state name for logging (e.\+g. \char`\"{}\+Chem\+State\char`\"{}).
 
 Implements \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_state_1_1_state_adb2c0a210afb045ea8cf1e96e3b0c6ed}{Compact\+Star\+::\+Physics\+::\+State\+::\+State}}.
 
+\mbox{\Hypertarget{class_compact_star_1_1_physics_1_1_state_1_1_thermal_state_ac7bec4ecf0446c99cc03f134ea927de5}\label{class_compact_star_1_1_physics_1_1_state_1_1_thermal_state_ac7bec4ecf0446c99cc03f134ea927de5}} 
+\index{CompactStar::Physics::State::ThermalState@{CompactStar::Physics::State::ThermalState}!PackTo@{PackTo}}
+\index{PackTo@{PackTo}!CompactStar::Physics::State::ThermalState@{CompactStar::Physics::State::ThermalState}}
+\doxysubsubsection{\texorpdfstring{PackTo()}{PackTo()}}
+{\footnotesize\ttfamily void Thermal\+State\+::\+Pack\+To (\begin{DoxyParamCaption}\item[{double $\ast$}]{dest }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Copy the internal ODE components into a flat buffer. 
+
+
+
+Implements \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_state_1_1_state_a541e92639dd1000d18fa3b68483fd502}{Compact\+Star\+::\+Physics\+::\+State\+::\+State}}.
+
 \mbox{\Hypertarget{class_compact_star_1_1_physics_1_1_state_1_1_thermal_state_a066eb839acd4f0a6fbf21be8d3be2cbc}\label{class_compact_star_1_1_physics_1_1_state_1_1_thermal_state_a066eb839acd4f0a6fbf21be8d3be2cbc}} 
 \index{CompactStar::Physics::State::ThermalState@{CompactStar::Physics::State::ThermalState}!Resize@{Resize}}
 \index{Resize@{Resize}!CompactStar::Physics::State::ThermalState@{CompactStar::Physics::State::ThermalState}}
@@ -178,8 +201,23 @@ Implements \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_state_1_1_state_a
 
 Convenience accessor for the primary thermal DOF (usually T∞). 
 
-By convention, component 0 is the {\bfseries{redshifted isothermal-\/core temperature}}. 
+By convention, component 0 is the {\bfseries{redshifted isothermal-\/core temperature}}. \mbox{\Hypertarget{class_compact_star_1_1_physics_1_1_state_1_1_thermal_state_ab8014f8c46f4262c9f3c64b3c071b87a}\label{class_compact_star_1_1_physics_1_1_state_1_1_thermal_state_ab8014f8c46f4262c9f3c64b3c071b87a}} 
+\index{CompactStar::Physics::State::ThermalState@{CompactStar::Physics::State::ThermalState}!UnpackFrom@{UnpackFrom}}
+\index{UnpackFrom@{UnpackFrom}!CompactStar::Physics::State::ThermalState@{CompactStar::Physics::State::ThermalState}}
+\doxysubsubsection{\texorpdfstring{UnpackFrom()}{UnpackFrom()}}
+{\footnotesize\ttfamily void Thermal\+State\+::\+Unpack\+From (\begin{DoxyParamCaption}\item[{const double $\ast$}]{src }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
 
-The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+
+
+Populate internal ODE components from a flat buffer. 
+
+
+
+Implements \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_state_1_1_state_a9d29b545a578c4857388b1aa92b4e993}{Compact\+Star\+::\+Physics\+::\+State\+::\+State}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 
-Compact\+Star/\+Physics/\+State/\mbox{\hyperlink{_thermal_state_8hpp}{Thermal\+State.\+hpp}}\end{DoxyCompactItemize}
+Compact\+Star/\+Physics/\+State/\mbox{\hyperlink{_thermal_state_8hpp}{Thermal\+State.\+hpp}}\item 
+Compact\+Star/\+Physics/\+State/src/Thermal\+State.\+cpp\end{DoxyCompactItemize}

@@ -21,24 +21,24 @@
 \DoxyCodeLine{38 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_state_8hpp}{CompactStar/Physics/State/State.hpp}}"{}}}
 \DoxyCodeLine{39 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_tags_8hpp}{CompactStar/Physics/State/Tags.hpp}}"{}}}
 \DoxyCodeLine{40 }
-\DoxyCodeLine{41 \textcolor{keyword}{namespace }CompactStar::Physics::State}
+\DoxyCodeLine{41 \textcolor{keyword}{namespace }\mbox{\hyperlink{namespace_compact_star_1_1_physics_1_1_state}{CompactStar::Physics::State}}}
 \DoxyCodeLine{42 \{}
 \DoxyCodeLine{43 \textcolor{keyword}{class }SpinState;}
-\DoxyCodeLine{44 \textcolor{keyword}{class }ThermalState;}
+\DoxyCodeLine{44 \textcolor{keyword}{class }\mbox{\hyperlink{class_compact_star_1_1_physics_1_1_state_1_1_thermal_state}{ThermalState}};}
 \DoxyCodeLine{45 \textcolor{keyword}{class }ChemState;}
-\DoxyCodeLine{46 \textcolor{keyword}{class }BNVState;}
+\DoxyCodeLine{46 \textcolor{keyword}{class }\mbox{\hyperlink{class_compact_star_1_1_physics_1_1_state_1_1_b_n_v_state}{BNVState}};}
 \DoxyCodeLine{47 \} \textcolor{comment}{// namespace CompactStar::Physics::State}}
 \DoxyCodeLine{48 }
-\DoxyCodeLine{49 \textcolor{keyword}{namespace }CompactStar::Physics::Evolution}
+\DoxyCodeLine{49 \textcolor{keyword}{namespace }\mbox{\hyperlink{namespace_compact_star_1_1_physics_1_1_evolution}{CompactStar::Physics::Evolution}}}
 \DoxyCodeLine{50 \{}
 \DoxyCodeLine{51 }
 \DoxyCodeLine{52 \textcolor{comment}{// -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
 \DoxyCodeLine{53 \textcolor{comment}{//  Helpers}}
 \DoxyCodeLine{54 \textcolor{comment}{// -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
 \DoxyCodeLine{55 }
-\DoxyCodeLine{61 \textcolor{keyword}{inline} \textcolor{keyword}{constexpr} std::size\_t \mbox{\hyperlink{_state_vector_8hpp_a5ac7d5119f023b69a7e8f8770e7f15cf}{NumStateTags}}()}
+\DoxyCodeLine{61 \textcolor{keyword}{inline} \textcolor{keyword}{constexpr} std::size\_t \mbox{\hyperlink{namespace_compact_star_1_1_physics_1_1_evolution_a5ac7d5119f023b69a7e8f8770e7f15cf}{NumStateTags}}()}
 \DoxyCodeLine{62 \{}
-\DoxyCodeLine{63     \textcolor{keyword}{using }\mbox{\hyperlink{_tags_8hpp_af14f5554b0d9be50c5ea718733bc424b}{Physics::State::StateTag}};}
+\DoxyCodeLine{63     \textcolor{keyword}{using }\mbox{\hyperlink{namespace_compact_star_1_1_physics_1_1_state_af14f5554b0d9be50c5ea718733bc424b}{Physics::State::StateTag}};}
 \DoxyCodeLine{64     \textcolor{keywordflow}{return} \textcolor{keyword}{static\_cast<}std::size\_t\textcolor{keyword}{>}(StateTag::Custom) + 1;}
 \DoxyCodeLine{65 \}}
 \DoxyCodeLine{66 }
@@ -61,15 +61,15 @@
 \DoxyCodeLine{98     \textcolor{comment}{//  Registration}}
 \DoxyCodeLine{99     \textcolor{comment}{// -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
 \DoxyCodeLine{100 }
-\DoxyCodeLine{110     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_state_vector_a4331dc2a18a709f883a859fa87bccdca}{Register}}(\mbox{\hyperlink{_tags_8hpp_af14f5554b0d9be50c5ea718733bc424b}{Physics::State::StateTag}} tag, \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_state_1_1_state}{Physics::State::State}} \&state);}
+\DoxyCodeLine{110     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_state_vector_a4331dc2a18a709f883a859fa87bccdca}{Register}}(\mbox{\hyperlink{namespace_compact_star_1_1_physics_1_1_state_af14f5554b0d9be50c5ea718733bc424b}{Physics::State::StateTag}} tag, \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_state_1_1_state}{Physics::State::State}} \&state);}
 \DoxyCodeLine{111 }
 \DoxyCodeLine{112     \textcolor{comment}{// -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
 \DoxyCodeLine{113     \textcolor{comment}{//  Generic accessors}}
 \DoxyCodeLine{114     \textcolor{comment}{// -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
 \DoxyCodeLine{115 }
-\DoxyCodeLine{121     \textcolor{keyword}{const} \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_state_1_1_state}{Physics::State::State}} \&\mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_state_vector_ad0c25d09c30da11a571304808205ca2d}{Get}}(\mbox{\hyperlink{_tags_8hpp_af14f5554b0d9be50c5ea718733bc424b}{Physics::State::StateTag}} tag) \textcolor{keyword}{const};}
+\DoxyCodeLine{121     \textcolor{keyword}{const} \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_state_1_1_state}{Physics::State::State}} \&\mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_state_vector_ad0c25d09c30da11a571304808205ca2d}{Get}}(\mbox{\hyperlink{namespace_compact_star_1_1_physics_1_1_state_af14f5554b0d9be50c5ea718733bc424b}{Physics::State::StateTag}} tag) \textcolor{keyword}{const};}
 \DoxyCodeLine{122 }
-\DoxyCodeLine{128     \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_state_1_1_state}{Physics::State::State}} \&\mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_state_vector_ad0c25d09c30da11a571304808205ca2d}{Get}}(\mbox{\hyperlink{_tags_8hpp_af14f5554b0d9be50c5ea718733bc424b}{Physics::State::StateTag}} tag);}
+\DoxyCodeLine{128     \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_state_1_1_state}{Physics::State::State}} \&\mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_state_vector_ad0c25d09c30da11a571304808205ca2d}{Get}}(\mbox{\hyperlink{namespace_compact_star_1_1_physics_1_1_state_af14f5554b0d9be50c5ea718733bc424b}{Physics::State::StateTag}} tag);}
 \DoxyCodeLine{129 }
 \DoxyCodeLine{130     \textcolor{comment}{// -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
 \DoxyCodeLine{131     \textcolor{comment}{//  Typed convenience accessors}}
@@ -99,12 +99,12 @@
 \DoxyCodeLine{163     \textcolor{comment}{//  Internal helpers}}
 \DoxyCodeLine{164     \textcolor{comment}{// -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
 \DoxyCodeLine{165 }
-\DoxyCodeLine{167     \textcolor{keyword}{static} \textcolor{keyword}{constexpr} std::size\_t Index(\mbox{\hyperlink{_tags_8hpp_af14f5554b0d9be50c5ea718733bc424b}{Physics::State::StateTag}} tag)}
+\DoxyCodeLine{167     \textcolor{keyword}{static} \textcolor{keyword}{constexpr} std::size\_t Index(\mbox{\hyperlink{namespace_compact_star_1_1_physics_1_1_state_af14f5554b0d9be50c5ea718733bc424b}{Physics::State::StateTag}} tag)}
 \DoxyCodeLine{168     \{}
 \DoxyCodeLine{169         \textcolor{keywordflow}{return} \textcolor{keyword}{static\_cast<}std::size\_t\textcolor{keyword}{>}(tag);}
 \DoxyCodeLine{170     \}}
 \DoxyCodeLine{171 }
-\DoxyCodeLine{173     std::array<\mbox{\hyperlink{class_compact_star_1_1_physics_1_1_state_1_1_state}{Physics::State::State}} *, \mbox{\hyperlink{_state_vector_8hpp_a5ac7d5119f023b69a7e8f8770e7f15cf}{NumStateTags}}()> blocks\_;}
+\DoxyCodeLine{173     std::array<\mbox{\hyperlink{class_compact_star_1_1_physics_1_1_state_1_1_state}{Physics::State::State}} *, \mbox{\hyperlink{namespace_compact_star_1_1_physics_1_1_evolution_a5ac7d5119f023b69a7e8f8770e7f15cf}{NumStateTags}}()> blocks\_;}
 \DoxyCodeLine{174 \};}
 \DoxyCodeLine{175 }
 \DoxyCodeLine{176 \} \textcolor{comment}{// namespace CompactStar::Physics::Evolution}}

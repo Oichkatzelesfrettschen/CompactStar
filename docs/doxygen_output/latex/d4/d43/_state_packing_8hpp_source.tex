@@ -1,0 +1,44 @@
+\hypertarget{_state_packing_8hpp_source}{}\doxysection{State\+Packing.\+hpp}
+\label{_state_packing_8hpp_source}\index{CompactStar/Physics/Evolution/StatePacking.hpp@{CompactStar/Physics/Evolution/StatePacking.hpp}}
+\mbox{\hyperlink{_state_packing_8hpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{comment}{// -\/*-\/ lsst-\/c++ -\/*-\/}}
+\DoxyCodeLine{2 \textcolor{comment}{/*}}
+\DoxyCodeLine{3 \textcolor{comment}{ * CompactStar}}
+\DoxyCodeLine{4 \textcolor{comment}{ * See License file at the top of the source tree.}}
+\DoxyCodeLine{5 \textcolor{comment}{ *}}
+\DoxyCodeLine{6 \textcolor{comment}{ * Copyright (c) 2025}}
+\DoxyCodeLine{7 \textcolor{comment}{ * Mohammadreza Zakeri}}
+\DoxyCodeLine{8 \textcolor{comment}{ *}}
+\DoxyCodeLine{9 \textcolor{comment}{ * MIT License — see LICENSE at repo root.}}
+\DoxyCodeLine{10 \textcolor{comment}{ */}}
+\DoxyCodeLine{11 }
+\DoxyCodeLine{28 \textcolor{preprocessor}{\#ifndef CompactStar\_Physics\_Evolution\_StatePacking\_H}}
+\DoxyCodeLine{29 \textcolor{preprocessor}{\#define CompactStar\_Physics\_Evolution\_StatePacking\_H}}
+\DoxyCodeLine{30 }
+\DoxyCodeLine{31 \textcolor{preprocessor}{\#include <cstddef>}}
+\DoxyCodeLine{32 }
+\DoxyCodeLine{33 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_r_h_s_accumulator_8hpp}{CompactStar/Physics/Evolution/RHSAccumulator.hpp}}"{}}}
+\DoxyCodeLine{34 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_state_layout_8hpp}{CompactStar/Physics/Evolution/StateLayout.hpp}}"{}}}
+\DoxyCodeLine{35 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_state_vector_8hpp}{CompactStar/Physics/Evolution/StateVector.hpp}}"{}}}
+\DoxyCodeLine{36 }
+\DoxyCodeLine{37 \textcolor{keyword}{namespace }\mbox{\hyperlink{namespace_compact_star_1_1_physics_1_1_evolution}{CompactStar::Physics::Evolution}}}
+\DoxyCodeLine{38 \{}
+\DoxyCodeLine{39 }
+\DoxyCodeLine{53 \textcolor{keywordtype}{void} \mbox{\hyperlink{namespace_compact_star_1_1_physics_1_1_evolution_a9ae738d6afc6c7301395a161c8190a44}{PackStateVector}}(\textcolor{keyword}{const} StateVector \&state,}
+\DoxyCodeLine{54                      \textcolor{keyword}{const} StateLayout \&layout,}
+\DoxyCodeLine{55                      \textcolor{keywordtype}{double} *y);}
+\DoxyCodeLine{56 }
+\DoxyCodeLine{70 \textcolor{keywordtype}{void} \mbox{\hyperlink{namespace_compact_star_1_1_physics_1_1_evolution_a547187e211d1075edc75eb9d5176eea3}{UnpackStateVector}}(StateVector \&state,}
+\DoxyCodeLine{71                        \textcolor{keyword}{const} StateLayout \&layout,}
+\DoxyCodeLine{72                        \textcolor{keyword}{const} \textcolor{keywordtype}{double} *y);}
+\DoxyCodeLine{73 }
+\DoxyCodeLine{89 \textcolor{keywordtype}{void} \mbox{\hyperlink{namespace_compact_star_1_1_physics_1_1_evolution_a7706794e4cfb8a5ed48ab4e406ffce8b}{ScatterRHSFromAccumulator}}(\textcolor{keyword}{const} RHSAccumulator \&rhs,}
+\DoxyCodeLine{90                                \textcolor{keyword}{const} StateLayout \&layout,}
+\DoxyCodeLine{91                                \textcolor{keywordtype}{double} *dydt);}
+\DoxyCodeLine{92 }
+\DoxyCodeLine{93 \} \textcolor{comment}{// namespace CompactStar::Physics::Evolution}}
+\DoxyCodeLine{94 }
+\DoxyCodeLine{95 \textcolor{preprocessor}{\#endif }\textcolor{comment}{/* CompactStar\_Physics\_Evolution\_StatePacking\_H */}\textcolor{preprocessor}{}}
+
+\end{DoxyCode}

@@ -1,0 +1,38 @@
+\hypertarget{_state_packing_8hpp}{}\doxysection{Compact\+Star/\+Physics/\+Evolution/\+State\+Packing.hpp File Reference}
+\label{_state_packing_8hpp}\index{CompactStar/Physics/Evolution/StatePacking.hpp@{CompactStar/Physics/Evolution/StatePacking.hpp}}
+
+
+Helpers for packing/unpacking State blocks to/from flat ODE arrays.  
+
+
+{\ttfamily \#include $<$cstddef$>$}\newline
+{\ttfamily \#include \char`\"{}Compact\+Star/\+Physics/\+Evolution/\+RHSAccumulator.\+hpp\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}Compact\+Star/\+Physics/\+Evolution/\+State\+Layout.\+hpp\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}Compact\+Star/\+Physics/\+Evolution/\+State\+Vector.\+hpp\char`\"{}}\newline
+\doxysubsection*{Namespaces}
+\begin{DoxyCompactItemize}
+\item 
+namespace \mbox{\hyperlink{namespace_compact_star_1_1_physics_1_1_evolution}{Compact\+Star\+::\+Physics\+::\+Evolution}}
+\begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{namespace_compact_star_1_1_physics_1_1_evolution}{Evolution}} engine for time-\/dependent neutron-\/star physics. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{namespace_compact_star_1_1_physics_1_1_evolution_a9ae738d6afc6c7301395a161c8190a44}{Compact\+Star\+::\+Physics\+::\+Evolution\+::\+Pack\+State\+Vector}} (const State\+Vector \&state, const State\+Layout \&layout, double $\ast$y)
+\begin{DoxyCompactList}\small\item\em Pack all active \mbox{\hyperlink{namespace_compact_star_1_1_physics_1_1_state}{State}} blocks into the flat ODE vector y\mbox{[}\mbox{]}. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{namespace_compact_star_1_1_physics_1_1_evolution_a547187e211d1075edc75eb9d5176eea3}{Compact\+Star\+::\+Physics\+::\+Evolution\+::\+Unpack\+State\+Vector}} (State\+Vector \&state, const State\+Layout \&layout, const double $\ast$y)
+\begin{DoxyCompactList}\small\item\em Unpack the flat ODE vector y\mbox{[}\mbox{]} back into the \mbox{\hyperlink{namespace_compact_star_1_1_physics_1_1_state}{State}} blocks. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{namespace_compact_star_1_1_physics_1_1_evolution_a7706794e4cfb8a5ed48ab4e406ffce8b}{Compact\+Star\+::\+Physics\+::\+Evolution\+::\+Scatter\+RHSFrom\+Accumulator}} (const RHSAccumulator \&rhs, const State\+Layout \&layout, double $\ast$dydt)
+\begin{DoxyCompactList}\small\item\em Scatter contributions from \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_r_h_s_accumulator}{RHSAccumulator}} into dydt\mbox{[}\mbox{]}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Helpers for packing/unpacking State blocks to/from flat ODE arrays. 
+
+These free functions provide the glue between\+:
+\begin{DoxyItemize}
+\item the tagged State blocks stored in State\+Vector,
+\item the layout information in State\+Layout, and
+\item the flat y\mbox{[}\mbox{]} / dydt\mbox{[}\mbox{]} arrays used by GSL.
+\end{DoxyItemize}
+
+They rely on the virtual Pack\+To / Unpack\+From methods provided by the abstract State base class and implemented by each concrete State block (Spin\+State, Thermal\+State, Chem\+State, BNVState, ...). 

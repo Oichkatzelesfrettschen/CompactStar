@@ -96,10 +96,10 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a1337b0292d71b672785c37ba4d7e8564"><td class="memItemLeft" align="right" valign="top">virtual std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/dd4/class_compact_star_1_1_physics_1_1_i_driver.html#a1337b0292d71b672785c37ba4d7e8564">Name</a> () const =0</td></tr>
 <tr class="memdesc:a1337b0292d71b672785c37ba4d7e8564"><td class="mdescLeft">&#160;</td><td class="mdescRight">Human-readable name for diagnostics/logging.  <a href="../../da/dd4/class_compact_star_1_1_physics_1_1_i_driver.html#a1337b0292d71b672785c37ba4d7e8564">More...</a><br /></td></tr>
 <tr class="separator:a1337b0292d71b672785c37ba4d7e8564"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a813f52e0fad2ee496611eb6a18114354"><td class="memItemLeft" align="right" valign="top">virtual const std::vector&lt; <a class="el" href="../../dd/de3/_tags_8hpp.html#af14f5554b0d9be50c5ea718733bc424b">State::StateTag</a> &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/dd4/class_compact_star_1_1_physics_1_1_i_driver.html#a813f52e0fad2ee496611eb6a18114354">DependsOn</a> () const =0</td></tr>
+<tr class="memitem:a813f52e0fad2ee496611eb6a18114354"><td class="memItemLeft" align="right" valign="top">virtual const std::vector&lt; <a class="el" href="../../da/d7b/namespace_compact_star_1_1_physics_1_1_state.html#af14f5554b0d9be50c5ea718733bc424b">State::StateTag</a> &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/dd4/class_compact_star_1_1_physics_1_1_i_driver.html#a813f52e0fad2ee496611eb6a18114354">DependsOn</a> () const =0</td></tr>
 <tr class="memdesc:a813f52e0fad2ee496611eb6a18114354"><td class="mdescLeft">&#160;</td><td class="mdescRight">Which state blocks this driver reads.  <a href="../../da/dd4/class_compact_star_1_1_physics_1_1_i_driver.html#a813f52e0fad2ee496611eb6a18114354">More...</a><br /></td></tr>
 <tr class="separator:a813f52e0fad2ee496611eb6a18114354"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a24a531cb99a43313f30018d1687241a7"><td class="memItemLeft" align="right" valign="top">virtual const std::vector&lt; <a class="el" href="../../dd/de3/_tags_8hpp.html#af14f5554b0d9be50c5ea718733bc424b">State::StateTag</a> &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/dd4/class_compact_star_1_1_physics_1_1_i_driver.html#a24a531cb99a43313f30018d1687241a7">Updates</a> () const =0</td></tr>
+<tr class="memitem:a24a531cb99a43313f30018d1687241a7"><td class="memItemLeft" align="right" valign="top">virtual const std::vector&lt; <a class="el" href="../../da/d7b/namespace_compact_star_1_1_physics_1_1_state.html#af14f5554b0d9be50c5ea718733bc424b">State::StateTag</a> &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/dd4/class_compact_star_1_1_physics_1_1_i_driver.html#a24a531cb99a43313f30018d1687241a7">Updates</a> () const =0</td></tr>
 <tr class="memdesc:a24a531cb99a43313f30018d1687241a7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Which state blocks this driver updates (adds contributions to).  <a href="../../da/dd4/class_compact_star_1_1_physics_1_1_i_driver.html#a24a531cb99a43313f30018d1687241a7">More...</a><br /></td></tr>
 <tr class="separator:a24a531cb99a43313f30018d1687241a7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8f6a4dd41179102863ea109d24e68bf4"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/dd4/class_compact_star_1_1_physics_1_1_i_driver.html#a8f6a4dd41179102863ea109d24e68bf4">AccumulateRHS</a> (double t, const <a class="el" href="../../da/d36/class_compact_star_1_1_physics_1_1_evolution_1_1_state_vector.html">Evolution::StateVector</a> &amp;Y, <a class="el" href="../../d6/d26/class_compact_star_1_1_physics_1_1_evolution_1_1_r_h_s_accumulator.html">Evolution::RHSAccumulator</a> &amp;dYdt, const <a class="el" href="../../d9/d42/class_compact_star_1_1_physics_1_1_evolution_1_1_star_context.html">Evolution::StarContext</a> &amp;ctx) const =0</td></tr>
@@ -154,7 +154,7 @@ Public Member Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Add this driver’s contribution to the global RHS dY/dt. </p>
-<p>Implementations must <em>accumulate</em> into <code>dYdt</code> (i.e., add), and must not assume any specific call order beyond what the Evolution graph resolves.</p>
+<p>Implementations must <em>accumulate</em> into <code>dYdt</code> (i.e., add), and must not assume any specific call order beyond what the <a class="el" href="../../d6/d38/namespace_compact_star_1_1_physics_1_1_evolution.html" title="Evolution engine for time-dependent neutron-star physics.">Evolution</a> graph resolves.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">t</td><td>Current time (model units; typically seconds). </td></tr>
@@ -179,7 +179,7 @@ Public Member Functions</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">virtual const std::vector&lt; <a class="el" href="../../dd/de3/_tags_8hpp.html#af14f5554b0d9be50c5ea718733bc424b">State::StateTag</a> &gt; &amp; CompactStar::Physics::IDriver::DependsOn </td>
+          <td class="memname">virtual const std::vector&lt; <a class="el" href="../../da/d7b/namespace_compact_star_1_1_physics_1_1_state.html#af14f5554b0d9be50c5ea718733bc424b">State::StateTag</a> &gt; &amp; CompactStar::Physics::IDriver::DependsOn </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td> const</td>
@@ -238,7 +238,7 @@ Public Member Functions</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">virtual const std::vector&lt; <a class="el" href="../../dd/de3/_tags_8hpp.html#af14f5554b0d9be50c5ea718733bc424b">State::StateTag</a> &gt; &amp; CompactStar::Physics::IDriver::Updates </td>
+          <td class="memname">virtual const std::vector&lt; <a class="el" href="../../da/d7b/namespace_compact_star_1_1_physics_1_1_state.html#af14f5554b0d9be50c5ea718733bc424b">State::StateTag</a> &gt; &amp; CompactStar::Physics::IDriver::Updates </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td> const</td>

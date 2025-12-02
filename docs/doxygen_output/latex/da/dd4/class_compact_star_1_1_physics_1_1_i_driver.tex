@@ -11,9 +11,9 @@ Inheritance diagram for Compact\+Star\+::Physics\+::IDriver\+:\begin{figure}[H]
 \item 
 virtual std\+::string \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_i_driver_a1337b0292d71b672785c37ba4d7e8564}{Name}} () const =0
 \begin{DoxyCompactList}\small\item\em Human-\/readable name for diagnostics/logging. \end{DoxyCompactList}\item 
-virtual const std\+::vector$<$ \mbox{\hyperlink{_tags_8hpp_af14f5554b0d9be50c5ea718733bc424b}{State\+::\+State\+Tag}} $>$ \& \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_i_driver_a813f52e0fad2ee496611eb6a18114354}{Depends\+On}} () const =0
+virtual const std\+::vector$<$ \mbox{\hyperlink{namespace_compact_star_1_1_physics_1_1_state_af14f5554b0d9be50c5ea718733bc424b}{State\+::\+State\+Tag}} $>$ \& \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_i_driver_a813f52e0fad2ee496611eb6a18114354}{Depends\+On}} () const =0
 \begin{DoxyCompactList}\small\item\em Which state blocks this driver reads. \end{DoxyCompactList}\item 
-virtual const std\+::vector$<$ \mbox{\hyperlink{_tags_8hpp_af14f5554b0d9be50c5ea718733bc424b}{State\+::\+State\+Tag}} $>$ \& \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_i_driver_a24a531cb99a43313f30018d1687241a7}{Updates}} () const =0
+virtual const std\+::vector$<$ \mbox{\hyperlink{namespace_compact_star_1_1_physics_1_1_state_af14f5554b0d9be50c5ea718733bc424b}{State\+::\+State\+Tag}} $>$ \& \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_i_driver_a24a531cb99a43313f30018d1687241a7}{Updates}} () const =0
 \begin{DoxyCompactList}\small\item\em Which state blocks this driver updates (adds contributions to). \end{DoxyCompactList}\item 
 virtual void \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_i_driver_a8f6a4dd41179102863ea109d24e68bf4}{Accumulate\+RHS}} (double t, const \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_state_vector}{Evolution\+::\+State\+Vector}} \&Y, \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_r_h_s_accumulator}{Evolution\+::\+RHSAccumulator}} \&d\+Ydt, const \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_star_context}{Evolution\+::\+Star\+Context}} \&ctx) const =0
 \begin{DoxyCompactList}\small\item\em Add this driver’s contribution to the global RHS d\+Y/dt. \end{DoxyCompactList}\end{DoxyCompactItemize}
@@ -30,7 +30,7 @@ virtual void \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_i_driver_a8f6a4
 
 Add this driver’s contribution to the global RHS d\+Y/dt. 
 
-Implementations must {\itshape accumulate} into {\ttfamily d\+Ydt} (i.\+e., add), and must not assume any specific call order beyond what the Evolution graph resolves.
+Implementations must {\itshape accumulate} into {\ttfamily d\+Ydt} (i.\+e., add), and must not assume any specific call order beyond what the \mbox{\hyperlink{namespace_compact_star_1_1_physics_1_1_evolution}{Evolution}} graph resolves.
 
 
 \begin{DoxyParams}{Parameters}
@@ -51,7 +51,7 @@ Implemented in \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_driver_1_1_th
 \index{CompactStar::Physics::IDriver@{CompactStar::Physics::IDriver}!DependsOn@{DependsOn}}
 \index{DependsOn@{DependsOn}!CompactStar::Physics::IDriver@{CompactStar::Physics::IDriver}}
 \doxysubsubsection{\texorpdfstring{DependsOn()}{DependsOn()}}
-{\footnotesize\ttfamily virtual const std\+::vector$<$ \mbox{\hyperlink{_tags_8hpp_af14f5554b0d9be50c5ea718733bc424b}{State\+::\+State\+Tag}} $>$ \& Compact\+Star\+::\+Physics\+::\+IDriver\+::\+Depends\+On (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [pure virtual]}}
+{\footnotesize\ttfamily virtual const std\+::vector$<$ \mbox{\hyperlink{namespace_compact_star_1_1_physics_1_1_state_af14f5554b0d9be50c5ea718733bc424b}{State\+::\+State\+Tag}} $>$ \& Compact\+Star\+::\+Physics\+::\+IDriver\+::\+Depends\+On (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [pure virtual]}}
 
 
 
@@ -79,7 +79,7 @@ Implemented in \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_driver_1_1_th
 \index{CompactStar::Physics::IDriver@{CompactStar::Physics::IDriver}!Updates@{Updates}}
 \index{Updates@{Updates}!CompactStar::Physics::IDriver@{CompactStar::Physics::IDriver}}
 \doxysubsubsection{\texorpdfstring{Updates()}{Updates()}}
-{\footnotesize\ttfamily virtual const std\+::vector$<$ \mbox{\hyperlink{_tags_8hpp_af14f5554b0d9be50c5ea718733bc424b}{State\+::\+State\+Tag}} $>$ \& Compact\+Star\+::\+Physics\+::\+IDriver\+::\+Updates (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [pure virtual]}}
+{\footnotesize\ttfamily virtual const std\+::vector$<$ \mbox{\hyperlink{namespace_compact_star_1_1_physics_1_1_state_af14f5554b0d9be50c5ea718733bc424b}{State\+::\+State\+Tag}} $>$ \& Compact\+Star\+::\+Physics\+::\+IDriver\+::\+Updates (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [pure virtual]}}
 
 
 

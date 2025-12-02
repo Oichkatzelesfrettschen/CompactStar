@@ -51,6 +51,13 @@
 #include <CompactStar/EOS/CompOSE_EOS.hpp>
 
 //==============================================================
+/**
+ * @namespace CompactStar::Microphysics::BNV::Internal
+ * @brief Low-level building blocks for BNV microphysics.
+ *
+ * Provides particle definitions, χ-population models, coupling constants,
+ * and internal helper routines used by Channels and Analysis.
+ */
 namespace CompactStar::Microphysics::BNV::Internal
 {
 

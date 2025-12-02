@@ -18,12 +18,12 @@ Composite view over the current ODE state (tag → State$\ast$).
 \mbox{\Hypertarget{class_compact_star_1_1_physics_1_1_evolution_1_1_state_vector_a069c56ac4eebc92da42b007d41c4c8d2}\label{class_compact_star_1_1_physics_1_1_evolution_1_1_state_vector_a069c56ac4eebc92da42b007d41c4c8d2}} 
 {\bfseries $\sim$\+State\+Vector} ()=default
 \begin{DoxyCompactList}\small\item\em Default destructor. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_state_vector_a4331dc2a18a709f883a859fa87bccdca}{Register}} (\mbox{\hyperlink{_tags_8hpp_af14f5554b0d9be50c5ea718733bc424b}{Physics\+::\+State\+::\+State\+Tag}} tag, \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_state_1_1_state}{Physics\+::\+State\+::\+State}} \&state)
-\begin{DoxyCompactList}\small\item\em Register a State block for a given tag. \end{DoxyCompactList}\item 
-const \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_state_1_1_state}{Physics\+::\+State\+::\+State}} \& \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_state_vector_ad0c25d09c30da11a571304808205ca2d}{Get}} (\mbox{\hyperlink{_tags_8hpp_af14f5554b0d9be50c5ea718733bc424b}{Physics\+::\+State\+::\+State\+Tag}} tag) const
-\begin{DoxyCompactList}\small\item\em Get a const reference to the State associated with {\ttfamily tag}. \end{DoxyCompactList}\item 
-\mbox{\hyperlink{class_compact_star_1_1_physics_1_1_state_1_1_state}{Physics\+::\+State\+::\+State}} \& \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_state_vector_ac21c4bcf583959f81a510ae75d9d8195}{Get}} (\mbox{\hyperlink{_tags_8hpp_af14f5554b0d9be50c5ea718733bc424b}{Physics\+::\+State\+::\+State\+Tag}} tag)
-\begin{DoxyCompactList}\small\item\em Get a mutable reference to the State associated with {\ttfamily tag}. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_state_vector_a4331dc2a18a709f883a859fa87bccdca}{Register}} (\mbox{\hyperlink{namespace_compact_star_1_1_physics_1_1_state_af14f5554b0d9be50c5ea718733bc424b}{Physics\+::\+State\+::\+State\+Tag}} tag, \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_state_1_1_state}{Physics\+::\+State\+::\+State}} \&state)
+\begin{DoxyCompactList}\small\item\em Register a \mbox{\hyperlink{namespace_compact_star_1_1_physics_1_1_state}{State}} block for a given tag. \end{DoxyCompactList}\item 
+const \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_state_1_1_state}{Physics\+::\+State\+::\+State}} \& \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_state_vector_ad0c25d09c30da11a571304808205ca2d}{Get}} (\mbox{\hyperlink{namespace_compact_star_1_1_physics_1_1_state_af14f5554b0d9be50c5ea718733bc424b}{Physics\+::\+State\+::\+State\+Tag}} tag) const
+\begin{DoxyCompactList}\small\item\em Get a const reference to the \mbox{\hyperlink{namespace_compact_star_1_1_physics_1_1_state}{State}} associated with {\ttfamily tag}. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_compact_star_1_1_physics_1_1_state_1_1_state}{Physics\+::\+State\+::\+State}} \& \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_state_vector_ac21c4bcf583959f81a510ae75d9d8195}{Get}} (\mbox{\hyperlink{namespace_compact_star_1_1_physics_1_1_state_af14f5554b0d9be50c5ea718733bc424b}{Physics\+::\+State\+::\+State\+Tag}} tag)
+\begin{DoxyCompactList}\small\item\em Get a mutable reference to the \mbox{\hyperlink{namespace_compact_star_1_1_physics_1_1_state}{State}} associated with {\ttfamily tag}. \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{class_compact_star_1_1_physics_1_1_evolution_1_1_state_vector_ab0732cb853cd40b3588d96d21d34aac7}\label{class_compact_star_1_1_physics_1_1_evolution_1_1_state_vector_ab0732cb853cd40b3588d96d21d34aac7}} 
 const Physics\+::\+State\+::\+Spin\+State \& {\bfseries Get\+Spin} () const
 \begin{DoxyCompactList}\small\item\em Const Spin\+State accessor (tag = State\+Tag\+::\+Spin). \end{DoxyCompactList}\item 
@@ -57,7 +57,7 @@ This class does not store any actual data; it only keeps pointers to State-\/der
 
 Ownership\+:
 \begin{DoxyItemize}
-\item \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_state_vector}{State\+Vector}} is {\bfseries{non-\/owning}}; the caller must ensure the underlying State objects outlive the \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_state_vector}{State\+Vector}}. 
+\item \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_state_vector}{State\+Vector}} is {\bfseries{non-\/owning}}; the caller must ensure the underlying \mbox{\hyperlink{namespace_compact_star_1_1_physics_1_1_state}{State}} objects outlive the \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_state_vector}{State\+Vector}}. 
 \end{DoxyItemize}
 
 \doxysubsection{Member Function Documentation}
@@ -65,11 +65,11 @@ Ownership\+:
 \index{CompactStar::Physics::Evolution::StateVector@{CompactStar::Physics::Evolution::StateVector}!Get@{Get}}
 \index{Get@{Get}!CompactStar::Physics::Evolution::StateVector@{CompactStar::Physics::Evolution::StateVector}}
 \doxysubsubsection{\texorpdfstring{Get()}{Get()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
-{\footnotesize\ttfamily \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_state_1_1_state}{Physics\+::\+State\+::\+State}} \& Compact\+Star\+::\+Physics\+::\+Evolution\+::\+State\+Vector\+::\+Get (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{_tags_8hpp_af14f5554b0d9be50c5ea718733bc424b}{Physics\+::\+State\+::\+State\+Tag}}}]{tag }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_state_1_1_state}{Physics\+::\+State\+::\+State}} \& Compact\+Star\+::\+Physics\+::\+Evolution\+::\+State\+Vector\+::\+Get (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{namespace_compact_star_1_1_physics_1_1_state_af14f5554b0d9be50c5ea718733bc424b}{Physics\+::\+State\+::\+State\+Tag}}}]{tag }\end{DoxyParamCaption})}
 
 
 
-Get a mutable reference to the State associated with {\ttfamily tag}. 
+Get a mutable reference to the \mbox{\hyperlink{namespace_compact_star_1_1_physics_1_1_state}{State}} associated with {\ttfamily tag}. 
 
 
 \begin{DoxyExceptions}{Exceptions}
@@ -80,11 +80,11 @@ Get a mutable reference to the State associated with {\ttfamily tag}.
 \index{CompactStar::Physics::Evolution::StateVector@{CompactStar::Physics::Evolution::StateVector}!Get@{Get}}
 \index{Get@{Get}!CompactStar::Physics::Evolution::StateVector@{CompactStar::Physics::Evolution::StateVector}}
 \doxysubsubsection{\texorpdfstring{Get()}{Get()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
-{\footnotesize\ttfamily const \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_state_1_1_state}{Physics\+::\+State\+::\+State}} \& Compact\+Star\+::\+Physics\+::\+Evolution\+::\+State\+Vector\+::\+Get (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{_tags_8hpp_af14f5554b0d9be50c5ea718733bc424b}{Physics\+::\+State\+::\+State\+Tag}}}]{tag }\end{DoxyParamCaption}) const}
+{\footnotesize\ttfamily const \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_state_1_1_state}{Physics\+::\+State\+::\+State}} \& Compact\+Star\+::\+Physics\+::\+Evolution\+::\+State\+Vector\+::\+Get (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{namespace_compact_star_1_1_physics_1_1_state_af14f5554b0d9be50c5ea718733bc424b}{Physics\+::\+State\+::\+State\+Tag}}}]{tag }\end{DoxyParamCaption}) const}
 
 
 
-Get a const reference to the State associated with {\ttfamily tag}. 
+Get a const reference to the \mbox{\hyperlink{namespace_compact_star_1_1_physics_1_1_state}{State}} associated with {\ttfamily tag}. 
 
 
 \begin{DoxyExceptions}{Exceptions}
@@ -95,11 +95,11 @@ Get a const reference to the State associated with {\ttfamily tag}.
 \index{CompactStar::Physics::Evolution::StateVector@{CompactStar::Physics::Evolution::StateVector}!Register@{Register}}
 \index{Register@{Register}!CompactStar::Physics::Evolution::StateVector@{CompactStar::Physics::Evolution::StateVector}}
 \doxysubsubsection{\texorpdfstring{Register()}{Register()}}
-{\footnotesize\ttfamily void Compact\+Star\+::\+Physics\+::\+Evolution\+::\+State\+Vector\+::\+Register (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{_tags_8hpp_af14f5554b0d9be50c5ea718733bc424b}{Physics\+::\+State\+::\+State\+Tag}}}]{tag,  }\item[{\mbox{\hyperlink{class_compact_star_1_1_physics_1_1_state_1_1_state}{Physics\+::\+State\+::\+State}} \&}]{state }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily void Compact\+Star\+::\+Physics\+::\+Evolution\+::\+State\+Vector\+::\+Register (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{namespace_compact_star_1_1_physics_1_1_state_af14f5554b0d9be50c5ea718733bc424b}{Physics\+::\+State\+::\+State\+Tag}}}]{tag,  }\item[{\mbox{\hyperlink{class_compact_star_1_1_physics_1_1_state_1_1_state}{Physics\+::\+State\+::\+State}} \&}]{state }\end{DoxyParamCaption})}
 
 
 
-Register a State block for a given tag. 
+Register a \mbox{\hyperlink{namespace_compact_star_1_1_physics_1_1_state}{State}} block for a given tag. 
 
 
 \begin{DoxyParams}{Parameters}

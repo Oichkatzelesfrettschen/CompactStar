@@ -17,5 +17,5 @@ var searchData=
   ['model_14',['Model',['../d4/d0a/class_compact_star_1_1_model.html#a0a6340dc9663543a56497bab5a3137c7',1,'CompactStar::Model']]],
   ['mu_15',['mu',['../d9/de0/struct_binary___params.html#affa4262c39f0670a7b4c57cb30200c32',1,'Binary_Params']]],
   ['mu_16',['Mu',['../d9/d31/class_compact_star_1_1_baryon.html#a101e130974d3b05fcd9ed62e0ea8d684',1,'CompactStar::Baryon::Mu()'],['../d4/da4/class_compact_star_1_1_particle.html#ade2a30772c19fada1f9f3d5b7dc1e47e',1,'CompactStar::Particle::Mu()']]],
-  ['murcaemissivityprefactor_17',['MUrcaEmissivityPrefactor',['../d4/dc0/_thermal_8hpp.html#a88c5c3bccb040991bbbb72fd57971f5b',1,'CompactStar::Physics::Thermal']]]
+  ['murcaemissivityprefactor_17',['MUrcaEmissivityPrefactor',['../db/da9/namespace_compact_star_1_1_physics_1_1_thermal.html#a88c5c3bccb040991bbbb72fd57971f5b',1,'CompactStar::Physics::Thermal']]]
 ];

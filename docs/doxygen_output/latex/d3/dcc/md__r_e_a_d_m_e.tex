@@ -116,7 +116,97 @@ Provided by the new Core module\+:
 
 
 \DoxyHorRuler{0}
-\hypertarget{md__r_e_a_d_m_e_autotoc_md18}{}\doxysection{Features}\label{md__r_e_a_d_m_e_autotoc_md18}
+\hypertarget{md__r_e_a_d_m_e_autotoc_md18}{}\doxysection{State Interface Architecture}\label{md__r_e_a_d_m_e_autotoc_md18}
+Compact\+Star’s evolution engine treats each physical subsystem ~\newline
+ (Spin, Thermal, Chem, BNV, …) as a {\bfseries{state block}} derived from a single abstract base class {\ttfamily State}. This base class defines a small, uniform interface\+:
+
+
+\begin{DoxyItemize}
+\item {\ttfamily Size()}
+\item {\ttfamily Data()}
+\item {\ttfamily \mbox{\hyperlink{_chem_state_8hpp_a3f6089e2db736965f021e2165ae39933}{Pack\+To()}}}
+\item {\ttfamily \mbox{\hyperlink{_chem_state_8hpp_af4c43758909d4e294d63b7d067eae761}{Unpack\+From()}}}
+\item {\ttfamily Resize()}
+\item {\ttfamily \mbox{\hyperlink{_chem_state_8hpp_ac2fdf117e3886bbce4baa56a77d3e9cc}{Clear()}}}
+\end{DoxyItemize}
+
+but {\bfseries{it intentionally does not define storage}}. ~\newline
+ Each derived state type owns its own internal representation.
+
+\DoxyHorRuler{0}
+\hypertarget{md__r_e_a_d_m_e_autotoc_md20}{}\doxysubsection{Why the base class does $<$em$>$not$<$/em$>$ own $<$tt$>$values\+\_\+$<$/tt$>$}\label{md__r_e_a_d_m_e_autotoc_md20}
+Different state types have very different physical and numerical needs\+:
+
+
+\begin{DoxyItemize}
+\item {\bfseries{Spin\+State}} stores Ω-\/like variables in a simple vector
+\item {\bfseries{Thermal\+State}} may evolve one or many temperature components
+\item {\bfseries{Chem\+State}} evolves a vector of η chemical imbalances
+\item {\bfseries{BNVState}} may evolve anything from 1 to many exotic parameters
+\item Future modules may require 2D grids, GPU buffers, or nested structures
+\end{DoxyItemize}
+
+If the base class forced a single storage container (e.\+g. {\ttfamily std\+::vector\texorpdfstring{$<$}{<}double\texorpdfstring{$>$}{>}}), it would prevent advanced future models or force awkward workarounds.
+
+Leaving storage fully up to the derived class gives\+:
+
+
+\begin{DoxyItemize}
+\item full flexibility for arbitrary physics models, present and future
+\item decoupling between “how data is stored” and “how evolution operates”
+\item identical external interface for all states
+\item zero-\/cost abstraction\+: the solver only sees contiguous segments via {\ttfamily Data()}
+\end{DoxyItemize}
+
+Every state remains free to choose {\bfseries{any internal representation}}, as long as it can supply a contiguous DOF view to the evolution engine.
+
+\DoxyHorRuler{0}
+\hypertarget{md__r_e_a_d_m_e_autotoc_md22}{}\doxysubsection{Packing and Unpacking\+: How Evolution Works}\label{md__r_e_a_d_m_e_autotoc_md22}
+During time evolution, the framework assembles one global ODE vector\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{y = [ Spin DOFs | Thermal DOFs | Chem DOFs | BNV DOFs | ... ]}
+
+\end{DoxyCode}
+
+
+Each state block implements\+:
+
+
+\begin{DoxyItemize}
+\item {\bfseries{Pack\+To(y, offset)}}\+: copy internal DOFs into the global vector
+\item {\bfseries{Unpack\+From(y, offset)}}\+: restore DOFs after the solver updates {\ttfamily y\mbox{[}\mbox{]}}
+\end{DoxyItemize}
+
+This enables\+:
+
+
+\begin{DoxyItemize}
+\item arbitrary ordering of state blocks
+\item custom block sizes
+\item clean separation between the physics model and GSL/\+Sundials interfaces
+\item modular drivers that specify dependencies via {\ttfamily State\+Tag}
+\end{DoxyItemize}
+
+\DoxyHorRuler{0}
+\hypertarget{md__r_e_a_d_m_e_autotoc_md24}{}\doxysubsection{Summary}\label{md__r_e_a_d_m_e_autotoc_md24}
+This architecture\+:
+
+
+\begin{DoxyItemize}
+\item maximizes extensibility
+\item cleanly supports heterogeneous physics blocks
+\item keeps the evolution solver generic and future-\/proof
+\item avoids premature commitment to a fixed layout
+\item simplifies driver implementation
+\end{DoxyItemize}
+
+For additional detail, see the comments in ~\newline
+ {\ttfamily \mbox{\hyperlink{_state_8hpp}{Compact\+Star/\+Physics/\+State/\+State.\+hpp}}}.
+
+\DoxyHorRuler{0}
+\hypertarget{md__r_e_a_d_m_e_autotoc_md26}{}\doxysection{Features}\label{md__r_e_a_d_m_e_autotoc_md26}
 
 \begin{DoxyItemize}
 \item Tabulated + analytical EOS support
@@ -130,7 +220,7 @@ Provided by the new Core module\+:
 \end{DoxyItemize}
 
 \DoxyHorRuler{0}
-\hypertarget{md__r_e_a_d_m_e_autotoc_md20}{}\doxysection{Building}\label{md__r_e_a_d_m_e_autotoc_md20}
+\hypertarget{md__r_e_a_d_m_e_autotoc_md28}{}\doxysection{Building}\label{md__r_e_a_d_m_e_autotoc_md28}
 
 \begin{DoxyCode}{0}
 \DoxyCodeLine{mkdir build}
@@ -151,7 +241,7 @@ Optional flags\+:
 \end{DoxyItemize}
 
 \DoxyHorRuler{0}
-\hypertarget{md__r_e_a_d_m_e_autotoc_md22}{}\doxysection{Documentation}\label{md__r_e_a_d_m_e_autotoc_md22}
+\hypertarget{md__r_e_a_d_m_e_autotoc_md30}{}\doxysection{Documentation}\label{md__r_e_a_d_m_e_autotoc_md30}
 Compact\+Star uses {\bfseries{Doxygen}} documentation. ~\newline
  To build\+:
 
@@ -165,12 +255,12 @@ Compact\+Star uses {\bfseries{Doxygen}} documentation. ~\newline
 
 
 \DoxyHorRuler{0}
-\hypertarget{md__r_e_a_d_m_e_autotoc_md24}{}\doxysection{Author}\label{md__r_e_a_d_m_e_autotoc_md24}
+\hypertarget{md__r_e_a_d_m_e_autotoc_md32}{}\doxysection{Author}\label{md__r_e_a_d_m_e_autotoc_md32}
 {\bfseries{Mohammadreza Zakeri}} ~\newline
  Assistant Professor of Physics ~\newline
  Eastern Kentucky University ~\newline
  📧 \href{mailto:M.Zakeri@eku.edu}{\texttt{ M.\+Zakeri@eku.\+edu}}
 
 \DoxyHorRuler{0}
-\hypertarget{md__r_e_a_d_m_e_autotoc_md26}{}\doxysection{Citation}\label{md__r_e_a_d_m_e_autotoc_md26}
+\hypertarget{md__r_e_a_d_m_e_autotoc_md34}{}\doxysection{Citation}\label{md__r_e_a_d_m_e_autotoc_md34}
 If you use Compact\+Star in published research, please cite this repository and the author. 

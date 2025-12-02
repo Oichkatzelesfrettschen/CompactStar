@@ -24,7 +24,7 @@
 \DoxyCodeLine{43 }
 \DoxyCodeLine{44 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_tags_8hpp}{CompactStar/Physics/State/Tags.hpp}}"{}}}
 \DoxyCodeLine{45 }
-\DoxyCodeLine{46 \textcolor{keyword}{namespace }CompactStar::Physics::Evolution}
+\DoxyCodeLine{46 \textcolor{keyword}{namespace }\mbox{\hyperlink{namespace_compact_star_1_1_physics_1_1_evolution}{CompactStar::Physics::Evolution}}}
 \DoxyCodeLine{47 \{}
 \DoxyCodeLine{48 }
 \DoxyCodeLine{49 \textcolor{comment}{// -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
@@ -52,14 +52,14 @@
 \DoxyCodeLine{82     \textcolor{comment}{//  Configuration}}
 \DoxyCodeLine{83     \textcolor{comment}{// -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
 \DoxyCodeLine{84 }
-\DoxyCodeLine{94     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_r_h_s_accumulator_a63e5b050de3c687e57d7abca297673ad}{Configure}}(\mbox{\hyperlink{_tags_8hpp_af14f5554b0d9be50c5ea718733bc424b}{Physics::State::StateTag}} tag, std::size\_t size)}
+\DoxyCodeLine{94     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_r_h_s_accumulator_a63e5b050de3c687e57d7abca297673ad}{Configure}}(\mbox{\hyperlink{namespace_compact_star_1_1_physics_1_1_state_af14f5554b0d9be50c5ea718733bc424b}{Physics::State::StateTag}} tag, std::size\_t size)}
 \DoxyCodeLine{95     \{}
 \DoxyCodeLine{96         \textcolor{keyword}{auto} \&block = blocks\_[Index(tag)];}
 \DoxyCodeLine{97         block.data.assign(size, 0.0);}
 \DoxyCodeLine{98         block.configured = \textcolor{keyword}{true};}
 \DoxyCodeLine{99     \}}
 \DoxyCodeLine{100 }
-\DoxyCodeLine{104     [[nodiscard]] \textcolor{keywordtype}{bool} \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_r_h_s_accumulator_afc832703bdeed29d4be9438845b0b829}{IsConfigured}}(\mbox{\hyperlink{_tags_8hpp_af14f5554b0d9be50c5ea718733bc424b}{Physics::State::StateTag}} tag)\textcolor{keyword}{ const}}
+\DoxyCodeLine{104     [[nodiscard]] \textcolor{keywordtype}{bool} \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_r_h_s_accumulator_afc832703bdeed29d4be9438845b0b829}{IsConfigured}}(\mbox{\hyperlink{namespace_compact_star_1_1_physics_1_1_state_af14f5554b0d9be50c5ea718733bc424b}{Physics::State::StateTag}} tag)\textcolor{keyword}{ const}}
 \DoxyCodeLine{105 \textcolor{keyword}{    }\{}
 \DoxyCodeLine{106         \textcolor{keywordflow}{return} blocks\_[Index(tag)].configured;}
 \DoxyCodeLine{107     \}}
@@ -68,13 +68,13 @@
 \DoxyCodeLine{110     \textcolor{comment}{//  Accumulation}}
 \DoxyCodeLine{111     \textcolor{comment}{// -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
 \DoxyCodeLine{112 }
-\DoxyCodeLine{123     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_r_h_s_accumulator_af6ce1814c6bdd9961dce5b718e7d6970}{AddTo}}(\mbox{\hyperlink{_tags_8hpp_af14f5554b0d9be50c5ea718733bc424b}{Physics::State::StateTag}} tag, std::size\_t component, \textcolor{keywordtype}{double} value)}
+\DoxyCodeLine{123     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_r_h_s_accumulator_af6ce1814c6bdd9961dce5b718e7d6970}{AddTo}}(\mbox{\hyperlink{namespace_compact_star_1_1_physics_1_1_state_af14f5554b0d9be50c5ea718733bc424b}{Physics::State::StateTag}} tag, std::size\_t component, \textcolor{keywordtype}{double} value)}
 \DoxyCodeLine{124     \{}
 \DoxyCodeLine{125         \textcolor{keyword}{auto} \&block = blocks\_[Index(tag)];}
 \DoxyCodeLine{126         \textcolor{keywordflow}{if} (!block.configured)}
 \DoxyCodeLine{127         \{}
 \DoxyCodeLine{128             \textcolor{keywordflow}{throw} std::runtime\_error(\textcolor{stringliteral}{"{}RHSAccumulator::AddTo: tag '"{}} +}
-\DoxyCodeLine{129                                      std::string(Physics::State::ToString(tag)) +}
+\DoxyCodeLine{129                                      std::string(\mbox{\hyperlink{namespace_compact_star_1_1_physics_1_1_state_ad94b7336e81d9f83c3c7f2eb946b5e9e}{Physics::State::ToString}}(tag)) +}
 \DoxyCodeLine{130                                      \textcolor{stringliteral}{"{}' not configured."{}});}
 \DoxyCodeLine{131         \}}
 \DoxyCodeLine{132         \textcolor{keywordflow}{if} (component >= block.data.size())}
@@ -102,25 +102,25 @@
 \DoxyCodeLine{160     \textcolor{comment}{//  Accessors}}
 \DoxyCodeLine{161     \textcolor{comment}{// -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
 \DoxyCodeLine{162 }
-\DoxyCodeLine{171     [[nodiscard]] \textcolor{keyword}{const} std::vector<double> \&\mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_r_h_s_accumulator_ab850248c73733517b68d4a82ddd25db6}{Block}}(\mbox{\hyperlink{_tags_8hpp_af14f5554b0d9be50c5ea718733bc424b}{Physics::State::StateTag}} tag)\textcolor{keyword}{ const}}
+\DoxyCodeLine{171     [[nodiscard]] \textcolor{keyword}{const} std::vector<double> \&\mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_r_h_s_accumulator_ab850248c73733517b68d4a82ddd25db6}{Block}}(\mbox{\hyperlink{namespace_compact_star_1_1_physics_1_1_state_af14f5554b0d9be50c5ea718733bc424b}{Physics::State::StateTag}} tag)\textcolor{keyword}{ const}}
 \DoxyCodeLine{172 \textcolor{keyword}{    }\{}
 \DoxyCodeLine{173         \textcolor{keyword}{const} \textcolor{keyword}{auto} \&block = blocks\_[Index(tag)];}
 \DoxyCodeLine{174         \textcolor{keywordflow}{if} (!block.configured)}
 \DoxyCodeLine{175         \{}
 \DoxyCodeLine{176             \textcolor{keywordflow}{throw} std::runtime\_error(\textcolor{stringliteral}{"{}RHSAccumulator::Block(const): tag '"{}} +}
-\DoxyCodeLine{177                                      std::string(Physics::State::ToString(tag)) +}
+\DoxyCodeLine{177                                      std::string(\mbox{\hyperlink{namespace_compact_star_1_1_physics_1_1_state_ad94b7336e81d9f83c3c7f2eb946b5e9e}{Physics::State::ToString}}(tag)) +}
 \DoxyCodeLine{178                                      \textcolor{stringliteral}{"{}' not configured."{}});}
 \DoxyCodeLine{179         \}}
 \DoxyCodeLine{180         \textcolor{keywordflow}{return} block.data;}
 \DoxyCodeLine{181     \}}
 \DoxyCodeLine{182 }
-\DoxyCodeLine{191     std::vector<double> \&\mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_r_h_s_accumulator_ad962d2339286b8dda25323c42780666a}{Block}}(\mbox{\hyperlink{_tags_8hpp_af14f5554b0d9be50c5ea718733bc424b}{Physics::State::StateTag}} tag)}
+\DoxyCodeLine{191     std::vector<double> \&\mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_r_h_s_accumulator_ad962d2339286b8dda25323c42780666a}{Block}}(\mbox{\hyperlink{namespace_compact_star_1_1_physics_1_1_state_af14f5554b0d9be50c5ea718733bc424b}{Physics::State::StateTag}} tag)}
 \DoxyCodeLine{192     \{}
 \DoxyCodeLine{193         \textcolor{keyword}{auto} \&block = blocks\_[Index(tag)];}
 \DoxyCodeLine{194         \textcolor{keywordflow}{if} (!block.configured)}
 \DoxyCodeLine{195         \{}
 \DoxyCodeLine{196             \textcolor{keywordflow}{throw} std::runtime\_error(\textcolor{stringliteral}{"{}RHSAccumulator::Block: tag '"{}} +}
-\DoxyCodeLine{197                                      std::string(Physics::State::ToString(tag)) +}
+\DoxyCodeLine{197                                      std::string(\mbox{\hyperlink{namespace_compact_star_1_1_physics_1_1_state_ad94b7336e81d9f83c3c7f2eb946b5e9e}{Physics::State::ToString}}(tag)) +}
 \DoxyCodeLine{198                                      \textcolor{stringliteral}{"{}' not configured."{}});}
 \DoxyCodeLine{199         \}}
 \DoxyCodeLine{200         \textcolor{keywordflow}{return} block.data;}
@@ -139,9 +139,9 @@
 \DoxyCodeLine{213     \};}
 \DoxyCodeLine{214 }
 \DoxyCodeLine{216     \textcolor{keyword}{static} \textcolor{keyword}{constexpr} std::size\_t NumTags =}
-\DoxyCodeLine{217         \textcolor{keyword}{static\_cast<}std::size\_t\textcolor{keyword}{>}(Physics::State::StateTag::Custom) + 1;}
+\DoxyCodeLine{217         \textcolor{keyword}{static\_cast<}std::size\_t\textcolor{keyword}{>}(\mbox{\hyperlink{namespace_compact_star_1_1_physics_1_1_state_af14f5554b0d9be50c5ea718733bc424ba90589c47f06eb971d548591f23c285af}{Physics::State::StateTag::Custom}}) + 1;}
 \DoxyCodeLine{218 }
-\DoxyCodeLine{220     \textcolor{keyword}{static} \textcolor{keyword}{constexpr} std::size\_t Index(\mbox{\hyperlink{_tags_8hpp_af14f5554b0d9be50c5ea718733bc424b}{Physics::State::StateTag}} tag)}
+\DoxyCodeLine{220     \textcolor{keyword}{static} \textcolor{keyword}{constexpr} std::size\_t Index(\mbox{\hyperlink{namespace_compact_star_1_1_physics_1_1_state_af14f5554b0d9be50c5ea718733bc424b}{Physics::State::StateTag}} tag)}
 \DoxyCodeLine{221     \{}
 \DoxyCodeLine{222         \textcolor{keywordflow}{return} \textcolor{keyword}{static\_cast<}std::size\_t\textcolor{keyword}{>}(tag);}
 \DoxyCodeLine{223     \}}

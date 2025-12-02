@@ -39,11 +39,14 @@
 #include "CompactStar/Core/StarProfile.hpp"
 #include "CompactStar/Physics/State/ThermalState.hpp"
 
-namespace CompactStar
-{
-namespace Physics
-{
-namespace Thermal
+/**
+ * @namespace CompactStar::Physics::Thermal
+ * @brief Thermal utilities: envelope models, cooling/heating helpers.
+ *
+ * Contains static thermal functions (e.g., neutrino luminosities,
+ * envelope T_b → T_s mappings) and interfaces used by thermal drivers.
+ */
+namespace CompactStar::Physics::Thermal
 {
 
 /**
@@ -125,8 +128,6 @@ double MUrcaEmissivityPrefactor(StarProfileView view,
  */
 double TotalNeutrinoLuminosity(StarProfileView view, const State::ThermalState &state);
 
-} // namespace Thermal
-} // namespace Physics
-} // namespace CompactStar
+} // namespace CompactStar::Physics::Thermal
 
 #endif /* CompactStar_Physics_Thermal_H */

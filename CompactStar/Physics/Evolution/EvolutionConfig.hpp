@@ -40,11 +40,21 @@
 #include <string>
 #include <vector>
 
-namespace CompactStar
-{
-namespace Physics
-{
-namespace Evolution
+/**
+ * @namespace CompactStar::Physics::Evolution
+ * @brief Evolution engine for time-dependent neutron-star physics.
+ *
+ * Contains:
+ *  - EvolutionSystem (RHS functor)
+ *  - StateVector registry
+ *  - RHSAccumulator
+ *  - GeometryCache
+ *  - Integrator bindings
+ *  - Observers, logging, checkpoints
+ *
+ * This namespace represents the core of the time-evolution subsystem.
+ */
+namespace CompactStar::Physics::Evolution
 {
 
 //==============================================================
@@ -113,11 +123,7 @@ struct Config
 	std::string run_label; /*!< Free-form label for outputs. */
 };
 //==============================================================
-} // namespace Evolution
-//=============================================================
-} // namespace Physics
-//==============================================================
-} // namespace CompactStar
+} // namespace CompactStar::Physics::Evolution
 //==============================================================
 
 #endif /* CompactStar_Physics_Evolution_Config_H */

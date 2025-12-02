@@ -69,7 +69,7 @@ $(function() {
 
 <div id="nav-path" class="navpath">
   <ul>
-<li class="navelem"><b>CompactStar</b></li><li class="navelem"><b>Physics</b></li><li class="navelem"><b>State</b></li><li class="navelem"><a class="el" href="../../d8/d9a/class_compact_star_1_1_physics_1_1_state_1_1_b_n_v_state.html">BNVState</a></li>  </ul>
+<li class="navelem"><b>CompactStar</b></li><li class="navelem"><b>Physics</b></li><li class="navelem"><a class="el" href="../../da/d7b/namespace_compact_star_1_1_physics_1_1_state.html">State</a></li><li class="navelem"><a class="el" href="../../d8/d9a/class_compact_star_1_1_physics_1_1_state_1_1_b_n_v_state.html">BNVState</a></li>  </ul>
 </div>
 </div><!-- top -->
 <div class="header">
@@ -117,9 +117,15 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a4cbce3755a27f7f2bd19fadb40ef400d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d8/d9a/class_compact_star_1_1_physics_1_1_state_1_1_b_n_v_state.html#a4cbce3755a27f7f2bd19fadb40ef400d">Clear</a> () override</td></tr>
 <tr class="memdesc:a4cbce3755a27f7f2bd19fadb40ef400d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Zero out all values (capacity preserved).  <a href="../../d8/d9a/class_compact_star_1_1_physics_1_1_state_1_1_b_n_v_state.html#a4cbce3755a27f7f2bd19fadb40ef400d">More...</a><br /></td></tr>
 <tr class="separator:a4cbce3755a27f7f2bd19fadb40ef400d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a06f92845a5ae6bf1abd1f955b70bd533"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d8/d9a/class_compact_star_1_1_physics_1_1_state_1_1_b_n_v_state.html#a06f92845a5ae6bf1abd1f955b70bd533">PackTo</a> (double *dest) const override</td></tr>
+<tr class="memdesc:a06f92845a5ae6bf1abd1f955b70bd533"><td class="mdescLeft">&#160;</td><td class="mdescRight">Copy the internal ODE components into a flat buffer.  <a href="../../d8/d9a/class_compact_star_1_1_physics_1_1_state_1_1_b_n_v_state.html#a06f92845a5ae6bf1abd1f955b70bd533">More...</a><br /></td></tr>
+<tr class="separator:a06f92845a5ae6bf1abd1f955b70bd533"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8f3a53be98215a94c80a46a779571d9f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d8/d9a/class_compact_star_1_1_physics_1_1_state_1_1_b_n_v_state.html#a8f3a53be98215a94c80a46a779571d9f">UnpackFrom</a> (const double *src) override</td></tr>
+<tr class="memdesc:a8f3a53be98215a94c80a46a779571d9f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Populate internal ODE components from a flat buffer.  <a href="../../d8/d9a/class_compact_star_1_1_physics_1_1_state_1_1_b_n_v_state.html#a8f3a53be98215a94c80a46a779571d9f">More...</a><br /></td></tr>
+<tr class="separator:a8f3a53be98215a94c80a46a779571d9f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0138ef8ca0d66e6c20a3934ad3a0b37c"><td class="memItemLeft" align="right" valign="top"><a id="a0138ef8ca0d66e6c20a3934ad3a0b37c" name="a0138ef8ca0d66e6c20a3934ad3a0b37c"></a>
 std::size_t&#160;</td><td class="memItemRight" valign="bottom"><b>NumComponents</b> () const</td></tr>
-<tr class="memdesc:a0138ef8ca0d66e6c20a3934ad3a0b37c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return number of BNV state components. <br /></td></tr>
+<tr class="memdesc:a0138ef8ca0d66e6c20a3934ad3a0b37c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return number of <a class="el" href="../../dd/d9b/namespace_compact_star_1_1_physics_1_1_b_n_v.html" title="High-level baryon-number-violation utilities.">BNV</a> state components. <br /></td></tr>
 <tr class="separator:a0138ef8ca0d66e6c20a3934ad3a0b37c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7f2091096981a01b7623f24391774245"><td class="memItemLeft" align="right" valign="top"><a id="a7f2091096981a01b7623f24391774245" name="a7f2091096981a01b7623f24391774245"></a>
 double &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>Value</b> (std::size_t i)</td></tr>
@@ -163,6 +169,12 @@ const double &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>SpinDow
 <tr class="memitem:ae531732a02445f1378be8a13837691e8 inherit pub_methods_class_compact_star_1_1_physics_1_1_state_1_1_state"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d4/d69/class_compact_star_1_1_physics_1_1_state_1_1_state.html#ae531732a02445f1378be8a13837691e8">Clear</a> ()=0</td></tr>
 <tr class="memdesc:ae531732a02445f1378be8a13837691e8 inherit pub_methods_class_compact_star_1_1_physics_1_1_state_1_1_state"><td class="mdescLeft">&#160;</td><td class="mdescRight">Reset contents to a well-defined state (usually all zeros).  <a href="../../d4/d69/class_compact_star_1_1_physics_1_1_state_1_1_state.html#ae531732a02445f1378be8a13837691e8">More...</a><br /></td></tr>
 <tr class="separator:ae531732a02445f1378be8a13837691e8 inherit pub_methods_class_compact_star_1_1_physics_1_1_state_1_1_state"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a541e92639dd1000d18fa3b68483fd502 inherit pub_methods_class_compact_star_1_1_physics_1_1_state_1_1_state"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d4/d69/class_compact_star_1_1_physics_1_1_state_1_1_state.html#a541e92639dd1000d18fa3b68483fd502">PackTo</a> (double *dest) const =0</td></tr>
+<tr class="memdesc:a541e92639dd1000d18fa3b68483fd502 inherit pub_methods_class_compact_star_1_1_physics_1_1_state_1_1_state"><td class="mdescLeft">&#160;</td><td class="mdescRight">Pack this state into a contiguous double buffer.  <a href="../../d4/d69/class_compact_star_1_1_physics_1_1_state_1_1_state.html#a541e92639dd1000d18fa3b68483fd502">More...</a><br /></td></tr>
+<tr class="separator:a541e92639dd1000d18fa3b68483fd502 inherit pub_methods_class_compact_star_1_1_physics_1_1_state_1_1_state"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9d29b545a578c4857388b1aa92b4e993 inherit pub_methods_class_compact_star_1_1_physics_1_1_state_1_1_state"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d4/d69/class_compact_star_1_1_physics_1_1_state_1_1_state.html#a9d29b545a578c4857388b1aa92b4e993">UnpackFrom</a> (const double *src)=0</td></tr>
+<tr class="memdesc:a9d29b545a578c4857388b1aa92b4e993 inherit pub_methods_class_compact_star_1_1_physics_1_1_state_1_1_state"><td class="mdescLeft">&#160;</td><td class="mdescRight">Unpack this state from a contiguous double buffer.  <a href="../../d4/d69/class_compact_star_1_1_physics_1_1_state_1_1_state.html#a9d29b545a578c4857388b1aa92b4e993">More...</a><br /></td></tr>
+<tr class="separator:a9d29b545a578c4857388b1aa92b4e993 inherit pub_methods_class_compact_star_1_1_physics_1_1_state_1_1_state"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac9892ca481397cba4afe2da9cd9a50a6 inherit pub_methods_class_compact_star_1_1_physics_1_1_state_1_1_state"><td class="memItemLeft" align="right" valign="top"><a id="ac9892ca481397cba4afe2da9cd9a50a6" name="ac9892ca481397cba4afe2da9cd9a50a6"></a>
 virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>SanityCheck</b> () const</td></tr>
 <tr class="memdesc:ac9892ca481397cba4afe2da9cd9a50a6 inherit pub_methods_class_compact_star_1_1_physics_1_1_state_1_1_state"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check for NaNs/Inf in the state vector and log results. <br /></td></tr>
@@ -174,7 +186,8 @@ virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>SanityCheck</
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p><a class="el" href="../../d4/d69/class_compact_star_1_1_physics_1_1_state_1_1_state.html" title="Abstract base class for any dynamic physics state block.">State</a> block for BNV-related dynamical or cached variables. </p>
 <p>This class behaves exactly like ChemState/ThermalState in terms of interface: a resizable contiguous vector of doubles exposed to the evolution system and its drivers.</p>
-<p>Physical meaning of each component is determined by your BNV model. </p>
+<p>Physical meaning of each component is determined by your <a class="el" href="../../dd/d9b/namespace_compact_star_1_1_physics_1_1_b_n_v.html" title="High-level baryon-number-violation utilities.">BNV</a> model.</p>
+<dl class="section note"><dt>Note</dt><dd>Storage (the <code>values_</code> vector) deliberately lives in this derived class rather than in the <a class="el" href="../../d4/d69/class_compact_star_1_1_physics_1_1_state_1_1_state.html" title="Abstract base class for any dynamic physics state block.">State</a> base class. This design allows future state types to use non-contiguous, multi-zone, or externally owned layouts while still exposing the uniform PackTo/UnpackFrom interface required by the evolution framework. See <a class="el" href="../../d4/d69/class_compact_star_1_1_physics_1_1_state_1_1_state.html">CompactStar::Physics::State::State</a> for details. </dd></dl>
 </div><h2 class="groupheader">Member Function Documentation</h2>
 <a id="a4cbce3755a27f7f2bd19fadb40ef400d" name="a4cbce3755a27f7f2bd19fadb40ef400d"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a4cbce3755a27f7f2bd19fadb40ef400d">&#9670;&#160;</a></span>Clear()</h2>
@@ -322,6 +335,36 @@ virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>SanityCheck</
 
 </div>
 </div>
+<a id="a06f92845a5ae6bf1abd1f955b70bd533" name="a06f92845a5ae6bf1abd1f955b70bd533"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a06f92845a5ae6bf1abd1f955b70bd533">&#9670;&#160;</a></span>PackTo()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void BNVState::PackTo </td>
+          <td>(</td>
+          <td class="paramtype">double *&#160;</td>
+          <td class="paramname"><em>dest</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Copy the internal ODE components into a flat buffer. </p>
+
+<p>Implements <a class="el" href="../../d4/d69/class_compact_star_1_1_physics_1_1_state_1_1_state.html#a541e92639dd1000d18fa3b68483fd502">CompactStar::Physics::State::State</a>.</p>
+
+</div>
+</div>
 <a id="a46016b61959adab3b42c7be24bdfabff" name="a46016b61959adab3b42c7be24bdfabff"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a46016b61959adab3b42c7be24bdfabff">&#9670;&#160;</a></span>Resize()</h2>
 
@@ -348,7 +391,7 @@ virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>SanityCheck</
 
 <p>Resize underlying DOF vector to <code>N</code> entries. </p>
 <p>Default layout: N = 2 index 0 → η_I index 1 → spin_down_limit</p>
-<p>You may expand this vector when implementing more elaborate BNV models. </p>
+<p>You may expand this vector when implementing more elaborate <a class="el" href="../../dd/d9b/namespace_compact_star_1_1_physics_1_1_b_n_v.html" title="High-level baryon-number-violation utilities.">BNV</a> models. </p>
 
 <p>Implements <a class="el" href="../../d4/d69/class_compact_star_1_1_physics_1_1_state_1_1_state.html#a67305cd2b43b22a5503b62326c00584f">CompactStar::Physics::State::State</a>.</p>
 
@@ -383,8 +426,39 @@ virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>SanityCheck</
 
 </div>
 </div>
-<hr/>The documentation for this class was generated from the following file:<ul>
+<a id="a8f3a53be98215a94c80a46a779571d9f" name="a8f3a53be98215a94c80a46a779571d9f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8f3a53be98215a94c80a46a779571d9f">&#9670;&#160;</a></span>UnpackFrom()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void BNVState::UnpackFrom </td>
+          <td>(</td>
+          <td class="paramtype">const double *&#160;</td>
+          <td class="paramname"><em>src</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Populate internal ODE components from a flat buffer. </p>
+
+<p>Implements <a class="el" href="../../d4/d69/class_compact_star_1_1_physics_1_1_state_1_1_state.html#a9d29b545a578c4857388b1aa92b4e993">CompactStar::Physics::State::State</a>.</p>
+
+</div>
+</div>
+<hr/>The documentation for this class was generated from the following files:<ul>
 <li>CompactStar/Physics/State/<a class="el" href="../../d4/db1/_b_n_v_state_8hpp_source.html">BNVState.hpp</a></li>
+<li>CompactStar/Physics/State/src/BNVState.cpp</li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->

@@ -18,18 +18,18 @@ Write-\/only accumulator for d\+Y/dt components, keyed by State\+Tag.
 \mbox{\Hypertarget{class_compact_star_1_1_physics_1_1_evolution_1_1_r_h_s_accumulator_a7e9cb0be04da1f731601932d241fba6a}\label{class_compact_star_1_1_physics_1_1_evolution_1_1_r_h_s_accumulator_a7e9cb0be04da1f731601932d241fba6a}} 
 {\bfseries $\sim$\+RHSAccumulator} ()=default
 \begin{DoxyCompactList}\small\item\em Default destructor. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_r_h_s_accumulator_a63e5b050de3c687e57d7abca297673ad}{Configure}} (\mbox{\hyperlink{_tags_8hpp_af14f5554b0d9be50c5ea718733bc424b}{Physics\+::\+State\+::\+State\+Tag}} tag, std\+::size\+\_\+t size)
+void \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_r_h_s_accumulator_a63e5b050de3c687e57d7abca297673ad}{Configure}} (\mbox{\hyperlink{namespace_compact_star_1_1_physics_1_1_state_af14f5554b0d9be50c5ea718733bc424b}{Physics\+::\+State\+::\+State\+Tag}} tag, std\+::size\+\_\+t size)
 \begin{DoxyCompactList}\small\item\em Configure the RHS block size for a given state tag. \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{class_compact_star_1_1_physics_1_1_evolution_1_1_r_h_s_accumulator_afc832703bdeed29d4be9438845b0b829}\label{class_compact_star_1_1_physics_1_1_evolution_1_1_r_h_s_accumulator_afc832703bdeed29d4be9438845b0b829}} 
-bool {\bfseries Is\+Configured} (\mbox{\hyperlink{_tags_8hpp_af14f5554b0d9be50c5ea718733bc424b}{Physics\+::\+State\+::\+State\+Tag}} tag) const
+bool {\bfseries Is\+Configured} (\mbox{\hyperlink{namespace_compact_star_1_1_physics_1_1_state_af14f5554b0d9be50c5ea718733bc424b}{Physics\+::\+State\+::\+State\+Tag}} tag) const
 \begin{DoxyCompactList}\small\item\em Check whether a block for {\ttfamily tag} has been configured. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_r_h_s_accumulator_af6ce1814c6bdd9961dce5b718e7d6970}{Add\+To}} (\mbox{\hyperlink{_tags_8hpp_af14f5554b0d9be50c5ea718733bc424b}{Physics\+::\+State\+::\+State\+Tag}} tag, std\+::size\+\_\+t component, double value)
+void \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_r_h_s_accumulator_af6ce1814c6bdd9961dce5b718e7d6970}{Add\+To}} (\mbox{\hyperlink{namespace_compact_star_1_1_physics_1_1_state_af14f5554b0d9be50c5ea718733bc424b}{Physics\+::\+State\+::\+State\+Tag}} tag, std\+::size\+\_\+t component, double value)
 \begin{DoxyCompactList}\small\item\em Add a contribution to the RHS of a given state component. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_r_h_s_accumulator_a2d42eb9079d699ce35b664d5d03ac117}{Clear}} ()
 \begin{DoxyCompactList}\small\item\em Reset all configured blocks to zero. \end{DoxyCompactList}\item 
-const std\+::vector$<$ double $>$ \& \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_r_h_s_accumulator_ab850248c73733517b68d4a82ddd25db6}{Block}} (\mbox{\hyperlink{_tags_8hpp_af14f5554b0d9be50c5ea718733bc424b}{Physics\+::\+State\+::\+State\+Tag}} tag) const
+const std\+::vector$<$ double $>$ \& \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_r_h_s_accumulator_ab850248c73733517b68d4a82ddd25db6}{Block}} (\mbox{\hyperlink{namespace_compact_star_1_1_physics_1_1_state_af14f5554b0d9be50c5ea718733bc424b}{Physics\+::\+State\+::\+State\+Tag}} tag) const
 \begin{DoxyCompactList}\small\item\em Read-\/only access to the RHS block for a given tag. \end{DoxyCompactList}\item 
-std\+::vector$<$ double $>$ \& \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_r_h_s_accumulator_ad962d2339286b8dda25323c42780666a}{Block}} (\mbox{\hyperlink{_tags_8hpp_af14f5554b0d9be50c5ea718733bc424b}{Physics\+::\+State\+::\+State\+Tag}} tag)
+std\+::vector$<$ double $>$ \& \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_r_h_s_accumulator_ad962d2339286b8dda25323c42780666a}{Block}} (\mbox{\hyperlink{namespace_compact_star_1_1_physics_1_1_state_af14f5554b0d9be50c5ea718733bc424b}{Physics\+::\+State\+::\+State\+Tag}} tag)
 \begin{DoxyCompactList}\small\item\em Mutable access to the RHS block for a given tag. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
@@ -43,7 +43,7 @@ Internally, this class maintains a small array of \char`\"{}blocks\char`\"{}, on
 \index{CompactStar::Physics::Evolution::RHSAccumulator@{CompactStar::Physics::Evolution::RHSAccumulator}!AddTo@{AddTo}}
 \index{AddTo@{AddTo}!CompactStar::Physics::Evolution::RHSAccumulator@{CompactStar::Physics::Evolution::RHSAccumulator}}
 \doxysubsubsection{\texorpdfstring{AddTo()}{AddTo()}}
-{\footnotesize\ttfamily void Compact\+Star\+::\+Physics\+::\+Evolution\+::\+RHSAccumulator\+::\+Add\+To (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{_tags_8hpp_af14f5554b0d9be50c5ea718733bc424b}{Physics\+::\+State\+::\+State\+Tag}}}]{tag,  }\item[{std\+::size\+\_\+t}]{component,  }\item[{double}]{value }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+{\footnotesize\ttfamily void Compact\+Star\+::\+Physics\+::\+Evolution\+::\+RHSAccumulator\+::\+Add\+To (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{namespace_compact_star_1_1_physics_1_1_state_af14f5554b0d9be50c5ea718733bc424b}{Physics\+::\+State\+::\+State\+Tag}}}]{tag,  }\item[{std\+::size\+\_\+t}]{component,  }\item[{double}]{value }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
 
 
@@ -67,7 +67,7 @@ Add a contribution to the RHS of a given state component.
 \index{CompactStar::Physics::Evolution::RHSAccumulator@{CompactStar::Physics::Evolution::RHSAccumulator}!Block@{Block}}
 \index{Block@{Block}!CompactStar::Physics::Evolution::RHSAccumulator@{CompactStar::Physics::Evolution::RHSAccumulator}}
 \doxysubsubsection{\texorpdfstring{Block()}{Block()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
-{\footnotesize\ttfamily std\+::vector$<$ double $>$ \& Compact\+Star\+::\+Physics\+::\+Evolution\+::\+RHSAccumulator\+::\+Block (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{_tags_8hpp_af14f5554b0d9be50c5ea718733bc424b}{Physics\+::\+State\+::\+State\+Tag}}}]{tag }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+{\footnotesize\ttfamily std\+::vector$<$ double $>$ \& Compact\+Star\+::\+Physics\+::\+Evolution\+::\+RHSAccumulator\+::\+Block (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{namespace_compact_star_1_1_physics_1_1_state_af14f5554b0d9be50c5ea718733bc424b}{Physics\+::\+State\+::\+State\+Tag}}}]{tag }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
 
 
@@ -90,7 +90,7 @@ reference to the internal vector$<$double$>$ for this tag.
 \index{CompactStar::Physics::Evolution::RHSAccumulator@{CompactStar::Physics::Evolution::RHSAccumulator}!Block@{Block}}
 \index{Block@{Block}!CompactStar::Physics::Evolution::RHSAccumulator@{CompactStar::Physics::Evolution::RHSAccumulator}}
 \doxysubsubsection{\texorpdfstring{Block()}{Block()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
-{\footnotesize\ttfamily const std\+::vector$<$ double $>$ \& Compact\+Star\+::\+Physics\+::\+Evolution\+::\+RHSAccumulator\+::\+Block (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{_tags_8hpp_af14f5554b0d9be50c5ea718733bc424b}{Physics\+::\+State\+::\+State\+Tag}}}]{tag }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+{\footnotesize\ttfamily const std\+::vector$<$ double $>$ \& Compact\+Star\+::\+Physics\+::\+Evolution\+::\+RHSAccumulator\+::\+Block (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{namespace_compact_star_1_1_physics_1_1_state_af14f5554b0d9be50c5ea718733bc424b}{Physics\+::\+State\+::\+State\+Tag}}}]{tag }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
 
 
 
@@ -123,7 +123,7 @@ This does not change the sizes or configuration flags; it just zeroes the stored
 \index{CompactStar::Physics::Evolution::RHSAccumulator@{CompactStar::Physics::Evolution::RHSAccumulator}!Configure@{Configure}}
 \index{Configure@{Configure}!CompactStar::Physics::Evolution::RHSAccumulator@{CompactStar::Physics::Evolution::RHSAccumulator}}
 \doxysubsubsection{\texorpdfstring{Configure()}{Configure()}}
-{\footnotesize\ttfamily void Compact\+Star\+::\+Physics\+::\+Evolution\+::\+RHSAccumulator\+::\+Configure (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{_tags_8hpp_af14f5554b0d9be50c5ea718733bc424b}{Physics\+::\+State\+::\+State\+Tag}}}]{tag,  }\item[{std\+::size\+\_\+t}]{size }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+{\footnotesize\ttfamily void Compact\+Star\+::\+Physics\+::\+Evolution\+::\+RHSAccumulator\+::\+Configure (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{namespace_compact_star_1_1_physics_1_1_state_af14f5554b0d9be50c5ea718733bc424b}{Physics\+::\+State\+::\+State\+Tag}}}]{tag,  }\item[{std\+::size\+\_\+t}]{size }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
 
 

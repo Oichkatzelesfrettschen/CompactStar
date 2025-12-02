@@ -37,224 +37,224 @@
 \DoxyCodeLine{45 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_analysis_8hpp}{CompactStar/Core/Analysis.hpp}}"{}}}
 \DoxyCodeLine{46 }
 \DoxyCodeLine{47 \textcolor{comment}{//==============================================================}}
-\DoxyCodeLine{48 \textcolor{keyword}{namespace }CompactStar::Microphysics::BNV::Analysis}
-\DoxyCodeLine{49 \{}
-\DoxyCodeLine{50 }
-\DoxyCodeLine{51 \textcolor{comment}{//==============================================================}}
-\DoxyCodeLine{52 \textcolor{keyword}{struct }\mbox{\hyperlink{struct_compact_star_1_1_microphysics_1_1_b_n_v_1_1_analysis_1_1_b_n_v___rate}{BNV\_Rate}}}
-\DoxyCodeLine{53 \{}
-\DoxyCodeLine{54     \textcolor{keyword}{struct }\mbox{\hyperlink{struct_compact_star_1_1_microphysics_1_1_b_n_v_1_1_analysis_1_1_b_n_v___rate_1_1_baryon}{Baryon}}}
-\DoxyCodeLine{55     \{}
-\DoxyCodeLine{56         std::string name = \textcolor{stringliteral}{"{}"{}};}
-\DoxyCodeLine{57         std::string label = \textcolor{stringliteral}{"{}"{}};}
-\DoxyCodeLine{58         \textcolor{keywordtype}{double} mass = 0;}
-\DoxyCodeLine{59 }
-\DoxyCodeLine{60         \mbox{\hyperlink{struct_compact_star_1_1_microphysics_1_1_b_n_v_1_1_analysis_1_1_b_n_v___rate_1_1_baryon}{Baryon}}() \{\}}
-\DoxyCodeLine{61         \mbox{\hyperlink{struct_compact_star_1_1_microphysics_1_1_b_n_v_1_1_analysis_1_1_b_n_v___rate_1_1_baryon}{Baryon}}(\textcolor{keyword}{const} std::string \&in\_name,}
-\DoxyCodeLine{62                \textcolor{keyword}{const} std::string \&in\_label,}
-\DoxyCodeLine{63                \textcolor{keyword}{const} \textcolor{keywordtype}{double} \&in\_mass)}
-\DoxyCodeLine{64             : name(in\_name),}
-\DoxyCodeLine{65               label(in\_label),}
-\DoxyCodeLine{66               mass(in\_mass)}
-\DoxyCodeLine{67         \{}
-\DoxyCodeLine{68         \}}
-\DoxyCodeLine{69     \};}
-\DoxyCodeLine{70 }
-\DoxyCodeLine{71     \textcolor{keyword}{const} \mbox{\hyperlink{struct_compact_star_1_1_microphysics_1_1_b_n_v_1_1_analysis_1_1_b_n_v___rate_1_1_baryon}{Baryon}} bar;}
-\DoxyCodeLine{72 }
-\DoxyCodeLine{73     \textcolor{keywordtype}{double} fr, b\_dot;}
-\DoxyCodeLine{74 }
-\DoxyCodeLine{75     \mbox{\hyperlink{struct_compact_star_1_1_microphysics_1_1_b_n_v_1_1_analysis_1_1_b_n_v___rate}{BNV\_Rate}}(\textcolor{keyword}{const} \mbox{\hyperlink{struct_compact_star_1_1_microphysics_1_1_b_n_v_1_1_analysis_1_1_b_n_v___rate_1_1_baryon}{Baryon}} \&in\_bar,}
-\DoxyCodeLine{76              \textcolor{keyword}{const} \textcolor{keywordtype}{double} \&in\_fr,}
-\DoxyCodeLine{77              \textcolor{keyword}{const} \textcolor{keywordtype}{double} \&in\_b\_dot)}
-\DoxyCodeLine{78         : bar(in\_bar), fr(in\_fr), b\_dot(in\_b\_dot)}
-\DoxyCodeLine{79     \{}
-\DoxyCodeLine{80     \}}
+\DoxyCodeLine{55 \textcolor{comment}{}\textcolor{keyword}{namespace }\mbox{\hyperlink{namespace_compact_star_1_1_microphysics_1_1_b_n_v_1_1_analysis}{CompactStar::Microphysics::BNV::Analysis}}}
+\DoxyCodeLine{56 \{}
+\DoxyCodeLine{57 }
+\DoxyCodeLine{58 \textcolor{comment}{//==============================================================}}
+\DoxyCodeLine{59 \textcolor{keyword}{struct }\mbox{\hyperlink{struct_compact_star_1_1_microphysics_1_1_b_n_v_1_1_analysis_1_1_b_n_v___rate}{BNV\_Rate}}}
+\DoxyCodeLine{60 \{}
+\DoxyCodeLine{61     \textcolor{keyword}{struct }\mbox{\hyperlink{struct_compact_star_1_1_microphysics_1_1_b_n_v_1_1_analysis_1_1_b_n_v___rate_1_1_baryon}{Baryon}}}
+\DoxyCodeLine{62     \{}
+\DoxyCodeLine{63         std::string name = \textcolor{stringliteral}{"{}"{}};}
+\DoxyCodeLine{64         std::string label = \textcolor{stringliteral}{"{}"{}};}
+\DoxyCodeLine{65         \textcolor{keywordtype}{double} mass = 0;}
+\DoxyCodeLine{66 }
+\DoxyCodeLine{67         \mbox{\hyperlink{struct_compact_star_1_1_microphysics_1_1_b_n_v_1_1_analysis_1_1_b_n_v___rate_1_1_baryon}{Baryon}}() \{\}}
+\DoxyCodeLine{68         \mbox{\hyperlink{struct_compact_star_1_1_microphysics_1_1_b_n_v_1_1_analysis_1_1_b_n_v___rate_1_1_baryon}{Baryon}}(\textcolor{keyword}{const} std::string \&in\_name,}
+\DoxyCodeLine{69                \textcolor{keyword}{const} std::string \&in\_label,}
+\DoxyCodeLine{70                \textcolor{keyword}{const} \textcolor{keywordtype}{double} \&in\_mass)}
+\DoxyCodeLine{71             : name(in\_name),}
+\DoxyCodeLine{72               label(in\_label),}
+\DoxyCodeLine{73               mass(in\_mass)}
+\DoxyCodeLine{74         \{}
+\DoxyCodeLine{75         \}}
+\DoxyCodeLine{76     \};}
+\DoxyCodeLine{77 }
+\DoxyCodeLine{78     \textcolor{keyword}{const} \mbox{\hyperlink{struct_compact_star_1_1_microphysics_1_1_b_n_v_1_1_analysis_1_1_b_n_v___rate_1_1_baryon}{Baryon}} bar;}
+\DoxyCodeLine{79 }
+\DoxyCodeLine{80     \textcolor{keywordtype}{double} fr, b\_dot;}
 \DoxyCodeLine{81 }
-\DoxyCodeLine{82     std::string Str()\textcolor{keyword}{ const}}
-\DoxyCodeLine{83 \textcolor{keyword}{    }\{}
-\DoxyCodeLine{84         std::stringstream ss;}
-\DoxyCodeLine{85         \textcolor{keywordtype}{char} tmp[200];}
-\DoxyCodeLine{86         snprintf(tmp, \textcolor{keyword}{sizeof}(tmp), \textcolor{stringliteral}{"{}\%-\/16.8e\(\backslash\)t \%-\/16.8e"{}},}
-\DoxyCodeLine{87                  fr, b\_dot);}
-\DoxyCodeLine{88         ss << tmp;}
-\DoxyCodeLine{89 }
-\DoxyCodeLine{90         \textcolor{keywordflow}{return} ss.str();}
-\DoxyCodeLine{91     \}}
-\DoxyCodeLine{92 \};}
-\DoxyCodeLine{93 \textcolor{comment}{//==============================================================}}
-\DoxyCodeLine{94 \textcolor{comment}{// struct BNV\_B}}
-\DoxyCodeLine{95 \textcolor{comment}{// \{}}
-\DoxyCodeLine{96 \textcolor{comment}{//   std::vector<BNV\_Rate> bnv\_rates ;}}
-\DoxyCodeLine{97 }
-\DoxyCodeLine{98 \textcolor{comment}{//   double b\_tot, b\_vis, b\_dar ;}}
-\DoxyCodeLine{99 \textcolor{comment}{// \};}}
-\DoxyCodeLine{100 }
-\DoxyCodeLine{101 \textcolor{comment}{//==============================================================}}
-\DoxyCodeLine{102 \textcolor{keyword}{struct }\mbox{\hyperlink{struct_compact_star_1_1_microphysics_1_1_b_n_v_1_1_analysis_1_1_b_n_v___rate___seq}{BNV\_Rate\_Seq}}}
-\DoxyCodeLine{103 \{}
-\DoxyCodeLine{104     \textcolor{comment}{// struct Baryon}}
-\DoxyCodeLine{105     \textcolor{comment}{// \{}}
-\DoxyCodeLine{106     \textcolor{comment}{//   std::string name  = "{}"{};}}
-\DoxyCodeLine{107     \textcolor{comment}{//   std::string label = "{}"{} ;}}
-\DoxyCodeLine{108     \textcolor{comment}{//   double mass = 0 ;}}
-\DoxyCodeLine{109     \textcolor{comment}{// \} ;}}
-\DoxyCodeLine{110 }
-\DoxyCodeLine{111     \textcolor{comment}{// Baryon bar ;}}
-\DoxyCodeLine{112     \textcolor{keywordtype}{double} b\_tot, m\_tot, ec;}
-\DoxyCodeLine{113     std::vector<BNV\_Rate> bnv\_rates;}
-\DoxyCodeLine{114 }
-\DoxyCodeLine{115     \textcolor{comment}{// std::vector<BNV\_B> bnv\_b ;}}
-\DoxyCodeLine{116 }
-\DoxyCodeLine{117     \textcolor{comment}{// double crit\_chi\_den = -\/1 ;}}
-\DoxyCodeLine{118 }
-\DoxyCodeLine{119     \mbox{\hyperlink{struct_compact_star_1_1_microphysics_1_1_b_n_v_1_1_analysis_1_1_b_n_v___rate___seq}{BNV\_Rate\_Seq}}(\textcolor{keyword}{const} \textcolor{keywordtype}{double} \&in\_b\_tot,}
-\DoxyCodeLine{120                  \textcolor{keyword}{const} \textcolor{keywordtype}{double} \&in\_m\_tot,}
-\DoxyCodeLine{121                  \textcolor{keyword}{const} \textcolor{keywordtype}{double} \&in\_ec)}
-\DoxyCodeLine{122         : b\_tot(in\_b\_tot), m\_tot(in\_m\_tot),}
-\DoxyCodeLine{123           ec(in\_ec)}
-\DoxyCodeLine{124     \{}
-\DoxyCodeLine{125     \}}
-\DoxyCodeLine{126 }
-\DoxyCodeLine{127     \textcolor{comment}{// BNV\_Rate\_Seq(const Baryon\& in\_bar)}}
-\DoxyCodeLine{128     \textcolor{comment}{// \{}}
-\DoxyCodeLine{129     \textcolor{comment}{//   bar = in\_bar ;}}
-\DoxyCodeLine{130     \textcolor{comment}{// \}}}
-\DoxyCodeLine{131 }
-\DoxyCodeLine{132     \textcolor{keywordtype}{void} Append(\textcolor{keyword}{const} \mbox{\hyperlink{struct_compact_star_1_1_microphysics_1_1_b_n_v_1_1_analysis_1_1_b_n_v___rate}{BNV\_Rate}} \&in\_bnv\_rate)}
-\DoxyCodeLine{133     \{}
-\DoxyCodeLine{134         bnv\_rates.emplace\_back(in\_bnv\_rate);}
-\DoxyCodeLine{135     \}}
-\DoxyCodeLine{136 }
-\DoxyCodeLine{137     \textcolor{comment}{// /// Sets the critical chi density that fully blocks the decay}}
-\DoxyCodeLine{138     \textcolor{comment}{// void SetCriticalChiDen(const double\&) ;}}
-\DoxyCodeLine{139 }
-\DoxyCodeLine{140     std::string Str()\textcolor{keyword}{ const}}
-\DoxyCodeLine{141 \textcolor{keyword}{    }\{}
-\DoxyCodeLine{142         std::stringstream ss;}
+\DoxyCodeLine{82     \mbox{\hyperlink{struct_compact_star_1_1_microphysics_1_1_b_n_v_1_1_analysis_1_1_b_n_v___rate}{BNV\_Rate}}(\textcolor{keyword}{const} \mbox{\hyperlink{struct_compact_star_1_1_microphysics_1_1_b_n_v_1_1_analysis_1_1_b_n_v___rate_1_1_baryon}{Baryon}} \&in\_bar,}
+\DoxyCodeLine{83              \textcolor{keyword}{const} \textcolor{keywordtype}{double} \&in\_fr,}
+\DoxyCodeLine{84              \textcolor{keyword}{const} \textcolor{keywordtype}{double} \&in\_b\_dot)}
+\DoxyCodeLine{85         : bar(in\_bar), fr(in\_fr), b\_dot(in\_b\_dot)}
+\DoxyCodeLine{86     \{}
+\DoxyCodeLine{87     \}}
+\DoxyCodeLine{88 }
+\DoxyCodeLine{89     std::string Str()\textcolor{keyword}{ const}}
+\DoxyCodeLine{90 \textcolor{keyword}{    }\{}
+\DoxyCodeLine{91         std::stringstream ss;}
+\DoxyCodeLine{92         \textcolor{keywordtype}{char} tmp[200];}
+\DoxyCodeLine{93         snprintf(tmp, \textcolor{keyword}{sizeof}(tmp), \textcolor{stringliteral}{"{}\%-\/16.8e\(\backslash\)t \%-\/16.8e"{}},}
+\DoxyCodeLine{94                  fr, b\_dot);}
+\DoxyCodeLine{95         ss << tmp;}
+\DoxyCodeLine{96 }
+\DoxyCodeLine{97         \textcolor{keywordflow}{return} ss.str();}
+\DoxyCodeLine{98     \}}
+\DoxyCodeLine{99 \};}
+\DoxyCodeLine{100 \textcolor{comment}{//==============================================================}}
+\DoxyCodeLine{101 \textcolor{comment}{// struct BNV\_B}}
+\DoxyCodeLine{102 \textcolor{comment}{// \{}}
+\DoxyCodeLine{103 \textcolor{comment}{//   std::vector<BNV\_Rate> bnv\_rates ;}}
+\DoxyCodeLine{104 }
+\DoxyCodeLine{105 \textcolor{comment}{//   double b\_tot, b\_vis, b\_dar ;}}
+\DoxyCodeLine{106 \textcolor{comment}{// \};}}
+\DoxyCodeLine{107 }
+\DoxyCodeLine{108 \textcolor{comment}{//==============================================================}}
+\DoxyCodeLine{109 \textcolor{keyword}{struct }\mbox{\hyperlink{struct_compact_star_1_1_microphysics_1_1_b_n_v_1_1_analysis_1_1_b_n_v___rate___seq}{BNV\_Rate\_Seq}}}
+\DoxyCodeLine{110 \{}
+\DoxyCodeLine{111     \textcolor{comment}{// struct Baryon}}
+\DoxyCodeLine{112     \textcolor{comment}{// \{}}
+\DoxyCodeLine{113     \textcolor{comment}{//   std::string name  = "{}"{};}}
+\DoxyCodeLine{114     \textcolor{comment}{//   std::string label = "{}"{} ;}}
+\DoxyCodeLine{115     \textcolor{comment}{//   double mass = 0 ;}}
+\DoxyCodeLine{116     \textcolor{comment}{// \} ;}}
+\DoxyCodeLine{117 }
+\DoxyCodeLine{118     \textcolor{comment}{// Baryon bar ;}}
+\DoxyCodeLine{119     \textcolor{keywordtype}{double} b\_tot, m\_tot, ec;}
+\DoxyCodeLine{120     std::vector<BNV\_Rate> bnv\_rates;}
+\DoxyCodeLine{121 }
+\DoxyCodeLine{122     \textcolor{comment}{// std::vector<BNV\_B> bnv\_b ;}}
+\DoxyCodeLine{123 }
+\DoxyCodeLine{124     \textcolor{comment}{// double crit\_chi\_den = -\/1 ;}}
+\DoxyCodeLine{125 }
+\DoxyCodeLine{126     \mbox{\hyperlink{struct_compact_star_1_1_microphysics_1_1_b_n_v_1_1_analysis_1_1_b_n_v___rate___seq}{BNV\_Rate\_Seq}}(\textcolor{keyword}{const} \textcolor{keywordtype}{double} \&in\_b\_tot,}
+\DoxyCodeLine{127                  \textcolor{keyword}{const} \textcolor{keywordtype}{double} \&in\_m\_tot,}
+\DoxyCodeLine{128                  \textcolor{keyword}{const} \textcolor{keywordtype}{double} \&in\_ec)}
+\DoxyCodeLine{129         : b\_tot(in\_b\_tot), m\_tot(in\_m\_tot),}
+\DoxyCodeLine{130           ec(in\_ec)}
+\DoxyCodeLine{131     \{}
+\DoxyCodeLine{132     \}}
+\DoxyCodeLine{133 }
+\DoxyCodeLine{134     \textcolor{comment}{// BNV\_Rate\_Seq(const Baryon\& in\_bar)}}
+\DoxyCodeLine{135     \textcolor{comment}{// \{}}
+\DoxyCodeLine{136     \textcolor{comment}{//   bar = in\_bar ;}}
+\DoxyCodeLine{137     \textcolor{comment}{// \}}}
+\DoxyCodeLine{138 }
+\DoxyCodeLine{139     \textcolor{keywordtype}{void} Append(\textcolor{keyword}{const} \mbox{\hyperlink{struct_compact_star_1_1_microphysics_1_1_b_n_v_1_1_analysis_1_1_b_n_v___rate}{BNV\_Rate}} \&in\_bnv\_rate)}
+\DoxyCodeLine{140     \{}
+\DoxyCodeLine{141         bnv\_rates.emplace\_back(in\_bnv\_rate);}
+\DoxyCodeLine{142     \}}
 \DoxyCodeLine{143 }
-\DoxyCodeLine{144         \textcolor{keywordflow}{for} (\textcolor{keywordtype}{size\_t} i = 0; i < bnv\_rates.size(); i++)}
-\DoxyCodeLine{145         \{}
-\DoxyCodeLine{146             ss << bnv\_rates[i].Str() << \textcolor{stringliteral}{"{}\(\backslash\)t "{}};}
-\DoxyCodeLine{147         \}}
-\DoxyCodeLine{148 }
-\DoxyCodeLine{149         \textcolor{keywordtype}{char} tmp[200];}
-\DoxyCodeLine{150         snprintf(tmp, \textcolor{keyword}{sizeof}(tmp), \textcolor{stringliteral}{"{}\%-\/16.8e\(\backslash\)t \%-\/16.8e\(\backslash\)t \%-\/16.8e"{}},}
-\DoxyCodeLine{151                  b\_tot, m\_tot, ec);}
-\DoxyCodeLine{152         ss << tmp;}
-\DoxyCodeLine{153 }
-\DoxyCodeLine{154         \textcolor{keywordflow}{return} ss.str();}
-\DoxyCodeLine{155     \}}
-\DoxyCodeLine{156 \};}
-\DoxyCodeLine{157 }
-\DoxyCodeLine{158 \textcolor{comment}{//==============================================================}}
-\DoxyCodeLine{159 \textcolor{keyword}{struct }\mbox{\hyperlink{struct_compact_star_1_1_microphysics_1_1_b_n_v_1_1_analysis_1_1_b_n_v___time}{BNV\_Time}}}
-\DoxyCodeLine{160 \{}
-\DoxyCodeLine{161     \textcolor{keywordtype}{double} t = 0;}
-\DoxyCodeLine{162 }
-\DoxyCodeLine{163     \mbox{\hyperlink{struct_compact_star_1_1_microphysics_1_1_b_n_v_1_1_analysis_1_1_b_n_v___time}{BNV\_Time}}() \{\}}
+\DoxyCodeLine{144     \textcolor{comment}{// /// Sets the critical chi density that fully blocks the decay}}
+\DoxyCodeLine{145     \textcolor{comment}{// void SetCriticalChiDen(const double\&) ;}}
+\DoxyCodeLine{146 }
+\DoxyCodeLine{147     std::string Str()\textcolor{keyword}{ const}}
+\DoxyCodeLine{148 \textcolor{keyword}{    }\{}
+\DoxyCodeLine{149         std::stringstream ss;}
+\DoxyCodeLine{150 }
+\DoxyCodeLine{151         \textcolor{keywordflow}{for} (\textcolor{keywordtype}{size\_t} i = 0; i < bnv\_rates.size(); i++)}
+\DoxyCodeLine{152         \{}
+\DoxyCodeLine{153             ss << bnv\_rates[i].Str() << \textcolor{stringliteral}{"{}\(\backslash\)t "{}};}
+\DoxyCodeLine{154         \}}
+\DoxyCodeLine{155 }
+\DoxyCodeLine{156         \textcolor{keywordtype}{char} tmp[200];}
+\DoxyCodeLine{157         snprintf(tmp, \textcolor{keyword}{sizeof}(tmp), \textcolor{stringliteral}{"{}\%-\/16.8e\(\backslash\)t \%-\/16.8e\(\backslash\)t \%-\/16.8e"{}},}
+\DoxyCodeLine{158                  b\_tot, m\_tot, ec);}
+\DoxyCodeLine{159         ss << tmp;}
+\DoxyCodeLine{160 }
+\DoxyCodeLine{161         \textcolor{keywordflow}{return} ss.str();}
+\DoxyCodeLine{162     \}}
+\DoxyCodeLine{163 \};}
 \DoxyCodeLine{164 }
-\DoxyCodeLine{165     \mbox{\hyperlink{struct_compact_star_1_1_microphysics_1_1_b_n_v_1_1_analysis_1_1_b_n_v___time}{BNV\_Time}}(\textcolor{keyword}{const} \textcolor{keywordtype}{double} \&in\_t)}
-\DoxyCodeLine{166         : t(in\_t) \{\}}
-\DoxyCodeLine{167 }
-\DoxyCodeLine{168     \mbox{\hyperlink{struct_compact_star_1_1_microphysics_1_1_b_n_v_1_1_analysis_1_1_b_n_v___time}{BNV\_Time}} operator/(\textcolor{keyword}{const} \mbox{\hyperlink{struct_compact_star_1_1_microphysics_1_1_b_n_v_1_1_analysis_1_1_b_n_v___time}{BNV\_Time}} \&rhs)\textcolor{keyword}{ const}}
-\DoxyCodeLine{169 \textcolor{keyword}{    }\{}
-\DoxyCodeLine{170         \textcolor{keywordflow}{return} t / rhs.t;}
-\DoxyCodeLine{171     \}}
-\DoxyCodeLine{172 }
-\DoxyCodeLine{173     \mbox{\hyperlink{struct_compact_star_1_1_microphysics_1_1_b_n_v_1_1_analysis_1_1_b_n_v___time}{BNV\_Time}} operator+(\textcolor{keyword}{const} \mbox{\hyperlink{struct_compact_star_1_1_microphysics_1_1_b_n_v_1_1_analysis_1_1_b_n_v___time}{BNV\_Time}} \&rhs)\textcolor{keyword}{ const}}
-\DoxyCodeLine{174 \textcolor{keyword}{    }\{}
-\DoxyCodeLine{175         \textcolor{keywordflow}{return} t + rhs.t;}
-\DoxyCodeLine{176     \}}
-\DoxyCodeLine{177 }
-\DoxyCodeLine{178     \mbox{\hyperlink{struct_compact_star_1_1_microphysics_1_1_b_n_v_1_1_analysis_1_1_b_n_v___time}{BNV\_Time}} \&operator+=(\textcolor{keyword}{const} \mbox{\hyperlink{struct_compact_star_1_1_microphysics_1_1_b_n_v_1_1_analysis_1_1_b_n_v___time}{BNV\_Time}} \&rhs)}
-\DoxyCodeLine{179     \{}
-\DoxyCodeLine{180         t += rhs.t;}
-\DoxyCodeLine{181 }
-\DoxyCodeLine{182         \textcolor{keywordflow}{return} *\textcolor{keyword}{this};}
+\DoxyCodeLine{165 \textcolor{comment}{//==============================================================}}
+\DoxyCodeLine{166 \textcolor{keyword}{struct }\mbox{\hyperlink{struct_compact_star_1_1_microphysics_1_1_b_n_v_1_1_analysis_1_1_b_n_v___time}{BNV\_Time}}}
+\DoxyCodeLine{167 \{}
+\DoxyCodeLine{168     \textcolor{keywordtype}{double} t = 0;}
+\DoxyCodeLine{169 }
+\DoxyCodeLine{170     \mbox{\hyperlink{struct_compact_star_1_1_microphysics_1_1_b_n_v_1_1_analysis_1_1_b_n_v___time}{BNV\_Time}}() \{\}}
+\DoxyCodeLine{171 }
+\DoxyCodeLine{172     \mbox{\hyperlink{struct_compact_star_1_1_microphysics_1_1_b_n_v_1_1_analysis_1_1_b_n_v___time}{BNV\_Time}}(\textcolor{keyword}{const} \textcolor{keywordtype}{double} \&in\_t)}
+\DoxyCodeLine{173         : t(in\_t) \{\}}
+\DoxyCodeLine{174 }
+\DoxyCodeLine{175     \mbox{\hyperlink{struct_compact_star_1_1_microphysics_1_1_b_n_v_1_1_analysis_1_1_b_n_v___time}{BNV\_Time}} operator/(\textcolor{keyword}{const} \mbox{\hyperlink{struct_compact_star_1_1_microphysics_1_1_b_n_v_1_1_analysis_1_1_b_n_v___time}{BNV\_Time}} \&rhs)\textcolor{keyword}{ const}}
+\DoxyCodeLine{176 \textcolor{keyword}{    }\{}
+\DoxyCodeLine{177         \textcolor{keywordflow}{return} t / rhs.t;}
+\DoxyCodeLine{178     \}}
+\DoxyCodeLine{179 }
+\DoxyCodeLine{180     \mbox{\hyperlink{struct_compact_star_1_1_microphysics_1_1_b_n_v_1_1_analysis_1_1_b_n_v___time}{BNV\_Time}} operator+(\textcolor{keyword}{const} \mbox{\hyperlink{struct_compact_star_1_1_microphysics_1_1_b_n_v_1_1_analysis_1_1_b_n_v___time}{BNV\_Time}} \&rhs)\textcolor{keyword}{ const}}
+\DoxyCodeLine{181 \textcolor{keyword}{    }\{}
+\DoxyCodeLine{182         \textcolor{keywordflow}{return} t + rhs.t;}
 \DoxyCodeLine{183     \}}
 \DoxyCodeLine{184 }
-\DoxyCodeLine{185     \mbox{\hyperlink{struct_compact_star_1_1_microphysics_1_1_b_n_v_1_1_analysis_1_1_b_n_v___time}{BNV\_Time}} operator-\/(\textcolor{keyword}{const} \mbox{\hyperlink{struct_compact_star_1_1_microphysics_1_1_b_n_v_1_1_analysis_1_1_b_n_v___time}{BNV\_Time}} \&rhs)\textcolor{keyword}{ const}}
-\DoxyCodeLine{186 \textcolor{keyword}{    }\{}
-\DoxyCodeLine{187         \textcolor{keywordflow}{return} t -\/ rhs.t;}
-\DoxyCodeLine{188     \}}
-\DoxyCodeLine{189 }
-\DoxyCodeLine{190     std::string Str()\textcolor{keyword}{ const}}
-\DoxyCodeLine{191 \textcolor{keyword}{    }\{}
-\DoxyCodeLine{192         \textcolor{keywordtype}{char} tmp[100];}
-\DoxyCodeLine{193         snprintf(tmp, \textcolor{keyword}{sizeof}(tmp), \textcolor{stringliteral}{"{}\%.6e"{}}, t);}
-\DoxyCodeLine{194         \textcolor{keywordflow}{return} std::string(tmp);}
+\DoxyCodeLine{185     \mbox{\hyperlink{struct_compact_star_1_1_microphysics_1_1_b_n_v_1_1_analysis_1_1_b_n_v___time}{BNV\_Time}} \&operator+=(\textcolor{keyword}{const} \mbox{\hyperlink{struct_compact_star_1_1_microphysics_1_1_b_n_v_1_1_analysis_1_1_b_n_v___time}{BNV\_Time}} \&rhs)}
+\DoxyCodeLine{186     \{}
+\DoxyCodeLine{187         t += rhs.t;}
+\DoxyCodeLine{188 }
+\DoxyCodeLine{189         \textcolor{keywordflow}{return} *\textcolor{keyword}{this};}
+\DoxyCodeLine{190     \}}
+\DoxyCodeLine{191 }
+\DoxyCodeLine{192     \mbox{\hyperlink{struct_compact_star_1_1_microphysics_1_1_b_n_v_1_1_analysis_1_1_b_n_v___time}{BNV\_Time}} operator-\/(\textcolor{keyword}{const} \mbox{\hyperlink{struct_compact_star_1_1_microphysics_1_1_b_n_v_1_1_analysis_1_1_b_n_v___time}{BNV\_Time}} \&rhs)\textcolor{keyword}{ const}}
+\DoxyCodeLine{193 \textcolor{keyword}{    }\{}
+\DoxyCodeLine{194         \textcolor{keywordflow}{return} t -\/ rhs.t;}
 \DoxyCodeLine{195     \}}
-\DoxyCodeLine{196 \};}
-\DoxyCodeLine{197 }
-\DoxyCodeLine{198 \textcolor{comment}{//==============================================================}}
-\DoxyCodeLine{199 \textcolor{keyword}{struct }\mbox{\hyperlink{struct_compact_star_1_1_microphysics_1_1_b_n_v_1_1_analysis_1_1_b_n_v___output}{BNV\_Output}}}
-\DoxyCodeLine{200 \{}
-\DoxyCodeLine{202     \mbox{\hyperlink{struct_compact_star_1_1_microphysics_1_1_b_n_v_1_1_analysis_1_1_b_n_v___rate_1_1_baryon}{BNV\_Rate::Baryon}} \mbox{\hyperlink{struct_compact_star_1_1_microphysics_1_1_b_n_v_1_1_analysis_1_1_b_n_v___output_a2b3aad3740e13a6e005ac2da391c2055}{bar}};}
-\DoxyCodeLine{203 }
-\DoxyCodeLine{205     \textcolor{keywordtype}{double} \mbox{\hyperlink{struct_compact_star_1_1_microphysics_1_1_b_n_v_1_1_analysis_1_1_b_n_v___output_a19496cd6a899c9c9003b195cd569da83}{m\_0}};}
-\DoxyCodeLine{206 }
-\DoxyCodeLine{208     \mbox{\hyperlink{struct_compact_star_1_1_microphysics_1_1_b_n_v_1_1_analysis_1_1_b_n_v___output_a960523e7d2b2f31c68b610ba24ef658c}{BNV\_Output}}() \{\}}
-\DoxyCodeLine{209 }
-\DoxyCodeLine{210     \textcolor{comment}{// std::string Str() const}}
-\DoxyCodeLine{211     \textcolor{comment}{// \{}}
-\DoxyCodeLine{212     \textcolor{comment}{//   char tmp[200] ;}}
-\DoxyCodeLine{213     \textcolor{comment}{//   sprintf(tmp, "{}\%-\/8s\(\backslash\)t \%.4f\(\backslash\)t \%.6e\(\backslash\)t \%.6e\(\backslash\)t \%.6e\(\backslash\)t \%.6e\(\backslash\)t \%.6e\(\backslash\)t \%.6e\(\backslash\)t \%.6e\(\backslash\)t \%.6e"{},}}
-\DoxyCodeLine{214     \textcolor{comment}{//           bar.label.c\_str(), m\_0, t\_0.t\_ch, t\_0.t,}}
-\DoxyCodeLine{215     \textcolor{comment}{//           age.t\_ch, age.t, death.t\_ch, death.t, Age\_over\_Death().t\_ch, Age\_over\_Death().t) ;}}
-\DoxyCodeLine{216     \textcolor{comment}{//   return std::string(tmp) ;}}
-\DoxyCodeLine{217     \textcolor{comment}{// \}}}
-\DoxyCodeLine{218 }
-\DoxyCodeLine{219     \textcolor{comment}{// std::string header() const}}
-\DoxyCodeLine{220     \textcolor{comment}{// \{}}
-\DoxyCodeLine{221     \textcolor{comment}{//   char tmp[200] ;}}
-\DoxyCodeLine{222     \textcolor{comment}{//   sprintf(tmp, "{}\%-\/8s\(\backslash\)t \%-\/6s\(\backslash\)t \%-\/13s\(\backslash\)t \%-\/13s\(\backslash\)t \%-\/13s\(\backslash\)t \%-\/13s\(\backslash\)t \%-\/13s\(\backslash\)t \%-\/13s\(\backslash\)t \%-\/13s\(\backslash\)t \%-\/13s"{},}}
-\DoxyCodeLine{223     \textcolor{comment}{//           "{}Channel"{}, "{}M(0)"{}, "{}t\_0"{}, "{}t\_0 [ch]"{}, "{}age"{},}}
-\DoxyCodeLine{224     \textcolor{comment}{//           "{}age [ch]"{}, "{}death"{}, "{}death [ch]"{}, "{}age/death"{}, "{}age/death [ch]"{}) ;}}
-\DoxyCodeLine{225     \textcolor{comment}{//   return std::string(tmp) ;}}
-\DoxyCodeLine{226     \textcolor{comment}{// \}}}
-\DoxyCodeLine{227 }
-\DoxyCodeLine{228     \textcolor{comment}{// std::vector<double> GetVals() const}}
-\DoxyCodeLine{229     \textcolor{comment}{// \{}}
-\DoxyCodeLine{230     \textcolor{comment}{//   return \{m\_0, t\_0.t\_ch, t\_0.t,}}
-\DoxyCodeLine{231     \textcolor{comment}{//           age.t\_ch, age.t, death.t\_ch, death.t,}}
-\DoxyCodeLine{232     \textcolor{comment}{//           Age\_over\_Death().t\_ch, Age\_over\_Death().t\} ;}}
+\DoxyCodeLine{196 }
+\DoxyCodeLine{197     std::string Str()\textcolor{keyword}{ const}}
+\DoxyCodeLine{198 \textcolor{keyword}{    }\{}
+\DoxyCodeLine{199         \textcolor{keywordtype}{char} tmp[100];}
+\DoxyCodeLine{200         snprintf(tmp, \textcolor{keyword}{sizeof}(tmp), \textcolor{stringliteral}{"{}\%.6e"{}}, t);}
+\DoxyCodeLine{201         \textcolor{keywordflow}{return} std::string(tmp);}
+\DoxyCodeLine{202     \}}
+\DoxyCodeLine{203 \};}
+\DoxyCodeLine{204 }
+\DoxyCodeLine{205 \textcolor{comment}{//==============================================================}}
+\DoxyCodeLine{206 \textcolor{keyword}{struct }\mbox{\hyperlink{struct_compact_star_1_1_microphysics_1_1_b_n_v_1_1_analysis_1_1_b_n_v___output}{BNV\_Output}}}
+\DoxyCodeLine{207 \{}
+\DoxyCodeLine{209     \mbox{\hyperlink{struct_compact_star_1_1_microphysics_1_1_b_n_v_1_1_analysis_1_1_b_n_v___rate_1_1_baryon}{BNV\_Rate::Baryon}} \mbox{\hyperlink{struct_compact_star_1_1_microphysics_1_1_b_n_v_1_1_analysis_1_1_b_n_v___output_a2b3aad3740e13a6e005ac2da391c2055}{bar}};}
+\DoxyCodeLine{210 }
+\DoxyCodeLine{212     \textcolor{keywordtype}{double} \mbox{\hyperlink{struct_compact_star_1_1_microphysics_1_1_b_n_v_1_1_analysis_1_1_b_n_v___output_a19496cd6a899c9c9003b195cd569da83}{m\_0}};}
+\DoxyCodeLine{213 }
+\DoxyCodeLine{215     \mbox{\hyperlink{struct_compact_star_1_1_microphysics_1_1_b_n_v_1_1_analysis_1_1_b_n_v___output_a960523e7d2b2f31c68b610ba24ef658c}{BNV\_Output}}() \{\}}
+\DoxyCodeLine{216 }
+\DoxyCodeLine{217     \textcolor{comment}{// std::string Str() const}}
+\DoxyCodeLine{218     \textcolor{comment}{// \{}}
+\DoxyCodeLine{219     \textcolor{comment}{//   char tmp[200] ;}}
+\DoxyCodeLine{220     \textcolor{comment}{//   sprintf(tmp, "{}\%-\/8s\(\backslash\)t \%.4f\(\backslash\)t \%.6e\(\backslash\)t \%.6e\(\backslash\)t \%.6e\(\backslash\)t \%.6e\(\backslash\)t \%.6e\(\backslash\)t \%.6e\(\backslash\)t \%.6e\(\backslash\)t \%.6e"{},}}
+\DoxyCodeLine{221     \textcolor{comment}{//           bar.label.c\_str(), m\_0, t\_0.t\_ch, t\_0.t,}}
+\DoxyCodeLine{222     \textcolor{comment}{//           age.t\_ch, age.t, death.t\_ch, death.t, Age\_over\_Death().t\_ch, Age\_over\_Death().t) ;}}
+\DoxyCodeLine{223     \textcolor{comment}{//   return std::string(tmp) ;}}
+\DoxyCodeLine{224     \textcolor{comment}{// \}}}
+\DoxyCodeLine{225 }
+\DoxyCodeLine{226     \textcolor{comment}{// std::string header() const}}
+\DoxyCodeLine{227     \textcolor{comment}{// \{}}
+\DoxyCodeLine{228     \textcolor{comment}{//   char tmp[200] ;}}
+\DoxyCodeLine{229     \textcolor{comment}{//   sprintf(tmp, "{}\%-\/8s\(\backslash\)t \%-\/6s\(\backslash\)t \%-\/13s\(\backslash\)t \%-\/13s\(\backslash\)t \%-\/13s\(\backslash\)t \%-\/13s\(\backslash\)t \%-\/13s\(\backslash\)t \%-\/13s\(\backslash\)t \%-\/13s\(\backslash\)t \%-\/13s"{},}}
+\DoxyCodeLine{230     \textcolor{comment}{//           "{}Channel"{}, "{}M(0)"{}, "{}t\_0"{}, "{}t\_0 [ch]"{}, "{}age"{},}}
+\DoxyCodeLine{231     \textcolor{comment}{//           "{}age [ch]"{}, "{}death"{}, "{}death [ch]"{}, "{}age/death"{}, "{}age/death [ch]"{}) ;}}
+\DoxyCodeLine{232     \textcolor{comment}{//   return std::string(tmp) ;}}
 \DoxyCodeLine{233     \textcolor{comment}{// \}}}
-\DoxyCodeLine{234 \};}
-\DoxyCodeLine{235 }
-\DoxyCodeLine{236 \textcolor{comment}{//==============================================================}}
-\DoxyCodeLine{237 \textcolor{keyword}{class }\mbox{\hyperlink{class_compact_star_1_1_microphysics_1_1_b_n_v_1_1_analysis_1_1_b_n_v___analysis}{BNV\_Analysis}} : \textcolor{keyword}{public} \mbox{\hyperlink{class_compact_star_1_1_analysis}{CompactStar::Analysis}}}
-\DoxyCodeLine{238 \{}
-\DoxyCodeLine{239     \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
-\DoxyCodeLine{240   \textcolor{keyword}{private}:}
-\DoxyCodeLine{241     \textcolor{comment}{// std::vector<BNV\_Rate> bnv\_rates ;}}
-\DoxyCodeLine{242     std::vector<BNV\_Rate::Baryon> bar\_list;}
-\DoxyCodeLine{243     std::vector<BNV\_Rate\_Seq> bnv\_rate\_seq;}
-\DoxyCodeLine{244 }
-\DoxyCodeLine{245     \textcolor{comment}{// Zaki::Vector::DataSet neutron\_out ;}}
-\DoxyCodeLine{246     \textcolor{comment}{// Zaki::Vector::DataSet lambda\_out ;}}
-\DoxyCodeLine{247     \textcolor{comment}{// Zaki::Vector::DataSet sigmam\_out ;}}
-\DoxyCodeLine{248 }
-\DoxyCodeLine{249     \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
-\DoxyCodeLine{250   \textcolor{keyword}{public}:}
-\DoxyCodeLine{251     \mbox{\hyperlink{class_compact_star_1_1_microphysics_1_1_b_n_v_1_1_analysis_1_1_b_n_v___analysis}{BNV\_Analysis}}();}
-\DoxyCodeLine{252 }
-\DoxyCodeLine{253     \mbox{\hyperlink{class_compact_star_1_1_microphysics_1_1_b_n_v_1_1_analysis_1_1_b_n_v___analysis}{\string~BNV\_Analysis}}();}
-\DoxyCodeLine{254 }
-\DoxyCodeLine{256     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_compact_star_1_1_microphysics_1_1_b_n_v_1_1_analysis_1_1_b_n_v___analysis_a7ee74c569f496ac8ccec5b7192f92668}{Analyze}}(\mbox{\hyperlink{class_compact_star_1_1_n_star}{NStar}} *in\_star) \textcolor{keyword}{override};}
-\DoxyCodeLine{257     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_compact_star_1_1_microphysics_1_1_b_n_v_1_1_analysis_1_1_b_n_v___analysis_a8f9b21175f9448ee5f375709e984310a}{Analyze}}(\mbox{\hyperlink{class_compact_star_1_1_mixed_star}{MixedStar}} *in\_star)\textcolor{keyword}{ override }\{\}}
-\DoxyCodeLine{258 }
-\DoxyCodeLine{260     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_compact_star_1_1_microphysics_1_1_b_n_v_1_1_analysis_1_1_b_n_v___analysis_aecdda1f6d9988932065729f2d1ca7cc2}{Export}}(\textcolor{keyword}{const} \mbox{\hyperlink{class_zaki_1_1_string_1_1_directory}{Zaki::String::Directory}} \&) \textcolor{keyword}{override};}
+\DoxyCodeLine{234 }
+\DoxyCodeLine{235     \textcolor{comment}{// std::vector<double> GetVals() const}}
+\DoxyCodeLine{236     \textcolor{comment}{// \{}}
+\DoxyCodeLine{237     \textcolor{comment}{//   return \{m\_0, t\_0.t\_ch, t\_0.t,}}
+\DoxyCodeLine{238     \textcolor{comment}{//           age.t\_ch, age.t, death.t\_ch, death.t,}}
+\DoxyCodeLine{239     \textcolor{comment}{//           Age\_over\_Death().t\_ch, Age\_over\_Death().t\} ;}}
+\DoxyCodeLine{240     \textcolor{comment}{// \}}}
+\DoxyCodeLine{241 \};}
+\DoxyCodeLine{242 }
+\DoxyCodeLine{243 \textcolor{comment}{//==============================================================}}
+\DoxyCodeLine{244 \textcolor{keyword}{class }\mbox{\hyperlink{class_compact_star_1_1_microphysics_1_1_b_n_v_1_1_analysis_1_1_b_n_v___analysis}{BNV\_Analysis}} : \textcolor{keyword}{public} \mbox{\hyperlink{class_compact_star_1_1_analysis}{CompactStar::Analysis}}}
+\DoxyCodeLine{245 \{}
+\DoxyCodeLine{246     \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{247   \textcolor{keyword}{private}:}
+\DoxyCodeLine{248     \textcolor{comment}{// std::vector<BNV\_Rate> bnv\_rates ;}}
+\DoxyCodeLine{249     std::vector<BNV\_Rate::Baryon> bar\_list;}
+\DoxyCodeLine{250     std::vector<BNV\_Rate\_Seq> bnv\_rate\_seq;}
+\DoxyCodeLine{251 }
+\DoxyCodeLine{252     \textcolor{comment}{// Zaki::Vector::DataSet neutron\_out ;}}
+\DoxyCodeLine{253     \textcolor{comment}{// Zaki::Vector::DataSet lambda\_out ;}}
+\DoxyCodeLine{254     \textcolor{comment}{// Zaki::Vector::DataSet sigmam\_out ;}}
+\DoxyCodeLine{255 }
+\DoxyCodeLine{256     \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{257   \textcolor{keyword}{public}:}
+\DoxyCodeLine{258     \mbox{\hyperlink{class_compact_star_1_1_microphysics_1_1_b_n_v_1_1_analysis_1_1_b_n_v___analysis}{BNV\_Analysis}}();}
+\DoxyCodeLine{259 }
+\DoxyCodeLine{260     \mbox{\hyperlink{class_compact_star_1_1_microphysics_1_1_b_n_v_1_1_analysis_1_1_b_n_v___analysis}{\string~BNV\_Analysis}}();}
 \DoxyCodeLine{261 }
-\DoxyCodeLine{262     \textcolor{keywordtype}{void} Evolve(\textcolor{keyword}{const} \mbox{\hyperlink{class_zaki_1_1_string_1_1_directory}{Zaki::String::Directory}} \&);}
-\DoxyCodeLine{263 }
-\DoxyCodeLine{264     \textcolor{comment}{// Saves the BNV results}}
-\DoxyCodeLine{265     \textcolor{comment}{// void ExportBNV(const Zaki::String::Directory\&) ;}}
-\DoxyCodeLine{266 \};}
-\DoxyCodeLine{267 }
-\DoxyCodeLine{268 \textcolor{comment}{//==============================================================}}
-\DoxyCodeLine{269 \} \textcolor{comment}{// namespace CompactStar::Microphysics::BNV::Analysis}}
-\DoxyCodeLine{270 \textcolor{comment}{//==============================================================}}
-\DoxyCodeLine{271 \textcolor{preprocessor}{\#endif }\textcolor{comment}{/*CompactStar\_Microphysics\_BNV\_Analysis\_BNV\_Analysis\_H*/}\textcolor{preprocessor}{}}
+\DoxyCodeLine{263     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_compact_star_1_1_microphysics_1_1_b_n_v_1_1_analysis_1_1_b_n_v___analysis_a7ee74c569f496ac8ccec5b7192f92668}{Analyze}}(\mbox{\hyperlink{class_compact_star_1_1_n_star}{NStar}} *in\_star) \textcolor{keyword}{override};}
+\DoxyCodeLine{264     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_compact_star_1_1_microphysics_1_1_b_n_v_1_1_analysis_1_1_b_n_v___analysis_a8f9b21175f9448ee5f375709e984310a}{Analyze}}(\mbox{\hyperlink{class_compact_star_1_1_mixed_star}{MixedStar}} *in\_star)\textcolor{keyword}{ override }\{\}}
+\DoxyCodeLine{265 }
+\DoxyCodeLine{267     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_compact_star_1_1_microphysics_1_1_b_n_v_1_1_analysis_1_1_b_n_v___analysis_aecdda1f6d9988932065729f2d1ca7cc2}{Export}}(\textcolor{keyword}{const} \mbox{\hyperlink{class_zaki_1_1_string_1_1_directory}{Zaki::String::Directory}} \&) \textcolor{keyword}{override};}
+\DoxyCodeLine{268 }
+\DoxyCodeLine{269     \textcolor{keywordtype}{void} Evolve(\textcolor{keyword}{const} \mbox{\hyperlink{class_zaki_1_1_string_1_1_directory}{Zaki::String::Directory}} \&);}
+\DoxyCodeLine{270 }
+\DoxyCodeLine{271     \textcolor{comment}{// Saves the BNV results}}
+\DoxyCodeLine{272     \textcolor{comment}{// void ExportBNV(const Zaki::String::Directory\&) ;}}
+\DoxyCodeLine{273 \};}
+\DoxyCodeLine{274 }
+\DoxyCodeLine{275 \textcolor{comment}{//==============================================================}}
+\DoxyCodeLine{276 \} \textcolor{comment}{// namespace CompactStar::Microphysics::BNV::Analysis}}
+\DoxyCodeLine{277 \textcolor{comment}{//==============================================================}}
+\DoxyCodeLine{278 \textcolor{preprocessor}{\#endif }\textcolor{comment}{/*CompactStar\_Microphysics\_BNV\_Analysis\_BNV\_Analysis\_H*/}\textcolor{preprocessor}{}}
 
 \end{DoxyCode}

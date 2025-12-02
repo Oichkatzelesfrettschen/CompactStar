@@ -1,0 +1,130 @@
+\hypertarget{class_compact_star_1_1_physics_1_1_evolution_1_1_state_layout}{}\doxysection{Compact\+Star\+::Physics\+::Evolution\+::State\+Layout Class Reference}
+\label{class_compact_star_1_1_physics_1_1_evolution_1_1_state_layout}\index{CompactStar::Physics::Evolution::StateLayout@{CompactStar::Physics::Evolution::StateLayout}}
+
+
+Records offsets and sizes of each State\+Tag block in the flat ODE vector.  
+
+
+
+
+{\ttfamily \#include $<$State\+Layout.\+hpp$>$}
+
+\doxysubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{struct_compact_star_1_1_physics_1_1_evolution_1_1_state_layout_1_1_block}{Block}}
+\begin{DoxyCompactList}\small\item\em Layout information for a single State\+Tag block. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_compact_star_1_1_physics_1_1_evolution_1_1_state_layout_aea7cbb39ad8cd9aa81134c560daa85b2}\label{class_compact_star_1_1_physics_1_1_evolution_1_1_state_layout_aea7cbb39ad8cd9aa81134c560daa85b2}} 
+{\bfseries State\+Layout} ()=default
+\begin{DoxyCompactList}\small\item\em Default constructor\+: all blocks inactive, total size = 0. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_state_layout_ab444e011bdc1266189ddf7ac55d6bebf}{Configure}} (const \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_state_vector}{State\+Vector}} \&state, std\+::initializer\+\_\+list$<$ \mbox{\hyperlink{namespace_compact_star_1_1_physics_1_1_state_af14f5554b0d9be50c5ea718733bc424b}{Physics\+::\+State\+::\+State\+Tag}} $>$ tags)
+\begin{DoxyCompactList}\small\item\em Configure layout from a \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_state_vector}{State\+Vector}} and an ordered list of tags. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_compact_star_1_1_physics_1_1_evolution_1_1_state_layout_a9b32f1c96f528d596ab57940a1ace2cc}\label{class_compact_star_1_1_physics_1_1_evolution_1_1_state_layout_a9b32f1c96f528d596ab57940a1ace2cc}} 
+std\+::size\+\_\+t {\bfseries Total\+Size} () const noexcept
+\begin{DoxyCompactList}\small\item\em Total dimension of the flat ODE vector y\mbox{[}\mbox{]} after configuration. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_compact_star_1_1_physics_1_1_evolution_1_1_state_layout_ae42a2eb4d94314cb78f232d38dda5058}\label{class_compact_star_1_1_physics_1_1_evolution_1_1_state_layout_ae42a2eb4d94314cb78f232d38dda5058}} 
+bool {\bfseries Is\+Active} (\mbox{\hyperlink{namespace_compact_star_1_1_physics_1_1_state_af14f5554b0d9be50c5ea718733bc424b}{Physics\+::\+State\+::\+State\+Tag}} tag) const noexcept
+\begin{DoxyCompactList}\small\item\em Check whether a given tag is active in this layout. \end{DoxyCompactList}\item 
+std\+::size\+\_\+t \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_state_layout_a1c81b4e5e1fab06adb9b4b881c962513}{Offset}} (\mbox{\hyperlink{namespace_compact_star_1_1_physics_1_1_state_af14f5554b0d9be50c5ea718733bc424b}{Physics\+::\+State\+::\+State\+Tag}} tag) const
+\begin{DoxyCompactList}\small\item\em Starting offset in y\mbox{[}\mbox{]} for the block with the given tag. \end{DoxyCompactList}\item 
+std\+::size\+\_\+t \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_state_layout_a38014e35f982457f62a3a8c5bc9cca61}{Block\+Size}} (\mbox{\hyperlink{namespace_compact_star_1_1_physics_1_1_state_af14f5554b0d9be50c5ea718733bc424b}{Physics\+::\+State\+::\+State\+Tag}} tag) const
+\begin{DoxyCompactList}\small\item\em Number of scalar components in the block with the given tag. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{struct_compact_star_1_1_physics_1_1_evolution_1_1_state_layout_1_1_block}{Block}} \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_state_layout_a139be77673f9e0cb4f960224e1b5dc7d}{Get\+Block}} (\mbox{\hyperlink{namespace_compact_star_1_1_physics_1_1_state_af14f5554b0d9be50c5ea718733bc424b}{Physics\+::\+State\+::\+State\+Tag}} tag) const
+\begin{DoxyCompactList}\small\item\em Get the full \mbox{\hyperlink{struct_compact_star_1_1_physics_1_1_evolution_1_1_state_layout_1_1_block}{Block}} descriptor for {\ttfamily tag}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Records offsets and sizes of each State\+Tag block in the flat ODE vector. 
+
+The layout is configured once (typically before the first call to the integrator) and is then treated as immutable during a given evolution run.
+
+It does not store any data itself; it only knows how the y\mbox{[}\mbox{]} / dydt\mbox{[}\mbox{]} arrays are partitioned into tagged blocks. 
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_compact_star_1_1_physics_1_1_evolution_1_1_state_layout_a38014e35f982457f62a3a8c5bc9cca61}\label{class_compact_star_1_1_physics_1_1_evolution_1_1_state_layout_a38014e35f982457f62a3a8c5bc9cca61}} 
+\index{CompactStar::Physics::Evolution::StateLayout@{CompactStar::Physics::Evolution::StateLayout}!BlockSize@{BlockSize}}
+\index{BlockSize@{BlockSize}!CompactStar::Physics::Evolution::StateLayout@{CompactStar::Physics::Evolution::StateLayout}}
+\doxysubsubsection{\texorpdfstring{BlockSize()}{BlockSize()}}
+{\footnotesize\ttfamily std\+::size\+\_\+t Compact\+Star\+::\+Physics\+::\+Evolution\+::\+State\+Layout\+::\+Block\+Size (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{namespace_compact_star_1_1_physics_1_1_state_af14f5554b0d9be50c5ea718733bc424b}{Physics\+::\+State\+::\+State\+Tag}}}]{tag }\end{DoxyParamCaption}) const}
+
+
+
+Number of scalar components in the block with the given tag. 
+
+
+\begin{DoxyExceptions}{Exceptions}
+{\em std\+::runtime\+\_\+error} & if the tag is not active. \\
+\hline
+\end{DoxyExceptions}
+\mbox{\Hypertarget{class_compact_star_1_1_physics_1_1_evolution_1_1_state_layout_ab444e011bdc1266189ddf7ac55d6bebf}\label{class_compact_star_1_1_physics_1_1_evolution_1_1_state_layout_ab444e011bdc1266189ddf7ac55d6bebf}} 
+\index{CompactStar::Physics::Evolution::StateLayout@{CompactStar::Physics::Evolution::StateLayout}!Configure@{Configure}}
+\index{Configure@{Configure}!CompactStar::Physics::Evolution::StateLayout@{CompactStar::Physics::Evolution::StateLayout}}
+\doxysubsubsection{\texorpdfstring{Configure()}{Configure()}}
+{\footnotesize\ttfamily void Compact\+Star\+::\+Physics\+::\+Evolution\+::\+State\+Layout\+::\+Configure (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_state_vector}{State\+Vector}} \&}]{state,  }\item[{std\+::initializer\+\_\+list$<$ \mbox{\hyperlink{namespace_compact_star_1_1_physics_1_1_state_af14f5554b0d9be50c5ea718733bc424b}{Physics\+::\+State\+::\+State\+Tag}} $>$}]{tags }\end{DoxyParamCaption})}
+
+
+
+Configure layout from a \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_state_vector}{State\+Vector}} and an ordered list of tags. 
+
+The tags in {\ttfamily tags} define the concatenation order in the flat ODE vector y\mbox{[}\mbox{]}. For each tag\+:
+
+
+\begin{DoxyItemize}
+\item State\+Vector\+::\+Get(tag).Size() is queried to determine block size;
+\item a contiguous block \mbox{[}offset, offset+size) is assigned in y\mbox{[}\mbox{]};
+\item the internal \mbox{\hyperlink{struct_compact_star_1_1_physics_1_1_evolution_1_1_state_layout_1_1_block}{Block}} entry is marked active.
+\end{DoxyItemize}
+
+Blocks for tags not listed in {\ttfamily tags} remain inactive.
+
+
+\begin{DoxyParams}{Parameters}
+{\em state} & Composite view over registered \mbox{\hyperlink{namespace_compact_star_1_1_physics_1_1_state}{State}} blocks. \\
+\hline
+{\em tags} & Ordered list of State\+Tag values to include in y\mbox{[}\mbox{]}.\\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em std\+::runtime\+\_\+error} & if any requested tag is not registered in the provided \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_state_vector}{State\+Vector}}. \\
+\hline
+\end{DoxyExceptions}
+\mbox{\Hypertarget{class_compact_star_1_1_physics_1_1_evolution_1_1_state_layout_a139be77673f9e0cb4f960224e1b5dc7d}\label{class_compact_star_1_1_physics_1_1_evolution_1_1_state_layout_a139be77673f9e0cb4f960224e1b5dc7d}} 
+\index{CompactStar::Physics::Evolution::StateLayout@{CompactStar::Physics::Evolution::StateLayout}!GetBlock@{GetBlock}}
+\index{GetBlock@{GetBlock}!CompactStar::Physics::Evolution::StateLayout@{CompactStar::Physics::Evolution::StateLayout}}
+\doxysubsubsection{\texorpdfstring{GetBlock()}{GetBlock()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{struct_compact_star_1_1_physics_1_1_evolution_1_1_state_layout_1_1_block}{State\+Layout\+::\+Block}} Compact\+Star\+::\+Physics\+::\+Evolution\+::\+State\+Layout\+::\+Get\+Block (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{namespace_compact_star_1_1_physics_1_1_state_af14f5554b0d9be50c5ea718733bc424b}{Physics\+::\+State\+::\+State\+Tag}}}]{tag }\end{DoxyParamCaption}) const}
+
+
+
+Get the full \mbox{\hyperlink{struct_compact_star_1_1_physics_1_1_evolution_1_1_state_layout_1_1_block}{Block}} descriptor for {\ttfamily tag}. 
+
+
+\begin{DoxyExceptions}{Exceptions}
+{\em std\+::runtime\+\_\+error} & if the tag is not active. \\
+\hline
+\end{DoxyExceptions}
+\mbox{\Hypertarget{class_compact_star_1_1_physics_1_1_evolution_1_1_state_layout_a1c81b4e5e1fab06adb9b4b881c962513}\label{class_compact_star_1_1_physics_1_1_evolution_1_1_state_layout_a1c81b4e5e1fab06adb9b4b881c962513}} 
+\index{CompactStar::Physics::Evolution::StateLayout@{CompactStar::Physics::Evolution::StateLayout}!Offset@{Offset}}
+\index{Offset@{Offset}!CompactStar::Physics::Evolution::StateLayout@{CompactStar::Physics::Evolution::StateLayout}}
+\doxysubsubsection{\texorpdfstring{Offset()}{Offset()}}
+{\footnotesize\ttfamily std\+::size\+\_\+t Compact\+Star\+::\+Physics\+::\+Evolution\+::\+State\+Layout\+::\+Offset (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{namespace_compact_star_1_1_physics_1_1_state_af14f5554b0d9be50c5ea718733bc424b}{Physics\+::\+State\+::\+State\+Tag}}}]{tag }\end{DoxyParamCaption}) const}
+
+
+
+Starting offset in y\mbox{[}\mbox{]} for the block with the given tag. 
+
+
+\begin{DoxyExceptions}{Exceptions}
+{\em std\+::runtime\+\_\+error} & if the tag is not active. \\
+\hline
+\end{DoxyExceptions}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Compact\+Star/\+Physics/\+Evolution/\mbox{\hyperlink{_state_layout_8hpp}{State\+Layout.\+hpp}}\item 
+Compact\+Star/\+Physics/\+Evolution/src/\mbox{\hyperlink{_state_layout_8cpp}{State\+Layout.\+cpp}}\end{DoxyCompactItemize}

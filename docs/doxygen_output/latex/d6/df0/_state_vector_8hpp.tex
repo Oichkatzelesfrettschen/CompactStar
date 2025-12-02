@@ -13,10 +13,17 @@ Composite view over sub-\/states (Spin/\+Thermal/\+Chem/\+BNV/…).
 \item 
 class \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_state_vector}{Compact\+Star\+::\+Physics\+::\+Evolution\+::\+State\+Vector}}
 \begin{DoxyCompactList}\small\item\em Composite view over the current ODE state (tag → State$\ast$). \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Namespaces}
+\begin{DoxyCompactItemize}
+\item 
+namespace \mbox{\hyperlink{namespace_compact_star_1_1_physics_1_1_state}{Compact\+Star\+::\+Physics\+::\+State}}
+\item 
+namespace \mbox{\hyperlink{namespace_compact_star_1_1_physics_1_1_evolution}{Compact\+Star\+::\+Physics\+::\+Evolution}}
+\begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{namespace_compact_star_1_1_physics_1_1_evolution}{Evolution}} engine for time-\/dependent neutron-\/star physics. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
-constexpr std\+::size\+\_\+t \mbox{\hyperlink{_state_vector_8hpp_a5ac7d5119f023b69a7e8f8770e7f15cf}{Compact\+Star\+::\+Physics\+::\+Evolution\+::\+Num\+State\+Tags}} ()
+constexpr std\+::size\+\_\+t \mbox{\hyperlink{namespace_compact_star_1_1_physics_1_1_evolution_a5ac7d5119f023b69a7e8f8770e7f15cf}{Compact\+Star\+::\+Physics\+::\+Evolution\+::\+Num\+State\+Tags}} ()
 \begin{DoxyCompactList}\small\item\em Number of State\+Tag enumeration values. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
@@ -37,16 +44,3 @@ In a typical evolution setup\+:
 \item System builds a State\+Vector once, registering each State block.
 \item Drivers receive a const State\+Vector\& in Accumulate\+RHS() and use it to read whatever blocks they depend on. 
 \end{DoxyItemize}
-
-\doxysubsection{Function Documentation}
-\mbox{\Hypertarget{_state_vector_8hpp_a5ac7d5119f023b69a7e8f8770e7f15cf}\label{_state_vector_8hpp_a5ac7d5119f023b69a7e8f8770e7f15cf}} 
-\index{StateVector.hpp@{StateVector.hpp}!NumStateTags@{NumStateTags}}
-\index{NumStateTags@{NumStateTags}!StateVector.hpp@{StateVector.hpp}}
-\doxysubsubsection{\texorpdfstring{NumStateTags()}{NumStateTags()}}
-{\footnotesize\ttfamily constexpr std\+::size\+\_\+t Compact\+Star\+::\+Physics\+::\+Evolution\+::\+Num\+State\+Tags (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [constexpr]}}
-
-
-
-Number of State\+Tag enumeration values. 
-
-Assumes that State\+Tag\+::\+Custom is the last enumerator in the enum. 

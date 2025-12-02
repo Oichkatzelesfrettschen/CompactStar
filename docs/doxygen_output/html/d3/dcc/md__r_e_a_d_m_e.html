@@ -186,6 +186,71 @@ Project Structure</h1>
 <div class="line">└── (other top-level support files)</div>
 </div><!-- fragment --><hr  />
 <h1><a class="anchor" id="autotoc_md18"></a>
+State Interface Architecture</h1>
+<p>CompactStar’s evolution engine treats each physical subsystem <br  />
+ (Spin, Thermal, Chem, BNV, …) as a <b>state block</b> derived from a single abstract base class <code>State</code>. This base class defines a small, uniform interface:</p>
+<ul>
+<li><code>Size()</code></li>
+<li><code>Data()</code></li>
+<li><code><a class="el" href="../../d0/d4a/_chem_state_8hpp.html#a3f6089e2db736965f021e2165ae39933" title="Copy the internal ODE components into a flat buffer.">PackTo()</a></code></li>
+<li><code><a class="el" href="../../d0/d4a/_chem_state_8hpp.html#af4c43758909d4e294d63b7d067eae761" title="Populate internal ODE components from a flat buffer.">UnpackFrom()</a></code></li>
+<li><code>Resize()</code></li>
+<li><code><a class="el" href="../../d0/d4a/_chem_state_8hpp.html#ac2fdf117e3886bbce4baa56a77d3e9cc" title="Reset all components to zero (does not release capacity).">Clear()</a></code></li>
+</ul>
+<p>but <b>it intentionally does not define storage</b>. <br  />
+ Each derived state type owns its own internal representation.</p>
+<hr  />
+<h2><a class="anchor" id="autotoc_md20"></a>
+Why the base class does &lt;em&gt;not&lt;/em&gt; own &lt;tt&gt;values_&lt;/tt&gt;</h2>
+<p>Different state types have very different physical and numerical needs:</p>
+<ul>
+<li><b>SpinState</b> stores Ω-like variables in a simple vector</li>
+<li><b>ThermalState</b> may evolve one or many temperature components</li>
+<li><b>ChemState</b> evolves a vector of η chemical imbalances</li>
+<li><b>BNVState</b> may evolve anything from 1 to many exotic parameters</li>
+<li>Future modules may require 2D grids, GPU buffers, or nested structures</li>
+</ul>
+<p>If the base class forced a single storage container (e.g. <code>std::vector&lt;double&gt;</code>), it would prevent advanced future models or force awkward workarounds.</p>
+<p>Leaving storage fully up to the derived class gives:</p>
+<ul>
+<li>full flexibility for arbitrary physics models, present and future</li>
+<li>decoupling between “how data is stored” and “how evolution operates”</li>
+<li>identical external interface for all states</li>
+<li>zero-cost abstraction: the solver only sees contiguous segments via <code>Data()</code></li>
+</ul>
+<p>Every state remains free to choose <b>any internal representation</b>, as long as it can supply a contiguous DOF view to the evolution engine.</p>
+<hr  />
+<h2><a class="anchor" id="autotoc_md22"></a>
+Packing and Unpacking: How Evolution Works</h2>
+<p>During time evolution, the framework assembles one global ODE vector:</p>
+<div class="fragment"><div class="line">y = [ Spin DOFs | Thermal DOFs | Chem DOFs | BNV DOFs | ... ]</div>
+</div><!-- fragment --><p>Each state block implements:</p>
+<ul>
+<li><b>PackTo(y, offset)</b>: copy internal DOFs into the global vector</li>
+<li><b>UnpackFrom(y, offset)</b>: restore DOFs after the solver updates <code>y[]</code></li>
+</ul>
+<p>This enables:</p>
+<ul>
+<li>arbitrary ordering of state blocks</li>
+<li>custom block sizes</li>
+<li>clean separation between the physics model and GSL/Sundials interfaces</li>
+<li>modular drivers that specify dependencies via <code>StateTag</code></li>
+</ul>
+<hr  />
+<h2><a class="anchor" id="autotoc_md24"></a>
+Summary</h2>
+<p>This architecture:</p>
+<ul>
+<li>maximizes extensibility</li>
+<li>cleanly supports heterogeneous physics blocks</li>
+<li>keeps the evolution solver generic and future-proof</li>
+<li>avoids premature commitment to a fixed layout</li>
+<li>simplifies driver implementation</li>
+</ul>
+<p>For additional detail, see the comments in <br  />
+ <code><a class="el" href="../../d5/d5d/_state_8hpp.html" title="Abstract ODE state interface for physics sub-states.">CompactStar/Physics/State/State.hpp</a></code>.</p>
+<hr  />
+<h1><a class="anchor" id="autotoc_md26"></a>
 Features</h1>
 <ul>
 <li>Tabulated + analytical EOS support</li>
@@ -198,7 +263,7 @@ Features</h1>
 <li>Lightweight dependencies (C++17, GSL)</li>
 </ul>
 <hr  />
-<h1><a class="anchor" id="autotoc_md20"></a>
+<h1><a class="anchor" id="autotoc_md28"></a>
 Building</h1>
 <div class="fragment"><div class="line">mkdir build</div>
 <div class="line">cd build</div>
@@ -211,7 +276,7 @@ Building</h1>
 <li><code>-DCS_ENABLE_PROFILING=ON</code></li>
 </ul>
 <hr  />
-<h1><a class="anchor" id="autotoc_md22"></a>
+<h1><a class="anchor" id="autotoc_md30"></a>
 Documentation</h1>
 <p>CompactStar uses <b>Doxygen</b> documentation. <br  />
  To build:</p>
@@ -219,14 +284,14 @@ Documentation</h1>
 <div class="line">cmake .. -DBUILD_DOCS=ON</div>
 <div class="line">make docs</div>
 </div><!-- fragment --><hr  />
-<h1><a class="anchor" id="autotoc_md24"></a>
+<h1><a class="anchor" id="autotoc_md32"></a>
 Author</h1>
 <p><b>Mohammadreza Zakeri</b> <br  />
  Assistant Professor of Physics <br  />
  Eastern Kentucky University <br  />
  📧 <a href="#" onclick="location.href='mai'+'lto:'+'M.Z'+'ak'+'eri'+'@e'+'ku.'+'ed'+'u'; return false;">M.Zak<span class="obfuscator">.nosp@m.</span>eri@<span class="obfuscator">.nosp@m.</span>eku.e<span class="obfuscator">.nosp@m.</span>du</a></p>
 <hr  />
-<h1><a class="anchor" id="autotoc_md26"></a>
+<h1><a class="anchor" id="autotoc_md34"></a>
 Citation</h1>
 <p>If you use CompactStar in published research, please cite this repository and the author. </p>
 </div></div><!-- contents -->

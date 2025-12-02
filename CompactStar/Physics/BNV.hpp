@@ -47,6 +47,13 @@
 #include "CompactStar/Physics/State/BNVState.hpp"
 #include "CompactStar/Physics/State/SpinState.hpp"
 
+/**
+ * @namespace CompactStar::Physics::BNV
+ * @brief High-level baryon-number-violation utilities.
+ *
+ * Contains spin-down limits, observational constraints, and wrappers that
+ * connect pulsar quantities to BNV reaction models in Microphysics.
+ */
 namespace CompactStar::Physics::BNV
 {
 

@@ -12,16 +12,21 @@ Thermal physics algorithms operating on Star\+Profile and Thermal\+State.
 \item 
 class \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_thermal_1_1_i_envelope}{Compact\+Star\+::\+Physics\+::\+Thermal\+::\+IEnvelope}}
 \begin{DoxyCompactList}\small\item\em Strategy for Tb -\/\texorpdfstring{$>$}{>} Ts mapping (thermal boundary condition). \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Namespaces}
+\begin{DoxyCompactItemize}
+\item 
+namespace \mbox{\hyperlink{namespace_compact_star_1_1_physics_1_1_thermal}{Compact\+Star\+::\+Physics\+::\+Thermal}}
+\begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{namespace_compact_star_1_1_physics_1_1_thermal}{Thermal}} utilities\+: envelope models, cooling/heating helpers. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
-double \mbox{\hyperlink{_thermal_8hpp_a3d8c95254cfe47948385053e64e5751b}{Compact\+Star\+::\+Physics\+::\+Thermal\+::\+Surface\+Photon\+Luminosity}} (Star\+Profile\+View view, const State\+::\+Thermal\+State \&state)
+double \mbox{\hyperlink{namespace_compact_star_1_1_physics_1_1_thermal_a3d8c95254cfe47948385053e64e5751b}{Compact\+Star\+::\+Physics\+::\+Thermal\+::\+Surface\+Photon\+Luminosity}} (Star\+Profile\+View view, const State\+::\+Thermal\+State \&state)
 \begin{DoxyCompactList}\small\item\em Redshifted photon luminosity (L\+\_\+\textbackslash{}infty) from the surface. \end{DoxyCompactList}\item 
-double \mbox{\hyperlink{_thermal_8hpp_a45dbe48bf7090bad81ec3ad8c31a643a}{Compact\+Star\+::\+Physics\+::\+Thermal\+::\+DUrca\+Emissivity\+Prefactor}} (Star\+Profile\+View view, const State\+::\+Thermal\+State \&state, double r\+\_\+km)
+double \mbox{\hyperlink{namespace_compact_star_1_1_physics_1_1_thermal_a45dbe48bf7090bad81ec3ad8c31a643a}{Compact\+Star\+::\+Physics\+::\+Thermal\+::\+DUrca\+Emissivity\+Prefactor}} (Star\+Profile\+View view, const State\+::\+Thermal\+State \&state, double r\+\_\+km)
 \begin{DoxyCompactList}\small\item\em Direct Urca neutrino emissivity (Q\+\_\+\textbackslash{}nu$^\wedge$\{\textbackslash{}text\{DUrca\}\}(r)). \end{DoxyCompactList}\item 
-double \mbox{\hyperlink{_thermal_8hpp_a88c5c3bccb040991bbbb72fd57971f5b}{Compact\+Star\+::\+Physics\+::\+Thermal\+::\+MUrca\+Emissivity\+Prefactor}} (Star\+Profile\+View view, const State\+::\+Thermal\+State \&state, double r\+\_\+km)
+double \mbox{\hyperlink{namespace_compact_star_1_1_physics_1_1_thermal_a88c5c3bccb040991bbbb72fd57971f5b}{Compact\+Star\+::\+Physics\+::\+Thermal\+::\+MUrca\+Emissivity\+Prefactor}} (Star\+Profile\+View view, const State\+::\+Thermal\+State \&state, double r\+\_\+km)
 \begin{DoxyCompactList}\small\item\em Modified Urca neutrino emissivity (Q\+\_\+\textbackslash{}nu$^\wedge$\{\textbackslash{}text\{MUrca\}\}(r)), prefactor form. \end{DoxyCompactList}\item 
-double \mbox{\hyperlink{_thermal_8hpp_abd551ddb3c0bfa1e6bc761dd0cab0060}{Compact\+Star\+::\+Physics\+::\+Thermal\+::\+Total\+Neutrino\+Luminosity}} (Star\+Profile\+View view, const State\+::\+Thermal\+State \&state)
+double \mbox{\hyperlink{namespace_compact_star_1_1_physics_1_1_thermal_abd551ddb3c0bfa1e6bc761dd0cab0060}{Compact\+Star\+::\+Physics\+::\+Thermal\+::\+Total\+Neutrino\+Luminosity}} (Star\+Profile\+View view, const State\+::\+Thermal\+State \&state)
 \begin{DoxyCompactList}\small\item\em Total redshifted neutrino luminosity (L\+\_\+\{\textbackslash{}nu,\textbackslash{}infty\}) (DUrca+\+MUrca). \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
@@ -33,99 +38,3 @@ Header-\/only declarations; put implementations in Thermal.\+cpp.
 \begin{DoxyAuthor}{Author}
 Mohammadreza Zakeri Contact\+: \href{mailto:M.Zakeri@eku.edu}{\texttt{ M.\+Zakeri@eku.\+edu}} 
 \end{DoxyAuthor}
-
-
-\doxysubsection{Function Documentation}
-\mbox{\Hypertarget{_thermal_8hpp_a45dbe48bf7090bad81ec3ad8c31a643a}\label{_thermal_8hpp_a45dbe48bf7090bad81ec3ad8c31a643a}} 
-\index{Thermal.hpp@{Thermal.hpp}!DUrcaEmissivityPrefactor@{DUrcaEmissivityPrefactor}}
-\index{DUrcaEmissivityPrefactor@{DUrcaEmissivityPrefactor}!Thermal.hpp@{Thermal.hpp}}
-\doxysubsubsection{\texorpdfstring{DUrcaEmissivityPrefactor()}{DUrcaEmissivityPrefactor()}}
-{\footnotesize\ttfamily double Compact\+Star\+::\+Physics\+::\+Thermal\+::\+DUrca\+Emissivity\+Prefactor (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_compact_star_1_1_star_profile_view}{Star\+Profile\+View}}}]{view,  }\item[{const \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_state_1_1_thermal_state}{State\+::\+Thermal\+State}} \&}]{state,  }\item[{double}]{r\+\_\+km }\end{DoxyParamCaption})}
-
-
-
-Direct Urca neutrino emissivity (Q\+\_\+\textbackslash{}nu$^\wedge$\{\textbackslash{}text\{DUrca\}\}(r)). 
-
-Returns the {\itshape prefactor-\/only} emissivity in (\mbox{[} \textbackslash{}mathrm\{erg\}\textbackslash{} \textbackslash{}mathrm\{cm\}$^\wedge$\{-\/3\}\textbackslash{} \textbackslash{}mathrm\{s\}$^\wedge$\{-\/1\} \mbox{]}) so that callers can scale with ( (T\+\_\+\textbackslash{}infty/10$^\wedge$9\textbackslash{},\textbackslash{}mathrm\{K\})$^\wedge$6 ) when desired.
-
-
-\begin{DoxyParams}{Parameters}
-{\em view} & Structural profile (uses composition/threshold masks if available). \\
-\hline
-{\em state} & Thermal state (may use T\+\_\+core if working in local frame). \\
-\hline
-{\em r\+\_\+km} & Radius at which to evaluate \mbox{[}km\mbox{]}. \\
-\hline
-\end{DoxyParams}
-\begin{DoxyReturn}{Returns}
-Emissivity prefactor at r (exclude the (T$^\wedge$6) factor). 
-\end{DoxyReturn}
-\mbox{\Hypertarget{_thermal_8hpp_a88c5c3bccb040991bbbb72fd57971f5b}\label{_thermal_8hpp_a88c5c3bccb040991bbbb72fd57971f5b}} 
-\index{Thermal.hpp@{Thermal.hpp}!MUrcaEmissivityPrefactor@{MUrcaEmissivityPrefactor}}
-\index{MUrcaEmissivityPrefactor@{MUrcaEmissivityPrefactor}!Thermal.hpp@{Thermal.hpp}}
-\doxysubsubsection{\texorpdfstring{MUrcaEmissivityPrefactor()}{MUrcaEmissivityPrefactor()}}
-{\footnotesize\ttfamily double Compact\+Star\+::\+Physics\+::\+Thermal\+::\+MUrca\+Emissivity\+Prefactor (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_compact_star_1_1_star_profile_view}{Star\+Profile\+View}}}]{view,  }\item[{const \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_state_1_1_thermal_state}{State\+::\+Thermal\+State}} \&}]{state,  }\item[{double}]{r\+\_\+km }\end{DoxyParamCaption})}
-
-
-
-Modified Urca neutrino emissivity (Q\+\_\+\textbackslash{}nu$^\wedge$\{\textbackslash{}text\{MUrca\}\}(r)), prefactor form. 
-
-
-\begin{DoxyParams}{Parameters}
-{\em view} & Structural profile view. \\
-\hline
-{\em state} & Thermal state. \\
-\hline
-{\em r\+\_\+km} & Radius \mbox{[}km\mbox{]}. \\
-\hline
-\end{DoxyParams}
-\begin{DoxyReturn}{Returns}
-Emissivity prefactor at r (exclude the (T$^\wedge$8) factor). 
-\end{DoxyReturn}
-\mbox{\Hypertarget{_thermal_8hpp_a3d8c95254cfe47948385053e64e5751b}\label{_thermal_8hpp_a3d8c95254cfe47948385053e64e5751b}} 
-\index{Thermal.hpp@{Thermal.hpp}!SurfacePhotonLuminosity@{SurfacePhotonLuminosity}}
-\index{SurfacePhotonLuminosity@{SurfacePhotonLuminosity}!Thermal.hpp@{Thermal.hpp}}
-\doxysubsubsection{\texorpdfstring{SurfacePhotonLuminosity()}{SurfacePhotonLuminosity()}}
-{\footnotesize\ttfamily double Compact\+Star\+::\+Physics\+::\+Thermal\+::\+Surface\+Photon\+Luminosity (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_compact_star_1_1_star_profile_view}{Star\+Profile\+View}}}]{view,  }\item[{const \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_state_1_1_thermal_state}{State\+::\+Thermal\+State}} \&}]{state }\end{DoxyParamCaption})}
-
-
-
-Redshifted photon luminosity (L\+\_\+\textbackslash{}infty) from the surface. 
-
-Uses Stefan–\+Boltzmann law with gravitational redshift. Assumes thin blanket (R\+\_\+blanket ≈ R) so that (T\+\_\+\textbackslash{}infty = z\+\_\+\textbackslash{}text\{surf\}\textbackslash{}, T\+\_\+\textbackslash{}text\{surf\}).
-
-
-\begin{DoxyParams}{Parameters}
-{\em view} & Non-\/owning structural profile view (needs R and z\+\_\+surf). \\
-\hline
-{\em state} & Thermal state (uses T\+\_\+surf). \\
-\hline
-\end{DoxyParams}
-\begin{DoxyReturn}{Returns}
-Redshifted luminosity (L\+\_\+\textbackslash{}infty) in \mbox{[}erg s($^\wedge$\{-\/1\})\mbox{]}.
-\end{DoxyReturn}
-\begin{DoxyNote}{Note}
-If you prefer to use a (T\+\_\+\textbackslash{}infty)-\/based fit (e.\+g., (T\+\_\+\textbackslash{}infty$^\wedge$\{2.\+42\})), implement a sibling function instead of overloading this one. 
-\end{DoxyNote}
-\mbox{\Hypertarget{_thermal_8hpp_abd551ddb3c0bfa1e6bc761dd0cab0060}\label{_thermal_8hpp_abd551ddb3c0bfa1e6bc761dd0cab0060}} 
-\index{Thermal.hpp@{Thermal.hpp}!TotalNeutrinoLuminosity@{TotalNeutrinoLuminosity}}
-\index{TotalNeutrinoLuminosity@{TotalNeutrinoLuminosity}!Thermal.hpp@{Thermal.hpp}}
-\doxysubsubsection{\texorpdfstring{TotalNeutrinoLuminosity()}{TotalNeutrinoLuminosity()}}
-{\footnotesize\ttfamily double Compact\+Star\+::\+Physics\+::\+Thermal\+::\+Total\+Neutrino\+Luminosity (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_compact_star_1_1_star_profile_view}{Star\+Profile\+View}}}]{view,  }\item[{const \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_state_1_1_thermal_state}{State\+::\+Thermal\+State}} \&}]{state }\end{DoxyParamCaption})}
-
-
-
-Total redshifted neutrino luminosity (L\+\_\+\{\textbackslash{}nu,\textbackslash{}infty\}) (DUrca+\+MUrca). 
-
-Integrates emissivities over proper volume with metric factors. Callers decide whether to pass local T or a redshifted temperature ansatz.
-
-
-\begin{DoxyParams}{Parameters}
-{\em view} & Structural profile view. \\
-\hline
-{\em state} & Thermal state. \\
-\hline
-\end{DoxyParams}
-\begin{DoxyReturn}{Returns}
-Redshifted neutrino luminosity \mbox{[}erg s($^\wedge$\{-\/1\})\mbox{]}. 
-\end{DoxyReturn}

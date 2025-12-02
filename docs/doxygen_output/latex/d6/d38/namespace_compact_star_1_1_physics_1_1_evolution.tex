@@ -1,0 +1,190 @@
+\hypertarget{namespace_compact_star_1_1_physics_1_1_evolution}{}\doxysection{Compact\+Star\+::Physics\+::Evolution Namespace Reference}
+\label{namespace_compact_star_1_1_physics_1_1_evolution}\index{CompactStar::Physics::Evolution@{CompactStar::Physics::Evolution}}
+
+
+\mbox{\hyperlink{namespace_compact_star_1_1_physics_1_1_evolution}{Evolution}} engine for time-\/dependent neutron-\/star physics.  
+
+
+\doxysubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{struct_compact_star_1_1_physics_1_1_evolution_1_1_config}{Config}}
+\begin{DoxyCompactList}\small\item\em Configures a single evolution run. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_evolution_system}{Evolution\+System}}
+\begin{DoxyCompactList}\small\item\em GSL-\/compatible RHS functor (interfaces only in Phase 0). \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_geometry_cache}{Geometry\+Cache}}
+\begin{DoxyCompactList}\small\item\em Stores radial weights and simple structure flags for integrals. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_r_h_s_accumulator}{RHSAccumulator}}
+\begin{DoxyCompactList}\small\item\em Write-\/only accumulator for d\+Y/dt components, keyed by State\+Tag. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_star_context}{Star\+Context}}
+\begin{DoxyCompactList}\small\item\em Immutable, per-\/star adapter exposing cached geometry and composition. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_state_layout}{State\+Layout}}
+\begin{DoxyCompactList}\small\item\em Records offsets and sizes of each State\+Tag block in the flat ODE vector. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_state_vector}{State\+Vector}}
+\begin{DoxyCompactList}\small\item\em Composite view over the current ODE state (tag → State$\ast$). \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum class \mbox{\hyperlink{namespace_compact_star_1_1_physics_1_1_evolution_a0319e48cd15f3f7460b2432fd507fd34}{Stepper\+Type}} \{ \mbox{\hyperlink{namespace_compact_star_1_1_physics_1_1_evolution_a0319e48cd15f3f7460b2432fd507fd34a651742901a96ccc36ad193073cb71b4a}{RKF45}}
+, \mbox{\hyperlink{namespace_compact_star_1_1_physics_1_1_evolution_a0319e48cd15f3f7460b2432fd507fd34a14a72850b24c13d12d4e2370e682a181}{MSBDF}}
+ \}
+\begin{DoxyCompactList}\small\item\em Available ODE steppers (backend is GSL in Phase 1+). \end{DoxyCompactList}\item 
+enum class \mbox{\hyperlink{namespace_compact_star_1_1_physics_1_1_evolution_a77ec205aab45375896e1afc074f535bc}{Envelope\+Model}} \{ {\bfseries Iron}
+, {\bfseries Accreted}
+, \mbox{\hyperlink{namespace_compact_star_1_1_physics_1_1_evolution_a77ec205aab45375896e1afc074f535bca90589c47f06eb971d548591f23c285af}{Custom}}
+ \}
+\begin{DoxyCompactList}\small\item\em Surface boundary models mapping $T_b \to T_s$. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{namespace_compact_star_1_1_physics_1_1_evolution_a9ae738d6afc6c7301395a161c8190a44}{Pack\+State\+Vector}} (const \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_state_vector}{State\+Vector}} \&state, const \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_state_layout}{State\+Layout}} \&layout, double $\ast$y)
+\begin{DoxyCompactList}\small\item\em Pack all active \mbox{\hyperlink{namespace_compact_star_1_1_physics_1_1_state}{State}} blocks into the flat ODE vector y\mbox{[}\mbox{]}. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{namespace_compact_star_1_1_physics_1_1_evolution_a547187e211d1075edc75eb9d5176eea3}{Unpack\+State\+Vector}} (\mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_state_vector}{State\+Vector}} \&state, const \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_state_layout}{State\+Layout}} \&layout, const double $\ast$y)
+\begin{DoxyCompactList}\small\item\em Unpack the flat ODE vector y\mbox{[}\mbox{]} back into the \mbox{\hyperlink{namespace_compact_star_1_1_physics_1_1_state}{State}} blocks. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{namespace_compact_star_1_1_physics_1_1_evolution_a7706794e4cfb8a5ed48ab4e406ffce8b}{Scatter\+RHSFrom\+Accumulator}} (const \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_r_h_s_accumulator}{RHSAccumulator}} \&rhs, const \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_state_layout}{State\+Layout}} \&layout, double $\ast$dydt)
+\begin{DoxyCompactList}\small\item\em Scatter contributions from \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_r_h_s_accumulator}{RHSAccumulator}} into dydt\mbox{[}\mbox{]}. \end{DoxyCompactList}\item 
+constexpr std\+::size\+\_\+t \mbox{\hyperlink{namespace_compact_star_1_1_physics_1_1_evolution_a5ac7d5119f023b69a7e8f8770e7f15cf}{Num\+State\+Tags}} ()
+\begin{DoxyCompactList}\small\item\em Number of State\+Tag enumeration values. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\mbox{\hyperlink{namespace_compact_star_1_1_physics_1_1_evolution}{Evolution}} engine for time-\/dependent neutron-\/star physics. 
+
+Contains\+:
+\begin{DoxyItemize}
+\item \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_evolution_system}{Evolution\+System}} (RHS functor)
+\item \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_state_vector}{State\+Vector}} registry
+\item \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_r_h_s_accumulator}{RHSAccumulator}}
+\item \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_geometry_cache}{Geometry\+Cache}}
+\item Integrator bindings
+\item Observers, logging, checkpoints
+\end{DoxyItemize}
+
+This namespace represents the core of the time-\/evolution subsystem. 
+
+\doxysubsection{Enumeration Type Documentation}
+\mbox{\Hypertarget{namespace_compact_star_1_1_physics_1_1_evolution_a77ec205aab45375896e1afc074f535bc}\label{namespace_compact_star_1_1_physics_1_1_evolution_a77ec205aab45375896e1afc074f535bc}} 
+\index{CompactStar::Physics::Evolution@{CompactStar::Physics::Evolution}!EnvelopeModel@{EnvelopeModel}}
+\index{EnvelopeModel@{EnvelopeModel}!CompactStar::Physics::Evolution@{CompactStar::Physics::Evolution}}
+\doxysubsubsection{\texorpdfstring{EnvelopeModel}{EnvelopeModel}}
+{\footnotesize\ttfamily enum class \mbox{\hyperlink{namespace_compact_star_1_1_physics_1_1_evolution_a77ec205aab45375896e1afc074f535bc}{Compact\+Star\+::\+Physics\+::\+Evolution\+::\+Envelope\+Model}}\hspace{0.3cm}{\ttfamily [strong]}}
+
+
+
+Surface boundary models mapping $T_b \to T_s$. 
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Custom@{Custom}!CompactStar::Physics::Evolution@{CompactStar::Physics::Evolution}}\index{CompactStar::Physics::Evolution@{CompactStar::Physics::Evolution}!Custom@{Custom}}}\mbox{\Hypertarget{namespace_compact_star_1_1_physics_1_1_evolution_a77ec205aab45375896e1afc074f535bca90589c47f06eb971d548591f23c285af}\label{namespace_compact_star_1_1_physics_1_1_evolution_a77ec205aab45375896e1afc074f535bca90589c47f06eb971d548591f23c285af}} 
+Custom&Provide a custom callable in Phase 2+. \\
+\hline
+
+\end{DoxyEnumFields}
+\mbox{\Hypertarget{namespace_compact_star_1_1_physics_1_1_evolution_a0319e48cd15f3f7460b2432fd507fd34}\label{namespace_compact_star_1_1_physics_1_1_evolution_a0319e48cd15f3f7460b2432fd507fd34}} 
+\index{CompactStar::Physics::Evolution@{CompactStar::Physics::Evolution}!StepperType@{StepperType}}
+\index{StepperType@{StepperType}!CompactStar::Physics::Evolution@{CompactStar::Physics::Evolution}}
+\doxysubsubsection{\texorpdfstring{StepperType}{StepperType}}
+{\footnotesize\ttfamily enum class \mbox{\hyperlink{namespace_compact_star_1_1_physics_1_1_evolution_a0319e48cd15f3f7460b2432fd507fd34}{Compact\+Star\+::\+Physics\+::\+Evolution\+::\+Stepper\+Type}}\hspace{0.3cm}{\ttfamily [strong]}}
+
+
+
+Available ODE steppers (backend is GSL in Phase 1+). 
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{RKF45@{RKF45}!CompactStar::Physics::Evolution@{CompactStar::Physics::Evolution}}\index{CompactStar::Physics::Evolution@{CompactStar::Physics::Evolution}!RKF45@{RKF45}}}\mbox{\Hypertarget{namespace_compact_star_1_1_physics_1_1_evolution_a0319e48cd15f3f7460b2432fd507fd34a651742901a96ccc36ad193073cb71b4a}\label{namespace_compact_star_1_1_physics_1_1_evolution_a0319e48cd15f3f7460b2432fd507fd34a651742901a96ccc36ad193073cb71b4a}} 
+RKF45&Explicit Runge–\+Kutta–\+Fehlberg 4(5) — diagnostics/exploration. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{MSBDF@{MSBDF}!CompactStar::Physics::Evolution@{CompactStar::Physics::Evolution}}\index{CompactStar::Physics::Evolution@{CompactStar::Physics::Evolution}!MSBDF@{MSBDF}}}\mbox{\Hypertarget{namespace_compact_star_1_1_physics_1_1_evolution_a0319e48cd15f3f7460b2432fd507fd34a14a72850b24c13d12d4e2370e682a181}\label{namespace_compact_star_1_1_physics_1_1_evolution_a0319e48cd15f3f7460b2432fd507fd34a14a72850b24c13d12d4e2370e682a181}} 
+MSBDF&Multi-\/step BDF — good default for stiffness at late times. ~\newline
+ \\
+\hline
+
+\end{DoxyEnumFields}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{namespace_compact_star_1_1_physics_1_1_evolution_a5ac7d5119f023b69a7e8f8770e7f15cf}\label{namespace_compact_star_1_1_physics_1_1_evolution_a5ac7d5119f023b69a7e8f8770e7f15cf}} 
+\index{CompactStar::Physics::Evolution@{CompactStar::Physics::Evolution}!NumStateTags@{NumStateTags}}
+\index{NumStateTags@{NumStateTags}!CompactStar::Physics::Evolution@{CompactStar::Physics::Evolution}}
+\doxysubsubsection{\texorpdfstring{NumStateTags()}{NumStateTags()}}
+{\footnotesize\ttfamily constexpr std\+::size\+\_\+t Compact\+Star\+::\+Physics\+::\+Evolution\+::\+Num\+State\+Tags (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [constexpr]}}
+
+
+
+Number of State\+Tag enumeration values. 
+
+Assumes that State\+Tag\+::\+Custom is the last enumerator in the enum. \mbox{\Hypertarget{namespace_compact_star_1_1_physics_1_1_evolution_a9ae738d6afc6c7301395a161c8190a44}\label{namespace_compact_star_1_1_physics_1_1_evolution_a9ae738d6afc6c7301395a161c8190a44}} 
+\index{CompactStar::Physics::Evolution@{CompactStar::Physics::Evolution}!PackStateVector@{PackStateVector}}
+\index{PackStateVector@{PackStateVector}!CompactStar::Physics::Evolution@{CompactStar::Physics::Evolution}}
+\doxysubsubsection{\texorpdfstring{PackStateVector()}{PackStateVector()}}
+{\footnotesize\ttfamily void Compact\+Star\+::\+Physics\+::\+Evolution\+::\+Pack\+State\+Vector (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_state_vector}{State\+Vector}} \&}]{state,  }\item[{const \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_state_layout}{State\+Layout}} \&}]{layout,  }\item[{double $\ast$}]{y }\end{DoxyParamCaption})}
+
+
+
+Pack all active \mbox{\hyperlink{namespace_compact_star_1_1_physics_1_1_state}{State}} blocks into the flat ODE vector y\mbox{[}\mbox{]}. 
+
+For each active tag in {\ttfamily layout}, this\+:
+\begin{DoxyEnumerate}
+\item obtains the corresponding \mbox{\hyperlink{namespace_compact_star_1_1_physics_1_1_state}{State}}\& from {\ttfamily state},
+\item determines its block size from {\ttfamily layout},
+\item calls State\+::\+Pack\+To() to write into y\mbox{[}offset..offset+size).
+\end{DoxyEnumerate}
+
+
+\begin{DoxyParams}{Parameters}
+{\em state} & Composite view over all registered \mbox{\hyperlink{namespace_compact_star_1_1_physics_1_1_state}{State}} blocks. \\
+\hline
+{\em layout} & Layout describing offsets/sizes for each tag in y\mbox{[}\mbox{]}. \\
+\hline
+{\em y} & Output pointer to the first element of the flat ODE vector. Must have capacity at least layout.\+Total\+Size(). \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{namespace_compact_star_1_1_physics_1_1_evolution_a7706794e4cfb8a5ed48ab4e406ffce8b}\label{namespace_compact_star_1_1_physics_1_1_evolution_a7706794e4cfb8a5ed48ab4e406ffce8b}} 
+\index{CompactStar::Physics::Evolution@{CompactStar::Physics::Evolution}!ScatterRHSFromAccumulator@{ScatterRHSFromAccumulator}}
+\index{ScatterRHSFromAccumulator@{ScatterRHSFromAccumulator}!CompactStar::Physics::Evolution@{CompactStar::Physics::Evolution}}
+\doxysubsubsection{\texorpdfstring{ScatterRHSFromAccumulator()}{ScatterRHSFromAccumulator()}}
+{\footnotesize\ttfamily void Compact\+Star\+::\+Physics\+::\+Evolution\+::\+Scatter\+RHSFrom\+Accumulator (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_r_h_s_accumulator}{RHSAccumulator}} \&}]{rhs,  }\item[{const \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_state_layout}{State\+Layout}} \&}]{layout,  }\item[{double $\ast$}]{dydt }\end{DoxyParamCaption})}
+
+
+
+Scatter contributions from \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_r_h_s_accumulator}{RHSAccumulator}} into dydt\mbox{[}\mbox{]}. 
+
+After drivers have written d\+Y/dt contributions into {\ttfamily rhs} (one block per State\+Tag), this function copies those blocks into the flat RHS vector dydt\mbox{[}\mbox{]} using the offsets/sizes stored in {\ttfamily layout}.
+
+Only tags that are active in {\ttfamily layout} and configured in {\ttfamily rhs} are copied. For safety, a mismatch between block sizes will throw.
+
+
+\begin{DoxyParams}{Parameters}
+{\em rhs} & \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_r_h_s_accumulator}{RHSAccumulator}} containing per-\/tag d\+Y/dt blocks. \\
+\hline
+{\em layout} & Layout describing offsets/sizes for each tag in dydt\mbox{[}\mbox{]}. \\
+\hline
+{\em dydt} & Output pointer to the first element of the flat RHS vector. Must have capacity at least layout.\+Total\+Size(). \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{namespace_compact_star_1_1_physics_1_1_evolution_a547187e211d1075edc75eb9d5176eea3}\label{namespace_compact_star_1_1_physics_1_1_evolution_a547187e211d1075edc75eb9d5176eea3}} 
+\index{CompactStar::Physics::Evolution@{CompactStar::Physics::Evolution}!UnpackStateVector@{UnpackStateVector}}
+\index{UnpackStateVector@{UnpackStateVector}!CompactStar::Physics::Evolution@{CompactStar::Physics::Evolution}}
+\doxysubsubsection{\texorpdfstring{UnpackStateVector()}{UnpackStateVector()}}
+{\footnotesize\ttfamily void Compact\+Star\+::\+Physics\+::\+Evolution\+::\+Unpack\+State\+Vector (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_state_vector}{State\+Vector}} \&}]{state,  }\item[{const \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_state_layout}{State\+Layout}} \&}]{layout,  }\item[{const double $\ast$}]{y }\end{DoxyParamCaption})}
+
+
+
+Unpack the flat ODE vector y\mbox{[}\mbox{]} back into the \mbox{\hyperlink{namespace_compact_star_1_1_physics_1_1_state}{State}} blocks. 
+
+For each active tag in {\ttfamily layout}, this\+:
+\begin{DoxyEnumerate}
+\item obtains the corresponding \mbox{\hyperlink{namespace_compact_star_1_1_physics_1_1_state}{State}}\& from {\ttfamily state},
+\item determines its block size from {\ttfamily layout},
+\item calls State\+::\+Unpack\+From() on the slice y\mbox{[}offset..offset+size).
+\end{DoxyEnumerate}
+
+
+\begin{DoxyParams}{Parameters}
+{\em state} & Composite view over all registered \mbox{\hyperlink{namespace_compact_star_1_1_physics_1_1_state}{State}} blocks. \\
+\hline
+{\em layout} & Layout describing offsets/sizes for each tag in y\mbox{[}\mbox{]}. \\
+\hline
+{\em y} & Input pointer to the first element of the flat ODE vector. Must have length at least layout.\+Total\+Size(). \\
+\hline
+\end{DoxyParams}

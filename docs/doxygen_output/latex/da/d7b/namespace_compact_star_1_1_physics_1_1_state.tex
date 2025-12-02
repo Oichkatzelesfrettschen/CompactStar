@@ -1,0 +1,137 @@
+\hypertarget{namespace_compact_star_1_1_physics_1_1_state}{}\doxysection{Compact\+Star\+::Physics\+::State Namespace Reference}
+\label{namespace_compact_star_1_1_physics_1_1_state}\index{CompactStar::Physics::State@{CompactStar::Physics::State}}
+\doxysubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_state_1_1_b_n_v_state}{BNVState}}
+\begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_state_1_1_state}{State}} block for BNV-\/related dynamical or cached variables. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_state_1_1_state}{State}}
+\begin{DoxyCompactList}\small\item\em Abstract base class for any dynamic physics state block. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{struct_compact_star_1_1_physics_1_1_state_1_1_step_meta}{Step\+Meta}}
+\begin{DoxyCompactList}\small\item\em Diagnostic metadata for a single attempted integration step. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_state_1_1_thermal_state}{Thermal\+State}}
+\begin{DoxyCompactList}\small\item\em Dynamical thermal DOFs + cached physical temperatures. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum class \mbox{\hyperlink{namespace_compact_star_1_1_physics_1_1_state_af14f5554b0d9be50c5ea718733bc424b}{State\+Tag}} \+: unsigned int \{ \newline
+\mbox{\hyperlink{namespace_compact_star_1_1_physics_1_1_state_af14f5554b0d9be50c5ea718733bc424baf5a6a925d4084ae58bd71a8a95a84ba7}{Spin}} = 0
+, \mbox{\hyperlink{namespace_compact_star_1_1_physics_1_1_state_af14f5554b0d9be50c5ea718733bc424bafdf1e200d60089abcb4a4c80ecd2bb75}{Thermal}}
+, \mbox{\hyperlink{namespace_compact_star_1_1_physics_1_1_state_af14f5554b0d9be50c5ea718733bc424ba576bfc2ef5ff3aea7cecfe5f0bee3886}{Chem}}
+, \mbox{\hyperlink{namespace_compact_star_1_1_physics_1_1_state_af14f5554b0d9be50c5ea718733bc424baaca5e32569b8af22bd1e8a13eefb0c87}{BNV}}
+, \newline
+\mbox{\hyperlink{namespace_compact_star_1_1_physics_1_1_state_af14f5554b0d9be50c5ea718733bc424badc4c71563b9bc39a65be853457e6b7b6}{Structure}}
+, \mbox{\hyperlink{namespace_compact_star_1_1_physics_1_1_state_af14f5554b0d9be50c5ea718733bc424ba52432cbd9f9df2483189ce2cb45f8bad}{Magnetic}}
+, \mbox{\hyperlink{namespace_compact_star_1_1_physics_1_1_state_af14f5554b0d9be50c5ea718733bc424ba90589c47f06eb971d548591f23c285af}{Custom}}
+ \}
+\begin{DoxyCompactList}\small\item\em Enumerates high-\/level dynamic subsystems (\char`\"{}state blocks\char`\"{}) of the model. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+constexpr std\+::string\+\_\+view \mbox{\hyperlink{namespace_compact_star_1_1_physics_1_1_state_ad94b7336e81d9f83c3c7f2eb946b5e9e}{To\+String}} (\mbox{\hyperlink{namespace_compact_star_1_1_physics_1_1_state_af14f5554b0d9be50c5ea718733bc424b}{State\+Tag}} tag)
+\begin{DoxyCompactList}\small\item\em Convert a {\ttfamily State\+Tag} to a short human-\/readable name. \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{namespace_compact_star_1_1_physics_1_1_state_a845a2130a1974db18fe62f1942400561}{To\+String\+Copy}} (\mbox{\hyperlink{namespace_compact_star_1_1_physics_1_1_state_af14f5554b0d9be50c5ea718733bc424b}{State\+Tag}} tag)
+\begin{DoxyCompactList}\small\item\em Return a printable {\ttfamily std\+::string} from a {\ttfamily State\+Tag}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\begin{DoxyNote}{Note}
+Design rationale\+:
+\end{DoxyNote}
+The \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_state_1_1_state}{State}} base class intentionally does {\itshape not} provide storage (e.\+g. no {\ttfamily std\+::vector\texorpdfstring{$<$}{<}double\texorpdfstring{$>$}{>} values\+\_\+} here). This is deliberate\+:
+
+
+\begin{DoxyItemize}
+\item Some states store a simple contiguous vector (Spin/\+Thermal/\+Chem/\+BNV).
+\item Future state types may store grid-\/based data, compressed data, external views, or multi-\/zone structures.
+\end{DoxyItemize}
+
+By keeping \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_state_1_1_state}{State}} as a {\itshape pure interface}, the evolution system interacts with all state blocks uniformly\+: \begin{DoxyVerb} Size()        → number of DOFs
+ Data()        → contiguous pointer
+ PackTo()      → flatten into global y[]
+ UnpackFrom()  → restore from global y[]
+\end{DoxyVerb}
+ Each derived class is free to choose its internal representation as long as it exposes the contiguous view required by the evolution framework.
+
+This keeps the core evolution machinery flexible and future-\/proof, while allowing physics modules to use whatever internal layout they need. 
+
+\doxysubsection{Enumeration Type Documentation}
+\mbox{\Hypertarget{namespace_compact_star_1_1_physics_1_1_state_af14f5554b0d9be50c5ea718733bc424b}\label{namespace_compact_star_1_1_physics_1_1_state_af14f5554b0d9be50c5ea718733bc424b}} 
+\index{CompactStar::Physics::State@{CompactStar::Physics::State}!StateTag@{StateTag}}
+\index{StateTag@{StateTag}!CompactStar::Physics::State@{CompactStar::Physics::State}}
+\doxysubsubsection{\texorpdfstring{StateTag}{StateTag}}
+{\footnotesize\ttfamily enum class \mbox{\hyperlink{namespace_compact_star_1_1_physics_1_1_state_af14f5554b0d9be50c5ea718733bc424b}{Compact\+Star\+::\+Physics\+::\+State\+::\+State\+Tag}} \+: unsigned int\hspace{0.3cm}{\ttfamily [strong]}}
+
+
+
+Enumerates high-\/level dynamic subsystems (\char`\"{}state blocks\char`\"{}) of the model. 
+
+Each distinct {\ttfamily State\+Tag} corresponds to one concrete state block (Spin\+State, \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_state_1_1_thermal_state}{Thermal\+State}}, Chem\+State, \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_state_1_1_b_n_v_state}{BNVState}}, …) in Physics/\+State, which the evolution System packs into the global State\+Vector. \begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Spin@{Spin}!CompactStar::Physics::State@{CompactStar::Physics::State}}\index{CompactStar::Physics::State@{CompactStar::Physics::State}!Spin@{Spin}}}\mbox{\Hypertarget{namespace_compact_star_1_1_physics_1_1_state_af14f5554b0d9be50c5ea718733bc424baf5a6a925d4084ae58bd71a8a95a84ba7}\label{namespace_compact_star_1_1_physics_1_1_state_af14f5554b0d9be50c5ea718733bc424baf5a6a925d4084ae58bd71a8a95a84ba7}} 
+Spin&Rotational degree of freedom (Ω, Ω̇, I, etc.) \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Thermal@{Thermal}!CompactStar::Physics::State@{CompactStar::Physics::State}}\index{CompactStar::Physics::State@{CompactStar::Physics::State}!Thermal@{Thermal}}}\mbox{\Hypertarget{namespace_compact_star_1_1_physics_1_1_state_af14f5554b0d9be50c5ea718733bc424bafdf1e200d60089abcb4a4c80ecd2bb75}\label{namespace_compact_star_1_1_physics_1_1_state_af14f5554b0d9be50c5ea718733bc424bafdf1e200d60089abcb4a4c80ecd2bb75}} 
+Thermal&Temperature / energy content (T̃, C\+\_\+v, L\+\_\+ν, L\+\_\+γ) \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Chem@{Chem}!CompactStar::Physics::State@{CompactStar::Physics::State}}\index{CompactStar::Physics::State@{CompactStar::Physics::State}!Chem@{Chem}}}\mbox{\Hypertarget{namespace_compact_star_1_1_physics_1_1_state_af14f5554b0d9be50c5ea718733bc424ba576bfc2ef5ff3aea7cecfe5f0bee3886}\label{namespace_compact_star_1_1_physics_1_1_state_af14f5554b0d9be50c5ea718733bc424ba576bfc2ef5ff3aea7cecfe5f0bee3886}} 
+Chem&Chemical imbalance (η\+\_\+e, η\+\_\+μ, etc.) \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{BNV@{BNV}!CompactStar::Physics::State@{CompactStar::Physics::State}}\index{CompactStar::Physics::State@{CompactStar::Physics::State}!BNV@{BNV}}}\mbox{\Hypertarget{namespace_compact_star_1_1_physics_1_1_state_af14f5554b0d9be50c5ea718733bc424baaca5e32569b8af22bd1e8a13eefb0c87}\label{namespace_compact_star_1_1_physics_1_1_state_af14f5554b0d9be50c5ea718733bc424baaca5e32569b8af22bd1e8a13eefb0c87}} 
+BNV&Baryon-\/number-\/violating or exotic particle population. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Structure@{Structure}!CompactStar::Physics::State@{CompactStar::Physics::State}}\index{CompactStar::Physics::State@{CompactStar::Physics::State}!Structure@{Structure}}}\mbox{\Hypertarget{namespace_compact_star_1_1_physics_1_1_state_af14f5554b0d9be50c5ea718733bc424badc4c71563b9bc39a65be853457e6b7b6}\label{namespace_compact_star_1_1_physics_1_1_state_af14f5554b0d9be50c5ea718733bc424badc4c71563b9bc39a65be853457e6b7b6}} 
+Structure&Optional\+: structural/geometric parameters (R, M, etc.) \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Magnetic@{Magnetic}!CompactStar::Physics::State@{CompactStar::Physics::State}}\index{CompactStar::Physics::State@{CompactStar::Physics::State}!Magnetic@{Magnetic}}}\mbox{\Hypertarget{namespace_compact_star_1_1_physics_1_1_state_af14f5554b0d9be50c5ea718733bc424ba52432cbd9f9df2483189ce2cb45f8bad}\label{namespace_compact_star_1_1_physics_1_1_state_af14f5554b0d9be50c5ea718733bc424ba52432cbd9f9df2483189ce2cb45f8bad}} 
+Magnetic&Optional\+: magnetic-\/field state (if evolved explicitly) \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Custom@{Custom}!CompactStar::Physics::State@{CompactStar::Physics::State}}\index{CompactStar::Physics::State@{CompactStar::Physics::State}!Custom@{Custom}}}\mbox{\Hypertarget{namespace_compact_star_1_1_physics_1_1_state_af14f5554b0d9be50c5ea718733bc424ba90589c47f06eb971d548591f23c285af}\label{namespace_compact_star_1_1_physics_1_1_state_af14f5554b0d9be50c5ea718733bc424ba90589c47f06eb971d548591f23c285af}} 
+Custom&Placeholder for user-\/extended or experimental subsystems. \\
+\hline
+
+\end{DoxyEnumFields}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{namespace_compact_star_1_1_physics_1_1_state_ad94b7336e81d9f83c3c7f2eb946b5e9e}\label{namespace_compact_star_1_1_physics_1_1_state_ad94b7336e81d9f83c3c7f2eb946b5e9e}} 
+\index{CompactStar::Physics::State@{CompactStar::Physics::State}!ToString@{ToString}}
+\index{ToString@{ToString}!CompactStar::Physics::State@{CompactStar::Physics::State}}
+\doxysubsubsection{\texorpdfstring{ToString()}{ToString()}}
+{\footnotesize\ttfamily constexpr std\+::string\+\_\+view Compact\+Star\+::\+Physics\+::\+State\+::\+To\+String (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{namespace_compact_star_1_1_physics_1_1_state_af14f5554b0d9be50c5ea718733bc424b}{State\+Tag}}}]{tag }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [constexpr]}}
+
+
+
+Convert a {\ttfamily State\+Tag} to a short human-\/readable name. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em tag} & Enumeration value. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Constant string\+\_\+view naming the state. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{namespace_compact_star_1_1_physics_1_1_state_a845a2130a1974db18fe62f1942400561}\label{namespace_compact_star_1_1_physics_1_1_state_a845a2130a1974db18fe62f1942400561}} 
+\index{CompactStar::Physics::State@{CompactStar::Physics::State}!ToStringCopy@{ToStringCopy}}
+\index{ToStringCopy@{ToStringCopy}!CompactStar::Physics::State@{CompactStar::Physics::State}}
+\doxysubsubsection{\texorpdfstring{ToStringCopy()}{ToStringCopy()}}
+{\footnotesize\ttfamily std\+::string Compact\+Star\+::\+Physics\+::\+State\+::\+To\+String\+Copy (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{namespace_compact_star_1_1_physics_1_1_state_af14f5554b0d9be50c5ea718733bc424b}{State\+Tag}}}]{tag }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Return a printable {\ttfamily std\+::string} from a {\ttfamily State\+Tag}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em tag} & Enumeration value. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Printable string. 
+\end{DoxyReturn}
