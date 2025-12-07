@@ -3,85 +3,91 @@
  * CompactStar
  * See License file at the top of the source tree.
  *
- * Copyright (c) 2025 Mohammadreza Zakeri
+ * Copyright (c) 2025
+ * Mohammadreza Zakeri
  *
- * Permission is hereby granted, free of charge, to any person obtaining a copy
- * of this software and associated documentation files (the "Software"), to deal
- * in the Software without restriction, including without limitation the rights
- * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
- * copies of the Software, and to permit persons to whom the Software is
- * furnished to do so, subject to the following conditions:
- *
- * The above copyright notice and this permission notice shall be included in all
- * copies or substantial portions of the Software.
- *
- * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
- * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
- * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
- * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
- * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
- * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
- * SOFTWARE.
+ * MIT License — see LICENSE at repo root.
  */
 
 /**
- * @file IntegratorGSL.hpp
- * @brief RAII front-end for a GSL ODE driver (interfaces only in Phase 0).
+ * @file GSLIntegrator.hpp
+ * @brief RAII front-end for a GSL ODE driver (gsl_odeiv2).
  *
- * Wraps stepper choice, tolerances, and integrates while invoking an Observer.
+ * Wraps stepper choice, tolerances, and integrates a flat ODE system
  *
- * @ingroup ChemicalHeating
+ *     dy/dt = f(t, y)
+ *
+ * where f(t, y) is provided by Physics::Evolution::EvolutionSystem.
+ *
+ * Packing/unpacking between State blocks and the flat y[] buffer is handled
+ * elsewhere (StateLayout + StatePacking); this class only sees the flat y[].
+ *
+ * @ingroup PhysicsEvolution
  */
-#ifndef CompactStar_ChemicalHeating_IntegratorGSL_H
-#define CompactStar_ChemicalHeating_IntegratorGSL_H
+
+#ifndef CompactStar_Physics_Evolution_Integrator_GSLIntegrator_H
+#define CompactStar_Physics_Evolution_Integrator_GSLIntegrator_H
 
 #include <cstddef>
 
 namespace CompactStar
 {
-namespace ChemicalHeating
+namespace Physics
 {
+namespace Evolution
+{
+
 class EvolutionSystem;
-struct EvolutionState;
 struct Config;
-class Observer;
-} // namespace ChemicalHeating
-} // namespace CompactStar
 
-namespace CompactStar
-{
-namespace ChemicalHeating
-{
-
-//==============================================================
-//                      IntegratorGSL Class
-//==============================================================
 /**
- * @class IntegratorGSL
- * @brief Thin RAII wrapper around gsl_odeiv2 (impl added in Phase 1).
+ * @class GSLIntegrator
+ * @brief Thin RAII wrapper around gsl_odeiv2_driver.
+ *
+ * Public API is deliberately minimal:
+ *   - construct with (EvolutionSystem, Config),
+ *   - call Integrate(t0, t1, y, n).
+ *
+ * The caller is responsible for:
+ *   - allocating y[0..n-1],
+ *   - packing/unpacking state via StateLayout / StatePacking,
+ *   - calling observers (if any) around Integrate().
  */
-class IntegratorGSL
+class GSLIntegrator
 {
   public:
-	/** @brief Construct from RHS and configuration (uses Config tolerances/stepper). */
-	IntegratorGSL(const EvolutionSystem &sys, const Config &cfg);
+	/**
+	 * @brief Construct from RHS and configuration.
+	 *
+	 * Stores **non-owning** pointers to @p sys and @p cfg; the caller
+	 * must ensure they outlive this integrator.
+	 */
+	GSLIntegrator(const EvolutionSystem &sys, const Config &cfg);
 
 	/**
-	 * @brief Integrate from t0 to t1, saving every @c cfg.dt_save via the Observer.
-	 * @param t0    Start time (s).
-	 * @param t1    End time (s).
-	 * @param state In/out state (read initial y, write final y).
-	 * @param obs   Observer to receive saved samples.
-	 * @return True if completed to @p t1; false if aborted (error or guard).
+	 * @brief Integrate from t0 to t1, updating y in place.
+	 *
+	 * Uses gsl_odeiv2_driver with:
+	 *   - dimension n,
+	 *   - stepper chosen from Config::stepper,
+	 *   - tolerances taken from Config::rtol / Config::atol.
+	 *
+	 * @param t0  Start time.
+	 * @param t1  End time.
+	 * @param y   In/out state vector of length @p n.
+	 * @param n   Dimension of the ODE system.
+	 *
+	 * @return true on success (GSL_SUCCESS); false otherwise.
 	 */
-	bool integrate(double t0, double t1, EvolutionState &state, Observer &obs) const;
+	bool Integrate(double t0, double t1, double *y, std::size_t n) const;
 
   private:
-	const EvolutionSystem *m_sys = 0;
-	const Config *m_cfg = 0;
+	const EvolutionSystem *m_sys = nullptr;
+	const Config *m_cfg = nullptr;
 };
 
-} // namespace ChemicalHeating
+} // namespace Evolution
+} // namespace Physics
 } // namespace CompactStar
 
-#endif /* CompactStar_ChemicalHeating_IntegratorGSL_H */
+#endif /* CompactStar_Physics_Evolution_Integrator_GSLIntegrator_H */

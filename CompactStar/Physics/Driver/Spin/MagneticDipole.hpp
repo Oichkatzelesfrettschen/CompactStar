@@ -31,7 +31,6 @@
 #include <vector>
 
 #include "CompactStar/Physics/Driver/IDriver.hpp"
-#include "CompactStar/Physics/State/SpinState.hpp"
 #include "CompactStar/Physics/State/Tags.hpp"
 
 namespace CompactStar::Physics::Driver::Spin

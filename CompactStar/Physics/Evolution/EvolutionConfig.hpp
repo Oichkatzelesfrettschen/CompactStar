@@ -60,12 +60,21 @@ namespace CompactStar::Physics::Evolution
 //==============================================================
 /**
  * @enum StepperType
- * @brief Available ODE steppers (backend is GSL in Phase 1+).
+ * @brief Available ODE steppers (GSL backends).
+ *
+ * These map directly to gsl_odeiv2_step_type values.
+ * The defaults (MSBDF for stiff; RKF45 for general) are reasonable for
+ * neutron-star evolution problems where stiffness can appear in late-time
+ * thermal/chemical equations.
  */
 enum class StepperType
 {
-	RKF45, /*!< Explicit Runge–Kutta–Fehlberg 4(5) — diagnostics/exploration. */
-	MSBDF  /*!< Multi-step BDF — good default for stiffness at late times.   */
+	RKF45, /*!< Runge–Kutta–Fehlberg 4(5) — robust general-purpose nonstiff stepper. */
+	RKCK,  /*!< Cash–Karp RK45 — similar to RKF45, sometimes slightly more stable. */
+	RK8PD, /*!< Dormand–Prince 8(5,3) — high accuracy explicit RK. */
+	RK2,   /*!< Simple RK2 (midpoint). Useful only for debugging. */
+
+	MSBDF /*!< Multistep BDF — stiff solver; good default for late-time evolution. */
 };
 
 //==============================================================

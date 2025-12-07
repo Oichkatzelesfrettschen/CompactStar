@@ -3,25 +3,10 @@
  * CompactStar
  * See License file at the top of the source tree.
  *
- * Copyright (c) 2025 Mohammadreza Zakeri
+ * Copyright (c) 2025
+ * Mohammadreza Zakeri
  *
- * Permission is hereby granted, free of charge, to any person obtaining a copy
- * of this software and associated documentation files (the "Software"), to deal
- * in the Software without restriction, including without limitation the rights
- * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
- * copies of the Software, and to permit persons to whom the Software is
- * furnished to do so, subject to the following conditions:
- *
- * The above copyright notice and this permission notice shall be included in all
- * copies or substantial portions of the Software.
- *
- * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
- * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
- * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
- * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
- * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
- * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
- * SOFTWARE.
+ * MIT License — see LICENSE at repo root.
  */
 /**
  * @defgroup PhysicsEvolution Physics evolution module
@@ -31,34 +16,55 @@
  * @file EvolutionSystem.hpp
  * @brief Right-hand side (RHS) functor for the ODE system dY/dt.
  *
- * The RHS assembles volume integrals using GeometryCache and RateSet, and computes
- * time derivatives for \f$T^\infty\f$ and \f$\boldsymbol{\eta}\f$ (and optionally \f$\Omega\f$).
- * Designed to be wrapped by a GSL driver in @c IntegratorGSL.
+ * EvolutionSystem wires together:
+ *  - static model context (StarContext, GeometryCache, envelope, Config),
+ *  - the dynamic StateVector (Spin/Thermal/Chem/BNV blocks),
+ *  - an RHSAccumulator for dY/dt contributions, and
+ *  - a set of physics drivers implementing IDriver.
+ *
+ * It does **not** implement any physics directly. The workflow is:
+ *
+ *  1. Unpack the flat y[] into State blocks (StatePacking::UnpackStateVector).
+ *  2. Clear RHSAccumulator.
+ *  3. For each driver:
+ *        driver->AccumulateRHS(t, state, rhs, *ctx.star);
+ *  4. Scatter RHSAccumulator back into dydt[]
+ *     (StatePacking::ScatterRHSFromAccumulator).
+ *
+ * Designed to be wrapped by a GSL driver.
  *
  * @ingroup PhysicsEvolution
  */
+
 #ifndef CompactStar_Physics_Evolution_EvolutionSystem_H
 #define CompactStar_Physics_Evolution_EvolutionSystem_H
 
-// #include <vector>
+#include <memory>
+#include <vector>
 
 namespace CompactStar
 {
 namespace Physics
 {
+// Forward declarations for static context pieces
 namespace Thermal
 {
 class IEnvelope;
 }
+
 namespace Evolution
 {
 class StarContext;
 class StateVector;
 class GeometryCache;
 class RHSAccumulator;
-// class RateSet;
+class StateLayout;
 struct Config;
 } // namespace Evolution
+
+// Driver interface lives at the Physics level (see IDriver.hpp)
+class IDriver;
+
 } // namespace Physics
 } // namespace CompactStar
 
@@ -69,58 +75,80 @@ namespace Physics
 namespace Evolution
 {
 
+// Shared-pointer alias for owning driver instances.
+using DriverPtr = std::shared_ptr<Physics::IDriver>;
+
 //==============================================================
 //                      EvolutionSystem Class
 //==============================================================
 /**
  * @class EvolutionSystem
- * @brief GSL-compatible RHS functor (interfaces only in Phase 0).
+ * @brief GSL-compatible RHS functor for dY/dt.
+ *
+ * EvolutionSystem owns no physics; it only coordinates:
+ *  - unpacking y[] into State blocks,
+ *  - invoking each IDriver to accumulate into RHSAccumulator,
+ *  - scattering RHS back into dydt[].
  */
 class EvolutionSystem
 {
   public:
 	/**
-	 * @brief Bundles read-only references to the model components.
+	 * @brief Bundles read-only references to static model components.
 	 */
 	struct Context
 	{
-		const StarContext *star = nullptr;
-		const GeometryCache *geo = nullptr;
-		const Thermal::IEnvelope *envelope = nullptr;
-		const Config *cfg = nullptr;
-		// maybe Microphysics, RateSet later, still static
+		const StarContext *star = nullptr;			  ///< geometry, EOS, profiles
+		const GeometryCache *geo = nullptr;			  ///< precomputed weights
+		const Thermal::IEnvelope *envelope = nullptr; ///< surface T_b → T_s
+		const Config *cfg = nullptr;				  ///< evolution configuration
 	};
 
-	/** @brief Construct with a fully-populated Context. */
-	explicit EvolutionSystem(const Context &ctx,
-							 StateVector &state,
-							 RHSAccumulator &rhs);
+	/**
+	 * @brief Construct the RHS functor.
+	 *
+	 * @param ctx     Static model context (stored by value, pointers non-owning).
+	 * @param state   Non-owning reference to logical state blocks.
+	 * @param rhs     Non-owning reference to RHS accumulator.
+	 * @param layout  Layout describing how tags map into the flat y[]/dydt[].
+	 * @param drivers List of physics drivers (owned via DriverPtr).
+	 *
+	 * Lifetime rules:
+	 *  - The StarContext, GeometryCache, IEnvelope, Config pointed to by @p ctx
+	 *    must outlive this EvolutionSystem.
+	 *  - @p state, @p rhs, and @p layout must outlive this EvolutionSystem.
+	 *  - Drivers are owned by EvolutionSystem via the DriverPtr vector.
+	 */
+	EvolutionSystem(const Context &ctx,
+					StateVector &state,
+					RHSAccumulator &rhs,
+					const StateLayout &layout,
+					std::vector<DriverPtr> drivers);
 
 	/**
 	 * @brief Evaluate RHS \f$\dot{y} = f(t,y)\f$.
 	 *
-	 * Signature mirrors GSL callbacks (no includes here). Implementation will:
-	 *  1) convert \f$T^\infty \to T(r)\f$ via redshift,
-	 *  2) assemble integrals for \f{C, L_\nu^\infty, H^\infty, L_\gamma^\infty\f},
-	 *  3) compute \f$\dot{T}^\infty\f$ and \f$\dot{\boldsymbol{\eta}}\f$ (and \f$\dot\Omega\f$ if coupled).
-	 *
 	 * @param t     Time (s).
-	 * @param y     State array (size = 1 + n_eta + [\Omega]).
+	 * @param y     State array (size = layout.TotalSize()).
 	 * @param dydt  Output derivatives (same size as @p y).
-	 * @return 0 if success; nonzero on failure (consistent with GSL codes).
+	 *
+	 * @return 0 on success; nonzero on failure (GSL convention).
 	 */
 	int operator()(double t, const double y[], double dydt[]) const;
 
   private:
-	Context m_ctx;
-	StateVector &m_state;  // dynamic: how we interpret y[]
-	RHSAccumulator &m_rhs; // dynamic: scratch for dY/dt
+	/// Validate that the static Context is non-null / self-consistent.
+	void ValidateContext() const;
+
+	Context m_ctx;					  ///< static model context (non-owning pointers)
+	StateVector &m_state;			  ///< logical state blocks (non-owning)
+	RHSAccumulator &m_rhs;			  ///< RHS scratch storage (non-owning)
+	const StateLayout &m_layout;	  ///< y[] / dydt[] layout (non-owning)
+	std::vector<DriverPtr> m_drivers; ///< owned physics drivers
 };
-//==============================================================
+
 } // namespace Evolution
-//==============================================================
 } // namespace Physics
-//==============================================================
 } // namespace CompactStar
-//==============================================================
+
 #endif /* CompactStar_Physics_Evolution_EvolutionSystem_H */

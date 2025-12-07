@@ -1,154 +1,191 @@
 // -*- lsst-c++ -*-
 /*
- * CompactStar — ChemicalHeating
+ * CompactStar
+ * See License file at the top of the source tree.
  *
- * Phase 1 integrator: a small RK4 stepping loop so we can run end-to-end now.
- * We will replace this with a gsl_odeiv2 driver in Phase 2 while preserving the API.
+ * Copyright (c) 2025
+ * Mohammadreza Zakeri
+ *
+ * MIT License — see LICENSE at repo root.
  */
 
-#include "CompactStar/ChemicalHeating/IntegratorGSL.hpp"
-#include "CompactStar/ChemicalHeating/Config.hpp"
-#include "CompactStar/ChemicalHeating/EvolutionState.hpp"
-#include "CompactStar/ChemicalHeating/EvolutionSystem.hpp"
-#include "CompactStar/ChemicalHeating/Observers.hpp"
+/**
+ * @file GSLIntegrator.cpp
+ * @brief Implementation of GSLIntegrator using gsl_odeiv2_driver.
+ */
 
-#include <algorithm>
-#include <cmath>
-#include <vector>
+#include "CompactStar/Physics/Evolution/Integrator/GSLIntegrator.hpp"
+
+#include <stdexcept>
+
+#include <gsl/gsl_errno.h>
+#include <gsl/gsl_odeiv2.h>
+
+#include "CompactStar/Physics/Evolution/EvolutionConfig.hpp"
+#include "CompactStar/Physics/Evolution/EvolutionSystem.hpp"
 
 namespace CompactStar
 {
-namespace ChemicalHeating
+namespace Physics
+{
+namespace Evolution
 {
 
+//------------------------------------------------------------------
+// Adapter: EvolutionSystem → gsl_odeiv2_system::function
+//------------------------------------------------------------------
 namespace
 {
-// =============================================================
-// [ZAKI-QUESTION]: Packing order agreed? y[0]=Tinf, then eta[0..n-1], then Omega (optional).
-static inline void pack_state(const EvolutionState &s, const Config &cfg, std::vector<double> &y)
+
+int gsl_rhs(double t, const double y[], double dydt[], void *params)
 {
-	const std::size_t Neta = (cfg.n_eta > 0 ? cfg.n_eta : std::size_t(1));
-	y.resize(1 + Neta + (cfg.couple_spin ? 1 : 0));
-	y[0] = s.Tinf;
-	for (std::size_t k = 0; k < Neta; ++k)
+	auto *sys = static_cast<EvolutionSystem *>(params);
+	if (!sys)
 	{
-		const double val = (k < s.eta.size() ? s.eta[k] : 0.0);
-		y[1 + k] = val;
+		return GSL_EBADFUNC;
 	}
-	if (cfg.couple_spin)
-		y[1 + Neta] = s.Omega;
-}
-// =============================================================
-static inline void unpack_state(const std::vector<double> &y, const Config &cfg, EvolutionState &s)
-{
-	const std::size_t Neta = (cfg.n_eta > 0 ? cfg.n_eta : std::size_t(1));
-	s.Tinf = y[0];
-	s.eta.resize(Neta);
-	for (std::size_t k = 0; k < Neta; ++k)
-		s.eta[k] = y[1 + k];
-	if (cfg.couple_spin)
-		s.Omega = y[1 + Neta];
+
+	// EvolutionSystem::operator() already returns 0 on success,
+	// non-zero on failure. GSL expects 0 for success.
+	const int rc = sys->operator()(t, y, dydt);
+	return (rc == 0) ? GSL_SUCCESS : GSL_EBADFUNC;
 }
 
-//==============================================================
-//                   RK4 Struct
-//==============================================================
-struct RK4
+/**
+ * @brief Map Config::stepper to a gsl_odeiv2_step_type.
+ *
+ * If the stepper is not recognized, defaults to gsl_odeiv2_step_rkf45.
+ */
+const gsl_odeiv2_step_type *SelectStepper(StepperType type)
 {
-	template <class F>
-	static void step(F &&f, double t, double h, std::vector<double> &y, std::vector<double> &k, std::vector<double> &tmp)
+	switch (type)
 	{
-		const std::size_t n = y.size();
-		k.resize(n);
-		tmp.resize(n);
+	case StepperType::MSBDF:
+		// Multistep BDF (stiff) – matches your default Config.
+		return gsl_odeiv2_step_msbdf;
 
-		// k1 = f(t, y)
-		f(t, y.data(), k.data());
-		for (std::size_t i = 0; i < n; ++i)
-			tmp[i] = y[i] + 0.5 * h * k[i];
+	case StepperType::RKF45:
+		// Classic nonstiff Runge–Kutta–Fehlberg (4,5).
+		return gsl_odeiv2_step_rkf45;
 
-		// k2
-		std::vector<double> k2(n);
-		f(t + 0.5 * h, tmp.data(), k2.data());
-		for (std::size_t i = 0; i < n; ++i)
-			tmp[i] = y[i] + 0.5 * h * k2[i];
+	case StepperType::RK8PD:
+		// Dormand–Prince 8(5,3) – high order explicit RK.
+		return gsl_odeiv2_step_rk8pd;
 
-		// k3
-		std::vector<double> k3(n);
-		f(t + 0.5 * h, tmp.data(), k3.data());
-		for (std::size_t i = 0; i < n; ++i)
-			tmp[i] = y[i] + h * k3[i];
+	case StepperType::RKCK:
+		// Cash–Karp RK45.
+		return gsl_odeiv2_step_rkck;
 
-		// k4
-		std::vector<double> k4(n);
-		f(t + h, tmp.data(), k4.data());
+	case StepperType::RK2:
+		// Simple 2nd-order RK.
+		return gsl_odeiv2_step_rk2;
 
-		// y_{n+1}
-		for (std::size_t i = 0; i < n; ++i)
-		{
-			y[i] += (h / 6.0) * (k[i] + 2.0 * k2[i] + 2.0 * k3[i] + k4[i]);
-		}
+	default:
+		// Fallback: reasonably robust nonstiff stepper.
+		return gsl_odeiv2_step_rkf45;
 	}
-};
+}
 
 } // anonymous namespace
 
-//==============================================================
-//                   IntegratorGSL Class
-//==============================================================
-IntegratorGSL::IntegratorGSL(const EvolutionSystem &sys, const Config &cfg)
+//------------------------------------------------------------------
+// GSLIntegrator::GSLIntegrator
+//------------------------------------------------------------------
+GSLIntegrator::GSLIntegrator(const EvolutionSystem &sys, const Config &cfg)
 	: m_sys(&sys), m_cfg(&cfg)
 {
-}
-//--------------------------------------------------------------
-bool IntegratorGSL::integrate(double t0, double t1, EvolutionState &state, Observer &obs) const
-{
-	// [ZAKI-QUESTION]: For the walking skeleton, we do fixed dt based on dt_save.
-	// When we switch to GSL, we’ll respect rtol/atol and still sample at dt_save.
-	const double dt_save = (m_cfg ? m_cfg->dt_save : 1.0e2);
-	const std::size_t Neta = (m_cfg && m_cfg->n_eta > 0) ? m_cfg->n_eta : std::size_t(1);
-
-	std::vector<double> y, k, tmp;
-	pack_state(state, *m_cfg, y);
-
-	double t = t0;
-	state.t = t;
-
-	// Initial sample
+	if (!m_sys)
 	{
-		Derived d; // Phase-1: zeros; we’ll compute Ts/Lnu/H later when micro is wired.
-		obs.on_sample(state, d);
+		throw std::runtime_error("GSLIntegrator: EvolutionSystem pointer must not be null.");
+	}
+	if (!m_cfg)
+	{
+		throw std::runtime_error("GSLIntegrator: Config pointer must not be null.");
+	}
+}
+
+//------------------------------------------------------------------
+// GSLIntegrator::Integrate
+//------------------------------------------------------------------
+bool GSLIntegrator::Integrate(double t0, double t1, double *y, std::size_t n) const
+{
+	if (!m_sys || !m_cfg || !y)
+		return false;
+
+	if (t1 <= t0 || n == 0)
+		return true; // nothing to do
+
+	// --------------------------------------------------------------
+	// 1. Set up gsl_odeiv2_system
+	// --------------------------------------------------------------
+	gsl_odeiv2_system sys{};
+	sys.function = &gsl_rhs;
+	sys.jacobian = nullptr; // finite-difference Jacobian (or add later)
+	sys.dimension = static_cast<size_t>(n);
+	sys.params = const_cast<EvolutionSystem *>(m_sys);
+
+	// --------------------------------------------------------------
+	// 2. Choose stepper and tolerances from Config
+	// --------------------------------------------------------------
+	const gsl_odeiv2_step_type *step_type = SelectStepper(m_cfg->stepper);
+
+	const double rtol = (m_cfg->rtol > 0.0) ? m_cfg->rtol : 1.0e-6;
+	const double atol = (m_cfg->atol > 0.0) ? m_cfg->atol : 1.0e-10;
+
+	// Initial step guess:
+	//    a small fraction of the interval by default.
+	double h_init = (t1 - t0) * 1.0e-3;
+	if (h_init <= 0.0)
+	{
+		h_init = 1.0; // fallback
 	}
 
-	// Fixed-step loop (Phase-1)
+	gsl_odeiv2_driver *driver =
+		gsl_odeiv2_driver_alloc_y_new(&sys,
+									  step_type,
+									  h_init,
+									  rtol,
+									  atol);
+
+	if (!driver)
+	{
+		return false;
+	}
+
+	// Optional: we can (crudely) enforce max_steps by splitting [t0, t1]
+	// into chunks and calling gsl_odeiv2_driver_apply repeatedly, counting
+	// our own "macro-steps". This is *not* the same as the internal GSL
+	// step counter, but it's a reasonable safety guard.
+	double t = t0;
+	std::size_t steps = 0;
+	const std::size_t max_steps =
+		(m_cfg->max_steps > 0) ? m_cfg->max_steps : static_cast<std::size_t>(1000000);
+
+	int status = GSL_SUCCESS;
+
 	while (t < t1)
 	{
-		const double h = std::min(dt_save, t1 - t);
+		// One apply() to advance as far as GSL wants toward t1.
+		status = gsl_odeiv2_driver_apply(driver, &t, t1, y);
 
-		// One RK4 step (using EvolutionSystem functor)
-		RK4::step(
-			[this](double tt, const double *yin, double *yout)
-			{
-				// Forward to EvolutionSystem::operator()
-				return this->m_sys->operator()(tt, yin, yout);
-			},
-			t, h, y, k, tmp);
+		if (status != GSL_SUCCESS)
+		{
+			break;
+		}
 
-		t += h;
-		unpack_state(y, *m_cfg, state);
-		state.t = t;
-		state.step += 1;
-
-		Derived d; // zeros for now
-		// [ZAKI-QUESTION]: Do you want Ts_local computed here via an envelope model
-		// once we pass it through EvolutionSystem’s Context? Right now we can’t see that Context.
-		obs.on_sample(state, d);
+		++steps;
+		if (steps > max_steps)
+		{
+			status = GSL_EMAXITER; // exceeded user-specified cap
+			break;
+		}
 	}
 
-	obs.on_finish(state, /*ok=*/true);
-	return true;
+	gsl_odeiv2_driver_free(driver);
+
+	return (status == GSL_SUCCESS);
 }
-//--------------------------------------------------------------
-//==============================================================
-} // namespace ChemicalHeating
+
+} // namespace Evolution
+} // namespace Physics
 } // namespace CompactStar

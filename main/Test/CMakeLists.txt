@@ -2,6 +2,7 @@ set(CompactStar_main_Test_SRC_Files
 	tov_debug_main
 	psr_debug_main
 	spin_evol_main
+	spin_evol_2_main
 )
 
 foreach(src ${CompactStar_main_Test_SRC_Files})

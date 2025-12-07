@@ -27,6 +27,8 @@
 #include "CompactStar/Physics/Evolution/RHSAccumulator.hpp"
 #include "CompactStar/Physics/Evolution/StarContext.hpp"
 #include "CompactStar/Physics/Evolution/StateVector.hpp"
+#include "CompactStar/Physics/State/SpinState.hpp"
+
 #include <cmath> // std::pow, std::abs
 
 #include <Zaki/Util/Instrumentor.hpp> // Z_LOG_INFO/WARNING/ERROR, PROFILE_FUNCTION
