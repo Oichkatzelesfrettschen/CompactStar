@@ -5,56 +5,30 @@
  *
  * Copyright (c) 2025 Mohammadreza Zakeri
  *
- * Permission is hereby granted, free of charge, to any person obtaining a copy
- * of this software and associated documentation files (the "Software"), to deal
- * in the Software without restriction, including without limitation the rights
- * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
- * copies of the Software, and to permit persons to whom the Software is
- * furnished to do so, subject to the following conditions:
- *
- * The above copyright notice and this permission notice shall be included in all
- * copies or substantial portions of the Software.
- *
- * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
- * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
- * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
- * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
- * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
- * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
- * SOFTWARE.
+ * MIT License — see LICENSE at repo root.
  */
 
 /**
- * @file Config.hpp
- * @brief User-configurable options for chemical/thermal evolution runs.
+ * @file EvolutionConfig.hpp
+ * @brief User-configurable options for chemical/thermal/spin evolution runs.
  *
  * Includes integrator tolerances, enabled physics channels, envelope and gap
- * choices, output cadence, and initial conditions (sizes only; values live in the tagged State blocks managed by StateVector).
+ * choices, output cadence, and initial-condition sizes (e.g. n_eta).
  *
  * @ingroup PhysicsEvolution
  */
+
 #ifndef CompactStar_Physics_Evolution_Config_H
 #define CompactStar_Physics_Evolution_Config_H
 
 #include <cstddef>
 #include <string>
-#include <vector>
 
-/**
- * @namespace CompactStar::Physics::Evolution
- * @brief Evolution engine for time-dependent neutron-star physics.
- *
- * Contains:
- *  - EvolutionSystem (RHS functor)
- *  - StateVector registry
- *  - RHSAccumulator
- *  - GeometryCache
- *  - Integrator bindings
- *  - Observers, logging, checkpoints
- *
- * This namespace represents the core of the time-evolution subsystem.
- */
-namespace CompactStar::Physics::Evolution
+namespace CompactStar
+{
+namespace Physics
+{
+namespace Evolution
 {
 
 //==============================================================
@@ -62,19 +36,21 @@ namespace CompactStar::Physics::Evolution
  * @enum StepperType
  * @brief Available ODE steppers (GSL backends).
  *
- * These map directly to gsl_odeiv2_step_type values.
- * The defaults (MSBDF for stiff; RKF45 for general) are reasonable for
- * neutron-star evolution problems where stiffness can appear in late-time
- * thermal/chemical equations.
+ * These map directly onto `gsl_odeiv2_step_type` implementations.
+ *
+ * Typical guidance:
+ *  - Use an explicit RK method (RKF45 / RKCK / RK8PD) for non-stiff
+ *    or exploratory runs.
+ *  - Use MSBDF for stiff late-time thermal/chemical evolution.
  */
 enum class StepperType
 {
-	RKF45, /*!< Runge–Kutta–Fehlberg 4(5) — robust general-purpose nonstiff stepper. */
-	RKCK,  /*!< Cash–Karp RK45 — similar to RKF45, sometimes slightly more stable. */
-	RK8PD, /*!< Dormand–Prince 8(5,3) — high accuracy explicit RK. */
-	RK2,   /*!< Simple RK2 (midpoint). Useful only for debugging. */
+	RKF45, /*!< Runge–Kutta–Fehlberg 4(5) — robust general-purpose non-stiff stepper. */
+	RKCK,  /*!< Cash–Karp RK45 — similar to RKF45, sometimes slightly more stable.    */
+	RK8PD, /*!< Dormand–Prince 8(5,3) — high-accuracy explicit RK (more expensive).   */
+	RK2,   /*!< Simple RK2 (midpoint) — mainly for debugging and sanity checks.       */
 
-	MSBDF /*!< Multistep BDF — stiff solver; good default for late-time evolution. */
+	MSBDF /*!< Multistep BDF — stiff solver; good default for late-time evolution.   */
 };
 
 //==============================================================
@@ -90,49 +66,62 @@ enum class EnvelopeModel
 };
 //==============================================================
 
-//==============================================================
 /**
  * @struct Config
- * @brief Configures a single evolution run.
+ * @brief Configuration for a single evolution run.
+ *
+ * This struct is intentionally small and POD-like; it is passed by const
+ * reference into `EvolutionSystem` and `GSLIntegrator`.
+ *
+ * ### Integrator-related fields
+ *  - `stepper`    : choice of GSL backend (`StepperType`).
+ *  - `rtol, atol` : relative/absolute tolerances for adaptive stepping.
+ *  - `max_steps`  : hard cap on total number of internal steps.
+ *  - `dt_save`    : cadence at which we *request* output samples.
+ *
+ * The actual integrator is implemented in `GSLIntegrator.cpp` and uses
+ * these settings to construct a `gsl_odeiv2_driver`.
  */
 struct Config
 {
-	// ---- Integrator ----------------------------------------------------------
-	StepperType stepper = StepperType::MSBDF; /*!< Time stepper choice. */
-	double rtol = 1e-6;						  /*!< Relative tolerance.  */
-	double atol = 1e-10;					  /*!< Absolute tolerance.  */
-	std::size_t max_steps = 1000000;		  /*!< Safety cap on steps. */
+	// ---- Integrator ------------------------------------------------------
+	StepperType stepper = StepperType::MSBDF; /*!< Time stepper choice (GSL backend). */
+	double rtol = 1e-6;						  /*!< Relative tolerance for adaptive stepping.  */
+	double atol = 1e-10;					  /*!< Absolute tolerance for adaptive stepping.  */
+	std::size_t max_steps = 1000000;		  /*!< Safety cap on total GSL steps.            */
 
-	// ---- Output --------------------------------------------------------------
-	double dt_save = 1.0e2; /*!< Spacing of saved samples (s). */
+	// ---- Output ----------------------------------------------------------
+	double dt_save = 1.0e2; /*!< Spacing of requested saved samples (s). */
 	bool save_intermediate = true;
 
-	// ---- Physics toggles -----------------------------------------------------
+	// ---- Physics toggles -------------------------------------------------
 	bool use_isothermal_core = true;	 /*!< Assume isothermal interior (standard). */
 	bool enable_MU = true;				 /*!< Modified Urca emissivity/reactions.    */
 	bool enable_DU = true;				 /*!< Direct Urca emissivity/reactions.      */
 	bool enable_PBF = false;			 /*!< Pair-breaking/formation emission.      */
 	bool enable_BNV = false;			 /*!< Baryon-number violating processes.     */
-	bool enable_rotochem_driver = false; /*!< Spin-down driver for \f$\eta\f$.   */
-	bool couple_spin = false;			 /*!< Include \f$\Omega\f$ in the state.  */
+	bool enable_rotochem_driver = false; /*!< Spin-down driver for \f$\eta\f$.       */
+	bool couple_spin = false;			 /*!< Include \f$\Omega\f$ in the state.     */
 
-	// ---- Envelope and gaps ---------------------------------------------------
+	// ---- Envelope and gaps -----------------------------------------------
 	EnvelopeModel envelope = EnvelopeModel::Iron;
 	double envelope_xi = 0.0; /*!< Light-element column parameter (if used). */
 	bool superfluid_n = false;
 	bool superfluid_p = false;
 
-	// ---- Chemical imbalances -------------------------------------------------
+	// ---- Chemical imbalances ---------------------------------------------
 	std::size_t n_eta = 1; /*!< Number of \f$\eta_i\f$ components. */
 
-	// ---- Units policy (documentation only; conversions handled in impl) ------
+	// ---- Units policy (documentation only; conversions handled elsewhere) -
 	std::string unit_policy = "cgs_with_Gc1";
 
-	// ---- Misc ----------------------------------------------------------------
+	// ---- Misc ------------------------------------------------------------
 	std::string run_label; /*!< Free-form label for outputs. */
 };
 //==============================================================
-} // namespace CompactStar::Physics::Evolution
-//==============================================================
+
+} // namespace Evolution
+} // namespace Physics
+} // namespace CompactStar
 
 #endif /* CompactStar_Physics_Evolution_Config_H */
