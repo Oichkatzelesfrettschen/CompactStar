@@ -3,6 +3,7 @@ set(CompactStar_main_Test_SRC_Files
 	psr_debug_main
 	spin_evol_main
 	spin_evol_2_main
+	spin_therm_evol_main
 )
 
 foreach(src ${CompactStar_main_Test_SRC_Files})
