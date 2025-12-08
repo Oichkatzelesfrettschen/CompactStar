@@ -137,7 +137,7 @@ int main()
 	// Effective area and heat capacity are just toy values here; adjust to keep
 	// dT/dt in a reasonable range.
 	thermOpts.area_eff = 1.0; // in code units; real code would use ~4πR^2 z^2
-	thermOpts.C_eff = 1.0e40; // big C_eff → slow cooling for demonstration
+	thermOpts.C_eff = 1.0e30; // big C_eff → slow cooling for demonstration
 	thermOpts.global_scale = 1.0;
 
 	auto thermalDriver =
