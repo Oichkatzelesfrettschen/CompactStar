@@ -50,7 +50,7 @@ namespace CompactStar
 {
 
 //==============================================================
-class Particle : public Prog
+class Particle : public Core::Prog
 {
 	friend class SigmaOmegaRho;
 	friend class SigmaOmegaRho_npemu;

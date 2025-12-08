@@ -16,11 +16,12 @@
 #include "CompactStar/Core/RotationSolver.hpp"
 #include "CompactStar/Core/TOVSolver.hpp"
 
+using namespace CompactStar::Core;
 //==============================================================
 //                        MixedStar class
 //==============================================================
 // Default Constructor
-CompactStar::MixedStar::MixedStar()
+MixedStar::MixedStar()
 	: Prog("MixedStar"),
 	  core_region("Core"), mantle_region("Mantle")
 // Be sure to run SurfaceIsReached if using this constructor!
@@ -38,7 +39,7 @@ CompactStar::MixedStar::MixedStar()
 
 //--------------------------------------------------------------
 // Initializes the visible dataset
-void CompactStar::MixedStar::InitVisible(
+void MixedStar::InitVisible(
 	const TOVSolver *in_tov_solver)
 {
 	// Resizes the columns to '7', and
@@ -69,7 +70,7 @@ void CompactStar::MixedStar::InitVisible(
 
 //--------------------------------------------------------------
 // Initializes the dark dataset
-void CompactStar::MixedStar::InitDark(
+void MixedStar::InitDark(
 	const TOVSolver *in_tov_solver)
 {
 	ds_dar.Reserve(7 + in_tov_solver->eos_tab_dark.rho_i.size(),
@@ -98,7 +99,7 @@ void CompactStar::MixedStar::InitDark(
 //--------------------------------------------------------------
 // This has to be run so the class
 // knows when to initialize all the splines
-void CompactStar::MixedStar::SurfaceIsReached(
+void MixedStar::SurfaceIsReached(
 	const size_t &in_v_idx, const size_t &in_d_idx)
 {
 	PROFILE_FUNCTION();
@@ -210,7 +211,7 @@ void CompactStar::MixedStar::SurfaceIsReached(
 //--------------------------------------------------------------
 // May 1, 2022: Not needed anymore, check the constructors!
 // Reserving the needed space for all datacolumns
-// void CompactStar::MixedStar::Reserve(const size_t& space_size)
+// void MixedStar::Reserve(const size_t& space_size)
 // {
 //   for (size_t c = 0; c < ds_vis.Dim().size() ; c++)
 //   {
@@ -241,8 +242,8 @@ void CompactStar::MixedStar::SurfaceIsReached(
 // }
 //--------------------------------------------------------------
 // Appends tov points to the MixedStar in the core region
-void CompactStar::MixedStar::Append_Core(const TOVPoint &in_tov,
-										 const TOVPoint &in_dark_tov)
+void MixedStar::Append_Core(const TOVPoint &in_tov,
+							const TOVPoint &in_dark_tov)
 {
 	// std::cout << radius_d.Size()<< ", r = " << in_tov.r << "\n" ;
 	ds_vis[r_idx].vals.emplace_back(in_tov.r);																		   // in km
@@ -275,7 +276,7 @@ void CompactStar::MixedStar::Append_Core(const TOVPoint &in_tov,
 //--------------------------------------------------------------
 // Appends tov points to the MixedStar in the in the mantle
 // from the dark solutions
-void CompactStar::MixedStar::Append_Dark_Mantle(const TOVPoint &in_dark_tov)
+void MixedStar::Append_Dark_Mantle(const TOVPoint &in_dark_tov)
 {
 	// std::cout << radius_d.Size()<< ", r = " << in_dark_tov.r << "\n" ;
 
@@ -299,7 +300,7 @@ void CompactStar::MixedStar::Append_Dark_Mantle(const TOVPoint &in_dark_tov)
 //--------------------------------------------------------------
 // Appends tov points to the MixedStar in the mantle
 // from the visible solutions
-void CompactStar::MixedStar::Append_Visible_Mantle(const TOVPoint &in_tov)
+void MixedStar::Append_Visible_Mantle(const TOVPoint &in_tov)
 {
 	ds_vis[r_idx].vals.emplace_back(in_tov.r);																		   // in km
 	ds_vis[m_idx].vals.emplace_back(Zaki::Physics::SUN_M_KM * in_tov.m);											   // in km
@@ -316,10 +317,10 @@ void CompactStar::MixedStar::Append_Visible_Mantle(const TOVPoint &in_tov)
 }
 //--------------------------------------------------------------
 // Constructor from TOV Solutions
-CompactStar::MixedStar::MixedStar(
+MixedStar::MixedStar(
 	const size_t &in_v_idx, const size_t &in_d_idx,
-	const std::vector<CompactStar::TOVPoint> &in_tov,
-	const std::vector<CompactStar::TOVPoint> &in_dark_tov)
+	const std::vector<TOVPoint> &in_tov,
+	const std::vector<TOVPoint> &in_dark_tov)
 	: Prog("MixedStar"),
 	  core_region("Core"), mantle_region("Mantle"),
 	  ds_vis(7 + in_tov[0].rho_i.size(), in_tov.size()),
@@ -552,7 +553,7 @@ CompactStar::MixedStar::MixedStar(
 }
 //--------------------------------------------------------------
 // Sets the work directory for the member objects
-void CompactStar::MixedStar::OnWorkDirChanged(
+void MixedStar::OnWorkDirChanged(
 	const Zaki::String::Directory &in_dir)
 {
 	ds_vis.SetWrkDir(in_dir);
@@ -563,7 +564,7 @@ void CompactStar::MixedStar::OnWorkDirChanged(
 
 //--------------------------------------------------------------
 // Similar to the destructor
-void CompactStar::MixedStar::Reset()
+void MixedStar::Reset()
 {
 	ds_dar.ClearRows();
 	ds_vis.ClearRows();
@@ -576,7 +577,7 @@ void CompactStar::MixedStar::Reset()
 
 //--------------------------------------------------------------
 // Destructor
-CompactStar::MixedStar::~MixedStar()
+MixedStar::~MixedStar()
 {
 	// Memory leak fixed on May 6, 2022
 	// gsl_integration_workspace_free(integ_wrk_space) ;
@@ -585,7 +586,7 @@ CompactStar::MixedStar::~MixedStar()
 //--------------------------------------------------------------
 // Returns the nu_der value given the radius input
 // r is in km !
-// double CompactStar::MixedStar::GetNuDerSpline_Vis(const double& in_r)
+// double MixedStar::GetNuDerSpline_Vis(const double& in_r)
 // {
 //   double tmp = gsl_spline_eval(nu_der_r_spline, in_r, mixed_r_accel);
 //   return tmp ;
@@ -594,7 +595,7 @@ CompactStar::MixedStar::~MixedStar()
 // //--------------------------------------------------------------
 // // Returns the nu_der value given the radius input
 // // r is in km !
-// double CompactStar::MixedStar::GetNuDerSpline_Dar(const double& in_r)
+// double MixedStar::GetNuDerSpline_Dar(const double& in_r)
 // {
 //   double tmp = gsl_spline_eval(nu_der_r_spline, in_r, mixed_r_accel);
 //   return tmp ;
@@ -602,7 +603,7 @@ CompactStar::MixedStar::~MixedStar()
 
 //--------------------------------------------------------------
 // Evaluate the metric function
-void CompactStar::MixedStar::EvaluateNu()
+void MixedStar::EvaluateNu()
 {
 	PROFILE_FUNCTION();
 	// -----------------------------------
@@ -669,7 +670,7 @@ void CompactStar::MixedStar::EvaluateNu()
 
 //--------------------------------------------------------------
 // Metric function as a function of radius (in km)
-double CompactStar::MixedStar::GetNu(const double &in_r) const
+double MixedStar::GetNu(const double &in_r) const
 {
 	// return gsl_spline_eval(nu_r_spline, in_r, mixed_r_accel) ;
 	if (dark_core)
@@ -680,7 +681,7 @@ double CompactStar::MixedStar::GetNu(const double &in_r) const
 
 //--------------------------------------------------------------
 // Metric function as a function of radius (in km)
-Zaki::Vector::DataColumn *CompactStar::MixedStar::GetNu()
+Zaki::Vector::DataColumn *MixedStar::GetNu()
 {
 	if (dark_core)
 		return &ds_vis[nu_idx];
@@ -689,21 +690,21 @@ Zaki::Vector::DataColumn *CompactStar::MixedStar::GetNu()
 }
 //--------------------------------------------------------------
 /// Returns the visible radius dataset
-Zaki::Vector::DataColumn *CompactStar::MixedStar::GetRadius_Visible()
+Zaki::Vector::DataColumn *MixedStar::GetRadius_Visible()
 {
 	return &ds_vis[r_idx];
 }
 
 //--------------------------------------------------------------
 // Returns the dark radius dataset
-Zaki::Vector::DataColumn *CompactStar::MixedStar::GetRadius_Dark()
+Zaki::Vector::DataColumn *MixedStar::GetRadius_Dark()
 {
 	return &ds_dar[r_idx];
 }
 
 //--------------------------------------------------------------
 // Returns the larger radius dataset
-Zaki::Vector::DataColumn *CompactStar::MixedStar::GetRadius()
+Zaki::Vector::DataColumn *MixedStar::GetRadius()
 {
 	if (dark_core)
 		return &ds_vis[r_idx];
@@ -713,7 +714,7 @@ Zaki::Vector::DataColumn *CompactStar::MixedStar::GetRadius()
 
 //--------------------------------------------------------------
 // Visible mass (in km) as a function of radius
-double CompactStar::MixedStar::GetMass_Visible(const double &in_r)
+double MixedStar::GetMass_Visible(const double &in_r)
 	const
 {
 	if (in_r < 0)
@@ -735,14 +736,14 @@ double CompactStar::MixedStar::GetMass_Visible(const double &in_r)
 //--------------------------------------------------------------
 // Visible mass (in km) as a function of radius
 Zaki::Vector::DataColumn *
-CompactStar::MixedStar::GetMass_Visible()
+MixedStar::GetMass_Visible()
 {
 	return &ds_vis[m_idx];
 }
 
 //--------------------------------------------------------------
 // Dark mass (in km) as a function of radius
-double CompactStar::MixedStar::GetMass_Dark(const double &in_r)
+double MixedStar::GetMass_Dark(const double &in_r)
 	const
 {
 	if (in_r < 0)
@@ -765,14 +766,14 @@ double CompactStar::MixedStar::GetMass_Dark(const double &in_r)
 //--------------------------------------------------------------
 // Dark mass (in km) as a function of radius
 Zaki::Vector::DataColumn *
-CompactStar::MixedStar::GetMass_Dark()
+MixedStar::GetMass_Dark()
 {
 	return &ds_dar[m_idx];
 }
 
 //--------------------------------------------------------------
 // Dark + visible mass (in km) as a function of radius
-double CompactStar::MixedStar::GetMass_Total(const double &in_r)
+double MixedStar::GetMass_Total(const double &in_r)
 	const
 {
 	return GetMass_Dark(in_r) + GetMass_Visible(in_r);
@@ -781,14 +782,14 @@ double CompactStar::MixedStar::GetMass_Total(const double &in_r)
 //--------------------------------------------------------------
 // Returns a data column holding total mass values
 // extending from the origin to the surface of the star
-Zaki::Vector::DataColumn *CompactStar::MixedStar::GetMass_Total()
+Zaki::Vector::DataColumn *MixedStar::GetMass_Total()
 {
 	return &mass_tot_dc;
 }
 
 //--------------------------------------------------------------
 // Visible baryon number density (fm^{-3}) as a function of radius
-double CompactStar::MixedStar::GetRho_Visible(const double &in_r)
+double MixedStar::GetRho_Visible(const double &in_r)
 	const
 {
 	if (in_r < 0)
@@ -810,7 +811,7 @@ double CompactStar::MixedStar::GetRho_Visible(const double &in_r)
 //--------------------------------------------------------------
 // Visible baryon number density (fm^{-3}) as a function of radius
 Zaki::Vector::DataColumn *
-CompactStar::MixedStar::GetRho_Visible()
+MixedStar::GetRho_Visible()
 {
 	return &ds_vis[rho_idx];
 }
@@ -819,7 +820,7 @@ CompactStar::MixedStar::GetRho_Visible()
 // Visible baryon number density (fm^{-3}) as a function of radius
 // for a specific species labeled as (in_label)
 Zaki::Vector::DataColumn *
-CompactStar::MixedStar::GetRho_i_Visible(const std::string &in_label)
+MixedStar::GetRho_i_Visible(const std::string &in_label)
 {
 
 	for (auto &&c : rho_i_v_idx)
@@ -838,7 +839,7 @@ CompactStar::MixedStar::GetRho_i_Visible(const std::string &in_label)
 
 //--------------------------------------------------------------
 // Dark baryon number density (fm^{-3}) as a function of radius
-double CompactStar::MixedStar::GetRho_Dark(const double &in_r)
+double MixedStar::GetRho_Dark(const double &in_r)
 	const
 {
 	if (in_r < 0)
@@ -860,14 +861,14 @@ double CompactStar::MixedStar::GetRho_Dark(const double &in_r)
 //--------------------------------------------------------------
 // Dark baryon number density (fm^{-3}) as a function of radius
 Zaki::Vector::DataColumn *
-CompactStar::MixedStar::GetRho_Dark()
+MixedStar::GetRho_Dark()
 {
 	return &ds_dar[rho_idx];
 }
 
 //--------------------------------------------------------------
 // Energy density (in km^{-2}) as a function of radius
-double CompactStar::MixedStar::GetEps_Visible(const double &in_r)
+double MixedStar::GetEps_Visible(const double &in_r)
 	const
 {
 	if (in_r < 0)
@@ -889,14 +890,14 @@ double CompactStar::MixedStar::GetEps_Visible(const double &in_r)
 //--------------------------------------------------------------
 // Energy density (in km^{-2}) as a function of radius
 Zaki::Vector::DataColumn *
-CompactStar::MixedStar::GetEps_Visible()
+MixedStar::GetEps_Visible()
 {
 	return &ds_vis[eps_idx];
 }
 
 //--------------------------------------------------------------
 // Dark energy density (in km^{-2}) as a function of radius
-double CompactStar::MixedStar::GetEps_Dark(const double &in_r)
+double MixedStar::GetEps_Dark(const double &in_r)
 	const
 {
 	if (in_r < 0)
@@ -918,14 +919,14 @@ double CompactStar::MixedStar::GetEps_Dark(const double &in_r)
 //--------------------------------------------------------------
 // Dark energy density (in km^{-2}) as a function of radius
 Zaki::Vector::DataColumn *
-CompactStar::MixedStar::GetEps_Dark()
+MixedStar::GetEps_Dark()
 {
 	return &ds_dar[eps_idx];
 }
 
 //--------------------------------------------------------------
 // Pressure (in km^{-2}) as a function of radius
-double CompactStar::MixedStar::GetPress_Visible(const double &in_r)
+double MixedStar::GetPress_Visible(const double &in_r)
 	const
 {
 	if (in_r < 0)
@@ -947,14 +948,14 @@ double CompactStar::MixedStar::GetPress_Visible(const double &in_r)
 //--------------------------------------------------------------
 // Pressure (in km^{-2}) as a function of radius
 Zaki::Vector::DataColumn *
-CompactStar::MixedStar::GetPress_Visible()
+MixedStar::GetPress_Visible()
 {
 	return &ds_vis[pre_idx];
 }
 
 //--------------------------------------------------------------
 // Dark pressure (in km^{-2}) as a function of radius
-double CompactStar::MixedStar::GetPress_Dark(const double &in_r)
+double MixedStar::GetPress_Dark(const double &in_r)
 	const
 {
 	if (in_r < 0)
@@ -976,21 +977,21 @@ double CompactStar::MixedStar::GetPress_Dark(const double &in_r)
 //--------------------------------------------------------------
 // Dark pressure (in km^{-2}) as a function of radius
 Zaki::Vector::DataColumn *
-CompactStar::MixedStar::GetPress_Dark()
+MixedStar::GetPress_Dark()
 {
 	return &ds_dar[pre_idx];
 }
 
 //--------------------------------------------------------------
 // Returns 'sequence'
-CompactStar::MixedSeqPoint CompactStar::MixedStar::GetSequence() const
+MixedSeqPoint MixedStar::GetSequence() const
 {
 	return sequence;
 }
 
 //--------------------------------------------------------------
 // Visible baryon number inegrand
-double CompactStar::MixedStar::BaryonNumIntegrand(double in_r)
+double MixedStar::BaryonNumIntegrand(double in_r)
 {
 	double out = in_r * in_r;
 	out *= 4 * M_PI * GetRho_Visible(in_r);
@@ -1005,7 +1006,7 @@ double CompactStar::MixedStar::BaryonNumIntegrand(double in_r)
 
 //--------------------------------------------------------------
 // Dark baryon number inegrand
-double CompactStar::MixedStar::BaryonNumIntegrand_Dark(double in_r)
+double MixedStar::BaryonNumIntegrand_Dark(double in_r)
 {
 	double out = in_r * in_r;
 	out *= 4 * M_PI * GetRho_Dark(in_r);
@@ -1021,7 +1022,7 @@ double CompactStar::MixedStar::BaryonNumIntegrand_Dark(double in_r)
 //--------------------------------------------------------------
 // Visible baryon number as a function of radius
 // [ Deactivated on May 25, 2022 ]
-double CompactStar::MixedStar::Find_BaryonNum_Visible(const double &in_r)
+double MixedStar::Find_BaryonNum_Visible(const double &in_r)
 {
 	PROFILE_FUNCTION();
 	// double result, err ;
@@ -1050,7 +1051,7 @@ double CompactStar::MixedStar::Find_BaryonNum_Visible(const double &in_r)
 //--------------------------------------------------------------
 // Visible baryon number as a function of radius
 // [ Deactivated on May 25, 2022 ]
-// double CompactStar::MixedStar::Find_BaryonNum_Dark(const double& in_r)
+// double MixedStar::Find_BaryonNum_Dark(const double& in_r)
 // {
 //   PROFILE_FUNCTION() ;
 // double result, err ;
@@ -1078,14 +1079,14 @@ double CompactStar::MixedStar::Find_BaryonNum_Visible(const double &in_r)
 
 //--------------------------------------------------------------
 // Visible baryon number
-// double CompactStar::MixedStar::Find_BaryonNum_Visible()
+// double MixedStar::Find_BaryonNum_Visible()
 // {
 // return Find_BaryonNum_Visible(ds_vis[r_idx][-1]) ;
 // }
 
 //--------------------------------------------------------------
 // Dark baryon number
-// double CompactStar::MixedStar::Find_BaryonNum_Dark()
+// double MixedStar::Find_BaryonNum_Dark()
 // {
 // return Find_BaryonNum_Dark(ds_dar[r_idx][-1]) ;
 // }
@@ -1094,7 +1095,7 @@ double CompactStar::MixedStar::Find_BaryonNum_Visible(const double &in_r)
 //// Moment of inertia (in km^3) inegrand
 // This is wrong and missing a factor of
 //  [ 1 - \omega(r) / \Omega ]
-// double CompactStar::MixedStar::MomInertiaIntegrand(double in_r)
+// double MixedStar::MomInertiaIntegrand(double in_r)
 // {
 //   double out = pow(in_r, 4) ;
 //         out *= 8*M_PI/3. ;
@@ -1112,7 +1113,7 @@ double CompactStar::MixedStar::Find_BaryonNum_Visible(const double &in_r)
 //--------------------------------------------------------------
 // Total moment of inertia (in km^3)
 // MomInertiaIntegrand is wrong!
-double CompactStar::MixedStar::Find_MomInertia()
+double MixedStar::Find_MomInertia()
 {
 	PROFILE_FUNCTION();
 
@@ -1139,7 +1140,7 @@ double CompactStar::MixedStar::Find_MomInertia()
 
 //--------------------------------------------------------------
 // Exports the mixed star profile
-void CompactStar::MixedStar::Export(
+void MixedStar::Export(
 	const Zaki::String::Directory &in_dir)
 {
 	char seq_header[200];

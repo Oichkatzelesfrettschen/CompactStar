@@ -66,7 +66,7 @@ double CharacteristicAge(const State::SpinState &s);
  * @param view Structural profile (for I(M,R) if you include it).
  * @return Estimated equatorial surface field [G].
  */
-double DipoleFieldEstimate(const State::SpinState &s, StarProfileView view);
+double DipoleFieldEstimate(const State::SpinState &s, Core::StarProfileView view);
 
 } // namespace CompactStar::Physics::Spin
 

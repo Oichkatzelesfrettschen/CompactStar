@@ -136,7 +136,7 @@ Zaki::Vector::DataSet MicroBNVCh::BNV_B_Chi_Transition::Rate_vs_R(
 {
 	// double eps = 1e-10 ;
 
-	const StarProfile *prof = pulsar.GetProfile();
+	const Core::StarProfile *prof = pulsar.GetProfile();
 	if (!prof || prof->empty())
 	{
 		Z_LOG_ERROR("Pulsar profile is not set or empty. Cannot compute B -> chi decay rate vs radius.");
@@ -146,7 +146,7 @@ Zaki::Vector::DataSet MicroBNVCh::BNV_B_Chi_Transition::Rate_vs_R(
 	// 1) total baryon density n(r)
 	const Zaki::Vector::DataColumn *n_r_col = prof->GetBaryonDensity();
 	// 2) radius column
-	const Zaki::Vector::DataColumn *r_col = prof->GetColumnPtr(StarProfile::Column::Radius);
+	const Zaki::Vector::DataColumn *r_col = prof->GetColumnPtr(Core::StarProfile::Column::Radius);
 	// 3) species fraction for this baryon
 	const Zaki::Vector::DataColumn *frac_col = prof->GetSpeciesPtr(B.label);
 

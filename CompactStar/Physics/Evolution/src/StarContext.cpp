@@ -20,7 +20,7 @@ namespace Evolution
 //                   StarContext Class
 //==============================================================
 //--------------------------------------------------------------
-StarContext::StarContext(const CompactStar::NStar &ns,
+StarContext::StarContext(const CompactStar::Core::NStar &ns,
 						 const CompactStar::EOS::Model *eos)
 	: m_ns(&ns), m_eos(eos)
 {
@@ -33,10 +33,10 @@ StarContext::StarContext(const CompactStar::NStar &ns,
 	// Some models may expose species columns via GetRho_i(label)
 
 	// NOTE: NStar getters return non-const pointers; we store as const.
-	m_r = const_cast<CompactStar::NStar &>(ns).Profile().GetRadius();
-	m_nu = const_cast<CompactStar::NStar &>(ns).Profile().GetMetricNu();
-	m_m = const_cast<CompactStar::NStar &>(ns).Profile().GetMass();
-	m_nb = const_cast<CompactStar::NStar &>(ns).Profile().GetBaryonDensity();
+	m_r = const_cast<CompactStar::Core::NStar &>(ns).Profile().GetRadius();
+	m_nu = const_cast<CompactStar::Core::NStar &>(ns).Profile().GetMetricNu();
+	m_m = const_cast<CompactStar::Core::NStar &>(ns).Profile().GetMass();
+	m_nb = const_cast<CompactStar::Core::NStar &>(ns).Profile().GetBaryonDensity();
 
 	// e^{Lambda} is not explicitly exposed in NStar.hpp.
 	// We'll leave m_elam = nullptr for now; GeometryCache can derive or stub it.

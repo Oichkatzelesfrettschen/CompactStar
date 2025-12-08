@@ -1,28 +1,28 @@
 // -*- lsst-c++ -*-
 /*
-* CompactStar
-* See License file at the top of the source tree.
-*
-* Copyright (c) 2023 Mohammadreza Zakeri
-*
-* Permission is hereby granted, free of charge, to any person obtaining a copy
-* of this software and associated documentation files (the "Software"), to deal
-* in the Software without restriction, including without limitation the rights
-* to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-* copies of the Software, and to permit persons to whom the Software is
-* furnished to do so, subject to the following conditions:
-*
-* The above copyright notice and this permission notice shall be included in all
-* copies or substantial portions of the Software.
-*
-* THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-* IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-* FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-* AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-* LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-* OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-* SOFTWARE.
-*/
+ * CompactStar
+ * See License file at the top of the source tree.
+ *
+ * Copyright (c) 2023 Mohammadreza Zakeri
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in all
+ * copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ * SOFTWARE.
+ */
 
 /**
  * @file RotationSolver.hpp
@@ -34,36 +34,36 @@
  * @author Mohammadreza Zakeri
  * Contact: M.Zakeri@eku.edu
  *
-*/
-#ifndef CompactStar_RotationSolver_H
-#define CompactStar_RotationSolver_H
+ */
+#ifndef CompactStar_Core_RotationSolver_H
+#define CompactStar_Core_RotationSolver_H
 
-#include <vector>
 #include <gsl/gsl_spline.h>
+#include <vector>
 
 #include <Zaki/Math/Math_Core.hpp>
 
 #include "CompactStar/Core/Prog.hpp"
 
 //==============================================================
-namespace CompactStar
+namespace CompactStar::Core
 {
-  class NStar ;
-  class MixedStar ;
+class NStar;
+class MixedStar;
 
 //==============================================================
 struct TOVTable
 {
   public:
-    std::vector<double> r ;
-    std::vector<double> m ;
-    std::vector<double> pre ;
-    std::vector<double> eps ;
+	std::vector<double> r;
+	std::vector<double> m;
+	std::vector<double> pre;
+	std::vector<double> eps;
 
-    size_t Size()
-    {
-      return r.size() ;
-    }
+	size_t Size()
+	{
+		return r.size();
+	}
 };
 //==============================================================
 // Added on Aug 6, 2020
@@ -77,249 +77,247 @@ struct TOVTable
 //
 struct OmegaSeqPoint
 {
-  double omega_bar_c, m, r, J, Omega ;
+	double omega_bar_c, m, r, J, Omega;
 
-  OmegaSeqPoint(const double& in_oc, const double& in_m,
-            const double& in_r, const double& in_J, const double& in_Omega)
-            : omega_bar_c(in_oc), m(in_m), r(in_r), J(in_J), Omega(in_Omega)
-          {}
+	OmegaSeqPoint(const double &in_oc, const double &in_m,
+				  const double &in_r, const double &in_J, const double &in_Omega)
+		: omega_bar_c(in_oc), m(in_m), r(in_r), J(in_J), Omega(in_Omega)
+	{
+	}
 
-  std::string Str() const
-  {
-    std::stringstream ss;
-    char tmp[200] ;
-    snprintf(tmp, sizeof(tmp), "%.8e\t %.8e\t %.8e\t %.8e\t %.8e", omega_bar_c, m, r, J, Omega) ;
-    ss << tmp ;
+	std::string Str() const
+	{
+		std::stringstream ss;
+		char tmp[200];
+		snprintf(tmp, sizeof(tmp), "%.8e\t %.8e\t %.8e\t %.8e\t %.8e", omega_bar_c, m, r, J, Omega);
+		ss << tmp;
 
-    return ss.str() ;
-  }
+		return ss.str();
+	}
 };
 //==============================================================
 class RotationSolver : public Prog
 {
-  //--------------------------------------------------------------
-  // This struct was added on Aug 6
-  struct OmegaPoint
-  {
-    double r, m, nu, omega_bar, domega_bar, omega ;
+	//--------------------------------------------------------------
+	// This struct was added on Aug 6
+	struct OmegaPoint
+	{
+		double r, m, nu, omega_bar, domega_bar, omega;
 
-    OmegaPoint(const double& in_r, const double& in_m,
-               const double& in_nu,
-               const double& in_omega_bar,
-               const double& in_domega_bar)
-              : r(in_r), m(in_m), nu(in_nu), omega_bar(in_omega_bar),
-               domega_bar(in_domega_bar), omega(0)
-            {}
+		OmegaPoint(const double &in_r, const double &in_m,
+				   const double &in_nu,
+				   const double &in_omega_bar,
+				   const double &in_domega_bar)
+			: r(in_r), m(in_m), nu(in_nu), omega_bar(in_omega_bar),
+			  domega_bar(in_domega_bar), omega(0)
+		{
+		}
 
-    std::string Str() const
-    {
-      std::stringstream ss;
-      char tmp[150] ;
-      snprintf(tmp, sizeof(tmp), "%-19.8e\t %-19.8e\t %-19.8e\t %-19.8e\t %-19.8e\t %-19.8e", r, m , nu, omega, omega_bar, domega_bar) ;
-      ss << tmp ;
+		std::string Str() const
+		{
+			std::stringstream ss;
+			char tmp[150];
+			snprintf(tmp, sizeof(tmp), "%-19.8e\t %-19.8e\t %-19.8e\t %-19.8e\t %-19.8e\t %-19.8e", r, m, nu, omega, omega_bar, domega_bar);
+			ss << tmp;
 
-      return ss.str() ;
-    }
-  };
-  //--------------------------------------------------------------
-  // This struct was added on Apr 20, 2022
-  //  to accommodate the mixed star scenarios
-  struct OmegaPointDark
-  {
-    double r, m, m_d, nu, omega_bar, domega_bar, omega ;
+			return ss.str();
+		}
+	};
+	//--------------------------------------------------------------
+	// This struct was added on Apr 20, 2022
+	//  to accommodate the mixed star scenarios
+	struct OmegaPointDark
+	{
+		double r, m, m_d, nu, omega_bar, domega_bar, omega;
 
-    OmegaPointDark( const double& in_r, 
-                const double& in_m,
-                const double& in_m_d,
-                const double& in_nu,
-                const double& in_omega_bar,
-                const double& in_domega_bar)
-              : r(in_r), m(in_m), m_d(in_m_d), nu(in_nu),
-                omega_bar(in_omega_bar),
-                domega_bar(in_domega_bar), omega(0)
-            {}
+		OmegaPointDark(const double &in_r,
+					   const double &in_m,
+					   const double &in_m_d,
+					   const double &in_nu,
+					   const double &in_omega_bar,
+					   const double &in_domega_bar)
+			: r(in_r), m(in_m), m_d(in_m_d), nu(in_nu),
+			  omega_bar(in_omega_bar),
+			  domega_bar(in_domega_bar), omega(0)
+		{
+		}
 
-    std::string Str() const
-    {
-      std::stringstream ss;
-      char tmp[150] ;
-      snprintf(tmp, sizeof(tmp), "%-19.8e\t %-19.8e\t %-19.8e\t "
-                    "%-19.8e\t %-19.8e\t %-19.8e\t %-19.8e",
-                    r, m, m_d, nu, omega, omega_bar, domega_bar) ;
-      ss << tmp ;
+		std::string Str() const
+		{
+			std::stringstream ss;
+			char tmp[150];
+			snprintf(tmp, sizeof(tmp), "%-19.8e\t %-19.8e\t %-19.8e\t "
+									   "%-19.8e\t %-19.8e\t %-19.8e\t %-19.8e",
+					 r, m, m_d, nu, omega, omega_bar, domega_bar);
+			ss << tmp;
 
-      return ss.str() ;
-    }
-  };
+			return ss.str();
+		}
+	};
 
-  //--------------------------------------------------------------
+	//--------------------------------------------------------------
   private:
+	NStar *nstar_ptr = nullptr;
+	MixedStar *mixedstar_ptr = nullptr;
 
-    NStar* nstar_ptr = nullptr ;
-    MixedStar* mixedstar_ptr = nullptr ;
+	size_t radial_res = 1000;
 
-    size_t radial_res = 1000 ;
+	// This workspace stores state variables for interpolation lookups.
+	// It caches the previous value of an index lookup.
+	// When the subsequent interpolation point falls in the same
+	// interval its index value can be returned immediately.
+	// gsl_interp_accel *accel = nullptr ;
 
-    // This workspace stores state variables for interpolation lookups.
-    // It caches the previous value of an index lookup. 
-    // When the subsequent interpolation point falls in the same 
-    // interval its index value can be returned immediately.
-    // gsl_interp_accel *accel = nullptr ;
+	// We use cubic spline
+	// Cubic spline with natural boundary conditions.
+	// The resulting curve is piecewise cubic on each interval,
+	// with matching first and second derivatives at the supplied data-points.
+	//  The second derivative is chosen to be zero at the first point and last point.
 
-    // We use cubic spline
-    // Cubic spline with natural boundary conditions. 
-    // The resulting curve is piecewise cubic on each interval, 
-    // with matching first and second derivatives at the supplied data-points.
-    //  The second derivative is chosen to be zero at the first point and last point.
+	/// Mass spline
+	// gsl_spline *m_spline = nullptr ;
+	/// pressure spline
+	// gsl_spline *p_spline = nullptr ;
+	/// energy denisty spline
+	// gsl_spline *e_spline = nullptr ;
 
-      /// Mass spline
-    // gsl_spline *m_spline = nullptr ;
-      /// pressure spline
-    // gsl_spline *p_spline = nullptr ;
-      /// energy denisty spline
-    // gsl_spline *e_spline = nullptr ;
+	/// Initial bar{omega} (at r = r(i=0))
+	double init_omega_bar = -1;
 
+	/// Solution to TOV is saved here
+	// TOVTable tov_solution ;
+	std::vector<OmegaPoint> omega_results;	  // Aug 6, 2020
+	std::vector<OmegaSeqPoint> omega_seq_pts; // Aug 6, 2020
 
-    /// Initial bar{omega} (at r = r(i=0))
-    double init_omega_bar = -1 ;
+	std::vector<OmegaPointDark> omega_results_dark; // Apr 20, 2022
 
-    /// Solution to TOV is saved here
-    // TOVTable tov_solution ;
-    std::vector<OmegaPoint> omega_results    ; // Aug 6, 2020
-    std::vector<OmegaSeqPoint> omega_seq_pts ; // Aug 6, 2020
+	/// Radius of the star
+	// double R_Star = -1 ;
 
-    std::vector<OmegaPointDark> omega_results_dark ; // Apr 20, 2022
+	/// Mass of the star (it will set after importing TOV solution)
+	// double M_Star = -1 ;
 
-    /// Radius of the star
-    // double R_Star = -1 ; 
+	double fast_p;
+	double fast_e;
+	double fast_m;
 
-    /// Mass of the star (it will set after importing TOV solution)
-    // double M_Star = -1 ; 
+	double fast_p_v;
+	double fast_p_d;
+	double fast_e_v;
+	double fast_e_d;
+	double fast_m_tot;
 
-    double fast_p ;
-    double fast_e ;
-    double fast_m ;
-
-    double fast_p_v;
-    double fast_p_d ;
-    double fast_e_v ;
-    double fast_e_d  ;
-    double fast_m_tot ;
-
-  //--------------------------------------------------------------
+	//--------------------------------------------------------------
   public:
-    
-    RotationSolver();
-    ~RotationSolver() ;
+	RotationSolver();
+	~RotationSolver();
 
-    /// Copy Constructor 
-    RotationSolver(const RotationSolver &) = delete ;
-    
-    /// Assignment operator
-    RotationSolver& operator= (const RotationSolver&) = delete ;
+	/// Copy Constructor
+	RotationSolver(const RotationSolver &) = delete;
 
-    // void ImportTOVSolution(const Zaki::String::Directory&) ;
-    // void ImportTOVSolution(const TOVTable&) ;
-    
-    /// Attaches the NStar pointer to RotationSolver class
-    void AttachNStar(NStar*) ;
+	/// Assignment operator
+	RotationSolver &operator=(const RotationSolver &) = delete;
 
-    void AttachMixedStar(MixedStar*) ;
+	// void ImportTOVSolution(const Zaki::String::Directory&) ;
+	// void ImportTOVSolution(const TOVTable&) ;
 
-    NStar* GetNStar() ;
+	/// Attaches the NStar pointer to RotationSolver class
+	void AttachNStar(NStar *);
 
-    MixedStar* GetMixedStar() ;
+	void AttachMixedStar(MixedStar *);
 
+	NStar *GetNStar();
 
-    /// Returns the mass at a given radius
-    double GetMass(const double&) ;
+	MixedStar *GetMixedStar();
 
-    /// Returns the pressure at a given radius
-    double GetPress(double) ;
+	/// Returns the mass at a given radius
+	double GetMass(const double &);
 
-    /// Returns the derivative of pressure at a given radius
-    // double GetPressDer(const double&) ;
+	/// Returns the pressure at a given radius
+	double GetPress(double);
 
-    /// Returns the energy density at a given radius
-    double GetEDens(const double&) ;
+	/// Returns the derivative of pressure at a given radius
+	// double GetPressDer(const double&) ;
 
-    /// Returns the initial value assumes for omega at r ~ 0
-    double GetInitOmegaBar() const ;
+	/// Returns the energy density at a given radius
+	double GetEDens(const double &);
 
-    /// Returns omega_seq_pts
-    std::vector<OmegaSeqPoint> GetOmegaSeq() const ;
+	/// Returns the initial value assumes for omega at r ~ 0
+	double GetInitOmegaBar() const;
 
-    /// .......................Aug 6, 2020.........................     
-    // Returns the metric function nu(r)
-    double GetNu(double in_R)  ;
+	/// Returns omega_seq_pts
+	std::vector<OmegaSeqPoint> GetOmegaSeq() const;
 
-    // nu(r) integrand
-    // double NuIntegrand(double r) ;
+	/// .......................Aug 6, 2020.........................
+	// Returns the metric function nu(r)
+	double GetNu(double in_R);
 
-    // // Returns the value of the j function (Hartle Eq. 6.17, P. 253)
-    // double GetHartleJ(double r) ;
+	// nu(r) integrand
+	// double NuIntegrand(double r) ;
 
-    // // Returns the derivative of the j function (Hartle Eq. 6.18, P. 253)
-    // double GetHartleJDer(double r) ;
+	// // Returns the value of the j function (Hartle Eq. 6.17, P. 253)
+	// double GetHartleJ(double r) ;
 
-    // /// Coefficient for y[0]
-    // double GetHartleOmegaCoeff(const double r) ;
+	// // Returns the derivative of the j function (Hartle Eq. 6.18, P. 253)
+	// double GetHartleJDer(double r) ;
 
-    // /// Coefficient for y[1]
-    // double GetHartleDOmegaCoeff(const double r) ;
+	// /// Coefficient for y[0]
+	// double GetHartleOmegaCoeff(const double r) ;
 
-    /// NStar: Coefficient for y[0]
-    double GetHartleOmegaCoeff_N_Fast(const double r) ;
+	// /// Coefficient for y[1]
+	// double GetHartleDOmegaCoeff(const double r) ;
 
-    /// NStar: Coefficient for y[1]
-    double GetHartleDOmegaCoeff_N_Fast(const double r) ;
+	/// NStar: Coefficient for y[0]
+	double GetHartleOmegaCoeff_N_Fast(const double r);
 
-    /// MixedStar: Coefficient for y[0]
-    double GetHartleOmegaCoeff_Mixed(const double r) ;
+	/// NStar: Coefficient for y[1]
+	double GetHartleDOmegaCoeff_N_Fast(const double r);
 
-    /// MixedStar: Coefficient for y[1]
-    double GetHartleDOmegaCoeff_Mixed(const double r) ;
+	/// MixedStar: Coefficient for y[0]
+	double GetHartleOmegaCoeff_Mixed(const double r);
 
-    /// MixedStar: Coefficient for y[0]
-    double GetHartleOmegaCoeff_Mixed_Fast(const double r) ;
+	/// MixedStar: Coefficient for y[1]
+	double GetHartleDOmegaCoeff_Mixed(const double r);
 
-    /// MixedStar: Coefficient for y[1]
-    double GetHartleDOmegaCoeff_Mixed_Fast(const double r) ;
+	/// MixedStar: Coefficient for y[0]
+	double GetHartleOmegaCoeff_Mixed_Fast(const double r);
 
-    /// Input a range of initial omega(0) values
-    void Solve( const Zaki::Math::Axis&, 
-                const Zaki::String::Directory& = "") ;   
-                
-    /// Input an initial omega(0) value
-    void Solve( const double&, 
-                const Zaki::String::Directory& = "") ;   
-    
-    /// MixedStar: Input an initial omega(0) value
-    void Solve_Mixed( const double&, 
-                const Zaki::String::Directory& = "") ;  
+	/// MixedStar: Coefficient for y[1]
+	double GetHartleDOmegaCoeff_Mixed_Fast(const double r);
 
-    /// Evaluates the moment of inertia for the neutron star
-    void FindNMomInertia() ; 
+	/// Input a range of initial omega(0) values
+	void Solve(const Zaki::Math::Axis &,
+			   const Zaki::String::Directory & = "");
 
-    /// Evaluates the moment of inertia for the mixed star
-    void FindMixedMomInertia() ; 
+	/// Input an initial omega(0) value
+	void Solve(const double &,
+			   const Zaki::String::Directory & = "");
 
-    /// ..........................................................            
-    /// Exports the results of solving the rotation equations
-    void ExportResults(const Zaki::String::Directory&) const ;
+	/// MixedStar: Input an initial omega(0) value
+	void Solve_Mixed(const double &,
+					 const Zaki::String::Directory & = "");
 
-    static int ODE(double r, const double y[], double f[], void *params) ;
-    static int ODE_Mixed(double r, const double y[], double f[], void *params) ;
-    static int ODE_Mixed_Out(double r, const double y[], double f[], void *params) ;
-    static int ODE_Mixed_Fast(double r, const double y[], double f[], void *params) ;
-    static int ODE_N_Fast(double r, const double y[], double f[], void *params) ;
+	/// Evaluates the moment of inertia for the neutron star
+	void FindNMomInertia();
 
+	/// Evaluates the moment of inertia for the mixed star
+	void FindMixedMomInertia();
 
-    // Resets the containers
-    void Reset() ;
+	/// ..........................................................
+	/// Exports the results of solving the rotation equations
+	void ExportResults(const Zaki::String::Directory &) const;
+
+	static int ODE(double r, const double y[], double f[], void *params);
+	static int ODE_Mixed(double r, const double y[], double f[], void *params);
+	static int ODE_Mixed_Out(double r, const double y[], double f[], void *params);
+	static int ODE_Mixed_Fast(double r, const double y[], double f[], void *params);
+	static int ODE_N_Fast(double r, const double y[], double f[], void *params);
+
+	// Resets the containers
+	void Reset();
 };
 
 //==============================================================
-} // CompactStar namespace
+} // namespace CompactStar::Core
 //==============================================================
-#endif /*CompactStar_RotationSolver_H*/
+#endif /*CompactStar_Core_RotationSolver_H*/

@@ -83,10 +83,10 @@ int main(int argc, char **argv)
 
 	std::string model = "tov_debug";
 
-	CompactStar::Pulsar PSRJ1614m2230_908("J1614-2230_1.908_hp",
-										  {1.908, 0.016},
-										  {3.15, 0.0},
-										  {0.96e-20, 0});
+	CompactStar::Core::Pulsar PSRJ1614m2230_908("J1614-2230_1.908_hp",
+												{1.908, 0.016},
+												{3.15, 0.0},
+												{0.96e-20, 0});
 
 	PSRJ1614m2230_908.SetWrkDir(dir.ParentDir() +
 								"/results/" +

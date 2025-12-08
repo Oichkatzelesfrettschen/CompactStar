@@ -241,7 +241,7 @@ struct BNV_Output
 };
 
 //==============================================================
-class BNV_Analysis : public CompactStar::Analysis
+class BNV_Analysis : public CompactStar::Core::Analysis
 {
 	//--------------------------------------------------------------
   private:
@@ -260,8 +260,8 @@ class BNV_Analysis : public CompactStar::Analysis
 	~BNV_Analysis();
 
 	/// Analysis during the sequence loop
-	void Analyze(NStar *in_star) override;
-	void Analyze(MixedStar *in_star) override {}
+	void Analyze(Core::NStar *in_star) override;
+	void Analyze(Core::MixedStar *in_star) override {}
 
 	/// Saves the results
 	void Export(const Zaki::String::Directory &) override;

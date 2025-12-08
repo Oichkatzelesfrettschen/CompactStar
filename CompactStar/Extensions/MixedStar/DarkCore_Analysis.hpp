@@ -263,7 +263,7 @@ struct DarkCore_Output
 };
 
 //==============================================================
-class DarkCore_Analysis : public Analysis
+class DarkCore_Analysis : public Core::Analysis
 {
 	//--------------------------------------------------------------
   private:
@@ -284,8 +284,8 @@ class DarkCore_Analysis : public Analysis
 	~DarkCore_Analysis();
 
 	/// Analysis during the sequence loop
-	void Analyze(MixedStar *in_star) override;
-	void Analyze(NStar *in_star) override {}
+	void Analyze(Core::MixedStar *in_star) override;
+	void Analyze(Core::NStar *in_star) override {}
 
 	/// Saves the results
 	void Export(const Zaki::String::Directory &) override;

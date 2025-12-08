@@ -10,7 +10,7 @@
 
 #define TOV_SOLVER_THREAD_VERBOSE 0
 
-using namespace CompactStar;
+using namespace CompactStar::Core;
 
 //==============================================================
 //                        TOVSolver_Thread class

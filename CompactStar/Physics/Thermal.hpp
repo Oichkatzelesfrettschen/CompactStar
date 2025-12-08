@@ -85,7 +85,7 @@ class IEnvelope
  * @note If you prefer to use a \(T_\infty\)-based fit (e.g., \(T_\infty^{2.42}\)),
  *       implement a sibling function instead of overloading this one.
  */
-double SurfacePhotonLuminosity(StarProfileView view, const State::ThermalState &state);
+double SurfacePhotonLuminosity(Core::StarProfileView view, const State::ThermalState &state);
 
 /**
  * @brief Direct Urca neutrino emissivity \(Q_\nu^{\text{DUrca}}(r)\).
@@ -99,7 +99,7 @@ double SurfacePhotonLuminosity(StarProfileView view, const State::ThermalState &
  * @param r_km    Radius at which to evaluate [km].
  * @return Emissivity prefactor at r (exclude the \(T^6\) factor).
  */
-double DUrcaEmissivityPrefactor(StarProfileView view,
+double DUrcaEmissivityPrefactor(Core::StarProfileView view,
 								const State::ThermalState &state,
 								double r_km);
 
@@ -111,7 +111,7 @@ double DUrcaEmissivityPrefactor(StarProfileView view,
  * @param r_km    Radius [km].
  * @return Emissivity prefactor at r (exclude the \(T^8\) factor).
  */
-double MUrcaEmissivityPrefactor(StarProfileView view,
+double MUrcaEmissivityPrefactor(Core::StarProfileView view,
 								const State::ThermalState &state,
 								double r_km);
 
@@ -126,7 +126,7 @@ double MUrcaEmissivityPrefactor(StarProfileView view,
  * @param state  Thermal state.
  * @return Redshifted neutrino luminosity [erg s\(^{-1}\)].
  */
-double TotalNeutrinoLuminosity(StarProfileView view, const State::ThermalState &state);
+double TotalNeutrinoLuminosity(Core::StarProfileView view, const State::ThermalState &state);
 
 } // namespace CompactStar::Physics::Thermal
 

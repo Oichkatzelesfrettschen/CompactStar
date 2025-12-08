@@ -36,8 +36,8 @@
  *
  */
 // Created on May 9, 2022
-#ifndef CompactStar_TOVSolver_Thread_H
-#define CompactStar_TOVSolver_Thread_H
+#ifndef CompactStar_Core_TOVSolver_Thread_H
+#define CompactStar_Core_TOVSolver_Thread_H
 
 #include <thread>
 // #include <vector>
@@ -49,7 +49,7 @@
 #include "CompactStar/Core/TOVSolver.hpp"
 
 //==============================================================
-namespace CompactStar
+namespace CompactStar::Core
 {
 
 //==============================================================
@@ -127,6 +127,6 @@ class TOVSolver_Thread : public TOVSolver
 //==============================================================
 
 //==============================================================
-} // namespace CompactStar
+} // namespace CompactStar::Core
 //==============================================================
-#endif /*CompactStar_TOVSolver_Thread_H*/
+#endif /*CompactStar_Core_TOVSolver_Thread_H*/

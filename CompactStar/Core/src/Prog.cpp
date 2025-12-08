@@ -236,7 +236,7 @@
 #include <Zaki/Util/Logger.hpp>
 #include <cerrno>
 
-namespace CompactStar
+namespace CompactStar::Core
 {
 
 // -----------------------------------------------------------------------------

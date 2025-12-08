@@ -53,7 +53,7 @@ namespace CompactStar::Microphysics::BNV::Analysis
 {
 
 //==============================================================
-class Decay_Analysis : public CompactStar::Analysis
+class Decay_Analysis : public CompactStar::Core::Analysis
 {
 	//--------------------------------------------------------------
   private:
@@ -117,7 +117,7 @@ class Decay_Analysis : public CompactStar::Analysis
 	// Masses must be converted from MeV to fm^-1
 	Zaki::Vector::DataSet V_self_E_ds;
 
-	Pulsar *pulsar;
+	Core::Pulsar *pulsar;
 
 	//--------------------------------------------------------------
   public:
@@ -126,8 +126,8 @@ class Decay_Analysis : public CompactStar::Analysis
 	~Decay_Analysis();
 
 	/// Analysis during the sequence loop
-	void Analyze(NStar *in_star) override;
-	void Analyze(MixedStar *in_star) override {}
+	void Analyze(Core::NStar *in_star) override;
+	void Analyze(Core::MixedStar *in_star) override {}
 
 	/// Saves the results
 	void Export(const Zaki::String::Directory &) override;
@@ -144,7 +144,7 @@ class Decay_Analysis : public CompactStar::Analysis
 	void PlotRestEnergy();
 
 	/// Attaches the pulsar
-	void AttachPulsar(Pulsar *puls);
+	void AttachPulsar(Core::Pulsar *puls);
 };
 
 //==============================================================

@@ -51,15 +51,15 @@ class DataColumn;
 } // namespace Vector
 } // namespace Zaki
 
-namespace CompactStar
+namespace CompactStar::Core
 {
 class NStar;		  // Core/NStar.hpp
 class RotationSolver; // Core/RotationSolver.hpp (if needed later)
-namespace EOS
+} // namespace CompactStar::Core
+namespace CompactStar::EOS
 {
 class Model;
-} // namespace EOS
-} // namespace CompactStar
+} // namespace CompactStar::EOS
 
 namespace CompactStar
 {
@@ -75,7 +75,7 @@ namespace Evolution
  * @class StarContext
  * @brief Immutable, per-star adapter exposing cached geometry and composition.
  *
- * Constructed from an existing @c CompactStar::NStar and (optionally) an EOS object.
+ * Constructed from an existing @c CompactStar::Core::NStar and (optionally) an EOS object.
  * Provides fast getters for radius grid, metric factors \f(e^{\nu}, e^{\Lambda}\f),
  * and commonly used columns (density, proton fraction, etc.) by forwarding to Core
  * datasets. Geometry-only computations that do not change during evolution can be
@@ -89,10 +89,10 @@ class StarContext
 
 	/**
 	 * @brief Construct from a precomputed neutron-star profile.
-	 * @param ns   Reference to an initialized @c CompactStar::NStar.
+	 * @param ns   Reference to an initialized @c CompactStar::Core::NStar.
 	 * @param eos  Optional pointer to an EOS object for composition queries (may be null).
 	 */
-	StarContext(const CompactStar::NStar &ns,
+	StarContext(const CompactStar::Core::NStar &ns,
 				const CompactStar::EOS::Model *eos = 0);
 
 	/// @name Basic geometry and grids
@@ -135,7 +135,7 @@ class StarContext
 	///@}
 
   private:
-	const CompactStar::NStar *m_ns = 0;
+	const CompactStar::Core::NStar *m_ns = 0;
 	const CompactStar::EOS::Model *m_eos = 0;
 
 	// Non-owning cached pointers to frequently accessed columns (set in ctor).

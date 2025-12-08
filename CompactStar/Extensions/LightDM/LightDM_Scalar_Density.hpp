@@ -52,7 +52,7 @@ namespace CompactStar
 {
 
 //==============================================================
-class LightDM_Scalar_Density : public Prog
+class LightDM_Scalar_Density : public Core::Prog
 {
   private:
 	/// Flag to indicate if the pulsar is set.
@@ -163,7 +163,7 @@ class LightDM_Scalar_Density : public Prog
 	/// [2] : "100"
 	Zaki::Vector::DataSet n_B;
 
-	Pulsar pulsar;
+	Core::Pulsar pulsar;
 
 	/// The 2sigma bound on dot{B}/B from pulsar binary
 	/// orbital period decay rate
@@ -220,7 +220,7 @@ class LightDM_Scalar_Density : public Prog
 	void SetModel(const std::string &in_eos_model);
 
 	/// Sets the pulsar
-	void SetPulsar(const CompactStar::Pulsar &);
+	void SetPulsar(const CompactStar::Core::Pulsar &);
 
 	// / Imports the EOS
 	void ImportEOS(const Zaki::String::Directory &eos_dir);

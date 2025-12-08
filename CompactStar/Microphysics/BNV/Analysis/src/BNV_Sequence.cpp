@@ -194,7 +194,7 @@ void MicroBNVAna::BNV_Sequence::GenSequence(const Zaki::String::Directory &in_di
 	// .......................................................
 	//                     Solving TOV
 	// .......................................................
-	CompactStar::TOVSolver solver;
+	CompactStar::Core::TOVSolver solver;
 
 	solver.SetWrkDir(in_dir.ParentDir().ParentDir());
 	solver.ImportEOS("EOS/CompOSE/" + in_model + "/" + in_model + ".eos");

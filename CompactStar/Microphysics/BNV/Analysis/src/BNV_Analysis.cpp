@@ -46,7 +46,7 @@ MicroBNVAna::BNV_Analysis::BNV_Analysis()
 MicroBNVAna::BNV_Analysis::~BNV_Analysis() {}
 //--------------------------------------------------------------
 // Analysis during the sequence loop
-void MicroBNVAna::BNV_Analysis::Analyze(NStar *in_star)
+void MicroBNVAna::BNV_Analysis::Analyze(Core::NStar *in_star)
 {
 
 	// double m_n = Zaki::Physics::NEUTRON_M_FM ;

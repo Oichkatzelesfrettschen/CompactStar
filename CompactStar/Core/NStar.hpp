@@ -41,8 +41,8 @@
  */
 // Last edit Oct 31, 2025
 
-#ifndef CompactStar_NStar_H
-#define CompactStar_NStar_H
+#ifndef CompactStar_Core_NStar_H
+#define CompactStar_Core_NStar_H
 
 #include <Zaki/String/Directory.hpp>
 #include <Zaki/Vector/DataSet.hpp>
@@ -60,7 +60,7 @@
 #include "CompactStar/Core/StarProfile.hpp"
 #include "CompactStar/EOS/CompOSE_EOS.hpp"
 
-namespace CompactStar
+namespace CompactStar::Core
 {
 
 // Forward declarations
@@ -457,6 +457,6 @@ class NStar : public Prog
  *  - new code should do: nstar.Profile().GetSpecies("n") (now safe)
  */
 
-} // namespace CompactStar
+} // namespace CompactStar::Core
 
-#endif /* CompactStar_NStar_H */
+#endif /* CompactStar_Core_NStar_H */

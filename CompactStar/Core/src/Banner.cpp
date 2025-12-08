@@ -14,7 +14,7 @@
 #include <Zaki/String/Banner.hpp>
 #include <mutex>
 
-namespace CompactStar
+namespace CompactStar::Core
 {
 
 // ----- internal: single once_flag in this TU ---------------------------------

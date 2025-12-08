@@ -20,10 +20,11 @@
 #include "CompactStar/Core/StarProfile.hpp"
 #include "CompactStar/Physics/Driver/Spin/MagneticDipole.hpp"
 #include "CompactStar/Physics/Spin.hpp"
-namespace CompactStar
+
+namespace PhysDriv = CompactStar::Physics::Driver;
+namespace CompactStar::Core
 {
 
-namespace PhysDriv = Physics::Driver;
 //======================================================================
 //                         Pulsar Class
 //======================================================================

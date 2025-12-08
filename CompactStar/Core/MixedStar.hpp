@@ -37,8 +37,8 @@
  * Contact: M.Zakeri@eku.edu
  */
 
-#ifndef CompactStar_MixedStar_H
-#define CompactStar_MixedStar_H
+#ifndef CompactStar_Core_MixedStar_H
+#define CompactStar_Core_MixedStar_H
 
 #include <Zaki/String/Directory.hpp>
 #include <Zaki/Vector/DataSet.hpp>
@@ -49,7 +49,7 @@
 //==============================================================
 // struct gsl_integration_workspace ;
 //==============================================================
-namespace CompactStar
+namespace CompactStar::Core
 {
 
 // Forward declarations
@@ -506,6 +506,6 @@ class MixedStar : public Prog
 };
 
 //==============================================================
-} // namespace CompactStar
+} // namespace CompactStar::Core
 //==============================================================
-#endif /*CompactStar_MixedStar_H*/
+#endif /*CompactStar_Core_MixedStar_H*/

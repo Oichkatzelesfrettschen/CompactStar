@@ -36,8 +36,8 @@
  *
  */
 // Last edit on Dec 15 2020
-#ifndef CompactStar_TOVSolver_H
-#define CompactStar_TOVSolver_H
+#ifndef CompactStar_Core_TOVSolver_H
+#define CompactStar_Core_TOVSolver_H
 
 #include <gsl/gsl_spline.h>
 #include <vector>
@@ -48,7 +48,7 @@
 #include "CompactStar/Core/Prog.hpp"
 #include "CompactStar/Core/StarProfile.hpp"
 //==============================================================
-namespace CompactStar
+namespace CompactStar::Core
 {
 
 class Analysis;
@@ -827,9 +827,9 @@ class TOVSolver : public Prog
 };
 
 //==============================================================
-} // namespace CompactStar
+} // namespace CompactStar::Core
 //==============================================================
 // std::ostream& operator << ( std::ostream &, const Coord2D&);
 // std::ostream& operator << ( std::ostream &, const Segment&);
 //==============================================================
-#endif /*CompactStar_TOVSolver_H*/
+#endif /*CompactStar_Core_TOVSolver_H*/

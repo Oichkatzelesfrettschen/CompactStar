@@ -13,7 +13,7 @@
 // #include <Zaki/String/String.hpp> // for Multiply(...) if you want logging
 #include <Zaki/Vector/DataSet.hpp>
 
-namespace CompactStar
+namespace CompactStar::Core
 {
 namespace StarBuilder
 {

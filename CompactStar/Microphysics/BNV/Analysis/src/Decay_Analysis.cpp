@@ -369,12 +369,12 @@ void MicroBNVAna::Decay_Analysis::ImportVSelfEnergy(const std::string &f_name,
 
 //--------------------------------------------------------------
 // Attaches the pulsar (new pointer-aware version)
-void MicroBNVAna::Decay_Analysis::AttachPulsar(Pulsar *puls)
+void MicroBNVAna::Decay_Analysis::AttachPulsar(Core::Pulsar *puls)
 {
 	pulsar = puls;
 
 	// 1) get the structural profile from the pulsar
-	const StarProfile *prof = pulsar->GetProfile();
+	const Core::StarProfile *prof = pulsar->GetProfile();
 	if (!prof || prof->empty())
 	{
 		Z_LOG_ERROR("MicroBNVAna::Decay_Analysis::AttachPulsar: pulsar has no profile.");
@@ -382,9 +382,9 @@ void MicroBNVAna::Decay_Analysis::AttachPulsar(Pulsar *puls)
 	}
 
 	// 2) pull the columns we need, by pointer
-	const auto *r_col = prof->GetColumnPtr(StarProfile::Column::Radius);
-	const auto *m_col = prof->GetColumnPtr(StarProfile::Column::Mass);
-	const auto *nu_col = prof->GetColumnPtr(StarProfile::Column::MetricNu);
+	const auto *r_col = prof->GetColumnPtr(Core::StarProfile::Column::Radius);
+	const auto *m_col = prof->GetColumnPtr(Core::StarProfile::Column::Mass);
+	const auto *nu_col = prof->GetColumnPtr(Core::StarProfile::Column::MetricNu);
 	const auto *nb_col = prof->GetBaryonDensity();	   // total baryon density n_B(r)
 	const auto *lam_frac = prof->GetSpeciesPtr("100"); // Lambda fraction n_Λ / n_B
 	const auto *neu_frac = prof->GetSpeciesPtr("10");  // Neutron fraction n_n / n_B
@@ -412,7 +412,7 @@ void MicroBNVAna::Decay_Analysis::AttachPulsar(Pulsar *puls)
 	M_r *= Zaki::Physics::SUN_M_KM;
 
 	// sequence point B (total baryon number along that sequence point)
-	const SeqPoint sp = pulsar->GetSeqPoint();
+	const Core::SeqPoint sp = pulsar->GetSeqPoint();
 	const double B_tot = sp.b;
 
 	// -----------------------------------------------------------------
@@ -564,7 +564,7 @@ void MicroBNVAna::Decay_Analysis::AttachPulsar(Pulsar *puls)
 
 //--------------------------------------------------------------
 // Analysis during the sequence loop
-void MicroBNVAna::Decay_Analysis::Analyze(NStar *in_star)
+void MicroBNVAna::Decay_Analysis::Analyze(Core::NStar *in_star)
 {
 	Zaki::Vector::DataColumn r_set = *in_star->Profile().GetRadius();
 	Zaki::Vector::DataColumn M_r = *in_star->Profile().GetMass();

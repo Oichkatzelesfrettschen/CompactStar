@@ -5,10 +5,11 @@
 #include <CompactStar/Core/StarProfile.hpp>
 #include <chrono>
 
+using namespace CompactStar::Core;
 //------------------------------------------------------------
 // 13) Export (in-place; no copying)
 //------------------------------------------------------------
-void CompactStar::StarProfile::Export(const Zaki::String::Directory &out_dir, int precision)
+void StarProfile::Export(const Zaki::String::Directory &out_dir, int precision)
 {
 	// nothing to export
 	if (radial.Dim().empty())

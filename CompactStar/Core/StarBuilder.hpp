@@ -29,8 +29,8 @@
  * @ingroup Core
  */
 
-#ifndef COMPACTSTAR_STARBUILDER_HPP
-#define COMPACTSTAR_STARBUILDER_HPP
+#ifndef CompactStar_Core_StarBuilder_H
+#define CompactStar_Core_StarBuilder_H
 
 #include <string>
 #include <utility>
@@ -43,8 +43,10 @@
 
 namespace CompactStar
 {
+namespace Core
+{
 /**
- * @namespace CompactStar::StarBuilder
+ * @namespace CompactStar::Core::StarBuilder
  * @brief Namespace for profile-construction helpers.
  */
 namespace StarBuilder
@@ -169,6 +171,7 @@ int BuildFromSequence(const Zaki::String::Directory &wrk_dir,
 					  const Options &opt = Options());
 
 } // namespace StarBuilder
+} // namespace Core
 } // namespace CompactStar
 
-#endif // COMPACTSTAR_STARBUILDER_HPP
+#endif // CompactStar_Core_StarBuilder_H

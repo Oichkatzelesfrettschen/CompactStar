@@ -43,13 +43,13 @@ my_gsl_error_handler(const char *reason,
 
 //--------------------------------------------------------------
 // Example condition: export every NS profile
-static bool AlwaysExportNS(const CompactStar::NStar &)
+static bool AlwaysExportNS(const CompactStar::Core::NStar &)
 {
 	return true;
 }
 
 // Example condition: export every mixed-star profile
-static bool AlwaysExportMixed(const CompactStar::MixedStar &)
+static bool AlwaysExportMixed(const CompactStar::Core::MixedStar &)
 {
 	return true;
 }
@@ -80,7 +80,7 @@ int main()
 	std::cout << "[debug] assuming EOS name = " << eos_name << "\n";
 
 	// 4) Create a TOV solver
-	CompactStar::TOVSolver tov;
+	CompactStar::Core::TOVSolver tov;
 	tov.AddNCondition(&AlwaysExportNS);
 	tov.AddMixCondition(&AlwaysExportMixed);
 

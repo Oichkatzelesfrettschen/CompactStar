@@ -35,8 +35,8 @@
  * It only wires data together and provides convenience wrappers.
  */
 
-#ifndef CompactStar_Pulsar_H
-#define CompactStar_Pulsar_H
+#ifndef CompactStar_Core_Pulsar_H
+#define CompactStar_Core_Pulsar_H
 
 #include <string>
 
@@ -50,7 +50,7 @@
 #include "CompactStar/Physics/State/SpinState.hpp"
 #include "CompactStar/Physics/State/ThermalState.hpp"
 
-namespace CompactStar
+namespace CompactStar::Core
 {
 
 /**
@@ -479,6 +479,6 @@ class Pulsar : public Prog
 	}
 };
 
-} // namespace CompactStar
+} // namespace CompactStar::Core
 
-#endif /* CompactStar_Pulsar_H */
+#endif /* CompactStar_Core_Pulsar_H */

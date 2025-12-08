@@ -8,12 +8,12 @@
  * MIT License — see LICENSE at repo root.
  */
 
-#ifndef CompactStar_Banner_H
-#define CompactStar_Banner_H
+#ifndef CompactStar_Core_Banner_H
+#define CompactStar_Core_Banner_H
 
 #include <mutex>
 
-namespace CompactStar
+namespace CompactStar::Core
 {
 
 /**
@@ -35,6 +35,6 @@ namespace CompactStar
  */
 void ShowBannerOnce();
 
-} // namespace CompactStar
+} // namespace CompactStar::Core
 
-#endif /* CompactStar_Banner_H */
+#endif /* CompactStar_Core_Banner_H */

@@ -35,8 +35,8 @@
  * Contact: M.Zakeri@eku.edu
  *
  */
-#ifndef CompactStar_TaskManager_H
-#define CompactStar_TaskManager_H
+#ifndef CompactStar_Core_TaskManager_H
+#define CompactStar_Core_TaskManager_H
 
 // #include <vector>
 #include <Zaki/Math/Math_Core.hpp>
@@ -45,7 +45,7 @@
 #include "CompactStar/Core/Prog.hpp"
 #include "CompactStar/Core/TOVSolver.hpp"
 //==============================================================
-namespace CompactStar
+namespace CompactStar::Core
 {
 
 class MixedStar;
@@ -107,6 +107,6 @@ class TaskManager : public Prog
 //==============================================================
 
 //==============================================================
-} // namespace CompactStar
+} // namespace CompactStar::Core
 //==============================================================
-#endif /*CompactStar_TaskManager_H*/
+#endif /*CompactStar_Core_TaskManager_H*/

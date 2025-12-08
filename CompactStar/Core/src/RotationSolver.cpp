@@ -22,7 +22,7 @@
 
 #define R_SOLVER_VERBOSE 0
 
-using namespace CompactStar;
+using namespace CompactStar::Core;
 //==============================================================
 //                        RotationSolver class
 //==============================================================
@@ -956,13 +956,13 @@ void RotationSolver::Solve_Mixed(const double &in_omega_0,
 
 	// ------------------------------------------------
 	// Inside the mixed star:
-	gsl_odeiv2_system ode_sys = {CompactStar::RotationSolver::ODE_Mixed, nullptr, 2, this};
+	gsl_odeiv2_system ode_sys = {RotationSolver::ODE_Mixed, nullptr, 2, this};
 
 	gsl_odeiv2_driver *tmp_driver = gsl_odeiv2_driver_alloc_y_new(&ode_sys, gsl_odeiv2_step_rk8pd,
 																  1.e-1, 1.e-10, 1.e-10);
 	// ------------------------------------------------
 	// Outside the mixed star
-	gsl_odeiv2_system ode_sys_out = {CompactStar::RotationSolver::ODE_Mixed_Out, nullptr, 2, this};
+	gsl_odeiv2_system ode_sys_out = {RotationSolver::ODE_Mixed_Out, nullptr, 2, this};
 
 	gsl_odeiv2_driver *tmp_driver_out = gsl_odeiv2_driver_alloc_y_new(&ode_sys_out, gsl_odeiv2_step_rk8pd,
 																	  1.e-1, 1.e-10, 1.e-10);
@@ -1243,7 +1243,7 @@ void RotationSolver::FindNMomInertia()
 
 	double ang_mom_J, ang_vel_Omega, mom_inertia;
 
-	gsl_odeiv2_system fast_ode_sys = {CompactStar::RotationSolver::ODE_N_Fast, nullptr, 2, this};
+	gsl_odeiv2_system fast_ode_sys = {RotationSolver::ODE_N_Fast, nullptr, 2, this};
 
 	gsl_odeiv2_driver *fast_driver = gsl_odeiv2_driver_alloc_y_new(&fast_ode_sys, gsl_odeiv2_step_rk8pd,
 																   1.e-1, 1.e-10, 1.e-10);
@@ -1291,7 +1291,7 @@ void RotationSolver::FindMixedMomInertia()
 	y[0] = init_omega_bar;
 	y[1] = 0;
 
-	// gsl_odeiv2_system ode_sys = {CompactStar::RotationSolver::ODE_Mixed, nullptr, 2, this} ;
+	// gsl_odeiv2_system ode_sys = {RotationSolver::ODE_Mixed, nullptr, 2, this} ;
 
 	// gsl_odeiv2_driver *tmp_driver = gsl_odeiv2_driver_alloc_y_new
 	//   (&ode_sys, gsl_odeiv2_step_rk8pd,
@@ -1330,7 +1330,7 @@ void RotationSolver::FindMixedMomInertia()
 
 	// ++++++++++++++++++++++++++++++++++++++++++++++++++
 	// New method:
-	gsl_odeiv2_system fast_ode_sys = {CompactStar::RotationSolver::ODE_Mixed_Fast, nullptr, 2, this};
+	gsl_odeiv2_system fast_ode_sys = {RotationSolver::ODE_Mixed_Fast, nullptr, 2, this};
 
 	gsl_odeiv2_driver *fast_driver = gsl_odeiv2_driver_alloc_y_new(&fast_ode_sys, gsl_odeiv2_step_rk8pd,
 																   1.e-1, 1.e-10, 1.e-10);

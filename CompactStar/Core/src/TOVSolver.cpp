@@ -31,7 +31,7 @@
 #define TOV_SOLVER_VERBOSE 1
 #define DarkCore_Analysis 0
 
-using namespace CompactStar;
+using namespace CompactStar::Core;
 
 //==============================================================
 //                        Sequence class
@@ -1543,7 +1543,7 @@ void TOVSolver::RadiusLoop(double &in_r, double *in_y)
 	//          GSL ODE SYSTEM SETUP
 	//----------------------------------------
 
-	gsl_odeiv2_system ode_sys = {CompactStar::TOVSolver::ODE, nullptr, 2, this};
+	gsl_odeiv2_system ode_sys = {TOVSolver::ODE, nullptr, 2, this};
 
 	gsl_odeiv2_driver *tmp_driver = gsl_odeiv2_driver_alloc_y_new(&ode_sys, gsl_odeiv2_step_rk8pd,
 																  1.e-1, 1.e-10, 1.e-10);
@@ -2333,13 +2333,13 @@ void TOVSolver::RadiusLoopMixed(double &in_r, double *in_y,
 	//          GSL ODE SYSTEM SETUP
 	//----------------------------------------
 	gsl_odeiv2_system ode_sys_core =
-		{CompactStar::TOVSolver::ODE_Dark_Core, nullptr, 4, this};
+		{TOVSolver::ODE_Dark_Core, nullptr, 4, this};
 
 	gsl_odeiv2_driver *tmp_driver_core = gsl_odeiv2_driver_alloc_y_new(&ode_sys_core, gsl_odeiv2_step_rk8pd,
 																	   1.e-1, 1.e-10, 1.e-10);
 
 	gsl_odeiv2_system ode_sys_mantle =
-		{CompactStar::TOVSolver::ODE_Dark_Mantle, nullptr, 2, this};
+		{TOVSolver::ODE_Dark_Mantle, nullptr, 2, this};
 
 	gsl_odeiv2_driver *tmp_driver_mantle = gsl_odeiv2_driver_alloc_y_new(&ode_sys_mantle, gsl_odeiv2_step_rk8pd,
 																		 1.e-1, 1.e-10, 1.e-10);
@@ -2522,13 +2522,13 @@ void TOVSolver::ExportSequence(const Zaki::String::Directory &in_dir) const
 //   vec_saver_2.Export1D(mixed_sequence) ;
 // }
 //--------------------------------------------------------------
-void CompactStar::TOVSolver::SetExclusionRegion(const Zaki::Math::Cond_Polygon &in_c_poly)
+void TOVSolver::SetExclusionRegion(const Zaki::Math::Cond_Polygon &in_c_poly)
 {
 	c_poly = in_c_poly;
 }
 //--------------------------------------------------------------
-void CompactStar::TOVSolver::PrintStatus(const size_t &in_v_idx,
-										 const size_t &in_d_idx, const size_t &in_v_res, const size_t &in_d_res)
+void TOVSolver::PrintStatus(const size_t &in_v_idx,
+							const size_t &in_d_idx, const size_t &in_v_res, const size_t &in_d_res)
 {
 	char tmp_term[150];
 	snprintf(tmp_term, sizeof(tmp_term), "Mixed sequence (%3.lu, %3.lu) out "
@@ -2539,8 +2539,8 @@ void CompactStar::TOVSolver::PrintStatus(const size_t &in_v_idx,
 }
 
 //--------------------------------------------------------------
-void CompactStar::TOVSolver::PrintStatus(const size_t &in_idx,
-										 const size_t &in_res)
+void TOVSolver::PrintStatus(const size_t &in_idx,
+							const size_t &in_res)
 {
 	char tmp_term[100];
 	snprintf(tmp_term, sizeof(tmp_term), "Sequence %3.lu out "
@@ -2550,7 +2550,7 @@ void CompactStar::TOVSolver::PrintStatus(const size_t &in_idx,
 }
 //--------------------------------------------------------------
 // Empties the sequence
-void CompactStar::TOVSolver::ClearSequence()
+void TOVSolver::ClearSequence()
 {
 	sequence.Clear();
 }
@@ -2593,9 +2593,9 @@ class radial_res_test : public TOVSolver_Tests
 //--------------------------------------------------------------
 // It generates a sequence of NS by varying radial resolution
 // as a function of central energy density
-void CompactStar::TOVSolver::GenTestSequence(const double &in_e_c,
-											 const Zaki::String::Directory &in_dir,
-											 const Zaki::String::Directory &in_file)
+void TOVSolver::GenTestSequence(const double &in_e_c,
+								const Zaki::String::Directory &in_dir,
+								const Zaki::String::Directory &in_file)
 {
 
 //   std::cout << "\n Dir = " << in_dir << "\t file = " << in_file << "\n" ;

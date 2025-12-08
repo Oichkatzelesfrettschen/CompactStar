@@ -247,8 +247,8 @@
  * @contact M.Zakeri@eku.edu
  */
 
-#ifndef CompactStar_Prog_H
-#define CompactStar_Prog_H
+#ifndef CompactStar_Core_Prog_H
+#define CompactStar_Core_Prog_H
 
 #include "CompactStar/Core/CompactStarConfig.h"
 #include <Zaki/String/Directory.hpp>
@@ -258,7 +258,7 @@
 #include <sstream>
 #include <string>
 
-namespace CompactStar
+namespace CompactStar::Core
 {
 
 /**
@@ -394,6 +394,6 @@ class Prog
 	///@}
 };
 
-} // namespace CompactStar
+} // namespace CompactStar::Core
 
-#endif /* CompactStar_Prog_H */
+#endif /* CompactStar_Core_Prog_H */

@@ -49,7 +49,7 @@ double tmp_meff_val = 0;
 
 double pulsar_mass = 0;
 //==============================================================
-bool MassCondition(const CompactStar::NStar &in_star)
+bool MassCondition(const CompactStar::Core::NStar &in_star)
 {
 	return (pulsar_mass - 1e-4 <= in_star.GetSequence().m &&
 			in_star.GetSequence().m <= pulsar_mass + 1e-4);
@@ -193,7 +193,7 @@ void LightDM_Scalar_Density::Export_Scalar_Density_vs_Baryon_Density(const Baryo
 }
 //--------------------------------------------------------------
 // Sets the pulsar
-void LightDM_Scalar_Density::SetPulsar(const CompactStar::Pulsar &in_pulsar)
+void LightDM_Scalar_Density::SetPulsar(const CompactStar::Core::Pulsar &in_pulsar)
 {
 	Z_LOG_INFO("Setting the pulsar...");
 	pulsar = in_pulsar;
@@ -204,7 +204,7 @@ void LightDM_Scalar_Density::SetPulsar(const CompactStar::Pulsar &in_pulsar)
 //--------------------------------------------------------------
 void LightDM_Scalar_Density::GenSequence() const
 {
-	CompactStar::TOVSolver solver;
+	CompactStar::Core::TOVSolver solver;
 	solver.ImportEOS(eos.GetWrkDir() + "/" + model + ".eos");
 	solver.SetWrkDir(wrk_dir_);
 	solver.SetRadialRes(10000);

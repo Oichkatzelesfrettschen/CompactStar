@@ -56,7 +56,7 @@ namespace CompactStar::Microphysics::BNV::Analysis
 {
 
 //==============================================================
-class BNV_Sequence : public Prog
+class BNV_Sequence : public Core::Prog
 {
   private:
 	Zaki::Vector::DataSet seq;

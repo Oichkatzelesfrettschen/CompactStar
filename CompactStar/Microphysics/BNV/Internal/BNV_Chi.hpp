@@ -63,23 +63,23 @@ namespace CompactStar::Microphysics::BNV::Internal
 
 struct Pulsar_Limit
 {
-	CompactStar::Pulsar p;
+	CompactStar::Core::Pulsar p;
 	std::vector<double> lim;
 
-	Pulsar_Limit(const CompactStar::Pulsar &in_p,
+	Pulsar_Limit(const CompactStar::Core::Pulsar &in_p,
 				 const std::vector<double> &in_lim)
 		: p(in_p), lim(in_lim)
 	{
 	}
 
-	// Pulsar_Limit(const CompactStar::Pulsar& in_p,
+	// Pulsar_Limit(const CompactStar::Core::Pulsar& in_p,
 	//              std::vector<double> in_lim )
 	//              : p(in_p), lim(in_lim)
 	// {}
 };
 
 //==============================================================
-class BNV_Chi : public Prog
+class BNV_Chi : public Core::Prog
 {
   public:
 	//--------------------------------------------------------------
@@ -191,7 +191,7 @@ class BNV_Chi : public Prog
 	/// [2] : "100"
 	Zaki::Vector::DataSet n_B;
 
-	Pulsar pulsar;
+	Core::Pulsar pulsar;
 
 	/// The 2sigma bound on dot{B}/B from pulsar binary
 	/// orbital period decay rate
@@ -254,7 +254,7 @@ class BNV_Chi : public Prog
 	virtual void SetModel(const std::string &in_eos_model);
 
 	/// Sets the pulsar
-	void SetPulsar(const CompactStar::Pulsar &);
+	void SetPulsar(const CompactStar::Core::Pulsar &);
 
 	/// Sets m_chi_vals
 	void SetChiMassRange(const Zaki::Math::Axis &);

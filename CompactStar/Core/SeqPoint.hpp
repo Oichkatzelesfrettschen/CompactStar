@@ -167,8 +167,8 @@
  * Contact: M.Zakeri@eku.edu
  */
 
-#ifndef CompactStar_SeqPoint_H
-#define CompactStar_SeqPoint_H
+#ifndef CompactStar_Core_SeqPoint_H
+#define CompactStar_Core_SeqPoint_H
 
 #include <cstdio> // snprintf
 #include <sstream>
@@ -178,7 +178,7 @@
 // If you have a logging macro like Z_LOG_ERROR declared elsewhere, it will be used.
 // Otherwise, this header remains agnostic and does not depend on it.
 
-namespace CompactStar
+namespace CompactStar::Core
 {
 
 //==============================================================
@@ -449,6 +449,6 @@ class SeqPoint
 	}
 };
 
-} // namespace CompactStar
+} // namespace CompactStar::Core
 
-#endif /* CompactStar_SeqPoint_H */
+#endif /* CompactStar_Core_SeqPoint_H */

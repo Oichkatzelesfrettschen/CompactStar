@@ -12,12 +12,12 @@
 #include "CompactStar/Extensions/MixedStar/DarkCore_Analysis.hpp"
 #include <CompactStar/EOS/Fermi_Gas.hpp>
 
-using namespace CompactStar;
+using namespace CompactStar::Core;
 
 Zaki::Math::Quantity J0348_p_0432_M(2.01, 0.04);
 //==============================================================
 // Condition for exporting the profiles
-bool Mass_Condition(const CompactStar::MixedStar &in_star)
+bool Mass_Condition(const MixedStar &in_star)
 {
 	return ((in_star.GetSequence().d.m + in_star.GetSequence().v.m) >=
 			(J0348_p_0432_M.val - J0348_p_0432_M.err)) &&
@@ -26,7 +26,7 @@ bool Mass_Condition(const CompactStar::MixedStar &in_star)
 }
 
 //==============================================================
-bool TrueCondition(const CompactStar::MixedStar &in_star)
+bool TrueCondition(const MixedStar &in_star)
 {
 	return true;
 }
@@ -121,7 +121,7 @@ void TaskManager::Work()
 	}
 
 	// Access the sequence info by calling this:
-	CompactStar::TOVSolver_Thread::GetSequence();
+	TOVSolver_Thread::GetSequence();
 
 	Zaki::Util::LogManager::SetLogLevels(Zaki::Util::LogLevel::Info);
 }
@@ -129,7 +129,7 @@ void TaskManager::Work()
 //--------------------------------------------------------------
 void TaskManager::Task(const int tsk_id) const
 {
-	CompactStar::TOVSolver_Thread solver(tsk_id);
+	TOVSolver_Thread solver(tsk_id);
 	solver.SetRadialRes(3.0e4);
 	solver.SetWrkDir(wrk_dir_);
 
@@ -193,7 +193,7 @@ void TaskManager::FindDarkEOS(const double &in_m)
 {
 	m_chi = in_m;
 
-	CompactStar::Fermi_Gas F_gas(in_m * Zaki::Physics::NEUTRON_M_MEV);
+	Fermi_Gas F_gas(in_m * Zaki::Physics::NEUTRON_M_MEV);
 	F_gas.SetRhoRange({1e-5, 5e+1});
 
 	F_gas.FindEOS(2000);
@@ -640,7 +640,7 @@ void TaskManager::Precision_Task(const double &in_mass) const
 
 	for (size_t i = 0; i < cont_divisions; i++)
 	{
-		CompactStar::Contour B_cont;
+		Contour B_cont;
 		B_cont.Import(wrk_dir_ + "/NStar/Dark_Core/" + chi_str + "/B_conts/" + m_str + "/B_tot_" + m_str + "_" + std::to_string(i) + ".tsv");
 
 		// std::cout << "\t Val = " << B_cont.val
@@ -650,9 +650,9 @@ void TaskManager::Precision_Task(const double &in_mass) const
 
 		// return ;
 
-		CompactStar::DarkCore_Analysis darkcore_analysis;
+		DarkCore_Analysis darkcore_analysis;
 
-		CompactStar::TOVSolver solver;
+		TOVSolver solver;
 		// solver.SetWrkDir(dir.ParentDir() +"/results") ;
 		solver.SetWrkDir(wrk_dir_);
 
@@ -677,7 +677,7 @@ void TaskManager::FindLimits(const double &in_mass) const
 	snprintf(tmp_m, sizeof(tmp_m), "%.2f", in_mass);
 	std::string m_str(tmp_m);
 
-	CompactStar::DarkCore_Analysis darkcore_analysis;
+	DarkCore_Analysis darkcore_analysis;
 
 	for (size_t i = 0; i < cont_divisions; i++)
 	{

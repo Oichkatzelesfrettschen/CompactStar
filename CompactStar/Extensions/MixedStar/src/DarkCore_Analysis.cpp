@@ -79,7 +79,7 @@ DarkCore_Analysis::DarkCore_Analysis()
 DarkCore_Analysis::~DarkCore_Analysis() {}
 //--------------------------------------------------------------
 // Analysis during the sequence loop
-void DarkCore_Analysis::Analyze(MixedStar *in_star)
+void DarkCore_Analysis::Analyze(Core::MixedStar *in_star)
 {
 
 	// double m_n = Zaki::Physics::NEUTRON_M_FM ;

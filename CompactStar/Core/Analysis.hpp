@@ -36,13 +36,13 @@
  *
  */
 
-#ifndef CompactStar_Analysis_H
-#define CompactStar_Analysis_H
+#ifndef CompactStar_Core_Analysis_H
+#define CompactStar_Core_Analysis_H
 
 #include "CompactStar/Core/Prog.hpp"
 
 //==============================================================
-namespace CompactStar
+namespace CompactStar::Core
 {
 
 class MixedStar;
@@ -118,6 +118,6 @@ class Analysis : public Prog
 };
 
 //==============================================================
-} // namespace CompactStar
+} // namespace CompactStar::Core
 //==============================================================
-#endif /*CompactStar_Analysis_H*/
+#endif /*CompactStar_Core_Analysis_H*/

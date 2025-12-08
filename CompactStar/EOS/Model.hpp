@@ -51,7 +51,7 @@ namespace CompactStar
 {
 
 //==============================================================
-class Model : public Prog
+class Model : public Core::Prog
 {
 	//--------------------------------------------------------------
   protected:

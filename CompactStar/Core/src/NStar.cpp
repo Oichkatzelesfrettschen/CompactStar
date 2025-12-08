@@ -14,6 +14,8 @@
 
 #include <gsl/gsl_integration.h>
 #include <limits>
+
+using namespace CompactStar::Core;
 //==============================================================
 //               Conversion Factors
 //==============================================================
@@ -23,14 +25,14 @@ static constexpr double FM3_TO_KM3 = 1e54;
 //==============================================================
 // Default Constructor
 // Be sure to run SurfaceIsReached if using this constructor!
-CompactStar::NStar::NStar() : Prog("NStar"), B_integrand{}
+NStar::NStar() : Prog("NStar"), B_integrand{}
 {
 	rot_solver.AttachNStar(this);
 }
 
 //--------------------------------------------------------------
 // Constructor from TOV Solutions
-CompactStar::NStar::NStar(const std::vector<CompactStar::TOVPoint> &in_tov)
+NStar::NStar(const std::vector<TOVPoint> &in_tov)
 	: Prog("NStar"), B_integrand{}
 {
 	rot_solver.AttachNStar(this);
@@ -39,8 +41,8 @@ CompactStar::NStar::NStar(const std::vector<CompactStar::TOVPoint> &in_tov)
 
 //--------------------------------------------------------------
 // Constructor from TOV Solutions with species labels
-CompactStar::NStar::NStar(const std::vector<CompactStar::TOVPoint> &in_tov,
-						  const std::vector<std::string> &species_labels)
+NStar::NStar(const std::vector<TOVPoint> &in_tov,
+			 const std::vector<std::string> &species_labels)
 	: Prog("NStar"), B_integrand{}
 {
 	rot_solver.AttachNStar(this);
@@ -53,8 +55,8 @@ CompactStar::NStar::NStar(const std::vector<CompactStar::TOVPoint> &in_tov,
 // ---------------------------------------------------------
 // Builder — Populate profile + legacy ds from TOV data
 // ---------------------------------------------------------
-void CompactStar::NStar::BuildFromTOV(const std::vector<TOVPoint> &in_tov,
-									  const std::vector<std::string> *species_labels)
+void NStar::BuildFromTOV(const std::vector<TOVPoint> &in_tov,
+						 const std::vector<std::string> *species_labels)
 {
 	PROFILE_FUNCTION();
 
@@ -365,7 +367,7 @@ void CompactStar::NStar::BuildFromTOV(const std::vector<TOVPoint> &in_tov,
 // ---------------------------------------------------------
 // Builder — Populate ds/B_integrand/sequence from TOV data
 // ---------------------------------------------------------
-void CompactStar::NStar::BuildFromTOV(const std::vector<TOVPoint> &in_tov,
+void NStar::BuildFromTOV(const std::vector<TOVPoint> &in_tov,
 									  const std::vector<std::string> *species_labels)
 {
 	PROFILE_FUNCTION();
@@ -472,7 +474,7 @@ void CompactStar::NStar::BuildFromTOV(const std::vector<TOVPoint> &in_tov,
 ------------------------------------------------------------------------- */
 // //--------------------------------------------------------------
 // // Constructor from TOV Solutions
-// CompactStar::NStar::NStar(const std::vector<CompactStar::TOVPoint> &in_tov)
+// NStar::NStar(const std::vector<CompactStar::TOVPoint> &in_tov)
 // 	: Prog("NStar", true),
 // 	  ds(7 + in_tov[0].rho_i.size(), in_tov.size()),
 // 	  B_integrand(2, in_tov.size())
@@ -565,7 +567,7 @@ void CompactStar::NStar::BuildFromTOV(const std::vector<TOVPoint> &in_tov,
 //--------------------------------------------------------------
 //--------------------------------------------------------------
 // Initializes the dataset from a TOV solver
-void CompactStar::NStar::InitFromTOVSolver(const TOVSolver *in_tov_solver)
+void NStar::InitFromTOVSolver(const TOVSolver *in_tov_solver)
 {
 	if (!in_tov_solver)
 	{
@@ -678,7 +680,7 @@ void CompactStar::NStar::InitFromTOVSolver(const TOVSolver *in_tov_solver)
 
 //--------------------------------------------------------------
 // Initializes the dataset
-void CompactStar::NStar::InitFromTOVSolver(const TOVSolver *in_tov_solver)
+void NStar::InitFromTOVSolver(const TOVSolver *in_tov_solver)
 {
 	if (!in_tov_solver)
 	{
@@ -731,7 +733,7 @@ void CompactStar::NStar::InitFromTOVSolver(const TOVSolver *in_tov_solver)
 // ------------------------------------------------------------
 // Init interpolants from profile
 // ------------------------------------------------------------
-void CompactStar::NStar::InitInterpolantsFromProfile_()
+void NStar::InitInterpolantsFromProfile_()
 {
 	// nothing to do if profile is empty
 	if (prof_.empty())
@@ -803,7 +805,7 @@ void CompactStar::NStar::InitInterpolantsFromProfile_()
 
 //--------------------------------------------------------------
 // Print profile column sizes
-void CompactStar::NStar::PrintProfileColumnSizes() const
+void NStar::PrintProfileColumnSizes() const
 {
 	std::cout << "[NStar] profile column sizes:\n";
 	for (const auto &col : prof_.radial.data_set)
@@ -816,7 +818,7 @@ void CompactStar::NStar::PrintProfileColumnSizes() const
 //--------------------------------------------------------------
 // This has to be run so the class
 // knows when to initialize all the splines
-// void CompactStar::NStar::FinalizeSurface()
+// void NStar::FinalizeSurface()
 // {
 // 	PROFILE_FUNCTION();
 
@@ -870,7 +872,7 @@ void CompactStar::NStar::PrintProfileColumnSizes() const
 //--------------------------------------------------------------
 // This has to be run so the class
 // knows when to initialize all the splines
-void CompactStar::NStar::FinalizeSurface()
+void NStar::FinalizeSurface()
 {
 	PROFILE_FUNCTION();
 
@@ -1062,14 +1064,14 @@ void CompactStar::NStar::FinalizeSurface()
 //  Returns true if SurfaceIsReached has been called
 //  and internal splines are ready.
 //  It is set to true in SurfaceIsReached()
-// bool CompactStar::NStar::IsSurfaceFinalized() const noexcept
+// bool NStar::IsSurfaceFinalized() const noexcept
 // {
 // 	return surface_ready;
 // }
 
 //--------------------------------------------------------------
 // Appends one TOV point to the NStar (legacy ds + new StarProfile)
-void CompactStar::NStar::Append(const TOVPoint &in_tov)
+void NStar::Append(const TOVPoint &in_tov)
 {
 	// ============================================================
 	// 1) ---- LEGACY DS PATH (keep as-is) -------------------------
@@ -1238,7 +1240,7 @@ void CompactStar::NStar::Append(const TOVPoint &in_tov)
 
 /* ------------- LEGACY VERSION FOR REFERENCE ------------------
 
-void CompactStar::NStar::Append(const TOVPoint &in_tov)
+void NStar::Append(const TOVPoint &in_tov)
 {
 	col(Col::R).vals.emplace_back(in_tov.r);                                                                       // in km
 	col(Col::M).vals.emplace_back(Zaki::Physics::SUN_M_KM * in_tov.m);                                             // in km
@@ -1263,7 +1265,7 @@ void CompactStar::NStar::Append(const TOVPoint &in_tov)
 
 //-------------------------------------------------------------- */
 // Sets the work directory for the member objects
-void CompactStar::NStar::OnWorkDirChanged(
+void NStar::OnWorkDirChanged(
 	const Zaki::String::Directory &in_dir)
 {
 	prof_.radial.SetWrkDir(in_dir);
@@ -1271,7 +1273,7 @@ void CompactStar::NStar::OnWorkDirChanged(
 
 //--------------------------------------------------------------
 /// Similar to the destructor
-void CompactStar::NStar::Reset()
+void NStar::Reset()
 {
 	// ds.ClearRows();
 	prof_.Reset();
@@ -1282,7 +1284,7 @@ void CompactStar::NStar::Reset()
 
 //--------------------------------------------------------------
 /// Destructor
-CompactStar::NStar::~NStar()
+NStar::~NStar()
 {
 }
 
@@ -1290,7 +1292,7 @@ CompactStar::NStar::~NStar()
 // /// Evaluate the metric function
 // Out of commission from October 28, 2025
 // Reason: This was an O(N^2) algorithm due to the repeated integrations
-// void CompactStar::NStar::EvaluateNu()
+// void NStar::EvaluateNu()
 // {
 // 	PROFILE_FUNCTION();
 
@@ -1321,7 +1323,7 @@ CompactStar::NStar::~NStar()
 
 //--------------------------------------------------------------
 /// Evaluate the metric function
-// void CompactStar::NStar::EvaluateNu()
+// void NStar::EvaluateNu()
 // {
 // 	PROFILE_FUNCTION();
 
@@ -1366,7 +1368,7 @@ CompactStar::NStar::~NStar()
 
 // 	ds.Interpolate(idx(Col::R), idx(Col::Nu));
 // }
-void CompactStar::NStar::EvaluateNu()
+void NStar::EvaluateNu()
 {
 	PROFILE_FUNCTION();
 
@@ -1466,7 +1468,7 @@ void CompactStar::NStar::EvaluateNu()
 
 //--------------------------------------------------------------
 /// Metric function as a function of radius (in km)
-double CompactStar::NStar::GetMetricNu(const double &in_r) const
+double NStar::GetMetricNu(const double &in_r) const
 {
 	if (in_r < 0)
 	{
@@ -1510,14 +1512,14 @@ double CompactStar::NStar::GetMetricNu(const double &in_r) const
 
 //--------------------------------------------------------------
 // Metric function as a function of radius (in km)
-// Zaki::Vector::DataColumn *CompactStar::NStar::GetNu() noexcept
+// Zaki::Vector::DataColumn *NStar::GetNu() noexcept
 // {
 // 	return &col(Col::Nu);
 // }
 //--------------------------------------------------------------
 // Get radius at star surface.
 //  returns Radius at surface (km).
-// double CompactStar::NStar::RadiusSurface() const noexcept // sequence.r
+// double NStar::RadiusSurface() const noexcept // sequence.r
 // {
 // 	if (!prof_.empty() && prof_.R > 0.0)
 // 		return prof_.R;
@@ -1529,7 +1531,7 @@ double CompactStar::NStar::GetMetricNu(const double &in_r) const
 // returns Mass at surface in solar mass units.
 // prof_.M is in km
 // sequence.m is in solar mass units
-// double CompactStar::NStar::MassSurface() const noexcept // sequence.m
+// double NStar::MassSurface() const noexcept // sequence.m
 // {
 // 	if (!prof_.empty() && prof_.M > 0.0)
 // 		return prof_.M / Zaki::Physics::SUN_M_KM;
@@ -1539,7 +1541,7 @@ double CompactStar::NStar::GetMetricNu(const double &in_r) const
 //--------------------------------------------------------------
 //  Get the number of radial grid points.
 // returns Number of points.
-// std::size_t CompactStar::NStar::Size() const noexcept
+// std::size_t NStar::Size() const noexcept
 // {
 // 	if (!prof_.empty())
 // 		return prof_.size();
@@ -1554,14 +1556,14 @@ double CompactStar::NStar::GetMetricNu(const double &in_r) const
 
 //--------------------------------------------------------------
 // Metric function as a function of radius (in km) - const version
-// const Zaki::Vector::DataColumn *CompactStar::NStar::GetNu() const noexcept
+// const Zaki::Vector::DataColumn *NStar::GetNu() const noexcept
 // {
 // 	return &col(Col::Nu);
 // }
 
 //--------------------------------------------------------------
 /// Mass (in km) as a function of radius
-double CompactStar::NStar::GetMass(const double &in_r) const
+double NStar::GetMass(const double &in_r) const
 {
 	{
 		if (in_r < 0)
@@ -1616,34 +1618,34 @@ double CompactStar::NStar::GetMass(const double &in_r) const
 
 //--------------------------------------------------------------
 // // Mass (in km) as a function of radius
-// Zaki::Vector::DataColumn *CompactStar::NStar::GetMass() noexcept
+// Zaki::Vector::DataColumn *NStar::GetMass() noexcept
 // {
 // 	return &col(Col::M);
 // }
 // //--------------------------------------------------------------
 // // Mass (in km) as a function of radius - const version
-// const Zaki::Vector::DataColumn *CompactStar::NStar::GetMass() const noexcept
+// const Zaki::Vector::DataColumn *NStar::GetMass() const noexcept
 // {
 // 	return &col(Col::M);
 // }
 
 //--------------------------------------------------------------
 // /// Returns the radius dataset
-// Zaki::Vector::DataColumn *CompactStar::NStar::GetRadius() noexcept
+// Zaki::Vector::DataColumn *NStar::GetRadius() noexcept
 // {
 // 	return &col(Col::R);
 // }
 
 // //--------------------------------------------------------------
 // /// Returns the radius dataset - const version
-// const Zaki::Vector::DataColumn *CompactStar::NStar::GetRadius() const noexcept
+// const Zaki::Vector::DataColumn *NStar::GetRadius() const noexcept
 // {
 // 	return &col(Col::R);
 // }
 
 //--------------------------------------------------------------
 /// Baryon number density (fm^{-3}) as a function of radius
-double CompactStar::NStar::GetBaryonDensity(const double &in_r) const
+double NStar::GetBaryonDensity(const double &in_r) const
 {
 	if (in_r < 0)
 	{
@@ -1690,14 +1692,14 @@ double CompactStar::NStar::GetBaryonDensity(const double &in_r) const
 
 //--------------------------------------------------------------
 // Baryon number density (fm^{-3}) as a function of radius
-// Zaki::Vector::DataColumn *CompactStar::NStar::GetRho() noexcept
+// Zaki::Vector::DataColumn *NStar::GetRho() noexcept
 // {
 // 	return &col(Col::Rho);
 // }
 
 //--------------------------------------------------------------
 // Baryon number density (fm^{-3}) as a function of radius - const version
-// const Zaki::Vector::DataColumn *CompactStar::NStar::GetRho() const noexcept
+// const Zaki::Vector::DataColumn *NStar::GetRho() const noexcept
 // {
 // 	return &col(Col::Rho);
 // }
@@ -1706,7 +1708,7 @@ double CompactStar::NStar::GetBaryonDensity(const double &in_r) const
 // Check if density data exists for a labeled species.
 //  label  Species label string.
 // Returns True if data exists, false otherwise.
-// bool CompactStar::NStar::HasRho_i(std::string_view label) const noexcept
+// bool NStar::HasRho_i(std::string_view label) const noexcept
 // {
 // 	for (auto &&c : rho_i_idx)
 // 	{
@@ -1722,7 +1724,7 @@ double CompactStar::NStar::GetBaryonDensity(const double &in_r) const
 //--------------------------------------------------------------
 // Visible baryon number density (fm^{-3}) as a function of radius
 // for a specific species labeled as (in_label)
-// Zaki::Vector::DataColumn *CompactStar::NStar::GetRho_i(const std::string &in_label) noexcept
+// Zaki::Vector::DataColumn *NStar::GetRho_i(const std::string &in_label) noexcept
 // {
 
 // 	for (auto &&c : rho_i_idx)
@@ -1743,7 +1745,7 @@ double CompactStar::NStar::GetBaryonDensity(const double &in_r) const
 // Visible baryon number density (fm^{-3}) as a function of radius
 // for a specific species labeled as (in_label) - const version
 // const Zaki::Vector::DataColumn *
-// CompactStar::NStar::GetRho_i(const std::string_view &in_label) const
+// NStar::GetRho_i(const std::string_view &in_label) const
 // {
 // 	for (auto &&c : rho_i_idx)
 // 	{
@@ -1761,7 +1763,7 @@ double CompactStar::NStar::GetBaryonDensity(const double &in_r) const
 // Check if density data exists for a labeled species.
 //  label  Species label string.
 // Returns True if data exists, false otherwise.
-// bool CompactStar::NStar::HasRho_i(std::string_view label) const noexcept
+// bool NStar::HasRho_i(std::string_view label) const noexcept
 // {
 // 	if (!prof_.empty() && prof_.HasSpecies(std::string(label)))
 // 		return true;
@@ -1772,7 +1774,7 @@ double CompactStar::NStar::GetBaryonDensity(const double &in_r) const
 // Visible baryon number density (fm^{-3}) as a function of radius
 // for a specific species labeled as (in_label) - const version
 const Zaki::Vector::DataColumn *
-CompactStar::NStar::GetRho_i(const std::string_view &in_label) const
+NStar::GetRho_i(const std::string_view &in_label) const
 {
 	if (prof_.empty())
 		return nullptr;
@@ -1787,7 +1789,7 @@ CompactStar::NStar::GetRho_i(const std::string_view &in_label) const
 // Visible baryon number density (fm^{-3}) as a function of radius
 // for a specific species labeled as (in_label)
 // Zaki::Vector::DataColumn *
-// CompactStar::NStar::GetRho_i(const std::string &in_label)
+// NStar::GetRho_i(const std::string &in_label)
 // {
 // 	if (prof_.empty())
 // 		return nullptr;
@@ -1797,7 +1799,7 @@ CompactStar::NStar::GetRho_i(const std::string_view &in_label) const
 
 //--------------------------------------------------------------
 /// Energy density (in km^{-2}) as a function of radius
-double CompactStar::NStar::GetEnergyDensity(const double &in_r) const
+double NStar::GetEnergyDensity(const double &in_r) const
 {
 	if (in_r < 0)
 	{
@@ -1842,21 +1844,21 @@ double CompactStar::NStar::GetEnergyDensity(const double &in_r) const
 //--------------------------------------------------------------
 // Energy density (in km^{-2}) as a function of radius
 // Zaki::Vector::DataColumn *
-// CompactStar::NStar::GetEps() noexcept
+// NStar::GetEps() noexcept
 // {
 // 	return &col(Col::Eps);
 // }
 // //--------------------------------------------------------------
 // // Energy density (in km^{-2}) as a function of radius - const version
 // const Zaki::Vector::DataColumn *
-// CompactStar::NStar::GetEps() const noexcept
+// NStar::GetEps() const noexcept
 // {
 // 	return &col(Col::Eps);
 // }
 
 //--------------------------------------------------------------
 /// Pressure (in km^{-2}) as a function of radius
-double CompactStar::NStar::GetPressure(const double &in_r) const
+double NStar::GetPressure(const double &in_r) const
 {
 	if (in_r < 0)
 	{
@@ -1901,7 +1903,7 @@ double CompactStar::NStar::GetPressure(const double &in_r) const
 //--------------------------------------------------------------
 // Pressure (in km^{-2}) as a function of radius
 // Zaki::Vector::DataColumn *
-// CompactStar::NStar::GetPress() noexcept
+// NStar::GetPress() noexcept
 // {
 // 	return &col(Col::P);
 // }
@@ -1909,14 +1911,14 @@ double CompactStar::NStar::GetPressure(const double &in_r) const
 //--------------------------------------------------------------
 // Pressure (in km^{-2}) as a function of radius - const version
 // const Zaki::Vector::DataColumn *
-// CompactStar::NStar::GetPress() const noexcept
+// NStar::GetPress() const noexcept
 // {
 // 	return &col(Col::P);
 // }
 
 // ------------------------------------------------------------
 // Sequence forwarding
-const CompactStar::SeqPoint &CompactStar::NStar::GetSequence() const noexcept
+const SeqPoint &NStar::GetSequence() const noexcept
 {
 	if (!prof_.empty())
 		return prof_.seq_point;
@@ -1927,7 +1929,7 @@ const CompactStar::SeqPoint &CompactStar::NStar::GetSequence() const noexcept
 }
 // ------------------------------------------------------------
 // Sequence forwarding (non-const)
-CompactStar::SeqPoint &CompactStar::NStar::GetSequence() noexcept
+SeqPoint &NStar::GetSequence() noexcept
 {
 	if (!prof_.empty())
 		return prof_.seq_point;
@@ -1939,7 +1941,7 @@ CompactStar::SeqPoint &CompactStar::NStar::GetSequence() noexcept
 
 //--------------------------------------------------------------
 // Baryon number integrand
-double CompactStar::NStar::BaryonNumIntegrand(double in_r) const
+double NStar::BaryonNumIntegrand(double in_r) const
 {
 	// if (in_r <= 0)
 	// 	return 0.0; // center contributes 0 anyway (r^2 factor)
@@ -1982,7 +1984,7 @@ double CompactStar::NStar::BaryonNumIntegrand(double in_r) const
 //--------------------------------------------------------------
 /// Total moment of inertia (in km^3)
 // MomInertiaIntegrand is wrong!
-double CompactStar::NStar::Find_MomInertia()
+double NStar::Find_MomInertia()
 {
 	PROFILE_FUNCTION();
 
@@ -1994,14 +1996,14 @@ double CompactStar::NStar::Find_MomInertia()
 //--------------------------------------------------------------
 /// Precision for printing the profile
 /// by default it is set to '9' digits
-void CompactStar::NStar::SetProfilePrecision(const int &in_prec)
+void NStar::SetProfilePrecision(const int &in_prec)
 {
 	prof_.SetProfilePrecision(in_prec);
 }
 
 //--------------------------------------------------------------
 // // Exports the star profile
-// void CompactStar::NStar::Export(const Zaki::String::Directory &in_dir)
+// void NStar::Export(const Zaki::String::Directory &in_dir)
 // {
 // 	char seq_header[200];
 // 	snprintf(seq_header, sizeof(seq_header),
@@ -2031,7 +2033,7 @@ void CompactStar::NStar::SetProfilePrecision(const int &in_prec)
 
 // 	ds.ClearHeadFoot();
 // }
-void CompactStar::NStar::Export(const Zaki::String::Directory &in_dir)
+void NStar::Export(const Zaki::String::Directory &in_dir)
 {
 	if (!prof_.empty())
 	{

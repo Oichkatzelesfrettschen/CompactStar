@@ -70,7 +70,7 @@ namespace CompactStar::Physics::BNV
  * @param s    Spin state (uses P, Pdot).
  * @return Upper bound on \f$\Gamma_{\mathrm{BNV}}\f$ [1/yr].
  */
-double SpinDownLimit(StarProfileView view, const ::CompactStar::Physics::State::SpinState &s);
+double SpinDownLimit(Core::StarProfileView view, const ::CompactStar::Physics::State::SpinState &s);
 
 /**
  * @brief Compute the spin-down bound and store it in a BNVState block.
@@ -87,7 +87,7 @@ double SpinDownLimit(StarProfileView view, const ::CompactStar::Physics::State::
  * @param s    Spin state (uses P, Pdot).
  * @param bnv  BNV state block to update (SpinDownLimit() field is set).
  */
-void UpdateSpinDownLimit(StarProfileView view,
+void UpdateSpinDownLimit(Core::StarProfileView view,
 						 const ::CompactStar::Physics::State::SpinState &s,
 						 Physics::State::BNVState &bnv);
 

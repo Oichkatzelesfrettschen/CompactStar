@@ -20,7 +20,7 @@ using namespace CompactStar;
 
 double BNV_Chi_pulsar_mass = 0;
 //==============================================================
-bool MassCondition(const CompactStar::NStar &in_star)
+bool MassCondition(const CompactStar::Core::NStar &in_star)
 {
 	return (BNV_Chi_pulsar_mass - 1e-4 <= in_star.GetSequence().m &&
 			in_star.GetSequence().m <= BNV_Chi_pulsar_mass + 1e-4);
@@ -108,7 +108,7 @@ void MicroBNVInt::BNV_Chi::SetModel(const std::string &in_eos_model)
 
 //--------------------------------------------------------------
 // Sets the pulsar
-void MicroBNVInt::BNV_Chi::SetPulsar(const CompactStar::Pulsar &in_pulsar)
+void MicroBNVInt::BNV_Chi::SetPulsar(const CompactStar::Core::Pulsar &in_pulsar)
 {
 	pulsar = in_pulsar;
 
@@ -182,7 +182,7 @@ void MicroBNVInt::BNV_Chi::ImportEOS(const Zaki::String::Directory &eos_dir,
 //--------------------------------------------------------------
 void MicroBNVInt::BNV_Chi::GenSequence() const
 {
-	CompactStar::TOVSolver solver;
+	CompactStar::Core::TOVSolver solver;
 	solver.ImportEOS(eos.GetWrkDir() + "/" + model + ".eos");
 	solver.SetWrkDir(wrk_dir_);
 	solver.SetRadialRes(10000);
@@ -1604,7 +1604,7 @@ void MicroBNVInt::BNV_Chi::Rate_vs_R(const std::vector<double> &m_chi,
 	double max_radius = 0;
 	for (size_t i = 0; i < psr_lims.size(); i++)
 	{
-		CompactStar::Pulsar tmp_p = psr_lims[i].p;
+		CompactStar::Core::Pulsar tmp_p = psr_lims[i].p;
 		tmp_p.SetWrkDir(wrk_dir_ + "/" + model + "/" + tmp_p.GetName());
 		tmp_p.FindProfile(model);
 		if (max_radius < tmp_p.GetSeqPoint().r)
@@ -1997,7 +1997,7 @@ double MicroBNVInt::BNV_Chi::GetRate(const double &m_chi,
 									 const Baryon &B)
 {
 	// 0) grab the profile from the pulsar
-	const StarProfile *prof = pulsar.GetProfile();
+	const Core::StarProfile *prof = pulsar.GetProfile();
 	if (!prof || prof->empty())
 	{
 		Z_LOG_ERROR("BNV_Chi::GetRate: pulsar profile is missing/empty.");
@@ -2005,9 +2005,9 @@ double MicroBNVInt::BNV_Chi::GetRate(const double &m_chi,
 	}
 
 	// 1) pull needed columns as pointers
-	const auto *r_col = prof->GetColumnPtr(StarProfile::Column::Radius);
-	const auto *m_col = prof->GetColumnPtr(StarProfile::Column::Mass);
-	const auto *nu_col = prof->GetColumnPtr(StarProfile::Column::MetricNu);
+	const auto *r_col = prof->GetColumnPtr(Core::StarProfile::Column::Radius);
+	const auto *m_col = prof->GetColumnPtr(Core::StarProfile::Column::Mass);
+	const auto *nu_col = prof->GetColumnPtr(Core::StarProfile::Column::MetricNu);
 
 	if (!r_col || !m_col || !nu_col)
 	{
@@ -2051,7 +2051,7 @@ double MicroBNVInt::BNV_Chi::GetRate(const double &m_chi,
 	total_rate_sinv *= 3600.0 * 24.0 * 365.0;
 
 	// 7) divide by total baryon number from sequence point
-	const SeqPoint sp = pulsar.GetSeqPoint();
+	const Core::SeqPoint sp = pulsar.GetSeqPoint();
 	const double Btot = sp.b;
 
 	if (Btot <= 0.0)
@@ -2136,7 +2136,7 @@ double MicroBNVInt::BNV_Chi::GetEpsLim(const double &m_chi,
 									   const Baryon &B)
 {
 	// 0) get the structural profile
-	const StarProfile *prof = pulsar.GetProfile();
+	const Core::StarProfile *prof = pulsar.GetProfile();
 	if (!prof || prof->empty())
 	{
 		// no structure → no constraint
@@ -2144,9 +2144,9 @@ double MicroBNVInt::BNV_Chi::GetEpsLim(const double &m_chi,
 	}
 
 	// 1) pull core columns as pointers
-	const auto *r_col = prof->GetColumnPtr(StarProfile::Column::Radius);
-	const auto *m_col = prof->GetColumnPtr(StarProfile::Column::Mass);
-	const auto *nu_col = prof->GetColumnPtr(StarProfile::Column::MetricNu);
+	const auto *r_col = prof->GetColumnPtr(Core::StarProfile::Column::Radius);
+	const auto *m_col = prof->GetColumnPtr(Core::StarProfile::Column::Mass);
+	const auto *nu_col = prof->GetColumnPtr(Core::StarProfile::Column::MetricNu);
 
 	if (!r_col || !m_col || !nu_col)
 	{
@@ -2189,7 +2189,7 @@ double MicroBNVInt::BNV_Chi::GetEpsLim(const double &m_chi,
 	total_rate_sinv *= 3600.0 * 24.0 * 365.0;
 
 	// 7) per-baryon rate = (1/B_tot) dB/dt
-	const SeqPoint sp = pulsar.GetSeqPoint();
+	const Core::SeqPoint sp = pulsar.GetSeqPoint();
 	const double Btot = sp.b;
 	if (Btot <= 0.0)
 	{
@@ -2293,7 +2293,7 @@ MicroBNVInt::BNV_Chi::Rate_Eps MicroBNVInt::BNV_Chi::GetRate_Eps(
 	const Baryon &B)
 {
 	// 0) get the structural profile
-	const StarProfile *prof = pulsar.GetProfile();
+	const Core::StarProfile *prof = pulsar.GetProfile();
 	if (!prof || prof->empty())
 	{
 		// no profile → no rate
@@ -2301,9 +2301,9 @@ MicroBNVInt::BNV_Chi::Rate_Eps MicroBNVInt::BNV_Chi::GetRate_Eps(
 	}
 
 	// 1) pull columns by pointer
-	const auto *r_col = prof->GetColumnPtr(StarProfile::Column::Radius);
-	const auto *m_col = prof->GetColumnPtr(StarProfile::Column::Mass);
-	const auto *nu_col = prof->GetColumnPtr(StarProfile::Column::MetricNu);
+	const auto *r_col = prof->GetColumnPtr(Core::StarProfile::Column::Radius);
+	const auto *m_col = prof->GetColumnPtr(Core::StarProfile::Column::Mass);
+	const auto *nu_col = prof->GetColumnPtr(Core::StarProfile::Column::MetricNu);
 
 	if (!r_col || !m_col || !nu_col)
 	{
@@ -2349,7 +2349,7 @@ MicroBNVInt::BNV_Chi::Rate_Eps MicroBNVInt::BNV_Chi::GetRate_Eps(
 	result_sinv *= 3600.0 * 24.0 * 365.0;
 
 	// 7) per-baryon rate: divide by total baryon number on this seq point
-	const SeqPoint sp = pulsar.GetSeqPoint();
+	const Core::SeqPoint sp = pulsar.GetSeqPoint();
 	const double Btot = sp.b;										// total baryon number for this model
 	double output_rate = (Btot > 0.0) ? (result_sinv / Btot) : 0.0; // [yr⁻¹]
 

@@ -52,8 +52,8 @@
  * Contact: M.Zakeri@eku.edu
  */
 
-#ifndef CompactStar_StarProfile_H
-#define CompactStar_StarProfile_H
+#ifndef CompactStar_Core_StarProfile_H
+#define CompactStar_Core_StarProfile_H
 
 #include <algorithm>
 #include <cstddef>
@@ -64,7 +64,7 @@
 #include "CompactStar/Core/SeqPoint.hpp"
 #include <Zaki/Vector/DataSet.hpp>
 
-namespace CompactStar
+namespace CompactStar::Core
 {
 
 //==============================================================
@@ -667,6 +667,6 @@ struct StarProfileView
 	const Zaki::Vector::DataColumn *GetMetricNu() const { return GetPtr(StarProfile::Column::MetricNu); }
 };
 
-} // namespace CompactStar
+} // namespace CompactStar::Core
 
-#endif /* CompactStar_StarProfile_H */
+#endif /* CompactStar_Core_StarProfile_H */

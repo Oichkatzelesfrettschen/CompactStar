@@ -70,7 +70,7 @@ enum class Dir_Type
 };
 
 //==============================================================
-class CompOSE_EOS : public Prog
+class CompOSE_EOS : public Core::Prog
 {
 	//--------------------------------------------------------------
   private:
