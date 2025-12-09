@@ -21,7 +21,7 @@ namespace CompactStar::Core
  * @brief Process-wide program banner utilities.
  *
  * Provides a one-shot banner display that runs automatically before
- * `main()` via a TU-scope static in Banner.cpp. You can also call
+ * `main()` via a TU-scope static in Banner.cpp. We can also call
  * ShowBannerOnce() manually if desired (e.g., in tests).
  */
 
@@ -29,7 +29,7 @@ namespace CompactStar::Core
  * @brief Print the CompactStar banner exactly once per process.
  *
  * Safe to call from any thread; subsequent calls are no-ops.
- * Normally you do not need to call this directly because
+ * Normally we do not need to call this directly because
  * Banner.cpp defines a TU-scope static that triggers it during
  * static initialization (before `main()`).
  */

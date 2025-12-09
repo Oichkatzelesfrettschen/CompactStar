@@ -36,7 +36,7 @@ namespace CompactStar::Core
  *
  * We give a generic name to the base `Prog` so logging still works,
  * and we immediately point the view at our internal profile.
- * (The view will be invalid until you actually load a profile.)
+ * (The view will be invalid until we actually load a profile.)
  */
 Pulsar::Pulsar()
 	: Prog("pulsar")
@@ -125,7 +125,7 @@ Pulsar::Pulsar(const std::string &name)
  *
  * @note This function automatically exports the resulting profile as
  *       `<wrk_dir>/<in_dir>/<name>.tsv` for consistency with older workflows.
- *       Disable that export if you prefer in-memory use only.
+ *       Disable that export if we prefer in-memory use only.
  *
  * @see CompactStar::StarBuilder::BuildFromSequence
  * @see CompactStar::SeqPoint

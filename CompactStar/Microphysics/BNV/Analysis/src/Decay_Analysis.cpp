@@ -408,7 +408,7 @@ void MicroBNVAna::Decay_Analysis::AttachPulsar(Core::Pulsar *puls)
 	Zaki::Vector::DataColumn X_lam = *lam_frac;
 	Zaki::Vector::DataColumn X_neu = *neu_frac;
 
-	// convert M_r to km-mass where you need it
+	// convert M_r to km-mass
 	M_r *= Zaki::Physics::SUN_M_KM;
 
 	// sequence point B (total baryon number along that sequence point)
@@ -463,7 +463,7 @@ void MicroBNVAna::Decay_Analysis::AttachPulsar(Core::Pulsar *puls)
 			double n_neu_local = n_B[i] * X_neu[i];
 
 			// effective masses/potentials evaluated at n_B[i]
-			double tmp_m_eff = m_eff_ds.Evaluate(2, n_B[i]); // 2 → Lambda branch in your table
+			double tmp_m_eff = m_eff_ds.Evaluate(2, n_B[i]); // 2 → Lambda branch in our table
 			double tmp_V = V_self_E_ds.Evaluate(2, n_B[i]);
 			double tmp_den = n_lam_local;
 

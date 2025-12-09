@@ -29,7 +29,7 @@
  * @brief Unified structural / metric / composition profile for compact stars.
  *
  * This is the “fully populated” phase-2 version. It mirrors the column layout
- * you already used in `NStar`:
+ * we already used in `NStar`:
  *
  *   0: r         (radius)
  *   1: m         (enclosed mass)
@@ -97,7 +97,7 @@ struct StarProfile
 	 * @enum Column
 	 * @brief Scoped identifiers for common profile columns.
 	 *
-	 * We match your legacy layout:
+	 * We match the legacy layout:
 	 *  0: Radius
 	 *  1: Mass
 	 *  2: MetricNuPrime
@@ -105,7 +105,7 @@ struct StarProfile
 	 *  4: EnergyDensity
 	 *  5: BaryonDensity
 	 *  6: MetricNu
-	 *  7: MetricLambda  (optional – may not be present in all runs)
+	 *  7: MetricLambda
 	 */
 	enum class Column : int
 	{
@@ -115,8 +115,8 @@ struct StarProfile
 		Pressure,	   ///< p(r)
 		EnergyDensity, ///< ε(r)
 		BaryonDensity, ///< n_B(r)
-		MetricNu,	   ///< ν(r) such that g_tt = e^{2ν}
-		MetricLambda   ///< λ(r) such that g_rr = e^{2λ} (optional)
+		MetricNu,	   ///< ν(r) such that g_tt = -e^{2ν}
+		MetricLambda   ///< λ(r) such that g_rr = e^{2λ}
 	};
 
 	// ------------------------------------------------------------
@@ -126,7 +126,6 @@ struct StarProfile
 	 * @brief Radial profile as produced by the TOV solver or file importer.
 	 *
 	 * Column order is expected to **at least** follow the first 7 entries above.
-	 * If your run doesn’t produce λ(r), leave idx_lambda = -1.
 	 */
 	Zaki::Vector::DataSet radial;
 
@@ -246,7 +245,7 @@ struct StarProfile
 	/**
 	 * @brief Get the current integer index that corresponds to a given Column.
 	 *
-	 * You can override these with SetColumnIndex(...) if your file layout
+	 * These can be overriden with SetColumnIndex(...) if the file layout
 	 * is different.
 	 */
 	int GetColumnIndex(Column col) const
@@ -320,7 +319,7 @@ struct StarProfile
 		return radial[static_cast<std::size_t>(idx)]; // return by value
 	}
 
-	// keep a NON-const version only if you really need mutation;
+	// keep a NON-const version only if we really need mutation;
 	// otherwise just delete it. Right now, keep it like this:
 	Zaki::Vector::DataColumn &Get(Column col)
 	{
@@ -365,8 +364,6 @@ struct StarProfile
 	/**
 	 * @brief Get λ(r) column, if present.
 	 *
-	 * @warning If this profile doesn’t have λ, `idx_lambda` may be < 0 or out
-	 *          of range. In that case, you must check before calling.
 	 */
 	const Zaki::Vector::DataColumn *GetMetricLambda() const
 	{
@@ -531,7 +528,7 @@ struct StarProfile
 	/**
 	 * @brief Add/register a species column.
 	 *
-	 * Call this from your TOV importer after pushing the column into `radial`.
+	 * Call this from our TOV importer after pushing the column into `radial`.
 	 *
 	 * @param label   species name
 	 * @param col_idx column index in `radial`
@@ -603,7 +600,7 @@ struct StarProfile
  * @brief Non-owning view into a `StarProfile`.
  *
  * Use this in algorithm headers (thermal, BNV, rotochemical) to avoid copying
- * large datasets. You can check `valid()` before accessing.
+ * large datasets. We can check `valid()` before accessing.
  */
 struct StarProfileView
 {

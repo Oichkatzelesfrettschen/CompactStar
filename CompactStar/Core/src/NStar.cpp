@@ -172,28 +172,33 @@ void NStar::BuildFromTOV(const std::vector<TOVPoint> &in_tov,
 			// nu (will be built later)
 			radial[prof_.idx_nu].vals.emplace_back(0.0);
 
-			// ------------------------------
-			// lambda(r) = 1 / (1 - 2 M(r)/r)
-			// r, m are in km, so this is consistent
-			double denom = 1.0;
+			// ------------------------------------------------------------
+			// Compute and append λ to the profile
+			// ------------------------------------------------------------
+			// Compute the Schwarzschild-like factor:
+			const double r_km = tp.r;
+			const double m_km = Zaki::Physics::SUN_M_KM * tp.m;
 
-			// avoid r=0 division
+			double denom = 1.0;
 			if (r_km > 0.0)
 			{
 				denom = 1.0 - 2.0 * m_km / r_km;
 				if (denom <= 0.0)
-					denom = 1e-15; // clamp: very compact inner point
-			}
-			else
-			{
-				// at the exact center, m=0, so λ=1 is fine
-				denom = 1.0;
+					denom = 1e-15; // protect against log of non-positive
 			}
 
-			double lambda_val = 1.0 / denom;
-			radial[prof_.idx_lambda].vals.emplace_back(lambda_val);
+			// g_rr = 1 / (1 - 2M/r)
+			// const double grr = 1.0 / denom;
+
+			// λ = 0.5 * ln(g_rr) = -0.5 * ln(denom)
+			// const double lambda_geom = 0.5 * std::log(grr);
+			// or equivalently:
+			const double lambda_geom = -0.5 * std::log(denom);
+
+			radial[prof_.idx_lambda].vals.emplace_back(lambda_geom);
+			// ------------------------------------------------------------
+
 			// ------------------------------
-
 			// species values (pad with 0.0)
 			if (!tp.rho_i.empty())
 			{
@@ -319,7 +324,7 @@ void NStar::BuildFromTOV(const std::vector<TOVPoint> &in_tov,
 	// 			ds[idx_col].label = "X" + std::to_string(idx_col);
 	// 	}
 
-	// 	// fill rows (unit handling matches your previous code)
+	// 	// fill rows (unit handling matches our previous code)
 	// 	for (const auto &tp : in_tov)
 	// 	{
 	// 		col(Col::R).vals.emplace_back(tp.r); // km
@@ -740,7 +745,7 @@ void NStar::InitInterpolantsFromProfile_()
 		return;
 
 	// We only interpolate columns that actually exist.
-	// NOTE: your StarProfile throws in Get(...) if column is missing,
+	// NOTE: our StarProfile throws in Get(...) if column is missing,
 	// so we MUST guard with HasColumn(...) before calling Interpolate.
 
 	// Radius column must exist for interpolation to make sense
@@ -1076,7 +1081,6 @@ void NStar::Append(const TOVPoint &in_tov)
 	// ============================================================
 	// 1) ---- LEGACY DS PATH (keep as-is) -------------------------
 	// ============================================================
-	// NOTE: this preserves your current behavior.
 	// col(Col::R).vals.emplace_back(in_tov.r); // in km
 
 	// col(Col::M).vals.emplace_back(
@@ -1183,20 +1187,31 @@ void NStar::Append(const TOVPoint &in_tov)
 	// std::cout << "radial[idx_r].Size() - radial[idx_m].Size() = "
 	// 		  << radial[prof_.idx_r].Size() - radial[prof_.idx_m].Size() << "\n";
 
-	// λ(r) = 1 / (1 - 2M/r)
+	// ------------------------------------------------------------
+	// Compute and append λ to the profile
+	// ------------------------------------------------------------
+	// Compute the Schwarzschild-like factor:
+	const double r_km = in_tov.r;
+	const double m_km = Zaki::Physics::SUN_M_KM * in_tov.m;
+
+	double denom = 1.0;
+	if (r_km > 0.0)
 	{
-		const double r_km = in_tov.r;
-		const double m_km = Zaki::Physics::SUN_M_KM * in_tov.m;
-		double denom = 1.0;
-		if (r_km > 0.0)
-		{
-			denom = 1.0 - 2.0 * m_km / r_km;
-			if (denom <= 0.0)
-				denom = 1e-15;
-		}
-		const double lambda_val = 1.0 / denom;
-		radial[prof_.idx_lambda].vals.emplace_back(lambda_val);
+		denom = 1.0 - 2.0 * m_km / r_km;
+		if (denom <= 0.0)
+			denom = 1e-15; // protect against log of non-positive
 	}
+
+	// g_rr = 1 / (1 - 2M/r)
+	// const double grr = 1.0 / denom;
+
+	// λ = 0.5 * ln(g_rr) = -0.5 * ln(denom)
+	// const double lambda_geom = 0.5 * std::log(grr);
+	// or equivalently:
+	const double lambda_geom = -0.5 * std::log(denom);
+
+	radial[prof_.idx_lambda].vals.emplace_back(lambda_geom);
+	// ------------------------------------------------------------
 
 	// ------------------------------------------------------------
 	// 2.a) per-species for the profile
@@ -1231,8 +1246,8 @@ void NStar::Append(const TOVPoint &in_tov)
 	// 2.b) update surface guess (sequence) incrementally
 	// ------------------------------------------------------------
 	// We can’t finalize here (that’s FinalizeSurface’s job) but we can
-	// at least update the running “last point” so if you inspect sequence
-	// before finalization, you get something reasonable.
+	// at least update the running “last point” so if we inspect sequence
+	// before finalization, we get something reasonable.
 	prof_.seq_point.r = in_tov.r; // km
 	prof_.seq_point.m = in_tov.m; // M_sun  ← leave it in solar masses
 								  // pc, ec, B, I will be filled / fixed at finalize time
@@ -1934,7 +1949,7 @@ SeqPoint &NStar::GetSequence() noexcept
 	if (!prof_.empty())
 		return prof_.seq_point;
 
-	// fallback: static singleton you can write to (rare path)
+	// fallback: static singleton we can write to (rare path)
 	static SeqPoint empty{};
 	return empty;
 }
@@ -2057,7 +2072,7 @@ void NStar::Export(const Zaki::String::Directory &in_dir)
 	// if (!prof_.empty())
 	// {
 	// 	auto &radial = prof_.radial; // NOTE: this makes a copy if DataSet is by value;
-	// 								// if your DataSet is cheap to copy, this is fine.
+	// 								// if DataSet is cheap to copy, this is fine.
 	// 								// If not, make it a ref and push heads/foots on the
 	// 								// underlying one.
 
@@ -2118,12 +2133,12 @@ void NStar::Export(const Zaki::String::Directory &in_dir)
 	// 	radial.SetPrecision(profile_precision);
 	// 	radial.Export(out_path);
 
-	// 	// if you copied, no need to ClearHeadFoot on original
+	// 	// if we copied, no need to ClearHeadFoot on original
 	// 	return;
 	// }
 
 	// ============================================================
-	// ========== LEGACY DS BRANCH (your original) =================
+	// ========== LEGACY DS BRANCH (our original) =================
 	// ============================================================
 	// {
 	// 	char seq_header[200];

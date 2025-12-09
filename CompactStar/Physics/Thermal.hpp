@@ -82,8 +82,8 @@ class IEnvelope
  * @param state  Thermal state (uses T_surf).
  * @return Redshifted luminosity \(L_\infty\) in [erg s\(^{-1}\)].
  *
- * @note If you prefer to use a \(T_\infty\)-based fit (e.g., \(T_\infty^{2.42}\)),
- *       implement a sibling function instead of overloading this one.
+ * @note If we prefer to use a \(T_\infty\)-based fit (e.g., \(T_\infty^{2.42}\)),
+ *       we should implement a sibling function instead of overloading this one.
  */
 double SurfacePhotonLuminosity(Core::StarProfileView view, const State::ThermalState &state);
 

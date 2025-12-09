@@ -23,7 +23,7 @@ struct CLI
 	{
 		CLI cli; // fully-initialized local
 
-		// Sensible defaults (adjust to your tree)
+		// Sensible defaults (adjust to the tree)
 		cli.model_name = "DD2";
 		cli.mass_Msun = 1.40;
 		cli.rel_dir = Zaki::String::Directory("main/Test/results/tov_debug/");
@@ -101,7 +101,6 @@ int main(int argc, char **argv)
 	// 		CompactStar::Pulsar puls(cli.pulsar_name);
 	// 		puls.SetWrkDir(cli.wrk_dir);	  // so StarBuilder sees the right base dir
 	// 		puls.SetMass({cli.mass_Msun, 0}); // target mass used inside FindProfile
-	// 		// (If you keep a public 'name', set it too; but you already pass model_name below.)
 
 	// 		std::cout << "[debug] model=" << cli.model_name
 	// 				  << " mass=" << cli.mass_Msun
@@ -114,8 +113,8 @@ int main(int argc, char **argv)
 	// 		std::cout << "[ok] FindProfile returned seq_idx=" << seq_idx << "\n";
 
 	// 		// Optionally, dump a few things to confirm it’s populated
-	// 		// (Guard if your Pulsar exposes these; adapt as needed.)
-	// 		const auto *prof = puls.GetProfile(); // if you have such an accessor
+	// 		// (Guard if Pulsar exposes these; adapt as needed.)
+	// 		const auto *prof = puls.GetProfile();
 	// 		if (prof && !prof->empty())
 	// 		{
 	// 			std::cout << "  R_surf (km): " << prof->R << "\n";

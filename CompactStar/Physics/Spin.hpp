@@ -60,10 +60,10 @@ double CharacteristicAge(const State::SpinState &s);
  * @ingroup Physics
  *
  * Commonly \(B \sim 3.2\times10^{19} \sqrt{P\,\dot{P}}\ \mathrm{G}\) with model factors.
- * This function is a placeholder for your preferred normalization and moments of inertia.
+ * This function is a placeholder for our preferred normalization and moments of inertia.
  *
  * @param s    Spin state.
- * @param view Structural profile (for I(M,R) if you include it).
+ * @param view Structural profile (for I(M,R) if we include it).
  * @return Estimated equatorial surface field [G].
  */
 double DipoleFieldEstimate(const State::SpinState &s, Core::StarProfileView view);

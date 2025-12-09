@@ -41,7 +41,7 @@ struct Config;
  * @brief Thin RAII wrapper around `gsl_odeiv2_driver`.
  *
  * Usage sketch:
- *   - Construct your StateVector / StateLayout / RHSAccumulator / EvolutionSystem.
+ *   - Construct the StateVector / StateLayout / RHSAccumulator / EvolutionSystem.
  *   - Let N = layout.TotalSize().
  *   - Allocate `std::vector<double> y(N)` and pack the State blocks into it.
  *   - Construct `GSLIntegrator integrator(sys, cfg, N);`

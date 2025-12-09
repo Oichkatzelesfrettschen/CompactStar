@@ -653,7 +653,7 @@ class TOVSolver : public Prog
 	 *                 to print. If @p max_rows == 0 the function
 	 *                 only prints the header and a short footer.
 	 *
-	 * @details This is useful for large CompOSE tables: you can
+	 * @details This is useful for large CompOSE tables: we can
 	 * quickly verify that the file was read correctly, that labels
 	 * were parsed, and that the first few rows are monotonic in
 	 * pressure, without flooding the terminal.
@@ -664,7 +664,7 @@ class TOVSolver : public Prog
 	 * @brief Print a compact EOS summary.
 	 *
 	 * @details Shows number of rows, column labels, and min/max for
-	 * energy density, pressure, and baryon density. This is what you
+	 * energy density, pressure, and baryon density. This is what we
 	 * typically want right after ImportEOS(...).
 	 */
 	void PrintEOSSummary() const;

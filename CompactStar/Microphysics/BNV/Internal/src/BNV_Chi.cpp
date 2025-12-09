@@ -1985,12 +1985,12 @@ void MicroBNVInt::BNV_Chi::hidden_Plot_Rate_vs_Density(const Baryon &B,
 /// \brief Per–baryon B → χ rate integrated over the star
 ///        (i.e. (1/B_tot) dB/dt), in [yr⁻¹].
 ///
-/// This is the same physics as your original version, but:
+/// This is the same physics as the original version, but:
 ///  - uses the new pointer-returning StarProfile API
 ///  - converts M(r) from M_sun → km so the GR factor is consistent
 ///  - guards against missing profile / zero baryon number
 ///
-/// \param m_chi χ mass (your internal unit, same as Rate_vs_R)
+/// \param m_chi χ mass (internal unit, same as Rate_vs_R)
 /// \param B     baryon channel (n, Λ, …)
 /// \return (Ḃ/B) in [yr⁻¹]
 double MicroBNVInt::BNV_Chi::GetRate(const double &m_chi,
@@ -2023,7 +2023,7 @@ double MicroBNVInt::BNV_Chi::GetRate(const double &m_chi,
 	// convert M(r) from M_sun → km so 1 - 2M/r is dimensionless
 	M_r *= Zaki::Physics::SUN_M_KM;
 
-	// 2) get the local B→χ rate profile from your channel util
+	// 2) get the local B→χ rate profile from the channel util
 	//    Rate_vs_R is expected to return {r, Γ(r)}
 	Zaki::Vector::DataSet rate_ds = Rate_vs_R(m_chi, B);
 	Zaki::Vector::DataColumn dc_rate_r = rate_ds[1]; // local rate density
@@ -2123,15 +2123,15 @@ double MicroBNVInt::BNV_Chi::GetRate(const double &m_chi,
 /// @brief Return the limit on ε from B → χ integrated over the star,
 ///        assuming the rate scales ∝ ε².
 ///
-/// This does exactly what your old code did, but:
+/// This does exactly what the old code did, but:
 ///  - uses pulsar.GetProfile() → const StarProfile*
 ///  - pulls columns via pointer helpers
 ///  - converts M(r) to km
 ///  - guards against missing profile / zero baryon number
 ///
-/// @param m_chi  χ mass (same units you use in Rate_vs_R)
+/// @param m_chi  χ mass (same units we use in Rate_vs_R)
 /// @param B      baryon channel (n, Λ, …)
-/// @return ε_limit in the same units as default_eps (your code says “MeV”)
+/// @return ε_limit in the same units as default_eps (“MeV”)
 double MicroBNVInt::BNV_Chi::GetEpsLim(const double &m_chi,
 									   const Baryon &B)
 {
@@ -2162,12 +2162,12 @@ double MicroBNVInt::BNV_Chi::GetEpsLim(const double &m_chi,
 	// convert M(r) -> km so 1 - 2M/r is consistent
 	M_r *= Zaki::Physics::SUN_M_KM; // now M_r is in [km]
 
-	// 2) local rate vs r from your channel
+	// 2) local rate vs r from the channel
 	//    Rate_vs_R is expected to return {r, Γ(r)}
 	Zaki::Vector::DataSet rate_ds = Rate_vs_R(m_chi, B);
 	Zaki::Vector::DataColumn dc_rate_r = rate_ds[1];
 
-	// 3) unit jump: fm⁻³ → km⁻³, using your repo convention
+	// 3) unit jump: fm⁻³ → km⁻³
 	dc_rate_r *= 1e54;
 
 	// 4) GR volume + redshift: 4π r² / sqrt(1 - 2M/r) × e^{ν}
@@ -2325,9 +2325,7 @@ MicroBNVInt::BNV_Chi::Rate_Eps MicroBNVInt::BNV_Chi::GetRate_Eps(
 	Zaki::Vector::DataColumn dc_rate_r = rate_ds[1]; // local rate density vs r
 
 	// 3) unit fix: fm⁻³ → km⁻³
-	// 1 km = 1e13 fm → 1 km³ = 1e39 fm³ → fm⁻³ to km⁻³ = 1e39?
-	// but you’ve been using 1e54 everywhere (your codebase convention),
-	// so we keep YOUR convention:
+	// 1 km = 1e18 fm → 1 km³ = 1e54 fm³ → fm⁻³ to km⁻³ = 1e54
 	dc_rate_r *= 1e54;
 
 	// 4) build GR volume element: 4π r² / sqrt(1 - 2M/r) × e^{ν(r)}

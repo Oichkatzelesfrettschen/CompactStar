@@ -30,7 +30,7 @@
  * @brief Neutron-star class (phase 2): legacy DataSet API + unified, SAFE StarProfile.
  *
  * This version:
- *  - uses your latest StarProfile (with safety checks, HasColumn, HasSpecies, etc.),
+ *  - uses our latest StarProfile (with safety checks, HasColumn, HasSpecies, etc.),
  *  - keeps the legacy ds-based API but comments out the ones we want to migrate away from,
  *  - prefers StarProfile (profile path) when it is non-empty,
  *  - falls back to legacy (ds + SeqPoint) otherwise.
@@ -220,9 +220,9 @@ class NStar : public Prog
 	/**
 	 * @brief Solve TOV and store result in internal StarProfile.
 	 *
-	 * Implementation in .cpp should call your new
-	 * `TOVSolver::SolveToProfile(...)` (or equivalent) that now fills
-	 * radius, mass, p, eps, rho, nu, and (optionally) lambda, and also
+	 * Implementation in .cpp should call our new
+	 * `TOVSolver::SolveToProfile(...)` that now fills
+	 * radius, mass, p, eps, rho, nu, and lambda, and also
 	 * registers species via `AddSpecies(...)`.
 	 */
 	int SolveTOV_Profile(const CompOSE_EOS &eos, double target_M_solar);
@@ -267,7 +267,7 @@ class NStar : public Prog
 	const SeqPoint &GetSequence() const noexcept;
 
 	/// brief Mutable access to the sequence point (from the profile).
-	/// details Use this if you want to tweak B, I, etc. after finalize.
+	/// details. We use this to tweak B, I, etc. after finalize.
 	SeqPoint &GetSequence() noexcept;
 
 	/**
@@ -293,7 +293,7 @@ class NStar : public Prog
 	/**
 	 * @brief Get number of radial grid points.
 	 *
-	 * Uses the safe helpers you added: first we check `prof_.empty()`,
+	 * Uses the safe helpers we added: first we check `prof_.empty()`,
 	 * then we fall back to the legacy `ds` if necessary.
 	 */
 	[[nodiscard]] std::size_t Size() const noexcept
@@ -394,7 +394,7 @@ class NStar : public Prog
 	// ------------------------------------------------------------
 	// 11) ===== LEGACY ds-BASED GETTERS (commented, to be replaced) =====
 	// ------------------------------------------------------------
-	// These are the ones you can grep in VSCode and replace with
+	// These are the ones we can grep in VSCode and replace with
 	// Profile().Get(...), Profile().GetPressure(), etc.
 
 	// [[nodiscard]] double GetMass(const double& in_r) const;
@@ -427,7 +427,7 @@ class NStar : public Prog
 //              Candidate removals / replacements
 //==============================================================
 /*
- * Replace these calls in your codebase:
+ * Replace these calls in our codebase:
  *
  * 1) GetMass(...) / GetMass()
  *      → Profile().GetMass()

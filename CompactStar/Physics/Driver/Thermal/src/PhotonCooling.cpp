@@ -51,7 +51,7 @@ namespace CompactStar::Physics::Driver::Thermal
 // -----------------------------------------------------------------------------
 //  Internal helper: Stefan–Boltzmann constant (cgs)
 // -----------------------------------------------------------------------------
-// You can adjust this or absorb it into area_eff/global_scale if your unit
+// We can adjust this or absorb it into area_eff/global_scale if our unit
 // policy differs. For now we keep the physical value for clarity.
 namespace
 {

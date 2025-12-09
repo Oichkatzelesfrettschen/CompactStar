@@ -47,7 +47,7 @@ int main()
 	// ---------------------------------------------------------------------
 	Physics::State::SpinState spin;
 	spin.Resize(1);		  // one DOF
-	spin.Omega() = 100.0; // initial Ω (your units)
+	spin.Omega() = 100.0; // initial Ω
 
 	Physics::Evolution::StateVector stateVec;
 	stateVec.Register(Physics::State::StateTag::Spin, spin);
@@ -102,7 +102,7 @@ int main()
 	Physics::Evolution::GSLIntegrator integrator(system, cfg, dim);
 
 	const double t0 = 0.0;
-	const double t1 = 1.0e10; // total integration time (your units)
+	const double t1 = 1.0e10; // total integration time
 
 	const bool ok = integrator.Integrate(t0, t1, y.data());
 	if (!ok)

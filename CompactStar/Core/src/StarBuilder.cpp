@@ -10,7 +10,7 @@
 #include <stdexcept>
 
 #include <Zaki/Physics/Constants.hpp>
-// #include <Zaki/String/String.hpp> // for Multiply(...) if you want logging
+// #include <Zaki/String/String.hpp> // for Multiply(...) if we want logging
 #include <Zaki/Vector/DataSet.hpp>
 
 namespace CompactStar::Core
@@ -32,9 +32,9 @@ static bool HasLabel(const Zaki::Vector::DataSet &ds, const std::string &label)
 }
 
 /**
- * @brief Build DUrca mask using your old Fermi-momentum condition.
+ * @brief Build DUrca mask using our old Fermi-momentum condition.
  *
- * Condition (your code):
+ * Condition:
  *   kF_n - kF_p - kF_e = 0  → threshold
  *   mask = 1 for r < r_threshold
  *
@@ -109,7 +109,7 @@ int BuildFromSequence(const Zaki::String::Directory &wrk_dir,
 	if (seq_ds.Dim().empty())
 		throw std::runtime_error("StarBuilder::BuildFromSequence: sequence file is empty: " + seq_path.Str());
 
-	// According to your old code:
+	// According to our old code:
 	//   seq_ds[0] = central energy density
 	//   seq_ds[1] = mass [Msun]
 	//   seq_ds[4] = total baryon number B(ec)
@@ -168,11 +168,11 @@ int BuildFromSequence(const Zaki::String::Directory &wrk_dir,
 		const double m_i_1 = seq_i_1.m;
 		const double m_i = seq_i.m;
 
-		// same formula you had:
+		// same formula we had:
 		//    x = (m_i - m_pulsar) / (m_i - m_i_1)
 		const double x = (m_i - target_mass_Msun) / (m_i - m_i_1);
 
-		// show / log if you want
+		// show / log if we want
 		std::cout << "----------------------------------------------------\n";
 		std::cout << " StarBuilder: closest index = " << tmp_idx << "\n";
 		std::cout << "   M_{" << tmp_idx - 1 << "} = " << m_i_1 << "\n";
@@ -192,7 +192,7 @@ int BuildFromSequence(const Zaki::String::Directory &wrk_dir,
 			throw std::runtime_error("StarBuilder::BuildFromSequence: neighbor profile not found for index " + std::to_string(tmp_idx - 1));
 
 		// --------------------------------------------------------
-		// Interpolate exactly the way your old code did:
+		// Interpolate and blend profiles:
 		// pick the shorter radial grid → copy it
 		// interpolate the longer one onto it → blend
 		// --------------------------------------------------------
@@ -267,7 +267,7 @@ int BuildFromSequence(const Zaki::String::Directory &wrk_dir,
 	// ------------------------------------------------------------
 	// 6. Blanket radius
 	//    defined by energy density ≃ 1e10 g/cm^3 → 7.4237e-9 km^-2
-	//    This is column 4 in your old profile.
+	//    This is column 4 in our old profile.
 	// ------------------------------------------------------------
 	{
 		const Zaki::Vector::DataColumn &eps = out.profile[4];

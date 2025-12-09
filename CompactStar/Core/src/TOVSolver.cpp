@@ -1165,7 +1165,7 @@ int TOVSolver::ODE(double r, const double y[], double f[], void *params)
 	TOVSolver *tov_obj = (TOVSolver *)params;
 
 	// set a minimum pressure cutoff. if we don't, the ODE solver will wobble all
-	// over the surface and crash, or if you make the error tolerance really strict
+	// over the surface and crash, or if we make the error tolerance really strict
 	// it'll integrate forever
 	if (y[1] < tov_obj->PressureCutoff())
 	{

@@ -19,24 +19,61 @@
 
 #include "CompactStar/Physics/Evolution/EvolutionConfig.hpp"
 #include "CompactStar/Physics/Evolution/EvolutionSystem.hpp"
+#include "CompactStar/Physics/Evolution/GeometryCache.hpp"
 #include "CompactStar/Physics/Evolution/Integrator/GSLIntegrator.hpp"
 #include "CompactStar/Physics/Evolution/RHSAccumulator.hpp"
 #include "CompactStar/Physics/Evolution/StarContext.hpp"
 #include "CompactStar/Physics/Evolution/StateLayout.hpp"
 #include "CompactStar/Physics/Evolution/StatePacking.hpp"
-#include "CompactStar/Physics/Evolution/StateVector.hpp"
-
-#include "CompactStar/Physics/Driver/Spin/MagneticDipole.hpp"
-#include "CompactStar/Physics/Driver/Thermal/PhotonCooling.hpp"
 
 #include "CompactStar/Physics/State/SpinState.hpp"
 #include "CompactStar/Physics/State/Tags.hpp"
 #include "CompactStar/Physics/State/ThermalState.hpp"
 
+#include "CompactStar/Physics/Driver/Spin/MagneticDipole.hpp"
+#include "CompactStar/Physics/Driver/Thermal/PhotonCooling.hpp"
+
+#include "CompactStar/Core/StarBuilder.hpp"
+#include "CompactStar/Core/TOVSolver.hpp"
+
 int main()
 {
 	using namespace CompactStar;
 
+	// --------------------------------------------------------------
+	// 1) Solve TOV to get a neutron-star profile
+	// --------------------------------------------------------------
+	Zaki::String::Directory dir(__FILE__);
+	std::cout << "[debug] this file dir = " << dir << "\n";
+
+	// Create a TOV solver
+	CompactStar::Core::TOVSolver tov;
+
+	Zaki::String::Directory eos_root =
+		dir.ParentDir().ParentDir() + "/EOS/CompOSE/";
+	// Zaki::String::Directory eos_root = "EOS/CompOSE/";
+	std::string eos_name = "DS(CMF)-1_with_crust";
+
+	tov.ImportEOS(eos_root + eos_name + "/" + eos_name + ".eos");
+	tov.SetWrkDir(dir.ParentDir() + "/results");
+	Zaki::Math::Axis ec_axis({{5.0e+14, 1.913e15}, 20, "Log"});
+
+	// Solve the sequence
+	//    Output directory: results/out_dir/
+	//    Output file name: out_file_Sequence.tsv
+	Zaki::String::Directory out_dir = "spin_therm_evol/";
+	Zaki::String::Directory out_file = "spin_therm_evol";
+
+	tov.Solve(ec_axis, out_dir, out_file);
+
+	Core::StarBuilder::Options sbOpts; // defaults are fine for now
+	Core::StarBuilder::Output sbOut;
+	Core::StarBuilder::BuildFromSequence(tov.GetWrkDir(), out_dir, out_file.Str(), 1.8, sbOut, sbOpts);
+
+	Core::NStar ns;
+
+	Physics::Evolution::StarContext starCtx;
+	Physics::Evolution::GeometryCache geo(starCtx);
 	// --------------------------------------------------------------
 	// 1) Evolution configuration
 	// --------------------------------------------------------------
@@ -60,11 +97,11 @@ int main()
 	// --------------------------------------------------------------
 	//
 	// For now we don't need any of these in the drivers we’re using, so we
-	// can leave them as nullptr. Later, when you wire in real microphysics
-	// and envelope models, you’ll fill these.
+	// can leave them as nullptr. Later, when we wire in real microphysics
+	// and envelope models, we’ll fill these.
 	Physics::Evolution::EvolutionSystem::Context ctx;
-	ctx.star = nullptr;		// e.g. pointer to StarContext built from NStar + EOS
-	ctx.geo = nullptr;		// e.g. GeometryCache
+	ctx.star = &starCtx;	// e.g. pointer to StarContext built from NStar + EOS
+	ctx.geo = &geo;			// e.g. GeometryCache
 	ctx.envelope = nullptr; // e.g. Thermal::IEnvelope implementation
 	ctx.cfg = &cfg;
 
@@ -77,7 +114,7 @@ int main()
 	thermal.Resize(1);
 	thermal.Tinf() = 1.0e8; // K, rough initial redshifted internal temperature
 
-	// Optional: set T_surf if you use DirectTSurf model later.
+	// Optional: set T_surf if we use DirectTSurf model later.
 	// For now we use ApproxFromTinf in PhotonCooling::Options, so this is not needed.
 	// thermal.T_surf = 1.0e6;
 
@@ -98,7 +135,7 @@ int main()
 	// --------------------------------------------------------------
 	//
 	// Here we choose y = [ Thermal block, then Spin block ].
-	// You could swap the order if you prefer.
+	// We could swap the order if we prefer.
 	Physics::Evolution::StateLayout layout;
 	layout.Configure(
 		stateVec,

@@ -28,7 +28,7 @@
  * @file Observers.hpp
  * @brief Observer interfaces and a basic recorder for time-series outputs.
  *
- * Observers receive snapshots during integration and write to your existing
+ * Observers receive snapshots during integration and write to
  * Zaki::Vector::DataSet columns (t, T^∞, T_s, L_ν^∞, L_γ^∞, H^∞, η_i, …).
  *
  * @ingroup ChemicalHeating

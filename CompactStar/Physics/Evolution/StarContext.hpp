@@ -106,8 +106,8 @@ class StarContext
 	/** @brief Metric exponent \f$\nu(r)\f$ where \f$g_{tt}=e^{2\nu}\f$. */
 	const Zaki::Vector::DataColumn *Nu() const;
 
-	/** @brief \f$e^{\Lambda(r)}\f$ if present (derived from mass and radius otherwise). */
-	const Zaki::Vector::DataColumn *ExpLambda() const;
+	/** @brief \f$\Lambda(r)\f$ if present (derived from mass and radius otherwise). */
+	const Zaki::Vector::DataColumn *Lambda() const;
 
 	/** @brief Gravitational mass profile (M_\f$\odot\f$ or internal units). */
 	const Zaki::Vector::DataColumn *Mass() const;
@@ -141,7 +141,7 @@ class StarContext
 	// Non-owning cached pointers to frequently accessed columns (set in ctor).
 	const Zaki::Vector::DataColumn *m_r = 0;
 	const Zaki::Vector::DataColumn *m_nu = 0;
-	const Zaki::Vector::DataColumn *m_elam = 0;
+	const Zaki::Vector::DataColumn *m_lam = 0;
 	const Zaki::Vector::DataColumn *m_m = 0;
 	const Zaki::Vector::DataColumn *m_nb = 0;
 	const Zaki::Vector::DataColumn *m_yp = 0;

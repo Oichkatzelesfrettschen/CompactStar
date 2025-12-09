@@ -64,7 +64,7 @@ namespace CompactStar::Physics::State
  * freedom** in a contiguous layout. A typical minimal configuration is
  * a single component interpreted as the spin frequency Ω [rad/s].
  *
- * You can extend this to multiple components (e.g. Ω, \dot{Ω}, or
+ * We can extend this to multiple components (e.g. Ω, \dot{Ω}, or
  * additional spin-related variables) without touching the evolution core.
  *
  * ### Observational fields

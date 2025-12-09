@@ -175,9 +175,6 @@
 #include <string>
 #include <vector>
 
-// If you have a logging macro like Z_LOG_ERROR declared elsewhere, it will be used.
-// Otherwise, this header remains agnostic and does not depend on it.
-
 namespace CompactStar::Core
 {
 
@@ -190,11 +187,11 @@ namespace CompactStar::Core
  * @ingroup Core
  *
  * ### Stored quantities (double):
- * - `ec` : central energy density (code units; often 1/km² or cgs—match your solver)
+ * - `ec` : central energy density (code units; match the solver)
  * - `m`  : gravitational mass at the surface (M_\odot)
  * - `r`  : circumferential radius at the surface (km)
- * - `pc` : central pressure (same unit system as your solver output)
- * - `b`  : baryon number integral (dimensionless or code units, per your convention)
+ * - `pc` : central pressure (same unit system as the solver output)
+ * - `b`  : baryon number integral (dimensionless or code units, per our convention)
  * - `I`  : moment of inertia (e.g., g·cm² or km³, depending on internal units)
  *
  * This class is intentionally minimal and trivially copyable so it can be passed
@@ -243,7 +240,7 @@ class SeqPoint
 	 * @brief Construct from a row vector `[ec, m, r, pc, b, I]`.
 	 *
 	 * If the input size is not exactly `kSize`, the object is zeroed.
-	 * (If you want hard failure, replace the behavior with an assert or exception.)
+	 * (For a hard failure, replace the behavior with an assert or exception.)
 	 *
 	 * @param row Vector of length 6.
 	 */
@@ -269,7 +266,7 @@ class SeqPoint
 	 * @brief Assignment from a row vector `[ec, m, r, pc, b, I]`.
 	 *
 	 * If the input size is not exactly `kSize`, the object is zeroed.
-	 * (If you want hard failure, replace the behavior with an assert or exception.)
+	 * (For a hard failure, replace the behavior with an assert or exception.)
 	 *
 	 * @param row Vector of length 6.
 	 * @return *this.
@@ -296,7 +293,7 @@ class SeqPoint
 	 * @brief Initializer-list constructor.
 	 *
 	 * If the input size is not exactly `kSize`, the object is zeroed.
-	 * (If you want hard failure, replace the behavior with an assert or exception.)
+	 * (For a hard failure, replace the behavior with an assert or exception.)
 	 *
 	 * @param list Initializer list of length 6.
 	 */
@@ -322,7 +319,7 @@ class SeqPoint
 	 * @brief Assignment from an initializer list.
 	 *
 	 * If the input size is not exactly `kSize`, the object is zeroed.
-	 * (If you want hard failure, replace the behavior with an assert or exception.)
+	 * (For a hard failure, replace the behavior with an assert or exception.)
 	 *
 	 * @param list Initializer list of length 6.
 	 * @return *this.

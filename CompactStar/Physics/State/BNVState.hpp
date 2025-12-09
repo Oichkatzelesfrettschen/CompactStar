@@ -18,7 +18,7 @@
  * evolution, effective η-like variables, or observationally relevant
  * meta-parameters).
  *
- * Depending on your BNV model, this may store:
+ * Depending on the BNV model, this may store:
  *  - a small vector of ODE-evolved quantities, or
  *  - a cached set of derived diagnostic values (non-ODE),
  * or both.
@@ -51,7 +51,7 @@ namespace CompactStar::Physics::State
  * interface: a resizable contiguous vector of doubles exposed to the
  * evolution system and its drivers.
  *
- * Physical meaning of each component is determined by your BNV model.
+ * Physical meaning of each component is determined by the BNV model.
  *
  * @note Storage (the `values_` vector) deliberately lives in this derived
  *       class rather than in the State base class.  This design allows
@@ -89,7 +89,7 @@ class BNVState : public State
 	 *     index 0 → η_I
 	 *     index 1 → spin_down_limit
 	 *
-	 * You may expand this vector when implementing more elaborate BNV models.
+	 * We may expand this vector when implementing more elaborate BNV models.
 	 */
 	void Resize(std::size_t N) override
 	{

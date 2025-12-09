@@ -13,7 +13,7 @@
  *  - touch both NS and (optionally) mixed-star paths
  *
  * This file is intentionally verbose and defensive: it prints
- * out what it’s doing so you can see where it fails (path,
+ * out what it’s doing so we can see where it fails (path,
  * EOS import, GSL spline, surface reached, export, ...).
  */
 
@@ -69,12 +69,10 @@ int main()
 	Zaki::String::Directory dir(__FILE__);
 	std::cout << "[debug] this file dir = " << dir << "\n";
 
-	// You will need to adjust these two to your layout.
-	// I’m following the same pattern you used in the BNV code.
 	Zaki::String::Directory eos_root =
 		dir.ParentDir().ParentDir() + "/EOS/CompOSE/";
 	// Zaki::String::Directory eos_root = "EOS/CompOSE/";
-	std::string eos_name = "DS(CMF)-1_with_crust"; // change to your actual table
+	std::string eos_name = "DS(CMF)-1_with_crust";
 
 	std::cout << "[debug] assuming EOS root = " << eos_root << "\n";
 	std::cout << "[debug] assuming EOS name = " << eos_name << "\n";
@@ -86,7 +84,7 @@ int main()
 
 	// Optional: make the profile TSVs more precise
 	tov.SetProfilePrecision(12);
-	// Optional: smaller max radius if you know you’re NS-only
+	// Optional: smaller max radius for NS-only
 	tov.SetMaxRadius(15); // 15 km
 
 	// 5) Import EOS
@@ -103,7 +101,7 @@ int main()
 		return 1;
 	}
 
-	//    CASE B (visible + dark): uncomment if you want to test mixed
+	//    CASE B (visible + dark): uncomment if for testing mixed
 	/*
 	try {
 		tov.ImportEOS(eos_root + "DS(CMF)-1",
@@ -121,11 +119,10 @@ int main()
 	tov.PrintEOSTable(5);
 
 	// 7) Build a central-*pressure* (or energy-density) axis.
-	//    Your TOV code’s Solve(...) signature is:
+	//    TOV code’s Solve(...) signature is:
 	//    void Solve(const Zaki::Math::Axis&, const Directory&, const Directory&);
 	//
 	//    Let’s just scan 40 points linearly between two plausible pressures.
-	//    YOU may need to change these numbers to match your EOS range.
 	Zaki::Math::Axis ec_axis({{1.0e+14, 1.913e15}, 20, "Log"});
 	//                ^min     ^max     ^N   ^type
 	// ε(energy density) : [ 1.658808e+08, 1.106871e+16 ];
@@ -167,7 +164,7 @@ int main()
 	//     - varying radial resolution
 	//     - export profile
 	//
-	// Pick one central energy density inside your EOS range.
+	// Pick one central energy density inside the EOS range.
 	// This is ONLY for debugging.
 	// double test_ec = 1.0e16;
 	// try

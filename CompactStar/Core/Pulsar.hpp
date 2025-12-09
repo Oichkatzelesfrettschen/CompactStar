@@ -71,7 +71,7 @@ namespace CompactStar::Core
  * - Does **not** implement DUrca/MUrca formulas directly (that’s in `Physics/Thermal.hpp`).
  * - Does **not** hard-code plotting.
  *
- * The idea is to keep this class small and make it the thing your
+ * The idea is to keep this class small and make it the thing our
  * higher-level code passes around.
  */
 class Pulsar : public Prog
@@ -92,7 +92,7 @@ class Pulsar : public Prog
 	/**
 	 * @brief Non-owning view of the structural profile.
 	 *
-	 * This is what you pass to `Spin::DipoleFieldEstimate(...)`,
+	 * This is what we pass to `Spin::DipoleFieldEstimate(...)`,
 	 * `Thermal::SurfacePhotonLuminosity(...)`, `BNV::SpinDownLimit(...)`, etc.
 	 * `view_.p` must be set whenever `prof_` is filled.
 	 */
@@ -108,7 +108,7 @@ class Pulsar : public Prog
 	/**
 	 * @brief Sequence point along a mass–radius or central-density sequence.
 	 *
-	 * Useful when this pulsar was *picked* from a sequence and you want to
+	 * Useful when this pulsar was *picked* from a sequence and we want to
 	 * remember where it came from.
 	 */
 	SeqPoint seq_point_;
@@ -156,7 +156,7 @@ class Pulsar : public Prog
 	/**
 	 * @brief Default constructor.
 	 *
-	 * Creates an empty pulsar with an invalid view. You must later
+	 * Creates an empty pulsar with an invalid view. We must later
 	 * call an import / construct method to populate the profile and
 	 * set the view.
 	 */
@@ -181,7 +181,7 @@ class Pulsar : public Prog
 	/**
 	 * @brief Backward-compatible constructor (old style).
 	 *
-	 * Lets you do:
+	 * Lets us do:
 	 *   Pulsar("J0348...", {2.01,0.04}, {P, dP}, {Pdot, dPdot})
 	 *
 	 * Internally this just builds a SpinState and forwards to the
@@ -465,7 +465,7 @@ class Pulsar : public Prog
 	/**
 	 * @brief Get the last cached BNV spin-down limit.
 	 *
-	 * If you never called `ComputeBNVSpinDownLimit()`, this will be 0.
+	 * If we never called `ComputeBNVSpinDownLimit()`, this will be 0.
 	 *
 	 * @return BNV spin-down limit [1/yr].
 	 */

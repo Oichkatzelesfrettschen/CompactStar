@@ -1,7 +1,7 @@
 /**
  * @file StarBuilder.hpp
  * @brief Utilities to construct a neutron-star structural profile from
- *        sequence TSVs (the files you already export from the TOV pipeline).
+ *        sequence TSVs (the files we already export from the TOV pipeline).
  *
  * This is the code that used to live in `Pulsar::FindProfile(...)`, but made
  * standalone so that:
@@ -17,14 +17,12 @@
  *  - find the closest mass to the requested one
  *  - if we're at the high-mass end, just load that profile
  *  - otherwise, linearly interpolate *between* the two neighboring profiles
- *    (your original logic: pick the shorter profile's radial grid, interpolate
+ *    (our logic: pick the shorter profile's radial grid, interpolate
  *     the longer one to it, then blend column-by-column)
  *  - compute `eta_I` using the derivatives in the sequence file
  *  - locate the blanket radius (by energy density)
- *  - build a DUrca “mask” column using your Fermi-momentum condition
+ *  - build a DUrca “mask” column using the Fermi-momentum condition
  *
- * You can then *move* the resulting `Zaki::Vector::DataSet` into your
- * `StarProfile` or whatever container you’re using at the call site.
  *
  * @ingroup Core
  */
@@ -69,7 +67,7 @@ struct Options
 	 * @brief Whether to try to build a DUrca mask from composition.
 	 *
 	 * This requires columns:
-	 *  - total baryon density      → column index 5 in your old profile
+	 *  - total baryon density      → column index 5 in our old profile
 	 *  - neutron fraction          → label "10"
 	 *  - proton fraction           → label "11"
 	 *  - electron fraction         → label "0"
@@ -82,7 +80,7 @@ struct Options
 /**
  * @brief Full output of the builder.
  *
- * This is everything your old `Pulsar::FindProfile(...)` produced, but
+ * This is everything our old `Pulsar::FindProfile(...)` produced, but
  * gathered into a single struct.
  */
 struct Output
@@ -90,7 +88,7 @@ struct Output
 	/**
 	 * @brief The *radial* profile (radius, mass, energy density, composition...).
 	 *
-	 * This is what you will most often move into `StarProfile` or hand to
+	 * This is what we will most often move into `StarProfile` or hand to
 	 * `StarProfileView`.
 	 */
 	Zaki::Vector::DataSet profile;
@@ -103,12 +101,12 @@ struct Output
 	/**
 	 * @brief Index of the sequence entry we took as “closest”.
 	 *
-	 * If interpolation was needed, this is still the upper index (like your old code).
+	 * If interpolation was needed, this is still the upper index.
 	 */
 	int seq_index = -1;
 
 	/**
-	 * @brief η_I as defined in your 2201.02637 logic:
+	 * @brief η_I as defined in [arXiv:2201.02637] logic:
 	 *  \f$ \eta_I = \frac{b}{dB/d\varepsilon_c} \frac{dI/d\varepsilon_c}{I} \f$.
 	 */
 	double eta_I = 0.0;
@@ -133,7 +131,7 @@ struct Output
 	/**
 	 * @brief A 0/1 column that is 1 for r < r_DUrca and 0 outside.
 	 *
-	 * Same object you used to call `r_durca_cond` in the old code.
+	 * Same object we used to call `r_durca_cond` in the old code.
 	 */
 	Zaki::Vector::DataColumn durca_mask;
 };
@@ -141,7 +139,7 @@ struct Output
 /**
  * @brief Build a neutron-star(-like) profile from a precomputed sequence.
  *
- * This is a direct extraction of your previous logic:
+ * This is a direct extraction of our previous logic:
  *
  *  1. load the sequence TSV
  *  2. find the closest mass

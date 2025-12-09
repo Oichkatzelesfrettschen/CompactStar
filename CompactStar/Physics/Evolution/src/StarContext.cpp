@@ -25,7 +25,7 @@ StarContext::StarContext(const CompactStar::Core::NStar &ns,
 	: m_ns(&ns), m_eos(eos)
 {
 	// Cache commonly used columns (non-owning)
-	// NStar API (from your header):
+	// NStar API:
 	//   Zaki::Vector::DataColumn* GetRadius();
 	//   Zaki::Vector::DataColumn* GetNu();
 	//   Zaki::Vector::DataColumn* GetMass();
@@ -33,14 +33,14 @@ StarContext::StarContext(const CompactStar::Core::NStar &ns,
 	// Some models may expose species columns via GetRho_i(label)
 
 	// NOTE: NStar getters return non-const pointers; we store as const.
-	m_r = const_cast<CompactStar::Core::NStar &>(ns).Profile().GetRadius();
-	m_nu = const_cast<CompactStar::Core::NStar &>(ns).Profile().GetMetricNu();
-	m_m = const_cast<CompactStar::Core::NStar &>(ns).Profile().GetMass();
-	m_nb = const_cast<CompactStar::Core::NStar &>(ns).Profile().GetBaryonDensity();
+	auto &ns_nonconst = const_cast<CompactStar::Core::NStar &>(ns);
+	auto &prof = ns_nonconst.Profile();
 
-	// e^{Lambda} is not explicitly exposed in NStar.hpp.
-	// We'll leave m_elam = nullptr for now; GeometryCache can derive or stub it.
-	m_elam = nullptr;
+	m_r = prof.GetRadius();
+	m_nu = prof.GetMetricNu();
+	m_m = prof.GetMass();
+	m_nb = prof.GetBaryonDensity();
+	m_lam = prof.GetMetricLambda();
 
 	// Proton fraction may be available either from EOS or as a species ratio; leave null by default.
 	m_yp = nullptr;
@@ -61,7 +61,7 @@ std::size_t StarContext::Size() const
 
 const Zaki::Vector::DataColumn *StarContext::Radius() const { return m_r; }
 const Zaki::Vector::DataColumn *StarContext::Nu() const { return m_nu; }
-const Zaki::Vector::DataColumn *StarContext::ExpLambda() const { return m_elam; }
+const Zaki::Vector::DataColumn *StarContext::Lambda() const { return m_lam; }
 const Zaki::Vector::DataColumn *StarContext::Mass() const { return m_m; }
 const Zaki::Vector::DataColumn *StarContext::BaryonDensity() const { return m_nb; }
 const Zaki::Vector::DataColumn *StarContext::ProtonFraction() const { return m_yp; }
@@ -76,7 +76,7 @@ double StarContext::RadiusSurface() const
 //--------------------------------------------------------------
 double StarContext::MassSurface() const
 {
-	// Gravitational mass from sequence point (units per your core).
+	// Gravitational mass from sequence point (units per core).
 	return m_ns ? m_ns->GetSequence().m : 0.0;
 }
 
