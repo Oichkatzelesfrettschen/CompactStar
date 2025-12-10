@@ -605,8 +605,10 @@ class TOVSolver : public Prog
 	///  because they are in the exclusion region.
 	size_t ignored_counter = 0;
 
-	void Hidden_ImportEOS_Vis(const Zaki::String::Directory &);
-	void Hidden_ImportEOS_Dar(const Zaki::String::Directory &);
+	void Hidden_ImportEOS_Vis(const Zaki::String::Directory &eos_file,
+							  const bool absolute_path = false);
+	void Hidden_ImportEOS_Dar(const Zaki::String::Directory &eos_file,
+							  const bool absolute_path = false);
 
 	// The precision in printing the profiles
 	int profile_precision = 9;
@@ -627,21 +629,44 @@ class TOVSolver : public Prog
 	double central_eps_floor_factor = 10.0;
 	//--------------------------------------------------------------
   public:
+	/**
+	 * @brief Construct a new TOVSolver object
+	 *
+	 */
 	TOVSolver();
+
+	/**
+	 * @brief Destroy the TOVSolver object
+	 *
+	 */
 	~TOVSolver();
 
-	/// Copy Constructor
+	/**
+	 * @brief Deleted copy constructor to prevent copying of TOVSolver objects.
+	 */
 	TOVSolver(const TOVSolver &) = delete;
 
-	/// Assignment operator
+	/**
+	 * @brief Deleted assignment operator to prevent copying of TOVSolver objects.
+	 */
 	TOVSolver &operator=(const TOVSolver &) = delete;
 
-	void ImportEOS(const Zaki::String::Directory &);
-	void ImportEOS(const Zaki::String::Directory &vis_eos,
-				   const Zaki::String::Directory &dar_eos);
+	/**
+	 * @brief Import the equation of state (EOS) from a file.
+	 * @param eos_file Path to the EOS file.
+	 * @param absolute_path If true, the provided path is treated as an absolute path.
+	 */
+	void ImportEOS(const Zaki::String::Directory &eos_file, const bool absolute_path = false);
 
-	// void ImportEOS_Visible(const Zaki::String::Directory&) ;
-	// void ImportEOS_Dark(const Zaki::String::Directory&) ;
+	/**
+	 * @brief Import the visible and dark equation of state (EOS) from files.
+	 * @param vis_eos Path to the visible EOS file.
+	 * @param dar_eos Path to the dark EOS file.
+	 * @param absolute_path If true, the provided paths are treated as absolute paths.
+	 */
+	void ImportEOS(const Zaki::String::Directory &vis_eos,
+				   const Zaki::String::Directory &dar_eos,
+				   const bool absolute_path = false);
 
 	// ----------------------------------------------------------
 	// EOS inspection / debugging
@@ -706,13 +731,35 @@ class TOVSolver : public Prog
 	void SetCentralEDensFloorFactor(double f);
 	// ----------------------------------------------------------
 
-	/// Returns the energy density given pressure
-	double GetEDens(const double &);
-	double GetEDens_Dark(const double &);
+	/**
+	 * @brief Get the energy density corresponding to a given pressure.
+	 * @param in_pressure value for which to find the energy density.
+	 * @return Energy density corresponding to the given pressure.
+	 */
+	double GetEDens(const double &in_pressure);
 
-	/// Returns the total baryon number density given pressure
-	double GetRho(const double &);
-	double GetRho_Dark(const double &);
+	/**
+	 * @brief Get the energy density of the dark component corresponding to a given pressure.
+	 * @param in_pressure value for which to find the dark energy density.
+	 *
+	 * @return Dark energy density corresponding to the given pressure.
+	 */
+	double GetEDens_Dark(const double &in_pressure);
+
+	/**
+	 * @brief Get the total baryon number density corresponding to a given pressure.
+	 * @param in_pressure value for which to find the baryon number density.
+	 * @return Total baryon number density corresponding to the given pressure.
+	 */
+	double GetRho(const double &in_pressure);
+
+	/**
+	 * @brief Get the total baryon number density of the dark component corresponding to a given pressure.
+	 * @param in_pressure value for which to find the dark baryon number density.
+	 *
+	 * @return Dark total baryon number density corresponding to the given pressure.
+	 */
+	double GetRho_Dark(const double &in_pressure);
 
 	//........... NOV 3, 2021 Begins ...........
 	/// Returns the total baryon number density given radius
@@ -745,7 +792,12 @@ class TOVSolver : public Prog
 	/// Attaches a pointer to analysis
 	void AddAnalysis(Analysis *);
 
-	/// Input a range of initial pressure
+	/**
+	 * @brief Solve TOV equations over a range of central energy densities.
+	 * @param in_ax Axis defining the range of central energy densities.
+	 * @param dir Directory to export the results to.
+	 * @param file_name File name for the results.
+	 */
 	void Solve(const Zaki::Math::Axis &,
 			   const Zaki::String::Directory &,
 			   const Zaki::String::Directory &file_name);
@@ -759,14 +811,23 @@ class TOVSolver : public Prog
 					 const Zaki::String::Directory &dir,
 					 const Zaki::String::Directory &file_name);
 
-	// The radius iteration in the neutron star scenario
+	/**
+	 * @brief Radius iteration loop for neutron stars.
+	 *
+	 * @param r	 Current radius value.
+	 * @param y State vector at the current radius.
+	 */
 	void RadiusLoop(double &r, double *y);
 
 	// The radius iteration in the mixed star scenario
 	void RadiusLoopMixed(double &r, double *y_core,
 						 double *y_mantle);
 
-	/// Exports the star sequence
+	/**
+	 * @brief Export the generated sequence of neutron stars.
+	 * @param dir Directory to export the sequence to.
+	 *
+	 */
 	void ExportSequence(const Zaki::String::Directory &) const;
 
 	/// Exports the mixed sequence
@@ -783,6 +844,10 @@ class TOVSolver : public Prog
 	virtual void SurfaceIsReached(const size_t &v_idx,
 								  const size_t &d_idx);
 
+	/**
+	 * @brief Handle the event when the surface is reached.
+	 *
+	 */
 	void SurfaceIsReached();
 
 	// For mixed stars
@@ -801,10 +866,28 @@ class TOVSolver : public Prog
 	static int ODE_Dark_Core(double r, const double y[], double f[], void *params);
 	static int ODE_Dark_Mantle(double r, const double y[], double f[], void *params);
 
+	/**
+	 * @brief Set the Exclusion Region object
+	 * @param polygon The polygon defining the exclusion region in (ec_v, ec_d) space
+	 * @details This method sets the exclusion region for the TOV solver.
+	 *
+	 */
 	void SetExclusionRegion(const Zaki::Math::Cond_Polygon &);
+
+	/**
+	 * @brief Set the Radial Res object
+	 * @param in_res The radial resolution for the solver
+	 * @details This method sets the radial resolution for the TOV solver.
+	 *
+	 */
 	void SetRadialRes(const size_t &);
 
-	/// Sets the printing precision for the NStar profiles
+	/**
+	 * @brief Set the Profile Precision object
+	 *
+	 * @param prec The printing precision for the star profiles
+	 * @details This method sets the printing precision for the star profiles.
+	 */
 	void SetProfilePrecision(const int &prec);
 
 	/// Sets maximum value for radius in the solver
@@ -812,18 +895,106 @@ class TOVSolver : public Prog
 	/// it would increase the radial resolution
 	/// defined by:
 	///  delta R = scale(R) * (R_max - R_min) / radial_res
+	/**
+	 * @brief Set the Max Radius object
+	 * @param The maximum radius for the solver
+	 * @details This method sets the maximum radius for the TOV solver.
+	 */
 	void SetMaxRadius(const double &);
 
-	/// Empties the sequence
+	/**
+	 * @brief Clear the generated sequence of neutron stars.
+	 *
+	 */
 	void ClearSequence();
 
-	/// @brief It generates a sequence of NS by varying radial resolution
-	/// @param e_c central energy density
-	/// @param dir directory for saving the results
-	/// @param file result file name
+	/** @brief It generates a sequence of NS by varying radial resolution
+	 * @param e_c central energy density
+	 * @param dir directory for saving the results
+	 * @param file result file name
+	 */
 	void GenTestSequence(const double &e_c,
 						 const Zaki::String::Directory &dir,
 						 const Zaki::String::Directory &file);
+
+	/**
+	 * @brief Solve TOV for a single star with given central energy density
+	 *        and return the radial TOV points.
+	 *
+	 * Contract:
+	 *  - @p ec_central is in the same units as eos_tab.eps (km^-2 in the current setup).
+	 *  - On success, returns >0 and fills @p out_tov with (r, m, nu', nu=0, p, e, rho, rho_i).
+	 *  - On failure, returns 0 and leaves @p out_tov empty.
+	 *
+	 * No units conversion or baryon-number / I integration happens here; that’s
+	 * left to NStar::BuildFromTOV.
+	 */
+	int SingleStarSolveToTOVPoints(double ec_central,
+								   std::vector<TOVPoint> &out_tov);
+
+	/**
+	 * @brief Solve the TOV equations for a *single neutron star* specified by
+	 *        a target gravitational mass, returning the full radial structure
+	 *        as a vector of @ref TOVPoint.
+	 *
+	 * This routine performs an internal search over central energy density
+	 * \( \varepsilon_c \) to find the value that yields the requested
+	 * gravitational mass (in solar masses). The EOS must have been imported
+	 * beforehand via @ref ImportEOS.
+	 *
+	 * ### Algorithm summary
+	 * 1. Construct a coarse, logarithmically spaced grid in \( \varepsilon_c \)
+	 *    between the allowed EOS range (with the usual floor/ceiling safety margins).
+	 * 2. For each sampled \( \varepsilon_c \):
+	 *      - Integrate the TOV equations using
+	 *        @ref SingleStarSolveToTOVPoints,
+	 *      - Record the resulting mass \( M(\varepsilon_c) \).
+	 * 3. Identify a *stable branch* interval where
+	 *      \f$ M(\varepsilon_{c,i+1}) > M(\varepsilon_{c,i}) \f$
+	 *    and where \( M(\varepsilon_c) \) brackets the target mass.
+	 * 4. If such a bracket exists, perform a bisection search in
+	 *    \( \varepsilon_c \) on that monotonic segment until a desired
+	 *    mass tolerance is achieved.
+	 * 5. If a stable-branch bracketing interval cannot be found (e.g. EOS
+	 *    with no monotonic segment covering the target), fall back to
+	 *    returning the profile whose mass is closest among the coarse samples.
+	 *
+	 * ### Output
+	 * - On **success**, @p out_tov is filled with the radial grid
+	 *   \f$ (r, m, \nu', \nu, p, \epsilon, n_B, \rho_i) \f$ produced by TOV
+	 *   integration, and the return value is the number of radial points.
+	 *
+	 * - If @p out_species_labels is non-null, it is filled with the species
+	 *   labels inferred from the EOS (typically @ref EOSTable::extra_labels).
+	 *
+	 * - On **failure**, the function returns `0` and leaves @p out_tov empty.
+	 *
+	 * @param[in]  target_M_solar
+	 *     Target gravitational mass in units of solar masses.
+	 *
+	 * @param[out] out_tov
+	 *     Vector that receives the final TOV radial structure.
+	 *     It is cleared on entry.
+	 *
+	 * @param[out] out_species_labels
+	 *     Optional pointer to a vector that receives the species labels
+	 *     corresponding to the \f$ \rho_i(r) \f$ columns. May be nullptr.
+	 *
+	 * @return
+	 *     Number of TOV radial points on success, or `0` on failure.
+	 *
+	 * @pre An EOS must have been loaded via @ref ImportEOS.
+	 *
+	 * @note This method performs no unit conversions; raw TOV values are
+	 *       returned exactly as produced by @ref SingleStarSolveToTOVPoints.
+	 *
+	 * @see SingleStarSolveToTOVPoints
+	 * @see ImportEOS
+	 * @see TOVPoint
+	 */
+	int SolveToProfile(double target_M_solar,
+					   std::vector<TOVPoint> &out_tov,
+					   std::vector<std::string> *out_species_labels = nullptr);
 };
 
 //==============================================================

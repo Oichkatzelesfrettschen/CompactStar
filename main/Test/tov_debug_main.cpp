@@ -87,11 +87,14 @@ int main()
 	// Optional: smaller max radius for NS-only
 	tov.SetMaxRadius(15); // 15 km
 
+	// Build the EOS file path:
+	Zaki::String::Directory eos_file =
+		eos_root + eos_name + "/" + eos_name + ".eos";
 	// 5) Import EOS
 	//    CASE A (visible only):
 	try
 	{
-		tov.ImportEOS(eos_root + eos_name + "/" + eos_name + ".eos");
+		tov.ImportEOS(eos_file);
 		std::cout << "[debug] visible EOS imported.\n";
 	}
 	catch (...)
@@ -112,7 +115,8 @@ int main()
 	}
 	*/
 
-	tov.SetWrkDir(dir.ParentDir() + "/results");
+	Zaki::String::Directory base_results_dir = dir.ParentDir() + "/results";
+	tov.SetWrkDir(base_results_dir);
 
 	// 6) Print EOS (so we know the table is sane)
 	tov.PrintEOSSummary();
@@ -133,23 +137,35 @@ int main()
 	Zaki::String::Directory out_dir = "tov_debug/";
 	Zaki::String::Directory out_file = "tov_debug";
 
-	std::cout << "[debug] solving TOV for axis of size "
-			  << ec_axis.res << " ...\n";
+	// std::cout << "[debug] solving TOV for axis of size "
+	//   << ec_axis.res << " ...\n";
 
-	try
-	{
-		tov.Solve(ec_axis, out_dir, out_file);
-	}
-	catch (const std::exception &ex)
-	{
-		std::cerr << "[error] TOV::Solve threw: " << ex.what() << "\n";
-		return 1;
-	}
-	catch (...)
-	{
-		std::cerr << "[error] TOV::Solve threw an unknown exception.\n";
-		return 1;
-	}
+	// std::vector<CompactStar::Core::TOVPoint> out_tov;
+	// tov.SolveToProfile(1.7, out_tov);
+
+	CompactStar::Core::NStar ns;
+	ns.SetWrkDir(base_results_dir);
+	const double target_M = 1.4; // Msun
+	const int n = ns.SolveTOV_Profile(eos_file, target_M, "tov_debug/");
+
+	std::cout << "\n\n[debug] TOV solve for M = " << target_M
+			  << " Msun returned M = " << ns.MassSurface()
+			  << " km, " << ns.GetSequence().m
+			  << ", R = " << ns.RadiusSurface() << " km, n = " << n << " points.\n\n";
+	// try
+	// {
+	// 	tov.Solve(ec_axis, out_dir, out_file);
+	// }
+	// catch (const std::exception &ex)
+	// {
+	// 	std::cerr << "[error] TOV::Solve threw: " << ex.what() << "\n";
+	// 	return 1;
+	// }
+	// catch (...)
+	// {
+	// 	std::cerr << "[error] TOV::Solve threw an unknown exception.\n";
+	// 	return 1;
+	// }
 
 	std::cout << "[debug] TOV solve finished.\n";
 

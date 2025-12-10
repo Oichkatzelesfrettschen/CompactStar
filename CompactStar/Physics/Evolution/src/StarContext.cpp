@@ -20,9 +20,8 @@ namespace Evolution
 //                   StarContext Class
 //==============================================================
 //--------------------------------------------------------------
-StarContext::StarContext(const CompactStar::Core::NStar &ns,
-						 const CompactStar::EOS::Model *eos)
-	: m_ns(&ns), m_eos(eos)
+StarContext::StarContext(const CompactStar::Core::NStar &ns)
+	: m_ns(&ns)
 {
 	// Cache commonly used columns (non-owning)
 	// NStar API:
@@ -43,7 +42,7 @@ StarContext::StarContext(const CompactStar::Core::NStar &ns,
 	m_lam = prof.GetMetricLambda();
 
 	// Proton fraction may be available either from EOS or as a species ratio; leave null by default.
-	m_yp = nullptr;
+	// m_yp = nullptr;
 }
 
 //--------------------------------------------------------------
@@ -64,7 +63,7 @@ const Zaki::Vector::DataColumn *StarContext::Nu() const { return m_nu; }
 const Zaki::Vector::DataColumn *StarContext::Lambda() const { return m_lam; }
 const Zaki::Vector::DataColumn *StarContext::Mass() const { return m_m; }
 const Zaki::Vector::DataColumn *StarContext::BaryonDensity() const { return m_nb; }
-const Zaki::Vector::DataColumn *StarContext::ProtonFraction() const { return m_yp; }
+// const Zaki::Vector::DataColumn *StarContext::ProtonFraction() const { return m_yp; }
 
 //--------------------------------------------------------------
 double StarContext::RadiusSurface() const

@@ -1,5 +1,5 @@
 /*
-  Last edited on ?, 2022
+  Last edited on Dec 9, 2025
 
   TOVSolver class
 */
@@ -354,23 +354,22 @@ void TOVSolver::OnWorkDirChanged(const Zaki::String::Directory &in_dir)
 // 	gsl_spline_init(visi_rho_p_spline, &eos_tab.pre[0], &eos_tab.rho[0], eos_tab.Size());
 // }
 //--------------------------------------------------------------
-
-void TOVSolver::Hidden_ImportEOS_Vis(const Zaki::String::Directory &f_name)
+void TOVSolver::Hidden_ImportEOS_Vis(const Zaki::String::Directory &eos_file, const bool absolute_path)
 {
 	// 0) Resolve the file path EXACTLY as we will open it
 	//    (this was ambiguous before)
-	// Zaki::String::Directory full_path;
-	// if (f_name.isAbsolute())
-	// {
-	// 	full_path = f_name; // use as-is
-	// }
-	// else
-	// {
-	Zaki::String::Directory full_path = wrk_dir_ + "/" + f_name; // relative to work dir
-	// }
+	Zaki::String::Directory full_path("");
+	if (absolute_path)
+	{
+		full_path = eos_file; // use as-is
+	}
+	else
+	{
+		full_path = wrk_dir_ + "/" + eos_file; // relative to work dir
+	}
 
-	std::cout << "\n[TOVSolver::Hidden_ImportEOS_Vis] trying to open: '"
-			  << full_path.Str() << "'\n";
+	// std::cout << "\n[TOVSolver::Hidden_ImportEOS_Vis] trying to open: '"
+	// 		  << full_path.Str() << "'\n";
 
 	std::ifstream file(full_path.Str());
 
@@ -537,33 +536,46 @@ void TOVSolver::Hidden_ImportEOS_Vis(const Zaki::String::Directory &f_name)
 }
 
 //--------------------------------------------------------------
-void TOVSolver::ImportEOS(const Zaki::String::Directory &f_name)
+void TOVSolver::ImportEOS(const Zaki::String::Directory &f_name,
+						  const bool absolute_path)
 {
-	Hidden_ImportEOS_Vis(f_name);
+	Hidden_ImportEOS_Vis(f_name, absolute_path);
 
 	n_star.InitFromTOVSolver(this);
 }
 
 //--------------------------------------------------------------
 void TOVSolver::ImportEOS(const Zaki::String::Directory &vis_eos,
-						  const Zaki::String::Directory &dar_eos)
+						  const Zaki::String::Directory &dar_eos,
+						  const bool absolute_path)
 {
-	Hidden_ImportEOS_Vis(vis_eos);
-	Hidden_ImportEOS_Dar(dar_eos);
+	Hidden_ImportEOS_Vis(vis_eos, absolute_path);
+	Hidden_ImportEOS_Dar(dar_eos, absolute_path);
 
 	mixed_star.InitVisible(this);
 	mixed_star.InitDark(this);
 }
 
 //--------------------------------------------------------------
-void TOVSolver::Hidden_ImportEOS_Dar(const Zaki::String::Directory &f_name)
+void TOVSolver::Hidden_ImportEOS_Dar(const Zaki::String::Directory &eos_file,
+									 const bool absolute_path)
 {
-	std::ifstream file((wrk_dir_ + "/" + f_name).Str());
+	Zaki::String::Directory full_path("");
+	if (absolute_path)
+	{
+		full_path = eos_file; // use as-is
+	}
+	else
+	{
+		full_path = wrk_dir_ + "/" + eos_file; // relative to work dir
+	}
+
+	std::ifstream file(full_path.Str());
 
 	// Error opening the file
 	if (file.fail())
 	{
-		Z_LOG_ERROR("File '" + (wrk_dir_ + "/" + f_name).Str() + "' cannot be opened!");
+		Z_LOG_ERROR("File '" + full_path.Str() + "' cannot be opened!");
 		Z_LOG_ERROR("Importing EOS data failed!");
 		exit(EXIT_FAILURE);
 		return;
@@ -610,7 +622,7 @@ void TOVSolver::Hidden_ImportEOS_Dar(const Zaki::String::Directory &f_name)
 		line_num++;
 	}
 
-	Z_LOG_INFO("Dark EOS data imported from: " + (wrk_dir_ + f_name).Str() + ".");
+	Z_LOG_INFO("Dark EOS data imported from: " + full_path.Str() + ".");
 
 	dark_eps_p_spline = gsl_spline_alloc(TOV_gsl_interp_type, eos_tab_dark.Size());
 	dark_rho_p_spline = gsl_spline_alloc(TOV_gsl_interp_type, eos_tab_dark.Size());
@@ -1490,7 +1502,7 @@ void TOVSolver::Solve(const Zaki::Math::Axis &in_ax,
 			ec = ceil_e;
 		}
 
-		// convert to pressure
+		// Convert ec to pressure
 		init_press = p_of_e(ec);
 
 		double r = r_min;
@@ -1499,17 +1511,8 @@ void TOVSolver::Solve(const Zaki::Math::Axis &in_ax,
 		y[1] = init_press;
 		y[0] = (4. / 3.) * M_PI * std::pow(r, 3.) * GetEDens(y[1]);
 
-		// integrate
-		// std::cout << "===========================\n";
-
-		// for (size_t i = 0; i < n_star.prof_.radial.Dim().size(); i++)
-		// {
-		// 	std::cout << n_star.prof_.radial.Dim()[i] << "\n";
-		// }
-
 		RadiusLoop(r, y);
-		// std::cout << "===========================\n";
-		// n_star.PrintProfileColumnSizes();
+
 		SurfaceIsReached();
 
 		if (analysis)
@@ -2277,6 +2280,397 @@ void TOVSolver::Solve_Mixed(const Contour &eps_cont,
 	// vec_saver.SetHeader(bnv_header) ;
 	// vec_saver.Export1D(bnv_rates) ;
 }
+//--------------------------------------------------------------
+// Single-star TOV solve → vector<TOVPoint>
+//--------------------------------------------------------------
+int TOVSolver::SingleStarSolveToTOVPoints(double ec_central,
+										  std::vector<TOVPoint> &out_tov)
+{
+	PROFILE_FUNCTION();
+
+	out_tov.clear();
+
+	if (eos_tab.eps.empty())
+	{
+		Z_LOG_ERROR("EOS table is empty.");
+		return 0;
+	}
+
+	// ----------------------------------------------------------
+	// 0) Clamp central energy density to EOS range (same as Solve)
+	// ----------------------------------------------------------
+	const double eos_e_min = eos_tab.eps.front();
+	const double eos_e_max = eos_tab.eps.back();
+
+	const double floor_e = central_eps_floor_factor * eos_e_min;
+	const double ceil_e = 0.999 * eos_e_max;
+
+	const double ec_req = ec_central;
+	double ec = ec_req;
+
+	if (ec < floor_e)
+	{
+		Z_LOG_WARNING("Requested eps(" +
+					  std::to_string(ec_req) + ") < floor(" +
+					  std::to_string(floor_e) + ") -> clamping.");
+		ec = floor_e;
+	}
+	else if (ec > ceil_e)
+	{
+		Z_LOG_WARNING("Requested eps(" +
+					  std::to_string(ec_req) + ") > ceil(" +
+					  std::to_string(ceil_e) + ") -> clamping.");
+		ec = ceil_e;
+	}
+
+	// ----------------------------------------------------------
+	// 1) Convert central ε to central pressure, set initial y[]
+	// ----------------------------------------------------------
+	init_press = p_of_e(ec);
+
+	double r = r_min; // cm
+	double y[2];
+
+	// y[1] = p(r), y[0] = m(r) in cgs (g)
+	y[1] = init_press;
+	y[0] = (4.0 / 3.0) * M_PI * std::pow(r, 3.0) * GetEDens(y[1]);
+
+	// ----------------------------------------------------------
+	// 2) GSL ODE setup (identical to RadiusLoop)
+	// ----------------------------------------------------------
+	gsl_odeiv2_system ode_sys = {TOVSolver::ODE, nullptr, 2, this};
+
+	gsl_odeiv2_driver *driver = gsl_odeiv2_driver_alloc_y_new(
+		&ode_sys,
+		gsl_odeiv2_step_rk8pd,
+		1.e-1,	// initial step
+		1.e-10, // abs tol
+		1.e-10	// rel tol
+	);
+
+	double min_log_r = r_min;
+	double max_log_r = r_max;
+
+	double step = (max_log_r - min_log_r) / radial_res;
+	double step_scale = 1.0;
+
+	const double p_cut = PressureCutoff();
+
+	// ----------------------------------------------------------
+	// 3) Radius loop — copy of RadiusLoop, but pushing TOVPoint
+	// ----------------------------------------------------------
+	for (double log_r_i = min_log_r;
+		 log_r_i <= max_log_r;
+		 log_r_i += step * step_scale)
+	{
+		double ri = log_r_i;
+
+		double tmp_delta_p = y[1]; // kept for potential future step-control tweaks
+
+		int status = gsl_odeiv2_driver_apply(driver, &r, ri, y);
+
+		if (status != GSL_SUCCESS)
+		{
+#if TOV_SOLVER_VERBOSE
+			printf("\t-------------------%s-------------------\n", "GSL");
+			printf("error, return value=%d\n.", status);
+			printf("Pressure = %2.2e.\n", y[1]);
+#endif
+			break;
+		}
+
+		// ------------------------------------------------------
+		// Step scaling (exactly as in RadiusLoop)
+		// r is in cm; thresholds 100, 1000, ... are cm as well.
+		// ------------------------------------------------------
+		if (ri < 100.0) // < 1 m
+		{
+			step_scale = 0.005;
+		}
+		else if (ri < 1000.0) // 1 m - 10 m
+		{
+			step_scale = 0.025;
+		}
+		else if (ri < 10000.0) // 10 m - 100 m
+		{
+			step_scale = 0.05;
+		}
+		else if (ri < 100000.0) // 100 m - 1 km
+		{
+			step_scale = 0.25;
+		}
+		else // > 1 km
+		{
+			step_scale = 1.0;
+		}
+
+		// ------------------------------------------------------
+		// Build and store TOVPoint at this radius
+		//
+		// Conventions:
+		//  - r in km         → r / 1e5 (cm → km)
+		//  - m in solar mass → y[0] / GSL_CONST_CGSM_SOLAR_MASS
+		//  - ν' from GetNuDer
+		//  - ν = 0 (rebuilt later by NStar::BuildFromTOV)
+		//  - p as is (cgs)
+		//  - e = GetEDens(p)
+		//  - ρ = GetRho(p)
+		//  - ρ_i = GetRho_i(p) (vector)
+		// ------------------------------------------------------
+		const double r_km = r / 1.e5;
+		const double m_msun = y[0] / GSL_CONST_CGSM_SOLAR_MASS;
+
+		const double nu_prime = GetNuDer(r, {y[0], y[1]});
+		const double e_here = GetEDens(y[1]);
+		const double rho_here = GetRho(y[1]);
+		const std::vector<double> rho_i_here = GetRho_i(y[1]);
+
+		out_tov.emplace_back(
+			r_km,
+			m_msun,
+			nu_prime,
+			0.0,	   // ν will be reconstructed later from ν'(r)
+			y[1],	   // p
+			e_here,	   // ε
+			rho_here,  // total baryon density
+			rho_i_here // species densities
+		);
+
+		// ------------------------------------------------------
+		// Termination condition: pressure below cutoff
+		// (same notion as used throughout TOVSolver)
+		// ------------------------------------------------------
+		if (y[1] <= p_cut)
+			break;
+	}
+
+	gsl_odeiv2_driver_free(driver);
+
+	if (out_tov.empty())
+		return 0;
+
+	return static_cast<int>(out_tov.size());
+}
+
+//--------------------------------------------------------------
+// SolveToProfile: Find e_c such that M(e_c) ≈ target_M_solar
+//   using root-finding in central energy density.
+//--------------------------------------------------------------
+int TOVSolver::SolveToProfile(double target_M_solar,
+							  std::vector<TOVPoint> &out_tov,
+							  std::vector<std::string> *out_species_labels)
+{
+	PROFILE_FUNCTION();
+
+	// (void)model_name; // currently unused; EOS assumed already imported
+
+	out_tov.clear();
+
+	if (eos_tab.eps.empty())
+	{
+		Z_LOG_ERROR("EOS table is empty. Call ImportEOS(...) first.");
+		return 0;
+	}
+
+	// ----------------------------------------------------------
+	// 0) Define allowed central ε range (same logic as Solve)
+	// ----------------------------------------------------------
+	const double eos_e_min = eos_tab.eps.front();
+	const double eos_e_max = eos_tab.eps.back();
+
+	const double floor_e = central_eps_floor_factor * eos_e_min;
+	const double ceil_e = 0.999 * eos_e_max;
+
+	if (floor_e <= 0.0 || ceil_e <= floor_e)
+	{
+		Z_LOG_ERROR("SolveToProfile: invalid EOS energy-density range.");
+		return 0;
+	}
+
+	// ----------------------------------------------------------
+	// 1) Coarse sampling in log ε_c to bracket the target mass
+	// ----------------------------------------------------------
+	const int N_coarse = 24; // number of coarse samples (configurable)
+
+	std::vector<double> ec_grid;
+	std::vector<double> M_grid;
+	ec_grid.reserve(N_coarse + 1);
+	M_grid.reserve(N_coarse + 1);
+
+	int best_idx = -1;
+	double best_mass_diff = std::numeric_limits<double>::infinity();
+
+	const double log_e_lo = std::log10(floor_e);
+	const double log_e_hi = std::log10(ceil_e);
+
+	for (int i = 0; i <= N_coarse; ++i)
+	{
+		const double t = static_cast<double>(i) / static_cast<double>(N_coarse);
+		const double log_e = log_e_lo + t * (log_e_hi - log_e_lo);
+		const double ec = std::pow(10.0, log_e);
+
+		std::vector<TOVPoint> tmp;
+		const int npts = SingleStarSolveToTOVPoints(ec, tmp);
+
+		if (npts <= 0 || tmp.empty())
+		{
+			Z_LOG_ERROR("SolveToProfile: SingleStarSolveToTOVPoints failed at ec = " +
+						std::to_string(ec));
+			return 0;
+		}
+
+		const double M_here = tmp.back().m; // Msun (by construction in RadiusLoop)
+
+		ec_grid.push_back(ec);
+		M_grid.push_back(M_here);
+
+		const double diff = std::fabs(M_here - target_M_solar);
+		if (diff < best_mass_diff)
+		{
+			best_mass_diff = diff;
+			best_idx = static_cast<int>(ec_grid.size()) - 1;
+		}
+	}
+
+	if (ec_grid.empty())
+	{
+		Z_LOG_ERROR("SolveToProfile: coarse sampling produced no valid points.");
+		return 0;
+	}
+
+	// ----------------------------------------------------------
+	// 2) Find a *stable-branch* bracket where M crosses the target
+	//    Stable branch ≡ dM/de_c > 0 → M_{i+1} > M_i
+	// ----------------------------------------------------------
+	int idx_lo = -1;
+	int idx_hi = -1;
+
+	for (int i = 0; i < static_cast<int>(ec_grid.size()) - 1; ++i)
+	{
+		const double Mi = M_grid[static_cast<std::size_t>(i)];
+		const double Mi1 = M_grid[static_cast<std::size_t>(i + 1)];
+
+		// require positive slope (stable segment)
+		if (Mi1 <= Mi)
+			continue;
+
+		// Check if target lies between Mi and Mi1
+		if (Mi <= target_M_solar && target_M_solar <= Mi1)
+		{
+			idx_lo = i;
+			idx_hi = i + 1;
+			break;
+		}
+	}
+
+	// If we didn't find a stable-branch bracket, we fall back to "closest"
+	if (idx_lo < 0 || idx_hi < 0)
+	{
+		Z_LOG_WARNING("SolveToProfile: could not bracket target mass on a stable branch. "
+					  "Falling back to closest coarse sample.");
+
+		if (best_idx < 0)
+			return 0;
+
+		const double ec_best = ec_grid[static_cast<std::size_t>(best_idx)];
+
+		std::vector<TOVPoint> tmp;
+		const int npts = SingleStarSolveToTOVPoints(ec_best, tmp);
+
+		if (npts <= 0 || tmp.empty())
+		{
+			Z_LOG_ERROR("SolveToProfile: fallback SingleStarSolveToTOVPoints failed.");
+			return 0;
+		}
+
+		out_tov = std::move(tmp);
+
+		if (out_species_labels)
+			*out_species_labels = eos_tab.extra_labels;
+
+		return static_cast<int>(out_tov.size());
+	}
+
+	// ----------------------------------------------------------
+	// 3) Bisection in e_c on the monotonic (stable) segment
+	// ----------------------------------------------------------
+	double ec_lo = ec_grid[static_cast<std::size_t>(idx_lo)];
+	double ec_hi = ec_grid[static_cast<std::size_t>(idx_hi)];
+
+	double M_lo = M_grid[static_cast<std::size_t>(idx_lo)];
+	double M_hi = M_grid[static_cast<std::size_t>(idx_hi)];
+
+	// enforce M_lo < M_hi on the bracket
+	if (M_lo > M_hi)
+	{
+		std::swap(M_lo, M_hi);
+		std::swap(ec_lo, ec_hi);
+	}
+
+	const double mass_tol = 1e-4; // Msun absolute tolerance
+	const int max_iter = 40;
+
+	std::vector<TOVPoint> best_profile;
+	double best_M = std::numeric_limits<double>::quiet_NaN();
+	best_mass_diff = std::numeric_limits<double>::infinity();
+
+	for (int iter = 0; iter < max_iter; ++iter)
+	{
+		const double ec_mid = 0.5 * (ec_lo + ec_hi);
+
+		std::vector<TOVPoint> tmp;
+		const int npts = SingleStarSolveToTOVPoints(ec_mid, tmp);
+
+		if (npts <= 0 || tmp.empty())
+		{
+			Z_LOG_ERROR("SolveToProfile: SingleStarSolveToTOVPoints failed at ec_mid = " +
+						std::to_string(ec_mid));
+			break;
+		}
+
+		const double M_mid = tmp.back().m;
+		const double diff = std::fabs(M_mid - target_M_solar);
+
+		if (diff < best_mass_diff)
+		{
+			best_mass_diff = diff;
+			best_profile = std::move(tmp);
+			best_M = M_mid;
+		}
+
+		if (diff < mass_tol)
+		{
+			// good enough
+			break;
+		}
+
+		// since we are on a monotonic branch (M increasing with ec),
+		// decide which side to keep
+		if (M_mid < target_M_solar)
+		{
+			ec_lo = ec_mid;
+			M_lo = M_mid;
+		}
+		else
+		{
+			ec_hi = ec_mid;
+			M_hi = M_mid;
+		}
+	}
+
+	if (best_profile.empty())
+	{
+		Z_LOG_ERROR("SolveToProfile: bisection failed to produce a valid profile.");
+		return 0;
+	}
+
+	out_tov = std::move(best_profile);
+
+	if (out_species_labels)
+		*out_species_labels = eos_tab.extra_labels;
+
+	return static_cast<int>(out_tov.size());
+}
 
 //--------------------------------------------------------------
 /// Sets the printing precision for the NStar profiles
@@ -2681,7 +3075,5 @@ void TOVSolver::GenTestSequence(const double &in_e_c,
 		analysis->Export(wrk_dir_ + in_dir);
 	// ----------------------------------------------
 }
-
-//--------------------------------------------------------------
 
 //==============================================================

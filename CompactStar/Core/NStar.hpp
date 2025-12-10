@@ -44,12 +44,9 @@
 #ifndef CompactStar_Core_NStar_H
 #define CompactStar_Core_NStar_H
 
+#include <Zaki/Physics/Constants.hpp>
 #include <Zaki/String/Directory.hpp>
 #include <Zaki/Vector/DataSet.hpp>
-// #include <chrono>
-// #include <cstdio>
-// #include <ctime>
-// #include <string>
 
 #include <string_view>
 #include <vector>
@@ -167,7 +164,7 @@ class NStar : public Prog
 	StarProfile prof_;
 
 	/** @brief EOS pointer used by profile-based solves (not owned). */
-	CompOSE_EOS *eos_ = nullptr;
+	// CompOSE_EOS *eos_ = nullptr;
 
 	/**
 	 * @brief Build / register all interpolants on the current StarProfile.
@@ -195,8 +192,8 @@ class NStar : public Prog
 	// ------------------------------------------------------------
 	// 4) EOS management
 	// ------------------------------------------------------------
-	void AttachEOS(CompOSE_EOS *eos) { eos_ = eos; }
-	CompOSE_EOS *GetEOS() const { return eos_; }
+	// void AttachEOS(CompOSE_EOS *eos) { eos_ = eos; }
+	// CompOSE_EOS *GetEOS() const { return eos_; }
 
 	// ------------------------------------------------------------
 	// 5) Legacy TOV init path (keep)
@@ -215,27 +212,30 @@ class NStar : public Prog
 	void Reset();
 
 	// ------------------------------------------------------------
-	// 6) NEW: profile-based solving / importing (preferred)
+	// 6) profile-based solving / importing
 	// ------------------------------------------------------------
-	/**
-	 * @brief Solve TOV and store result in internal StarProfile.
+	//! Solve TOV for a single star and populate this NStar's StarProfile.
+	/*!
+	 * @param eos_file Full path (directory + filename) of the EOS table,
+	 *                 e.g. `eos_root + eos_name + "/" + eos_name + ".eos"`.
+	 * @param target_M_solar Target gravitational mass in units of M_sun.
+	 * @param rel_out_dir Optional subdirectory (relative to this NStar's
+	 *                    working directory) where the TOV solver can dump
+	 *                    any sequence / debug output if it wants.
 	 *
-	 * Implementation in .cpp should call our new
-	 * `TOVSolver::SolveToProfile(...)` that now fills
-	 * radius, mass, p, eps, rho, nu, and lambda, and also
-	 * registers species via `AddSpecies(...)`.
+	 * @return Number of radial points in the final profile on success,
+	 *         or 0 on failure.
+	 *
+	 * This is a high–level one-shot constructor:
+	 *  - builds an internal TOVSolver,
+	 *  - imports the EOS from @p eos_file,
+	 *  - calls TOVSolver::SolveToProfile(...),
+	 *  - then calls BuildFromTOV(...) to populate @c prof_ and all
+	 *    derived quantities (B, I, z_surf, etc.).
 	 */
-	int SolveTOV_Profile(const CompOSE_EOS &eos, double target_M_solar);
-
-	/**
-	 * @brief Solve TOV using the attached EOS and store in internal profile.
-	 */
-	int SolveTOV_Profile(double target_M_solar)
-	{
-		if (!eos_)
-			return 0;
-		return SolveTOV_Profile(*eos_, target_M_solar);
-	}
+	int SolveTOV_Profile(const Zaki::String::Directory &eos_file,
+						 double target_M_solar,
+						 const Zaki::String::Directory &rel_out_dir = "");
 
 	/**
 	 * @brief Import a precomputed StarProfile from disk and store internally.
@@ -281,13 +281,13 @@ class NStar : public Prog
 	}
 
 	/**
-	 * @brief Get mass at star surface.
+	 * @brief Get mass at star surface in M_sun units.
 	 */
 	[[nodiscard]] double MassSurface() const noexcept
 	{
 		if (!prof_.empty() && prof_.M > 0.0)
-			return prof_.M;
-		return GetSequence().m;
+			return prof_.M / Zaki::Physics::SUN_M_KM; // in M_Sun units
+		return GetSequence().m;						  // in M_Sun units
 	}
 
 	/**

@@ -75,9 +75,9 @@ namespace Evolution
  * @class StarContext
  * @brief Immutable, per-star adapter exposing cached geometry and composition.
  *
- * Constructed from an existing @c CompactStar::Core::NStar and (optionally) an EOS object.
+ * Constructed from an existing @c CompactStar::Core::NStar.
  * Provides fast getters for radius grid, metric factors \f(e^{\nu}, e^{\Lambda}\f),
- * and commonly used columns (density, proton fraction, etc.) by forwarding to Core
+ * and commonly used columns (density, etc.) by forwarding to Core
  * datasets. Geometry-only computations that do not change during evolution can be
  * cached here at construction time (done in GeometryCache).
  */
@@ -90,10 +90,8 @@ class StarContext
 	/**
 	 * @brief Construct from a precomputed neutron-star profile.
 	 * @param ns   Reference to an initialized @c CompactStar::Core::NStar.
-	 * @param eos  Optional pointer to an EOS object for composition queries (may be null).
 	 */
-	StarContext(const CompactStar::Core::NStar &ns,
-				const CompactStar::EOS::Model *eos = 0);
+	StarContext(const CompactStar::Core::NStar &ns);
 
 	/// @name Basic geometry and grids
 	///@{
@@ -119,7 +117,7 @@ class StarContext
 	const Zaki::Vector::DataColumn *BaryonDensity() const;
 
 	/** @brief Proton fraction \f$Y_p(r)\f$ or nullptr if not available. */
-	const Zaki::Vector::DataColumn *ProtonFraction() const;
+	// const Zaki::Vector::DataColumn *ProtonFraction() const;
 	///@}
 
 	/// @name Global scalars
@@ -136,7 +134,7 @@ class StarContext
 
   private:
 	const CompactStar::Core::NStar *m_ns = 0;
-	const CompactStar::EOS::Model *m_eos = 0;
+	// const CompactStar::EOS::Model *m_eos = 0;
 
 	// Non-owning cached pointers to frequently accessed columns (set in ctor).
 	const Zaki::Vector::DataColumn *m_r = 0;
@@ -144,7 +142,7 @@ class StarContext
 	const Zaki::Vector::DataColumn *m_lam = 0;
 	const Zaki::Vector::DataColumn *m_m = 0;
 	const Zaki::Vector::DataColumn *m_nb = 0;
-	const Zaki::Vector::DataColumn *m_yp = 0;
+	// const Zaki::Vector::DataColumn *m_yp = 0;
 };
 //==============================================================
 } // namespace Evolution

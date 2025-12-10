@@ -49,11 +49,8 @@ NStar::NStar(const std::vector<TOVPoint> &in_tov,
 	BuildFromTOV(in_tov, &species_labels);
 }
 
-// ---------------------------------------------------------
-// Builder — Populate ds/B_integrand/sequence from TOV data
-// ---------------------------------------------------------
-// ---------------------------------------------------------
-// Builder — Populate profile + legacy ds from TOV data
+//--------------------------------------------------------------
+// Builder — Populate profile from TOV data
 // ---------------------------------------------------------
 void NStar::BuildFromTOV(const std::vector<TOVPoint> &in_tov,
 						 const std::vector<std::string> *species_labels)
@@ -83,7 +80,6 @@ void NStar::BuildFromTOV(const std::vector<TOVPoint> &in_tov,
 					" != inferred n_species = " + std::to_string(n_species) +
 					". Proceeding with inferred n_species; extra/missing labels ignored.");
 	}
-
 	// ------------------------------------------------------------
 	// 0) Fresh start
 	// ------------------------------------------------------------
@@ -96,6 +92,7 @@ void NStar::BuildFromTOV(const std::vector<TOVPoint> &in_tov,
 		auto &radial = prof_.radial;
 		radial.data_set.clear();
 		radial.Reserve(8 + n_species, n_rows);
+		B_integrand.Reserve(2, n_rows);
 
 		// create canonical columns in the exact order we settled on:
 		// 0 r, 1 m, 2 nu', 3 p, 4 eps, 5 rho, 6 nu, 7 lambda
@@ -121,7 +118,7 @@ void NStar::BuildFromTOV(const std::vector<TOVPoint> &in_tov,
 		prof_.idx_nu = 6;
 
 		radial.AddColumn("lambda");
-		prof_.idx_lambda = 7; // may remain unused
+		prof_.idx_lambda = 7;
 
 		// species (after the fixed ones)
 		prof_.species_labels.clear();
@@ -176,8 +173,8 @@ void NStar::BuildFromTOV(const std::vector<TOVPoint> &in_tov,
 			// Compute and append λ to the profile
 			// ------------------------------------------------------------
 			// Compute the Schwarzschild-like factor:
-			const double r_km = tp.r;
-			const double m_km = Zaki::Physics::SUN_M_KM * tp.m;
+			// const double r_km = tp.r;
+			// const double m_km = Zaki::Physics::SUN_M_KM * tp.m;
 
 			double denom = 1.0;
 			if (r_km > 0.0)
@@ -259,10 +256,7 @@ void NStar::BuildFromTOV(const std::vector<TOVPoint> &in_tov,
 		prof_.seq_point.r = radial[prof_.idx_r][-1]; // km
 		prof_.R = prof_.seq_point.r;
 
-		// surface mass (in solar masses)
-		// prof_.seq_point.m =
-		// 	radial[prof_.idx_m][-1] / Zaki::Physics::SUN_M_KM; // Msun
-		// prof_.M = prof_.seq_point.m;
+		// surface mass (in both solar masses and km)
 		const double Msurf_km = radial[prof_.idx_m][-1];			  // km
 		const double Msurf_Msun = Msurf_km / Zaki::Physics::SUN_M_KM; // Msun
 
@@ -294,77 +288,6 @@ void NStar::BuildFromTOV(const std::vector<TOVPoint> &in_tov,
 
 		surface_ready = true;
 	}
-
-	// ============================================================
-	// 2) LEGACY DS BUILD (kept so old code works)
-	// ============================================================
-	// {
-	// 	// 7 fixed columns: r, m, nu', p, eps, rho, nu  (+ per-species rho_i)
-	// 	ds.Reserve(7 + n_species, n_rows);
-
-	// 	// label fixed columns
-	// 	col(Col::R).label = "r(km)";
-	// 	col(Col::M).label = "m(km)";
-	// 	col(Col::NuPrime).label = "nu'(km^-1)";
-	// 	col(Col::P).label = "p(km^-2)";
-	// 	col(Col::Eps).label = "eps(km^-2)";
-	// 	col(Col::Rho).label = "rho(fm^-3)";
-	// 	col(Col::Nu).label = "nu";
-
-	// 	// per-species columns
-	// 	rho_i_idx.clear();
-	// 	rho_i_idx.reserve(n_species);
-	// 	for (std::size_t j = 0; j < n_species; ++j)
-	// 	{
-	// 		const int idx_col = 7 + static_cast<int>(j);
-	// 		rho_i_idx.emplace_back(idx_col);
-	// 		if (species_labels && j < species_labels->size())
-	// 			ds[idx_col].label = (*species_labels)[j];
-	// 		else
-	// 			ds[idx_col].label = "X" + std::to_string(idx_col);
-	// 	}
-
-	// 	// fill rows (unit handling matches our previous code)
-	// 	for (const auto &tp : in_tov)
-	// 	{
-	// 		col(Col::R).vals.emplace_back(tp.r); // km
-	// 		col(Col::M).vals.emplace_back(Zaki::Physics::SUN_M_KM * tp.m);
-	// 		col(Col::Rho).vals.emplace_back(tp.rho); // fm^-3
-
-	// 		col(Col::Eps).vals.emplace_back(
-	// 			tp.e * Zaki::Physics::INV_FM4_2_INV_KM2 /
-	// 			Zaki::Physics::INV_FM4_2_G_CM3);
-	// 		col(Col::P).vals.emplace_back(
-	// 			tp.p * Zaki::Physics::INV_FM4_2_INV_KM2 /
-	// 			Zaki::Physics::INV_FM4_2_Dyn_CM2);
-	// 		col(Col::NuPrime).vals.emplace_back(tp.nu_der * 1e5);
-
-	// 		for (std::size_t j = 0; j < n_species; ++j)
-	// 		{
-	// 			const double val = (j < tp.rho_i.size()) ? tp.rho_i[j] : 0.0;
-	// 			ds[rho_i_idx[j]].vals.emplace_back(val);
-	// 		}
-	// 	}
-
-	// 	// splines for legacy ds
-	// 	ds.Interpolate(idx(Col::R),
-	// 				   {idx(Col::M), idx(Col::NuPrime), idx(Col::Rho),
-	// 					idx(Col::Eps), idx(Col::P)});
-
-	// 	// build ν(r) from ν'(r) (legacy path)
-	// 	EvaluateNu();
-
-	// 	// sequence (legacy struct)
-	// 	sequence.ec = col(Col::Eps)[0] * Zaki::Physics::INV_FM4_2_G_CM3 /
-	// 				  Zaki::Physics::INV_FM4_2_INV_KM2;
-	// 	sequence.m = col(Col::M)[-1] / Zaki::Physics::SUN_M_KM;
-	// 	sequence.r = col(Col::R)[-1];
-	// 	sequence.pc = col(Col::P)[0] * Zaki::Physics::INV_FM4_2_Dyn_CM2 /
-	// 				  Zaki::Physics::INV_FM4_2_INV_KM2;
-	// 	sequence.b = B_integrand.Integrate(
-	// 		1, {col(Col::R)[0], col(Col::R)[-1]});
-	// 	sequence.I = prof_.seq_point.I; // keep them consistent
-	// }
 }
 
 /* -------------------- LEGACY VERSION FOR REFERENCE --------------------
@@ -886,45 +809,12 @@ void NStar::FinalizeSurface()
 	// ============================================================
 	if (!prof_.empty())
 	{
+		// --------------------------------------------------------
+		// 1.a) Build interpolants from profile columns
+		// --------------------------------------------------------
 		InitInterpolantsFromProfile_();
 
-		// auto &radial = prof_.radial;
-
-		// --- safety: must have radius column with rows
-		// if (!prof_.HasColumn(StarProfile::Column::Radius))
-		// {
-		// 	Z_LOG_ERROR("StarProfile has no radius column; cannot finalize.");
-		// 	surface_ready = false;
-		// 	return;
-		// }
 		const int rcol = prof_.GetColumnIndex(StarProfile::Column::Radius);
-		// const auto &r = radial[rcol];
-		// if (r.Size() == 0)
-		// {
-		// 	Z_LOG_ERROR("StarProfile radius column is empty; nothing to finalize.");
-		// 	surface_ready = false;
-		// 	return;
-		// }
-
-		// --------------------------------------------------------
-		// 1.a) Interpolate basic columns vs r
-		//     (only those that actually exist in the profile)
-		// --------------------------------------------------------
-		// Collect the columns we want to interpolate
-		// std::vector<int> interp_cols;
-		// if (prof_.HasColumn(StarProfile::Column::Mass))
-		// 	interp_cols.push_back(prof_.GetColumnIndex(StarProfile::Column::Mass));
-		// if (prof_.HasColumn(StarProfile::Column::MetricNuPrime))
-		// 	interp_cols.push_back(prof_.GetColumnIndex(StarProfile::Column::MetricNuPrime));
-		// if (prof_.HasColumn(StarProfile::Column::BaryonDensity))
-		// 	interp_cols.push_back(prof_.GetColumnIndex(StarProfile::Column::BaryonDensity));
-		// if (prof_.HasColumn(StarProfile::Column::EnergyDensity))
-		// 	interp_cols.push_back(prof_.GetColumnIndex(StarProfile::Column::EnergyDensity));
-		// if (prof_.HasColumn(StarProfile::Column::Pressure))
-		// 	interp_cols.push_back(prof_.GetColumnIndex(StarProfile::Column::Pressure));
-
-		// if (!interp_cols.empty())
-		// 	radial.Interpolate(rcol, interp_cols);
 
 		// --------------------------------------------------------
 		// 1.b) Build ν(r) from ν′(r) with surface BC
@@ -1017,51 +907,6 @@ void NStar::FinalizeSurface()
 		surface_ready = true;
 		return;
 	}
-
-	// ============================================================
-	// 2) LEGACY DS PATH (KEPT FOR NOW)
-	// ============================================================
-	// {
-	// 	// Must have rows before we can interpolate
-	// 	const auto &r = col(Col::R);
-	// 	if (r.Size() == 0)
-	// 	{
-	// 		Z_LOG_ERROR("FinalizeAfterSurface: no rows appended; nothing to finalize.");
-	// 		surface_ready = false;
-	// 		return;
-	// 	}
-
-	// 	// Build splines for (M, ν', ρ, ε, p) as functions of r
-	// 	ds.Interpolate(idx(Col::R),
-	// 				   {idx(Col::M), idx(Col::NuPrime), idx(Col::Rho),
-	// 					idx(Col::Eps), idx(Col::P)});
-
-	// 	// Build ν(r) from ν'(r) with surface BC
-	// 	EvaluateNu();
-
-	// 	// ........................ B integrand ........................
-	// 	B_integrand[0] = col(Col::R);
-	// 	B_integrand[1] = col(Col::R).pow(2);
-	// 	B_integrand[1] *= 4.0 * M_PI * col(Col::Rho);
-	// 	B_integrand[1] /= (1.0 - 2.0 * col(Col::M) / col(Col::R)).sqrt();
-	// 	B_integrand[1] *= FM3_TO_KM3;
-	// 	B_integrand.Interpolate(0, 1);
-	// 	// .............................................................
-
-	// 	// Fill the sequence point
-	// 	sequence.ec = col(Col::Eps)[0] * Zaki::Physics::INV_FM4_2_G_CM3 /
-	// 				  Zaki::Physics::INV_FM4_2_INV_KM2;			// g/cm^3
-	// 	sequence.m = col(Col::M)[-1] / Zaki::Physics::SUN_M_KM; // M_sun
-	// 	sequence.r = col(Col::R)[-1];							// km
-	// 	sequence.pc = col(Col::P)[0] * Zaki::Physics::INV_FM4_2_Dyn_CM2 /
-	// 				  Zaki::Physics::INV_FM4_2_INV_KM2; // dyne/cm^2
-	// 	sequence.b = B_integrand.Integrate(
-	// 		1, {col(Col::R)[0], col(Col::R)[-1]});
-
-	// 	sequence.I = Find_MomInertia();
-
-	// 	surface_ready = true;
-	// }
 }
 
 //--------------------------------------------------------------
@@ -1249,7 +1094,7 @@ void NStar::Append(const TOVPoint &in_tov)
 	// at least update the running “last point” so if we inspect sequence
 	// before finalization, we get something reasonable.
 	prof_.seq_point.r = in_tov.r; // km
-	prof_.seq_point.m = in_tov.m; // M_sun  ← leave it in solar masses
+	prof_.seq_point.m = in_tov.m; // M_sun  ← in solar masses
 								  // pc, ec, B, I will be filled / fixed at finalize time
 }
 
@@ -2017,37 +1862,7 @@ void NStar::SetProfilePrecision(const int &in_prec)
 }
 
 //--------------------------------------------------------------
-// // Exports the star profile
-// void NStar::Export(const Zaki::String::Directory &in_dir)
-// {
-// 	char seq_header[200];
-// 	snprintf(seq_header, sizeof(seq_header),
-// 			 "    %-14s\t %-14s\t %-14s\t %-14s\t %-14s\t %-14s",
-// 			 "ec(g/cm^3)", "M", "R(km)", "pc(dyne/cm^2)", "B", "I(km^3)");
-
-// 	std::time_t end_time = std::chrono::system_clock::to_time_t(
-// 		std::chrono::system_clock::now());
-
-// 	ds.AddHead("# --------------------------------------------------------"
-// 			   "--------------------------------------------------------\n");
-
-// 	ds.AddHead("# Profile generated on ");
-// 	ds.AddHead(std::string(std::ctime(&end_time)));
-// 	ds.AddHead("# --------------------------------------------------------"
-// 			   "--------------------------------------------------------\n");
-// 	ds.AddHead("# Sequence point info: \n");
-// 	ds.AddHead("#         " + std::string(seq_header) + "\n");
-// 	ds.AddHead("#         " + sequence.Str() + "\n");
-// 	ds.AddHead("# --------------------------------------------------------"
-// 			   "--------------------------------------------------------\n");
-// 	ds.AddFoot("# --------------------------------------------------------"
-// 			   "--------------------------------------------------------");
-
-// 	ds.SetPrecision(profile_precision);
-// 	ds.Export(in_dir.ThisFileDir() + "/" + in_dir.ThisFile().Str());
-
-// 	ds.ClearHeadFoot();
-// }
+/// Export the profile to file
 void NStar::Export(const Zaki::String::Directory &in_dir)
 {
 	if (!prof_.empty())
@@ -2055,116 +1870,91 @@ void NStar::Export(const Zaki::String::Directory &in_dir)
 		prof_.Export(in_dir);
 		return;
 	}
-	// ------------------------------------------------------------
-	// 1) figure out output path
-	// ------------------------------------------------------------
-	// const std::string out_path =
-	// 	in_dir.ThisFileDir().Str() + "/" + in_dir.ThisFile().Str();
-	// // ------------------------------------------------------------
-	// // 2) get time
-	// // ------------------------------------------------------------
-	// std::time_t end_time = std::chrono::system_clock::to_time_t(
-	// 	std::chrono::system_clock::now());
 
-	// // ============================================================
-	// // ========== PROFILE-FIRST BRANCH =============================
-	// // ============================================================
-	// if (!prof_.empty())
-	// {
-	// 	auto &radial = prof_.radial; // NOTE: this makes a copy if DataSet is by value;
-	// 								// if DataSet is cheap to copy, this is fine.
-	// 								// If not, make it a ref and push heads/foots on the
-	// 								// underlying one.
-
-	// 	// ---------- build sequence header ----------
-	// 	char seq_header[200];
-	// 	snprintf(seq_header, sizeof(seq_header),
-	// 			 "    %-14s\t %-14s\t %-14s\t %-14s\t %-14s\t %-14s",
-	// 			 "ec(g/cm^3)", "M", "R(km)", "pc(dyne/cm^2)", "B", "I(km^3)");
-
-	// 	// ---------- header ----------
-	// 	radial.AddHead("# --------------------------------------------------------"
-	// 				   "--------------------------------------------------------\n");
-	// 	radial.AddHead("# Profile generated on ");
-	// 	radial.AddHead(std::string(std::ctime(&end_time)));
-	// 	radial.AddHead("# --------------------------------------------------------"
-	// 				   "--------------------------------------------------------\n");
-	// 	radial.AddHead("# Sequence point info: \n");
-	// 	radial.AddHead("#         " + std::string(seq_header) + "\n");
-	// 	radial.AddHead("#         " + prof_.seq_point.Str() + "\n");
-	// 	radial.AddHead("# --------------------------------------------------------"
-	// 				   "--------------------------------------------------------\n");
-
-	// 	// ---------- column description ----------
-	// 	radial.AddHead("# Columns (present in this file):\n");
-
-	// 	if (prof_.HasColumn(StarProfile::Column::Radius))
-	// 		radial.AddHead("#   r(km)\n");
-	// 	if (prof_.HasColumn(StarProfile::Column::Mass))
-	// 		radial.AddHead("#   m(Msun)\n");
-	// 	if (prof_.HasColumn(StarProfile::Column::MetricNuPrime))
-	// 		radial.AddHead("#   nu_prime(d nu/dr)\n");
-	// 	if (prof_.HasColumn(StarProfile::Column::Pressure))
-	// 		radial.AddHead("#   p(r)\n");
-	// 	if (prof_.HasColumn(StarProfile::Column::EnergyDensity))
-	// 		radial.AddHead("#   eps(r)\n");
-	// 	if (prof_.HasColumn(StarProfile::Column::BaryonDensity))
-	// 		radial.AddHead("#   nB(r)\n");
-	// 	if (prof_.HasColumn(StarProfile::Column::MetricNu))
-	// 		radial.AddHead("#   nu(r)\n");
-	// 	if (prof_.HasColumn(StarProfile::Column::MetricLambda))
-	// 		radial.AddHead("#   lambda(r)\n");
-
-	// 	// ---------- per-species ----------
-	// 	if (!prof_.species_labels.empty())
-	// 	{
-	// 		radial.AddHead("# Species densities (following above columns):\n");
-	// 		for (std::size_t i = 0; i < prof_.species_labels.size(); ++i)
-	// 		{
-	// 			const auto &lbl = prof_.species_labels[i];
-	// 			const int idx = prof_.species_idx[i];
-	// 			radial.AddHead("#   [" + std::to_string(idx) + "] " + lbl + "(r)\n");
-	// 		}
-	// 	}
-
-	// 	radial.AddFoot("# --------------------------------------------------------"
-	// 				   "--------------------------------------------------------");
-
-	// 	radial.SetPrecision(profile_precision);
-	// 	radial.Export(out_path);
-
-	// 	// if we copied, no need to ClearHeadFoot on original
-	// 	return;
-	// }
-
-	// ============================================================
-	// ========== LEGACY DS BRANCH (our original) =================
-	// ============================================================
-	// {
-	// 	char seq_header[200];
-	// 	snprintf(seq_header, sizeof(seq_header),
-	// 			 "    %-14s\t %-14s\t %-14s\t %-14s\t %-14s\t %-14s",
-	// 			 "ec(g/cm^3)", "M", "R(km)", "pc(dyne/cm^2)", "B", "I(km^3)");
-
-	// 	ds.AddHead("# --------------------------------------------------------"
-	// 			   "--------------------------------------------------------\n");
-	// 	ds.AddHead("# Profile generated on ");
-	// 	ds.AddHead(std::string(std::ctime(&end_time)));
-	// 	ds.AddHead("# --------------------------------------------------------"
-	// 			   "--------------------------------------------------------\n");
-	// 	ds.AddHead("# Sequence point info: \n");
-	// 	ds.AddHead("#         " + std::string(seq_header) + "\n");
-	// 	ds.AddHead("#         " + sequence.Str() + "\n");
-	// 	ds.AddHead("# --------------------------------------------------------"
-	// 			   "--------------------------------------------------------\n");
-	// 	ds.AddFoot("# --------------------------------------------------------"
-	// 			   "--------------------------------------------------------");
-
-	// 	ds.SetPrecision(profile_precision);
-	// 	ds.Export(out_path);
-	// 	ds.ClearHeadFoot();
-	// }
+	Z_LOG_WARNING("NStar::Export: no profile to export.");
 }
 //--------------------------------------------------------------
+//--------------------------------------------------------------
+// NStar::SolveTOV_Profile — run TOV internally and build profile
+//--------------------------------------------------------------
+int NStar::SolveTOV_Profile(const Zaki::String::Directory &eos_file,
+							double target_M_solar,
+							const Zaki::String::Directory &rel_out_dir)
+{
+	PROFILE_FUNCTION();
 
+	// Fresh start: clear any existing profile / sequence / B-integrand.
+	Reset();
+
+	// ------------------------------------------------------------
+	// 1) Set up a local TOVSolver
+	// ------------------------------------------------------------
+	CompactStar::Core::TOVSolver tov;
+
+	// Working directory for the solver:
+	//   base = this NStar's wrk_dir_
+	//   plus optional relative subdirectory (e.g. "tov_debug/")
+	Zaki::String::Directory out_dir = wrk_dir_ + rel_out_dir; // no-op if rel_out_dir is ""
+	// out_dir = out_dir + rel_out_dir; // no-op if rel_out_dir is ""
+
+	tov.SetWrkDir(out_dir);
+
+	// Import the EOS table directly from the provided file path.
+	// Caller is responsible for passing something like:
+	//   eos_root + eos_name + "/" + eos_name + ".eos"
+	tov.ImportEOS(eos_file, true);
+
+	// (Optional) If we want to use the same profile precision as NStar's
+	// exports, we could mirror that here by adding a getter for
+	// profile_precision and calling tov.SetProfilePrecision(...).
+	// For now we just use TOVSolver's internal default.
+
+	// ------------------------------------------------------------
+	// 2) Single-star solve to target mass
+	// ------------------------------------------------------------
+	std::vector<CompactStar::Core::TOVPoint> tov_points;
+	std::vector<std::string> species_labels;
+
+	const int n_pts = tov.SolveToProfile(target_M_solar,
+										 tov_points,
+										 &species_labels);
+	if (n_pts <= 0 || tov_points.empty())
+	{
+		Z_LOG_ERROR("NStar::SolveTOV_Profile: SolveToProfile failed for "
+					"target mass = " +
+					std::to_string(target_M_solar) + " Msun "
+													 "with EOS file: " +
+					eos_file.Str());
+		surface_ready = false;
+		return 0;
+	}
+
+	// ------------------------------------------------------------
+	// 3) Use the existing builder to populate StarProfile
+	// ------------------------------------------------------------
+	// BuildFromTOV:
+	//  - fills prof_.radial (r, m, nu', p, eps, rho, nu, lambda, species…)
+	//  - constructs B_integrand and integrates B
+	//  - fills prof_.seq_point (ec, pc, M, R, B, I)
+	//  - sets prof_.M, prof_.R, prof_.z_surf
+	//  - sets surface_ready = true
+	BuildFromTOV(tov_points,
+				 species_labels.empty() ? nullptr : &species_labels);
+
+	// DO NOT call InitInterpolantsFromProfile_();
+	// DO NOT call FinalizeSurface();
+	//
+	// BuildFromTOV already:
+	//   - resets NStar
+	//   - lays out columns
+	//   - interpolates
+	//   - EvaluateNu
+	//   - builds B_integrand
+	//   - sets seq_point, M, R, z_surf
+	//   - sets surface_ready = true
+
+	return n_pts;
+}
+
+//--------------------------------------------------------------
 //==============================================================
