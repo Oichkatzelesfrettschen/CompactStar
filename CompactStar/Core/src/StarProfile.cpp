@@ -9,12 +9,16 @@ using namespace CompactStar::Core;
 //------------------------------------------------------------
 // 13) Export (in-place; no copying)
 //------------------------------------------------------------
-void StarProfile::Export(const Zaki::String::Directory &out_dir, int precision)
+void StarProfile::Export(const Zaki::String::Directory &out_rel_path, int precision)
 {
 	// nothing to export
-	if (radial.Dim().empty())
+	if (radial.Empty())
+	{
+		Z_LOG_ERROR("Profile is empty; nothing to export.");
 		return;
+	}
 
+	// Use stored profile_precision unless an explicit override is given.
 	if (precision < 0)
 		precision = profile_precision;
 
@@ -75,10 +79,15 @@ void StarProfile::Export(const Zaki::String::Directory &out_dir, int precision)
 				   "--------------------------------------------------------");
 
 	radial.SetPrecision(precision);
-	const std::string out_path =
-		out_dir.ThisFileDir().Str() + "/" + out_dir.ThisFile().Str();
-	radial.Export(out_path);
+	// const std::string out_path =
+	// 	out_dir.ThisFileDir().Str() + "/" + out_dir.ThisFile().Str();
 
+	// Just pass through the relative filename/directory.
+	// DataSet::Export will combine its own work directory with out_rel_path.
+	Z_LOG_INFO("Exporting to relative path: " + out_rel_path.Str());
+	radial.Export(out_rel_path);
+	// std::cout << "\n[info] radial.GetWrkDir() = " << radial.GetWrkDir().Str() << "\n ";
+	// std::cout << "\n[info] StarProfile exported to: " << out_path << "\n";
 	radial.ClearHeadFoot();
 }
 //------------------------------------------------------------

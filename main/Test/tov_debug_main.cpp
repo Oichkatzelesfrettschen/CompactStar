@@ -20,7 +20,6 @@
 #include <gsl/gsl_errno.h>
 #include <iostream>
 
-// #include <Zaki/Math/
 #include <Zaki/String/Directory.hpp>
 #include <Zaki/Util/Logger.hpp>
 
@@ -61,13 +60,14 @@ int main()
 	gsl_set_error_handler(&my_gsl_error_handler);
 
 	// 2) Logging: make it a bit chatty for debugging
-	Zaki::Util::LogManager::SetLogLevels(Zaki::Util::LogLevel::Info);
+	Zaki::Util::LogManager::SetLogLevels(Zaki::Util::LogLevel::Warning);
 
 	// 3) Working directory based on this file
-	//    dir      -> .../CompactStar/Core/main/
-	//    dir.ParentDir() -> .../CompactStar/Core/
+	//    dir      -> .../CompactStar/Core/main/Test/
+	//    dir.ParentDir() -> .../CompactStar/Core/main/
 	Zaki::String::Directory dir(__FILE__);
 	std::cout << "[debug] this file dir = " << dir << "\n";
+	std::cout << "[debug] this file parent dir = " << dir.ParentDir() << "\n";
 
 	Zaki::String::Directory eos_root =
 		dir.ParentDir().ParentDir() + "/EOS/CompOSE/";
@@ -78,31 +78,31 @@ int main()
 	std::cout << "[debug] assuming EOS name = " << eos_name << "\n";
 
 	// 4) Create a TOV solver
-	CompactStar::Core::TOVSolver tov;
-	tov.AddNCondition(&AlwaysExportNS);
-	tov.AddMixCondition(&AlwaysExportMixed);
+	// CompactStar::Core::TOVSolver tov;
+	// tov.AddNCondition(&AlwaysExportNS);
+	// tov.AddMixCondition(&AlwaysExportMixed);
 
 	// Optional: make the profile TSVs more precise
-	tov.SetProfilePrecision(12);
+	// tov.SetProfilePrecision(12);
 	// Optional: smaller max radius for NS-only
-	tov.SetMaxRadius(15); // 15 km
+	// tov.SetMaxRadius(15); // 15 km
 
 	// Build the EOS file path:
 	Zaki::String::Directory eos_file =
 		eos_root + eos_name + "/" + eos_name + ".eos";
 	// 5) Import EOS
 	//    CASE A (visible only):
-	try
-	{
-		tov.ImportEOS(eos_file);
-		std::cout << "[debug] visible EOS imported.\n";
-	}
-	catch (...)
-	{
-		std::cerr << "[error] visible EOS import failed. "
-				  << "Check path: " << (eos_root + eos_name) << "\n";
-		return 1;
-	}
+	// try
+	// {
+	// 	tov.ImportEOS(eos_file);
+	// 	std::cout << "[debug] visible EOS imported.\n";
+	// }
+	// catch (...)
+	// {
+	// 	std::cerr << "[error] visible EOS import failed. "
+	// 			  << "Check path: " << (eos_root + eos_name) << "\n";
+	// 	return 1;
+	// }
 
 	//    CASE B (visible + dark): uncomment if for testing mixed
 	/*
@@ -116,26 +116,26 @@ int main()
 	*/
 
 	Zaki::String::Directory base_results_dir = dir.ParentDir() + "/results";
-	tov.SetWrkDir(base_results_dir);
+	// tov.SetWrkDir(base_results_dir);
 
 	// 6) Print EOS (so we know the table is sane)
-	tov.PrintEOSSummary();
-	tov.PrintEOSTable(5);
+	// tov.PrintEOSSummary();
+	// tov.PrintEOSTable(5);
 
 	// 7) Build a central-*pressure* (or energy-density) axis.
 	//    TOV code’s Solve(...) signature is:
 	//    void Solve(const Zaki::Math::Axis&, const Directory&, const Directory&);
 	//
 	//    Let’s just scan 40 points linearly between two plausible pressures.
-	Zaki::Math::Axis ec_axis({{1.0e+14, 1.913e15}, 20, "Log"});
+	// Zaki::Math::Axis ec_axis({{1.0e+14, 1.913e15}, 20, "Log"});
 	//                ^min     ^max     ^N   ^type
 	// ε(energy density) : [ 1.658808e+08, 1.106871e+16 ];
 
 	// 8) Solve the sequence
 	//    Output directory: results/tov/
 	//    Output file name: Sequence.tsv
-	Zaki::String::Directory out_dir = "tov_debug/";
-	Zaki::String::Directory out_file = "tov_debug";
+	Zaki::String::Directory out_dir = "tov_debug";
+	// Zaki::String::Directory out_file = "tov_debug";
 
 	// std::cout << "[debug] solving TOV for axis of size "
 	//   << ec_axis.res << " ...\n";
@@ -146,12 +146,35 @@ int main()
 	CompactStar::Core::NStar ns;
 	ns.SetWrkDir(base_results_dir);
 	const double target_M = 1.4; // Msun
-	const int n = ns.SolveTOV_Profile(eos_file, target_M, "tov_debug/");
+	const int n = ns.SolveTOV_Profile(eos_file, target_M, out_dir);
 
 	std::cout << "\n\n[debug] TOV solve for M = " << target_M
 			  << " Msun returned M = " << ns.MassSurface()
 			  << " km, " << ns.GetSequence().m
 			  << ", R = " << ns.RadiusSurface() << " km, n = " << n << " points.\n\n";
+	std::cout << "NS Work Directory: \t" << ns.GetWrkDir() << "\n";
+	// CompactStar::Core::StarProfile prof = ns.Profile();
+	// std::cout << "Prof.radial.GetWrkDir(): \n";
+	// prof.radial.GetWrkDir().Print();
+	// std::cout << "Profile Export: \n";
+	// prof.Export(out_dir + "NStar_Profile_full.tsv");
+	ns.Export(out_dir + "/NStar_Profile.tsv");
+
+	Zaki::Vector::DataSet ds(2, 10);
+	ds[0].label = "x";
+	ds[1].label = "y";
+
+	for (size_t i = 0; i < 10; i++)
+	{
+		ds[0].vals.emplace_back(static_cast<double>(i));
+		ds[1].vals.emplace_back(static_cast<double>(i * i));
+		// ds[0].vals[i] = (static_cast<double>(i));
+		// ds[1].vals[i] = (static_cast<double>(i * i));
+	}
+
+	ds.SetWrkDir(ns.GetWrkDir());
+	std::cout << "-> ds.Dim().size() = " << ds.Dim().size() << "\n";
+	ds.Export("ds_test/Testing_ds.tsv");
 	// try
 	// {
 	// 	tov.Solve(ec_axis, out_dir, out_file);

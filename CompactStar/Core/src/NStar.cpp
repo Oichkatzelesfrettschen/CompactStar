@@ -1128,7 +1128,11 @@ void NStar::Append(const TOVPoint &in_tov)
 void NStar::OnWorkDirChanged(
 	const Zaki::String::Directory &in_dir)
 {
+	std::cout << "[NStar::OnWorkDirChanged] Setting work directory to: "
+			  << in_dir << "\n";
 	prof_.radial.SetWrkDir(in_dir);
+	std::cout << "[NStar::OnWorkDirChanged] prof_.radial.GetWrkDir(): "
+			  << prof_.radial.GetWrkDir() << "\n";
 }
 
 //--------------------------------------------------------------
@@ -1863,16 +1867,97 @@ void NStar::SetProfilePrecision(const int &in_prec)
 
 //--------------------------------------------------------------
 /// Export the profile to file
-void NStar::Export(const Zaki::String::Directory &in_dir)
+// void NStar::Export(const Zaki::String::Directory &rel_path)
+// {
+// 	if (prof_.empty())
+// 	{
+// 		Z_LOG_ERROR("StarProfile is empty; nothing to export.");
+// 		return;
+// 	}
+
+// 	const auto &radial = prof_.radial;
+// 	const auto dims = radial.Dim();
+
+// 	Z_LOG_INFO("radial.Dim().size() = " +
+// 			   std::to_string(dims.size()));
+
+// 	if (!dims.empty())
+// 	{
+// 		Z_LOG_INFO("first column size = " +
+// 				   std::to_string(radial[0].Size()));
+// 	}
+// 	// if (!prof_.empty())
+// 	// {
+// 	// 	prof_.Export(in_dir);
+// 	// 	return;
+// 	// }
+// 	// Make sure the profile's DataSet uses the same work directory as NStar.
+// 	// (OnWorkDirChanged() already does this when SetWrkDir() is called,
+// 	// but calling it here is cheap and makes this path bulletproof.)
+// 	prof_.radial.SetWrkDir(wrk_dir_);
+
+// 	Z_LOG_INFO("wrk_dir_ = " + wrk_dir_.Str());
+// 	Z_LOG_INFO("exporting profile to relative path: " + rel_path.Str());
+
+// 	// Delegate actual write
+// 	prof_.Export(rel_path);
+
+// 	// For sanity, print what DataSet thinks its work directory is:
+// 	Z_LOG_INFO("radial.GetWrkDir() = " + prof_.radial.GetWrkDir().Str());
+// }
+
+void NStar::Export(const Zaki::String::Directory &rel_path)
 {
-	if (!prof_.empty())
+	PROFILE_FUNCTION();
+
+	if (prof_.empty())
 	{
-		prof_.Export(in_dir);
+		Z_LOG_ERROR("StarProfile is empty; nothing to export.");
 		return;
 	}
 
-	Z_LOG_WARNING("NStar::Export: no profile to export.");
+	// 1) Ensure the profile's DataSet uses the same work directory as NStar.
+	prof_.radial.SetWrkDir(wrk_dir_);
+
+	Z_LOG_INFO("wrk_dir_ = " + wrk_dir_.Str());
+	Z_LOG_INFO("exporting profile to relative path: " + rel_path.Str());
+
+	// 2) Build the full path and force-create its parent directory
+	Zaki::String::Directory full_path = wrk_dir_ + rel_path;
+	Zaki::String::Directory parent_dir = full_path.ParentDir();
+
+	Z_LOG_INFO("full_path      = " + full_path.Str());
+	Z_LOG_INFO("parent_dir     = " + parent_dir.Str());
+
+	parent_dir.Create(); // should create .../results/tov_debug if missing
+
+	// 3) Write a tiny debug file *directly* using std::ofstream
+	{
+		const std::string dbg_name = full_path.Str() + ".debug";
+
+		std::ofstream dbg(dbg_name);
+		if (!dbg)
+		{
+			Z_LOG_ERROR("FAILED to open debug file for write: " + dbg_name);
+		}
+		else
+		{
+			dbg << "# NStar export debug file\n";
+			dbg << "# wrk_dir_   = " << wrk_dir_.Str() << "\n";
+			dbg << "# rel_path   = " << rel_path.Str() << "\n";
+			dbg << "# full_path  = " << full_path.Str() << "\n";
+			dbg.close();
+			Z_LOG_INFO("wrote debug file: " + dbg_name);
+		}
+	}
+
+	// 4) Delegate actual TSV export via StarProfile
+	prof_.Export(rel_path);
+
+	Z_LOG_INFO("radial.GetWrkDir() = " +
+			   prof_.radial.GetWrkDir().Str());
 }
+
 //--------------------------------------------------------------
 //--------------------------------------------------------------
 // NStar::SolveTOV_Profile — run TOV internally and build profile
@@ -1897,6 +1982,8 @@ int NStar::SolveTOV_Profile(const Zaki::String::Directory &eos_file,
 	Zaki::String::Directory out_dir = wrk_dir_ + rel_out_dir; // no-op if rel_out_dir is ""
 	// out_dir = out_dir + rel_out_dir; // no-op if rel_out_dir is ""
 
+	// std::cout << "NStar::SolveTOV_Profile: setting TOVSolver work dir to: "
+	// 		  << out_dir << std::endl;
 	tov.SetWrkDir(out_dir);
 
 	// Import the EOS table directly from the provided file path.
@@ -1920,7 +2007,7 @@ int NStar::SolveTOV_Profile(const Zaki::String::Directory &eos_file,
 										 &species_labels);
 	if (n_pts <= 0 || tov_points.empty())
 	{
-		Z_LOG_ERROR("NStar::SolveTOV_Profile: SolveToProfile failed for "
+		Z_LOG_ERROR("SolveToProfile failed for "
 					"target mass = " +
 					std::to_string(target_M_solar) + " Msun "
 													 "with EOS file: " +

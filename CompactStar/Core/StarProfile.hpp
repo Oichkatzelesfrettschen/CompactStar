@@ -188,10 +188,11 @@ struct StarProfile
 	 */
 	bool empty() const
 	{
-		auto dims = radial.Dim();
-		if (dims.empty())
-			return true;
-		return radial[0].Size() == 0;
+		return radial.Empty();
+		// auto dims = radial.Dim();
+		// if (dims.empty())
+		// 	return true;
+		// return radial[0].Size() == 0;
 	}
 
 	/**
