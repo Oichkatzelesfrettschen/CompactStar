@@ -94,33 +94,56 @@ void NStar::BuildFromTOV(const std::vector<TOVPoint> &in_tov,
 		radial.Reserve(8 + n_species, n_rows);
 		B_integrand.Reserve(2, n_rows);
 
+		// ----------------------------------
+		// REMOVE THIS BLOCK
+		// ----------------------------------
 		// create canonical columns in the exact order we settled on:
 		// 0 r, 1 m, 2 nu', 3 p, 4 eps, 5 rho, 6 nu, 7 lambda
-		radial.AddColumn("r(km)");
+		// radial.AddColumn("r(km)");
+		// prof_.idx_r = 0;
+
+		// radial.AddColumn("m(km)");
+		// prof_.idx_m = 1;
+
+		// radial.AddColumn("nu_prime(km^-1)");
+		// prof_.idx_nuprime = 2;
+
+		// radial.AddColumn("p(km^-2)");
+		// prof_.idx_p = 3;
+
+		// radial.AddColumn("eps(km^-2)");
+		// prof_.idx_eps = 4;
+
+		// radial.AddColumn("nB(fm^-3)");
+		// prof_.idx_nb = 5;
+
+		// radial.AddColumn("nu");
+		// prof_.idx_nu = 6;
+
+		// radial.AddColumn("lambda");
+		// prof_.idx_lambda = 7;
+		// ----------------------------------
+
+		// label the ones we just reserved
+		radial[0].label = "r(km)";
 		prof_.idx_r = 0;
-
-		radial.AddColumn("m(km)");
+		radial[1].label = "m(km)";
 		prof_.idx_m = 1;
-
-		radial.AddColumn("nu_prime(km^-1)");
+		radial[2].label = "nu_prime(km^-1)";
 		prof_.idx_nuprime = 2;
-
-		radial.AddColumn("p(km^-2)");
+		radial[3].label = "p(km^-2)";
 		prof_.idx_p = 3;
-
-		radial.AddColumn("eps(km^-2)");
+		radial[4].label = "eps(km^-2)";
 		prof_.idx_eps = 4;
-
-		radial.AddColumn("nB(fm^-3)");
+		radial[5].label = "nB(fm^-3)";
 		prof_.idx_nb = 5;
-
-		radial.AddColumn("nu");
+		radial[6].label = "nu";
 		prof_.idx_nu = 6;
-
-		radial.AddColumn("lambda");
+		radial[7].label = "lambda";
 		prof_.idx_lambda = 7;
 
 		// species (after the fixed ones)
+		// species columns: indices 8..(8+n_species-1)
 		prof_.species_labels.clear();
 		prof_.species_idx.clear();
 		prof_.species_labels.reserve(n_species);
@@ -128,14 +151,14 @@ void NStar::BuildFromTOV(const std::vector<TOVPoint> &in_tov,
 
 		for (std::size_t j = 0; j < n_species; ++j)
 		{
-			std::string lbl;
-			if (species_labels && j < species_labels->size())
-				lbl = (*species_labels)[j];
-			else
-				lbl = "rho_i_" + std::to_string(j);
+			std::string lbl = (species_labels && j < species_labels->size())
+								  ? (*species_labels)[j]
+								  : "rho_i_" + std::to_string(j);
 
-			const int col_idx = static_cast<int>(radial.Dim().size());
-			radial.AddColumn(lbl);
+			// const int col_idx = static_cast<int>(radial.Dim().size()); // REMOVE THIS LINE
+			const int col_idx = 8 + static_cast<int>(j);
+			radial[col_idx].label = lbl;
+			// radial.AddColumn(lbl); // REMOVE THIS LINE
 			prof_.AddSpecies(lbl, col_idx);
 		}
 
@@ -961,61 +984,6 @@ void NStar::Append(const TOVPoint &in_tov)
 	// and has the canonical columns.
 	auto &radial = prof_.radial;
 
-	// If InitFromTOVSolver() ran, we already have 8 base columns
-	// (0..7) labeled and sized; just reuse them. Only in the rare case
-	// that the profile is totally empty (e.g. NStar constructed directly
-	// without going through TOVSolver) do we create columns here.
-	// const bool has_preallocated_base = (radial.Dim().size() >= 8) &&
-	// 								   prof_.IsValidColumnIndex(prof_.idx_r) &&
-	// 								   prof_.IsValidColumnIndex(prof_.idx_m) &&
-	// 								   prof_.IsValidColumnIndex(prof_.idx_nuprime) &&
-	// 								   prof_.IsValidColumnIndex(prof_.idx_p) &&
-	// 								   prof_.IsValidColumnIndex(prof_.idx_eps) &&
-	// 								   prof_.IsValidColumnIndex(prof_.idx_nb) &&
-	// 								   prof_.IsValidColumnIndex(prof_.idx_nu);
-
-	// if (!has_preallocated_base)
-	// {
-	// 	std::cout << "[NStar::Append] StarProfile radial dataset missing base columns; adding them now.\n";
-	// 	// Fallback — old behavior (for standalone NStar use)
-	// 	if (!prof_.IsValidColumnIndex(prof_.idx_r))
-	// 	{
-	// 		radial.AddColumn("r(km)");
-	// 		prof_.idx_r = static_cast<int>(radial.Dim().size() - 1);
-	// 	}
-	// 	if (!prof_.IsValidColumnIndex(prof_.idx_m))
-	// 	{
-	// 		radial.AddColumn("m(km)");
-	// 		prof_.idx_m = static_cast<int>(radial.Dim().size() - 1);
-	// 	}
-	// 	if (!prof_.IsValidColumnIndex(prof_.idx_nuprime))
-	// 	{
-	// 		radial.AddColumn("nu_prime(km^-1)");
-	// 		prof_.idx_nuprime = static_cast<int>(radial.Dim().size() - 1);
-	// 	}
-	// 	if (!prof_.IsValidColumnIndex(prof_.idx_p))
-	// 	{
-	// 		radial.AddColumn("p(km^-2)");
-	// 		prof_.idx_p = static_cast<int>(radial.Dim().size() - 1);
-	// 	}
-	// 	if (!prof_.IsValidColumnIndex(prof_.idx_eps))
-	// 	{
-	// 		radial.AddColumn("eps(km^-2)");
-	// 		prof_.idx_eps = static_cast<int>(radial.Dim().size() - 1);
-	// 	}
-	// 	if (!prof_.IsValidColumnIndex(prof_.idx_nb))
-	// 	{
-	// 		radial.AddColumn("nB(fm^-3)");
-	// 		prof_.idx_nb = static_cast<int>(radial.Dim().size() - 1);
-	// 	}
-	// 	if (!prof_.IsValidColumnIndex(prof_.idx_nu))
-	// 	{
-	// 		radial.AddColumn("nu");
-	// 		prof_.idx_nu = static_cast<int>(radial.Dim().size() - 1);
-	// 	}
-	// 	// lambda stays optional
-	// }
-
 	// Now actually append the values (same unit conversions as legacy)
 	radial[prof_.idx_r].vals.emplace_back(in_tov.r);
 	radial[prof_.idx_m].vals.emplace_back(Zaki::Physics::SUN_M_KM * in_tov.m); // solar-mass → km
@@ -1061,31 +1029,31 @@ void NStar::Append(const TOVPoint &in_tov)
 	// ------------------------------------------------------------
 	// 2.a) per-species for the profile
 	// ------------------------------------------------------------
-	if (!in_tov.rho_i.empty())
-	{
-		// If the profile doesn’t yet know these species, we auto-register them.
-		// We assume order-matching: in_tov.rho_i[k] ↔ prof_.species_labels[k]
-		if (prof_.species_labels.size() < in_tov.rho_i.size())
-		{
-			// extend labels and columns
-			for (std::size_t k = prof_.species_labels.size();
-				 k < in_tov.rho_i.size(); ++k)
-			{
-				// make up a label if we don't have one
-				const std::string lbl = "rho_i_" + std::to_string(k);
-				radial.AddColumn(lbl);
-				const int col_idx = static_cast<int>(radial.Dim().size() - 1);
-				prof_.AddSpecies(lbl, col_idx);
-			}
-		}
+	// if (!in_tov.rho_i.empty())
+	// {
+	// 	// If the profile doesn’t yet know these species, we auto-register them.
+	// 	// We assume order-matching: in_tov.rho_i[k] ↔ prof_.species_labels[k]
+	// 	if (prof_.species_labels.size() < in_tov.rho_i.size())
+	// 	{
+	// 		// extend labels and columns
+	// 		for (std::size_t k = prof_.species_labels.size();
+	// 			 k < in_tov.rho_i.size(); ++k)
+	// 		{
+	// 			// make up a label if we don't have one
+	// 			const std::string lbl = "rho_i_" + std::to_string(k);
+	// 			radial.AddColumn(lbl);
+	// 			const int col_idx = static_cast<int>(radial.Dim().size() - 1);
+	// 			prof_.AddSpecies(lbl, col_idx);
+	// 		}
+	// 	}
 
-		// now append the data
-		for (std::size_t k = 0; k < in_tov.rho_i.size(); ++k)
-		{
-			const int col_idx = prof_.species_idx[k];
-			radial[col_idx].vals.emplace_back(in_tov.rho_i[k]); // fm^{-3}
-		}
+	// now append the data
+	for (std::size_t k = 0; k < in_tov.rho_i.size(); ++k)
+	{
+		const int col_idx = prof_.species_idx[k];
+		radial[col_idx].vals.emplace_back(in_tov.rho_i[k]); // fm^{-3}
 	}
+	// }
 
 	// ------------------------------------------------------------
 	// 2.b) update surface guess (sequence) incrementally
@@ -1919,43 +1887,48 @@ void NStar::Export(const Zaki::String::Directory &rel_path)
 	// 1) Ensure the profile's DataSet uses the same work directory as NStar.
 	prof_.radial.SetWrkDir(wrk_dir_);
 
-	Z_LOG_INFO("wrk_dir_ = " + wrk_dir_.Str());
-	Z_LOG_INFO("exporting profile to relative path: " + rel_path.Str());
+	// Z_LOG_INFO("wrk_dir_ = " + wrk_dir_.Str());
+	// Z_LOG_INFO("exporting profile to relative path: " + rel_path.Str());
 
 	// 2) Build the full path and force-create its parent directory
 	Zaki::String::Directory full_path = wrk_dir_ + rel_path;
 	Zaki::String::Directory parent_dir = full_path.ParentDir();
 
-	Z_LOG_INFO("full_path      = " + full_path.Str());
-	Z_LOG_INFO("parent_dir     = " + parent_dir.Str());
+	// Z_LOG_INFO("full_path      = " + full_path.Str());
+	// Z_LOG_INFO("parent_dir     = " + parent_dir.Str());
 
-	parent_dir.Create(); // should create .../results/tov_debug if missing
+	// parent_dir.Create(); // should create .../results/tov_debug if missing
 
 	// 3) Write a tiny debug file *directly* using std::ofstream
-	{
-		const std::string dbg_name = full_path.Str() + ".debug";
+	// {
+	// 	const std::string dbg_name = full_path.Str() + ".debug";
 
-		std::ofstream dbg(dbg_name);
-		if (!dbg)
-		{
-			Z_LOG_ERROR("FAILED to open debug file for write: " + dbg_name);
-		}
-		else
-		{
-			dbg << "# NStar export debug file\n";
-			dbg << "# wrk_dir_   = " << wrk_dir_.Str() << "\n";
-			dbg << "# rel_path   = " << rel_path.Str() << "\n";
-			dbg << "# full_path  = " << full_path.Str() << "\n";
-			dbg.close();
-			Z_LOG_INFO("wrote debug file: " + dbg_name);
-		}
-	}
+	// 	std::ofstream dbg(dbg_name);
+	// 	if (!dbg)
+	// 	{
+	// 		Z_LOG_ERROR("FAILED to open debug file for write: " + dbg_name);
+	// 	}
+	// 	else
+	// 	{
+	// 		dbg << "# NStar export debug file\n";
+	// 		dbg << "# wrk_dir_   = " << wrk_dir_.Str() << "\n";
+	// 		dbg << "# rel_path   = " << rel_path.Str() << "\n";
+	// 		dbg << "# full_path  = " << full_path.Str() << "\n";
+	// 		dbg << "# " << prof_.column_count() << " columns in profile\n";
+	// 		dbg << "# " << prof_.size() << " rows in profile\n";
+	// 		dbg << "# " << prof_.GetRadius()->Min() << " km ≤ r ≤ "
+	// 			<< prof_.GetRadius()->Max() << " km\n";
+	// 		dbg.close();
+	// 		Z_LOG_INFO("wrote debug file: " + dbg_name);
+	// 	}
+	// }
 
 	// 4) Delegate actual TSV export via StarProfile
 	prof_.Export(rel_path);
+	// prof_.Export(full_path);
 
-	Z_LOG_INFO("radial.GetWrkDir() = " +
-			   prof_.radial.GetWrkDir().Str());
+	// Z_LOG_INFO("radial.GetWrkDir() = " +
+	// 		   prof_.radial.GetWrkDir().Str());
 }
 
 //--------------------------------------------------------------

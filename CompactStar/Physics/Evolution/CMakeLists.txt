@@ -21,6 +21,8 @@ set(CompactStar_Physics_Evolution_sources
     CompactStar/Physics/Evolution/src/EvolutionSystem.cpp
     CompactStar/Physics/Evolution/src/StateLayout.cpp
     CompactStar/Physics/Evolution/src/StatePacking.cpp
+    CompactStar/Physics/Evolution/src/StarContext.cpp
+    CompactStar/Physics/Evolution/src/GeometryCache.cpp
 )
 
 # Append integrator sources that were bubbled up from Integrator/CMakeLists.txt

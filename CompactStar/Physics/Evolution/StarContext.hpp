@@ -26,11 +26,10 @@
 
 /**
  * @file StarContext.hpp
- * @brief Read-only bridge to Core structures (NStar, EOS, RotationSolver)
- * 		  for the evolution module.
+ * @brief Read-only bridge to Core structures (StarProfile) for the evolution module.
  *
  * StarContext centralizes access to geometry, composition, and metric quantities
- * derived from a precomputed neutron-star profile. It *does not* run TOV or rotation;
+ * derived from a precomputed neutron-star profile. It does not run TOV/rotation;
  * it only exposes cached, interpolation-friendly views needed during RHS evaluations.
  *
  * @ingroup PhysicsEvolution
@@ -38,34 +37,19 @@
 #ifndef CompactStar_Physics_Evolution_StarContext_H
 #define CompactStar_Physics_Evolution_StarContext_H
 
+#include <Zaki/Vector/DataSet.hpp>
 #include <cstddef>
-#include <string>
-#include <vector>
-
-namespace Zaki
-{
-namespace Vector
-{
-class DataSet;
-class DataColumn;
-} // namespace Vector
-} // namespace Zaki
+// namespace Zaki::Vector
+// {
+// class DataColumn;
+// }
 
 namespace CompactStar::Core
 {
-class NStar;		  // Core/NStar.hpp
-class RotationSolver; // Core/RotationSolver.hpp (if needed later)
-} // namespace CompactStar::Core
-namespace CompactStar::EOS
-{
-class Model;
-} // namespace CompactStar::EOS
+class StarProfile; // Core/StarProfile.hpp
+}
 
-namespace CompactStar
-{
-namespace Physics
-{
-namespace Evolution
+namespace CompactStar::Physics::Evolution
 {
 
 //==============================================================
@@ -75,11 +59,9 @@ namespace Evolution
  * @class StarContext
  * @brief Immutable, per-star adapter exposing cached geometry and composition.
  *
- * Constructed from an existing @c CompactStar::Core::NStar.
- * Provides fast getters for radius grid, metric factors \f(e^{\nu}, e^{\Lambda}\f),
- * and commonly used columns (density, etc.) by forwarding to Core
- * datasets. Geometry-only computations that do not change during evolution can be
- * cached here at construction time (done in GeometryCache).
+ * Constructed from an existing @c CompactStar::Core::StarProfile.
+ * Caches non-owning pointers to frequently accessed columns (r, m, nu, lambda, nb).
+ * Validates consistency (row counts) up front to fail fast before evolution.
  */
 class StarContext
 {
@@ -89,66 +71,49 @@ class StarContext
 
 	/**
 	 * @brief Construct from a precomputed neutron-star profile.
-	 * @param ns   Reference to an initialized @c CompactStar::Core::NStar.
+	 * @param prof Reference to an initialized @c CompactStar::Core::StarProfile.
 	 */
-	StarContext(const CompactStar::Core::NStar &ns);
+	explicit StarContext(const CompactStar::Core::StarProfile &prof);
 
-	/// @name Basic geometry and grids
-	///@{
-	/** @brief Number of radial samples in the profile grid. */
-	std::size_t Size() const;
+	/// True iff bound to a profile and required columns were found.
+	bool IsValid() const { return m_prof != nullptr && m_r != nullptr && m_m != nullptr; }
 
-	/** @brief Radius column (km). */
-	const Zaki::Vector::DataColumn *Radius() const;
+	// --------------------
+	// Basic geometry / grid
+	// --------------------
+	std::size_t Size() const;										 ///< Number of radial samples.
+	const Zaki::Vector::DataColumn *Radius() const { return m_r; }	 ///< r(km)
+	const Zaki::Vector::DataColumn *Mass() const { return m_m; }	 ///< m(km)
+	const Zaki::Vector::DataColumn *Nu() const { return m_nu; }		 ///< nu
+	const Zaki::Vector::DataColumn *Lambda() const { return m_lam; } ///< lambda
 
-	/** @brief Metric exponent \f$\nu(r)\f$ where \f$g_{tt}=e^{2\nu}\f$. */
-	const Zaki::Vector::DataColumn *Nu() const;
+	// --------------------
+	// Thermodynamic background (optional)
+	// --------------------
+	const Zaki::Vector::DataColumn *BaryonDensity() const { return m_nb; } ///< nB(fm^-3) or nullptr
 
-	/** @brief \f$\Lambda(r)\f$ if present (derived from mass and radius otherwise). */
-	const Zaki::Vector::DataColumn *Lambda() const;
-
-	/** @brief Gravitational mass profile (M_\f$\odot\f$ or internal units). */
-	const Zaki::Vector::DataColumn *Mass() const;
-	///@}
-
-	/// @name Thermodynamic background (optional; forwarded from Core/EOS)
-	///@{
-	/** @brief Total baryon number density \f$n_b(r)\f$ (fm^{-3}) if available. */
-	const Zaki::Vector::DataColumn *BaryonDensity() const;
-
-	/** @brief Proton fraction \f$Y_p(r)\f$ or nullptr if not available. */
-	// const Zaki::Vector::DataColumn *ProtonFraction() const;
-	///@}
-
-	/// @name Global scalars
-	///@{
-	/** @brief Circumferential radius at the surface (km). */
-	double RadiusSurface() const;
-
-	/** @brief Gravitational mass at the surface (same units as Mass column). */
-	double MassSurface() const;
-
-	/** @brief Surface redshift factor \f$e^{\nu(R)}\f$. */
-	double ExpNuSurface() const;
-	///@}
+	// --------------------
+	// Global scalars (derived from columns)
+	// --------------------
+	double RadiusSurface() const; ///< r[-1] (km)
+	double MassSurface() const;	  ///< m[-1] (km)
+	double ExpNuSurface() const;  ///< exp(nu[-1]) if nu exists, else 0
 
   private:
-	const CompactStar::Core::NStar *m_ns = 0;
-	// const CompactStar::EOS::Model *m_eos = 0;
+	void BindColumnsOrThrow_(); // sets m_r/m_m/m_nu/m_lam/m_nb
+	void ValidateOrThrow_();	// checks consistent row counts for required cols
+
+  private:
+	const CompactStar::Core::StarProfile *m_prof = nullptr;
 
 	// Non-owning cached pointers to frequently accessed columns (set in ctor).
-	const Zaki::Vector::DataColumn *m_r = 0;
-	const Zaki::Vector::DataColumn *m_nu = 0;
-	const Zaki::Vector::DataColumn *m_lam = 0;
-	const Zaki::Vector::DataColumn *m_m = 0;
-	const Zaki::Vector::DataColumn *m_nb = 0;
-	// const Zaki::Vector::DataColumn *m_yp = 0;
+	const Zaki::Vector::DataColumn *m_r = nullptr;
+	const Zaki::Vector::DataColumn *m_m = nullptr;
+	const Zaki::Vector::DataColumn *m_nu = nullptr;
+	const Zaki::Vector::DataColumn *m_lam = nullptr;
+	const Zaki::Vector::DataColumn *m_nb = nullptr;
 };
-//==============================================================
-} // namespace Evolution
-//==============================================================
-} // namespace Physics
-//==============================================================
-} // namespace CompactStar
-//==============================================================
+
+} // namespace CompactStar::Physics::Evolution
+
 #endif /* CompactStar_Physics_Evolution_StarContext_H */

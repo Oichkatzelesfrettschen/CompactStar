@@ -84,7 +84,13 @@ void StarProfile::Export(const Zaki::String::Directory &out_rel_path, int precis
 
 	// Just pass through the relative filename/directory.
 	// DataSet::Export will combine its own work directory with out_rel_path.
-	Z_LOG_INFO("Exporting to relative path: " + out_rel_path.Str());
+
+	// Z_LOG_INFO("Exporting to relative path: " + out_rel_path.Str());
+	// std::cout << "\n[info] StarProfile::Export: "
+	// 		  << radial.RowCount() << " rows and "
+	// 		  << radial.Dim().size() << " columns will be exported to: "
+	// 		  << out_rel_path.Str() << "\n";
+
 	radial.Export(out_rel_path);
 	// std::cout << "\n[info] radial.GetWrkDir() = " << radial.GetWrkDir().Str() << "\n ";
 	// std::cout << "\n[info] StarProfile exported to: " << out_path << "\n";
