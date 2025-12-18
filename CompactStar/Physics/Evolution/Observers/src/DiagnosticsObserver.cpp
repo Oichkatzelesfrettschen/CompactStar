@@ -46,12 +46,13 @@ DiagnosticsObserver::DiagnosticsObserver(const Options &opts)
 {
 	OpenOutput();
 }
-
+// -----------------------------------------------------------------------------
 DiagnosticsObserver::DiagnosticsObserver(Options &&opts)
 	: opts_(std::move(opts))
 {
 	OpenOutput();
 }
+// -----------------------------------------------------------------------------
 /**
  * @brief Construct with options and driver diagnostics providers.
  * @param opts Observer options.
@@ -78,6 +79,7 @@ DiagnosticsObserver::DiagnosticsObserver(
 		next_time_trigger_ = 0.0; // first eligible record at t>=0 unless record_at_start==false
 	}
 }
+// -----------------------------------------------------------------------------
 /**
  * @brief Destroy the Diagnostics Observer:: Diagnostics Observer object.
  * 	Closes the output file if open.
@@ -161,6 +163,9 @@ void DiagnosticsObserver::Record(double t,
 		// Driver snapshot scalars
 		drv->DiagnoseSnapshot(t, Y, ctx, pkt);
 
+		// Apply cadence filtering (observer-level policy)
+		ApplyCadenceFilter(pkt);
+
 		// Basic sanity checks
 		pkt.ValidateBasic();
 
@@ -198,6 +203,13 @@ void DiagnosticsObserver::OnStart(const RunInfo &run,
 {
 	started_ = true;
 
+	// Clear per-producer emission state
+	last_value_.clear();
+
+	//	Clear once-per-run state
+	once_emitted_.clear();
+
+	// Reset step counter
 	step_counter_ = 0;
 
 	// Initialize time trigger schedule
@@ -248,5 +260,81 @@ void DiagnosticsObserver::OnSample(const SampleInfo &s,
 
 	Record(s.t, Y, ctx);
 }
+// -----------------------------------------------------------------------------
+bool DiagnosticsObserver::ApproximatelyEqual(double a, double b, double atol, double rtol)
+{
+	// Handle exact equality fast (also handles infinities, though those should be caught elsewhere)
+	if (a == b)
+		return true;
 
+	const double diff = std::abs(a - b);
+	const double scale = std::max(std::abs(a), std::abs(b));
+	return diff <= (atol + rtol * scale);
+}
+// -----------------------------------------------------------------------------
+void DiagnosticsObserver::ApplyCadenceFilter(Diagnostics::DiagnosticPacket &pkt)
+{
+	const std::string &prod = pkt.Producer();
+
+	auto &last_for_prod = last_value_[prod];
+	auto &once_for_prod = once_emitted_[prod];
+
+	// Build a filtered map (keep deterministic ordering by reusing std::map)
+	std::map<std::string, Diagnostics::ScalarEntry> kept;
+
+	for (const auto &kv : pkt.Scalars())
+	{
+		const std::string &key = kv.first;
+		const auto &e = kv.second;
+
+		using Cad = Diagnostics::Cadence;
+
+		switch (e.cadence)
+		{
+		case Cad::Always:
+			kept.emplace(key, e);
+			last_for_prod[key] = e.value; // optional, but useful for later switches
+			break;
+
+		case Cad::OncePerRun:
+			if (once_for_prod.find(key) == once_for_prod.end())
+			{
+				kept.emplace(key, e);
+				once_for_prod.insert(key);
+				last_for_prod[key] = e.value;
+			}
+			break;
+
+		case Cad::OnChange:
+		default:
+		{
+			auto it = last_for_prod.find(key);
+			if (it == last_for_prod.end())
+			{
+				kept.emplace(key, e);		  // first time: emit
+				last_for_prod[key] = e.value; // record
+			}
+			else
+			{
+				if (!ApproximatelyEqual(e.value, it->second,
+										opts_.on_change_atol, opts_.on_change_rtol))
+				{
+					kept.emplace(key, e);
+					it->second = e.value;
+				}
+			}
+			break;
+		}
+		}
+	}
+
+	pkt.ClearScalars();
+	for (const auto &kv : kept)
+	{
+		const auto &key = kv.first;
+		const auto &e = kv.second;
+		pkt.AddScalar(key, e.value, e.unit, e.description, e.source, e.cadence);
+	}
+}
+// -----------------------------------------------------------------------------
 } // namespace CompactStar::Physics::Evolution::Observers

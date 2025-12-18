@@ -60,6 +60,25 @@ void DiagnosticPacket::AddScalar(const std::string &key,
 	scalars_[key] = std::move(e);
 }
 //--------------------------------------------------------------
+void DiagnosticPacket::AddScalar(const std::string &key,
+								 double value,
+								 std::string unit,
+								 std::string description,
+								 std::string source,
+								 Cadence cadence)
+{
+	ScalarEntry e;
+	e.value = value;
+	e.unit = std::move(unit);
+	e.description = std::move(description);
+	e.source = std::move(source);
+	e.is_finite = std::isfinite(value);
+	e.cadence = cadence;
+
+	scalars_[key] = std::move(e);
+}
+
+//--------------------------------------------------------------
 
 bool DiagnosticPacket::HasScalar(const std::string &key) const
 {

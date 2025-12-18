@@ -247,19 +247,24 @@ void Diagnose(const PhotonCooling &self,
 				  "Surface temperature used in photon luminosity", "computed");
 
 	out.AddScalar("R_surf_km", d.R_surf_km, "km",
-				  "Surface radius from GeometryCache (last grid point)", "cache");
+				  "Surface radius from GeometryCache (last grid point)", "cache",
+				  Evolution::Diagnostics::Cadence::OncePerRun);
 
 	out.AddScalar("R_surf_cm", d.R_surf_cm, "cm",
-				  "Surface radius converted to cgs", "computed");
+				  "Surface radius converted to cgs", "computed",
+				  Evolution::Diagnostics::Cadence::OncePerRun);
 
 	out.AddScalar("exp2nu_surf", d.exp2nu_surf, "",
-				  "exp(2 nu) at surface from GeometryCache", "cache");
+				  "exp(2 nu) at surface from GeometryCache", "cache",
+				  Evolution::Diagnostics::Cadence::OncePerRun);
 
 	out.AddScalar("A_inf_cm2", d.A_inf_cm2, "cm^2",
-				  "Redshifted emitting area at infinity", "computed");
+				  "Redshifted emitting area at infinity", "computed",
+				  Evolution::Diagnostics::Cadence::OncePerRun);
 
 	out.AddScalar("A_eff_inf_cm2", d.A_eff_inf_cm2, "cm^2",
-				  "Effective emitting area at infinity (radiating_fraction * A_inf)", "computed");
+				  "Effective emitting area at infinity (radiating_fraction * A_inf)", "computed",
+				  Evolution::Diagnostics::Cadence::OncePerRun);
 
 	out.AddScalar("L_gamma_inf_erg_s", d.L_gamma_inf_erg_s, "erg/s",
 				  "Photon luminosity at infinity", "computed");

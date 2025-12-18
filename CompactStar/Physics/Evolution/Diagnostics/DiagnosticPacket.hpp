@@ -38,6 +38,19 @@ namespace CompactStar::Physics::Evolution::Diagnostics
 {
 
 /**
+ * @brief Cadence hint for recording this scalar.
+ * - Always: write every sample.
+ * - OnChange: write only if the value changed (within tolerance).
+ * - OncePerRun: write once (step==0) and then never again.
+ */
+enum class Cadence
+{
+	Always,	   // write every diagnostic sample
+	OnChange,  // write only if value changed (within tolerance)
+	OncePerRun // write once (step==0) and then never again
+};
+
+/**
  * @brief Represents one scalar diagnostic entry.
  *
  * Keys should be stable and tooling-friendly (snake_case recommended).
@@ -59,6 +72,9 @@ struct ScalarEntry
 
 	/// True if the numeric value is finite (filled by caller or checked by validators).
 	bool is_finite = true;
+
+	/// Cadence hint for recording this scalar.
+	Cadence cadence = Cadence::Always;
 };
 
 /**
@@ -127,6 +143,23 @@ class DiagnosticPacket
 				   std::string unit = "",
 				   std::string description = "",
 				   std::string source = "");
+
+	/**
+	 * @brief Add/replace a scalar with cadence hint.
+	 * If the key already exists, it is overwritten (deterministic).
+	 * @param key Stable key name (tooling-friendly).
+	 * @param value Numeric value.
+	 * @param unit Optional unit string.
+	 * @param description Optional one-line description.
+	 * @param source Optional provenance label (e.g., "computed", "state").
+	 * @param cadence Cadence hint for recording this scalar.
+	 */
+	void AddScalar(const std::string &key,
+				   double value,
+				   std::string unit,
+				   std::string description,
+				   std::string source,
+				   Cadence cadence);
 
 	/**
 	 * @brief Returns true if the scalar exists.

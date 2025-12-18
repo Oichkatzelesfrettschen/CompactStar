@@ -33,6 +33,8 @@
 #include <fstream>
 #include <memory>
 #include <string>
+#include <unordered_map>
+#include <unordered_set>
 #include <vector>
 
 #include "CompactStar/Physics/Evolution/Diagnostics/DiagnosticPacket.hpp"
@@ -78,6 +80,12 @@ class DiagnosticsObserver final : public IObserver
 
 		/// Enforce a unit vocabulary (if empty => no enforcement).
 		Diagnostics::UnitVocabulary unit_vocab;
+
+		/// @brief Absolute tolerance for "on change" detection.
+		double on_change_atol = 0.0;
+
+		/// @brief Relative tolerance for "on change" detection.
+		double on_change_rtol = 1e-12;
 	};
 
 	/// Construct from options (copy).
@@ -131,6 +139,16 @@ class DiagnosticsObserver final : public IObserver
 	std::vector<const Driver::Diagnostics::IDriverDiagnostics *> drivers_;
 
 	std::ofstream out_;
+
+	// Per-producer emission state:
+	std::unordered_map<std::string, std::unordered_map<std::string, double>> last_value_;
+	std::unordered_map<std::string, std::unordered_set<std::string>> once_emitted_;
+
+	/// Apply cadence filtering (every N steps / dt / on change) to the packet.
+	void ApplyCadenceFilter(Diagnostics::DiagnosticPacket &pkt);
+
+	/// Helper: approximately equal within tolerances.
+	static bool ApproximatelyEqual(double a, double b, double atol, double rtol);
 
 	// Scheduling state
 	// bool first_call_ = true;

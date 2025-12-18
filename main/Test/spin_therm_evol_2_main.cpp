@@ -29,6 +29,7 @@
 #include "CompactStar/Physics/Evolution/GeometryCache.hpp"
 #include "CompactStar/Physics/Evolution/Integrator/GSLIntegrator.hpp"
 #include "CompactStar/Physics/Evolution/Observers/DiagnosticsObserver.hpp"
+#include "CompactStar/Physics/Evolution/Observers/TimeSeriesObserver.hpp"
 #include "CompactStar/Physics/Evolution/RHSAccumulator.hpp"
 #include "CompactStar/Physics/Evolution/StarContext.hpp"
 #include "CompactStar/Physics/Evolution/StateLayout.hpp"
@@ -242,6 +243,71 @@ int main()
 
 	system.AddObserver(diag);
 	// -------------------------------------------------------
+	// 11b) Observer: TimeSeries (compact table for plotting)
+	// -------------------------------------------------------
+	{
+		namespace PhyEvolObs = Physics::Evolution::Observers;
+		using TS = PhyEvolObs::TimeSeriesObserver;
+
+		TS::Options topts;
+		topts.output_path = base_results_dir + "/" + out_dir + "/timeseries.csv";
+		topts.format = TS::OutputFormat::CSV;
+		topts.append = false;
+		topts.record_at_start = true;
+		topts.record_every_n_samples = 1; // record every OnSample (dt_save cadence)
+		topts.record_every_dt = 0.0;	  // disable time-trigger (optional)
+		topts.write_header = true;
+		topts.write_sidecar_metadata = true;
+		topts.float_precision = 17;
+
+		// Columns (in the exact order written)
+		{
+			TS::Column c;
+
+			c.key = "t_s";
+			c.source = TS::ColumnSource::BuiltinState;
+			c.unit = "s";
+			c.description = "Simulation time";
+			c.builtin = TS::Column::Builtin::Time;
+			topts.columns.push_back(c);
+
+			c = TS::Column{};
+			c.key = "sample_index";
+			c.source = TS::ColumnSource::BuiltinState;
+			c.unit = "";
+			c.description = "Monotonic sample counter";
+			c.builtin = TS::Column::Builtin::SampleIndex;
+			topts.columns.push_back(c);
+
+			c = TS::Column{};
+			c.key = "Tinf_K";
+			c.source = TS::ColumnSource::BuiltinState;
+			c.unit = "K";
+			c.description = "Redshifted internal temperature";
+			c.builtin = TS::Column::Builtin::Tinf_K;
+			topts.columns.push_back(c);
+
+			c = TS::Column{};
+			c.key = "Omega_rad_s";
+			c.source = TS::ColumnSource::BuiltinState;
+			c.unit = "rad/s";
+			c.description = "Spin angular frequency";
+			c.builtin = TS::Column::Builtin::Omega_rad_s;
+			topts.columns.push_back(c);
+		}
+
+		// If (later) you add DriverScalar columns, pass diagnostics-capable drivers here.
+		std::vector<const Physics::Driver::Diagnostics::IDriverDiagnostics *> ts_drivers;
+		if (auto *p = dynamic_cast<const Physics::Driver::Diagnostics::IDriverDiagnostics *>(spinDriver.get()))
+			ts_drivers.push_back(p);
+		if (auto *p = dynamic_cast<const Physics::Driver::Diagnostics::IDriverDiagnostics *>(thermalDriver.get()))
+			ts_drivers.push_back(p);
+
+		auto ts = std::make_shared<TS>(topts, ts_drivers);
+		system.AddObserver(ts);
+	}
+
+	// -------------------------------------------------------
 	// 12) Pack initial state -> y[]
 	// -------------------------------------------------------
 	std::vector<double> y(dim);
@@ -278,3 +344,4 @@ int main()
 	std::cout << "[debug] done.\n";
 	return 0;
 }
+// ==============================================================

@@ -1,0 +1,44 @@
+{
+  "observer": "TimeSeriesObserver",
+  "run": {
+    "tag": "",
+    "output_dir": "",
+    "t0": 0,
+    "tf": 10000000000
+  },
+  "table": {
+    "path": "/Users/keeper/Library/CloudStorage/GoogleDrive-m.zakeri@eku.edu/My Drive/Research/Tools/Coding/CompactStar/main/Test/results//spin_therm_evol_2/timeseries.csv",
+    "format": "CSV",
+    "delimiter": ","
+  },
+  "columns": [
+    {
+      "key": "t_s",
+      "source": "BuiltinState",
+      "unit": "s",
+      "description": "Simulation time",
+      "builtin": "Time"
+    },
+    {
+      "key": "sample_index",
+      "source": "BuiltinState",
+      "unit": "",
+      "description": "Monotonic sample counter",
+      "builtin": "SampleIndex"
+    },
+    {
+      "key": "Tinf_K",
+      "source": "BuiltinState",
+      "unit": "K",
+      "description": "Redshifted internal temperature",
+      "builtin": "Tinf_K"
+    },
+    {
+      "key": "Omega_rad_s",
+      "source": "BuiltinState",
+      "unit": "rad/s",
+      "description": "Spin angular frequency",
+      "builtin": "Omega_rad_s"
+    }
+  ]
+}

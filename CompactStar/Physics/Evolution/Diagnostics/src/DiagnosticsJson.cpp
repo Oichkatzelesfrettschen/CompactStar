@@ -132,7 +132,7 @@ void DiagnosticsJson::WritePacket(std::ostream &os,
 	os << "}";
 
 	// Contract lines
-	if (opts.include_contract)
+	if (opts.include_contract && !pkt.ContractLines().empty())
 	{
 		os << ",";
 		Newline(os, pretty);
@@ -155,64 +155,143 @@ void DiagnosticsJson::WritePacket(std::ostream &os,
 		os << "]";
 	}
 
-	// Messages
+	// // Messages
+	// if (opts.include_messages)
+	// {
+	// 	os << ",";
+	// 	Newline(os, pretty);
+
+	// 	Indent(os, indent);
+	// 	Key(os, "warnings");
+	// 	os << "[";
+	// 	Newline(os, pretty);
+	// 	const auto &W = pkt.Warnings();
+	// 	for (std::size_t j = 0; j < W.size(); ++j)
+	// 	{
+	// 		Indent(os, indent * 2);
+	// 		WriteEscapedString(os, W[j]);
+	// 		if (j + 1 < W.size())
+	// 			os << ",";
+	// 		Newline(os, pretty);
+	// 	}
+	// 	Indent(os, indent);
+	// 	os << "]";
+	// 	os << ",";
+	// 	Newline(os, pretty);
+
+	// 	Indent(os, indent);
+	// 	Key(os, "errors");
+	// 	os << "[";
+	// 	Newline(os, pretty);
+	// 	const auto &E = pkt.Errors();
+	// 	for (std::size_t j = 0; j < E.size(); ++j)
+	// 	{
+	// 		Indent(os, indent * 2);
+	// 		WriteEscapedString(os, E[j]);
+	// 		if (j + 1 < E.size())
+	// 			os << ",";
+	// 		Newline(os, pretty);
+	// 	}
+	// 	Indent(os, indent);
+	// 	os << "]";
+
+	// 	os << ",";
+	// 	Newline(os, pretty);
+
+	// 	Indent(os, indent);
+	// 	Key(os, "notes");
+	// 	os << "[";
+	// 	Newline(os, pretty);
+	// 	const auto &N = pkt.Notes();
+	// 	for (std::size_t j = 0; j < N.size(); ++j)
+	// 	{
+	// 		Indent(os, indent * 2);
+	// 		WriteEscapedString(os, N[j]);
+	// 		if (j + 1 < N.size())
+	// 			os << ",";
+	// 		Newline(os, pretty);
+	// 	}
+	// 	Indent(os, indent);
+	// 	os << "]";
+	// }
+
+	bool wrote_any_message_block = false;
+	// Messages (only emit non-empty blocks)
 	if (opts.include_messages)
 	{
-		os << ",";
-		Newline(os, pretty);
-
-		Indent(os, indent);
-		Key(os, "warnings");
-		os << "[";
-		Newline(os, pretty);
 		const auto &W = pkt.Warnings();
-		for (std::size_t j = 0; j < W.size(); ++j)
-		{
-			Indent(os, indent * 2);
-			WriteEscapedString(os, W[j]);
-			if (j + 1 < W.size())
-				os << ",";
-			Newline(os, pretty);
-		}
-		Indent(os, indent);
-		os << "]";
-		os << ",";
-		Newline(os, pretty);
-
-		Indent(os, indent);
-		Key(os, "errors");
-		os << "[";
-		Newline(os, pretty);
 		const auto &E = pkt.Errors();
-		for (std::size_t j = 0; j < E.size(); ++j)
-		{
-			Indent(os, indent * 2);
-			WriteEscapedString(os, E[j]);
-			if (j + 1 < E.size())
-				os << ",";
-			Newline(os, pretty);
-		}
-		Indent(os, indent);
-		os << "]";
-
-		os << ",";
-		Newline(os, pretty);
-
-		Indent(os, indent);
-		Key(os, "notes");
-		os << "[";
-		Newline(os, pretty);
 		const auto &N = pkt.Notes();
-		for (std::size_t j = 0; j < N.size(); ++j)
+
+		auto emit_comma_if_needed = [&]()
 		{
-			Indent(os, indent * 2);
-			WriteEscapedString(os, N[j]);
-			if (j + 1 < N.size())
+			if (wrote_any_message_block)
+			{
 				os << ",";
+				Newline(os, pretty);
+			}
+			wrote_any_message_block = true;
+		};
+
+		if (!W.empty())
+		{
+			emit_comma_if_needed();
+			Indent(os, indent);
+			Key(os, "warnings");
+			os << "[";
 			Newline(os, pretty);
+
+			for (std::size_t j = 0; j < W.size(); ++j)
+			{
+				Indent(os, indent * 2);
+				WriteEscapedString(os, W[j]);
+				if (j + 1 < W.size())
+					os << ",";
+				Newline(os, pretty);
+			}
+			Indent(os, indent);
+			os << "]";
 		}
-		Indent(os, indent);
-		os << "]";
+
+		if (!E.empty())
+		{
+			emit_comma_if_needed();
+			Indent(os, indent);
+			Key(os, "errors");
+			os << "[";
+			Newline(os, pretty);
+
+			for (std::size_t j = 0; j < E.size(); ++j)
+			{
+				Indent(os, indent * 2);
+				WriteEscapedString(os, E[j]);
+				if (j + 1 < E.size())
+					os << ",";
+				Newline(os, pretty);
+			}
+			Indent(os, indent);
+			os << "]";
+		}
+
+		if (!N.empty())
+		{
+			emit_comma_if_needed();
+			Indent(os, indent);
+			Key(os, "notes");
+			os << "[";
+			Newline(os, pretty);
+
+			for (std::size_t j = 0; j < N.size(); ++j)
+			{
+				Indent(os, indent * 2);
+				WriteEscapedString(os, N[j]);
+				if (j + 1 < N.size())
+					os << ",";
+				Newline(os, pretty);
+			}
+			Indent(os, indent);
+			os << "]";
+		}
 	}
 
 	Newline(os, pretty);
