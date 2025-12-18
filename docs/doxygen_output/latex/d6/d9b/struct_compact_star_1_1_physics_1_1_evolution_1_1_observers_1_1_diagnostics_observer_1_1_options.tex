@@ -1,0 +1,43 @@
+\hypertarget{struct_compact_star_1_1_physics_1_1_evolution_1_1_observers_1_1_diagnostics_observer_1_1_options}{}\doxysection{Compact\+Star\+::Physics\+::Evolution\+::Observers\+::Diagnostics\+Observer\+::Options Struct Reference}
+\label{struct_compact_star_1_1_physics_1_1_evolution_1_1_observers_1_1_diagnostics_observer_1_1_options}\index{CompactStar::Physics::Evolution::Observers::DiagnosticsObserver::Options@{CompactStar::Physics::Evolution::Observers::DiagnosticsObserver::Options}}
+
+
+Configuration for \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_observers_1_1_diagnostics_observer}{Diagnostics\+Observer}}.  
+
+
+
+
+{\ttfamily \#include $<$Diagnostics\+Observer.\+hpp$>$}
+
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{struct_compact_star_1_1_physics_1_1_evolution_1_1_observers_1_1_diagnostics_observer_1_1_options_af8515685b4edcf85068c17baa52b1d95}\label{struct_compact_star_1_1_physics_1_1_evolution_1_1_observers_1_1_diagnostics_observer_1_1_options_af8515685b4edcf85068c17baa52b1d95}} 
+\mbox{\hyperlink{class_zaki_1_1_string_1_1_directory}{Zaki\+::\+String\+::\+Directory}} {\bfseries output\+\_\+path} = \char`\"{}diagnostics.\+jsonl\char`\"{}
+\begin{DoxyCompactList}\small\item\em Output path for JSONL file. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{struct_compact_star_1_1_physics_1_1_evolution_1_1_observers_1_1_diagnostics_observer_1_1_options_afb79e6c765625695adeaec2c9f35baa3}\label{struct_compact_star_1_1_physics_1_1_evolution_1_1_observers_1_1_diagnostics_observer_1_1_options_afb79e6c765625695adeaec2c9f35baa3}} 
+std\+::size\+\_\+t {\bfseries record\+\_\+every\+\_\+n\+\_\+steps} = 0
+\begin{DoxyCompactList}\small\item\em Record every N observer calls (step-\/based). If 0, disables step-\/based triggering. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{struct_compact_star_1_1_physics_1_1_evolution_1_1_observers_1_1_diagnostics_observer_1_1_options_a743512ee27120462a873ffe047a911d1}\label{struct_compact_star_1_1_physics_1_1_evolution_1_1_observers_1_1_diagnostics_observer_1_1_options_a743512ee27120462a873ffe047a911d1}} 
+double {\bfseries record\+\_\+every\+\_\+dt} = 0.\+0
+\begin{DoxyCompactList}\small\item\em Record every dt in simulation-\/time. If \texorpdfstring{$<$}{<}=0, disables time-\/based triggering. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{struct_compact_star_1_1_physics_1_1_evolution_1_1_observers_1_1_diagnostics_observer_1_1_options_a0d8e613dd7e970e92bfc6d0fa57f3dd6}\label{struct_compact_star_1_1_physics_1_1_evolution_1_1_observers_1_1_diagnostics_observer_1_1_options_a0d8e613dd7e970e92bfc6d0fa57f3dd6}} 
+bool {\bfseries record\+\_\+at\+\_\+start} = true
+\begin{DoxyCompactList}\small\item\em If true, record at the first Observe() call (typically t=0). \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{struct_compact_star_1_1_physics_1_1_evolution_1_1_observers_1_1_diagnostics_observer_1_1_options_ada60d206d3f872d91fc75dd29c3b845c}\label{struct_compact_star_1_1_physics_1_1_evolution_1_1_observers_1_1_diagnostics_observer_1_1_options_ada60d206d3f872d91fc75dd29c3b845c}} 
+bool {\bfseries append} = false
+\begin{DoxyCompactList}\small\item\em If true, append to file instead of truncating. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{struct_compact_star_1_1_physics_1_1_evolution_1_1_observers_1_1_diagnostics_observer_1_1_options_aa56b0db6f6e7eac41c39f9622977a4e2}\label{struct_compact_star_1_1_physics_1_1_evolution_1_1_observers_1_1_diagnostics_observer_1_1_options_aa56b0db6f6e7eac41c39f9622977a4e2}} 
+\mbox{\hyperlink{struct_compact_star_1_1_physics_1_1_evolution_1_1_diagnostics_1_1_json_options}{Diagnostics\+::\+Json\+Options}} {\bfseries json\+\_\+opts}
+\begin{DoxyCompactList}\small\item\em JSON output options. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{struct_compact_star_1_1_physics_1_1_evolution_1_1_observers_1_1_diagnostics_observer_1_1_options_a33c63f88767aec623626ecfecb7ce3a6}\label{struct_compact_star_1_1_physics_1_1_evolution_1_1_observers_1_1_diagnostics_observer_1_1_options_a33c63f88767aec623626ecfecb7ce3a6}} 
+\mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_diagnostics_1_1_unit_vocabulary}{Diagnostics\+::\+Unit\+Vocabulary}} {\bfseries unit\+\_\+vocab}
+\begin{DoxyCompactList}\small\item\em Enforce a unit vocabulary (if empty =\texorpdfstring{$>$}{>} no enforcement). \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Configuration for \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_observers_1_1_diagnostics_observer}{Diagnostics\+Observer}}. 
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Compact\+Star/\+Physics/\+Evolution/\+Observers/\mbox{\hyperlink{_diagnostics_observer_8hpp}{Diagnostics\+Observer.\+hpp}}\end{DoxyCompactItemize}

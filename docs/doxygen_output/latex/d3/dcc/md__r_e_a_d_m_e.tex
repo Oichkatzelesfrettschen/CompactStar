@@ -15,21 +15,21 @@ Originally designed for dense-\/matter astrophysics research, the codebase has e
 Compact\+Star is written in {\bfseries{C++17}}, designed for {\bfseries{flexibility, reproducibility, and extensibility}}, and integrates cleanly into HPC workflows.
 
 \DoxyHorRuler{0}
-\hypertarget{md__r_e_a_d_m_e_autotoc_md7}{}\doxysection{Core Capabilities}\label{md__r_e_a_d_m_e_autotoc_md7}
-\hypertarget{md__r_e_a_d_m_e_autotoc_md8}{}\doxysubsubsection{Stellar Structure}\label{md__r_e_a_d_m_e_autotoc_md8}
+\hypertarget{md__r_e_a_d_m_e_autotoc_md34}{}\doxysection{Core Capabilities}\label{md__r_e_a_d_m_e_autotoc_md34}
+\hypertarget{md__r_e_a_d_m_e_autotoc_md35}{}\doxysubsubsection{Stellar Structure}\label{md__r_e_a_d_m_e_autotoc_md35}
 
 \begin{DoxyItemize}
 \item {\bfseries{TOVSolver}}\+: static Tolman–\+Oppenheimer–\+Volkoff integration for any tabulated or analytical EOS.
 \item {\bfseries{TOVSolver\+\_\+\+Thread}}\+: multithreaded parallel wrapper for generating full sequences.
 \item {\bfseries{Hartle\+Solver}}\+: slow-\/rotation solver for frame-\/dragging and O(Ω²) structure perturbations.
 \item Computes mass–radius curves, moment of inertia, compactness, redshift, and structural profiles.
-\end{DoxyItemize}\hypertarget{md__r_e_a_d_m_e_autotoc_md9}{}\doxysubsubsection{Equations of State}\label{md__r_e_a_d_m_e_autotoc_md9}
+\end{DoxyItemize}\hypertarget{md__r_e_a_d_m_e_autotoc_md36}{}\doxysubsubsection{Equations of State}\label{md__r_e_a_d_m_e_autotoc_md36}
 
 \begin{DoxyItemize}
 \item Supports tabulated, analytical, and hybrid/multiphase EOS formats.
 \item Built-\/in EOS readers, interpolation, thermodynamic derivatives.
 \item Clean interfaces for adding microphysical modules (effective masses, symmetry energy, thresholds).
-\end{DoxyItemize}\hypertarget{md__r_e_a_d_m_e_autotoc_md10}{}\doxysubsubsection{Thermal \& Chemical Evolution}\label{md__r_e_a_d_m_e_autotoc_md10}
+\end{DoxyItemize}\hypertarget{md__r_e_a_d_m_e_autotoc_md37}{}\doxysubsubsection{Thermal \& Chemical Evolution}\label{md__r_e_a_d_m_e_autotoc_md37}
 
 \begin{DoxyItemize}
 \item Fully implements the Reisenegger–\+Fernández rotochemical heating formalism.
@@ -41,18 +41,18 @@ Compact\+Star is written in {\bfseries{C++17}}, designed for {\bfseries{flexibil
 \item heating vs cooling balance,
 \item photon output.
 \end{DoxyItemize}
-\end{DoxyItemize}\hypertarget{md__r_e_a_d_m_e_autotoc_md11}{}\doxysubsubsection{BNV Heating (\+Baryon Number Violation)}\label{md__r_e_a_d_m_e_autotoc_md11}
+\end{DoxyItemize}\hypertarget{md__r_e_a_d_m_e_autotoc_md38}{}\doxysubsubsection{BNV Heating (\+Baryon Number Violation)}\label{md__r_e_a_d_m_e_autotoc_md38}
 
 \begin{DoxyItemize}
 \item Dedicated BNVState and reaction-\/rate infrastructure.
 \item User-\/defined particle-\/physics models plug in cleanly via the Driver abstraction.
 \item Supports energy injection, matter depletion, and thermal feedback.
-\end{DoxyItemize}\hypertarget{md__r_e_a_d_m_e_autotoc_md12}{}\doxysubsubsection{Spin Evolution}\label{md__r_e_a_d_m_e_autotoc_md12}
+\end{DoxyItemize}\hypertarget{md__r_e_a_d_m_e_autotoc_md39}{}\doxysubsubsection{Spin Evolution}\label{md__r_e_a_d_m_e_autotoc_md39}
 
 \begin{DoxyItemize}
 \item Magnetic-\/dipole braking, custom torque laws, and coupling to chemical/thermal evolution.
 \item Integrates naturally with Hartle structure corrections.
-\end{DoxyItemize}\hypertarget{md__r_e_a_d_m_e_autotoc_md13}{}\doxysubsubsection{Sequences, Contours \& Analysis}\label{md__r_e_a_d_m_e_autotoc_md13}
+\end{DoxyItemize}\hypertarget{md__r_e_a_d_m_e_autotoc_md40}{}\doxysubsubsection{Sequences, Contours \& Analysis}\label{md__r_e_a_d_m_e_autotoc_md40}
 
 \begin{DoxyItemize}
 \item Sequence generator for\+:
@@ -64,7 +64,7 @@ Compact\+Star is written in {\bfseries{C++17}}, designed for {\bfseries{flexibil
 \end{DoxyItemize}
 \item Contour and profile exporter (csv, json, dataset format).
 \item Tools for generating stability curves and parameter-\/space scans.
-\end{DoxyItemize}\hypertarget{md__r_e_a_d_m_e_autotoc_md14}{}\doxysubsubsection{Core Mathematics, Physics, and Datasets}\label{md__r_e_a_d_m_e_autotoc_md14}
+\end{DoxyItemize}\hypertarget{md__r_e_a_d_m_e_autotoc_md41}{}\doxysubsubsection{Core Mathematics, Physics, and Datasets}\label{md__r_e_a_d_m_e_autotoc_md41}
 Provided by the new Core module\+:
 
 
@@ -77,7 +77,7 @@ Provided by the new Core module\+:
 \end{DoxyItemize}
 
 \DoxyHorRuler{0}
-\hypertarget{md__r_e_a_d_m_e_autotoc_md16}{}\doxysection{Project Structure}\label{md__r_e_a_d_m_e_autotoc_md16}
+\hypertarget{md__r_e_a_d_m_e_autotoc_md43}{}\doxysection{Project Structure}\label{md__r_e_a_d_m_e_autotoc_md43}
 
 \begin{DoxyCode}{0}
 \DoxyCodeLine{CompactStar/}
@@ -116,7 +116,7 @@ Provided by the new Core module\+:
 
 
 \DoxyHorRuler{0}
-\hypertarget{md__r_e_a_d_m_e_autotoc_md18}{}\doxysection{State Interface Architecture}\label{md__r_e_a_d_m_e_autotoc_md18}
+\hypertarget{md__r_e_a_d_m_e_autotoc_md45}{}\doxysection{State Interface Architecture}\label{md__r_e_a_d_m_e_autotoc_md45}
 Compact\+Star’s evolution engine treats each physical subsystem ~\newline
  (Spin, Thermal, Chem, BNV, …) as a {\bfseries{state block}} derived from a single abstract base class {\ttfamily State}. This base class defines a small, uniform interface\+:
 
@@ -134,7 +134,7 @@ but {\bfseries{it intentionally does not define storage}}. ~\newline
  Each derived state type owns its own internal representation.
 
 \DoxyHorRuler{0}
-\hypertarget{md__r_e_a_d_m_e_autotoc_md20}{}\doxysubsection{Why the base class does $<$em$>$not$<$/em$>$ own $<$tt$>$values\+\_\+$<$/tt$>$}\label{md__r_e_a_d_m_e_autotoc_md20}
+\hypertarget{md__r_e_a_d_m_e_autotoc_md47}{}\doxysubsection{Why the base class does $<$em$>$not$<$/em$>$ own $<$tt$>$values\+\_\+$<$/tt$>$}\label{md__r_e_a_d_m_e_autotoc_md47}
 Different state types have very different physical and numerical needs\+:
 
 
@@ -161,7 +161,7 @@ Leaving storage fully up to the derived class gives\+:
 Every state remains free to choose {\bfseries{any internal representation}}, as long as it can supply a contiguous DOF view to the evolution engine.
 
 \DoxyHorRuler{0}
-\hypertarget{md__r_e_a_d_m_e_autotoc_md22}{}\doxysubsection{Packing and Unpacking\+: How Evolution Works}\label{md__r_e_a_d_m_e_autotoc_md22}
+\hypertarget{md__r_e_a_d_m_e_autotoc_md49}{}\doxysubsection{Packing and Unpacking\+: How Evolution Works}\label{md__r_e_a_d_m_e_autotoc_md49}
 During time evolution, the framework assembles one global ODE vector\+:
 
 
@@ -190,7 +190,7 @@ This enables\+:
 \end{DoxyItemize}
 
 \DoxyHorRuler{0}
-\hypertarget{md__r_e_a_d_m_e_autotoc_md24}{}\doxysubsection{Summary}\label{md__r_e_a_d_m_e_autotoc_md24}
+\hypertarget{md__r_e_a_d_m_e_autotoc_md51}{}\doxysubsection{Summary}\label{md__r_e_a_d_m_e_autotoc_md51}
 This architecture\+:
 
 
@@ -206,7 +206,7 @@ For additional detail, see the comments in ~\newline
  {\ttfamily \mbox{\hyperlink{_state_8hpp}{Compact\+Star/\+Physics/\+State/\+State.\+hpp}}}.
 
 \DoxyHorRuler{0}
-\hypertarget{md__r_e_a_d_m_e_autotoc_md26}{}\doxysection{Features}\label{md__r_e_a_d_m_e_autotoc_md26}
+\hypertarget{md__r_e_a_d_m_e_autotoc_md53}{}\doxysection{Features}\label{md__r_e_a_d_m_e_autotoc_md53}
 
 \begin{DoxyItemize}
 \item Tabulated + analytical EOS support
@@ -220,7 +220,7 @@ For additional detail, see the comments in ~\newline
 \end{DoxyItemize}
 
 \DoxyHorRuler{0}
-\hypertarget{md__r_e_a_d_m_e_autotoc_md28}{}\doxysection{Building}\label{md__r_e_a_d_m_e_autotoc_md28}
+\hypertarget{md__r_e_a_d_m_e_autotoc_md55}{}\doxysection{Building}\label{md__r_e_a_d_m_e_autotoc_md55}
 
 \begin{DoxyCode}{0}
 \DoxyCodeLine{mkdir build}
@@ -241,7 +241,7 @@ Optional flags\+:
 \end{DoxyItemize}
 
 \DoxyHorRuler{0}
-\hypertarget{md__r_e_a_d_m_e_autotoc_md30}{}\doxysection{Documentation}\label{md__r_e_a_d_m_e_autotoc_md30}
+\hypertarget{md__r_e_a_d_m_e_autotoc_md57}{}\doxysection{Documentation}\label{md__r_e_a_d_m_e_autotoc_md57}
 Compact\+Star uses {\bfseries{Doxygen}} documentation. ~\newline
  To build\+:
 
@@ -255,12 +255,12 @@ Compact\+Star uses {\bfseries{Doxygen}} documentation. ~\newline
 
 
 \DoxyHorRuler{0}
-\hypertarget{md__r_e_a_d_m_e_autotoc_md32}{}\doxysection{Author}\label{md__r_e_a_d_m_e_autotoc_md32}
+\hypertarget{md__r_e_a_d_m_e_autotoc_md59}{}\doxysection{Author}\label{md__r_e_a_d_m_e_autotoc_md59}
 {\bfseries{Mohammadreza Zakeri}} ~\newline
  Assistant Professor of Physics ~\newline
  Eastern Kentucky University ~\newline
  📧 \href{mailto:M.Zakeri@eku.edu}{\texttt{ M.\+Zakeri@eku.\+edu}}
 
 \DoxyHorRuler{0}
-\hypertarget{md__r_e_a_d_m_e_autotoc_md34}{}\doxysection{Citation}\label{md__r_e_a_d_m_e_autotoc_md34}
+\hypertarget{md__r_e_a_d_m_e_autotoc_md61}{}\doxysection{Citation}\label{md__r_e_a_d_m_e_autotoc_md61}
 If you use Compact\+Star in published research, please cite this repository and the author. 

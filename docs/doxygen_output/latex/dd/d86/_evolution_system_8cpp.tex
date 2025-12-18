@@ -5,22 +5,25 @@
 Implementation of Evolution\+System (RHS functor for d\+Y/dt).  
 
 
-{\ttfamily \#include \char`\"{}Compact\+Star/\+Physics/\+Evolution/\+Evolution\+System.\+hpp\char`\"{}}\newline
+{\ttfamily \#include $<$stdexcept$>$}\newline
+{\ttfamily \#include \char`\"{}Compact\+Star/\+Physics/\+Driver/\+IDriver.\+hpp\char`\"{}}\newline
 {\ttfamily \#include \char`\"{}Compact\+Star/\+Physics/\+Evolution/\+Evolution\+Config.\+hpp\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}Compact\+Star/\+Physics/\+Evolution/\+Evolution\+System.\+hpp\char`\"{}}\newline
 {\ttfamily \#include \char`\"{}Compact\+Star/\+Physics/\+Evolution/\+Geometry\+Cache.\+hpp\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}Compact\+Star/\+Physics/\+Evolution/\+Observers/\+IObserver.\+hpp\char`\"{}}\newline
 {\ttfamily \#include \char`\"{}Compact\+Star/\+Physics/\+Evolution/\+RHSAccumulator.\+hpp\char`\"{}}\newline
 {\ttfamily \#include \char`\"{}Compact\+Star/\+Physics/\+Evolution/\+Star\+Context.\+hpp\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}Compact\+Star/\+Physics/\+Evolution/\+State\+Layout.\+hpp\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}Compact\+Star/\+Physics/\+Evolution/\+State\+Packing.\+hpp\char`\"{}}\newline
 {\ttfamily \#include \char`\"{}Compact\+Star/\+Physics/\+Evolution/\+State\+Vector.\+hpp\char`\"{}}\newline
-{\ttfamily \#include \char`\"{}Compact\+Star/\+Physics/\+Thermal.\+hpp\char`\"{}}\newline
-{\ttfamily \#include $<$cstddef$>$}\newline
-{\ttfamily \#include $<$stdexcept$>$}\newline
+{\ttfamily \#include \char`\"{}Zaki/\+Util/\+Logger.\+hpp\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}Compact\+Star/\+Physics/\+State/\+Spin\+State.\+hpp\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}Compact\+Star/\+Physics/\+State/\+Thermal\+State.\+hpp\char`\"{}}\newline
 \doxysubsection*{Namespaces}
 \begin{DoxyCompactItemize}
 \item 
 namespace \mbox{\hyperlink{namespace_compact_star_1_1_physics}{Compact\+Star\+::\+Physics}}
-\begin{DoxyCompactList}\small\item\em High-\/level physical modeling layer for compact stars. \end{DoxyCompactList}\item 
-namespace \mbox{\hyperlink{namespace_compact_star_1_1_physics_1_1_evolution}{Compact\+Star\+::\+Physics\+::\+Evolution}}
-\begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{namespace_compact_star_1_1_physics_1_1_evolution}{Evolution}} engine for time-\/dependent neutron-\/star physics. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em High-\/level physical modeling layer for compact stars. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}

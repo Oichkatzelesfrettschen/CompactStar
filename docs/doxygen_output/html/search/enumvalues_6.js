@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['spin_0',['Spin',['../da/d7b/namespace_compact_star_1_1_physics_1_1_state.html#af14f5554b0d9be50c5ea718733bc424baf5a6a925d4084ae58bd71a8a95a84ba7',1,'CompactStar::Physics::State']]],
-  ['structure_1',['Structure',['../da/d7b/namespace_compact_star_1_1_physics_1_1_state.html#af14f5554b0d9be50c5ea718733bc424badc4c71563b9bc39a65be853457e6b7b6',1,'CompactStar::Physics::State']]]
+  ['pressure_0',['Pressure',['../d4/d29/struct_compact_star_1_1_core_1_1_star_profile.html#a69a0f27099ce767c2afe8fe5503d7628aa78578c428179b490a0461e76ba5f319',1,'CompactStar::Core::StarProfile']]]
 ];

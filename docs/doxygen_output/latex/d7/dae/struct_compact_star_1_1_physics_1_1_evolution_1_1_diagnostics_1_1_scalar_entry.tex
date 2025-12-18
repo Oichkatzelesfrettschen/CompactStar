@@ -1,0 +1,39 @@
+\hypertarget{struct_compact_star_1_1_physics_1_1_evolution_1_1_diagnostics_1_1_scalar_entry}{}\doxysection{Compact\+Star\+::Physics\+::Evolution\+::Diagnostics\+::Scalar\+Entry Struct Reference}
+\label{struct_compact_star_1_1_physics_1_1_evolution_1_1_diagnostics_1_1_scalar_entry}\index{CompactStar::Physics::Evolution::Diagnostics::ScalarEntry@{CompactStar::Physics::Evolution::Diagnostics::ScalarEntry}}
+
+
+Represents one scalar diagnostic entry.  
+
+
+
+
+{\ttfamily \#include $<$Diagnostic\+Packet.\+hpp$>$}
+
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{struct_compact_star_1_1_physics_1_1_evolution_1_1_diagnostics_1_1_scalar_entry_ac7d1696c770c707cdd00e7405a644ecd}\label{struct_compact_star_1_1_physics_1_1_evolution_1_1_diagnostics_1_1_scalar_entry_ac7d1696c770c707cdd00e7405a644ecd}} 
+double {\bfseries value} = 0.\+0
+\begin{DoxyCompactList}\small\item\em Numeric value of the field. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{struct_compact_star_1_1_physics_1_1_evolution_1_1_diagnostics_1_1_scalar_entry_afee4e62c559952485acc3531537d66d6}\label{struct_compact_star_1_1_physics_1_1_evolution_1_1_diagnostics_1_1_scalar_entry_afee4e62c559952485acc3531537d66d6}} 
+std\+::string {\bfseries unit}
+\begin{DoxyCompactList}\small\item\em Optional unit string (e.\+g., \char`\"{}\+K\char`\"{}, \char`\"{}erg/s\char`\"{}, \char`\"{}cm$^\wedge$2\char`\"{}, \char`\"{}rad/s\char`\"{}). \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{struct_compact_star_1_1_physics_1_1_evolution_1_1_diagnostics_1_1_scalar_entry_a7030b76a904a2b9714a26d0538d0b9d6}\label{struct_compact_star_1_1_physics_1_1_evolution_1_1_diagnostics_1_1_scalar_entry_a7030b76a904a2b9714a26d0538d0b9d6}} 
+std\+::string {\bfseries description}
+\begin{DoxyCompactList}\small\item\em Optional one-\/line human description. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{struct_compact_star_1_1_physics_1_1_evolution_1_1_diagnostics_1_1_scalar_entry_a1bbbdfedc86b4ab0c7b0bcd420111ace}\label{struct_compact_star_1_1_physics_1_1_evolution_1_1_diagnostics_1_1_scalar_entry_a1bbbdfedc86b4ab0c7b0bcd420111ace}} 
+std\+::string {\bfseries source}
+\begin{DoxyCompactList}\small\item\em Optional “source” label (e.\+g., \char`\"{}computed\char`\"{}, \char`\"{}input\char`\"{}, \char`\"{}cache\char`\"{}, \char`\"{}fallback\char`\"{}). \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{struct_compact_star_1_1_physics_1_1_evolution_1_1_diagnostics_1_1_scalar_entry_ad2705f83eca8baeffa684d1da71e1a73}\label{struct_compact_star_1_1_physics_1_1_evolution_1_1_diagnostics_1_1_scalar_entry_ad2705f83eca8baeffa684d1da71e1a73}} 
+bool {\bfseries is\+\_\+finite} = true
+\begin{DoxyCompactList}\small\item\em True if the numeric value is finite (filled by caller or checked by validators). \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Represents one scalar diagnostic entry. 
+
+Keys should be stable and tooling-\/friendly (snake\+\_\+case recommended). The optional unit is a human/tool hint, not a type system. 
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Compact\+Star/\+Physics/\+Evolution/\+Diagnostics/\mbox{\hyperlink{_diagnostic_packet_8hpp}{Diagnostic\+Packet.\+hpp}}\end{DoxyCompactItemize}

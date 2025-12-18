@@ -1,0 +1,47 @@
+\hypertarget{_diagnostic_packet_8hpp}{}\doxysection{Compact\+Star/\+Physics/\+Evolution/\+Diagnostics/\+Diagnostic\+Packet.hpp File Reference}
+\label{_diagnostic_packet_8hpp}\index{CompactStar/Physics/Evolution/Diagnostics/DiagnosticPacket.hpp@{CompactStar/Physics/Evolution/Diagnostics/DiagnosticPacket.hpp}}
+
+
+Runtime container for a single diagnostics “snapshot”.  
+
+
+{\ttfamily \#include $<$cstddef$>$}\newline
+{\ttfamily \#include $<$map$>$}\newline
+{\ttfamily \#include $<$string$>$}\newline
+{\ttfamily \#include $<$vector$>$}\newline
+\doxysubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{struct_compact_star_1_1_physics_1_1_evolution_1_1_diagnostics_1_1_scalar_entry}{Compact\+Star\+::\+Physics\+::\+Evolution\+::\+Diagnostics\+::\+Scalar\+Entry}}
+\begin{DoxyCompactList}\small\item\em Represents one scalar diagnostic entry. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_diagnostics_1_1_diagnostic_packet}{Compact\+Star\+::\+Physics\+::\+Evolution\+::\+Diagnostics\+::\+Diagnostic\+Packet}}
+\begin{DoxyCompactList}\small\item\em Single diagnostics snapshot with metadata and scalar fields. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Namespaces}
+\begin{DoxyCompactItemize}
+\item 
+namespace \mbox{\hyperlink{namespace_compact_star_1_1_physics}{Compact\+Star\+::\+Physics}}
+\begin{DoxyCompactList}\small\item\em High-\/level physical modeling layer for compact stars. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Runtime container for a single diagnostics “snapshot”. 
+
+A Diagnostic\+Packet is a light-\/weight structure that stores\+:
+\begin{DoxyItemize}
+\item metadata about where/when the snapshot was created (time, step, driver name),
+\item a stable list of scalar values (key -\/\texorpdfstring{$>$}{>} number + optional unit + description),
+\item optional text blocks (contracts, warnings, notes).
+\end{DoxyItemize}
+
+It is intended for\+:
+\begin{DoxyItemize}
+\item terminal-\/friendly structured printing (via custom renderers),
+\item JSON/\+JSONL export for tooling and regression tests.
+\end{DoxyItemize}
+
+Notes on design\+:
+\begin{DoxyItemize}
+\item This module intentionally stores {\itshape only doubles} as numeric payloads.
+\item Unit strings are metadata only (no unit arithmetic); they support auditing.
+\item Storage uses an ordered map (std\+::map) for deterministic output ordering. 
+\end{DoxyItemize}

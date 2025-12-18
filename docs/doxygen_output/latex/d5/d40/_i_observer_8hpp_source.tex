@@ -1,116 +1,80 @@
 \hypertarget{_i_observer_8hpp_source}{}\doxysection{IObserver.\+hpp}
 \label{_i_observer_8hpp_source}\index{CompactStar/Physics/Evolution/Observers/IObserver.hpp@{CompactStar/Physics/Evolution/Observers/IObserver.hpp}}
-
+\mbox{\hyperlink{_i_observer_8hpp}{Go to the documentation of this file.}}
 \begin{DoxyCode}{0}
-\DoxyCodeLine{1 \textcolor{comment}{// -\/*-\/ lsst-\/c++ -\/*-\/}}
-\DoxyCodeLine{2 \textcolor{comment}{/*}}
-\DoxyCodeLine{3 \textcolor{comment}{ * CompactStar}}
-\DoxyCodeLine{4 \textcolor{comment}{ * See License file at the top of the source tree.}}
-\DoxyCodeLine{5 \textcolor{comment}{ *}}
-\DoxyCodeLine{6 \textcolor{comment}{ * Copyright (c) 2025 Mohammadreza Zakeri}}
-\DoxyCodeLine{7 \textcolor{comment}{ *}}
-\DoxyCodeLine{8 \textcolor{comment}{ * Permission is hereby granted, free of charge, to any person obtaining a copy}}
-\DoxyCodeLine{9 \textcolor{comment}{ * of this software and associated documentation files (the "{}Software"{}), to deal}}
-\DoxyCodeLine{10 \textcolor{comment}{ * in the Software without restriction, including without limitation the rights}}
-\DoxyCodeLine{11 \textcolor{comment}{ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell}}
-\DoxyCodeLine{12 \textcolor{comment}{ * copies of the Software, and to permit persons to whom the Software is}}
-\DoxyCodeLine{13 \textcolor{comment}{ * furnished to do so, subject to the following conditions:}}
-\DoxyCodeLine{14 \textcolor{comment}{ *}}
-\DoxyCodeLine{15 \textcolor{comment}{ * The above copyright notice and this permission notice shall be included in all}}
-\DoxyCodeLine{16 \textcolor{comment}{ * copies or substantial portions of the Software.}}
-\DoxyCodeLine{17 \textcolor{comment}{ *}}
-\DoxyCodeLine{18 \textcolor{comment}{ * THE SOFTWARE IS PROVIDED "{}AS IS"{}, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR}}
-\DoxyCodeLine{19 \textcolor{comment}{ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,}}
-\DoxyCodeLine{20 \textcolor{comment}{ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE}}
-\DoxyCodeLine{21 \textcolor{comment}{ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER}}
-\DoxyCodeLine{22 \textcolor{comment}{ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,}}
-\DoxyCodeLine{23 \textcolor{comment}{ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE}}
-\DoxyCodeLine{24 \textcolor{comment}{ * SOFTWARE.}}
-\DoxyCodeLine{25 \textcolor{comment}{ */}}
-\DoxyCodeLine{26 }
-\DoxyCodeLine{36 \textcolor{preprocessor}{\#ifndef CompactStar\_ChemicalHeating\_Observers\_H}}
-\DoxyCodeLine{37 \textcolor{preprocessor}{\#define CompactStar\_ChemicalHeating\_Observers\_H}}
-\DoxyCodeLine{38 }
-\DoxyCodeLine{39 \textcolor{preprocessor}{\#include <string>}}
-\DoxyCodeLine{40 \textcolor{preprocessor}{\#include <vector>}}
-\DoxyCodeLine{41 }
-\DoxyCodeLine{42 \textcolor{keyword}{namespace }Zaki}
-\DoxyCodeLine{43 \{}
-\DoxyCodeLine{44 \textcolor{keyword}{namespace }Vector}
-\DoxyCodeLine{45 \{}
-\DoxyCodeLine{46 \textcolor{keyword}{class }DataSet;}
-\DoxyCodeLine{47 \}}
-\DoxyCodeLine{48 \} \textcolor{comment}{// namespace Zaki}}
-\DoxyCodeLine{49 }
-\DoxyCodeLine{50 \textcolor{keyword}{namespace }CompactStar}
-\DoxyCodeLine{51 \{}
-\DoxyCodeLine{52 \textcolor{keyword}{namespace }ChemicalHeating}
-\DoxyCodeLine{53 \{}
-\DoxyCodeLine{54 \textcolor{keyword}{struct }EvolutionState;}
-\DoxyCodeLine{55 \}}
-\DoxyCodeLine{56 \} \textcolor{comment}{// namespace CompactStar}}
-\DoxyCodeLine{57 \textcolor{comment}{//==============================================================}}
-\DoxyCodeLine{58 \textcolor{keyword}{namespace }CompactStar}
-\DoxyCodeLine{59 \{}
-\DoxyCodeLine{60 \textcolor{comment}{//==============================================================}}
-\DoxyCodeLine{61 \textcolor{keyword}{namespace }ChemicalHeating}
-\DoxyCodeLine{62 \{}
-\DoxyCodeLine{63 }
-\DoxyCodeLine{64 \textcolor{comment}{//==============================================================}}
-\DoxyCodeLine{65 \textcolor{comment}{//                       Derived Struct}}
-\DoxyCodeLine{66 \textcolor{comment}{//==============================================================}}
-\DoxyCodeLine{74 \textcolor{comment}{}\textcolor{keyword}{struct }\mbox{\hyperlink{struct_compact_star_1_1_chemical_heating_1_1_derived}{Derived}}}
-\DoxyCodeLine{75 \{}
-\DoxyCodeLine{76     \textcolor{keywordtype}{double} \mbox{\hyperlink{struct_compact_star_1_1_chemical_heating_1_1_derived_a045feacfce8e90baaaf125087fc5b4f6}{Ts\_local}} = 0.0;   }
-\DoxyCodeLine{77     \textcolor{keywordtype}{double} \mbox{\hyperlink{struct_compact_star_1_1_chemical_heating_1_1_derived_ad4660700bdd80909792374701038de8a}{Lnu\_inf}} = 0.0;     }
-\DoxyCodeLine{78     \textcolor{keywordtype}{double} \mbox{\hyperlink{struct_compact_star_1_1_chemical_heating_1_1_derived_a4ed6fd05c080865fd33046a385268e63}{Lgamma\_inf}} = 0.0; }
-\DoxyCodeLine{79     \textcolor{keywordtype}{double} \mbox{\hyperlink{struct_compact_star_1_1_chemical_heating_1_1_derived_a12bdbb52118dffa204ebba31f5097692}{H\_inf}} = 0.0;         }
-\DoxyCodeLine{80     \textcolor{keywordtype}{double} \mbox{\hyperlink{struct_compact_star_1_1_chemical_heating_1_1_derived_a82562de72c8419e7d1ec4cf0bbfed00e}{C\_tot}} = 0.0;         }
-\DoxyCodeLine{81 \};}
-\DoxyCodeLine{82 \textcolor{comment}{//==============================================================}}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#pragma once}}
+\DoxyCodeLine{2 \textcolor{comment}{// -\/*-\/ lsst-\/c++ -\/*-\/}}
+\DoxyCodeLine{3 \textcolor{comment}{/*}}
+\DoxyCodeLine{4 \textcolor{comment}{ * CompactStar}}
+\DoxyCodeLine{5 \textcolor{comment}{ * See License file at the top of the source tree.}}
+\DoxyCodeLine{6 \textcolor{comment}{ *}}
+\DoxyCodeLine{7 \textcolor{comment}{ * Copyright (c) 2025}}
+\DoxyCodeLine{8 \textcolor{comment}{ * Mohammadreza Zakeri}}
+\DoxyCodeLine{9 \textcolor{comment}{ *}}
+\DoxyCodeLine{10 \textcolor{comment}{ * MIT License — see LICENSE at repo root.}}
+\DoxyCodeLine{11 \textcolor{comment}{ */}}
+\DoxyCodeLine{12 }
+\DoxyCodeLine{37 \textcolor{preprocessor}{\#include <cstdint>}}
+\DoxyCodeLine{38 \textcolor{preprocessor}{\#include <string>}}
+\DoxyCodeLine{39 }
+\DoxyCodeLine{40 \textcolor{keyword}{namespace }CompactStar::Physics::Evolution}
+\DoxyCodeLine{41 \{}
+\DoxyCodeLine{42 \textcolor{keyword}{class }StateVector;}
+\DoxyCodeLine{43 \textcolor{keyword}{class }DriverContext;}
+\DoxyCodeLine{44 \} \textcolor{comment}{// namespace CompactStar::Physics::Evolution}}
+\DoxyCodeLine{45 }
+\DoxyCodeLine{46 \textcolor{keyword}{namespace }CompactStar::Physics::Evolution::Observers}
+\DoxyCodeLine{47 \{}
+\DoxyCodeLine{48 }
+\DoxyCodeLine{55 \textcolor{keyword}{struct }\mbox{\hyperlink{struct_compact_star_1_1_physics_1_1_evolution_1_1_observers_1_1_run_info}{RunInfo}}}
+\DoxyCodeLine{56 \{}
+\DoxyCodeLine{58     std::string \mbox{\hyperlink{struct_compact_star_1_1_physics_1_1_evolution_1_1_observers_1_1_run_info_a6c487d603bace93ab3804c41cf86769a}{tag}};}
+\DoxyCodeLine{59 }
+\DoxyCodeLine{61     std::string \mbox{\hyperlink{struct_compact_star_1_1_physics_1_1_evolution_1_1_observers_1_1_run_info_ab3a2d18b851d109708348dce26db0a33}{output\_dir}};}
+\DoxyCodeLine{62 }
+\DoxyCodeLine{64     \textcolor{keywordtype}{double} \mbox{\hyperlink{struct_compact_star_1_1_physics_1_1_evolution_1_1_observers_1_1_run_info_a1841bb3b2660a6b26acec504314ad22e}{t0}} = 0.0;}
+\DoxyCodeLine{65 }
+\DoxyCodeLine{67     \textcolor{keywordtype}{double} \mbox{\hyperlink{struct_compact_star_1_1_physics_1_1_evolution_1_1_observers_1_1_run_info_a73bdf8a24a3c5200eef0a2cd53996a44}{tf}} = 0.0;}
+\DoxyCodeLine{68 \};}
+\DoxyCodeLine{69 }
+\DoxyCodeLine{76 \textcolor{keyword}{struct }\mbox{\hyperlink{struct_compact_star_1_1_physics_1_1_evolution_1_1_observers_1_1_sample_info}{SampleInfo}}}
+\DoxyCodeLine{77 \{}
+\DoxyCodeLine{79     \textcolor{keywordtype}{double} \mbox{\hyperlink{struct_compact_star_1_1_physics_1_1_evolution_1_1_observers_1_1_sample_info_af6f339502c9c34919fd2a60637abd88c}{t}} = 0.0;}
+\DoxyCodeLine{80 }
+\DoxyCodeLine{82     std::uint64\_t \mbox{\hyperlink{struct_compact_star_1_1_physics_1_1_evolution_1_1_observers_1_1_sample_info_acf63327094b58fb3a698fb46abb0e4ea}{sample\_index}} = 0;}
 \DoxyCodeLine{83 }
-\DoxyCodeLine{84 \textcolor{comment}{//==============================================================}}
-\DoxyCodeLine{85 \textcolor{comment}{//                        Observer Class}}
-\DoxyCodeLine{86 \textcolor{comment}{//==============================================================}}
-\DoxyCodeLine{91 \textcolor{comment}{}\textcolor{keyword}{class }\mbox{\hyperlink{class_compact_star_1_1_chemical_heating_1_1_observer}{Observer}}}
+\DoxyCodeLine{85     std::uint64\_t \mbox{\hyperlink{struct_compact_star_1_1_physics_1_1_evolution_1_1_observers_1_1_sample_info_a1307dba5cda602bdaad1d43a01e8a4a3}{step\_index}} = 0;}
+\DoxyCodeLine{86 \};}
+\DoxyCodeLine{87 }
+\DoxyCodeLine{91 \textcolor{keyword}{struct }\mbox{\hyperlink{struct_compact_star_1_1_physics_1_1_evolution_1_1_observers_1_1_finish_info}{FinishInfo}}}
 \DoxyCodeLine{92 \{}
-\DoxyCodeLine{93   \textcolor{keyword}{public}:}
-\DoxyCodeLine{94     \textcolor{keyword}{virtual} \mbox{\hyperlink{class_compact_star_1_1_chemical_heating_1_1_observer}{\string~Observer}}() \{\}}
+\DoxyCodeLine{94     \textcolor{keywordtype}{double} \mbox{\hyperlink{struct_compact_star_1_1_physics_1_1_evolution_1_1_observers_1_1_finish_info_a0157e317d9b5c760db0c6ffb9824d6c1}{t\_final}} = 0.0;}
 \DoxyCodeLine{95 }
-\DoxyCodeLine{101     \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_compact_star_1_1_chemical_heating_1_1_observer_a0f2176f2215329230ff5071b72650cde}{on\_sample}}(\textcolor{keyword}{const} EvolutionState \&state, \textcolor{keyword}{const} \mbox{\hyperlink{struct_compact_star_1_1_chemical_heating_1_1_derived}{Derived}} \&d) = 0;}
+\DoxyCodeLine{97     \textcolor{keywordtype}{bool} \mbox{\hyperlink{struct_compact_star_1_1_physics_1_1_evolution_1_1_observers_1_1_finish_info_ae5df7cdb11852bb4111cc4f59c53fe49}{ok}} = \textcolor{keyword}{false};}
+\DoxyCodeLine{98 }
+\DoxyCodeLine{100     std::string \mbox{\hyperlink{struct_compact_star_1_1_physics_1_1_evolution_1_1_observers_1_1_finish_info_a31b15e2257cbc6e48717cd7d7d5be04a}{message}};}
+\DoxyCodeLine{101 \};}
 \DoxyCodeLine{102 }
-\DoxyCodeLine{108     \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_compact_star_1_1_chemical_heating_1_1_observer_a2475dced2f1fc6484bc7910f7f6adf5a}{on\_finish}}(\textcolor{keyword}{const} EvolutionState \&state, \textcolor{keywordtype}{bool} ok)}
-\DoxyCodeLine{109     \{}
-\DoxyCodeLine{110         (void)state;}
-\DoxyCodeLine{111         (void)ok;}
-\DoxyCodeLine{112     \}}
-\DoxyCodeLine{113 \};}
-\DoxyCodeLine{114 \textcolor{comment}{//==============================================================}}
-\DoxyCodeLine{115 }
-\DoxyCodeLine{116 \textcolor{comment}{//==============================================================}}
-\DoxyCodeLine{117 \textcolor{comment}{//                  TimeSeriesRecorder Class}}
-\DoxyCodeLine{118 \textcolor{comment}{//==============================================================}}
-\DoxyCodeLine{127 \textcolor{comment}{}\textcolor{keyword}{class }\mbox{\hyperlink{class_compact_star_1_1_chemical_heating_1_1_time_series_recorder}{TimeSeriesRecorder}} : \textcolor{keyword}{public} \mbox{\hyperlink{class_compact_star_1_1_chemical_heating_1_1_observer}{Observer}}}
-\DoxyCodeLine{128 \{}
-\DoxyCodeLine{129   \textcolor{keyword}{public}:}
-\DoxyCodeLine{135     \textcolor{keyword}{explicit} \mbox{\hyperlink{class_compact_star_1_1_chemical_heating_1_1_time_series_recorder_a3222a404f5aec93a5ca844ea26c4d82f}{TimeSeriesRecorder}}(\mbox{\hyperlink{class_zaki_1_1_vector_1_1_data_set}{Zaki::Vector::DataSet}} \&ds,}
-\DoxyCodeLine{136                                 \textcolor{keyword}{const} std::string \&tag = std::string());}
-\DoxyCodeLine{137 }
-\DoxyCodeLine{139     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_compact_star_1_1_chemical_heating_1_1_time_series_recorder_ada2755c26b3bdba8620665b0d1ea9e0d}{on\_sample}}(\textcolor{keyword}{const} EvolutionState \&state, \textcolor{keyword}{const} \mbox{\hyperlink{struct_compact_star_1_1_chemical_heating_1_1_derived}{Derived}} \&d) \textcolor{keyword}{override};}
-\DoxyCodeLine{140 }
-\DoxyCodeLine{142     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_compact_star_1_1_chemical_heating_1_1_time_series_recorder_a64c7e95e64cda106e84aab4655e7611f}{on\_finish}}(\textcolor{keyword}{const} EvolutionState \&state, \textcolor{keywordtype}{bool} ok) \textcolor{keyword}{override};}
-\DoxyCodeLine{143 }
-\DoxyCodeLine{144   \textcolor{keyword}{private}:}
-\DoxyCodeLine{145     \mbox{\hyperlink{class_zaki_1_1_vector_1_1_data_set}{Zaki::Vector::DataSet}} *m\_ds = 0;}
-\DoxyCodeLine{146     std::string m\_tag;}
-\DoxyCodeLine{147     \textcolor{keywordtype}{bool} m\_initialized = \textcolor{keyword}{false};}
-\DoxyCodeLine{148 \};}
-\DoxyCodeLine{149 \textcolor{comment}{//==============================================================}}
-\DoxyCodeLine{150 \} \textcolor{comment}{// namespace ChemicalHeating}}
-\DoxyCodeLine{151 \textcolor{comment}{//==============================================================}}
-\DoxyCodeLine{152 \} \textcolor{comment}{// namespace CompactStar}}
-\DoxyCodeLine{153 \textcolor{comment}{//==============================================================}}
-\DoxyCodeLine{154 }
-\DoxyCodeLine{155 \textcolor{preprocessor}{\#endif }\textcolor{comment}{/* CompactStar\_ChemicalHeating\_Observers\_H */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{108 \textcolor{keyword}{class }\mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_observers_1_1_i_observer}{IObserver}}}
+\DoxyCodeLine{109 \{}
+\DoxyCodeLine{110   \textcolor{keyword}{public}:}
+\DoxyCodeLine{111     \textcolor{keyword}{virtual} \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_observers_1_1_i_observer}{\string~IObserver}}();}
+\DoxyCodeLine{112 }
+\DoxyCodeLine{126     \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_observers_1_1_i_observer_ac0fc3ae20bdb247ac53141d3e5772a4d}{OnStart}}(\textcolor{keyword}{const} \mbox{\hyperlink{struct_compact_star_1_1_physics_1_1_evolution_1_1_observers_1_1_run_info}{RunInfo}} \&run,}
+\DoxyCodeLine{127                          \textcolor{keyword}{const} \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_state_vector}{Evolution::StateVector}} \&Y0,}
+\DoxyCodeLine{128                          \textcolor{keyword}{const} \mbox{\hyperlink{struct_compact_star_1_1_physics_1_1_evolution_1_1_driver_context}{Evolution::DriverContext}} \&ctx);}
+\DoxyCodeLine{129 }
+\DoxyCodeLine{143     \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_observers_1_1_i_observer_ae8f5cf1b4c8bf1170402166950d9baab}{OnSample}}(\textcolor{keyword}{const} \mbox{\hyperlink{struct_compact_star_1_1_physics_1_1_evolution_1_1_observers_1_1_sample_info}{SampleInfo}} \&s,}
+\DoxyCodeLine{144                           \textcolor{keyword}{const} \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_state_vector}{Evolution::StateVector}} \&Y,}
+\DoxyCodeLine{145                           \textcolor{keyword}{const} \mbox{\hyperlink{struct_compact_star_1_1_physics_1_1_evolution_1_1_driver_context}{Evolution::DriverContext}} \&ctx) = 0;}
+\DoxyCodeLine{146 }
+\DoxyCodeLine{159     \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_observers_1_1_i_observer_a6c8f9110c9a1e13675c384d103f64782}{OnFinish}}(\textcolor{keyword}{const} \mbox{\hyperlink{struct_compact_star_1_1_physics_1_1_evolution_1_1_observers_1_1_finish_info}{FinishInfo}} \&fin,}
+\DoxyCodeLine{160                           \textcolor{keyword}{const} \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_state_vector}{Evolution::StateVector}} \&Yf,}
+\DoxyCodeLine{161                           \textcolor{keyword}{const} \mbox{\hyperlink{struct_compact_star_1_1_physics_1_1_evolution_1_1_driver_context}{Evolution::DriverContext}} \&ctx);}
+\DoxyCodeLine{162 }
+\DoxyCodeLine{166     [[nodiscard]] \textcolor{keyword}{virtual} std::string \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_observers_1_1_i_observer_aacc16e14cdf6031c4bb69f7ff8ea7e59}{Name}}() \textcolor{keyword}{const};}
+\DoxyCodeLine{167 \};}
+\DoxyCodeLine{168 }
+\DoxyCodeLine{169 \} \textcolor{comment}{// namespace CompactStar::Physics::Evolution::Observers}}
 
 \end{DoxyCode}

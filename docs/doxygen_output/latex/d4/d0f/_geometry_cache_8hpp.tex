@@ -2,30 +2,43 @@
 \label{_geometry_cache_8hpp}\index{CompactStar/Physics/Evolution/GeometryCache.hpp@{CompactStar/Physics/Evolution/GeometryCache.hpp}}
 
 
-Precomputed geometric weights and masks for fast radial integration.  
+Precomputed geometric factors for fast radial integration (Data\+Column-\/native).  
 
 
+{\ttfamily \#include $<$Zaki/\+Vector/\+Data\+Set.\+hpp$>$}\newline
 {\ttfamily \#include $<$cstddef$>$}\newline
-{\ttfamily \#include $<$vector$>$}\newline
 \doxysubsection*{Classes}
 \begin{DoxyCompactItemize}
 \item 
 class \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_geometry_cache}{Compact\+Star\+::\+Physics\+::\+Evolution\+::\+Geometry\+Cache}}
-\begin{DoxyCompactList}\small\item\em Stores radial weights and simple structure flags for integrals. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Geometry-\/only cached columns for repeated integrals. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Namespaces}
 \begin{DoxyCompactItemize}
 \item 
 namespace \mbox{\hyperlink{namespace_compact_star_1_1_physics}{Compact\+Star\+::\+Physics}}
-\begin{DoxyCompactList}\small\item\em High-\/level physical modeling layer for compact stars. \end{DoxyCompactList}\item 
-namespace \mbox{\hyperlink{namespace_compact_star_1_1_physics_1_1_evolution}{Compact\+Star\+::\+Physics\+::\+Evolution}}
-\begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{namespace_compact_star_1_1_physics_1_1_evolution}{Evolution}} engine for time-\/dependent neutron-\/star physics. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em High-\/level physical modeling layer for compact stars. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}
-Precomputed geometric weights and masks for fast radial integration. 
+Precomputed geometric factors for fast radial integration (Data\+Column-\/native). 
 
-Geometry\+Cache builds redshift/volume weights once per star\+:
+Metric convention assumed\+:  \[
+  ds^2 = -e^{2\nu(r)} dt^2 + e^{2\Lambda(r)} dr^2 + r^2 d\Omega^2
+\]
+
+where\+:
 \begin{DoxyItemize}
-\item $w_C(r)=4\pi r^2 e^{\Lambda(r)}$ (heat capacity integrals)
-\item $w_\nu(r)=4\pi r^2 e^{\Lambda(r)+2\nu(r)}$ (luminosities at infinity) 
+\item $\nu(r)$ is the time metric exponent
+\item $\Lambda(r)$ is the radial metric exponent
+\end{DoxyItemize}
+
+This cache stores primitive, reusable columns\+:
+\begin{DoxyItemize}
+\item $r$ (km)
+\item $A(r)=4\pi r^2$
+\item $e^{\nu}$, $e^{-\nu}$, $e^{2\nu}$
+\item $e^{\Lambda}$, $e^{-\Lambda}$
+\item $e^{\nu-\Lambda}$, $e^{-(\nu+\Lambda)}$
+\item $w_V(r)=4\pi r^2 e^{\Lambda}$ (proper-\/volume shell weight)
+\item $w_V e^{\nu}$, $w_V e^{2\nu}$ (common redshifted variants) 
 \end{DoxyItemize}

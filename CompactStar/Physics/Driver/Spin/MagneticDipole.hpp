@@ -116,7 +116,7 @@ class MagneticDipole final : public IDriver
 	void AccumulateRHS(double t,
 					   const Evolution::StateVector &Y,
 					   Evolution::RHSAccumulator &dYdt,
-					   const Evolution::StarContext &ctx) const override;
+					   const Evolution::DriverContext &ctx) const override;
 
 	// ------------------------------------------------------------------
 	//  Options access

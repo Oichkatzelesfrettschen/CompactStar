@@ -69,54 +69,64 @@ $(function() {
 
 <div id="nav-path" class="navpath">
   <ul>
-<li class="navelem"><b>CompactStar</b></li><li class="navelem"><a class="el" href="../../dc/dab/namespace_compact_star_1_1_physics.html">Physics</a></li><li class="navelem"><a class="el" href="../../d6/d38/namespace_compact_star_1_1_physics_1_1_evolution.html">Evolution</a></li><li class="navelem"><a class="el" href="../../d1/d5f/class_compact_star_1_1_physics_1_1_evolution_1_1_evolution_system.html">EvolutionSystem</a></li>  </ul>
+<li class="navelem"><b>CompactStar</b></li><li class="navelem"><a class="el" href="../../dc/dab/namespace_compact_star_1_1_physics.html">Physics</a></li><li class="navelem"><b>Evolution</b></li><li class="navelem"><a class="el" href="../../d1/d5f/class_compact_star_1_1_physics_1_1_evolution_1_1_evolution_system.html">EvolutionSystem</a></li>  </ul>
 </div>
 </div><!-- top -->
 <div class="header">
   <div class="summary">
-<a href="#nested-classes">Classes</a> &#124;
 <a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="../../d7/d5a/class_compact_star_1_1_physics_1_1_evolution_1_1_evolution_system-members.html">List of all members</a>  </div>
   <div class="headertitle"><div class="title">CompactStar::Physics::Evolution::EvolutionSystem Class Reference</div></div>
 </div><!--header-->
 <div class="contents">
 
-<p>GSL-compatible RHS functor (interfaces only in Phase 0).  
+<p>GSL-compatible RHS functor for dY/dt.  
  <a href="../../d1/d5f/class_compact_star_1_1_physics_1_1_evolution_1_1_evolution_system.html#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="../../d3/d1e/_evolution_system_8hpp_source.html">EvolutionSystem.hpp</a>&gt;</code></p>
 <table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="nested-classes" name="nested-classes"></a>
-Classes</h2></td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d6/d04/struct_compact_star_1_1_physics_1_1_evolution_1_1_evolution_system_1_1_context.html">Context</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Bundles read-only references to the model components.  <a href="../../d6/d04/struct_compact_star_1_1_physics_1_1_evolution_1_1_evolution_system_1_1_context.html#details">More...</a><br /></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a2ac42b526a3d6817ced76229f5db5896"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d1/d5f/class_compact_star_1_1_physics_1_1_evolution_1_1_evolution_system.html#a2ac42b526a3d6817ced76229f5db5896">EvolutionSystem</a> (const <a class="el" href="../../d6/d04/struct_compact_star_1_1_physics_1_1_evolution_1_1_evolution_system_1_1_context.html">Context</a> &amp;ctx, <a class="el" href="../../da/d36/class_compact_star_1_1_physics_1_1_evolution_1_1_state_vector.html">StateVector</a> &amp;state, <a class="el" href="../../d6/d26/class_compact_star_1_1_physics_1_1_evolution_1_1_r_h_s_accumulator.html">RHSAccumulator</a> &amp;rhs)</td></tr>
-<tr class="memdesc:a2ac42b526a3d6817ced76229f5db5896"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct with a fully-populated <a class="el" href="../../d6/d04/struct_compact_star_1_1_physics_1_1_evolution_1_1_evolution_system_1_1_context.html" title="Bundles read-only references to the model components.">Context</a>.  <a href="../../d1/d5f/class_compact_star_1_1_physics_1_1_evolution_1_1_evolution_system.html#a2ac42b526a3d6817ced76229f5db5896">More...</a><br /></td></tr>
-<tr class="separator:a2ac42b526a3d6817ced76229f5db5896"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9e015fdf5586e8361e7f404a7e58ed0b"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d1/d5f/class_compact_star_1_1_physics_1_1_evolution_1_1_evolution_system.html#a9e015fdf5586e8361e7f404a7e58ed0b">operator()</a> (double t, const double y[], double dydt[]) const</td></tr>
-<tr class="memdesc:a9e015fdf5586e8361e7f404a7e58ed0b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Evaluate RHS <picture><source srcset="../../form_17_dark.png" media="(prefers-color-scheme: dark)"/><img class="formulaInl" alt="$\dot{y} = f(t,y)$" src="../../form_17.png"/></picture>.  <a href="../../d1/d5f/class_compact_star_1_1_physics_1_1_evolution_1_1_evolution_system.html#a9e015fdf5586e8361e7f404a7e58ed0b">More...</a><br /></td></tr>
-<tr class="separator:a9e015fdf5586e8361e7f404a7e58ed0b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1536e327db83ae765406e6f9aa6ff100"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d1/d5f/class_compact_star_1_1_physics_1_1_evolution_1_1_evolution_system.html#a1536e327db83ae765406e6f9aa6ff100">EvolutionSystem</a> (const <a class="el" href="../../d1/db5/struct_compact_star_1_1_physics_1_1_evolution_1_1_driver_context.html">DriverContext</a> &amp;ctx, <a class="el" href="../../da/d36/class_compact_star_1_1_physics_1_1_evolution_1_1_state_vector.html">StateVector</a> &amp;state, <a class="el" href="../../d6/d26/class_compact_star_1_1_physics_1_1_evolution_1_1_r_h_s_accumulator.html">RHSAccumulator</a> &amp;rhs, const <a class="el" href="../../d8/ddc/class_compact_star_1_1_physics_1_1_evolution_1_1_state_layout.html">StateLayout</a> &amp;layout, std::vector&lt; DriverPtr &gt; drivers)</td></tr>
+<tr class="memdesc:a1536e327db83ae765406e6f9aa6ff100"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct the RHS functor.  <a href="../../d1/d5f/class_compact_star_1_1_physics_1_1_evolution_1_1_evolution_system.html#a1536e327db83ae765406e6f9aa6ff100">More...</a><br /></td></tr>
+<tr class="separator:a1536e327db83ae765406e6f9aa6ff100"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a42fb560c16ef9608bc0761e0c7bd6dda"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d1/d5f/class_compact_star_1_1_physics_1_1_evolution_1_1_evolution_system.html#a42fb560c16ef9608bc0761e0c7bd6dda">operator()</a> (double t, const double *y, double *dydt) const</td></tr>
+<tr class="memdesc:a42fb560c16ef9608bc0761e0c7bd6dda"><td class="mdescLeft">&#160;</td><td class="mdescRight">Evaluate RHS <picture><source srcset="../../form_32_dark.png" media="(prefers-color-scheme: dark)"/><img class="formulaInl" alt="$\dot{y} = f(t,y)$" src="../../form_32.png"/></picture>.  <a href="../../d1/d5f/class_compact_star_1_1_physics_1_1_evolution_1_1_evolution_system.html#a42fb560c16ef9608bc0761e0c7bd6dda">More...</a><br /></td></tr>
+<tr class="separator:a42fb560c16ef9608bc0761e0c7bd6dda"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a905a4d65c7dc3b4b5c36f0272375d257"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d1/d5f/class_compact_star_1_1_physics_1_1_evolution_1_1_evolution_system.html#a905a4d65c7dc3b4b5c36f0272375d257">AddObserver</a> (ObserverPtr obs)</td></tr>
+<tr class="memdesc:a905a4d65c7dc3b4b5c36f0272375d257"><td class="mdescLeft">&#160;</td><td class="mdescRight">Register an observer to receive evolution callbacks.  <a href="../../d1/d5f/class_compact_star_1_1_physics_1_1_evolution_1_1_evolution_system.html#a905a4d65c7dc3b4b5c36f0272375d257">More...</a><br /></td></tr>
+<tr class="separator:a905a4d65c7dc3b4b5c36f0272375d257"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab2fd6ddf928c3db5d47da5f0a38ef9ad"><td class="memItemLeft" align="right" valign="top">const std::vector&lt; ObserverPtr &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d1/d5f/class_compact_star_1_1_physics_1_1_evolution_1_1_evolution_system.html#ab2fd6ddf928c3db5d47da5f0a38ef9ad">ObserversList</a> () const</td></tr>
+<tr class="memdesc:ab2fd6ddf928c3db5d47da5f0a38ef9ad"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return the registered observers.  <a href="../../d1/d5f/class_compact_star_1_1_physics_1_1_evolution_1_1_evolution_system.html#ab2fd6ddf928c3db5d47da5f0a38ef9ad">More...</a><br /></td></tr>
+<tr class="separator:ab2fd6ddf928c3db5d47da5f0a38ef9ad"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a050094910e796895d585451887cac700"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d1/d5f/class_compact_star_1_1_physics_1_1_evolution_1_1_evolution_system.html#a050094910e796895d585451887cac700">NotifyStart</a> (double t0, double t1, const double *y0) const</td></tr>
+<tr class="memdesc:a050094910e796895d585451887cac700"><td class="mdescLeft">&#160;</td><td class="mdescRight">Notify observers before integration begins.  <a href="../../d1/d5f/class_compact_star_1_1_physics_1_1_evolution_1_1_evolution_system.html#a050094910e796895d585451887cac700">More...</a><br /></td></tr>
+<tr class="separator:a050094910e796895d585451887cac700"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5a322f14f7fd7750e74eb253f995377b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d1/d5f/class_compact_star_1_1_physics_1_1_evolution_1_1_evolution_system.html#a5a322f14f7fd7750e74eb253f995377b">NotifySample</a> (double t, const double *y, std::size_t sample_index) const</td></tr>
+<tr class="memdesc:a5a322f14f7fd7750e74eb253f995377b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Notify observers after reaching a save point (dt_save cadence).  <a href="../../d1/d5f/class_compact_star_1_1_physics_1_1_evolution_1_1_evolution_system.html#a5a322f14f7fd7750e74eb253f995377b">More...</a><br /></td></tr>
+<tr class="separator:a5a322f14f7fd7750e74eb253f995377b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a306557933222720ed97b8e3367c41c8e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d1/d5f/class_compact_star_1_1_physics_1_1_evolution_1_1_evolution_system.html#a306557933222720ed97b8e3367c41c8e">NotifyFinish</a> (double t, const double *y, bool ok) const</td></tr>
+<tr class="memdesc:a306557933222720ed97b8e3367c41c8e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Notify observers once at the end of integration.  <a href="../../d1/d5f/class_compact_star_1_1_physics_1_1_evolution_1_1_evolution_system.html#a306557933222720ed97b8e3367c41c8e">More...</a><br /></td></tr>
+<tr class="separator:a306557933222720ed97b8e3367c41c8e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>GSL-compatible RHS functor (interfaces only in Phase 0). </p>
+<div class="textblock"><p>GSL-compatible RHS functor for dY/dt. </p>
+<p><a class="el" href="../../d1/d5f/class_compact_star_1_1_physics_1_1_evolution_1_1_evolution_system.html" title="GSL-compatible RHS functor for dY/dt.">EvolutionSystem</a> owns no physics; it only coordinates:</p><ul>
+<li>unpacking y[] into <a class="el" href="../../da/d7b/namespace_compact_star_1_1_physics_1_1_state.html">State</a> blocks,</li>
+<li>invoking each <a class="el" href="../../da/dd4/class_compact_star_1_1_physics_1_1_i_driver.html">IDriver</a> to accumulate into <a class="el" href="../../d6/d26/class_compact_star_1_1_physics_1_1_evolution_1_1_r_h_s_accumulator.html" title="Write-only accumulator for dY/dt components, keyed by StateTag.">RHSAccumulator</a>,</li>
+<li>scattering RHS back into dydt[]. </li>
+</ul>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a id="a2ac42b526a3d6817ced76229f5db5896" name="a2ac42b526a3d6817ced76229f5db5896"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a2ac42b526a3d6817ced76229f5db5896">&#9670;&#160;</a></span>EvolutionSystem()</h2>
+<a id="a1536e327db83ae765406e6f9aa6ff100" name="a1536e327db83ae765406e6f9aa6ff100"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1536e327db83ae765406e6f9aa6ff100">&#9670;&#160;</a></span>EvolutionSystem()</h2>
 
 <div class="memitem">
 <div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">CompactStar::ChemicalHeating::EvolutionSystem::EvolutionSystem </td>
+          <td class="memname">CompactStar::Physics::Evolution::EvolutionSystem::EvolutionSystem </td>
           <td>(</td>
-          <td class="paramtype">const <a class="el" href="../../d6/d04/struct_compact_star_1_1_physics_1_1_evolution_1_1_evolution_system_1_1_context.html">Context</a> &amp;&#160;</td>
+          <td class="paramtype">const <a class="el" href="../../d1/db5/struct_compact_star_1_1_physics_1_1_evolution_1_1_driver_context.html">DriverContext</a> &amp;&#160;</td>
           <td class="paramname"><em>ctx</em>, </td>
         </tr>
         <tr>
@@ -129,7 +139,19 @@ Public Member Functions</h2></td></tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype"><a class="el" href="../../d6/d26/class_compact_star_1_1_physics_1_1_evolution_1_1_r_h_s_accumulator.html">RHSAccumulator</a> &amp;&#160;</td>
-          <td class="paramname"><em>rhs</em>&#160;</td>
+          <td class="paramname"><em>rhs</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="../../d8/ddc/class_compact_star_1_1_physics_1_1_evolution_1_1_state_layout.html">StateLayout</a> &amp;&#160;</td>
+          <td class="paramname"><em>layout</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::vector&lt; DriverPtr &gt;&#160;</td>
+          <td class="paramname"><em>drivers</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -137,40 +159,73 @@ Public Member Functions</h2></td></tr>
           <td></td><td></td>
         </tr>
       </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">explicit</span></span>  </td>
-  </tr>
-</table>
 </div><div class="memdoc">
 
-<p>Construct with a fully-populated <a class="el" href="../../d6/d04/struct_compact_star_1_1_physics_1_1_evolution_1_1_evolution_system_1_1_context.html" title="Bundles read-only references to the model components.">Context</a>. </p>
-<p>Construct the RHS functor with a static model context and references to the dynamic state / RHS helpers.</p>
+<p>Construct the RHS functor. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">ctx</td><td>Static model context (star structure, geometry, envelope, config). </td></tr>
-    <tr><td class="paramname">state</td><td>Non-owning reference to the current <a class="el" href="../../da/d36/class_compact_star_1_1_physics_1_1_evolution_1_1_state_vector.html" title="Composite view over the current ODE state (tag → State*).">StateVector</a> (how we interpret the flat y[] array). </td></tr>
-    <tr><td class="paramname">rhs</td><td>Non-owning reference to an <a class="el" href="../../d6/d26/class_compact_star_1_1_physics_1_1_evolution_1_1_r_h_s_accumulator.html" title="Write-only accumulator for dY/dt components, keyed by StateTag.">RHSAccumulator</a> used as scratch storage for dY/dt contributions.</td></tr>
+    <tr><td class="paramname">ctx</td><td>Static model context (stored by value, pointers non-owning). </td></tr>
+    <tr><td class="paramname">state</td><td>Non-owning reference to logical state blocks. </td></tr>
+    <tr><td class="paramname">rhs</td><td>Non-owning reference to RHS accumulator. </td></tr>
+    <tr><td class="paramname">layout</td><td>Layout describing how tags map into the flat y[]/dydt[]. </td></tr>
+    <tr><td class="paramname">drivers</td><td>List of physics drivers (owned via DriverPtr).</td></tr>
   </table>
   </dd>
 </dl>
-<p>Ownership / lifetime:</p><ul>
-<li>The <a class="el" href="../../d1/d5f/class_compact_star_1_1_physics_1_1_evolution_1_1_evolution_system.html" title="GSL-compatible RHS functor (interfaces only in Phase 0).">EvolutionSystem</a> stores the <code>ctx</code> by value (pointers inside it must remain valid for the lifetime of the <a class="el" href="../../d1/d5f/class_compact_star_1_1_physics_1_1_evolution_1_1_evolution_system.html" title="GSL-compatible RHS functor (interfaces only in Phase 0).">EvolutionSystem</a>).</li>
-<li><code>state</code> and <code>rhs</code> are stored as references; the caller is responsible for ensuring they outlive the <a class="el" href="../../d1/d5f/class_compact_star_1_1_physics_1_1_evolution_1_1_evolution_system.html" title="GSL-compatible RHS functor (interfaces only in Phase 0).">EvolutionSystem</a>.</li>
+<p>Lifetime rules:</p><ul>
+<li>The RuntimeContext, <a class="el" href="../../d2/d50/class_compact_star_1_1_physics_1_1_evolution_1_1_geometry_cache.html" title="Geometry-only cached columns for repeated integrals.">GeometryCache</a>, IEnvelope, <a class="el" href="../../d5/d7b/struct_compact_star_1_1_physics_1_1_evolution_1_1_config.html" title="Configuration for a single evolution run.">Config</a> pointed to by <code>ctx</code> must outlive this <a class="el" href="../../d1/d5f/class_compact_star_1_1_physics_1_1_evolution_1_1_evolution_system.html" title="GSL-compatible RHS functor for dY/dt.">EvolutionSystem</a>.</li>
+<li><code>state</code>, <code>rhs</code>, and <code>layout</code> must outlive this <a class="el" href="../../d1/d5f/class_compact_star_1_1_physics_1_1_evolution_1_1_evolution_system.html" title="GSL-compatible RHS functor for dY/dt.">EvolutionSystem</a>.</li>
+<li>Drivers are owned by <a class="el" href="../../d1/d5f/class_compact_star_1_1_physics_1_1_evolution_1_1_evolution_system.html" title="GSL-compatible RHS functor for dY/dt.">EvolutionSystem</a> via the DriverPtr vector. </li>
 </ul>
-<p>At this stage (Phase 0 / scaffolding), we only perform basic validation of the context pointers and store the references. The actual physics will be implemented once the driver / rate infrastructure is in place. </p>
 
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
-<a id="a9e015fdf5586e8361e7f404a7e58ed0b" name="a9e015fdf5586e8361e7f404a7e58ed0b"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a9e015fdf5586e8361e7f404a7e58ed0b">&#9670;&#160;</a></span>operator()()</h2>
+<a id="a905a4d65c7dc3b4b5c36f0272375d257" name="a905a4d65c7dc3b4b5c36f0272375d257"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a905a4d65c7dc3b4b5c36f0272375d257">&#9670;&#160;</a></span>AddObserver()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">int CompactStar::ChemicalHeating::EvolutionSystem::operator() </td>
+          <td class="memname">void CompactStar::Physics::Evolution::EvolutionSystem::AddObserver </td>
+          <td>(</td>
+          <td class="paramtype">ObserverPtr&#160;</td>
+          <td class="paramname"><em>obs</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Register an observer to receive evolution callbacks. </p>
+<p>Observers are notified by the integrator (not by operator()) at:</p><ul>
+<li>OnStart(t0, Y0, ctx)</li>
+<li>Observe(t, Y, ctx) on accepted steps (or at least whenever the integrator chooses)</li>
+<li>OnFinish(t, Y, ctx, ok)</li>
+</ul>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">obs</td><td>Shared pointer to an observer implementation. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="exception"><dt>Exceptions</dt><dd>
+  <table class="exception">
+    <tr><td class="paramname">std::runtime_error</td><td>if obs is null. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a306557933222720ed97b8e3367c41c8e" name="a306557933222720ed97b8e3367c41c8e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a306557933222720ed97b8e3367c41c8e">&#9670;&#160;</a></span>NotifyFinish()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void CompactStar::Physics::Evolution::EvolutionSystem::NotifyFinish </td>
           <td>(</td>
           <td class="paramtype">double&#160;</td>
           <td class="paramname"><em>t</em>, </td>
@@ -178,14 +233,14 @@ Public Member Functions</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const double&#160;</td>
-          <td class="paramname"><em>y</em>[], </td>
+          <td class="paramtype">const double *&#160;</td>
+          <td class="paramname"><em>y</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">double&#160;</td>
-          <td class="paramname"><em>dydt</em>[]&#160;</td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>ok</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -195,42 +250,182 @@ Public Member Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Evaluate RHS <picture><source srcset="../../form_17_dark.png" media="(prefers-color-scheme: dark)"/><img class="formulaInl" alt="$\dot{y} = f(t,y)$" src="../../form_17.png"/></picture>. </p>
-<p>Signature mirrors GSL callbacks (no includes here). Implementation will: 1) convert <picture><source srcset="../../form_18_dark.png" media="(prefers-color-scheme: dark)"/><img class="formulaInl" alt="$T^\infty \to T(r)$" src="../../form_18.png"/></picture> via redshift, 2) assemble integrals for</p>
-<p>This method is designed to be wrapped by a GSL ODE driver. Its signature mirrors the usual callback:</p>
-<ul>
-<li><code>t</code> is the current time (s),</li>
-<li><code>y</code> is the current state vector (flat array),</li>
-<li><code>dydt</code> is where the derivatives are written.</li>
-</ul>
-<p>In the <em>final</em> implementation, the steps will roughly be:</p>
-<ol type="1">
-<li>Decode <code>y</code> into the sub-states via <a class="el" href="../../da/d36/class_compact_star_1_1_physics_1_1_evolution_1_1_state_vector.html" title="Composite view over the current ODE state (tag → State*).">StateVector</a> (Spin/Thermal/Chem/BNV,…).</li>
-<li>Use <a class="el" href="../../d2/d50/class_compact_star_1_1_physics_1_1_evolution_1_1_geometry_cache.html" title="Stores radial weights and simple structure flags for integrals.">GeometryCache</a> and <a class="el" href="../../d9/d42/class_compact_star_1_1_physics_1_1_evolution_1_1_star_context.html" title="Immutable, per-star adapter exposing cached geometry and composition.">StarContext</a> to build any per-call radial quantities (e.g., redshifted temperatures).</li>
-<li>Clear <a class="el" href="../../d6/d26/class_compact_star_1_1_physics_1_1_evolution_1_1_r_h_s_accumulator.html" title="Write-only accumulator for dY/dt components, keyed by StateTag.">RHSAccumulator</a> and let each driver accumulate its contribution to the appropriate tagged block (thermal, chem, spin…).</li>
-<li>Project the accumulated RHS back into the flat <code>dydt</code> array in the same layout used by the integrator.</li>
-</ol>
-<p>For the current Phase 0, we provide a safe, minimal implementation that:</p><ul>
-<li>computes the expected size of the state vector from <a class="el" href="../../d5/d7b/struct_compact_star_1_1_physics_1_1_evolution_1_1_config.html" title="Configures a single evolution run.">Config</a>,</li>
-<li>zeroes out <code>dydt</code> (no evolution),</li>
-<li>leaves detailed physics as a TODO.</li>
-</ul>
+<p>Notify observers once at the end of integration. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">t</td><td>Final time reached. </td></tr>
+    <tr><td class="paramname">y</td><td>Flat state array at final time. </td></tr>
+    <tr><td class="paramname">ok</td><td>Whether integrator considers the run successful. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a5a322f14f7fd7750e74eb253f995377b" name="a5a322f14f7fd7750e74eb253f995377b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5a322f14f7fd7750e74eb253f995377b">&#9670;&#160;</a></span>NotifySample()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void CompactStar::Physics::Evolution::EvolutionSystem::NotifySample </td>
+          <td>(</td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>t</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const double *&#160;</td>
+          <td class="paramname"><em>y</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::size_t&#160;</td>
+          <td class="paramname"><em>sample_index</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Notify observers after reaching a save point (dt_save cadence). </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">t</td><td>Current time (after stepping). </td></tr>
+    <tr><td class="paramname">y</td><td>Flat state array at time t. </td></tr>
+    <tr><td class="paramname">sample_index</td><td>0-based index of emitted samples. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a050094910e796895d585451887cac700" name="a050094910e796895d585451887cac700"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a050094910e796895d585451887cac700">&#9670;&#160;</a></span>NotifyStart()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void CompactStar::Physics::Evolution::EvolutionSystem::NotifyStart </td>
+          <td>(</td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>t0</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>t1</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const double *&#160;</td>
+          <td class="paramname"><em>y0</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Notify observers before integration begins. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">t0</td><td>Start time. </td></tr>
+    <tr><td class="paramname">t1</td><td>Target end time. </td></tr>
+    <tr><td class="paramname">y0</td><td>Flat initial state array (size = layout.TotalSize()). </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="ab2fd6ddf928c3db5d47da5f0a38ef9ad" name="ab2fd6ddf928c3db5d47da5f0a38ef9ad"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab2fd6ddf928c3db5d47da5f0a38ef9ad">&#9670;&#160;</a></span>ObserversList()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const std::vector&lt; ObserverPtr &gt; &amp; CompactStar::Physics::Evolution::EvolutionSystem::ObserversList </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Return the registered observers. </p>
+<p>This is intended for the integrator to iterate and call hooks. </p>
+
+</div>
+</div>
+<a id="a42fb560c16ef9608bc0761e0c7bd6dda" name="a42fb560c16ef9608bc0761e0c7bd6dda"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a42fb560c16ef9608bc0761e0c7bd6dda">&#9670;&#160;</a></span>operator()()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int CompactStar::Physics::Evolution::EvolutionSystem::operator() </td>
+          <td>(</td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>t</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const double *&#160;</td>
+          <td class="paramname"><em>y</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double *&#160;</td>
+          <td class="paramname"><em>dydt</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Evaluate RHS <picture><source srcset="../../form_32_dark.png" media="(prefers-color-scheme: dark)"/><img class="formulaInl" alt="$\dot{y} = f(t,y)$" src="../../form_32.png"/></picture>. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">t</td><td>Time (s). </td></tr>
-    <tr><td class="paramname">y</td><td><a class="el" href="../../da/d7b/namespace_compact_star_1_1_physics_1_1_state.html">State</a> array (size = 1 + n_eta + [Omega] depending on <a class="el" href="../../d5/d7b/struct_compact_star_1_1_physics_1_1_evolution_1_1_config.html" title="Configures a single evolution run.">Config</a>). </td></tr>
+    <tr><td class="paramname">y</td><td><a class="el" href="../../da/d7b/namespace_compact_star_1_1_physics_1_1_state.html">State</a> array (size = layout.TotalSize()). </td></tr>
     <tr><td class="paramname">dydt</td><td>Output derivatives (same size as <code>y</code>).</td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>0 if success; nonzero on failure (consistent with GSL conventions). </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>0 on success; nonzero on failure (GSL convention). </dd></dl>
 
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following files:<ul>
 <li>CompactStar/Physics/Evolution/<a class="el" href="../../d3/d1e/_evolution_system_8hpp_source.html">EvolutionSystem.hpp</a></li>
 <li>CompactStar/Physics/Evolution/src/<a class="el" href="../../dd/d86/_evolution_system_8cpp.html">EvolutionSystem.cpp</a></li>
-<li>CompactStar/Physics/Evolution/src/System_old.cpp</li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->

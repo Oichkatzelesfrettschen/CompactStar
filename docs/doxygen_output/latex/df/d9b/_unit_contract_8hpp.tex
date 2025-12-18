@@ -1,0 +1,46 @@
+\hypertarget{_unit_contract_8hpp}{}\doxysection{Compact\+Star/\+Physics/\+Evolution/\+Diagnostics/\+Unit\+Contract.hpp File Reference}
+\label{_unit_contract_8hpp}\index{CompactStar/Physics/Evolution/Diagnostics/UnitContract.hpp@{CompactStar/Physics/Evolution/Diagnostics/UnitContract.hpp}}
+
+
+Runtime “unit contract” utilities for diagnostics.  
+
+
+{\ttfamily \#include $<$set$>$}\newline
+{\ttfamily \#include $<$string$>$}\newline
+{\ttfamily \#include $<$vector$>$}\newline
+\doxysubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_diagnostics_1_1_unit_contract}{Compact\+Star\+::\+Physics\+::\+Evolution\+::\+Diagnostics\+::\+Unit\+Contract}}
+\begin{DoxyCompactList}\small\item\em A simple runtime contract describing unit conventions and assumptions. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_diagnostics_1_1_unit_vocabulary}{Compact\+Star\+::\+Physics\+::\+Evolution\+::\+Diagnostics\+::\+Unit\+Vocabulary}}
+\begin{DoxyCompactList}\small\item\em Global allowed-\/vocabulary for unit strings. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Namespaces}
+\begin{DoxyCompactItemize}
+\item 
+namespace \mbox{\hyperlink{namespace_compact_star_1_1_physics}{Compact\+Star\+::\+Physics}}
+\begin{DoxyCompactList}\small\item\em High-\/level physical modeling layer for compact stars. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Runtime “unit contract” utilities for diagnostics. 
+
+This module supports two ideas you discussed\+:
+
+(1) Centralize unit assumptions in one place per driver (runtime contract)\+:
+\begin{DoxyItemize}
+\item A driver provides a Unit\+Contract with stable text lines.
+\item Diagnostics can print the contract verbatim (no duplication of formulas).
+\end{DoxyItemize}
+
+(2) Enforce a global allowed unit vocabulary (runtime linting)\+:
+\begin{DoxyItemize}
+\item You can validate that unit strings used by diagnostics are from a predefined set (e.\+g., \char`\"{}\+K\char`\"{}, \char`\"{}erg/s\char`\"{}, \char`\"{}cm$^\wedge$2\char`\"{}, \char`\"{}rad/s\char`\"{}).
+\item This prevents drift like \char`\"{}erg s$^\wedge$-\/1\char`\"{} vs \char`\"{}erg/s\char`\"{} across drivers.
+\end{DoxyItemize}
+
+Important\+:
+\begin{DoxyItemize}
+\item This is NOT a unit type system; it is metadata and linting.
+\item Validation should be cheap and used only in debug/diagnostic paths. 
+\end{DoxyItemize}

@@ -28,8 +28,8 @@
 \DoxyCodeLine{24 \textcolor{comment}{ * SOFTWARE.}}
 \DoxyCodeLine{25 \textcolor{comment}{ */}}
 \DoxyCodeLine{26 }
-\DoxyCodeLine{40 \textcolor{preprocessor}{\#ifndef CompactStar\_MixedStar\_H}}
-\DoxyCodeLine{41 \textcolor{preprocessor}{\#define CompactStar\_MixedStar\_H}}
+\DoxyCodeLine{40 \textcolor{preprocessor}{\#ifndef CompactStar\_Core\_MixedStar\_H}}
+\DoxyCodeLine{41 \textcolor{preprocessor}{\#define CompactStar\_Core\_MixedStar\_H}}
 \DoxyCodeLine{42 }
 \DoxyCodeLine{43 \textcolor{preprocessor}{\#include <\mbox{\hyperlink{_directory_8hpp}{Zaki/String/Directory.hpp}}>}}
 \DoxyCodeLine{44 \textcolor{preprocessor}{\#include <\mbox{\hyperlink{_data_set_8hpp}{Zaki/Vector/DataSet.hpp}}>}}
@@ -40,7 +40,7 @@
 \DoxyCodeLine{49 \textcolor{comment}{//==============================================================}}
 \DoxyCodeLine{50 \textcolor{comment}{// struct gsl\_integration\_workspace ;}}
 \DoxyCodeLine{51 \textcolor{comment}{//==============================================================}}
-\DoxyCodeLine{52 \textcolor{keyword}{namespace }CompactStar}
+\DoxyCodeLine{52 \textcolor{keyword}{namespace }CompactStar::Core}
 \DoxyCodeLine{53 \{}
 \DoxyCodeLine{54 }
 \DoxyCodeLine{55 \textcolor{comment}{// Forward declarations}}
@@ -50,27 +50,27 @@
 \DoxyCodeLine{59 \textcolor{comment}{//==============================================================}}
 \DoxyCodeLine{60 \textcolor{comment}{//             Mixed Star Sequence Points Class}}
 \DoxyCodeLine{61 \textcolor{comment}{//==============================================================}}
-\DoxyCodeLine{64 \textcolor{comment}{}\textcolor{keyword}{class }\mbox{\hyperlink{class_compact_star_1_1_mixed_seq_point}{MixedSeqPoint}}}
+\DoxyCodeLine{64 \textcolor{comment}{}\textcolor{keyword}{class }\mbox{\hyperlink{class_compact_star_1_1_core_1_1_mixed_seq_point}{MixedSeqPoint}}}
 \DoxyCodeLine{65 \{}
 \DoxyCodeLine{66   \textcolor{keyword}{public}:}
-\DoxyCodeLine{67     \mbox{\hyperlink{class_compact_star_1_1_seq_point}{SeqPoint}} v, \mbox{\hyperlink{class_compact_star_1_1_mixed_seq_point_a545f9f0512ca09d81507442095bd6cb3}{d}};              }
-\DoxyCodeLine{68     \textcolor{keywordtype}{size\_t} v\_idx = 0, \mbox{\hyperlink{class_compact_star_1_1_mixed_seq_point_ade93db03e76c26a9942943cb10f945e7}{d\_idx}} = 0; }
+\DoxyCodeLine{67     \mbox{\hyperlink{class_compact_star_1_1_core_1_1_seq_point}{SeqPoint}} v, \mbox{\hyperlink{class_compact_star_1_1_core_1_1_mixed_seq_point_ae27f86e239fecbd785373860617a40aa}{d}};              }
+\DoxyCodeLine{68     \textcolor{keywordtype}{size\_t} v\_idx = 0, \mbox{\hyperlink{class_compact_star_1_1_core_1_1_mixed_seq_point_a05cbe1ceafc8c4788c9582f204fb784e}{d\_idx}} = 0; }
 \DoxyCodeLine{69 }
-\DoxyCodeLine{71     \mbox{\hyperlink{class_compact_star_1_1_mixed_seq_point_a2cabcf8586e06c18265de0863a034a8c}{MixedSeqPoint}}() \{\};}
+\DoxyCodeLine{71     \mbox{\hyperlink{class_compact_star_1_1_core_1_1_mixed_seq_point_ac37dce98bf460b1bb7804e3f1f556dd1}{MixedSeqPoint}}() \{\};}
 \DoxyCodeLine{72 }
-\DoxyCodeLine{80     \mbox{\hyperlink{class_compact_star_1_1_mixed_seq_point_ae9ece35f256e099a67b677192ed3f3b9}{MixedSeqPoint}}(\textcolor{keyword}{const} \textcolor{keywordtype}{size\_t} \&in\_v\_idx,}
-\DoxyCodeLine{81                   \textcolor{keyword}{const} \mbox{\hyperlink{class_compact_star_1_1_seq_point}{SeqPoint}} \&in\_v,}
+\DoxyCodeLine{80     \mbox{\hyperlink{class_compact_star_1_1_core_1_1_mixed_seq_point_aa652e7b1894597fc095fd0d520728c85}{MixedSeqPoint}}(\textcolor{keyword}{const} \textcolor{keywordtype}{size\_t} \&in\_v\_idx,}
+\DoxyCodeLine{81                   \textcolor{keyword}{const} \mbox{\hyperlink{class_compact_star_1_1_core_1_1_seq_point}{SeqPoint}} \&in\_v,}
 \DoxyCodeLine{82                   \textcolor{keyword}{const} \textcolor{keywordtype}{size\_t} \&in\_d\_idx,}
-\DoxyCodeLine{83                   \textcolor{keyword}{const} \mbox{\hyperlink{class_compact_star_1_1_seq_point}{SeqPoint}} \&in\_d)}
-\DoxyCodeLine{84         : v(in\_v), \mbox{\hyperlink{class_compact_star_1_1_mixed_seq_point_a545f9f0512ca09d81507442095bd6cb3}{d}}(in\_d), v\_idx(in\_v\_idx),}
-\DoxyCodeLine{85           \mbox{\hyperlink{class_compact_star_1_1_mixed_seq_point_ade93db03e76c26a9942943cb10f945e7}{d\_idx}}(in\_d\_idx)}
+\DoxyCodeLine{83                   \textcolor{keyword}{const} \mbox{\hyperlink{class_compact_star_1_1_core_1_1_seq_point}{SeqPoint}} \&in\_d)}
+\DoxyCodeLine{84         : v(in\_v), \mbox{\hyperlink{class_compact_star_1_1_core_1_1_mixed_seq_point_ae27f86e239fecbd785373860617a40aa}{d}}(in\_d), v\_idx(in\_v\_idx),}
+\DoxyCodeLine{85           \mbox{\hyperlink{class_compact_star_1_1_core_1_1_mixed_seq_point_a05cbe1ceafc8c4788c9582f204fb784e}{d\_idx}}(in\_d\_idx)}
 \DoxyCodeLine{86     \{}
 \DoxyCodeLine{87     \}}
 \DoxyCodeLine{88 }
-\DoxyCodeLine{92     \mbox{\hyperlink{class_compact_star_1_1_mixed_seq_point_ab480d04c48fa03445e83a03cdb762f04}{MixedSeqPoint}}(\textcolor{keyword}{const} \textcolor{keywordtype}{size\_t} \&in\_v\_idx,}
+\DoxyCodeLine{92     \mbox{\hyperlink{class_compact_star_1_1_core_1_1_mixed_seq_point_a1809ea01d85dfd799408dec41739895d}{MixedSeqPoint}}(\textcolor{keyword}{const} \textcolor{keywordtype}{size\_t} \&in\_v\_idx,}
 \DoxyCodeLine{93                   \textcolor{keyword}{const} \textcolor{keywordtype}{size\_t} \&in\_d\_idx,}
 \DoxyCodeLine{94                   \textcolor{keyword}{const} std::vector<double> \&in\_seq\_row)}
-\DoxyCodeLine{95         : v\_idx(in\_v\_idx), \mbox{\hyperlink{class_compact_star_1_1_mixed_seq_point_ade93db03e76c26a9942943cb10f945e7}{d\_idx}}(in\_d\_idx)}
+\DoxyCodeLine{95         : v\_idx(in\_v\_idx), \mbox{\hyperlink{class_compact_star_1_1_core_1_1_mixed_seq_point_a05cbe1ceafc8c4788c9582f204fb784e}{d\_idx}}(in\_d\_idx)}
 \DoxyCodeLine{96     \{}
 \DoxyCodeLine{97         \textcolor{keywordflow}{if} (in\_seq\_row.size() != 12)}
 \DoxyCodeLine{98             Z\_LOG\_ERROR(\textcolor{stringliteral}{"{}The mixed sequence data point is incomplete."{}});}
@@ -78,12 +78,12 @@
 \DoxyCodeLine{100         \{}
 \DoxyCodeLine{101             v = \{in\_seq\_row[0], in\_seq\_row[1], in\_seq\_row[2],}
 \DoxyCodeLine{102                  in\_seq\_row[3], in\_seq\_row[4], in\_seq\_row[5]\};}
-\DoxyCodeLine{103             \mbox{\hyperlink{class_compact_star_1_1_mixed_seq_point_a545f9f0512ca09d81507442095bd6cb3}{d}} = \{in\_seq\_row[6], in\_seq\_row[7], in\_seq\_row[8],}
+\DoxyCodeLine{103             \mbox{\hyperlink{class_compact_star_1_1_core_1_1_mixed_seq_point_ae27f86e239fecbd785373860617a40aa}{d}} = \{in\_seq\_row[6], in\_seq\_row[7], in\_seq\_row[8],}
 \DoxyCodeLine{104                  in\_seq\_row[9], in\_seq\_row[10], in\_seq\_row[11]\};}
 \DoxyCodeLine{105         \}}
 \DoxyCodeLine{106     \}}
 \DoxyCodeLine{107 }
-\DoxyCodeLine{114     std::string \mbox{\hyperlink{class_compact_star_1_1_mixed_seq_point_a581701ead83b7196ed06191e20cd355c}{Str}}()\textcolor{keyword}{ const}}
+\DoxyCodeLine{114     std::string \mbox{\hyperlink{class_compact_star_1_1_core_1_1_mixed_seq_point_a07fd60601915192e7170ff7b565abe7c}{Str}}()\textcolor{keyword}{ const}}
 \DoxyCodeLine{115 \textcolor{keyword}{    }\{}
 \DoxyCodeLine{116         \textcolor{comment}{// May 10, 2022: For some reason}}
 \DoxyCodeLine{117         \textcolor{comment}{// \%lu and \%zu specifiers don't}}
@@ -91,33 +91,33 @@
 \DoxyCodeLine{119         \textcolor{comment}{// Fixed: Removed "{}."{} in "{}\%5.lu"{}.}}
 \DoxyCodeLine{120         std::stringstream ss;}
 \DoxyCodeLine{121         \textcolor{keywordtype}{char} tmp[75];}
-\DoxyCodeLine{122         snprintf(tmp, \textcolor{keyword}{sizeof}(tmp), \textcolor{stringliteral}{"{}\%5lu\(\backslash\)t \%5lu\(\backslash\)t "{}}, v\_idx, \mbox{\hyperlink{class_compact_star_1_1_mixed_seq_point_ade93db03e76c26a9942943cb10f945e7}{d\_idx}});}
+\DoxyCodeLine{122         snprintf(tmp, \textcolor{keyword}{sizeof}(tmp), \textcolor{stringliteral}{"{}\%5lu\(\backslash\)t \%5lu\(\backslash\)t "{}}, v\_idx, \mbox{\hyperlink{class_compact_star_1_1_core_1_1_mixed_seq_point_a05cbe1ceafc8c4788c9582f204fb784e}{d\_idx}});}
 \DoxyCodeLine{123         \textcolor{comment}{// std::cout << "{}\(\backslash\)n\(\backslash\)t\(\backslash\)t"{} << tmp  << "{}\(\backslash\)n"{} ;}}
-\DoxyCodeLine{124         ss << tmp << v.\mbox{\hyperlink{class_compact_star_1_1_seq_point_ad011ef3fc4be7164403486f04e90cac7}{Str}}() << \textcolor{stringliteral}{"{}\(\backslash\)t "{}} << \mbox{\hyperlink{class_compact_star_1_1_mixed_seq_point_a545f9f0512ca09d81507442095bd6cb3}{d}}.\mbox{\hyperlink{class_compact_star_1_1_seq_point_ad011ef3fc4be7164403486f04e90cac7}{Str}}();}
+\DoxyCodeLine{124         ss << tmp << v.\mbox{\hyperlink{class_compact_star_1_1_core_1_1_seq_point_aa3f5903935bf8e6e5ca071622523eccc}{Str}}() << \textcolor{stringliteral}{"{}\(\backslash\)t "{}} << \mbox{\hyperlink{class_compact_star_1_1_core_1_1_mixed_seq_point_ae27f86e239fecbd785373860617a40aa}{d}}.\mbox{\hyperlink{class_compact_star_1_1_core_1_1_seq_point_aa3f5903935bf8e6e5ca071622523eccc}{Str}}();}
 \DoxyCodeLine{125         \textcolor{keywordflow}{return} ss.str();}
 \DoxyCodeLine{126     \}}
 \DoxyCodeLine{127 }
-\DoxyCodeLine{129     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_compact_star_1_1_mixed_seq_point_a9333efd65a69b6d732ab4c27d317f9e9}{Reset}}()}
+\DoxyCodeLine{129     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_compact_star_1_1_core_1_1_mixed_seq_point_a17d208b830fe0a5e0b2efedc582556ca}{Reset}}()}
 \DoxyCodeLine{130     \{}
 \DoxyCodeLine{131         v\_idx = 0;}
-\DoxyCodeLine{132         \mbox{\hyperlink{class_compact_star_1_1_mixed_seq_point_ade93db03e76c26a9942943cb10f945e7}{d\_idx}} = 0;}
-\DoxyCodeLine{133         v.\mbox{\hyperlink{class_compact_star_1_1_seq_point_aea3f17097ce4a553f2d25006e9690574}{clear}}();}
-\DoxyCodeLine{134         \mbox{\hyperlink{class_compact_star_1_1_mixed_seq_point_a545f9f0512ca09d81507442095bd6cb3}{d}}.\mbox{\hyperlink{class_compact_star_1_1_seq_point_aea3f17097ce4a553f2d25006e9690574}{clear}}();}
+\DoxyCodeLine{132         \mbox{\hyperlink{class_compact_star_1_1_core_1_1_mixed_seq_point_a05cbe1ceafc8c4788c9582f204fb784e}{d\_idx}} = 0;}
+\DoxyCodeLine{133         v.\mbox{\hyperlink{class_compact_star_1_1_core_1_1_seq_point_a2a164c0570e161eed79e9b71cdbeefad}{clear}}();}
+\DoxyCodeLine{134         \mbox{\hyperlink{class_compact_star_1_1_core_1_1_mixed_seq_point_ae27f86e239fecbd785373860617a40aa}{d}}.\mbox{\hyperlink{class_compact_star_1_1_core_1_1_seq_point_a2a164c0570e161eed79e9b71cdbeefad}{clear}}();}
 \DoxyCodeLine{135     \}}
 \DoxyCodeLine{136 }
 \DoxyCodeLine{137     \textcolor{comment}{//..................................................}}
 \DoxyCodeLine{138     \textcolor{comment}{// Operator overloading}}
 \DoxyCodeLine{139     \textcolor{comment}{// Addition (+)}}
-\DoxyCodeLine{143 \textcolor{comment}{}    \mbox{\hyperlink{class_compact_star_1_1_mixed_seq_point}{MixedSeqPoint}} \mbox{\hyperlink{class_compact_star_1_1_mixed_seq_point_aa7a19f5d42fd2ba4008337a0ad42ed93}{operator+}}(\textcolor{keyword}{const} \mbox{\hyperlink{class_compact_star_1_1_mixed_seq_point}{MixedSeqPoint}} \&seq)\textcolor{keyword}{ const}}
+\DoxyCodeLine{143 \textcolor{comment}{}    \mbox{\hyperlink{class_compact_star_1_1_core_1_1_mixed_seq_point}{MixedSeqPoint}} \mbox{\hyperlink{class_compact_star_1_1_core_1_1_mixed_seq_point_ad4f8c6c90cae3238cd219854c5b82cfd}{operator+}}(\textcolor{keyword}{const} \mbox{\hyperlink{class_compact_star_1_1_core_1_1_mixed_seq_point}{MixedSeqPoint}} \&seq)\textcolor{keyword}{ const}}
 \DoxyCodeLine{144 \textcolor{keyword}{    }\{}
-\DoxyCodeLine{145         \mbox{\hyperlink{class_compact_star_1_1_mixed_seq_point}{MixedSeqPoint}} out\_seq(0, v + seq.v, 0, \mbox{\hyperlink{class_compact_star_1_1_mixed_seq_point_a545f9f0512ca09d81507442095bd6cb3}{d}} + seq.d);}
+\DoxyCodeLine{145         \mbox{\hyperlink{class_compact_star_1_1_core_1_1_mixed_seq_point}{MixedSeqPoint}} out\_seq(0, v + seq.v, 0, \mbox{\hyperlink{class_compact_star_1_1_core_1_1_mixed_seq_point_ae27f86e239fecbd785373860617a40aa}{d}} + seq.d);}
 \DoxyCodeLine{146         \textcolor{keywordflow}{return} out\_seq;}
 \DoxyCodeLine{147     \}}
 \DoxyCodeLine{148 }
 \DoxyCodeLine{149     \textcolor{comment}{// Multiplication (*)}}
-\DoxyCodeLine{153 \textcolor{comment}{}    \mbox{\hyperlink{class_compact_star_1_1_mixed_seq_point}{MixedSeqPoint}} \mbox{\hyperlink{class_compact_star_1_1_mixed_seq_point_ad46f4c5ea1377abb12fe24fb9232f193}{operator*}}(\textcolor{keyword}{const} \textcolor{keywordtype}{double} \&num)\textcolor{keyword}{ const}}
+\DoxyCodeLine{153 \textcolor{comment}{}    \mbox{\hyperlink{class_compact_star_1_1_core_1_1_mixed_seq_point}{MixedSeqPoint}} \mbox{\hyperlink{class_compact_star_1_1_core_1_1_mixed_seq_point_a4b8dfc15a2ec97abdd0354f697c5ef3f}{operator*}}(\textcolor{keyword}{const} \textcolor{keywordtype}{double} \&num)\textcolor{keyword}{ const}}
 \DoxyCodeLine{154 \textcolor{keyword}{    }\{}
-\DoxyCodeLine{155         \mbox{\hyperlink{class_compact_star_1_1_mixed_seq_point}{MixedSeqPoint}} out\_seq(0, v * num, 0, \mbox{\hyperlink{class_compact_star_1_1_mixed_seq_point_a545f9f0512ca09d81507442095bd6cb3}{d}} * num);}
+\DoxyCodeLine{155         \mbox{\hyperlink{class_compact_star_1_1_core_1_1_mixed_seq_point}{MixedSeqPoint}} out\_seq(0, v * num, 0, \mbox{\hyperlink{class_compact_star_1_1_core_1_1_mixed_seq_point_ae27f86e239fecbd785373860617a40aa}{d}} * num);}
 \DoxyCodeLine{156         \textcolor{keywordflow}{return} out\_seq;}
 \DoxyCodeLine{157     \}}
 \DoxyCodeLine{158     \textcolor{comment}{//..................................................}}
@@ -125,11 +125,11 @@
 \DoxyCodeLine{160 \textcolor{comment}{//==============================================================}}
 \DoxyCodeLine{161 \textcolor{comment}{//                      MixedStar Class}}
 \DoxyCodeLine{162 \textcolor{comment}{//==============================================================}}
-\DoxyCodeLine{176 \textcolor{comment}{}\textcolor{keyword}{class }\mbox{\hyperlink{class_compact_star_1_1_mixed_star}{MixedStar}} : \textcolor{keyword}{public} \mbox{\hyperlink{class_compact_star_1_1_prog}{Prog}}}
+\DoxyCodeLine{176 \textcolor{comment}{}\textcolor{keyword}{class }\mbox{\hyperlink{class_compact_star_1_1_core_1_1_mixed_star}{MixedStar}} : \textcolor{keyword}{public} \mbox{\hyperlink{class_compact_star_1_1_core_1_1_prog}{Prog}}}
 \DoxyCodeLine{177 \{}
-\DoxyCodeLine{178     \textcolor{keyword}{friend} \textcolor{keyword}{class }\mbox{\hyperlink{class_compact_star_1_1_rotation_solver}{RotationSolver}};}
-\DoxyCodeLine{179     \textcolor{keyword}{friend} \textcolor{keyword}{class }\mbox{\hyperlink{class_compact_star_1_1_t_o_v_solver}{TOVSolver}};}
-\DoxyCodeLine{180     \textcolor{keyword}{friend} \textcolor{keyword}{class }\mbox{\hyperlink{class_compact_star_1_1_mixed_sequence}{MixedSequence}};}
+\DoxyCodeLine{178     \textcolor{keyword}{friend} \textcolor{keyword}{class }\mbox{\hyperlink{class_compact_star_1_1_core_1_1_rotation_solver}{RotationSolver}};}
+\DoxyCodeLine{179     \textcolor{keyword}{friend} \textcolor{keyword}{class }\mbox{\hyperlink{class_compact_star_1_1_core_1_1_t_o_v_solver}{TOVSolver}};}
+\DoxyCodeLine{180     \textcolor{keyword}{friend} \textcolor{keyword}{class }\mbox{\hyperlink{class_compact_star_1_1_core_1_1_mixed_sequence}{MixedSequence}};}
 \DoxyCodeLine{181     \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
 \DoxyCodeLine{182   \textcolor{keyword}{private}:}
 \DoxyCodeLine{188     \textcolor{keyword}{struct }Region}
@@ -171,9 +171,9 @@
 \DoxyCodeLine{239     \};}
 \DoxyCodeLine{240     \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
 \DoxyCodeLine{241 }
-\DoxyCodeLine{247     \mbox{\hyperlink{class_compact_star_1_1_mixed_seq_point}{MixedSeqPoint}} sequence;}
+\DoxyCodeLine{247     \mbox{\hyperlink{class_compact_star_1_1_core_1_1_mixed_seq_point}{MixedSeqPoint}} sequence;}
 \DoxyCodeLine{248 }
-\DoxyCodeLine{252     \mbox{\hyperlink{class_compact_star_1_1_rotation_solver}{RotationSolver}} rot\_solver;}
+\DoxyCodeLine{252     \mbox{\hyperlink{class_compact_star_1_1_core_1_1_rotation_solver}{RotationSolver}} rot\_solver;}
 \DoxyCodeLine{253 }
 \DoxyCodeLine{255     \textcolor{keywordtype}{double} MomI = 0;}
 \DoxyCodeLine{256 }
@@ -214,113 +214,113 @@
 \DoxyCodeLine{318     \textcolor{keywordtype}{void} OnWorkDirChanged(\textcolor{keyword}{const} \mbox{\hyperlink{class_zaki_1_1_string_1_1_directory}{Zaki::String::Directory}} \&dir) \textcolor{keyword}{override};}
 \DoxyCodeLine{319     \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
 \DoxyCodeLine{320   \textcolor{keyword}{public}:}
-\DoxyCodeLine{322     \mbox{\hyperlink{class_compact_star_1_1_mixed_star_a78c4f2ae72f52e172837efa533511fb3}{MixedStar}}();}
+\DoxyCodeLine{322     \mbox{\hyperlink{class_compact_star_1_1_core_1_1_mixed_star_a57f52129f0862b47bd317a54cd693b1b}{MixedStar}}();}
 \DoxyCodeLine{323 }
-\DoxyCodeLine{330     \mbox{\hyperlink{class_compact_star_1_1_mixed_star_a3957866659f942009bbec015b9277a90}{MixedStar}}(\textcolor{keyword}{const} \textcolor{keywordtype}{size\_t} \&in\_v\_idx, \textcolor{keyword}{const} \textcolor{keywordtype}{size\_t} \&in\_d\_idx,}
+\DoxyCodeLine{330     \mbox{\hyperlink{class_compact_star_1_1_core_1_1_mixed_star_a57f52129f0862b47bd317a54cd693b1b}{MixedStar}}(\textcolor{keyword}{const} \textcolor{keywordtype}{size\_t} \&in\_v\_idx, \textcolor{keyword}{const} \textcolor{keywordtype}{size\_t} \&in\_d\_idx,}
 \DoxyCodeLine{331               \textcolor{keyword}{const} std::vector<TOVPoint> \&in\_tov\_results,}
 \DoxyCodeLine{332               \textcolor{keyword}{const} std::vector<TOVPoint> \&in\_dark\_tov\_results);}
 \DoxyCodeLine{333 }
-\DoxyCodeLine{335     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_compact_star_1_1_mixed_star_a05ab0d36cdf0fbedf6905c1adcc57664}{InitVisible}}(\textcolor{keyword}{const} \mbox{\hyperlink{class_compact_star_1_1_t_o_v_solver}{TOVSolver}} *in\_tov\_solver);}
+\DoxyCodeLine{335     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_compact_star_1_1_core_1_1_mixed_star_a8ec4a63da1276770e6f69337d1f1e8e7}{InitVisible}}(\textcolor{keyword}{const} \mbox{\hyperlink{class_compact_star_1_1_core_1_1_t_o_v_solver}{TOVSolver}} *in\_tov\_solver);}
 \DoxyCodeLine{336 }
-\DoxyCodeLine{338     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_compact_star_1_1_mixed_star_a893e364b6bf44ee6e8e8f0b444ce6199}{InitDark}}(\textcolor{keyword}{const} \mbox{\hyperlink{class_compact_star_1_1_t_o_v_solver}{TOVSolver}} *in\_tov\_solver);}
+\DoxyCodeLine{338     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_compact_star_1_1_core_1_1_mixed_star_af032c0ea16ac0569ac24ec3f8f1fe0ad}{InitDark}}(\textcolor{keyword}{const} \mbox{\hyperlink{class_compact_star_1_1_core_1_1_t_o_v_solver}{TOVSolver}} *in\_tov\_solver);}
 \DoxyCodeLine{339 }
-\DoxyCodeLine{343     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_compact_star_1_1_mixed_star_a655ba16f51772b0b13c33455865d0f97}{Append\_Core}}(\textcolor{keyword}{const} \mbox{\hyperlink{struct_compact_star_1_1_t_o_v_point}{TOVPoint}} \&in\_tov\_pts,}
-\DoxyCodeLine{344                      \textcolor{keyword}{const} \mbox{\hyperlink{struct_compact_star_1_1_t_o_v_point}{TOVPoint}} \&in\_dark\_tov\_pts);}
+\DoxyCodeLine{343     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_compact_star_1_1_core_1_1_mixed_star_ac089fe5dd81701d9fba86b9a941f2e70}{Append\_Core}}(\textcolor{keyword}{const} \mbox{\hyperlink{struct_compact_star_1_1_core_1_1_t_o_v_point}{TOVPoint}} \&in\_tov\_pts,}
+\DoxyCodeLine{344                      \textcolor{keyword}{const} \mbox{\hyperlink{struct_compact_star_1_1_core_1_1_t_o_v_point}{TOVPoint}} \&in\_dark\_tov\_pts);}
 \DoxyCodeLine{345 }
-\DoxyCodeLine{348     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_compact_star_1_1_mixed_star_a76dfd87cfba1fee6dce33ef9f774ca93}{Append\_Dark\_Mantle}}(\textcolor{keyword}{const} \mbox{\hyperlink{struct_compact_star_1_1_t_o_v_point}{TOVPoint}} \&in\_dark\_tov\_pts);}
+\DoxyCodeLine{348     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_compact_star_1_1_core_1_1_mixed_star_af8b2bdb715b2bc9be2819e6dcc7e66e5}{Append\_Dark\_Mantle}}(\textcolor{keyword}{const} \mbox{\hyperlink{struct_compact_star_1_1_core_1_1_t_o_v_point}{TOVPoint}} \&in\_dark\_tov\_pts);}
 \DoxyCodeLine{349 }
-\DoxyCodeLine{352     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_compact_star_1_1_mixed_star_a815830016aa015b4ce36ccfe7dd31bcf}{Append\_Visible\_Mantle}}(\textcolor{keyword}{const} \mbox{\hyperlink{struct_compact_star_1_1_t_o_v_point}{TOVPoint}} \&in\_tov\_pts);}
+\DoxyCodeLine{352     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_compact_star_1_1_core_1_1_mixed_star_aeeaeb766339913b25d0e9bbf2d48a2a0}{Append\_Visible\_Mantle}}(\textcolor{keyword}{const} \mbox{\hyperlink{struct_compact_star_1_1_core_1_1_t_o_v_point}{TOVPoint}} \&in\_tov\_pts);}
 \DoxyCodeLine{353 }
-\DoxyCodeLine{356     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_compact_star_1_1_mixed_star_aef24810c26d8c6cbd038c15ef4749b25}{SurfaceIsReached}}(\textcolor{keyword}{const} \textcolor{keywordtype}{size\_t} \&in\_v\_idx,}
+\DoxyCodeLine{356     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_compact_star_1_1_core_1_1_mixed_star_ad645e8a5a9b58efaaa1392f9731bd6d9}{SurfaceIsReached}}(\textcolor{keyword}{const} \textcolor{keywordtype}{size\_t} \&in\_v\_idx,}
 \DoxyCodeLine{357                           \textcolor{keyword}{const} \textcolor{keywordtype}{size\_t} \&in\_d\_idx);}
 \DoxyCodeLine{358 }
 \DoxyCodeLine{360     \textcolor{comment}{// [ Removed on May 1, 2022 because of the changes}}
 \DoxyCodeLine{361     \textcolor{comment}{//    to the constructors! ]}}
 \DoxyCodeLine{362     \textcolor{comment}{// void Reserve(const size\_t\& space\_size) ;}}
 \DoxyCodeLine{363 }
-\DoxyCodeLine{366     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_compact_star_1_1_mixed_star_ad10c3a29931eba3c6445c9426ec633d3}{Reset}}();}
+\DoxyCodeLine{366     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_compact_star_1_1_core_1_1_mixed_star_a334d1104ad2e98b3d4564663654a9a10}{Reset}}();}
 \DoxyCodeLine{367 }
 \DoxyCodeLine{369     \textcolor{comment}{// MixedStar(const Zaki::String::Directory\& in\_tov\_file) ;}}
 \DoxyCodeLine{370 }
-\DoxyCodeLine{372     \mbox{\hyperlink{class_compact_star_1_1_mixed_star_a41a65d34b789eeea4da503cb85d77b8e}{\string~MixedStar}}();}
+\DoxyCodeLine{372     \mbox{\hyperlink{class_compact_star_1_1_core_1_1_mixed_star_af2744a90d2813e0b4fc884e370d02ff6}{\string~MixedStar}}();}
 \DoxyCodeLine{373 }
-\DoxyCodeLine{376     \mbox{\hyperlink{class_compact_star_1_1_mixed_star_a3972e212413cb65d07c9585b11c72e1d}{MixedStar}}(\textcolor{keyword}{const} \mbox{\hyperlink{class_compact_star_1_1_mixed_star}{MixedStar}} \&) = \textcolor{keyword}{delete};}
+\DoxyCodeLine{376     \mbox{\hyperlink{class_compact_star_1_1_core_1_1_mixed_star_aa7ca13a406b677d4284d1c051c77d27d}{MixedStar}}(\textcolor{keyword}{const} \mbox{\hyperlink{class_compact_star_1_1_core_1_1_mixed_star}{MixedStar}} \&) = \textcolor{keyword}{delete};}
 \DoxyCodeLine{377 }
-\DoxyCodeLine{380     \mbox{\hyperlink{class_compact_star_1_1_mixed_star}{MixedStar}} \&\mbox{\hyperlink{class_compact_star_1_1_mixed_star_a24c059c1d5533f0eaedcc40f9d13161d}{operator=}}(\textcolor{keyword}{const} \mbox{\hyperlink{class_compact_star_1_1_mixed_star}{MixedStar}} \&) = \textcolor{keyword}{delete};}
+\DoxyCodeLine{380     \mbox{\hyperlink{class_compact_star_1_1_core_1_1_mixed_star}{MixedStar}} \&\mbox{\hyperlink{class_compact_star_1_1_core_1_1_mixed_star_a61adfcd8a6d1d69767dbc372111f4b41}{operator=}}(\textcolor{keyword}{const} \mbox{\hyperlink{class_compact_star_1_1_core_1_1_mixed_star}{MixedStar}} \&) = \textcolor{keyword}{delete};}
 \DoxyCodeLine{381 }
-\DoxyCodeLine{383     \textcolor{keywordtype}{double} \mbox{\hyperlink{class_compact_star_1_1_mixed_star_a0fd8ec8e5d7fb47baa6c49d06ce058a3}{GetMass\_Visible}}(\textcolor{keyword}{const} \textcolor{keywordtype}{double} \&in\_r) \textcolor{keyword}{const};}
+\DoxyCodeLine{383     \textcolor{keywordtype}{double} \mbox{\hyperlink{class_compact_star_1_1_core_1_1_mixed_star_a89f2eb8ea3ad31750bbf03d674579928}{GetMass\_Visible}}(\textcolor{keyword}{const} \textcolor{keywordtype}{double} \&in\_r) \textcolor{keyword}{const};}
 \DoxyCodeLine{384 }
-\DoxyCodeLine{386     \mbox{\hyperlink{struct_zaki_1_1_vector_1_1_data_column}{Zaki::Vector::DataColumn}} *\mbox{\hyperlink{class_compact_star_1_1_mixed_star_a0fd8ec8e5d7fb47baa6c49d06ce058a3}{GetMass\_Visible}}();}
+\DoxyCodeLine{386     \mbox{\hyperlink{struct_zaki_1_1_vector_1_1_data_column}{Zaki::Vector::DataColumn}} *\mbox{\hyperlink{class_compact_star_1_1_core_1_1_mixed_star_a89f2eb8ea3ad31750bbf03d674579928}{GetMass\_Visible}}();}
 \DoxyCodeLine{387 }
-\DoxyCodeLine{389     \textcolor{keywordtype}{double} \mbox{\hyperlink{class_compact_star_1_1_mixed_star_ae44a9aa20af7ccb02eff5d5e634b2f35}{GetMass\_Dark}}(\textcolor{keyword}{const} \textcolor{keywordtype}{double} \&in\_r) \textcolor{keyword}{const};}
+\DoxyCodeLine{389     \textcolor{keywordtype}{double} \mbox{\hyperlink{class_compact_star_1_1_core_1_1_mixed_star_a362f876d0a6c3a34533207d87be19b09}{GetMass\_Dark}}(\textcolor{keyword}{const} \textcolor{keywordtype}{double} \&in\_r) \textcolor{keyword}{const};}
 \DoxyCodeLine{390 }
-\DoxyCodeLine{392     \mbox{\hyperlink{struct_zaki_1_1_vector_1_1_data_column}{Zaki::Vector::DataColumn}} *\mbox{\hyperlink{class_compact_star_1_1_mixed_star_ae44a9aa20af7ccb02eff5d5e634b2f35}{GetMass\_Dark}}();}
+\DoxyCodeLine{392     \mbox{\hyperlink{struct_zaki_1_1_vector_1_1_data_column}{Zaki::Vector::DataColumn}} *\mbox{\hyperlink{class_compact_star_1_1_core_1_1_mixed_star_a362f876d0a6c3a34533207d87be19b09}{GetMass\_Dark}}();}
 \DoxyCodeLine{393 }
-\DoxyCodeLine{397     \textcolor{keywordtype}{double} \mbox{\hyperlink{class_compact_star_1_1_mixed_star_a82e28516da6b2f777c4fb2035d9c41e1}{GetMass\_Total}}(\textcolor{keyword}{const} \textcolor{keywordtype}{double} \&in\_r) \textcolor{keyword}{const};}
+\DoxyCodeLine{397     \textcolor{keywordtype}{double} \mbox{\hyperlink{class_compact_star_1_1_core_1_1_mixed_star_afc9b89ae4f2e5650e4d52fb167cb7403}{GetMass\_Total}}(\textcolor{keyword}{const} \textcolor{keywordtype}{double} \&in\_r) \textcolor{keyword}{const};}
 \DoxyCodeLine{398 }
-\DoxyCodeLine{402     \mbox{\hyperlink{struct_zaki_1_1_vector_1_1_data_column}{Zaki::Vector::DataColumn}} *\mbox{\hyperlink{class_compact_star_1_1_mixed_star_a82e28516da6b2f777c4fb2035d9c41e1}{GetMass\_Total}}();}
+\DoxyCodeLine{402     \mbox{\hyperlink{struct_zaki_1_1_vector_1_1_data_column}{Zaki::Vector::DataColumn}} *\mbox{\hyperlink{class_compact_star_1_1_core_1_1_mixed_star_afc9b89ae4f2e5650e4d52fb167cb7403}{GetMass\_Total}}();}
 \DoxyCodeLine{403 }
-\DoxyCodeLine{407     \textcolor{keywordtype}{double} \mbox{\hyperlink{class_compact_star_1_1_mixed_star_a426168a85c8f785580d9ad7620af6b1a}{GetRho\_Visible}}(\textcolor{keyword}{const} \textcolor{keywordtype}{double} \&in\_r) \textcolor{keyword}{const};}
+\DoxyCodeLine{407     \textcolor{keywordtype}{double} \mbox{\hyperlink{class_compact_star_1_1_core_1_1_mixed_star_a619a9fcd3b7ae6ae6bf891647a05add7}{GetRho\_Visible}}(\textcolor{keyword}{const} \textcolor{keywordtype}{double} \&in\_r) \textcolor{keyword}{const};}
 \DoxyCodeLine{408 }
-\DoxyCodeLine{411     \mbox{\hyperlink{struct_zaki_1_1_vector_1_1_data_column}{Zaki::Vector::DataColumn}} *\mbox{\hyperlink{class_compact_star_1_1_mixed_star_a426168a85c8f785580d9ad7620af6b1a}{GetRho\_Visible}}();}
+\DoxyCodeLine{411     \mbox{\hyperlink{struct_zaki_1_1_vector_1_1_data_column}{Zaki::Vector::DataColumn}} *\mbox{\hyperlink{class_compact_star_1_1_core_1_1_mixed_star_a619a9fcd3b7ae6ae6bf891647a05add7}{GetRho\_Visible}}();}
 \DoxyCodeLine{412 }
 \DoxyCodeLine{416     \mbox{\hyperlink{struct_zaki_1_1_vector_1_1_data_column}{Zaki::Vector::DataColumn}} *}
-\DoxyCodeLine{417     \mbox{\hyperlink{class_compact_star_1_1_mixed_star_a20c5e258792a5a277993a70dffa2ff1a}{GetRho\_i\_Visible}}(\textcolor{keyword}{const} std::string \&in\_label);}
+\DoxyCodeLine{417     \mbox{\hyperlink{class_compact_star_1_1_core_1_1_mixed_star_a2bf1b7ced95ca3b518f2b4cb2b743514}{GetRho\_i\_Visible}}(\textcolor{keyword}{const} std::string \&in\_label);}
 \DoxyCodeLine{418 }
-\DoxyCodeLine{421     \textcolor{keywordtype}{double} \mbox{\hyperlink{class_compact_star_1_1_mixed_star_a0a3bb2ea50e7e29b028c094234ec4f3f}{GetRho\_Dark}}(\textcolor{keyword}{const} \textcolor{keywordtype}{double} \&in\_r) \textcolor{keyword}{const};}
+\DoxyCodeLine{421     \textcolor{keywordtype}{double} \mbox{\hyperlink{class_compact_star_1_1_core_1_1_mixed_star_adb58e454cf2aa0ea233f626233af82c0}{GetRho\_Dark}}(\textcolor{keyword}{const} \textcolor{keywordtype}{double} \&in\_r) \textcolor{keyword}{const};}
 \DoxyCodeLine{422 }
-\DoxyCodeLine{424     \mbox{\hyperlink{struct_zaki_1_1_vector_1_1_data_column}{Zaki::Vector::DataColumn}} *\mbox{\hyperlink{class_compact_star_1_1_mixed_star_a0a3bb2ea50e7e29b028c094234ec4f3f}{GetRho\_Dark}}();}
+\DoxyCodeLine{424     \mbox{\hyperlink{struct_zaki_1_1_vector_1_1_data_column}{Zaki::Vector::DataColumn}} *\mbox{\hyperlink{class_compact_star_1_1_core_1_1_mixed_star_adb58e454cf2aa0ea233f626233af82c0}{GetRho\_Dark}}();}
 \DoxyCodeLine{425 }
-\DoxyCodeLine{428     \textcolor{keywordtype}{double} \mbox{\hyperlink{class_compact_star_1_1_mixed_star_a19367fa44591b1cd642dd8e12137ba2e}{GetEps\_Visible}}(\textcolor{keyword}{const} \textcolor{keywordtype}{double} \&in\_r) \textcolor{keyword}{const};}
+\DoxyCodeLine{428     \textcolor{keywordtype}{double} \mbox{\hyperlink{class_compact_star_1_1_core_1_1_mixed_star_a068f01e9283aca699aa10ab7ecba29ee}{GetEps\_Visible}}(\textcolor{keyword}{const} \textcolor{keywordtype}{double} \&in\_r) \textcolor{keyword}{const};}
 \DoxyCodeLine{429 }
-\DoxyCodeLine{431     \mbox{\hyperlink{struct_zaki_1_1_vector_1_1_data_column}{Zaki::Vector::DataColumn}} *\mbox{\hyperlink{class_compact_star_1_1_mixed_star_a19367fa44591b1cd642dd8e12137ba2e}{GetEps\_Visible}}();}
+\DoxyCodeLine{431     \mbox{\hyperlink{struct_zaki_1_1_vector_1_1_data_column}{Zaki::Vector::DataColumn}} *\mbox{\hyperlink{class_compact_star_1_1_core_1_1_mixed_star_a068f01e9283aca699aa10ab7ecba29ee}{GetEps\_Visible}}();}
 \DoxyCodeLine{432 }
-\DoxyCodeLine{435     \textcolor{keywordtype}{double} \mbox{\hyperlink{class_compact_star_1_1_mixed_star_a7345fa0bbd999c315ba400e008898a83}{GetEps\_Dark}}(\textcolor{keyword}{const} \textcolor{keywordtype}{double} \&in\_r) \textcolor{keyword}{const};}
+\DoxyCodeLine{435     \textcolor{keywordtype}{double} \mbox{\hyperlink{class_compact_star_1_1_core_1_1_mixed_star_a1c7037b4bb844e1c23221b39ae8f5e4a}{GetEps\_Dark}}(\textcolor{keyword}{const} \textcolor{keywordtype}{double} \&in\_r) \textcolor{keyword}{const};}
 \DoxyCodeLine{436 }
-\DoxyCodeLine{438     \mbox{\hyperlink{struct_zaki_1_1_vector_1_1_data_column}{Zaki::Vector::DataColumn}} *\mbox{\hyperlink{class_compact_star_1_1_mixed_star_a7345fa0bbd999c315ba400e008898a83}{GetEps\_Dark}}();}
+\DoxyCodeLine{438     \mbox{\hyperlink{struct_zaki_1_1_vector_1_1_data_column}{Zaki::Vector::DataColumn}} *\mbox{\hyperlink{class_compact_star_1_1_core_1_1_mixed_star_a1c7037b4bb844e1c23221b39ae8f5e4a}{GetEps\_Dark}}();}
 \DoxyCodeLine{439 }
-\DoxyCodeLine{442     \textcolor{keywordtype}{double} \mbox{\hyperlink{class_compact_star_1_1_mixed_star_a8c9d1b17c75126906c17761f38d56a6f}{GetPress\_Visible}}(\textcolor{keyword}{const} \textcolor{keywordtype}{double} \&in\_r) \textcolor{keyword}{const};}
+\DoxyCodeLine{442     \textcolor{keywordtype}{double} \mbox{\hyperlink{class_compact_star_1_1_core_1_1_mixed_star_a7708b5bf5c49c6b8ee1a3e395fbb2a10}{GetPress\_Visible}}(\textcolor{keyword}{const} \textcolor{keywordtype}{double} \&in\_r) \textcolor{keyword}{const};}
 \DoxyCodeLine{443 }
-\DoxyCodeLine{445     \mbox{\hyperlink{struct_zaki_1_1_vector_1_1_data_column}{Zaki::Vector::DataColumn}} *\mbox{\hyperlink{class_compact_star_1_1_mixed_star_a8c9d1b17c75126906c17761f38d56a6f}{GetPress\_Visible}}();}
+\DoxyCodeLine{445     \mbox{\hyperlink{struct_zaki_1_1_vector_1_1_data_column}{Zaki::Vector::DataColumn}} *\mbox{\hyperlink{class_compact_star_1_1_core_1_1_mixed_star_a7708b5bf5c49c6b8ee1a3e395fbb2a10}{GetPress\_Visible}}();}
 \DoxyCodeLine{446 }
-\DoxyCodeLine{449     \textcolor{keywordtype}{double} \mbox{\hyperlink{class_compact_star_1_1_mixed_star_a14dc210ff0054d153dc35d3f8ebd0758}{GetPress\_Dark}}(\textcolor{keyword}{const} \textcolor{keywordtype}{double} \&in\_r) \textcolor{keyword}{const};}
+\DoxyCodeLine{449     \textcolor{keywordtype}{double} \mbox{\hyperlink{class_compact_star_1_1_core_1_1_mixed_star_a53b3ef4729c7baebcaf71a33010f4af5}{GetPress\_Dark}}(\textcolor{keyword}{const} \textcolor{keywordtype}{double} \&in\_r) \textcolor{keyword}{const};}
 \DoxyCodeLine{450 }
-\DoxyCodeLine{452     \mbox{\hyperlink{struct_zaki_1_1_vector_1_1_data_column}{Zaki::Vector::DataColumn}} *\mbox{\hyperlink{class_compact_star_1_1_mixed_star_a14dc210ff0054d153dc35d3f8ebd0758}{GetPress\_Dark}}();}
+\DoxyCodeLine{452     \mbox{\hyperlink{struct_zaki_1_1_vector_1_1_data_column}{Zaki::Vector::DataColumn}} *\mbox{\hyperlink{class_compact_star_1_1_core_1_1_mixed_star_a53b3ef4729c7baebcaf71a33010f4af5}{GetPress\_Dark}}();}
 \DoxyCodeLine{453 }
-\DoxyCodeLine{456     \mbox{\hyperlink{class_compact_star_1_1_mixed_seq_point}{MixedSeqPoint}} \mbox{\hyperlink{class_compact_star_1_1_mixed_star_a8e465205c0fe4c79314c6714fb36a0a1}{GetSequence}}() \textcolor{keyword}{const};}
+\DoxyCodeLine{456     \mbox{\hyperlink{class_compact_star_1_1_core_1_1_mixed_seq_point}{MixedSeqPoint}} \mbox{\hyperlink{class_compact_star_1_1_core_1_1_mixed_star_a3c40a1081c11b70af632bfd1d61ebb95}{GetSequence}}() \textcolor{keyword}{const};}
 \DoxyCodeLine{457 }
-\DoxyCodeLine{459     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_compact_star_1_1_mixed_star_a30d58d91c99073ac8622451789c2e22e}{EvaluateNu}}();}
+\DoxyCodeLine{459     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_compact_star_1_1_core_1_1_mixed_star_aec1eb1ef59e52e3b6a056b900e27035a}{EvaluateNu}}();}
 \DoxyCodeLine{460 }
-\DoxyCodeLine{463     \textcolor{keywordtype}{double} \mbox{\hyperlink{class_compact_star_1_1_mixed_star_aa1ae955e945bb52d262981b7b1f870e2}{GetNu}}(\textcolor{keyword}{const} \textcolor{keywordtype}{double} \&in\_r) \textcolor{keyword}{const};}
+\DoxyCodeLine{463     \textcolor{keywordtype}{double} \mbox{\hyperlink{class_compact_star_1_1_core_1_1_mixed_star_ac4e305d5c230da8779c6a0cdd168d734}{GetNu}}(\textcolor{keyword}{const} \textcolor{keywordtype}{double} \&in\_r) \textcolor{keyword}{const};}
 \DoxyCodeLine{464 }
-\DoxyCodeLine{466     \mbox{\hyperlink{struct_zaki_1_1_vector_1_1_data_column}{Zaki::Vector::DataColumn}} *\mbox{\hyperlink{class_compact_star_1_1_mixed_star_aa1ae955e945bb52d262981b7b1f870e2}{GetNu}}();}
+\DoxyCodeLine{466     \mbox{\hyperlink{struct_zaki_1_1_vector_1_1_data_column}{Zaki::Vector::DataColumn}} *\mbox{\hyperlink{class_compact_star_1_1_core_1_1_mixed_star_ac4e305d5c230da8779c6a0cdd168d734}{GetNu}}();}
 \DoxyCodeLine{467 }
-\DoxyCodeLine{469     \mbox{\hyperlink{struct_zaki_1_1_vector_1_1_data_column}{Zaki::Vector::DataColumn}} *\mbox{\hyperlink{class_compact_star_1_1_mixed_star_a8c947ec4dbf807f90e60eb6082b44b0e}{GetRadius\_Visible}}();}
+\DoxyCodeLine{469     \mbox{\hyperlink{struct_zaki_1_1_vector_1_1_data_column}{Zaki::Vector::DataColumn}} *\mbox{\hyperlink{class_compact_star_1_1_core_1_1_mixed_star_a68d9bdab5ef273ab671b94ffafb12d65}{GetRadius\_Visible}}();}
 \DoxyCodeLine{470 }
-\DoxyCodeLine{472     \mbox{\hyperlink{struct_zaki_1_1_vector_1_1_data_column}{Zaki::Vector::DataColumn}} *\mbox{\hyperlink{class_compact_star_1_1_mixed_star_aee13a7105b6d611e0f49133093443f23}{GetRadius\_Dark}}();}
+\DoxyCodeLine{472     \mbox{\hyperlink{struct_zaki_1_1_vector_1_1_data_column}{Zaki::Vector::DataColumn}} *\mbox{\hyperlink{class_compact_star_1_1_core_1_1_mixed_star_a326956199941ca7ca23aae8d4a5905d9}{GetRadius\_Dark}}();}
 \DoxyCodeLine{473 }
-\DoxyCodeLine{475     \mbox{\hyperlink{struct_zaki_1_1_vector_1_1_data_column}{Zaki::Vector::DataColumn}} *\mbox{\hyperlink{class_compact_star_1_1_mixed_star_a3c0508b35060b0b8eb6c701c9a8cfee0}{GetRadius}}();}
+\DoxyCodeLine{475     \mbox{\hyperlink{struct_zaki_1_1_vector_1_1_data_column}{Zaki::Vector::DataColumn}} *\mbox{\hyperlink{class_compact_star_1_1_core_1_1_mixed_star_a70364d7a2f4258d9062f8cb97b8a68c0}{GetRadius}}();}
 \DoxyCodeLine{476 }
-\DoxyCodeLine{479     \textcolor{keywordtype}{double} \mbox{\hyperlink{class_compact_star_1_1_mixed_star_a54c3b74932e4891ffd3de04d9653e983}{BaryonNumIntegrand}}(\textcolor{keywordtype}{double} in\_r);}
+\DoxyCodeLine{479     \textcolor{keywordtype}{double} \mbox{\hyperlink{class_compact_star_1_1_core_1_1_mixed_star_a1c4649a5ae37827ecb1235dda16ddb47}{BaryonNumIntegrand}}(\textcolor{keywordtype}{double} in\_r);}
 \DoxyCodeLine{480 }
-\DoxyCodeLine{483     \textcolor{keywordtype}{double} \mbox{\hyperlink{class_compact_star_1_1_mixed_star_aa145a84e8176353fba90f277b5786882}{Find\_BaryonNum\_Visible}}(\textcolor{keyword}{const} \textcolor{keywordtype}{double} \&in\_r);}
+\DoxyCodeLine{483     \textcolor{keywordtype}{double} \mbox{\hyperlink{class_compact_star_1_1_core_1_1_mixed_star_a07ad3d57356aa039361a041e0bdffe6b}{Find\_BaryonNum\_Visible}}(\textcolor{keyword}{const} \textcolor{keywordtype}{double} \&in\_r);}
 \DoxyCodeLine{484 }
-\DoxyCodeLine{487     \textcolor{keywordtype}{double} \mbox{\hyperlink{class_compact_star_1_1_mixed_star_aa145a84e8176353fba90f277b5786882}{Find\_BaryonNum\_Visible}}();}
+\DoxyCodeLine{487     \textcolor{keywordtype}{double} \mbox{\hyperlink{class_compact_star_1_1_core_1_1_mixed_star_a07ad3d57356aa039361a041e0bdffe6b}{Find\_BaryonNum\_Visible}}();}
 \DoxyCodeLine{488 }
-\DoxyCodeLine{491     \textcolor{keywordtype}{double} \mbox{\hyperlink{class_compact_star_1_1_mixed_star_a4a7adcf6b506c93788aeee041183bfc1}{BaryonNumIntegrand\_Dark}}(\textcolor{keywordtype}{double} in\_r);}
+\DoxyCodeLine{491     \textcolor{keywordtype}{double} \mbox{\hyperlink{class_compact_star_1_1_core_1_1_mixed_star_a4f0c63c4db266e0b855d04d8e09c2164}{BaryonNumIntegrand\_Dark}}(\textcolor{keywordtype}{double} in\_r);}
 \DoxyCodeLine{492 }
-\DoxyCodeLine{495     \textcolor{keywordtype}{double} \mbox{\hyperlink{class_compact_star_1_1_mixed_star_a930260071319744a63569fdaae19c824}{Find\_BaryonNum\_Dark}}(\textcolor{keyword}{const} \textcolor{keywordtype}{double} \&in\_r);}
+\DoxyCodeLine{495     \textcolor{keywordtype}{double} \mbox{\hyperlink{class_compact_star_1_1_core_1_1_mixed_star_a4cd0358297ee20fc91c54f16cc47ce7e}{Find\_BaryonNum\_Dark}}(\textcolor{keyword}{const} \textcolor{keywordtype}{double} \&in\_r);}
 \DoxyCodeLine{496 }
-\DoxyCodeLine{498     \textcolor{keywordtype}{double} \mbox{\hyperlink{class_compact_star_1_1_mixed_star_ad68cea3ed5857376e8a449f9d146be3f}{Find\_BaryonNum\_Dark}}();}
+\DoxyCodeLine{498     \textcolor{keywordtype}{double} \mbox{\hyperlink{class_compact_star_1_1_core_1_1_mixed_star_a2a2c7e4f6d943209dc3761ca98377afa}{Find\_BaryonNum\_Dark}}();}
 \DoxyCodeLine{499 }
-\DoxyCodeLine{501     \textcolor{keywordtype}{double} \mbox{\hyperlink{class_compact_star_1_1_mixed_star_a2b428b3b78814d74d05f9084f61be077}{Find\_MomInertia}}();}
+\DoxyCodeLine{501     \textcolor{keywordtype}{double} \mbox{\hyperlink{class_compact_star_1_1_core_1_1_mixed_star_a7731b91ef0980b97fc3319fb0a1c17f3}{Find\_MomInertia}}();}
 \DoxyCodeLine{502 }
-\DoxyCodeLine{505     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_compact_star_1_1_mixed_star_aae48e580cf49107604ba456dfd8c6df6}{Export}}(\textcolor{keyword}{const} \mbox{\hyperlink{class_zaki_1_1_string_1_1_directory}{Zaki::String::Directory}} \&in\_dir);}
+\DoxyCodeLine{505     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_compact_star_1_1_core_1_1_mixed_star_a4d3e4bd6bcbd38b79effbac548b543ab}{Export}}(\textcolor{keyword}{const} \mbox{\hyperlink{class_zaki_1_1_string_1_1_directory}{Zaki::String::Directory}} \&in\_dir);}
 \DoxyCodeLine{506 \};}
 \DoxyCodeLine{507 }
 \DoxyCodeLine{508 \textcolor{comment}{//==============================================================}}
-\DoxyCodeLine{509 \} \textcolor{comment}{// namespace CompactStar}}
+\DoxyCodeLine{509 \} \textcolor{comment}{// namespace CompactStar::Core}}
 \DoxyCodeLine{510 \textcolor{comment}{//==============================================================}}
-\DoxyCodeLine{511 \textcolor{preprocessor}{\#endif }\textcolor{comment}{/*CompactStar\_MixedStar\_H*/}\textcolor{preprocessor}{}}
+\DoxyCodeLine{511 \textcolor{preprocessor}{\#endif }\textcolor{comment}{/*CompactStar\_Core\_MixedStar\_H*/}\textcolor{preprocessor}{}}
 
 \end{DoxyCode}

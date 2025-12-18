@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['column_0',['Column',['../d4/d7b/struct_compact_star_1_1_star_profile.html#afcfd77a3fe7d7158278310be5e7075d8',1,'CompactStar::StarProfile']]]
+  ['column_0',['Column',['../d4/d29/struct_compact_star_1_1_core_1_1_star_profile.html#a69a0f27099ce767c2afe8fe5503d7628',1,'CompactStar::Core::StarProfile']]]
 ];

@@ -5,14 +5,14 @@
 Logs info, warnings and errors on terminal and into a file if needed.  
 
 
-{\ttfamily \#include $<$iostream$>$}\newline
-{\ttfamily \#include $<$string$>$}\newline
-{\ttfamily \#include $<$fstream$>$}\newline
-{\ttfamily \#include $<$mutex$>$}\newline
-{\ttfamily \#include $<$time.\+h$>$}\newline
 {\ttfamily \#include $<$cstring$>$}\newline
-{\ttfamily \#include \char`\"{}Zaki/\+String/\+String\+\_\+\+Basic.\+hpp\char`\"{}}\newline
+{\ttfamily \#include $<$fstream$>$}\newline
+{\ttfamily \#include $<$iostream$>$}\newline
+{\ttfamily \#include $<$mutex$>$}\newline
+{\ttfamily \#include $<$string$>$}\newline
+{\ttfamily \#include $<$time.\+h$>$}\newline
 {\ttfamily \#include \char`\"{}Zaki/\+String/\+Directory.\+hpp\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}Zaki/\+String/\+String\+\_\+\+Basic.\+hpp\char`\"{}}\newline
 \doxysubsection*{Classes}
 \begin{DoxyCompactItemize}
 \item 
@@ -28,11 +28,7 @@ struct \mbox{\hyperlink{struct_zaki_1_1_util_1_1_log_entry}{Zaki\+::\+Util\+::\+
 \mbox{\Hypertarget{_logger_8hpp_a5fccb4fc71e44089a1b1a77fc76c0b68}\label{_logger_8hpp_a5fccb4fc71e44089a1b1a77fc76c0b68}} 
 \#define {\bfseries \+\_\+\+\_\+\+FILENAME\+\_\+\+\_\+}~strrchr(\char`\"{}/\char`\"{} \+\_\+\+\_\+\+FILE\+\_\+\+\_\+, \textquotesingle{}/\textquotesingle{}) + 1
 \item 
-\mbox{\Hypertarget{_logger_8hpp_a6720ae827dddddff52813636623af928}\label{_logger_8hpp_a6720ae827dddddff52813636623af928}} 
-\#define {\bfseries Z\+\_\+\+LOG\+\_\+\+HIDDEN}(MSG,  LEVEL,  L)~\mbox{\hyperlink{struct_zaki_1_1_util_1_1_log_entry}{Zaki\+::\+Util\+::\+Log\+Entry}} \+\_\+\+\_\+\+CONCAT(log\+Entry,L)(MSG,  \+\_\+\+\_\+\+LINE\+\_\+\+\_\+, \+\_\+\+\_\+func\+\_\+\+\_\+, \+\_\+\+\_\+\+FILENAME\+\_\+\+\_\+, LEVEL)
-\item 
-\mbox{\Hypertarget{_logger_8hpp_aeeb52603868e416dbddc8a1e7b77fcd5}\label{_logger_8hpp_aeeb52603868e416dbddc8a1e7b77fcd5}} 
-\#define {\bfseries Z\+\_\+\+LOG}(MSG,  LEVEL)~Z\+\_\+\+LOG\+\_\+\+HIDDEN(MSG, LEVEL, \+\_\+\+\_\+\+COUNTER\+\_\+\+\_\+)
+\#define \mbox{\hyperlink{_logger_8hpp_aeeb52603868e416dbddc8a1e7b77fcd5}{Z\+\_\+\+LOG}}(MSG,  LEVEL)
 \item 
 \mbox{\Hypertarget{_logger_8hpp_a5d9e77f33b7b2ad22b245a72f6e93411}\label{_logger_8hpp_a5d9e77f33b7b2ad22b245a72f6e93411}} 
 \#define {\bfseries Z\+\_\+\+LOG\+\_\+\+NOTE}(MSG)~Z\+\_\+\+LOG(MSG, Zaki\+::\+Util\+::\+Log\+Level\+::\+Verbose)
@@ -64,3 +60,20 @@ Logs info, warnings and errors on terminal and into a file if needed.
 \begin{DoxyAuthor}{Author}
 Mohammadreza Zakeri Contact\+: \href{mailto:M.Zakeri@uky.edu}{\texttt{ M.\+Zakeri@uky.\+edu}} 
 \end{DoxyAuthor}
+
+
+\doxysubsection{Macro Definition Documentation}
+\mbox{\Hypertarget{_logger_8hpp_aeeb52603868e416dbddc8a1e7b77fcd5}\label{_logger_8hpp_aeeb52603868e416dbddc8a1e7b77fcd5}} 
+\index{Logger.hpp@{Logger.hpp}!Z\_LOG@{Z\_LOG}}
+\index{Z\_LOG@{Z\_LOG}!Logger.hpp@{Logger.hpp}}
+\doxysubsubsection{\texorpdfstring{Z\_LOG}{Z\_LOG}}
+{\footnotesize\ttfamily \#define Z\+\_\+\+LOG(\begin{DoxyParamCaption}\item[{}]{MSG,  }\item[{}]{LEVEL }\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{    \textcolor{keywordflow}{do}                                                                                       \(\backslash\)}
+\DoxyCodeLine{    \{                                                                                        \(\backslash\)}
+\DoxyCodeLine{        Zaki::Util::LogEntry((MSG), \_\_LINE\_\_, \_\_func\_\_, \_\_FILENAME\_\_, (LEVEL), \_\_COUNTER\_\_); \(\backslash\)}
+\DoxyCodeLine{    \} \textcolor{keywordflow}{while} (0)}
+
+\end{DoxyCode}

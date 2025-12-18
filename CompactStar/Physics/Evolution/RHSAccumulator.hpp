@@ -200,6 +200,22 @@ class RHSAccumulator
 		return block.data;
 	}
 
+	double Peek(Physics::State::StateTag tag, size_t i) const
+	{
+		const auto &block = blocks_[Index(tag)];
+		if (!block.configured)
+		{
+			throw std::runtime_error("RHSAccumulator::Peek: tag '" +
+									 std::string(Physics::State::ToString(tag)) +
+									 "' not configured.");
+		}
+		if (i >= block.data.size())
+		{
+			throw std::runtime_error("RHSAccumulator::Peek: component index out of range.");
+		}
+		return block.data[i];
+	}
+
   private:
 	// ---------------------------------------------------------------------
 	//  Internal structures / helpers

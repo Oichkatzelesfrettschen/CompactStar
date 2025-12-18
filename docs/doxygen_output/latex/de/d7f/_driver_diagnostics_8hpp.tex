@@ -1,0 +1,45 @@
+\hypertarget{_driver_diagnostics_8hpp}{}\doxysection{Compact\+Star/\+Physics/\+Driver/\+Diagnostics/\+Driver\+Diagnostics.hpp File Reference}
+\label{_driver_diagnostics_8hpp}\index{CompactStar/Physics/Driver/Diagnostics/DriverDiagnostics.hpp@{CompactStar/Physics/Driver/Diagnostics/DriverDiagnostics.hpp}}
+
+
+Optional diagnostics interface for Physics drivers.  
+
+
+{\ttfamily \#include $<$string$>$}\newline
+{\ttfamily \#include \char`\"{}Compact\+Star/\+Physics/\+Evolution/\+Diagnostics/\+Diagnostic\+Packet.\+hpp\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}Compact\+Star/\+Physics/\+Evolution/\+Diagnostics/\+Unit\+Contract.\+hpp\char`\"{}}\newline
+\doxysubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_driver_1_1_diagnostics_1_1_i_driver_diagnostics}{Compact\+Star\+::\+Physics\+::\+Driver\+::\+Diagnostics\+::\+IDriver\+Diagnostics}}
+\begin{DoxyCompactList}\small\item\em Interface that a driver can implement to expose diagnostics. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Namespaces}
+\begin{DoxyCompactItemize}
+\item 
+namespace \mbox{\hyperlink{namespace_compact_star_1_1_physics}{Compact\+Star\+::\+Physics}}
+\begin{DoxyCompactList}\small\item\em High-\/level physical modeling layer for compact stars. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Optional diagnostics interface for Physics drivers. 
+
+This header defines a small, non-\/intrusive interface that any driver can implement to provide a structured diagnostics snapshot at runtime.
+
+Motivation\+:
+\begin{DoxyItemize}
+\item Avoid ad-\/hoc debug prints scattered across drivers.
+\item Provide deterministic JSON/\+JSONL records for tooling and regression tests.
+\item Centralize \char`\"{}unit contract\char`\"{} lines per driver (conventions \& assumptions).
+\end{DoxyItemize}
+
+Design constraints\+:
+\begin{DoxyItemize}
+\item Numeric payload is still plain doubles.
+\item Diagnostics are intended to be called rarely (e.\+g., t=0 or every N steps), so they should not influence performance.
+\end{DoxyItemize}
+
+Usage\+:
+\begin{DoxyItemize}
+\item A driver may implement IDriver\+Diagnostics.
+\item An observer (Diagnostics\+Observer) queries drivers that implement this interface and writes results to JSONL. 
+\end{DoxyItemize}

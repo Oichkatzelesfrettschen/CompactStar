@@ -1,0 +1,133 @@
+\hypertarget{struct_compact_star_1_1_physics_1_1_evolution_1_1_driver_context}{}\doxysection{Compact\+Star\+::Physics\+::Evolution\+::Driver\+Context Struct Reference}
+\label{struct_compact_star_1_1_physics_1_1_evolution_1_1_driver_context}\index{CompactStar::Physics::Evolution::DriverContext@{CompactStar::Physics::Evolution::DriverContext}}
+
+
+Layout of the \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_state_vector}{State\+Vector}}.  
+
+
+
+
+{\ttfamily \#include $<$Driver\+Context.\+hpp$>$}
+
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+const \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_star_context}{Star\+Context}} $\ast$ \mbox{\hyperlink{struct_compact_star_1_1_physics_1_1_evolution_1_1_driver_context_a7b9661a3ea07074e7e35d0052dc8017d}{star}} = nullptr
+\begin{DoxyCompactList}\small\item\em Pointer to the stellar structure context. \end{DoxyCompactList}\item 
+const \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_geometry_cache}{Geometry\+Cache}} $\ast$ \mbox{\hyperlink{struct_compact_star_1_1_physics_1_1_evolution_1_1_driver_context_a91179844fc5b4edf1ace0a6c4aa9c952}{geo}} = nullptr
+\begin{DoxyCompactList}\small\item\em Pointer to precomputed geometric integration weights. \end{DoxyCompactList}\item 
+const \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_thermal_1_1_i_envelope}{Thermal\+::\+IEnvelope}} $\ast$ \mbox{\hyperlink{struct_compact_star_1_1_physics_1_1_evolution_1_1_driver_context_a3c1546224c30fc3477d457988a069699}{envelope}} = nullptr
+\begin{DoxyCompactList}\small\item\em Pointer to thermal envelope / atmosphere model. \end{DoxyCompactList}\item 
+const \mbox{\hyperlink{struct_compact_star_1_1_physics_1_1_evolution_1_1_config}{Config}} $\ast$ \mbox{\hyperlink{struct_compact_star_1_1_physics_1_1_evolution_1_1_driver_context_af829389d8f0608617550646a36412085}{cfg}} = nullptr
+\begin{DoxyCompactList}\small\item\em Pointer to global evolution configuration. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Layout of the \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_state_vector}{State\+Vector}}. 
+
+Read-\/only static context for evolution drivers.
+
+\mbox{\hyperlink{struct_compact_star_1_1_physics_1_1_evolution_1_1_driver_context}{Driver\+Context}} bundles together {\itshape all static, slowly-\/varying objects} that physics drivers may consult when computing d\+Y/dt.
+
+It is passed {\bfseries{by const reference}} into \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_i_driver_ab4c100ea49a9ec8bad3b43f9f84c17eb}{IDriver\+::\+Accumulate\+RHS()}}.\hypertarget{struct_compact_star_1_1_physics_1_1_evolution_1_1_driver_context_autotoc_md24}{}\doxyparagraph{Design principles}\label{struct_compact_star_1_1_physics_1_1_evolution_1_1_driver_context_autotoc_md24}
+
+\begin{DoxyItemize}
+\item {\bfseries{Non-\/owning}}\+: all pointers refer to objects owned elsewhere (typically by the calling code / \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_evolution_system}{Evolution\+System}}).
+\item {\bfseries{Read-\/only}}\+: drivers must treat everything here as immutable.
+\item {\bfseries{Optional components}}\+: pointers may be null if a given feature is not enabled (e.\+g. envelope models).
+\end{DoxyItemize}\hypertarget{struct_compact_star_1_1_physics_1_1_evolution_1_1_driver_context_autotoc_md25}{}\doxyparagraph{Typical usage inside a driver}\label{struct_compact_star_1_1_physics_1_1_evolution_1_1_driver_context_autotoc_md25}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keywordtype}{void} MyDriver::AccumulateRHS(..., \textcolor{keyword}{const} DriverContext\& ctx)\textcolor{keyword}{ const}}
+\DoxyCodeLine{\textcolor{keyword}{}\{}
+\DoxyCodeLine{    \textcolor{keywordflow}{if} (ctx.geo)}
+\DoxyCodeLine{    \{}
+\DoxyCodeLine{        \textcolor{keyword}{const} \textcolor{keyword}{auto}\& w = ctx.geo-\/>WC();}
+\DoxyCodeLine{        ...}
+\DoxyCodeLine{    \}}
+\DoxyCodeLine{}
+\DoxyCodeLine{    \textcolor{keywordflow}{if} (ctx.star)}
+\DoxyCodeLine{    \{}
+\DoxyCodeLine{        \textcolor{keyword}{const} \textcolor{keyword}{auto}\& prof = ctx.star-\/>Profile();}
+\DoxyCodeLine{        ...}
+\DoxyCodeLine{    \}}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+ 
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{struct_compact_star_1_1_physics_1_1_evolution_1_1_driver_context_af829389d8f0608617550646a36412085}\label{struct_compact_star_1_1_physics_1_1_evolution_1_1_driver_context_af829389d8f0608617550646a36412085}} 
+\index{CompactStar::Physics::Evolution::DriverContext@{CompactStar::Physics::Evolution::DriverContext}!cfg@{cfg}}
+\index{cfg@{cfg}!CompactStar::Physics::Evolution::DriverContext@{CompactStar::Physics::Evolution::DriverContext}}
+\doxysubsubsection{\texorpdfstring{cfg}{cfg}}
+{\footnotesize\ttfamily const \mbox{\hyperlink{struct_compact_star_1_1_physics_1_1_evolution_1_1_config}{Config}}$\ast$ Compact\+Star\+::\+Physics\+::\+Evolution\+::\+Driver\+Context\+::cfg = nullptr}
+
+
+
+Pointer to global evolution configuration. 
+
+Provides access to\+:
+\begin{DoxyItemize}
+\item numerical tolerances,
+\item enabled physics switches,
+\item model-\/wide flags.
+\end{DoxyItemize}
+
+Drivers should treat this as read-\/only policy information. \mbox{\Hypertarget{struct_compact_star_1_1_physics_1_1_evolution_1_1_driver_context_a3c1546224c30fc3477d457988a069699}\label{struct_compact_star_1_1_physics_1_1_evolution_1_1_driver_context_a3c1546224c30fc3477d457988a069699}} 
+\index{CompactStar::Physics::Evolution::DriverContext@{CompactStar::Physics::Evolution::DriverContext}!envelope@{envelope}}
+\index{envelope@{envelope}!CompactStar::Physics::Evolution::DriverContext@{CompactStar::Physics::Evolution::DriverContext}}
+\doxysubsubsection{\texorpdfstring{envelope}{envelope}}
+{\footnotesize\ttfamily const \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_thermal_1_1_i_envelope}{Thermal\+::\+IEnvelope}}$\ast$ Compact\+Star\+::\+Physics\+::\+Evolution\+::\+Driver\+Context\+::envelope = nullptr}
+
+
+
+Pointer to thermal envelope / atmosphere model. 
+
+Provides mappings such as\+: T\+\_\+core → T\+\_\+surface T\+\_\+surface → photon luminosity
+
+Optional; may be null if no envelope model is configured. \mbox{\Hypertarget{struct_compact_star_1_1_physics_1_1_evolution_1_1_driver_context_a91179844fc5b4edf1ace0a6c4aa9c952}\label{struct_compact_star_1_1_physics_1_1_evolution_1_1_driver_context_a91179844fc5b4edf1ace0a6c4aa9c952}} 
+\index{CompactStar::Physics::Evolution::DriverContext@{CompactStar::Physics::Evolution::DriverContext}!geo@{geo}}
+\index{geo@{geo}!CompactStar::Physics::Evolution::DriverContext@{CompactStar::Physics::Evolution::DriverContext}}
+\doxysubsubsection{\texorpdfstring{geo}{geo}}
+{\footnotesize\ttfamily const \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_geometry_cache}{Geometry\+Cache}}$\ast$ Compact\+Star\+::\+Physics\+::\+Evolution\+::\+Driver\+Context\+::geo = nullptr}
+
+
+
+Pointer to precomputed geometric integration weights. 
+
+\mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_geometry_cache}{Geometry\+Cache}} contains commonly-\/used metric combinations such as\+:
+\begin{DoxyItemize}
+\item proper-\/volume factors,
+\item redshifted shell weights,
+\item exp(ν), exp(2ν), exp(Λ), etc.
+\end{DoxyItemize}
+
+Drivers performing spatial integrals (cooling, heating, luminosities) should prefer using \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_geometry_cache}{Geometry\+Cache}} over recomputing these factors.
+
+May be null for purely local / toy drivers. \mbox{\Hypertarget{struct_compact_star_1_1_physics_1_1_evolution_1_1_driver_context_a7b9661a3ea07074e7e35d0052dc8017d}\label{struct_compact_star_1_1_physics_1_1_evolution_1_1_driver_context_a7b9661a3ea07074e7e35d0052dc8017d}} 
+\index{CompactStar::Physics::Evolution::DriverContext@{CompactStar::Physics::Evolution::DriverContext}!star@{star}}
+\index{star@{star}!CompactStar::Physics::Evolution::DriverContext@{CompactStar::Physics::Evolution::DriverContext}}
+\doxysubsubsection{\texorpdfstring{star}{star}}
+{\footnotesize\ttfamily const \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_star_context}{Star\+Context}}$\ast$ Compact\+Star\+::\+Physics\+::\+Evolution\+::\+Driver\+Context\+::star = nullptr}
+
+
+
+Pointer to the stellar structure context. 
+
+Provides access to\+:
+\begin{DoxyItemize}
+\item radial grids,
+\item metric functions,
+\item EOS hooks,
+\item composition profiles,
+\item any cached background quantities.
+\end{DoxyItemize}
+
+Typically constructed from a solved NStar / TOV profile.
+
+May be null if a driver does not require structural data. 
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Compact\+Star/\+Physics/\+Evolution/\mbox{\hyperlink{_driver_context_8hpp}{Driver\+Context.\+hpp}}\end{DoxyCompactItemize}

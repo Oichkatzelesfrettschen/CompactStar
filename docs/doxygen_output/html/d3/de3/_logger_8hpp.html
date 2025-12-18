@@ -83,14 +83,14 @@ $(function() {
 
 <p>Logs info, warnings and errors on terminal and into a file if needed.  
 <a href="#details">More...</a></p>
-<div class="textblock"><code>#include &lt;iostream&gt;</code><br />
-<code>#include &lt;string&gt;</code><br />
+<div class="textblock"><code>#include &lt;cstring&gt;</code><br />
 <code>#include &lt;fstream&gt;</code><br />
+<code>#include &lt;iostream&gt;</code><br />
 <code>#include &lt;mutex&gt;</code><br />
+<code>#include &lt;string&gt;</code><br />
 <code>#include &lt;time.h&gt;</code><br />
-<code>#include &lt;cstring&gt;</code><br />
-<code>#include &quot;<a class="el" href="../../dd/d24/_string___basic_8hpp_source.html">Zaki/String/String_Basic.hpp</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="../../d3/dd3/_directory_8hpp_source.html">Zaki/String/Directory.hpp</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="../../dd/d24/_string___basic_8hpp_source.html">Zaki/String/String_Basic.hpp</a>&quot;</code><br />
 </div>
 <p><a href="../../d3/de3/_logger_8hpp_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
@@ -108,11 +108,7 @@ Macros</h2></td></tr>
 <tr class="memitem:a5fccb4fc71e44089a1b1a77fc76c0b68"><td class="memItemLeft" align="right" valign="top"><a id="a5fccb4fc71e44089a1b1a77fc76c0b68" name="a5fccb4fc71e44089a1b1a77fc76c0b68"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><b>__FILENAME__</b>&#160;&#160;&#160;strrchr(&quot;/&quot; __FILE__, '/') + 1</td></tr>
 <tr class="separator:a5fccb4fc71e44089a1b1a77fc76c0b68"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6720ae827dddddff52813636623af928"><td class="memItemLeft" align="right" valign="top"><a id="a6720ae827dddddff52813636623af928" name="a6720ae827dddddff52813636623af928"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>Z_LOG_HIDDEN</b>(MSG,  LEVEL,  L)&#160;&#160;&#160;<a class="el" href="../../d1/da8/struct_zaki_1_1_util_1_1_log_entry.html">Zaki::Util::LogEntry</a> __CONCAT(logEntry,L)(MSG,  __LINE__, __func__, __FILENAME__, LEVEL)</td></tr>
-<tr class="separator:a6720ae827dddddff52813636623af928"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aeeb52603868e416dbddc8a1e7b77fcd5"><td class="memItemLeft" align="right" valign="top"><a id="aeeb52603868e416dbddc8a1e7b77fcd5" name="aeeb52603868e416dbddc8a1e7b77fcd5"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>Z_LOG</b>(MSG,  LEVEL)&#160;&#160;&#160;Z_LOG_HIDDEN(MSG, LEVEL, __COUNTER__)</td></tr>
+<tr class="memitem:aeeb52603868e416dbddc8a1e7b77fcd5"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d3/de3/_logger_8hpp.html#aeeb52603868e416dbddc8a1e7b77fcd5">Z_LOG</a>(MSG,  LEVEL)</td></tr>
 <tr class="separator:aeeb52603868e416dbddc8a1e7b77fcd5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5d9e77f33b7b2ad22b245a72f6e93411"><td class="memItemLeft" align="right" valign="top"><a id="a5d9e77f33b7b2ad22b245a72f6e93411" name="a5d9e77f33b7b2ad22b245a72f6e93411"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><b>Z_LOG_NOTE</b>(MSG)&#160;&#160;&#160;Z_LOG(MSG, Zaki::Util::LogLevel::Verbose)</td></tr>
@@ -139,7 +135,40 @@ Enumerations</h2></td></tr>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Logs info, warnings and errors on terminal and into a file if needed. </p>
 <dl class="section author"><dt>Author</dt><dd>Mohammadreza Zakeri Contact: <a href="#" onclick="location.href='mai'+'lto:'+'M.Z'+'ak'+'eri'+'@u'+'ky.'+'ed'+'u'; return false;">M.Zak<span class="obfuscator">.nosp@m.</span>eri@<span class="obfuscator">.nosp@m.</span>uky.e<span class="obfuscator">.nosp@m.</span>du</a> </dd></dl>
-</div></div><!-- contents -->
+</div><h2 class="groupheader">Macro Definition Documentation</h2>
+<a id="aeeb52603868e416dbddc8a1e7b77fcd5" name="aeeb52603868e416dbddc8a1e7b77fcd5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aeeb52603868e416dbddc8a1e7b77fcd5">&#9670;&#160;</a></span>Z_LOG</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define Z_LOG</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">MSG, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">LEVEL&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<b>Value:</b><div class="fragment"><div class="line">    <span class="keywordflow">do</span>                                                                                       \</div>
+<div class="line">    {                                                                                        \</div>
+<div class="line">        Zaki::Util::LogEntry((MSG), __LINE__, __func__, __FILENAME__, (LEVEL), __COUNTER__); \</div>
+<div class="line">    } <span class="keywordflow">while</span> (0)</div>
+</div><!-- fragment -->
+</div>
+</div>
+</div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Generated by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="../../doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.6

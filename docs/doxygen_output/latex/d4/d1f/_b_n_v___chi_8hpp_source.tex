@@ -49,23 +49,23 @@
 \DoxyCodeLine{63 }
 \DoxyCodeLine{64 \textcolor{keyword}{struct }\mbox{\hyperlink{struct_compact_star_1_1_microphysics_1_1_b_n_v_1_1_internal_1_1_pulsar___limit}{Pulsar\_Limit}}}
 \DoxyCodeLine{65 \{}
-\DoxyCodeLine{66     \mbox{\hyperlink{class_compact_star_1_1_pulsar}{CompactStar::Pulsar}} p;}
+\DoxyCodeLine{66     \mbox{\hyperlink{class_compact_star_1_1_core_1_1_pulsar}{CompactStar::Core::Pulsar}} p;}
 \DoxyCodeLine{67     std::vector<double> lim;}
 \DoxyCodeLine{68 }
-\DoxyCodeLine{69     \mbox{\hyperlink{struct_compact_star_1_1_microphysics_1_1_b_n_v_1_1_internal_1_1_pulsar___limit}{Pulsar\_Limit}}(\textcolor{keyword}{const} \mbox{\hyperlink{class_compact_star_1_1_pulsar}{CompactStar::Pulsar}} \&in\_p,}
+\DoxyCodeLine{69     \mbox{\hyperlink{struct_compact_star_1_1_microphysics_1_1_b_n_v_1_1_internal_1_1_pulsar___limit}{Pulsar\_Limit}}(\textcolor{keyword}{const} \mbox{\hyperlink{class_compact_star_1_1_core_1_1_pulsar}{CompactStar::Core::Pulsar}} \&in\_p,}
 \DoxyCodeLine{70                  \textcolor{keyword}{const} std::vector<double> \&in\_lim)}
 \DoxyCodeLine{71         : p(in\_p), lim(in\_lim)}
 \DoxyCodeLine{72     \{}
 \DoxyCodeLine{73     \}}
 \DoxyCodeLine{74 }
-\DoxyCodeLine{75     \textcolor{comment}{// Pulsar\_Limit(const CompactStar::Pulsar\& in\_p,}}
+\DoxyCodeLine{75     \textcolor{comment}{// Pulsar\_Limit(const CompactStar::Core::Pulsar\& in\_p,}}
 \DoxyCodeLine{76     \textcolor{comment}{//              std::vector<double> in\_lim )}}
 \DoxyCodeLine{77     \textcolor{comment}{//              : p(in\_p), lim(in\_lim)}}
 \DoxyCodeLine{78     \textcolor{comment}{// \{\}}}
 \DoxyCodeLine{79 \};}
 \DoxyCodeLine{80 }
 \DoxyCodeLine{81 \textcolor{comment}{//==============================================================}}
-\DoxyCodeLine{82 \textcolor{keyword}{class }\mbox{\hyperlink{class_compact_star_1_1_microphysics_1_1_b_n_v_1_1_internal_1_1_b_n_v___chi}{BNV\_Chi}} : \textcolor{keyword}{public} \mbox{\hyperlink{class_compact_star_1_1_prog}{Prog}}}
+\DoxyCodeLine{82 \textcolor{keyword}{class }\mbox{\hyperlink{class_compact_star_1_1_microphysics_1_1_b_n_v_1_1_internal_1_1_b_n_v___chi}{BNV\_Chi}} : \textcolor{keyword}{public} \mbox{\hyperlink{class_compact_star_1_1_core_1_1_prog}{Core::Prog}}}
 \DoxyCodeLine{83 \{}
 \DoxyCodeLine{84   \textcolor{keyword}{public}:}
 \DoxyCodeLine{85     \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
@@ -158,7 +158,7 @@
 \DoxyCodeLine{187 }
 \DoxyCodeLine{192     \mbox{\hyperlink{class_zaki_1_1_vector_1_1_data_set}{Zaki::Vector::DataSet}} \mbox{\hyperlink{class_compact_star_1_1_microphysics_1_1_b_n_v_1_1_internal_1_1_b_n_v___chi_aa47c1817fb2b76bd0d5b9a802809ea6b}{n\_B}};}
 \DoxyCodeLine{193 }
-\DoxyCodeLine{194     \mbox{\hyperlink{class_compact_star_1_1_pulsar}{Pulsar}} pulsar;}
+\DoxyCodeLine{194     \mbox{\hyperlink{class_compact_star_1_1_core_1_1_pulsar}{Core::Pulsar}} pulsar;}
 \DoxyCodeLine{195 }
 \DoxyCodeLine{198     \textcolor{comment}{// double gamma\_bnv\_bin\_lim = 7.83129*1e-\/10 ;}}
 \DoxyCodeLine{199     \textcolor{keywordtype}{double} \mbox{\hyperlink{class_compact_star_1_1_microphysics_1_1_b_n_v_1_1_internal_1_1_b_n_v___chi_aad8c1213a7ba00109e548c215feb8e0b}{gamma\_bnv\_bin\_lim}} = 1.75e-\/10;}
@@ -201,7 +201,7 @@
 \DoxyCodeLine{252 }
 \DoxyCodeLine{254     \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_compact_star_1_1_microphysics_1_1_b_n_v_1_1_internal_1_1_b_n_v___chi_a52dad4da032cde3fa1a4fda5fe1f04a4}{SetModel}}(\textcolor{keyword}{const} std::string \&in\_eos\_model);}
 \DoxyCodeLine{255 }
-\DoxyCodeLine{257     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_compact_star_1_1_microphysics_1_1_b_n_v_1_1_internal_1_1_b_n_v___chi_a7be86b5f8cb25f58f75a3cedfb3f82a7}{SetPulsar}}(\textcolor{keyword}{const} \mbox{\hyperlink{class_compact_star_1_1_pulsar}{CompactStar::Pulsar}} \&);}
+\DoxyCodeLine{257     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_compact_star_1_1_microphysics_1_1_b_n_v_1_1_internal_1_1_b_n_v___chi_a3cd8d0b6d1a5084c6b4bd68ff353f1d5}{SetPulsar}}(\textcolor{keyword}{const} \mbox{\hyperlink{class_compact_star_1_1_core_1_1_pulsar}{CompactStar::Core::Pulsar}} \&);}
 \DoxyCodeLine{258 }
 \DoxyCodeLine{260     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_compact_star_1_1_microphysics_1_1_b_n_v_1_1_internal_1_1_b_n_v___chi_ae262f436f32e004e2f8eac17c3485803}{SetChiMassRange}}(\textcolor{keyword}{const} \mbox{\hyperlink{struct_zaki_1_1_math_1_1_axis}{Zaki::Math::Axis}} \&);}
 \DoxyCodeLine{261 }

@@ -24,7 +24,7 @@
 \DoxyCodeLine{43 }
 \DoxyCodeLine{44 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_tags_8hpp}{CompactStar/Physics/State/Tags.hpp}}"{}}}
 \DoxyCodeLine{45 }
-\DoxyCodeLine{46 \textcolor{keyword}{namespace }\mbox{\hyperlink{namespace_compact_star_1_1_physics_1_1_evolution}{CompactStar::Physics::Evolution}}}
+\DoxyCodeLine{46 \textcolor{keyword}{namespace }CompactStar::Physics::Evolution}
 \DoxyCodeLine{47 \{}
 \DoxyCodeLine{48 }
 \DoxyCodeLine{49 \textcolor{comment}{// -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
@@ -126,31 +126,47 @@
 \DoxyCodeLine{200         \textcolor{keywordflow}{return} block.data;}
 \DoxyCodeLine{201     \}}
 \DoxyCodeLine{202 }
-\DoxyCodeLine{203   \textcolor{keyword}{private}:}
-\DoxyCodeLine{204     \textcolor{comment}{// -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
-\DoxyCodeLine{205     \textcolor{comment}{//  Internal structures / helpers}}
-\DoxyCodeLine{206     \textcolor{comment}{// -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
-\DoxyCodeLine{207 }
-\DoxyCodeLine{208     \textcolor{comment}{// Renamed to avoid collision with Block(...) member functions.}}
-\DoxyCodeLine{209     \textcolor{keyword}{struct }BlockStorage}
-\DoxyCodeLine{210     \{}
-\DoxyCodeLine{211         std::vector<double> data;}
-\DoxyCodeLine{212         \textcolor{keywordtype}{bool} configured = \textcolor{keyword}{false};}
-\DoxyCodeLine{213     \};}
-\DoxyCodeLine{214 }
-\DoxyCodeLine{216     \textcolor{keyword}{static} \textcolor{keyword}{constexpr} std::size\_t NumTags =}
-\DoxyCodeLine{217         \textcolor{keyword}{static\_cast<}std::size\_t\textcolor{keyword}{>}(\mbox{\hyperlink{namespace_compact_star_1_1_physics_1_1_state_af14f5554b0d9be50c5ea718733bc424ba90589c47f06eb971d548591f23c285af}{Physics::State::StateTag::Custom}}) + 1;}
+\DoxyCodeLine{203     \textcolor{keywordtype}{double} Peek(\mbox{\hyperlink{namespace_compact_star_1_1_physics_1_1_state_af14f5554b0d9be50c5ea718733bc424b}{Physics::State::StateTag}} tag, \textcolor{keywordtype}{size\_t} i)\textcolor{keyword}{ const}}
+\DoxyCodeLine{204 \textcolor{keyword}{    }\{}
+\DoxyCodeLine{205         \textcolor{keyword}{const} \textcolor{keyword}{auto} \&block = blocks\_[Index(tag)];}
+\DoxyCodeLine{206         \textcolor{keywordflow}{if} (!block.configured)}
+\DoxyCodeLine{207         \{}
+\DoxyCodeLine{208             \textcolor{keywordflow}{throw} std::runtime\_error(\textcolor{stringliteral}{"{}RHSAccumulator::Peek: tag '"{}} +}
+\DoxyCodeLine{209                                      std::string(\mbox{\hyperlink{namespace_compact_star_1_1_physics_1_1_state_ad94b7336e81d9f83c3c7f2eb946b5e9e}{Physics::State::ToString}}(tag)) +}
+\DoxyCodeLine{210                                      \textcolor{stringliteral}{"{}' not configured."{}});}
+\DoxyCodeLine{211         \}}
+\DoxyCodeLine{212         \textcolor{keywordflow}{if} (i >= block.data.size())}
+\DoxyCodeLine{213         \{}
+\DoxyCodeLine{214             \textcolor{keywordflow}{throw} std::runtime\_error(\textcolor{stringliteral}{"{}RHSAccumulator::Peek: component index out of range."{}});}
+\DoxyCodeLine{215         \}}
+\DoxyCodeLine{216         \textcolor{keywordflow}{return} block.data[i];}
+\DoxyCodeLine{217     \}}
 \DoxyCodeLine{218 }
-\DoxyCodeLine{220     \textcolor{keyword}{static} \textcolor{keyword}{constexpr} std::size\_t Index(\mbox{\hyperlink{namespace_compact_star_1_1_physics_1_1_state_af14f5554b0d9be50c5ea718733bc424b}{Physics::State::StateTag}} tag)}
-\DoxyCodeLine{221     \{}
-\DoxyCodeLine{222         \textcolor{keywordflow}{return} \textcolor{keyword}{static\_cast<}std::size\_t\textcolor{keyword}{>}(tag);}
-\DoxyCodeLine{223     \}}
-\DoxyCodeLine{224 }
-\DoxyCodeLine{226     std::array<BlockStorage, NumTags> blocks\_;}
-\DoxyCodeLine{227 \};}
-\DoxyCodeLine{228 }
-\DoxyCodeLine{229 \} \textcolor{comment}{// namespace CompactStar::Physics::Evolution}}
+\DoxyCodeLine{219   \textcolor{keyword}{private}:}
+\DoxyCodeLine{220     \textcolor{comment}{// -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{221     \textcolor{comment}{//  Internal structures / helpers}}
+\DoxyCodeLine{222     \textcolor{comment}{// -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{223 }
+\DoxyCodeLine{224     \textcolor{comment}{// Renamed to avoid collision with Block(...) member functions.}}
+\DoxyCodeLine{225     \textcolor{keyword}{struct }BlockStorage}
+\DoxyCodeLine{226     \{}
+\DoxyCodeLine{227         std::vector<double> data;}
+\DoxyCodeLine{228         \textcolor{keywordtype}{bool} configured = \textcolor{keyword}{false};}
+\DoxyCodeLine{229     \};}
 \DoxyCodeLine{230 }
-\DoxyCodeLine{231 \textcolor{preprocessor}{\#endif }\textcolor{comment}{/* CompactStar\_Physics\_Evolution\_RHSAccumulator\_H */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{232     \textcolor{keyword}{static} \textcolor{keyword}{constexpr} std::size\_t NumTags =}
+\DoxyCodeLine{233         \textcolor{keyword}{static\_cast<}std::size\_t\textcolor{keyword}{>}(\mbox{\hyperlink{namespace_compact_star_1_1_physics_1_1_state_af14f5554b0d9be50c5ea718733bc424ba90589c47f06eb971d548591f23c285af}{Physics::State::StateTag::Custom}}) + 1;}
+\DoxyCodeLine{234 }
+\DoxyCodeLine{236     \textcolor{keyword}{static} \textcolor{keyword}{constexpr} std::size\_t Index(\mbox{\hyperlink{namespace_compact_star_1_1_physics_1_1_state_af14f5554b0d9be50c5ea718733bc424b}{Physics::State::StateTag}} tag)}
+\DoxyCodeLine{237     \{}
+\DoxyCodeLine{238         \textcolor{keywordflow}{return} \textcolor{keyword}{static\_cast<}std::size\_t\textcolor{keyword}{>}(tag);}
+\DoxyCodeLine{239     \}}
+\DoxyCodeLine{240 }
+\DoxyCodeLine{242     std::array<BlockStorage, NumTags> blocks\_;}
+\DoxyCodeLine{243 \};}
+\DoxyCodeLine{244 }
+\DoxyCodeLine{245 \} \textcolor{comment}{// namespace CompactStar::Physics::Evolution}}
+\DoxyCodeLine{246 }
+\DoxyCodeLine{247 \textcolor{preprocessor}{\#endif }\textcolor{comment}{/* CompactStar\_Physics\_Evolution\_RHSAccumulator\_H */}\textcolor{preprocessor}{}}
 
 \end{DoxyCode}

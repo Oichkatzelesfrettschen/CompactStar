@@ -1,0 +1,36 @@
+\hypertarget{struct_compact_star_1_1_physics_1_1_evolution_1_1_observers_1_1_run_info}{}\doxysection{Compact\+Star\+::Physics\+::Evolution\+::Observers\+::Run\+Info Struct Reference}
+\label{struct_compact_star_1_1_physics_1_1_evolution_1_1_observers_1_1_run_info}\index{CompactStar::Physics::Evolution::Observers::RunInfo@{CompactStar::Physics::Evolution::Observers::RunInfo}}
+
+
+Run-\/level metadata for observer initialization.  
+
+
+
+
+{\ttfamily \#include $<$IObserver.\+hpp$>$}
+
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{struct_compact_star_1_1_physics_1_1_evolution_1_1_observers_1_1_run_info_a6c487d603bace93ab3804c41cf86769a}\label{struct_compact_star_1_1_physics_1_1_evolution_1_1_observers_1_1_run_info_a6c487d603bace93ab3804c41cf86769a}} 
+std\+::string {\bfseries tag}
+\begin{DoxyCompactList}\small\item\em Optional label for the run (useful in filenames / metadata). \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{struct_compact_star_1_1_physics_1_1_evolution_1_1_observers_1_1_run_info_ab3a2d18b851d109708348dce26db0a33}\label{struct_compact_star_1_1_physics_1_1_evolution_1_1_observers_1_1_run_info_ab3a2d18b851d109708348dce26db0a33}} 
+std\+::string {\bfseries output\+\_\+dir}
+\begin{DoxyCompactList}\small\item\em Output directory chosen by the driver (observers may create subdirs). \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{struct_compact_star_1_1_physics_1_1_evolution_1_1_observers_1_1_run_info_a1841bb3b2660a6b26acec504314ad22e}\label{struct_compact_star_1_1_physics_1_1_evolution_1_1_observers_1_1_run_info_a1841bb3b2660a6b26acec504314ad22e}} 
+double {\bfseries t0} = 0.\+0
+\begin{DoxyCompactList}\small\item\em The integrator\textquotesingle{}s notion of initial time. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{struct_compact_star_1_1_physics_1_1_evolution_1_1_observers_1_1_run_info_a73bdf8a24a3c5200eef0a2cd53996a44}\label{struct_compact_star_1_1_physics_1_1_evolution_1_1_observers_1_1_run_info_a73bdf8a24a3c5200eef0a2cd53996a44}} 
+double {\bfseries tf} = 0.\+0
+\begin{DoxyCompactList}\small\item\em The integrator\textquotesingle{}s notion of target/final time (if known). \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Run-\/level metadata for observer initialization. 
+
+This is intentionally small and stable. Add fields only if they are truly run-\/level (not per-\/sample). 
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Compact\+Star/\+Physics/\+Evolution/\+Observers/\mbox{\hyperlink{_i_observer_8hpp}{IObserver.\+hpp}}\end{DoxyCompactItemize}

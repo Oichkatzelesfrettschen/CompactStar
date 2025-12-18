@@ -99,7 +99,7 @@ int main()
 	// For now we don't need any of these in the drivers we’re using, so we
 	// can leave them as nullptr. Later, when we wire in real microphysics
 	// and envelope models, we’ll fill these.
-	Physics::Evolution::EvolutionSystem::Context ctx;
+	Physics::Evolution::DriverContext ctx;
 	ctx.star = &starCtx;	// e.g. pointer to StarContext built from NStar + EOS
 	ctx.geo = &geo;			// e.g. GeometryCache
 	ctx.envelope = nullptr; // e.g. Thermal::IEnvelope implementation
@@ -112,7 +112,7 @@ int main()
 	// --- Thermal block: 1 DOF = T∞ ---------------------------------
 	Physics::State::ThermalState thermal;
 	thermal.Resize(1);
-	thermal.Tinf() = 1.0e8; // K, rough initial redshifted internal temperature
+	thermal.SetTinf(1.0e8); // K, rough initial redshifted internal temperature
 
 	// Optional: set T_surf if we use DirectTSurf model later.
 	// For now we use ApproxFromTinf in PhotonCooling::Options, so this is not needed.
@@ -173,8 +173,8 @@ int main()
 
 	// Effective area and heat capacity are just toy values here; adjust to keep
 	// dT/dt in a reasonable range.
-	thermOpts.area_eff = 1.0; // in code units; real code would use ~4πR^2 z^2
-	thermOpts.C_eff = 1.0e30; // big C_eff → slow cooling for demonstration
+	thermOpts.radiating_fraction = 1.0; // in code units; real code would use ~4πR^2 z^2
+	thermOpts.C_eff = 1.0e40;			// big C_eff → slow cooling for demonstration
 	thermOpts.global_scale = 1.0;
 
 	auto thermalDriver =

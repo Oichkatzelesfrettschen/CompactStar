@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['baryondensity_0',['BaryonDensity',['../d4/d7b/struct_compact_star_1_1_star_profile.html#afcfd77a3fe7d7158278310be5e7075d8a31519c07cd22a64ea3e013348518b410',1,'CompactStar::StarProfile']]],
-  ['bnv_1',['BNV',['../da/d7b/namespace_compact_star_1_1_physics_1_1_state.html#af14f5554b0d9be50c5ea718733bc424baaca5e32569b8af22bd1e8a13eefb0c87',1,'CompactStar::Physics::State']]]
+  ['approxfromtinf_0',['ApproxFromTinf',['../d4/d9a/struct_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_photon_cooling_1_1_options.html#a1db89fd4a5a8c77fc76d2570512180b0a98f677e2b96d80e0c853d448714c5731',1,'CompactStar::Physics::Driver::Thermal::PhotonCooling::Options']]]
 ];

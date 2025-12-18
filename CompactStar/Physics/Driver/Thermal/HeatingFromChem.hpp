@@ -59,22 +59,22 @@ class HeatingFromChem final : public IDriver
 	// --- IDriver interface -----------------------------------------------------
 	std::string Name() const override { return "HeatingFromChem"; }
 
-	std::span<const State::StateTag> DependsOn() const override
+	const std::vector<State::StateTag> &DependsOn() const override
 	{
-		static constexpr std::array<State::StateTag, 2> deps{State::StateTag::Chem, State::StateTag::Thermal};
+		static const std::vector<State::StateTag> deps{State::StateTag::Chem, State::StateTag::Thermal};
 		return deps;
 	}
 
-	std::span<const State::StateTag> Updates() const override
+	const std::vector<State::StateTag> &Updates() const override
 	{
-		static constexpr std::array<State::StateTag, 1> ups{State::StateTag::Thermal};
+		static const std::vector<State::StateTag> ups{State::StateTag::Thermal};
 		return ups;
 	}
 
 	void AccumulateRHS(double t,
 					   const Evolution::StateVector &Y,
 					   Evolution::RHSAccumulator &dYdt,
-					   const Evolution::StarContext &ctx) const override;
+					   const Evolution::DriverContext &ctx) const override;
 
 	// --------------------------------------------------------------------------
 	const Options &GetOptions() const { return opts_; }

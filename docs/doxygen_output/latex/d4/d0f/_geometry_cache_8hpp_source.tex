@@ -28,58 +28,93 @@
 \DoxyCodeLine{24 \textcolor{comment}{ * SOFTWARE.}}
 \DoxyCodeLine{25 \textcolor{comment}{ */}}
 \DoxyCodeLine{26 }
-\DoxyCodeLine{37 \textcolor{preprocessor}{\#ifndef CompactStar\_Physics\_Evolution\_GeometryCache\_H}}
-\DoxyCodeLine{38 \textcolor{preprocessor}{\#define CompactStar\_Physics\_Evolution\_GeometryCache\_H}}
-\DoxyCodeLine{39 }
-\DoxyCodeLine{40 \textcolor{preprocessor}{\#include <cstddef>}}
-\DoxyCodeLine{41 \textcolor{preprocessor}{\#include <vector>}}
-\DoxyCodeLine{42 }
-\DoxyCodeLine{43 \textcolor{comment}{// namespace CompactStar}}
-\DoxyCodeLine{44 \textcolor{comment}{// \{}}
-\DoxyCodeLine{45 \textcolor{comment}{// namespace ChemicalHeating}}
-\DoxyCodeLine{46 \textcolor{comment}{// \{}}
-\DoxyCodeLine{47 \textcolor{comment}{// class StarContext;}}
-\DoxyCodeLine{48 \textcolor{comment}{// \}}}
-\DoxyCodeLine{49 \textcolor{comment}{// \} // namespace CompactStar}}
-\DoxyCodeLine{50 }
-\DoxyCodeLine{51 \textcolor{comment}{//==============================================================}}
-\DoxyCodeLine{52 \textcolor{keyword}{namespace }CompactStar}
-\DoxyCodeLine{53 \{}
-\DoxyCodeLine{54 \textcolor{keyword}{namespace }Physics}
-\DoxyCodeLine{55 \{}
-\DoxyCodeLine{56 \textcolor{keyword}{namespace }Evolution}
-\DoxyCodeLine{57 \{}
-\DoxyCodeLine{58 }
-\DoxyCodeLine{59 \textcolor{keyword}{class }StarContext;}
-\DoxyCodeLine{60 \textcolor{comment}{//==============================================================}}
-\DoxyCodeLine{61 \textcolor{comment}{//                      GeometryCache Class}}
-\DoxyCodeLine{62 \textcolor{comment}{//==============================================================}}
-\DoxyCodeLine{67 \textcolor{comment}{}\textcolor{keyword}{class }\mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_geometry_cache}{GeometryCache}}}
-\DoxyCodeLine{68 \{}
-\DoxyCodeLine{69   \textcolor{keyword}{public}:}
-\DoxyCodeLine{74     \textcolor{keyword}{explicit} \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_geometry_cache}{GeometryCache}}(\textcolor{keyword}{const} \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_star_context}{StarContext}} \&ctx);}
-\DoxyCodeLine{75 }
-\DoxyCodeLine{77     [[nodiscard]] std::size\_t \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_geometry_cache_a667e9d632837d73b115ab6527c4ec117}{Size}}() \textcolor{keyword}{const};}
-\DoxyCodeLine{78 }
-\DoxyCodeLine{80     \textcolor{keyword}{const} std::vector<double> \&\mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_geometry_cache_a9c99086728c8f4f517cfab19f94f0bcd}{WC}}() \textcolor{keyword}{const};}
-\DoxyCodeLine{81 }
-\DoxyCodeLine{83     \textcolor{keyword}{const} std::vector<double> \&\mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_geometry_cache_af84c63de79b6fc3d8f50490ecc20f8bb}{WNu}}() \textcolor{keyword}{const};}
-\DoxyCodeLine{84 }
-\DoxyCodeLine{86     \textcolor{keyword}{const} std::vector<double> \&\mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_geometry_cache_ade9d6bc121225447725160d762a84dd3}{Radius}}() \textcolor{keyword}{const};}
-\DoxyCodeLine{87 }
-\DoxyCodeLine{88   \textcolor{keyword}{private}:}
-\DoxyCodeLine{89     std::vector<double> m\_r;}
-\DoxyCodeLine{90     std::vector<double> m\_wC;}
-\DoxyCodeLine{91     std::vector<double> m\_wNu;}
-\DoxyCodeLine{92 \};}
-\DoxyCodeLine{93 \textcolor{comment}{//==============================================================}}
-\DoxyCodeLine{94 \} \textcolor{comment}{// namespace Evolution}}
-\DoxyCodeLine{95 \textcolor{comment}{//==============================================================}}
-\DoxyCodeLine{96 \} \textcolor{comment}{// namespace Physics}}
-\DoxyCodeLine{97 \textcolor{comment}{//==============================================================}}
-\DoxyCodeLine{98 \} \textcolor{comment}{// namespace CompactStar}}
-\DoxyCodeLine{99 \textcolor{comment}{//==============================================================}}
-\DoxyCodeLine{100 }
-\DoxyCodeLine{101 \textcolor{preprocessor}{\#endif }\textcolor{comment}{/* CompactStar\_Physics\_Evolution\_GeometryCache\_H */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{52 \textcolor{preprocessor}{\#ifndef CompactStar\_Physics\_Evolution\_GeometryCache\_H}}
+\DoxyCodeLine{53 \textcolor{preprocessor}{\#define CompactStar\_Physics\_Evolution\_GeometryCache\_H}}
+\DoxyCodeLine{54 }
+\DoxyCodeLine{55 \textcolor{preprocessor}{\#include <\mbox{\hyperlink{_data_set_8hpp}{Zaki/Vector/DataSet.hpp}}>}}
+\DoxyCodeLine{56 \textcolor{preprocessor}{\#include <cstddef>}}
+\DoxyCodeLine{57 }
+\DoxyCodeLine{58 \textcolor{comment}{// namespace Zaki}}
+\DoxyCodeLine{59 \textcolor{comment}{// \{}}
+\DoxyCodeLine{60 \textcolor{comment}{// namespace Vector}}
+\DoxyCodeLine{61 \textcolor{comment}{// \{}}
+\DoxyCodeLine{62 \textcolor{comment}{// class DataColumn;}}
+\DoxyCodeLine{63 \textcolor{comment}{// \} // namespace Vector}}
+\DoxyCodeLine{64 \textcolor{comment}{// \} // namespace Zaki}}
+\DoxyCodeLine{65 }
+\DoxyCodeLine{66 \textcolor{keyword}{namespace }CompactStar}
+\DoxyCodeLine{67 \{}
+\DoxyCodeLine{68 \textcolor{keyword}{namespace }Physics}
+\DoxyCodeLine{69 \{}
+\DoxyCodeLine{70 \textcolor{keyword}{namespace }Evolution}
+\DoxyCodeLine{71 \{}
+\DoxyCodeLine{72 }
+\DoxyCodeLine{73 \textcolor{keyword}{class }StarContext;}
+\DoxyCodeLine{74 }
+\DoxyCodeLine{84 \textcolor{keyword}{class }\mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_geometry_cache}{GeometryCache}}}
+\DoxyCodeLine{85 \{}
+\DoxyCodeLine{86   \textcolor{keyword}{public}:}
+\DoxyCodeLine{87     \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{103 \textcolor{comment}{}    \textcolor{keyword}{explicit} \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_geometry_cache}{GeometryCache}}(\textcolor{keyword}{const} \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_star_context}{StarContext}} \&ctx);}
+\DoxyCodeLine{104 }
+\DoxyCodeLine{105     \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{107 \textcolor{comment}{}    [[nodiscard]] std::size\_t \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_geometry_cache_ae9b06cbe27c75ff4d2814a991655197c}{Size}}() \textcolor{keyword}{const};}
+\DoxyCodeLine{108 }
+\DoxyCodeLine{109     \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{111 \textcolor{comment}{}}
+\DoxyCodeLine{112     \textcolor{keyword}{const} \mbox{\hyperlink{struct_zaki_1_1_vector_1_1_data_column}{Zaki::Vector::DataColumn}} \&\mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_geometry_cache_af9782646d70879b09ce4d89084e306ad}{R}}() \textcolor{keyword}{const};             }
+\DoxyCodeLine{113     \textcolor{keyword}{const} \mbox{\hyperlink{struct_zaki_1_1_vector_1_1_data_column}{Zaki::Vector::DataColumn}} \&\mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_geometry_cache_aafe7c5b33665721e466aa28fb5b38af0}{Area}}() \textcolor{keyword}{const};           }
+\DoxyCodeLine{114     \textcolor{keyword}{const} \mbox{\hyperlink{struct_zaki_1_1_vector_1_1_data_column}{Zaki::Vector::DataColumn}} \&\mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_geometry_cache_a264040a24e5d3317398593c563735190}{ExpNu}}() \textcolor{keyword}{const};         }
+\DoxyCodeLine{115     \textcolor{keyword}{const} \mbox{\hyperlink{struct_zaki_1_1_vector_1_1_data_column}{Zaki::Vector::DataColumn}} \&\mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_geometry_cache_a1e86108a23aee7c1c905110f73cbd0f7}{ExpMinusNu}}() \textcolor{keyword}{const};       }
+\DoxyCodeLine{116     \textcolor{keyword}{const} \mbox{\hyperlink{struct_zaki_1_1_vector_1_1_data_column}{Zaki::Vector::DataColumn}} \&\mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_geometry_cache_a2aa39fbbc2804876242679ee4a73553b}{Exp2Nu}}() \textcolor{keyword}{const};           }
+\DoxyCodeLine{117     \textcolor{keyword}{const} \mbox{\hyperlink{struct_zaki_1_1_vector_1_1_data_column}{Zaki::Vector::DataColumn}} \&\mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_geometry_cache_ad9a6aa2b8736b7cb970695b838b768c9}{ExpLambda}}() \textcolor{keyword}{const};     }
+\DoxyCodeLine{118     \textcolor{keyword}{const} \mbox{\hyperlink{struct_zaki_1_1_vector_1_1_data_column}{Zaki::Vector::DataColumn}} \&\mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_geometry_cache_a92089443280612a0c17b15cea20f304d}{ExpMinusLambda}}() \textcolor{keyword}{const}; }
+\DoxyCodeLine{120 }
+\DoxyCodeLine{121     \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{123 \textcolor{comment}{}}
+\DoxyCodeLine{124     \textcolor{keyword}{const} \mbox{\hyperlink{struct_zaki_1_1_vector_1_1_data_column}{Zaki::Vector::DataColumn}} \&\mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_geometry_cache_aca6e0819c1bfb15bb8a493d48e4d855e}{ExpNuMinusLambda}}() \textcolor{keyword}{const};      }
+\DoxyCodeLine{125     \textcolor{keyword}{const} \mbox{\hyperlink{struct_zaki_1_1_vector_1_1_data_column}{Zaki::Vector::DataColumn}} \&\mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_geometry_cache_a45e621a24fa0466aef381a110a0eb00f}{ExpMinusNuMinusLambda}}() \textcolor{keyword}{const}; }
+\DoxyCodeLine{127 }
+\DoxyCodeLine{128     \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{130 \textcolor{comment}{}}
+\DoxyCodeLine{131     \textcolor{keyword}{const} \mbox{\hyperlink{struct_zaki_1_1_vector_1_1_data_column}{Zaki::Vector::DataColumn}} \&\mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_geometry_cache_a65b31a13f389dc603bb1ea6e5ac3f3c1}{WV}}() \textcolor{keyword}{const};         }
+\DoxyCodeLine{132     \textcolor{keyword}{const} \mbox{\hyperlink{struct_zaki_1_1_vector_1_1_data_column}{Zaki::Vector::DataColumn}} \&\mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_geometry_cache_ab78457bc28c310101ffb3f069779d013}{WVExpNu}}() \textcolor{keyword}{const};  }
+\DoxyCodeLine{133     \textcolor{keyword}{const} \mbox{\hyperlink{struct_zaki_1_1_vector_1_1_data_column}{Zaki::Vector::DataColumn}} \&\mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_geometry_cache_abe5f08fbc63e327105e4295b3c6a2f51}{WVExp2Nu}}() \textcolor{keyword}{const}; }
+\DoxyCodeLine{135 }
+\DoxyCodeLine{136   \textcolor{keyword}{private}:}
+\DoxyCodeLine{137     \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{139 \textcolor{comment}{}    \textcolor{keywordtype}{void} Build\_(\textcolor{keyword}{const} \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_star_context}{StarContext}} \&ctx);}
+\DoxyCodeLine{140 }
+\DoxyCodeLine{141     \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{154 \textcolor{comment}{}    \textcolor{keyword}{static} \mbox{\hyperlink{struct_zaki_1_1_vector_1_1_data_column}{Zaki::Vector::DataColumn}}}
+\DoxyCodeLine{155     DeriveLambdaFromMR\_(\textcolor{keyword}{const} \mbox{\hyperlink{struct_zaki_1_1_vector_1_1_data_column}{Zaki::Vector::DataColumn}} \&r,}
+\DoxyCodeLine{156                         \textcolor{keyword}{const} \mbox{\hyperlink{struct_zaki_1_1_vector_1_1_data_column}{Zaki::Vector::DataColumn}} \&m,}
+\DoxyCodeLine{157                         \textcolor{keywordtype}{double} eps = 1e-\/15);}
+\DoxyCodeLine{158 }
+\DoxyCodeLine{159     \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{160     \textcolor{comment}{// Cached columns}}
+\DoxyCodeLine{161     \mbox{\hyperlink{struct_zaki_1_1_vector_1_1_data_column}{Zaki::Vector::DataColumn}} m\_r;}
+\DoxyCodeLine{162     \mbox{\hyperlink{struct_zaki_1_1_vector_1_1_data_column}{Zaki::Vector::DataColumn}} m\_area;}
+\DoxyCodeLine{163 }
+\DoxyCodeLine{164     \mbox{\hyperlink{struct_zaki_1_1_vector_1_1_data_column}{Zaki::Vector::DataColumn}} m\_expNu;}
+\DoxyCodeLine{165     \mbox{\hyperlink{struct_zaki_1_1_vector_1_1_data_column}{Zaki::Vector::DataColumn}} m\_expMinusNu;}
+\DoxyCodeLine{166     \mbox{\hyperlink{struct_zaki_1_1_vector_1_1_data_column}{Zaki::Vector::DataColumn}} m\_exp2Nu;}
+\DoxyCodeLine{167 }
+\DoxyCodeLine{168     \mbox{\hyperlink{struct_zaki_1_1_vector_1_1_data_column}{Zaki::Vector::DataColumn}} m\_expLam;}
+\DoxyCodeLine{169     \mbox{\hyperlink{struct_zaki_1_1_vector_1_1_data_column}{Zaki::Vector::DataColumn}} m\_expMinusLam;}
+\DoxyCodeLine{170 }
+\DoxyCodeLine{171     \mbox{\hyperlink{struct_zaki_1_1_vector_1_1_data_column}{Zaki::Vector::DataColumn}} m\_expNuMinusLam;}
+\DoxyCodeLine{172     \mbox{\hyperlink{struct_zaki_1_1_vector_1_1_data_column}{Zaki::Vector::DataColumn}} m\_expMinusNuMinusLam;}
+\DoxyCodeLine{173 }
+\DoxyCodeLine{174     \mbox{\hyperlink{struct_zaki_1_1_vector_1_1_data_column}{Zaki::Vector::DataColumn}} m\_wV;}
+\DoxyCodeLine{175     \mbox{\hyperlink{struct_zaki_1_1_vector_1_1_data_column}{Zaki::Vector::DataColumn}} m\_wVExpNu;}
+\DoxyCodeLine{176     \mbox{\hyperlink{struct_zaki_1_1_vector_1_1_data_column}{Zaki::Vector::DataColumn}} m\_wVExp2Nu;}
+\DoxyCodeLine{177 \};}
+\DoxyCodeLine{178 }
+\DoxyCodeLine{179 \} \textcolor{comment}{// namespace Evolution}}
+\DoxyCodeLine{180 \} \textcolor{comment}{// namespace Physics}}
+\DoxyCodeLine{181 \} \textcolor{comment}{// namespace CompactStar}}
+\DoxyCodeLine{182 }
+\DoxyCodeLine{183 \textcolor{preprocessor}{\#endif }\textcolor{comment}{/* CompactStar\_Physics\_Evolution\_GeometryCache\_H */}\textcolor{preprocessor}{}}
 
 \end{DoxyCode}

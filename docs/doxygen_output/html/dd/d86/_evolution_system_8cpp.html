@@ -81,23 +81,25 @@ $(function() {
 
 <p>Implementation of EvolutionSystem (RHS functor for dY/dt).  
 <a href="#details">More...</a></p>
-<div class="textblock"><code>#include &quot;<a class="el" href="../../d3/d1e/_evolution_system_8hpp_source.html">CompactStar/Physics/Evolution/EvolutionSystem.hpp</a>&quot;</code><br />
-<code>#include &quot;CompactStar/Physics/Evolution/EvolutionConfig.hpp&quot;</code><br />
+<div class="textblock"><code>#include &lt;stdexcept&gt;</code><br />
+<code>#include &quot;<a class="el" href="../../d7/d2e/_i_driver_8hpp_source.html">CompactStar/Physics/Driver/IDriver.hpp</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="../../d4/d96/_evolution_config_8hpp_source.html">CompactStar/Physics/Evolution/EvolutionConfig.hpp</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="../../d3/d1e/_evolution_system_8hpp_source.html">CompactStar/Physics/Evolution/EvolutionSystem.hpp</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="../../d4/d0f/_geometry_cache_8hpp_source.html">CompactStar/Physics/Evolution/GeometryCache.hpp</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="../../d5/d40/_i_observer_8hpp_source.html">CompactStar/Physics/Evolution/Observers/IObserver.hpp</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="../../df/d6e/_r_h_s_accumulator_8hpp_source.html">CompactStar/Physics/Evolution/RHSAccumulator.hpp</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="../../de/d70/_star_context_8hpp_source.html">CompactStar/Physics/Evolution/StarContext.hpp</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="../../db/d23/_state_layout_8hpp_source.html">CompactStar/Physics/Evolution/StateLayout.hpp</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="../../d4/d43/_state_packing_8hpp_source.html">CompactStar/Physics/Evolution/StatePacking.hpp</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="../../d6/df0/_state_vector_8hpp_source.html">CompactStar/Physics/Evolution/StateVector.hpp</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="../../d4/dc0/_thermal_8hpp_source.html">CompactStar/Physics/Thermal.hpp</a>&quot;</code><br />
-<code>#include &lt;cstddef&gt;</code><br />
-<code>#include &lt;stdexcept&gt;</code><br />
+<code>#include &quot;<a class="el" href="../../d3/de3/_logger_8hpp_source.html">Zaki/Util/Logger.hpp</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="../../d8/da2/_spin_state_8hpp_source.html">CompactStar/Physics/State/SpinState.hpp</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="../../d3/deb/_thermal_state_8hpp_source.html">CompactStar/Physics/State/ThermalState.hpp</a>&quot;</code><br />
 </div><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="namespaces" name="namespaces"></a>
 Namespaces</h2></td></tr>
 <tr class="memitem:dc/dab/namespace_compact_star_1_1_physics"><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dc/dab/namespace_compact_star_1_1_physics.html">CompactStar::Physics</a></td></tr>
 <tr class="memdesc:dc/dab/namespace_compact_star_1_1_physics"><td class="mdescLeft">&#160;</td><td class="mdescRight">High-level physical modeling layer for compact stars. <br /></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:d6/d38/namespace_compact_star_1_1_physics_1_1_evolution"><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d6/d38/namespace_compact_star_1_1_physics_1_1_evolution.html">CompactStar::Physics::Evolution</a></td></tr>
-<tr class="memdesc:d6/d38/namespace_compact_star_1_1_physics_1_1_evolution"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="../../d6/d38/namespace_compact_star_1_1_physics_1_1_evolution.html" title="Evolution engine for time-dependent neutron-star physics.">Evolution</a> engine for time-dependent neutron-star physics. <br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>

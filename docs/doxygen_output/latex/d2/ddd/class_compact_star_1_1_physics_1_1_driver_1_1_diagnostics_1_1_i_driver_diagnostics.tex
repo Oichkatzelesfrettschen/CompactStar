@@ -1,0 +1,108 @@
+\hypertarget{class_compact_star_1_1_physics_1_1_driver_1_1_diagnostics_1_1_i_driver_diagnostics}{}\doxysection{Compact\+Star\+::Physics\+::Driver\+::Diagnostics\+::IDriver\+Diagnostics Class Reference}
+\label{class_compact_star_1_1_physics_1_1_driver_1_1_diagnostics_1_1_i_driver_diagnostics}\index{CompactStar::Physics::Driver::Diagnostics::IDriverDiagnostics@{CompactStar::Physics::Driver::Diagnostics::IDriverDiagnostics}}
+
+
+Interface that a driver can implement to expose diagnostics.  
+
+
+
+
+{\ttfamily \#include $<$Driver\+Diagnostics.\+hpp$>$}
+
+Inheritance diagram for Compact\+Star\+::Physics\+::Driver\+::Diagnostics\+::IDriver\+Diagnostics\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{d2/ddd/class_compact_star_1_1_physics_1_1_driver_1_1_diagnostics_1_1_i_driver_diagnostics}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+virtual std\+::string \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_driver_1_1_diagnostics_1_1_i_driver_diagnostics_ae39990bca910f580804aaa21e347537c}{Diagnostics\+Name}} () const =0
+\begin{DoxyCompactList}\small\item\em Human-\/readable stable name for this driver instance. \end{DoxyCompactList}\item 
+virtual \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_diagnostics_1_1_unit_contract}{Evolution\+::\+Diagnostics\+::\+Unit\+Contract}} \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_driver_1_1_diagnostics_1_1_i_driver_diagnostics_a11b182179ee903feb396c131ca0404d8}{Unit\+Contract}} () const =0
+\begin{DoxyCompactList}\small\item\em Return unit conventions and assumptions for this driver. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_driver_1_1_diagnostics_1_1_i_driver_diagnostics_a282ccc724f51a04081b59ca8e6eea0bb}{Diagnose\+Snapshot}} (double t, const \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_state_vector}{Evolution\+::\+State\+Vector}} \&Y, const \mbox{\hyperlink{struct_compact_star_1_1_physics_1_1_evolution_1_1_driver_context}{Evolution\+::\+Driver\+Context}} \&ctx, \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_diagnostics_1_1_diagnostic_packet}{Evolution\+::\+Diagnostics\+::\+Diagnostic\+Packet}} \&out) const =0
+\begin{DoxyCompactList}\small\item\em Fill a packet with driver-\/specific diagnostics at (t, Y, ctx). \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Interface that a driver can implement to expose diagnostics. 
+
+This is intentionally orthogonal to \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_i_driver}{IDriver}}\textquotesingle{}s runtime API\+:
+\begin{DoxyItemize}
+\item If a driver doesn\textquotesingle{}t implement it, nothing changes.
+\item If it does, an observer can call \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_driver_1_1_diagnostics_1_1_i_driver_diagnostics_a282ccc724f51a04081b59ca8e6eea0bb}{Diagnose\+Snapshot()}} and \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_driver_1_1_diagnostics_1_1_i_driver_diagnostics_a11b182179ee903feb396c131ca0404d8}{Unit\+Contract()}}. 
+\end{DoxyItemize}
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_compact_star_1_1_physics_1_1_driver_1_1_diagnostics_1_1_i_driver_diagnostics_a282ccc724f51a04081b59ca8e6eea0bb}\label{class_compact_star_1_1_physics_1_1_driver_1_1_diagnostics_1_1_i_driver_diagnostics_a282ccc724f51a04081b59ca8e6eea0bb}} 
+\index{CompactStar::Physics::Driver::Diagnostics::IDriverDiagnostics@{CompactStar::Physics::Driver::Diagnostics::IDriverDiagnostics}!DiagnoseSnapshot@{DiagnoseSnapshot}}
+\index{DiagnoseSnapshot@{DiagnoseSnapshot}!CompactStar::Physics::Driver::Diagnostics::IDriverDiagnostics@{CompactStar::Physics::Driver::Diagnostics::IDriverDiagnostics}}
+\doxysubsubsection{\texorpdfstring{DiagnoseSnapshot()}{DiagnoseSnapshot()}}
+{\footnotesize\ttfamily virtual void Compact\+Star\+::\+Physics\+::\+Driver\+::\+Diagnostics\+::\+IDriver\+Diagnostics\+::\+Diagnose\+Snapshot (\begin{DoxyParamCaption}\item[{double}]{t,  }\item[{const \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_state_vector}{Evolution\+::\+State\+Vector}} \&}]{Y,  }\item[{const \mbox{\hyperlink{struct_compact_star_1_1_physics_1_1_evolution_1_1_driver_context}{Evolution\+::\+Driver\+Context}} \&}]{ctx,  }\item[{\mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_diagnostics_1_1_diagnostic_packet}{Evolution\+::\+Diagnostics\+::\+Diagnostic\+Packet}} \&}]{out }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Fill a packet with driver-\/specific diagnostics at (t, Y, ctx). 
+
+This method should\+:
+\begin{DoxyItemize}
+\item only {\itshape read} state and cache (no mutation),
+\item be safe even if some caches are missing (log as notes/warnings),
+\item prefer calling the same internal helper functions as the physics path to avoid drift between the code and the diagnostics.
+\end{DoxyItemize}
+
+
+\begin{DoxyParams}{Parameters}
+{\em t} & Simulation time \mbox{[}same unit as integrator uses\mbox{]}. \\
+\hline
+{\em Y} & Composite state vector (read-\/only). \\
+\hline
+{\em ctx} & Driver context (geometry/cache handles, star pointer, etc). \\
+\hline
+{\em out} & Packet to be filled/overwritten by this method. \\
+\hline
+\end{DoxyParams}
+
+
+Implemented in \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_photon_cooling_a66ec050c82074aa8847ed1d3872d257e}{Compact\+Star\+::\+Physics\+::\+Driver\+::\+Thermal\+::\+Photon\+Cooling}}.
+
+\mbox{\Hypertarget{class_compact_star_1_1_physics_1_1_driver_1_1_diagnostics_1_1_i_driver_diagnostics_ae39990bca910f580804aaa21e347537c}\label{class_compact_star_1_1_physics_1_1_driver_1_1_diagnostics_1_1_i_driver_diagnostics_ae39990bca910f580804aaa21e347537c}} 
+\index{CompactStar::Physics::Driver::Diagnostics::IDriverDiagnostics@{CompactStar::Physics::Driver::Diagnostics::IDriverDiagnostics}!DiagnosticsName@{DiagnosticsName}}
+\index{DiagnosticsName@{DiagnosticsName}!CompactStar::Physics::Driver::Diagnostics::IDriverDiagnostics@{CompactStar::Physics::Driver::Diagnostics::IDriverDiagnostics}}
+\doxysubsubsection{\texorpdfstring{DiagnosticsName()}{DiagnosticsName()}}
+{\footnotesize\ttfamily virtual std\+::string Compact\+Star\+::\+Physics\+::\+Driver\+::\+Diagnostics\+::\+IDriver\+Diagnostics\+::\+Diagnostics\+Name (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Human-\/readable stable name for this driver instance. 
+
+Example\+: \char`\"{}\+Photon\+Cooling\char`\"{} If you have multiple instances (different options), you can include an instance suffix (e.\+g., \char`\"{}\+Photon\+Cooling\#0\char`\"{}) but keep it stable for tooling. 
+
+Implemented in \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_photon_cooling_a80765fd32881122d00150939a4119f03}{Compact\+Star\+::\+Physics\+::\+Driver\+::\+Thermal\+::\+Photon\+Cooling}}.
+
+\mbox{\Hypertarget{class_compact_star_1_1_physics_1_1_driver_1_1_diagnostics_1_1_i_driver_diagnostics_a11b182179ee903feb396c131ca0404d8}\label{class_compact_star_1_1_physics_1_1_driver_1_1_diagnostics_1_1_i_driver_diagnostics_a11b182179ee903feb396c131ca0404d8}} 
+\index{CompactStar::Physics::Driver::Diagnostics::IDriverDiagnostics@{CompactStar::Physics::Driver::Diagnostics::IDriverDiagnostics}!UnitContract@{UnitContract}}
+\index{UnitContract@{UnitContract}!CompactStar::Physics::Driver::Diagnostics::IDriverDiagnostics@{CompactStar::Physics::Driver::Diagnostics::IDriverDiagnostics}}
+\doxysubsubsection{\texorpdfstring{UnitContract()}{UnitContract()}}
+{\footnotesize\ttfamily virtual \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_diagnostics_1_1_unit_contract}{Evolution\+::\+Diagnostics\+::\+Unit\+Contract}} Compact\+Star\+::\+Physics\+::\+Driver\+::\+Diagnostics\+::\+IDriver\+Diagnostics\+::\+Unit\+Contract (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Return unit conventions and assumptions for this driver. 
+
+This is intended to\+:
+\begin{DoxyItemize}
+\item be stable and rarely change,
+\item NOT duplicate computations,
+\item document inputs/outputs and required unit systems. 
+\end{DoxyItemize}
+
+Implemented in \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_photon_cooling_a7b609acb6e931f07674ef9b2312324fc}{Compact\+Star\+::\+Physics\+::\+Driver\+::\+Thermal\+::\+Photon\+Cooling}}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Compact\+Star/\+Physics/\+Driver/\+Diagnostics/\mbox{\hyperlink{_driver_diagnostics_8hpp}{Driver\+Diagnostics.\+hpp}}\end{DoxyCompactItemize}

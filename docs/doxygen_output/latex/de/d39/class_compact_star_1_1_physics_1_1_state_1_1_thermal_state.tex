@@ -45,11 +45,19 @@ double \& {\bfseries Value} (std\+::size\+\_\+t i)
 \mbox{\Hypertarget{class_compact_star_1_1_physics_1_1_state_1_1_thermal_state_a8385b3f119f4e3039b7f7a9d93924b06}\label{class_compact_star_1_1_physics_1_1_state_1_1_thermal_state_a8385b3f119f4e3039b7f7a9d93924b06}} 
 const double \& {\bfseries Value} (std\+::size\+\_\+t i) const
 \begin{DoxyCompactList}\small\item\em Const access to i-\/th component. \end{DoxyCompactList}\item 
-double \& \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_state_1_1_thermal_state_a15bf0d0ef000c399b78f6e2dc800bf94}{Tinf}} ()
-\begin{DoxyCompactList}\small\item\em Convenience accessor for the primary thermal DOF (usually T∞). \end{DoxyCompactList}\item 
-\mbox{\Hypertarget{class_compact_star_1_1_physics_1_1_state_1_1_thermal_state_a45e8610f66efa5168fc42dfc9039a3d4}\label{class_compact_star_1_1_physics_1_1_state_1_1_thermal_state_a45e8610f66efa5168fc42dfc9039a3d4}} 
-const double \& {\bfseries Tinf} () const
-\begin{DoxyCompactList}\small\item\em Const accessor for T∞. \end{DoxyCompactList}\end{DoxyCompactItemize}
+double \& \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_state_1_1_thermal_state_a07130a374ce630acfb4a8304d1afe326}{Ln\+Tinf\+Over\+Tref}} ()
+\begin{DoxyCompactList}\small\item\em Access the {\bfseries{dimensionless evolved thermal variable}} $ x \equiv \ln(T_\infty / T_{\rm ref}) $. \end{DoxyCompactList}\item 
+const double \& \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_state_1_1_thermal_state_afc25634b075018b07c8d786bc5e73674}{Ln\+Tinf\+Over\+Tref}} () const
+\begin{DoxyCompactList}\small\item\em Const access to the dimensionless evolved thermal variable $ x \equiv \ln(T_\infty / T_{\rm ref}) $. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_state_1_1_thermal_state_ac84d797bad64d4edad475aa1e8aa4634}{Tinf}} () const
+\begin{DoxyCompactList}\small\item\em Return the {\bfseries{physical redshifted temperature}} T∞ in Kelvin. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_state_1_1_thermal_state_a290667242e2d1b5ab72263a0a2f18224}{Set\+Tinf}} (double T\+\_\+K)
+\begin{DoxyCompactList}\small\item\em Set the physical redshifted temperature T∞ (in Kelvin). \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static constexpr double \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_state_1_1_thermal_state_a5cfc1980829b1e112f7a4a24cef0d97b}{Tref\+\_\+K}} ()
+\begin{DoxyCompactList}\small\item\em Reference temperature used to make the evolved log variable dimensionless. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Public Attributes}
 \begin{DoxyCompactItemize}
 \item 
@@ -67,12 +75,27 @@ double {\bfseries T\+\_\+surf} = 0.\+0
 \doxysubsection{Detailed Description}
 Dynamical thermal DOFs + cached physical temperatures. 
 
-The ODE part (values\+\_\+) is what evolution drivers operate on. By default callers usually use a single DOF representing the {\bfseries{redshifted internal temperature}} T∞. If more thermal components (e.\+g. multi-\/zone models) are needed, callers simply call Resize(\+N).
+The ODE part ({\ttfamily values\+\_\+}) stores the {\bfseries{thermal evolution variables}} operated on by evolution drivers. In the default (single-\/zone) configuration\+:
 
-The auxiliary fields store physically meaningful temperatures in the {\bfseries{local fluid frame}}, which microphysics and cooling models often require.
+
+\begin{DoxyItemize}
+\item {\ttfamily values\+\_\+\mbox{[}0\mbox{]} ≡ ln(T∞ / T\+\_\+ref) (dimensionless)}
+\end{DoxyItemize}
+
+where T∞ is the {\bfseries{redshifted isothermal-\/core temperature}} in Kelvin.
+
+Storing the logarithm of the temperature ensures positivity by construction and improves numerical stability over long cooling timescales. Evolution drivers must therefore contribute to\+:
+
+d(ln(T∞/\+T\+\_\+ref))/dt = (1 / T∞) · d\+T∞/dt
+
+rather than directly evolving T∞ itself.
+
+Additional thermal components (e.\+g. multi-\/zone models) can be introduced by calling {\ttfamily Resize(\+N)}; the interpretation of components beyond index 0 is left to higher-\/level thermal models.
+
+The auxiliary fields ({\ttfamily T\+\_\+core}, {\ttfamily T\+\_\+blanket}, {\ttfamily T\+\_\+surf}) store physically meaningful temperatures in the {\bfseries{local fluid frame}}. These are {\bfseries{not}} part of the ODE vector and are intended for use by microphysics, envelope models, cooling laws, and diagnostics.
 
 \begin{DoxyNote}{Note}
-Storage (the {\ttfamily values\+\_\+} vector) deliberately lives in this derived class rather than in the \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_state_1_1_state}{State}} base class. This design allows future state types to use non-\/contiguous, multi-\/zone, or externally owned layouts while still exposing the uniform Pack\+To/\+Unpack\+From interface required by the evolution framework. See \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_state_1_1_state}{Compact\+Star\+::\+Physics\+::\+State\+::\+State}} for details. 
+Storage (the {\ttfamily values\+\_\+} vector) deliberately lives in this derived class rather than in the {\ttfamily \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_state_1_1_state}{State}}} base class. This design allows future state types to use non-\/contiguous, multi-\/zone, or externally owned layouts while still exposing the uniform Pack\+To/\+Unpack\+From interface required by the evolution framework. See \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_state_1_1_state}{Compact\+Star\+::\+Physics\+::\+State\+::\+State}} for details. 
 \end{DoxyNote}
 
 
@@ -133,7 +156,43 @@ Grid size == number of thermal DOFs in this simple layout.
 
 Reimplemented from \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_state_1_1_state_a26c2a63bb521c916f9ffb681e15028b8}{Compact\+Star\+::\+Physics\+::\+State\+::\+State}}.
 
-\mbox{\Hypertarget{class_compact_star_1_1_physics_1_1_state_1_1_thermal_state_a35507eb8ed8d3b3646649257f4f2a851}\label{class_compact_star_1_1_physics_1_1_state_1_1_thermal_state_a35507eb8ed8d3b3646649257f4f2a851}} 
+\mbox{\Hypertarget{class_compact_star_1_1_physics_1_1_state_1_1_thermal_state_a07130a374ce630acfb4a8304d1afe326}\label{class_compact_star_1_1_physics_1_1_state_1_1_thermal_state_a07130a374ce630acfb4a8304d1afe326}} 
+\index{CompactStar::Physics::State::ThermalState@{CompactStar::Physics::State::ThermalState}!LnTinfOverTref@{LnTinfOverTref}}
+\index{LnTinfOverTref@{LnTinfOverTref}!CompactStar::Physics::State::ThermalState@{CompactStar::Physics::State::ThermalState}}
+\doxysubsubsection{\texorpdfstring{LnTinfOverTref()}{LnTinfOverTref()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily double \& Thermal\+State\+::\+Ln\+Tinf\+Over\+Tref (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Access the {\bfseries{dimensionless evolved thermal variable}} $ x \equiv \ln(T_\infty / T_{\rm ref}) $. 
+
+This function exposes the {\itshape actual ODE variable} stored in the thermal state vector\+:
+
+values\+\_\+\mbox{[}0\mbox{]} ≡ ln(T∞ / T\+\_\+ref) (dimensionless)\hypertarget{class_compact_star_1_1_physics_1_1_state_1_1_thermal_state_autotoc_md29}{}\doxyparagraph{Usage}\label{class_compact_star_1_1_physics_1_1_state_1_1_thermal_state_autotoc_md29}
+
+\begin{DoxyItemize}
+\item Evolution drivers and RHS accumulators {\bfseries{must operate on this variable}} when contributing to the ODE system.
+\item If a physical model computes $dT_\infty/dt$, convert via\+:
+\end{DoxyItemize}
+
+\[
+    \frac{dx}{dt} = \frac{1}{T_\infty}\frac{dT_\infty}{dt}.
+  \]
+
+\begin{DoxyWarning}{Warning}
+This returns a mutable reference to the ODE storage. Modifying it directly changes the evolved state. 
+\end{DoxyWarning}
+\mbox{\Hypertarget{class_compact_star_1_1_physics_1_1_state_1_1_thermal_state_afc25634b075018b07c8d786bc5e73674}\label{class_compact_star_1_1_physics_1_1_state_1_1_thermal_state_afc25634b075018b07c8d786bc5e73674}} 
+\index{CompactStar::Physics::State::ThermalState@{CompactStar::Physics::State::ThermalState}!LnTinfOverTref@{LnTinfOverTref}}
+\index{LnTinfOverTref@{LnTinfOverTref}!CompactStar::Physics::State::ThermalState@{CompactStar::Physics::State::ThermalState}}
+\doxysubsubsection{\texorpdfstring{LnTinfOverTref()}{LnTinfOverTref()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily const double \& Thermal\+State\+::\+Ln\+Tinf\+Over\+Tref (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Const access to the dimensionless evolved thermal variable $ x \equiv \ln(T_\infty / T_{\rm ref}) $. 
+
+See the non-\/const overload for full documentation. \mbox{\Hypertarget{class_compact_star_1_1_physics_1_1_state_1_1_thermal_state_a35507eb8ed8d3b3646649257f4f2a851}\label{class_compact_star_1_1_physics_1_1_state_1_1_thermal_state_a35507eb8ed8d3b3646649257f4f2a851}} 
 \index{CompactStar::Physics::State::ThermalState@{CompactStar::Physics::State::ThermalState}!Name@{Name}}
 \index{Name@{Name}!CompactStar::Physics::State::ThermalState@{CompactStar::Physics::State::ThermalState}}
 \doxysubsubsection{\texorpdfstring{Name()}{Name()}}
@@ -177,6 +236,35 @@ More components can be added for multi-\/zone thermal evolution models.
 
 Implements \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_state_1_1_state_a67305cd2b43b22a5503b62326c00584f}{Compact\+Star\+::\+Physics\+::\+State\+::\+State}}.
 
+\mbox{\Hypertarget{class_compact_star_1_1_physics_1_1_state_1_1_thermal_state_a290667242e2d1b5ab72263a0a2f18224}\label{class_compact_star_1_1_physics_1_1_state_1_1_thermal_state_a290667242e2d1b5ab72263a0a2f18224}} 
+\index{CompactStar::Physics::State::ThermalState@{CompactStar::Physics::State::ThermalState}!SetTinf@{SetTinf}}
+\index{SetTinf@{SetTinf}!CompactStar::Physics::State::ThermalState@{CompactStar::Physics::State::ThermalState}}
+\doxysubsubsection{\texorpdfstring{SetTinf()}{SetTinf()}}
+{\footnotesize\ttfamily void Thermal\+State\+::\+Set\+Tinf (\begin{DoxyParamCaption}\item[{double}]{T\+\_\+K }\end{DoxyParamCaption})}
+
+
+
+Set the physical redshifted temperature T∞ (in Kelvin). 
+
+This is a convenience helper that converts the physical temperature into the stored ODE variable\+:
+
+\mbox{\hyperlink{class_compact_star_1_1_physics_1_1_state_1_1_thermal_state_a07130a374ce630acfb4a8304d1afe326}{Ln\+Tinf\+Over\+Tref()}} ← ln(T∞ / T\+\_\+ref).\hypertarget{class_compact_star_1_1_physics_1_1_state_1_1_thermal_state_autotoc_md31}{}\doxyparagraph{Usage}\label{class_compact_star_1_1_physics_1_1_state_1_1_thermal_state_autotoc_md31}
+
+\begin{DoxyItemize}
+\item Intended for {\bfseries{initial-\/condition setup}} and controlled resets.
+\item Equivalent to\+:
+
+\mbox{\hyperlink{class_compact_star_1_1_physics_1_1_state_1_1_thermal_state_a07130a374ce630acfb4a8304d1afe326}{Ln\+Tinf\+Over\+Tref()}} = std\+::log(T\+\_\+K / \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_state_1_1_thermal_state_a5cfc1980829b1e112f7a4a24cef0d97b}{Tref\+\_\+\+K()}});
+\end{DoxyItemize}
+
+
+\begin{DoxyParams}{Parameters}
+{\em T\+\_\+K} & Physical redshifted temperature in Kelvin (must be \texorpdfstring{$>$}{>} 0).\\
+\hline
+\end{DoxyParams}
+\begin{DoxyWarning}{Warning}
+Passing T\+\_\+K ≤ 0 is invalid and will be rejected. 
+\end{DoxyWarning}
 \mbox{\Hypertarget{class_compact_star_1_1_physics_1_1_state_1_1_thermal_state_a2b4321c1aadef35f0694453e7d5283d0}\label{class_compact_star_1_1_physics_1_1_state_1_1_thermal_state_a2b4321c1aadef35f0694453e7d5283d0}} 
 \index{CompactStar::Physics::State::ThermalState@{CompactStar::Physics::State::ThermalState}!Size@{Size}}
 \index{Size@{Size}!CompactStar::Physics::State::ThermalState@{CompactStar::Physics::State::ThermalState}}
@@ -191,17 +279,46 @@ Number of ODE thermal components.
 
 Implements \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_state_1_1_state_a7d41a392de8417100b45ebfb19298eae}{Compact\+Star\+::\+Physics\+::\+State\+::\+State}}.
 
-\mbox{\Hypertarget{class_compact_star_1_1_physics_1_1_state_1_1_thermal_state_a15bf0d0ef000c399b78f6e2dc800bf94}\label{class_compact_star_1_1_physics_1_1_state_1_1_thermal_state_a15bf0d0ef000c399b78f6e2dc800bf94}} 
+\mbox{\Hypertarget{class_compact_star_1_1_physics_1_1_state_1_1_thermal_state_ac84d797bad64d4edad475aa1e8aa4634}\label{class_compact_star_1_1_physics_1_1_state_1_1_thermal_state_ac84d797bad64d4edad475aa1e8aa4634}} 
 \index{CompactStar::Physics::State::ThermalState@{CompactStar::Physics::State::ThermalState}!Tinf@{Tinf}}
 \index{Tinf@{Tinf}!CompactStar::Physics::State::ThermalState@{CompactStar::Physics::State::ThermalState}}
 \doxysubsubsection{\texorpdfstring{Tinf()}{Tinf()}}
-{\footnotesize\ttfamily double \& Compact\+Star\+::\+Physics\+::\+State\+::\+Thermal\+State\+::\+Tinf (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+{\footnotesize\ttfamily double Thermal\+State\+::\+Tinf (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
 
 
 
-Convenience accessor for the primary thermal DOF (usually T∞). 
+Return the {\bfseries{physical redshifted temperature}} T∞ in Kelvin. 
 
-By convention, component 0 is the {\bfseries{redshifted isothermal-\/core temperature}}. \mbox{\Hypertarget{class_compact_star_1_1_physics_1_1_state_1_1_thermal_state_ab8014f8c46f4262c9f3c64b3c071b87a}\label{class_compact_star_1_1_physics_1_1_state_1_1_thermal_state_ab8014f8c46f4262c9f3c64b3c071b87a}} 
+This value is {\bfseries{computed}}, not stored\+:
+
+T∞ = T\+\_\+ref $\ast$ exp(\+Ln\+Tinf\+Over\+Tref()).\hypertarget{class_compact_star_1_1_physics_1_1_state_1_1_thermal_state_autotoc_md30}{}\doxyparagraph{Usage}\label{class_compact_star_1_1_physics_1_1_state_1_1_thermal_state_autotoc_md30}
+
+\begin{DoxyItemize}
+\item Intended for diagnostics, microphysics, cooling laws, and logging.
+\item Must NOT be used as an ODE variable or written to directly.
+\end{DoxyItemize}
+
+\begin{DoxyReturn}{Returns}
+Physical redshifted temperature T∞ in Kelvin. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_compact_star_1_1_physics_1_1_state_1_1_thermal_state_a5cfc1980829b1e112f7a4a24cef0d97b}\label{class_compact_star_1_1_physics_1_1_state_1_1_thermal_state_a5cfc1980829b1e112f7a4a24cef0d97b}} 
+\index{CompactStar::Physics::State::ThermalState@{CompactStar::Physics::State::ThermalState}!Tref\_K@{Tref\_K}}
+\index{Tref\_K@{Tref\_K}!CompactStar::Physics::State::ThermalState@{CompactStar::Physics::State::ThermalState}}
+\doxysubsubsection{\texorpdfstring{Tref\_K()}{Tref\_K()}}
+{\footnotesize\ttfamily static constexpr double Compact\+Star\+::\+Physics\+::\+State\+::\+Thermal\+State\+::\+Tref\+\_\+K (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}, {\ttfamily [constexpr]}}
+
+
+
+Reference temperature used to make the evolved log variable dimensionless. 
+
+The primary evolved thermal variable is stored as\+:  \[
+  x \equiv \ln(T_\infty / T_{\rm ref})
+\] where both temperatures are in Kelvin.
+
+\begin{DoxyReturn}{Returns}
+Reference temperature in Kelvin. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_compact_star_1_1_physics_1_1_state_1_1_thermal_state_ab8014f8c46f4262c9f3c64b3c071b87a}\label{class_compact_star_1_1_physics_1_1_state_1_1_thermal_state_ab8014f8c46f4262c9f3c64b3c071b87a}} 
 \index{CompactStar::Physics::State::ThermalState@{CompactStar::Physics::State::ThermalState}!UnpackFrom@{UnpackFrom}}
 \index{UnpackFrom@{UnpackFrom}!CompactStar::Physics::State::ThermalState@{CompactStar::Physics::State::ThermalState}}
 \doxysubsubsection{\texorpdfstring{UnpackFrom()}{UnpackFrom()}}

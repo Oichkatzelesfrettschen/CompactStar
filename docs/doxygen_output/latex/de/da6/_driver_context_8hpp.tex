@@ -1,0 +1,35 @@
+\hypertarget{_driver_context_8hpp}{}\doxysection{Compact\+Star/\+Physics/\+Evolution/\+Driver\+Context.hpp File Reference}
+\label{_driver_context_8hpp}\index{CompactStar/Physics/Evolution/DriverContext.hpp@{CompactStar/Physics/Evolution/DriverContext.hpp}}
+
+
+Lightweight read-\/only context passed to evolution drivers.  
+
+
+\doxysubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{struct_compact_star_1_1_physics_1_1_evolution_1_1_driver_context}{Compact\+Star\+::\+Physics\+::\+Evolution\+::\+Driver\+Context}}
+\begin{DoxyCompactList}\small\item\em Layout of the \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_state_vector}{State\+Vector}}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Namespaces}
+\begin{DoxyCompactItemize}
+\item 
+namespace \mbox{\hyperlink{namespace_compact_star_1_1_physics}{Compact\+Star\+::\+Physics}}
+\begin{DoxyCompactList}\small\item\em High-\/level physical modeling layer for compact stars. \end{DoxyCompactList}\item 
+namespace \mbox{\hyperlink{namespace_compact_star_1_1_physics_1_1_thermal}{Compact\+Star\+::\+Physics\+::\+Thermal}}
+\begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{namespace_compact_star_1_1_physics_1_1_thermal}{Thermal}} utilities\+: envelope models, cooling/heating helpers. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Lightweight read-\/only context passed to evolution drivers. 
+
+This file defines a {\bfseries{non-\/owning aggregation of static model data}} that evolution drivers may need in order to compute RHS contributions.
+
+The Driver\+Context is intentionally\+:
+\begin{DoxyItemize}
+\item {\bfseries{small}} (just pointers),
+\item {\bfseries{read-\/only}} (drivers must not mutate it),
+\item {\bfseries{stable across time steps}} (unlike State\+Vector),
+\item {\bfseries{decoupled from Evolution\+System internals}}.
+\end{DoxyItemize}
+
+This avoids circular dependencies between IDriver and Evolution\+System, and makes the driver interface explicit and robust. 

@@ -27,7 +27,7 @@
  *  1. Unpack the flat y[] into State blocks (StatePacking::UnpackStateVector).
  *  2. Clear RHSAccumulator.
  *  3. For each driver:
- *        driver->AccumulateRHS(t, state, rhs, *ctx.star);
+ *        driver->AccumulateRHS(t, state, rhs, runtime_context);
  *  4. Scatter RHSAccumulator back into dydt[]
  *     (StatePacking::ScatterRHSFromAccumulator).
  *
@@ -42,25 +42,28 @@
 #include <memory>
 #include <vector>
 
+#include "CompactStar/Physics/Evolution/DriverContext.hpp"
+
 namespace CompactStar
 {
 namespace Physics
 {
 // Forward declarations for static context pieces
-namespace Thermal
-{
-class IEnvelope;
-}
+// namespace Thermal
+// {
+// class IEnvelope;
+// }
 
-namespace Evolution
-{
-class StarContext;
-class StateVector;
-class GeometryCache;
-class RHSAccumulator;
-class StateLayout;
-struct Config;
-} // namespace Evolution
+// namespace Evolution
+// {
+// // class StarContext;
+// // class StateVector;
+// // class GeometryCache;
+// // class RHSAccumulator;
+// // class StateLayout;
+// // struct Config;
+// // struct DriverContext;
+// } // namespace Evolution
 
 // Driver interface lives at the Physics level (see IDriver.hpp)
 class IDriver;
@@ -75,9 +78,14 @@ namespace Physics
 namespace Evolution
 {
 
+namespace Observers
+{
+class IObserver;
+}
+
 // Shared-pointer alias for owning driver instances.
 using DriverPtr = std::shared_ptr<Physics::IDriver>;
-
+using ObserverPtr = std::shared_ptr<Observers::IObserver>;
 //==============================================================
 //                      EvolutionSystem Class
 //==============================================================
@@ -93,16 +101,16 @@ using DriverPtr = std::shared_ptr<Physics::IDriver>;
 class EvolutionSystem
 {
   public:
-	/**
-	 * @brief Bundles read-only references to static model components.
-	 */
-	struct Context
-	{
-		const StarContext *star = nullptr;			  ///< geometry, EOS, profiles
-		const GeometryCache *geo = nullptr;			  ///< precomputed weights
-		const Thermal::IEnvelope *envelope = nullptr; ///< surface T_b → T_s
-		const Config *cfg = nullptr;				  ///< evolution configuration
-	};
+	// /**
+	//  * @brief Bundles read-only references to static model components.
+	//  */
+	// struct RuntimeContext
+	// {
+	// 	const StarContext *star = nullptr;			  ///< geometry, EOS, profiles
+	// 	const GeometryCache *geo = nullptr;			  ///< precomputed weights
+	// 	const Thermal::IEnvelope *envelope = nullptr; ///< surface T_b → T_s
+	// 	const Config *cfg = nullptr;				  ///< evolution configuration
+	// };
 
 	/**
 	 * @brief Construct the RHS functor.
@@ -114,12 +122,12 @@ class EvolutionSystem
 	 * @param drivers List of physics drivers (owned via DriverPtr).
 	 *
 	 * Lifetime rules:
-	 *  - The StarContext, GeometryCache, IEnvelope, Config pointed to by @p ctx
+	 *  - The RuntimeContext, GeometryCache, IEnvelope, Config pointed to by @p ctx
 	 *    must outlive this EvolutionSystem.
 	 *  - @p state, @p rhs, and @p layout must outlive this EvolutionSystem.
 	 *  - Drivers are owned by EvolutionSystem via the DriverPtr vector.
 	 */
-	EvolutionSystem(const Context &ctx,
+	EvolutionSystem(const DriverContext &ctx,
 					StateVector &state,
 					RHSAccumulator &rhs,
 					const StateLayout &layout,
@@ -134,17 +142,70 @@ class EvolutionSystem
 	 *
 	 * @return 0 on success; nonzero on failure (GSL convention).
 	 */
-	int operator()(double t, const double y[], double dydt[]) const;
+	int operator()(double t, const double *y, double *dydt) const;
+
+	/**
+	 * @brief Register an observer to receive evolution callbacks.
+	 *
+	 * Observers are notified by the integrator (not by operator()) at:
+	 *  - OnStart(t0, Y0, ctx)
+	 *  - Observe(t, Y, ctx) on accepted steps (or at least whenever the integrator chooses)
+	 *  - OnFinish(t, Y, ctx, ok)
+	 *
+	 * @param obs Shared pointer to an observer implementation.
+	 * @throws std::runtime_error if obs is null.
+	 */
+	void AddObserver(ObserverPtr obs);
+
+	/**
+	 * @brief Return the registered observers.
+	 *
+	 * This is intended for the integrator to iterate and call hooks.
+	 */
+	[[nodiscard]] const std::vector<ObserverPtr> &ObserversList() const { return m_observers; }
+
+	/**
+	 * @brief Notify observers before integration begins.
+	 * @param t0 Start time.
+	 * @param t1 Target end time.
+	 * @param y0 Flat initial state array (size = layout.TotalSize()).
+	 */
+	void NotifyStart(double t0, double t1, const double *y0) const;
+
+	/**
+	 * @brief Notify observers after reaching a save point (dt_save cadence).
+	 * @param t Current time (after stepping).
+	 * @param y Flat state array at time t.
+	 * @param sample_index 0-based index of emitted samples.
+	 */
+	void NotifySample(double t, const double *y, std::size_t sample_index) const;
+
+	/**
+	 * @brief Notify observers once at the end of integration.
+	 * @param t Final time reached.
+	 * @param y Flat state array at final time.
+	 * @param ok Whether integrator considers the run successful.
+	 */
+	void NotifyFinish(double t, const double *y, bool ok) const;
 
   private:
 	/// Validate that the static Context is non-null / self-consistent.
 	void ValidateContext() const;
 
-	Context m_ctx;					  ///< static model context (non-owning pointers)
+	DriverContext m_ctx;			  ///< static model context (non-owning pointers)
 	StateVector &m_state;			  ///< logical state blocks (non-owning)
 	RHSAccumulator &m_rhs;			  ///< RHS scratch storage (non-owning)
 	const StateLayout &m_layout;	  ///< y[] / dydt[] layout (non-owning)
 	std::vector<DriverPtr> m_drivers; ///< owned physics drivers
+
+	/**
+	 * @brief Registered observers (side-effectful consumers of accepted steps).
+	 *
+	 * NOTE: We store this in EvolutionSystem so the user can attach observers
+	 * at the same place they attach drivers. We do NOT call observers from
+	 * operator() to avoid triggering side effects during RHS evaluations.
+	 */
+	std::vector<ObserverPtr> m_observers;
 };
 
 } // namespace Evolution

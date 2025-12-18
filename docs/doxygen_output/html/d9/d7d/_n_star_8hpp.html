@@ -81,7 +81,8 @@ $(function() {
 
 <p>Neutron-star class (phase 2): legacy DataSet API + unified, SAFE StarProfile.  
 <a href="#details">More...</a></p>
-<div class="textblock"><code>#include &lt;<a class="el" href="../../d3/dd3/_directory_8hpp_source.html">Zaki/String/Directory.hpp</a>&gt;</code><br />
+<div class="textblock"><code>#include &lt;<a class="el" href="../../dc/d77/_constants_8hpp_source.html">Zaki/Physics/Constants.hpp</a>&gt;</code><br />
+<code>#include &lt;<a class="el" href="../../d3/dd3/_directory_8hpp_source.html">Zaki/String/Directory.hpp</a>&gt;</code><br />
 <code>#include &lt;<a class="el" href="../../de/dee/_data_set_8hpp_source.html">Zaki/Vector/DataSet.hpp</a>&gt;</code><br />
 <code>#include &lt;string_view&gt;</code><br />
 <code>#include &lt;vector&gt;</code><br />
@@ -95,14 +96,14 @@ $(function() {
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="nested-classes" name="nested-classes"></a>
 Classes</h2></td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dc/d86/class_compact_star_1_1_n_star.html">CompactStar::NStar</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Neutron-star container for TOV solutions, rotation, and export.  <a href="../../dc/d86/class_compact_star_1_1_n_star.html#details">More...</a><br /></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d0/d88/class_compact_star_1_1_core_1_1_n_star.html">CompactStar::Core::NStar</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Neutron-star container for TOV solutions, rotation, and export.  <a href="../../d0/d88/class_compact_star_1_1_core_1_1_n_star.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Neutron-star class (phase 2): legacy DataSet API + unified, SAFE StarProfile. </p>
 <p>This version:</p><ul>
-<li>uses your latest StarProfile (with safety checks, HasColumn, HasSpecies, etc.),</li>
+<li>uses our latest StarProfile (with safety checks, HasColumn, HasSpecies, etc.),</li>
 <li>keeps the legacy ds-based API but comments out the ones we want to migrate away from,</li>
 <li>prefers StarProfile (profile path) when it is non-empty,</li>
 <li>falls back to legacy (ds + SeqPoint) otherwise.</li>

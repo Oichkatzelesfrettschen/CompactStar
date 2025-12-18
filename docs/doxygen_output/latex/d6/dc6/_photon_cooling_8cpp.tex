@@ -1,0 +1,65 @@
+\hypertarget{_photon_cooling_8cpp}{}\doxysection{Compact\+Star/\+Physics/\+Driver/\+Thermal/src/\+Photon\+Cooling.cpp File Reference}
+\label{_photon_cooling_8cpp}\index{CompactStar/Physics/Driver/Thermal/src/PhotonCooling.cpp@{CompactStar/Physics/Driver/Thermal/src/PhotonCooling.cpp}}
+
+
+Implementation of Photon\+Cooling driver (surface photon cooling).  
+
+
+{\ttfamily \#include \char`\"{}Compact\+Star/\+Physics/\+Driver/\+Thermal/\+Photon\+Cooling.\+hpp\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}Compact\+Star/\+Physics/\+Driver/\+Thermal/\+Photon\+Cooling\+\_\+\+Details.\+hpp\char`\"{}}\newline
+{\ttfamily \#include $<$cmath$>$}\newline
+{\ttfamily \#include $<$limits$>$}\newline
+{\ttfamily \#include $<$stdexcept$>$}\newline
+{\ttfamily \#include \char`\"{}Compact\+Star/\+Physics/\+Evolution/\+Driver\+Context.\+hpp\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}Compact\+Star/\+Physics/\+Evolution/\+Geometry\+Cache.\+hpp\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}Compact\+Star/\+Physics/\+Evolution/\+RHSAccumulator.\+hpp\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}Compact\+Star/\+Physics/\+Evolution/\+State\+Vector.\+hpp\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}Compact\+Star/\+Physics/\+State/\+Thermal\+State.\+hpp\char`\"{}}\newline
+{\ttfamily \#include $<$Zaki/\+Util/\+Instrumentor.\+hpp$>$}\newline
+{\ttfamily \#include $<$Zaki/\+Util/\+Logger.\+hpp$>$}\newline
+\doxysubsection*{Namespaces}
+\begin{DoxyCompactItemize}
+\item 
+namespace \mbox{\hyperlink{namespace_compact_star_1_1_physics}{Compact\+Star\+::\+Physics}}
+\begin{DoxyCompactList}\small\item\em High-\/level physical modeling layer for compact stars. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Implementation of Photon\+Cooling driver (surface photon cooling). 
+
+This file implements\+: \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_photon_cooling_a30a11d918558a08eb44bed1272a7a486}{Compact\+Star\+::\+Physics\+::\+Driver\+::\+Thermal\+::\+Photon\+Cooling\+::\+Accumulate\+RHS}}
+
+The driver contributes a cooling term to the redshifted thermal degree of freedom (typically T\+\_\+inf), using a blackbody-\/like photon luminosity measured at infinity\+:
+
+L\+\_\+\{γ,∞\} = F\+\_\+rad $\ast$ A\+\_\+∞ $\ast$ σ\+\_\+\+SB $\ast$ T\+\_\+surf$^\wedge$4 $\ast$ global\+\_\+scale
+
+and\+:
+
+d\+T\+\_\+inf/dt += -\/ L\+\_\+\{γ,∞\} / C\+\_\+eff .
+
+\DoxyHorRuler{0}
+ \hypertarget{_photon_cooling_8cpp_autotoc_md23}{}\doxysubsubsection{UNITS (must remain consistent)\+:}\label{_photon_cooling_8cpp_autotoc_md23}
+
+\begin{DoxyItemize}
+\item T\+\_\+surf, T\+\_\+inf are in Kelvin \mbox{[}K\mbox{]}
+\item σ\+\_\+\+SB is in cgs\+: \mbox{[}erg cm$^\wedge$-\/2 s$^\wedge$-\/1 K$^\wedge$-\/4\mbox{]}
+\item A\+\_\+∞ must be in \mbox{[}cm$^\wedge$2\mbox{]} if σ\+\_\+\+SB is cgs
+\item L\+\_\+\{γ,∞\} is then \mbox{[}erg/s\mbox{]}
+\item C\+\_\+eff must be \mbox{[}erg/K\mbox{]} so that d\+T/dt is \mbox{[}K/s\mbox{]}
+\end{DoxyItemize}
+
+Geometry\+:
+\begin{DoxyItemize}
+\item If Geometry\+Cache provides R in km (typical), convert to cm using\+: 1 km = 1e5 cm
+\end{DoxyItemize}
+
+Redshift\+:
+\begin{DoxyItemize}
+\item We assume g\+\_\+tt = -\/exp(2ν(r)); Geometry\+Cache provides exp(2ν(r)) or similar.
+\item For luminosity at infinity from the surface\+: A\+\_\+∞ = 4π R$^\wedge$2 $\ast$ exp(2ν(\+R))
+\end{DoxyItemize}
+
+NOTE\+:
+\begin{DoxyItemize}
+\item The Driver\+Context (Evolution\+::\+Driver\+Context) is expected to provide access to Geometry\+Cache via ctx.\+geo (preferred), plus optional envelope via ctx.\+envelope. 
+\end{DoxyItemize}

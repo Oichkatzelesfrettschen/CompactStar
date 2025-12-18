@@ -87,7 +87,7 @@ Inheritance diagram for CompactStar::Physics::IDriver:</div>
   <map id="CompactStar::Physics::IDriver_map" name="CompactStar::Physics::IDriver_map">
 <area href="../../d9/d40/class_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_heating_from_chem.html" title="Accumulates the thermal RHS from chemical heating (η⋅Γ terms)." alt="CompactStar::Physics::Driver::Thermal::HeatingFromChem" shape="rect" coords="0,56,337,80"/>
 <area href="../../d7/daf/class_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_neutrino_cooling.html" title="Adds −L_ν/C_eff to the thermal RHS (redshifted frame)." alt="CompactStar::Physics::Driver::Thermal::NeutrinoCooling" shape="rect" coords="347,56,684,80"/>
-<area href="../../d8/df7/class_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_photon_cooling.html" title="Adds −L_γ/C_eff to the thermal RHS (redshifted frame)." alt="CompactStar::Physics::Driver::Thermal::PhotonCooling" shape="rect" coords="694,56,1031,80"/>
+<area href="../../d8/df7/class_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_photon_cooling.html" title="Adds a photon-cooling contribution to the thermal RHS (redshifted frame)." alt="CompactStar::Physics::Driver::Thermal::PhotonCooling" shape="rect" coords="694,56,1031,80"/>
   </map>
 </div></div>
 <table class="memberdecls">
@@ -102,13 +102,13 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a24a531cb99a43313f30018d1687241a7"><td class="memItemLeft" align="right" valign="top">virtual const std::vector&lt; <a class="el" href="../../da/d7b/namespace_compact_star_1_1_physics_1_1_state.html#af14f5554b0d9be50c5ea718733bc424b">State::StateTag</a> &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/dd4/class_compact_star_1_1_physics_1_1_i_driver.html#a24a531cb99a43313f30018d1687241a7">Updates</a> () const =0</td></tr>
 <tr class="memdesc:a24a531cb99a43313f30018d1687241a7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Which state blocks this driver updates (adds contributions to).  <a href="../../da/dd4/class_compact_star_1_1_physics_1_1_i_driver.html#a24a531cb99a43313f30018d1687241a7">More...</a><br /></td></tr>
 <tr class="separator:a24a531cb99a43313f30018d1687241a7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8f6a4dd41179102863ea109d24e68bf4"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/dd4/class_compact_star_1_1_physics_1_1_i_driver.html#a8f6a4dd41179102863ea109d24e68bf4">AccumulateRHS</a> (double t, const <a class="el" href="../../da/d36/class_compact_star_1_1_physics_1_1_evolution_1_1_state_vector.html">Evolution::StateVector</a> &amp;Y, <a class="el" href="../../d6/d26/class_compact_star_1_1_physics_1_1_evolution_1_1_r_h_s_accumulator.html">Evolution::RHSAccumulator</a> &amp;dYdt, const <a class="el" href="../../d9/d42/class_compact_star_1_1_physics_1_1_evolution_1_1_star_context.html">Evolution::StarContext</a> &amp;ctx) const =0</td></tr>
-<tr class="memdesc:a8f6a4dd41179102863ea109d24e68bf4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Add this driver’s contribution to the global RHS dY/dt.  <a href="../../da/dd4/class_compact_star_1_1_physics_1_1_i_driver.html#a8f6a4dd41179102863ea109d24e68bf4">More...</a><br /></td></tr>
-<tr class="separator:a8f6a4dd41179102863ea109d24e68bf4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab4c100ea49a9ec8bad3b43f9f84c17eb"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/dd4/class_compact_star_1_1_physics_1_1_i_driver.html#ab4c100ea49a9ec8bad3b43f9f84c17eb">AccumulateRHS</a> (double t, const <a class="el" href="../../da/d36/class_compact_star_1_1_physics_1_1_evolution_1_1_state_vector.html">Evolution::StateVector</a> &amp;Y, <a class="el" href="../../d6/d26/class_compact_star_1_1_physics_1_1_evolution_1_1_r_h_s_accumulator.html">Evolution::RHSAccumulator</a> &amp;dYdt, const <a class="el" href="../../d1/db5/struct_compact_star_1_1_physics_1_1_evolution_1_1_driver_context.html">Evolution::DriverContext</a> &amp;ctx) const =0</td></tr>
+<tr class="memdesc:ab4c100ea49a9ec8bad3b43f9f84c17eb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Add this driver’s contribution to the global RHS dY/dt.  <a href="../../da/dd4/class_compact_star_1_1_physics_1_1_i_driver.html#ab4c100ea49a9ec8bad3b43f9f84c17eb">More...</a><br /></td></tr>
+<tr class="separator:ab4c100ea49a9ec8bad3b43f9f84c17eb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Member Function Documentation</h2>
-<a id="a8f6a4dd41179102863ea109d24e68bf4" name="a8f6a4dd41179102863ea109d24e68bf4"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a8f6a4dd41179102863ea109d24e68bf4">&#9670;&#160;</a></span>AccumulateRHS()</h2>
+<a id="ab4c100ea49a9ec8bad3b43f9f84c17eb" name="ab4c100ea49a9ec8bad3b43f9f84c17eb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab4c100ea49a9ec8bad3b43f9f84c17eb">&#9670;&#160;</a></span>AccumulateRHS()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -137,7 +137,7 @@ Public Member Functions</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const <a class="el" href="../../d9/d42/class_compact_star_1_1_physics_1_1_evolution_1_1_star_context.html">Evolution::StarContext</a> &amp;&#160;</td>
+          <td class="paramtype">const <a class="el" href="../../d1/db5/struct_compact_star_1_1_physics_1_1_evolution_1_1_driver_context.html">Evolution::DriverContext</a> &amp;&#160;</td>
           <td class="paramname"><em>ctx</em>&#160;</td>
         </tr>
         <tr>
@@ -154,7 +154,7 @@ Public Member Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Add this driver’s contribution to the global RHS dY/dt. </p>
-<p>Implementations must <em>accumulate</em> into <code>dYdt</code> (i.e., add), and must not assume any specific call order beyond what the <a class="el" href="../../d6/d38/namespace_compact_star_1_1_physics_1_1_evolution.html" title="Evolution engine for time-dependent neutron-star physics.">Evolution</a> graph resolves.</p>
+<p>Implementations must <em>accumulate</em> into <code>dYdt</code> (i.e., add), and must not assume any specific call order beyond what the Evolution graph resolves.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">t</td><td>Current time (model units; typically seconds). </td></tr>
@@ -165,7 +165,7 @@ Public Member Functions</h2></td></tr>
   </dd>
 </dl>
 
-<p>Implemented in <a class="el" href="../../d9/d40/class_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_heating_from_chem.html#a5f9f22c76959e7eb907e5c6997598093">CompactStar::Physics::Driver::Thermal::HeatingFromChem</a>, <a class="el" href="../../d7/daf/class_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_neutrino_cooling.html#ad3c3e40c162184605b4e27915423c65c">CompactStar::Physics::Driver::Thermal::NeutrinoCooling</a>, and <a class="el" href="../../d8/df7/class_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_photon_cooling.html#a9b6e2a592f8473860e317c9102edc831">CompactStar::Physics::Driver::Thermal::PhotonCooling</a>.</p>
+<p>Implemented in <a class="el" href="../../d9/d40/class_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_heating_from_chem.html#a0d9f71b781bfc9df8f02eed58cbadb76">CompactStar::Physics::Driver::Thermal::HeatingFromChem</a>, <a class="el" href="../../d7/daf/class_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_neutrino_cooling.html#ab9ed44b6727390735bb257b656daca44">CompactStar::Physics::Driver::Thermal::NeutrinoCooling</a>, and <a class="el" href="../../d8/df7/class_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_photon_cooling.html#a30a11d918558a08eb44bed1272a7a486">CompactStar::Physics::Driver::Thermal::PhotonCooling</a>.</p>
 
 </div>
 </div>
@@ -195,7 +195,7 @@ Public Member Functions</h2></td></tr>
 <p>Which state blocks this driver reads. </p>
 <p>Drivers should return a reference to a static container (e.g. a static const std::vector&lt;StateTag&gt;). </p>
 
-<p>Implemented in <a class="el" href="../../d9/d40/class_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_heating_from_chem.html#a9913eff798bd1896243a978d1e5c9cc1">CompactStar::Physics::Driver::Thermal::HeatingFromChem</a>, <a class="el" href="../../d7/daf/class_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_neutrino_cooling.html#a84bda6a5dd4718cea02067ddc0d9d2f5">CompactStar::Physics::Driver::Thermal::NeutrinoCooling</a>, and <a class="el" href="../../d8/df7/class_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_photon_cooling.html#a727e70e4e7ae99d1711d2d44b12b8150">CompactStar::Physics::Driver::Thermal::PhotonCooling</a>.</p>
+<p>Implemented in <a class="el" href="../../d9/d40/class_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_heating_from_chem.html#ab40688139cff7c5c2600ebc94a6c06aa">CompactStar::Physics::Driver::Thermal::HeatingFromChem</a>, <a class="el" href="../../d7/daf/class_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_neutrino_cooling.html#aa42814553d2918595b45d411648656c2">CompactStar::Physics::Driver::Thermal::NeutrinoCooling</a>, and <a class="el" href="../../d8/df7/class_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_photon_cooling.html#a1e27f52db93a97bad80c9457d7e1b1f0">CompactStar::Physics::Driver::Thermal::PhotonCooling</a>.</p>
 
 </div>
 </div>
@@ -254,7 +254,7 @@ Public Member Functions</h2></td></tr>
 <p>Which state blocks this driver updates (adds contributions to). </p>
 <p>Drivers should return a reference to a static container (e.g. a static const std::vector&lt;StateTag&gt;). </p>
 
-<p>Implemented in <a class="el" href="../../d9/d40/class_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_heating_from_chem.html#a40751d8be9aebf75f3302b0b9bd2bd63">CompactStar::Physics::Driver::Thermal::HeatingFromChem</a>, <a class="el" href="../../d7/daf/class_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_neutrino_cooling.html#aa617d91eaad9d418559b6bde6f8e11f2">CompactStar::Physics::Driver::Thermal::NeutrinoCooling</a>, and <a class="el" href="../../d8/df7/class_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_photon_cooling.html#a75fda0abed33a37355c02b0072c35ee6">CompactStar::Physics::Driver::Thermal::PhotonCooling</a>.</p>
+<p>Implemented in <a class="el" href="../../d9/d40/class_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_heating_from_chem.html#a3e5476a2438700080e716198ad5262d9">CompactStar::Physics::Driver::Thermal::HeatingFromChem</a>, <a class="el" href="../../d7/daf/class_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_neutrino_cooling.html#a3e430568095c4bc88f22f9e6730e2bdc">CompactStar::Physics::Driver::Thermal::NeutrinoCooling</a>, and <a class="el" href="../../d8/df7/class_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_photon_cooling.html#ae0fef08a30b8f5ac85aa8330ffe201ae">CompactStar::Physics::Driver::Thermal::PhotonCooling</a>.</p>
 
 </div>
 </div>

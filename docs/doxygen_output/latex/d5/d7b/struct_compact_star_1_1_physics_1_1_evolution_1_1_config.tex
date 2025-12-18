@@ -2,7 +2,7 @@
 \label{struct_compact_star_1_1_physics_1_1_evolution_1_1_config}\index{CompactStar::Physics::Evolution::Config@{CompactStar::Physics::Evolution::Config}}
 
 
-Configures a single evolution run.  
+Configuration for a single evolution run.  
 
 
 
@@ -12,7 +12,7 @@ Configures a single evolution run.
 \doxysubsection*{Public Attributes}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\hyperlink{namespace_compact_star_1_1_physics_1_1_evolution_a0319e48cd15f3f7460b2432fd507fd34}{Stepper\+Type}} \mbox{\hyperlink{struct_compact_star_1_1_physics_1_1_evolution_1_1_config_ae283786bfb5c27a7d4b0a48375e30294}{stepper}} = \mbox{\hyperlink{namespace_compact_star_1_1_physics_1_1_evolution_a0319e48cd15f3f7460b2432fd507fd34a14a72850b24c13d12d4e2370e682a181}{Stepper\+Type\+::\+MSBDF}}
+\mbox{\hyperlink{_evolution_config_8hpp_a0319e48cd15f3f7460b2432fd507fd34}{Stepper\+Type}} \mbox{\hyperlink{struct_compact_star_1_1_physics_1_1_evolution_1_1_config_ae283786bfb5c27a7d4b0a48375e30294}{stepper}} = \mbox{\hyperlink{_evolution_config_8hpp_a0319e48cd15f3f7460b2432fd507fd34a14a72850b24c13d12d4e2370e682a181}{Stepper\+Type\+::\+MSBDF}}
 \item 
 double \mbox{\hyperlink{struct_compact_star_1_1_physics_1_1_evolution_1_1_config_a81accd13af408d61ec9f4d8913452d2f}{rtol}} = 1e-\/6
 \item 
@@ -40,7 +40,7 @@ bool \mbox{\hyperlink{struct_compact_star_1_1_physics_1_1_evolution_1_1_config_a
 bool \mbox{\hyperlink{struct_compact_star_1_1_physics_1_1_evolution_1_1_config_afb3eba73bbc39057f6f04d905b0cc27b}{couple\+\_\+spin}} = false
 \item 
 \mbox{\Hypertarget{struct_compact_star_1_1_physics_1_1_evolution_1_1_config_afaf335ececb43540fec904cd694a7dd5}\label{struct_compact_star_1_1_physics_1_1_evolution_1_1_config_afaf335ececb43540fec904cd694a7dd5}} 
-\mbox{\hyperlink{namespace_compact_star_1_1_physics_1_1_evolution_a77ec205aab45375896e1afc074f535bc}{Envelope\+Model}} {\bfseries envelope} = Envelope\+Model\+::\+Iron
+\mbox{\hyperlink{_evolution_config_8hpp_a77ec205aab45375896e1afc074f535bc}{Envelope\+Model}} {\bfseries envelope} = Envelope\+Model\+::\+Iron
 \item 
 double \mbox{\hyperlink{struct_compact_star_1_1_physics_1_1_evolution_1_1_config_a956575775d60221464dd6732798fa247}{envelope\+\_\+xi}} = 0.\+0
 \item 
@@ -60,7 +60,18 @@ std\+::string \mbox{\hyperlink{struct_compact_star_1_1_physics_1_1_evolution_1_1
 
 
 \doxysubsection{Detailed Description}
-Configures a single evolution run. 
+Configuration for a single evolution run. 
+
+This struct is intentionally small and POD-\/like; it is passed by const reference into {\ttfamily \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_evolution_system}{Evolution\+System}}} and {\ttfamily \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_g_s_l_integrator}{GSLIntegrator}}}.\hypertarget{struct_compact_star_1_1_physics_1_1_evolution_1_1_config_autotoc_md26}{}\doxyparagraph{Integrator-\/related fields}\label{struct_compact_star_1_1_physics_1_1_evolution_1_1_config_autotoc_md26}
+
+\begin{DoxyItemize}
+\item {\ttfamily stepper} \+: choice of GSL backend ({\ttfamily Stepper\+Type}).
+\item {\ttfamily rtol, atol} \+: relative/absolute tolerances for adaptive stepping.
+\item {\ttfamily max\+\_\+steps} \+: hard cap on total number of internal steps.
+\item {\ttfamily dt\+\_\+save} \+: cadence at which we {\itshape request} output samples.
+\end{DoxyItemize}
+
+The actual integrator is implemented in {\ttfamily \mbox{\hyperlink{_g_s_l_integrator_8cpp}{GSLIntegrator.\+cpp}}} and uses these settings to construct a {\ttfamily gsl\+\_\+odeiv2\+\_\+driver}. 
 
 \doxysubsection{Member Data Documentation}
 \mbox{\Hypertarget{struct_compact_star_1_1_physics_1_1_evolution_1_1_config_af2ff1bf36cca9c19839186ecdbc89ff5}\label{struct_compact_star_1_1_physics_1_1_evolution_1_1_config_af2ff1bf36cca9c19839186ecdbc89ff5}} 
@@ -69,7 +80,7 @@ Configures a single evolution run.
 \doxysubsubsection{\texorpdfstring{atol}{atol}}
 {\footnotesize\ttfamily double Compact\+Star\+::\+Physics\+::\+Evolution\+::\+Config\+::atol = 1e-\/10}
 
-Absolute tolerance. ~\newline
+Absolute tolerance for adaptive stepping. ~\newline
  \mbox{\Hypertarget{struct_compact_star_1_1_physics_1_1_evolution_1_1_config_afb3eba73bbc39057f6f04d905b0cc27b}\label{struct_compact_star_1_1_physics_1_1_evolution_1_1_config_afb3eba73bbc39057f6f04d905b0cc27b}} 
 \index{CompactStar::Physics::Evolution::Config@{CompactStar::Physics::Evolution::Config}!couple\_spin@{couple\_spin}}
 \index{couple\_spin@{couple\_spin}!CompactStar::Physics::Evolution::Config@{CompactStar::Physics::Evolution::Config}}
@@ -83,7 +94,7 @@ Include $\Omega$ in the state. ~\newline
 \doxysubsubsection{\texorpdfstring{dt\_save}{dt\_save}}
 {\footnotesize\ttfamily double Compact\+Star\+::\+Physics\+::\+Evolution\+::\+Config\+::dt\+\_\+save = 1.\+0e2}
 
-Spacing of saved samples (s). \mbox{\Hypertarget{struct_compact_star_1_1_physics_1_1_evolution_1_1_config_a2aa7e969c648e1e115879b00df71dba7}\label{struct_compact_star_1_1_physics_1_1_evolution_1_1_config_a2aa7e969c648e1e115879b00df71dba7}} 
+Spacing of requested saved samples (s). \mbox{\Hypertarget{struct_compact_star_1_1_physics_1_1_evolution_1_1_config_a2aa7e969c648e1e115879b00df71dba7}\label{struct_compact_star_1_1_physics_1_1_evolution_1_1_config_a2aa7e969c648e1e115879b00df71dba7}} 
 \index{CompactStar::Physics::Evolution::Config@{CompactStar::Physics::Evolution::Config}!enable\_BNV@{enable\_BNV}}
 \index{enable\_BNV@{enable\_BNV}!CompactStar::Physics::Evolution::Config@{CompactStar::Physics::Evolution::Config}}
 \doxysubsubsection{\texorpdfstring{enable\_BNV}{enable\_BNV}}
@@ -130,7 +141,8 @@ Light-\/element column parameter (if used). \mbox{\Hypertarget{struct_compact_st
 \doxysubsubsection{\texorpdfstring{max\_steps}{max\_steps}}
 {\footnotesize\ttfamily std\+::size\+\_\+t Compact\+Star\+::\+Physics\+::\+Evolution\+::\+Config\+::max\+\_\+steps = 1000000}
 
-Safety cap on steps. \mbox{\Hypertarget{struct_compact_star_1_1_physics_1_1_evolution_1_1_config_ab2e24ae85b3b6f4d3b2496fde7d61a9d}\label{struct_compact_star_1_1_physics_1_1_evolution_1_1_config_ab2e24ae85b3b6f4d3b2496fde7d61a9d}} 
+Safety cap on total GSL steps. ~\newline
+ \mbox{\Hypertarget{struct_compact_star_1_1_physics_1_1_evolution_1_1_config_ab2e24ae85b3b6f4d3b2496fde7d61a9d}\label{struct_compact_star_1_1_physics_1_1_evolution_1_1_config_ab2e24ae85b3b6f4d3b2496fde7d61a9d}} 
 \index{CompactStar::Physics::Evolution::Config@{CompactStar::Physics::Evolution::Config}!n\_eta@{n\_eta}}
 \index{n\_eta@{n\_eta}!CompactStar::Physics::Evolution::Config@{CompactStar::Physics::Evolution::Config}}
 \doxysubsubsection{\texorpdfstring{n\_eta}{n\_eta}}
@@ -142,7 +154,7 @@ Number of $\eta_i$ components. \mbox{\Hypertarget{struct_compact_star_1_1_physic
 \doxysubsubsection{\texorpdfstring{rtol}{rtol}}
 {\footnotesize\ttfamily double Compact\+Star\+::\+Physics\+::\+Evolution\+::\+Config\+::rtol = 1e-\/6}
 
-Relative tolerance. ~\newline
+Relative tolerance for adaptive stepping. ~\newline
  \mbox{\Hypertarget{struct_compact_star_1_1_physics_1_1_evolution_1_1_config_af7573276349dec83c48d0278eae576fc}\label{struct_compact_star_1_1_physics_1_1_evolution_1_1_config_af7573276349dec83c48d0278eae576fc}} 
 \index{CompactStar::Physics::Evolution::Config@{CompactStar::Physics::Evolution::Config}!run\_label@{run\_label}}
 \index{run\_label@{run\_label}!CompactStar::Physics::Evolution::Config@{CompactStar::Physics::Evolution::Config}}
@@ -153,9 +165,9 @@ Free-\/form label for outputs. \mbox{\Hypertarget{struct_compact_star_1_1_physic
 \index{CompactStar::Physics::Evolution::Config@{CompactStar::Physics::Evolution::Config}!stepper@{stepper}}
 \index{stepper@{stepper}!CompactStar::Physics::Evolution::Config@{CompactStar::Physics::Evolution::Config}}
 \doxysubsubsection{\texorpdfstring{stepper}{stepper}}
-{\footnotesize\ttfamily \mbox{\hyperlink{namespace_compact_star_1_1_physics_1_1_evolution_a0319e48cd15f3f7460b2432fd507fd34}{Stepper\+Type}} Compact\+Star\+::\+Physics\+::\+Evolution\+::\+Config\+::stepper = \mbox{\hyperlink{namespace_compact_star_1_1_physics_1_1_evolution_a0319e48cd15f3f7460b2432fd507fd34a14a72850b24c13d12d4e2370e682a181}{Stepper\+Type\+::\+MSBDF}}}
+{\footnotesize\ttfamily \mbox{\hyperlink{_evolution_config_8hpp_a0319e48cd15f3f7460b2432fd507fd34}{Stepper\+Type}} Compact\+Star\+::\+Physics\+::\+Evolution\+::\+Config\+::stepper = \mbox{\hyperlink{_evolution_config_8hpp_a0319e48cd15f3f7460b2432fd507fd34a14a72850b24c13d12d4e2370e682a181}{Stepper\+Type\+::\+MSBDF}}}
 
-Time stepper choice. \mbox{\Hypertarget{struct_compact_star_1_1_physics_1_1_evolution_1_1_config_ae36a398df8b8b82ee10c0d239e676258}\label{struct_compact_star_1_1_physics_1_1_evolution_1_1_config_ae36a398df8b8b82ee10c0d239e676258}} 
+Time stepper choice (GSL backend). \mbox{\Hypertarget{struct_compact_star_1_1_physics_1_1_evolution_1_1_config_ae36a398df8b8b82ee10c0d239e676258}\label{struct_compact_star_1_1_physics_1_1_evolution_1_1_config_ae36a398df8b8b82ee10c0d239e676258}} 
 \index{CompactStar::Physics::Evolution::Config@{CompactStar::Physics::Evolution::Config}!use\_isothermal\_core@{use\_isothermal\_core}}
 \index{use\_isothermal\_core@{use\_isothermal\_core}!CompactStar::Physics::Evolution::Config@{CompactStar::Physics::Evolution::Config}}
 \doxysubsubsection{\texorpdfstring{use\_isothermal\_core}{use\_isothermal\_core}}
@@ -165,4 +177,4 @@ Assume isothermal interior (standard).
 
 The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
 \item 
-Compact\+Star/\+Physics/\+Evolution/Evolution\+Config.\+hpp\end{DoxyCompactItemize}
+Compact\+Star/\+Physics/\+Evolution/\mbox{\hyperlink{_evolution_config_8hpp}{Evolution\+Config.\+hpp}}\end{DoxyCompactItemize}

@@ -1,0 +1,137 @@
+\hypertarget{class_compact_star_1_1_core_1_1_rotation_solver}{}\doxysection{Compact\+Star\+::Core\+::Rotation\+Solver Class Reference}
+\label{class_compact_star_1_1_core_1_1_rotation_solver}\index{CompactStar::Core::RotationSolver@{CompactStar::Core::RotationSolver}}
+Inheritance diagram for Compact\+Star\+::Core\+::Rotation\+Solver\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{d7/d64/class_compact_star_1_1_core_1_1_rotation_solver}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_compact_star_1_1_core_1_1_rotation_solver_a61e5a17dc8a001b654c0ee52535a78c6}\label{class_compact_star_1_1_core_1_1_rotation_solver_a61e5a17dc8a001b654c0ee52535a78c6}} 
+{\bfseries Rotation\+Solver} (const \mbox{\hyperlink{class_compact_star_1_1_core_1_1_rotation_solver}{Rotation\+Solver}} \&)=delete
+\begin{DoxyCompactList}\small\item\em Copy Constructor. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_compact_star_1_1_core_1_1_rotation_solver_a2e9e7d3bc5601f1cbf99aaab21acfa1a}\label{class_compact_star_1_1_core_1_1_rotation_solver_a2e9e7d3bc5601f1cbf99aaab21acfa1a}} 
+\mbox{\hyperlink{class_compact_star_1_1_core_1_1_rotation_solver}{Rotation\+Solver}} \& {\bfseries operator=} (const \mbox{\hyperlink{class_compact_star_1_1_core_1_1_rotation_solver}{Rotation\+Solver}} \&)=delete
+\begin{DoxyCompactList}\small\item\em Assignment operator. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_compact_star_1_1_core_1_1_rotation_solver_aea5a24345c13c6440e0e1e458d9d27b6}\label{class_compact_star_1_1_core_1_1_rotation_solver_aea5a24345c13c6440e0e1e458d9d27b6}} 
+void {\bfseries Attach\+NStar} (\mbox{\hyperlink{class_compact_star_1_1_core_1_1_n_star}{NStar}} $\ast$)
+\begin{DoxyCompactList}\small\item\em Attaches the \mbox{\hyperlink{class_compact_star_1_1_core_1_1_n_star}{NStar}} pointer to \mbox{\hyperlink{class_compact_star_1_1_core_1_1_rotation_solver}{Rotation\+Solver}} class. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_compact_star_1_1_core_1_1_rotation_solver_a51d055f17b9ad84e6dd1cdbb23f3259f}\label{class_compact_star_1_1_core_1_1_rotation_solver_a51d055f17b9ad84e6dd1cdbb23f3259f}} 
+void {\bfseries Attach\+Mixed\+Star} (\mbox{\hyperlink{class_compact_star_1_1_core_1_1_mixed_star}{Mixed\+Star}} $\ast$)
+\item 
+\mbox{\Hypertarget{class_compact_star_1_1_core_1_1_rotation_solver_a8350041533921cc63da5d7cc229079f7}\label{class_compact_star_1_1_core_1_1_rotation_solver_a8350041533921cc63da5d7cc229079f7}} 
+\mbox{\hyperlink{class_compact_star_1_1_core_1_1_n_star}{NStar}} $\ast$ {\bfseries Get\+NStar} ()
+\item 
+\mbox{\Hypertarget{class_compact_star_1_1_core_1_1_rotation_solver_aba0cce420db9a1cb171af4922aca0649}\label{class_compact_star_1_1_core_1_1_rotation_solver_aba0cce420db9a1cb171af4922aca0649}} 
+\mbox{\hyperlink{class_compact_star_1_1_core_1_1_mixed_star}{Mixed\+Star}} $\ast$ {\bfseries Get\+Mixed\+Star} ()
+\item 
+\mbox{\Hypertarget{class_compact_star_1_1_core_1_1_rotation_solver_a184af2011aaa3dd4503c6c7d7e5ec66b}\label{class_compact_star_1_1_core_1_1_rotation_solver_a184af2011aaa3dd4503c6c7d7e5ec66b}} 
+double {\bfseries Get\+Mass} (const double \&)
+\begin{DoxyCompactList}\small\item\em Returns the mass at a given radius. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_compact_star_1_1_core_1_1_rotation_solver_a50a15fde0bd81f887b0fdecb271f0271}\label{class_compact_star_1_1_core_1_1_rotation_solver_a50a15fde0bd81f887b0fdecb271f0271}} 
+double {\bfseries Get\+Press} (double)
+\begin{DoxyCompactList}\small\item\em Returns the pressure at a given radius. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{class_compact_star_1_1_core_1_1_rotation_solver_a01a9649bfd01395159f3c7b84e6d07a7}{Get\+EDens}} (const double \&)
+\begin{DoxyCompactList}\small\item\em Returns the derivative of pressure at a given radius. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_compact_star_1_1_core_1_1_rotation_solver_a31516a40b8686e27d9cb50361ebfe1f4}\label{class_compact_star_1_1_core_1_1_rotation_solver_a31516a40b8686e27d9cb50361ebfe1f4}} 
+double {\bfseries Get\+Init\+Omega\+Bar} () const
+\begin{DoxyCompactList}\small\item\em Returns the initial value assumes for omega at r $\sim$ 0. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_compact_star_1_1_core_1_1_rotation_solver_af922f4e2d00e88cdf104f2f86bc5953e}\label{class_compact_star_1_1_core_1_1_rotation_solver_af922f4e2d00e88cdf104f2f86bc5953e}} 
+std\+::vector$<$ \mbox{\hyperlink{struct_compact_star_1_1_core_1_1_omega_seq_point}{Omega\+Seq\+Point}} $>$ {\bfseries Get\+Omega\+Seq} () const
+\begin{DoxyCompactList}\small\item\em Returns omega\+\_\+seq\+\_\+pts. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_compact_star_1_1_core_1_1_rotation_solver_a9a34bccfd1878e4465c13ae48dca833e}\label{class_compact_star_1_1_core_1_1_rotation_solver_a9a34bccfd1878e4465c13ae48dca833e}} 
+double {\bfseries Get\+Nu} (double in\+\_\+R)
+\begin{DoxyCompactList}\small\item\em .......................Aug 6, 2020......................... \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_compact_star_1_1_core_1_1_rotation_solver_ac0415fea93d15873fd4161e1403cfd7b}\label{class_compact_star_1_1_core_1_1_rotation_solver_ac0415fea93d15873fd4161e1403cfd7b}} 
+double {\bfseries Get\+Hartle\+Omega\+Coeff\+\_\+\+N\+\_\+\+Fast} (const double r)
+\begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{class_compact_star_1_1_core_1_1_n_star}{NStar}}\+: Coefficient for y\mbox{[}0\mbox{]}. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_compact_star_1_1_core_1_1_rotation_solver_abee3786b422b4ece7917275ebed81362}\label{class_compact_star_1_1_core_1_1_rotation_solver_abee3786b422b4ece7917275ebed81362}} 
+double {\bfseries Get\+Hartle\+DOmega\+Coeff\+\_\+\+N\+\_\+\+Fast} (const double r)
+\begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{class_compact_star_1_1_core_1_1_n_star}{NStar}}\+: Coefficient for y\mbox{[}1\mbox{]}. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{class_compact_star_1_1_core_1_1_rotation_solver_acc8db2ce10c86326f7292e5061738cae}{Get\+Hartle\+Omega\+Coeff\+\_\+\+Mixed}} (const double r)
+\begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{class_compact_star_1_1_core_1_1_mixed_star}{Mixed\+Star}}\+: Coefficient for y\mbox{[}0\mbox{]}. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_compact_star_1_1_core_1_1_rotation_solver_a8640645e7335b73ee3cf83cfdcdc2d22}\label{class_compact_star_1_1_core_1_1_rotation_solver_a8640645e7335b73ee3cf83cfdcdc2d22}} 
+double {\bfseries Get\+Hartle\+DOmega\+Coeff\+\_\+\+Mixed} (const double r)
+\begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{class_compact_star_1_1_core_1_1_mixed_star}{Mixed\+Star}}\+: Coefficient for y\mbox{[}1\mbox{]}. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_compact_star_1_1_core_1_1_rotation_solver_a457ac9d515dae9bf410f8b68797f81b4}\label{class_compact_star_1_1_core_1_1_rotation_solver_a457ac9d515dae9bf410f8b68797f81b4}} 
+double {\bfseries Get\+Hartle\+Omega\+Coeff\+\_\+\+Mixed\+\_\+\+Fast} (const double r)
+\begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{class_compact_star_1_1_core_1_1_mixed_star}{Mixed\+Star}}\+: Coefficient for y\mbox{[}0\mbox{]}. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_compact_star_1_1_core_1_1_rotation_solver_ad7441f8027b58dcb7bd861205bfd5c42}\label{class_compact_star_1_1_core_1_1_rotation_solver_ad7441f8027b58dcb7bd861205bfd5c42}} 
+double {\bfseries Get\+Hartle\+DOmega\+Coeff\+\_\+\+Mixed\+\_\+\+Fast} (const double r)
+\begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{class_compact_star_1_1_core_1_1_mixed_star}{Mixed\+Star}}\+: Coefficient for y\mbox{[}1\mbox{]}. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_compact_star_1_1_core_1_1_rotation_solver_acd856c63a63e64f1bca88f89ec238fce}\label{class_compact_star_1_1_core_1_1_rotation_solver_acd856c63a63e64f1bca88f89ec238fce}} 
+void {\bfseries Solve} (const \mbox{\hyperlink{struct_zaki_1_1_math_1_1_axis}{Zaki\+::\+Math\+::\+Axis}} \&, const \mbox{\hyperlink{class_zaki_1_1_string_1_1_directory}{Zaki\+::\+String\+::\+Directory}} \&=\char`\"{}\char`\"{})
+\begin{DoxyCompactList}\small\item\em Input a range of initial omega(0) values. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_compact_star_1_1_core_1_1_rotation_solver_af2d1d3978f603e05f704d1ca4355c946}\label{class_compact_star_1_1_core_1_1_rotation_solver_af2d1d3978f603e05f704d1ca4355c946}} 
+void {\bfseries Solve} (const double \&, const \mbox{\hyperlink{class_zaki_1_1_string_1_1_directory}{Zaki\+::\+String\+::\+Directory}} \&=\char`\"{}\char`\"{})
+\begin{DoxyCompactList}\small\item\em Input an initial omega(0) value. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_compact_star_1_1_core_1_1_rotation_solver_ade106ecafb618c303b21de6698bc0f19}\label{class_compact_star_1_1_core_1_1_rotation_solver_ade106ecafb618c303b21de6698bc0f19}} 
+void {\bfseries Solve\+\_\+\+Mixed} (const double \&, const \mbox{\hyperlink{class_zaki_1_1_string_1_1_directory}{Zaki\+::\+String\+::\+Directory}} \&=\char`\"{}\char`\"{})
+\begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{class_compact_star_1_1_core_1_1_mixed_star}{Mixed\+Star}}\+: Input an initial omega(0) value. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_compact_star_1_1_core_1_1_rotation_solver_ae6d9fdb90475708d2444dd300fe8c92d}\label{class_compact_star_1_1_core_1_1_rotation_solver_ae6d9fdb90475708d2444dd300fe8c92d}} 
+void {\bfseries Find\+NMom\+Inertia} ()
+\begin{DoxyCompactList}\small\item\em Evaluates the moment of inertia for the neutron star. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_compact_star_1_1_core_1_1_rotation_solver_ae54870db5b861f14dae29d504a105a96}\label{class_compact_star_1_1_core_1_1_rotation_solver_ae54870db5b861f14dae29d504a105a96}} 
+void {\bfseries Find\+Mixed\+Mom\+Inertia} ()
+\begin{DoxyCompactList}\small\item\em Evaluates the moment of inertia for the mixed star. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_compact_star_1_1_core_1_1_rotation_solver_acd30447e393f4611a5020ba6e2b97f58}{Export\+Results}} (const \mbox{\hyperlink{class_zaki_1_1_string_1_1_directory}{Zaki\+::\+String\+::\+Directory}} \&) const
+\item 
+\mbox{\Hypertarget{class_compact_star_1_1_core_1_1_rotation_solver_ac6a050704dec270bc7ffd1818728ac76}\label{class_compact_star_1_1_core_1_1_rotation_solver_ac6a050704dec270bc7ffd1818728ac76}} 
+void {\bfseries Reset} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_compact_star_1_1_core_1_1_rotation_solver_a49265b3a92c3140e4c8bbd8b2ed46e67}\label{class_compact_star_1_1_core_1_1_rotation_solver_a49265b3a92c3140e4c8bbd8b2ed46e67}} 
+static int {\bfseries ODE} (double r, const double y\mbox{[}$\,$\mbox{]}, double f\mbox{[}$\,$\mbox{]}, void $\ast$params)
+\item 
+\mbox{\Hypertarget{class_compact_star_1_1_core_1_1_rotation_solver_afd7c47f437d4ad64eb6e30d58bdeca4b}\label{class_compact_star_1_1_core_1_1_rotation_solver_afd7c47f437d4ad64eb6e30d58bdeca4b}} 
+static int {\bfseries ODE\+\_\+\+Mixed} (double r, const double y\mbox{[}$\,$\mbox{]}, double f\mbox{[}$\,$\mbox{]}, void $\ast$params)
+\item 
+\mbox{\Hypertarget{class_compact_star_1_1_core_1_1_rotation_solver_a4f3e0d03de407899171d4678a2cc0b6a}\label{class_compact_star_1_1_core_1_1_rotation_solver_a4f3e0d03de407899171d4678a2cc0b6a}} 
+static int {\bfseries ODE\+\_\+\+Mixed\+\_\+\+Out} (double r, const double y\mbox{[}$\,$\mbox{]}, double f\mbox{[}$\,$\mbox{]}, void $\ast$params)
+\item 
+\mbox{\Hypertarget{class_compact_star_1_1_core_1_1_rotation_solver_acdc02267ffbecb4ca2c7bfccc808d804}\label{class_compact_star_1_1_core_1_1_rotation_solver_acdc02267ffbecb4ca2c7bfccc808d804}} 
+static int {\bfseries ODE\+\_\+\+Mixed\+\_\+\+Fast} (double r, const double y\mbox{[}$\,$\mbox{]}, double f\mbox{[}$\,$\mbox{]}, void $\ast$params)
+\item 
+\mbox{\Hypertarget{class_compact_star_1_1_core_1_1_rotation_solver_a585e3d2449c41658b69c72727bd2c199}\label{class_compact_star_1_1_core_1_1_rotation_solver_a585e3d2449c41658b69c72727bd2c199}} 
+static int {\bfseries ODE\+\_\+\+N\+\_\+\+Fast} (double r, const double y\mbox{[}$\,$\mbox{]}, double f\mbox{[}$\,$\mbox{]}, void $\ast$params)
+\end{DoxyCompactItemize}
+\doxysubsection*{Additional Inherited Members}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_compact_star_1_1_core_1_1_rotation_solver_acd30447e393f4611a5020ba6e2b97f58}\label{class_compact_star_1_1_core_1_1_rotation_solver_acd30447e393f4611a5020ba6e2b97f58}} 
+\index{CompactStar::Core::RotationSolver@{CompactStar::Core::RotationSolver}!ExportResults@{ExportResults}}
+\index{ExportResults@{ExportResults}!CompactStar::Core::RotationSolver@{CompactStar::Core::RotationSolver}}
+\doxysubsubsection{\texorpdfstring{ExportResults()}{ExportResults()}}
+{\footnotesize\ttfamily void Rotation\+Solver\+::\+Export\+Results (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_zaki_1_1_string_1_1_directory}{Zaki\+::\+String\+::\+Directory}} \&}]{in\+\_\+dir }\end{DoxyParamCaption}) const}
+
+.......................................................... Exports the results of solving the rotation equations \mbox{\Hypertarget{class_compact_star_1_1_core_1_1_rotation_solver_a01a9649bfd01395159f3c7b84e6d07a7}\label{class_compact_star_1_1_core_1_1_rotation_solver_a01a9649bfd01395159f3c7b84e6d07a7}} 
+\index{CompactStar::Core::RotationSolver@{CompactStar::Core::RotationSolver}!GetEDens@{GetEDens}}
+\index{GetEDens@{GetEDens}!CompactStar::Core::RotationSolver@{CompactStar::Core::RotationSolver}}
+\doxysubsubsection{\texorpdfstring{GetEDens()}{GetEDens()}}
+{\footnotesize\ttfamily double Rotation\+Solver\+::\+Get\+EDens (\begin{DoxyParamCaption}\item[{const double \&}]{in\+\_\+R }\end{DoxyParamCaption})}
+
+
+
+Returns the derivative of pressure at a given radius. 
+
+Returns the energy density at a given radius \mbox{\Hypertarget{class_compact_star_1_1_core_1_1_rotation_solver_acc8db2ce10c86326f7292e5061738cae}\label{class_compact_star_1_1_core_1_1_rotation_solver_acc8db2ce10c86326f7292e5061738cae}} 
+\index{CompactStar::Core::RotationSolver@{CompactStar::Core::RotationSolver}!GetHartleOmegaCoeff\_Mixed@{GetHartleOmegaCoeff\_Mixed}}
+\index{GetHartleOmegaCoeff\_Mixed@{GetHartleOmegaCoeff\_Mixed}!CompactStar::Core::RotationSolver@{CompactStar::Core::RotationSolver}}
+\doxysubsubsection{\texorpdfstring{GetHartleOmegaCoeff\_Mixed()}{GetHartleOmegaCoeff\_Mixed()}}
+{\footnotesize\ttfamily double Rotation\+Solver\+::\+Get\+Hartle\+Omega\+Coeff\+\_\+\+Mixed (\begin{DoxyParamCaption}\item[{const double}]{r }\end{DoxyParamCaption})}
+
+
+
+\mbox{\hyperlink{class_compact_star_1_1_core_1_1_mixed_star}{Mixed\+Star}}\+: Coefficient for y\mbox{[}0\mbox{]}. 
+
+Returns the total baryon number density given pressure. 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Compact\+Star/\+Core/\mbox{\hyperlink{_rotation_solver_8hpp}{Rotation\+Solver.\+hpp}}\item 
+Compact\+Star/\+Core/src/Rotation\+Solver.\+cpp\end{DoxyCompactItemize}

@@ -69,7 +69,7 @@ $(function() {
 
 <div id="nav-path" class="navpath">
   <ul>
-<li class="navelem"><b>CompactStar</b></li><li class="navelem"><a class="el" href="../../dc/dab/namespace_compact_star_1_1_physics.html">Physics</a></li><li class="navelem"><a class="el" href="../../d6/d38/namespace_compact_star_1_1_physics_1_1_evolution.html">Evolution</a></li><li class="navelem"><a class="el" href="../../d9/d42/class_compact_star_1_1_physics_1_1_evolution_1_1_star_context.html">StarContext</a></li>  </ul>
+<li class="navelem"><b>CompactStar</b></li><li class="navelem"><a class="el" href="../../dc/dab/namespace_compact_star_1_1_physics.html">Physics</a></li><li class="navelem"><b>Evolution</b></li><li class="navelem"><a class="el" href="../../d9/d42/class_compact_star_1_1_physics_1_1_evolution_1_1_star_context.html">StarContext</a></li>  </ul>
 </div>
 </div><!-- top -->
 <div class="header">
@@ -91,88 +91,82 @@ Public Member Functions</h2></td></tr>
 &#160;</td><td class="memItemRight" valign="bottom"><b>StarContext</b> ()=default</td></tr>
 <tr class="memdesc:ab27dfa3cd8109547ef0f347ed674cf85"><td class="mdescLeft">&#160;</td><td class="mdescRight">Default constructor (invalid context). <br /></td></tr>
 <tr class="separator:ab27dfa3cd8109547ef0f347ed674cf85"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae210b14deed99cedc7e2218bc682b8ad"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d9/d42/class_compact_star_1_1_physics_1_1_evolution_1_1_star_context.html#ae210b14deed99cedc7e2218bc682b8ad">StarContext</a> (const <a class="el" href="../../dc/d86/class_compact_star_1_1_n_star.html">CompactStar::NStar</a> &amp;ns, const CompactStar::EOS::Model *eos=0)</td></tr>
-<tr class="memdesc:ae210b14deed99cedc7e2218bc682b8ad"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct from a precomputed neutron-star profile.  <a href="../../d9/d42/class_compact_star_1_1_physics_1_1_evolution_1_1_star_context.html#ae210b14deed99cedc7e2218bc682b8ad">More...</a><br /></td></tr>
-<tr class="separator:ae210b14deed99cedc7e2218bc682b8ad"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr><td colspan="2"><div class="groupHeader">Basic geometry and grids</div></td></tr>
+<tr class="memitem:a20c009d60244228afdc5c518a688990d"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d9/d42/class_compact_star_1_1_physics_1_1_evolution_1_1_star_context.html#a20c009d60244228afdc5c518a688990d">StarContext</a> (const <a class="el" href="../../d4/d29/struct_compact_star_1_1_core_1_1_star_profile.html">CompactStar::Core::StarProfile</a> &amp;prof)</td></tr>
+<tr class="memdesc:a20c009d60244228afdc5c518a688990d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct from a precomputed neutron-star profile.  <a href="../../d9/d42/class_compact_star_1_1_physics_1_1_evolution_1_1_star_context.html#a20c009d60244228afdc5c518a688990d">More...</a><br /></td></tr>
+<tr class="separator:a20c009d60244228afdc5c518a688990d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a779d0781a6098f4d633753551a6aea28"><td class="memItemLeft" align="right" valign="top"><a id="a779d0781a6098f4d633753551a6aea28" name="a779d0781a6098f4d633753551a6aea28"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><b>IsValid</b> () const</td></tr>
+<tr class="memdesc:a779d0781a6098f4d633753551a6aea28"><td class="mdescLeft">&#160;</td><td class="mdescRight">True iff bound to a profile and required columns were found. <br /></td></tr>
+<tr class="separator:a779d0781a6098f4d633753551a6aea28"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:afcc4b85c86e2bdd9fe0210ea124fa53a"><td class="memItemLeft" align="right" valign="top"><a id="afcc4b85c86e2bdd9fe0210ea124fa53a" name="afcc4b85c86e2bdd9fe0210ea124fa53a"></a>
 std::size_t&#160;</td><td class="memItemRight" valign="bottom"><b>Size</b> () const</td></tr>
-<tr class="memdesc:afcc4b85c86e2bdd9fe0210ea124fa53a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Number of radial samples in the profile grid. <br /></td></tr>
+<tr class="memdesc:afcc4b85c86e2bdd9fe0210ea124fa53a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Number of radial samples. <br /></td></tr>
 <tr class="separator:afcc4b85c86e2bdd9fe0210ea124fa53a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae367f2d7eb043bde1fcbc49a30b4d03f"><td class="memItemLeft" align="right" valign="top"><a id="ae367f2d7eb043bde1fcbc49a30b4d03f" name="ae367f2d7eb043bde1fcbc49a30b4d03f"></a>
 const <a class="el" href="../../d3/dd3/struct_zaki_1_1_vector_1_1_data_column.html">Zaki::Vector::DataColumn</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>Radius</b> () const</td></tr>
-<tr class="memdesc:ae367f2d7eb043bde1fcbc49a30b4d03f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Radius column (km). <br /></td></tr>
+<tr class="memdesc:ae367f2d7eb043bde1fcbc49a30b4d03f"><td class="mdescLeft">&#160;</td><td class="mdescRight">r(km) <br /></td></tr>
 <tr class="separator:ae367f2d7eb043bde1fcbc49a30b4d03f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a40b97b068da2afcd4ec30490de825e8f"><td class="memItemLeft" align="right" valign="top"><a id="a40b97b068da2afcd4ec30490de825e8f" name="a40b97b068da2afcd4ec30490de825e8f"></a>
-const <a class="el" href="../../d3/dd3/struct_zaki_1_1_vector_1_1_data_column.html">Zaki::Vector::DataColumn</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>Nu</b> () const</td></tr>
-<tr class="memdesc:a40b97b068da2afcd4ec30490de825e8f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Metric exponent <picture><source srcset="../../form_24_dark.png" media="(prefers-color-scheme: dark)"/><img class="formulaInl" alt="$\nu(r)$" src="../../form_24.png"/></picture> where <picture><source srcset="../../form_25_dark.png" media="(prefers-color-scheme: dark)"/><img class="formulaInl" alt="$g_{tt}=e^{2\nu}$" src="../../form_25.png"/></picture>. <br /></td></tr>
-<tr class="separator:a40b97b068da2afcd4ec30490de825e8f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a641c163d01ac5b0027af3168a5f50d1c"><td class="memItemLeft" align="right" valign="top"><a id="a641c163d01ac5b0027af3168a5f50d1c" name="a641c163d01ac5b0027af3168a5f50d1c"></a>
-const <a class="el" href="../../d3/dd3/struct_zaki_1_1_vector_1_1_data_column.html">Zaki::Vector::DataColumn</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>ExpLambda</b> () const</td></tr>
-<tr class="memdesc:a641c163d01ac5b0027af3168a5f50d1c"><td class="mdescLeft">&#160;</td><td class="mdescRight"><picture><source srcset="../../form_26_dark.png" media="(prefers-color-scheme: dark)"/><img class="formulaInl" alt="$e^{\Lambda(r)}$" src="../../form_26.png"/></picture> if present (derived from mass and radius otherwise). <br /></td></tr>
-<tr class="separator:a641c163d01ac5b0027af3168a5f50d1c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad5915364679ddd7e26d9996c5a21c56d"><td class="memItemLeft" align="right" valign="top"><a id="ad5915364679ddd7e26d9996c5a21c56d" name="ad5915364679ddd7e26d9996c5a21c56d"></a>
 const <a class="el" href="../../d3/dd3/struct_zaki_1_1_vector_1_1_data_column.html">Zaki::Vector::DataColumn</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>Mass</b> () const</td></tr>
-<tr class="memdesc:ad5915364679ddd7e26d9996c5a21c56d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gravitational mass profile (M_ <picture><source srcset="../../form_27_dark.png" media="(prefers-color-scheme: dark)"/><img class="formulaInl" alt="$\odot$" src="../../form_27.png"/></picture> or internal units). <br /></td></tr>
+<tr class="memdesc:ad5915364679ddd7e26d9996c5a21c56d"><td class="mdescLeft">&#160;</td><td class="mdescRight">m(km) <br /></td></tr>
 <tr class="separator:ad5915364679ddd7e26d9996c5a21c56d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr><td colspan="2"><div class="groupHeader">Thermodynamic background (optional; forwarded from Core/EOS)</div></td></tr>
+<tr class="memitem:a40b97b068da2afcd4ec30490de825e8f"><td class="memItemLeft" align="right" valign="top"><a id="a40b97b068da2afcd4ec30490de825e8f" name="a40b97b068da2afcd4ec30490de825e8f"></a>
+const <a class="el" href="../../d3/dd3/struct_zaki_1_1_vector_1_1_data_column.html">Zaki::Vector::DataColumn</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>Nu</b> () const</td></tr>
+<tr class="memdesc:a40b97b068da2afcd4ec30490de825e8f"><td class="mdescLeft">&#160;</td><td class="mdescRight">nu <br /></td></tr>
+<tr class="separator:a40b97b068da2afcd4ec30490de825e8f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1055450caef85e681d66b6cc69f022c7"><td class="memItemLeft" align="right" valign="top"><a id="a1055450caef85e681d66b6cc69f022c7" name="a1055450caef85e681d66b6cc69f022c7"></a>
+const <a class="el" href="../../d3/dd3/struct_zaki_1_1_vector_1_1_data_column.html">Zaki::Vector::DataColumn</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>Lambda</b> () const</td></tr>
+<tr class="memdesc:a1055450caef85e681d66b6cc69f022c7"><td class="mdescLeft">&#160;</td><td class="mdescRight">lambda <br /></td></tr>
+<tr class="separator:a1055450caef85e681d66b6cc69f022c7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a95225261475e0e3256348b5581fbf792"><td class="memItemLeft" align="right" valign="top"><a id="a95225261475e0e3256348b5581fbf792" name="a95225261475e0e3256348b5581fbf792"></a>
 const <a class="el" href="../../d3/dd3/struct_zaki_1_1_vector_1_1_data_column.html">Zaki::Vector::DataColumn</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>BaryonDensity</b> () const</td></tr>
-<tr class="memdesc:a95225261475e0e3256348b5581fbf792"><td class="mdescLeft">&#160;</td><td class="mdescRight">Total baryon number density <picture><source srcset="../../form_28_dark.png" media="(prefers-color-scheme: dark)"/><img class="formulaInl" alt="$n_b(r)$" src="../../form_28.png"/></picture> (fm^{-3}) if available. <br /></td></tr>
+<tr class="memdesc:a95225261475e0e3256348b5581fbf792"><td class="mdescLeft">&#160;</td><td class="mdescRight">nB(fm^-3) or nullptr <br /></td></tr>
 <tr class="separator:a95225261475e0e3256348b5581fbf792"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a74d298c4e3e0dcb4832e7e386307b259"><td class="memItemLeft" align="right" valign="top"><a id="a74d298c4e3e0dcb4832e7e386307b259" name="a74d298c4e3e0dcb4832e7e386307b259"></a>
-const <a class="el" href="../../d3/dd3/struct_zaki_1_1_vector_1_1_data_column.html">Zaki::Vector::DataColumn</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>ProtonFraction</b> () const</td></tr>
-<tr class="memdesc:a74d298c4e3e0dcb4832e7e386307b259"><td class="mdescLeft">&#160;</td><td class="mdescRight">Proton fraction <picture><source srcset="../../form_29_dark.png" media="(prefers-color-scheme: dark)"/><img class="formulaInl" alt="$Y_p(r)$" src="../../form_29.png"/></picture> or nullptr if not available. <br /></td></tr>
-<tr class="separator:a74d298c4e3e0dcb4832e7e386307b259"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr><td colspan="2"><div class="groupHeader">Global scalars</div></td></tr>
 <tr class="memitem:af6fb20f678a782fa4104b39ce0d68f9b"><td class="memItemLeft" align="right" valign="top"><a id="af6fb20f678a782fa4104b39ce0d68f9b" name="af6fb20f678a782fa4104b39ce0d68f9b"></a>
 double&#160;</td><td class="memItemRight" valign="bottom"><b>RadiusSurface</b> () const</td></tr>
-<tr class="memdesc:af6fb20f678a782fa4104b39ce0d68f9b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Circumferential radius at the surface (km). <br /></td></tr>
+<tr class="memdesc:af6fb20f678a782fa4104b39ce0d68f9b"><td class="mdescLeft">&#160;</td><td class="mdescRight">r[-1] (km) <br /></td></tr>
 <tr class="separator:af6fb20f678a782fa4104b39ce0d68f9b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a669582110bc36249497fb5cf1ae46ff0"><td class="memItemLeft" align="right" valign="top"><a id="a669582110bc36249497fb5cf1ae46ff0" name="a669582110bc36249497fb5cf1ae46ff0"></a>
 double&#160;</td><td class="memItemRight" valign="bottom"><b>MassSurface</b> () const</td></tr>
-<tr class="memdesc:a669582110bc36249497fb5cf1ae46ff0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gravitational mass at the surface (same units as Mass column). <br /></td></tr>
+<tr class="memdesc:a669582110bc36249497fb5cf1ae46ff0"><td class="mdescLeft">&#160;</td><td class="mdescRight">m[-1] (km) <br /></td></tr>
 <tr class="separator:a669582110bc36249497fb5cf1ae46ff0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2d80e28892a24f43682eb5fa01685458"><td class="memItemLeft" align="right" valign="top"><a id="a2d80e28892a24f43682eb5fa01685458" name="a2d80e28892a24f43682eb5fa01685458"></a>
 double&#160;</td><td class="memItemRight" valign="bottom"><b>ExpNuSurface</b> () const</td></tr>
-<tr class="memdesc:a2d80e28892a24f43682eb5fa01685458"><td class="mdescLeft">&#160;</td><td class="mdescRight">Surface redshift factor <picture><source srcset="../../form_30_dark.png" media="(prefers-color-scheme: dark)"/><img class="formulaInl" alt="$e^{\nu(R)}$" src="../../form_30.png"/></picture>. <br /></td></tr>
+<tr class="memdesc:a2d80e28892a24f43682eb5fa01685458"><td class="mdescLeft">&#160;</td><td class="mdescRight">exp(nu[-1]) if nu exists, else 0 <br /></td></tr>
 <tr class="separator:a2d80e28892a24f43682eb5fa01685458"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Immutable, per-star adapter exposing cached geometry and composition. </p>
-<p>Constructed from an existing <code><a class="el" href="../../dc/d86/class_compact_star_1_1_n_star.html" title="Neutron-star container for TOV solutions, rotation, and export.">CompactStar::NStar</a></code> and (optionally) an EOS object. Provides fast getters for radius grid, metric factors <picture><source srcset="../../form_23_dark.png" media="(prefers-color-scheme: dark)"/><img class="formulaInl" alt="e^{\nu}, e^{\Lambda}" src="../../form_23.png"/></picture>, and commonly used columns (density, proton fraction, etc.) by forwarding to Core datasets. Geometry-only computations that do not change during evolution can be cached here at construction time (done in <a class="el" href="../../d2/d50/class_compact_star_1_1_physics_1_1_evolution_1_1_geometry_cache.html" title="Stores radial weights and simple structure flags for integrals.">GeometryCache</a>). </p>
+<p>Constructed from an existing <code><a class="el" href="../../d4/d29/struct_compact_star_1_1_core_1_1_star_profile.html" title="Structural / metric / composition data for a compact-star configuration.">CompactStar::Core::StarProfile</a></code>. Caches non-owning pointers to frequently accessed columns (r, m, nu, lambda, nb). Validates consistency (row counts) up front to fail fast before evolution. </p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a id="ae210b14deed99cedc7e2218bc682b8ad" name="ae210b14deed99cedc7e2218bc682b8ad"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ae210b14deed99cedc7e2218bc682b8ad">&#9670;&#160;</a></span>StarContext()</h2>
+<a id="a20c009d60244228afdc5c518a688990d" name="a20c009d60244228afdc5c518a688990d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a20c009d60244228afdc5c518a688990d">&#9670;&#160;</a></span>StarContext()</h2>
 
 <div class="memitem">
 <div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname">CompactStar::Physics::Evolution::StarContext::StarContext </td>
           <td>(</td>
-          <td class="paramtype">const <a class="el" href="../../dc/d86/class_compact_star_1_1_n_star.html">CompactStar::NStar</a> &amp;&#160;</td>
-          <td class="paramname"><em>ns</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
+          <td class="paramtype">const <a class="el" href="../../d4/d29/struct_compact_star_1_1_core_1_1_star_profile.html">CompactStar::Core::StarProfile</a> &amp;&#160;</td>
+          <td class="paramname"><em>prof</em></td><td>)</td>
           <td></td>
-          <td class="paramtype">const CompactStar::EOS::Model *&#160;</td>
-          <td class="paramname"><em>eos</em> = <code>0</code>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">explicit</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
 
 <p>Construct from a precomputed neutron-star profile. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">ns</td><td>Reference to an initialized <code><a class="el" href="../../dc/d86/class_compact_star_1_1_n_star.html" title="Neutron-star container for TOV solutions, rotation, and export.">CompactStar::NStar</a></code>. </td></tr>
-    <tr><td class="paramname">eos</td><td>Optional pointer to an EOS object for composition queries (may be null). </td></tr>
+    <tr><td class="paramname">prof</td><td>Reference to an initialized <code><a class="el" href="../../d4/d29/struct_compact_star_1_1_core_1_1_star_profile.html" title="Structural / metric / composition data for a compact-star configuration.">CompactStar::Core::StarProfile</a></code>. </td></tr>
   </table>
   </dd>
 </dl>

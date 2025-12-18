@@ -190,7 +190,7 @@ bool GSLIntegrator::Integrate(double t0, double t1, double *y) const
 	//  Log configuration once at the start
 	// ---------------------------------------------------------------------
 	std::ostringstream oss;
-	oss << "GSLIntegrator: using GSL stepper '"
+	oss << "Using GSL stepper '"
 		<< StepperTypeName(m_cfg->stepper)
 		<< "' (rtol=" << m_cfg->rtol
 		<< ", atol=" << m_cfg->atol
@@ -207,6 +207,8 @@ bool GSLIntegrator::Integrate(double t0, double t1, double *y) const
 		return true;
 	}
 
+	// Notify observers at start (t0 snapshot)
+	m_sys->NotifyStart(t0, t1, y);
 	// ---------------------------------------------------------------------
 	//  Main integration loop
 	// ---------------------------------------------------------------------
@@ -221,6 +223,9 @@ bool GSLIntegrator::Integrate(double t0, double t1, double *y) const
 
 		int status = gsl_odeiv2_driver_apply(driver, &t, t_target, y);
 
+		// Notify observers once per dt_save chunk (sample cadence)
+		m_sys->NotifySample(t, y, steps_used);
+
 		if (status != GSL_SUCCESS)
 		{
 			std::ostringstream oss;
@@ -231,6 +236,9 @@ bool GSLIntegrator::Integrate(double t0, double t1, double *y) const
 			Z_LOG_ERROR(oss.str());
 
 			gsl_odeiv2_driver_free(driver);
+
+			m_sys->NotifyFinish(t, y, false);
+
 			return false;
 		}
 
@@ -245,6 +253,9 @@ bool GSLIntegrator::Integrate(double t0, double t1, double *y) const
 			Z_LOG_ERROR(oss.str());
 
 			gsl_odeiv2_driver_free(driver);
+
+			m_sys->NotifyFinish(t, y, false);
+
 			return false;
 		}
 
@@ -252,6 +263,9 @@ bool GSLIntegrator::Integrate(double t0, double t1, double *y) const
 	}
 
 	gsl_odeiv2_driver_free(driver);
+
+	m_sys->NotifyFinish(t, y, true);
+
 	return true;
 }
 

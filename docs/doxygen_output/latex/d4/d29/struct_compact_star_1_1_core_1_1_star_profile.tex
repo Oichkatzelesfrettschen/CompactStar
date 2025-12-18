@@ -1,0 +1,462 @@
+\hypertarget{struct_compact_star_1_1_core_1_1_star_profile}{}\doxysection{Compact\+Star\+::Core\+::Star\+Profile Struct Reference}
+\label{struct_compact_star_1_1_core_1_1_star_profile}\index{CompactStar::Core::StarProfile@{CompactStar::Core::StarProfile}}
+
+
+Structural / metric / composition data for a compact-\/star configuration.  
+
+
+
+
+{\ttfamily \#include $<$Star\+Profile.\+hpp$>$}
+
+\doxysubsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+enum class \mbox{\hyperlink{struct_compact_star_1_1_core_1_1_star_profile_a69a0f27099ce767c2afe8fe5503d7628}{Column}} \+: int \{ \newline
+\mbox{\hyperlink{struct_compact_star_1_1_core_1_1_star_profile_a69a0f27099ce767c2afe8fe5503d7628ad1106ccca74e98877ed6d7890c70bb2c}{Radius}} = 0
+, \mbox{\hyperlink{struct_compact_star_1_1_core_1_1_star_profile_a69a0f27099ce767c2afe8fe5503d7628aff2864d6f652ee0ac254814f1ae4f4a8}{Mass}}
+, \mbox{\hyperlink{struct_compact_star_1_1_core_1_1_star_profile_a69a0f27099ce767c2afe8fe5503d7628aa312480076674952a868e487eee050a5}{Metric\+Nu\+Prime}}
+, \mbox{\hyperlink{struct_compact_star_1_1_core_1_1_star_profile_a69a0f27099ce767c2afe8fe5503d7628aa78578c428179b490a0461e76ba5f319}{Pressure}}
+, \newline
+\mbox{\hyperlink{struct_compact_star_1_1_core_1_1_star_profile_a69a0f27099ce767c2afe8fe5503d7628a459a5fc6d80b0bb954be7ffabc1137ff}{Energy\+Density}}
+, \mbox{\hyperlink{struct_compact_star_1_1_core_1_1_star_profile_a69a0f27099ce767c2afe8fe5503d7628a31519c07cd22a64ea3e013348518b410}{Baryon\+Density}}
+, \mbox{\hyperlink{struct_compact_star_1_1_core_1_1_star_profile_a69a0f27099ce767c2afe8fe5503d7628a72fd3e8826aa395cd9f2001b5160976c}{Metric\+Nu}}
+, \mbox{\hyperlink{struct_compact_star_1_1_core_1_1_star_profile_a69a0f27099ce767c2afe8fe5503d7628a8c24dc3d008e6f222bcc2c07d9a64bfe}{Metric\+Lambda}}
+ \}
+\begin{DoxyCompactList}\small\item\em Scoped identifiers for common profile columns. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+bool \mbox{\hyperlink{struct_compact_star_1_1_core_1_1_star_profile_a3750369c5f726772e3173490671a0f0a}{empty}} () const
+\begin{DoxyCompactList}\small\item\em Test whether the profile has any radial samples. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{struct_compact_star_1_1_core_1_1_star_profile_a00c3ab6fc60b250e16e2574ed50c0cf5}\label{struct_compact_star_1_1_core_1_1_star_profile_a00c3ab6fc60b250e16e2574ed50c0cf5}} 
+std\+::size\+\_\+t {\bfseries size} () const
+\begin{DoxyCompactList}\small\item\em Number of radial grid points. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{struct_compact_star_1_1_core_1_1_star_profile_a226c69cb6486e2526dd553da6ccf1b8c}\label{struct_compact_star_1_1_core_1_1_star_profile_a226c69cb6486e2526dd553da6ccf1b8c}} 
+std\+::size\+\_\+t {\bfseries column\+\_\+count} () const
+\begin{DoxyCompactList}\small\item\em Total number of columns available in the radial profile. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{struct_compact_star_1_1_core_1_1_star_profile_ab31344c982c747561a8e6b9f9604ecd5}\label{struct_compact_star_1_1_core_1_1_star_profile_ab31344c982c747561a8e6b9f9604ecd5}} 
+bool {\bfseries Is\+Valid\+Column\+Index} (int idx) const noexcept
+\begin{DoxyCompactList}\small\item\em Check if a raw column index is valid. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{struct_compact_star_1_1_core_1_1_star_profile_a33687cb86215f7243c515a9d4d1a5e8d}\label{struct_compact_star_1_1_core_1_1_star_profile_a33687cb86215f7243c515a9d4d1a5e8d}} 
+bool {\bfseries Has\+Column} (\mbox{\hyperlink{struct_compact_star_1_1_core_1_1_star_profile_a69a0f27099ce767c2afe8fe5503d7628}{Column}} col) const noexcept
+\begin{DoxyCompactList}\small\item\em Check whether the given Column identifier maps to a valid column. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{struct_compact_star_1_1_core_1_1_star_profile_ae96f2864220f21e88e5617d1cb10b74e}\label{struct_compact_star_1_1_core_1_1_star_profile_ae96f2864220f21e88e5617d1cb10b74e}} 
+bool {\bfseries Has\+Metric\+Lambda} () const noexcept
+\begin{DoxyCompactList}\small\item\em Whether λ(r) data is available. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{struct_compact_star_1_1_core_1_1_star_profile_ab4bf589821d34b77517d0c4d8ec7dcc4}{Get\+Column\+Index}} (\mbox{\hyperlink{struct_compact_star_1_1_core_1_1_star_profile_a69a0f27099ce767c2afe8fe5503d7628}{Column}} col) const
+\begin{DoxyCompactList}\small\item\em Get the current integer index that corresponds to a given Column. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{struct_compact_star_1_1_core_1_1_star_profile_ab6b5f338b51c9d570fb7592bfe949a62}\label{struct_compact_star_1_1_core_1_1_star_profile_ab6b5f338b51c9d570fb7592bfe949a62}} 
+void {\bfseries Set\+Column\+Index} (\mbox{\hyperlink{struct_compact_star_1_1_core_1_1_star_profile_a69a0f27099ce767c2afe8fe5503d7628}{Column}} col, int idx)
+\begin{DoxyCompactList}\small\item\em Override the integer index for a given Column. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{struct_compact_star_1_1_core_1_1_star_profile_aebd7d9b43dea48bf81496413217d8651}\label{struct_compact_star_1_1_core_1_1_star_profile_aebd7d9b43dea48bf81496413217d8651}} 
+\mbox{\hyperlink{struct_zaki_1_1_vector_1_1_data_column}{Zaki\+::\+Vector\+::\+Data\+Column}} {\bfseries Get} (\mbox{\hyperlink{struct_compact_star_1_1_core_1_1_star_profile_a69a0f27099ce767c2afe8fe5503d7628}{Column}} col) const
+\item 
+\mbox{\Hypertarget{struct_compact_star_1_1_core_1_1_star_profile_acca8925146cb618929e0c2e27212652a}\label{struct_compact_star_1_1_core_1_1_star_profile_acca8925146cb618929e0c2e27212652a}} 
+\mbox{\hyperlink{struct_zaki_1_1_vector_1_1_data_column}{Zaki\+::\+Vector\+::\+Data\+Column}} \& {\bfseries Get} (\mbox{\hyperlink{struct_compact_star_1_1_core_1_1_star_profile_a69a0f27099ce767c2afe8fe5503d7628}{Column}} col)
+\item 
+const \mbox{\hyperlink{struct_zaki_1_1_vector_1_1_data_column}{Zaki\+::\+Vector\+::\+Data\+Column}} $\ast$ \mbox{\hyperlink{struct_compact_star_1_1_core_1_1_star_profile_a7777505c8632f7bd265a04ccbea50c6d}{Get\+Ptr}} (\mbox{\hyperlink{struct_compact_star_1_1_core_1_1_star_profile_a69a0f27099ce767c2afe8fe5503d7628}{Column}} col) const
+\begin{DoxyCompactList}\small\item\em Get a pointer to the column for a given logical column. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{struct_compact_star_1_1_core_1_1_star_profile_a436dd37fbe1c96d1ee50b8e669507638}\label{struct_compact_star_1_1_core_1_1_star_profile_a436dd37fbe1c96d1ee50b8e669507638}} 
+const \mbox{\hyperlink{struct_zaki_1_1_vector_1_1_data_column}{Zaki\+::\+Vector\+::\+Data\+Column}} $\ast$ {\bfseries Get\+Radius} () const
+\item 
+\mbox{\Hypertarget{struct_compact_star_1_1_core_1_1_star_profile_a7247a8b38997c420edf530bc6c12acbe}\label{struct_compact_star_1_1_core_1_1_star_profile_a7247a8b38997c420edf530bc6c12acbe}} 
+const \mbox{\hyperlink{struct_zaki_1_1_vector_1_1_data_column}{Zaki\+::\+Vector\+::\+Data\+Column}} $\ast$ {\bfseries Get\+Mass} () const
+\item 
+\mbox{\Hypertarget{struct_compact_star_1_1_core_1_1_star_profile_acf4c5487ca2adfc4e7acfc5fb424af1a}\label{struct_compact_star_1_1_core_1_1_star_profile_acf4c5487ca2adfc4e7acfc5fb424af1a}} 
+const \mbox{\hyperlink{struct_zaki_1_1_vector_1_1_data_column}{Zaki\+::\+Vector\+::\+Data\+Column}} $\ast$ {\bfseries Get\+Metric\+Nu\+Prime} () const
+\item 
+\mbox{\Hypertarget{struct_compact_star_1_1_core_1_1_star_profile_a81f81619715ab73ac3f6fe819dc419c4}\label{struct_compact_star_1_1_core_1_1_star_profile_a81f81619715ab73ac3f6fe819dc419c4}} 
+const \mbox{\hyperlink{struct_zaki_1_1_vector_1_1_data_column}{Zaki\+::\+Vector\+::\+Data\+Column}} $\ast$ {\bfseries Get\+Pressure} () const
+\item 
+\mbox{\Hypertarget{struct_compact_star_1_1_core_1_1_star_profile_aee178218075d25f1017fc65f7253f596}\label{struct_compact_star_1_1_core_1_1_star_profile_aee178218075d25f1017fc65f7253f596}} 
+const \mbox{\hyperlink{struct_zaki_1_1_vector_1_1_data_column}{Zaki\+::\+Vector\+::\+Data\+Column}} $\ast$ {\bfseries Get\+Energy\+Density} () const
+\item 
+\mbox{\Hypertarget{struct_compact_star_1_1_core_1_1_star_profile_a81fa38a2f967d31236f638e53303fea8}\label{struct_compact_star_1_1_core_1_1_star_profile_a81fa38a2f967d31236f638e53303fea8}} 
+const \mbox{\hyperlink{struct_zaki_1_1_vector_1_1_data_column}{Zaki\+::\+Vector\+::\+Data\+Column}} $\ast$ {\bfseries Get\+Baryon\+Density} () const
+\item 
+\mbox{\Hypertarget{struct_compact_star_1_1_core_1_1_star_profile_a1352b7ea6e758a9dd2b52ecc979af95e}\label{struct_compact_star_1_1_core_1_1_star_profile_a1352b7ea6e758a9dd2b52ecc979af95e}} 
+const \mbox{\hyperlink{struct_zaki_1_1_vector_1_1_data_column}{Zaki\+::\+Vector\+::\+Data\+Column}} $\ast$ {\bfseries Get\+Metric\+Nu} () const
+\item 
+const \mbox{\hyperlink{struct_zaki_1_1_vector_1_1_data_column}{Zaki\+::\+Vector\+::\+Data\+Column}} $\ast$ \mbox{\hyperlink{struct_compact_star_1_1_core_1_1_star_profile_ae0558273ffb0c486c805be7d0dfee06b}{Get\+Metric\+Lambda}} () const
+\begin{DoxyCompactList}\small\item\em Get λ(r) column, if present. \end{DoxyCompactList}\item 
+const \mbox{\hyperlink{struct_zaki_1_1_vector_1_1_data_column}{Zaki\+::\+Vector\+::\+Data\+Column}} $\ast$ \mbox{\hyperlink{struct_compact_star_1_1_core_1_1_star_profile_ae7196bf3110b8d3d41398b1d48d3b1d3}{Get\+Column\+Ptr}} (int idx) const
+\begin{DoxyCompactList}\small\item\em Get a pointer to the underlying column, or nullptr if invalid. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{struct_zaki_1_1_vector_1_1_data_column}{Zaki\+::\+Vector\+::\+Data\+Column}} $\ast$ \mbox{\hyperlink{struct_compact_star_1_1_core_1_1_star_profile_aeab0dc8db71fc1421ac22143f03d12e5}{Get\+Column\+Ptr}} (int idx)
+\begin{DoxyCompactList}\small\item\em Mutable version of Get\+Column\+Ptr. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{struct_compact_star_1_1_core_1_1_star_profile_af06cd50e4ede8101eba9452b7faa0c75}\label{struct_compact_star_1_1_core_1_1_star_profile_af06cd50e4ede8101eba9452b7faa0c75}} 
+const \mbox{\hyperlink{struct_zaki_1_1_vector_1_1_data_column}{Zaki\+::\+Vector\+::\+Data\+Column}} $\ast$ {\bfseries Get\+Column\+Ptr} (\mbox{\hyperlink{struct_compact_star_1_1_core_1_1_star_profile_a69a0f27099ce767c2afe8fe5503d7628}{Column}} col) const
+\begin{DoxyCompactList}\small\item\em Get a pointer to the column for a given logical column. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{struct_zaki_1_1_vector_1_1_data_column}{Zaki\+::\+Vector\+::\+Data\+Column}} $\ast$ \mbox{\hyperlink{struct_compact_star_1_1_core_1_1_star_profile_a240daef546c2349165f3bcc1fd1035e7}{Get\+Column\+Ptr}} (\mbox{\hyperlink{struct_compact_star_1_1_core_1_1_star_profile_a69a0f27099ce767c2afe8fe5503d7628}{Column}} col)
+\begin{DoxyCompactList}\small\item\em Get a pointer to the column for a given logical column. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{struct_compact_star_1_1_core_1_1_star_profile_a7d3c4ffc6048c7e0a19dd1281a0a101d}\label{struct_compact_star_1_1_core_1_1_star_profile_a7d3c4ffc6048c7e0a19dd1281a0a101d}} 
+const \mbox{\hyperlink{struct_zaki_1_1_vector_1_1_data_column}{Zaki\+::\+Vector\+::\+Data\+Column}} $\ast$ {\bfseries Get\+Species\+Ptr} (const std\+::string \&label) const
+\begin{DoxyCompactList}\small\item\em Get a pointer to a species column by label. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{struct_zaki_1_1_vector_1_1_data_column}{Zaki\+::\+Vector\+::\+Data\+Column}} $\ast$ \mbox{\hyperlink{struct_compact_star_1_1_core_1_1_star_profile_a98456d5aa44b141e53fb633547e1839f}{Get\+Species\+Ptr}} (const std\+::string \&label)
+\begin{DoxyCompactList}\small\item\em Mutable version of Get\+Species\+Ptr. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{struct_compact_star_1_1_core_1_1_star_profile_a3570a715ce918b656decb1bf629dbc6b}\label{struct_compact_star_1_1_core_1_1_star_profile_a3570a715ce918b656decb1bf629dbc6b}} 
+std\+::size\+\_\+t {\bfseries Species\+Count} () const noexcept
+\begin{DoxyCompactList}\small\item\em Number of per-\/species density columns attached to this profile. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{struct_compact_star_1_1_core_1_1_star_profile_aba7f54453aed1201fc90ce50ea72ed4f}{Has\+Species}} (const std\+::string \&label) const
+\begin{DoxyCompactList}\small\item\em Check if a species label exists. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{struct_compact_star_1_1_core_1_1_star_profile_a6de3b6606a3016cd240bd19555365d54}\label{struct_compact_star_1_1_core_1_1_star_profile_a6de3b6606a3016cd240bd19555365d54}} 
+int {\bfseries Species\+Local\+Index} (const std\+::string \&label) const
+\begin{DoxyCompactList}\small\item\em Get index in {\ttfamily species\+\_\+labels} for a given label, or -\/1 if not found. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{struct_zaki_1_1_vector_1_1_data_column}{Zaki\+::\+Vector\+::\+Data\+Column}} \mbox{\hyperlink{struct_compact_star_1_1_core_1_1_star_profile_a8917f6074baf3c76263ca8acc6acdff2}{Get\+Species}} (const std\+::string \&label) const
+\begin{DoxyCompactList}\small\item\em Get radial column for a given species label (const). \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{struct_compact_star_1_1_core_1_1_star_profile_af07faa27c2eab610f137aeed756e6419}\label{struct_compact_star_1_1_core_1_1_star_profile_af07faa27c2eab610f137aeed756e6419}} 
+\mbox{\hyperlink{struct_zaki_1_1_vector_1_1_data_column}{Zaki\+::\+Vector\+::\+Data\+Column}} \& {\bfseries Get\+Species} (const std\+::string \&label)
+\begin{DoxyCompactList}\small\item\em Mutable access to species column. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{struct_compact_star_1_1_core_1_1_star_profile_ac25b55312c06baaa58d51bfc0f644b2d}{Add\+Species}} (const std\+::string \&label, int col\+\_\+idx)
+\begin{DoxyCompactList}\small\item\em Add/register a species column. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{struct_compact_star_1_1_core_1_1_star_profile_af6225c46cbe48c88781985bebcc2f94b}{Set\+Species\+Column}} (const std\+::string \&label, int col\+\_\+idx)
+\begin{DoxyCompactList}\small\item\em Set/update the column index for an existing species label. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{struct_compact_star_1_1_core_1_1_star_profile_a8bc8ad7ea4bfeb972c8d980029b0851b}\label{struct_compact_star_1_1_core_1_1_star_profile_a8bc8ad7ea4bfeb972c8d980029b0851b}} 
+void {\bfseries Set\+Profile\+Precision} (const int \&profile\+\_\+precision)
+\item 
+\mbox{\Hypertarget{struct_compact_star_1_1_core_1_1_star_profile_a79f72a2540b897ac670f2f13a3a156ad}\label{struct_compact_star_1_1_core_1_1_star_profile_a79f72a2540b897ac670f2f13a3a156ad}} 
+void {\bfseries Export} (const \mbox{\hyperlink{class_zaki_1_1_string_1_1_directory}{Zaki\+::\+String\+::\+Directory}} \&out\+\_\+dir, int precision=-\/1)
+\item 
+\mbox{\Hypertarget{struct_compact_star_1_1_core_1_1_star_profile_a429c0784aa122344db4ab55ec12617d6}\label{struct_compact_star_1_1_core_1_1_star_profile_a429c0784aa122344db4ab55ec12617d6}} 
+void {\bfseries Reset} ()
+\begin{DoxyCompactList}\small\item\em Reset profile to an empty state. Invalidates all views. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_zaki_1_1_vector_1_1_data_set}{Zaki\+::\+Vector\+::\+Data\+Set}} \mbox{\hyperlink{struct_compact_star_1_1_core_1_1_star_profile_a270e0e97913bc127e4c665f909eaaf46}{radial}}
+\begin{DoxyCompactList}\small\item\em Radial profile as produced by the TOV solver or file importer. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{struct_compact_star_1_1_core_1_1_star_profile_ae19034719eed95b1ffe940faedcb3c35}\label{struct_compact_star_1_1_core_1_1_star_profile_ae19034719eed95b1ffe940faedcb3c35}} 
+\mbox{\hyperlink{class_compact_star_1_1_core_1_1_seq_point}{Seq\+Point}} {\bfseries seq\+\_\+point} \{\}
+\begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{class_compact_star_1_1_core_1_1_sequence}{Sequence}} point this profile belongs to. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{struct_compact_star_1_1_core_1_1_star_profile_abc46b46cd9111d922c5c4544dd2acc4f}\label{struct_compact_star_1_1_core_1_1_star_profile_abc46b46cd9111d922c5c4544dd2acc4f}} 
+double {\bfseries M} = 0.\+0
+\begin{DoxyCompactList}\small\item\em Gravitational mass at surface (km). \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{struct_compact_star_1_1_core_1_1_star_profile_aaa22cc4bb42d396d9808bc27fa6a50a0}\label{struct_compact_star_1_1_core_1_1_star_profile_aaa22cc4bb42d396d9808bc27fa6a50a0}} 
+double {\bfseries R} = 0.\+0
+\begin{DoxyCompactList}\small\item\em Circumferential radius at surface (km). \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{struct_compact_star_1_1_core_1_1_star_profile_a7521a74eac378508f4f94a3628fbb7df}\label{struct_compact_star_1_1_core_1_1_star_profile_a7521a74eac378508f4f94a3628fbb7df}} 
+double {\bfseries z\+\_\+surf} = 0.\+0
+\begin{DoxyCompactList}\small\item\em Surface redshift factor e$^\wedge$\{ν(\+R)\} (dimensionless). \end{DoxyCompactList}\item 
+std\+::vector$<$ std\+::string $>$ \mbox{\hyperlink{struct_compact_star_1_1_core_1_1_star_profile_a2aff71901f78187dfbbfaa48a1354b05}{species\+\_\+labels}}
+\begin{DoxyCompactList}\small\item\em Labels for per-\/species density columns (same order as species\+\_\+idx). \end{DoxyCompactList}\item 
+std\+::vector$<$ int $>$ \mbox{\hyperlink{struct_compact_star_1_1_core_1_1_star_profile_aab8ba5deee62a546a0782d21900df993}{species\+\_\+idx}}
+\begin{DoxyCompactList}\small\item\em Column indices in {\ttfamily radial} for each species. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{Indent}\textbf{ Backward-\/compatible integer indices}\par
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{struct_compact_star_1_1_core_1_1_star_profile_a8b0f6eda3a2656f9c0e720cfd76b025b}\label{struct_compact_star_1_1_core_1_1_star_profile_a8b0f6eda3a2656f9c0e720cfd76b025b}} 
+int {\bfseries idx\+\_\+r} = static\+\_\+cast$<$int$>$(\mbox{\hyperlink{struct_compact_star_1_1_core_1_1_star_profile_a69a0f27099ce767c2afe8fe5503d7628ad1106ccca74e98877ed6d7890c70bb2c}{Column\+::\+Radius}})
+\item 
+\mbox{\Hypertarget{struct_compact_star_1_1_core_1_1_star_profile_a3cc91a3d0ae4ce74e655e2b4c379dbb3}\label{struct_compact_star_1_1_core_1_1_star_profile_a3cc91a3d0ae4ce74e655e2b4c379dbb3}} 
+int {\bfseries idx\+\_\+m} = static\+\_\+cast$<$int$>$(\mbox{\hyperlink{struct_compact_star_1_1_core_1_1_star_profile_a69a0f27099ce767c2afe8fe5503d7628aff2864d6f652ee0ac254814f1ae4f4a8}{Column\+::\+Mass}})
+\item 
+\mbox{\Hypertarget{struct_compact_star_1_1_core_1_1_star_profile_a999482766860129d8488be81f1ffbb92}\label{struct_compact_star_1_1_core_1_1_star_profile_a999482766860129d8488be81f1ffbb92}} 
+int {\bfseries idx\+\_\+nuprime} = static\+\_\+cast$<$int$>$(\mbox{\hyperlink{struct_compact_star_1_1_core_1_1_star_profile_a69a0f27099ce767c2afe8fe5503d7628aa312480076674952a868e487eee050a5}{Column\+::\+Metric\+Nu\+Prime}})
+\item 
+\mbox{\Hypertarget{struct_compact_star_1_1_core_1_1_star_profile_a501a2825cb155f487317d8e199cbeb58}\label{struct_compact_star_1_1_core_1_1_star_profile_a501a2825cb155f487317d8e199cbeb58}} 
+int {\bfseries idx\+\_\+p} = static\+\_\+cast$<$int$>$(\mbox{\hyperlink{struct_compact_star_1_1_core_1_1_star_profile_a69a0f27099ce767c2afe8fe5503d7628aa78578c428179b490a0461e76ba5f319}{Column\+::\+Pressure}})
+\item 
+\mbox{\Hypertarget{struct_compact_star_1_1_core_1_1_star_profile_afda0e0635ed3b8b0ddf078b41b73737c}\label{struct_compact_star_1_1_core_1_1_star_profile_afda0e0635ed3b8b0ddf078b41b73737c}} 
+int {\bfseries idx\+\_\+eps} = static\+\_\+cast$<$int$>$(\mbox{\hyperlink{struct_compact_star_1_1_core_1_1_star_profile_a69a0f27099ce767c2afe8fe5503d7628a459a5fc6d80b0bb954be7ffabc1137ff}{Column\+::\+Energy\+Density}})
+\item 
+\mbox{\Hypertarget{struct_compact_star_1_1_core_1_1_star_profile_af73ad27d0a7a46c44002c36bc48f3dbf}\label{struct_compact_star_1_1_core_1_1_star_profile_af73ad27d0a7a46c44002c36bc48f3dbf}} 
+int {\bfseries idx\+\_\+nb} = static\+\_\+cast$<$int$>$(\mbox{\hyperlink{struct_compact_star_1_1_core_1_1_star_profile_a69a0f27099ce767c2afe8fe5503d7628a31519c07cd22a64ea3e013348518b410}{Column\+::\+Baryon\+Density}})
+\item 
+\mbox{\Hypertarget{struct_compact_star_1_1_core_1_1_star_profile_ac80aea6ebf3e5ed90c8363a10275937f}\label{struct_compact_star_1_1_core_1_1_star_profile_ac80aea6ebf3e5ed90c8363a10275937f}} 
+int {\bfseries idx\+\_\+nu} = static\+\_\+cast$<$int$>$(\mbox{\hyperlink{struct_compact_star_1_1_core_1_1_star_profile_a69a0f27099ce767c2afe8fe5503d7628a72fd3e8826aa395cd9f2001b5160976c}{Column\+::\+Metric\+Nu}})
+\item 
+\mbox{\Hypertarget{struct_compact_star_1_1_core_1_1_star_profile_ace53847a785858b10f09cd736db6dd7f}\label{struct_compact_star_1_1_core_1_1_star_profile_ace53847a785858b10f09cd736db6dd7f}} 
+int {\bfseries idx\+\_\+lambda} = static\+\_\+cast$<$int$>$(\mbox{\hyperlink{struct_compact_star_1_1_core_1_1_star_profile_a69a0f27099ce767c2afe8fe5503d7628a8c24dc3d008e6f222bcc2c07d9a64bfe}{Column\+::\+Metric\+Lambda}})
+\end{DoxyCompactItemize}
+\end{Indent}
+
+
+\doxysubsection{Detailed Description}
+Structural / metric / composition data for a compact-\/star configuration. 
+
+One instance = one star.
+
+It contains\+:
+\begin{DoxyItemize}
+\item full radial data as a Data\+Set;
+\item sequence metadata (M, R, central values) via \mbox{\hyperlink{class_compact_star_1_1_core_1_1_seq_point}{Seq\+Point}};
+\item explicit indices for all “core” columns (r, m, ν′, p, ε, ρ, ν, λ);
+\item a typed {\ttfamily enum class Column} so new code can use enum and old code can use ints;
+\item per-\/species density columns, with names and indices. 
+\end{DoxyItemize}
+
+\doxysubsection{Member Enumeration Documentation}
+\mbox{\Hypertarget{struct_compact_star_1_1_core_1_1_star_profile_a69a0f27099ce767c2afe8fe5503d7628}\label{struct_compact_star_1_1_core_1_1_star_profile_a69a0f27099ce767c2afe8fe5503d7628}} 
+\index{CompactStar::Core::StarProfile@{CompactStar::Core::StarProfile}!Column@{Column}}
+\index{Column@{Column}!CompactStar::Core::StarProfile@{CompactStar::Core::StarProfile}}
+\doxysubsubsection{\texorpdfstring{Column}{Column}}
+{\footnotesize\ttfamily enum class \mbox{\hyperlink{struct_compact_star_1_1_core_1_1_star_profile_a69a0f27099ce767c2afe8fe5503d7628}{Compact\+Star\+::\+Core\+::\+Star\+Profile\+::\+Column}} \+: int\hspace{0.3cm}{\ttfamily [strong]}}
+
+
+
+Scoped identifiers for common profile columns. 
+
+We match the legacy layout\+: 0\+: Radius 1\+: Mass 2\+: Metric\+Nu\+Prime 3\+: Pressure 4\+: Energy\+Density 5\+: Baryon\+Density 6\+: Metric\+Nu 7\+: Metric\+Lambda \begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Radius@{Radius}!CompactStar::Core::StarProfile@{CompactStar::Core::StarProfile}}\index{CompactStar::Core::StarProfile@{CompactStar::Core::StarProfile}!Radius@{Radius}}}\mbox{\Hypertarget{struct_compact_star_1_1_core_1_1_star_profile_a69a0f27099ce767c2afe8fe5503d7628ad1106ccca74e98877ed6d7890c70bb2c}\label{struct_compact_star_1_1_core_1_1_star_profile_a69a0f27099ce767c2afe8fe5503d7628ad1106ccca74e98877ed6d7890c70bb2c}} 
+Radius&r \mbox{[}km\mbox{]} \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Mass@{Mass}!CompactStar::Core::StarProfile@{CompactStar::Core::StarProfile}}\index{CompactStar::Core::StarProfile@{CompactStar::Core::StarProfile}!Mass@{Mass}}}\mbox{\Hypertarget{struct_compact_star_1_1_core_1_1_star_profile_a69a0f27099ce767c2afe8fe5503d7628aff2864d6f652ee0ac254814f1ae4f4a8}\label{struct_compact_star_1_1_core_1_1_star_profile_a69a0f27099ce767c2afe8fe5503d7628aff2864d6f652ee0ac254814f1ae4f4a8}} 
+Mass&m(r) \mbox{[}km\mbox{]} \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{MetricNuPrime@{MetricNuPrime}!CompactStar::Core::StarProfile@{CompactStar::Core::StarProfile}}\index{CompactStar::Core::StarProfile@{CompactStar::Core::StarProfile}!MetricNuPrime@{MetricNuPrime}}}\mbox{\Hypertarget{struct_compact_star_1_1_core_1_1_star_profile_a69a0f27099ce767c2afe8fe5503d7628aa312480076674952a868e487eee050a5}\label{struct_compact_star_1_1_core_1_1_star_profile_a69a0f27099ce767c2afe8fe5503d7628aa312480076674952a868e487eee050a5}} 
+Metric\+Nu\+Prime&dν/dr or ν\textquotesingle{}(r) \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Pressure@{Pressure}!CompactStar::Core::StarProfile@{CompactStar::Core::StarProfile}}\index{CompactStar::Core::StarProfile@{CompactStar::Core::StarProfile}!Pressure@{Pressure}}}\mbox{\Hypertarget{struct_compact_star_1_1_core_1_1_star_profile_a69a0f27099ce767c2afe8fe5503d7628aa78578c428179b490a0461e76ba5f319}\label{struct_compact_star_1_1_core_1_1_star_profile_a69a0f27099ce767c2afe8fe5503d7628aa78578c428179b490a0461e76ba5f319}} 
+Pressure&p(r) \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{EnergyDensity@{EnergyDensity}!CompactStar::Core::StarProfile@{CompactStar::Core::StarProfile}}\index{CompactStar::Core::StarProfile@{CompactStar::Core::StarProfile}!EnergyDensity@{EnergyDensity}}}\mbox{\Hypertarget{struct_compact_star_1_1_core_1_1_star_profile_a69a0f27099ce767c2afe8fe5503d7628a459a5fc6d80b0bb954be7ffabc1137ff}\label{struct_compact_star_1_1_core_1_1_star_profile_a69a0f27099ce767c2afe8fe5503d7628a459a5fc6d80b0bb954be7ffabc1137ff}} 
+Energy\+Density&ε(r) \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{BaryonDensity@{BaryonDensity}!CompactStar::Core::StarProfile@{CompactStar::Core::StarProfile}}\index{CompactStar::Core::StarProfile@{CompactStar::Core::StarProfile}!BaryonDensity@{BaryonDensity}}}\mbox{\Hypertarget{struct_compact_star_1_1_core_1_1_star_profile_a69a0f27099ce767c2afe8fe5503d7628a31519c07cd22a64ea3e013348518b410}\label{struct_compact_star_1_1_core_1_1_star_profile_a69a0f27099ce767c2afe8fe5503d7628a31519c07cd22a64ea3e013348518b410}} 
+Baryon\+Density&n\+\_\+\+B(r) \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{MetricNu@{MetricNu}!CompactStar::Core::StarProfile@{CompactStar::Core::StarProfile}}\index{CompactStar::Core::StarProfile@{CompactStar::Core::StarProfile}!MetricNu@{MetricNu}}}\mbox{\Hypertarget{struct_compact_star_1_1_core_1_1_star_profile_a69a0f27099ce767c2afe8fe5503d7628a72fd3e8826aa395cd9f2001b5160976c}\label{struct_compact_star_1_1_core_1_1_star_profile_a69a0f27099ce767c2afe8fe5503d7628a72fd3e8826aa395cd9f2001b5160976c}} 
+Metric\+Nu&ν(r) such that g\+\_\+tt = -\/e$^\wedge$\{2ν\} \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{MetricLambda@{MetricLambda}!CompactStar::Core::StarProfile@{CompactStar::Core::StarProfile}}\index{CompactStar::Core::StarProfile@{CompactStar::Core::StarProfile}!MetricLambda@{MetricLambda}}}\mbox{\Hypertarget{struct_compact_star_1_1_core_1_1_star_profile_a69a0f27099ce767c2afe8fe5503d7628a8c24dc3d008e6f222bcc2c07d9a64bfe}\label{struct_compact_star_1_1_core_1_1_star_profile_a69a0f27099ce767c2afe8fe5503d7628a8c24dc3d008e6f222bcc2c07d9a64bfe}} 
+Metric\+Lambda&λ(r) such that g\+\_\+rr = e$^\wedge$\{2λ\} \\
+\hline
+
+\end{DoxyEnumFields}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{struct_compact_star_1_1_core_1_1_star_profile_ac25b55312c06baaa58d51bfc0f644b2d}\label{struct_compact_star_1_1_core_1_1_star_profile_ac25b55312c06baaa58d51bfc0f644b2d}} 
+\index{CompactStar::Core::StarProfile@{CompactStar::Core::StarProfile}!AddSpecies@{AddSpecies}}
+\index{AddSpecies@{AddSpecies}!CompactStar::Core::StarProfile@{CompactStar::Core::StarProfile}}
+\doxysubsubsection{\texorpdfstring{AddSpecies()}{AddSpecies()}}
+{\footnotesize\ttfamily void Compact\+Star\+::\+Core\+::\+Star\+Profile\+::\+Add\+Species (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{label,  }\item[{int}]{col\+\_\+idx }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Add/register a species column. 
+
+Call this from our TOV importer after pushing the column into {\ttfamily radial}.
+
+
+\begin{DoxyParams}{Parameters}
+{\em label} & species name \\
+\hline
+{\em col\+\_\+idx} & column index in {\ttfamily radial} \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{struct_compact_star_1_1_core_1_1_star_profile_a3750369c5f726772e3173490671a0f0a}\label{struct_compact_star_1_1_core_1_1_star_profile_a3750369c5f726772e3173490671a0f0a}} 
+\index{CompactStar::Core::StarProfile@{CompactStar::Core::StarProfile}!empty@{empty}}
+\index{empty@{empty}!CompactStar::Core::StarProfile@{CompactStar::Core::StarProfile}}
+\doxysubsubsection{\texorpdfstring{empty()}{empty()}}
+{\footnotesize\ttfamily bool Compact\+Star\+::\+Core\+::\+Star\+Profile\+::empty (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Test whether the profile has any radial samples. 
+
+\begin{DoxyReturn}{Returns}
+true if there is no column or first column is empty. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{struct_compact_star_1_1_core_1_1_star_profile_ab4bf589821d34b77517d0c4d8ec7dcc4}\label{struct_compact_star_1_1_core_1_1_star_profile_ab4bf589821d34b77517d0c4d8ec7dcc4}} 
+\index{CompactStar::Core::StarProfile@{CompactStar::Core::StarProfile}!GetColumnIndex@{GetColumnIndex}}
+\index{GetColumnIndex@{GetColumnIndex}!CompactStar::Core::StarProfile@{CompactStar::Core::StarProfile}}
+\doxysubsubsection{\texorpdfstring{GetColumnIndex()}{GetColumnIndex()}}
+{\footnotesize\ttfamily int Compact\+Star\+::\+Core\+::\+Star\+Profile\+::\+Get\+Column\+Index (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_compact_star_1_1_core_1_1_star_profile_a69a0f27099ce767c2afe8fe5503d7628}{Column}}}]{col }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Get the current integer index that corresponds to a given Column. 
+
+These can be overriden with Set\+Column\+Index(...) if the file layout is different. \mbox{\Hypertarget{struct_compact_star_1_1_core_1_1_star_profile_a240daef546c2349165f3bcc1fd1035e7}\label{struct_compact_star_1_1_core_1_1_star_profile_a240daef546c2349165f3bcc1fd1035e7}} 
+\index{CompactStar::Core::StarProfile@{CompactStar::Core::StarProfile}!GetColumnPtr@{GetColumnPtr}}
+\index{GetColumnPtr@{GetColumnPtr}!CompactStar::Core::StarProfile@{CompactStar::Core::StarProfile}}
+\doxysubsubsection{\texorpdfstring{GetColumnPtr()}{GetColumnPtr()}\hspace{0.1cm}{\footnotesize\ttfamily [1/3]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{struct_zaki_1_1_vector_1_1_data_column}{Zaki\+::\+Vector\+::\+Data\+Column}} $\ast$ Compact\+Star\+::\+Core\+::\+Star\+Profile\+::\+Get\+Column\+Ptr (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_compact_star_1_1_core_1_1_star_profile_a69a0f27099ce767c2afe8fe5503d7628}{Column}}}]{col }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Get a pointer to the column for a given logical column. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em col} & Column enum value.\\
+\hline
+\end{DoxyParams}
+Mutable version. \begin{DoxyReturn}{Returns}
+pointer to column or nullptr if invalid. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{struct_compact_star_1_1_core_1_1_star_profile_aeab0dc8db71fc1421ac22143f03d12e5}\label{struct_compact_star_1_1_core_1_1_star_profile_aeab0dc8db71fc1421ac22143f03d12e5}} 
+\index{CompactStar::Core::StarProfile@{CompactStar::Core::StarProfile}!GetColumnPtr@{GetColumnPtr}}
+\index{GetColumnPtr@{GetColumnPtr}!CompactStar::Core::StarProfile@{CompactStar::Core::StarProfile}}
+\doxysubsubsection{\texorpdfstring{GetColumnPtr()}{GetColumnPtr()}\hspace{0.1cm}{\footnotesize\ttfamily [2/3]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{struct_zaki_1_1_vector_1_1_data_column}{Zaki\+::\+Vector\+::\+Data\+Column}} $\ast$ Compact\+Star\+::\+Core\+::\+Star\+Profile\+::\+Get\+Column\+Ptr (\begin{DoxyParamCaption}\item[{int}]{idx }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Mutable version of Get\+Column\+Ptr. 
+
+Returns a direct pointer to the underlying column if valid, or nullptr if the index is out of range. \mbox{\Hypertarget{struct_compact_star_1_1_core_1_1_star_profile_ae7196bf3110b8d3d41398b1d48d3b1d3}\label{struct_compact_star_1_1_core_1_1_star_profile_ae7196bf3110b8d3d41398b1d48d3b1d3}} 
+\index{CompactStar::Core::StarProfile@{CompactStar::Core::StarProfile}!GetColumnPtr@{GetColumnPtr}}
+\index{GetColumnPtr@{GetColumnPtr}!CompactStar::Core::StarProfile@{CompactStar::Core::StarProfile}}
+\doxysubsubsection{\texorpdfstring{GetColumnPtr()}{GetColumnPtr()}\hspace{0.1cm}{\footnotesize\ttfamily [3/3]}}
+{\footnotesize\ttfamily const \mbox{\hyperlink{struct_zaki_1_1_vector_1_1_data_column}{Zaki\+::\+Vector\+::\+Data\+Column}} $\ast$ Compact\+Star\+::\+Core\+::\+Star\+Profile\+::\+Get\+Column\+Ptr (\begin{DoxyParamCaption}\item[{int}]{idx }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Get a pointer to the underlying column, or nullptr if invalid. 
+
+This uses const\+\_\+cast to get the non-\/const operator\mbox{[}\mbox{]} so we do NOT return a reference to a temporary. \mbox{\Hypertarget{struct_compact_star_1_1_core_1_1_star_profile_ae0558273ffb0c486c805be7d0dfee06b}\label{struct_compact_star_1_1_core_1_1_star_profile_ae0558273ffb0c486c805be7d0dfee06b}} 
+\index{CompactStar::Core::StarProfile@{CompactStar::Core::StarProfile}!GetMetricLambda@{GetMetricLambda}}
+\index{GetMetricLambda@{GetMetricLambda}!CompactStar::Core::StarProfile@{CompactStar::Core::StarProfile}}
+\doxysubsubsection{\texorpdfstring{GetMetricLambda()}{GetMetricLambda()}}
+{\footnotesize\ttfamily const \mbox{\hyperlink{struct_zaki_1_1_vector_1_1_data_column}{Zaki\+::\+Vector\+::\+Data\+Column}} $\ast$ Compact\+Star\+::\+Core\+::\+Star\+Profile\+::\+Get\+Metric\+Lambda (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Get λ(r) column, if present. 
+
+\mbox{\Hypertarget{struct_compact_star_1_1_core_1_1_star_profile_a7777505c8632f7bd265a04ccbea50c6d}\label{struct_compact_star_1_1_core_1_1_star_profile_a7777505c8632f7bd265a04ccbea50c6d}} 
+\index{CompactStar::Core::StarProfile@{CompactStar::Core::StarProfile}!GetPtr@{GetPtr}}
+\index{GetPtr@{GetPtr}!CompactStar::Core::StarProfile@{CompactStar::Core::StarProfile}}
+\doxysubsubsection{\texorpdfstring{GetPtr()}{GetPtr()}}
+{\footnotesize\ttfamily const \mbox{\hyperlink{struct_zaki_1_1_vector_1_1_data_column}{Zaki\+::\+Vector\+::\+Data\+Column}} $\ast$ Compact\+Star\+::\+Core\+::\+Star\+Profile\+::\+Get\+Ptr (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_compact_star_1_1_core_1_1_star_profile_a69a0f27099ce767c2afe8fe5503d7628}{Column}}}]{col }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Get a pointer to the column for a given logical column. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em col} & Column enum value. This uses const\+\_\+cast to get the non-\/const operator\mbox{[}\mbox{]} so we do NOT return a reference to a temporary.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+pointer to column or nullptr if invalid. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{struct_compact_star_1_1_core_1_1_star_profile_a8917f6074baf3c76263ca8acc6acdff2}\label{struct_compact_star_1_1_core_1_1_star_profile_a8917f6074baf3c76263ca8acc6acdff2}} 
+\index{CompactStar::Core::StarProfile@{CompactStar::Core::StarProfile}!GetSpecies@{GetSpecies}}
+\index{GetSpecies@{GetSpecies}!CompactStar::Core::StarProfile@{CompactStar::Core::StarProfile}}
+\doxysubsubsection{\texorpdfstring{GetSpecies()}{GetSpecies()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{struct_zaki_1_1_vector_1_1_data_column}{Zaki\+::\+Vector\+::\+Data\+Column}} Compact\+Star\+::\+Core\+::\+Star\+Profile\+::\+Get\+Species (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{label }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Get radial column for a given species label (const). 
+
+
+\begin{DoxyParams}{Parameters}
+{\em label} & species name, e.\+g. \char`\"{}n\char`\"{}, \char`\"{}p\char`\"{}, \char`\"{}\+Lambda\char`\"{}\\
+\hline
+\end{DoxyParams}
+Returns by value to avoid returning a reference to a temporary, since Data\+Set\+::operator\mbox{[}$\,$\mbox{]} on a const Data\+Set returns by value. 
+\begin{DoxyExceptions}{Exceptions}
+{\em std\+::out\+\_\+of\+\_\+range} & if label not found or index invalid. \\
+\hline
+\end{DoxyExceptions}
+\begin{DoxyReturn}{Returns}
+Data\+Column for the species. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{struct_compact_star_1_1_core_1_1_star_profile_a98456d5aa44b141e53fb633547e1839f}\label{struct_compact_star_1_1_core_1_1_star_profile_a98456d5aa44b141e53fb633547e1839f}} 
+\index{CompactStar::Core::StarProfile@{CompactStar::Core::StarProfile}!GetSpeciesPtr@{GetSpeciesPtr}}
+\index{GetSpeciesPtr@{GetSpeciesPtr}!CompactStar::Core::StarProfile@{CompactStar::Core::StarProfile}}
+\doxysubsubsection{\texorpdfstring{GetSpeciesPtr()}{GetSpeciesPtr()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{struct_zaki_1_1_vector_1_1_data_column}{Zaki\+::\+Vector\+::\+Data\+Column}} $\ast$ Compact\+Star\+::\+Core\+::\+Star\+Profile\+::\+Get\+Species\+Ptr (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{label }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Mutable version of Get\+Species\+Ptr. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em label} & species name, e.\+g. \char`\"{}n\char`\"{}, \char`\"{}p\char`\"{}, \char`\"{}\+Lambda\char`\"{} \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+pointer to column or nullptr if not found. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{struct_compact_star_1_1_core_1_1_star_profile_aba7f54453aed1201fc90ce50ea72ed4f}\label{struct_compact_star_1_1_core_1_1_star_profile_aba7f54453aed1201fc90ce50ea72ed4f}} 
+\index{CompactStar::Core::StarProfile@{CompactStar::Core::StarProfile}!HasSpecies@{HasSpecies}}
+\index{HasSpecies@{HasSpecies}!CompactStar::Core::StarProfile@{CompactStar::Core::StarProfile}}
+\doxysubsubsection{\texorpdfstring{HasSpecies()}{HasSpecies()}}
+{\footnotesize\ttfamily bool Compact\+Star\+::\+Core\+::\+Star\+Profile\+::\+Has\+Species (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{label }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Check if a species label exists. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em label} & e.\+g. \char`\"{}n\char`\"{}, \char`\"{}p\char`\"{}, \char`\"{}\+Lambda\char`\"{} \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if present. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{struct_compact_star_1_1_core_1_1_star_profile_af6225c46cbe48c88781985bebcc2f94b}\label{struct_compact_star_1_1_core_1_1_star_profile_af6225c46cbe48c88781985bebcc2f94b}} 
+\index{CompactStar::Core::StarProfile@{CompactStar::Core::StarProfile}!SetSpeciesColumn@{SetSpeciesColumn}}
+\index{SetSpeciesColumn@{SetSpeciesColumn}!CompactStar::Core::StarProfile@{CompactStar::Core::StarProfile}}
+\doxysubsubsection{\texorpdfstring{SetSpeciesColumn()}{SetSpeciesColumn()}}
+{\footnotesize\ttfamily void Compact\+Star\+::\+Core\+::\+Star\+Profile\+::\+Set\+Species\+Column (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{label,  }\item[{int}]{col\+\_\+idx }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Set/update the column index for an existing species label. 
+
+If the label is not found, it will be added as a new species.
+
+
+\begin{DoxyParams}{Parameters}
+{\em label} & species name \\
+\hline
+{\em col\+\_\+idx} & column index in {\ttfamily radial} \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{struct_compact_star_1_1_core_1_1_star_profile_a270e0e97913bc127e4c665f909eaaf46}\label{struct_compact_star_1_1_core_1_1_star_profile_a270e0e97913bc127e4c665f909eaaf46}} 
+\index{CompactStar::Core::StarProfile@{CompactStar::Core::StarProfile}!radial@{radial}}
+\index{radial@{radial}!CompactStar::Core::StarProfile@{CompactStar::Core::StarProfile}}
+\doxysubsubsection{\texorpdfstring{radial}{radial}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_zaki_1_1_vector_1_1_data_set}{Zaki\+::\+Vector\+::\+Data\+Set}} Compact\+Star\+::\+Core\+::\+Star\+Profile\+::radial}
+
+
+
+Radial profile as produced by the TOV solver or file importer. 
+
+Column order is expected to {\bfseries{at least}} follow the first 7 entries above. \mbox{\Hypertarget{struct_compact_star_1_1_core_1_1_star_profile_aab8ba5deee62a546a0782d21900df993}\label{struct_compact_star_1_1_core_1_1_star_profile_aab8ba5deee62a546a0782d21900df993}} 
+\index{CompactStar::Core::StarProfile@{CompactStar::Core::StarProfile}!species\_idx@{species\_idx}}
+\index{species\_idx@{species\_idx}!CompactStar::Core::StarProfile@{CompactStar::Core::StarProfile}}
+\doxysubsubsection{\texorpdfstring{species\_idx}{species\_idx}}
+{\footnotesize\ttfamily std\+::vector$<$int$>$ Compact\+Star\+::\+Core\+::\+Star\+Profile\+::species\+\_\+idx}
+
+
+
+Column indices in {\ttfamily radial} for each species. 
+
+Must be the same length as {\ttfamily species\+\_\+labels}. \mbox{\Hypertarget{struct_compact_star_1_1_core_1_1_star_profile_a2aff71901f78187dfbbfaa48a1354b05}\label{struct_compact_star_1_1_core_1_1_star_profile_a2aff71901f78187dfbbfaa48a1354b05}} 
+\index{CompactStar::Core::StarProfile@{CompactStar::Core::StarProfile}!species\_labels@{species\_labels}}
+\index{species\_labels@{species\_labels}!CompactStar::Core::StarProfile@{CompactStar::Core::StarProfile}}
+\doxysubsubsection{\texorpdfstring{species\_labels}{species\_labels}}
+{\footnotesize\ttfamily std\+::vector$<$std\+::string$>$ Compact\+Star\+::\+Core\+::\+Star\+Profile\+::species\+\_\+labels}
+
+
+
+Labels for per-\/species density columns (same order as species\+\_\+idx). 
+
+Example\+: species\+\_\+labels = \{\char`\"{}n\char`\"{}, \char`\"{}p\char`\"{}, \char`\"{}\+Lambda\char`\"{}, \char`\"{}\+Sigma-\/\char`\"{}\} species\+\_\+idx = \{ 8, 9, 10, 11 \}
+
+so that radial\mbox{[} species\+\_\+idx\mbox{[}i\mbox{]} \mbox{]} is the column for species\+\_\+labels\mbox{[}i\mbox{]}. 
+
+The documentation for this struct was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Compact\+Star/\+Core/\mbox{\hyperlink{_star_profile_8hpp}{Star\+Profile.\+hpp}}\item 
+Compact\+Star/\+Core/src/Star\+Profile.\+cpp\end{DoxyCompactItemize}

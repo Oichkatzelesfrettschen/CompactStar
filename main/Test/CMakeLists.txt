@@ -5,6 +5,7 @@ set(CompactStar_main_Test_SRC_Files
 	spin_evol_2_main
 	spin_therm_evol_main
 	ns_build_main
+	spin_therm_evol_2_main
 )
 
 foreach(src ${CompactStar_main_Test_SRC_Files})

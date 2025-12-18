@@ -1,0 +1,46 @@
+\hypertarget{_diagnostics_json_8hpp}{}\doxysection{Compact\+Star/\+Physics/\+Evolution/\+Diagnostics/\+Diagnostics\+Json.hpp File Reference}
+\label{_diagnostics_json_8hpp}\index{CompactStar/Physics/Evolution/Diagnostics/DiagnosticsJson.hpp@{CompactStar/Physics/Evolution/Diagnostics/DiagnosticsJson.hpp}}
+
+
+Minimal JSON writer for diagnostics packets.  
+
+
+{\ttfamily \#include $<$ostream$>$}\newline
+{\ttfamily \#include $<$string$>$}\newline
+{\ttfamily \#include \char`\"{}Compact\+Star/\+Physics/\+Evolution/\+Diagnostics/\+Diagnostic\+Packet.\+hpp\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}Compact\+Star/\+Physics/\+Evolution/\+Diagnostics/\+Unit\+Contract.\+hpp\char`\"{}}\newline
+\doxysubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{struct_compact_star_1_1_physics_1_1_evolution_1_1_diagnostics_1_1_json_options}{Compact\+Star\+::\+Physics\+::\+Evolution\+::\+Diagnostics\+::\+Json\+Options}}
+\begin{DoxyCompactList}\small\item\em Configuration options for JSON rendering. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_diagnostics_1_1_diagnostics_json}{Compact\+Star\+::\+Physics\+::\+Evolution\+::\+Diagnostics\+::\+Diagnostics\+Json}}
+\begin{DoxyCompactList}\small\item\em JSON rendering helpers. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Namespaces}
+\begin{DoxyCompactItemize}
+\item 
+namespace \mbox{\hyperlink{namespace_compact_star_1_1_physics}{Compact\+Star\+::\+Physics}}
+\begin{DoxyCompactList}\small\item\em High-\/level physical modeling layer for compact stars. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Minimal JSON writer for diagnostics packets. 
+
+We intentionally do not use a full JSON library\+:
+\begin{DoxyItemize}
+\item avoids bringing in dependencies,
+\item keeps output deterministic and easy to diff,
+\item sufficient for tooling/regression tests.
+\end{DoxyItemize}
+
+Output styles supported\+:
+\begin{DoxyItemize}
+\item JSON object (single packet)
+\item JSONL (one JSON object per line) for append-\/only logs.
+\end{DoxyItemize}
+
+Determinism\+:
+\begin{DoxyItemize}
+\item Scalars iterate in key order due to std\+::map.
+\item Text arrays preserve insertion order. 
+\end{DoxyItemize}

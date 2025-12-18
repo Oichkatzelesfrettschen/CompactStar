@@ -48,16 +48,32 @@ namespace CompactStar::Physics::State
  * @class ThermalState
  * @brief Dynamical thermal DOFs + cached physical temperatures.
  *
- * The ODE part (values_) is what evolution drivers operate on. By default
- * callers usually use a single DOF representing the **redshifted internal
- * temperature** T∞. If more thermal components (e.g. multi-zone models)
- * are needed, callers simply call Resize(N).
+ * The ODE part (`values_`) stores the **thermal evolution variables** operated
+ * on by evolution drivers. In the default (single-zone) configuration:
  *
- * The auxiliary fields store physically meaningful temperatures in the
- * **local fluid frame**, which microphysics and cooling models often require.
+ *   - `values_[0] ≡ ln(T∞ / T_ref) (dimensionless)`
+ *
+ * where T∞ is the **redshifted isothermal-core temperature** in Kelvin.
+ *
+ * Storing the logarithm of the temperature ensures positivity by construction
+ * and improves numerical stability over long cooling timescales. Evolution
+ * drivers must therefore contribute to:
+ *
+ *   d(ln(T∞/T_ref))/dt = (1 / T∞) · dT∞/dt
+ *
+ * rather than directly evolving T∞ itself.
+ *
+ * Additional thermal components (e.g. multi-zone models) can be introduced
+ * by calling `Resize(N)`; the interpretation of components beyond index 0
+ * is left to higher-level thermal models.
+ *
+ * The auxiliary fields (`T_core`, `T_blanket`, `T_surf`) store physically
+ * meaningful temperatures in the **local fluid frame**. These are **not**
+ * part of the ODE vector and are intended for use by microphysics,
+ * envelope models, cooling laws, and diagnostics.
  *
  * @note Storage (the `values_` vector) deliberately lives in this derived
- *       class rather than in the State base class.  This design allows
+ *       class rather than in the `State` base class. This design allows
  *       future state types to use non-contiguous, multi-zone, or
  *       externally owned layouts while still exposing the uniform
  *       PackTo/UnpackFrom interface required by the evolution framework.
@@ -132,15 +148,88 @@ class ThermalState : public State
 	/// Const access to i-th component.
 	const double &Value(std::size_t i) const { return values_.at(i); }
 
-	/**
-	 * @brief Convenience accessor for the primary thermal DOF (usually T∞).
-	 *
-	 * By convention, component 0 is the **redshifted isothermal-core temperature**.
-	 */
-	double &Tinf() { return values_.at(0); }
+	// ------------------------------------------------------------------
+	// Primary thermal DOF convention
+	// ------------------------------------------------------------------
 
-	/// Const accessor for T∞.
-	const double &Tinf() const { return values_.at(0); }
+	/**
+	 * @brief Reference temperature used to make the evolved log variable dimensionless.
+	 *
+	 * The primary evolved thermal variable is stored as:
+	 * \f[
+	 *   x \equiv \ln(T_\infty / T_{\rm ref})
+	 * \f]
+	 * where both temperatures are in Kelvin.
+	 *
+	 * @return Reference temperature in Kelvin.
+	 */
+	static constexpr double Tref_K() { return 1e8; }
+
+	/**
+	 * @brief Access the **dimensionless evolved thermal variable**
+	 * \f$ x \equiv \ln(T_\infty / T_{\rm ref}) \f$.
+	 *
+	 * This function exposes the *actual ODE variable* stored in the thermal
+	 * state vector:
+	 *
+	 *   values_[0] ≡ ln(T∞ / T_ref)   (dimensionless)
+	 *
+	 * ### Usage
+	 * - Evolution drivers and RHS accumulators **must operate on this variable**
+	 *   when contributing to the ODE system.
+	 * - If a physical model computes \f$dT_\infty/dt\f$, convert via:
+	 *
+	 *   \f[
+	 *     \frac{dx}{dt} = \frac{1}{T_\infty}\frac{dT_\infty}{dt}.
+	 *   \f]
+	 *
+	 * @warning This returns a mutable reference to the ODE storage.
+	 *          Modifying it directly changes the evolved state.
+	 */
+	double &LnTinfOverTref();
+
+	/**
+	 * @brief Const access to the dimensionless evolved thermal variable
+	 * \f$ x \equiv \ln(T_\infty / T_{\rm ref}) \f$.
+	 *
+	 * See the non-const overload for full documentation.
+	 */
+	const double &LnTinfOverTref() const;
+
+	/**
+	 * @brief Return the **physical redshifted temperature** T∞ in Kelvin.
+	 *
+	 * This value is **computed**, not stored:
+	 *
+	 *   T∞ = T_ref * exp(LnTinfOverTref()).
+	 *
+	 * ### Usage
+	 * - Intended for diagnostics, microphysics, cooling laws, and logging.
+	 * - Must NOT be used as an ODE variable or written to directly.
+	 *
+	 * @return Physical redshifted temperature T∞ in Kelvin.
+	 */
+	double Tinf() const;
+
+	/**
+	 * @brief Set the physical redshifted temperature T∞ (in Kelvin).
+	 *
+	 * This is a convenience helper that converts the physical temperature
+	 * into the stored ODE variable:
+	 *
+	 *   LnTinfOverTref() ← ln(T∞ / T_ref).
+	 *
+	 * ### Usage
+	 * - Intended for **initial-condition setup** and controlled resets.
+	 * - Equivalent to:
+	 *
+	 *     LnTinfOverTref() = std::log(T_K / Tref_K());
+	 *
+	 * @param T_K Physical redshifted temperature in Kelvin (must be > 0).
+	 *
+	 * @warning Passing T_K ≤ 0 is invalid and will be rejected.
+	 */
+	void SetTinf(double T_K);
 
 	// ------------------------------------------------------------------
 	// Auxiliary temperatures (NOT part of the ODE vector)

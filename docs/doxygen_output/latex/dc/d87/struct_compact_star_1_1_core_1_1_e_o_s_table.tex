@@ -1,0 +1,148 @@
+\hypertarget{struct_compact_star_1_1_core_1_1_e_o_s_table}{}\doxysection{Compact\+Star\+::Core\+::EOSTable Struct Reference}
+\label{struct_compact_star_1_1_core_1_1_e_o_s_table}\index{CompactStar::Core::EOSTable@{CompactStar::Core::EOSTable}}
+
+
+Class representing a table of equation of state (EOS) data.  
+
+
+
+
+{\ttfamily \#include $<$TOVSolver.\+hpp$>$}
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+size\+\_\+t \mbox{\hyperlink{struct_compact_star_1_1_core_1_1_e_o_s_table_acbfb304b5bb33be277c0e21e7eec9b2b}{Size}} ()
+\begin{DoxyCompactList}\small\item\em Getter for the size of the table. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{struct_compact_star_1_1_core_1_1_e_o_s_table_af1f3212d3732556d4a91f8547df78a2f}{Set\+Labels}} (const std\+::string \&in\+\_\+eps\+\_\+label, const std\+::string \&in\+\_\+pre\+\_\+label, const std\+::string \&in\+\_\+rho\+\_\+label)
+\begin{DoxyCompactList}\small\item\em Setter for the labels. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{struct_compact_star_1_1_core_1_1_e_o_s_table_a9a20bb692f38afce195d0c7a608767ed}{Add\+Extra\+Labels}} (const std\+::string \&in\+\_\+label)
+\begin{DoxyCompactList}\small\item\em Setter for the extra labels. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{struct_compact_star_1_1_core_1_1_e_o_s_table_a9dae56b4350b33a4de1586d7414612ad}{Print}} (const int n\+\_\+lines=5) const
+\begin{DoxyCompactList}\small\item\em Printer for the table. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{struct_compact_star_1_1_core_1_1_e_o_s_table_ad463324012304586c33db20016d4d65c}{Print\+Summary}} () const
+\begin{DoxyCompactList}\small\item\em Prints a compact summary of the EOS table. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{struct_compact_star_1_1_core_1_1_e_o_s_table_a8f793dde2ff600a90ef891a337b70b1b}\label{struct_compact_star_1_1_core_1_1_e_o_s_table_a8f793dde2ff600a90ef891a337b70b1b}} 
+std\+::vector$<$ double $>$ {\bfseries eps}
+\item 
+\mbox{\Hypertarget{struct_compact_star_1_1_core_1_1_e_o_s_table_a1a23b38240cc0e9031b7aaf894984e1a}\label{struct_compact_star_1_1_core_1_1_e_o_s_table_a1a23b38240cc0e9031b7aaf894984e1a}} 
+std\+::vector$<$ double $>$ {\bfseries pre}
+\item 
+\mbox{\Hypertarget{struct_compact_star_1_1_core_1_1_e_o_s_table_af29ae355a402812dec671bb9191edb1d}\label{struct_compact_star_1_1_core_1_1_e_o_s_table_af29ae355a402812dec671bb9191edb1d}} 
+std\+::vector$<$ double $>$ {\bfseries rho}
+\item 
+\mbox{\Hypertarget{struct_compact_star_1_1_core_1_1_e_o_s_table_a97c9d7cf1c5c7b052d6d423bd524a0d4}\label{struct_compact_star_1_1_core_1_1_e_o_s_table_a97c9d7cf1c5c7b052d6d423bd524a0d4}} 
+std\+::vector$<$ std\+::vector$<$ double $>$ $>$ {\bfseries rho\+\_\+i}
+\item 
+\mbox{\Hypertarget{struct_compact_star_1_1_core_1_1_e_o_s_table_aa5f7abb47223c0e92faa60ad665d1567}\label{struct_compact_star_1_1_core_1_1_e_o_s_table_aa5f7abb47223c0e92faa60ad665d1567}} 
+std\+::vector$<$ std\+::string $>$ {\bfseries extra\+\_\+labels}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Class representing a table of equation of state (EOS) data. 
+
+The \mbox{\hyperlink{struct_compact_star_1_1_core_1_1_e_o_s_table}{EOSTable}} class stores the energy density, pressure, and baryon number density values for a given EOS. It also provides methods to set labels, add extra labels, and print the table. 
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{struct_compact_star_1_1_core_1_1_e_o_s_table_a9a20bb692f38afce195d0c7a608767ed}\label{struct_compact_star_1_1_core_1_1_e_o_s_table_a9a20bb692f38afce195d0c7a608767ed}} 
+\index{CompactStar::Core::EOSTable@{CompactStar::Core::EOSTable}!AddExtraLabels@{AddExtraLabels}}
+\index{AddExtraLabels@{AddExtraLabels}!CompactStar::Core::EOSTable@{CompactStar::Core::EOSTable}}
+\doxysubsubsection{\texorpdfstring{AddExtraLabels()}{AddExtraLabels()}}
+{\footnotesize\ttfamily void Compact\+Star\+::\+Core\+::\+EOSTable\+::\+Add\+Extra\+Labels (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{in\+\_\+label }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Setter for the extra labels. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em in\+\_\+label} & Label for the extra data \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{struct_compact_star_1_1_core_1_1_e_o_s_table_a9dae56b4350b33a4de1586d7414612ad}\label{struct_compact_star_1_1_core_1_1_e_o_s_table_a9dae56b4350b33a4de1586d7414612ad}} 
+\index{CompactStar::Core::EOSTable@{CompactStar::Core::EOSTable}!Print@{Print}}
+\index{Print@{Print}!CompactStar::Core::EOSTable@{CompactStar::Core::EOSTable}}
+\doxysubsubsection{\texorpdfstring{Print()}{Print()}}
+{\footnotesize\ttfamily void Compact\+Star\+::\+Core\+::\+EOSTable\+::\+Print (\begin{DoxyParamCaption}\item[{const int}]{n\+\_\+lines = {\ttfamily 5} }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Printer for the table. 
+
+Prints the table to the standard output.
+
+Prints the EOS table to the standard output.
+
+
+\begin{DoxyItemize}
+\item By default, prints only the header and the first few lines (5).
+\item If {\ttfamily n\+\_\+lines} is specified and positive, prints up to that many rows.
+\item If {\ttfamily n\+\_\+lines} exceeds the table size, prints the entire table.
+\item Negative values for {\ttfamily n\+\_\+lines} (e.\+g. -\/1) force printing {\itshape all} rows. 
+\begin{DoxyParams}{Parameters}
+{\em n\+\_\+lines} & Optional number of data rows to print (default = 5). \\
+\hline
+\end{DoxyParams}
+
+\end{DoxyItemize}\mbox{\Hypertarget{struct_compact_star_1_1_core_1_1_e_o_s_table_ad463324012304586c33db20016d4d65c}\label{struct_compact_star_1_1_core_1_1_e_o_s_table_ad463324012304586c33db20016d4d65c}} 
+\index{CompactStar::Core::EOSTable@{CompactStar::Core::EOSTable}!PrintSummary@{PrintSummary}}
+\index{PrintSummary@{PrintSummary}!CompactStar::Core::EOSTable@{CompactStar::Core::EOSTable}}
+\doxysubsubsection{\texorpdfstring{PrintSummary()}{PrintSummary()}}
+{\footnotesize\ttfamily void Compact\+Star\+::\+Core\+::\+EOSTable\+::\+Print\+Summary (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Prints a compact summary of the EOS table. 
+
+Shows\+:
+\begin{DoxyItemize}
+\item Number of data rows.
+\item Column labels.
+\item Minimum and maximum values of ε, P, and ρ.
+\item Extra species columns, if present. Intended for quick sanity checks before running the TOV solver. 
+\end{DoxyItemize}\mbox{\Hypertarget{struct_compact_star_1_1_core_1_1_e_o_s_table_af1f3212d3732556d4a91f8547df78a2f}\label{struct_compact_star_1_1_core_1_1_e_o_s_table_af1f3212d3732556d4a91f8547df78a2f}} 
+\index{CompactStar::Core::EOSTable@{CompactStar::Core::EOSTable}!SetLabels@{SetLabels}}
+\index{SetLabels@{SetLabels}!CompactStar::Core::EOSTable@{CompactStar::Core::EOSTable}}
+\doxysubsubsection{\texorpdfstring{SetLabels()}{SetLabels()}}
+{\footnotesize\ttfamily void Compact\+Star\+::\+Core\+::\+EOSTable\+::\+Set\+Labels (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{in\+\_\+eps\+\_\+label,  }\item[{const std\+::string \&}]{in\+\_\+pre\+\_\+label,  }\item[{const std\+::string \&}]{in\+\_\+rho\+\_\+label }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Setter for the labels. 
+
+Sets the labels for the energy density, pressure, and baryon number density. 
+\begin{DoxyParams}{Parameters}
+{\em in\+\_\+eps\+\_\+label} & Label for the energy density \\
+\hline
+{\em in\+\_\+pre\+\_\+label} & Label for the pressure \\
+\hline
+{\em in\+\_\+rho\+\_\+label} & Label for the baryon number density \\
+\hline
+\end{DoxyParams}
+\begin{DoxyNote}{Note}
+The labels are stripped of leading and trailing spaces. 
+
+The labels are stored as strings. 
+\end{DoxyNote}
+\mbox{\Hypertarget{struct_compact_star_1_1_core_1_1_e_o_s_table_acbfb304b5bb33be277c0e21e7eec9b2b}\label{struct_compact_star_1_1_core_1_1_e_o_s_table_acbfb304b5bb33be277c0e21e7eec9b2b}} 
+\index{CompactStar::Core::EOSTable@{CompactStar::Core::EOSTable}!Size@{Size}}
+\index{Size@{Size}!CompactStar::Core::EOSTable@{CompactStar::Core::EOSTable}}
+\doxysubsubsection{\texorpdfstring{Size()}{Size()}}
+{\footnotesize\ttfamily size\+\_\+t Compact\+Star\+::\+Core\+::\+EOSTable\+::\+Size (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Getter for the size of the table. 
+
+Returns the number of rows in the table. \begin{DoxyReturn}{Returns}
+The size of the table 
+\end{DoxyReturn}
+
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Compact\+Star/\+Core/\mbox{\hyperlink{_t_o_v_solver_8hpp}{TOVSolver.\+hpp}}\end{DoxyCompactItemize}

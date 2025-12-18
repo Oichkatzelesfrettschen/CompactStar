@@ -1,0 +1,36 @@
+ ************************************************************
+ * Logging started on  2025-12-17	16:35:43
+ ************************************************************
+ 16:35:43 - Info #9 in [RotationSolver.cpp:AttachNStar:164] Attaching NStar to RotationSolver class...
+ 16:35:43 - Info #1 in [Directory.cpp:Create:249] Directory '/Users/keeper/Library/CloudStorage/GoogleDrive-m.zakeri@eku.edu/My Drive/Research/Tools/Coding/CompactStar/main/Test/results' created.
+ 16:35:43 - Info #0 in [Prog.cpp:SetWrkDir:267] Work directory set to '/Users/keeper/Library/CloudStorage/GoogleDrive-m.zakeri@eku.edu/My Drive/Research/Tools/Coding/CompactStar/main/Test/results'.
+ 16:35:43 - Info #1 in [Directory.cpp:Create:249] Directory '/Users/keeper/Library/CloudStorage/GoogleDrive-m.zakeri@eku.edu/My Drive/Research/Tools/Coding/CompactStar/main/Test/results' created.
+ 16:35:43 - Info #31 in [DataSet.cpp:SetWrkDir:1745] Work directory set to '/Users/keeper/Library/CloudStorage/GoogleDrive-m.zakeri@eku.edu/My Drive/Research/Tools/Coding/CompactStar/main/Test/results'.
+ 16:35:43 - Info #11 in [RotationSolver.cpp:AttachMixedStar:178] Attaching MixedStar to RotationSolver class...
+ 16:35:43 - Info #9 in [RotationSolver.cpp:AttachNStar:164] Attaching NStar to RotationSolver class...
+ 16:35:43 - Info #1 in [Directory.cpp:Create:249] Directory '/Users/keeper/Library/CloudStorage/GoogleDrive-m.zakeri@eku.edu/My Drive/Research/Tools/Coding/CompactStar/main/Test/results/spin_therm_evol_2' created.
+ 16:35:43 - Info #0 in [Prog.cpp:SetWrkDir:267] Work directory set to '/Users/keeper/Library/CloudStorage/GoogleDrive-m.zakeri@eku.edu/My Drive/Research/Tools/Coding/CompactStar/main/Test/results/spin_therm_evol_2'.
+ 16:35:43 - Info #1 in [Directory.cpp:Create:249] Directory '/Users/keeper/Library/CloudStorage/GoogleDrive-m.zakeri@eku.edu/My Drive/Research/Tools/Coding/CompactStar/main/Test/results/spin_therm_evol_2' created.
+ 16:35:43 - Info #0 in [Prog.cpp:SetWrkDir:267] Work directory set to '/Users/keeper/Library/CloudStorage/GoogleDrive-m.zakeri@eku.edu/My Drive/Research/Tools/Coding/CompactStar/main/Test/results/spin_therm_evol_2'.
+ 16:35:43 - Info #1 in [Directory.cpp:Create:249] Directory '/Users/keeper/Library/CloudStorage/GoogleDrive-m.zakeri@eku.edu/My Drive/Research/Tools/Coding/CompactStar/main/Test/results/spin_therm_evol_2' created.
+ 16:35:43 - Info #31 in [DataSet.cpp:SetWrkDir:1745] Work directory set to '/Users/keeper/Library/CloudStorage/GoogleDrive-m.zakeri@eku.edu/My Drive/Research/Tools/Coding/CompactStar/main/Test/results/spin_therm_evol_2'.
+ 16:35:43 - Info #1 in [Directory.cpp:Create:249] Directory '/Users/keeper/Library/CloudStorage/GoogleDrive-m.zakeri@eku.edu/My Drive/Research/Tools/Coding/CompactStar/main/Test/results/spin_therm_evol_2' created.
+ 16:35:43 - Info #0 in [Prog.cpp:SetWrkDir:267] Work directory set to '/Users/keeper/Library/CloudStorage/GoogleDrive-m.zakeri@eku.edu/My Drive/Research/Tools/Coding/CompactStar/main/Test/results/spin_therm_evol_2'.
+ 16:35:43 - Info #1 in [Directory.cpp:Create:249] Directory '/Users/keeper/Library/CloudStorage/GoogleDrive-m.zakeri@eku.edu/My Drive/Research/Tools/Coding/CompactStar/main/Test/results/spin_therm_evol_2' created.
+ 16:35:43 - Info #0 in [Prog.cpp:SetWrkDir:267] Work directory set to '/Users/keeper/Library/CloudStorage/GoogleDrive-m.zakeri@eku.edu/My Drive/Research/Tools/Coding/CompactStar/main/Test/results/spin_therm_evol_2'.
+ 16:35:43 - Info #1 in [Directory.cpp:Create:249] Directory '/Users/keeper/Library/CloudStorage/GoogleDrive-m.zakeri@eku.edu/My Drive/Research/Tools/Coding/CompactStar/main/Test/results/spin_therm_evol_2' created.
+ 16:35:43 - Info #31 in [DataSet.cpp:SetWrkDir:1745] Work directory set to '/Users/keeper/Library/CloudStorage/GoogleDrive-m.zakeri@eku.edu/My Drive/Research/Tools/Coding/CompactStar/main/Test/results/spin_therm_evol_2'.
+ 16:35:43 - Info #1 in [Directory.cpp:Create:249] Directory '/Users/keeper/Library/CloudStorage/GoogleDrive-m.zakeri@eku.edu/My Drive/Research/Tools/Coding/CompactStar/main/Test/results/spin_therm_evol_2' created.
+ 16:35:43 - Info #31 in [DataSet.cpp:SetWrkDir:1745] Work directory set to '/Users/keeper/Library/CloudStorage/GoogleDrive-m.zakeri@eku.edu/My Drive/Research/Tools/Coding/CompactStar/main/Test/results/spin_therm_evol_2'.
+ 16:35:43 - Info #1 in [Directory.cpp:Create:249] Directory '/Users/keeper/Library/CloudStorage/GoogleDrive-m.zakeri@eku.edu/My Drive/Research/Tools/Coding/CompactStar/main/Test/results/spin_therm_evol_2' created.
+ 16:35:43 - Info #0 in [Prog.cpp:SetWrkDir:267] Work directory set to '/Users/keeper/Library/CloudStorage/GoogleDrive-m.zakeri@eku.edu/My Drive/Research/Tools/Coding/CompactStar/main/Test/results/spin_therm_evol_2'.
+ 16:35:43 - Info #13 in [TOVSolver.cpp:Hidden_ImportEOS_Vis:479] EOS data imported from: /Users/keeper/Library/CloudStorage/GoogleDrive-m.zakeri@eku.edu/My Drive/Research/Tools/Coding/CompactStar/main/EOS/CompOSE/DS(CMF)-1_with_crust/DS(CMF)-1_with_crust.eos.
+ 16:35:43 - Info #15 in [TOVSolver.cpp:Hidden_ImportEOS_Vis:535] Initializing the splines for energy density and pressure: done.
+ 16:35:43 - Info #1 in [Directory.cpp:Create:249] Directory '/Users/keeper/Library/CloudStorage/GoogleDrive-m.zakeri@eku.edu/My Drive/Research/Tools/Coding/CompactStar/main/Test/results' created.
+ 16:35:43 - Info #31 in [DataSet.cpp:SetWrkDir:1745] Work directory set to '/Users/keeper/Library/CloudStorage/GoogleDrive-m.zakeri@eku.edu/My Drive/Research/Tools/Coding/CompactStar/main/Test/results'.
+ 16:35:43 - Info #1 in [Directory.cpp:Create:249] Directory '/Users/keeper/Library/CloudStorage/GoogleDrive-m.zakeri@eku.edu/My Drive/Research/Tools/Coding/CompactStar/main/Test/results/spin_therm_evol_2' created.
+ 16:35:43 - Info #56 in [DataSet.cpp:Export:2595] DataSet exported to: /Users/keeper/Library/CloudStorage/GoogleDrive-m.zakeri@eku.edu/My Drive/Research/Tools/Coding/CompactStar/main/Test/results/spin_therm_evol_2/NStar_Profile.tsv.
+ 16:35:43 - Info #1 in [GSLIntegrator.cpp:Integrate:201] Using GSL stepper 'RKF45' (rtol=1e-06, atol=1e-10, max_steps=1000000, dt_save=100000)
+ 16:35:43 - Info #2 in [DiagnosticsObserver.cpp:OnStart:210] OnStart(t0=0.000000)
+ ************************************************************
+	 Total Warnings: 0 	 Total Errors: 0

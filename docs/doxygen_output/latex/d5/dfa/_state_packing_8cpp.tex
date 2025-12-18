@@ -14,20 +14,96 @@ Implementation of helpers for packing/unpacking State blocks.
 \begin{DoxyCompactItemize}
 \item 
 namespace \mbox{\hyperlink{namespace_compact_star_1_1_physics}{Compact\+Star\+::\+Physics}}
-\begin{DoxyCompactList}\small\item\em High-\/level physical modeling layer for compact stars. \end{DoxyCompactList}\item 
-namespace \mbox{\hyperlink{namespace_compact_star_1_1_physics_1_1_evolution}{Compact\+Star\+::\+Physics\+::\+Evolution}}
-\begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{namespace_compact_star_1_1_physics_1_1_evolution}{Evolution}} engine for time-\/dependent neutron-\/star physics. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em High-\/level physical modeling layer for compact stars. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
-void \mbox{\hyperlink{namespace_compact_star_1_1_physics_1_1_evolution_a9ae738d6afc6c7301395a161c8190a44}{Compact\+Star\+::\+Physics\+::\+Evolution\+::\+Pack\+State\+Vector}} (const State\+Vector \&state, const State\+Layout \&layout, double $\ast$y)
+void \mbox{\hyperlink{_state_packing_8cpp_a9ae738d6afc6c7301395a161c8190a44}{Compact\+Star\+::\+Physics\+::\+Evolution\+::\+Pack\+State\+Vector}} (const State\+Vector \&state, const State\+Layout \&layout, double $\ast$y)
 \begin{DoxyCompactList}\small\item\em Pack all active \mbox{\hyperlink{namespace_compact_star_1_1_physics_1_1_state}{State}} blocks into the flat ODE vector y\mbox{[}\mbox{]}. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{namespace_compact_star_1_1_physics_1_1_evolution_a547187e211d1075edc75eb9d5176eea3}{Compact\+Star\+::\+Physics\+::\+Evolution\+::\+Unpack\+State\+Vector}} (State\+Vector \&state, const State\+Layout \&layout, const double $\ast$y)
+void \mbox{\hyperlink{_state_packing_8cpp_a547187e211d1075edc75eb9d5176eea3}{Compact\+Star\+::\+Physics\+::\+Evolution\+::\+Unpack\+State\+Vector}} (State\+Vector \&state, const State\+Layout \&layout, const double $\ast$y)
 \begin{DoxyCompactList}\small\item\em Unpack the flat ODE vector y\mbox{[}\mbox{]} back into the \mbox{\hyperlink{namespace_compact_star_1_1_physics_1_1_state}{State}} blocks. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{namespace_compact_star_1_1_physics_1_1_evolution_a7706794e4cfb8a5ed48ab4e406ffce8b}{Compact\+Star\+::\+Physics\+::\+Evolution\+::\+Scatter\+RHSFrom\+Accumulator}} (const RHSAccumulator \&rhs, const State\+Layout \&layout, double $\ast$dydt)
+void \mbox{\hyperlink{_state_packing_8cpp_a7706794e4cfb8a5ed48ab4e406ffce8b}{Compact\+Star\+::\+Physics\+::\+Evolution\+::\+Scatter\+RHSFrom\+Accumulator}} (const RHSAccumulator \&rhs, const State\+Layout \&layout, double $\ast$dydt)
 \begin{DoxyCompactList}\small\item\em Scatter contributions from \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_r_h_s_accumulator}{RHSAccumulator}} into dydt\mbox{[}\mbox{]}. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}
 Implementation of helpers for packing/unpacking State blocks. 
 
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{_state_packing_8cpp_a9ae738d6afc6c7301395a161c8190a44}\label{_state_packing_8cpp_a9ae738d6afc6c7301395a161c8190a44}} 
+\index{StatePacking.cpp@{StatePacking.cpp}!PackStateVector@{PackStateVector}}
+\index{PackStateVector@{PackStateVector}!StatePacking.cpp@{StatePacking.cpp}}
+\doxysubsubsection{\texorpdfstring{PackStateVector()}{PackStateVector()}}
+{\footnotesize\ttfamily void Compact\+Star\+::\+Physics\+::\+Evolution\+::\+Pack\+State\+Vector (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_state_vector}{State\+Vector}} \&}]{state,  }\item[{const \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_state_layout}{State\+Layout}} \&}]{layout,  }\item[{double $\ast$}]{y }\end{DoxyParamCaption})}
+
+
+
+Pack all active State blocks into the flat ODE vector y\mbox{[}\mbox{]}. 
+
+For each active tag in {\ttfamily layout}, this\+:
+\begin{DoxyEnumerate}
+\item obtains the corresponding State\& from {\ttfamily state},
+\item determines its block size from {\ttfamily layout},
+\item calls State\+::\+Pack\+To() to write into y\mbox{[}offset..offset+size).
+\end{DoxyEnumerate}
+
+
+\begin{DoxyParams}{Parameters}
+{\em state} & Composite view over all registered State blocks. \\
+\hline
+{\em layout} & Layout describing offsets/sizes for each tag in y\mbox{[}\mbox{]}. \\
+\hline
+{\em y} & Output pointer to the first element of the flat ODE vector. Must have capacity at least layout.\+Total\+Size(). \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{_state_packing_8cpp_a7706794e4cfb8a5ed48ab4e406ffce8b}\label{_state_packing_8cpp_a7706794e4cfb8a5ed48ab4e406ffce8b}} 
+\index{StatePacking.cpp@{StatePacking.cpp}!ScatterRHSFromAccumulator@{ScatterRHSFromAccumulator}}
+\index{ScatterRHSFromAccumulator@{ScatterRHSFromAccumulator}!StatePacking.cpp@{StatePacking.cpp}}
+\doxysubsubsection{\texorpdfstring{ScatterRHSFromAccumulator()}{ScatterRHSFromAccumulator()}}
+{\footnotesize\ttfamily void Compact\+Star\+::\+Physics\+::\+Evolution\+::\+Scatter\+RHSFrom\+Accumulator (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_r_h_s_accumulator}{RHSAccumulator}} \&}]{rhs,  }\item[{const \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_state_layout}{State\+Layout}} \&}]{layout,  }\item[{double $\ast$}]{dydt }\end{DoxyParamCaption})}
+
+
+
+Scatter contributions from RHSAccumulator into dydt\mbox{[}\mbox{]}. 
+
+After drivers have written d\+Y/dt contributions into {\ttfamily rhs} (one block per State\+Tag), this function copies those blocks into the flat RHS vector dydt\mbox{[}\mbox{]} using the offsets/sizes stored in {\ttfamily layout}.
+
+Only tags that are active in {\ttfamily layout} and configured in {\ttfamily rhs} are copied. For safety, a mismatch between block sizes will throw.
+
+
+\begin{DoxyParams}{Parameters}
+{\em rhs} & RHSAccumulator containing per-\/tag d\+Y/dt blocks. \\
+\hline
+{\em layout} & Layout describing offsets/sizes for each tag in dydt\mbox{[}\mbox{]}. \\
+\hline
+{\em dydt} & Output pointer to the first element of the flat RHS vector. Must have capacity at least layout.\+Total\+Size(). \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{_state_packing_8cpp_a547187e211d1075edc75eb9d5176eea3}\label{_state_packing_8cpp_a547187e211d1075edc75eb9d5176eea3}} 
+\index{StatePacking.cpp@{StatePacking.cpp}!UnpackStateVector@{UnpackStateVector}}
+\index{UnpackStateVector@{UnpackStateVector}!StatePacking.cpp@{StatePacking.cpp}}
+\doxysubsubsection{\texorpdfstring{UnpackStateVector()}{UnpackStateVector()}}
+{\footnotesize\ttfamily void Compact\+Star\+::\+Physics\+::\+Evolution\+::\+Unpack\+State\+Vector (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_state_vector}{State\+Vector}} \&}]{state,  }\item[{const \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_state_layout}{State\+Layout}} \&}]{layout,  }\item[{const double $\ast$}]{y }\end{DoxyParamCaption})}
+
+
+
+Unpack the flat ODE vector y\mbox{[}\mbox{]} back into the State blocks. 
+
+For each active tag in {\ttfamily layout}, this\+:
+\begin{DoxyEnumerate}
+\item obtains the corresponding State\& from {\ttfamily state},
+\item determines its block size from {\ttfamily layout},
+\item calls State\+::\+Unpack\+From() on the slice y\mbox{[}offset..offset+size).
+\end{DoxyEnumerate}
+
+
+\begin{DoxyParams}{Parameters}
+{\em state} & Composite view over all registered State blocks. \\
+\hline
+{\em layout} & Layout describing offsets/sizes for each tag in y\mbox{[}\mbox{]}. \\
+\hline
+{\em y} & Input pointer to the first element of the flat ODE vector. Must have length at least layout.\+Total\+Size(). \\
+\hline
+\end{DoxyParams}

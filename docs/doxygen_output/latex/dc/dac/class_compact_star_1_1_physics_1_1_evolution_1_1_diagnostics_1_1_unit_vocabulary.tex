@@ -1,0 +1,49 @@
+\hypertarget{class_compact_star_1_1_physics_1_1_evolution_1_1_diagnostics_1_1_unit_vocabulary}{}\doxysection{Compact\+Star\+::Physics\+::Evolution\+::Diagnostics\+::Unit\+Vocabulary Class Reference}
+\label{class_compact_star_1_1_physics_1_1_evolution_1_1_diagnostics_1_1_unit_vocabulary}\index{CompactStar::Physics::Evolution::Diagnostics::UnitVocabulary@{CompactStar::Physics::Evolution::Diagnostics::UnitVocabulary}}
+
+
+Global allowed-\/vocabulary for unit strings.  
+
+
+
+
+{\ttfamily \#include $<$Unit\+Contract.\+hpp$>$}
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_compact_star_1_1_physics_1_1_evolution_1_1_diagnostics_1_1_unit_vocabulary_ae1464ae899fc21587d7ed96b99653c87}\label{class_compact_star_1_1_physics_1_1_evolution_1_1_diagnostics_1_1_unit_vocabulary_ae1464ae899fc21587d7ed96b99653c87}} 
+{\bfseries Unit\+Vocabulary} (std\+::set$<$ std\+::string $>$ allowed\+\_\+units)
+\begin{DoxyCompactList}\small\item\em Initialize with a predefined allowed set. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_diagnostics_1_1_unit_vocabulary_a1fdea23a7a7e11a1072a38b9cebedda9}{Is\+Allowed}} (const std\+::string \&unit) const
+\begin{DoxyCompactList}\small\item\em Return true if the unit is allowed. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_compact_star_1_1_physics_1_1_evolution_1_1_diagnostics_1_1_unit_vocabulary_acb5a81a1dc2ae7a886a6d5dca98dd15f}\label{class_compact_star_1_1_physics_1_1_evolution_1_1_diagnostics_1_1_unit_vocabulary_acb5a81a1dc2ae7a886a6d5dca98dd15f}} 
+void {\bfseries Add\+Allowed} (std\+::string unit)
+\begin{DoxyCompactList}\small\item\em Add one allowed unit string. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_compact_star_1_1_physics_1_1_evolution_1_1_diagnostics_1_1_unit_vocabulary_ac1b359ee714d138657d6be81a2cadd40}\label{class_compact_star_1_1_physics_1_1_evolution_1_1_diagnostics_1_1_unit_vocabulary_ac1b359ee714d138657d6be81a2cadd40}} 
+const std\+::set$<$ std\+::string $>$ \& {\bfseries Allowed} () const
+\begin{DoxyCompactList}\small\item\em Return the current allowed set. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Global allowed-\/vocabulary for unit strings. 
+
+You can keep this strict or permissive. Strict is better for regression tests. If you want to allow arbitrary units, just skip validation or keep vocabulary empty. 
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_compact_star_1_1_physics_1_1_evolution_1_1_diagnostics_1_1_unit_vocabulary_a1fdea23a7a7e11a1072a38b9cebedda9}\label{class_compact_star_1_1_physics_1_1_evolution_1_1_diagnostics_1_1_unit_vocabulary_a1fdea23a7a7e11a1072a38b9cebedda9}} 
+\index{CompactStar::Physics::Evolution::Diagnostics::UnitVocabulary@{CompactStar::Physics::Evolution::Diagnostics::UnitVocabulary}!IsAllowed@{IsAllowed}}
+\index{IsAllowed@{IsAllowed}!CompactStar::Physics::Evolution::Diagnostics::UnitVocabulary@{CompactStar::Physics::Evolution::Diagnostics::UnitVocabulary}}
+\doxysubsubsection{\texorpdfstring{IsAllowed()}{IsAllowed()}}
+{\footnotesize\ttfamily bool Compact\+Star\+::\+Physics\+::\+Evolution\+::\+Diagnostics\+::\+Unit\+Vocabulary\+::\+Is\+Allowed (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{unit }\end{DoxyParamCaption}) const}
+
+
+
+Return true if the unit is allowed. 
+
+If the vocabulary is empty, this returns true (treat as “no enforcement”). 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Compact\+Star/\+Physics/\+Evolution/\+Diagnostics/\mbox{\hyperlink{_unit_contract_8hpp}{Unit\+Contract.\+hpp}}\item 
+Compact\+Star/\+Physics/\+Evolution/\+Diagnostics/src/Unit\+Contract.\+cpp\end{DoxyCompactItemize}

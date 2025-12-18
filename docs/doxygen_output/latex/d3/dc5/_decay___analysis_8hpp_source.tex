@@ -46,7 +46,7 @@
 \DoxyCodeLine{53 \{}
 \DoxyCodeLine{54 }
 \DoxyCodeLine{55 \textcolor{comment}{//==============================================================}}
-\DoxyCodeLine{56 \textcolor{keyword}{class }\mbox{\hyperlink{class_compact_star_1_1_microphysics_1_1_b_n_v_1_1_analysis_1_1_decay___analysis}{Decay\_Analysis}} : \textcolor{keyword}{public} \mbox{\hyperlink{class_compact_star_1_1_analysis}{CompactStar::Analysis}}}
+\DoxyCodeLine{56 \textcolor{keyword}{class }\mbox{\hyperlink{class_compact_star_1_1_microphysics_1_1_b_n_v_1_1_analysis_1_1_decay___analysis}{Decay\_Analysis}} : \textcolor{keyword}{public} \mbox{\hyperlink{class_compact_star_1_1_core_1_1_analysis}{CompactStar::Core::Analysis}}}
 \DoxyCodeLine{57 \{}
 \DoxyCodeLine{58     \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
 \DoxyCodeLine{59   \textcolor{keyword}{private}:}
@@ -102,7 +102,7 @@
 \DoxyCodeLine{117     \textcolor{comment}{// Masses must be converted from MeV to fm\string^-\/1}}
 \DoxyCodeLine{118     \mbox{\hyperlink{class_zaki_1_1_vector_1_1_data_set}{Zaki::Vector::DataSet}} V\_self\_E\_ds;}
 \DoxyCodeLine{119 }
-\DoxyCodeLine{120     \mbox{\hyperlink{class_compact_star_1_1_pulsar}{Pulsar}} *pulsar;}
+\DoxyCodeLine{120     \mbox{\hyperlink{class_compact_star_1_1_core_1_1_pulsar}{Core::Pulsar}} *pulsar;}
 \DoxyCodeLine{121 }
 \DoxyCodeLine{122     \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
 \DoxyCodeLine{123   \textcolor{keyword}{public}:}
@@ -110,8 +110,8 @@
 \DoxyCodeLine{125 }
 \DoxyCodeLine{126     \mbox{\hyperlink{class_compact_star_1_1_microphysics_1_1_b_n_v_1_1_analysis_1_1_decay___analysis}{\string~Decay\_Analysis}}();}
 \DoxyCodeLine{127 }
-\DoxyCodeLine{129     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_compact_star_1_1_microphysics_1_1_b_n_v_1_1_analysis_1_1_decay___analysis_aa3c85ce2a8b008d749d3a7877b931e5a}{Analyze}}(\mbox{\hyperlink{class_compact_star_1_1_n_star}{NStar}} *in\_star) \textcolor{keyword}{override};}
-\DoxyCodeLine{130     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_compact_star_1_1_microphysics_1_1_b_n_v_1_1_analysis_1_1_decay___analysis_aa268ad728013213186c020b727223ad1}{Analyze}}(\mbox{\hyperlink{class_compact_star_1_1_mixed_star}{MixedStar}} *in\_star)\textcolor{keyword}{ override }\{\}}
+\DoxyCodeLine{129     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_compact_star_1_1_microphysics_1_1_b_n_v_1_1_analysis_1_1_decay___analysis_a82e42ba730e313365271ea38e994be09}{Analyze}}(\mbox{\hyperlink{class_compact_star_1_1_core_1_1_n_star}{Core::NStar}} *in\_star) \textcolor{keyword}{override};}
+\DoxyCodeLine{130     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_compact_star_1_1_microphysics_1_1_b_n_v_1_1_analysis_1_1_decay___analysis_a2e450bd4d9cd1d706ffce2481ea4316a}{Analyze}}(\mbox{\hyperlink{class_compact_star_1_1_core_1_1_mixed_star}{Core::MixedStar}} *in\_star)\textcolor{keyword}{ override }\{\}}
 \DoxyCodeLine{131 }
 \DoxyCodeLine{133     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_compact_star_1_1_microphysics_1_1_b_n_v_1_1_analysis_1_1_decay___analysis_a3246dd79dda633a791c659eff5c5922f}{Export}}(\textcolor{keyword}{const} \mbox{\hyperlink{class_zaki_1_1_string_1_1_directory}{Zaki::String::Directory}} \&) \textcolor{keyword}{override};}
 \DoxyCodeLine{134 }
@@ -124,7 +124,7 @@
 \DoxyCodeLine{142 }
 \DoxyCodeLine{144     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_compact_star_1_1_microphysics_1_1_b_n_v_1_1_analysis_1_1_decay___analysis_a49e840d7ca0663e870d4b97e011eb259}{PlotRestEnergy}}();}
 \DoxyCodeLine{145 }
-\DoxyCodeLine{147     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_compact_star_1_1_microphysics_1_1_b_n_v_1_1_analysis_1_1_decay___analysis_a8a2454ef14ded4b194f40bf4c5500ad6}{AttachPulsar}}(\mbox{\hyperlink{class_compact_star_1_1_pulsar}{Pulsar}} *puls);}
+\DoxyCodeLine{147     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_compact_star_1_1_microphysics_1_1_b_n_v_1_1_analysis_1_1_decay___analysis_a7b8c1a65a66e2a139448160ea8b26c06}{AttachPulsar}}(\mbox{\hyperlink{class_compact_star_1_1_core_1_1_pulsar}{Core::Pulsar}} *puls);}
 \DoxyCodeLine{148 \};}
 \DoxyCodeLine{149 }
 \DoxyCodeLine{150 \textcolor{comment}{//==============================================================}}

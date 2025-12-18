@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['chem_0',['Chem',['../da/d7b/namespace_compact_star_1_1_physics_1_1_state.html#af14f5554b0d9be50c5ea718733bc424ba576bfc2ef5ff3aea7cecfe5f0bee3886',1,'CompactStar::Physics::State']]],
-  ['custom_1',['Custom',['../d6/d38/namespace_compact_star_1_1_physics_1_1_evolution.html#a77ec205aab45375896e1afc074f535bca90589c47f06eb971d548591f23c285af',1,'CompactStar::Physics::Evolution::Custom()'],['../da/d7b/namespace_compact_star_1_1_physics_1_1_state.html#af14f5554b0d9be50c5ea718733bc424ba90589c47f06eb971d548591f23c285af',1,'CompactStar::Physics::State::Custom()']]]
+  ['baryondensity_0',['BaryonDensity',['../d4/d29/struct_compact_star_1_1_core_1_1_star_profile.html#a69a0f27099ce767c2afe8fe5503d7628a31519c07cd22a64ea3e013348518b410',1,'CompactStar::Core::StarProfile']]],
+  ['bnv_1',['BNV',['../da/d7b/namespace_compact_star_1_1_physics_1_1_state.html#af14f5554b0d9be50c5ea718733bc424baaca5e32569b8af22bd1e8a13eefb0c87',1,'CompactStar::Physics::State']]]
 ];

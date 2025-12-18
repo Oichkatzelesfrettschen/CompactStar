@@ -28,8 +28,8 @@
 \DoxyCodeLine{24 \textcolor{comment}{ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE}}
 \DoxyCodeLine{25 \textcolor{comment}{ * SOFTWARE.}}
 \DoxyCodeLine{26 \textcolor{comment}{ */}}
-\DoxyCodeLine{55 \textcolor{preprocessor}{\#ifndef CompactStar\_StarProfile\_H}}
-\DoxyCodeLine{56 \textcolor{preprocessor}{\#define CompactStar\_StarProfile\_H}}
+\DoxyCodeLine{55 \textcolor{preprocessor}{\#ifndef CompactStar\_Core\_StarProfile\_H}}
+\DoxyCodeLine{56 \textcolor{preprocessor}{\#define CompactStar\_Core\_StarProfile\_H}}
 \DoxyCodeLine{57 }
 \DoxyCodeLine{58 \textcolor{preprocessor}{\#include <algorithm>}}
 \DoxyCodeLine{59 \textcolor{preprocessor}{\#include <cstddef>}}
@@ -40,13 +40,13 @@
 \DoxyCodeLine{64 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_seq_point_8hpp}{CompactStar/Core/SeqPoint.hpp}}"{}}}
 \DoxyCodeLine{65 \textcolor{preprocessor}{\#include <\mbox{\hyperlink{_data_set_8hpp}{Zaki/Vector/DataSet.hpp}}>}}
 \DoxyCodeLine{66 }
-\DoxyCodeLine{67 \textcolor{keyword}{namespace }CompactStar}
+\DoxyCodeLine{67 \textcolor{keyword}{namespace }CompactStar::Core}
 \DoxyCodeLine{68 \{}
 \DoxyCodeLine{69 }
 \DoxyCodeLine{70 \textcolor{comment}{//==============================================================}}
 \DoxyCodeLine{71 \textcolor{comment}{//                        StarProfile}}
 \DoxyCodeLine{72 \textcolor{comment}{//==============================================================}}
-\DoxyCodeLine{86 \textcolor{comment}{}\textcolor{keyword}{struct }\mbox{\hyperlink{struct_compact_star_1_1_star_profile}{StarProfile}}}
+\DoxyCodeLine{86 \textcolor{comment}{}\textcolor{keyword}{struct }\mbox{\hyperlink{struct_compact_star_1_1_core_1_1_star_profile}{StarProfile}}}
 \DoxyCodeLine{87 \{}
 \DoxyCodeLine{88   \textcolor{keyword}{private}:}
 \DoxyCodeLine{90     \textcolor{keywordtype}{int} profile\_precision = 9;}
@@ -55,148 +55,149 @@
 \DoxyCodeLine{93     \textcolor{comment}{// -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
 \DoxyCodeLine{94     \textcolor{comment}{// 1) Strongly-\/typed column identifiers}}
 \DoxyCodeLine{95     \textcolor{comment}{// -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
-\DoxyCodeLine{110 \textcolor{comment}{}    \textcolor{keyword}{enum class} \mbox{\hyperlink{struct_compact_star_1_1_star_profile_afcfd77a3fe7d7158278310be5e7075d8}{Column}} : \textcolor{keywordtype}{int}}
+\DoxyCodeLine{110 \textcolor{comment}{}    \textcolor{keyword}{enum class} \mbox{\hyperlink{struct_compact_star_1_1_core_1_1_star_profile_a69a0f27099ce767c2afe8fe5503d7628}{Column}} : \textcolor{keywordtype}{int}}
 \DoxyCodeLine{111     \{}
-\DoxyCodeLine{112         \mbox{\hyperlink{struct_compact_star_1_1_star_profile_afcfd77a3fe7d7158278310be5e7075d8ad1106ccca74e98877ed6d7890c70bb2c}{Radius}} = 0,      }
-\DoxyCodeLine{113         \mbox{\hyperlink{struct_compact_star_1_1_star_profile_afcfd77a3fe7d7158278310be5e7075d8aff2864d6f652ee0ac254814f1ae4f4a8}{Mass}},          }
-\DoxyCodeLine{114         \mbox{\hyperlink{struct_compact_star_1_1_star_profile_afcfd77a3fe7d7158278310be5e7075d8aa312480076674952a868e487eee050a5}{MetricNuPrime}}, }
-\DoxyCodeLine{115         \mbox{\hyperlink{struct_compact_star_1_1_star_profile_afcfd77a3fe7d7158278310be5e7075d8aa78578c428179b490a0461e76ba5f319}{Pressure}},      }
-\DoxyCodeLine{116         \mbox{\hyperlink{struct_compact_star_1_1_star_profile_afcfd77a3fe7d7158278310be5e7075d8a459a5fc6d80b0bb954be7ffabc1137ff}{EnergyDensity}}, }
-\DoxyCodeLine{117         \mbox{\hyperlink{struct_compact_star_1_1_star_profile_afcfd77a3fe7d7158278310be5e7075d8a31519c07cd22a64ea3e013348518b410}{BaryonDensity}}, }
-\DoxyCodeLine{118         \mbox{\hyperlink{struct_compact_star_1_1_star_profile_afcfd77a3fe7d7158278310be5e7075d8a72fd3e8826aa395cd9f2001b5160976c}{MetricNu}},      }
-\DoxyCodeLine{119         \mbox{\hyperlink{struct_compact_star_1_1_star_profile_afcfd77a3fe7d7158278310be5e7075d8a8c24dc3d008e6f222bcc2c07d9a64bfe}{MetricLambda}}   }
+\DoxyCodeLine{112         \mbox{\hyperlink{struct_compact_star_1_1_core_1_1_star_profile_a69a0f27099ce767c2afe8fe5503d7628ad1106ccca74e98877ed6d7890c70bb2c}{Radius}} = 0,      }
+\DoxyCodeLine{113         \mbox{\hyperlink{struct_compact_star_1_1_core_1_1_star_profile_a69a0f27099ce767c2afe8fe5503d7628aff2864d6f652ee0ac254814f1ae4f4a8}{Mass}},          }
+\DoxyCodeLine{114         \mbox{\hyperlink{struct_compact_star_1_1_core_1_1_star_profile_a69a0f27099ce767c2afe8fe5503d7628aa312480076674952a868e487eee050a5}{MetricNuPrime}}, }
+\DoxyCodeLine{115         \mbox{\hyperlink{struct_compact_star_1_1_core_1_1_star_profile_a69a0f27099ce767c2afe8fe5503d7628aa78578c428179b490a0461e76ba5f319}{Pressure}},      }
+\DoxyCodeLine{116         \mbox{\hyperlink{struct_compact_star_1_1_core_1_1_star_profile_a69a0f27099ce767c2afe8fe5503d7628a459a5fc6d80b0bb954be7ffabc1137ff}{EnergyDensity}}, }
+\DoxyCodeLine{117         \mbox{\hyperlink{struct_compact_star_1_1_core_1_1_star_profile_a69a0f27099ce767c2afe8fe5503d7628a31519c07cd22a64ea3e013348518b410}{BaryonDensity}}, }
+\DoxyCodeLine{118         \mbox{\hyperlink{struct_compact_star_1_1_core_1_1_star_profile_a69a0f27099ce767c2afe8fe5503d7628a72fd3e8826aa395cd9f2001b5160976c}{MetricNu}},      }
+\DoxyCodeLine{119         \mbox{\hyperlink{struct_compact_star_1_1_core_1_1_star_profile_a69a0f27099ce767c2afe8fe5503d7628a8c24dc3d008e6f222bcc2c07d9a64bfe}{MetricLambda}}   }
 \DoxyCodeLine{120     \};}
 \DoxyCodeLine{121 }
 \DoxyCodeLine{122     \textcolor{comment}{// -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
 \DoxyCodeLine{123     \textcolor{comment}{// 2) Raw radial data}}
 \DoxyCodeLine{124     \textcolor{comment}{// -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
-\DoxyCodeLine{131 \textcolor{comment}{}    \mbox{\hyperlink{class_zaki_1_1_vector_1_1_data_set}{Zaki::Vector::DataSet}} \mbox{\hyperlink{struct_compact_star_1_1_star_profile_a8378261b8df3b639cd4b9a40fd201148}{radial}};}
-\DoxyCodeLine{132 }
-\DoxyCodeLine{133     \textcolor{comment}{// -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
-\DoxyCodeLine{134     \textcolor{comment}{// 3) Sequence metadata}}
-\DoxyCodeLine{135     \textcolor{comment}{// -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
-\DoxyCodeLine{136     \mbox{\hyperlink{class_compact_star_1_1_seq_point}{SeqPoint}} \mbox{\hyperlink{struct_compact_star_1_1_star_profile_a0b64a950b06ee63fccba59a3b4d349a3}{seq\_point}}\{\}; }
-\DoxyCodeLine{137 }
-\DoxyCodeLine{138     \textcolor{comment}{// -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
-\DoxyCodeLine{139     \textcolor{comment}{// 4) Global star properties (surface values)}}
-\DoxyCodeLine{140     \textcolor{comment}{// -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
-\DoxyCodeLine{141     \textcolor{keywordtype}{double} \mbox{\hyperlink{struct_compact_star_1_1_star_profile_a45976f38173ad03dd3c9eb5426e64fbc}{M}} = 0.0;         }
-\DoxyCodeLine{142     \textcolor{keywordtype}{double} \mbox{\hyperlink{struct_compact_star_1_1_star_profile_abfc49d2e02cf8638568e740282481928}{R}} = 0.0;         }
-\DoxyCodeLine{143     \textcolor{keywordtype}{double} \mbox{\hyperlink{struct_compact_star_1_1_star_profile_a5617cc8d449cfbc4eb1f0448b98c719b}{z\_surf}} = 0.0; }
-\DoxyCodeLine{144 }
-\DoxyCodeLine{145     \textcolor{comment}{// -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
-\DoxyCodeLine{146     \textcolor{comment}{// 5) Backward-\/compatible integer indices}}
-\DoxyCodeLine{147     \textcolor{comment}{// -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
-\DoxyCodeLine{152 \textcolor{comment}{}    \textcolor{keywordtype}{int} idx\_r = \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{int}\textcolor{keyword}{>}(\mbox{\hyperlink{struct_compact_star_1_1_star_profile_afcfd77a3fe7d7158278310be5e7075d8ad1106ccca74e98877ed6d7890c70bb2c}{Column::Radius}});}
-\DoxyCodeLine{153     \textcolor{keywordtype}{int} idx\_m = \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{int}\textcolor{keyword}{>}(\mbox{\hyperlink{struct_compact_star_1_1_star_profile_afcfd77a3fe7d7158278310be5e7075d8aff2864d6f652ee0ac254814f1ae4f4a8}{Column::Mass}});}
-\DoxyCodeLine{154     \textcolor{keywordtype}{int} idx\_nuprime = \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{int}\textcolor{keyword}{>}(\mbox{\hyperlink{struct_compact_star_1_1_star_profile_afcfd77a3fe7d7158278310be5e7075d8aa312480076674952a868e487eee050a5}{Column::MetricNuPrime}});}
-\DoxyCodeLine{155     \textcolor{keywordtype}{int} idx\_p = \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{int}\textcolor{keyword}{>}(\mbox{\hyperlink{struct_compact_star_1_1_star_profile_afcfd77a3fe7d7158278310be5e7075d8aa78578c428179b490a0461e76ba5f319}{Column::Pressure}});}
-\DoxyCodeLine{156     \textcolor{keywordtype}{int} idx\_eps = \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{int}\textcolor{keyword}{>}(\mbox{\hyperlink{struct_compact_star_1_1_star_profile_afcfd77a3fe7d7158278310be5e7075d8a459a5fc6d80b0bb954be7ffabc1137ff}{Column::EnergyDensity}});}
-\DoxyCodeLine{157     \textcolor{keywordtype}{int} idx\_nb = \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{int}\textcolor{keyword}{>}(\mbox{\hyperlink{struct_compact_star_1_1_star_profile_afcfd77a3fe7d7158278310be5e7075d8a31519c07cd22a64ea3e013348518b410}{Column::BaryonDensity}});}
-\DoxyCodeLine{158     \textcolor{keywordtype}{int} idx\_nu = \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{int}\textcolor{keyword}{>}(\mbox{\hyperlink{struct_compact_star_1_1_star_profile_afcfd77a3fe7d7158278310be5e7075d8a72fd3e8826aa395cd9f2001b5160976c}{Column::MetricNu}});}
-\DoxyCodeLine{159     \textcolor{keywordtype}{int} idx\_lambda = \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{int}\textcolor{keyword}{>}(\mbox{\hyperlink{struct_compact_star_1_1_star_profile_afcfd77a3fe7d7158278310be5e7075d8a8c24dc3d008e6f222bcc2c07d9a64bfe}{Column::MetricLambda}}); \textcolor{comment}{// may be invalid for older files}}
-\DoxyCodeLine{162 \textcolor{comment}{}    \textcolor{comment}{// -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
-\DoxyCodeLine{163     \textcolor{comment}{// 6) Per-\/species densities}}
-\DoxyCodeLine{164     \textcolor{comment}{// -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
-\DoxyCodeLine{174 \textcolor{comment}{}    std::vector<std::string> \mbox{\hyperlink{struct_compact_star_1_1_star_profile_a967a39c4c0e0d0326048837900a2be31}{species\_labels}};}
-\DoxyCodeLine{175 }
-\DoxyCodeLine{181     std::vector<int> \mbox{\hyperlink{struct_compact_star_1_1_star_profile_a7efa32f76545381b88a9caeb63a162fe}{species\_idx}};}
-\DoxyCodeLine{182 }
-\DoxyCodeLine{183     \textcolor{comment}{// -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
-\DoxyCodeLine{184     \textcolor{comment}{// 7) Basic queries}}
-\DoxyCodeLine{185     \textcolor{comment}{// -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
-\DoxyCodeLine{190 \textcolor{comment}{}    \textcolor{keywordtype}{bool} \mbox{\hyperlink{struct_compact_star_1_1_star_profile_a7b96f6da1096bce884d26fb4ca48fe0c}{empty}}()\textcolor{keyword}{ const}}
-\DoxyCodeLine{191 \textcolor{keyword}{    }\{}
-\DoxyCodeLine{192         \textcolor{keyword}{auto} dims = \mbox{\hyperlink{struct_compact_star_1_1_star_profile_a8378261b8df3b639cd4b9a40fd201148}{radial}}.\mbox{\hyperlink{class_zaki_1_1_vector_1_1_data_set_ac2d737e6a1b03feff3543fb894137b8d}{Dim}}();}
-\DoxyCodeLine{193         \textcolor{keywordflow}{if} (dims.empty())}
-\DoxyCodeLine{194             \textcolor{keywordflow}{return} \textcolor{keyword}{true};}
-\DoxyCodeLine{195         \textcolor{keywordflow}{return} \mbox{\hyperlink{struct_compact_star_1_1_star_profile_a8378261b8df3b639cd4b9a40fd201148}{radial}}[0].Size() == 0;}
+\DoxyCodeLine{130 \textcolor{comment}{}    \mbox{\hyperlink{class_zaki_1_1_vector_1_1_data_set}{Zaki::Vector::DataSet}} \mbox{\hyperlink{struct_compact_star_1_1_core_1_1_star_profile_a270e0e97913bc127e4c665f909eaaf46}{radial}};}
+\DoxyCodeLine{131 }
+\DoxyCodeLine{132     \textcolor{comment}{// -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{133     \textcolor{comment}{// 3) Sequence metadata}}
+\DoxyCodeLine{134     \textcolor{comment}{// -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{135     \mbox{\hyperlink{class_compact_star_1_1_core_1_1_seq_point}{SeqPoint}} \mbox{\hyperlink{struct_compact_star_1_1_core_1_1_star_profile_ae19034719eed95b1ffe940faedcb3c35}{seq\_point}}\{\}; }
+\DoxyCodeLine{136 }
+\DoxyCodeLine{137     \textcolor{comment}{// -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{138     \textcolor{comment}{// 4) Global star properties (surface values)}}
+\DoxyCodeLine{139     \textcolor{comment}{// -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{140     \textcolor{keywordtype}{double} \mbox{\hyperlink{struct_compact_star_1_1_core_1_1_star_profile_abc46b46cd9111d922c5c4544dd2acc4f}{M}} = 0.0;         }
+\DoxyCodeLine{141     \textcolor{keywordtype}{double} \mbox{\hyperlink{struct_compact_star_1_1_core_1_1_star_profile_aaa22cc4bb42d396d9808bc27fa6a50a0}{R}} = 0.0;         }
+\DoxyCodeLine{142     \textcolor{keywordtype}{double} \mbox{\hyperlink{struct_compact_star_1_1_core_1_1_star_profile_a7521a74eac378508f4f94a3628fbb7df}{z\_surf}} = 0.0; }
+\DoxyCodeLine{143 }
+\DoxyCodeLine{144     \textcolor{comment}{// -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{145     \textcolor{comment}{// 5) Backward-\/compatible integer indices}}
+\DoxyCodeLine{146     \textcolor{comment}{// -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{151 \textcolor{comment}{}    \textcolor{keywordtype}{int} idx\_r = \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{int}\textcolor{keyword}{>}(\mbox{\hyperlink{struct_compact_star_1_1_core_1_1_star_profile_a69a0f27099ce767c2afe8fe5503d7628ad1106ccca74e98877ed6d7890c70bb2c}{Column::Radius}});}
+\DoxyCodeLine{152     \textcolor{keywordtype}{int} idx\_m = \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{int}\textcolor{keyword}{>}(\mbox{\hyperlink{struct_compact_star_1_1_core_1_1_star_profile_a69a0f27099ce767c2afe8fe5503d7628aff2864d6f652ee0ac254814f1ae4f4a8}{Column::Mass}});}
+\DoxyCodeLine{153     \textcolor{keywordtype}{int} idx\_nuprime = \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{int}\textcolor{keyword}{>}(\mbox{\hyperlink{struct_compact_star_1_1_core_1_1_star_profile_a69a0f27099ce767c2afe8fe5503d7628aa312480076674952a868e487eee050a5}{Column::MetricNuPrime}});}
+\DoxyCodeLine{154     \textcolor{keywordtype}{int} idx\_p = \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{int}\textcolor{keyword}{>}(\mbox{\hyperlink{struct_compact_star_1_1_core_1_1_star_profile_a69a0f27099ce767c2afe8fe5503d7628aa78578c428179b490a0461e76ba5f319}{Column::Pressure}});}
+\DoxyCodeLine{155     \textcolor{keywordtype}{int} idx\_eps = \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{int}\textcolor{keyword}{>}(\mbox{\hyperlink{struct_compact_star_1_1_core_1_1_star_profile_a69a0f27099ce767c2afe8fe5503d7628a459a5fc6d80b0bb954be7ffabc1137ff}{Column::EnergyDensity}});}
+\DoxyCodeLine{156     \textcolor{keywordtype}{int} idx\_nb = \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{int}\textcolor{keyword}{>}(\mbox{\hyperlink{struct_compact_star_1_1_core_1_1_star_profile_a69a0f27099ce767c2afe8fe5503d7628a31519c07cd22a64ea3e013348518b410}{Column::BaryonDensity}});}
+\DoxyCodeLine{157     \textcolor{keywordtype}{int} idx\_nu = \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{int}\textcolor{keyword}{>}(\mbox{\hyperlink{struct_compact_star_1_1_core_1_1_star_profile_a69a0f27099ce767c2afe8fe5503d7628a72fd3e8826aa395cd9f2001b5160976c}{Column::MetricNu}});}
+\DoxyCodeLine{158     \textcolor{keywordtype}{int} idx\_lambda = \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{int}\textcolor{keyword}{>}(\mbox{\hyperlink{struct_compact_star_1_1_core_1_1_star_profile_a69a0f27099ce767c2afe8fe5503d7628a8c24dc3d008e6f222bcc2c07d9a64bfe}{Column::MetricLambda}}); \textcolor{comment}{// may be invalid for older files}}
+\DoxyCodeLine{161 \textcolor{comment}{}    \textcolor{comment}{// -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{162     \textcolor{comment}{// 6) Per-\/species densities}}
+\DoxyCodeLine{163     \textcolor{comment}{// -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{173 \textcolor{comment}{}    std::vector<std::string> \mbox{\hyperlink{struct_compact_star_1_1_core_1_1_star_profile_a2aff71901f78187dfbbfaa48a1354b05}{species\_labels}};}
+\DoxyCodeLine{174 }
+\DoxyCodeLine{180     std::vector<int> \mbox{\hyperlink{struct_compact_star_1_1_core_1_1_star_profile_aab8ba5deee62a546a0782d21900df993}{species\_idx}};}
+\DoxyCodeLine{181 }
+\DoxyCodeLine{182     \textcolor{comment}{// -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{183     \textcolor{comment}{// 7) Basic queries}}
+\DoxyCodeLine{184     \textcolor{comment}{// -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{189 \textcolor{comment}{}    \textcolor{keywordtype}{bool} \mbox{\hyperlink{struct_compact_star_1_1_core_1_1_star_profile_a3750369c5f726772e3173490671a0f0a}{empty}}()\textcolor{keyword}{ const}}
+\DoxyCodeLine{190 \textcolor{keyword}{    }\{}
+\DoxyCodeLine{191         \textcolor{keywordflow}{return} \mbox{\hyperlink{struct_compact_star_1_1_core_1_1_star_profile_a270e0e97913bc127e4c665f909eaaf46}{radial}}.\mbox{\hyperlink{class_zaki_1_1_vector_1_1_data_set_aa6b454df7affd47e00f6cb40afd9b56f}{Empty}}();}
+\DoxyCodeLine{192         \textcolor{comment}{// auto dims = radial.Dim();}}
+\DoxyCodeLine{193         \textcolor{comment}{// if (dims.empty())}}
+\DoxyCodeLine{194         \textcolor{comment}{//  return true;}}
+\DoxyCodeLine{195         \textcolor{comment}{// return radial[0].Size() == 0;}}
 \DoxyCodeLine{196     \}}
 \DoxyCodeLine{197 }
-\DoxyCodeLine{201     std::size\_t \mbox{\hyperlink{struct_compact_star_1_1_star_profile_a4ed746f95b50357a8854791feb757438}{size}}()\textcolor{keyword}{ const}}
+\DoxyCodeLine{201     std::size\_t \mbox{\hyperlink{struct_compact_star_1_1_core_1_1_star_profile_a00c3ab6fc60b250e16e2574ed50c0cf5}{size}}()\textcolor{keyword}{ const}}
 \DoxyCodeLine{202 \textcolor{keyword}{    }\{}
-\DoxyCodeLine{203         \textcolor{keyword}{auto} dims = \mbox{\hyperlink{struct_compact_star_1_1_star_profile_a8378261b8df3b639cd4b9a40fd201148}{radial}}.\mbox{\hyperlink{class_zaki_1_1_vector_1_1_data_set_ac2d737e6a1b03feff3543fb894137b8d}{Dim}}();}
+\DoxyCodeLine{203         \textcolor{keyword}{auto} dims = \mbox{\hyperlink{struct_compact_star_1_1_core_1_1_star_profile_a270e0e97913bc127e4c665f909eaaf46}{radial}}.\mbox{\hyperlink{class_zaki_1_1_vector_1_1_data_set_ac2d737e6a1b03feff3543fb894137b8d}{Dim}}();}
 \DoxyCodeLine{204         \textcolor{keywordflow}{if} (dims.empty())}
 \DoxyCodeLine{205             \textcolor{keywordflow}{return} 0;}
-\DoxyCodeLine{206         \textcolor{keywordflow}{return} \mbox{\hyperlink{struct_compact_star_1_1_star_profile_a8378261b8df3b639cd4b9a40fd201148}{radial}}[0].Size();}
+\DoxyCodeLine{206         \textcolor{keywordflow}{return} \mbox{\hyperlink{struct_compact_star_1_1_core_1_1_star_profile_a270e0e97913bc127e4c665f909eaaf46}{radial}}[0].Size();}
 \DoxyCodeLine{207     \}}
 \DoxyCodeLine{208 }
-\DoxyCodeLine{212     std::size\_t \mbox{\hyperlink{struct_compact_star_1_1_star_profile_ae5eb33989d59fe49b86155a51dea6b58}{column\_count}}()\textcolor{keyword}{ const}}
+\DoxyCodeLine{212     std::size\_t \mbox{\hyperlink{struct_compact_star_1_1_core_1_1_star_profile_a226c69cb6486e2526dd553da6ccf1b8c}{column\_count}}()\textcolor{keyword}{ const}}
 \DoxyCodeLine{213 \textcolor{keyword}{    }\{}
-\DoxyCodeLine{214         \textcolor{keywordflow}{return} \mbox{\hyperlink{struct_compact_star_1_1_star_profile_a8378261b8df3b639cd4b9a40fd201148}{radial}}.\mbox{\hyperlink{class_zaki_1_1_vector_1_1_data_set_ac2d737e6a1b03feff3543fb894137b8d}{Dim}}().size();}
+\DoxyCodeLine{214         \textcolor{keywordflow}{return} \mbox{\hyperlink{struct_compact_star_1_1_core_1_1_star_profile_a270e0e97913bc127e4c665f909eaaf46}{radial}}.\mbox{\hyperlink{class_zaki_1_1_vector_1_1_data_set_ac2d737e6a1b03feff3543fb894137b8d}{Dim}}().size();}
 \DoxyCodeLine{215     \}}
 \DoxyCodeLine{216 }
-\DoxyCodeLine{220     \textcolor{keywordtype}{bool} \mbox{\hyperlink{struct_compact_star_1_1_star_profile_a06d121853c044d35262e5e9cecdb5719}{IsValidColumnIndex}}(\textcolor{keywordtype}{int} idx) \textcolor{keyword}{const} \textcolor{keyword}{noexcept}}
+\DoxyCodeLine{220     \textcolor{keywordtype}{bool} \mbox{\hyperlink{struct_compact_star_1_1_core_1_1_star_profile_ab31344c982c747561a8e6b9f9604ecd5}{IsValidColumnIndex}}(\textcolor{keywordtype}{int} idx) \textcolor{keyword}{const} \textcolor{keyword}{noexcept}}
 \DoxyCodeLine{221     \{}
 \DoxyCodeLine{222         \textcolor{keywordflow}{if} (idx < 0)}
 \DoxyCodeLine{223             \textcolor{keywordflow}{return} \textcolor{keyword}{false};}
-\DoxyCodeLine{224         \textcolor{keywordflow}{return} \textcolor{keyword}{static\_cast<}std::size\_t\textcolor{keyword}{>}(idx) < \mbox{\hyperlink{struct_compact_star_1_1_star_profile_ae5eb33989d59fe49b86155a51dea6b58}{column\_count}}();}
+\DoxyCodeLine{224         \textcolor{keywordflow}{return} \textcolor{keyword}{static\_cast<}std::size\_t\textcolor{keyword}{>}(idx) < \mbox{\hyperlink{struct_compact_star_1_1_core_1_1_star_profile_a226c69cb6486e2526dd553da6ccf1b8c}{column\_count}}();}
 \DoxyCodeLine{225     \}}
 \DoxyCodeLine{226 }
-\DoxyCodeLine{230     \textcolor{keywordtype}{bool} \mbox{\hyperlink{struct_compact_star_1_1_star_profile_aa450ffd70a7c7c5411263727b45bf665}{HasColumn}}(\mbox{\hyperlink{struct_compact_star_1_1_star_profile_afcfd77a3fe7d7158278310be5e7075d8}{Column}} col) \textcolor{keyword}{const} \textcolor{keyword}{noexcept}}
+\DoxyCodeLine{230     \textcolor{keywordtype}{bool} \mbox{\hyperlink{struct_compact_star_1_1_core_1_1_star_profile_a33687cb86215f7243c515a9d4d1a5e8d}{HasColumn}}(\mbox{\hyperlink{struct_compact_star_1_1_core_1_1_star_profile_a69a0f27099ce767c2afe8fe5503d7628}{Column}} col) \textcolor{keyword}{const} \textcolor{keyword}{noexcept}}
 \DoxyCodeLine{231     \{}
-\DoxyCodeLine{232         \textcolor{keywordflow}{return} \mbox{\hyperlink{struct_compact_star_1_1_star_profile_a06d121853c044d35262e5e9cecdb5719}{IsValidColumnIndex}}(\mbox{\hyperlink{struct_compact_star_1_1_star_profile_acadc359379652fd44314a4afc0aba0d5}{GetColumnIndex}}(col));}
+\DoxyCodeLine{232         \textcolor{keywordflow}{return} \mbox{\hyperlink{struct_compact_star_1_1_core_1_1_star_profile_ab31344c982c747561a8e6b9f9604ecd5}{IsValidColumnIndex}}(\mbox{\hyperlink{struct_compact_star_1_1_core_1_1_star_profile_ab4bf589821d34b77517d0c4d8ec7dcc4}{GetColumnIndex}}(col));}
 \DoxyCodeLine{233     \}}
 \DoxyCodeLine{234 }
-\DoxyCodeLine{238     \textcolor{keywordtype}{bool} \mbox{\hyperlink{struct_compact_star_1_1_star_profile_a6dfc86907dd0e7073577db188fc7aa69}{HasMetricLambda}}() const noexcept}
+\DoxyCodeLine{238     \textcolor{keywordtype}{bool} \mbox{\hyperlink{struct_compact_star_1_1_core_1_1_star_profile_ae96f2864220f21e88e5617d1cb10b74e}{HasMetricLambda}}() const noexcept}
 \DoxyCodeLine{239     \{}
-\DoxyCodeLine{240         \textcolor{keywordflow}{return} \mbox{\hyperlink{struct_compact_star_1_1_star_profile_aa450ffd70a7c7c5411263727b45bf665}{HasColumn}}(\mbox{\hyperlink{struct_compact_star_1_1_star_profile_afcfd77a3fe7d7158278310be5e7075d8a8c24dc3d008e6f222bcc2c07d9a64bfe}{Column::MetricLambda}});}
+\DoxyCodeLine{240         \textcolor{keywordflow}{return} \mbox{\hyperlink{struct_compact_star_1_1_core_1_1_star_profile_a33687cb86215f7243c515a9d4d1a5e8d}{HasColumn}}(\mbox{\hyperlink{struct_compact_star_1_1_core_1_1_star_profile_a69a0f27099ce767c2afe8fe5503d7628a8c24dc3d008e6f222bcc2c07d9a64bfe}{Column::MetricLambda}});}
 \DoxyCodeLine{241     \}}
 \DoxyCodeLine{242 }
 \DoxyCodeLine{243     \textcolor{comment}{// -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
 \DoxyCodeLine{244     \textcolor{comment}{// 8) Column index management}}
 \DoxyCodeLine{245     \textcolor{comment}{// -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
-\DoxyCodeLine{252 \textcolor{comment}{}    \textcolor{keywordtype}{int} \mbox{\hyperlink{struct_compact_star_1_1_star_profile_acadc359379652fd44314a4afc0aba0d5}{GetColumnIndex}}(\mbox{\hyperlink{struct_compact_star_1_1_star_profile_afcfd77a3fe7d7158278310be5e7075d8}{Column}} col)\textcolor{keyword}{ const}}
+\DoxyCodeLine{252 \textcolor{comment}{}    \textcolor{keywordtype}{int} \mbox{\hyperlink{struct_compact_star_1_1_core_1_1_star_profile_ab4bf589821d34b77517d0c4d8ec7dcc4}{GetColumnIndex}}(\mbox{\hyperlink{struct_compact_star_1_1_core_1_1_star_profile_a69a0f27099ce767c2afe8fe5503d7628}{Column}} col)\textcolor{keyword}{ const}}
 \DoxyCodeLine{253 \textcolor{keyword}{    }\{}
 \DoxyCodeLine{254         \textcolor{keywordflow}{switch} (col)}
 \DoxyCodeLine{255         \{}
-\DoxyCodeLine{256         \textcolor{keywordflow}{case} \mbox{\hyperlink{struct_compact_star_1_1_star_profile_afcfd77a3fe7d7158278310be5e7075d8ad1106ccca74e98877ed6d7890c70bb2c}{Column::Radius}}:}
+\DoxyCodeLine{256         \textcolor{keywordflow}{case} \mbox{\hyperlink{struct_compact_star_1_1_core_1_1_star_profile_a69a0f27099ce767c2afe8fe5503d7628ad1106ccca74e98877ed6d7890c70bb2c}{Column::Radius}}:}
 \DoxyCodeLine{257             \textcolor{keywordflow}{return} idx\_r;}
-\DoxyCodeLine{258         \textcolor{keywordflow}{case} \mbox{\hyperlink{struct_compact_star_1_1_star_profile_afcfd77a3fe7d7158278310be5e7075d8aff2864d6f652ee0ac254814f1ae4f4a8}{Column::Mass}}:}
+\DoxyCodeLine{258         \textcolor{keywordflow}{case} \mbox{\hyperlink{struct_compact_star_1_1_core_1_1_star_profile_a69a0f27099ce767c2afe8fe5503d7628aff2864d6f652ee0ac254814f1ae4f4a8}{Column::Mass}}:}
 \DoxyCodeLine{259             \textcolor{keywordflow}{return} idx\_m;}
-\DoxyCodeLine{260         \textcolor{keywordflow}{case} \mbox{\hyperlink{struct_compact_star_1_1_star_profile_afcfd77a3fe7d7158278310be5e7075d8aa312480076674952a868e487eee050a5}{Column::MetricNuPrime}}:}
+\DoxyCodeLine{260         \textcolor{keywordflow}{case} \mbox{\hyperlink{struct_compact_star_1_1_core_1_1_star_profile_a69a0f27099ce767c2afe8fe5503d7628aa312480076674952a868e487eee050a5}{Column::MetricNuPrime}}:}
 \DoxyCodeLine{261             \textcolor{keywordflow}{return} idx\_nuprime;}
-\DoxyCodeLine{262         \textcolor{keywordflow}{case} \mbox{\hyperlink{struct_compact_star_1_1_star_profile_afcfd77a3fe7d7158278310be5e7075d8aa78578c428179b490a0461e76ba5f319}{Column::Pressure}}:}
+\DoxyCodeLine{262         \textcolor{keywordflow}{case} \mbox{\hyperlink{struct_compact_star_1_1_core_1_1_star_profile_a69a0f27099ce767c2afe8fe5503d7628aa78578c428179b490a0461e76ba5f319}{Column::Pressure}}:}
 \DoxyCodeLine{263             \textcolor{keywordflow}{return} idx\_p;}
-\DoxyCodeLine{264         \textcolor{keywordflow}{case} \mbox{\hyperlink{struct_compact_star_1_1_star_profile_afcfd77a3fe7d7158278310be5e7075d8a459a5fc6d80b0bb954be7ffabc1137ff}{Column::EnergyDensity}}:}
+\DoxyCodeLine{264         \textcolor{keywordflow}{case} \mbox{\hyperlink{struct_compact_star_1_1_core_1_1_star_profile_a69a0f27099ce767c2afe8fe5503d7628a459a5fc6d80b0bb954be7ffabc1137ff}{Column::EnergyDensity}}:}
 \DoxyCodeLine{265             \textcolor{keywordflow}{return} idx\_eps;}
-\DoxyCodeLine{266         \textcolor{keywordflow}{case} \mbox{\hyperlink{struct_compact_star_1_1_star_profile_afcfd77a3fe7d7158278310be5e7075d8a31519c07cd22a64ea3e013348518b410}{Column::BaryonDensity}}:}
+\DoxyCodeLine{266         \textcolor{keywordflow}{case} \mbox{\hyperlink{struct_compact_star_1_1_core_1_1_star_profile_a69a0f27099ce767c2afe8fe5503d7628a31519c07cd22a64ea3e013348518b410}{Column::BaryonDensity}}:}
 \DoxyCodeLine{267             \textcolor{keywordflow}{return} idx\_nb;}
-\DoxyCodeLine{268         \textcolor{keywordflow}{case} \mbox{\hyperlink{struct_compact_star_1_1_star_profile_afcfd77a3fe7d7158278310be5e7075d8a72fd3e8826aa395cd9f2001b5160976c}{Column::MetricNu}}:}
+\DoxyCodeLine{268         \textcolor{keywordflow}{case} \mbox{\hyperlink{struct_compact_star_1_1_core_1_1_star_profile_a69a0f27099ce767c2afe8fe5503d7628a72fd3e8826aa395cd9f2001b5160976c}{Column::MetricNu}}:}
 \DoxyCodeLine{269             \textcolor{keywordflow}{return} idx\_nu;}
-\DoxyCodeLine{270         \textcolor{keywordflow}{case} \mbox{\hyperlink{struct_compact_star_1_1_star_profile_afcfd77a3fe7d7158278310be5e7075d8a8c24dc3d008e6f222bcc2c07d9a64bfe}{Column::MetricLambda}}:}
+\DoxyCodeLine{270         \textcolor{keywordflow}{case} \mbox{\hyperlink{struct_compact_star_1_1_core_1_1_star_profile_a69a0f27099ce767c2afe8fe5503d7628a8c24dc3d008e6f222bcc2c07d9a64bfe}{Column::MetricLambda}}:}
 \DoxyCodeLine{271             \textcolor{keywordflow}{return} idx\_lambda;}
 \DoxyCodeLine{272         \textcolor{keywordflow}{default}:}
 \DoxyCodeLine{273             \textcolor{keywordflow}{return} -\/1;}
 \DoxyCodeLine{274         \}}
 \DoxyCodeLine{275     \}}
 \DoxyCodeLine{276 }
-\DoxyCodeLine{280     \textcolor{keywordtype}{void} \mbox{\hyperlink{struct_compact_star_1_1_star_profile_a642d64df02e1752f08d89cd33c274ed3}{SetColumnIndex}}(\mbox{\hyperlink{struct_compact_star_1_1_star_profile_afcfd77a3fe7d7158278310be5e7075d8}{Column}} col, \textcolor{keywordtype}{int} idx)}
+\DoxyCodeLine{280     \textcolor{keywordtype}{void} \mbox{\hyperlink{struct_compact_star_1_1_core_1_1_star_profile_ab6b5f338b51c9d570fb7592bfe949a62}{SetColumnIndex}}(\mbox{\hyperlink{struct_compact_star_1_1_core_1_1_star_profile_a69a0f27099ce767c2afe8fe5503d7628}{Column}} col, \textcolor{keywordtype}{int} idx)}
 \DoxyCodeLine{281     \{}
 \DoxyCodeLine{282         \textcolor{keywordflow}{switch} (col)}
 \DoxyCodeLine{283         \{}
-\DoxyCodeLine{284         \textcolor{keywordflow}{case} \mbox{\hyperlink{struct_compact_star_1_1_star_profile_afcfd77a3fe7d7158278310be5e7075d8ad1106ccca74e98877ed6d7890c70bb2c}{Column::Radius}}:}
+\DoxyCodeLine{284         \textcolor{keywordflow}{case} \mbox{\hyperlink{struct_compact_star_1_1_core_1_1_star_profile_a69a0f27099ce767c2afe8fe5503d7628ad1106ccca74e98877ed6d7890c70bb2c}{Column::Radius}}:}
 \DoxyCodeLine{285             idx\_r = idx;}
 \DoxyCodeLine{286             \textcolor{keywordflow}{break};}
-\DoxyCodeLine{287         \textcolor{keywordflow}{case} \mbox{\hyperlink{struct_compact_star_1_1_star_profile_afcfd77a3fe7d7158278310be5e7075d8aff2864d6f652ee0ac254814f1ae4f4a8}{Column::Mass}}:}
+\DoxyCodeLine{287         \textcolor{keywordflow}{case} \mbox{\hyperlink{struct_compact_star_1_1_core_1_1_star_profile_a69a0f27099ce767c2afe8fe5503d7628aff2864d6f652ee0ac254814f1ae4f4a8}{Column::Mass}}:}
 \DoxyCodeLine{288             idx\_m = idx;}
 \DoxyCodeLine{289             \textcolor{keywordflow}{break};}
-\DoxyCodeLine{290         \textcolor{keywordflow}{case} \mbox{\hyperlink{struct_compact_star_1_1_star_profile_afcfd77a3fe7d7158278310be5e7075d8aa312480076674952a868e487eee050a5}{Column::MetricNuPrime}}:}
+\DoxyCodeLine{290         \textcolor{keywordflow}{case} \mbox{\hyperlink{struct_compact_star_1_1_core_1_1_star_profile_a69a0f27099ce767c2afe8fe5503d7628aa312480076674952a868e487eee050a5}{Column::MetricNuPrime}}:}
 \DoxyCodeLine{291             idx\_nuprime = idx;}
 \DoxyCodeLine{292             \textcolor{keywordflow}{break};}
-\DoxyCodeLine{293         \textcolor{keywordflow}{case} \mbox{\hyperlink{struct_compact_star_1_1_star_profile_afcfd77a3fe7d7158278310be5e7075d8aa78578c428179b490a0461e76ba5f319}{Column::Pressure}}:}
+\DoxyCodeLine{293         \textcolor{keywordflow}{case} \mbox{\hyperlink{struct_compact_star_1_1_core_1_1_star_profile_a69a0f27099ce767c2afe8fe5503d7628aa78578c428179b490a0461e76ba5f319}{Column::Pressure}}:}
 \DoxyCodeLine{294             idx\_p = idx;}
 \DoxyCodeLine{295             \textcolor{keywordflow}{break};}
-\DoxyCodeLine{296         \textcolor{keywordflow}{case} \mbox{\hyperlink{struct_compact_star_1_1_star_profile_afcfd77a3fe7d7158278310be5e7075d8a459a5fc6d80b0bb954be7ffabc1137ff}{Column::EnergyDensity}}:}
+\DoxyCodeLine{296         \textcolor{keywordflow}{case} \mbox{\hyperlink{struct_compact_star_1_1_core_1_1_star_profile_a69a0f27099ce767c2afe8fe5503d7628a459a5fc6d80b0bb954be7ffabc1137ff}{Column::EnergyDensity}}:}
 \DoxyCodeLine{297             idx\_eps = idx;}
 \DoxyCodeLine{298             \textcolor{keywordflow}{break};}
-\DoxyCodeLine{299         \textcolor{keywordflow}{case} \mbox{\hyperlink{struct_compact_star_1_1_star_profile_afcfd77a3fe7d7158278310be5e7075d8a31519c07cd22a64ea3e013348518b410}{Column::BaryonDensity}}:}
+\DoxyCodeLine{299         \textcolor{keywordflow}{case} \mbox{\hyperlink{struct_compact_star_1_1_core_1_1_star_profile_a69a0f27099ce767c2afe8fe5503d7628a31519c07cd22a64ea3e013348518b410}{Column::BaryonDensity}}:}
 \DoxyCodeLine{300             idx\_nb = idx;}
 \DoxyCodeLine{301             \textcolor{keywordflow}{break};}
-\DoxyCodeLine{302         \textcolor{keywordflow}{case} \mbox{\hyperlink{struct_compact_star_1_1_star_profile_afcfd77a3fe7d7158278310be5e7075d8a72fd3e8826aa395cd9f2001b5160976c}{Column::MetricNu}}:}
+\DoxyCodeLine{302         \textcolor{keywordflow}{case} \mbox{\hyperlink{struct_compact_star_1_1_core_1_1_star_profile_a69a0f27099ce767c2afe8fe5503d7628a72fd3e8826aa395cd9f2001b5160976c}{Column::MetricNu}}:}
 \DoxyCodeLine{303             idx\_nu = idx;}
 \DoxyCodeLine{304             \textcolor{keywordflow}{break};}
-\DoxyCodeLine{305         \textcolor{keywordflow}{case} \mbox{\hyperlink{struct_compact_star_1_1_star_profile_afcfd77a3fe7d7158278310be5e7075d8a8c24dc3d008e6f222bcc2c07d9a64bfe}{Column::MetricLambda}}:}
+\DoxyCodeLine{305         \textcolor{keywordflow}{case} \mbox{\hyperlink{struct_compact_star_1_1_core_1_1_star_profile_a69a0f27099ce767c2afe8fe5503d7628a8c24dc3d008e6f222bcc2c07d9a64bfe}{Column::MetricLambda}}:}
 \DoxyCodeLine{306             idx\_lambda = idx;}
 \DoxyCodeLine{307             \textcolor{keywordflow}{break};}
 \DoxyCodeLine{308         \}}
@@ -205,263 +206,263 @@
 \DoxyCodeLine{311     \textcolor{comment}{// -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
 \DoxyCodeLine{312     \textcolor{comment}{// 9) Enum-\/based data access}}
 \DoxyCodeLine{313     \textcolor{comment}{// -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
-\DoxyCodeLine{314     \mbox{\hyperlink{struct_zaki_1_1_vector_1_1_data_column}{Zaki::Vector::DataColumn}} Get(\mbox{\hyperlink{struct_compact_star_1_1_star_profile_afcfd77a3fe7d7158278310be5e7075d8}{Column}} col)\textcolor{keyword}{ const}}
+\DoxyCodeLine{314     \mbox{\hyperlink{struct_zaki_1_1_vector_1_1_data_column}{Zaki::Vector::DataColumn}} Get(\mbox{\hyperlink{struct_compact_star_1_1_core_1_1_star_profile_a69a0f27099ce767c2afe8fe5503d7628}{Column}} col)\textcolor{keyword}{ const}}
 \DoxyCodeLine{315 \textcolor{keyword}{    }\{}
-\DoxyCodeLine{316         \textcolor{keywordtype}{int} idx = \mbox{\hyperlink{struct_compact_star_1_1_star_profile_acadc359379652fd44314a4afc0aba0d5}{GetColumnIndex}}(col);}
-\DoxyCodeLine{317         \textcolor{keywordflow}{if} (!\mbox{\hyperlink{struct_compact_star_1_1_star_profile_a06d121853c044d35262e5e9cecdb5719}{IsValidColumnIndex}}(idx))}
+\DoxyCodeLine{316         \textcolor{keywordtype}{int} idx = \mbox{\hyperlink{struct_compact_star_1_1_core_1_1_star_profile_ab4bf589821d34b77517d0c4d8ec7dcc4}{GetColumnIndex}}(col);}
+\DoxyCodeLine{317         \textcolor{keywordflow}{if} (!\mbox{\hyperlink{struct_compact_star_1_1_core_1_1_star_profile_ab31344c982c747561a8e6b9f9604ecd5}{IsValidColumnIndex}}(idx))}
 \DoxyCodeLine{318             \textcolor{keywordflow}{throw} std::out\_of\_range(\textcolor{stringliteral}{"{}Column index out of range: "{}} +}
 \DoxyCodeLine{319                                     std::to\_string(\textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{int}\textcolor{keyword}{>}(col)));}
-\DoxyCodeLine{320         \textcolor{keywordflow}{return} \mbox{\hyperlink{struct_compact_star_1_1_star_profile_a8378261b8df3b639cd4b9a40fd201148}{radial}}[\textcolor{keyword}{static\_cast<}std::size\_t\textcolor{keyword}{>}(idx)]; \textcolor{comment}{// return by value}}
+\DoxyCodeLine{320         \textcolor{keywordflow}{return} \mbox{\hyperlink{struct_compact_star_1_1_core_1_1_star_profile_a270e0e97913bc127e4c665f909eaaf46}{radial}}[\textcolor{keyword}{static\_cast<}std::size\_t\textcolor{keyword}{>}(idx)]; \textcolor{comment}{// return by value}}
 \DoxyCodeLine{321     \}}
 \DoxyCodeLine{322 }
-\DoxyCodeLine{323     \textcolor{comment}{// keep a NON-\/const version only if you really need mutation;}}
+\DoxyCodeLine{323     \textcolor{comment}{// keep a NON-\/const version only if we really need mutation;}}
 \DoxyCodeLine{324     \textcolor{comment}{// otherwise just delete it. Right now, keep it like this:}}
-\DoxyCodeLine{325     \mbox{\hyperlink{struct_zaki_1_1_vector_1_1_data_column}{Zaki::Vector::DataColumn}} \&Get(\mbox{\hyperlink{struct_compact_star_1_1_star_profile_afcfd77a3fe7d7158278310be5e7075d8}{Column}} col)}
+\DoxyCodeLine{325     \mbox{\hyperlink{struct_zaki_1_1_vector_1_1_data_column}{Zaki::Vector::DataColumn}} \&Get(\mbox{\hyperlink{struct_compact_star_1_1_core_1_1_star_profile_a69a0f27099ce767c2afe8fe5503d7628}{Column}} col)}
 \DoxyCodeLine{326     \{}
-\DoxyCodeLine{327         \textcolor{keywordtype}{int} idx = \mbox{\hyperlink{struct_compact_star_1_1_star_profile_acadc359379652fd44314a4afc0aba0d5}{GetColumnIndex}}(col);}
-\DoxyCodeLine{328         \textcolor{keywordflow}{if} (!\mbox{\hyperlink{struct_compact_star_1_1_star_profile_a06d121853c044d35262e5e9cecdb5719}{IsValidColumnIndex}}(idx))}
+\DoxyCodeLine{327         \textcolor{keywordtype}{int} idx = \mbox{\hyperlink{struct_compact_star_1_1_core_1_1_star_profile_ab4bf589821d34b77517d0c4d8ec7dcc4}{GetColumnIndex}}(col);}
+\DoxyCodeLine{328         \textcolor{keywordflow}{if} (!\mbox{\hyperlink{struct_compact_star_1_1_core_1_1_star_profile_ab31344c982c747561a8e6b9f9604ecd5}{IsValidColumnIndex}}(idx))}
 \DoxyCodeLine{329             \textcolor{keywordflow}{throw} std::out\_of\_range(\textcolor{stringliteral}{"{}Column index out of range: "{}} +}
 \DoxyCodeLine{330                                     std::to\_string(\textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{int}\textcolor{keyword}{>}(col)));}
-\DoxyCodeLine{331         \textcolor{keywordflow}{return} \mbox{\hyperlink{struct_compact_star_1_1_star_profile_a8378261b8df3b639cd4b9a40fd201148}{radial}}[\textcolor{keyword}{static\_cast<}std::size\_t\textcolor{keyword}{>}(idx)]; \textcolor{comment}{// this is OK if non-\/const operator[] returns ref}}
+\DoxyCodeLine{331         \textcolor{keywordflow}{return} \mbox{\hyperlink{struct_compact_star_1_1_core_1_1_star_profile_a270e0e97913bc127e4c665f909eaaf46}{radial}}[\textcolor{keyword}{static\_cast<}std::size\_t\textcolor{keyword}{>}(idx)]; \textcolor{comment}{// this is OK if non-\/const operator[] returns ref}}
 \DoxyCodeLine{332     \}}
 \DoxyCodeLine{333 }
-\DoxyCodeLine{343     \textcolor{keyword}{const} \mbox{\hyperlink{struct_zaki_1_1_vector_1_1_data_column}{Zaki::Vector::DataColumn}} *\mbox{\hyperlink{struct_compact_star_1_1_star_profile_ab91fcb79a441cd6a38c37e15a1221a5d}{GetPtr}}(\mbox{\hyperlink{struct_compact_star_1_1_star_profile_afcfd77a3fe7d7158278310be5e7075d8}{Column}} col)\textcolor{keyword}{ const}}
+\DoxyCodeLine{343     \textcolor{keyword}{const} \mbox{\hyperlink{struct_zaki_1_1_vector_1_1_data_column}{Zaki::Vector::DataColumn}} *\mbox{\hyperlink{struct_compact_star_1_1_core_1_1_star_profile_a7777505c8632f7bd265a04ccbea50c6d}{GetPtr}}(\mbox{\hyperlink{struct_compact_star_1_1_core_1_1_star_profile_a69a0f27099ce767c2afe8fe5503d7628}{Column}} col)\textcolor{keyword}{ const}}
 \DoxyCodeLine{344 \textcolor{keyword}{    }\{}
-\DoxyCodeLine{345         \textcolor{keywordtype}{int} idx = \mbox{\hyperlink{struct_compact_star_1_1_star_profile_acadc359379652fd44314a4afc0aba0d5}{GetColumnIndex}}(col);}
-\DoxyCodeLine{346         \textcolor{keywordflow}{if} (!\mbox{\hyperlink{struct_compact_star_1_1_star_profile_a06d121853c044d35262e5e9cecdb5719}{IsValidColumnIndex}}(idx))}
+\DoxyCodeLine{345         \textcolor{keywordtype}{int} idx = \mbox{\hyperlink{struct_compact_star_1_1_core_1_1_star_profile_ab4bf589821d34b77517d0c4d8ec7dcc4}{GetColumnIndex}}(col);}
+\DoxyCodeLine{346         \textcolor{keywordflow}{if} (!\mbox{\hyperlink{struct_compact_star_1_1_core_1_1_star_profile_ab31344c982c747561a8e6b9f9604ecd5}{IsValidColumnIndex}}(idx))}
 \DoxyCodeLine{347             \textcolor{keywordflow}{return} \textcolor{keyword}{nullptr};}
 \DoxyCodeLine{348 }
 \DoxyCodeLine{349         \textcolor{comment}{// DataSet::operator[] on const returns by value, so we must go through}}
 \DoxyCodeLine{350         \textcolor{comment}{// the non-\/const operator[] to get a stable reference.}}
-\DoxyCodeLine{351         \textcolor{keyword}{auto} \&nonconst\_ds = \textcolor{keyword}{const\_cast<}\mbox{\hyperlink{class_zaki_1_1_vector_1_1_data_set}{Zaki::Vector::DataSet}} \&\textcolor{keyword}{>}(\mbox{\hyperlink{struct_compact_star_1_1_star_profile_a8378261b8df3b639cd4b9a40fd201148}{radial}});}
+\DoxyCodeLine{351         \textcolor{keyword}{auto} \&nonconst\_ds = \textcolor{keyword}{const\_cast<}\mbox{\hyperlink{class_zaki_1_1_vector_1_1_data_set}{Zaki::Vector::DataSet}} \&\textcolor{keyword}{>}(\mbox{\hyperlink{struct_compact_star_1_1_core_1_1_star_profile_a270e0e97913bc127e4c665f909eaaf46}{radial}});}
 \DoxyCodeLine{352         \textcolor{keywordflow}{return} \&nonconst\_ds[\textcolor{keyword}{static\_cast<}std::size\_t\textcolor{keyword}{>}(idx)];}
 \DoxyCodeLine{353     \}}
 \DoxyCodeLine{354     \textcolor{comment}{// -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
 \DoxyCodeLine{355     \textcolor{comment}{// 10) Convenience accessors (core)}}
 \DoxyCodeLine{356     \textcolor{comment}{// -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
-\DoxyCodeLine{357     \textcolor{keyword}{const} \mbox{\hyperlink{struct_zaki_1_1_vector_1_1_data_column}{Zaki::Vector::DataColumn}} *GetRadius()\textcolor{keyword}{ const }\{ \textcolor{keywordflow}{return} \mbox{\hyperlink{struct_compact_star_1_1_star_profile_ab91fcb79a441cd6a38c37e15a1221a5d}{GetPtr}}(\mbox{\hyperlink{struct_compact_star_1_1_star_profile_afcfd77a3fe7d7158278310be5e7075d8ad1106ccca74e98877ed6d7890c70bb2c}{Column::Radius}}); \}}
-\DoxyCodeLine{358     \textcolor{keyword}{const} \mbox{\hyperlink{struct_zaki_1_1_vector_1_1_data_column}{Zaki::Vector::DataColumn}} *GetMass()\textcolor{keyword}{ const }\{ \textcolor{keywordflow}{return} \mbox{\hyperlink{struct_compact_star_1_1_star_profile_ab91fcb79a441cd6a38c37e15a1221a5d}{GetPtr}}(\mbox{\hyperlink{struct_compact_star_1_1_star_profile_afcfd77a3fe7d7158278310be5e7075d8aff2864d6f652ee0ac254814f1ae4f4a8}{Column::Mass}}); \}}
-\DoxyCodeLine{359     \textcolor{keyword}{const} \mbox{\hyperlink{struct_zaki_1_1_vector_1_1_data_column}{Zaki::Vector::DataColumn}} *GetMetricNuPrime()\textcolor{keyword}{ const }\{ \textcolor{keywordflow}{return} \mbox{\hyperlink{struct_compact_star_1_1_star_profile_ab91fcb79a441cd6a38c37e15a1221a5d}{GetPtr}}(\mbox{\hyperlink{struct_compact_star_1_1_star_profile_afcfd77a3fe7d7158278310be5e7075d8aa312480076674952a868e487eee050a5}{Column::MetricNuPrime}}); \}}
-\DoxyCodeLine{360     \textcolor{keyword}{const} \mbox{\hyperlink{struct_zaki_1_1_vector_1_1_data_column}{Zaki::Vector::DataColumn}} *GetPressure()\textcolor{keyword}{ const }\{ \textcolor{keywordflow}{return} \mbox{\hyperlink{struct_compact_star_1_1_star_profile_ab91fcb79a441cd6a38c37e15a1221a5d}{GetPtr}}(\mbox{\hyperlink{struct_compact_star_1_1_star_profile_afcfd77a3fe7d7158278310be5e7075d8aa78578c428179b490a0461e76ba5f319}{Column::Pressure}}); \}}
-\DoxyCodeLine{361     \textcolor{keyword}{const} \mbox{\hyperlink{struct_zaki_1_1_vector_1_1_data_column}{Zaki::Vector::DataColumn}} *GetEnergyDensity()\textcolor{keyword}{ const }\{ \textcolor{keywordflow}{return} \mbox{\hyperlink{struct_compact_star_1_1_star_profile_ab91fcb79a441cd6a38c37e15a1221a5d}{GetPtr}}(\mbox{\hyperlink{struct_compact_star_1_1_star_profile_afcfd77a3fe7d7158278310be5e7075d8a459a5fc6d80b0bb954be7ffabc1137ff}{Column::EnergyDensity}}); \}}
-\DoxyCodeLine{362     \textcolor{keyword}{const} \mbox{\hyperlink{struct_zaki_1_1_vector_1_1_data_column}{Zaki::Vector::DataColumn}} *GetBaryonDensity()\textcolor{keyword}{ const }\{ \textcolor{keywordflow}{return} \mbox{\hyperlink{struct_compact_star_1_1_star_profile_ab91fcb79a441cd6a38c37e15a1221a5d}{GetPtr}}(\mbox{\hyperlink{struct_compact_star_1_1_star_profile_afcfd77a3fe7d7158278310be5e7075d8a31519c07cd22a64ea3e013348518b410}{Column::BaryonDensity}}); \}}
-\DoxyCodeLine{363     \textcolor{keyword}{const} \mbox{\hyperlink{struct_zaki_1_1_vector_1_1_data_column}{Zaki::Vector::DataColumn}} *GetMetricNu()\textcolor{keyword}{ const }\{ \textcolor{keywordflow}{return} \mbox{\hyperlink{struct_compact_star_1_1_star_profile_ab91fcb79a441cd6a38c37e15a1221a5d}{GetPtr}}(\mbox{\hyperlink{struct_compact_star_1_1_star_profile_afcfd77a3fe7d7158278310be5e7075d8a72fd3e8826aa395cd9f2001b5160976c}{Column::MetricNu}}); \}}
+\DoxyCodeLine{357     \textcolor{keyword}{const} \mbox{\hyperlink{struct_zaki_1_1_vector_1_1_data_column}{Zaki::Vector::DataColumn}} *GetRadius()\textcolor{keyword}{ const }\{ \textcolor{keywordflow}{return} \mbox{\hyperlink{struct_compact_star_1_1_core_1_1_star_profile_a7777505c8632f7bd265a04ccbea50c6d}{GetPtr}}(\mbox{\hyperlink{struct_compact_star_1_1_core_1_1_star_profile_a69a0f27099ce767c2afe8fe5503d7628ad1106ccca74e98877ed6d7890c70bb2c}{Column::Radius}}); \}}
+\DoxyCodeLine{358     \textcolor{keyword}{const} \mbox{\hyperlink{struct_zaki_1_1_vector_1_1_data_column}{Zaki::Vector::DataColumn}} *GetMass()\textcolor{keyword}{ const }\{ \textcolor{keywordflow}{return} \mbox{\hyperlink{struct_compact_star_1_1_core_1_1_star_profile_a7777505c8632f7bd265a04ccbea50c6d}{GetPtr}}(\mbox{\hyperlink{struct_compact_star_1_1_core_1_1_star_profile_a69a0f27099ce767c2afe8fe5503d7628aff2864d6f652ee0ac254814f1ae4f4a8}{Column::Mass}}); \}}
+\DoxyCodeLine{359     \textcolor{keyword}{const} \mbox{\hyperlink{struct_zaki_1_1_vector_1_1_data_column}{Zaki::Vector::DataColumn}} *GetMetricNuPrime()\textcolor{keyword}{ const }\{ \textcolor{keywordflow}{return} \mbox{\hyperlink{struct_compact_star_1_1_core_1_1_star_profile_a7777505c8632f7bd265a04ccbea50c6d}{GetPtr}}(\mbox{\hyperlink{struct_compact_star_1_1_core_1_1_star_profile_a69a0f27099ce767c2afe8fe5503d7628aa312480076674952a868e487eee050a5}{Column::MetricNuPrime}}); \}}
+\DoxyCodeLine{360     \textcolor{keyword}{const} \mbox{\hyperlink{struct_zaki_1_1_vector_1_1_data_column}{Zaki::Vector::DataColumn}} *GetPressure()\textcolor{keyword}{ const }\{ \textcolor{keywordflow}{return} \mbox{\hyperlink{struct_compact_star_1_1_core_1_1_star_profile_a7777505c8632f7bd265a04ccbea50c6d}{GetPtr}}(\mbox{\hyperlink{struct_compact_star_1_1_core_1_1_star_profile_a69a0f27099ce767c2afe8fe5503d7628aa78578c428179b490a0461e76ba5f319}{Column::Pressure}}); \}}
+\DoxyCodeLine{361     \textcolor{keyword}{const} \mbox{\hyperlink{struct_zaki_1_1_vector_1_1_data_column}{Zaki::Vector::DataColumn}} *GetEnergyDensity()\textcolor{keyword}{ const }\{ \textcolor{keywordflow}{return} \mbox{\hyperlink{struct_compact_star_1_1_core_1_1_star_profile_a7777505c8632f7bd265a04ccbea50c6d}{GetPtr}}(\mbox{\hyperlink{struct_compact_star_1_1_core_1_1_star_profile_a69a0f27099ce767c2afe8fe5503d7628a459a5fc6d80b0bb954be7ffabc1137ff}{Column::EnergyDensity}}); \}}
+\DoxyCodeLine{362     \textcolor{keyword}{const} \mbox{\hyperlink{struct_zaki_1_1_vector_1_1_data_column}{Zaki::Vector::DataColumn}} *GetBaryonDensity()\textcolor{keyword}{ const }\{ \textcolor{keywordflow}{return} \mbox{\hyperlink{struct_compact_star_1_1_core_1_1_star_profile_a7777505c8632f7bd265a04ccbea50c6d}{GetPtr}}(\mbox{\hyperlink{struct_compact_star_1_1_core_1_1_star_profile_a69a0f27099ce767c2afe8fe5503d7628a31519c07cd22a64ea3e013348518b410}{Column::BaryonDensity}}); \}}
+\DoxyCodeLine{363     \textcolor{keyword}{const} \mbox{\hyperlink{struct_zaki_1_1_vector_1_1_data_column}{Zaki::Vector::DataColumn}} *GetMetricNu()\textcolor{keyword}{ const }\{ \textcolor{keywordflow}{return} \mbox{\hyperlink{struct_compact_star_1_1_core_1_1_star_profile_a7777505c8632f7bd265a04ccbea50c6d}{GetPtr}}(\mbox{\hyperlink{struct_compact_star_1_1_core_1_1_star_profile_a69a0f27099ce767c2afe8fe5503d7628a72fd3e8826aa395cd9f2001b5160976c}{Column::MetricNu}}); \}}
 \DoxyCodeLine{364 }
-\DoxyCodeLine{371     \textcolor{keyword}{const} \mbox{\hyperlink{struct_zaki_1_1_vector_1_1_data_column}{Zaki::Vector::DataColumn}} *\mbox{\hyperlink{struct_compact_star_1_1_star_profile_a7bccfdaf624f5e8e53a18229545999ee}{GetMetricLambda}}()\textcolor{keyword}{ const}}
-\DoxyCodeLine{372 \textcolor{keyword}{    }\{}
-\DoxyCodeLine{373         \textcolor{keywordflow}{if} (!\mbox{\hyperlink{struct_compact_star_1_1_star_profile_a6dfc86907dd0e7073577db188fc7aa69}{HasMetricLambda}}())}
-\DoxyCodeLine{374             \textcolor{keywordflow}{return} \textcolor{keyword}{nullptr};}
-\DoxyCodeLine{375         \textcolor{keywordflow}{return} \mbox{\hyperlink{struct_compact_star_1_1_star_profile_ab91fcb79a441cd6a38c37e15a1221a5d}{GetPtr}}(\mbox{\hyperlink{struct_compact_star_1_1_star_profile_afcfd77a3fe7d7158278310be5e7075d8a8c24dc3d008e6f222bcc2c07d9a64bfe}{Column::MetricLambda}});}
-\DoxyCodeLine{376     \}}
-\DoxyCodeLine{377 }
+\DoxyCodeLine{369     \textcolor{keyword}{const} \mbox{\hyperlink{struct_zaki_1_1_vector_1_1_data_column}{Zaki::Vector::DataColumn}} *\mbox{\hyperlink{struct_compact_star_1_1_core_1_1_star_profile_ae0558273ffb0c486c805be7d0dfee06b}{GetMetricLambda}}()\textcolor{keyword}{ const}}
+\DoxyCodeLine{370 \textcolor{keyword}{    }\{}
+\DoxyCodeLine{371         \textcolor{keywordflow}{if} (!\mbox{\hyperlink{struct_compact_star_1_1_core_1_1_star_profile_ae96f2864220f21e88e5617d1cb10b74e}{HasMetricLambda}}())}
+\DoxyCodeLine{372             \textcolor{keywordflow}{return} \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{373         \textcolor{keywordflow}{return} \mbox{\hyperlink{struct_compact_star_1_1_core_1_1_star_profile_a7777505c8632f7bd265a04ccbea50c6d}{GetPtr}}(\mbox{\hyperlink{struct_compact_star_1_1_core_1_1_star_profile_a69a0f27099ce767c2afe8fe5503d7628a8c24dc3d008e6f222bcc2c07d9a64bfe}{Column::MetricLambda}});}
+\DoxyCodeLine{374     \}}
+\DoxyCodeLine{375 }
+\DoxyCodeLine{376     \textcolor{comment}{// -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{377     \textcolor{comment}{// LOW-\/LEVEL POINTER ACCESSORS (for code that needs an actual column)}}
 \DoxyCodeLine{378     \textcolor{comment}{// -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
-\DoxyCodeLine{379     \textcolor{comment}{// LOW-\/LEVEL POINTER ACCESSORS (for code that needs an actual column)}}
-\DoxyCodeLine{380     \textcolor{comment}{// -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
-\DoxyCodeLine{387 \textcolor{comment}{}    \textcolor{keyword}{const} \mbox{\hyperlink{struct_zaki_1_1_vector_1_1_data_column}{Zaki::Vector::DataColumn}} *\mbox{\hyperlink{struct_compact_star_1_1_star_profile_a2c7a702e4b298ba889241c7be45377ee}{GetColumnPtr}}(\textcolor{keywordtype}{int} idx)\textcolor{keyword}{ const}}
-\DoxyCodeLine{388 \textcolor{keyword}{    }\{}
-\DoxyCodeLine{389         \textcolor{keywordflow}{if} (!\mbox{\hyperlink{struct_compact_star_1_1_star_profile_a06d121853c044d35262e5e9cecdb5719}{IsValidColumnIndex}}(idx))}
-\DoxyCodeLine{390             \textcolor{keywordflow}{return} \textcolor{keyword}{nullptr};}
-\DoxyCodeLine{391 }
-\DoxyCodeLine{392         \textcolor{comment}{// we know radial is the owner; we just need the non-\/const operator[]}}
-\DoxyCodeLine{393         \textcolor{keyword}{auto} \&ds = \textcolor{keyword}{const\_cast<}\mbox{\hyperlink{class_zaki_1_1_vector_1_1_data_set}{Zaki::Vector::DataSet}} \&\textcolor{keyword}{>}(\mbox{\hyperlink{struct_compact_star_1_1_star_profile_a8378261b8df3b639cd4b9a40fd201148}{radial}});}
-\DoxyCodeLine{394         \textcolor{keywordflow}{return} \&ds[\textcolor{keyword}{static\_cast<}std::size\_t\textcolor{keyword}{>}(idx)];}
-\DoxyCodeLine{395     \}}
-\DoxyCodeLine{396 }
-\DoxyCodeLine{403     \mbox{\hyperlink{struct_zaki_1_1_vector_1_1_data_column}{Zaki::Vector::DataColumn}} *\mbox{\hyperlink{struct_compact_star_1_1_star_profile_abc3054582e94f85aae72ef2e02d34f69}{GetColumnPtr}}(\textcolor{keywordtype}{int} idx)}
-\DoxyCodeLine{404     \{}
-\DoxyCodeLine{405         \textcolor{keywordflow}{if} (!\mbox{\hyperlink{struct_compact_star_1_1_star_profile_a06d121853c044d35262e5e9cecdb5719}{IsValidColumnIndex}}(idx))}
-\DoxyCodeLine{406             \textcolor{keywordflow}{return} \textcolor{keyword}{nullptr};}
-\DoxyCodeLine{407 }
-\DoxyCodeLine{408         \textcolor{keywordflow}{return} \&\mbox{\hyperlink{struct_compact_star_1_1_star_profile_a8378261b8df3b639cd4b9a40fd201148}{radial}}[\textcolor{keyword}{static\_cast<}std::size\_t\textcolor{keyword}{>}(idx)];}
-\DoxyCodeLine{409     \}}
-\DoxyCodeLine{410 }
-\DoxyCodeLine{414     \textcolor{keyword}{const} \mbox{\hyperlink{struct_zaki_1_1_vector_1_1_data_column}{Zaki::Vector::DataColumn}} *\mbox{\hyperlink{struct_compact_star_1_1_star_profile_a91a07096debd23da6445117b04bd323f}{GetColumnPtr}}(\mbox{\hyperlink{struct_compact_star_1_1_star_profile_afcfd77a3fe7d7158278310be5e7075d8}{Column}} col)\textcolor{keyword}{ const}}
-\DoxyCodeLine{415 \textcolor{keyword}{    }\{}
-\DoxyCodeLine{416         \textcolor{keywordflow}{return} \mbox{\hyperlink{struct_compact_star_1_1_star_profile_a2c7a702e4b298ba889241c7be45377ee}{GetColumnPtr}}(\mbox{\hyperlink{struct_compact_star_1_1_star_profile_acadc359379652fd44314a4afc0aba0d5}{GetColumnIndex}}(col));}
-\DoxyCodeLine{417     \}}
-\DoxyCodeLine{418 }
-\DoxyCodeLine{427     \mbox{\hyperlink{struct_zaki_1_1_vector_1_1_data_column}{Zaki::Vector::DataColumn}} *\mbox{\hyperlink{struct_compact_star_1_1_star_profile_a20a02322529cbfa3fa5a90f378ca22a5}{GetColumnPtr}}(\mbox{\hyperlink{struct_compact_star_1_1_star_profile_afcfd77a3fe7d7158278310be5e7075d8}{Column}} col)}
-\DoxyCodeLine{428     \{}
-\DoxyCodeLine{429         \textcolor{keywordflow}{return} \mbox{\hyperlink{struct_compact_star_1_1_star_profile_a2c7a702e4b298ba889241c7be45377ee}{GetColumnPtr}}(\mbox{\hyperlink{struct_compact_star_1_1_star_profile_acadc359379652fd44314a4afc0aba0d5}{GetColumnIndex}}(col));}
-\DoxyCodeLine{430     \}}
-\DoxyCodeLine{431 }
-\DoxyCodeLine{435     \textcolor{keyword}{const} \mbox{\hyperlink{struct_zaki_1_1_vector_1_1_data_column}{Zaki::Vector::DataColumn}} *\mbox{\hyperlink{struct_compact_star_1_1_star_profile_a40267c9458957caf98a29e34e8286b13}{GetSpeciesPtr}}(\textcolor{keyword}{const} std::string \&label)\textcolor{keyword}{ const}}
-\DoxyCodeLine{436 \textcolor{keyword}{    }\{}
-\DoxyCodeLine{437         \textcolor{keywordtype}{int} li = \mbox{\hyperlink{struct_compact_star_1_1_star_profile_acb9e60f57698623c9c72b14c9a652f77}{SpeciesLocalIndex}}(label);}
-\DoxyCodeLine{438         \textcolor{keywordflow}{if} (li < 0 || \textcolor{keyword}{static\_cast<}std::size\_t\textcolor{keyword}{>}(li) >= \mbox{\hyperlink{struct_compact_star_1_1_star_profile_a7efa32f76545381b88a9caeb63a162fe}{species\_idx}}.size())}
-\DoxyCodeLine{439             \textcolor{keywordflow}{return} \textcolor{keyword}{nullptr};}
-\DoxyCodeLine{440 }
-\DoxyCodeLine{441         \textcolor{keywordtype}{int} col\_idx = \mbox{\hyperlink{struct_compact_star_1_1_star_profile_a7efa32f76545381b88a9caeb63a162fe}{species\_idx}}[\textcolor{keyword}{static\_cast<}std::size\_t\textcolor{keyword}{>}(li)];}
-\DoxyCodeLine{442         \textcolor{keywordflow}{return} \mbox{\hyperlink{struct_compact_star_1_1_star_profile_a2c7a702e4b298ba889241c7be45377ee}{GetColumnPtr}}(col\_idx);}
-\DoxyCodeLine{443     \}}
-\DoxyCodeLine{444 }
-\DoxyCodeLine{450     \mbox{\hyperlink{struct_zaki_1_1_vector_1_1_data_column}{Zaki::Vector::DataColumn}} *\mbox{\hyperlink{struct_compact_star_1_1_star_profile_ac4958d701beb9c58c4b7b0b47938c8bb}{GetSpeciesPtr}}(\textcolor{keyword}{const} std::string \&label)}
-\DoxyCodeLine{451     \{}
-\DoxyCodeLine{452         \textcolor{keywordtype}{int} li = \mbox{\hyperlink{struct_compact_star_1_1_star_profile_acb9e60f57698623c9c72b14c9a652f77}{SpeciesLocalIndex}}(label);}
-\DoxyCodeLine{453         \textcolor{keywordflow}{if} (li < 0 || \textcolor{keyword}{static\_cast<}std::size\_t\textcolor{keyword}{>}(li) >= \mbox{\hyperlink{struct_compact_star_1_1_star_profile_a7efa32f76545381b88a9caeb63a162fe}{species\_idx}}.size())}
-\DoxyCodeLine{454             \textcolor{keywordflow}{return} \textcolor{keyword}{nullptr};}
-\DoxyCodeLine{455 }
-\DoxyCodeLine{456         \textcolor{keywordtype}{int} col\_idx = \mbox{\hyperlink{struct_compact_star_1_1_star_profile_a7efa32f76545381b88a9caeb63a162fe}{species\_idx}}[\textcolor{keyword}{static\_cast<}std::size\_t\textcolor{keyword}{>}(li)];}
-\DoxyCodeLine{457         \textcolor{keywordflow}{return} \mbox{\hyperlink{struct_compact_star_1_1_star_profile_a2c7a702e4b298ba889241c7be45377ee}{GetColumnPtr}}(col\_idx);}
-\DoxyCodeLine{458     \}}
+\DoxyCodeLine{385 \textcolor{comment}{}    \textcolor{keyword}{const} \mbox{\hyperlink{struct_zaki_1_1_vector_1_1_data_column}{Zaki::Vector::DataColumn}} *\mbox{\hyperlink{struct_compact_star_1_1_core_1_1_star_profile_ae7196bf3110b8d3d41398b1d48d3b1d3}{GetColumnPtr}}(\textcolor{keywordtype}{int} idx)\textcolor{keyword}{ const}}
+\DoxyCodeLine{386 \textcolor{keyword}{    }\{}
+\DoxyCodeLine{387         \textcolor{keywordflow}{if} (!\mbox{\hyperlink{struct_compact_star_1_1_core_1_1_star_profile_ab31344c982c747561a8e6b9f9604ecd5}{IsValidColumnIndex}}(idx))}
+\DoxyCodeLine{388             \textcolor{keywordflow}{return} \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{389 }
+\DoxyCodeLine{390         \textcolor{comment}{// we know radial is the owner; we just need the non-\/const operator[]}}
+\DoxyCodeLine{391         \textcolor{keyword}{auto} \&ds = \textcolor{keyword}{const\_cast<}\mbox{\hyperlink{class_zaki_1_1_vector_1_1_data_set}{Zaki::Vector::DataSet}} \&\textcolor{keyword}{>}(\mbox{\hyperlink{struct_compact_star_1_1_core_1_1_star_profile_a270e0e97913bc127e4c665f909eaaf46}{radial}});}
+\DoxyCodeLine{392         \textcolor{keywordflow}{return} \&ds[\textcolor{keyword}{static\_cast<}std::size\_t\textcolor{keyword}{>}(idx)];}
+\DoxyCodeLine{393     \}}
+\DoxyCodeLine{394 }
+\DoxyCodeLine{401     \mbox{\hyperlink{struct_zaki_1_1_vector_1_1_data_column}{Zaki::Vector::DataColumn}} *\mbox{\hyperlink{struct_compact_star_1_1_core_1_1_star_profile_aeab0dc8db71fc1421ac22143f03d12e5}{GetColumnPtr}}(\textcolor{keywordtype}{int} idx)}
+\DoxyCodeLine{402     \{}
+\DoxyCodeLine{403         \textcolor{keywordflow}{if} (!\mbox{\hyperlink{struct_compact_star_1_1_core_1_1_star_profile_ab31344c982c747561a8e6b9f9604ecd5}{IsValidColumnIndex}}(idx))}
+\DoxyCodeLine{404             \textcolor{keywordflow}{return} \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{405 }
+\DoxyCodeLine{406         \textcolor{keywordflow}{return} \&\mbox{\hyperlink{struct_compact_star_1_1_core_1_1_star_profile_a270e0e97913bc127e4c665f909eaaf46}{radial}}[\textcolor{keyword}{static\_cast<}std::size\_t\textcolor{keyword}{>}(idx)];}
+\DoxyCodeLine{407     \}}
+\DoxyCodeLine{408 }
+\DoxyCodeLine{412     \textcolor{keyword}{const} \mbox{\hyperlink{struct_zaki_1_1_vector_1_1_data_column}{Zaki::Vector::DataColumn}} *\mbox{\hyperlink{struct_compact_star_1_1_core_1_1_star_profile_af06cd50e4ede8101eba9452b7faa0c75}{GetColumnPtr}}(\mbox{\hyperlink{struct_compact_star_1_1_core_1_1_star_profile_a69a0f27099ce767c2afe8fe5503d7628}{Column}} col)\textcolor{keyword}{ const}}
+\DoxyCodeLine{413 \textcolor{keyword}{    }\{}
+\DoxyCodeLine{414         \textcolor{keywordflow}{return} \mbox{\hyperlink{struct_compact_star_1_1_core_1_1_star_profile_ae7196bf3110b8d3d41398b1d48d3b1d3}{GetColumnPtr}}(\mbox{\hyperlink{struct_compact_star_1_1_core_1_1_star_profile_ab4bf589821d34b77517d0c4d8ec7dcc4}{GetColumnIndex}}(col));}
+\DoxyCodeLine{415     \}}
+\DoxyCodeLine{416 }
+\DoxyCodeLine{425     \mbox{\hyperlink{struct_zaki_1_1_vector_1_1_data_column}{Zaki::Vector::DataColumn}} *\mbox{\hyperlink{struct_compact_star_1_1_core_1_1_star_profile_a240daef546c2349165f3bcc1fd1035e7}{GetColumnPtr}}(\mbox{\hyperlink{struct_compact_star_1_1_core_1_1_star_profile_a69a0f27099ce767c2afe8fe5503d7628}{Column}} col)}
+\DoxyCodeLine{426     \{}
+\DoxyCodeLine{427         \textcolor{keywordflow}{return} \mbox{\hyperlink{struct_compact_star_1_1_core_1_1_star_profile_ae7196bf3110b8d3d41398b1d48d3b1d3}{GetColumnPtr}}(\mbox{\hyperlink{struct_compact_star_1_1_core_1_1_star_profile_ab4bf589821d34b77517d0c4d8ec7dcc4}{GetColumnIndex}}(col));}
+\DoxyCodeLine{428     \}}
+\DoxyCodeLine{429 }
+\DoxyCodeLine{433     \textcolor{keyword}{const} \mbox{\hyperlink{struct_zaki_1_1_vector_1_1_data_column}{Zaki::Vector::DataColumn}} *\mbox{\hyperlink{struct_compact_star_1_1_core_1_1_star_profile_a7d3c4ffc6048c7e0a19dd1281a0a101d}{GetSpeciesPtr}}(\textcolor{keyword}{const} std::string \&label)\textcolor{keyword}{ const}}
+\DoxyCodeLine{434 \textcolor{keyword}{    }\{}
+\DoxyCodeLine{435         \textcolor{keywordtype}{int} li = \mbox{\hyperlink{struct_compact_star_1_1_core_1_1_star_profile_a6de3b6606a3016cd240bd19555365d54}{SpeciesLocalIndex}}(label);}
+\DoxyCodeLine{436         \textcolor{keywordflow}{if} (li < 0 || \textcolor{keyword}{static\_cast<}std::size\_t\textcolor{keyword}{>}(li) >= \mbox{\hyperlink{struct_compact_star_1_1_core_1_1_star_profile_aab8ba5deee62a546a0782d21900df993}{species\_idx}}.size())}
+\DoxyCodeLine{437             \textcolor{keywordflow}{return} \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{438 }
+\DoxyCodeLine{439         \textcolor{keywordtype}{int} col\_idx = \mbox{\hyperlink{struct_compact_star_1_1_core_1_1_star_profile_aab8ba5deee62a546a0782d21900df993}{species\_idx}}[\textcolor{keyword}{static\_cast<}std::size\_t\textcolor{keyword}{>}(li)];}
+\DoxyCodeLine{440         \textcolor{keywordflow}{return} \mbox{\hyperlink{struct_compact_star_1_1_core_1_1_star_profile_ae7196bf3110b8d3d41398b1d48d3b1d3}{GetColumnPtr}}(col\_idx);}
+\DoxyCodeLine{441     \}}
+\DoxyCodeLine{442 }
+\DoxyCodeLine{448     \mbox{\hyperlink{struct_zaki_1_1_vector_1_1_data_column}{Zaki::Vector::DataColumn}} *\mbox{\hyperlink{struct_compact_star_1_1_core_1_1_star_profile_a98456d5aa44b141e53fb633547e1839f}{GetSpeciesPtr}}(\textcolor{keyword}{const} std::string \&label)}
+\DoxyCodeLine{449     \{}
+\DoxyCodeLine{450         \textcolor{keywordtype}{int} li = \mbox{\hyperlink{struct_compact_star_1_1_core_1_1_star_profile_a6de3b6606a3016cd240bd19555365d54}{SpeciesLocalIndex}}(label);}
+\DoxyCodeLine{451         \textcolor{keywordflow}{if} (li < 0 || \textcolor{keyword}{static\_cast<}std::size\_t\textcolor{keyword}{>}(li) >= \mbox{\hyperlink{struct_compact_star_1_1_core_1_1_star_profile_aab8ba5deee62a546a0782d21900df993}{species\_idx}}.size())}
+\DoxyCodeLine{452             \textcolor{keywordflow}{return} \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{453 }
+\DoxyCodeLine{454         \textcolor{keywordtype}{int} col\_idx = \mbox{\hyperlink{struct_compact_star_1_1_core_1_1_star_profile_aab8ba5deee62a546a0782d21900df993}{species\_idx}}[\textcolor{keyword}{static\_cast<}std::size\_t\textcolor{keyword}{>}(li)];}
+\DoxyCodeLine{455         \textcolor{keywordflow}{return} \mbox{\hyperlink{struct_compact_star_1_1_core_1_1_star_profile_ae7196bf3110b8d3d41398b1d48d3b1d3}{GetColumnPtr}}(col\_idx);}
+\DoxyCodeLine{456     \}}
+\DoxyCodeLine{457     \textcolor{comment}{// -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{458     \textcolor{comment}{// 11) Per-\/species helpers}}
 \DoxyCodeLine{459     \textcolor{comment}{// -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
-\DoxyCodeLine{460     \textcolor{comment}{// 11) Per-\/species helpers}}
-\DoxyCodeLine{461     \textcolor{comment}{// -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
-\DoxyCodeLine{465 \textcolor{comment}{}    std::size\_t \mbox{\hyperlink{struct_compact_star_1_1_star_profile_a04975fab8fa0f3920258c12929435bde}{SpeciesCount}}() const noexcept}
-\DoxyCodeLine{466     \{}
-\DoxyCodeLine{467         \textcolor{keywordflow}{return} \mbox{\hyperlink{struct_compact_star_1_1_star_profile_a967a39c4c0e0d0326048837900a2be31}{species\_labels}}.size();}
-\DoxyCodeLine{468     \}}
-\DoxyCodeLine{469 }
-\DoxyCodeLine{476     \textcolor{keywordtype}{bool} \mbox{\hyperlink{struct_compact_star_1_1_star_profile_a0bb40bacac3138a8284f0bca0c97c4d5}{HasSpecies}}(\textcolor{keyword}{const} std::string \&label)\textcolor{keyword}{ const}}
-\DoxyCodeLine{477 \textcolor{keyword}{    }\{}
-\DoxyCodeLine{478         \textcolor{keyword}{auto} it = std::find(\mbox{\hyperlink{struct_compact_star_1_1_star_profile_a967a39c4c0e0d0326048837900a2be31}{species\_labels}}.begin(), \mbox{\hyperlink{struct_compact_star_1_1_star_profile_a967a39c4c0e0d0326048837900a2be31}{species\_labels}}.end(), label);}
-\DoxyCodeLine{479         \textcolor{keywordflow}{return} it != \mbox{\hyperlink{struct_compact_star_1_1_star_profile_a967a39c4c0e0d0326048837900a2be31}{species\_labels}}.end();}
-\DoxyCodeLine{480     \}}
-\DoxyCodeLine{481 }
-\DoxyCodeLine{485     \textcolor{keywordtype}{int} \mbox{\hyperlink{struct_compact_star_1_1_star_profile_acb9e60f57698623c9c72b14c9a652f77}{SpeciesLocalIndex}}(\textcolor{keyword}{const} std::string \&label)\textcolor{keyword}{ const}}
-\DoxyCodeLine{486 \textcolor{keyword}{    }\{}
-\DoxyCodeLine{487         \textcolor{keywordflow}{for} (std::size\_t i = 0; i < \mbox{\hyperlink{struct_compact_star_1_1_star_profile_a967a39c4c0e0d0326048837900a2be31}{species\_labels}}.size(); ++i)}
-\DoxyCodeLine{488             \textcolor{keywordflow}{if} (\mbox{\hyperlink{struct_compact_star_1_1_star_profile_a967a39c4c0e0d0326048837900a2be31}{species\_labels}}[i] == label)}
-\DoxyCodeLine{489                 \textcolor{keywordflow}{return} \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{int}\textcolor{keyword}{>}(i);}
-\DoxyCodeLine{490         \textcolor{keywordflow}{return} -\/1;}
-\DoxyCodeLine{491     \}}
-\DoxyCodeLine{492 }
-\DoxyCodeLine{503     \mbox{\hyperlink{struct_zaki_1_1_vector_1_1_data_column}{Zaki::Vector::DataColumn}} \mbox{\hyperlink{struct_compact_star_1_1_star_profile_afb594d32f4f53786a5405a22cc84604a}{GetSpecies}}(\textcolor{keyword}{const} std::string \&label)\textcolor{keyword}{ const}}
-\DoxyCodeLine{504 \textcolor{keyword}{    }\{}
-\DoxyCodeLine{505         \textcolor{keywordtype}{int} li = \mbox{\hyperlink{struct_compact_star_1_1_star_profile_acb9e60f57698623c9c72b14c9a652f77}{SpeciesLocalIndex}}(label);}
-\DoxyCodeLine{506         \textcolor{keywordflow}{if} (li < 0 || \textcolor{keyword}{static\_cast<}std::size\_t\textcolor{keyword}{>}(li) >= \mbox{\hyperlink{struct_compact_star_1_1_star_profile_a7efa32f76545381b88a9caeb63a162fe}{species\_idx}}.size())}
-\DoxyCodeLine{507             \textcolor{keywordflow}{throw} std::out\_of\_range(\textcolor{stringliteral}{"{}Unknown species label: "{}} + label);}
-\DoxyCodeLine{508 }
-\DoxyCodeLine{509         \textcolor{keywordtype}{int} col\_idx = \mbox{\hyperlink{struct_compact_star_1_1_star_profile_a7efa32f76545381b88a9caeb63a162fe}{species\_idx}}[\textcolor{keyword}{static\_cast<}std::size\_t\textcolor{keyword}{>}(li)];}
-\DoxyCodeLine{510         \textcolor{keywordflow}{if} (!\mbox{\hyperlink{struct_compact_star_1_1_star_profile_a06d121853c044d35262e5e9cecdb5719}{IsValidColumnIndex}}(col\_idx))}
-\DoxyCodeLine{511             \textcolor{keywordflow}{throw} std::out\_of\_range(\textcolor{stringliteral}{"{}Column index out of range for species: "{}} + label);}
-\DoxyCodeLine{512 }
-\DoxyCodeLine{513         \textcolor{comment}{// return by value — SAFE}}
-\DoxyCodeLine{514         \textcolor{keywordflow}{return} \mbox{\hyperlink{struct_compact_star_1_1_star_profile_a8378261b8df3b639cd4b9a40fd201148}{radial}}[\textcolor{keyword}{static\_cast<}std::size\_t\textcolor{keyword}{>}(col\_idx)];}
-\DoxyCodeLine{515     \}}
-\DoxyCodeLine{516 }
-\DoxyCodeLine{520     \mbox{\hyperlink{struct_zaki_1_1_vector_1_1_data_column}{Zaki::Vector::DataColumn}} \&\mbox{\hyperlink{struct_compact_star_1_1_star_profile_a20dc3f26e070154b54f8f667d94bc178}{GetSpecies}}(\textcolor{keyword}{const} std::string \&label)}
-\DoxyCodeLine{521     \{}
-\DoxyCodeLine{522         \textcolor{keywordtype}{int} li = \mbox{\hyperlink{struct_compact_star_1_1_star_profile_acb9e60f57698623c9c72b14c9a652f77}{SpeciesLocalIndex}}(label);}
-\DoxyCodeLine{523         \textcolor{keywordflow}{if} (li < 0 || \textcolor{keyword}{static\_cast<}std::size\_t\textcolor{keyword}{>}(li) >= \mbox{\hyperlink{struct_compact_star_1_1_star_profile_a7efa32f76545381b88a9caeb63a162fe}{species\_idx}}.size())}
-\DoxyCodeLine{524             \textcolor{keywordflow}{throw} std::out\_of\_range(\textcolor{stringliteral}{"{}Unknown species label: "{}} + label);}
-\DoxyCodeLine{525         \textcolor{keywordtype}{int} col\_idx = \mbox{\hyperlink{struct_compact_star_1_1_star_profile_a7efa32f76545381b88a9caeb63a162fe}{species\_idx}}[\textcolor{keyword}{static\_cast<}std::size\_t\textcolor{keyword}{>}(li)];}
-\DoxyCodeLine{526         \textcolor{keywordflow}{if} (!\mbox{\hyperlink{struct_compact_star_1_1_star_profile_a06d121853c044d35262e5e9cecdb5719}{IsValidColumnIndex}}(col\_idx))}
-\DoxyCodeLine{527             \textcolor{keywordflow}{throw} std::out\_of\_range(\textcolor{stringliteral}{"{}Column index out of range for species: "{}} + label);}
-\DoxyCodeLine{528         \textcolor{keywordflow}{return} \mbox{\hyperlink{struct_compact_star_1_1_star_profile_a8378261b8df3b639cd4b9a40fd201148}{radial}}[\textcolor{keyword}{static\_cast<}std::size\_t\textcolor{keyword}{>}(col\_idx)];}
-\DoxyCodeLine{529     \}}
-\DoxyCodeLine{530 }
-\DoxyCodeLine{539     \textcolor{keywordtype}{void} \mbox{\hyperlink{struct_compact_star_1_1_star_profile_a9b5f1784daa0a7116c55e68ae754c448}{AddSpecies}}(\textcolor{keyword}{const} std::string \&label, \textcolor{keywordtype}{int} col\_idx)}
-\DoxyCodeLine{540     \{}
-\DoxyCodeLine{541         \mbox{\hyperlink{struct_compact_star_1_1_star_profile_a967a39c4c0e0d0326048837900a2be31}{species\_labels}}.push\_back(label);}
-\DoxyCodeLine{542         \mbox{\hyperlink{struct_compact_star_1_1_star_profile_a7efa32f76545381b88a9caeb63a162fe}{species\_idx}}.push\_back(col\_idx);}
-\DoxyCodeLine{543     \}}
-\DoxyCodeLine{544 }
-\DoxyCodeLine{553     \textcolor{keywordtype}{void} \mbox{\hyperlink{struct_compact_star_1_1_star_profile_aff33f295c43984a305a077e14895eff6}{SetSpeciesColumn}}(\textcolor{keyword}{const} std::string \&label, \textcolor{keywordtype}{int} col\_idx)}
-\DoxyCodeLine{554     \{}
-\DoxyCodeLine{555         \textcolor{keywordflow}{for} (std::size\_t i = 0; i < \mbox{\hyperlink{struct_compact_star_1_1_star_profile_a967a39c4c0e0d0326048837900a2be31}{species\_labels}}.size(); ++i)}
-\DoxyCodeLine{556         \{}
-\DoxyCodeLine{557             \textcolor{keywordflow}{if} (\mbox{\hyperlink{struct_compact_star_1_1_star_profile_a967a39c4c0e0d0326048837900a2be31}{species\_labels}}[i] == label)}
-\DoxyCodeLine{558             \{}
-\DoxyCodeLine{559                 \mbox{\hyperlink{struct_compact_star_1_1_star_profile_a7efa32f76545381b88a9caeb63a162fe}{species\_idx}}[i] = col\_idx;}
-\DoxyCodeLine{560                 \textcolor{keywordflow}{return};}
-\DoxyCodeLine{561             \}}
-\DoxyCodeLine{562         \}}
-\DoxyCodeLine{563         \textcolor{comment}{// fallback: if not found, register new}}
-\DoxyCodeLine{564         \mbox{\hyperlink{struct_compact_star_1_1_star_profile_a9b5f1784daa0a7116c55e68ae754c448}{AddSpecies}}(label, col\_idx);}
-\DoxyCodeLine{565     \}}
-\DoxyCodeLine{566 }
+\DoxyCodeLine{463 \textcolor{comment}{}    std::size\_t \mbox{\hyperlink{struct_compact_star_1_1_core_1_1_star_profile_a3570a715ce918b656decb1bf629dbc6b}{SpeciesCount}}() const noexcept}
+\DoxyCodeLine{464     \{}
+\DoxyCodeLine{465         \textcolor{keywordflow}{return} \mbox{\hyperlink{struct_compact_star_1_1_core_1_1_star_profile_a2aff71901f78187dfbbfaa48a1354b05}{species\_labels}}.size();}
+\DoxyCodeLine{466     \}}
+\DoxyCodeLine{467 }
+\DoxyCodeLine{474     \textcolor{keywordtype}{bool} \mbox{\hyperlink{struct_compact_star_1_1_core_1_1_star_profile_aba7f54453aed1201fc90ce50ea72ed4f}{HasSpecies}}(\textcolor{keyword}{const} std::string \&label)\textcolor{keyword}{ const}}
+\DoxyCodeLine{475 \textcolor{keyword}{    }\{}
+\DoxyCodeLine{476         \textcolor{keyword}{auto} it = std::find(\mbox{\hyperlink{struct_compact_star_1_1_core_1_1_star_profile_a2aff71901f78187dfbbfaa48a1354b05}{species\_labels}}.begin(), \mbox{\hyperlink{struct_compact_star_1_1_core_1_1_star_profile_a2aff71901f78187dfbbfaa48a1354b05}{species\_labels}}.end(), label);}
+\DoxyCodeLine{477         \textcolor{keywordflow}{return} it != \mbox{\hyperlink{struct_compact_star_1_1_core_1_1_star_profile_a2aff71901f78187dfbbfaa48a1354b05}{species\_labels}}.end();}
+\DoxyCodeLine{478     \}}
+\DoxyCodeLine{479 }
+\DoxyCodeLine{483     \textcolor{keywordtype}{int} \mbox{\hyperlink{struct_compact_star_1_1_core_1_1_star_profile_a6de3b6606a3016cd240bd19555365d54}{SpeciesLocalIndex}}(\textcolor{keyword}{const} std::string \&label)\textcolor{keyword}{ const}}
+\DoxyCodeLine{484 \textcolor{keyword}{    }\{}
+\DoxyCodeLine{485         \textcolor{keywordflow}{for} (std::size\_t i = 0; i < \mbox{\hyperlink{struct_compact_star_1_1_core_1_1_star_profile_a2aff71901f78187dfbbfaa48a1354b05}{species\_labels}}.size(); ++i)}
+\DoxyCodeLine{486             \textcolor{keywordflow}{if} (\mbox{\hyperlink{struct_compact_star_1_1_core_1_1_star_profile_a2aff71901f78187dfbbfaa48a1354b05}{species\_labels}}[i] == label)}
+\DoxyCodeLine{487                 \textcolor{keywordflow}{return} \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{int}\textcolor{keyword}{>}(i);}
+\DoxyCodeLine{488         \textcolor{keywordflow}{return} -\/1;}
+\DoxyCodeLine{489     \}}
+\DoxyCodeLine{490 }
+\DoxyCodeLine{501     \mbox{\hyperlink{struct_zaki_1_1_vector_1_1_data_column}{Zaki::Vector::DataColumn}} \mbox{\hyperlink{struct_compact_star_1_1_core_1_1_star_profile_a8917f6074baf3c76263ca8acc6acdff2}{GetSpecies}}(\textcolor{keyword}{const} std::string \&label)\textcolor{keyword}{ const}}
+\DoxyCodeLine{502 \textcolor{keyword}{    }\{}
+\DoxyCodeLine{503         \textcolor{keywordtype}{int} li = \mbox{\hyperlink{struct_compact_star_1_1_core_1_1_star_profile_a6de3b6606a3016cd240bd19555365d54}{SpeciesLocalIndex}}(label);}
+\DoxyCodeLine{504         \textcolor{keywordflow}{if} (li < 0 || \textcolor{keyword}{static\_cast<}std::size\_t\textcolor{keyword}{>}(li) >= \mbox{\hyperlink{struct_compact_star_1_1_core_1_1_star_profile_aab8ba5deee62a546a0782d21900df993}{species\_idx}}.size())}
+\DoxyCodeLine{505             \textcolor{keywordflow}{throw} std::out\_of\_range(\textcolor{stringliteral}{"{}Unknown species label: "{}} + label);}
+\DoxyCodeLine{506 }
+\DoxyCodeLine{507         \textcolor{keywordtype}{int} col\_idx = \mbox{\hyperlink{struct_compact_star_1_1_core_1_1_star_profile_aab8ba5deee62a546a0782d21900df993}{species\_idx}}[\textcolor{keyword}{static\_cast<}std::size\_t\textcolor{keyword}{>}(li)];}
+\DoxyCodeLine{508         \textcolor{keywordflow}{if} (!\mbox{\hyperlink{struct_compact_star_1_1_core_1_1_star_profile_ab31344c982c747561a8e6b9f9604ecd5}{IsValidColumnIndex}}(col\_idx))}
+\DoxyCodeLine{509             \textcolor{keywordflow}{throw} std::out\_of\_range(\textcolor{stringliteral}{"{}Column index out of range for species: "{}} + label);}
+\DoxyCodeLine{510 }
+\DoxyCodeLine{511         \textcolor{comment}{// return by value — SAFE}}
+\DoxyCodeLine{512         \textcolor{keywordflow}{return} \mbox{\hyperlink{struct_compact_star_1_1_core_1_1_star_profile_a270e0e97913bc127e4c665f909eaaf46}{radial}}[\textcolor{keyword}{static\_cast<}std::size\_t\textcolor{keyword}{>}(col\_idx)];}
+\DoxyCodeLine{513     \}}
+\DoxyCodeLine{514 }
+\DoxyCodeLine{518     \mbox{\hyperlink{struct_zaki_1_1_vector_1_1_data_column}{Zaki::Vector::DataColumn}} \&\mbox{\hyperlink{struct_compact_star_1_1_core_1_1_star_profile_af07faa27c2eab610f137aeed756e6419}{GetSpecies}}(\textcolor{keyword}{const} std::string \&label)}
+\DoxyCodeLine{519     \{}
+\DoxyCodeLine{520         \textcolor{keywordtype}{int} li = \mbox{\hyperlink{struct_compact_star_1_1_core_1_1_star_profile_a6de3b6606a3016cd240bd19555365d54}{SpeciesLocalIndex}}(label);}
+\DoxyCodeLine{521         \textcolor{keywordflow}{if} (li < 0 || \textcolor{keyword}{static\_cast<}std::size\_t\textcolor{keyword}{>}(li) >= \mbox{\hyperlink{struct_compact_star_1_1_core_1_1_star_profile_aab8ba5deee62a546a0782d21900df993}{species\_idx}}.size())}
+\DoxyCodeLine{522             \textcolor{keywordflow}{throw} std::out\_of\_range(\textcolor{stringliteral}{"{}Unknown species label: "{}} + label);}
+\DoxyCodeLine{523         \textcolor{keywordtype}{int} col\_idx = \mbox{\hyperlink{struct_compact_star_1_1_core_1_1_star_profile_aab8ba5deee62a546a0782d21900df993}{species\_idx}}[\textcolor{keyword}{static\_cast<}std::size\_t\textcolor{keyword}{>}(li)];}
+\DoxyCodeLine{524         \textcolor{keywordflow}{if} (!\mbox{\hyperlink{struct_compact_star_1_1_core_1_1_star_profile_ab31344c982c747561a8e6b9f9604ecd5}{IsValidColumnIndex}}(col\_idx))}
+\DoxyCodeLine{525             \textcolor{keywordflow}{throw} std::out\_of\_range(\textcolor{stringliteral}{"{}Column index out of range for species: "{}} + label);}
+\DoxyCodeLine{526         \textcolor{keywordflow}{return} \mbox{\hyperlink{struct_compact_star_1_1_core_1_1_star_profile_a270e0e97913bc127e4c665f909eaaf46}{radial}}[\textcolor{keyword}{static\_cast<}std::size\_t\textcolor{keyword}{>}(col\_idx)];}
+\DoxyCodeLine{527     \}}
+\DoxyCodeLine{528 }
+\DoxyCodeLine{537     \textcolor{keywordtype}{void} \mbox{\hyperlink{struct_compact_star_1_1_core_1_1_star_profile_ac25b55312c06baaa58d51bfc0f644b2d}{AddSpecies}}(\textcolor{keyword}{const} std::string \&label, \textcolor{keywordtype}{int} col\_idx)}
+\DoxyCodeLine{538     \{}
+\DoxyCodeLine{539         \mbox{\hyperlink{struct_compact_star_1_1_core_1_1_star_profile_a2aff71901f78187dfbbfaa48a1354b05}{species\_labels}}.push\_back(label);}
+\DoxyCodeLine{540         \mbox{\hyperlink{struct_compact_star_1_1_core_1_1_star_profile_aab8ba5deee62a546a0782d21900df993}{species\_idx}}.push\_back(col\_idx);}
+\DoxyCodeLine{541     \}}
+\DoxyCodeLine{542 }
+\DoxyCodeLine{551     \textcolor{keywordtype}{void} \mbox{\hyperlink{struct_compact_star_1_1_core_1_1_star_profile_af6225c46cbe48c88781985bebcc2f94b}{SetSpeciesColumn}}(\textcolor{keyword}{const} std::string \&label, \textcolor{keywordtype}{int} col\_idx)}
+\DoxyCodeLine{552     \{}
+\DoxyCodeLine{553         \textcolor{keywordflow}{for} (std::size\_t i = 0; i < \mbox{\hyperlink{struct_compact_star_1_1_core_1_1_star_profile_a2aff71901f78187dfbbfaa48a1354b05}{species\_labels}}.size(); ++i)}
+\DoxyCodeLine{554         \{}
+\DoxyCodeLine{555             \textcolor{keywordflow}{if} (\mbox{\hyperlink{struct_compact_star_1_1_core_1_1_star_profile_a2aff71901f78187dfbbfaa48a1354b05}{species\_labels}}[i] == label)}
+\DoxyCodeLine{556             \{}
+\DoxyCodeLine{557                 \mbox{\hyperlink{struct_compact_star_1_1_core_1_1_star_profile_aab8ba5deee62a546a0782d21900df993}{species\_idx}}[i] = col\_idx;}
+\DoxyCodeLine{558                 \textcolor{keywordflow}{return};}
+\DoxyCodeLine{559             \}}
+\DoxyCodeLine{560         \}}
+\DoxyCodeLine{561         \textcolor{comment}{// fallback: if not found, register new}}
+\DoxyCodeLine{562         \mbox{\hyperlink{struct_compact_star_1_1_core_1_1_star_profile_ac25b55312c06baaa58d51bfc0f644b2d}{AddSpecies}}(label, col\_idx);}
+\DoxyCodeLine{563     \}}
+\DoxyCodeLine{564 }
+\DoxyCodeLine{565     \textcolor{comment}{// -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{566     \textcolor{comment}{// 12) Profile precision}}
 \DoxyCodeLine{567     \textcolor{comment}{// -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
-\DoxyCodeLine{568     \textcolor{comment}{// 12) Profile precision}}
-\DoxyCodeLine{569     \textcolor{comment}{// -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
-\DoxyCodeLine{570     \textcolor{keywordtype}{void} SetProfilePrecision(\textcolor{keyword}{const} \textcolor{keywordtype}{int} \&profile\_precision)}
-\DoxyCodeLine{571     \{}
-\DoxyCodeLine{572         this-\/>profile\_precision = profile\_precision;}
-\DoxyCodeLine{573     \}}
-\DoxyCodeLine{574 }
+\DoxyCodeLine{568     \textcolor{keywordtype}{void} SetProfilePrecision(\textcolor{keyword}{const} \textcolor{keywordtype}{int} \&profile\_precision)}
+\DoxyCodeLine{569     \{}
+\DoxyCodeLine{570         this-\/>profile\_precision = profile\_precision;}
+\DoxyCodeLine{571     \}}
+\DoxyCodeLine{572 }
+\DoxyCodeLine{573     \textcolor{comment}{// -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{574     \textcolor{comment}{// 13) Export (in-\/place; no copying)}}
 \DoxyCodeLine{575     \textcolor{comment}{// -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
-\DoxyCodeLine{576     \textcolor{comment}{// 13) Export (in-\/place; no copying)}}
-\DoxyCodeLine{577     \textcolor{comment}{// -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
-\DoxyCodeLine{578     \textcolor{keywordtype}{void} Export(\textcolor{keyword}{const} \mbox{\hyperlink{class_zaki_1_1_string_1_1_directory}{Zaki::String::Directory}} \&out\_dir, \textcolor{keywordtype}{int} precision = -\/1);}
-\DoxyCodeLine{579 }
+\DoxyCodeLine{576     \textcolor{keywordtype}{void} Export(\textcolor{keyword}{const} \mbox{\hyperlink{class_zaki_1_1_string_1_1_directory}{Zaki::String::Directory}} \&out\_dir, \textcolor{keywordtype}{int} precision = -\/1);}
+\DoxyCodeLine{577 }
+\DoxyCodeLine{578     \textcolor{comment}{// -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{579     \textcolor{comment}{// 14) Reset}}
 \DoxyCodeLine{580     \textcolor{comment}{// -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
-\DoxyCodeLine{581     \textcolor{comment}{// 14) Reset}}
-\DoxyCodeLine{582     \textcolor{comment}{// -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
-\DoxyCodeLine{584 \textcolor{comment}{}    \textcolor{keywordtype}{void} \mbox{\hyperlink{struct_compact_star_1_1_star_profile_ad4a9ac7524385085c386ed0359758dfd}{Reset}}()}
-\DoxyCodeLine{585     \{}
-\DoxyCodeLine{586         \mbox{\hyperlink{struct_compact_star_1_1_star_profile_a8378261b8df3b639cd4b9a40fd201148}{radial}}.\mbox{\hyperlink{class_zaki_1_1_vector_1_1_data_set_a57f3cc2283914e910ed6ac741148e8ed}{ClearRows}}();}
-\DoxyCodeLine{587         \textcolor{comment}{// radial.data\_set.clear();}}
-\DoxyCodeLine{588         \mbox{\hyperlink{struct_compact_star_1_1_star_profile_a0b64a950b06ee63fccba59a3b4d349a3}{seq\_point}}.\mbox{\hyperlink{class_compact_star_1_1_seq_point_aea3f17097ce4a553f2d25006e9690574}{clear}}();}
-\DoxyCodeLine{589 }
-\DoxyCodeLine{590         \mbox{\hyperlink{struct_compact_star_1_1_star_profile_a45976f38173ad03dd3c9eb5426e64fbc}{M}} = 0.0;}
-\DoxyCodeLine{591         \mbox{\hyperlink{struct_compact_star_1_1_star_profile_abfc49d2e02cf8638568e740282481928}{R}} = 0.0;}
-\DoxyCodeLine{592         \mbox{\hyperlink{struct_compact_star_1_1_star_profile_a5617cc8d449cfbc4eb1f0448b98c719b}{z\_surf}} = 0.0;}
-\DoxyCodeLine{593         \textcolor{comment}{// species\_labels.clear();}}
-\DoxyCodeLine{594         \textcolor{comment}{// species\_idx.clear();}}
-\DoxyCodeLine{595     \}}
-\DoxyCodeLine{596 \};}
-\DoxyCodeLine{597 }
+\DoxyCodeLine{582 \textcolor{comment}{}    \textcolor{keywordtype}{void} \mbox{\hyperlink{struct_compact_star_1_1_core_1_1_star_profile_a429c0784aa122344db4ab55ec12617d6}{Reset}}()}
+\DoxyCodeLine{583     \{}
+\DoxyCodeLine{584         \mbox{\hyperlink{struct_compact_star_1_1_core_1_1_star_profile_a270e0e97913bc127e4c665f909eaaf46}{radial}}.\mbox{\hyperlink{class_zaki_1_1_vector_1_1_data_set_a57f3cc2283914e910ed6ac741148e8ed}{ClearRows}}();}
+\DoxyCodeLine{585         \textcolor{comment}{// radial.data\_set.clear();}}
+\DoxyCodeLine{586         \mbox{\hyperlink{struct_compact_star_1_1_core_1_1_star_profile_ae19034719eed95b1ffe940faedcb3c35}{seq\_point}}.\mbox{\hyperlink{class_compact_star_1_1_core_1_1_seq_point_a2a164c0570e161eed79e9b71cdbeefad}{clear}}();}
+\DoxyCodeLine{587 }
+\DoxyCodeLine{588         \mbox{\hyperlink{struct_compact_star_1_1_core_1_1_star_profile_abc46b46cd9111d922c5c4544dd2acc4f}{M}} = 0.0;}
+\DoxyCodeLine{589         \mbox{\hyperlink{struct_compact_star_1_1_core_1_1_star_profile_aaa22cc4bb42d396d9808bc27fa6a50a0}{R}} = 0.0;}
+\DoxyCodeLine{590         \mbox{\hyperlink{struct_compact_star_1_1_core_1_1_star_profile_a7521a74eac378508f4f94a3628fbb7df}{z\_surf}} = 0.0;}
+\DoxyCodeLine{591         \textcolor{comment}{// species\_labels.clear();}}
+\DoxyCodeLine{592         \textcolor{comment}{// species\_idx.clear();}}
+\DoxyCodeLine{593     \}}
+\DoxyCodeLine{594 \};}
+\DoxyCodeLine{595 }
+\DoxyCodeLine{596 \textcolor{comment}{//==============================================================}}
+\DoxyCodeLine{597 \textcolor{comment}{//                        StarProfileView}}
 \DoxyCodeLine{598 \textcolor{comment}{//==============================================================}}
-\DoxyCodeLine{599 \textcolor{comment}{//                        StarProfileView}}
-\DoxyCodeLine{600 \textcolor{comment}{//==============================================================}}
-\DoxyCodeLine{608 \textcolor{comment}{}\textcolor{keyword}{struct }\mbox{\hyperlink{struct_compact_star_1_1_star_profile_view}{StarProfileView}}}
-\DoxyCodeLine{609 \{}
-\DoxyCodeLine{610     \textcolor{keyword}{const} \mbox{\hyperlink{struct_compact_star_1_1_star_profile}{StarProfile}} *p = \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{606 \textcolor{comment}{}\textcolor{keyword}{struct }\mbox{\hyperlink{struct_compact_star_1_1_core_1_1_star_profile_view}{StarProfileView}}}
+\DoxyCodeLine{607 \{}
+\DoxyCodeLine{608     \textcolor{keyword}{const} \mbox{\hyperlink{struct_compact_star_1_1_core_1_1_star_profile}{StarProfile}} *p = \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{609 }
+\DoxyCodeLine{610     \textcolor{keywordtype}{bool} valid()\textcolor{keyword}{ const }\{ \textcolor{keywordflow}{return} (p != \textcolor{keyword}{nullptr}) \&\& !p-\/>empty(); \}}
 \DoxyCodeLine{611 }
-\DoxyCodeLine{612     \textcolor{keywordtype}{bool} valid()\textcolor{keyword}{ const }\{ \textcolor{keywordflow}{return} (p != \textcolor{keyword}{nullptr}) \&\& !p-\/>empty(); \}}
-\DoxyCodeLine{613 }
-\DoxyCodeLine{614     \textcolor{keywordtype}{int} GetColumnIndex(\mbox{\hyperlink{struct_compact_star_1_1_star_profile_afcfd77a3fe7d7158278310be5e7075d8}{StarProfile::Column}} col)\textcolor{keyword}{ const}}
-\DoxyCodeLine{615 \textcolor{keyword}{    }\{}
-\DoxyCodeLine{616         \textcolor{keywordflow}{if} (!valid() || !p-\/>HasColumn(col))}
-\DoxyCodeLine{617             \textcolor{keywordflow}{return} -\/1;}
-\DoxyCodeLine{618         \textcolor{keywordflow}{return} p-\/>GetColumnIndex(col);}
-\DoxyCodeLine{619     \}}
-\DoxyCodeLine{620 }
-\DoxyCodeLine{621     \textcolor{comment}{// const Zaki::Vector::DataColumn *Get(StarProfile::Column col) const}}
-\DoxyCodeLine{622     \textcolor{comment}{// \{}}
-\DoxyCodeLine{623     \textcolor{comment}{//  if (!valid())}}
-\DoxyCodeLine{624     \textcolor{comment}{//      return nullptr;}}
-\DoxyCodeLine{625 }
-\DoxyCodeLine{626     \textcolor{comment}{//  const int idx = p-\/>GetColumnIndex(col);}}
-\DoxyCodeLine{627     \textcolor{comment}{//  if (!p-\/>IsValidColumnIndex(idx))}}
-\DoxyCodeLine{628     \textcolor{comment}{//      return nullptr;}}
-\DoxyCodeLine{629 }
-\DoxyCodeLine{630     \textcolor{comment}{//  return p-\/>GetColumnPtr(idx);}}
-\DoxyCodeLine{631     \textcolor{comment}{// \}}}
-\DoxyCodeLine{632 }
-\DoxyCodeLine{639     \textcolor{keyword}{const} \mbox{\hyperlink{struct_zaki_1_1_vector_1_1_data_column}{Zaki::Vector::DataColumn}} *\mbox{\hyperlink{struct_compact_star_1_1_star_profile_view_a0ba23410678e370b32ca475107a6a8fd}{GetPtr}}(\mbox{\hyperlink{struct_compact_star_1_1_star_profile_afcfd77a3fe7d7158278310be5e7075d8}{StarProfile::Column}} col)\textcolor{keyword}{ const}}
-\DoxyCodeLine{640 \textcolor{keyword}{    }\{}
-\DoxyCodeLine{641         \textcolor{keywordflow}{if} (!valid())}
-\DoxyCodeLine{642             \textcolor{keywordflow}{return} \textcolor{keyword}{nullptr};}
-\DoxyCodeLine{643 }
-\DoxyCodeLine{644         \textcolor{comment}{// get the int index for this column in the underlying profile}}
-\DoxyCodeLine{645         \textcolor{keyword}{const} \textcolor{keywordtype}{int} idx = p-\/>GetColumnIndex(col);}
-\DoxyCodeLine{646         \textcolor{keywordflow}{if} (!p-\/>IsValidColumnIndex(idx))}
-\DoxyCodeLine{647             \textcolor{keywordflow}{return} \textcolor{keyword}{nullptr};}
-\DoxyCodeLine{648 }
-\DoxyCodeLine{649         \textcolor{comment}{// use the profile's pointer-\/returning helper}}
-\DoxyCodeLine{650         \textcolor{keywordflow}{return} p-\/>GetColumnPtr(idx);}
-\DoxyCodeLine{651     \}}
-\DoxyCodeLine{652 }
-\DoxyCodeLine{653     \textcolor{comment}{// Convenience forwards (so thermal/BNV code can stay short)}}
-\DoxyCodeLine{654     \textcolor{comment}{// const Zaki::Vector::DataColumn \&Radius() const \{ return Get(StarProfile::Column::Radius); \}}}
-\DoxyCodeLine{655     \textcolor{comment}{// const Zaki::Vector::DataColumn \&Mass() const \{ return Get(StarProfile::Column::Mass); \}}}
-\DoxyCodeLine{656     \textcolor{comment}{// const Zaki::Vector::DataColumn \&Pressure() const \{ return Get(StarProfile::Column::Pressure); \}}}
-\DoxyCodeLine{657     \textcolor{comment}{// const Zaki::Vector::DataColumn \&EnergyDensity() const \{ return Get(StarProfile::Column::EnergyDensity); \}}}
-\DoxyCodeLine{658     \textcolor{comment}{// const Zaki::Vector::DataColumn \&Baryon() const \{ return Get(StarProfile::Column::BaryonDensity); \}}}
-\DoxyCodeLine{659     \textcolor{comment}{// const Zaki::Vector::DataColumn \&Nu() const \{ return Get(StarProfile::Column::MetricNu); \}}}
-\DoxyCodeLine{660 }
-\DoxyCodeLine{661     \textcolor{keyword}{const} \mbox{\hyperlink{struct_zaki_1_1_vector_1_1_data_column}{Zaki::Vector::DataColumn}} *GetRadius()\textcolor{keyword}{ const }\{ \textcolor{keywordflow}{return} \mbox{\hyperlink{struct_compact_star_1_1_star_profile_view_a0ba23410678e370b32ca475107a6a8fd}{GetPtr}}(\mbox{\hyperlink{struct_compact_star_1_1_star_profile_afcfd77a3fe7d7158278310be5e7075d8ad1106ccca74e98877ed6d7890c70bb2c}{StarProfile::Column::Radius}}); \}}
-\DoxyCodeLine{662     \textcolor{keyword}{const} \mbox{\hyperlink{struct_zaki_1_1_vector_1_1_data_column}{Zaki::Vector::DataColumn}} *GetMass()\textcolor{keyword}{ const }\{ \textcolor{keywordflow}{return} \mbox{\hyperlink{struct_compact_star_1_1_star_profile_view_a0ba23410678e370b32ca475107a6a8fd}{GetPtr}}(\mbox{\hyperlink{struct_compact_star_1_1_star_profile_afcfd77a3fe7d7158278310be5e7075d8aff2864d6f652ee0ac254814f1ae4f4a8}{StarProfile::Column::Mass}}); \}}
-\DoxyCodeLine{663     \textcolor{keyword}{const} \mbox{\hyperlink{struct_zaki_1_1_vector_1_1_data_column}{Zaki::Vector::DataColumn}} *GetMetricNuPrime()\textcolor{keyword}{ const }\{ \textcolor{keywordflow}{return} \mbox{\hyperlink{struct_compact_star_1_1_star_profile_view_a0ba23410678e370b32ca475107a6a8fd}{GetPtr}}(\mbox{\hyperlink{struct_compact_star_1_1_star_profile_afcfd77a3fe7d7158278310be5e7075d8aa312480076674952a868e487eee050a5}{StarProfile::Column::MetricNuPrime}}); \}}
-\DoxyCodeLine{664     \textcolor{keyword}{const} \mbox{\hyperlink{struct_zaki_1_1_vector_1_1_data_column}{Zaki::Vector::DataColumn}} *GetPressure()\textcolor{keyword}{ const }\{ \textcolor{keywordflow}{return} \mbox{\hyperlink{struct_compact_star_1_1_star_profile_view_a0ba23410678e370b32ca475107a6a8fd}{GetPtr}}(\mbox{\hyperlink{struct_compact_star_1_1_star_profile_afcfd77a3fe7d7158278310be5e7075d8aa78578c428179b490a0461e76ba5f319}{StarProfile::Column::Pressure}}); \}}
-\DoxyCodeLine{665     \textcolor{keyword}{const} \mbox{\hyperlink{struct_zaki_1_1_vector_1_1_data_column}{Zaki::Vector::DataColumn}} *GetEnergyDensity()\textcolor{keyword}{ const }\{ \textcolor{keywordflow}{return} \mbox{\hyperlink{struct_compact_star_1_1_star_profile_view_a0ba23410678e370b32ca475107a6a8fd}{GetPtr}}(\mbox{\hyperlink{struct_compact_star_1_1_star_profile_afcfd77a3fe7d7158278310be5e7075d8a459a5fc6d80b0bb954be7ffabc1137ff}{StarProfile::Column::EnergyDensity}}); \}}
-\DoxyCodeLine{666     \textcolor{keyword}{const} \mbox{\hyperlink{struct_zaki_1_1_vector_1_1_data_column}{Zaki::Vector::DataColumn}} *GetBaryonDensity()\textcolor{keyword}{ const }\{ \textcolor{keywordflow}{return} \mbox{\hyperlink{struct_compact_star_1_1_star_profile_view_a0ba23410678e370b32ca475107a6a8fd}{GetPtr}}(\mbox{\hyperlink{struct_compact_star_1_1_star_profile_afcfd77a3fe7d7158278310be5e7075d8a31519c07cd22a64ea3e013348518b410}{StarProfile::Column::BaryonDensity}}); \}}
-\DoxyCodeLine{667     \textcolor{keyword}{const} \mbox{\hyperlink{struct_zaki_1_1_vector_1_1_data_column}{Zaki::Vector::DataColumn}} *GetMetricNu()\textcolor{keyword}{ const }\{ \textcolor{keywordflow}{return} \mbox{\hyperlink{struct_compact_star_1_1_star_profile_view_a0ba23410678e370b32ca475107a6a8fd}{GetPtr}}(\mbox{\hyperlink{struct_compact_star_1_1_star_profile_afcfd77a3fe7d7158278310be5e7075d8a72fd3e8826aa395cd9f2001b5160976c}{StarProfile::Column::MetricNu}}); \}}
-\DoxyCodeLine{668 \};}
+\DoxyCodeLine{612     \textcolor{keywordtype}{int} GetColumnIndex(\mbox{\hyperlink{struct_compact_star_1_1_core_1_1_star_profile_a69a0f27099ce767c2afe8fe5503d7628}{StarProfile::Column}} col)\textcolor{keyword}{ const}}
+\DoxyCodeLine{613 \textcolor{keyword}{    }\{}
+\DoxyCodeLine{614         \textcolor{keywordflow}{if} (!valid() || !p-\/>HasColumn(col))}
+\DoxyCodeLine{615             \textcolor{keywordflow}{return} -\/1;}
+\DoxyCodeLine{616         \textcolor{keywordflow}{return} p-\/>GetColumnIndex(col);}
+\DoxyCodeLine{617     \}}
+\DoxyCodeLine{618 }
+\DoxyCodeLine{619     \textcolor{comment}{// const Zaki::Vector::DataColumn *Get(StarProfile::Column col) const}}
+\DoxyCodeLine{620     \textcolor{comment}{// \{}}
+\DoxyCodeLine{621     \textcolor{comment}{//  if (!valid())}}
+\DoxyCodeLine{622     \textcolor{comment}{//      return nullptr;}}
+\DoxyCodeLine{623 }
+\DoxyCodeLine{624     \textcolor{comment}{//  const int idx = p-\/>GetColumnIndex(col);}}
+\DoxyCodeLine{625     \textcolor{comment}{//  if (!p-\/>IsValidColumnIndex(idx))}}
+\DoxyCodeLine{626     \textcolor{comment}{//      return nullptr;}}
+\DoxyCodeLine{627 }
+\DoxyCodeLine{628     \textcolor{comment}{//  return p-\/>GetColumnPtr(idx);}}
+\DoxyCodeLine{629     \textcolor{comment}{// \}}}
+\DoxyCodeLine{630 }
+\DoxyCodeLine{637     \textcolor{keyword}{const} \mbox{\hyperlink{struct_zaki_1_1_vector_1_1_data_column}{Zaki::Vector::DataColumn}} *\mbox{\hyperlink{struct_compact_star_1_1_core_1_1_star_profile_view_abaf3262b7869c9f034b6a779ebf8aa08}{GetPtr}}(\mbox{\hyperlink{struct_compact_star_1_1_core_1_1_star_profile_a69a0f27099ce767c2afe8fe5503d7628}{StarProfile::Column}} col)\textcolor{keyword}{ const}}
+\DoxyCodeLine{638 \textcolor{keyword}{    }\{}
+\DoxyCodeLine{639         \textcolor{keywordflow}{if} (!valid())}
+\DoxyCodeLine{640             \textcolor{keywordflow}{return} \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{641 }
+\DoxyCodeLine{642         \textcolor{comment}{// get the int index for this column in the underlying profile}}
+\DoxyCodeLine{643         \textcolor{keyword}{const} \textcolor{keywordtype}{int} idx = p-\/>GetColumnIndex(col);}
+\DoxyCodeLine{644         \textcolor{keywordflow}{if} (!p-\/>IsValidColumnIndex(idx))}
+\DoxyCodeLine{645             \textcolor{keywordflow}{return} \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{646 }
+\DoxyCodeLine{647         \textcolor{comment}{// use the profile's pointer-\/returning helper}}
+\DoxyCodeLine{648         \textcolor{keywordflow}{return} p-\/>GetColumnPtr(idx);}
+\DoxyCodeLine{649     \}}
+\DoxyCodeLine{650 }
+\DoxyCodeLine{651     \textcolor{comment}{// Convenience forwards (so thermal/BNV code can stay short)}}
+\DoxyCodeLine{652     \textcolor{comment}{// const Zaki::Vector::DataColumn \&Radius() const \{ return Get(StarProfile::Column::Radius); \}}}
+\DoxyCodeLine{653     \textcolor{comment}{// const Zaki::Vector::DataColumn \&Mass() const \{ return Get(StarProfile::Column::Mass); \}}}
+\DoxyCodeLine{654     \textcolor{comment}{// const Zaki::Vector::DataColumn \&Pressure() const \{ return Get(StarProfile::Column::Pressure); \}}}
+\DoxyCodeLine{655     \textcolor{comment}{// const Zaki::Vector::DataColumn \&EnergyDensity() const \{ return Get(StarProfile::Column::EnergyDensity); \}}}
+\DoxyCodeLine{656     \textcolor{comment}{// const Zaki::Vector::DataColumn \&Baryon() const \{ return Get(StarProfile::Column::BaryonDensity); \}}}
+\DoxyCodeLine{657     \textcolor{comment}{// const Zaki::Vector::DataColumn \&Nu() const \{ return Get(StarProfile::Column::MetricNu); \}}}
+\DoxyCodeLine{658 }
+\DoxyCodeLine{659     \textcolor{keyword}{const} \mbox{\hyperlink{struct_zaki_1_1_vector_1_1_data_column}{Zaki::Vector::DataColumn}} *GetRadius()\textcolor{keyword}{ const }\{ \textcolor{keywordflow}{return} \mbox{\hyperlink{struct_compact_star_1_1_core_1_1_star_profile_view_abaf3262b7869c9f034b6a779ebf8aa08}{GetPtr}}(\mbox{\hyperlink{struct_compact_star_1_1_core_1_1_star_profile_a69a0f27099ce767c2afe8fe5503d7628ad1106ccca74e98877ed6d7890c70bb2c}{StarProfile::Column::Radius}}); \}}
+\DoxyCodeLine{660     \textcolor{keyword}{const} \mbox{\hyperlink{struct_zaki_1_1_vector_1_1_data_column}{Zaki::Vector::DataColumn}} *GetMass()\textcolor{keyword}{ const }\{ \textcolor{keywordflow}{return} \mbox{\hyperlink{struct_compact_star_1_1_core_1_1_star_profile_view_abaf3262b7869c9f034b6a779ebf8aa08}{GetPtr}}(\mbox{\hyperlink{struct_compact_star_1_1_core_1_1_star_profile_a69a0f27099ce767c2afe8fe5503d7628aff2864d6f652ee0ac254814f1ae4f4a8}{StarProfile::Column::Mass}}); \}}
+\DoxyCodeLine{661     \textcolor{keyword}{const} \mbox{\hyperlink{struct_zaki_1_1_vector_1_1_data_column}{Zaki::Vector::DataColumn}} *GetMetricNuPrime()\textcolor{keyword}{ const }\{ \textcolor{keywordflow}{return} \mbox{\hyperlink{struct_compact_star_1_1_core_1_1_star_profile_view_abaf3262b7869c9f034b6a779ebf8aa08}{GetPtr}}(\mbox{\hyperlink{struct_compact_star_1_1_core_1_1_star_profile_a69a0f27099ce767c2afe8fe5503d7628aa312480076674952a868e487eee050a5}{StarProfile::Column::MetricNuPrime}}); \}}
+\DoxyCodeLine{662     \textcolor{keyword}{const} \mbox{\hyperlink{struct_zaki_1_1_vector_1_1_data_column}{Zaki::Vector::DataColumn}} *GetPressure()\textcolor{keyword}{ const }\{ \textcolor{keywordflow}{return} \mbox{\hyperlink{struct_compact_star_1_1_core_1_1_star_profile_view_abaf3262b7869c9f034b6a779ebf8aa08}{GetPtr}}(\mbox{\hyperlink{struct_compact_star_1_1_core_1_1_star_profile_a69a0f27099ce767c2afe8fe5503d7628aa78578c428179b490a0461e76ba5f319}{StarProfile::Column::Pressure}}); \}}
+\DoxyCodeLine{663     \textcolor{keyword}{const} \mbox{\hyperlink{struct_zaki_1_1_vector_1_1_data_column}{Zaki::Vector::DataColumn}} *GetEnergyDensity()\textcolor{keyword}{ const }\{ \textcolor{keywordflow}{return} \mbox{\hyperlink{struct_compact_star_1_1_core_1_1_star_profile_view_abaf3262b7869c9f034b6a779ebf8aa08}{GetPtr}}(\mbox{\hyperlink{struct_compact_star_1_1_core_1_1_star_profile_a69a0f27099ce767c2afe8fe5503d7628a459a5fc6d80b0bb954be7ffabc1137ff}{StarProfile::Column::EnergyDensity}}); \}}
+\DoxyCodeLine{664     \textcolor{keyword}{const} \mbox{\hyperlink{struct_zaki_1_1_vector_1_1_data_column}{Zaki::Vector::DataColumn}} *GetBaryonDensity()\textcolor{keyword}{ const }\{ \textcolor{keywordflow}{return} \mbox{\hyperlink{struct_compact_star_1_1_core_1_1_star_profile_view_abaf3262b7869c9f034b6a779ebf8aa08}{GetPtr}}(\mbox{\hyperlink{struct_compact_star_1_1_core_1_1_star_profile_a69a0f27099ce767c2afe8fe5503d7628a31519c07cd22a64ea3e013348518b410}{StarProfile::Column::BaryonDensity}}); \}}
+\DoxyCodeLine{665     \textcolor{keyword}{const} \mbox{\hyperlink{struct_zaki_1_1_vector_1_1_data_column}{Zaki::Vector::DataColumn}} *GetMetricNu()\textcolor{keyword}{ const }\{ \textcolor{keywordflow}{return} \mbox{\hyperlink{struct_compact_star_1_1_core_1_1_star_profile_view_abaf3262b7869c9f034b6a779ebf8aa08}{GetPtr}}(\mbox{\hyperlink{struct_compact_star_1_1_core_1_1_star_profile_a69a0f27099ce767c2afe8fe5503d7628a72fd3e8826aa395cd9f2001b5160976c}{StarProfile::Column::MetricNu}}); \}}
+\DoxyCodeLine{666 \};}
+\DoxyCodeLine{667 }
+\DoxyCodeLine{668 \} \textcolor{comment}{// namespace CompactStar::Core}}
 \DoxyCodeLine{669 }
-\DoxyCodeLine{670 \} \textcolor{comment}{// namespace CompactStar}}
-\DoxyCodeLine{671 }
-\DoxyCodeLine{672 \textcolor{preprocessor}{\#endif }\textcolor{comment}{/* CompactStar\_StarProfile\_H */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{670 \textcolor{preprocessor}{\#endif }\textcolor{comment}{/* CompactStar\_Core\_StarProfile\_H */}\textcolor{preprocessor}{}}
 
 \end{DoxyCode}

@@ -4,58 +4,58 @@
 \begin{DoxyCode}{0}
 \DoxyCodeLine{1 \textcolor{comment}{// -\/*-\/ lsst-\/c++ -\/*-\/}}
 \DoxyCodeLine{2 \textcolor{comment}{/*}}
-\DoxyCodeLine{3 \textcolor{comment}{* CompactStar}}
-\DoxyCodeLine{4 \textcolor{comment}{* See License file at the top of the source tree.}}
-\DoxyCodeLine{5 \textcolor{comment}{*}}
-\DoxyCodeLine{6 \textcolor{comment}{* Copyright (c) 2023 Mohammadreza Zakeri}}
-\DoxyCodeLine{7 \textcolor{comment}{*}}
-\DoxyCodeLine{8 \textcolor{comment}{* Permission is hereby granted, free of charge, to any person obtaining a copy}}
-\DoxyCodeLine{9 \textcolor{comment}{* of this software and associated documentation files (the "{}Software"{}), to deal}}
-\DoxyCodeLine{10 \textcolor{comment}{* in the Software without restriction, including without limitation the rights}}
-\DoxyCodeLine{11 \textcolor{comment}{* to use, copy, modify, merge, publish, distribute, sublicense, and/or sell}}
-\DoxyCodeLine{12 \textcolor{comment}{* copies of the Software, and to permit persons to whom the Software is}}
-\DoxyCodeLine{13 \textcolor{comment}{* furnished to do so, subject to the following conditions:}}
-\DoxyCodeLine{14 \textcolor{comment}{*}}
-\DoxyCodeLine{15 \textcolor{comment}{* The above copyright notice and this permission notice shall be included in all}}
-\DoxyCodeLine{16 \textcolor{comment}{* copies or substantial portions of the Software.}}
-\DoxyCodeLine{17 \textcolor{comment}{*}}
-\DoxyCodeLine{18 \textcolor{comment}{* THE SOFTWARE IS PROVIDED "{}AS IS"{}, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR}}
-\DoxyCodeLine{19 \textcolor{comment}{* IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,}}
-\DoxyCodeLine{20 \textcolor{comment}{* FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE}}
-\DoxyCodeLine{21 \textcolor{comment}{* AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER}}
-\DoxyCodeLine{22 \textcolor{comment}{* LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,}}
-\DoxyCodeLine{23 \textcolor{comment}{* OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE}}
-\DoxyCodeLine{24 \textcolor{comment}{* SOFTWARE.}}
-\DoxyCodeLine{25 \textcolor{comment}{*/}}
+\DoxyCodeLine{3 \textcolor{comment}{ * CompactStar}}
+\DoxyCodeLine{4 \textcolor{comment}{ * See License file at the top of the source tree.}}
+\DoxyCodeLine{5 \textcolor{comment}{ *}}
+\DoxyCodeLine{6 \textcolor{comment}{ * Copyright (c) 2023 Mohammadreza Zakeri}}
+\DoxyCodeLine{7 \textcolor{comment}{ *}}
+\DoxyCodeLine{8 \textcolor{comment}{ * Permission is hereby granted, free of charge, to any person obtaining a copy}}
+\DoxyCodeLine{9 \textcolor{comment}{ * of this software and associated documentation files (the "{}Software"{}), to deal}}
+\DoxyCodeLine{10 \textcolor{comment}{ * in the Software without restriction, including without limitation the rights}}
+\DoxyCodeLine{11 \textcolor{comment}{ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell}}
+\DoxyCodeLine{12 \textcolor{comment}{ * copies of the Software, and to permit persons to whom the Software is}}
+\DoxyCodeLine{13 \textcolor{comment}{ * furnished to do so, subject to the following conditions:}}
+\DoxyCodeLine{14 \textcolor{comment}{ *}}
+\DoxyCodeLine{15 \textcolor{comment}{ * The above copyright notice and this permission notice shall be included in all}}
+\DoxyCodeLine{16 \textcolor{comment}{ * copies or substantial portions of the Software.}}
+\DoxyCodeLine{17 \textcolor{comment}{ *}}
+\DoxyCodeLine{18 \textcolor{comment}{ * THE SOFTWARE IS PROVIDED "{}AS IS"{}, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR}}
+\DoxyCodeLine{19 \textcolor{comment}{ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,}}
+\DoxyCodeLine{20 \textcolor{comment}{ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE}}
+\DoxyCodeLine{21 \textcolor{comment}{ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER}}
+\DoxyCodeLine{22 \textcolor{comment}{ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,}}
+\DoxyCodeLine{23 \textcolor{comment}{ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE}}
+\DoxyCodeLine{24 \textcolor{comment}{ * SOFTWARE.}}
+\DoxyCodeLine{25 \textcolor{comment}{ */}}
 \DoxyCodeLine{26 }
-\DoxyCodeLine{38 \textcolor{preprocessor}{\#ifndef CompactStar\_RotationSolver\_H}}
-\DoxyCodeLine{39 \textcolor{preprocessor}{\#define CompactStar\_RotationSolver\_H}}
+\DoxyCodeLine{38 \textcolor{preprocessor}{\#ifndef CompactStar\_Core\_RotationSolver\_H}}
+\DoxyCodeLine{39 \textcolor{preprocessor}{\#define CompactStar\_Core\_RotationSolver\_H}}
 \DoxyCodeLine{40 }
-\DoxyCodeLine{41 \textcolor{preprocessor}{\#include <vector>}}
-\DoxyCodeLine{42 \textcolor{preprocessor}{\#include <gsl/gsl\_spline.h>}}
+\DoxyCodeLine{41 \textcolor{preprocessor}{\#include <gsl/gsl\_spline.h>}}
+\DoxyCodeLine{42 \textcolor{preprocessor}{\#include <vector>}}
 \DoxyCodeLine{43 }
 \DoxyCodeLine{44 \textcolor{preprocessor}{\#include <\mbox{\hyperlink{_math___core_8hpp}{Zaki/Math/Math\_Core.hpp}}>}}
 \DoxyCodeLine{45 }
 \DoxyCodeLine{46 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_prog_8hpp}{CompactStar/Core/Prog.hpp}}"{}}}
 \DoxyCodeLine{47 }
 \DoxyCodeLine{48 \textcolor{comment}{//==============================================================}}
-\DoxyCodeLine{49 \textcolor{keyword}{namespace }CompactStar}
+\DoxyCodeLine{49 \textcolor{keyword}{namespace }CompactStar::Core}
 \DoxyCodeLine{50 \{}
-\DoxyCodeLine{51   \textcolor{keyword}{class }NStar ;}
-\DoxyCodeLine{52   \textcolor{keyword}{class }MixedStar ;}
+\DoxyCodeLine{51 \textcolor{keyword}{class }NStar;}
+\DoxyCodeLine{52 \textcolor{keyword}{class }MixedStar;}
 \DoxyCodeLine{53 }
 \DoxyCodeLine{54 \textcolor{comment}{//==============================================================}}
-\DoxyCodeLine{55 \textcolor{keyword}{struct }\mbox{\hyperlink{struct_compact_star_1_1_t_o_v_table}{TOVTable}}}
+\DoxyCodeLine{55 \textcolor{keyword}{struct }\mbox{\hyperlink{struct_compact_star_1_1_core_1_1_t_o_v_table}{TOVTable}}}
 \DoxyCodeLine{56 \{}
 \DoxyCodeLine{57   \textcolor{keyword}{public}:}
-\DoxyCodeLine{58     std::vector<double> r ;}
-\DoxyCodeLine{59     std::vector<double> m ;}
-\DoxyCodeLine{60     std::vector<double> pre ;}
-\DoxyCodeLine{61     std::vector<double> eps ;}
+\DoxyCodeLine{58     std::vector<double> r;}
+\DoxyCodeLine{59     std::vector<double> m;}
+\DoxyCodeLine{60     std::vector<double> pre;}
+\DoxyCodeLine{61     std::vector<double> eps;}
 \DoxyCodeLine{62 }
 \DoxyCodeLine{63     \textcolor{keywordtype}{size\_t} Size()}
 \DoxyCodeLine{64     \{}
-\DoxyCodeLine{65       \textcolor{keywordflow}{return} r.size() ;}
+\DoxyCodeLine{65         \textcolor{keywordflow}{return} r.size();}
 \DoxyCodeLine{66     \}}
 \DoxyCodeLine{67 \};}
 \DoxyCodeLine{68 \textcolor{comment}{//==============================================================}}
@@ -68,223 +68,221 @@
 \DoxyCodeLine{75 \textcolor{comment}{//  J     :   total angular momentum of the star}}
 \DoxyCodeLine{76 \textcolor{comment}{//  Omega :   angular velocity of the star}}
 \DoxyCodeLine{77 \textcolor{comment}{//}}
-\DoxyCodeLine{78 \textcolor{keyword}{struct }\mbox{\hyperlink{struct_compact_star_1_1_omega_seq_point}{OmegaSeqPoint}}}
+\DoxyCodeLine{78 \textcolor{keyword}{struct }\mbox{\hyperlink{struct_compact_star_1_1_core_1_1_omega_seq_point}{OmegaSeqPoint}}}
 \DoxyCodeLine{79 \{}
-\DoxyCodeLine{80   \textcolor{keywordtype}{double} omega\_bar\_c, m, r, J, Omega ;}
+\DoxyCodeLine{80     \textcolor{keywordtype}{double} omega\_bar\_c, m, r, J, Omega;}
 \DoxyCodeLine{81 }
-\DoxyCodeLine{82   \mbox{\hyperlink{struct_compact_star_1_1_omega_seq_point}{OmegaSeqPoint}}(\textcolor{keyword}{const} \textcolor{keywordtype}{double}\& in\_oc, \textcolor{keyword}{const} \textcolor{keywordtype}{double}\& in\_m,}
-\DoxyCodeLine{83             \textcolor{keyword}{const} \textcolor{keywordtype}{double}\& in\_r, \textcolor{keyword}{const} \textcolor{keywordtype}{double}\& in\_J, \textcolor{keyword}{const} \textcolor{keywordtype}{double}\& in\_Omega)}
-\DoxyCodeLine{84             : omega\_bar\_c(in\_oc), m(in\_m), r(in\_r), J(in\_J), Omega(in\_Omega)}
-\DoxyCodeLine{85           \{\}}
-\DoxyCodeLine{86 }
-\DoxyCodeLine{87   std::string Str()\textcolor{keyword}{ const}}
-\DoxyCodeLine{88 \textcolor{keyword}{  }\{}
-\DoxyCodeLine{89     std::stringstream ss;}
-\DoxyCodeLine{90     \textcolor{keywordtype}{char} tmp[200] ;}
-\DoxyCodeLine{91     snprintf(tmp, \textcolor{keyword}{sizeof}(tmp), \textcolor{stringliteral}{"{}\%.8e\(\backslash\)t \%.8e\(\backslash\)t \%.8e\(\backslash\)t \%.8e\(\backslash\)t \%.8e"{}}, omega\_bar\_c, m, r, J, Omega) ;}
-\DoxyCodeLine{92     ss << tmp ;}
-\DoxyCodeLine{93 }
-\DoxyCodeLine{94     \textcolor{keywordflow}{return} ss.str() ;}
-\DoxyCodeLine{95   \}}
-\DoxyCodeLine{96 \};}
-\DoxyCodeLine{97 \textcolor{comment}{//==============================================================}}
-\DoxyCodeLine{98 \textcolor{keyword}{class }\mbox{\hyperlink{class_compact_star_1_1_rotation_solver}{RotationSolver}} : \textcolor{keyword}{public} \mbox{\hyperlink{class_compact_star_1_1_prog}{Prog}}}
-\DoxyCodeLine{99 \{}
-\DoxyCodeLine{100   \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
-\DoxyCodeLine{101   \textcolor{comment}{// This struct was added on Aug 6}}
-\DoxyCodeLine{102   \textcolor{keyword}{struct }OmegaPoint}
-\DoxyCodeLine{103   \{}
-\DoxyCodeLine{104     \textcolor{keywordtype}{double} r, m, nu, omega\_bar, domega\_bar, omega ;}
-\DoxyCodeLine{105 }
-\DoxyCodeLine{106     OmegaPoint(\textcolor{keyword}{const} \textcolor{keywordtype}{double}\& in\_r, \textcolor{keyword}{const} \textcolor{keywordtype}{double}\& in\_m,}
-\DoxyCodeLine{107                \textcolor{keyword}{const} \textcolor{keywordtype}{double}\& in\_nu,}
-\DoxyCodeLine{108                \textcolor{keyword}{const} \textcolor{keywordtype}{double}\& in\_omega\_bar,}
-\DoxyCodeLine{109                \textcolor{keyword}{const} \textcolor{keywordtype}{double}\& in\_domega\_bar)}
-\DoxyCodeLine{110               : r(in\_r), m(in\_m), nu(in\_nu), omega\_bar(in\_omega\_bar),}
-\DoxyCodeLine{111                domega\_bar(in\_domega\_bar), omega(0)}
-\DoxyCodeLine{112             \{\}}
-\DoxyCodeLine{113 }
-\DoxyCodeLine{114     std::string Str()\textcolor{keyword}{ const}}
-\DoxyCodeLine{115 \textcolor{keyword}{    }\{}
-\DoxyCodeLine{116       std::stringstream ss;}
-\DoxyCodeLine{117       \textcolor{keywordtype}{char} tmp[150] ;}
-\DoxyCodeLine{118       snprintf(tmp, \textcolor{keyword}{sizeof}(tmp), \textcolor{stringliteral}{"{}\%-\/19.8e\(\backslash\)t \%-\/19.8e\(\backslash\)t \%-\/19.8e\(\backslash\)t \%-\/19.8e\(\backslash\)t \%-\/19.8e\(\backslash\)t \%-\/19.8e"{}}, r, m , nu, omega, omega\_bar, domega\_bar) ;}
-\DoxyCodeLine{119       ss << tmp ;}
-\DoxyCodeLine{120 }
-\DoxyCodeLine{121       \textcolor{keywordflow}{return} ss.str() ;}
-\DoxyCodeLine{122     \}}
-\DoxyCodeLine{123   \};}
-\DoxyCodeLine{124   \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
-\DoxyCodeLine{125   \textcolor{comment}{// This struct was added on Apr 20, 2022}}
-\DoxyCodeLine{126   \textcolor{comment}{//  to accommodate the mixed star scenarios}}
-\DoxyCodeLine{127   \textcolor{keyword}{struct }OmegaPointDark}
-\DoxyCodeLine{128   \{}
-\DoxyCodeLine{129     \textcolor{keywordtype}{double} r, m, m\_d, nu, omega\_bar, domega\_bar, omega ;}
-\DoxyCodeLine{130 }
-\DoxyCodeLine{131     OmegaPointDark( \textcolor{keyword}{const} \textcolor{keywordtype}{double}\& in\_r, }
-\DoxyCodeLine{132                 \textcolor{keyword}{const} \textcolor{keywordtype}{double}\& in\_m,}
-\DoxyCodeLine{133                 \textcolor{keyword}{const} \textcolor{keywordtype}{double}\& in\_m\_d,}
-\DoxyCodeLine{134                 \textcolor{keyword}{const} \textcolor{keywordtype}{double}\& in\_nu,}
-\DoxyCodeLine{135                 \textcolor{keyword}{const} \textcolor{keywordtype}{double}\& in\_omega\_bar,}
-\DoxyCodeLine{136                 \textcolor{keyword}{const} \textcolor{keywordtype}{double}\& in\_domega\_bar)}
-\DoxyCodeLine{137               : r(in\_r), m(in\_m), m\_d(in\_m\_d), nu(in\_nu),}
-\DoxyCodeLine{138                 omega\_bar(in\_omega\_bar),}
-\DoxyCodeLine{139                 domega\_bar(in\_domega\_bar), omega(0)}
-\DoxyCodeLine{140             \{\}}
-\DoxyCodeLine{141 }
-\DoxyCodeLine{142     std::string Str()\textcolor{keyword}{ const}}
-\DoxyCodeLine{143 \textcolor{keyword}{    }\{}
-\DoxyCodeLine{144       std::stringstream ss;}
-\DoxyCodeLine{145       \textcolor{keywordtype}{char} tmp[150] ;}
-\DoxyCodeLine{146       snprintf(tmp, \textcolor{keyword}{sizeof}(tmp), \textcolor{stringliteral}{"{}\%-\/19.8e\(\backslash\)t \%-\/19.8e\(\backslash\)t \%-\/19.8e\(\backslash\)t "{}}}
-\DoxyCodeLine{147                     \textcolor{stringliteral}{"{}\%-\/19.8e\(\backslash\)t \%-\/19.8e\(\backslash\)t \%-\/19.8e\(\backslash\)t \%-\/19.8e"{}},}
-\DoxyCodeLine{148                     r, m, m\_d, nu, omega, omega\_bar, domega\_bar) ;}
-\DoxyCodeLine{149       ss << tmp ;}
-\DoxyCodeLine{150 }
-\DoxyCodeLine{151       \textcolor{keywordflow}{return} ss.str() ;}
-\DoxyCodeLine{152     \}}
-\DoxyCodeLine{153   \};}
-\DoxyCodeLine{154 }
-\DoxyCodeLine{155   \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
-\DoxyCodeLine{156   \textcolor{keyword}{private}:}
+\DoxyCodeLine{82     \mbox{\hyperlink{struct_compact_star_1_1_core_1_1_omega_seq_point}{OmegaSeqPoint}}(\textcolor{keyword}{const} \textcolor{keywordtype}{double} \&in\_oc, \textcolor{keyword}{const} \textcolor{keywordtype}{double} \&in\_m,}
+\DoxyCodeLine{83                   \textcolor{keyword}{const} \textcolor{keywordtype}{double} \&in\_r, \textcolor{keyword}{const} \textcolor{keywordtype}{double} \&in\_J, \textcolor{keyword}{const} \textcolor{keywordtype}{double} \&in\_Omega)}
+\DoxyCodeLine{84         : omega\_bar\_c(in\_oc), m(in\_m), r(in\_r), J(in\_J), Omega(in\_Omega)}
+\DoxyCodeLine{85     \{}
+\DoxyCodeLine{86     \}}
+\DoxyCodeLine{87 }
+\DoxyCodeLine{88     std::string Str()\textcolor{keyword}{ const}}
+\DoxyCodeLine{89 \textcolor{keyword}{    }\{}
+\DoxyCodeLine{90         std::stringstream ss;}
+\DoxyCodeLine{91         \textcolor{keywordtype}{char} tmp[200];}
+\DoxyCodeLine{92         snprintf(tmp, \textcolor{keyword}{sizeof}(tmp), \textcolor{stringliteral}{"{}\%.8e\(\backslash\)t \%.8e\(\backslash\)t \%.8e\(\backslash\)t \%.8e\(\backslash\)t \%.8e"{}}, omega\_bar\_c, m, r, J, Omega);}
+\DoxyCodeLine{93         ss << tmp;}
+\DoxyCodeLine{94 }
+\DoxyCodeLine{95         \textcolor{keywordflow}{return} ss.str();}
+\DoxyCodeLine{96     \}}
+\DoxyCodeLine{97 \};}
+\DoxyCodeLine{98 \textcolor{comment}{//==============================================================}}
+\DoxyCodeLine{99 \textcolor{keyword}{class }\mbox{\hyperlink{class_compact_star_1_1_core_1_1_rotation_solver}{RotationSolver}} : \textcolor{keyword}{public} \mbox{\hyperlink{class_compact_star_1_1_core_1_1_prog}{Prog}}}
+\DoxyCodeLine{100 \{}
+\DoxyCodeLine{101     \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{102     \textcolor{comment}{// This struct was added on Aug 6}}
+\DoxyCodeLine{103     \textcolor{keyword}{struct }OmegaPoint}
+\DoxyCodeLine{104     \{}
+\DoxyCodeLine{105         \textcolor{keywordtype}{double} r, m, nu, omega\_bar, domega\_bar, omega;}
+\DoxyCodeLine{106 }
+\DoxyCodeLine{107         OmegaPoint(\textcolor{keyword}{const} \textcolor{keywordtype}{double} \&in\_r, \textcolor{keyword}{const} \textcolor{keywordtype}{double} \&in\_m,}
+\DoxyCodeLine{108                    \textcolor{keyword}{const} \textcolor{keywordtype}{double} \&in\_nu,}
+\DoxyCodeLine{109                    \textcolor{keyword}{const} \textcolor{keywordtype}{double} \&in\_omega\_bar,}
+\DoxyCodeLine{110                    \textcolor{keyword}{const} \textcolor{keywordtype}{double} \&in\_domega\_bar)}
+\DoxyCodeLine{111             : r(in\_r), m(in\_m), nu(in\_nu), omega\_bar(in\_omega\_bar),}
+\DoxyCodeLine{112               domega\_bar(in\_domega\_bar), omega(0)}
+\DoxyCodeLine{113         \{}
+\DoxyCodeLine{114         \}}
+\DoxyCodeLine{115 }
+\DoxyCodeLine{116         std::string Str()\textcolor{keyword}{ const}}
+\DoxyCodeLine{117 \textcolor{keyword}{        }\{}
+\DoxyCodeLine{118             std::stringstream ss;}
+\DoxyCodeLine{119             \textcolor{keywordtype}{char} tmp[150];}
+\DoxyCodeLine{120             snprintf(tmp, \textcolor{keyword}{sizeof}(tmp), \textcolor{stringliteral}{"{}\%-\/19.8e\(\backslash\)t \%-\/19.8e\(\backslash\)t \%-\/19.8e\(\backslash\)t \%-\/19.8e\(\backslash\)t \%-\/19.8e\(\backslash\)t \%-\/19.8e"{}}, r, m, nu, omega, omega\_bar, domega\_bar);}
+\DoxyCodeLine{121             ss << tmp;}
+\DoxyCodeLine{122 }
+\DoxyCodeLine{123             \textcolor{keywordflow}{return} ss.str();}
+\DoxyCodeLine{124         \}}
+\DoxyCodeLine{125     \};}
+\DoxyCodeLine{126     \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{127     \textcolor{comment}{// This struct was added on Apr 20, 2022}}
+\DoxyCodeLine{128     \textcolor{comment}{//  to accommodate the mixed star scenarios}}
+\DoxyCodeLine{129     \textcolor{keyword}{struct }OmegaPointDark}
+\DoxyCodeLine{130     \{}
+\DoxyCodeLine{131         \textcolor{keywordtype}{double} r, m, m\_d, nu, omega\_bar, domega\_bar, omega;}
+\DoxyCodeLine{132 }
+\DoxyCodeLine{133         OmegaPointDark(\textcolor{keyword}{const} \textcolor{keywordtype}{double} \&in\_r,}
+\DoxyCodeLine{134                        \textcolor{keyword}{const} \textcolor{keywordtype}{double} \&in\_m,}
+\DoxyCodeLine{135                        \textcolor{keyword}{const} \textcolor{keywordtype}{double} \&in\_m\_d,}
+\DoxyCodeLine{136                        \textcolor{keyword}{const} \textcolor{keywordtype}{double} \&in\_nu,}
+\DoxyCodeLine{137                        \textcolor{keyword}{const} \textcolor{keywordtype}{double} \&in\_omega\_bar,}
+\DoxyCodeLine{138                        \textcolor{keyword}{const} \textcolor{keywordtype}{double} \&in\_domega\_bar)}
+\DoxyCodeLine{139             : r(in\_r), m(in\_m), m\_d(in\_m\_d), nu(in\_nu),}
+\DoxyCodeLine{140               omega\_bar(in\_omega\_bar),}
+\DoxyCodeLine{141               domega\_bar(in\_domega\_bar), omega(0)}
+\DoxyCodeLine{142         \{}
+\DoxyCodeLine{143         \}}
+\DoxyCodeLine{144 }
+\DoxyCodeLine{145         std::string Str()\textcolor{keyword}{ const}}
+\DoxyCodeLine{146 \textcolor{keyword}{        }\{}
+\DoxyCodeLine{147             std::stringstream ss;}
+\DoxyCodeLine{148             \textcolor{keywordtype}{char} tmp[150];}
+\DoxyCodeLine{149             snprintf(tmp, \textcolor{keyword}{sizeof}(tmp), \textcolor{stringliteral}{"{}\%-\/19.8e\(\backslash\)t \%-\/19.8e\(\backslash\)t \%-\/19.8e\(\backslash\)t "{}}}
+\DoxyCodeLine{150                                        \textcolor{stringliteral}{"{}\%-\/19.8e\(\backslash\)t \%-\/19.8e\(\backslash\)t \%-\/19.8e\(\backslash\)t \%-\/19.8e"{}},}
+\DoxyCodeLine{151                      r, m, m\_d, nu, omega, omega\_bar, domega\_bar);}
+\DoxyCodeLine{152             ss << tmp;}
+\DoxyCodeLine{153 }
+\DoxyCodeLine{154             \textcolor{keywordflow}{return} ss.str();}
+\DoxyCodeLine{155         \}}
+\DoxyCodeLine{156     \};}
 \DoxyCodeLine{157 }
-\DoxyCodeLine{158     \mbox{\hyperlink{class_compact_star_1_1_n_star}{NStar}}* nstar\_ptr = nullptr ;}
-\DoxyCodeLine{159     \mbox{\hyperlink{class_compact_star_1_1_mixed_star}{MixedStar}}* mixedstar\_ptr = nullptr ;}
-\DoxyCodeLine{160 }
-\DoxyCodeLine{161     \textcolor{keywordtype}{size\_t} radial\_res = 1000 ;}
+\DoxyCodeLine{158     \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{159   \textcolor{keyword}{private}:}
+\DoxyCodeLine{160     \mbox{\hyperlink{class_compact_star_1_1_core_1_1_n_star}{NStar}} *nstar\_ptr = \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{161     \mbox{\hyperlink{class_compact_star_1_1_core_1_1_mixed_star}{MixedStar}} *mixedstar\_ptr = \textcolor{keyword}{nullptr};}
 \DoxyCodeLine{162 }
-\DoxyCodeLine{163     \textcolor{comment}{// This workspace stores state variables for interpolation lookups.}}
-\DoxyCodeLine{164     \textcolor{comment}{// It caches the previous value of an index lookup. }}
-\DoxyCodeLine{165     \textcolor{comment}{// When the subsequent interpolation point falls in the same }}
-\DoxyCodeLine{166     \textcolor{comment}{// interval its index value can be returned immediately.}}
-\DoxyCodeLine{167     \textcolor{comment}{// gsl\_interp\_accel *accel = nullptr ;}}
-\DoxyCodeLine{168 }
-\DoxyCodeLine{169     \textcolor{comment}{// We use cubic spline}}
-\DoxyCodeLine{170     \textcolor{comment}{// Cubic spline with natural boundary conditions. }}
-\DoxyCodeLine{171     \textcolor{comment}{// The resulting curve is piecewise cubic on each interval, }}
-\DoxyCodeLine{172     \textcolor{comment}{// with matching first and second derivatives at the supplied data-\/points.}}
-\DoxyCodeLine{173     \textcolor{comment}{//  The second derivative is chosen to be zero at the first point and last point.}}
-\DoxyCodeLine{174 }
-\DoxyCodeLine{176     \textcolor{comment}{// gsl\_spline *m\_spline = nullptr ;}}
-\DoxyCodeLine{178 \textcolor{comment}{}    \textcolor{comment}{// gsl\_spline *p\_spline = nullptr ;}}
-\DoxyCodeLine{180 \textcolor{comment}{}    \textcolor{comment}{// gsl\_spline *e\_spline = nullptr ;}}
-\DoxyCodeLine{181 }
-\DoxyCodeLine{182 }
-\DoxyCodeLine{184     \textcolor{keywordtype}{double} init\_omega\_bar = -\/1 ;}
-\DoxyCodeLine{185 }
-\DoxyCodeLine{187     \textcolor{comment}{// TOVTable tov\_solution ;}}
-\DoxyCodeLine{188     std::vector<OmegaPoint> omega\_results    ; \textcolor{comment}{// Aug 6, 2020}}
-\DoxyCodeLine{189     std::vector<OmegaSeqPoint> omega\_seq\_pts ; \textcolor{comment}{// Aug 6, 2020}}
-\DoxyCodeLine{190 }
-\DoxyCodeLine{191     std::vector<OmegaPointDark> omega\_results\_dark ; \textcolor{comment}{// Apr 20, 2022}}
-\DoxyCodeLine{192 }
-\DoxyCodeLine{194     \textcolor{comment}{// double R\_Star = -\/1 ; }}
-\DoxyCodeLine{195 }
-\DoxyCodeLine{197     \textcolor{comment}{// double M\_Star = -\/1 ; }}
-\DoxyCodeLine{198 }
-\DoxyCodeLine{199     \textcolor{keywordtype}{double} fast\_p ;}
-\DoxyCodeLine{200     \textcolor{keywordtype}{double} fast\_e ;}
-\DoxyCodeLine{201     \textcolor{keywordtype}{double} fast\_m ;}
-\DoxyCodeLine{202 }
-\DoxyCodeLine{203     \textcolor{keywordtype}{double} fast\_p\_v;}
-\DoxyCodeLine{204     \textcolor{keywordtype}{double} fast\_p\_d ;}
-\DoxyCodeLine{205     \textcolor{keywordtype}{double} fast\_e\_v ;}
-\DoxyCodeLine{206     \textcolor{keywordtype}{double} fast\_e\_d  ;}
-\DoxyCodeLine{207     \textcolor{keywordtype}{double} fast\_m\_tot ;}
-\DoxyCodeLine{208 }
-\DoxyCodeLine{209   \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
-\DoxyCodeLine{210   \textcolor{keyword}{public}:}
-\DoxyCodeLine{211     }
-\DoxyCodeLine{212     \mbox{\hyperlink{class_compact_star_1_1_rotation_solver}{RotationSolver}}();}
-\DoxyCodeLine{213     \mbox{\hyperlink{class_compact_star_1_1_rotation_solver}{\string~RotationSolver}}() ;}
+\DoxyCodeLine{163     \textcolor{keywordtype}{size\_t} radial\_res = 1000;}
+\DoxyCodeLine{164 }
+\DoxyCodeLine{165     \textcolor{comment}{// This workspace stores state variables for interpolation lookups.}}
+\DoxyCodeLine{166     \textcolor{comment}{// It caches the previous value of an index lookup.}}
+\DoxyCodeLine{167     \textcolor{comment}{// When the subsequent interpolation point falls in the same}}
+\DoxyCodeLine{168     \textcolor{comment}{// interval its index value can be returned immediately.}}
+\DoxyCodeLine{169     \textcolor{comment}{// gsl\_interp\_accel *accel = nullptr ;}}
+\DoxyCodeLine{170 }
+\DoxyCodeLine{171     \textcolor{comment}{// We use cubic spline}}
+\DoxyCodeLine{172     \textcolor{comment}{// Cubic spline with natural boundary conditions.}}
+\DoxyCodeLine{173     \textcolor{comment}{// The resulting curve is piecewise cubic on each interval,}}
+\DoxyCodeLine{174     \textcolor{comment}{// with matching first and second derivatives at the supplied data-\/points.}}
+\DoxyCodeLine{175     \textcolor{comment}{//  The second derivative is chosen to be zero at the first point and last point.}}
+\DoxyCodeLine{176 }
+\DoxyCodeLine{178     \textcolor{comment}{// gsl\_spline *m\_spline = nullptr ;}}
+\DoxyCodeLine{180 \textcolor{comment}{}    \textcolor{comment}{// gsl\_spline *p\_spline = nullptr ;}}
+\DoxyCodeLine{182 \textcolor{comment}{}    \textcolor{comment}{// gsl\_spline *e\_spline = nullptr ;}}
+\DoxyCodeLine{183 }
+\DoxyCodeLine{185     \textcolor{keywordtype}{double} init\_omega\_bar = -\/1;}
+\DoxyCodeLine{186 }
+\DoxyCodeLine{188     \textcolor{comment}{// TOVTable tov\_solution ;}}
+\DoxyCodeLine{189     std::vector<OmegaPoint> omega\_results;    \textcolor{comment}{// Aug 6, 2020}}
+\DoxyCodeLine{190     std::vector<OmegaSeqPoint> omega\_seq\_pts; \textcolor{comment}{// Aug 6, 2020}}
+\DoxyCodeLine{191 }
+\DoxyCodeLine{192     std::vector<OmegaPointDark> omega\_results\_dark; \textcolor{comment}{// Apr 20, 2022}}
+\DoxyCodeLine{193 }
+\DoxyCodeLine{195     \textcolor{comment}{// double R\_Star = -\/1 ;}}
+\DoxyCodeLine{196 }
+\DoxyCodeLine{198     \textcolor{comment}{// double M\_Star = -\/1 ;}}
+\DoxyCodeLine{199 }
+\DoxyCodeLine{200     \textcolor{keywordtype}{double} fast\_p;}
+\DoxyCodeLine{201     \textcolor{keywordtype}{double} fast\_e;}
+\DoxyCodeLine{202     \textcolor{keywordtype}{double} fast\_m;}
+\DoxyCodeLine{203 }
+\DoxyCodeLine{204     \textcolor{keywordtype}{double} fast\_p\_v;}
+\DoxyCodeLine{205     \textcolor{keywordtype}{double} fast\_p\_d;}
+\DoxyCodeLine{206     \textcolor{keywordtype}{double} fast\_e\_v;}
+\DoxyCodeLine{207     \textcolor{keywordtype}{double} fast\_e\_d;}
+\DoxyCodeLine{208     \textcolor{keywordtype}{double} fast\_m\_tot;}
+\DoxyCodeLine{209 }
+\DoxyCodeLine{210     \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{211   \textcolor{keyword}{public}:}
+\DoxyCodeLine{212     \mbox{\hyperlink{class_compact_star_1_1_core_1_1_rotation_solver}{RotationSolver}}();}
+\DoxyCodeLine{213     \mbox{\hyperlink{class_compact_star_1_1_core_1_1_rotation_solver}{\string~RotationSolver}}();}
 \DoxyCodeLine{214 }
-\DoxyCodeLine{216     \mbox{\hyperlink{class_compact_star_1_1_rotation_solver_afa952270638f928ba9ae3a70478e8293}{RotationSolver}}(\textcolor{keyword}{const} \mbox{\hyperlink{class_compact_star_1_1_rotation_solver}{RotationSolver}} \&) = delete ;}
-\DoxyCodeLine{217     }
-\DoxyCodeLine{219     \mbox{\hyperlink{class_compact_star_1_1_rotation_solver}{RotationSolver}}\& \mbox{\hyperlink{class_compact_star_1_1_rotation_solver_a77db0e6bbb20776b718e167e023ba24f}{operator= }}(\textcolor{keyword}{const} \mbox{\hyperlink{class_compact_star_1_1_rotation_solver}{RotationSolver}}\&) = delete ;}
+\DoxyCodeLine{216     \mbox{\hyperlink{class_compact_star_1_1_core_1_1_rotation_solver_a61e5a17dc8a001b654c0ee52535a78c6}{RotationSolver}}(\textcolor{keyword}{const} \mbox{\hyperlink{class_compact_star_1_1_core_1_1_rotation_solver}{RotationSolver}} \&) = \textcolor{keyword}{delete};}
+\DoxyCodeLine{217 }
+\DoxyCodeLine{219     \mbox{\hyperlink{class_compact_star_1_1_core_1_1_rotation_solver}{RotationSolver}} \&\mbox{\hyperlink{class_compact_star_1_1_core_1_1_rotation_solver_a2e9e7d3bc5601f1cbf99aaab21acfa1a}{operator=}}(\textcolor{keyword}{const} \mbox{\hyperlink{class_compact_star_1_1_core_1_1_rotation_solver}{RotationSolver}} \&) = \textcolor{keyword}{delete};}
 \DoxyCodeLine{220 }
 \DoxyCodeLine{221     \textcolor{comment}{// void ImportTOVSolution(const Zaki::String::Directory\&) ;}}
 \DoxyCodeLine{222     \textcolor{comment}{// void ImportTOVSolution(const TOVTable\&) ;}}
-\DoxyCodeLine{223     }
-\DoxyCodeLine{225     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_compact_star_1_1_rotation_solver_aea5a24345c13c6440e0e1e458d9d27b6}{AttachNStar}}(\mbox{\hyperlink{class_compact_star_1_1_n_star}{NStar}}*) ;}
+\DoxyCodeLine{223 }
+\DoxyCodeLine{225     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_compact_star_1_1_core_1_1_rotation_solver_aea5a24345c13c6440e0e1e458d9d27b6}{AttachNStar}}(\mbox{\hyperlink{class_compact_star_1_1_core_1_1_n_star}{NStar}} *);}
 \DoxyCodeLine{226 }
-\DoxyCodeLine{227     \textcolor{keywordtype}{void} AttachMixedStar(\mbox{\hyperlink{class_compact_star_1_1_mixed_star}{MixedStar}}*) ;}
+\DoxyCodeLine{227     \textcolor{keywordtype}{void} AttachMixedStar(\mbox{\hyperlink{class_compact_star_1_1_core_1_1_mixed_star}{MixedStar}} *);}
 \DoxyCodeLine{228 }
-\DoxyCodeLine{229     \mbox{\hyperlink{class_compact_star_1_1_n_star}{NStar}}* GetNStar() ;}
+\DoxyCodeLine{229     \mbox{\hyperlink{class_compact_star_1_1_core_1_1_n_star}{NStar}} *GetNStar();}
 \DoxyCodeLine{230 }
-\DoxyCodeLine{231     \mbox{\hyperlink{class_compact_star_1_1_mixed_star}{MixedStar}}* GetMixedStar() ;}
+\DoxyCodeLine{231     \mbox{\hyperlink{class_compact_star_1_1_core_1_1_mixed_star}{MixedStar}} *GetMixedStar();}
 \DoxyCodeLine{232 }
-\DoxyCodeLine{233 }
-\DoxyCodeLine{235     \textcolor{keywordtype}{double} \mbox{\hyperlink{class_compact_star_1_1_rotation_solver_ab26f0ffdb1bf0f57c4adbd2cff83ab7c}{GetMass}}(\textcolor{keyword}{const} \textcolor{keywordtype}{double}\&) ;}
-\DoxyCodeLine{236 }
-\DoxyCodeLine{238     \textcolor{keywordtype}{double} \mbox{\hyperlink{class_compact_star_1_1_rotation_solver_ace41daa2023bcd8d1fd82717fc0cb88a}{GetPress}}(\textcolor{keywordtype}{double}) ;}
-\DoxyCodeLine{239 }
-\DoxyCodeLine{241     \textcolor{comment}{// double GetPressDer(const double\&) ;}}
-\DoxyCodeLine{242 }
-\DoxyCodeLine{244     \textcolor{keywordtype}{double} \mbox{\hyperlink{class_compact_star_1_1_rotation_solver_a01a9649bfd01395159f3c7b84e6d07a7}{GetEDens}}(\textcolor{keyword}{const} \textcolor{keywordtype}{double}\&) ;}
-\DoxyCodeLine{245 }
-\DoxyCodeLine{247     \textcolor{keywordtype}{double} \mbox{\hyperlink{class_compact_star_1_1_rotation_solver_a31516a40b8686e27d9cb50361ebfe1f4}{GetInitOmegaBar}}() \textcolor{keyword}{const} ;}
-\DoxyCodeLine{248 }
-\DoxyCodeLine{250     std::vector<OmegaSeqPoint> \mbox{\hyperlink{class_compact_star_1_1_rotation_solver_af922f4e2d00e88cdf104f2f86bc5953e}{GetOmegaSeq}}() \textcolor{keyword}{const} ;}
-\DoxyCodeLine{251 }
-\DoxyCodeLine{253     \textcolor{comment}{// Returns the metric function nu(r)}}
-\DoxyCodeLine{254     \textcolor{keywordtype}{double} \mbox{\hyperlink{class_compact_star_1_1_rotation_solver_a9a34bccfd1878e4465c13ae48dca833e}{GetNu}}(\textcolor{keywordtype}{double} in\_R)  ;}
-\DoxyCodeLine{255 }
-\DoxyCodeLine{256     \textcolor{comment}{// nu(r) integrand}}
-\DoxyCodeLine{257     \textcolor{comment}{// double NuIntegrand(double r) ;}}
-\DoxyCodeLine{258 }
-\DoxyCodeLine{259     \textcolor{comment}{// // Returns the value of the j function (Hartle Eq. 6.17, P. 253)}}
-\DoxyCodeLine{260     \textcolor{comment}{// double GetHartleJ(double r) ;}}
-\DoxyCodeLine{261 }
-\DoxyCodeLine{262     \textcolor{comment}{// // Returns the derivative of the j function (Hartle Eq. 6.18, P. 253)}}
-\DoxyCodeLine{263     \textcolor{comment}{// double GetHartleJDer(double r) ;}}
-\DoxyCodeLine{264 }
-\DoxyCodeLine{265     \textcolor{comment}{// /// Coefficient for y[0]}}
-\DoxyCodeLine{266     \textcolor{comment}{// double GetHartleOmegaCoeff(const double r) ;}}
-\DoxyCodeLine{267 }
-\DoxyCodeLine{268     \textcolor{comment}{// /// Coefficient for y[1]}}
-\DoxyCodeLine{269     \textcolor{comment}{// double GetHartleDOmegaCoeff(const double r) ;}}
-\DoxyCodeLine{270 }
-\DoxyCodeLine{272     \textcolor{keywordtype}{double} \mbox{\hyperlink{class_compact_star_1_1_rotation_solver_ac0415fea93d15873fd4161e1403cfd7b}{GetHartleOmegaCoeff\_N\_Fast}}(\textcolor{keyword}{const} \textcolor{keywordtype}{double} r) ;}
-\DoxyCodeLine{273 }
-\DoxyCodeLine{275     \textcolor{keywordtype}{double} \mbox{\hyperlink{class_compact_star_1_1_rotation_solver_abee3786b422b4ece7917275ebed81362}{GetHartleDOmegaCoeff\_N\_Fast}}(\textcolor{keyword}{const} \textcolor{keywordtype}{double} r) ;}
-\DoxyCodeLine{276 }
-\DoxyCodeLine{278     \textcolor{keywordtype}{double} \mbox{\hyperlink{class_compact_star_1_1_rotation_solver_acc8db2ce10c86326f7292e5061738cae}{GetHartleOmegaCoeff\_Mixed}}(\textcolor{keyword}{const} \textcolor{keywordtype}{double} r) ;}
-\DoxyCodeLine{279 }
-\DoxyCodeLine{281     \textcolor{keywordtype}{double} \mbox{\hyperlink{class_compact_star_1_1_rotation_solver_a8640645e7335b73ee3cf83cfdcdc2d22}{GetHartleDOmegaCoeff\_Mixed}}(\textcolor{keyword}{const} \textcolor{keywordtype}{double} r) ;}
-\DoxyCodeLine{282 }
-\DoxyCodeLine{284     \textcolor{keywordtype}{double} \mbox{\hyperlink{class_compact_star_1_1_rotation_solver_a457ac9d515dae9bf410f8b68797f81b4}{GetHartleOmegaCoeff\_Mixed\_Fast}}(\textcolor{keyword}{const} \textcolor{keywordtype}{double} r) ;}
-\DoxyCodeLine{285 }
-\DoxyCodeLine{287     \textcolor{keywordtype}{double} \mbox{\hyperlink{class_compact_star_1_1_rotation_solver_ad7441f8027b58dcb7bd861205bfd5c42}{GetHartleDOmegaCoeff\_Mixed\_Fast}}(\textcolor{keyword}{const} \textcolor{keywordtype}{double} r) ;}
-\DoxyCodeLine{288 }
-\DoxyCodeLine{290     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_compact_star_1_1_rotation_solver_a7364901287fe4d70f9f23aa59692f4f3}{Solve}}( \textcolor{keyword}{const} \mbox{\hyperlink{struct_zaki_1_1_math_1_1_axis}{Zaki::Math::Axis}}\&, }
-\DoxyCodeLine{291                 \textcolor{keyword}{const} \mbox{\hyperlink{class_zaki_1_1_string_1_1_directory}{Zaki::String::Directory}}\& = \textcolor{stringliteral}{"{}"{}}) ;   }
-\DoxyCodeLine{292                 }
-\DoxyCodeLine{294     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_compact_star_1_1_rotation_solver_a6a806e83a8606be6db58a078e0257dc1}{Solve}}( \textcolor{keyword}{const} \textcolor{keywordtype}{double}\&, }
-\DoxyCodeLine{295                 \textcolor{keyword}{const} \mbox{\hyperlink{class_zaki_1_1_string_1_1_directory}{Zaki::String::Directory}}\& = \textcolor{stringliteral}{"{}"{}}) ;   }
-\DoxyCodeLine{296     }
-\DoxyCodeLine{298     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_compact_star_1_1_rotation_solver_ade106ecafb618c303b21de6698bc0f19}{Solve\_Mixed}}( \textcolor{keyword}{const} \textcolor{keywordtype}{double}\&, }
-\DoxyCodeLine{299                 \textcolor{keyword}{const} \mbox{\hyperlink{class_zaki_1_1_string_1_1_directory}{Zaki::String::Directory}}\& = \textcolor{stringliteral}{"{}"{}}) ;  }
-\DoxyCodeLine{300 }
-\DoxyCodeLine{302     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_compact_star_1_1_rotation_solver_ae6d9fdb90475708d2444dd300fe8c92d}{FindNMomInertia}}() ; }
-\DoxyCodeLine{303 }
-\DoxyCodeLine{305     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_compact_star_1_1_rotation_solver_ae54870db5b861f14dae29d504a105a96}{FindMixedMomInertia}}() ; }
-\DoxyCodeLine{306 }
-\DoxyCodeLine{309     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_compact_star_1_1_rotation_solver_acd30447e393f4611a5020ba6e2b97f58}{ExportResults}}(\textcolor{keyword}{const} \mbox{\hyperlink{class_zaki_1_1_string_1_1_directory}{Zaki::String::Directory}}\&) \textcolor{keyword}{const} ;}
-\DoxyCodeLine{310 }
-\DoxyCodeLine{311     \textcolor{keyword}{static} \textcolor{keywordtype}{int} ODE(\textcolor{keywordtype}{double} r, \textcolor{keyword}{const} \textcolor{keywordtype}{double} y[], \textcolor{keywordtype}{double} f[], \textcolor{keywordtype}{void} *params) ;}
-\DoxyCodeLine{312     \textcolor{keyword}{static} \textcolor{keywordtype}{int} ODE\_Mixed(\textcolor{keywordtype}{double} r, \textcolor{keyword}{const} \textcolor{keywordtype}{double} y[], \textcolor{keywordtype}{double} f[], \textcolor{keywordtype}{void} *params) ;}
-\DoxyCodeLine{313     \textcolor{keyword}{static} \textcolor{keywordtype}{int} ODE\_Mixed\_Out(\textcolor{keywordtype}{double} r, \textcolor{keyword}{const} \textcolor{keywordtype}{double} y[], \textcolor{keywordtype}{double} f[], \textcolor{keywordtype}{void} *params) ;}
-\DoxyCodeLine{314     \textcolor{keyword}{static} \textcolor{keywordtype}{int} ODE\_Mixed\_Fast(\textcolor{keywordtype}{double} r, \textcolor{keyword}{const} \textcolor{keywordtype}{double} y[], \textcolor{keywordtype}{double} f[], \textcolor{keywordtype}{void} *params) ;}
-\DoxyCodeLine{315     \textcolor{keyword}{static} \textcolor{keywordtype}{int} ODE\_N\_Fast(\textcolor{keywordtype}{double} r, \textcolor{keyword}{const} \textcolor{keywordtype}{double} y[], \textcolor{keywordtype}{double} f[], \textcolor{keywordtype}{void} *params) ;}
-\DoxyCodeLine{316 }
-\DoxyCodeLine{317 }
-\DoxyCodeLine{318     \textcolor{comment}{// Resets the containers}}
-\DoxyCodeLine{319     \textcolor{keywordtype}{void} Reset() ;}
-\DoxyCodeLine{320 \};}
-\DoxyCodeLine{321 }
+\DoxyCodeLine{234     \textcolor{keywordtype}{double} \mbox{\hyperlink{class_compact_star_1_1_core_1_1_rotation_solver_a184af2011aaa3dd4503c6c7d7e5ec66b}{GetMass}}(\textcolor{keyword}{const} \textcolor{keywordtype}{double} \&);}
+\DoxyCodeLine{235 }
+\DoxyCodeLine{237     \textcolor{keywordtype}{double} \mbox{\hyperlink{class_compact_star_1_1_core_1_1_rotation_solver_a50a15fde0bd81f887b0fdecb271f0271}{GetPress}}(\textcolor{keywordtype}{double});}
+\DoxyCodeLine{238 }
+\DoxyCodeLine{240     \textcolor{comment}{// double GetPressDer(const double\&) ;}}
+\DoxyCodeLine{241 }
+\DoxyCodeLine{243     \textcolor{keywordtype}{double} \mbox{\hyperlink{class_compact_star_1_1_core_1_1_rotation_solver_a01a9649bfd01395159f3c7b84e6d07a7}{GetEDens}}(\textcolor{keyword}{const} \textcolor{keywordtype}{double} \&);}
+\DoxyCodeLine{244 }
+\DoxyCodeLine{246     \textcolor{keywordtype}{double} \mbox{\hyperlink{class_compact_star_1_1_core_1_1_rotation_solver_a31516a40b8686e27d9cb50361ebfe1f4}{GetInitOmegaBar}}() \textcolor{keyword}{const};}
+\DoxyCodeLine{247 }
+\DoxyCodeLine{249     std::vector<OmegaSeqPoint> \mbox{\hyperlink{class_compact_star_1_1_core_1_1_rotation_solver_af922f4e2d00e88cdf104f2f86bc5953e}{GetOmegaSeq}}() \textcolor{keyword}{const};}
+\DoxyCodeLine{250 }
+\DoxyCodeLine{252     \textcolor{comment}{// Returns the metric function nu(r)}}
+\DoxyCodeLine{253     \textcolor{keywordtype}{double} \mbox{\hyperlink{class_compact_star_1_1_core_1_1_rotation_solver_a9a34bccfd1878e4465c13ae48dca833e}{GetNu}}(\textcolor{keywordtype}{double} in\_R);}
+\DoxyCodeLine{254 }
+\DoxyCodeLine{255     \textcolor{comment}{// nu(r) integrand}}
+\DoxyCodeLine{256     \textcolor{comment}{// double NuIntegrand(double r) ;}}
+\DoxyCodeLine{257 }
+\DoxyCodeLine{258     \textcolor{comment}{// // Returns the value of the j function (Hartle Eq. 6.17, P. 253)}}
+\DoxyCodeLine{259     \textcolor{comment}{// double GetHartleJ(double r) ;}}
+\DoxyCodeLine{260 }
+\DoxyCodeLine{261     \textcolor{comment}{// // Returns the derivative of the j function (Hartle Eq. 6.18, P. 253)}}
+\DoxyCodeLine{262     \textcolor{comment}{// double GetHartleJDer(double r) ;}}
+\DoxyCodeLine{263 }
+\DoxyCodeLine{264     \textcolor{comment}{// /// Coefficient for y[0]}}
+\DoxyCodeLine{265     \textcolor{comment}{// double GetHartleOmegaCoeff(const double r) ;}}
+\DoxyCodeLine{266 }
+\DoxyCodeLine{267     \textcolor{comment}{// /// Coefficient for y[1]}}
+\DoxyCodeLine{268     \textcolor{comment}{// double GetHartleDOmegaCoeff(const double r) ;}}
+\DoxyCodeLine{269 }
+\DoxyCodeLine{271     \textcolor{keywordtype}{double} \mbox{\hyperlink{class_compact_star_1_1_core_1_1_rotation_solver_ac0415fea93d15873fd4161e1403cfd7b}{GetHartleOmegaCoeff\_N\_Fast}}(\textcolor{keyword}{const} \textcolor{keywordtype}{double} r);}
+\DoxyCodeLine{272 }
+\DoxyCodeLine{274     \textcolor{keywordtype}{double} \mbox{\hyperlink{class_compact_star_1_1_core_1_1_rotation_solver_abee3786b422b4ece7917275ebed81362}{GetHartleDOmegaCoeff\_N\_Fast}}(\textcolor{keyword}{const} \textcolor{keywordtype}{double} r);}
+\DoxyCodeLine{275 }
+\DoxyCodeLine{277     \textcolor{keywordtype}{double} \mbox{\hyperlink{class_compact_star_1_1_core_1_1_rotation_solver_acc8db2ce10c86326f7292e5061738cae}{GetHartleOmegaCoeff\_Mixed}}(\textcolor{keyword}{const} \textcolor{keywordtype}{double} r);}
+\DoxyCodeLine{278 }
+\DoxyCodeLine{280     \textcolor{keywordtype}{double} \mbox{\hyperlink{class_compact_star_1_1_core_1_1_rotation_solver_a8640645e7335b73ee3cf83cfdcdc2d22}{GetHartleDOmegaCoeff\_Mixed}}(\textcolor{keyword}{const} \textcolor{keywordtype}{double} r);}
+\DoxyCodeLine{281 }
+\DoxyCodeLine{283     \textcolor{keywordtype}{double} \mbox{\hyperlink{class_compact_star_1_1_core_1_1_rotation_solver_a457ac9d515dae9bf410f8b68797f81b4}{GetHartleOmegaCoeff\_Mixed\_Fast}}(\textcolor{keyword}{const} \textcolor{keywordtype}{double} r);}
+\DoxyCodeLine{284 }
+\DoxyCodeLine{286     \textcolor{keywordtype}{double} \mbox{\hyperlink{class_compact_star_1_1_core_1_1_rotation_solver_ad7441f8027b58dcb7bd861205bfd5c42}{GetHartleDOmegaCoeff\_Mixed\_Fast}}(\textcolor{keyword}{const} \textcolor{keywordtype}{double} r);}
+\DoxyCodeLine{287 }
+\DoxyCodeLine{289     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_compact_star_1_1_core_1_1_rotation_solver_acd856c63a63e64f1bca88f89ec238fce}{Solve}}(\textcolor{keyword}{const} \mbox{\hyperlink{struct_zaki_1_1_math_1_1_axis}{Zaki::Math::Axis}} \&,}
+\DoxyCodeLine{290                \textcolor{keyword}{const} \mbox{\hyperlink{class_zaki_1_1_string_1_1_directory}{Zaki::String::Directory}} \& = \textcolor{stringliteral}{"{}"{}});}
+\DoxyCodeLine{291 }
+\DoxyCodeLine{293     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_compact_star_1_1_core_1_1_rotation_solver_af2d1d3978f603e05f704d1ca4355c946}{Solve}}(\textcolor{keyword}{const} \textcolor{keywordtype}{double} \&,}
+\DoxyCodeLine{294                \textcolor{keyword}{const} \mbox{\hyperlink{class_zaki_1_1_string_1_1_directory}{Zaki::String::Directory}} \& = \textcolor{stringliteral}{"{}"{}});}
+\DoxyCodeLine{295 }
+\DoxyCodeLine{297     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_compact_star_1_1_core_1_1_rotation_solver_ade106ecafb618c303b21de6698bc0f19}{Solve\_Mixed}}(\textcolor{keyword}{const} \textcolor{keywordtype}{double} \&,}
+\DoxyCodeLine{298                      \textcolor{keyword}{const} \mbox{\hyperlink{class_zaki_1_1_string_1_1_directory}{Zaki::String::Directory}} \& = \textcolor{stringliteral}{"{}"{}});}
+\DoxyCodeLine{299 }
+\DoxyCodeLine{301     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_compact_star_1_1_core_1_1_rotation_solver_ae6d9fdb90475708d2444dd300fe8c92d}{FindNMomInertia}}();}
+\DoxyCodeLine{302 }
+\DoxyCodeLine{304     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_compact_star_1_1_core_1_1_rotation_solver_ae54870db5b861f14dae29d504a105a96}{FindMixedMomInertia}}();}
+\DoxyCodeLine{305 }
+\DoxyCodeLine{308     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_compact_star_1_1_core_1_1_rotation_solver_acd30447e393f4611a5020ba6e2b97f58}{ExportResults}}(\textcolor{keyword}{const} \mbox{\hyperlink{class_zaki_1_1_string_1_1_directory}{Zaki::String::Directory}} \&) \textcolor{keyword}{const};}
+\DoxyCodeLine{309 }
+\DoxyCodeLine{310     \textcolor{keyword}{static} \textcolor{keywordtype}{int} ODE(\textcolor{keywordtype}{double} r, \textcolor{keyword}{const} \textcolor{keywordtype}{double} y[], \textcolor{keywordtype}{double} f[], \textcolor{keywordtype}{void} *params);}
+\DoxyCodeLine{311     \textcolor{keyword}{static} \textcolor{keywordtype}{int} ODE\_Mixed(\textcolor{keywordtype}{double} r, \textcolor{keyword}{const} \textcolor{keywordtype}{double} y[], \textcolor{keywordtype}{double} f[], \textcolor{keywordtype}{void} *params);}
+\DoxyCodeLine{312     \textcolor{keyword}{static} \textcolor{keywordtype}{int} ODE\_Mixed\_Out(\textcolor{keywordtype}{double} r, \textcolor{keyword}{const} \textcolor{keywordtype}{double} y[], \textcolor{keywordtype}{double} f[], \textcolor{keywordtype}{void} *params);}
+\DoxyCodeLine{313     \textcolor{keyword}{static} \textcolor{keywordtype}{int} ODE\_Mixed\_Fast(\textcolor{keywordtype}{double} r, \textcolor{keyword}{const} \textcolor{keywordtype}{double} y[], \textcolor{keywordtype}{double} f[], \textcolor{keywordtype}{void} *params);}
+\DoxyCodeLine{314     \textcolor{keyword}{static} \textcolor{keywordtype}{int} ODE\_N\_Fast(\textcolor{keywordtype}{double} r, \textcolor{keyword}{const} \textcolor{keywordtype}{double} y[], \textcolor{keywordtype}{double} f[], \textcolor{keywordtype}{void} *params);}
+\DoxyCodeLine{315 }
+\DoxyCodeLine{316     \textcolor{comment}{// Resets the containers}}
+\DoxyCodeLine{317     \textcolor{keywordtype}{void} Reset();}
+\DoxyCodeLine{318 \};}
+\DoxyCodeLine{319 }
+\DoxyCodeLine{320 \textcolor{comment}{//==============================================================}}
+\DoxyCodeLine{321 \} \textcolor{comment}{// namespace CompactStar::Core}}
 \DoxyCodeLine{322 \textcolor{comment}{//==============================================================}}
-\DoxyCodeLine{323 \} \textcolor{comment}{// CompactStar namespace}}
-\DoxyCodeLine{324 \textcolor{comment}{//==============================================================}}
-\DoxyCodeLine{325 \textcolor{preprocessor}{\#endif }\textcolor{comment}{/*CompactStar\_RotationSolver\_H*/}\textcolor{preprocessor}{}}
+\DoxyCodeLine{323 \textcolor{preprocessor}{\#endif }\textcolor{comment}{/*CompactStar\_Core\_RotationSolver\_H*/}\textcolor{preprocessor}{}}
 
 \end{DoxyCode}

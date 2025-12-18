@@ -73,18 +73,31 @@ $(function() {
 </div>
 </div><!-- top -->
 <div class="header">
+  <div class="summary">
+<a href="#namespaces">Namespaces</a>  </div>
   <div class="headertitle"><div class="title">GeometryCache.cpp File Reference</div></div>
 </div><!--header-->
 <div class="contents">
 
-<p>See <a class="el" href="../../d4/d0f/_geometry_cache_8hpp.html" title="Precomputed geometric weights and masks for fast radial integration.">GeometryCache.hpp</a>. Precompute radial weights.  
+<p>See <a class="el" href="../../d4/d0f/_geometry_cache_8hpp.html" title="Precomputed geometric factors for fast radial integration (DataColumn-native).">GeometryCache.hpp</a>.  
 <a href="#details">More...</a></p>
-<div class="textblock"><code>#include &quot;CompactStar/ChemicalHeating/GeometryCache.hpp&quot;</code><br />
-<code>#include &quot;CompactStar/ChemicalHeating/StarContext.hpp&quot;</code><br />
-<code>#include &lt;<a class="el" href="../../de/dee/_data_set_8hpp_source.html">Zaki/Vector/DataSet.hpp</a>&gt;</code><br />
+<div class="textblock"><code>#include &quot;<a class="el" href="../../d4/d0f/_geometry_cache_8hpp_source.html">CompactStar/Physics/Evolution/GeometryCache.hpp</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="../../de/d70/_star_context_8hpp_source.html">CompactStar/Physics/Evolution/StarContext.hpp</a>&quot;</code><br />
 <code>#include &lt;cmath&gt;</code><br />
-</div><a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>See <a class="el" href="../../d4/d0f/_geometry_cache_8hpp.html" title="Precomputed geometric weights and masks for fast radial integration.">GeometryCache.hpp</a>. Precompute radial weights. </p>
+<code>#include &lt;stdexcept&gt;</code><br />
+</div><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="namespaces" name="namespaces"></a>
+Namespaces</h2></td></tr>
+<tr class="memitem:dc/dab/namespace_compact_star_1_1_physics"><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dc/dab/namespace_compact_star_1_1_physics.html">CompactStar::Physics</a></td></tr>
+<tr class="memdesc:dc/dab/namespace_compact_star_1_1_physics"><td class="mdescLeft">&#160;</td><td class="mdescRight">High-level physical modeling layer for compact stars. <br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>See <a class="el" href="../../d4/d0f/_geometry_cache_8hpp.html" title="Precomputed geometric factors for fast radial integration (DataColumn-native).">GeometryCache.hpp</a>. </p>
+<p>Implementation policy:</p><ul>
+<li>Prefer DataColumn algebra (exp/log/pow, operator*, etc.)</li>
+<li>Only do explicit loops when we must apply a per-row safety clamp (e.g., deriving Lambda from 1-2m/r). </li>
+</ul>
 </div></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

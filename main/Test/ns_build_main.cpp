@@ -24,9 +24,10 @@
 #include <Zaki/Util/Logger.hpp>
 
 #include <CompactStar/Core/TOVSolver.hpp>
+#include <CompactStar/Physics/Evolution/EvolutionConfig.hpp>
+#include <CompactStar/Physics/Evolution/EvolutionSystem.hpp>
 #include <CompactStar/Physics/Evolution/GeometryCache.hpp>
 #include <CompactStar/Physics/Evolution/StarContext.hpp>
-
 //--------------------------------------------------------------
 // GSL error handler (so GSL does not abort the program)
 static void
@@ -81,9 +82,34 @@ int main()
 
 	ns.Export(out_dir + "/NStar_Profile.tsv");
 
-	CompactStar::Physics::Evolution::StarContext sc(ns.Profile());
-	CompactStar::Physics::Evolution::GeometryCache gc(sc);
-	std::cout << "\n gc.Exp2Nu().Size() = " << gc.Exp2Nu().Size() << "\n";
+	CompactStar::Physics::Evolution::StarContext starCtx(ns.Profile());
+	CompactStar::Physics::Evolution::GeometryCache geo(starCtx);
+	std::cout << "\n geo.Exp2Nu().Size() = " << geo.Exp2Nu().Size() << "\n";
 	std::cout << "[debug] done.\n";
+
+	// --------------------------------------------------------------
+	// 1) Evolution configuration
+	// --------------------------------------------------------------
+	CompactStar::Physics::Evolution::Config cfg;
+
+	// Enable spin in the state vector (so MagneticDipole has something to act on).
+	cfg.couple_spin = true;
+
+	// No chemical imbalances for this test.
+	cfg.n_eta = 0;
+
+	// Simple integrator settings for a short test run.
+	cfg.stepper = CompactStar::Physics::Evolution::StepperType::RKF45;
+	cfg.rtol = 1e-6;
+	cfg.atol = 1e-10;
+	cfg.max_steps = 1000000;
+	cfg.dt_save = 1.0e5; // not used directly by GSLIntegrator yet, but kept for consistency
+
+	CompactStar::Physics::Evolution::DriverContext ctx;
+	ctx.star = &starCtx;	// e.g. pointer to StarContext built from NStar + EOS
+	ctx.geo = &geo;			// e.g. GeometryCache
+	ctx.envelope = nullptr; // e.g. Thermal::IEnvelope implementation
+	ctx.cfg = &cfg;
+
 	return 0;
 }

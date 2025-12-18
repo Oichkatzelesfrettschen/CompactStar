@@ -28,8 +28,8 @@
 \DoxyCodeLine{24 \textcolor{comment}{ * SOFTWARE.}}
 \DoxyCodeLine{25 \textcolor{comment}{ */}}
 \DoxyCodeLine{26 }
-\DoxyCodeLine{38 \textcolor{preprocessor}{\#ifndef CompactStar\_TaskManager\_H}}
-\DoxyCodeLine{39 \textcolor{preprocessor}{\#define CompactStar\_TaskManager\_H}}
+\DoxyCodeLine{38 \textcolor{preprocessor}{\#ifndef CompactStar\_Core\_TaskManager\_H}}
+\DoxyCodeLine{39 \textcolor{preprocessor}{\#define CompactStar\_Core\_TaskManager\_H}}
 \DoxyCodeLine{40 }
 \DoxyCodeLine{41 \textcolor{comment}{// \#include <vector>}}
 \DoxyCodeLine{42 \textcolor{preprocessor}{\#include <\mbox{\hyperlink{_math___core_8hpp}{Zaki/Math/Math\_Core.hpp}}>}}
@@ -38,13 +38,13 @@
 \DoxyCodeLine{45 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_prog_8hpp}{CompactStar/Core/Prog.hpp}}"{}}}
 \DoxyCodeLine{46 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_t_o_v_solver_8hpp}{CompactStar/Core/TOVSolver.hpp}}"{}}}
 \DoxyCodeLine{47 \textcolor{comment}{//==============================================================}}
-\DoxyCodeLine{48 \textcolor{keyword}{namespace }CompactStar}
+\DoxyCodeLine{48 \textcolor{keyword}{namespace }CompactStar::Core}
 \DoxyCodeLine{49 \{}
 \DoxyCodeLine{50 }
 \DoxyCodeLine{51 \textcolor{keyword}{class }MixedStar;}
 \DoxyCodeLine{52 \textcolor{keyword}{class }MixedSequence;}
 \DoxyCodeLine{53 \textcolor{comment}{// ========================================================}}
-\DoxyCodeLine{54 \textcolor{keyword}{class }\mbox{\hyperlink{class_compact_star_1_1_task_manager}{TaskManager}} : \textcolor{keyword}{public} \mbox{\hyperlink{class_compact_star_1_1_prog}{Prog}}}
+\DoxyCodeLine{54 \textcolor{keyword}{class }\mbox{\hyperlink{class_compact_star_1_1_core_1_1_task_manager}{TaskManager}} : \textcolor{keyword}{public} \mbox{\hyperlink{class_compact_star_1_1_core_1_1_prog}{Prog}}}
 \DoxyCodeLine{55 \{}
 \DoxyCodeLine{56     \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
 \DoxyCodeLine{57   \textcolor{keyword}{private}:}
@@ -72,16 +72,16 @@
 \DoxyCodeLine{79     \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{short} \textcolor{keywordtype}{int} cont\_divisions = 10;}
 \DoxyCodeLine{80     \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
 \DoxyCodeLine{81   \textcolor{keyword}{public}:}
-\DoxyCodeLine{82     \mbox{\hyperlink{class_compact_star_1_1_task_manager}{TaskManager}}(\textcolor{keyword}{const} \textcolor{keywordtype}{size\_t} \&in\_num\_thrds);}
-\DoxyCodeLine{83     \mbox{\hyperlink{class_compact_star_1_1_task_manager}{\string~TaskManager}}();}
+\DoxyCodeLine{82     \mbox{\hyperlink{class_compact_star_1_1_core_1_1_task_manager}{TaskManager}}(\textcolor{keyword}{const} \textcolor{keywordtype}{size\_t} \&in\_num\_thrds);}
+\DoxyCodeLine{83     \mbox{\hyperlink{class_compact_star_1_1_core_1_1_task_manager}{\string~TaskManager}}();}
 \DoxyCodeLine{84 }
 \DoxyCodeLine{85     \textcolor{keywordtype}{void} SetDarEOSDir(\textcolor{keyword}{const} \mbox{\hyperlink{class_zaki_1_1_string_1_1_directory}{Zaki::String::Directory}} \&);}
 \DoxyCodeLine{86     \textcolor{keywordtype}{void} SetVisEOSDir(\textcolor{keyword}{const} \mbox{\hyperlink{class_zaki_1_1_string_1_1_directory}{Zaki::String::Directory}} \&);}
 \DoxyCodeLine{87     \textcolor{keywordtype}{void} FindDarkEOS(\textcolor{keyword}{const} \textcolor{keywordtype}{double} \&in\_m);}
 \DoxyCodeLine{88     \textcolor{keywordtype}{void} SetChiMass(\textcolor{keyword}{const} \textcolor{keywordtype}{double} \&in\_m);}
 \DoxyCodeLine{89 }
-\DoxyCodeLine{90     \mbox{\hyperlink{class_compact_star_1_1_task_manager}{TaskManager}} *SetExclusionRegion(\textcolor{keyword}{const} \mbox{\hyperlink{class_zaki_1_1_math_1_1_cond___polygon}{Zaki::Math::Cond\_Polygon}} \&);}
-\DoxyCodeLine{91     \mbox{\hyperlink{class_compact_star_1_1_task_manager}{TaskManager}} *SetGrid(\textcolor{keyword}{const} \mbox{\hyperlink{struct_zaki_1_1_math_1_1_axis}{Zaki::Math::Axis}} \&v\_ax,}
+\DoxyCodeLine{90     \mbox{\hyperlink{class_compact_star_1_1_core_1_1_task_manager}{TaskManager}} *SetExclusionRegion(\textcolor{keyword}{const} \mbox{\hyperlink{class_zaki_1_1_math_1_1_cond___polygon}{Zaki::Math::Cond\_Polygon}} \&);}
+\DoxyCodeLine{91     \mbox{\hyperlink{class_compact_star_1_1_core_1_1_task_manager}{TaskManager}} *SetGrid(\textcolor{keyword}{const} \mbox{\hyperlink{struct_zaki_1_1_math_1_1_axis}{Zaki::Math::Axis}} \&v\_ax,}
 \DoxyCodeLine{92                          \textcolor{keyword}{const} \mbox{\hyperlink{struct_zaki_1_1_math_1_1_axis}{Zaki::Math::Axis}} \&d\_ax);}
 \DoxyCodeLine{93     \textcolor{comment}{// TaskManager* SetWrkDir(const Zaki::String::Directory\& in\_dir) override ;}}
 \DoxyCodeLine{94     \mbox{\hyperlink{struct_zaki_1_1_math_1_1_axis}{Zaki::Math::Axis}} GetVisibleAxis() \textcolor{keyword}{const};}
@@ -100,8 +100,8 @@
 \DoxyCodeLine{107 \textcolor{comment}{//==============================================================}}
 \DoxyCodeLine{108 }
 \DoxyCodeLine{109 \textcolor{comment}{//==============================================================}}
-\DoxyCodeLine{110 \} \textcolor{comment}{// namespace CompactStar}}
+\DoxyCodeLine{110 \} \textcolor{comment}{// namespace CompactStar::Core}}
 \DoxyCodeLine{111 \textcolor{comment}{//==============================================================}}
-\DoxyCodeLine{112 \textcolor{preprocessor}{\#endif }\textcolor{comment}{/*CompactStar\_TaskManager\_H*/}\textcolor{preprocessor}{}}
+\DoxyCodeLine{112 \textcolor{preprocessor}{\#endif }\textcolor{comment}{/*CompactStar\_Core\_TaskManager\_H*/}\textcolor{preprocessor}{}}
 
 \end{DoxyCode}

@@ -1,0 +1,49 @@
+\hypertarget{_driver_diagnostics_8hpp_source}{}\doxysection{Driver\+Diagnostics.\+hpp}
+\label{_driver_diagnostics_8hpp_source}\index{CompactStar/Physics/Driver/Diagnostics/DriverDiagnostics.hpp@{CompactStar/Physics/Driver/Diagnostics/DriverDiagnostics.hpp}}
+\mbox{\hyperlink{_driver_diagnostics_8hpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#pragma once}}
+\DoxyCodeLine{2 \textcolor{comment}{// -\/*-\/ lsst-\/c++ -\/*-\/}}
+\DoxyCodeLine{3 \textcolor{comment}{/*}}
+\DoxyCodeLine{4 \textcolor{comment}{ * CompactStar}}
+\DoxyCodeLine{5 \textcolor{comment}{ * See License file at the top of the source tree.}}
+\DoxyCodeLine{6 \textcolor{comment}{ *}}
+\DoxyCodeLine{7 \textcolor{comment}{ * Copyright (c) 2025}}
+\DoxyCodeLine{8 \textcolor{comment}{ * Mohammadreza Zakeri}}
+\DoxyCodeLine{9 \textcolor{comment}{ *}}
+\DoxyCodeLine{10 \textcolor{comment}{ * MIT License — see LICENSE at repo root.}}
+\DoxyCodeLine{11 \textcolor{comment}{ */}}
+\DoxyCodeLine{12 }
+\DoxyCodeLine{36 \textcolor{preprocessor}{\#include <string>}}
+\DoxyCodeLine{37 }
+\DoxyCodeLine{38 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_diagnostic_packet_8hpp}{CompactStar/Physics/Evolution/Diagnostics/DiagnosticPacket.hpp}}"{}}}
+\DoxyCodeLine{39 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_unit_contract_8hpp}{CompactStar/Physics/Evolution/Diagnostics/UnitContract.hpp}}"{}}}
+\DoxyCodeLine{40 }
+\DoxyCodeLine{41 \textcolor{comment}{// Forward declarations to avoid heavy includes here.}}
+\DoxyCodeLine{42 \textcolor{keyword}{namespace }CompactStar::Physics::Evolution}
+\DoxyCodeLine{43 \{}
+\DoxyCodeLine{44 \textcolor{keyword}{class }StateVector;}
+\DoxyCodeLine{45 \textcolor{keyword}{class }DriverContext;}
+\DoxyCodeLine{46 \} \textcolor{comment}{// namespace CompactStar::Physics::Evolution}}
+\DoxyCodeLine{47 }
+\DoxyCodeLine{48 \textcolor{keyword}{namespace }CompactStar::Physics::Driver::Diagnostics}
+\DoxyCodeLine{49 \{}
+\DoxyCodeLine{50 }
+\DoxyCodeLine{58 \textcolor{keyword}{class }\mbox{\hyperlink{class_compact_star_1_1_physics_1_1_driver_1_1_diagnostics_1_1_i_driver_diagnostics}{IDriverDiagnostics}}}
+\DoxyCodeLine{59 \{}
+\DoxyCodeLine{60   \textcolor{keyword}{public}:}
+\DoxyCodeLine{61     \textcolor{keyword}{virtual} \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_driver_1_1_diagnostics_1_1_i_driver_diagnostics}{\string~IDriverDiagnostics}}() = \textcolor{keywordflow}{default};}
+\DoxyCodeLine{62 }
+\DoxyCodeLine{70     [[nodiscard]] \textcolor{keyword}{virtual} std::string \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_driver_1_1_diagnostics_1_1_i_driver_diagnostics_ae39990bca910f580804aaa21e347537c}{DiagnosticsName}}() \textcolor{keyword}{const} = 0;}
+\DoxyCodeLine{71 }
+\DoxyCodeLine{80     [[nodiscard]] \textcolor{keyword}{virtual} \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_diagnostics_1_1_unit_contract}{Evolution::Diagnostics::UnitContract}} \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_driver_1_1_diagnostics_1_1_i_driver_diagnostics_a11b182179ee903feb396c131ca0404d8}{UnitContract}}() \textcolor{keyword}{const} = 0;}
+\DoxyCodeLine{81 }
+\DoxyCodeLine{96     \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_driver_1_1_diagnostics_1_1_i_driver_diagnostics_a282ccc724f51a04081b59ca8e6eea0bb}{DiagnoseSnapshot}}(\textcolor{keywordtype}{double} t,}
+\DoxyCodeLine{97                                   \textcolor{keyword}{const} \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_state_vector}{Evolution::StateVector}} \&Y,}
+\DoxyCodeLine{98                                   \textcolor{keyword}{const} \mbox{\hyperlink{struct_compact_star_1_1_physics_1_1_evolution_1_1_driver_context}{Evolution::DriverContext}} \&ctx,}
+\DoxyCodeLine{99                                   \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_diagnostics_1_1_diagnostic_packet}{Evolution::Diagnostics::DiagnosticPacket}} \&out) \textcolor{keyword}{const} = 0;}
+\DoxyCodeLine{100 \};}
+\DoxyCodeLine{101 }
+\DoxyCodeLine{102 \} \textcolor{comment}{// namespace CompactStar::Physics::Driver::Diagnostics}}
+
+\end{DoxyCode}

@@ -1,0 +1,137 @@
+\hypertarget{class_compact_star_1_1_physics_1_1_evolution_1_1_observers_1_1_diagnostics_observer}{}\doxysection{Compact\+Star\+::Physics\+::Evolution\+::Observers\+::Diagnostics\+Observer Class Reference}
+\label{class_compact_star_1_1_physics_1_1_evolution_1_1_observers_1_1_diagnostics_observer}\index{CompactStar::Physics::Evolution::Observers::DiagnosticsObserver@{CompactStar::Physics::Evolution::Observers::DiagnosticsObserver}}
+
+
+Periodic diagnostics writer for drivers (JSONL).  
+
+
+
+
+{\ttfamily \#include $<$Diagnostics\+Observer.\+hpp$>$}
+
+Inheritance diagram for Compact\+Star\+::Physics\+::Evolution\+::Observers\+::Diagnostics\+Observer\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{d8/ded/class_compact_star_1_1_physics_1_1_evolution_1_1_observers_1_1_diagnostics_observer}
+\end{center}
+\end{figure}
+\doxysubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{struct_compact_star_1_1_physics_1_1_evolution_1_1_observers_1_1_diagnostics_observer_1_1_options}{Options}}
+\begin{DoxyCompactList}\small\item\em Configuration for \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_observers_1_1_diagnostics_observer}{Diagnostics\+Observer}}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_compact_star_1_1_physics_1_1_evolution_1_1_observers_1_1_diagnostics_observer_a43f9a4f203effa6f7c1a37d62baaefe4}\label{class_compact_star_1_1_physics_1_1_evolution_1_1_observers_1_1_diagnostics_observer_a43f9a4f203effa6f7c1a37d62baaefe4}} 
+{\bfseries Diagnostics\+Observer} (const \mbox{\hyperlink{struct_compact_star_1_1_physics_1_1_evolution_1_1_observers_1_1_diagnostics_observer_1_1_options}{Options}} \&opts)
+\begin{DoxyCompactList}\small\item\em Construct from options (copy). \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_compact_star_1_1_physics_1_1_evolution_1_1_observers_1_1_diagnostics_observer_ac46f2f58c62fa6ea8c16b9e4e5326167}\label{class_compact_star_1_1_physics_1_1_evolution_1_1_observers_1_1_diagnostics_observer_ac46f2f58c62fa6ea8c16b9e4e5326167}} 
+{\bfseries Diagnostics\+Observer} (\mbox{\hyperlink{struct_compact_star_1_1_physics_1_1_evolution_1_1_observers_1_1_diagnostics_observer_1_1_options}{Options}} \&\&opts)
+\begin{DoxyCompactList}\small\item\em Construct from options (move). \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_observers_1_1_diagnostics_observer_ae77ab8fb24c2bd39dce3ba9783afcc13}{Diagnostics\+Observer}} (\mbox{\hyperlink{struct_compact_star_1_1_physics_1_1_evolution_1_1_observers_1_1_diagnostics_observer_1_1_options}{Options}} opts, std\+::vector$<$ const \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_driver_1_1_diagnostics_1_1_i_driver_diagnostics}{Driver\+::\+Diagnostics\+::\+IDriver\+Diagnostics}} $\ast$ $>$ drivers)
+\begin{DoxyCompactList}\small\item\em Construct with options and driver diagnostics providers. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_compact_star_1_1_physics_1_1_evolution_1_1_observers_1_1_diagnostics_observer_a6c0d09976ddf5d4f4d2f87b035e07b96}\label{class_compact_star_1_1_physics_1_1_evolution_1_1_observers_1_1_diagnostics_observer_a6c0d09976ddf5d4f4d2f87b035e07b96}} 
+{\bfseries $\sim$\+Diagnostics\+Observer} () override
+\begin{DoxyCompactList}\small\item\em Destroy the Diagnostics Observer\+:\+: Diagnostics Observer object. Closes the output file if open. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_observers_1_1_diagnostics_observer_a11c39761b8722bc0062df685ef78d1c9}{On\+Sample}} (const \mbox{\hyperlink{struct_compact_star_1_1_physics_1_1_evolution_1_1_observers_1_1_sample_info}{Sample\+Info}} \&s, const \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_state_vector}{State\+Vector}} \&Y, const \mbox{\hyperlink{struct_compact_star_1_1_physics_1_1_evolution_1_1_driver_context}{Driver\+Context}} \&ctx) override
+\begin{DoxyCompactList}\small\item\em Called whenever the evolution loop records a sample (typically every dt\+\_\+save). \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_observers_1_1_diagnostics_observer_aa2815290e01460c161090592b803ab8a}{On\+Start}} (const \mbox{\hyperlink{struct_compact_star_1_1_physics_1_1_evolution_1_1_observers_1_1_run_info}{Run\+Info}} \&run, const \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_state_vector}{State\+Vector}} \&Y0, const \mbox{\hyperlink{struct_compact_star_1_1_physics_1_1_evolution_1_1_driver_context}{Driver\+Context}} \&ctx) override
+\begin{DoxyCompactList}\small\item\em Called once before integration begins. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Periodic diagnostics writer for drivers (JSONL). 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_compact_star_1_1_physics_1_1_evolution_1_1_observers_1_1_diagnostics_observer_ae77ab8fb24c2bd39dce3ba9783afcc13}\label{class_compact_star_1_1_physics_1_1_evolution_1_1_observers_1_1_diagnostics_observer_ae77ab8fb24c2bd39dce3ba9783afcc13}} 
+\index{CompactStar::Physics::Evolution::Observers::DiagnosticsObserver@{CompactStar::Physics::Evolution::Observers::DiagnosticsObserver}!DiagnosticsObserver@{DiagnosticsObserver}}
+\index{DiagnosticsObserver@{DiagnosticsObserver}!CompactStar::Physics::Evolution::Observers::DiagnosticsObserver@{CompactStar::Physics::Evolution::Observers::DiagnosticsObserver}}
+\doxysubsubsection{\texorpdfstring{DiagnosticsObserver()}{DiagnosticsObserver()}}
+{\footnotesize\ttfamily Compact\+Star\+::\+Physics\+::\+Evolution\+::\+Observers\+::\+Diagnostics\+Observer\+::\+Diagnostics\+Observer (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_compact_star_1_1_physics_1_1_evolution_1_1_observers_1_1_diagnostics_observer_1_1_options}{Options}}}]{opts,  }\item[{std\+::vector$<$ const \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_driver_1_1_diagnostics_1_1_i_driver_diagnostics}{Driver\+::\+Diagnostics\+::\+IDriver\+Diagnostics}} $\ast$ $>$}]{drivers }\end{DoxyParamCaption})}
+
+
+
+Construct with options and driver diagnostics providers. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em opts} & Observer options. \\
+\hline
+{\em drivers} & List of drivers that implement IDriver\+Diagnostics.\\
+\hline
+{\em opts} & Observer options. \\
+\hline
+{\em drivers} & List of drivers that implement IDriver\+Diagnostics. \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_compact_star_1_1_physics_1_1_evolution_1_1_observers_1_1_diagnostics_observer_a11c39761b8722bc0062df685ef78d1c9}\label{class_compact_star_1_1_physics_1_1_evolution_1_1_observers_1_1_diagnostics_observer_a11c39761b8722bc0062df685ef78d1c9}} 
+\index{CompactStar::Physics::Evolution::Observers::DiagnosticsObserver@{CompactStar::Physics::Evolution::Observers::DiagnosticsObserver}!OnSample@{OnSample}}
+\index{OnSample@{OnSample}!CompactStar::Physics::Evolution::Observers::DiagnosticsObserver@{CompactStar::Physics::Evolution::Observers::DiagnosticsObserver}}
+\doxysubsubsection{\texorpdfstring{OnSample()}{OnSample()}}
+{\footnotesize\ttfamily void Compact\+Star\+::\+Physics\+::\+Evolution\+::\+Observers\+::\+Diagnostics\+Observer\+::\+On\+Sample (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{struct_compact_star_1_1_physics_1_1_evolution_1_1_observers_1_1_sample_info}{Sample\+Info}} \&}]{s,  }\item[{const \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_state_vector}{State\+Vector}} \&}]{Y,  }\item[{const \mbox{\hyperlink{struct_compact_star_1_1_physics_1_1_evolution_1_1_driver_context}{Driver\+Context}} \&}]{ctx }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Called whenever the evolution loop records a sample (typically every dt\+\_\+save). 
+
+Called whenever the evolution loop emits a sample.
+
+This is typically triggered every dt\+\_\+save by the integrator, but the observer remains agnostic of the integrator details.
+
+
+\begin{DoxyParams}{Parameters}
+{\em s} & Sample metadata (time, index, save count, etc.) \\
+\hline
+{\em Y} & Current logical state vector (already unpacked) \\
+\hline
+{\em ctx} & Driver context (geometry, star context, config) \\
+\hline
+\end{DoxyParams}
+
+
+Implements \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_observers_1_1_i_observer_ae8f5cf1b4c8bf1170402166950d9baab}{Compact\+Star\+::\+Physics\+::\+Evolution\+::\+Observers\+::\+IObserver}}.
+
+\mbox{\Hypertarget{class_compact_star_1_1_physics_1_1_evolution_1_1_observers_1_1_diagnostics_observer_aa2815290e01460c161090592b803ab8a}\label{class_compact_star_1_1_physics_1_1_evolution_1_1_observers_1_1_diagnostics_observer_aa2815290e01460c161090592b803ab8a}} 
+\index{CompactStar::Physics::Evolution::Observers::DiagnosticsObserver@{CompactStar::Physics::Evolution::Observers::DiagnosticsObserver}!OnStart@{OnStart}}
+\index{OnStart@{OnStart}!CompactStar::Physics::Evolution::Observers::DiagnosticsObserver@{CompactStar::Physics::Evolution::Observers::DiagnosticsObserver}}
+\doxysubsubsection{\texorpdfstring{OnStart()}{OnStart()}}
+{\footnotesize\ttfamily void Compact\+Star\+::\+Physics\+::\+Evolution\+::\+Observers\+::\+Diagnostics\+Observer\+::\+On\+Start (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{struct_compact_star_1_1_physics_1_1_evolution_1_1_observers_1_1_run_info}{Run\+Info}} \&}]{run,  }\item[{const \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_state_vector}{State\+Vector}} \&}]{Y0,  }\item[{const \mbox{\hyperlink{struct_compact_star_1_1_physics_1_1_evolution_1_1_driver_context}{Driver\+Context}} \&}]{ctx }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Called once before integration begins. 
+
+Called once at the beginning of the evolution (t = t0).
+
+
+\begin{DoxyParams}{Parameters}
+{\em run} & Run-\/level metadata. \\
+\hline
+{\em Y0} & Initial state snapshot (read-\/only). \\
+\hline
+{\em ctx} & Driver context (read-\/only).\\
+\hline
+\end{DoxyParams}
+
+
+This is the preferred place for\+:
+\begin{DoxyItemize}
+\item Initial-\/condition diagnostics
+\item Unit contracts
+\item Geometry sanity checks
+\end{DoxyItemize}
+
+We intentionally do NOT increment step counters here — this is a logical initialization phase, not an evolution step. 
+
+Reimplemented from \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_observers_1_1_i_observer_ac0fc3ae20bdb247ac53141d3e5772a4d}{Compact\+Star\+::\+Physics\+::\+Evolution\+::\+Observers\+::\+IObserver}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Compact\+Star/\+Physics/\+Evolution/\+Observers/\mbox{\hyperlink{_diagnostics_observer_8hpp}{Diagnostics\+Observer.\+hpp}}\item 
+Compact\+Star/\+Physics/\+Evolution/\+Observers/src/Diagnostics\+Observer.\+cpp\end{DoxyCompactItemize}

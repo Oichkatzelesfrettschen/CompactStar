@@ -1,0 +1,26 @@
+\hypertarget{_g_s_l_integrator_8cpp}{}\doxysection{Compact\+Star/\+Physics/\+Evolution/\+Integrator/src/\+GSLIntegrator.cpp File Reference}
+\label{_g_s_l_integrator_8cpp}\index{CompactStar/Physics/Evolution/Integrator/src/GSLIntegrator.cpp@{CompactStar/Physics/Evolution/Integrator/src/GSLIntegrator.cpp}}
+
+
+Implementation of GSLIntegrator (GSL driver wrapper).  
+
+
+{\ttfamily \#include \char`\"{}Compact\+Star/\+Physics/\+Evolution/\+Integrator/\+GSLIntegrator.\+hpp\char`\"{}}\newline
+{\ttfamily \#include $<$algorithm$>$}\newline
+{\ttfamily \#include $<$stdexcept$>$}\newline
+{\ttfamily \#include $<$gsl/gsl\+\_\+errno.\+h$>$}\newline
+{\ttfamily \#include $<$gsl/gsl\+\_\+odeiv2.\+h$>$}\newline
+{\ttfamily \#include $<$Zaki/\+Util/\+Instrumentor.\+hpp$>$}\newline
+{\ttfamily \#include $<$Zaki/\+Util/\+Logger.\+hpp$>$}\newline
+{\ttfamily \#include \char`\"{}Compact\+Star/\+Physics/\+Evolution/\+Evolution\+Config.\+hpp\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}Compact\+Star/\+Physics/\+Evolution/\+Evolution\+System.\+hpp\char`\"{}}\newline
+\doxysubsection*{Namespaces}
+\begin{DoxyCompactItemize}
+\item 
+namespace \mbox{\hyperlink{namespace_compact_star_1_1_physics}{Compact\+Star\+::\+Physics}}
+\begin{DoxyCompactList}\small\item\em High-\/level physical modeling layer for compact stars. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Implementation of GSLIntegrator (GSL driver wrapper). 
+

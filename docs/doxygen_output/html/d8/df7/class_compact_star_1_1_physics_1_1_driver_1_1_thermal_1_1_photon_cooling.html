@@ -76,12 +76,13 @@ $(function() {
   <div class="summary">
 <a href="#nested-classes">Classes</a> &#124;
 <a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#friends">Friends</a> &#124;
 <a href="../../d7/d9a/class_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_photon_cooling-members.html">List of all members</a>  </div>
   <div class="headertitle"><div class="title">CompactStar::Physics::Driver::Thermal::PhotonCooling Class Reference<span class="mlabels"><span class="mlabel">final</span></span></div></div>
 </div><!--header-->
 <div class="contents">
 
-<p>Adds −L_γ/C_eff to the thermal RHS (redshifted frame).  
+<p>Adds a photon-cooling contribution to the thermal RHS (redshifted frame).  
  <a href="../../d8/df7/class_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_photon_cooling.html#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="../../db/d12/_photon_cooling_8hpp_source.html">PhotonCooling.hpp</a>&gt;</code></p>
@@ -91,38 +92,56 @@ Inheritance diagram for CompactStar::Physics::Driver::Thermal::PhotonCooling:</d
  <div class="center">
   <img src="../../d8/df7/class_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_photon_cooling.png" usemap="#CompactStar::Physics::Driver::Thermal::PhotonCooling_map" alt=""/>
   <map id="CompactStar::Physics::Driver::Thermal::PhotonCooling_map" name="CompactStar::Physics::Driver::Thermal::PhotonCooling_map">
-<area href="../../da/dd4/class_compact_star_1_1_physics_1_1_i_driver.html" alt="CompactStar::Physics::IDriver" shape="rect" coords="0,0,315,24"/>
+<area href="../../da/dd4/class_compact_star_1_1_physics_1_1_i_driver.html" alt="CompactStar::Physics::IDriver" shape="rect" coords="0,0,357,24"/>
+<area href="../../d2/ddd/class_compact_star_1_1_physics_1_1_driver_1_1_diagnostics_1_1_i_driver_diagnostics.html" title="Interface that a driver can implement to expose diagnostics." alt="CompactStar::Physics::Driver::Diagnostics::IDriverDiagnostics" shape="rect" coords="367,0,724,24"/>
   </map>
 </div></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="nested-classes" name="nested-classes"></a>
 Classes</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d4/d9a/struct_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_photon_cooling_1_1_options.html">Options</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Configuration parameters for <a class="el" href="../../d8/df7/class_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_photon_cooling.html" title="Adds a photon-cooling contribution to the thermal RHS (redshifted frame).">PhotonCooling</a>.  <a href="../../d4/d9a/struct_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_photon_cooling_1_1_options.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a3303944cbe13400761c4709f648c3507"><td class="memItemLeft" align="right" valign="top"><a id="a3303944cbe13400761c4709f648c3507" name="a3303944cbe13400761c4709f648c3507"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>PhotonCooling</b> (<a class="el" href="../../d4/d9a/struct_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_photon_cooling_1_1_options.html">Options</a> opts={})</td></tr>
-<tr class="separator:a3303944cbe13400761c4709f648c3507"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a73a3516839e327277df85d9a6ff00bd0"><td class="memItemLeft" align="right" valign="top"><a id="a73a3516839e327277df85d9a6ff00bd0" name="a73a3516839e327277df85d9a6ff00bd0"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>PhotonCooling</b> ()=default</td></tr>
+<tr class="memdesc:a73a3516839e327277df85d9a6ff00bd0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Default-construct with Options() defaults. <br /></td></tr>
+<tr class="separator:a73a3516839e327277df85d9a6ff00bd0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a34af3f990be0332bee9c7b0572b24b50"><td class="memItemLeft" align="right" valign="top"><a id="a34af3f990be0332bee9c7b0572b24b50" name="a34af3f990be0332bee9c7b0572b24b50"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>PhotonCooling</b> (const <a class="el" href="../../d4/d9a/struct_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_photon_cooling_1_1_options.html">Options</a> &amp;opts)</td></tr>
+<tr class="memdesc:a34af3f990be0332bee9c7b0572b24b50"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct with explicit options. <br /></td></tr>
+<tr class="separator:a34af3f990be0332bee9c7b0572b24b50"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9953abae9587b8953309a1ecb9066cf3"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d8/df7/class_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_photon_cooling.html#a9953abae9587b8953309a1ecb9066cf3">Name</a> () const override</td></tr>
 <tr class="memdesc:a9953abae9587b8953309a1ecb9066cf3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Human-readable name for diagnostics/logging.  <a href="../../d8/df7/class_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_photon_cooling.html#a9953abae9587b8953309a1ecb9066cf3">More...</a><br /></td></tr>
 <tr class="separator:a9953abae9587b8953309a1ecb9066cf3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a727e70e4e7ae99d1711d2d44b12b8150"><td class="memItemLeft" align="right" valign="top">std::span&lt; const <a class="el" href="../../da/d7b/namespace_compact_star_1_1_physics_1_1_state.html#af14f5554b0d9be50c5ea718733bc424b">State::StateTag</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d8/df7/class_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_photon_cooling.html#a727e70e4e7ae99d1711d2d44b12b8150">DependsOn</a> () const override</td></tr>
-<tr class="memdesc:a727e70e4e7ae99d1711d2d44b12b8150"><td class="mdescLeft">&#160;</td><td class="mdescRight">Which state blocks this driver reads.  <a href="../../d8/df7/class_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_photon_cooling.html#a727e70e4e7ae99d1711d2d44b12b8150">More...</a><br /></td></tr>
-<tr class="separator:a727e70e4e7ae99d1711d2d44b12b8150"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a75fda0abed33a37355c02b0072c35ee6"><td class="memItemLeft" align="right" valign="top">std::span&lt; const <a class="el" href="../../da/d7b/namespace_compact_star_1_1_physics_1_1_state.html#af14f5554b0d9be50c5ea718733bc424b">State::StateTag</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d8/df7/class_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_photon_cooling.html#a75fda0abed33a37355c02b0072c35ee6">Updates</a> () const override</td></tr>
-<tr class="memdesc:a75fda0abed33a37355c02b0072c35ee6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Which state blocks this driver updates (adds contributions to).  <a href="../../d8/df7/class_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_photon_cooling.html#a75fda0abed33a37355c02b0072c35ee6">More...</a><br /></td></tr>
-<tr class="separator:a75fda0abed33a37355c02b0072c35ee6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9b6e2a592f8473860e317c9102edc831"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d8/df7/class_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_photon_cooling.html#a9b6e2a592f8473860e317c9102edc831">AccumulateRHS</a> (double t, const <a class="el" href="../../da/d36/class_compact_star_1_1_physics_1_1_evolution_1_1_state_vector.html">Evolution::StateVector</a> &amp;Y, <a class="el" href="../../d6/d26/class_compact_star_1_1_physics_1_1_evolution_1_1_r_h_s_accumulator.html">Evolution::RHSAccumulator</a> &amp;dYdt, const <a class="el" href="../../d9/d42/class_compact_star_1_1_physics_1_1_evolution_1_1_star_context.html">Evolution::StarContext</a> &amp;ctx) const override</td></tr>
-<tr class="memdesc:a9b6e2a592f8473860e317c9102edc831"><td class="mdescLeft">&#160;</td><td class="mdescRight">Add this driver’s contribution to the global RHS dY/dt.  <a href="../../d8/df7/class_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_photon_cooling.html#a9b6e2a592f8473860e317c9102edc831">More...</a><br /></td></tr>
-<tr class="separator:a9b6e2a592f8473860e317c9102edc831"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1e27f52db93a97bad80c9457d7e1b1f0"><td class="memItemLeft" align="right" valign="top">const std::vector&lt; <a class="el" href="../../da/d7b/namespace_compact_star_1_1_physics_1_1_state.html#af14f5554b0d9be50c5ea718733bc424b">State::StateTag</a> &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d8/df7/class_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_photon_cooling.html#a1e27f52db93a97bad80c9457d7e1b1f0">DependsOn</a> () const override</td></tr>
+<tr class="memdesc:a1e27f52db93a97bad80c9457d7e1b1f0"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="../../da/d7b/namespace_compact_star_1_1_physics_1_1_state.html">State</a> blocks this driver reads.  <a href="../../d8/df7/class_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_photon_cooling.html#a1e27f52db93a97bad80c9457d7e1b1f0">More...</a><br /></td></tr>
+<tr class="separator:a1e27f52db93a97bad80c9457d7e1b1f0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae0fef08a30b8f5ac85aa8330ffe201ae"><td class="memItemLeft" align="right" valign="top">const std::vector&lt; <a class="el" href="../../da/d7b/namespace_compact_star_1_1_physics_1_1_state.html#af14f5554b0d9be50c5ea718733bc424b">State::StateTag</a> &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d8/df7/class_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_photon_cooling.html#ae0fef08a30b8f5ac85aa8330ffe201ae">Updates</a> () const override</td></tr>
+<tr class="memdesc:ae0fef08a30b8f5ac85aa8330ffe201ae"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="../../da/d7b/namespace_compact_star_1_1_physics_1_1_state.html">State</a> blocks this driver updates (accumulates into RHS).  <a href="../../d8/df7/class_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_photon_cooling.html#ae0fef08a30b8f5ac85aa8330ffe201ae">More...</a><br /></td></tr>
+<tr class="separator:ae0fef08a30b8f5ac85aa8330ffe201ae"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a30a11d918558a08eb44bed1272a7a486"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d8/df7/class_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_photon_cooling.html#a30a11d918558a08eb44bed1272a7a486">AccumulateRHS</a> (double t, const <a class="el" href="../../da/d36/class_compact_star_1_1_physics_1_1_evolution_1_1_state_vector.html">Evolution::StateVector</a> &amp;Y, <a class="el" href="../../d6/d26/class_compact_star_1_1_physics_1_1_evolution_1_1_r_h_s_accumulator.html">Evolution::RHSAccumulator</a> &amp;dYdt, const <a class="el" href="../../d1/db5/struct_compact_star_1_1_physics_1_1_evolution_1_1_driver_context.html">Evolution::DriverContext</a> &amp;ctx) const override</td></tr>
+<tr class="memdesc:a30a11d918558a08eb44bed1272a7a486"><td class="mdescLeft">&#160;</td><td class="mdescRight">Add photon cooling contribution to the thermal RHS.  <a href="../../d8/df7/class_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_photon_cooling.html#a30a11d918558a08eb44bed1272a7a486">More...</a><br /></td></tr>
+<tr class="separator:a30a11d918558a08eb44bed1272a7a486"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8855b0a423c6fab5bfdbf8124534fd77"><td class="memItemLeft" align="right" valign="top"><a id="a8855b0a423c6fab5bfdbf8124534fd77" name="a8855b0a423c6fab5bfdbf8124534fd77"></a>
 const <a class="el" href="../../d4/d9a/struct_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_photon_cooling_1_1_options.html">Options</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>GetOptions</b> () const</td></tr>
+<tr class="memdesc:a8855b0a423c6fab5bfdbf8124534fd77"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get current options (read-only). <br /></td></tr>
 <tr class="separator:a8855b0a423c6fab5bfdbf8124534fd77"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0a3209e025fbe7669a9944e09d10e9d5"><td class="memItemLeft" align="right" valign="top"><a id="a0a3209e025fbe7669a9944e09d10e9d5" name="a0a3209e025fbe7669a9944e09d10e9d5"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>SetOptions</b> (const <a class="el" href="../../d4/d9a/struct_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_photon_cooling_1_1_options.html">Options</a> &amp;o)</td></tr>
+<tr class="memdesc:a0a3209e025fbe7669a9944e09d10e9d5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Replace options (by value). <br /></td></tr>
 <tr class="separator:a0a3209e025fbe7669a9944e09d10e9d5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a80765fd32881122d00150939a4119f03"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d8/df7/class_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_photon_cooling.html#a80765fd32881122d00150939a4119f03">DiagnosticsName</a> () const override</td></tr>
+<tr class="memdesc:a80765fd32881122d00150939a4119f03"><td class="mdescLeft">&#160;</td><td class="mdescRight">Human-readable stable name for this driver instance.  <a href="../../d8/df7/class_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_photon_cooling.html#a80765fd32881122d00150939a4119f03">More...</a><br /></td></tr>
+<tr class="separator:a80765fd32881122d00150939a4119f03"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7b609acb6e931f07674ef9b2312324fc"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d1/d12/class_compact_star_1_1_physics_1_1_evolution_1_1_diagnostics_1_1_unit_contract.html">Evolution::Diagnostics::UnitContract</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d8/df7/class_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_photon_cooling.html#a7b609acb6e931f07674ef9b2312324fc">UnitContract</a> () const override</td></tr>
+<tr class="memdesc:a7b609acb6e931f07674ef9b2312324fc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return unit conventions and assumptions for this driver.  <a href="../../d8/df7/class_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_photon_cooling.html#a7b609acb6e931f07674ef9b2312324fc">More...</a><br /></td></tr>
+<tr class="separator:a7b609acb6e931f07674ef9b2312324fc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a66ec050c82074aa8847ed1d3872d257e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d8/df7/class_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_photon_cooling.html#a66ec050c82074aa8847ed1d3872d257e">DiagnoseSnapshot</a> (double t, const <a class="el" href="../../da/d36/class_compact_star_1_1_physics_1_1_evolution_1_1_state_vector.html">Evolution::StateVector</a> &amp;Y, const <a class="el" href="../../d1/db5/struct_compact_star_1_1_physics_1_1_evolution_1_1_driver_context.html">Evolution::DriverContext</a> &amp;ctx, <a class="el" href="../../d0/d7a/class_compact_star_1_1_physics_1_1_evolution_1_1_diagnostics_1_1_diagnostic_packet.html">Evolution::Diagnostics::DiagnosticPacket</a> &amp;out) const override</td></tr>
+<tr class="memdesc:a66ec050c82074aa8847ed1d3872d257e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Fill a packet with driver-specific diagnostics at (t, Y, ctx).  <a href="../../d8/df7/class_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_photon_cooling.html#a66ec050c82074aa8847ed1d3872d257e">More...</a><br /></td></tr>
+<tr class="separator:a66ec050c82074aa8847ed1d3872d257e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1337b0292d71b672785c37ba4d7e8564"><td class="memItemLeft" align="right" valign="top">virtual std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/dd4/class_compact_star_1_1_physics_1_1_i_driver.html#a1337b0292d71b672785c37ba4d7e8564">Name</a> () const =0</td></tr>
 <tr class="memdesc:a1337b0292d71b672785c37ba4d7e8564"><td class="mdescLeft">&#160;</td><td class="mdescRight">Human-readable name for diagnostics/logging.  <a href="../../da/dd4/class_compact_star_1_1_physics_1_1_i_driver.html#a1337b0292d71b672785c37ba4d7e8564">More...</a><br /></td></tr>
 <tr class="separator:a1337b0292d71b672785c37ba4d7e8564"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -132,16 +151,51 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>SetOptions</b> (const
 <tr class="memitem:a24a531cb99a43313f30018d1687241a7"><td class="memItemLeft" align="right" valign="top">virtual const std::vector&lt; <a class="el" href="../../da/d7b/namespace_compact_star_1_1_physics_1_1_state.html#af14f5554b0d9be50c5ea718733bc424b">State::StateTag</a> &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/dd4/class_compact_star_1_1_physics_1_1_i_driver.html#a24a531cb99a43313f30018d1687241a7">Updates</a> () const =0</td></tr>
 <tr class="memdesc:a24a531cb99a43313f30018d1687241a7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Which state blocks this driver updates (adds contributions to).  <a href="../../da/dd4/class_compact_star_1_1_physics_1_1_i_driver.html#a24a531cb99a43313f30018d1687241a7">More...</a><br /></td></tr>
 <tr class="separator:a24a531cb99a43313f30018d1687241a7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8f6a4dd41179102863ea109d24e68bf4"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/dd4/class_compact_star_1_1_physics_1_1_i_driver.html#a8f6a4dd41179102863ea109d24e68bf4">AccumulateRHS</a> (double t, const <a class="el" href="../../da/d36/class_compact_star_1_1_physics_1_1_evolution_1_1_state_vector.html">Evolution::StateVector</a> &amp;Y, <a class="el" href="../../d6/d26/class_compact_star_1_1_physics_1_1_evolution_1_1_r_h_s_accumulator.html">Evolution::RHSAccumulator</a> &amp;dYdt, const <a class="el" href="../../d9/d42/class_compact_star_1_1_physics_1_1_evolution_1_1_star_context.html">Evolution::StarContext</a> &amp;ctx) const =0</td></tr>
-<tr class="memdesc:a8f6a4dd41179102863ea109d24e68bf4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Add this driver’s contribution to the global RHS dY/dt.  <a href="../../da/dd4/class_compact_star_1_1_physics_1_1_i_driver.html#a8f6a4dd41179102863ea109d24e68bf4">More...</a><br /></td></tr>
-<tr class="separator:a8f6a4dd41179102863ea109d24e68bf4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab4c100ea49a9ec8bad3b43f9f84c17eb"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/dd4/class_compact_star_1_1_physics_1_1_i_driver.html#ab4c100ea49a9ec8bad3b43f9f84c17eb">AccumulateRHS</a> (double t, const <a class="el" href="../../da/d36/class_compact_star_1_1_physics_1_1_evolution_1_1_state_vector.html">Evolution::StateVector</a> &amp;Y, <a class="el" href="../../d6/d26/class_compact_star_1_1_physics_1_1_evolution_1_1_r_h_s_accumulator.html">Evolution::RHSAccumulator</a> &amp;dYdt, const <a class="el" href="../../d1/db5/struct_compact_star_1_1_physics_1_1_evolution_1_1_driver_context.html">Evolution::DriverContext</a> &amp;ctx) const =0</td></tr>
+<tr class="memdesc:ab4c100ea49a9ec8bad3b43f9f84c17eb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Add this driver’s contribution to the global RHS dY/dt.  <a href="../../da/dd4/class_compact_star_1_1_physics_1_1_i_driver.html#ab4c100ea49a9ec8bad3b43f9f84c17eb">More...</a><br /></td></tr>
+<tr class="separator:ab4c100ea49a9ec8bad3b43f9f84c17eb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae39990bca910f580804aaa21e347537c"><td class="memItemLeft" align="right" valign="top">virtual std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d2/ddd/class_compact_star_1_1_physics_1_1_driver_1_1_diagnostics_1_1_i_driver_diagnostics.html#ae39990bca910f580804aaa21e347537c">DiagnosticsName</a> () const =0</td></tr>
+<tr class="memdesc:ae39990bca910f580804aaa21e347537c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Human-readable stable name for this driver instance.  <a href="../../d2/ddd/class_compact_star_1_1_physics_1_1_driver_1_1_diagnostics_1_1_i_driver_diagnostics.html#ae39990bca910f580804aaa21e347537c">More...</a><br /></td></tr>
+<tr class="separator:ae39990bca910f580804aaa21e347537c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a11b182179ee903feb396c131ca0404d8"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="../../d1/d12/class_compact_star_1_1_physics_1_1_evolution_1_1_diagnostics_1_1_unit_contract.html">Evolution::Diagnostics::UnitContract</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d2/ddd/class_compact_star_1_1_physics_1_1_driver_1_1_diagnostics_1_1_i_driver_diagnostics.html#a11b182179ee903feb396c131ca0404d8">UnitContract</a> () const =0</td></tr>
+<tr class="memdesc:a11b182179ee903feb396c131ca0404d8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return unit conventions and assumptions for this driver.  <a href="../../d2/ddd/class_compact_star_1_1_physics_1_1_driver_1_1_diagnostics_1_1_i_driver_diagnostics.html#a11b182179ee903feb396c131ca0404d8">More...</a><br /></td></tr>
+<tr class="separator:a11b182179ee903feb396c131ca0404d8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a282ccc724f51a04081b59ca8e6eea0bb"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d2/ddd/class_compact_star_1_1_physics_1_1_driver_1_1_diagnostics_1_1_i_driver_diagnostics.html#a282ccc724f51a04081b59ca8e6eea0bb">DiagnoseSnapshot</a> (double t, const <a class="el" href="../../da/d36/class_compact_star_1_1_physics_1_1_evolution_1_1_state_vector.html">Evolution::StateVector</a> &amp;Y, const <a class="el" href="../../d1/db5/struct_compact_star_1_1_physics_1_1_evolution_1_1_driver_context.html">Evolution::DriverContext</a> &amp;ctx, <a class="el" href="../../d0/d7a/class_compact_star_1_1_physics_1_1_evolution_1_1_diagnostics_1_1_diagnostic_packet.html">Evolution::Diagnostics::DiagnosticPacket</a> &amp;out) const =0</td></tr>
+<tr class="memdesc:a282ccc724f51a04081b59ca8e6eea0bb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Fill a packet with driver-specific diagnostics at (t, Y, ctx).  <a href="../../d2/ddd/class_compact_star_1_1_physics_1_1_driver_1_1_diagnostics_1_1_i_driver_diagnostics.html#a282ccc724f51a04081b59ca8e6eea0bb">More...</a><br /></td></tr>
+<tr class="separator:a282ccc724f51a04081b59ca8e6eea0bb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="friends" name="friends"></a>
+Friends</h2></td></tr>
+<tr class="memitem:a6783ecc1b79a01183f090aa35b78c6b7"><td class="memItemLeft" align="right" valign="top"><a id="a6783ecc1b79a01183f090aa35b78c6b7" name="a6783ecc1b79a01183f090aa35b78c6b7"></a>
+struct&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d8/df7/class_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_photon_cooling.html#a6783ecc1b79a01183f090aa35b78c6b7">CompactStar::Physics::Driver::Thermal::Detail::PhotonCooling_Details</a></td></tr>
+<tr class="memdesc:a6783ecc1b79a01183f090aa35b78c6b7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Allow PhotonCooling_Details to access private members. <br /></td></tr>
+<tr class="separator:a6783ecc1b79a01183f090aa35b78c6b7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Adds −L_γ/C_eff to the thermal RHS (redshifted frame). </p>
-<p><b>Depends on:</b> <a class="el" href="../../db/da9/namespace_compact_star_1_1_physics_1_1_thermal.html" title="Thermal utilities: envelope models, cooling/heating helpers.">Thermal</a> <b>Updates:</b> <a class="el" href="../../db/da9/namespace_compact_star_1_1_physics_1_1_thermal.html" title="Thermal utilities: envelope models, cooling/heating helpers.">Thermal</a> </p>
+<div class="textblock"><p>Adds a photon-cooling contribution to the thermal RHS (redshifted frame). </p>
+<p><b>Depends on:</b> <a class="el" href="../../db/da9/namespace_compact_star_1_1_physics_1_1_thermal.html" title="Thermal utilities: envelope models, cooling/heating helpers.">Thermal</a> <b>Updates:</b> <a class="el" href="../../db/da9/namespace_compact_star_1_1_physics_1_1_thermal.html" title="Thermal utilities: envelope models, cooling/heating helpers.">Thermal</a></p>
+<h3><a class="anchor" id="autotoc_md14"></a>
+What this driver does</h3>
+<ol type="1">
+<li>Determines a surface temperature (T_{\rm surf}) (K) from the <a class="el" href="../../db/da9/namespace_compact_star_1_1_physics_1_1_thermal.html" title="Thermal utilities: envelope models, cooling/heating helpers.">Thermal</a> state:<ul>
+<li>directly from the auxiliary ThermalState::T_surf, or</li>
+<li>via an envelope mapping (future), or</li>
+<li>via a simple approximation from (T_\infty).</li>
+</ul>
+</li>
+<li>Computes (L_{\gamma,\infty}) using geometry + Stefan–Boltzmann.</li>
+<li>Adds (-L_{\gamma,\infty}/C_{\rm eff}) to the RHS for the evolved thermal DOF.</li>
+</ol>
+<h3><a class="anchor" id="autotoc_md15"></a>
+What this driver does &lt;em&gt;not&lt;/em&gt; do</h3>
+<ul>
+<li>It does not modify the static star structure.</li>
+<li>It does not compute (C_{\rm eff}) from EOS/microphysics (yet).</li>
+<li>It does not implement a realistic envelope unless provided externally. </li>
+</ul>
 </div><h2 class="groupheader">Member Function Documentation</h2>
-<a id="a9b6e2a592f8473860e317c9102edc831" name="a9b6e2a592f8473860e317c9102edc831"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a9b6e2a592f8473860e317c9102edc831">&#9670;&#160;</a></span>AccumulateRHS()</h2>
+<a id="a30a11d918558a08eb44bed1272a7a486" name="a30a11d918558a08eb44bed1272a7a486"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a30a11d918558a08eb44bed1272a7a486">&#9670;&#160;</a></span>AccumulateRHS()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -170,7 +224,7 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>SetOptions</b> (const
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const <a class="el" href="../../d9/d42/class_compact_star_1_1_physics_1_1_evolution_1_1_star_context.html">Evolution::StarContext</a> &amp;&#160;</td>
+          <td class="paramtype">const <a class="el" href="../../d1/db5/struct_compact_star_1_1_physics_1_1_evolution_1_1_driver_context.html">Evolution::DriverContext</a> &amp;&#160;</td>
           <td class="paramname"><em>ctx</em>&#160;</td>
         </tr>
         <tr>
@@ -186,24 +240,64 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>SetOptions</b> (const
 </table>
 </div><div class="memdoc">
 
-<p>Add this driver’s contribution to the global RHS dY/dt. </p>
-<p>Implementations must <em>accumulate</em> into <code>dYdt</code> (i.e., add), and must not assume any specific call order beyond what the <a class="el" href="../../d6/d38/namespace_compact_star_1_1_physics_1_1_evolution.html" title="Evolution engine for time-dependent neutron-star physics.">Evolution</a> graph resolves.</p>
+<p>Add photon cooling contribution to the thermal RHS. </p>
+<p>This method must <b>accumulate</b> into <code>dYdt</code> (never overwrite).</p>
+<h3><a class="anchor" id="autotoc_md16"></a>
+Algorithm outline</h3>
+<ol type="1">
+<li>Read <a class="el" href="../../db/da9/namespace_compact_star_1_1_physics_1_1_thermal.html" title="Thermal utilities: envelope models, cooling/heating helpers.">Thermal</a> state from <code>Y</code> and obtain (T_\infty).</li>
+<li>Determine (T_{\rm surf}) according to Options::surface_model:<ul>
+<li>DirectTSurf: use ThermalState::T_surf if set (&gt;0), else fallback.</li>
+<li>EnvelopeMapping: if ctx.envelope exists, use it (future).</li>
+<li>ApproxFromTinf: set (T_{\rm surf} \leftarrow T_\infty).</li>
+</ul>
+</li>
+<li>Determine (A_\infty) from geometry (preferred):  <p class="formulaDsp">
+<picture><source srcset="../../form_23_dark.png" media="(prefers-color-scheme: dark)"/><img class="formulaDsp" alt="\[
+      A_\infty = 4\pi R^2 e^{2\nu(R)} .
+   \]" src="../../form_23.png"/></picture>
+</p>
+ taking care to convert (R) into cm if (\sigma_{\rm SB}) is cgs.</li>
+<li>Form the luminosity and the physical cooling rate:  <p class="formulaDsp">
+<picture><source srcset="../../form_24_dark.png" media="(prefers-color-scheme: dark)"/><img class="formulaDsp" alt="\[
+     L_{\gamma,\infty} = \mathrm{global\_scale}\;
+                         \mathrm{radiating\_fraction}\;
+                         A_\infty\;
+                         \sigma_{\rm SB}\;
+                         T_{\rm surf}^4 ,
+   \]" src="../../form_24.png"/></picture>
+</p>
+  <p class="formulaDsp">
+<picture><source srcset="../../form_25_dark.png" media="(prefers-color-scheme: dark)"/><img class="formulaDsp" alt="\[
+     \frac{dT_\infty}{dt} = -\frac{L_{\gamma,\infty}}{C_{\rm eff}} .
+   \]" src="../../form_25.png"/></picture>
+</p>
+</li>
+<li>Convert to the evolved ODE variable and accumulate into the RHS:  <p class="formulaDsp">
+<picture><source srcset="../../form_26_dark.png" media="(prefers-color-scheme: dark)"/><img class="formulaDsp" alt="\[
+     \frac{d\ln (T_\infty / T_{\rm ref})}{dt} \mathrel{+}= \frac{1}{T_\infty}\,\frac{dT_\infty}{dt}
+     = -\frac{L_{\gamma,\infty}}{C_{\rm eff}\,T_\infty}.
+   \]" src="../../form_26.png"/></picture>
+</p>
+</li>
+</ol>
+<dl class="section note"><dt>Note</dt><dd>CompactStar evolves (\ln (T_\infty / T_{\rm ref})) (not (T_\infty)) in the thermal state vector. Drivers must therefore contribute (d(\ln (T_\infty / T_{\rm ref}))/dt).</dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">t</td><td>Current time (model units; typically seconds). </td></tr>
-    <tr><td class="paramname">Y</td><td>Read-only composite state vector (Spin/Thermal/Chem/…). </td></tr>
-    <tr><td class="paramname">dYdt</td><td>Write-only accumulator for RHS components (add to it). </td></tr>
-    <tr><td class="paramname">ctx</td><td>Read-only star/context data (geometry, EOS, microphysics). </td></tr>
+    <tr><td class="paramname">t</td><td>Current time (seconds, by convention for evolution drivers). </td></tr>
+    <tr><td class="paramname">Y</td><td>Read-only composite state vector. </td></tr>
+    <tr><td class="paramname">dYdt</td><td>Write-only RHS accumulator (driver adds to it). </td></tr>
+    <tr><td class="paramname">ctx</td><td>Static driver context (geometry, star, envelope, config). </td></tr>
   </table>
   </dd>
 </dl>
 
-<p>Implements <a class="el" href="../../da/dd4/class_compact_star_1_1_physics_1_1_i_driver.html#a8f6a4dd41179102863ea109d24e68bf4">CompactStar::Physics::IDriver</a>.</p>
+<p>Implements <a class="el" href="../../da/dd4/class_compact_star_1_1_physics_1_1_i_driver.html#ab4c100ea49a9ec8bad3b43f9f84c17eb">CompactStar::Physics::IDriver</a>.</p>
 
 </div>
 </div>
-<a id="a727e70e4e7ae99d1711d2d44b12b8150" name="a727e70e4e7ae99d1711d2d44b12b8150"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a727e70e4e7ae99d1711d2d44b12b8150">&#9670;&#160;</a></span>DependsOn()</h2>
+<a id="a1e27f52db93a97bad80c9457d7e1b1f0" name="a1e27f52db93a97bad80c9457d7e1b1f0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1e27f52db93a97bad80c9457d7e1b1f0">&#9670;&#160;</a></span>DependsOn()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -212,7 +306,7 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>SetOptions</b> (const
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">std::span&lt; const <a class="el" href="../../da/d7b/namespace_compact_star_1_1_physics_1_1_state.html#af14f5554b0d9be50c5ea718733bc424b">State::StateTag</a> &gt; CompactStar::Physics::Driver::Thermal::PhotonCooling::DependsOn </td>
+          <td class="memname">const std::vector&lt; <a class="el" href="../../da/d7b/namespace_compact_star_1_1_physics_1_1_state.html#af14f5554b0d9be50c5ea718733bc424b">State::StateTag</a> &gt; &amp; CompactStar::Physics::Driver::Thermal::PhotonCooling::DependsOn </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td> const</td>
@@ -225,10 +319,105 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>SetOptions</b> (const
 </table>
 </div><div class="memdoc">
 
-<p>Which state blocks this driver reads. </p>
-<p>Drivers should return a reference to a static container (e.g. a static const std::vector&lt;StateTag&gt;). </p>
+<p><a class="el" href="../../da/d7b/namespace_compact_star_1_1_physics_1_1_state.html">State</a> blocks this driver reads. </p>
 
 <p>Implements <a class="el" href="../../da/dd4/class_compact_star_1_1_physics_1_1_i_driver.html#a813f52e0fad2ee496611eb6a18114354">CompactStar::Physics::IDriver</a>.</p>
+
+</div>
+</div>
+<a id="a66ec050c82074aa8847ed1d3872d257e" name="a66ec050c82074aa8847ed1d3872d257e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a66ec050c82074aa8847ed1d3872d257e">&#9670;&#160;</a></span>DiagnoseSnapshot()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void CompactStar::Physics::Driver::Thermal::PhotonCooling::DiagnoseSnapshot </td>
+          <td>(</td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>t</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="../../da/d36/class_compact_star_1_1_physics_1_1_evolution_1_1_state_vector.html">Evolution::StateVector</a> &amp;&#160;</td>
+          <td class="paramname"><em>Y</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="../../d1/db5/struct_compact_star_1_1_physics_1_1_evolution_1_1_driver_context.html">Evolution::DriverContext</a> &amp;&#160;</td>
+          <td class="paramname"><em>ctx</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="../../d0/d7a/class_compact_star_1_1_physics_1_1_evolution_1_1_diagnostics_1_1_diagnostic_packet.html">Evolution::Diagnostics::DiagnosticPacket</a> &amp;&#160;</td>
+          <td class="paramname"><em>out</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Fill a packet with driver-specific diagnostics at (t, Y, ctx). </p>
+<p>This method should:</p><ul>
+<li>only <em>read</em> state and cache (no mutation),</li>
+<li>be safe even if some caches are missing (log as notes/warnings),</li>
+<li>prefer calling the same internal helper functions as the physics path to avoid drift between the code and the diagnostics.</li>
+</ul>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">t</td><td>Simulation time [same unit as integrator uses]. </td></tr>
+    <tr><td class="paramname">Y</td><td>Composite state vector (read-only). </td></tr>
+    <tr><td class="paramname">ctx</td><td>Driver context (geometry/cache handles, star pointer, etc). </td></tr>
+    <tr><td class="paramname">out</td><td>Packet to be filled/overwritten by this method. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Implements <a class="el" href="../../d2/ddd/class_compact_star_1_1_physics_1_1_driver_1_1_diagnostics_1_1_i_driver_diagnostics.html#a282ccc724f51a04081b59ca8e6eea0bb">CompactStar::Physics::Driver::Diagnostics::IDriverDiagnostics</a>.</p>
+
+</div>
+</div>
+<a id="a80765fd32881122d00150939a4119f03" name="a80765fd32881122d00150939a4119f03"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a80765fd32881122d00150939a4119f03">&#9670;&#160;</a></span>DiagnosticsName()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::string CompactStar::Physics::Driver::Thermal::PhotonCooling::DiagnosticsName </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Human-readable stable name for this driver instance. </p>
+<p>Example: "PhotonCooling" If you have multiple instances (different options), you can include an instance suffix (e.g., "PhotonCooling#0") but keep it stable for tooling. </p>
+
+<p>Implements <a class="el" href="../../d2/ddd/class_compact_star_1_1_physics_1_1_driver_1_1_diagnostics_1_1_i_driver_diagnostics.html#ae39990bca910f580804aaa21e347537c">CompactStar::Physics::Driver::Diagnostics::IDriverDiagnostics</a>.</p>
 
 </div>
 </div>
@@ -261,8 +450,8 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>SetOptions</b> (const
 
 </div>
 </div>
-<a id="a75fda0abed33a37355c02b0072c35ee6" name="a75fda0abed33a37355c02b0072c35ee6"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a75fda0abed33a37355c02b0072c35ee6">&#9670;&#160;</a></span>Updates()</h2>
+<a id="a7b609acb6e931f07674ef9b2312324fc" name="a7b609acb6e931f07674ef9b2312324fc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7b609acb6e931f07674ef9b2312324fc">&#9670;&#160;</a></span>UnitContract()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -271,7 +460,41 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>SetOptions</b> (const
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">std::span&lt; const <a class="el" href="../../da/d7b/namespace_compact_star_1_1_physics_1_1_state.html#af14f5554b0d9be50c5ea718733bc424b">State::StateTag</a> &gt; CompactStar::Physics::Driver::Thermal::PhotonCooling::Updates </td>
+          <td class="memname"><a class="el" href="../../d1/d12/class_compact_star_1_1_physics_1_1_evolution_1_1_diagnostics_1_1_unit_contract.html">Evolution::Diagnostics::UnitContract</a> CompactStar::Physics::Driver::Thermal::PhotonCooling::UnitContract </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Return unit conventions and assumptions for this driver. </p>
+<p>This is intended to:</p><ul>
+<li>be stable and rarely change,</li>
+<li>NOT duplicate computations,</li>
+<li>document inputs/outputs and required unit systems. </li>
+</ul>
+
+<p>Implements <a class="el" href="../../d2/ddd/class_compact_star_1_1_physics_1_1_driver_1_1_diagnostics_1_1_i_driver_diagnostics.html#a11b182179ee903feb396c131ca0404d8">CompactStar::Physics::Driver::Diagnostics::IDriverDiagnostics</a>.</p>
+
+</div>
+</div>
+<a id="ae0fef08a30b8f5ac85aa8330ffe201ae" name="ae0fef08a30b8f5ac85aa8330ffe201ae"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae0fef08a30b8f5ac85aa8330ffe201ae">&#9670;&#160;</a></span>Updates()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const std::vector&lt; <a class="el" href="../../da/d7b/namespace_compact_star_1_1_physics_1_1_state.html#af14f5554b0d9be50c5ea718733bc424b">State::StateTag</a> &gt; &amp; CompactStar::Physics::Driver::Thermal::PhotonCooling::Updates </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td> const</td>
@@ -284,15 +507,15 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>SetOptions</b> (const
 </table>
 </div><div class="memdoc">
 
-<p>Which state blocks this driver updates (adds contributions to). </p>
-<p>Drivers should return a reference to a static container (e.g. a static const std::vector&lt;StateTag&gt;). </p>
+<p><a class="el" href="../../da/d7b/namespace_compact_star_1_1_physics_1_1_state.html">State</a> blocks this driver updates (accumulates into RHS). </p>
 
 <p>Implements <a class="el" href="../../da/dd4/class_compact_star_1_1_physics_1_1_i_driver.html#a24a531cb99a43313f30018d1687241a7">CompactStar::Physics::IDriver</a>.</p>
 
 </div>
 </div>
-<hr/>The documentation for this class was generated from the following file:<ul>
+<hr/>The documentation for this class was generated from the following files:<ul>
 <li>CompactStar/Physics/Driver/Thermal/<a class="el" href="../../db/d12/_photon_cooling_8hpp_source.html">PhotonCooling.hpp</a></li>
+<li>CompactStar/Physics/Driver/Thermal/src/<a class="el" href="../../d6/dc6/_photon_cooling_8cpp.html">PhotonCooling.cpp</a></li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->

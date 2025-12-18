@@ -1,0 +1,131 @@
+\hypertarget{class_compact_star_1_1_physics_1_1_evolution_1_1_observers_1_1_i_observer}{}\doxysection{Compact\+Star\+::Physics\+::Evolution\+::Observers\+::IObserver Class Reference}
+\label{class_compact_star_1_1_physics_1_1_evolution_1_1_observers_1_1_i_observer}\index{CompactStar::Physics::Evolution::Observers::IObserver@{CompactStar::Physics::Evolution::Observers::IObserver}}
+
+
+Base interface for evolution observers.  
+
+
+
+
+{\ttfamily \#include $<$IObserver.\+hpp$>$}
+
+Inheritance diagram for Compact\+Star\+::Physics\+::Evolution\+::Observers\+::IObserver\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{dd/de2/class_compact_star_1_1_physics_1_1_evolution_1_1_observers_1_1_i_observer}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+virtual void \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_observers_1_1_i_observer_ac0fc3ae20bdb247ac53141d3e5772a4d}{On\+Start}} (const \mbox{\hyperlink{struct_compact_star_1_1_physics_1_1_evolution_1_1_observers_1_1_run_info}{Run\+Info}} \&run, const \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_state_vector}{Evolution\+::\+State\+Vector}} \&Y0, const \mbox{\hyperlink{struct_compact_star_1_1_physics_1_1_evolution_1_1_driver_context}{Evolution\+::\+Driver\+Context}} \&ctx)
+\begin{DoxyCompactList}\small\item\em Called once before integration begins. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_observers_1_1_i_observer_ae8f5cf1b4c8bf1170402166950d9baab}{On\+Sample}} (const \mbox{\hyperlink{struct_compact_star_1_1_physics_1_1_evolution_1_1_observers_1_1_sample_info}{Sample\+Info}} \&s, const \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_state_vector}{Evolution\+::\+State\+Vector}} \&Y, const \mbox{\hyperlink{struct_compact_star_1_1_physics_1_1_evolution_1_1_driver_context}{Evolution\+::\+Driver\+Context}} \&ctx)=0
+\begin{DoxyCompactList}\small\item\em Called whenever the evolution loop decides to record a sample. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_observers_1_1_i_observer_a6c8f9110c9a1e13675c384d103f64782}{On\+Finish}} (const \mbox{\hyperlink{struct_compact_star_1_1_physics_1_1_evolution_1_1_observers_1_1_finish_info}{Finish\+Info}} \&fin, const \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_state_vector}{Evolution\+::\+State\+Vector}} \&Yf, const \mbox{\hyperlink{struct_compact_star_1_1_physics_1_1_evolution_1_1_driver_context}{Evolution\+::\+Driver\+Context}} \&ctx)
+\begin{DoxyCompactList}\small\item\em Called once after the integration ends (success or failure). \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_compact_star_1_1_physics_1_1_evolution_1_1_observers_1_1_i_observer_aacc16e14cdf6031c4bb69f7ff8ea7e59}\label{class_compact_star_1_1_physics_1_1_evolution_1_1_observers_1_1_i_observer_aacc16e14cdf6031c4bb69f7ff8ea7e59}} 
+virtual std\+::string {\bfseries Name} () const
+\begin{DoxyCompactList}\small\item\em Optional human-\/readable observer name for logs. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Base interface for evolution observers. 
+
+Observers should be cheap to construct; heavy resources should be opened in On\+Start. 
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_compact_star_1_1_physics_1_1_evolution_1_1_observers_1_1_i_observer_a6c8f9110c9a1e13675c384d103f64782}\label{class_compact_star_1_1_physics_1_1_evolution_1_1_observers_1_1_i_observer_a6c8f9110c9a1e13675c384d103f64782}} 
+\index{CompactStar::Physics::Evolution::Observers::IObserver@{CompactStar::Physics::Evolution::Observers::IObserver}!OnFinish@{OnFinish}}
+\index{OnFinish@{OnFinish}!CompactStar::Physics::Evolution::Observers::IObserver@{CompactStar::Physics::Evolution::Observers::IObserver}}
+\doxysubsubsection{\texorpdfstring{OnFinish()}{OnFinish()}}
+{\footnotesize\ttfamily void Compact\+Star\+::\+Physics\+::\+Evolution\+::\+Observers\+::\+IObserver\+::\+On\+Finish (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{struct_compact_star_1_1_physics_1_1_evolution_1_1_observers_1_1_finish_info}{Finish\+Info}} \&}]{fin,  }\item[{const \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_state_vector}{Evolution\+::\+State\+Vector}} \&}]{Yf,  }\item[{const \mbox{\hyperlink{struct_compact_star_1_1_physics_1_1_evolution_1_1_driver_context}{Evolution\+::\+Driver\+Context}} \&}]{ctx }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Called once after the integration ends (success or failure). 
+
+Use this for\+:
+\begin{DoxyItemize}
+\item flushing/closing files,
+\item writing final metadata,
+\item emitting summary lines.
+\end{DoxyItemize}
+
+
+\begin{DoxyParams}{Parameters}
+{\em fin} & Finalization info (ok flag, final time, optional message). \\
+\hline
+{\em Yf} & Final state snapshot (read-\/only). \\
+\hline
+{\em ctx} & Driver context (read-\/only). \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_compact_star_1_1_physics_1_1_evolution_1_1_observers_1_1_i_observer_ae8f5cf1b4c8bf1170402166950d9baab}\label{class_compact_star_1_1_physics_1_1_evolution_1_1_observers_1_1_i_observer_ae8f5cf1b4c8bf1170402166950d9baab}} 
+\index{CompactStar::Physics::Evolution::Observers::IObserver@{CompactStar::Physics::Evolution::Observers::IObserver}!OnSample@{OnSample}}
+\index{OnSample@{OnSample}!CompactStar::Physics::Evolution::Observers::IObserver@{CompactStar::Physics::Evolution::Observers::IObserver}}
+\doxysubsubsection{\texorpdfstring{OnSample()}{OnSample()}}
+{\footnotesize\ttfamily virtual void Compact\+Star\+::\+Physics\+::\+Evolution\+::\+Observers\+::\+IObserver\+::\+On\+Sample (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{struct_compact_star_1_1_physics_1_1_evolution_1_1_observers_1_1_sample_info}{Sample\+Info}} \&}]{s,  }\item[{const \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_state_vector}{Evolution\+::\+State\+Vector}} \&}]{Y,  }\item[{const \mbox{\hyperlink{struct_compact_star_1_1_physics_1_1_evolution_1_1_driver_context}{Evolution\+::\+Driver\+Context}} \&}]{ctx }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Called whenever the evolution loop decides to record a sample. 
+
+This is the primary callback for\+:
+\begin{DoxyItemize}
+\item time-\/series recording,
+\item checkpoints (if checkpointing on dt\+\_\+save),
+\item diagnostics snapshots,
+\item lightweight logging.
+\end{DoxyItemize}
+
+
+\begin{DoxyParams}{Parameters}
+{\em s} & Sample metadata. \\
+\hline
+{\em Y} & Current state snapshot (read-\/only). \\
+\hline
+{\em ctx} & Driver context (read-\/only). \\
+\hline
+\end{DoxyParams}
+
+
+Implemented in \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_observers_1_1_diagnostics_observer_a11c39761b8722bc0062df685ef78d1c9}{Compact\+Star\+::\+Physics\+::\+Evolution\+::\+Observers\+::\+Diagnostics\+Observer}}.
+
+\mbox{\Hypertarget{class_compact_star_1_1_physics_1_1_evolution_1_1_observers_1_1_i_observer_ac0fc3ae20bdb247ac53141d3e5772a4d}\label{class_compact_star_1_1_physics_1_1_evolution_1_1_observers_1_1_i_observer_ac0fc3ae20bdb247ac53141d3e5772a4d}} 
+\index{CompactStar::Physics::Evolution::Observers::IObserver@{CompactStar::Physics::Evolution::Observers::IObserver}!OnStart@{OnStart}}
+\index{OnStart@{OnStart}!CompactStar::Physics::Evolution::Observers::IObserver@{CompactStar::Physics::Evolution::Observers::IObserver}}
+\doxysubsubsection{\texorpdfstring{OnStart()}{OnStart()}}
+{\footnotesize\ttfamily void Compact\+Star\+::\+Physics\+::\+Evolution\+::\+Observers\+::\+IObserver\+::\+On\+Start (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{struct_compact_star_1_1_physics_1_1_evolution_1_1_observers_1_1_run_info}{Run\+Info}} \&}]{run,  }\item[{const \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_state_vector}{Evolution\+::\+State\+Vector}} \&}]{Y0,  }\item[{const \mbox{\hyperlink{struct_compact_star_1_1_physics_1_1_evolution_1_1_driver_context}{Evolution\+::\+Driver\+Context}} \&}]{ctx }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Called once before integration begins. 
+
+Use this for\+:
+\begin{DoxyItemize}
+\item opening output files,
+\item writing headers/metadata,
+\item allocating datasets/buffers,
+\item validating required context dependencies.
+\end{DoxyItemize}
+
+
+\begin{DoxyParams}{Parameters}
+{\em run} & Run-\/level metadata. \\
+\hline
+{\em Y0} & Initial state snapshot (read-\/only). \\
+\hline
+{\em ctx} & Driver context (read-\/only). \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented in \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_observers_1_1_diagnostics_observer_aa2815290e01460c161090592b803ab8a}{Compact\+Star\+::\+Physics\+::\+Evolution\+::\+Observers\+::\+Diagnostics\+Observer}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Compact\+Star/\+Physics/\+Evolution/\+Observers/\mbox{\hyperlink{_i_observer_8hpp}{IObserver.\+hpp}}\item 
+Compact\+Star/\+Physics/\+Evolution/\+Observers/src/IObserver.\+cpp\end{DoxyCompactItemize}

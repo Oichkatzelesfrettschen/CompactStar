@@ -232,8 +232,8 @@
 \DoxyCodeLine{228 \textcolor{comment}{// \#endif /*CompactStar\_Prog\_H*/}}
 \DoxyCodeLine{229 }
 \DoxyCodeLine{230 \textcolor{comment}{// -\/*-\/ lsst-\/c++ -\/*-\/}}
-\DoxyCodeLine{250 \textcolor{comment}{}\textcolor{preprocessor}{\#ifndef CompactStar\_Prog\_H}}
-\DoxyCodeLine{251 \textcolor{preprocessor}{\#define CompactStar\_Prog\_H}}
+\DoxyCodeLine{250 \textcolor{comment}{}\textcolor{preprocessor}{\#ifndef CompactStar\_Core\_Prog\_H}}
+\DoxyCodeLine{251 \textcolor{preprocessor}{\#define CompactStar\_Core\_Prog\_H}}
 \DoxyCodeLine{252 }
 \DoxyCodeLine{253 \textcolor{preprocessor}{\#include "{}CompactStar/Core/CompactStarConfig.h"{}}}
 \DoxyCodeLine{254 \textcolor{preprocessor}{\#include <\mbox{\hyperlink{_directory_8hpp}{Zaki/String/Directory.hpp}}>}}
@@ -243,53 +243,53 @@
 \DoxyCodeLine{258 \textcolor{preprocessor}{\#include <sstream>}}
 \DoxyCodeLine{259 \textcolor{preprocessor}{\#include <string>}}
 \DoxyCodeLine{260 }
-\DoxyCodeLine{261 \textcolor{keyword}{namespace }CompactStar}
+\DoxyCodeLine{261 \textcolor{keyword}{namespace }CompactStar::Core}
 \DoxyCodeLine{262 \{}
 \DoxyCodeLine{263 }
-\DoxyCodeLine{276 \textcolor{keyword}{class }\mbox{\hyperlink{class_compact_star_1_1_prog}{Prog}}}
+\DoxyCodeLine{276 \textcolor{keyword}{class }\mbox{\hyperlink{class_compact_star_1_1_core_1_1_prog}{Prog}}}
 \DoxyCodeLine{277 \{}
 \DoxyCodeLine{278   \textcolor{keyword}{protected}:}
-\DoxyCodeLine{282     \mbox{\hyperlink{class_zaki_1_1_string_1_1_directory}{Zaki::String::Directory}} \mbox{\hyperlink{class_compact_star_1_1_prog_a22d25d960b2cd5a4525cc5397b8f5edf}{wrk\_dir\_}}\{\textcolor{stringliteral}{"{}"{}}\};}
+\DoxyCodeLine{282     \mbox{\hyperlink{class_zaki_1_1_string_1_1_directory}{Zaki::String::Directory}} \mbox{\hyperlink{class_compact_star_1_1_core_1_1_prog_aca59ff2c680e90357e4de7a94f0cc045}{wrk\_dir\_}}\{\textcolor{stringliteral}{"{}"{}}\};}
 \DoxyCodeLine{283 }
-\DoxyCodeLine{287     std::string \mbox{\hyperlink{class_compact_star_1_1_prog_a1d2e93eecd6fe3ac6e9daf428623994a}{name\_}}\{\};}
+\DoxyCodeLine{287     std::string \mbox{\hyperlink{class_compact_star_1_1_core_1_1_prog_a1eddd1918d358baaf4dc109cc87e7b9e}{name\_}}\{\};}
 \DoxyCodeLine{288 }
-\DoxyCodeLine{292     \textcolor{keywordtype}{bool} \mbox{\hyperlink{class_compact_star_1_1_prog_af5171a725d45aac0d31c1ea27998aa94}{set\_name\_flag\_}}\{\textcolor{keyword}{false}\};}
+\DoxyCodeLine{292     \textcolor{keywordtype}{bool} \mbox{\hyperlink{class_compact_star_1_1_core_1_1_prog_ae04879f14cb8f86a9968c97c050f952e}{set\_name\_flag\_}}\{\textcolor{keyword}{false}\};}
 \DoxyCodeLine{293     \textcolor{keywordtype}{bool} set\_wrk\_dir\_flag\_\{\textcolor{keyword}{false}\};}
 \DoxyCodeLine{294 }
-\DoxyCodeLine{303     \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_compact_star_1_1_prog_a3857b5dfcd7bcc5ee4ceda86a73289bf}{OnWorkDirChanged}}(\textcolor{keyword}{const} \mbox{\hyperlink{class_zaki_1_1_string_1_1_directory}{Zaki::String::Directory}} \&dir);}
+\DoxyCodeLine{303     \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_compact_star_1_1_core_1_1_prog_ab7917253a3c1eb49926e9a2192cb58f5}{OnWorkDirChanged}}(\textcolor{keyword}{const} \mbox{\hyperlink{class_zaki_1_1_string_1_1_directory}{Zaki::String::Directory}} \&dir);}
 \DoxyCodeLine{304 }
 \DoxyCodeLine{311     \textcolor{comment}{// [[deprecated("{}Use OnWorkDirChanged instead."{})]]}}
 \DoxyCodeLine{312     \textcolor{comment}{// virtual Prog *SetMemWrkDir(const Zaki::String::Directory \&dir);}}
 \DoxyCodeLine{313 }
 \DoxyCodeLine{314   \textcolor{keyword}{public}:}
 \DoxyCodeLine{317 }
-\DoxyCodeLine{320     \mbox{\hyperlink{class_compact_star_1_1_prog_af268a0883c7628dcd91857602efeb483}{Prog}}() = \textcolor{keywordflow}{default};}
+\DoxyCodeLine{320     \mbox{\hyperlink{class_compact_star_1_1_core_1_1_prog_a2b4ec1cddf34f5902dd2f43e59318abc}{Prog}}() = \textcolor{keywordflow}{default};}
 \DoxyCodeLine{321 }
-\DoxyCodeLine{326     \textcolor{keyword}{explicit} \mbox{\hyperlink{class_compact_star_1_1_prog_a3c1e220a772e9e2cb4c5dbed931fe72d}{Prog}}(\textcolor{keyword}{const} std::string \&prog\_name)}
-\DoxyCodeLine{327         : \mbox{\hyperlink{class_compact_star_1_1_prog_a22d25d960b2cd5a4525cc5397b8f5edf}{wrk\_dir\_}}\{\textcolor{stringliteral}{"{}"{}}\}, \mbox{\hyperlink{class_compact_star_1_1_prog_a1d2e93eecd6fe3ac6e9daf428623994a}{name\_}}\{prog\_name\}, \mbox{\hyperlink{class_compact_star_1_1_prog_af5171a725d45aac0d31c1ea27998aa94}{set\_name\_flag\_}}\{true\} \{\}}
+\DoxyCodeLine{326     \textcolor{keyword}{explicit} \mbox{\hyperlink{class_compact_star_1_1_core_1_1_prog_a1edcffeddf6d1f489f3bb98779ccdc4a}{Prog}}(\textcolor{keyword}{const} std::string \&prog\_name)}
+\DoxyCodeLine{327         : \mbox{\hyperlink{class_compact_star_1_1_core_1_1_prog_aca59ff2c680e90357e4de7a94f0cc045}{wrk\_dir\_}}\{\textcolor{stringliteral}{"{}"{}}\}, \mbox{\hyperlink{class_compact_star_1_1_core_1_1_prog_a1eddd1918d358baaf4dc109cc87e7b9e}{name\_}}\{prog\_name\}, \mbox{\hyperlink{class_compact_star_1_1_core_1_1_prog_ae04879f14cb8f86a9968c97c050f952e}{set\_name\_flag\_}}\{true\} \{\}}
 \DoxyCodeLine{328 }
-\DoxyCodeLine{332     \textcolor{keyword}{virtual} \mbox{\hyperlink{class_compact_star_1_1_prog_acad7c646cdf94e3b68ae4d44ed638889}{\string~Prog}}() = \textcolor{keywordflow}{default};}
+\DoxyCodeLine{332     \textcolor{keyword}{virtual} \mbox{\hyperlink{class_compact_star_1_1_core_1_1_prog_affec6e8e6f1fb7764108089b147d61e7}{\string~Prog}}() = \textcolor{keywordflow}{default};}
 \DoxyCodeLine{334 }
 \DoxyCodeLine{337 }
-\DoxyCodeLine{346     \textcolor{keyword}{virtual} \mbox{\hyperlink{class_compact_star_1_1_prog}{Prog}} *\mbox{\hyperlink{class_compact_star_1_1_prog_a28c50895a9fd2c9390f82a1bb5c1eefe}{SetWrkDir}}(\textcolor{keyword}{const} \mbox{\hyperlink{class_zaki_1_1_string_1_1_directory}{Zaki::String::Directory}} \&dir);}
+\DoxyCodeLine{346     \textcolor{keyword}{virtual} \mbox{\hyperlink{class_compact_star_1_1_core_1_1_prog}{Prog}} *\mbox{\hyperlink{class_compact_star_1_1_core_1_1_prog_a706e1dda8945e018ad54e372e1eee4b9}{SetWrkDir}}(\textcolor{keyword}{const} \mbox{\hyperlink{class_zaki_1_1_string_1_1_directory}{Zaki::String::Directory}} \&dir);}
 \DoxyCodeLine{347 }
-\DoxyCodeLine{352     \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_compact_star_1_1_prog_af5739075331f9d09c256cb2aea800d55}{SetName}}(\textcolor{keyword}{const} std::string \&prog\_name);}
+\DoxyCodeLine{352     \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_compact_star_1_1_core_1_1_prog_aa41208abb08d25e40229b48a2ebfb827}{SetName}}(\textcolor{keyword}{const} std::string \&prog\_name);}
 \DoxyCodeLine{354 }
 \DoxyCodeLine{357 }
-\DoxyCodeLine{363     \textcolor{keyword}{virtual} \mbox{\hyperlink{class_zaki_1_1_string_1_1_directory}{Zaki::String::Directory}} \mbox{\hyperlink{class_compact_star_1_1_prog_a5b9d3f07d67e7ecb54ba0e1332c4f4a4}{GetWrkDir}}() \textcolor{keyword}{const};}
+\DoxyCodeLine{363     \textcolor{keyword}{virtual} \mbox{\hyperlink{class_zaki_1_1_string_1_1_directory}{Zaki::String::Directory}} \mbox{\hyperlink{class_compact_star_1_1_core_1_1_prog_a95981bebe85c84770d3c30604388e608}{GetWrkDir}}() \textcolor{keyword}{const};}
 \DoxyCodeLine{364 }
-\DoxyCodeLine{369     \textcolor{keywordtype}{bool} \mbox{\hyperlink{class_compact_star_1_1_prog_a33e7f7ce593953ffb4c0b409c65c6222}{IsWrkDirSet}}()\textcolor{keyword}{ const }\{ \textcolor{keywordflow}{return} set\_wrk\_dir\_flag\_; \}}
+\DoxyCodeLine{369     \textcolor{keywordtype}{bool} \mbox{\hyperlink{class_compact_star_1_1_core_1_1_prog_ad2218c6c2755069a2e57b633c3b18ea1}{IsWrkDirSet}}()\textcolor{keyword}{ const }\{ \textcolor{keywordflow}{return} set\_wrk\_dir\_flag\_; \}}
 \DoxyCodeLine{370 }
-\DoxyCodeLine{377     \textcolor{keyword}{virtual} std::string \mbox{\hyperlink{class_compact_star_1_1_prog_a816d8fac5e9f5969c0dce4b298bfc0ed}{GetName}}() \textcolor{keyword}{const};}
+\DoxyCodeLine{377     \textcolor{keyword}{virtual} std::string \mbox{\hyperlink{class_compact_star_1_1_core_1_1_prog_af5fc8a40babf79e9e524c8f7ef99f270}{GetName}}() \textcolor{keyword}{const};}
 \DoxyCodeLine{379 }
 \DoxyCodeLine{382 }
-\DoxyCodeLine{387     \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_compact_star_1_1_prog_a9bc6fb78da0b60e7231ac2d54513dd61}{Print}}() \textcolor{keyword}{const};}
+\DoxyCodeLine{387     \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_compact_star_1_1_core_1_1_prog_ac39c43ee91bdf6bbffe044d203c9be1b}{Print}}() \textcolor{keyword}{const};}
 \DoxyCodeLine{388 }
-\DoxyCodeLine{393     std::string \mbox{\hyperlink{class_compact_star_1_1_prog_a40079c6ac9af21ba77ea14f64987e11b}{PtrStr}}() \textcolor{keyword}{const};}
+\DoxyCodeLine{393     std::string \mbox{\hyperlink{class_compact_star_1_1_core_1_1_prog_ad919280df6569735ccbc0d2fb224056b}{PtrStr}}() \textcolor{keyword}{const};}
 \DoxyCodeLine{395 \};}
 \DoxyCodeLine{396 }
-\DoxyCodeLine{397 \} \textcolor{comment}{// namespace CompactStar}}
+\DoxyCodeLine{397 \} \textcolor{comment}{// namespace CompactStar::Core}}
 \DoxyCodeLine{398 }
-\DoxyCodeLine{399 \textcolor{preprocessor}{\#endif }\textcolor{comment}{/* CompactStar\_Prog\_H */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{399 \textcolor{preprocessor}{\#endif }\textcolor{comment}{/* CompactStar\_Core\_Prog\_H */}\textcolor{preprocessor}{}}
 
 \end{DoxyCode}

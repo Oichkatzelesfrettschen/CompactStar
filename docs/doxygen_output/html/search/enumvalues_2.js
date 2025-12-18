@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['energydensity_0',['EnergyDensity',['../d4/d7b/struct_compact_star_1_1_star_profile.html#afcfd77a3fe7d7158278310be5e7075d8a459a5fc6d80b0bb954be7ffabc1137ff',1,'CompactStar::StarProfile']]]
+  ['chem_0',['Chem',['../da/d7b/namespace_compact_star_1_1_physics_1_1_state.html#af14f5554b0d9be50c5ea718733bc424ba576bfc2ef5ff3aea7cecfe5f0bee3886',1,'CompactStar::Physics::State']]],
+  ['custom_1',['Custom',['../d4/d96/_evolution_config_8hpp.html#a77ec205aab45375896e1afc074f535bca90589c47f06eb971d548591f23c285af',1,'Custom()CompactStar::Physics::Evolution'],['../da/d7b/namespace_compact_star_1_1_physics_1_1_state.html#af14f5554b0d9be50c5ea718733bc424ba90589c47f06eb971d548591f23c285af',1,'CompactStar::Physics::State::Custom()']]]
 ];

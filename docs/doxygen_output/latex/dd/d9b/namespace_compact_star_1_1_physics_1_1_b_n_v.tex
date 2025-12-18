@@ -8,9 +8,9 @@ High-\/level baryon-\/number-\/violation utilities.
 \doxysubsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
-double \mbox{\hyperlink{namespace_compact_star_1_1_physics_1_1_b_n_v_a0d89ca57a51bd76528b6ef9919d49521}{Spin\+Down\+Limit}} (\mbox{\hyperlink{struct_compact_star_1_1_star_profile_view}{Star\+Profile\+View}} view, const \+::\+Compact\+Star\+::\+Physics\+::\+State\+::\+Spin\+State \&s)
+double \mbox{\hyperlink{namespace_compact_star_1_1_physics_1_1_b_n_v_ad1e046840f914b32bf1a11ada344df8a}{Spin\+Down\+Limit}} (\mbox{\hyperlink{struct_compact_star_1_1_core_1_1_star_profile_view}{Core\+::\+Star\+Profile\+View}} view, const \+::\+Compact\+Star\+::\+Physics\+::\+State\+::\+Spin\+State \&s)
 \begin{DoxyCompactList}\small\item\em Spin-\/down energy budget bound on the total \mbox{\hyperlink{namespace_compact_star_1_1_physics_1_1_b_n_v}{BNV}} rate. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{namespace_compact_star_1_1_physics_1_1_b_n_v_a004900e17981c9ca6b94498f2a3c36ae}{Update\+Spin\+Down\+Limit}} (\mbox{\hyperlink{struct_compact_star_1_1_star_profile_view}{Star\+Profile\+View}} view, const \+::\+Compact\+Star\+::\+Physics\+::\+State\+::\+Spin\+State \&s, \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_state_1_1_b_n_v_state}{Physics\+::\+State\+::\+BNVState}} \&bnv)
+void \mbox{\hyperlink{namespace_compact_star_1_1_physics_1_1_b_n_v_a8c81cc1619eb6ee882b2124fd766559c}{Update\+Spin\+Down\+Limit}} (\mbox{\hyperlink{struct_compact_star_1_1_core_1_1_star_profile_view}{Core\+::\+Star\+Profile\+View}} view, const \+::\+Compact\+Star\+::\+Physics\+::\+State\+::\+Spin\+State \&s, \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_state_1_1_b_n_v_state}{Physics\+::\+State\+::\+BNVState}} \&bnv)
 \begin{DoxyCompactList}\small\item\em Compute the spin-\/down bound and store it in a BNVState block. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
@@ -20,11 +20,11 @@ High-\/level baryon-\/number-\/violation utilities.
 Contains spin-\/down limits, observational constraints, and wrappers that connect pulsar quantities to \mbox{\hyperlink{namespace_compact_star_1_1_physics_1_1_b_n_v}{BNV}} reaction models in Microphysics. 
 
 \doxysubsection{Function Documentation}
-\mbox{\Hypertarget{namespace_compact_star_1_1_physics_1_1_b_n_v_a0d89ca57a51bd76528b6ef9919d49521}\label{namespace_compact_star_1_1_physics_1_1_b_n_v_a0d89ca57a51bd76528b6ef9919d49521}} 
+\mbox{\Hypertarget{namespace_compact_star_1_1_physics_1_1_b_n_v_ad1e046840f914b32bf1a11ada344df8a}\label{namespace_compact_star_1_1_physics_1_1_b_n_v_ad1e046840f914b32bf1a11ada344df8a}} 
 \index{CompactStar::Physics::BNV@{CompactStar::Physics::BNV}!SpinDownLimit@{SpinDownLimit}}
 \index{SpinDownLimit@{SpinDownLimit}!CompactStar::Physics::BNV@{CompactStar::Physics::BNV}}
 \doxysubsubsection{\texorpdfstring{SpinDownLimit()}{SpinDownLimit()}}
-{\footnotesize\ttfamily double Compact\+Star\+::\+Physics\+::\+BNV\+::\+Spin\+Down\+Limit (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_compact_star_1_1_star_profile_view}{Star\+Profile\+View}}}]{view,  }\item[{const \+::\+Compact\+Star\+::\+Physics\+::\+State\+::\+Spin\+State \&}]{s }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily double Compact\+Star\+::\+Physics\+::\+BNV\+::\+Spin\+Down\+Limit (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_compact_star_1_1_core_1_1_star_profile_view}{Core\+::\+Star\+Profile\+View}}}]{view,  }\item[{const \+::\+Compact\+Star\+::\+Physics\+::\+State\+::\+Spin\+State \&}]{s }\end{DoxyParamCaption})}
 
 
 
@@ -44,11 +44,11 @@ This is a pure utility function and does not modify any state blocks.
 \begin{DoxyReturn}{Returns}
 Upper bound on $\Gamma_{\mathrm{BNV}}$ \mbox{[}1/yr\mbox{]}. 
 \end{DoxyReturn}
-\mbox{\Hypertarget{namespace_compact_star_1_1_physics_1_1_b_n_v_a004900e17981c9ca6b94498f2a3c36ae}\label{namespace_compact_star_1_1_physics_1_1_b_n_v_a004900e17981c9ca6b94498f2a3c36ae}} 
+\mbox{\Hypertarget{namespace_compact_star_1_1_physics_1_1_b_n_v_a8c81cc1619eb6ee882b2124fd766559c}\label{namespace_compact_star_1_1_physics_1_1_b_n_v_a8c81cc1619eb6ee882b2124fd766559c}} 
 \index{CompactStar::Physics::BNV@{CompactStar::Physics::BNV}!UpdateSpinDownLimit@{UpdateSpinDownLimit}}
 \index{UpdateSpinDownLimit@{UpdateSpinDownLimit}!CompactStar::Physics::BNV@{CompactStar::Physics::BNV}}
 \doxysubsubsection{\texorpdfstring{UpdateSpinDownLimit()}{UpdateSpinDownLimit()}}
-{\footnotesize\ttfamily void Compact\+Star\+::\+Physics\+::\+BNV\+::\+Update\+Spin\+Down\+Limit (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_compact_star_1_1_star_profile_view}{Star\+Profile\+View}}}]{view,  }\item[{const \+::\+Compact\+Star\+::\+Physics\+::\+State\+::\+Spin\+State \&}]{s,  }\item[{\mbox{\hyperlink{class_compact_star_1_1_physics_1_1_state_1_1_b_n_v_state}{Physics\+::\+State\+::\+BNVState}} \&}]{bnv }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily void Compact\+Star\+::\+Physics\+::\+BNV\+::\+Update\+Spin\+Down\+Limit (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_compact_star_1_1_core_1_1_star_profile_view}{Core\+::\+Star\+Profile\+View}}}]{view,  }\item[{const \+::\+Compact\+Star\+::\+Physics\+::\+State\+::\+Spin\+State \&}]{s,  }\item[{\mbox{\hyperlink{class_compact_star_1_1_physics_1_1_state_1_1_b_n_v_state}{Physics\+::\+State\+::\+BNVState}} \&}]{bnv }\end{DoxyParamCaption})}
 
 
 
@@ -64,6 +64,6 @@ By convention, the spin-\/down limit is stored in bnv.\+Spin\+Down\+Limit() matc
 \hline
 {\em s} & \mbox{\hyperlink{namespace_compact_star_1_1_physics_1_1_spin}{Spin}} state (uses P, Pdot). \\
 \hline
-{\em bnv} & \mbox{\hyperlink{namespace_compact_star_1_1_physics_1_1_b_n_v}{BNV}} state block to update (\mbox{\hyperlink{namespace_compact_star_1_1_physics_1_1_b_n_v_a0d89ca57a51bd76528b6ef9919d49521}{Spin\+Down\+Limit()}} field is set). \\
+{\em bnv} & \mbox{\hyperlink{namespace_compact_star_1_1_physics_1_1_b_n_v}{BNV}} state block to update (\mbox{\hyperlink{namespace_compact_star_1_1_physics_1_1_b_n_v_ad1e046840f914b32bf1a11ada344df8a}{Spin\+Down\+Limit()}} field is set). \\
 \hline
 \end{DoxyParams}

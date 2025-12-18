@@ -25,8 +25,8 @@ double \mbox{\hyperlink{class_compact_star_1_1_microphysics_1_1_b_n_v_1_1_intern
 \item 
 virtual void \mbox{\hyperlink{class_compact_star_1_1_microphysics_1_1_b_n_v_1_1_internal_1_1_b_n_v___chi_a52dad4da032cde3fa1a4fda5fe1f04a4}{Set\+Model}} (const std\+::string \&in\+\_\+eos\+\_\+model)
 \begin{DoxyCompactList}\small\item\em Sets the EoS model. \end{DoxyCompactList}\item 
-\mbox{\Hypertarget{class_compact_star_1_1_microphysics_1_1_b_n_v_1_1_internal_1_1_b_n_v___chi_a7be86b5f8cb25f58f75a3cedfb3f82a7}\label{class_compact_star_1_1_microphysics_1_1_b_n_v_1_1_internal_1_1_b_n_v___chi_a7be86b5f8cb25f58f75a3cedfb3f82a7}} 
-void {\bfseries Set\+Pulsar} (const \mbox{\hyperlink{class_compact_star_1_1_pulsar}{Compact\+Star\+::\+Pulsar}} \&)
+\mbox{\Hypertarget{class_compact_star_1_1_microphysics_1_1_b_n_v_1_1_internal_1_1_b_n_v___chi_a3cd8d0b6d1a5084c6b4bd68ff353f1d5}\label{class_compact_star_1_1_microphysics_1_1_b_n_v_1_1_internal_1_1_b_n_v___chi_a3cd8d0b6d1a5084c6b4bd68ff353f1d5}} 
+void {\bfseries Set\+Pulsar} (const \mbox{\hyperlink{class_compact_star_1_1_core_1_1_pulsar}{Compact\+Star\+::\+Core\+::\+Pulsar}} \&)
 \begin{DoxyCompactList}\small\item\em Sets the pulsar. \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{class_compact_star_1_1_microphysics_1_1_b_n_v_1_1_internal_1_1_b_n_v___chi_ae262f436f32e004e2f8eac17c3485803}\label{class_compact_star_1_1_microphysics_1_1_b_n_v_1_1_internal_1_1_b_n_v___chi_ae262f436f32e004e2f8eac17c3485803}} 
 void {\bfseries Set\+Chi\+Mass\+Range} (const \mbox{\hyperlink{struct_zaki_1_1_math_1_1_axis}{Zaki\+::\+Math\+::\+Axis}} \&)
@@ -157,8 +157,8 @@ double {\bfseries phase\+\_\+int\+\_\+sigma\+\_\+0} = 0
 \begin{DoxyCompactList}\small\item\em The EoS. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{class_zaki_1_1_vector_1_1_data_set}{Zaki\+::\+Vector\+::\+Data\+Set}} \mbox{\hyperlink{class_compact_star_1_1_microphysics_1_1_b_n_v_1_1_internal_1_1_b_n_v___chi_aa47c1817fb2b76bd0d5b9a802809ea6b}{n\+\_\+B}}
 \item 
-\mbox{\Hypertarget{class_compact_star_1_1_microphysics_1_1_b_n_v_1_1_internal_1_1_b_n_v___chi_a9fc5bdd6ceefcfa8bd76b6388f88fd0e}\label{class_compact_star_1_1_microphysics_1_1_b_n_v_1_1_internal_1_1_b_n_v___chi_a9fc5bdd6ceefcfa8bd76b6388f88fd0e}} 
-\mbox{\hyperlink{class_compact_star_1_1_pulsar}{Pulsar}} {\bfseries pulsar}
+\mbox{\Hypertarget{class_compact_star_1_1_microphysics_1_1_b_n_v_1_1_internal_1_1_b_n_v___chi_ad537ea53ac84b419c71334f7cc6bc1e1}\label{class_compact_star_1_1_microphysics_1_1_b_n_v_1_1_internal_1_1_b_n_v___chi_ad537ea53ac84b419c71334f7cc6bc1e1}} 
+\mbox{\hyperlink{class_compact_star_1_1_core_1_1_pulsar}{Core\+::\+Pulsar}} {\bfseries pulsar}
 \item 
 double \mbox{\hyperlink{class_compact_star_1_1_microphysics_1_1_b_n_v_1_1_internal_1_1_b_n_v___chi_aad8c1213a7ba00109e548c215feb8e0b}{gamma\+\_\+bnv\+\_\+bin\+\_\+lim}} = 1.\+75e-\/10
 \item 
@@ -196,7 +196,7 @@ Return the limit on ε from B → χ integrated over the star, assuming the rate
 
 Returns the limit on eps from B -\/\texorpdfstring{$>$}{>} chi decay rate integrated over the radius and in units of \mbox{[} MeV \mbox{]}
 
-This does exactly what your old code did, but\+:
+This does exactly what the old code did, but\+:
 \begin{DoxyItemize}
 \item uses pulsar.\+Get\+Profile() → const Star\+Profile$\ast$
 \item pulls columns via pointer helpers
@@ -206,13 +206,13 @@ This does exactly what your old code did, but\+:
 
 
 \begin{DoxyParams}{Parameters}
-{\em m\+\_\+chi} & χ mass (same units you use in Rate\+\_\+vs\+\_\+R) \\
+{\em m\+\_\+chi} & χ mass (same units we use in Rate\+\_\+vs\+\_\+R) \\
 \hline
 {\em B} & baryon channel (n, Λ, …) \\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-ε\+\_\+limit in the same units as default\+\_\+eps (your code says “\+Me\+V”) 
+ε\+\_\+limit in the same units as default\+\_\+eps (“\+Me\+V”) 
 \end{DoxyReturn}
 \mbox{\Hypertarget{class_compact_star_1_1_microphysics_1_1_b_n_v_1_1_internal_1_1_b_n_v___chi_a55d084d64ffb4a4284e8069038f48c75}\label{class_compact_star_1_1_microphysics_1_1_b_n_v_1_1_internal_1_1_b_n_v___chi_a55d084d64ffb4a4284e8069038f48c75}} 
 \index{CompactStar::Microphysics::BNV::Internal::BNV\_Chi@{CompactStar::Microphysics::BNV::Internal::BNV\_Chi}!GetRate@{GetRate}}
@@ -224,16 +224,16 @@ This does exactly what your old code did, but\+:
 
 Per–baryon B → χ rate integrated over the star (i.\+e. (1/\+B\+\_\+tot) d\+B/dt), in \mbox{[}yr⁻¹\mbox{]}. 
 
-This is the same physics as your original version, but\+:
+This is the same physics as the original version, but\+:
 \begin{DoxyItemize}
-\item uses the new pointer-\/returning \mbox{\hyperlink{struct_compact_star_1_1_star_profile}{Star\+Profile}} API
+\item uses the new pointer-\/returning Star\+Profile API
 \item converts M(r) from M\+\_\+sun → km so the GR factor is consistent
 \item guards against missing profile / zero baryon number
 \end{DoxyItemize}
 
 
 \begin{DoxyParams}{Parameters}
-{\em m\+\_\+chi} & χ mass (your internal unit, same as Rate\+\_\+vs\+\_\+R) \\
+{\em m\+\_\+chi} & χ mass (internal unit, same as Rate\+\_\+vs\+\_\+R) \\
 \hline
 {\em B} & baryon channel (n, Λ, …) \\
 \hline
@@ -255,7 +255,7 @@ Returns the rate and limit on eps from B -\/\texorpdfstring{$>$}{>} chi decay ra
 
 This does\+:
 \begin{DoxyEnumerate}
-\item grab r, M(r), ν(r) from the pulsar’s \mbox{\hyperlink{struct_compact_star_1_1_star_profile}{Star\+Profile}}
+\item grab r, M(r), ν(r) from the pulsar’s Star\+Profile
 \item get the {\itshape local} decay rate vs radius from Rate\+\_\+vs\+\_\+\+R(m\+\_\+chi, B)
 \item apply GR volume element 4π r² (1 -\/ 2M/r)$^\wedge$(-\/1/2) and redshift e$^\wedge$\{ν\}
 \item convert km³·fm⁻³ → dimensionless via 1e54

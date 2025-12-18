@@ -1,11 +1,11 @@
 var searchData=
 [
   ['h2r6_5fi_0',['H2R6_I',['../da/d11/class_compact_star_1_1_microphysics_1_1_b_n_v_1_1_analysis_1_1_b_n_v___sequence.html#a4f1dc97f5bc13e9781640757a1bc54bd',1,'CompactStar::Microphysics::BNV::Analysis::BNV_Sequence']]],
-  ['h_5finf_1',['H_inf',['../d4/d40/struct_compact_star_1_1_chemical_heating_1_1_derived.html#a12bdbb52118dffa204ebba31f5097692',1,'CompactStar::ChemicalHeating::Derived']]],
-  ['hascolumn_2',['HasColumn',['../d4/d7b/struct_compact_star_1_1_star_profile.html#aa450ffd70a7c7c5411263727b45bf665',1,'CompactStar::StarProfile']]],
-  ['hasmetriclambda_3',['HasMetricLambda',['../d4/d7b/struct_compact_star_1_1_star_profile.html#a6dfc86907dd0e7073577db188fc7aa69',1,'CompactStar::StarProfile']]],
-  ['hasrho_5fi_4',['HasRho_i',['../dc/d86/class_compact_star_1_1_n_star.html#aca82b4c3e64f2364828b1192b6cd6730',1,'CompactStar::NStar']]],
-  ['hasspecies_5',['HasSpecies',['../d4/d7b/struct_compact_star_1_1_star_profile.html#a0bb40bacac3138a8284f0bca0c97c4d5',1,'CompactStar::StarProfile']]],
+  ['hascolumn_1',['HasColumn',['../d4/d29/struct_compact_star_1_1_core_1_1_star_profile.html#a33687cb86215f7243c515a9d4d1a5e8d',1,'CompactStar::Core::StarProfile']]],
+  ['hasmetriclambda_2',['HasMetricLambda',['../d4/d29/struct_compact_star_1_1_core_1_1_star_profile.html#ae96f2864220f21e88e5617d1cb10b74e',1,'CompactStar::Core::StarProfile']]],
+  ['hasrho_5fi_3',['HasRho_i',['../d0/d88/class_compact_star_1_1_core_1_1_n_star.html#a13630e1bbf8735836b2918e3a5a4906f',1,'CompactStar::Core::NStar']]],
+  ['hasscalar_4',['HasScalar',['../d0/d7a/class_compact_star_1_1_physics_1_1_evolution_1_1_diagnostics_1_1_diagnostic_packet.html#a2a2affd7d8fd21e1a254c1b4d13fc226',1,'CompactStar::Physics::Evolution::Diagnostics::DiagnosticPacket']]],
+  ['hasspecies_5',['HasSpecies',['../d4/d29/struct_compact_star_1_1_core_1_1_star_profile.html#aba7f54453aed1201fc90ce50ea72ed4f',1,'CompactStar::Core::StarProfile']]],
   ['heating_6',['heating',['../d4/d2d/class_compact_star_1_1_chemical_heating_1_1_reaction_channel.html#aa255efc6d5bba7c8b1d9c8baf6132abf',1,'CompactStar::ChemicalHeating::ReactionChannel']]],
   ['heatingfromchem_7',['HeatingFromChem',['../d9/d40/class_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_heating_from_chem.html',1,'CompactStar::Physics::Driver::Thermal']]],
   ['heatingfromchem_2ehpp_8',['HeatingFromChem.hpp',['../d4/d81/_heating_from_chem_8hpp.html',1,'']]],

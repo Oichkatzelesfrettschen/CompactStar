@@ -5,25 +5,49 @@
 Right-\/hand side (RHS) functor for the ODE system d\+Y/dt.  
 
 
+{\ttfamily \#include $<$memory$>$}\newline
+{\ttfamily \#include $<$vector$>$}\newline
+{\ttfamily \#include \char`\"{}Compact\+Star/\+Physics/\+Evolution/\+Driver\+Context.\+hpp\char`\"{}}\newline
 \doxysubsection*{Classes}
 \begin{DoxyCompactItemize}
 \item 
 class \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_evolution_system}{Compact\+Star\+::\+Physics\+::\+Evolution\+::\+Evolution\+System}}
-\begin{DoxyCompactList}\small\item\em GSL-\/compatible RHS functor (interfaces only in Phase 0). \end{DoxyCompactList}\item 
-struct \mbox{\hyperlink{struct_compact_star_1_1_physics_1_1_evolution_1_1_evolution_system_1_1_context}{Compact\+Star\+::\+Physics\+::\+Evolution\+::\+Evolution\+System\+::\+Context}}
-\begin{DoxyCompactList}\small\item\em Bundles read-\/only references to the model components. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em GSL-\/compatible RHS functor for d\+Y/dt. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Namespaces}
 \begin{DoxyCompactItemize}
 \item 
 namespace \mbox{\hyperlink{namespace_compact_star_1_1_physics}{Compact\+Star\+::\+Physics}}
-\begin{DoxyCompactList}\small\item\em High-\/level physical modeling layer for compact stars. \end{DoxyCompactList}\item 
-namespace \mbox{\hyperlink{namespace_compact_star_1_1_physics_1_1_thermal}{Compact\+Star\+::\+Physics\+::\+Thermal}}
-\begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{namespace_compact_star_1_1_physics_1_1_thermal}{Thermal}} utilities\+: envelope models, cooling/heating helpers. \end{DoxyCompactList}\item 
-namespace \mbox{\hyperlink{namespace_compact_star_1_1_physics_1_1_evolution}{Compact\+Star\+::\+Physics\+::\+Evolution}}
-\begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{namespace_compact_star_1_1_physics_1_1_evolution}{Evolution}} engine for time-\/dependent neutron-\/star physics. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em High-\/level physical modeling layer for compact stars. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{_evolution_system_8hpp_ac59c489f5ce4d34a3d7e3fd404277a77}\label{_evolution_system_8hpp_ac59c489f5ce4d34a3d7e3fd404277a77}} 
+using {\bfseries Compact\+Star\+::\+Physics\+::\+Evolution\+::\+Driver\+Ptr} = std\+::shared\+\_\+ptr$<$ Physics\+::\+IDriver $>$
+\item 
+\mbox{\Hypertarget{_evolution_system_8hpp_a3fbb8aa2efc7da9a859d9b2ae0b72a7a}\label{_evolution_system_8hpp_a3fbb8aa2efc7da9a859d9b2ae0b72a7a}} 
+using {\bfseries Compact\+Star\+::\+Physics\+::\+Evolution\+::\+Observer\+Ptr} = std\+::shared\+\_\+ptr$<$ Observers\+::\+IObserver $>$
+\end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}
 Right-\/hand side (RHS) functor for the ODE system d\+Y/dt. 
 
-The RHS assembles volume integrals using Geometry\+Cache and Rate\+Set, and computes time derivatives for $T^\infty$ and $\boldsymbol{\eta}$ (and optionally $\Omega$). Designed to be wrapped by a GSL driver in {\ttfamily Integrator\+GSL}. 
+Evolution\+System wires together\+:
+\begin{DoxyItemize}
+\item static model context (Star\+Context, Geometry\+Cache, envelope, Config),
+\item the dynamic State\+Vector (Spin/\+Thermal/\+Chem/\+BNV blocks),
+\item an RHSAccumulator for d\+Y/dt contributions, and
+\item a set of physics drivers implementing IDriver.
+\end{DoxyItemize}
+
+It does {\bfseries{not}} implement any physics directly. The workflow is\+:
+
+
+\begin{DoxyEnumerate}
+\item Unpack the flat y\mbox{[}\mbox{]} into State blocks (State\+Packing\+::\+Unpack\+State\+Vector).
+\item Clear RHSAccumulator.
+\item For each driver\+: driver-\/\texorpdfstring{$>$}{>}Accumulate\+RHS(t, state, rhs, runtime\+\_\+context);
+\item Scatter RHSAccumulator back into dydt\mbox{[}\mbox{]} (State\+Packing\+::\+Scatter\+RHSFrom\+Accumulator).
+\end{DoxyEnumerate}
+
+Designed to be wrapped by a GSL driver. 

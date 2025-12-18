@@ -64,7 +64,7 @@ const double \& {\bfseries Spin\+Down\+Limit} () const
 
 This class behaves exactly like Chem\+State/\+Thermal\+State in terms of interface\+: a resizable contiguous vector of doubles exposed to the evolution system and its drivers.
 
-Physical meaning of each component is determined by your \mbox{\hyperlink{namespace_compact_star_1_1_physics_1_1_b_n_v}{BNV}} model.
+Physical meaning of each component is determined by the \mbox{\hyperlink{namespace_compact_star_1_1_physics_1_1_b_n_v}{BNV}} model.
 
 \begin{DoxyNote}{Note}
 Storage (the {\ttfamily values\+\_\+} vector) deliberately lives in this derived class rather than in the \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_state_1_1_state}{State}} base class. This design allows future state types to use non-\/contiguous, multi-\/zone, or externally owned layouts while still exposing the uniform Pack\+To/\+Unpack\+From interface required by the evolution framework. See \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_state_1_1_state}{Compact\+Star\+::\+Physics\+::\+State\+::\+State}} for details. 
@@ -168,7 +168,7 @@ Resize underlying DOF vector to {\ttfamily N} entries.
 
 Default layout\+: N = 2 index 0 → η\+\_\+I index 1 → spin\+\_\+down\+\_\+limit
 
-You may expand this vector when implementing more elaborate \mbox{\hyperlink{namespace_compact_star_1_1_physics_1_1_b_n_v}{BNV}} models. 
+We may expand this vector when implementing more elaborate \mbox{\hyperlink{namespace_compact_star_1_1_physics_1_1_b_n_v}{BNV}} models. 
 
 Implements \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_state_1_1_state_a67305cd2b43b22a5503b62326c00584f}{Compact\+Star\+::\+Physics\+::\+State\+::\+State}}.
 

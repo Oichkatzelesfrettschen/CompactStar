@@ -15,22 +15,22 @@ virtual const std\+::vector$<$ \mbox{\hyperlink{namespace_compact_star_1_1_physi
 \begin{DoxyCompactList}\small\item\em Which state blocks this driver reads. \end{DoxyCompactList}\item 
 virtual const std\+::vector$<$ \mbox{\hyperlink{namespace_compact_star_1_1_physics_1_1_state_af14f5554b0d9be50c5ea718733bc424b}{State\+::\+State\+Tag}} $>$ \& \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_i_driver_a24a531cb99a43313f30018d1687241a7}{Updates}} () const =0
 \begin{DoxyCompactList}\small\item\em Which state blocks this driver updates (adds contributions to). \end{DoxyCompactList}\item 
-virtual void \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_i_driver_a8f6a4dd41179102863ea109d24e68bf4}{Accumulate\+RHS}} (double t, const \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_state_vector}{Evolution\+::\+State\+Vector}} \&Y, \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_r_h_s_accumulator}{Evolution\+::\+RHSAccumulator}} \&d\+Ydt, const \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_star_context}{Evolution\+::\+Star\+Context}} \&ctx) const =0
+virtual void \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_i_driver_ab4c100ea49a9ec8bad3b43f9f84c17eb}{Accumulate\+RHS}} (double t, const \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_state_vector}{Evolution\+::\+State\+Vector}} \&Y, \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_r_h_s_accumulator}{Evolution\+::\+RHSAccumulator}} \&d\+Ydt, const \mbox{\hyperlink{struct_compact_star_1_1_physics_1_1_evolution_1_1_driver_context}{Evolution\+::\+Driver\+Context}} \&ctx) const =0
 \begin{DoxyCompactList}\small\item\em Add this driver’s contribution to the global RHS d\+Y/dt. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \doxysubsection{Member Function Documentation}
-\mbox{\Hypertarget{class_compact_star_1_1_physics_1_1_i_driver_a8f6a4dd41179102863ea109d24e68bf4}\label{class_compact_star_1_1_physics_1_1_i_driver_a8f6a4dd41179102863ea109d24e68bf4}} 
+\mbox{\Hypertarget{class_compact_star_1_1_physics_1_1_i_driver_ab4c100ea49a9ec8bad3b43f9f84c17eb}\label{class_compact_star_1_1_physics_1_1_i_driver_ab4c100ea49a9ec8bad3b43f9f84c17eb}} 
 \index{CompactStar::Physics::IDriver@{CompactStar::Physics::IDriver}!AccumulateRHS@{AccumulateRHS}}
 \index{AccumulateRHS@{AccumulateRHS}!CompactStar::Physics::IDriver@{CompactStar::Physics::IDriver}}
 \doxysubsubsection{\texorpdfstring{AccumulateRHS()}{AccumulateRHS()}}
-{\footnotesize\ttfamily virtual void Compact\+Star\+::\+Physics\+::\+IDriver\+::\+Accumulate\+RHS (\begin{DoxyParamCaption}\item[{double}]{t,  }\item[{const \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_state_vector}{Evolution\+::\+State\+Vector}} \&}]{Y,  }\item[{\mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_r_h_s_accumulator}{Evolution\+::\+RHSAccumulator}} \&}]{d\+Ydt,  }\item[{const \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_star_context}{Evolution\+::\+Star\+Context}} \&}]{ctx }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [pure virtual]}}
+{\footnotesize\ttfamily virtual void Compact\+Star\+::\+Physics\+::\+IDriver\+::\+Accumulate\+RHS (\begin{DoxyParamCaption}\item[{double}]{t,  }\item[{const \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_state_vector}{Evolution\+::\+State\+Vector}} \&}]{Y,  }\item[{\mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_r_h_s_accumulator}{Evolution\+::\+RHSAccumulator}} \&}]{d\+Ydt,  }\item[{const \mbox{\hyperlink{struct_compact_star_1_1_physics_1_1_evolution_1_1_driver_context}{Evolution\+::\+Driver\+Context}} \&}]{ctx }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [pure virtual]}}
 
 
 
 Add this driver’s contribution to the global RHS d\+Y/dt. 
 
-Implementations must {\itshape accumulate} into {\ttfamily d\+Ydt} (i.\+e., add), and must not assume any specific call order beyond what the \mbox{\hyperlink{namespace_compact_star_1_1_physics_1_1_evolution}{Evolution}} graph resolves.
+Implementations must {\itshape accumulate} into {\ttfamily d\+Ydt} (i.\+e., add), and must not assume any specific call order beyond what the Evolution graph resolves.
 
 
 \begin{DoxyParams}{Parameters}
@@ -45,7 +45,7 @@ Implementations must {\itshape accumulate} into {\ttfamily d\+Ydt} (i.\+e., add)
 \end{DoxyParams}
 
 
-Implemented in \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_heating_from_chem_a5f9f22c76959e7eb907e5c6997598093}{Compact\+Star\+::\+Physics\+::\+Driver\+::\+Thermal\+::\+Heating\+From\+Chem}}, \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_neutrino_cooling_ad3c3e40c162184605b4e27915423c65c}{Compact\+Star\+::\+Physics\+::\+Driver\+::\+Thermal\+::\+Neutrino\+Cooling}}, and \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_photon_cooling_a9b6e2a592f8473860e317c9102edc831}{Compact\+Star\+::\+Physics\+::\+Driver\+::\+Thermal\+::\+Photon\+Cooling}}.
+Implemented in \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_heating_from_chem_a0d9f71b781bfc9df8f02eed58cbadb76}{Compact\+Star\+::\+Physics\+::\+Driver\+::\+Thermal\+::\+Heating\+From\+Chem}}, \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_neutrino_cooling_ab9ed44b6727390735bb257b656daca44}{Compact\+Star\+::\+Physics\+::\+Driver\+::\+Thermal\+::\+Neutrino\+Cooling}}, and \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_photon_cooling_a30a11d918558a08eb44bed1272a7a486}{Compact\+Star\+::\+Physics\+::\+Driver\+::\+Thermal\+::\+Photon\+Cooling}}.
 
 \mbox{\Hypertarget{class_compact_star_1_1_physics_1_1_i_driver_a813f52e0fad2ee496611eb6a18114354}\label{class_compact_star_1_1_physics_1_1_i_driver_a813f52e0fad2ee496611eb6a18114354}} 
 \index{CompactStar::Physics::IDriver@{CompactStar::Physics::IDriver}!DependsOn@{DependsOn}}
@@ -59,7 +59,7 @@ Which state blocks this driver reads.
 
 Drivers should return a reference to a static container (e.\+g. a static const std\+::vector$<$\+State\+Tag$>$). 
 
-Implemented in \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_heating_from_chem_a9913eff798bd1896243a978d1e5c9cc1}{Compact\+Star\+::\+Physics\+::\+Driver\+::\+Thermal\+::\+Heating\+From\+Chem}}, \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_neutrino_cooling_a84bda6a5dd4718cea02067ddc0d9d2f5}{Compact\+Star\+::\+Physics\+::\+Driver\+::\+Thermal\+::\+Neutrino\+Cooling}}, and \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_photon_cooling_a727e70e4e7ae99d1711d2d44b12b8150}{Compact\+Star\+::\+Physics\+::\+Driver\+::\+Thermal\+::\+Photon\+Cooling}}.
+Implemented in \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_heating_from_chem_ab40688139cff7c5c2600ebc94a6c06aa}{Compact\+Star\+::\+Physics\+::\+Driver\+::\+Thermal\+::\+Heating\+From\+Chem}}, \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_neutrino_cooling_aa42814553d2918595b45d411648656c2}{Compact\+Star\+::\+Physics\+::\+Driver\+::\+Thermal\+::\+Neutrino\+Cooling}}, and \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_photon_cooling_a1e27f52db93a97bad80c9457d7e1b1f0}{Compact\+Star\+::\+Physics\+::\+Driver\+::\+Thermal\+::\+Photon\+Cooling}}.
 
 \mbox{\Hypertarget{class_compact_star_1_1_physics_1_1_i_driver_a1337b0292d71b672785c37ba4d7e8564}\label{class_compact_star_1_1_physics_1_1_i_driver_a1337b0292d71b672785c37ba4d7e8564}} 
 \index{CompactStar::Physics::IDriver@{CompactStar::Physics::IDriver}!Name@{Name}}
@@ -87,7 +87,7 @@ Which state blocks this driver updates (adds contributions to).
 
 Drivers should return a reference to a static container (e.\+g. a static const std\+::vector$<$\+State\+Tag$>$). 
 
-Implemented in \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_heating_from_chem_a40751d8be9aebf75f3302b0b9bd2bd63}{Compact\+Star\+::\+Physics\+::\+Driver\+::\+Thermal\+::\+Heating\+From\+Chem}}, \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_neutrino_cooling_aa617d91eaad9d418559b6bde6f8e11f2}{Compact\+Star\+::\+Physics\+::\+Driver\+::\+Thermal\+::\+Neutrino\+Cooling}}, and \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_photon_cooling_a75fda0abed33a37355c02b0072c35ee6}{Compact\+Star\+::\+Physics\+::\+Driver\+::\+Thermal\+::\+Photon\+Cooling}}.
+Implemented in \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_heating_from_chem_a3e5476a2438700080e716198ad5262d9}{Compact\+Star\+::\+Physics\+::\+Driver\+::\+Thermal\+::\+Heating\+From\+Chem}}, \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_neutrino_cooling_a3e430568095c4bc88f22f9e6730e2bdc}{Compact\+Star\+::\+Physics\+::\+Driver\+::\+Thermal\+::\+Neutrino\+Cooling}}, and \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_photon_cooling_ae0fef08a30b8f5ac85aa8330ffe201ae}{Compact\+Star\+::\+Physics\+::\+Driver\+::\+Thermal\+::\+Photon\+Cooling}}.
 
 
 

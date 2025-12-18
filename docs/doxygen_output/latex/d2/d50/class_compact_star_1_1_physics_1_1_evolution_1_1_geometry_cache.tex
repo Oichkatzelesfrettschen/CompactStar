@@ -2,7 +2,7 @@
 \label{class_compact_star_1_1_physics_1_1_evolution_1_1_geometry_cache}\index{CompactStar::Physics::Evolution::GeometryCache@{CompactStar::Physics::Evolution::GeometryCache}}
 
 
-Stores radial weights and simple structure flags for integrals.  
+Geometry-\/only cached columns for repeated integrals.  
 
 
 
@@ -12,42 +12,95 @@ Stores radial weights and simple structure flags for integrals.
 \doxysubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_geometry_cache_a75f75627e6ba1474e01bdf8cd3e874f6}{Geometry\+Cache}} (const \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_star_context}{Star\+Context}} \&ctx)
-\begin{DoxyCompactList}\small\item\em Build weights from a {\ttfamily \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_star_context}{Star\+Context}}}. \end{DoxyCompactList}\item 
-\mbox{\Hypertarget{class_compact_star_1_1_physics_1_1_evolution_1_1_geometry_cache_a667e9d632837d73b115ab6527c4ec117}\label{class_compact_star_1_1_physics_1_1_evolution_1_1_geometry_cache_a667e9d632837d73b115ab6527c4ec117}} 
+\mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_geometry_cache_a762384961130c067cfc04a3d237d5a65}{Geometry\+Cache}} (const \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_star_context}{Star\+Context}} \&ctx)
+\begin{DoxyCompactList}\small\item\em Construct and build cache columns from a \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_star_context}{Star\+Context}}. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_compact_star_1_1_physics_1_1_evolution_1_1_geometry_cache_ae9b06cbe27c75ff4d2814a991655197c}\label{class_compact_star_1_1_physics_1_1_evolution_1_1_geometry_cache_ae9b06cbe27c75ff4d2814a991655197c}} 
 std\+::size\+\_\+t {\bfseries Size} () const
-\begin{DoxyCompactList}\small\item\em Number of radial samples. \end{DoxyCompactList}\item 
-\mbox{\Hypertarget{class_compact_star_1_1_physics_1_1_evolution_1_1_geometry_cache_a9c99086728c8f4f517cfab19f94f0bcd}\label{class_compact_star_1_1_physics_1_1_evolution_1_1_geometry_cache_a9c99086728c8f4f517cfab19f94f0bcd}} 
-const std\+::vector$<$ double $>$ \& {\bfseries WC} () const
-\begin{DoxyCompactList}\small\item\em Weight for heat-\/capacity-\/like integrals\+: $w_C(r)$. \end{DoxyCompactList}\item 
-\mbox{\Hypertarget{class_compact_star_1_1_physics_1_1_evolution_1_1_geometry_cache_af84c63de79b6fc3d8f50490ecc20f8bb}\label{class_compact_star_1_1_physics_1_1_evolution_1_1_geometry_cache_af84c63de79b6fc3d8f50490ecc20f8bb}} 
-const std\+::vector$<$ double $>$ \& {\bfseries WNu} () const
-\begin{DoxyCompactList}\small\item\em Weight for redshifted luminosities\+: $w_\nu(r)$. \end{DoxyCompactList}\item 
-\mbox{\Hypertarget{class_compact_star_1_1_physics_1_1_evolution_1_1_geometry_cache_ade9d6bc121225447725160d762a84dd3}\label{class_compact_star_1_1_physics_1_1_evolution_1_1_geometry_cache_ade9d6bc121225447725160d762a84dd3}} 
-const std\+::vector$<$ double $>$ \& {\bfseries Radius} () const
-\begin{DoxyCompactList}\small\item\em Radius grid (km). Provided for convenience. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Number of radial samples (N). \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{Indent}\textbf{ Primitive grids / exponentials}\par
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_compact_star_1_1_physics_1_1_evolution_1_1_geometry_cache_af9782646d70879b09ce4d89084e306ad}\label{class_compact_star_1_1_physics_1_1_evolution_1_1_geometry_cache_af9782646d70879b09ce4d89084e306ad}} 
+const \mbox{\hyperlink{struct_zaki_1_1_vector_1_1_data_column}{Zaki\+::\+Vector\+::\+Data\+Column}} \& {\bfseries R} () const
+\begin{DoxyCompactList}\small\item\em r(km) \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_compact_star_1_1_physics_1_1_evolution_1_1_geometry_cache_aafe7c5b33665721e466aa28fb5b38af0}\label{class_compact_star_1_1_physics_1_1_evolution_1_1_geometry_cache_aafe7c5b33665721e466aa28fb5b38af0}} 
+const \mbox{\hyperlink{struct_zaki_1_1_vector_1_1_data_column}{Zaki\+::\+Vector\+::\+Data\+Column}} \& {\bfseries Area} () const
+\begin{DoxyCompactList}\small\item\em 4$\ast$pi$\ast$r$^\wedge$2 \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_compact_star_1_1_physics_1_1_evolution_1_1_geometry_cache_a264040a24e5d3317398593c563735190}\label{class_compact_star_1_1_physics_1_1_evolution_1_1_geometry_cache_a264040a24e5d3317398593c563735190}} 
+const \mbox{\hyperlink{struct_zaki_1_1_vector_1_1_data_column}{Zaki\+::\+Vector\+::\+Data\+Column}} \& {\bfseries Exp\+Nu} () const
+\begin{DoxyCompactList}\small\item\em exp(nu) \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_compact_star_1_1_physics_1_1_evolution_1_1_geometry_cache_a1e86108a23aee7c1c905110f73cbd0f7}\label{class_compact_star_1_1_physics_1_1_evolution_1_1_geometry_cache_a1e86108a23aee7c1c905110f73cbd0f7}} 
+const \mbox{\hyperlink{struct_zaki_1_1_vector_1_1_data_column}{Zaki\+::\+Vector\+::\+Data\+Column}} \& {\bfseries Exp\+Minus\+Nu} () const
+\begin{DoxyCompactList}\small\item\em exp(-\/nu) \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_compact_star_1_1_physics_1_1_evolution_1_1_geometry_cache_a2aa39fbbc2804876242679ee4a73553b}\label{class_compact_star_1_1_physics_1_1_evolution_1_1_geometry_cache_a2aa39fbbc2804876242679ee4a73553b}} 
+const \mbox{\hyperlink{struct_zaki_1_1_vector_1_1_data_column}{Zaki\+::\+Vector\+::\+Data\+Column}} \& {\bfseries Exp2\+Nu} () const
+\begin{DoxyCompactList}\small\item\em exp(2$\ast$nu) \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_compact_star_1_1_physics_1_1_evolution_1_1_geometry_cache_ad9a6aa2b8736b7cb970695b838b768c9}\label{class_compact_star_1_1_physics_1_1_evolution_1_1_geometry_cache_ad9a6aa2b8736b7cb970695b838b768c9}} 
+const \mbox{\hyperlink{struct_zaki_1_1_vector_1_1_data_column}{Zaki\+::\+Vector\+::\+Data\+Column}} \& {\bfseries Exp\+Lambda} () const
+\begin{DoxyCompactList}\small\item\em exp(\+Lambda) \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_compact_star_1_1_physics_1_1_evolution_1_1_geometry_cache_a92089443280612a0c17b15cea20f304d}\label{class_compact_star_1_1_physics_1_1_evolution_1_1_geometry_cache_a92089443280612a0c17b15cea20f304d}} 
+const \mbox{\hyperlink{struct_zaki_1_1_vector_1_1_data_column}{Zaki\+::\+Vector\+::\+Data\+Column}} \& {\bfseries Exp\+Minus\+Lambda} () const
+\begin{DoxyCompactList}\small\item\em exp(-\/Lambda) \end{DoxyCompactList}\end{DoxyCompactItemize}
+\end{Indent}
+\begin{Indent}\textbf{ Common mixed metric products}\par
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_compact_star_1_1_physics_1_1_evolution_1_1_geometry_cache_aca6e0819c1bfb15bb8a493d48e4d855e}\label{class_compact_star_1_1_physics_1_1_evolution_1_1_geometry_cache_aca6e0819c1bfb15bb8a493d48e4d855e}} 
+const \mbox{\hyperlink{struct_zaki_1_1_vector_1_1_data_column}{Zaki\+::\+Vector\+::\+Data\+Column}} \& {\bfseries Exp\+Nu\+Minus\+Lambda} () const
+\begin{DoxyCompactList}\small\item\em exp(nu -\/ Lambda) \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_compact_star_1_1_physics_1_1_evolution_1_1_geometry_cache_a45e621a24fa0466aef381a110a0eb00f}\label{class_compact_star_1_1_physics_1_1_evolution_1_1_geometry_cache_a45e621a24fa0466aef381a110a0eb00f}} 
+const \mbox{\hyperlink{struct_zaki_1_1_vector_1_1_data_column}{Zaki\+::\+Vector\+::\+Data\+Column}} \& {\bfseries Exp\+Minus\+Nu\+Minus\+Lambda} () const
+\begin{DoxyCompactList}\small\item\em exp(-\/(nu + Lambda)) \end{DoxyCompactList}\end{DoxyCompactItemize}
+\end{Indent}
+\begin{Indent}\textbf{ Canonical weights}\par
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_compact_star_1_1_physics_1_1_evolution_1_1_geometry_cache_a65b31a13f389dc603bb1ea6e5ac3f3c1}\label{class_compact_star_1_1_physics_1_1_evolution_1_1_geometry_cache_a65b31a13f389dc603bb1ea6e5ac3f3c1}} 
+const \mbox{\hyperlink{struct_zaki_1_1_vector_1_1_data_column}{Zaki\+::\+Vector\+::\+Data\+Column}} \& {\bfseries WV} () const
+\begin{DoxyCompactList}\small\item\em 4$\ast$pi$\ast$r$^\wedge$2$\ast$exp(Lambda) \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_compact_star_1_1_physics_1_1_evolution_1_1_geometry_cache_ab78457bc28c310101ffb3f069779d013}\label{class_compact_star_1_1_physics_1_1_evolution_1_1_geometry_cache_ab78457bc28c310101ffb3f069779d013}} 
+const \mbox{\hyperlink{struct_zaki_1_1_vector_1_1_data_column}{Zaki\+::\+Vector\+::\+Data\+Column}} \& {\bfseries WVExp\+Nu} () const
+\begin{DoxyCompactList}\small\item\em WV$\ast$exp(nu) \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_compact_star_1_1_physics_1_1_evolution_1_1_geometry_cache_abe5f08fbc63e327105e4295b3c6a2f51}\label{class_compact_star_1_1_physics_1_1_evolution_1_1_geometry_cache_abe5f08fbc63e327105e4295b3c6a2f51}} 
+const \mbox{\hyperlink{struct_zaki_1_1_vector_1_1_data_column}{Zaki\+::\+Vector\+::\+Data\+Column}} \& {\bfseries WVExp2\+Nu} () const
+\begin{DoxyCompactList}\small\item\em WV$\ast$exp(2nu) \end{DoxyCompactList}\end{DoxyCompactItemize}
+\end{Indent}
 
 
 \doxysubsection{Detailed Description}
-Stores radial weights and simple structure flags for integrals. 
+Geometry-\/only cached columns for repeated integrals. 
+
+This class is intended to be\+:
+\begin{DoxyItemize}
+\item Cheap to copy/move (columns store vectors internally),
+\item Purely geometric (no microphysics),
+\item Data\+Column-\/native (supports algebra and Mathematica-\/like indexing). 
+\end{DoxyItemize}
 
 \doxysubsection{Constructor \& Destructor Documentation}
-\mbox{\Hypertarget{class_compact_star_1_1_physics_1_1_evolution_1_1_geometry_cache_a75f75627e6ba1474e01bdf8cd3e874f6}\label{class_compact_star_1_1_physics_1_1_evolution_1_1_geometry_cache_a75f75627e6ba1474e01bdf8cd3e874f6}} 
+\mbox{\Hypertarget{class_compact_star_1_1_physics_1_1_evolution_1_1_geometry_cache_a762384961130c067cfc04a3d237d5a65}\label{class_compact_star_1_1_physics_1_1_evolution_1_1_geometry_cache_a762384961130c067cfc04a3d237d5a65}} 
 \index{CompactStar::Physics::Evolution::GeometryCache@{CompactStar::Physics::Evolution::GeometryCache}!GeometryCache@{GeometryCache}}
 \index{GeometryCache@{GeometryCache}!CompactStar::Physics::Evolution::GeometryCache@{CompactStar::Physics::Evolution::GeometryCache}}
 \doxysubsubsection{\texorpdfstring{GeometryCache()}{GeometryCache()}}
-{\footnotesize\ttfamily Compact\+Star\+::\+Chemical\+Heating\+::\+Geometry\+Cache\+::\+Geometry\+Cache (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_star_context}{Star\+Context}} \&}]{ctx }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [explicit]}}
+{\footnotesize\ttfamily Compact\+Star\+::\+Physics\+::\+Evolution\+::\+Geometry\+Cache\+::\+Geometry\+Cache (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_star_context}{Star\+Context}} \&}]{ctx }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [explicit]}}
 
 
 
-Build weights from a {\ttfamily \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_star_context}{Star\+Context}}}. 
+Construct and build cache columns from a \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_star_context}{Star\+Context}}. 
 
+Requirements\+:
+\begin{DoxyItemize}
+\item ctx.\+Radius() != nullptr and \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_geometry_cache_ae9b06cbe27c75ff4d2814a991655197c}{Size()}} \texorpdfstring{$>$}{>} 0
+\item ctx.\+Nu() != nullptr and same \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_geometry_cache_ae9b06cbe27c75ff4d2814a991655197c}{Size()}}
+\end{DoxyItemize}
 
-\begin{DoxyParams}{Parameters}
-{\em ctx} & Read-\/only star context (grid, metric). \\
-\hline
-\end{DoxyParams}
-
+Lambda handling\+:
+\begin{DoxyItemize}
+\item If ctx.\+Lambda() exists and matches \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_geometry_cache_ae9b06cbe27c75ff4d2814a991655197c}{Size()}}, use it.
+\item Otherwise derive Lambda from (m,r)\+:  \[
+     \Lambda = -\tfrac12\ln(1-2m/r)
+   \] with a small clamp if (1-\/2m/r) \texorpdfstring{$<$}{<}= 0. 
+\end{DoxyItemize}
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 

@@ -1,0 +1,63 @@
+\hypertarget{class_compact_star_1_1_physics_1_1_evolution_1_1_diagnostics_1_1_diagnostics_json}{}\doxysection{Compact\+Star\+::Physics\+::Evolution\+::Diagnostics\+::Diagnostics\+Json Class Reference}
+\label{class_compact_star_1_1_physics_1_1_evolution_1_1_diagnostics_1_1_diagnostics_json}\index{CompactStar::Physics::Evolution::Diagnostics::DiagnosticsJson@{CompactStar::Physics::Evolution::Diagnostics::DiagnosticsJson}}
+
+
+JSON rendering helpers.  
+
+
+
+
+{\ttfamily \#include $<$Diagnostics\+Json.\+hpp$>$}
+
+\doxysubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static void \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_diagnostics_1_1_diagnostics_json_a099bdd74319166ef1ddb7262d9882e37}{Write\+Packet}} (std\+::ostream \&os, const \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_diagnostics_1_1_diagnostic_packet}{Diagnostic\+Packet}} \&pkt, const \mbox{\hyperlink{struct_compact_star_1_1_physics_1_1_evolution_1_1_diagnostics_1_1_json_options}{Json\+Options}} \&opts=\{\}, const \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_diagnostics_1_1_unit_vocabulary}{Unit\+Vocabulary}} $\ast$vocab=nullptr)
+\begin{DoxyCompactList}\small\item\em Write a single packet as a JSON object. \end{DoxyCompactList}\item 
+static void \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_diagnostics_1_1_diagnostics_json_aeea40e3a9f6c92a653c1a9f4bc1045b1}{Write\+Packet\+Jsonl}} (std\+::ostream \&os, const \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_diagnostics_1_1_diagnostic_packet}{Diagnostic\+Packet}} \&pkt, const \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_diagnostics_1_1_unit_vocabulary}{Unit\+Vocabulary}} $\ast$vocab=nullptr)
+\begin{DoxyCompactList}\small\item\em Write a single packet in JSONL form (one object + \textquotesingle{}~\newline
+\textquotesingle{}). \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+JSON rendering helpers. 
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_compact_star_1_1_physics_1_1_evolution_1_1_diagnostics_1_1_diagnostics_json_a099bdd74319166ef1ddb7262d9882e37}\label{class_compact_star_1_1_physics_1_1_evolution_1_1_diagnostics_1_1_diagnostics_json_a099bdd74319166ef1ddb7262d9882e37}} 
+\index{CompactStar::Physics::Evolution::Diagnostics::DiagnosticsJson@{CompactStar::Physics::Evolution::Diagnostics::DiagnosticsJson}!WritePacket@{WritePacket}}
+\index{WritePacket@{WritePacket}!CompactStar::Physics::Evolution::Diagnostics::DiagnosticsJson@{CompactStar::Physics::Evolution::Diagnostics::DiagnosticsJson}}
+\doxysubsubsection{\texorpdfstring{WritePacket()}{WritePacket()}}
+{\footnotesize\ttfamily void Compact\+Star\+::\+Physics\+::\+Evolution\+::\+Diagnostics\+::\+Diagnostics\+Json\+::\+Write\+Packet (\begin{DoxyParamCaption}\item[{std\+::ostream \&}]{os,  }\item[{const \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_diagnostics_1_1_diagnostic_packet}{Diagnostic\+Packet}} \&}]{pkt,  }\item[{const \mbox{\hyperlink{struct_compact_star_1_1_physics_1_1_evolution_1_1_diagnostics_1_1_json_options}{Json\+Options}} \&}]{opts = {\ttfamily \{\}},  }\item[{const \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_diagnostics_1_1_unit_vocabulary}{Unit\+Vocabulary}} $\ast$}]{vocab = {\ttfamily nullptr} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Write a single packet as a JSON object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em os} & Output stream. \\
+\hline
+{\em pkt} & \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_diagnostics_1_1_diagnostic_packet}{Diagnostic\+Packet}} to render. \\
+\hline
+{\em opts} & Rendering options. \\
+\hline
+{\em vocab} & Optional unit vocabulary for linting (may be null).\\
+\hline
+\end{DoxyParams}
+If vocab is provided and a scalar unit is not allowed, the writer does not throw; instead it emits a {\ttfamily \char`\"{}unit\+\_\+ok\char`\"{}\+: false} metadata field for that scalar (when metadata enabled). \mbox{\Hypertarget{class_compact_star_1_1_physics_1_1_evolution_1_1_diagnostics_1_1_diagnostics_json_aeea40e3a9f6c92a653c1a9f4bc1045b1}\label{class_compact_star_1_1_physics_1_1_evolution_1_1_diagnostics_1_1_diagnostics_json_aeea40e3a9f6c92a653c1a9f4bc1045b1}} 
+\index{CompactStar::Physics::Evolution::Diagnostics::DiagnosticsJson@{CompactStar::Physics::Evolution::Diagnostics::DiagnosticsJson}!WritePacketJsonl@{WritePacketJsonl}}
+\index{WritePacketJsonl@{WritePacketJsonl}!CompactStar::Physics::Evolution::Diagnostics::DiagnosticsJson@{CompactStar::Physics::Evolution::Diagnostics::DiagnosticsJson}}
+\doxysubsubsection{\texorpdfstring{WritePacketJsonl()}{WritePacketJsonl()}}
+{\footnotesize\ttfamily void Compact\+Star\+::\+Physics\+::\+Evolution\+::\+Diagnostics\+::\+Diagnostics\+Json\+::\+Write\+Packet\+Jsonl (\begin{DoxyParamCaption}\item[{std\+::ostream \&}]{os,  }\item[{const \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_diagnostics_1_1_diagnostic_packet}{Diagnostic\+Packet}} \&}]{pkt,  }\item[{const \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_diagnostics_1_1_unit_vocabulary}{Unit\+Vocabulary}} $\ast$}]{vocab = {\ttfamily nullptr} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Write a single packet in JSONL form (one object + \textquotesingle{}~\newline
+\textquotesingle{}). 
+
+Useful for append-\/only logs where each line is independently parseable. Forces {\ttfamily pretty=false} (JSONL should be one line). 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Compact\+Star/\+Physics/\+Evolution/\+Diagnostics/\mbox{\hyperlink{_diagnostics_json_8hpp}{Diagnostics\+Json.\+hpp}}\item 
+Compact\+Star/\+Physics/\+Evolution/\+Diagnostics/src/Diagnostics\+Json.\+cpp\end{DoxyCompactItemize}

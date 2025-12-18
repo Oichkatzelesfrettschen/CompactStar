@@ -75,23 +75,24 @@ $(function() {
 <div class="header">
   <div class="summary">
 <a href="#nested-classes">Classes</a> &#124;
-<a href="#namespaces">Namespaces</a>  </div>
+<a href="#namespaces">Namespaces</a> &#124;
+<a href="#typedef-members">Typedefs</a>  </div>
   <div class="headertitle"><div class="title">EvolutionSystem.hpp File Reference<div class="ingroups"><a class="el" href="../../dc/dfe/group___physics_evolution.html">Physics evolution module</a></div></div></div>
 </div><!--header-->
 <div class="contents">
 
 <p>Right-hand side (RHS) functor for the ODE system dY/dt.  
 <a href="#details">More...</a></p>
-
+<div class="textblock"><code>#include &lt;memory&gt;</code><br />
+<code>#include &lt;vector&gt;</code><br />
+<code>#include &quot;<a class="el" href="../../de/da6/_driver_context_8hpp_source.html">CompactStar/Physics/Evolution/DriverContext.hpp</a>&quot;</code><br />
+</div>
 <p><a href="../../d3/d1e/_evolution_system_8hpp_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="nested-classes" name="nested-classes"></a>
 Classes</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d1/d5f/class_compact_star_1_1_physics_1_1_evolution_1_1_evolution_system.html">CompactStar::Physics::Evolution::EvolutionSystem</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">GSL-compatible RHS functor (interfaces only in Phase 0).  <a href="../../d1/d5f/class_compact_star_1_1_physics_1_1_evolution_1_1_evolution_system.html#details">More...</a><br /></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d6/d04/struct_compact_star_1_1_physics_1_1_evolution_1_1_evolution_system_1_1_context.html">CompactStar::Physics::Evolution::EvolutionSystem::Context</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Bundles read-only references to the model components.  <a href="../../d6/d04/struct_compact_star_1_1_physics_1_1_evolution_1_1_evolution_system_1_1_context.html#details">More...</a><br /></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">GSL-compatible RHS functor for dY/dt.  <a href="../../d1/d5f/class_compact_star_1_1_physics_1_1_evolution_1_1_evolution_system.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="namespaces" name="namespaces"></a>
@@ -99,16 +100,32 @@ Namespaces</h2></td></tr>
 <tr class="memitem:dc/dab/namespace_compact_star_1_1_physics"><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dc/dab/namespace_compact_star_1_1_physics.html">CompactStar::Physics</a></td></tr>
 <tr class="memdesc:dc/dab/namespace_compact_star_1_1_physics"><td class="mdescLeft">&#160;</td><td class="mdescRight">High-level physical modeling layer for compact stars. <br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:db/da9/namespace_compact_star_1_1_physics_1_1_thermal"><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/da9/namespace_compact_star_1_1_physics_1_1_thermal.html">CompactStar::Physics::Thermal</a></td></tr>
-<tr class="memdesc:db/da9/namespace_compact_star_1_1_physics_1_1_thermal"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="../../db/da9/namespace_compact_star_1_1_physics_1_1_thermal.html" title="Thermal utilities: envelope models, cooling/heating helpers.">Thermal</a> utilities: envelope models, cooling/heating helpers. <br /></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:d6/d38/namespace_compact_star_1_1_physics_1_1_evolution"><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d6/d38/namespace_compact_star_1_1_physics_1_1_evolution.html">CompactStar::Physics::Evolution</a></td></tr>
-<tr class="memdesc:d6/d38/namespace_compact_star_1_1_physics_1_1_evolution"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="../../d6/d38/namespace_compact_star_1_1_physics_1_1_evolution.html" title="Evolution engine for time-dependent neutron-star physics.">Evolution</a> engine for time-dependent neutron-star physics. <br /></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="typedef-members" name="typedef-members"></a>
+Typedefs</h2></td></tr>
+<tr class="memitem:ac59c489f5ce4d34a3d7e3fd404277a77"><td class="memItemLeft" align="right" valign="top"><a id="ac59c489f5ce4d34a3d7e3fd404277a77" name="ac59c489f5ce4d34a3d7e3fd404277a77"></a>
+using&#160;</td><td class="memItemRight" valign="bottom"><b>CompactStar::Physics::Evolution::DriverPtr</b> = std::shared_ptr&lt; Physics::IDriver &gt;</td></tr>
+<tr class="separator:ac59c489f5ce4d34a3d7e3fd404277a77"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3fbb8aa2efc7da9a859d9b2ae0b72a7a"><td class="memItemLeft" align="right" valign="top"><a id="a3fbb8aa2efc7da9a859d9b2ae0b72a7a" name="a3fbb8aa2efc7da9a859d9b2ae0b72a7a"></a>
+using&#160;</td><td class="memItemRight" valign="bottom"><b>CompactStar::Physics::Evolution::ObserverPtr</b> = std::shared_ptr&lt; Observers::IObserver &gt;</td></tr>
+<tr class="separator:a3fbb8aa2efc7da9a859d9b2ae0b72a7a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Right-hand side (RHS) functor for the ODE system dY/dt. </p>
-<p>The RHS assembles volume integrals using GeometryCache and RateSet, and computes time derivatives for <picture><source srcset="../../form_15_dark.png" media="(prefers-color-scheme: dark)"/><img class="formulaInl" alt="$T^\infty$" src="../../form_15.png"/></picture> and <picture><source srcset="../../form_16_dark.png" media="(prefers-color-scheme: dark)"/><img class="formulaInl" alt="$\boldsymbol{\eta}$" src="../../form_16.png"/></picture> (and optionally <picture><source srcset="../../form_13_dark.png" media="(prefers-color-scheme: dark)"/><img class="formulaInl" alt="$\Omega$" src="../../form_13.png"/></picture>). Designed to be wrapped by a GSL driver in <code>IntegratorGSL</code>. </p>
+<p>EvolutionSystem wires together:</p><ul>
+<li>static model context (StarContext, GeometryCache, envelope, Config),</li>
+<li>the dynamic StateVector (Spin/Thermal/Chem/BNV blocks),</li>
+<li>an RHSAccumulator for dY/dt contributions, and</li>
+<li>a set of physics drivers implementing IDriver.</li>
+</ul>
+<p>It does <b>not</b> implement any physics directly. The workflow is:</p>
+<ol type="1">
+<li>Unpack the flat y[] into State blocks (StatePacking::UnpackStateVector).</li>
+<li>Clear RHSAccumulator.</li>
+<li>For each driver: driver-&gt;AccumulateRHS(t, state, rhs, runtime_context);</li>
+<li>Scatter RHSAccumulator back into dydt[] (StatePacking::ScatterRHSFromAccumulator).</li>
+</ol>
+<p>Designed to be wrapped by a GSL driver. </p>
 </div></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

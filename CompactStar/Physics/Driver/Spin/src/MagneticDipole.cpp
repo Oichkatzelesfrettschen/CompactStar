@@ -70,7 +70,7 @@ namespace CompactStar::Physics::Driver::Spin
 void MagneticDipole::AccumulateRHS(double t,
 								   const Evolution::StateVector &Y,
 								   Evolution::RHSAccumulator &dYdt,
-								   const Evolution::StarContext &ctx) const
+								   const Evolution::DriverContext &ctx) const
 {
 	PROFILE_FUNCTION();
 

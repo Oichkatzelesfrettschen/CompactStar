@@ -1,0 +1,102 @@
+\hypertarget{_evolution_config_8hpp}{}\doxysection{Compact\+Star/\+Physics/\+Evolution/\+Evolution\+Config.hpp File Reference}
+\label{_evolution_config_8hpp}\index{CompactStar/Physics/Evolution/EvolutionConfig.hpp@{CompactStar/Physics/Evolution/EvolutionConfig.hpp}}
+
+
+User-\/configurable options for chemical/thermal/spin evolution runs.  
+
+
+{\ttfamily \#include $<$cstddef$>$}\newline
+{\ttfamily \#include $<$string$>$}\newline
+\doxysubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{struct_compact_star_1_1_physics_1_1_evolution_1_1_config}{Compact\+Star\+::\+Physics\+::\+Evolution\+::\+Config}}
+\begin{DoxyCompactList}\small\item\em Configuration for a single evolution run. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Namespaces}
+\begin{DoxyCompactItemize}
+\item 
+namespace \mbox{\hyperlink{namespace_compact_star_1_1_physics}{Compact\+Star\+::\+Physics}}
+\begin{DoxyCompactList}\small\item\em High-\/level physical modeling layer for compact stars. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum class \mbox{\hyperlink{_evolution_config_8hpp_a0319e48cd15f3f7460b2432fd507fd34}{Compact\+Star\+::\+Physics\+::\+Evolution\+::\+Stepper\+Type}} \{ \newline
+\mbox{\hyperlink{_evolution_config_8hpp_a0319e48cd15f3f7460b2432fd507fd34a651742901a96ccc36ad193073cb71b4a}{RKF45}}
+, \mbox{\hyperlink{_evolution_config_8hpp_a0319e48cd15f3f7460b2432fd507fd34a7794d510945b9b8bc389fd986c82be74}{RKCK}}
+, \mbox{\hyperlink{_evolution_config_8hpp_a0319e48cd15f3f7460b2432fd507fd34ac423801e814fe1540a194566a1a056c7}{RK8\+PD}}
+, \mbox{\hyperlink{_evolution_config_8hpp_a0319e48cd15f3f7460b2432fd507fd34a993199f8fe9c7a359c71015d682dcccf}{RK2}}
+, \newline
+\mbox{\hyperlink{_evolution_config_8hpp_a0319e48cd15f3f7460b2432fd507fd34a14a72850b24c13d12d4e2370e682a181}{MSBDF}}
+ \}
+\begin{DoxyCompactList}\small\item\em Available ODE steppers (GSL backends). \end{DoxyCompactList}\item 
+enum class \mbox{\hyperlink{_evolution_config_8hpp_a77ec205aab45375896e1afc074f535bc}{Compact\+Star\+::\+Physics\+::\+Evolution\+::\+Envelope\+Model}} \{ {\bfseries Iron}
+, {\bfseries Accreted}
+, \mbox{\hyperlink{_evolution_config_8hpp_a77ec205aab45375896e1afc074f535bca90589c47f06eb971d548591f23c285af}{Custom}}
+ \}
+\begin{DoxyCompactList}\small\item\em Surface boundary models mapping $T_b \to T_s$. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+User-\/configurable options for chemical/thermal/spin evolution runs. 
+
+Includes integrator tolerances, enabled physics channels, envelope and gap choices, output cadence, and initial-\/condition sizes (e.\+g. n\+\_\+eta). 
+
+\doxysubsection{Enumeration Type Documentation}
+\mbox{\Hypertarget{_evolution_config_8hpp_a77ec205aab45375896e1afc074f535bc}\label{_evolution_config_8hpp_a77ec205aab45375896e1afc074f535bc}} 
+\index{EvolutionConfig.hpp@{EvolutionConfig.hpp}!EnvelopeModel@{EnvelopeModel}}
+\index{EnvelopeModel@{EnvelopeModel}!EvolutionConfig.hpp@{EvolutionConfig.hpp}}
+\doxysubsubsection{\texorpdfstring{EnvelopeModel}{EnvelopeModel}}
+{\footnotesize\ttfamily enum class \mbox{\hyperlink{_evolution_config_8hpp_a77ec205aab45375896e1afc074f535bc}{Compact\+Star\+::\+Physics\+::\+Evolution\+::\+Envelope\+Model}}\hspace{0.3cm}{\ttfamily [strong]}}
+
+
+
+Surface boundary models mapping $T_b \to T_s$. 
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Custom@{Custom}!EvolutionConfig.hpp@{EvolutionConfig.hpp}}\index{EvolutionConfig.hpp@{EvolutionConfig.hpp}!Custom@{Custom}}}\mbox{\Hypertarget{_evolution_config_8hpp_a77ec205aab45375896e1afc074f535bca90589c47f06eb971d548591f23c285af}\label{_evolution_config_8hpp_a77ec205aab45375896e1afc074f535bca90589c47f06eb971d548591f23c285af}} 
+Custom&Provide a custom callable in Phase 2+. \\
+\hline
+
+\end{DoxyEnumFields}
+\mbox{\Hypertarget{_evolution_config_8hpp_a0319e48cd15f3f7460b2432fd507fd34}\label{_evolution_config_8hpp_a0319e48cd15f3f7460b2432fd507fd34}} 
+\index{EvolutionConfig.hpp@{EvolutionConfig.hpp}!StepperType@{StepperType}}
+\index{StepperType@{StepperType}!EvolutionConfig.hpp@{EvolutionConfig.hpp}}
+\doxysubsubsection{\texorpdfstring{StepperType}{StepperType}}
+{\footnotesize\ttfamily enum class \mbox{\hyperlink{_evolution_config_8hpp_a0319e48cd15f3f7460b2432fd507fd34}{Compact\+Star\+::\+Physics\+::\+Evolution\+::\+Stepper\+Type}}\hspace{0.3cm}{\ttfamily [strong]}}
+
+
+
+Available ODE steppers (GSL backends). 
+
+These map directly onto {\ttfamily gsl\+\_\+odeiv2\+\_\+step\+\_\+type} implementations.
+
+Typical guidance\+:
+\begin{DoxyItemize}
+\item Use an explicit RK method (RKF45 / RKCK / RK8\+PD) for non-\/stiff or exploratory runs.
+\item Use MSBDF for stiff late-\/time thermal/chemical evolution. 
+\end{DoxyItemize}\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{RKF45@{RKF45}!EvolutionConfig.hpp@{EvolutionConfig.hpp}}\index{EvolutionConfig.hpp@{EvolutionConfig.hpp}!RKF45@{RKF45}}}\mbox{\Hypertarget{_evolution_config_8hpp_a0319e48cd15f3f7460b2432fd507fd34a651742901a96ccc36ad193073cb71b4a}\label{_evolution_config_8hpp_a0319e48cd15f3f7460b2432fd507fd34a651742901a96ccc36ad193073cb71b4a}} 
+RKF45&Runge–\+Kutta–\+Fehlberg 4(5) — robust general-\/purpose non-\/stiff stepper. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{RKCK@{RKCK}!EvolutionConfig.hpp@{EvolutionConfig.hpp}}\index{EvolutionConfig.hpp@{EvolutionConfig.hpp}!RKCK@{RKCK}}}\mbox{\Hypertarget{_evolution_config_8hpp_a0319e48cd15f3f7460b2432fd507fd34a7794d510945b9b8bc389fd986c82be74}\label{_evolution_config_8hpp_a0319e48cd15f3f7460b2432fd507fd34a7794d510945b9b8bc389fd986c82be74}} 
+RKCK&Cash–\+Karp RK45 — similar to RKF45, sometimes slightly more stable. ~\newline
+ \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{RK8PD@{RK8PD}!EvolutionConfig.hpp@{EvolutionConfig.hpp}}\index{EvolutionConfig.hpp@{EvolutionConfig.hpp}!RK8PD@{RK8PD}}}\mbox{\Hypertarget{_evolution_config_8hpp_a0319e48cd15f3f7460b2432fd507fd34ac423801e814fe1540a194566a1a056c7}\label{_evolution_config_8hpp_a0319e48cd15f3f7460b2432fd507fd34ac423801e814fe1540a194566a1a056c7}} 
+RK8\+PD&Dormand–\+Prince 8(5,3) — high-\/accuracy explicit RK (more expensive). ~\newline
+ \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{RK2@{RK2}!EvolutionConfig.hpp@{EvolutionConfig.hpp}}\index{EvolutionConfig.hpp@{EvolutionConfig.hpp}!RK2@{RK2}}}\mbox{\Hypertarget{_evolution_config_8hpp_a0319e48cd15f3f7460b2432fd507fd34a993199f8fe9c7a359c71015d682dcccf}\label{_evolution_config_8hpp_a0319e48cd15f3f7460b2432fd507fd34a993199f8fe9c7a359c71015d682dcccf}} 
+RK2&Simple RK2 (midpoint) — mainly for debugging and sanity checks. ~\newline
+ \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{MSBDF@{MSBDF}!EvolutionConfig.hpp@{EvolutionConfig.hpp}}\index{EvolutionConfig.hpp@{EvolutionConfig.hpp}!MSBDF@{MSBDF}}}\mbox{\Hypertarget{_evolution_config_8hpp_a0319e48cd15f3f7460b2432fd507fd34a14a72850b24c13d12d4e2370e682a181}\label{_evolution_config_8hpp_a0319e48cd15f3f7460b2432fd507fd34a14a72850b24c13d12d4e2370e682a181}} 
+MSBDF&Multistep BDF — stiff solver; good default for late-\/time evolution. ~\newline
+ \\
+\hline
+
+\end{DoxyEnumFields}

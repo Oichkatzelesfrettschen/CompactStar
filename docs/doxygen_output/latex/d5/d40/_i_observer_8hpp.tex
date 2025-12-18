@@ -1,0 +1,40 @@
+\hypertarget{_i_observer_8hpp}{}\doxysection{Compact\+Star/\+Physics/\+Evolution/\+Observers/\+IObserver.hpp File Reference}
+\label{_i_observer_8hpp}\index{CompactStar/Physics/Evolution/Observers/IObserver.hpp@{CompactStar/Physics/Evolution/Observers/IObserver.hpp}}
+
+
+Core observer interface for Evolution module.  
+
+
+{\ttfamily \#include $<$cstdint$>$}\newline
+{\ttfamily \#include $<$string$>$}\newline
+\doxysubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{struct_compact_star_1_1_physics_1_1_evolution_1_1_observers_1_1_run_info}{Compact\+Star\+::\+Physics\+::\+Evolution\+::\+Observers\+::\+Run\+Info}}
+\begin{DoxyCompactList}\small\item\em Run-\/level metadata for observer initialization. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{struct_compact_star_1_1_physics_1_1_evolution_1_1_observers_1_1_sample_info}{Compact\+Star\+::\+Physics\+::\+Evolution\+::\+Observers\+::\+Sample\+Info}}
+\begin{DoxyCompactList}\small\item\em Snapshot metadata for a recorded sample. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{struct_compact_star_1_1_physics_1_1_evolution_1_1_observers_1_1_finish_info}{Compact\+Star\+::\+Physics\+::\+Evolution\+::\+Observers\+::\+Finish\+Info}}
+\begin{DoxyCompactList}\small\item\em Outcome of the integration for observer finalization. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_observers_1_1_i_observer}{Compact\+Star\+::\+Physics\+::\+Evolution\+::\+Observers\+::\+IObserver}}
+\begin{DoxyCompactList}\small\item\em Base interface for evolution observers. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Namespaces}
+\begin{DoxyCompactItemize}
+\item 
+namespace \mbox{\hyperlink{namespace_compact_star_1_1_physics}{Compact\+Star\+::\+Physics}}
+\begin{DoxyCompactList}\small\item\em High-\/level physical modeling layer for compact stars. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Core observer interface for Evolution module. 
+
+Observers are passive callbacks invoked by the integrator / evolution driver to record or export information (time series, checkpoints, diagnostics, logs).
+
+Key design points\+:
+\begin{DoxyItemize}
+\item Observers see the full composite state (Evolution\+::\+State\+Vector) and the read-\/only runtime context (Evolution\+::\+Driver\+Context).
+\item Observers MUST NOT mutate the ODE state or context.
+\item Observers are scheduled by the evolution loop (e.\+g., dt\+\_\+save). The interface does not prescribe scheduling logic; it just provides hooks.
+\end{DoxyItemize}
+
+Typical call pattern\+: 1) obs-\/\texorpdfstring{$>$}{>}On\+Start(run, Y0, ctx) 2) During integration, at each \char`\"{}save point\char`\"{}\+: obs-\/\texorpdfstring{$>$}{>}On\+Sample(sample, Y, ctx) (optionally, future\+: obs-\/\texorpdfstring{$>$}{>}On\+Step(step, Y, ctx) for every integrator step) 3) obs-\/\texorpdfstring{$>$}{>}On\+Finish(result, Y\+\_\+final, ctx) 

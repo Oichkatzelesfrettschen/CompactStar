@@ -1,0 +1,328 @@
+\hypertarget{class_compact_star_1_1_core_1_1_pulsar}{}\doxysection{Compact\+Star\+::Core\+::Pulsar Class Reference}
+\label{class_compact_star_1_1_core_1_1_pulsar}\index{CompactStar::Core::Pulsar@{CompactStar::Core::Pulsar}}
+
+
+High-\/level pulsar object that bundles structure, spin, thermal, and BNV state.  
+
+
+
+
+{\ttfamily \#include $<$Pulsar.\+hpp$>$}
+
+Inheritance diagram for Compact\+Star\+::Core\+::Pulsar\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{db/d2f/class_compact_star_1_1_core_1_1_pulsar}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_compact_star_1_1_core_1_1_pulsar_a3f07a0d7df0686f831900048a66dbfcf}{Pulsar}} ()
+\begin{DoxyCompactList}\small\item\em Default constructor. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_compact_star_1_1_core_1_1_pulsar_ae256cc77330b4bf7ad22bbd83489ca1e}{Pulsar}} (const std\+::string \&name)
+\begin{DoxyCompactList}\small\item\em Construct a \mbox{\hyperlink{class_compact_star_1_1_core_1_1_pulsar}{Pulsar}} with a name (for logging via \mbox{\hyperlink{class_compact_star_1_1_core_1_1_prog}{Prog}}). \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_compact_star_1_1_core_1_1_pulsar_af7ede8816b5b1a807bb5fa03a1c0dcb2}{Pulsar}} (const std\+::string \&name, const \mbox{\hyperlink{class_zaki_1_1_math_1_1_quantity}{Zaki\+::\+Math\+::\+Quantity}} \&mass, const Physics\+::\+State\+::\+Spin\+State \&spin)
+\begin{DoxyCompactList}\small\item\em Construct from name, mass, and an explicit spin state. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_compact_star_1_1_core_1_1_pulsar_a799e5d70871ebe7f2861fb7d8fb720b9}{Pulsar}} (const std\+::string \&name, const \mbox{\hyperlink{class_zaki_1_1_math_1_1_quantity}{Zaki\+::\+Math\+::\+Quantity}} \&mass, const \mbox{\hyperlink{class_zaki_1_1_math_1_1_quantity}{Zaki\+::\+Math\+::\+Quantity}} \&spin\+\_\+p, const \mbox{\hyperlink{class_zaki_1_1_math_1_1_quantity}{Zaki\+::\+Math\+::\+Quantity}} \&spin\+\_\+pdot)
+\begin{DoxyCompactList}\small\item\em Backward-\/compatible constructor (old style). \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_compact_star_1_1_core_1_1_pulsar_a28d2aa15447a791c94a690e4da3055da}\label{class_compact_star_1_1_core_1_1_pulsar_a28d2aa15447a791c94a690e4da3055da}} 
+{\bfseries $\sim$\+Pulsar} ()=default
+\begin{DoxyCompactList}\small\item\em Default destructor. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_compact_star_1_1_core_1_1_pulsar_ae3bde1f32731f18c3f01131d23f3b14c}{Attach\+EOS}} (\mbox{\hyperlink{class_compact_star_1_1_comp_o_s_e___e_o_s}{Comp\+OSE\+\_\+\+EOS}} $\ast$e)
+\begin{DoxyCompactList}\small\item\em Attach an EOS object to this pulsar. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_compact_star_1_1_comp_o_s_e___e_o_s}{Comp\+OSE\+\_\+\+EOS}} $\ast$ \mbox{\hyperlink{class_compact_star_1_1_core_1_1_pulsar_a32e1a0f6f75a397024157e46e8571554}{Get\+EOS}} () const
+\begin{DoxyCompactList}\small\item\em Get the attached EOS (may be nullptr). \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_compact_star_1_1_core_1_1_pulsar_a223e0ccdd16e2ced6bffa8d9f0b1a3cc}{Find\+Profile}} (const std\+::string \&model\+\_\+name, const \mbox{\hyperlink{class_zaki_1_1_string_1_1_directory}{Zaki\+::\+String\+::\+Directory}} \&in\+\_\+dir=\char`\"{}\char`\"{})
+\begin{DoxyCompactList}\small\item\em Build or load the structural profile using a model name. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_compact_star_1_1_core_1_1_pulsar_a3746004e8d8a9e2af81e599f44607cb1}{Import\+Profile}} (const std\+::string \&model\+\_\+name, const \mbox{\hyperlink{class_zaki_1_1_string_1_1_directory}{Zaki\+::\+String\+::\+Directory}} \&in\+\_\+dir=\char`\"{}\char`\"{})
+\begin{DoxyCompactList}\small\item\em Import an already computed profile from disk. \end{DoxyCompactList}\item 
+const \mbox{\hyperlink{struct_compact_star_1_1_core_1_1_star_profile}{Star\+Profile}} $\ast$ \mbox{\hyperlink{class_compact_star_1_1_core_1_1_pulsar_ae101bdc0e705e7c62a3233c7931bf725}{Get\+Profile}} () const
+\begin{DoxyCompactList}\small\item\em Expose the internal structural profile (const). \end{DoxyCompactList}\item 
+\mbox{\hyperlink{struct_compact_star_1_1_core_1_1_star_profile_view}{Star\+Profile\+View}} \mbox{\hyperlink{class_compact_star_1_1_core_1_1_pulsar_a941217bda01f2a5488b1c4036130960a}{Get\+Profile\+View}} () const
+\begin{DoxyCompactList}\small\item\em Get a non-\/owning view of the profile. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_zaki_1_1_math_1_1_quantity}{Zaki\+::\+Math\+::\+Quantity}} \mbox{\hyperlink{class_compact_star_1_1_core_1_1_pulsar_a992f5e2a5e5974658fdef74655c6369d}{Get\+Mass}} () const
+\begin{DoxyCompactList}\small\item\em Get the Mass object. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_compact_star_1_1_core_1_1_pulsar_a710a97e0db88940f1b8b2b6505a380b3}{Set\+Mass}} (const \mbox{\hyperlink{class_zaki_1_1_math_1_1_quantity}{Zaki\+::\+Math\+::\+Quantity}} \&in\+\_\+mp)
+\begin{DoxyCompactList}\small\item\em Set the Mass object. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_compact_star_1_1_core_1_1_pulsar_a322f18c6fdb6b7455dd9f2219a37f593}\label{class_compact_star_1_1_core_1_1_pulsar_a322f18c6fdb6b7455dd9f2219a37f593}} 
+\mbox{\hyperlink{class_zaki_1_1_math_1_1_quantity}{Zaki\+::\+Math\+::\+Quantity}} {\bfseries Get\+SpinP} () const
+\begin{DoxyCompactList}\small\item\em Return spin period (P) in seconds. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Additional Inherited Members}
+
+
+\doxysubsection{Detailed Description}
+High-\/level pulsar object that bundles structure, spin, thermal, and BNV state. 
+
+\hypertarget{class_compact_star_1_1_core_1_1_pulsar_autotoc_md0}{}\doxyparagraph{Responsibilities}\label{class_compact_star_1_1_core_1_1_pulsar_autotoc_md0}
+
+\begin{DoxyItemize}
+\item Owns (or imports) a {\bfseries{structural profile}} ({\ttfamily \mbox{\hyperlink{struct_compact_star_1_1_core_1_1_star_profile}{Star\+Profile}}}) and exposes it as a view.
+\item Stores {\bfseries{observed spin parameters}} in a {\ttfamily Spin\+State}.
+\item Stores {\bfseries{thermal parameters}} in a {\ttfamily Thermal\+State}.
+\item Stores {\bfseries{BNV diagnostics}} in a {\ttfamily BNVState}.
+\item Optionally attaches an {\bfseries{EOS}}.
+\item Optionally remembers its {\bfseries{sequence point}} ({\ttfamily \mbox{\hyperlink{class_compact_star_1_1_core_1_1_seq_point}{Seq\+Point}}}) and the parent {\bfseries{sequence profile}} (for mass–radius sequences, evolutionary tracks, etc.).
+\end{DoxyItemize}\hypertarget{class_compact_star_1_1_core_1_1_pulsar_autotoc_md1}{}\doxyparagraph{Non-\/\+Responsibilities}\label{class_compact_star_1_1_core_1_1_pulsar_autotoc_md1}
+
+\begin{DoxyItemize}
+\item Does {\bfseries{not}} do raw TOV integration (that’s still in {\ttfamily \mbox{\hyperlink{class_compact_star_1_1_core_1_1_t_o_v_solver}{TOVSolver}}}).
+\item Does {\bfseries{not}} implement DUrca/\+MUrca formulas directly (that’s in {\ttfamily \mbox{\hyperlink{_thermal_8hpp}{Physics/\+Thermal.\+hpp}}}).
+\item Does {\bfseries{not}} hard-\/code plotting.
+\end{DoxyItemize}
+
+The idea is to keep this class small and make it the thing our higher-\/level code passes around. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_compact_star_1_1_core_1_1_pulsar_a3f07a0d7df0686f831900048a66dbfcf}\label{class_compact_star_1_1_core_1_1_pulsar_a3f07a0d7df0686f831900048a66dbfcf}} 
+\index{CompactStar::Core::Pulsar@{CompactStar::Core::Pulsar}!Pulsar@{Pulsar}}
+\index{Pulsar@{Pulsar}!CompactStar::Core::Pulsar@{CompactStar::Core::Pulsar}}
+\doxysubsubsection{\texorpdfstring{Pulsar()}{Pulsar()}\hspace{0.1cm}{\footnotesize\ttfamily [1/4]}}
+{\footnotesize\ttfamily Compact\+Star\+::\+Core\+::\+Pulsar\+::\+Pulsar (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Default constructor. 
+
+Creates an empty pulsar with an invalid view. We must later call an import / construct method to populate the profile and set the view.
+
+We give a generic name to the base {\ttfamily \mbox{\hyperlink{class_compact_star_1_1_core_1_1_prog}{Prog}}} so logging still works, and we immediately point the view at our internal profile. (The view will be invalid until we actually load a profile.) \mbox{\Hypertarget{class_compact_star_1_1_core_1_1_pulsar_ae256cc77330b4bf7ad22bbd83489ca1e}\label{class_compact_star_1_1_core_1_1_pulsar_ae256cc77330b4bf7ad22bbd83489ca1e}} 
+\index{CompactStar::Core::Pulsar@{CompactStar::Core::Pulsar}!Pulsar@{Pulsar}}
+\index{Pulsar@{Pulsar}!CompactStar::Core::Pulsar@{CompactStar::Core::Pulsar}}
+\doxysubsubsection{\texorpdfstring{Pulsar()}{Pulsar()}\hspace{0.1cm}{\footnotesize\ttfamily [2/4]}}
+{\footnotesize\ttfamily Compact\+Star\+::\+Core\+::\+Pulsar\+::\+Pulsar (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{name }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [explicit]}}
+
+
+
+Construct a \mbox{\hyperlink{class_compact_star_1_1_core_1_1_pulsar}{Pulsar}} with a name (for logging via \mbox{\hyperlink{class_compact_star_1_1_core_1_1_prog}{Prog}}). 
+
+Named constructor.
+
+
+\begin{DoxyParams}{Parameters}
+{\em name} & \mbox{\hyperlink{class_compact_star_1_1_core_1_1_pulsar}{Pulsar}} identifier.\\
+\hline
+\end{DoxyParams}
+
+
+
+\begin{DoxyParams}{Parameters}
+{\em name} & Name for logging / workspace. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_compact_star_1_1_core_1_1_pulsar_af7ede8816b5b1a807bb5fa03a1c0dcb2}\label{class_compact_star_1_1_core_1_1_pulsar_af7ede8816b5b1a807bb5fa03a1c0dcb2}} 
+\index{CompactStar::Core::Pulsar@{CompactStar::Core::Pulsar}!Pulsar@{Pulsar}}
+\index{Pulsar@{Pulsar}!CompactStar::Core::Pulsar@{CompactStar::Core::Pulsar}}
+\doxysubsubsection{\texorpdfstring{Pulsar()}{Pulsar()}\hspace{0.1cm}{\footnotesize\ttfamily [3/4]}}
+{\footnotesize\ttfamily Compact\+Star\+::\+Core\+::\+Pulsar\+::\+Pulsar (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{name,  }\item[{const \mbox{\hyperlink{class_zaki_1_1_math_1_1_quantity}{Zaki\+::\+Math\+::\+Quantity}} \&}]{mass,  }\item[{const Physics\+::\+State\+::\+Spin\+State \&}]{spin }\end{DoxyParamCaption})}
+
+
+
+Construct from name, mass, and an explicit spin state. 
+
+This is the “new” form\+: structure info (mass) stays here, spin info lives in a Spin\+State. \mbox{\Hypertarget{class_compact_star_1_1_core_1_1_pulsar_a799e5d70871ebe7f2861fb7d8fb720b9}\label{class_compact_star_1_1_core_1_1_pulsar_a799e5d70871ebe7f2861fb7d8fb720b9}} 
+\index{CompactStar::Core::Pulsar@{CompactStar::Core::Pulsar}!Pulsar@{Pulsar}}
+\index{Pulsar@{Pulsar}!CompactStar::Core::Pulsar@{CompactStar::Core::Pulsar}}
+\doxysubsubsection{\texorpdfstring{Pulsar()}{Pulsar()}\hspace{0.1cm}{\footnotesize\ttfamily [4/4]}}
+{\footnotesize\ttfamily Compact\+Star\+::\+Core\+::\+Pulsar\+::\+Pulsar (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{name,  }\item[{const \mbox{\hyperlink{class_zaki_1_1_math_1_1_quantity}{Zaki\+::\+Math\+::\+Quantity}} \&}]{mass,  }\item[{const \mbox{\hyperlink{class_zaki_1_1_math_1_1_quantity}{Zaki\+::\+Math\+::\+Quantity}} \&}]{spin\+\_\+p,  }\item[{const \mbox{\hyperlink{class_zaki_1_1_math_1_1_quantity}{Zaki\+::\+Math\+::\+Quantity}} \&}]{spin\+\_\+pdot }\end{DoxyParamCaption})}
+
+
+
+Backward-\/compatible constructor (old style). 
+
+backward-\/compatible ctor
+
+Lets us do\+: \mbox{\hyperlink{class_compact_star_1_1_core_1_1_pulsar}{Pulsar}}(\char`\"{}\+J0348...\char`\"{}, \{2.\+01,0.\+04\}, \{P, dP\}, \{Pdot, d\+Pdot\})
+
+Internally this just builds a Spin\+State and forwards to the (name, mass, Spin\+State) ctor. 
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_compact_star_1_1_core_1_1_pulsar_ae3bde1f32731f18c3f01131d23f3b14c}\label{class_compact_star_1_1_core_1_1_pulsar_ae3bde1f32731f18c3f01131d23f3b14c}} 
+\index{CompactStar::Core::Pulsar@{CompactStar::Core::Pulsar}!AttachEOS@{AttachEOS}}
+\index{AttachEOS@{AttachEOS}!CompactStar::Core::Pulsar@{CompactStar::Core::Pulsar}}
+\doxysubsubsection{\texorpdfstring{AttachEOS()}{AttachEOS()}}
+{\footnotesize\ttfamily void Compact\+Star\+::\+Core\+::\+Pulsar\+::\+Attach\+EOS (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_compact_star_1_1_comp_o_s_e___e_o_s}{Comp\+OSE\+\_\+\+EOS}} $\ast$}]{e }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Attach an EOS object to this pulsar. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em e} & Pointer to a \mbox{\hyperlink{class_compact_star_1_1_comp_o_s_e___e_o_s}{Comp\+OSE\+\_\+\+EOS}} instance. Not owned. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_compact_star_1_1_core_1_1_pulsar_a223e0ccdd16e2ced6bffa8d9f0b1a3cc}\label{class_compact_star_1_1_core_1_1_pulsar_a223e0ccdd16e2ced6bffa8d9f0b1a3cc}} 
+\index{CompactStar::Core::Pulsar@{CompactStar::Core::Pulsar}!FindProfile@{FindProfile}}
+\index{FindProfile@{FindProfile}!CompactStar::Core::Pulsar@{CompactStar::Core::Pulsar}}
+\doxysubsubsection{\texorpdfstring{FindProfile()}{FindProfile()}}
+{\footnotesize\ttfamily int Compact\+Star\+::\+Core\+::\+Pulsar\+::\+Find\+Profile (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{model\+\_\+name,  }\item[{const \mbox{\hyperlink{class_zaki_1_1_string_1_1_directory}{Zaki\+::\+String\+::\+Directory}} \&}]{in\+\_\+dir = {\ttfamily \char`\"{}\char`\"{}} }\end{DoxyParamCaption})}
+
+
+
+Build or load the structural profile using a model name. 
+
+Construct the pulsar’s internal structural profile from precomputed sequence and profile files on disk.
+
+This should\+:
+\begin{DoxyEnumerate}
+\item fill {\ttfamily prof\+\_\+} from TOV / disk
+\item set {\ttfamily view\+\_\+.\+p = \&prof\+\_\+}
+\end{DoxyEnumerate}
+
+
+\begin{DoxyParams}{Parameters}
+{\em model\+\_\+name} & EOS/sequence/model identifier. \\
+\hline
+{\em in\+\_\+dir} & Directory to read from (optional). \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Number of radial points in the resulting profile.
+\end{DoxyReturn}
+
+
+This replaces the old, inline logic that used to perform file import, interpolation, and DUrca/blanket calculations directly inside \mbox{\hyperlink{class_compact_star_1_1_core_1_1_pulsar}{Pulsar}}. It now delegates those operations to Compact\+Star\+::\+Star\+Builder\+::\+Build\+From\+Sequence, which handles\+:
+\begin{DoxyItemize}
+\item loading the sequence file {\ttfamily \texorpdfstring{$<$}{<}model\+\_\+name\texorpdfstring{$>$}{>}\+\_\+\+Sequence.\+tsv}
+\item identifying the profile index closest to the pulsar mass ({\ttfamily mp})
+\item interpolating between neighboring profiles if needed
+\item computing the structural point seq\+\_\+point and η\+\_\+I parameter
+\item locating the heat-\/blanket radius ({\ttfamily r\+\_\+blanket})
+\item optionally building a Direct-\/\+Urca mask ({\ttfamily r\+\_\+durca\+\_\+cond})
+\end{DoxyItemize}
+
+The resulting data set is stored in the Pulsar’s internal members for later use by thermodynamic, BNV, or spin modules.
+
+
+\begin{DoxyParams}{Parameters}
+{\em model\+\_\+name} & Name of the EOS/sequence model (e.\+g. {\ttfamily \char`\"{}\+DD2\char`\"{}}, {\ttfamily \char`\"{}\+SLy4\char`\"{}}). \\
+\hline
+{\em in\+\_\+dir} & Relative directory path containing the sequence and profile files. Typically this is the same as the one used for the TOV sequence exports.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Index of the sequence point used (same as returned by \mbox{\hyperlink{namespace_compact_star_1_1_core_1_1_star_builder_a19961898bdb0474685d48dec1d43b565}{Star\+Builder\+::\+Build\+From\+Sequence}}).
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em std\+::runtime\+\_\+error} & if required files are missing or interpolation fails.\\
+\hline
+\end{DoxyExceptions}
+\begin{DoxyNote}{Note}
+This function automatically exports the resulting profile as {\ttfamily \texorpdfstring{$<$}{<}wrk\+\_\+dir\texorpdfstring{$>$}{>}/\texorpdfstring{$<$}{<}in\+\_\+dir\texorpdfstring{$>$}{>}/\texorpdfstring{$<$}{<}name\texorpdfstring{$>$}{>}.tsv} for consistency with older workflows. Disable that export if we prefer in-\/memory use only.
+\end{DoxyNote}
+\begin{DoxySeeAlso}{See also}
+Compact\+Star\+::\+Star\+Builder\+::\+Build\+From\+Sequence 
+
+Compact\+Star\+::\+Seq\+Point 
+
+Compact\+Star\+::\+Star\+Profile 
+\end{DoxySeeAlso}
+\mbox{\Hypertarget{class_compact_star_1_1_core_1_1_pulsar_a32e1a0f6f75a397024157e46e8571554}\label{class_compact_star_1_1_core_1_1_pulsar_a32e1a0f6f75a397024157e46e8571554}} 
+\index{CompactStar::Core::Pulsar@{CompactStar::Core::Pulsar}!GetEOS@{GetEOS}}
+\index{GetEOS@{GetEOS}!CompactStar::Core::Pulsar@{CompactStar::Core::Pulsar}}
+\doxysubsubsection{\texorpdfstring{GetEOS()}{GetEOS()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_compact_star_1_1_comp_o_s_e___e_o_s}{Comp\+OSE\+\_\+\+EOS}} $\ast$ Compact\+Star\+::\+Core\+::\+Pulsar\+::\+Get\+EOS (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Get the attached EOS (may be nullptr). 
+
+\begin{DoxyReturn}{Returns}
+Pointer to EOS. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_compact_star_1_1_core_1_1_pulsar_a992f5e2a5e5974658fdef74655c6369d}\label{class_compact_star_1_1_core_1_1_pulsar_a992f5e2a5e5974658fdef74655c6369d}} 
+\index{CompactStar::Core::Pulsar@{CompactStar::Core::Pulsar}!GetMass@{GetMass}}
+\index{GetMass@{GetMass}!CompactStar::Core::Pulsar@{CompactStar::Core::Pulsar}}
+\doxysubsubsection{\texorpdfstring{GetMass()}{GetMass()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_zaki_1_1_math_1_1_quantity}{Zaki\+::\+Math\+::\+Quantity}} Compact\+Star\+::\+Core\+::\+Pulsar\+::\+Get\+Mass (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Get the Mass object. 
+
+\begin{DoxyReturn}{Returns}
+\mbox{\hyperlink{class_zaki_1_1_math_1_1_quantity}{Zaki\+::\+Math\+::\+Quantity}} 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_compact_star_1_1_core_1_1_pulsar_ae101bdc0e705e7c62a3233c7931bf725}\label{class_compact_star_1_1_core_1_1_pulsar_ae101bdc0e705e7c62a3233c7931bf725}} 
+\index{CompactStar::Core::Pulsar@{CompactStar::Core::Pulsar}!GetProfile@{GetProfile}}
+\index{GetProfile@{GetProfile}!CompactStar::Core::Pulsar@{CompactStar::Core::Pulsar}}
+\doxysubsubsection{\texorpdfstring{GetProfile()}{GetProfile()}}
+{\footnotesize\ttfamily const \mbox{\hyperlink{struct_compact_star_1_1_core_1_1_star_profile}{Star\+Profile}} $\ast$ Compact\+Star\+::\+Core\+::\+Pulsar\+::\+Get\+Profile (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Expose the internal structural profile (const). 
+
+\begin{DoxyReturn}{Returns}
+Const pointer to {\ttfamily \mbox{\hyperlink{struct_compact_star_1_1_core_1_1_star_profile}{Star\+Profile}}}. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_compact_star_1_1_core_1_1_pulsar_a941217bda01f2a5488b1c4036130960a}\label{class_compact_star_1_1_core_1_1_pulsar_a941217bda01f2a5488b1c4036130960a}} 
+\index{CompactStar::Core::Pulsar@{CompactStar::Core::Pulsar}!GetProfileView@{GetProfileView}}
+\index{GetProfileView@{GetProfileView}!CompactStar::Core::Pulsar@{CompactStar::Core::Pulsar}}
+\doxysubsubsection{\texorpdfstring{GetProfileView()}{GetProfileView()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{struct_compact_star_1_1_core_1_1_star_profile_view}{Star\+Profile\+View}} Compact\+Star\+::\+Core\+::\+Pulsar\+::\+Get\+Profile\+View (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Get a non-\/owning view of the profile. 
+
+Prefer to pass this to physics functions.
+
+\begin{DoxyReturn}{Returns}
+Copy of {\ttfamily \mbox{\hyperlink{struct_compact_star_1_1_core_1_1_star_profile_view}{Star\+Profile\+View}}} (cheap). 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_compact_star_1_1_core_1_1_pulsar_a3746004e8d8a9e2af81e599f44607cb1}\label{class_compact_star_1_1_core_1_1_pulsar_a3746004e8d8a9e2af81e599f44607cb1}} 
+\index{CompactStar::Core::Pulsar@{CompactStar::Core::Pulsar}!ImportProfile@{ImportProfile}}
+\index{ImportProfile@{ImportProfile}!CompactStar::Core::Pulsar@{CompactStar::Core::Pulsar}}
+\doxysubsubsection{\texorpdfstring{ImportProfile()}{ImportProfile()}}
+{\footnotesize\ttfamily void Compact\+Star\+::\+Core\+::\+Pulsar\+::\+Import\+Profile (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{model\+\_\+name,  }\item[{const \mbox{\hyperlink{class_zaki_1_1_string_1_1_directory}{Zaki\+::\+String\+::\+Directory}} \&}]{in\+\_\+dir = {\ttfamily \char`\"{}\char`\"{}} }\end{DoxyParamCaption})}
+
+
+
+Import an already computed profile from disk. 
+
+Import an already computed profile.
+
+Exactly like {\ttfamily Find\+Profile(...)} but without doing the TOV solve.
+
+
+\begin{DoxyParams}{Parameters}
+{\em model\+\_\+name} & EOS/sequence/model identifier. \\
+\hline
+{\em in\+\_\+dir} & Directory to read from.\\
+\hline
+\end{DoxyParams}
+
+
+Semantics are the same as {\ttfamily Find\+Profile(...)}, except we do {\bfseries{not}} attempt to run a TOV solve — we just read what’s on disk.
+
+
+\begin{DoxyParams}{Parameters}
+{\em model\+\_\+name} & model/\+EOS tag \\
+\hline
+{\em in\+\_\+dir} & directory relative to work dir \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_compact_star_1_1_core_1_1_pulsar_a710a97e0db88940f1b8b2b6505a380b3}\label{class_compact_star_1_1_core_1_1_pulsar_a710a97e0db88940f1b8b2b6505a380b3}} 
+\index{CompactStar::Core::Pulsar@{CompactStar::Core::Pulsar}!SetMass@{SetMass}}
+\index{SetMass@{SetMass}!CompactStar::Core::Pulsar@{CompactStar::Core::Pulsar}}
+\doxysubsubsection{\texorpdfstring{SetMass()}{SetMass()}}
+{\footnotesize\ttfamily void Compact\+Star\+::\+Core\+::\+Pulsar\+::\+Set\+Mass (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_zaki_1_1_math_1_1_quantity}{Zaki\+::\+Math\+::\+Quantity}} \&}]{in\+\_\+mp }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Set the Mass object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em in\+\_\+mp} & \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Compact\+Star/\+Core/\mbox{\hyperlink{_pulsar_8hpp}{Pulsar.\+hpp}}\item 
+Compact\+Star/\+Core/src/\mbox{\hyperlink{_pulsar_8cpp}{Pulsar.\+cpp}}\end{DoxyCompactItemize}

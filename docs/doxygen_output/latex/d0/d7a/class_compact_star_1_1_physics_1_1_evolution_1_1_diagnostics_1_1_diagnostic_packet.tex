@@ -1,0 +1,193 @@
+\hypertarget{class_compact_star_1_1_physics_1_1_evolution_1_1_diagnostics_1_1_diagnostic_packet}{}\doxysection{Compact\+Star\+::Physics\+::Evolution\+::Diagnostics\+::Diagnostic\+Packet Class Reference}
+\label{class_compact_star_1_1_physics_1_1_evolution_1_1_diagnostics_1_1_diagnostic_packet}\index{CompactStar::Physics::Evolution::Diagnostics::DiagnosticPacket@{CompactStar::Physics::Evolution::Diagnostics::DiagnosticPacket}}
+
+
+Single diagnostics snapshot with metadata and scalar fields.  
+
+
+
+
+{\ttfamily \#include $<$Diagnostic\+Packet.\+hpp$>$}
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_diagnostics_1_1_diagnostic_packet_a46193bc90f6c4d17dcb28f3a4d7cc16d}{Diagnostic\+Packet}} (std\+::string producer=\char`\"{}\char`\"{})
+\begin{DoxyCompactList}\small\item\em Construct an empty packet. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_diagnostics_1_1_diagnostic_packet_ad0989ec06d14d1c15b5281ba903bd8a3}{Validate\+Basic}} ()
+\begin{DoxyCompactList}\small\item\em Run basic validations. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{Indent}\textbf{ Metadata setters}\par
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_compact_star_1_1_physics_1_1_evolution_1_1_diagnostics_1_1_diagnostic_packet_a1cf87e0ecb00cc3bb2cbf6f151ddafe5}\label{class_compact_star_1_1_physics_1_1_evolution_1_1_diagnostics_1_1_diagnostic_packet_a1cf87e0ecb00cc3bb2cbf6f151ddafe5}} 
+void {\bfseries Set\+Time} (double t)
+\begin{DoxyCompactList}\small\item\em Set the simulation time associated with this packet. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_compact_star_1_1_physics_1_1_evolution_1_1_diagnostics_1_1_diagnostic_packet_aceac7a9fe1232bd510012a4466a578de}\label{class_compact_star_1_1_physics_1_1_evolution_1_1_diagnostics_1_1_diagnostic_packet_aceac7a9fe1232bd510012a4466a578de}} 
+void {\bfseries Set\+Step\+Index} (std\+::size\+\_\+t step)
+\begin{DoxyCompactList}\small\item\em Set an integer step index (optional). \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_compact_star_1_1_physics_1_1_evolution_1_1_diagnostics_1_1_diagnostic_packet_a7be0f724e6d84630efdf1383ede2ab2f}\label{class_compact_star_1_1_physics_1_1_evolution_1_1_diagnostics_1_1_diagnostic_packet_a7be0f724e6d84630efdf1383ede2ab2f}} 
+void {\bfseries Set\+Run\+Id} (std\+::string run\+\_\+id)
+\begin{DoxyCompactList}\small\item\em Set a run identifier (optional; useful for multi-\/run aggregations). \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_compact_star_1_1_physics_1_1_evolution_1_1_diagnostics_1_1_diagnostic_packet_a54a669a16d7fb7f507e4e9aaca86d5a1}\label{class_compact_star_1_1_physics_1_1_evolution_1_1_diagnostics_1_1_diagnostic_packet_a54a669a16d7fb7f507e4e9aaca86d5a1}} 
+void {\bfseries Set\+Producer} (std\+::string producer)
+\begin{DoxyCompactList}\small\item\em Override producer label (driver name, observer name, etc.). \end{DoxyCompactList}\end{DoxyCompactItemize}
+\end{Indent}
+\begin{Indent}\textbf{ Metadata getters}\par
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_compact_star_1_1_physics_1_1_evolution_1_1_diagnostics_1_1_diagnostic_packet_ac99fa9a37332ef886b4b8fe69c2b279a}\label{class_compact_star_1_1_physics_1_1_evolution_1_1_diagnostics_1_1_diagnostic_packet_ac99fa9a37332ef886b4b8fe69c2b279a}} 
+double {\bfseries Time} () const
+\item 
+\mbox{\Hypertarget{class_compact_star_1_1_physics_1_1_evolution_1_1_diagnostics_1_1_diagnostic_packet_ab8de6e2333ede59facee268b15525cda}\label{class_compact_star_1_1_physics_1_1_evolution_1_1_diagnostics_1_1_diagnostic_packet_ab8de6e2333ede59facee268b15525cda}} 
+std\+::size\+\_\+t {\bfseries Step\+Index} () const
+\item 
+\mbox{\Hypertarget{class_compact_star_1_1_physics_1_1_evolution_1_1_diagnostics_1_1_diagnostic_packet_af7adbcdd629d0dba1183bf7df331f257}\label{class_compact_star_1_1_physics_1_1_evolution_1_1_diagnostics_1_1_diagnostic_packet_af7adbcdd629d0dba1183bf7df331f257}} 
+const std\+::string \& {\bfseries Run\+Id} () const
+\item 
+\mbox{\Hypertarget{class_compact_star_1_1_physics_1_1_evolution_1_1_diagnostics_1_1_diagnostic_packet_a4db3972e44461658a7863d3249d294d1}\label{class_compact_star_1_1_physics_1_1_evolution_1_1_diagnostics_1_1_diagnostic_packet_a4db3972e44461658a7863d3249d294d1}} 
+const std\+::string \& {\bfseries Producer} () const
+\end{DoxyCompactItemize}
+\end{Indent}
+\begin{Indent}\textbf{ Scalar fields}\par
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_diagnostics_1_1_diagnostic_packet_a3a0a6fd0da5d14923b2d6cb6d6d19873}{Add\+Scalar}} (const std\+::string \&key, double value, std\+::string unit=\char`\"{}\char`\"{}, std\+::string description=\char`\"{}\char`\"{}, std\+::string source=\char`\"{}\char`\"{})
+\begin{DoxyCompactList}\small\item\em Add/replace a scalar. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_compact_star_1_1_physics_1_1_evolution_1_1_diagnostics_1_1_diagnostic_packet_a2a2affd7d8fd21e1a254c1b4d13fc226}\label{class_compact_star_1_1_physics_1_1_evolution_1_1_diagnostics_1_1_diagnostic_packet_a2a2affd7d8fd21e1a254c1b4d13fc226}} 
+bool {\bfseries Has\+Scalar} (const std\+::string \&key) const
+\begin{DoxyCompactList}\small\item\em Returns true if the scalar exists. \end{DoxyCompactList}\item 
+const \mbox{\hyperlink{struct_compact_star_1_1_physics_1_1_evolution_1_1_diagnostics_1_1_scalar_entry}{Scalar\+Entry}} \& \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_diagnostics_1_1_diagnostic_packet_a3bc5c1814b135c82ec1170b299b1c7ea}{Get\+Scalar}} (const std\+::string \&key) const
+\begin{DoxyCompactList}\small\item\em Get a scalar entry by key. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_compact_star_1_1_physics_1_1_evolution_1_1_diagnostics_1_1_diagnostic_packet_af891926e63190f4d240693952ce56fe1}\label{class_compact_star_1_1_physics_1_1_evolution_1_1_diagnostics_1_1_diagnostic_packet_af891926e63190f4d240693952ce56fe1}} 
+const std\+::map$<$ std\+::string, \mbox{\hyperlink{struct_compact_star_1_1_physics_1_1_evolution_1_1_diagnostics_1_1_scalar_entry}{Scalar\+Entry}} $>$ \& {\bfseries Scalars} () const
+\begin{DoxyCompactList}\small\item\em Return ordered scalar map (deterministic iteration order). \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_compact_star_1_1_physics_1_1_evolution_1_1_diagnostics_1_1_diagnostic_packet_a7ed5e82d64e835536654eba0f9714b55}\label{class_compact_star_1_1_physics_1_1_evolution_1_1_diagnostics_1_1_diagnostic_packet_a7ed5e82d64e835536654eba0f9714b55}} 
+void {\bfseries Clear\+Scalars} ()
+\begin{DoxyCompactList}\small\item\em Remove all scalar entries. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\end{Indent}
+\begin{Indent}\textbf{ Text blocks (contracts / warnings / notes)}\par
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_compact_star_1_1_physics_1_1_evolution_1_1_diagnostics_1_1_diagnostic_packet_a7b39b48cd63654da220633dc0bb6339e}\label{class_compact_star_1_1_physics_1_1_evolution_1_1_diagnostics_1_1_diagnostic_packet_a7b39b48cd63654da220633dc0bb6339e}} 
+void {\bfseries Add\+Contract\+Line} (std\+::string line)
+\begin{DoxyCompactList}\small\item\em Add a “contract” line (unit assumptions, conventions). \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_compact_star_1_1_physics_1_1_evolution_1_1_diagnostics_1_1_diagnostic_packet_a9f8580e7c1e24ac47cba76700d299b1e}\label{class_compact_star_1_1_physics_1_1_evolution_1_1_diagnostics_1_1_diagnostic_packet_a9f8580e7c1e24ac47cba76700d299b1e}} 
+void {\bfseries Add\+Warning} (std\+::string line)
+\begin{DoxyCompactList}\small\item\em Add a warning (non-\/fatal diagnostic). \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_compact_star_1_1_physics_1_1_evolution_1_1_diagnostics_1_1_diagnostic_packet_acebfe2ab85a507bcb16507567bd714ba}\label{class_compact_star_1_1_physics_1_1_evolution_1_1_diagnostics_1_1_diagnostic_packet_acebfe2ab85a507bcb16507567bd714ba}} 
+void {\bfseries Add\+Error} (std\+::string line)
+\begin{DoxyCompactList}\small\item\em Add an error (indicates diagnostic inconsistency). \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_compact_star_1_1_physics_1_1_evolution_1_1_diagnostics_1_1_diagnostic_packet_a3196daa62c58c5344702fb1423179cac}\label{class_compact_star_1_1_physics_1_1_evolution_1_1_diagnostics_1_1_diagnostic_packet_a3196daa62c58c5344702fb1423179cac}} 
+void {\bfseries Add\+Note} (std\+::string line)
+\begin{DoxyCompactList}\small\item\em Add a note (freeform info). \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_compact_star_1_1_physics_1_1_evolution_1_1_diagnostics_1_1_diagnostic_packet_a97bd92a990e6c54083e01fdba6d228c6}\label{class_compact_star_1_1_physics_1_1_evolution_1_1_diagnostics_1_1_diagnostic_packet_a97bd92a990e6c54083e01fdba6d228c6}} 
+const std\+::vector$<$ std\+::string $>$ \& {\bfseries Contract\+Lines} () const
+\item 
+\mbox{\Hypertarget{class_compact_star_1_1_physics_1_1_evolution_1_1_diagnostics_1_1_diagnostic_packet_af0c6bf4ec96f91bebda699ae49eb49e9}\label{class_compact_star_1_1_physics_1_1_evolution_1_1_diagnostics_1_1_diagnostic_packet_af0c6bf4ec96f91bebda699ae49eb49e9}} 
+const std\+::vector$<$ std\+::string $>$ \& {\bfseries Warnings} () const
+\item 
+\mbox{\Hypertarget{class_compact_star_1_1_physics_1_1_evolution_1_1_diagnostics_1_1_diagnostic_packet_aabb1bfebb6c46ff547ce3fc145ec32eb}\label{class_compact_star_1_1_physics_1_1_evolution_1_1_diagnostics_1_1_diagnostic_packet_aabb1bfebb6c46ff547ce3fc145ec32eb}} 
+const std\+::vector$<$ std\+::string $>$ \& {\bfseries Errors} () const
+\item 
+\mbox{\Hypertarget{class_compact_star_1_1_physics_1_1_evolution_1_1_diagnostics_1_1_diagnostic_packet_a79d84235e755cee625003a26cd3c5db3}\label{class_compact_star_1_1_physics_1_1_evolution_1_1_diagnostics_1_1_diagnostic_packet_a79d84235e755cee625003a26cd3c5db3}} 
+const std\+::vector$<$ std\+::string $>$ \& {\bfseries Notes} () const
+\item 
+\mbox{\Hypertarget{class_compact_star_1_1_physics_1_1_evolution_1_1_diagnostics_1_1_diagnostic_packet_a0f7ea4e9ba1f0f27b9ad5d235d5aa134}\label{class_compact_star_1_1_physics_1_1_evolution_1_1_diagnostics_1_1_diagnostic_packet_a0f7ea4e9ba1f0f27b9ad5d235d5aa134}} 
+void {\bfseries Clear\+Text\+Blocks} ()
+\end{DoxyCompactItemize}
+\end{Indent}
+
+
+\doxysubsection{Detailed Description}
+Single diagnostics snapshot with metadata and scalar fields. 
+
+Typical usage\+: 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_diagnostics_1_1_diagnostic_packet_a46193bc90f6c4d17dcb28f3a4d7cc16d}{DiagnosticPacket}} pkt(\textcolor{stringliteral}{"{}PhotonCooling"{}});}
+\DoxyCodeLine{pkt.SetTime(t);}
+\DoxyCodeLine{pkt.AddScalar(\textcolor{stringliteral}{"{}Tinf\_K"{}}, Tinf, \textcolor{stringliteral}{"{}K"{}}, \textcolor{stringliteral}{"{}Redshifted internal temperature"{}}, \textcolor{stringliteral}{"{}state"{}});}
+\DoxyCodeLine{pkt.AddScalar(\textcolor{stringliteral}{"{}A\_inf\_cm2"{}}, Ainf, \textcolor{stringliteral}{"{}cm\string^2"{}}, \textcolor{stringliteral}{"{}Redshifted area at infinity"{}}, \textcolor{stringliteral}{"{}computed"{}});}
+
+\end{DoxyCode}
+ 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_compact_star_1_1_physics_1_1_evolution_1_1_diagnostics_1_1_diagnostic_packet_a46193bc90f6c4d17dcb28f3a4d7cc16d}\label{class_compact_star_1_1_physics_1_1_evolution_1_1_diagnostics_1_1_diagnostic_packet_a46193bc90f6c4d17dcb28f3a4d7cc16d}} 
+\index{CompactStar::Physics::Evolution::Diagnostics::DiagnosticPacket@{CompactStar::Physics::Evolution::Diagnostics::DiagnosticPacket}!DiagnosticPacket@{DiagnosticPacket}}
+\index{DiagnosticPacket@{DiagnosticPacket}!CompactStar::Physics::Evolution::Diagnostics::DiagnosticPacket@{CompactStar::Physics::Evolution::Diagnostics::DiagnosticPacket}}
+\doxysubsubsection{\texorpdfstring{DiagnosticPacket()}{DiagnosticPacket()}}
+{\footnotesize\ttfamily Compact\+Star\+::\+Physics\+::\+Evolution\+::\+Diagnostics\+::\+Diagnostic\+Packet\+::\+Diagnostic\+Packet (\begin{DoxyParamCaption}\item[{std\+::string}]{producer = {\ttfamily \char`\"{}\char`\"{}} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [explicit]}}
+
+
+
+Construct an empty packet. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em producer} & A short label for the producer (often a driver name). \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_compact_star_1_1_physics_1_1_evolution_1_1_diagnostics_1_1_diagnostic_packet_a3a0a6fd0da5d14923b2d6cb6d6d19873}\label{class_compact_star_1_1_physics_1_1_evolution_1_1_diagnostics_1_1_diagnostic_packet_a3a0a6fd0da5d14923b2d6cb6d6d19873}} 
+\index{CompactStar::Physics::Evolution::Diagnostics::DiagnosticPacket@{CompactStar::Physics::Evolution::Diagnostics::DiagnosticPacket}!AddScalar@{AddScalar}}
+\index{AddScalar@{AddScalar}!CompactStar::Physics::Evolution::Diagnostics::DiagnosticPacket@{CompactStar::Physics::Evolution::Diagnostics::DiagnosticPacket}}
+\doxysubsubsection{\texorpdfstring{AddScalar()}{AddScalar()}}
+{\footnotesize\ttfamily void Compact\+Star\+::\+Physics\+::\+Evolution\+::\+Diagnostics\+::\+Diagnostic\+Packet\+::\+Add\+Scalar (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{key,  }\item[{double}]{value,  }\item[{std\+::string}]{unit = {\ttfamily \char`\"{}\char`\"{}},  }\item[{std\+::string}]{description = {\ttfamily \char`\"{}\char`\"{}},  }\item[{std\+::string}]{source = {\ttfamily \char`\"{}\char`\"{}} }\end{DoxyParamCaption})}
+
+
+
+Add/replace a scalar. 
+
+If the key already exists, it is overwritten (deterministic).
+
+
+\begin{DoxyParams}{Parameters}
+{\em key} & Stable key name (tooling-\/friendly). \\
+\hline
+{\em value} & Numeric value. \\
+\hline
+{\em unit} & Optional unit string. \\
+\hline
+{\em description} & Optional one-\/line description. \\
+\hline
+{\em source} & Optional provenance label (e.\+g., \char`\"{}computed\char`\"{}, \char`\"{}state\char`\"{}). \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_compact_star_1_1_physics_1_1_evolution_1_1_diagnostics_1_1_diagnostic_packet_a3bc5c1814b135c82ec1170b299b1c7ea}\label{class_compact_star_1_1_physics_1_1_evolution_1_1_diagnostics_1_1_diagnostic_packet_a3bc5c1814b135c82ec1170b299b1c7ea}} 
+\index{CompactStar::Physics::Evolution::Diagnostics::DiagnosticPacket@{CompactStar::Physics::Evolution::Diagnostics::DiagnosticPacket}!GetScalar@{GetScalar}}
+\index{GetScalar@{GetScalar}!CompactStar::Physics::Evolution::Diagnostics::DiagnosticPacket@{CompactStar::Physics::Evolution::Diagnostics::DiagnosticPacket}}
+\doxysubsubsection{\texorpdfstring{GetScalar()}{GetScalar()}}
+{\footnotesize\ttfamily const \mbox{\hyperlink{struct_compact_star_1_1_physics_1_1_evolution_1_1_diagnostics_1_1_scalar_entry}{Scalar\+Entry}} \& Compact\+Star\+::\+Physics\+::\+Evolution\+::\+Diagnostics\+::\+Diagnostic\+Packet\+::\+Get\+Scalar (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{key }\end{DoxyParamCaption}) const}
+
+
+
+Get a scalar entry by key. 
+
+
+\begin{DoxyExceptions}{Exceptions}
+{\em std\+::out\+\_\+of\+\_\+range} & if the key does not exist. \\
+\hline
+\end{DoxyExceptions}
+\mbox{\Hypertarget{class_compact_star_1_1_physics_1_1_evolution_1_1_diagnostics_1_1_diagnostic_packet_ad0989ec06d14d1c15b5281ba903bd8a3}\label{class_compact_star_1_1_physics_1_1_evolution_1_1_diagnostics_1_1_diagnostic_packet_ad0989ec06d14d1c15b5281ba903bd8a3}} 
+\index{CompactStar::Physics::Evolution::Diagnostics::DiagnosticPacket@{CompactStar::Physics::Evolution::Diagnostics::DiagnosticPacket}!ValidateBasic@{ValidateBasic}}
+\index{ValidateBasic@{ValidateBasic}!CompactStar::Physics::Evolution::Diagnostics::DiagnosticPacket@{CompactStar::Physics::Evolution::Diagnostics::DiagnosticPacket}}
+\doxysubsubsection{\texorpdfstring{ValidateBasic()}{ValidateBasic()}}
+{\footnotesize\ttfamily void Compact\+Star\+::\+Physics\+::\+Evolution\+::\+Diagnostics\+::\+Diagnostic\+Packet\+::\+Validate\+Basic (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Run basic validations. 
+
+This does not throw; it appends errors/warnings into the packet. Typical checks\+:
+\begin{DoxyItemize}
+\item non-\/finite values,
+\item empty producer (optional),
+\item reserved keys (optional). 
+\end{DoxyItemize}
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Compact\+Star/\+Physics/\+Evolution/\+Diagnostics/\mbox{\hyperlink{_diagnostic_packet_8hpp}{Diagnostic\+Packet.\+hpp}}\item 
+Compact\+Star/\+Physics/\+Evolution/\+Diagnostics/src/Diagnostic\+Packet.\+cpp\end{DoxyCompactItemize}

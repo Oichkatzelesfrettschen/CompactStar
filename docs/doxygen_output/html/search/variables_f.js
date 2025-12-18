@@ -1,15 +1,19 @@
 var searchData=
 [
-  ['r_0',['R',['../d4/d7b/struct_compact_star_1_1_star_profile.html#abfc49d2e02cf8638568e740282481928',1,'CompactStar::StarProfile']]],
-  ['r_1',['r',['../d4/dbf/class_compact_star_1_1_seq_point.html#a68c1a5f589acd078100b6d015f94ef40',1,'CompactStar::SeqPoint']]],
-  ['r_5fblanket_5fidx_2',['r_blanket_idx',['../d2/db0/struct_compact_star_1_1_star_builder_1_1_output.html#ad5bf815a9e6eb4fccd6b9ad3bad82aa3',1,'CompactStar::StarBuilder::Output']]],
-  ['r_5fblanket_5fkm_3',['r_blanket_km',['../d2/db0/struct_compact_star_1_1_star_builder_1_1_output.html#a8195128158b2cef40fddf4599b226659',1,'CompactStar::StarBuilder::Output']]],
-  ['r_5fdurca_5fkm_4',['r_durca_km',['../d2/db0/struct_compact_star_1_1_star_builder_1_1_output.html#a79500b7b68c79ca9e9faf0114d7e5108',1,'CompactStar::StarBuilder::Output']]],
-  ['r_5fmax_5',['r_max',['../dd/d3c/class_compact_star_1_1_t_o_v_solver.html#a276fdfae92b19ea72b1cdfea605280e1',1,'CompactStar::TOVSolver']]],
-  ['r_5fmin_6',['r_min',['../dd/d3c/class_compact_star_1_1_t_o_v_solver.html#af603ae9883f0d26eb6c89cab00c36ba8',1,'CompactStar::TOVSolver']]],
-  ['radial_7',['radial',['../d4/d7b/struct_compact_star_1_1_star_profile.html#a8378261b8df3b639cd4b9a40fd201148',1,'CompactStar::StarProfile']]],
-  ['radial_5fres_8',['radial_res',['../dd/d3c/class_compact_star_1_1_t_o_v_solver.html#addab6d0500d8bc434f1a7acef3fdb8ac',1,'CompactStar::TOVSolver']]],
-  ['rho_9',['Rho',['../d4/da4/class_compact_star_1_1_particle.html#ab7c9fac36abcf6e73694ad2f85e57846',1,'CompactStar::Particle']]],
-  ['rtol_10',['rtol',['../d5/d7b/struct_compact_star_1_1_physics_1_1_evolution_1_1_config.html#a81accd13af408d61ec9f4d8913452d2f',1,'CompactStar::Physics::Evolution::Config']]],
-  ['run_5flabel_11',['run_label',['../d5/d7b/struct_compact_star_1_1_physics_1_1_evolution_1_1_config.html#af7573276349dec83c48d0278eae576fc',1,'CompactStar::Physics::Evolution::Config']]]
+  ['r_0',['r',['../d4/dc4/class_compact_star_1_1_core_1_1_seq_point.html#a9238e3d764af8edd9ec01b17daf2d42f',1,'CompactStar::Core::SeqPoint']]],
+  ['r_1',['R',['../d4/d29/struct_compact_star_1_1_core_1_1_star_profile.html#aaa22cc4bb42d396d9808bc27fa6a50a0',1,'CompactStar::Core::StarProfile']]],
+  ['r_5fblanket_5fidx_2',['r_blanket_idx',['../d1/d1b/struct_compact_star_1_1_core_1_1_star_builder_1_1_output.html#a082129d26780ceb5b61de8ee862942df',1,'CompactStar::Core::StarBuilder::Output']]],
+  ['r_5fblanket_5fkm_3',['r_blanket_km',['../d1/d1b/struct_compact_star_1_1_core_1_1_star_builder_1_1_output.html#abafd1ba938ee9838b914cba2b4419536',1,'CompactStar::Core::StarBuilder::Output']]],
+  ['r_5fdurca_5fkm_4',['r_durca_km',['../d1/d1b/struct_compact_star_1_1_core_1_1_star_builder_1_1_output.html#aab52a67c8a6aa825697456addd46342c',1,'CompactStar::Core::StarBuilder::Output']]],
+  ['r_5fmax_5',['r_max',['../dd/d31/class_compact_star_1_1_core_1_1_t_o_v_solver.html#adacdc45087afd3b77b9e8edd5aed01f4',1,'CompactStar::Core::TOVSolver']]],
+  ['r_5fmin_6',['r_min',['../dd/d31/class_compact_star_1_1_core_1_1_t_o_v_solver.html#a7a68560552abbd8edd6e487db7b26e8f',1,'CompactStar::Core::TOVSolver']]],
+  ['radial_7',['radial',['../d4/d29/struct_compact_star_1_1_core_1_1_star_profile.html#a270e0e97913bc127e4c665f909eaaf46',1,'CompactStar::Core::StarProfile']]],
+  ['radial_5fres_8',['radial_res',['../dd/d31/class_compact_star_1_1_core_1_1_t_o_v_solver.html#a94f40bd1132ba5c317de716b0f4e37d6',1,'CompactStar::Core::TOVSolver']]],
+  ['radiating_5ffraction_9',['radiating_fraction',['../d4/d9a/struct_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_photon_cooling_1_1_options.html#aa1cfded12d2ee64573749ee89121d44f',1,'CompactStar::Physics::Driver::Thermal::PhotonCooling::Options']]],
+  ['record_5fat_5fstart_10',['record_at_start',['../d6/d9b/struct_compact_star_1_1_physics_1_1_evolution_1_1_observers_1_1_diagnostics_observer_1_1_options.html#a0d8e613dd7e970e92bfc6d0fa57f3dd6',1,'CompactStar::Physics::Evolution::Observers::DiagnosticsObserver::Options']]],
+  ['record_5fevery_5fdt_11',['record_every_dt',['../d6/d9b/struct_compact_star_1_1_physics_1_1_evolution_1_1_observers_1_1_diagnostics_observer_1_1_options.html#a743512ee27120462a873ffe047a911d1',1,'CompactStar::Physics::Evolution::Observers::DiagnosticsObserver::Options']]],
+  ['record_5fevery_5fn_5fsteps_12',['record_every_n_steps',['../d6/d9b/struct_compact_star_1_1_physics_1_1_evolution_1_1_observers_1_1_diagnostics_observer_1_1_options.html#afb79e6c765625695adeaec2c9f35baa3',1,'CompactStar::Physics::Evolution::Observers::DiagnosticsObserver::Options']]],
+  ['rho_13',['Rho',['../d4/da4/class_compact_star_1_1_particle.html#ab7c9fac36abcf6e73694ad2f85e57846',1,'CompactStar::Particle']]],
+  ['rtol_14',['rtol',['../d5/d7b/struct_compact_star_1_1_physics_1_1_evolution_1_1_config.html#a81accd13af408d61ec9f4d8913452d2f',1,'CompactStar::Physics::Evolution::Config']]],
+  ['run_5flabel_15',['run_label',['../d5/d7b/struct_compact_star_1_1_physics_1_1_evolution_1_1_config.html#af7573276349dec83c48d0278eae576fc',1,'CompactStar::Physics::Evolution::Config']]]
 ];

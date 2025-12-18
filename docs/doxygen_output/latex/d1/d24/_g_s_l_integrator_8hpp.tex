@@ -1,0 +1,31 @@
+\hypertarget{_g_s_l_integrator_8hpp}{}\doxysection{Compact\+Star/\+Physics/\+Evolution/\+Integrator/\+GSLIntegrator.hpp File Reference}
+\label{_g_s_l_integrator_8hpp}\index{CompactStar/Physics/Evolution/Integrator/GSLIntegrator.hpp@{CompactStar/Physics/Evolution/Integrator/GSLIntegrator.hpp}}
+
+
+RAII front-\/end for a GSL ODE driver.  
+
+
+{\ttfamily \#include $<$cstddef$>$}\newline
+\doxysubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_g_s_l_integrator}{Compact\+Star\+::\+Physics\+::\+Evolution\+::\+GSLIntegrator}}
+\begin{DoxyCompactList}\small\item\em Thin RAII wrapper around {\ttfamily gsl\+\_\+odeiv2\+\_\+driver}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Namespaces}
+\begin{DoxyCompactItemize}
+\item 
+namespace \mbox{\hyperlink{namespace_compact_star_1_1_physics}{Compact\+Star\+::\+Physics}}
+\begin{DoxyCompactList}\small\item\em High-\/level physical modeling layer for compact stars. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+RAII front-\/end for a GSL ODE driver. 
+
+Wraps stepper choice, tolerances, and integrates the flat ODE vector y\mbox{[}\mbox{]} while delegating the RHS evaluation to {\ttfamily Evolution\+System}.
+
+Design\+:
+\begin{DoxyItemize}
+\item Dimension N of the system is provided at construction.
+\item The integrator does {\itshape not} know about State\+Vector/\+State\+Layout; callers are responsible for packing/unpacking via State\+Packing helpers.
+\item The RHS callback simply forwards to {\ttfamily Evolution\+System\+::operator()}. 
+\end{DoxyItemize}

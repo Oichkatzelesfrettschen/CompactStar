@@ -113,14 +113,14 @@ std::size_t&#160;</td><td class="memItemRight" valign="bottom"><b>NumComponents<
 <tr class="memdesc:a53d81624f03725345e5e83949046ba2c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return the number of chemical-imbalance components. <br /></td></tr>
 <tr class="separator:a53d81624f03725345e5e83949046ba2c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a186adce6c8871bd2d0803fff25be23ac"><td class="memItemLeft" align="right" valign="top">double &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d0/d4a/_chem_state_8hpp.html#a186adce6c8871bd2d0803fff25be23ac">Eta</a> (std::size_t i)</td></tr>
-<tr class="memdesc:a186adce6c8871bd2d0803fff25be23ac"><td class="mdescLeft">&#160;</td><td class="mdescRight">Mutable access to the i-th chemical imbalance <picture><source srcset="../../form_14_dark.png" media="(prefers-color-scheme: dark)"/><img class="formulaInl" alt="$\eta_i$" src="../../form_14.png"/></picture>.  <a href="../../d0/d4a/_chem_state_8hpp.html#a186adce6c8871bd2d0803fff25be23ac">More...</a><br /></td></tr>
+<tr class="memdesc:a186adce6c8871bd2d0803fff25be23ac"><td class="mdescLeft">&#160;</td><td class="mdescRight">Mutable access to the i-th chemical imbalance <picture><source srcset="../../form_31_dark.png" media="(prefers-color-scheme: dark)"/><img class="formulaInl" alt="$\eta_i$" src="../../form_31.png"/></picture>.  <a href="../../d0/d4a/_chem_state_8hpp.html#a186adce6c8871bd2d0803fff25be23ac">More...</a><br /></td></tr>
 <tr class="separator:a186adce6c8871bd2d0803fff25be23ac"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>ODE state block for chemical imbalances used by evolution drivers. </p>
-<p>Represents the dynamical degrees of freedom associated with departures from beta-equilibrium, typically written as a vector of chemical imbalances <picture><source srcset="../../form_14_dark.png" media="(prefers-color-scheme: dark)"/><img class="formulaInl" alt="$\eta_i$" src="../../form_14.png"/></picture> (e.g., <picture><source srcset="../../form_31_dark.png" media="(prefers-color-scheme: dark)"/><img class="formulaInl" alt="$\eta_{npe}, \eta_{np\mu}$" src="../../form_31.png"/></picture>).</p>
+<p>Represents the dynamical degrees of freedom associated with departures from beta-equilibrium, typically written as a vector of chemical imbalances <picture><source srcset="../../form_31_dark.png" media="(prefers-color-scheme: dark)"/><img class="formulaInl" alt="$\eta_i$" src="../../form_31.png"/></picture> (e.g., <picture><source srcset="../../form_50_dark.png" media="(prefers-color-scheme: dark)"/><img class="formulaInl" alt="$\eta_{npe}, \eta_{np\mu}$" src="../../form_50.png"/></picture>).</p>
 <p>Design notes:</p><ul>
-<li>Stores only the <em>dynamic</em> variables (the <picture><source srcset="../../form_32_dark.png" media="(prefers-color-scheme: dark)"/><img class="formulaInl" alt="$\eta_i\f vector).
+<li>Stores only the <em>dynamic</em> variables (the <picture><source srcset="../../form_51_dark.png" media="(prefers-color-scheme: dark)"/><img class="formulaInl" alt="$\eta_i\f vector).
     - No time, no spin, no tags — those live in StepMeta or other states.
     - Layout is a flat contiguous array compatible with the global ODE vector.
     - Size is configured once via Resize(N) prior to integration.
@@ -145,11 +145,11 @@ namespace CompactStar::Physics::State
 
 /**
    @class ChemState
-   @brief Contiguous state block for chemical imbalances $" src="../../form_32.png"/></picture>\eta_i\f$.</li>
+   @brief Contiguous state block for chemical imbalances $" src="../../form_51.png"/></picture>\eta_i\f$.</li>
 </ul>
-<p>The components are stored as a simple 1D vector; their physical meaning (which index corresponds to which reaction channel such as <picture><source srcset="../../form_33_dark.png" media="(prefers-color-scheme: dark)"/><img class="formulaInl" alt="$\eta_{npe}\f,
-   $" src="../../form_33.png"/></picture>\eta_{np\mu}\f, etc.) is defined by the drivers/microphysics layer, not by this class.</p>
-<p>Units of <picture><source srcset="../../form_14_dark.png" media="(prefers-color-scheme: dark)"/><img class="formulaInl" alt="$\eta_i$" src="../../form_14.png"/></picture> are typically energy (e.g. erg), but this is not enforced here.</p>
+<p>The components are stored as a simple 1D vector; their physical meaning (which index corresponds to which reaction channel such as <picture><source srcset="../../form_52_dark.png" media="(prefers-color-scheme: dark)"/><img class="formulaInl" alt="$\eta_{npe}\f,
+   $" src="../../form_52.png"/></picture>\eta_{np\mu}\f, etc.) is defined by the drivers/microphysics layer, not by this class.</p>
+<p>Units of <picture><source srcset="../../form_31_dark.png" media="(prefers-color-scheme: dark)"/><img class="formulaInl" alt="$\eta_i$" src="../../form_31.png"/></picture> are typically energy (e.g. erg), but this is not enforced here.</p>
 <dl class="section note"><dt>Note</dt><dd>Storage (the `values_` vector) deliberately lives in this derived class rather than in the State base class. This design allows future state types to use non-contiguous, multi-zone, or externally owned layouts while still exposing the uniform PackTo/UnpackFrom interface required by the evolution framework. See <a class="el" href="../../d4/d69/class_compact_star_1_1_physics_1_1_state_1_1_state.html">CompactStar::Physics::State::State</a> for details. */ class ChemState : public State { public: // ------------------------------------------------------------------ // Required State interface // ------------------------------------------------------------------</dd></dl>
 <p>Short human-readable identifier for logging. const char *Name() const override { return "ChemState"; }</p>
 <p>Number of scalar degrees of freedom (number of </p>
@@ -170,8 +170,8 @@ namespace CompactStar::Physics::State
       </table>
 </div><div class="memdoc">
 
-<p>Mutable access to the i-th chemical imbalance <picture><source srcset="../../form_14_dark.png" media="(prefers-color-scheme: dark)"/><img class="formulaInl" alt="$\eta_i$" src="../../form_14.png"/></picture>. </p>
-<p>Const access to the i-th chemical imbalance <picture><source srcset="../../form_14_dark.png" media="(prefers-color-scheme: dark)"/><img class="formulaInl" alt="$\eta_i$" src="../../form_14.png"/></picture>. </p>
+<p>Mutable access to the i-th chemical imbalance <picture><source srcset="../../form_31_dark.png" media="(prefers-color-scheme: dark)"/><img class="formulaInl" alt="$\eta_i$" src="../../form_31.png"/></picture>. </p>
+<p>Const access to the i-th chemical imbalance <picture><source srcset="../../form_31_dark.png" media="(prefers-color-scheme: dark)"/><img class="formulaInl" alt="$\eta_i$" src="../../form_31.png"/></picture>. </p>
 
 </div>
 </div>

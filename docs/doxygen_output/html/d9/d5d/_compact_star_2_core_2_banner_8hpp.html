@@ -87,22 +87,22 @@ $(function() {
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:aa05929e3ae061e66e1439830296e78df"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d9/d5d/_compact_star_2_core_2_banner_8hpp.html#aa05929e3ae061e66e1439830296e78df">CompactStar::ShowBannerOnce</a> ()</td></tr>
-<tr class="memdesc:aa05929e3ae061e66e1439830296e78df"><td class="mdescLeft">&#160;</td><td class="mdescRight">Print the CompactStar banner exactly once per process.  <a href="../../d9/d5d/_compact_star_2_core_2_banner_8hpp.html#aa05929e3ae061e66e1439830296e78df">More...</a><br /></td></tr>
-<tr class="separator:aa05929e3ae061e66e1439830296e78df"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a63a941e0e11965fc416106b5734214c5"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d9/d5d/_compact_star_2_core_2_banner_8hpp.html#a63a941e0e11965fc416106b5734214c5">CompactStar::Core::ShowBannerOnce</a> ()</td></tr>
+<tr class="memdesc:a63a941e0e11965fc416106b5734214c5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Print the CompactStar banner exactly once per process.  <a href="../../d9/d5d/_compact_star_2_core_2_banner_8hpp.html#a63a941e0e11965fc416106b5734214c5">More...</a><br /></td></tr>
+<tr class="separator:a63a941e0e11965fc416106b5734214c5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Process-wide program banner utilities. </p>
-<p>Provides a one-shot banner display that runs automatically before <code>main()</code> via a TU-scope static in Banner.cpp. You can also call ShowBannerOnce() manually if desired (e.g., in tests). </p>
+<p>Provides a one-shot banner display that runs automatically before <code>main()</code> via a TU-scope static in Banner.cpp. We can also call ShowBannerOnce() manually if desired (e.g., in tests). </p>
 </div><h2 class="groupheader">Function Documentation</h2>
-<a id="aa05929e3ae061e66e1439830296e78df" name="aa05929e3ae061e66e1439830296e78df"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aa05929e3ae061e66e1439830296e78df">&#9670;&#160;</a></span>ShowBannerOnce()</h2>
+<a id="a63a941e0e11965fc416106b5734214c5" name="a63a941e0e11965fc416106b5734214c5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a63a941e0e11965fc416106b5734214c5">&#9670;&#160;</a></span>ShowBannerOnce()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void CompactStar::ShowBannerOnce </td>
+          <td class="memname">void CompactStar::Core::ShowBannerOnce </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
@@ -111,7 +111,7 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Print the CompactStar banner exactly once per process. </p>
-<p>Safe to call from any thread; subsequent calls are no-ops. Normally you do not need to call this directly because Banner.cpp defines a TU-scope static that triggers it during static initialization (before <code>main()</code>). </p>
+<p>Safe to call from any thread; subsequent calls are no-ops. Normally we do not need to call this directly because Banner.cpp defines a TU-scope static that triggers it during static initialization (before <code>main()</code>). </p>
 
 </div>
 </div>

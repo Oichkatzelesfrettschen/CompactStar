@@ -80,17 +80,17 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 
-<p>Precomputed geometric weights and masks for fast radial integration.  
+<p>Precomputed geometric factors for fast radial integration (DataColumn-native).  
 <a href="#details">More...</a></p>
-<div class="textblock"><code>#include &lt;cstddef&gt;</code><br />
-<code>#include &lt;vector&gt;</code><br />
+<div class="textblock"><code>#include &lt;<a class="el" href="../../de/dee/_data_set_8hpp_source.html">Zaki/Vector/DataSet.hpp</a>&gt;</code><br />
+<code>#include &lt;cstddef&gt;</code><br />
 </div>
 <p><a href="../../d4/d0f/_geometry_cache_8hpp_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="nested-classes" name="nested-classes"></a>
 Classes</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d2/d50/class_compact_star_1_1_physics_1_1_evolution_1_1_geometry_cache.html">CompactStar::Physics::Evolution::GeometryCache</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Stores radial weights and simple structure flags for integrals.  <a href="../../d2/d50/class_compact_star_1_1_physics_1_1_evolution_1_1_geometry_cache.html#details">More...</a><br /></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Geometry-only cached columns for repeated integrals.  <a href="../../d2/d50/class_compact_star_1_1_physics_1_1_evolution_1_1_geometry_cache.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="namespaces" name="namespaces"></a>
@@ -98,15 +98,26 @@ Namespaces</h2></td></tr>
 <tr class="memitem:dc/dab/namespace_compact_star_1_1_physics"><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dc/dab/namespace_compact_star_1_1_physics.html">CompactStar::Physics</a></td></tr>
 <tr class="memdesc:dc/dab/namespace_compact_star_1_1_physics"><td class="mdescLeft">&#160;</td><td class="mdescRight">High-level physical modeling layer for compact stars. <br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:d6/d38/namespace_compact_star_1_1_physics_1_1_evolution"><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d6/d38/namespace_compact_star_1_1_physics_1_1_evolution.html">CompactStar::Physics::Evolution</a></td></tr>
-<tr class="memdesc:d6/d38/namespace_compact_star_1_1_physics_1_1_evolution"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="../../d6/d38/namespace_compact_star_1_1_physics_1_1_evolution.html" title="Evolution engine for time-dependent neutron-star physics.">Evolution</a> engine for time-dependent neutron-star physics. <br /></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Precomputed geometric weights and masks for fast radial integration. </p>
-<p>GeometryCache builds redshift/volume weights once per star:</p><ul>
-<li><picture><source srcset="../../form_19_dark.png" media="(prefers-color-scheme: dark)"/><img class="formulaInl" alt="$w_C(r)=4\pi r^2 e^{\Lambda(r)}$" src="../../form_19.png"/></picture> (heat capacity integrals)</li>
-<li><picture><source srcset="../../form_20_dark.png" media="(prefers-color-scheme: dark)"/><img class="formulaInl" alt="$w_\nu(r)=4\pi r^2 e^{\Lambda(r)+2\nu(r)}$" src="../../form_20.png"/></picture> (luminosities at infinity) </li>
+<div class="textblock"><p>Precomputed geometric factors for fast radial integration (DataColumn-native). </p>
+<p>Metric convention assumed:  </p><p class="formulaDsp">
+<picture><source srcset="../../form_33_dark.png" media="(prefers-color-scheme: dark)"/><img class="formulaDsp" alt="\[
+  ds^2 = -e^{2\nu(r)} dt^2 + e^{2\Lambda(r)} dr^2 + r^2 d\Omega^2
+\]" src="../../form_33.png"/></picture>
+</p>
+<p>where:</p><ul>
+<li><picture><source srcset="../../form_34_dark.png" media="(prefers-color-scheme: dark)"/><img class="formulaInl" alt="$\nu(r)$" src="../../form_34.png"/></picture> is the time metric exponent</li>
+<li><picture><source srcset="../../form_35_dark.png" media="(prefers-color-scheme: dark)"/><img class="formulaInl" alt="$\Lambda(r)$" src="../../form_35.png"/></picture> is the radial metric exponent</li>
+</ul>
+<p>This cache stores primitive, reusable columns:</p><ul>
+<li><picture><source srcset="../../form_36_dark.png" media="(prefers-color-scheme: dark)"/><img class="formulaInl" alt="$r$" src="../../form_36.png"/></picture> (km)</li>
+<li><picture><source srcset="../../form_37_dark.png" media="(prefers-color-scheme: dark)"/><img class="formulaInl" alt="$A(r)=4\pi r^2$" src="../../form_37.png"/></picture></li>
+<li><picture><source srcset="../../form_38_dark.png" media="(prefers-color-scheme: dark)"/><img class="formulaInl" alt="$e^{\nu}$" src="../../form_38.png"/></picture>, <picture><source srcset="../../form_39_dark.png" media="(prefers-color-scheme: dark)"/><img class="formulaInl" alt="$e^{-\nu}$" src="../../form_39.png"/></picture>, <picture><source srcset="../../form_40_dark.png" media="(prefers-color-scheme: dark)"/><img class="formulaInl" alt="$e^{2\nu}$" src="../../form_40.png"/></picture></li>
+<li><picture><source srcset="../../form_41_dark.png" media="(prefers-color-scheme: dark)"/><img class="formulaInl" alt="$e^{\Lambda}$" src="../../form_41.png"/></picture>, <picture><source srcset="../../form_42_dark.png" media="(prefers-color-scheme: dark)"/><img class="formulaInl" alt="$e^{-\Lambda}$" src="../../form_42.png"/></picture></li>
+<li><picture><source srcset="../../form_43_dark.png" media="(prefers-color-scheme: dark)"/><img class="formulaInl" alt="$e^{\nu-\Lambda}$" src="../../form_43.png"/></picture>, <picture><source srcset="../../form_44_dark.png" media="(prefers-color-scheme: dark)"/><img class="formulaInl" alt="$e^{-(\nu+\Lambda)}$" src="../../form_44.png"/></picture></li>
+<li><picture><source srcset="../../form_45_dark.png" media="(prefers-color-scheme: dark)"/><img class="formulaInl" alt="$w_V(r)=4\pi r^2 e^{\Lambda}$" src="../../form_45.png"/></picture> (proper-volume shell weight)</li>
+<li><picture><source srcset="../../form_46_dark.png" media="(prefers-color-scheme: dark)"/><img class="formulaInl" alt="$w_V e^{\nu}$" src="../../form_46.png"/></picture>, <picture><source srcset="../../form_47_dark.png" media="(prefers-color-scheme: dark)"/><img class="formulaInl" alt="$w_V e^{2\nu}$" src="../../form_47.png"/></picture> (common redshifted variants) </li>
 </ul>
 </div></div><!-- contents -->
 <!-- start footer part -->

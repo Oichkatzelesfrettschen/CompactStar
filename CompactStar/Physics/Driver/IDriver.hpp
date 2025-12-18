@@ -39,18 +39,29 @@
 #include <string>
 #include <vector>
 
-#include "CompactStar/Physics/State/Tags.hpp" // defines enum class StateTag
+#include "CompactStar/Physics/Driver/Diagnostics/DriverDiagnostics.hpp"
+#include "CompactStar/Physics/Evolution/DriverContext.hpp" // forward declaration only
+#include "CompactStar/Physics/State/Tags.hpp"			   // defines enum class StateTag
 
 namespace CompactStar::Physics
 {
 
-// Forward declarations to avoid heavy includes here
-namespace Evolution
-{
-class StateVector;	  ///< Composite view over sub-states (Spin/Thermal/Chem/…)
-class RHSAccumulator; ///< Write-only accumulator for dY/dt components
-class StarContext;	  ///< Geometry, EOS hooks, microphysics caches, etc.
-} // namespace Evolution
+// // Forward declarations to avoid heavy includes here
+// namespace Evolution
+// {
+// class StateVector;	  ///< Composite view over sub-states (Spin/Thermal/Chem/…)
+// class RHSAccumulator; ///< Write-only accumulator for dY/dt components
+// // class StarContext;	  ///< Geometry, EOS hooks, microphysics caches, etc.
+// class EvolutionSystem
+// {
+//   public:
+// 	struct RuntimeContext; // forward declaration of nested type
+// };
+// // namespace EvolutionSystem
+// // {
+// // struct Context; ///< Bundles static model context for drivers
+// // }
+// } // namespace Evolution
 
 /**
  * @class IDDriver
@@ -99,7 +110,7 @@ class IDriver
 	virtual void AccumulateRHS(double t,
 							   const Evolution::StateVector &Y,
 							   Evolution::RHSAccumulator &dYdt,
-							   const Evolution::StarContext &ctx) const = 0;
+							   const Evolution::DriverContext &ctx) const = 0;
 };
 
 } // namespace CompactStar::Physics

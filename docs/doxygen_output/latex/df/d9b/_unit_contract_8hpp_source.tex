@@ -1,0 +1,58 @@
+\hypertarget{_unit_contract_8hpp_source}{}\doxysection{Unit\+Contract.\+hpp}
+\label{_unit_contract_8hpp_source}\index{CompactStar/Physics/Evolution/Diagnostics/UnitContract.hpp@{CompactStar/Physics/Evolution/Diagnostics/UnitContract.hpp}}
+\mbox{\hyperlink{_unit_contract_8hpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#pragma once}}
+\DoxyCodeLine{2 \textcolor{comment}{// -\/*-\/ lsst-\/c++ -\/*-\/}}
+\DoxyCodeLine{3 \textcolor{comment}{/*}}
+\DoxyCodeLine{4 \textcolor{comment}{ * CompactStar}}
+\DoxyCodeLine{5 \textcolor{comment}{ * See License file at the top of the source tree.}}
+\DoxyCodeLine{6 \textcolor{comment}{ *}}
+\DoxyCodeLine{7 \textcolor{comment}{ * Copyright (c) 2025}}
+\DoxyCodeLine{8 \textcolor{comment}{ * Mohammadreza Zakeri}}
+\DoxyCodeLine{9 \textcolor{comment}{ *}}
+\DoxyCodeLine{10 \textcolor{comment}{ * MIT License — see LICENSE at repo root.}}
+\DoxyCodeLine{11 \textcolor{comment}{ */}}
+\DoxyCodeLine{12 }
+\DoxyCodeLine{33 \textcolor{preprocessor}{\#include <set>}}
+\DoxyCodeLine{34 \textcolor{preprocessor}{\#include <string>}}
+\DoxyCodeLine{35 \textcolor{preprocessor}{\#include <vector>}}
+\DoxyCodeLine{36 }
+\DoxyCodeLine{37 \textcolor{keyword}{namespace }CompactStar::Physics::Evolution::Diagnostics}
+\DoxyCodeLine{38 \{}
+\DoxyCodeLine{39 }
+\DoxyCodeLine{48 \textcolor{keyword}{class }\mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_diagnostics_1_1_unit_contract}{UnitContract}}}
+\DoxyCodeLine{49 \{}
+\DoxyCodeLine{50   \textcolor{keyword}{public}:}
+\DoxyCodeLine{51     \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_diagnostics_1_1_unit_contract}{UnitContract}}() = \textcolor{keywordflow}{default};}
+\DoxyCodeLine{52 }
+\DoxyCodeLine{59     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_diagnostics_1_1_unit_contract_ae267de44d6e51e76f64702f7f33d02db}{AddLine}}(std::string line);}
+\DoxyCodeLine{60 }
+\DoxyCodeLine{64     [[nodiscard]] \textcolor{keyword}{const} std::vector<std::string> \&\mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_diagnostics_1_1_unit_contract_a65930f75230760055818a0b3c4a0a4f1}{Lines}}()\textcolor{keyword}{ const }\{ \textcolor{keywordflow}{return} lines\_; \}}
+\DoxyCodeLine{65 }
+\DoxyCodeLine{69     [[nodiscard]] \textcolor{keywordtype}{bool} \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_diagnostics_1_1_unit_contract_a9384d8bf0bd630bfaee6567de026bbb0}{Empty}}()\textcolor{keyword}{ const }\{ \textcolor{keywordflow}{return} lines\_.empty(); \}}
+\DoxyCodeLine{70 }
+\DoxyCodeLine{71   \textcolor{keyword}{private}:}
+\DoxyCodeLine{72     std::vector<std::string> lines\_;}
+\DoxyCodeLine{73 \};}
+\DoxyCodeLine{74 }
+\DoxyCodeLine{81 \textcolor{keyword}{class }\mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_diagnostics_1_1_unit_vocabulary}{UnitVocabulary}}}
+\DoxyCodeLine{82 \{}
+\DoxyCodeLine{83   \textcolor{keyword}{public}:}
+\DoxyCodeLine{84     \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_diagnostics_1_1_unit_vocabulary}{UnitVocabulary}}() = \textcolor{keywordflow}{default};}
+\DoxyCodeLine{85 }
+\DoxyCodeLine{89     \textcolor{keyword}{explicit} \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_diagnostics_1_1_unit_vocabulary}{UnitVocabulary}}(std::set<std::string> allowed\_units);}
+\DoxyCodeLine{90 }
+\DoxyCodeLine{96     [[nodiscard]] \textcolor{keywordtype}{bool} \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_diagnostics_1_1_unit_vocabulary_a1fdea23a7a7e11a1072a38b9cebedda9}{IsAllowed}}(\textcolor{keyword}{const} std::string \&unit) \textcolor{keyword}{const};}
+\DoxyCodeLine{97 }
+\DoxyCodeLine{101     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_diagnostics_1_1_unit_vocabulary_acb5a81a1dc2ae7a886a6d5dca98dd15f}{AddAllowed}}(std::string unit);}
+\DoxyCodeLine{102 }
+\DoxyCodeLine{106     [[nodiscard]] \textcolor{keyword}{const} std::set<std::string> \&\mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_diagnostics_1_1_unit_vocabulary_ac1b359ee714d138657d6be81a2cadd40}{Allowed}}()\textcolor{keyword}{ const }\{ \textcolor{keywordflow}{return} allowed\_; \}}
+\DoxyCodeLine{107 }
+\DoxyCodeLine{108   \textcolor{keyword}{private}:}
+\DoxyCodeLine{109     std::set<std::string> allowed\_;}
+\DoxyCodeLine{110 \};}
+\DoxyCodeLine{111 }
+\DoxyCodeLine{112 \} \textcolor{comment}{// namespace CompactStar::Physics::Evolution::Diagnostics}}
+
+\end{DoxyCode}

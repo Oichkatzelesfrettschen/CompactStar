@@ -9,171 +9,164 @@
  * MIT License — see LICENSE at repo root.
  */
 
-// -----------------------------------------------------------------------------
-//  PhotonCooling.cpp
-// -----------------------------------------------------------------------------
-//  Implementation of the photon cooling evolution driver.
-//
-//  Minimal model:
-//
-//      L_γ  = A_eff * σ_SB * T_surf^4 * global_scale
-//      dT∞/dt = - L_γ / C_eff
-//
-//  where T_surf is either taken directly from ThermalState::T_surf or
-//  approximated from T∞ depending on Options::surface_model.
-//
-//  This is intentionally simple and “toy-like” so we can verify:
-//    - multi-block evolution (Thermal + Spin),
-//    - driver wiring / RHSAccumulator behavior,
-//    - stability of coupled integration.
-//
-//  Later we can:
-//    - pull T_surf from an envelope model via StarContext,
-//    - compute A_eff and C_eff from structure + microphysics,
-//    - add neutrino cooling and rotochemical heating drivers.
-// -----------------------------------------------------------------------------
+/**
+ * @file PhotonCooling.cpp
+ * @brief Implementation of PhotonCooling driver (surface photon cooling).
+ *
+ * This file implements:
+ *   CompactStar::Physics::Driver::Thermal::PhotonCooling::AccumulateRHS
+ *
+ * The driver contributes a cooling term to the redshifted thermal degree of
+ * freedom (typically T_inf), using a blackbody-like photon luminosity measured
+ * at infinity:
+ *
+ *   L_{γ,∞} = F_rad * A_∞ * σ_SB * T_surf^4 * global_scale
+ *
+ * and:
+ *
+ *   dT_inf/dt += - L_{γ,∞} / C_eff .
+ *
+ * ---------------------------------------------------------------------------
+ * UNITS (must remain consistent):
+ * ---------------------------------------------------------------------------
+ * - T_surf, T_inf are in Kelvin [K]
+ * - σ_SB is in cgs: [erg cm^-2 s^-1 K^-4]
+ * - A_∞ must be in [cm^2] if σ_SB is cgs
+ * - L_{γ,∞} is then [erg/s]
+ * - C_eff must be [erg/K] so that dT/dt is [K/s]
+ *
+ * Geometry:
+ * - If GeometryCache provides R in km (typical), convert to cm using:
+ *     1 km = 1e5 cm
+ *
+ * Redshift:
+ * - We assume g_tt = -exp(2ν(r)); GeometryCache provides exp(2ν(r)) or similar.
+ * - For luminosity at infinity from the surface:
+ *     A_∞ = 4π R^2 * exp(2ν(R))
+ *
+ * NOTE:
+ * - The DriverContext (Evolution::DriverContext) is expected to provide access
+ *   to GeometryCache via ctx.geo (preferred), plus optional envelope via ctx.envelope.
+ */
 
 #include "CompactStar/Physics/Driver/Thermal/PhotonCooling.hpp"
+#include "CompactStar/Physics/Driver/Thermal/PhotonCooling_Details.hpp"
 
 #include <cmath> // std::pow
 #include <limits>
+#include <stdexcept> // (not used here, but often used in drivers)
 
+#include "CompactStar/Physics/Evolution/DriverContext.hpp" // defines Evolution::DriverContext
+#include "CompactStar/Physics/Evolution/GeometryCache.hpp" // GeometryCache API
 #include "CompactStar/Physics/Evolution/RHSAccumulator.hpp"
-#include "CompactStar/Physics/Evolution/StarContext.hpp"
 #include "CompactStar/Physics/Evolution/StateVector.hpp"
 #include "CompactStar/Physics/State/ThermalState.hpp"
 
-#include <Zaki/Util/Instrumentor.hpp> // Z_LOG_INFO/WARNING/ERROR, PROFILE_FUNCTION
+#include <Zaki/Util/Instrumentor.hpp> // PROFILE_FUNCTION
+#include <Zaki/Util/Logger.hpp>		  // Z_LOG_INFO/WARNING/ERROR
 
 namespace CompactStar::Physics::Driver::Thermal
 {
 
 // -----------------------------------------------------------------------------
-//  Internal helper: Stefan–Boltzmann constant (cgs)
+//  Internal constants
 // -----------------------------------------------------------------------------
-// We can adjust this or absorb it into area_eff/global_scale if our unit
-// policy differs. For now we keep the physical value for clarity.
-namespace
-{
-constexpr double SigmaSB_cgs = 5.670374419e-5; // erg cm^-2 s^-1 K^-4
-} // namespace
+// namespace
+// {
+// /// Stefan–Boltzmann constant in cgs units: erg cm^-2 s^-1 K^-4.
+// constexpr double SigmaSB_cgs = 5.670374419e-5;
+
+// /// km -> cm conversion for radius if GeometryCache stores radius in km.
+// constexpr double KM_TO_CM = 1.0e5;
+// } // namespace
 
 // -----------------------------------------------------------------------------
 //  PhotonCooling::AccumulateRHS
 // -----------------------------------------------------------------------------
-/**
- * @brief Add photon cooling contribution to the thermal RHS dT∞/dt.
- *
- * This implementation assumes:
- *   - ThermalState has at least one ODE DOF; component 0 is T∞.
- *   - Auxiliary ThermalState::T_surf is optional; if zero and SurfaceModel
- *     is DirectTSurf, we fall back to T∞.
- *   - C_eff > 0; otherwise the driver logs an error and returns.
- *
- * @param t     Current time (model units; typically seconds).
- * @param Y     Read-only composite state vector (must provide access to ThermalState).
- * @param dYdt  Write-only accumulator for RHS components; we add to the Thermal block.
- * @param ctx   Read-only star/context data (currently unused in this minimal model).
- */
 void PhotonCooling::AccumulateRHS(double t,
 								  const Evolution::StateVector &Y,
 								  Evolution::RHSAccumulator &dYdt,
-								  const Evolution::StarContext &ctx) const
+								  const Evolution::DriverContext &ctx) const
 {
 	PROFILE_FUNCTION();
 
-	(void)t;   // Not used in this simple cooling law (no explicit time dependence).
-	(void)ctx; // Reserved for future use (envelope mapping, geometry, redshift).
+	// This cooling law has no explicit time dependence at present.
+	(void)t;
 
 	// -------------------------------------------------------------------------
-	//  1. Extract the ThermalState from the composite state vector
+	//  Centralized computation (shared with diagnostics)
 	// -------------------------------------------------------------------------
-	const Physics::State::ThermalState &thermal = Y.GetThermal();
+	//
+	// We compute everything (Tsurf mapping, geometry/redshift area, luminosity,
+	// and dTinf/dt) through the shared helper to prevent “diagnostics drift”.
+	//
+	const auto d = Detail::ComputeDerived(*this, Y, ctx);
 
-	if (thermal.NumComponents() == 0)
+	// If the helper cannot compute a well-defined contribution, do nothing.
+	// It returns a human-readable message describing why.
+	if (!d.ok)
 	{
-		Z_LOG_WARNING("PhotonCooling::AccumulateRHS: ThermalState has zero components; "
-					  "driver is effectively disabled.");
+		// Keep this as WARNING (not ERROR) because common causes include
+		// infrastructure-first runs (missing geo), disabled cooling (Frad<=0),
+		// or non-physical initial conditions used for wiring tests.
+		// Z_LOG_WARNING("PhotonCooling skipped: " + d.message);
+		// For an adaptive integrator, "skip" can happen at trial states.
+		// Default: do nothing (silent).
 		return;
 	}
 
-	// T∞ is the primary evolved thermal DOF (component 0 by convention).
-	const double Tinf = thermal.Tinf();
-
-	// If T∞ is non-positive, photon cooling is ill-defined physically.
-	if (!(Tinf > 0.0))
+	// Optional: surface-model notes are informational (e.g., DirectTSurf fallback).
+	if (!d.message.empty())
 	{
-		Z_LOG_WARNING("PhotonCooling::AccumulateRHS: Tinf <= 0; skipping photon cooling term.");
-		return;
+		Z_LOG_INFO("PhotonCooling note: " + d.message);
 	}
 
 	// -------------------------------------------------------------------------
-	//  2. Determine surface temperature T_surf
+	//  Accumulate RHS contribution
 	// -------------------------------------------------------------------------
-	double Tsurf = 0.0;
+	// We evolve x = ln(Tinf/Tref), so we must add dx/dt, not dT/dt:
+	//
+	//   dx/dt = (1/Tinf) * dTinf/dt   [1/s]
+	//
+	if (Y.GetThermal().Size() == 0)
+		return; // No thermal DOF to update.
 
-	switch (opts_.surface_model)
-	{
-	case Options::SurfaceModel::DirectTSurf:
-	{
-		// Use auxiliary T_surf if available; fall back to T∞ if not set.
-		if (thermal.T_surf > 0.0)
-		{
-			Tsurf = thermal.T_surf;
-		}
-		else
-		{
-			Z_LOG_INFO("PhotonCooling::AccumulateRHS: T_surf <= 0, "
-					   "falling back to Tinf for DirectTSurf model.");
-			Tsurf = Tinf;
-		}
-		break;
-	}
+	// const double Tinf_K = d.Tinf_K; // physical temperature in Kelvin
+	if (!(d.Tinf_K > 0.0)) // physical temperature in Kelvin
+		return;			   // defensively skip (ComputeDerived should already enforce this)
 
-	case Options::SurfaceModel::ApproxFromTinf:
-	default:
-	{
-		// Minimal approximation: T_surf ≈ T∞.
-		// Later we can replace this by an envelope mapping, e.g. T_surf(T∞, g_s).
-		Tsurf = Tinf;
-		break;
-	}
-	}
+	dYdt.AddTo(State::StateTag::Thermal, 0, d.dLnTinf_dt_1_s);
+}
 
-	if (!(Tsurf > 0.0))
-	{
-		Z_LOG_WARNING("PhotonCooling::AccumulateRHS: Tsurf <= 0 after mapping; skipping term.");
-		return;
-	}
+// -----------------------------------------------------------------------------
+//  IDriverDiagnostics interface
+// -----------------------------------------------------------------------------
+std::string PhotonCooling::DiagnosticsName() const
+{
+	return "PhotonCooling";
+}
 
-	// -------------------------------------------------------------------------
-	//  3. Compute effective photon luminosity L_γ
-	// -------------------------------------------------------------------------
-	if (!(opts_.C_eff > 0.0))
-	{
-		Z_LOG_ERROR("PhotonCooling::AccumulateRHS: C_eff <= 0; cannot compute dT/dt. "
-					"Check PhotonCooling::Options.");
-		return;
-	}
+// -----------------------------------------------------------------------------
+//  UnitContract interface
+// -----------------------------------------------------------------------------
+Evolution::Diagnostics::UnitContract PhotonCooling::UnitContract() const
+{
+	Evolution::Diagnostics::UnitContract c;
+	// Fill using *your* UnitContract API (whatever fields you defined).
+	// e.g., c.title="PhotonCooling"; c.lines.push_back("Tinf, Tsurf in [K] ...");
+	return c;
+}
 
-	const double area_eff = (opts_.area_eff > 0.0) ? opts_.area_eff : 0.0;
-	if (area_eff <= 0.0)
-	{
-		Z_LOG_WARNING("PhotonCooling::AccumulateRHS: area_eff <= 0; no photon cooling applied.");
-		return;
-	}
-
-	// L_γ,∞ ~ area_eff * σ_SB * T_surf^4 * global_scale
-	const double Tsurf4 = std::pow(Tsurf, 4.0);
-	double L_gamma = area_eff * SigmaSB_cgs * Tsurf4 * opts_.global_scale;
-
-	// -------------------------------------------------------------------------
-	//  4. Convert L_γ into dT∞/dt and accumulate into RHS
-	// -------------------------------------------------------------------------
-	const double dTinf_dt = -L_gamma / opts_.C_eff;
-
-	// By convention, component 0 of the Thermal block is T∞.
-	dYdt.AddTo(State::StateTag::Thermal, 0, dTinf_dt);
+// -----------------------------------------------------------------------------
+//  DiagnoseSnapshot interface
+// -----------------------------------------------------------------------------
+void PhotonCooling::DiagnoseSnapshot(double t,
+									 const Evolution::StateVector &Y,
+									 const Evolution::DriverContext &ctx,
+									 Evolution::Diagnostics::DiagnosticPacket &out) const
+{
+	// Overwrite/fill `out` deterministically.
+	Detail::Diagnose(*this, t, Y, ctx, out);
 }
 
 } // namespace CompactStar::Physics::Driver::Thermal

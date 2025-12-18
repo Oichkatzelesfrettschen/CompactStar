@@ -2,7 +2,7 @@
 \label{_star_builder_8hpp}\index{CompactStar/Core/StarBuilder.hpp@{CompactStar/Core/StarBuilder.hpp}}
 
 
-Utilities to construct a neutron-\/star structural profile from sequence TSVs (the files you already export from the TOV pipeline).  
+Utilities to construct a neutron-\/star structural profile from sequence TSVs (the files we already export from the TOV pipeline).  
 
 
 {\ttfamily \#include $<$string$>$}\newline
@@ -14,24 +14,24 @@ Utilities to construct a neutron-\/star structural profile from sequence TSVs (t
 \doxysubsection*{Classes}
 \begin{DoxyCompactItemize}
 \item 
-struct \mbox{\hyperlink{struct_compact_star_1_1_star_builder_1_1_options}{Compact\+Star\+::\+Star\+Builder\+::\+Options}}
-\begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{struct_compact_star_1_1_star_builder_1_1_options}{Options}} controlling how the builder treats blanket / DUrca, etc. \end{DoxyCompactList}\item 
-struct \mbox{\hyperlink{struct_compact_star_1_1_star_builder_1_1_output}{Compact\+Star\+::\+Star\+Builder\+::\+Output}}
+struct \mbox{\hyperlink{struct_compact_star_1_1_core_1_1_star_builder_1_1_options}{Compact\+Star\+::\+Core\+::\+Star\+Builder\+::\+Options}}
+\begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{struct_compact_star_1_1_core_1_1_star_builder_1_1_options}{Options}} controlling how the builder treats blanket / DUrca, etc. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{struct_compact_star_1_1_core_1_1_star_builder_1_1_output}{Compact\+Star\+::\+Core\+::\+Star\+Builder\+::\+Output}}
 \begin{DoxyCompactList}\small\item\em Full output of the builder. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Namespaces}
 \begin{DoxyCompactItemize}
 \item 
-namespace \mbox{\hyperlink{namespace_compact_star_1_1_star_builder}{Compact\+Star\+::\+Star\+Builder}}
+namespace \mbox{\hyperlink{namespace_compact_star_1_1_core_1_1_star_builder}{Compact\+Star\+::\+Core\+::\+Star\+Builder}}
 \begin{DoxyCompactList}\small\item\em Namespace for profile-\/construction helpers. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
-int \mbox{\hyperlink{namespace_compact_star_1_1_star_builder_a3b94da4e460dfad279f5cac1c5300b0d}{Compact\+Star\+::\+Star\+Builder\+::\+Build\+From\+Sequence}} (const \mbox{\hyperlink{class_zaki_1_1_string_1_1_directory}{Zaki\+::\+String\+::\+Directory}} \&wrk\+\_\+dir, const \mbox{\hyperlink{class_zaki_1_1_string_1_1_directory}{Zaki\+::\+String\+::\+Directory}} \&rel\+\_\+dir, const std\+::string \&model\+\_\+name, double target\+\_\+mass\+\_\+\+Msun, Output \&out, const Options \&opt)
+int \mbox{\hyperlink{namespace_compact_star_1_1_core_1_1_star_builder_a19961898bdb0474685d48dec1d43b565}{Compact\+Star\+::\+Core\+::\+Star\+Builder\+::\+Build\+From\+Sequence}} (const \mbox{\hyperlink{class_zaki_1_1_string_1_1_directory}{Zaki\+::\+String\+::\+Directory}} \&wrk\+\_\+dir, const \mbox{\hyperlink{class_zaki_1_1_string_1_1_directory}{Zaki\+::\+String\+::\+Directory}} \&rel\+\_\+dir, const std\+::string \&model\+\_\+name, double target\+\_\+mass\+\_\+\+Msun, Output \&out, const Options \&opt)
 \begin{DoxyCompactList}\small\item\em Core implementation. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}
-Utilities to construct a neutron-\/star structural profile from sequence TSVs (the files you already export from the TOV pipeline). 
+Utilities to construct a neutron-\/star structural profile from sequence TSVs (the files we already export from the TOV pipeline). 
 
 This is the code that used to live in {\ttfamily Pulsar\+::\+Find\+Profile(...)}, but made standalone so that\+:
 
@@ -49,10 +49,8 @@ The builder does the following\+:
 \item load {\ttfamily \texorpdfstring{$<$}{<}wrk\+\_\+dir\texorpdfstring{$>$}{>}\texorpdfstring{$<$}{<}rel\+\_\+dir\texorpdfstring{$>$}{>}\texorpdfstring{$<$}{<}model\+\_\+name\texorpdfstring{$>$}{>}\+\_\+\+Sequence.\+tsv}
 \item find the closest mass to the requested one
 \item if we\textquotesingle{}re at the high-\/mass end, just load that profile
-\item otherwise, linearly interpolate {\itshape between} the two neighboring profiles (your original logic\+: pick the shorter profile\textquotesingle{}s radial grid, interpolate the longer one to it, then blend column-\/by-\/column)
+\item otherwise, linearly interpolate {\itshape between} the two neighboring profiles (our logic\+: pick the shorter profile\textquotesingle{}s radial grid, interpolate the longer one to it, then blend column-\/by-\/column)
 \item compute {\ttfamily eta\+\_\+I} using the derivatives in the sequence file
 \item locate the blanket radius (by energy density)
-\item build a DUrca “mask” column using your Fermi-\/momentum condition
+\item build a DUrca “mask” column using the Fermi-\/momentum condition 
 \end{DoxyItemize}
-
-You can then {\itshape move} the resulting {\ttfamily \mbox{\hyperlink{class_zaki_1_1_vector_1_1_data_set}{Zaki\+::\+Vector\+::\+Data\+Set}}} into your {\ttfamily Star\+Profile} or whatever container you’re using at the call site. 

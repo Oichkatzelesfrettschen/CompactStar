@@ -2,115 +2,193 @@
 \label{class_compact_star_1_1_physics_1_1_evolution_1_1_evolution_system}\index{CompactStar::Physics::Evolution::EvolutionSystem@{CompactStar::Physics::Evolution::EvolutionSystem}}
 
 
-GSL-\/compatible RHS functor (interfaces only in Phase 0).  
+GSL-\/compatible RHS functor for d\+Y/dt.  
 
 
 
 
 {\ttfamily \#include $<$Evolution\+System.\+hpp$>$}
 
-\doxysubsection*{Classes}
-\begin{DoxyCompactItemize}
-\item 
-struct \mbox{\hyperlink{struct_compact_star_1_1_physics_1_1_evolution_1_1_evolution_system_1_1_context}{Context}}
-\begin{DoxyCompactList}\small\item\em Bundles read-\/only references to the model components. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_evolution_system_a2ac42b526a3d6817ced76229f5db5896}{Evolution\+System}} (const \mbox{\hyperlink{struct_compact_star_1_1_physics_1_1_evolution_1_1_evolution_system_1_1_context}{Context}} \&ctx, \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_state_vector}{State\+Vector}} \&state, \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_r_h_s_accumulator}{RHSAccumulator}} \&rhs)
-\begin{DoxyCompactList}\small\item\em Construct with a fully-\/populated \mbox{\hyperlink{struct_compact_star_1_1_physics_1_1_evolution_1_1_evolution_system_1_1_context}{Context}}. \end{DoxyCompactList}\item 
-int \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_evolution_system_a9e015fdf5586e8361e7f404a7e58ed0b}{operator()}} (double t, const double y\mbox{[}$\,$\mbox{]}, double dydt\mbox{[}$\,$\mbox{]}) const
-\begin{DoxyCompactList}\small\item\em Evaluate RHS $\dot{y} = f(t,y)$. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_evolution_system_a1536e327db83ae765406e6f9aa6ff100}{Evolution\+System}} (const \mbox{\hyperlink{struct_compact_star_1_1_physics_1_1_evolution_1_1_driver_context}{Driver\+Context}} \&ctx, \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_state_vector}{State\+Vector}} \&state, \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_r_h_s_accumulator}{RHSAccumulator}} \&rhs, const \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_state_layout}{State\+Layout}} \&layout, std\+::vector$<$ Driver\+Ptr $>$ drivers)
+\begin{DoxyCompactList}\small\item\em Construct the RHS functor. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_evolution_system_a42fb560c16ef9608bc0761e0c7bd6dda}{operator()}} (double t, const double $\ast$y, double $\ast$dydt) const
+\begin{DoxyCompactList}\small\item\em Evaluate RHS $\dot{y} = f(t,y)$. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_evolution_system_a905a4d65c7dc3b4b5c36f0272375d257}{Add\+Observer}} (Observer\+Ptr obs)
+\begin{DoxyCompactList}\small\item\em Register an observer to receive evolution callbacks. \end{DoxyCompactList}\item 
+const std\+::vector$<$ Observer\+Ptr $>$ \& \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_evolution_system_ab2fd6ddf928c3db5d47da5f0a38ef9ad}{Observers\+List}} () const
+\begin{DoxyCompactList}\small\item\em Return the registered observers. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_evolution_system_a050094910e796895d585451887cac700}{Notify\+Start}} (double t0, double t1, const double $\ast$y0) const
+\begin{DoxyCompactList}\small\item\em Notify observers before integration begins. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_evolution_system_a5a322f14f7fd7750e74eb253f995377b}{Notify\+Sample}} (double t, const double $\ast$y, std\+::size\+\_\+t sample\+\_\+index) const
+\begin{DoxyCompactList}\small\item\em Notify observers after reaching a save point (dt\+\_\+save cadence). \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_evolution_system_a306557933222720ed97b8e3367c41c8e}{Notify\+Finish}} (double t, const double $\ast$y, bool ok) const
+\begin{DoxyCompactList}\small\item\em Notify observers once at the end of integration. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}
-GSL-\/compatible RHS functor (interfaces only in Phase 0). 
+GSL-\/compatible RHS functor for d\+Y/dt. 
+
+\mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_evolution_system}{Evolution\+System}} owns no physics; it only coordinates\+:
+\begin{DoxyItemize}
+\item unpacking y\mbox{[}\mbox{]} into \mbox{\hyperlink{namespace_compact_star_1_1_physics_1_1_state}{State}} blocks,
+\item invoking each \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_i_driver}{IDriver}} to accumulate into \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_r_h_s_accumulator}{RHSAccumulator}},
+\item scattering RHS back into dydt\mbox{[}\mbox{]}. 
+\end{DoxyItemize}
 
 \doxysubsection{Constructor \& Destructor Documentation}
-\mbox{\Hypertarget{class_compact_star_1_1_physics_1_1_evolution_1_1_evolution_system_a2ac42b526a3d6817ced76229f5db5896}\label{class_compact_star_1_1_physics_1_1_evolution_1_1_evolution_system_a2ac42b526a3d6817ced76229f5db5896}} 
+\mbox{\Hypertarget{class_compact_star_1_1_physics_1_1_evolution_1_1_evolution_system_a1536e327db83ae765406e6f9aa6ff100}\label{class_compact_star_1_1_physics_1_1_evolution_1_1_evolution_system_a1536e327db83ae765406e6f9aa6ff100}} 
 \index{CompactStar::Physics::Evolution::EvolutionSystem@{CompactStar::Physics::Evolution::EvolutionSystem}!EvolutionSystem@{EvolutionSystem}}
 \index{EvolutionSystem@{EvolutionSystem}!CompactStar::Physics::Evolution::EvolutionSystem@{CompactStar::Physics::Evolution::EvolutionSystem}}
 \doxysubsubsection{\texorpdfstring{EvolutionSystem()}{EvolutionSystem()}}
-{\footnotesize\ttfamily Compact\+Star\+::\+Chemical\+Heating\+::\+Evolution\+System\+::\+Evolution\+System (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{struct_compact_star_1_1_physics_1_1_evolution_1_1_evolution_system_1_1_context}{Context}} \&}]{ctx,  }\item[{\mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_state_vector}{State\+Vector}} \&}]{state,  }\item[{\mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_r_h_s_accumulator}{RHSAccumulator}} \&}]{rhs }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [explicit]}}
+{\footnotesize\ttfamily Compact\+Star\+::\+Physics\+::\+Evolution\+::\+Evolution\+System\+::\+Evolution\+System (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{struct_compact_star_1_1_physics_1_1_evolution_1_1_driver_context}{Driver\+Context}} \&}]{ctx,  }\item[{\mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_state_vector}{State\+Vector}} \&}]{state,  }\item[{\mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_r_h_s_accumulator}{RHSAccumulator}} \&}]{rhs,  }\item[{const \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_state_layout}{State\+Layout}} \&}]{layout,  }\item[{std\+::vector$<$ Driver\+Ptr $>$}]{drivers }\end{DoxyParamCaption})}
 
 
 
-Construct with a fully-\/populated \mbox{\hyperlink{struct_compact_star_1_1_physics_1_1_evolution_1_1_evolution_system_1_1_context}{Context}}. 
-
-Construct the RHS functor with a static model context and references to the dynamic state / RHS helpers.
+Construct the RHS functor. 
 
 
 \begin{DoxyParams}{Parameters}
-{\em ctx} & Static model context (star structure, geometry, envelope, config). \\
+{\em ctx} & Static model context (stored by value, pointers non-\/owning). \\
 \hline
-{\em state} & Non-\/owning reference to the current \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_state_vector}{State\+Vector}} (how we interpret the flat y\mbox{[}\mbox{]} array). \\
+{\em state} & Non-\/owning reference to logical state blocks. \\
 \hline
-{\em rhs} & Non-\/owning reference to an \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_r_h_s_accumulator}{RHSAccumulator}} used as scratch storage for d\+Y/dt contributions.\\
+{\em rhs} & Non-\/owning reference to RHS accumulator. \\
+\hline
+{\em layout} & Layout describing how tags map into the flat y\mbox{[}\mbox{]}/dydt\mbox{[}\mbox{]}. \\
+\hline
+{\em drivers} & List of physics drivers (owned via Driver\+Ptr).\\
 \hline
 \end{DoxyParams}
-Ownership / lifetime\+:
+Lifetime rules\+:
 \begin{DoxyItemize}
-\item The \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_evolution_system}{Evolution\+System}} stores the {\ttfamily ctx} by value (pointers inside it must remain valid for the lifetime of the \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_evolution_system}{Evolution\+System}}).
-\item {\ttfamily state} and {\ttfamily rhs} are stored as references; the caller is responsible for ensuring they outlive the \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_evolution_system}{Evolution\+System}}.
+\item The Runtime\+Context, \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_geometry_cache}{Geometry\+Cache}}, IEnvelope, \mbox{\hyperlink{struct_compact_star_1_1_physics_1_1_evolution_1_1_config}{Config}} pointed to by {\ttfamily ctx} must outlive this \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_evolution_system}{Evolution\+System}}.
+\item {\ttfamily state}, {\ttfamily rhs}, and {\ttfamily layout} must outlive this \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_evolution_system}{Evolution\+System}}.
+\item Drivers are owned by \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_evolution_system}{Evolution\+System}} via the Driver\+Ptr vector. 
 \end{DoxyItemize}
 
-At this stage (Phase 0 / scaffolding), we only perform basic validation of the context pointers and store the references. The actual physics will be implemented once the driver / rate infrastructure is in place. 
-
 \doxysubsection{Member Function Documentation}
-\mbox{\Hypertarget{class_compact_star_1_1_physics_1_1_evolution_1_1_evolution_system_a9e015fdf5586e8361e7f404a7e58ed0b}\label{class_compact_star_1_1_physics_1_1_evolution_1_1_evolution_system_a9e015fdf5586e8361e7f404a7e58ed0b}} 
+\mbox{\Hypertarget{class_compact_star_1_1_physics_1_1_evolution_1_1_evolution_system_a905a4d65c7dc3b4b5c36f0272375d257}\label{class_compact_star_1_1_physics_1_1_evolution_1_1_evolution_system_a905a4d65c7dc3b4b5c36f0272375d257}} 
+\index{CompactStar::Physics::Evolution::EvolutionSystem@{CompactStar::Physics::Evolution::EvolutionSystem}!AddObserver@{AddObserver}}
+\index{AddObserver@{AddObserver}!CompactStar::Physics::Evolution::EvolutionSystem@{CompactStar::Physics::Evolution::EvolutionSystem}}
+\doxysubsubsection{\texorpdfstring{AddObserver()}{AddObserver()}}
+{\footnotesize\ttfamily void Compact\+Star\+::\+Physics\+::\+Evolution\+::\+Evolution\+System\+::\+Add\+Observer (\begin{DoxyParamCaption}\item[{Observer\+Ptr}]{obs }\end{DoxyParamCaption})}
+
+
+
+Register an observer to receive evolution callbacks. 
+
+Observers are notified by the integrator (not by operator()) at\+:
+\begin{DoxyItemize}
+\item On\+Start(t0, Y0, ctx)
+\item Observe(t, Y, ctx) on accepted steps (or at least whenever the integrator chooses)
+\item On\+Finish(t, Y, ctx, ok)
+\end{DoxyItemize}
+
+
+\begin{DoxyParams}{Parameters}
+{\em obs} & Shared pointer to an observer implementation. \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em std\+::runtime\+\_\+error} & if obs is null. \\
+\hline
+\end{DoxyExceptions}
+\mbox{\Hypertarget{class_compact_star_1_1_physics_1_1_evolution_1_1_evolution_system_a306557933222720ed97b8e3367c41c8e}\label{class_compact_star_1_1_physics_1_1_evolution_1_1_evolution_system_a306557933222720ed97b8e3367c41c8e}} 
+\index{CompactStar::Physics::Evolution::EvolutionSystem@{CompactStar::Physics::Evolution::EvolutionSystem}!NotifyFinish@{NotifyFinish}}
+\index{NotifyFinish@{NotifyFinish}!CompactStar::Physics::Evolution::EvolutionSystem@{CompactStar::Physics::Evolution::EvolutionSystem}}
+\doxysubsubsection{\texorpdfstring{NotifyFinish()}{NotifyFinish()}}
+{\footnotesize\ttfamily void Compact\+Star\+::\+Physics\+::\+Evolution\+::\+Evolution\+System\+::\+Notify\+Finish (\begin{DoxyParamCaption}\item[{double}]{t,  }\item[{const double $\ast$}]{y,  }\item[{bool}]{ok }\end{DoxyParamCaption}) const}
+
+
+
+Notify observers once at the end of integration. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em t} & Final time reached. \\
+\hline
+{\em y} & Flat state array at final time. \\
+\hline
+{\em ok} & Whether integrator considers the run successful. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_compact_star_1_1_physics_1_1_evolution_1_1_evolution_system_a5a322f14f7fd7750e74eb253f995377b}\label{class_compact_star_1_1_physics_1_1_evolution_1_1_evolution_system_a5a322f14f7fd7750e74eb253f995377b}} 
+\index{CompactStar::Physics::Evolution::EvolutionSystem@{CompactStar::Physics::Evolution::EvolutionSystem}!NotifySample@{NotifySample}}
+\index{NotifySample@{NotifySample}!CompactStar::Physics::Evolution::EvolutionSystem@{CompactStar::Physics::Evolution::EvolutionSystem}}
+\doxysubsubsection{\texorpdfstring{NotifySample()}{NotifySample()}}
+{\footnotesize\ttfamily void Compact\+Star\+::\+Physics\+::\+Evolution\+::\+Evolution\+System\+::\+Notify\+Sample (\begin{DoxyParamCaption}\item[{double}]{t,  }\item[{const double $\ast$}]{y,  }\item[{std\+::size\+\_\+t}]{sample\+\_\+index }\end{DoxyParamCaption}) const}
+
+
+
+Notify observers after reaching a save point (dt\+\_\+save cadence). 
+
+
+\begin{DoxyParams}{Parameters}
+{\em t} & Current time (after stepping). \\
+\hline
+{\em y} & Flat state array at time t. \\
+\hline
+{\em sample\+\_\+index} & 0-\/based index of emitted samples. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_compact_star_1_1_physics_1_1_evolution_1_1_evolution_system_a050094910e796895d585451887cac700}\label{class_compact_star_1_1_physics_1_1_evolution_1_1_evolution_system_a050094910e796895d585451887cac700}} 
+\index{CompactStar::Physics::Evolution::EvolutionSystem@{CompactStar::Physics::Evolution::EvolutionSystem}!NotifyStart@{NotifyStart}}
+\index{NotifyStart@{NotifyStart}!CompactStar::Physics::Evolution::EvolutionSystem@{CompactStar::Physics::Evolution::EvolutionSystem}}
+\doxysubsubsection{\texorpdfstring{NotifyStart()}{NotifyStart()}}
+{\footnotesize\ttfamily void Compact\+Star\+::\+Physics\+::\+Evolution\+::\+Evolution\+System\+::\+Notify\+Start (\begin{DoxyParamCaption}\item[{double}]{t0,  }\item[{double}]{t1,  }\item[{const double $\ast$}]{y0 }\end{DoxyParamCaption}) const}
+
+
+
+Notify observers before integration begins. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em t0} & Start time. \\
+\hline
+{\em t1} & Target end time. \\
+\hline
+{\em y0} & Flat initial state array (size = layout.\+Total\+Size()). \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_compact_star_1_1_physics_1_1_evolution_1_1_evolution_system_ab2fd6ddf928c3db5d47da5f0a38ef9ad}\label{class_compact_star_1_1_physics_1_1_evolution_1_1_evolution_system_ab2fd6ddf928c3db5d47da5f0a38ef9ad}} 
+\index{CompactStar::Physics::Evolution::EvolutionSystem@{CompactStar::Physics::Evolution::EvolutionSystem}!ObserversList@{ObserversList}}
+\index{ObserversList@{ObserversList}!CompactStar::Physics::Evolution::EvolutionSystem@{CompactStar::Physics::Evolution::EvolutionSystem}}
+\doxysubsubsection{\texorpdfstring{ObserversList()}{ObserversList()}}
+{\footnotesize\ttfamily const std\+::vector$<$ Observer\+Ptr $>$ \& Compact\+Star\+::\+Physics\+::\+Evolution\+::\+Evolution\+System\+::\+Observers\+List (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Return the registered observers. 
+
+This is intended for the integrator to iterate and call hooks. \mbox{\Hypertarget{class_compact_star_1_1_physics_1_1_evolution_1_1_evolution_system_a42fb560c16ef9608bc0761e0c7bd6dda}\label{class_compact_star_1_1_physics_1_1_evolution_1_1_evolution_system_a42fb560c16ef9608bc0761e0c7bd6dda}} 
 \index{CompactStar::Physics::Evolution::EvolutionSystem@{CompactStar::Physics::Evolution::EvolutionSystem}!operator()@{operator()}}
 \index{operator()@{operator()}!CompactStar::Physics::Evolution::EvolutionSystem@{CompactStar::Physics::Evolution::EvolutionSystem}}
 \doxysubsubsection{\texorpdfstring{operator()()}{operator()()}}
-{\footnotesize\ttfamily int Compact\+Star\+::\+Chemical\+Heating\+::\+Evolution\+System\+::operator() (\begin{DoxyParamCaption}\item[{double}]{t,  }\item[{const double}]{y\mbox{[}$\,$\mbox{]},  }\item[{double}]{dydt\mbox{[}$\,$\mbox{]} }\end{DoxyParamCaption}) const}
+{\footnotesize\ttfamily int Compact\+Star\+::\+Physics\+::\+Evolution\+::\+Evolution\+System\+::operator() (\begin{DoxyParamCaption}\item[{double}]{t,  }\item[{const double $\ast$}]{y,  }\item[{double $\ast$}]{dydt }\end{DoxyParamCaption}) const}
 
 
 
 Evaluate RHS $\dot{y} = f(t,y)$. 
 
-Signature mirrors GSL callbacks (no includes here). Implementation will\+: 1) convert $T^\infty \to T(r)$ via redshift, 2) assemble integrals for
-
-This method is designed to be wrapped by a GSL ODE driver. Its signature mirrors the usual callback\+:
-
-
-\begin{DoxyItemize}
-\item {\ttfamily t} is the current time (s),
-\item {\ttfamily y} is the current state vector (flat array),
-\item {\ttfamily dydt} is where the derivatives are written.
-\end{DoxyItemize}
-
-In the {\itshape final} implementation, the steps will roughly be\+:
-
-
-\begin{DoxyEnumerate}
-\item Decode {\ttfamily y} into the sub-\/states via \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_state_vector}{State\+Vector}} (Spin/\+Thermal/\+Chem/\+BNV,…).
-\item Use \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_geometry_cache}{Geometry\+Cache}} and \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_star_context}{Star\+Context}} to build any per-\/call radial quantities (e.\+g., redshifted temperatures).
-\item Clear \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_r_h_s_accumulator}{RHSAccumulator}} and let each driver accumulate its contribution to the appropriate tagged block (thermal, chem, spin…).
-\item Project the accumulated RHS back into the flat {\ttfamily dydt} array in the same layout used by the integrator.
-\end{DoxyEnumerate}
-
-For the current Phase 0, we provide a safe, minimal implementation that\+:
-\begin{DoxyItemize}
-\item computes the expected size of the state vector from \mbox{\hyperlink{struct_compact_star_1_1_physics_1_1_evolution_1_1_config}{Config}},
-\item zeroes out {\ttfamily dydt} (no evolution),
-\item leaves detailed physics as a TODO.
-\end{DoxyItemize}
-
 
 \begin{DoxyParams}{Parameters}
 {\em t} & Time (s). \\
 \hline
-{\em y} & \mbox{\hyperlink{namespace_compact_star_1_1_physics_1_1_state}{State}} array (size = 1 + n\+\_\+eta + \mbox{[}Omega\mbox{]} depending on \mbox{\hyperlink{struct_compact_star_1_1_physics_1_1_evolution_1_1_config}{Config}}). \\
+{\em y} & \mbox{\hyperlink{namespace_compact_star_1_1_physics_1_1_state}{State}} array (size = layout.\+Total\+Size()). \\
 \hline
 {\em dydt} & Output derivatives (same size as {\ttfamily y}).\\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-0 if success; nonzero on failure (consistent with GSL conventions). 
+0 on success; nonzero on failure (GSL convention). 
 \end{DoxyReturn}
 
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 
 Compact\+Star/\+Physics/\+Evolution/\mbox{\hyperlink{_evolution_system_8hpp}{Evolution\+System.\+hpp}}\item 
-Compact\+Star/\+Physics/\+Evolution/src/\mbox{\hyperlink{_evolution_system_8cpp}{Evolution\+System.\+cpp}}\item 
-Compact\+Star/\+Physics/\+Evolution/src/System\+\_\+old.\+cpp\end{DoxyCompactItemize}
+Compact\+Star/\+Physics/\+Evolution/src/\mbox{\hyperlink{_evolution_system_8cpp}{Evolution\+System.\+cpp}}\end{DoxyCompactItemize}

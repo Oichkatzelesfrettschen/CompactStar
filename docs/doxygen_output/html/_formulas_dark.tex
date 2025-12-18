@@ -27,6 +27,15 @@ $\varepsilon_{\min}$
 $ \varepsilon_{\text{floor}} = f \times \varepsilon_{\min} $
 \pagebreak
 
+$ M(\varepsilon_{c,i+1}) > M(\varepsilon_{c,i}) $
+\pagebreak
+
+$ (r, m, \nu', \nu, p, \epsilon, n_B, \rho_i) $
+\pagebreak
+
+$ \rho_i(r) $
+\pagebreak
+
 $Q_\nu(r, T, \boldsymbol{\eta})$
 \pagebreak
 
@@ -45,6 +54,73 @@ $H$
 $\Gamma_{\mathrm{BNV}}$
 \pagebreak
 
+\[
+  \frac{d\ln (T_\infty / T_{\rm ref})}{dt} = - \frac{L_{\gamma,\infty}}{C_{\rm eff}\,T_\infty}
+\]
+\pagebreak
+
+\[
+  \frac{d\ln (T_\infty / T_{\rm ref})}{dt} = \frac{1}{T_\infty}\,\frac{dT_\infty}{dt}.
+\]
+\pagebreak
+
+\[
+  L_{\gamma,\infty} = \mathcal{F}_{\rm rad}\; A_{\infty}\; \sigma_{\rm SB}\; T_{\rm surf}^4 .
+\]
+\pagebreak
+
+$T_{\rm surf}$
+\pagebreak
+
+$\sigma_{\rm SB}$
+\pagebreak
+
+$A_{\infty}$
+\pagebreak
+
+$\mathcal{F}_{\rm rad}$
+\pagebreak
+
+\[
+  L_{\gamma,\infty} = 4\pi R^2 \, e^{2\nu(R)} \, \sigma_{\rm SB}\, T_{\rm surf}^4 ,
+\]
+\pagebreak
+
+\[
+  A_\infty \equiv 4\pi R^2 e^{2\nu(R)} .
+\]
+\pagebreak
+
+\[
+      A_\infty = 4\pi R^2 e^{2\nu(R)} .
+   \]
+\pagebreak
+
+\[
+     L_{\gamma,\infty} = \mathrm{global\_scale}\;
+                         \mathrm{radiating\_fraction}\;
+                         A_\infty\;
+                         \sigma_{\rm SB}\;
+                         T_{\rm surf}^4 ,
+   \]
+\pagebreak
+
+\[
+     \frac{dT_\infty}{dt} = -\frac{L_{\gamma,\infty}}{C_{\rm eff}} .
+   \]
+\pagebreak
+
+\[
+     \frac{d\ln (T_\infty / T_{\rm ref})}{dt} \mathrel{+}= \frac{1}{T_\infty}\,\frac{dT_\infty}{dt}
+     = -\frac{L_{\gamma,\infty}}{C_{\rm eff}\,T_\infty}.
+   \]
+\pagebreak
+
+\[
+  \frac{dT_\infty}{dt} = -\frac{L_{\gamma,\infty}}{C_{\rm eff}} .
+\]
+\pagebreak
+
 $T_b \to T_s$
 \pagebreak
 
@@ -57,52 +133,64 @@ $\Omega$
 $\eta_i$
 \pagebreak
 
-$T^\infty$
-\pagebreak
-
-$\boldsymbol{\eta}$
-\pagebreak
-
 $\dot{y} = f(t,y)$
 \pagebreak
 
-$T^\infty \to T(r)$
-\pagebreak
-
-$w_C(r)=4\pi r^2 e^{\Lambda(r)}$
-\pagebreak
-
-$w_\nu(r)=4\pi r^2 e^{\Lambda(r)+2\nu(r)}$
-\pagebreak
-
-$w_C(r)$
-\pagebreak
-
-$w_\nu(r)$
-\pagebreak
-
-e^{\nu}, e^{\Lambda}
+\[
+  ds^2 = -e^{2\nu(r)} dt^2 + e^{2\Lambda(r)} dr^2 + r^2 d\Omega^2
+\]
 \pagebreak
 
 $\nu(r)$
 \pagebreak
 
-$g_{tt}=e^{2\nu}$
+$\Lambda(r)$
 \pagebreak
 
-$e^{\Lambda(r)}$
+$r$
 \pagebreak
 
-$\odot$
+$A(r)=4\pi r^2$
 \pagebreak
 
-$n_b(r)$
+$e^{\nu}$
 \pagebreak
 
-$Y_p(r)$
+$e^{-\nu}$
 \pagebreak
 
-$e^{\nu(R)}$
+$e^{2\nu}$
+\pagebreak
+
+$e^{\Lambda}$
+\pagebreak
+
+$e^{-\Lambda}$
+\pagebreak
+
+$e^{\nu-\Lambda}$
+\pagebreak
+
+$e^{-(\nu+\Lambda)}$
+\pagebreak
+
+$w_V(r)=4\pi r^2 e^{\Lambda}$
+\pagebreak
+
+$w_V e^{\nu}$
+\pagebreak
+
+$w_V e^{2\nu}$
+\pagebreak
+
+\[
+     \Lambda = -\tfrac12\ln(1-2m/r)
+   \]
+\pagebreak
+
+\[
+  \Lambda_i = -\tfrac12\ln(\max(1-2m_i/r_i,\epsilon))
+\]
 \pagebreak
 
 $\eta_{npe}, \eta_{np\mu}$
@@ -138,6 +226,22 @@ namespace CompactStar::Physics::State
 
 $\eta_{npe}\f,
    $
+\pagebreak
+
+\[
+  x \equiv \ln(T_\infty / T_{\rm ref})
+\]
+\pagebreak
+
+$ x \equiv \ln(T_\infty / T_{\rm ref}) $
+\pagebreak
+
+$dT_\infty/dt$
+\pagebreak
+
+\[
+    \frac{dx}{dt} = \frac{1}{T_\infty}\frac{dT_\infty}{dt}.
+  \]
 \pagebreak
 
 $\ddot{f}$

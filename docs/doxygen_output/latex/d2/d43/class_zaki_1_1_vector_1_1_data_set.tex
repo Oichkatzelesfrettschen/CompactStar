@@ -35,6 +35,12 @@ void {\bfseries Set\+Wrk\+Dir} (const \mbox{\hyperlink{class_zaki_1_1_string_1_1
 \mbox{\Hypertarget{class_zaki_1_1_vector_1_1_data_set_a78f20f0e00e01d0f968b080cdc980145}\label{class_zaki_1_1_vector_1_1_data_set_a78f20f0e00e01d0f968b080cdc980145}} 
 {\bfseries Data\+Set} (const \mbox{\hyperlink{class_zaki_1_1_vector_1_1_data_set}{Data\+Set}} \&)
 \begin{DoxyCompactList}\small\item\em Copy Constructor. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_zaki_1_1_vector_1_1_data_set_aeacf884c74a2177d2232a62908337d1f}\label{class_zaki_1_1_vector_1_1_data_set_aeacf884c74a2177d2232a62908337d1f}} 
+std\+::size\+\_\+t {\bfseries Row\+Count} () const
+\begin{DoxyCompactList}\small\item\em Number of rows (max column length). \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_zaki_1_1_vector_1_1_data_set_aa6b454df7affd47e00f6cb40afd9b56f}\label{class_zaki_1_1_vector_1_1_data_set_aa6b454df7affd47e00f6cb40afd9b56f}} 
+bool {\bfseries Empty} () const
+\begin{DoxyCompactList}\small\item\em True if there are no columns or no rows. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{class_zaki_1_1_vector_1_1_data_set_afc85a3841761ccdda98a57864d9a32e5}{Set\+Precision}} (const int \&prec)
 \begin{DoxyCompactList}\small\item\em Sets the precision for printing numbers. \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{class_zaki_1_1_vector_1_1_data_set_a6134a6cf51ddbfa249f4665313e4cef9}\label{class_zaki_1_1_vector_1_1_data_set_a6134a6cf51ddbfa249f4665313e4cef9}} 
@@ -238,8 +244,7 @@ Adds an empty column with the input label and fills it up with the value \mbox{\
 \doxysubsubsection{\texorpdfstring{Append()}{Append()}}
 {\footnotesize\ttfamily \mbox{\hyperlink{class_zaki_1_1_vector_1_1_data_set}{Data\+Set}} Zaki\+::\+Vector\+::\+Data\+Set\+::\+Append (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_zaki_1_1_vector_1_1_data_set}{Data\+Set}} \&}]{ }\end{DoxyParamCaption}) const}
 
-Appends another dataset data to the end of the current dataset. ~\newline
- \mbox{\Hypertarget{class_zaki_1_1_vector_1_1_data_set_affb66b64b24aa84913026cde828a5a29}\label{class_zaki_1_1_vector_1_1_data_set_affb66b64b24aa84913026cde828a5a29}} 
+Appends another dataset data to the end of the current dataset. \mbox{\Hypertarget{class_zaki_1_1_vector_1_1_data_set_affb66b64b24aa84913026cde828a5a29}\label{class_zaki_1_1_vector_1_1_data_set_affb66b64b24aa84913026cde828a5a29}} 
 \index{Zaki::Vector::DataSet@{Zaki::Vector::DataSet}!AppendRow@{AppendRow}}
 \index{AppendRow@{AppendRow}!Zaki::Vector::DataSet@{Zaki::Vector::DataSet}}
 \doxysubsubsection{\texorpdfstring{AppendRow()}{AppendRow()}}
@@ -251,8 +256,7 @@ Appends a new row to the current dataset must have the same size as the dataset\
 \doxysubsubsection{\texorpdfstring{ClearRows()}{ClearRows()}}
 {\footnotesize\ttfamily void Zaki\+::\+Vector\+::\+Data\+Set\+::\+Clear\+Rows (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
 
-It clears the rows in data\+\_\+set columns, but keeps the columns! ~\newline
- \mbox{\Hypertarget{class_zaki_1_1_vector_1_1_data_set_a6a7be2e4e4ccc9fdfc3c0265fef26391}\label{class_zaki_1_1_vector_1_1_data_set_a6a7be2e4e4ccc9fdfc3c0265fef26391}} 
+It clears the rows in data\+\_\+set columns, but keeps the columns! \mbox{\Hypertarget{class_zaki_1_1_vector_1_1_data_set_a6a7be2e4e4ccc9fdfc3c0265fef26391}\label{class_zaki_1_1_vector_1_1_data_set_a6a7be2e4e4ccc9fdfc3c0265fef26391}} 
 \index{Zaki::Vector::DataSet@{Zaki::Vector::DataSet}!Derivative@{Derivative}}
 \index{Derivative@{Derivative}!Zaki::Vector::DataSet@{Zaki::Vector::DataSet}}
 \doxysubsubsection{\texorpdfstring{Derivative()}{Derivative()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}

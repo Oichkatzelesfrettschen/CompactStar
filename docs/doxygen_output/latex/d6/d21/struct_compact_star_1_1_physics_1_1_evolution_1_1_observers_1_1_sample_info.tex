@@ -1,0 +1,33 @@
+\hypertarget{struct_compact_star_1_1_physics_1_1_evolution_1_1_observers_1_1_sample_info}{}\doxysection{Compact\+Star\+::Physics\+::Evolution\+::Observers\+::Sample\+Info Struct Reference}
+\label{struct_compact_star_1_1_physics_1_1_evolution_1_1_observers_1_1_sample_info}\index{CompactStar::Physics::Evolution::Observers::SampleInfo@{CompactStar::Physics::Evolution::Observers::SampleInfo}}
+
+
+Snapshot metadata for a recorded sample.  
+
+
+
+
+{\ttfamily \#include $<$IObserver.\+hpp$>$}
+
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{struct_compact_star_1_1_physics_1_1_evolution_1_1_observers_1_1_sample_info_af6f339502c9c34919fd2a60637abd88c}\label{struct_compact_star_1_1_physics_1_1_evolution_1_1_observers_1_1_sample_info_af6f339502c9c34919fd2a60637abd88c}} 
+double {\bfseries t} = 0.\+0
+\begin{DoxyCompactList}\small\item\em Simulation time at the sample. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{struct_compact_star_1_1_physics_1_1_evolution_1_1_observers_1_1_sample_info_acf63327094b58fb3a698fb46abb0e4ea}\label{struct_compact_star_1_1_physics_1_1_evolution_1_1_observers_1_1_sample_info_acf63327094b58fb3a698fb46abb0e4ea}} 
+std\+::uint64\+\_\+t {\bfseries sample\+\_\+index} = 0
+\begin{DoxyCompactList}\small\item\em Monotonic sample counter\+: 0,1,2,... (not necessarily equal to integrator step count). \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{struct_compact_star_1_1_physics_1_1_evolution_1_1_observers_1_1_sample_info_a1307dba5cda602bdaad1d43a01e8a4a3}\label{struct_compact_star_1_1_physics_1_1_evolution_1_1_observers_1_1_sample_info_a1307dba5cda602bdaad1d43a01e8a4a3}} 
+std\+::uint64\+\_\+t {\bfseries step\+\_\+index} = 0
+\begin{DoxyCompactList}\small\item\em Optional\+: integrator internal step counter if you want to expose it (0 if unknown). \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Snapshot metadata for a recorded sample. 
+
+A \char`\"{}sample\char`\"{} is typically emitted every dt\+\_\+save (or at explicit output times). This is not necessarily each internal integrator step. 
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Compact\+Star/\+Physics/\+Evolution/\+Observers/\mbox{\hyperlink{_i_observer_8hpp}{IObserver.\+hpp}}\end{DoxyCompactItemize}

@@ -1,5 +1,6 @@
 add_subdirectory(Integrator)
 add_subdirectory(Observers)
+add_subdirectory(Diagnostics)
 
 set(CompactStar_Physics_Evolution_headers
     EvolutionConfig.hpp
@@ -10,6 +11,7 @@ set(CompactStar_Physics_Evolution_headers
     StateVector.hpp
     StateLayout.hpp
     StatePacking.hpp
+    DriverContext.hpp
 )
 
 install(FILES ${CompactStar_Physics_Evolution_headers}
@@ -28,6 +30,8 @@ set(CompactStar_Physics_Evolution_sources
 # Append integrator sources that were bubbled up from Integrator/CMakeLists.txt
 list(APPEND CompactStar_Physics_Evolution_sources
     ${CompactStar_Physics_Evolution_Integrator_sources}
+    ${CompactStar_Physics_Evolution_Diagnostics_sources}
+    ${CompactStar_Physics_Evolution_Observer_sources}
 )
 
 # If/when you add Observer .cpps, you can do the same:

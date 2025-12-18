@@ -84,9 +84,9 @@ $(function() {
 </ul>
 <p>CompactStar is written in <b>C++17</b>, designed for <b>flexibility, reproducibility, and extensibility</b>, and integrates cleanly into HPC workflows.</p>
 <hr  />
-<h1><a class="anchor" id="autotoc_md7"></a>
+<h1><a class="anchor" id="autotoc_md34"></a>
 Core Capabilities</h1>
-<h3><a class="anchor" id="autotoc_md8"></a>
+<h3><a class="anchor" id="autotoc_md35"></a>
 Stellar Structure</h3>
 <ul>
 <li><b>TOVSolver</b>: static Tolman–Oppenheimer–Volkoff integration for any tabulated or analytical EOS.</li>
@@ -94,14 +94,14 @@ Stellar Structure</h3>
 <li><b>HartleSolver</b>: slow-rotation solver for frame-dragging and O(Ω²) structure perturbations.</li>
 <li>Computes mass–radius curves, moment of inertia, compactness, redshift, and structural profiles.</li>
 </ul>
-<h3><a class="anchor" id="autotoc_md9"></a>
+<h3><a class="anchor" id="autotoc_md36"></a>
 Equations of State</h3>
 <ul>
 <li>Supports tabulated, analytical, and hybrid/multiphase EOS formats.</li>
 <li>Built-in EOS readers, interpolation, thermodynamic derivatives.</li>
 <li>Clean interfaces for adding microphysical modules (effective masses, symmetry energy, thresholds).</li>
 </ul>
-<h3><a class="anchor" id="autotoc_md10"></a>
+<h3><a class="anchor" id="autotoc_md37"></a>
 Thermal &amp; Chemical Evolution</h3>
 <ul>
 <li>Fully implements the Reisenegger–Fernández rotochemical heating formalism.</li>
@@ -114,20 +114,20 @@ Thermal &amp; Chemical Evolution</h3>
 </ul>
 </li>
 </ul>
-<h3><a class="anchor" id="autotoc_md11"></a>
+<h3><a class="anchor" id="autotoc_md38"></a>
 BNV Heating (Baryon Number Violation)</h3>
 <ul>
 <li>Dedicated BNVState and reaction-rate infrastructure.</li>
 <li>User-defined particle-physics models plug in cleanly via the Driver abstraction.</li>
 <li>Supports energy injection, matter depletion, and thermal feedback.</li>
 </ul>
-<h3><a class="anchor" id="autotoc_md12"></a>
+<h3><a class="anchor" id="autotoc_md39"></a>
 Spin Evolution</h3>
 <ul>
 <li>Magnetic-dipole braking, custom torque laws, and coupling to chemical/thermal evolution.</li>
 <li>Integrates naturally with Hartle structure corrections.</li>
 </ul>
-<h3><a class="anchor" id="autotoc_md13"></a>
+<h3><a class="anchor" id="autotoc_md40"></a>
 Sequences, Contours &amp; Analysis</h3>
 <ul>
 <li>Sequence generator for:<ul>
@@ -140,7 +140,7 @@ Sequences, Contours &amp; Analysis</h3>
 <li>Contour and profile exporter (csv, json, dataset format).</li>
 <li>Tools for generating stability curves and parameter-space scans.</li>
 </ul>
-<h3><a class="anchor" id="autotoc_md14"></a>
+<h3><a class="anchor" id="autotoc_md41"></a>
 Core Mathematics, Physics, and Datasets</h3>
 <p>Provided by the new Core module:</p>
 <ul>
@@ -151,7 +151,7 @@ Core Mathematics, Physics, and Datasets</h3>
 <li>File I/O utilities for exporting star profiles, evolution histories, and grids.</li>
 </ul>
 <hr  />
-<h1><a class="anchor" id="autotoc_md16"></a>
+<h1><a class="anchor" id="autotoc_md43"></a>
 Project Structure</h1>
 <div class="fragment"><div class="line">CompactStar/</div>
 <div class="line">├── Core/                           # Math, physics primitives, TOV/Hartle solvers, star builders</div>
@@ -185,7 +185,7 @@ Project Structure</h1>
 <div class="line">├── CMakeLists.txt                  # Build system</div>
 <div class="line">└── (other top-level support files)</div>
 </div><!-- fragment --><hr  />
-<h1><a class="anchor" id="autotoc_md18"></a>
+<h1><a class="anchor" id="autotoc_md45"></a>
 State Interface Architecture</h1>
 <p>CompactStar’s evolution engine treats each physical subsystem <br  />
  (Spin, Thermal, Chem, BNV, …) as a <b>state block</b> derived from a single abstract base class <code>State</code>. This base class defines a small, uniform interface:</p>
@@ -200,7 +200,7 @@ State Interface Architecture</h1>
 <p>but <b>it intentionally does not define storage</b>. <br  />
  Each derived state type owns its own internal representation.</p>
 <hr  />
-<h2><a class="anchor" id="autotoc_md20"></a>
+<h2><a class="anchor" id="autotoc_md47"></a>
 Why the base class does &lt;em&gt;not&lt;/em&gt; own &lt;tt&gt;values_&lt;/tt&gt;</h2>
 <p>Different state types have very different physical and numerical needs:</p>
 <ul>
@@ -220,7 +220,7 @@ Why the base class does &lt;em&gt;not&lt;/em&gt; own &lt;tt&gt;values_&lt;/tt&gt
 </ul>
 <p>Every state remains free to choose <b>any internal representation</b>, as long as it can supply a contiguous DOF view to the evolution engine.</p>
 <hr  />
-<h2><a class="anchor" id="autotoc_md22"></a>
+<h2><a class="anchor" id="autotoc_md49"></a>
 Packing and Unpacking: How Evolution Works</h2>
 <p>During time evolution, the framework assembles one global ODE vector:</p>
 <div class="fragment"><div class="line">y = [ Spin DOFs | Thermal DOFs | Chem DOFs | BNV DOFs | ... ]</div>
@@ -237,7 +237,7 @@ Packing and Unpacking: How Evolution Works</h2>
 <li>modular drivers that specify dependencies via <code>StateTag</code></li>
 </ul>
 <hr  />
-<h2><a class="anchor" id="autotoc_md24"></a>
+<h2><a class="anchor" id="autotoc_md51"></a>
 Summary</h2>
 <p>This architecture:</p>
 <ul>
@@ -250,7 +250,7 @@ Summary</h2>
 <p>For additional detail, see the comments in <br  />
  <code><a class="el" href="../../d5/d5d/_state_8hpp.html" title="Abstract ODE state interface for physics sub-states.">CompactStar/Physics/State/State.hpp</a></code>.</p>
 <hr  />
-<h1><a class="anchor" id="autotoc_md26"></a>
+<h1><a class="anchor" id="autotoc_md53"></a>
 Features</h1>
 <ul>
 <li>Tabulated + analytical EOS support</li>
@@ -263,7 +263,7 @@ Features</h1>
 <li>Lightweight dependencies (C++17, GSL)</li>
 </ul>
 <hr  />
-<h1><a class="anchor" id="autotoc_md28"></a>
+<h1><a class="anchor" id="autotoc_md55"></a>
 Building</h1>
 <div class="fragment"><div class="line">mkdir build</div>
 <div class="line">cd build</div>
@@ -276,7 +276,7 @@ Building</h1>
 <li><code>-DCS_ENABLE_PROFILING=ON</code></li>
 </ul>
 <hr  />
-<h1><a class="anchor" id="autotoc_md30"></a>
+<h1><a class="anchor" id="autotoc_md57"></a>
 Documentation</h1>
 <p>CompactStar uses <b>Doxygen</b> documentation. <br  />
  To build:</p>
@@ -284,14 +284,14 @@ Documentation</h1>
 <div class="line">cmake .. -DBUILD_DOCS=ON</div>
 <div class="line">make docs</div>
 </div><!-- fragment --><hr  />
-<h1><a class="anchor" id="autotoc_md32"></a>
+<h1><a class="anchor" id="autotoc_md59"></a>
 Author</h1>
 <p><b>Mohammadreza Zakeri</b> <br  />
  Assistant Professor of Physics <br  />
  Eastern Kentucky University <br  />
  📧 <a href="#" onclick="location.href='mai'+'lto:'+'M.Z'+'ak'+'eri'+'@e'+'ku.'+'ed'+'u'; return false;">M.Zak<span class="obfuscator">.nosp@m.</span>eri@<span class="obfuscator">.nosp@m.</span>eku.e<span class="obfuscator">.nosp@m.</span>du</a></p>
 <hr  />
-<h1><a class="anchor" id="autotoc_md34"></a>
+<h1><a class="anchor" id="autotoc_md61"></a>
 Citation</h1>
 <p>If you use CompactStar in published research, please cite this repository and the author. </p>
 </div></div><!-- contents -->

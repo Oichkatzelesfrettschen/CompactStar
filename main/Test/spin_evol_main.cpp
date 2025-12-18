@@ -73,8 +73,8 @@ int main()
 
 	SpinDrv::MagneticDipole driver(opts);
 
-	// Assumes StarContext is default-constructible; if not, adapt as needed.
-	Evol::StarContext ctx;
+	// Assumes DriverContext is default-constructible; if not, adapt as needed.
+	Evol::DriverContext ctx;
 
 	// ---------------------------------------------------------------------
 	// 4. Simple explicit-Euler evolution loop

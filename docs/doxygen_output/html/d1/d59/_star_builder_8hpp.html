@@ -81,7 +81,7 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 
-<p>Utilities to construct a neutron-star structural profile from sequence TSVs (the files you already export from the TOV pipeline).  
+<p>Utilities to construct a neutron-star structural profile from sequence TSVs (the files we already export from the TOV pipeline).  
 <a href="#details">More...</a></p>
 <div class="textblock"><code>#include &lt;string&gt;</code><br />
 <code>#include &lt;utility&gt;</code><br />
@@ -94,27 +94,27 @@ $(function() {
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="nested-classes" name="nested-classes"></a>
 Classes</h2></td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d8/dac/struct_compact_star_1_1_star_builder_1_1_options.html">CompactStar::StarBuilder::Options</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="../../d8/dac/struct_compact_star_1_1_star_builder_1_1_options.html" title="Options controlling how the builder treats blanket / DUrca, etc.">Options</a> controlling how the builder treats blanket / DUrca, etc.  <a href="../../d8/dac/struct_compact_star_1_1_star_builder_1_1_options.html#details">More...</a><br /></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/d63/struct_compact_star_1_1_core_1_1_star_builder_1_1_options.html">CompactStar::Core::StarBuilder::Options</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="../../da/d63/struct_compact_star_1_1_core_1_1_star_builder_1_1_options.html" title="Options controlling how the builder treats blanket / DUrca, etc.">Options</a> controlling how the builder treats blanket / DUrca, etc.  <a href="../../da/d63/struct_compact_star_1_1_core_1_1_star_builder_1_1_options.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d2/db0/struct_compact_star_1_1_star_builder_1_1_output.html">CompactStar::StarBuilder::Output</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Full output of the builder.  <a href="../../d2/db0/struct_compact_star_1_1_star_builder_1_1_output.html#details">More...</a><br /></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d1/d1b/struct_compact_star_1_1_core_1_1_star_builder_1_1_output.html">CompactStar::Core::StarBuilder::Output</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Full output of the builder.  <a href="../../d1/d1b/struct_compact_star_1_1_core_1_1_star_builder_1_1_output.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="namespaces" name="namespaces"></a>
 Namespaces</h2></td></tr>
-<tr class="memitem:d1/d24/namespace_compact_star_1_1_star_builder"><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d1/d24/namespace_compact_star_1_1_star_builder.html">CompactStar::StarBuilder</a></td></tr>
-<tr class="memdesc:d1/d24/namespace_compact_star_1_1_star_builder"><td class="mdescLeft">&#160;</td><td class="mdescRight">Namespace for profile-construction helpers. <br /></td></tr>
+<tr class="memitem:d6/dfe/namespace_compact_star_1_1_core_1_1_star_builder"><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d6/dfe/namespace_compact_star_1_1_core_1_1_star_builder.html">CompactStar::Core::StarBuilder</a></td></tr>
+<tr class="memdesc:d6/dfe/namespace_compact_star_1_1_core_1_1_star_builder"><td class="mdescLeft">&#160;</td><td class="mdescRight">Namespace for profile-construction helpers. <br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:a3b94da4e460dfad279f5cac1c5300b0d"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d1/d24/namespace_compact_star_1_1_star_builder.html#a3b94da4e460dfad279f5cac1c5300b0d">CompactStar::StarBuilder::BuildFromSequence</a> (const <a class="el" href="../../d5/d5e/class_zaki_1_1_string_1_1_directory.html">Zaki::String::Directory</a> &amp;wrk_dir, const <a class="el" href="../../d5/d5e/class_zaki_1_1_string_1_1_directory.html">Zaki::String::Directory</a> &amp;rel_dir, const std::string &amp;model_name, double target_mass_Msun, Output &amp;out, const Options &amp;opt)</td></tr>
-<tr class="memdesc:a3b94da4e460dfad279f5cac1c5300b0d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Core implementation.  <a href="../../d1/d24/namespace_compact_star_1_1_star_builder.html#a3b94da4e460dfad279f5cac1c5300b0d">More...</a><br /></td></tr>
-<tr class="separator:a3b94da4e460dfad279f5cac1c5300b0d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a19961898bdb0474685d48dec1d43b565"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d6/dfe/namespace_compact_star_1_1_core_1_1_star_builder.html#a19961898bdb0474685d48dec1d43b565">CompactStar::Core::StarBuilder::BuildFromSequence</a> (const <a class="el" href="../../d5/d5e/class_zaki_1_1_string_1_1_directory.html">Zaki::String::Directory</a> &amp;wrk_dir, const <a class="el" href="../../d5/d5e/class_zaki_1_1_string_1_1_directory.html">Zaki::String::Directory</a> &amp;rel_dir, const std::string &amp;model_name, double target_mass_Msun, Output &amp;out, const Options &amp;opt)</td></tr>
+<tr class="memdesc:a19961898bdb0474685d48dec1d43b565"><td class="mdescLeft">&#160;</td><td class="mdescRight">Core implementation.  <a href="../../d6/dfe/namespace_compact_star_1_1_core_1_1_star_builder.html#a19961898bdb0474685d48dec1d43b565">More...</a><br /></td></tr>
+<tr class="separator:a19961898bdb0474685d48dec1d43b565"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Utilities to construct a neutron-star structural profile from sequence TSVs (the files you already export from the TOV pipeline). </p>
+<div class="textblock"><p>Utilities to construct a neutron-star structural profile from sequence TSVs (the files we already export from the TOV pipeline). </p>
 <p>This is the code that used to live in <code>Pulsar::FindProfile(...)</code>, but made standalone so that:</p>
 <ol type="1">
 <li>Pulsar doesn't have to know how profiles are built.</li>
@@ -126,12 +126,11 @@ Functions</h2></td></tr>
 <li>load <code>&lt;wrk_dir&gt;&lt;rel_dir&gt;&lt;model_name&gt;_Sequence.tsv</code></li>
 <li>find the closest mass to the requested one</li>
 <li>if we're at the high-mass end, just load that profile</li>
-<li>otherwise, linearly interpolate <em>between</em> the two neighboring profiles (your original logic: pick the shorter profile's radial grid, interpolate the longer one to it, then blend column-by-column)</li>
+<li>otherwise, linearly interpolate <em>between</em> the two neighboring profiles (our logic: pick the shorter profile's radial grid, interpolate the longer one to it, then blend column-by-column)</li>
 <li>compute <code>eta_I</code> using the derivatives in the sequence file</li>
 <li>locate the blanket radius (by energy density)</li>
-<li>build a DUrca “mask” column using your Fermi-momentum condition</li>
+<li>build a DUrca “mask” column using the Fermi-momentum condition </li>
 </ul>
-<p>You can then <em>move</em> the resulting <code><a class="el" href="../../d2/d43/class_zaki_1_1_vector_1_1_data_set.html">Zaki::Vector::DataSet</a></code> into your <code>StarProfile</code> or whatever container you’re using at the call site. </p>
 </div></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

@@ -2,15 +2,25 @@
 \label{_geometry_cache_8cpp}\index{CompactStar/Physics/Evolution/src/GeometryCache.cpp@{CompactStar/Physics/Evolution/src/GeometryCache.cpp}}
 
 
-See \mbox{\hyperlink{_geometry_cache_8hpp}{Geometry\+Cache.\+hpp}}. Precompute radial weights.  
+See \mbox{\hyperlink{_geometry_cache_8hpp}{Geometry\+Cache.\+hpp}}.  
 
 
-{\ttfamily \#include \char`\"{}Compact\+Star/\+Chemical\+Heating/\+Geometry\+Cache.\+hpp\char`\"{}}\newline
-{\ttfamily \#include \char`\"{}Compact\+Star/\+Chemical\+Heating/\+Star\+Context.\+hpp\char`\"{}}\newline
-{\ttfamily \#include $<$Zaki/\+Vector/\+Data\+Set.\+hpp$>$}\newline
+{\ttfamily \#include \char`\"{}Compact\+Star/\+Physics/\+Evolution/\+Geometry\+Cache.\+hpp\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}Compact\+Star/\+Physics/\+Evolution/\+Star\+Context.\+hpp\char`\"{}}\newline
 {\ttfamily \#include $<$cmath$>$}\newline
+{\ttfamily \#include $<$stdexcept$>$}\newline
+\doxysubsection*{Namespaces}
+\begin{DoxyCompactItemize}
+\item 
+namespace \mbox{\hyperlink{namespace_compact_star_1_1_physics}{Compact\+Star\+::\+Physics}}
+\begin{DoxyCompactList}\small\item\em High-\/level physical modeling layer for compact stars. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}
-See \mbox{\hyperlink{_geometry_cache_8hpp}{Geometry\+Cache.\+hpp}}. Precompute radial weights. 
+See \mbox{\hyperlink{_geometry_cache_8hpp}{Geometry\+Cache.\+hpp}}. 
 
+Implementation policy\+:
+\begin{DoxyItemize}
+\item Prefer Data\+Column algebra (exp/log/pow, operator$\ast$, etc.)
+\item Only do explicit loops when we must apply a per-\/row safety clamp (e.\+g., deriving Lambda from 1-\/2m/r). 
+\end{DoxyItemize}

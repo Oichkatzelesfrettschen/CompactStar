@@ -1,0 +1,76 @@
+\hypertarget{_photon_cooling___details_8hpp}{}\doxysection{Compact\+Star/\+Physics/\+Driver/\+Thermal/\+Photon\+Cooling\+\_\+\+Details.hpp File Reference}
+\label{_photon_cooling___details_8hpp}\index{CompactStar/Physics/Driver/Thermal/PhotonCooling\_Details.hpp@{CompactStar/Physics/Driver/Thermal/PhotonCooling\_Details.hpp}}
+
+
+Shared computations for Photon\+Cooling (physics + diagnostics).  
+
+
+{\ttfamily \#include $<$cmath$>$}\newline
+{\ttfamily \#include $<$string$>$}\newline
+{\ttfamily \#include \char`\"{}Compact\+Star/\+Physics/\+Evolution/\+Driver\+Context.\+hpp\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}Compact\+Star/\+Physics/\+Evolution/\+State\+Vector.\+hpp\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}Compact\+Star/\+Physics/\+State/\+Thermal\+State.\+hpp\char`\"{}}\newline
+\doxysubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{struct_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_detail_1_1_photon_cooling___details}{Compact\+Star\+::\+Physics\+::\+Driver\+::\+Thermal\+::\+Detail\+::\+Photon\+Cooling\+\_\+\+Details}}
+\begin{DoxyCompactList}\small\item\em Bundle of derived photon-\/cooling quantities for diagnostics/physics. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Namespaces}
+\begin{DoxyCompactItemize}
+\item 
+namespace \mbox{\hyperlink{namespace_compact_star_1_1_physics}{Compact\+Star\+::\+Physics}}
+\begin{DoxyCompactList}\small\item\em High-\/level physical modeling layer for compact stars. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+Photon\+Cooling\+\_\+\+Details \mbox{\hyperlink{_photon_cooling___details_8hpp_ac2ce0fa8a68ea72614488a1af1990412}{Compact\+Star\+::\+Physics\+::\+Driver\+::\+Thermal\+::\+Detail\+::\+Compute\+Derived}} (const Photon\+Cooling \&drv, const Evolution\+::\+State\+Vector \&Y, const Evolution\+::\+Driver\+Context \&ctx)
+\begin{DoxyCompactList}\small\item\em Compute derived quantities for \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_photon_cooling}{Photon\+Cooling}}. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{_photon_cooling___details_8hpp_a1e44508228bc6939a8378a0afd300a93}{Compact\+Star\+::\+Physics\+::\+Driver\+::\+Thermal\+::\+Detail\+::\+Diagnose}} (const Photon\+Cooling \&self, double t, const Evolution\+::\+State\+Vector \&Y, const Evolution\+::\+Driver\+Context \&ctx, Evolution\+::\+Diagnostics\+::\+Diagnostic\+Packet \&out)
+\begin{DoxyCompactList}\small\item\em Write a diagnostics packet for \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_photon_cooling}{Photon\+Cooling}} at a given snapshot. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Shared computations for Photon\+Cooling (physics + diagnostics). 
+
+This file centralizes the computation of\+:
+\begin{DoxyItemize}
+\item surface temperature mapping (currently trivial / placeholder),
+\item A\+\_\+inf and A\+\_\+eff\+\_\+inf,
+\item luminosity at infinity,
+\item physical cooling rate d\+Tinf/dt \mbox{[}K/s\mbox{]},
+\item ODE RHS contribution d/dt ln(Tinf/\+Tref) \mbox{[}1/s\mbox{]}.
+\end{DoxyItemize}
+
+The goal is to avoid the “diagnostics drift” problem\+: if you change the physics implementation, diagnostics automatically match, because they call the same helpers. 
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{_photon_cooling___details_8hpp_ac2ce0fa8a68ea72614488a1af1990412}\label{_photon_cooling___details_8hpp_ac2ce0fa8a68ea72614488a1af1990412}} 
+\index{PhotonCooling\_Details.hpp@{PhotonCooling\_Details.hpp}!ComputeDerived@{ComputeDerived}}
+\index{ComputeDerived@{ComputeDerived}!PhotonCooling\_Details.hpp@{PhotonCooling\_Details.hpp}}
+\doxysubsubsection{\texorpdfstring{ComputeDerived()}{ComputeDerived()}}
+{\footnotesize\ttfamily Photon\+Cooling\+\_\+\+Details Compact\+Star\+::\+Physics\+::\+Driver\+::\+Thermal\+::\+Detail\+::\+Compute\+Derived (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_photon_cooling}{Photon\+Cooling}} \&}]{drv,  }\item[{const \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_state_vector}{Evolution\+::\+State\+Vector}} \&}]{Y,  }\item[{const \mbox{\hyperlink{struct_compact_star_1_1_physics_1_1_evolution_1_1_driver_context}{Evolution\+::\+Driver\+Context}} \&}]{ctx }\end{DoxyParamCaption})}
+
+
+
+Compute derived quantities for Photon\+Cooling. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em drv} & Photon\+Cooling instance (options/constants live in drv.\+opts\+\_\+). \\
+\hline
+{\em Y} & State vector (Thermal\+State read here). \\
+\hline
+{\em ctx} & Driver context (Geometry\+Cache read here). \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{_photon_cooling___details_8hpp_a1e44508228bc6939a8378a0afd300a93}\label{_photon_cooling___details_8hpp_a1e44508228bc6939a8378a0afd300a93}} 
+\index{PhotonCooling\_Details.hpp@{PhotonCooling\_Details.hpp}!Diagnose@{Diagnose}}
+\index{Diagnose@{Diagnose}!PhotonCooling\_Details.hpp@{PhotonCooling\_Details.hpp}}
+\doxysubsubsection{\texorpdfstring{Diagnose()}{Diagnose()}}
+{\footnotesize\ttfamily void Compact\+Star\+::\+Physics\+::\+Driver\+::\+Thermal\+::\+Detail\+::\+Diagnose (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_photon_cooling}{Photon\+Cooling}} \&}]{self,  }\item[{double}]{t,  }\item[{const \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_state_vector}{Evolution\+::\+State\+Vector}} \&}]{Y,  }\item[{const \mbox{\hyperlink{struct_compact_star_1_1_physics_1_1_evolution_1_1_driver_context}{Evolution\+::\+Driver\+Context}} \&}]{ctx,  }\item[{\mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_diagnostics_1_1_diagnostic_packet}{Evolution\+::\+Diagnostics\+::\+Diagnostic\+Packet}} \&}]{out }\end{DoxyParamCaption})}
+
+
+
+Write a diagnostics packet for Photon\+Cooling at a given snapshot. 
+
+This uses Compute\+Derived() so diagnostics and physics stay consistent. 

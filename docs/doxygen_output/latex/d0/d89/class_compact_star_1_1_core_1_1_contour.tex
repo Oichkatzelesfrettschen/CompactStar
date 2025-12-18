@@ -1,0 +1,112 @@
+\hypertarget{class_compact_star_1_1_core_1_1_contour}{}\doxysection{Compact\+Star\+::Core\+::Contour Class Reference}
+\label{class_compact_star_1_1_core_1_1_contour}\index{CompactStar::Core::Contour@{CompactStar::Core::Contour}}
+
+
+Class representing a contour in the TOV solution space.  
+
+
+
+
+{\ttfamily \#include $<$TOVSolver.\+hpp$>$}
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_compact_star_1_1_core_1_1_contour_a5bce2ba6e08f2f2495bdada45b01d906}{Contour}} ()
+\begin{DoxyCompactList}\small\item\em Default constructor. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_compact_star_1_1_core_1_1_contour_a0ffd96bbdd492738e47a41c895bc2feb}{Contour}} (const std\+::string \&in\+\_\+label)
+\begin{DoxyCompactList}\small\item\em Constructor with label. \end{DoxyCompactList}\item 
+size\+\_\+t \mbox{\hyperlink{class_compact_star_1_1_core_1_1_contour_ae4d63df1fb1a4b8cebda388e02cc16ef}{Size}} () const
+\begin{DoxyCompactList}\small\item\em Getter for the size of the curve. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_compact_star_1_1_core_1_1_contour_a05adccc841ad7a9ddba9d77b31bca35f}{Import}} (const \mbox{\hyperlink{class_zaki_1_1_string_1_1_directory}{Zaki\+::\+String\+::\+Directory}} \&in\+\_\+file)
+\begin{DoxyCompactList}\small\item\em Imports the contour from a file. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_compact_star_1_1_core_1_1_contour_a9c67724bdfc682fc30015382b37ae366}\label{class_compact_star_1_1_core_1_1_contour_a9c67724bdfc682fc30015382b37ae366}} 
+\mbox{\hyperlink{class_zaki_1_1_math_1_1_curve2_d}{Zaki\+::\+Math\+::\+Curve2D}} {\bfseries curve}
+\item 
+\mbox{\Hypertarget{class_compact_star_1_1_core_1_1_contour_abe7fbd3799b1a29babc988658604b6fa}\label{class_compact_star_1_1_core_1_1_contour_abe7fbd3799b1a29babc988658604b6fa}} 
+double {\bfseries val} = 0
+\item 
+\mbox{\Hypertarget{class_compact_star_1_1_core_1_1_contour_a644e8c1029a9da55d0536bfc0081dade}\label{class_compact_star_1_1_core_1_1_contour_a644e8c1029a9da55d0536bfc0081dade}} 
+double {\bfseries precision} = 1e-\/8
+\item 
+\mbox{\Hypertarget{class_compact_star_1_1_core_1_1_contour_a96726dc79f6acb958b8557b9b51a7244}\label{class_compact_star_1_1_core_1_1_contour_a96726dc79f6acb958b8557b9b51a7244}} 
+size\+\_\+t {\bfseries max\+\_\+steps} = 35
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Class representing a contour in the TOV solution space. 
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_compact_star_1_1_core_1_1_contour_a5bce2ba6e08f2f2495bdada45b01d906}\label{class_compact_star_1_1_core_1_1_contour_a5bce2ba6e08f2f2495bdada45b01d906}} 
+\index{CompactStar::Core::Contour@{CompactStar::Core::Contour}!Contour@{Contour}}
+\index{Contour@{Contour}!CompactStar::Core::Contour@{CompactStar::Core::Contour}}
+\doxysubsubsection{\texorpdfstring{Contour()}{Contour()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily Compact\+Star\+::\+Core\+::\+Contour\+::\+Contour (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Default constructor. 
+
+Initializes an empty contour object. \begin{DoxyNote}{Note}
+The curve is empty and the value is set to 0. 
+\end{DoxyNote}
+\mbox{\Hypertarget{class_compact_star_1_1_core_1_1_contour_a0ffd96bbdd492738e47a41c895bc2feb}\label{class_compact_star_1_1_core_1_1_contour_a0ffd96bbdd492738e47a41c895bc2feb}} 
+\index{CompactStar::Core::Contour@{CompactStar::Core::Contour}!Contour@{Contour}}
+\index{Contour@{Contour}!CompactStar::Core::Contour@{CompactStar::Core::Contour}}
+\doxysubsubsection{\texorpdfstring{Contour()}{Contour()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily Compact\+Star\+::\+Core\+::\+Contour\+::\+Contour (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{in\+\_\+label }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Constructor with label. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em in\+\_\+label} & Label for the contour\\
+\hline
+\end{DoxyParams}
+Initializes a contour object with the specified label. \begin{DoxyNote}{Note}
+The curve is empty and the value is set to 0. 
+\end{DoxyNote}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_compact_star_1_1_core_1_1_contour_a05adccc841ad7a9ddba9d77b31bca35f}\label{class_compact_star_1_1_core_1_1_contour_a05adccc841ad7a9ddba9d77b31bca35f}} 
+\index{CompactStar::Core::Contour@{CompactStar::Core::Contour}!Import@{Import}}
+\index{Import@{Import}!CompactStar::Core::Contour@{CompactStar::Core::Contour}}
+\doxysubsubsection{\texorpdfstring{Import()}{Import()}}
+{\footnotesize\ttfamily void Compact\+Star\+::\+Core\+::\+Contour\+::\+Import (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_zaki_1_1_string_1_1_directory}{Zaki\+::\+String\+::\+Directory}} \&}]{in\+\_\+file }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Imports the contour from a file. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em in\+\_\+file} & \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_compact_star_1_1_core_1_1_contour_ae4d63df1fb1a4b8cebda388e02cc16ef}\label{class_compact_star_1_1_core_1_1_contour_ae4d63df1fb1a4b8cebda388e02cc16ef}} 
+\index{CompactStar::Core::Contour@{CompactStar::Core::Contour}!Size@{Size}}
+\index{Size@{Size}!CompactStar::Core::Contour@{CompactStar::Core::Contour}}
+\doxysubsubsection{\texorpdfstring{Size()}{Size()}}
+{\footnotesize\ttfamily size\+\_\+t Compact\+Star\+::\+Core\+::\+Contour\+::\+Size (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Getter for the size of the curve. 
+
+Returns the number of points in the curve. \begin{DoxyReturn}{Returns}
+The size of the curve 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Compact\+Star/\+Core/\mbox{\hyperlink{_t_o_v_solver_8hpp}{TOVSolver.\+hpp}}\end{DoxyCompactItemize}

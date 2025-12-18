@@ -2,7 +2,7 @@
 \label{class_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_photon_cooling}\index{CompactStar::Physics::Driver::Thermal::PhotonCooling@{CompactStar::Physics::Driver::Thermal::PhotonCooling}}
 
 
-Adds −\+L\+\_\+γ/\+C\+\_\+eff to the thermal RHS (redshifted frame).  
+Adds a photon-\/cooling contribution to the thermal RHS (redshifted frame).  
 
 
 
@@ -12,82 +12,189 @@ Adds −\+L\+\_\+γ/\+C\+\_\+eff to the thermal RHS (redshifted frame).
 Inheritance diagram for Compact\+Star\+::Physics\+::Driver\+::Thermal\+::Photon\+Cooling\+:\begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[height=2.000000cm]{d8/df7/class_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_photon_cooling}
+\includegraphics[height=1.534247cm]{d8/df7/class_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_photon_cooling}
 \end{center}
 \end{figure}
 \doxysubsection*{Classes}
 \begin{DoxyCompactItemize}
 \item 
 struct \mbox{\hyperlink{struct_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_photon_cooling_1_1_options}{Options}}
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Configuration parameters for \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_photon_cooling}{Photon\+Cooling}}. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\Hypertarget{class_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_photon_cooling_a3303944cbe13400761c4709f648c3507}\label{class_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_photon_cooling_a3303944cbe13400761c4709f648c3507}} 
-{\bfseries Photon\+Cooling} (\mbox{\hyperlink{struct_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_photon_cooling_1_1_options}{Options}} opts=\{\})
-\item 
+\mbox{\Hypertarget{class_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_photon_cooling_a73a3516839e327277df85d9a6ff00bd0}\label{class_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_photon_cooling_a73a3516839e327277df85d9a6ff00bd0}} 
+{\bfseries Photon\+Cooling} ()=default
+\begin{DoxyCompactList}\small\item\em Default-\/construct with Options() defaults. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_photon_cooling_a34af3f990be0332bee9c7b0572b24b50}\label{class_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_photon_cooling_a34af3f990be0332bee9c7b0572b24b50}} 
+{\bfseries Photon\+Cooling} (const \mbox{\hyperlink{struct_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_photon_cooling_1_1_options}{Options}} \&opts)
+\begin{DoxyCompactList}\small\item\em Construct with explicit options. \end{DoxyCompactList}\item 
 std\+::string \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_photon_cooling_a9953abae9587b8953309a1ecb9066cf3}{Name}} () const override
 \begin{DoxyCompactList}\small\item\em Human-\/readable name for diagnostics/logging. \end{DoxyCompactList}\item 
-std\+::span$<$ const \mbox{\hyperlink{namespace_compact_star_1_1_physics_1_1_state_af14f5554b0d9be50c5ea718733bc424b}{State\+::\+State\+Tag}} $>$ \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_photon_cooling_a727e70e4e7ae99d1711d2d44b12b8150}{Depends\+On}} () const override
-\begin{DoxyCompactList}\small\item\em Which state blocks this driver reads. \end{DoxyCompactList}\item 
-std\+::span$<$ const \mbox{\hyperlink{namespace_compact_star_1_1_physics_1_1_state_af14f5554b0d9be50c5ea718733bc424b}{State\+::\+State\+Tag}} $>$ \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_photon_cooling_a75fda0abed33a37355c02b0072c35ee6}{Updates}} () const override
-\begin{DoxyCompactList}\small\item\em Which state blocks this driver updates (adds contributions to). \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_photon_cooling_a9b6e2a592f8473860e317c9102edc831}{Accumulate\+RHS}} (double t, const \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_state_vector}{Evolution\+::\+State\+Vector}} \&Y, \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_r_h_s_accumulator}{Evolution\+::\+RHSAccumulator}} \&d\+Ydt, const \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_star_context}{Evolution\+::\+Star\+Context}} \&ctx) const override
-\begin{DoxyCompactList}\small\item\em Add this driver’s contribution to the global RHS d\+Y/dt. \end{DoxyCompactList}\item 
+const std\+::vector$<$ \mbox{\hyperlink{namespace_compact_star_1_1_physics_1_1_state_af14f5554b0d9be50c5ea718733bc424b}{State\+::\+State\+Tag}} $>$ \& \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_photon_cooling_a1e27f52db93a97bad80c9457d7e1b1f0}{Depends\+On}} () const override
+\begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{namespace_compact_star_1_1_physics_1_1_state}{State}} blocks this driver reads. \end{DoxyCompactList}\item 
+const std\+::vector$<$ \mbox{\hyperlink{namespace_compact_star_1_1_physics_1_1_state_af14f5554b0d9be50c5ea718733bc424b}{State\+::\+State\+Tag}} $>$ \& \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_photon_cooling_ae0fef08a30b8f5ac85aa8330ffe201ae}{Updates}} () const override
+\begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{namespace_compact_star_1_1_physics_1_1_state}{State}} blocks this driver updates (accumulates into RHS). \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_photon_cooling_a30a11d918558a08eb44bed1272a7a486}{Accumulate\+RHS}} (double t, const \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_state_vector}{Evolution\+::\+State\+Vector}} \&Y, \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_r_h_s_accumulator}{Evolution\+::\+RHSAccumulator}} \&d\+Ydt, const \mbox{\hyperlink{struct_compact_star_1_1_physics_1_1_evolution_1_1_driver_context}{Evolution\+::\+Driver\+Context}} \&ctx) const override
+\begin{DoxyCompactList}\small\item\em Add photon cooling contribution to the thermal RHS. \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{class_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_photon_cooling_a8855b0a423c6fab5bfdbf8124534fd77}\label{class_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_photon_cooling_a8855b0a423c6fab5bfdbf8124534fd77}} 
 const \mbox{\hyperlink{struct_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_photon_cooling_1_1_options}{Options}} \& {\bfseries Get\+Options} () const
-\item 
+\begin{DoxyCompactList}\small\item\em Get current options (read-\/only). \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{class_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_photon_cooling_a0a3209e025fbe7669a9944e09d10e9d5}\label{class_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_photon_cooling_a0a3209e025fbe7669a9944e09d10e9d5}} 
 void {\bfseries Set\+Options} (const \mbox{\hyperlink{struct_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_photon_cooling_1_1_options}{Options}} \&o)
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Replace options (by value). \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_photon_cooling_a80765fd32881122d00150939a4119f03}{Diagnostics\+Name}} () const override
+\begin{DoxyCompactList}\small\item\em Human-\/readable stable name for this driver instance. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_diagnostics_1_1_unit_contract}{Evolution\+::\+Diagnostics\+::\+Unit\+Contract}} \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_photon_cooling_a7b609acb6e931f07674ef9b2312324fc}{Unit\+Contract}} () const override
+\begin{DoxyCompactList}\small\item\em Return unit conventions and assumptions for this driver. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_photon_cooling_a66ec050c82074aa8847ed1d3872d257e}{Diagnose\+Snapshot}} (double t, const \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_state_vector}{Evolution\+::\+State\+Vector}} \&Y, const \mbox{\hyperlink{struct_compact_star_1_1_physics_1_1_evolution_1_1_driver_context}{Evolution\+::\+Driver\+Context}} \&ctx, \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_diagnostics_1_1_diagnostic_packet}{Evolution\+::\+Diagnostics\+::\+Diagnostic\+Packet}} \&out) const override
+\begin{DoxyCompactList}\small\item\em Fill a packet with driver-\/specific diagnostics at (t, Y, ctx). \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Friends}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_photon_cooling_a6783ecc1b79a01183f090aa35b78c6b7}\label{class_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_photon_cooling_a6783ecc1b79a01183f090aa35b78c6b7}} 
+struct \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_photon_cooling_a6783ecc1b79a01183f090aa35b78c6b7}{Compact\+Star\+::\+Physics\+::\+Driver\+::\+Thermal\+::\+Detail\+::\+Photon\+Cooling\+\_\+\+Details}}
+\begin{DoxyCompactList}\small\item\em Allow Photon\+Cooling\+\_\+\+Details to access private members. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}
-Adds −\+L\+\_\+γ/\+C\+\_\+eff to the thermal RHS (redshifted frame). 
+Adds a photon-\/cooling contribution to the thermal RHS (redshifted frame). 
 
-{\bfseries{Depends on\+:}} \mbox{\hyperlink{namespace_compact_star_1_1_physics_1_1_thermal}{Thermal}} {\bfseries{Updates\+:}} \mbox{\hyperlink{namespace_compact_star_1_1_physics_1_1_thermal}{Thermal}} 
+{\bfseries{Depends on\+:}} \mbox{\hyperlink{namespace_compact_star_1_1_physics_1_1_thermal}{Thermal}} {\bfseries{Updates\+:}} \mbox{\hyperlink{namespace_compact_star_1_1_physics_1_1_thermal}{Thermal}}\hypertarget{class_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_photon_cooling_autotoc_md14}{}\doxyparagraph{What this driver does}\label{class_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_photon_cooling_autotoc_md14}
+
+\begin{DoxyEnumerate}
+\item Determines a surface temperature (T\+\_\+\{\textbackslash{}rm surf\}) (K) from the \mbox{\hyperlink{namespace_compact_star_1_1_physics_1_1_thermal}{Thermal}} state\+:
+\begin{DoxyItemize}
+\item directly from the auxiliary Thermal\+State\+::\+T\+\_\+surf, or
+\item via an envelope mapping (future), or
+\item via a simple approximation from (T\+\_\+\textbackslash{}infty).
+\end{DoxyItemize}
+\item Computes (L\+\_\+\{\textbackslash{}gamma,\textbackslash{}infty\}) using geometry + Stefan–\+Boltzmann.
+\item Adds (-\/L\+\_\+\{\textbackslash{}gamma,\textbackslash{}infty\}/\+C\+\_\+\{\textbackslash{}rm eff\}) to the RHS for the evolved thermal DOF.
+\end{DoxyEnumerate}\hypertarget{class_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_photon_cooling_autotoc_md15}{}\doxyparagraph{What this driver does $<$em$>$not$<$/em$>$ do}\label{class_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_photon_cooling_autotoc_md15}
+
+\begin{DoxyItemize}
+\item It does not modify the static star structure.
+\item It does not compute (C\+\_\+\{\textbackslash{}rm eff\}) from EOS/microphysics (yet).
+\item It does not implement a realistic envelope unless provided externally. 
+\end{DoxyItemize}
 
 \doxysubsection{Member Function Documentation}
-\mbox{\Hypertarget{class_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_photon_cooling_a9b6e2a592f8473860e317c9102edc831}\label{class_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_photon_cooling_a9b6e2a592f8473860e317c9102edc831}} 
+\mbox{\Hypertarget{class_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_photon_cooling_a30a11d918558a08eb44bed1272a7a486}\label{class_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_photon_cooling_a30a11d918558a08eb44bed1272a7a486}} 
 \index{CompactStar::Physics::Driver::Thermal::PhotonCooling@{CompactStar::Physics::Driver::Thermal::PhotonCooling}!AccumulateRHS@{AccumulateRHS}}
 \index{AccumulateRHS@{AccumulateRHS}!CompactStar::Physics::Driver::Thermal::PhotonCooling@{CompactStar::Physics::Driver::Thermal::PhotonCooling}}
 \doxysubsubsection{\texorpdfstring{AccumulateRHS()}{AccumulateRHS()}}
-{\footnotesize\ttfamily void Compact\+Star\+::\+Physics\+::\+Driver\+::\+Thermal\+::\+Photon\+Cooling\+::\+Accumulate\+RHS (\begin{DoxyParamCaption}\item[{double}]{t,  }\item[{const \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_state_vector}{Evolution\+::\+State\+Vector}} \&}]{Y,  }\item[{\mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_r_h_s_accumulator}{Evolution\+::\+RHSAccumulator}} \&}]{d\+Ydt,  }\item[{const \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_star_context}{Evolution\+::\+Star\+Context}} \&}]{ctx }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+{\footnotesize\ttfamily void Compact\+Star\+::\+Physics\+::\+Driver\+::\+Thermal\+::\+Photon\+Cooling\+::\+Accumulate\+RHS (\begin{DoxyParamCaption}\item[{double}]{t,  }\item[{const \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_state_vector}{Evolution\+::\+State\+Vector}} \&}]{Y,  }\item[{\mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_r_h_s_accumulator}{Evolution\+::\+RHSAccumulator}} \&}]{d\+Ydt,  }\item[{const \mbox{\hyperlink{struct_compact_star_1_1_physics_1_1_evolution_1_1_driver_context}{Evolution\+::\+Driver\+Context}} \&}]{ctx }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
 
 
 
-Add this driver’s contribution to the global RHS d\+Y/dt. 
+Add photon cooling contribution to the thermal RHS. 
 
-Implementations must {\itshape accumulate} into {\ttfamily d\+Ydt} (i.\+e., add), and must not assume any specific call order beyond what the \mbox{\hyperlink{namespace_compact_star_1_1_physics_1_1_evolution}{Evolution}} graph resolves.
+This method must {\bfseries{accumulate}} into {\ttfamily d\+Ydt} (never overwrite).\hypertarget{class_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_photon_cooling_autotoc_md16}{}\doxyparagraph{Algorithm outline}\label{class_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_photon_cooling_autotoc_md16}
 
+\begin{DoxyEnumerate}
+\item Read \mbox{\hyperlink{namespace_compact_star_1_1_physics_1_1_thermal}{Thermal}} state from {\ttfamily Y} and obtain (T\+\_\+\textbackslash{}infty).
+\item Determine (T\+\_\+\{\textbackslash{}rm surf\}) according to Options\+::surface\+\_\+model\+:
+\begin{DoxyItemize}
+\item Direct\+TSurf\+: use Thermal\+State\+::\+T\+\_\+surf if set (\texorpdfstring{$>$}{>}0), else fallback.
+\item Envelope\+Mapping\+: if ctx.\+envelope exists, use it (future).
+\item Approx\+From\+Tinf\+: set (T\+\_\+\{\textbackslash{}rm surf\} \textbackslash{}leftarrow T\+\_\+\textbackslash{}infty).
+\end{DoxyItemize}
+\item Determine (A\+\_\+\textbackslash{}infty) from geometry (preferred)\+:  \[
+      A_\infty = 4\pi R^2 e^{2\nu(R)} .
+   \] taking care to convert (R) into cm if (\textbackslash{}sigma\+\_\+\{\textbackslash{}rm SB\}) is cgs.
+\item Form the luminosity and the physical cooling rate\+:  \[
+     L_{\gamma,\infty} = \mathrm{global\_scale}\;
+                         \mathrm{radiating\_fraction}\;
+                         A_\infty\;
+                         \sigma_{\rm SB}\;
+                         T_{\rm surf}^4 ,
+   \]  \[
+     \frac{dT_\infty}{dt} = -\frac{L_{\gamma,\infty}}{C_{\rm eff}} .
+   \]
+\item Convert to the evolved ODE variable and accumulate into the RHS\+:  \[
+     \frac{d\ln (T_\infty / T_{\rm ref})}{dt} \mathrel{+}= \frac{1}{T_\infty}\,\frac{dT_\infty}{dt}
+     = -\frac{L_{\gamma,\infty}}{C_{\rm eff}\,T_\infty}.
+   \]
+\end{DoxyEnumerate}
+
+\begin{DoxyNote}{Note}
+Compact\+Star evolves (\textbackslash{}ln (T\+\_\+\textbackslash{}infty / T\+\_\+\{\textbackslash{}rm ref\})) (not (T\+\_\+\textbackslash{}infty)) in the thermal state vector. Drivers must therefore contribute (d(\textbackslash{}ln (T\+\_\+\textbackslash{}infty / T\+\_\+\{\textbackslash{}rm ref\}))/dt).
+\end{DoxyNote}
 
 \begin{DoxyParams}{Parameters}
-{\em t} & Current time (model units; typically seconds). \\
+{\em t} & Current time (seconds, by convention for evolution drivers). \\
 \hline
-{\em Y} & Read-\/only composite state vector (Spin/\+Thermal/\+Chem/…). \\
+{\em Y} & Read-\/only composite state vector. \\
 \hline
-{\em d\+Ydt} & Write-\/only accumulator for RHS components (add to it). \\
+{\em d\+Ydt} & Write-\/only RHS accumulator (driver adds to it). \\
 \hline
-{\em ctx} & Read-\/only star/context data (geometry, EOS, microphysics). \\
+{\em ctx} & Static driver context (geometry, star, envelope, config). \\
 \hline
 \end{DoxyParams}
 
 
-Implements \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_i_driver_a8f6a4dd41179102863ea109d24e68bf4}{Compact\+Star\+::\+Physics\+::\+IDriver}}.
+Implements \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_i_driver_ab4c100ea49a9ec8bad3b43f9f84c17eb}{Compact\+Star\+::\+Physics\+::\+IDriver}}.
 
-\mbox{\Hypertarget{class_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_photon_cooling_a727e70e4e7ae99d1711d2d44b12b8150}\label{class_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_photon_cooling_a727e70e4e7ae99d1711d2d44b12b8150}} 
+\mbox{\Hypertarget{class_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_photon_cooling_a1e27f52db93a97bad80c9457d7e1b1f0}\label{class_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_photon_cooling_a1e27f52db93a97bad80c9457d7e1b1f0}} 
 \index{CompactStar::Physics::Driver::Thermal::PhotonCooling@{CompactStar::Physics::Driver::Thermal::PhotonCooling}!DependsOn@{DependsOn}}
 \index{DependsOn@{DependsOn}!CompactStar::Physics::Driver::Thermal::PhotonCooling@{CompactStar::Physics::Driver::Thermal::PhotonCooling}}
 \doxysubsubsection{\texorpdfstring{DependsOn()}{DependsOn()}}
-{\footnotesize\ttfamily std\+::span$<$ const \mbox{\hyperlink{namespace_compact_star_1_1_physics_1_1_state_af14f5554b0d9be50c5ea718733bc424b}{State\+::\+State\+Tag}} $>$ Compact\+Star\+::\+Physics\+::\+Driver\+::\+Thermal\+::\+Photon\+Cooling\+::\+Depends\+On (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+{\footnotesize\ttfamily const std\+::vector$<$ \mbox{\hyperlink{namespace_compact_star_1_1_physics_1_1_state_af14f5554b0d9be50c5ea718733bc424b}{State\+::\+State\+Tag}} $>$ \& Compact\+Star\+::\+Physics\+::\+Driver\+::\+Thermal\+::\+Photon\+Cooling\+::\+Depends\+On (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
 
 
 
-Which state blocks this driver reads. 
+\mbox{\hyperlink{namespace_compact_star_1_1_physics_1_1_state}{State}} blocks this driver reads. 
 
-Drivers should return a reference to a static container (e.\+g. a static const std\+::vector$<$\+State\+Tag$>$). 
+
 
 Implements \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_i_driver_a813f52e0fad2ee496611eb6a18114354}{Compact\+Star\+::\+Physics\+::\+IDriver}}.
+
+\mbox{\Hypertarget{class_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_photon_cooling_a66ec050c82074aa8847ed1d3872d257e}\label{class_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_photon_cooling_a66ec050c82074aa8847ed1d3872d257e}} 
+\index{CompactStar::Physics::Driver::Thermal::PhotonCooling@{CompactStar::Physics::Driver::Thermal::PhotonCooling}!DiagnoseSnapshot@{DiagnoseSnapshot}}
+\index{DiagnoseSnapshot@{DiagnoseSnapshot}!CompactStar::Physics::Driver::Thermal::PhotonCooling@{CompactStar::Physics::Driver::Thermal::PhotonCooling}}
+\doxysubsubsection{\texorpdfstring{DiagnoseSnapshot()}{DiagnoseSnapshot()}}
+{\footnotesize\ttfamily void Compact\+Star\+::\+Physics\+::\+Driver\+::\+Thermal\+::\+Photon\+Cooling\+::\+Diagnose\+Snapshot (\begin{DoxyParamCaption}\item[{double}]{t,  }\item[{const \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_state_vector}{Evolution\+::\+State\+Vector}} \&}]{Y,  }\item[{const \mbox{\hyperlink{struct_compact_star_1_1_physics_1_1_evolution_1_1_driver_context}{Evolution\+::\+Driver\+Context}} \&}]{ctx,  }\item[{\mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_diagnostics_1_1_diagnostic_packet}{Evolution\+::\+Diagnostics\+::\+Diagnostic\+Packet}} \&}]{out }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Fill a packet with driver-\/specific diagnostics at (t, Y, ctx). 
+
+This method should\+:
+\begin{DoxyItemize}
+\item only {\itshape read} state and cache (no mutation),
+\item be safe even if some caches are missing (log as notes/warnings),
+\item prefer calling the same internal helper functions as the physics path to avoid drift between the code and the diagnostics.
+\end{DoxyItemize}
+
+
+\begin{DoxyParams}{Parameters}
+{\em t} & Simulation time \mbox{[}same unit as integrator uses\mbox{]}. \\
+\hline
+{\em Y} & Composite state vector (read-\/only). \\
+\hline
+{\em ctx} & Driver context (geometry/cache handles, star pointer, etc). \\
+\hline
+{\em out} & Packet to be filled/overwritten by this method. \\
+\hline
+\end{DoxyParams}
+
+
+Implements \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_driver_1_1_diagnostics_1_1_i_driver_diagnostics_a282ccc724f51a04081b59ca8e6eea0bb}{Compact\+Star\+::\+Physics\+::\+Driver\+::\+Diagnostics\+::\+IDriver\+Diagnostics}}.
+
+\mbox{\Hypertarget{class_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_photon_cooling_a80765fd32881122d00150939a4119f03}\label{class_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_photon_cooling_a80765fd32881122d00150939a4119f03}} 
+\index{CompactStar::Physics::Driver::Thermal::PhotonCooling@{CompactStar::Physics::Driver::Thermal::PhotonCooling}!DiagnosticsName@{DiagnosticsName}}
+\index{DiagnosticsName@{DiagnosticsName}!CompactStar::Physics::Driver::Thermal::PhotonCooling@{CompactStar::Physics::Driver::Thermal::PhotonCooling}}
+\doxysubsubsection{\texorpdfstring{DiagnosticsName()}{DiagnosticsName()}}
+{\footnotesize\ttfamily std\+::string Compact\+Star\+::\+Physics\+::\+Driver\+::\+Thermal\+::\+Photon\+Cooling\+::\+Diagnostics\+Name (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Human-\/readable stable name for this driver instance. 
+
+Example\+: \char`\"{}\+Photon\+Cooling\char`\"{} If you have multiple instances (different options), you can include an instance suffix (e.\+g., \char`\"{}\+Photon\+Cooling\#0\char`\"{}) but keep it stable for tooling. 
+
+Implements \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_driver_1_1_diagnostics_1_1_i_driver_diagnostics_ae39990bca910f580804aaa21e347537c}{Compact\+Star\+::\+Physics\+::\+Driver\+::\+Diagnostics\+::\+IDriver\+Diagnostics}}.
 
 \mbox{\Hypertarget{class_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_photon_cooling_a9953abae9587b8953309a1ecb9066cf3}\label{class_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_photon_cooling_a9953abae9587b8953309a1ecb9066cf3}} 
 \index{CompactStar::Physics::Driver::Thermal::PhotonCooling@{CompactStar::Physics::Driver::Thermal::PhotonCooling}!Name@{Name}}
@@ -103,22 +210,42 @@ Human-\/readable name for diagnostics/logging.
 
 Implements \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_i_driver_a1337b0292d71b672785c37ba4d7e8564}{Compact\+Star\+::\+Physics\+::\+IDriver}}.
 
-\mbox{\Hypertarget{class_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_photon_cooling_a75fda0abed33a37355c02b0072c35ee6}\label{class_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_photon_cooling_a75fda0abed33a37355c02b0072c35ee6}} 
+\mbox{\Hypertarget{class_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_photon_cooling_a7b609acb6e931f07674ef9b2312324fc}\label{class_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_photon_cooling_a7b609acb6e931f07674ef9b2312324fc}} 
+\index{CompactStar::Physics::Driver::Thermal::PhotonCooling@{CompactStar::Physics::Driver::Thermal::PhotonCooling}!UnitContract@{UnitContract}}
+\index{UnitContract@{UnitContract}!CompactStar::Physics::Driver::Thermal::PhotonCooling@{CompactStar::Physics::Driver::Thermal::PhotonCooling}}
+\doxysubsubsection{\texorpdfstring{UnitContract()}{UnitContract()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_diagnostics_1_1_unit_contract}{Evolution\+::\+Diagnostics\+::\+Unit\+Contract}} Compact\+Star\+::\+Physics\+::\+Driver\+::\+Thermal\+::\+Photon\+Cooling\+::\+Unit\+Contract (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Return unit conventions and assumptions for this driver. 
+
+This is intended to\+:
+\begin{DoxyItemize}
+\item be stable and rarely change,
+\item NOT duplicate computations,
+\item document inputs/outputs and required unit systems. 
+\end{DoxyItemize}
+
+Implements \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_driver_1_1_diagnostics_1_1_i_driver_diagnostics_a11b182179ee903feb396c131ca0404d8}{Compact\+Star\+::\+Physics\+::\+Driver\+::\+Diagnostics\+::\+IDriver\+Diagnostics}}.
+
+\mbox{\Hypertarget{class_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_photon_cooling_ae0fef08a30b8f5ac85aa8330ffe201ae}\label{class_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_photon_cooling_ae0fef08a30b8f5ac85aa8330ffe201ae}} 
 \index{CompactStar::Physics::Driver::Thermal::PhotonCooling@{CompactStar::Physics::Driver::Thermal::PhotonCooling}!Updates@{Updates}}
 \index{Updates@{Updates}!CompactStar::Physics::Driver::Thermal::PhotonCooling@{CompactStar::Physics::Driver::Thermal::PhotonCooling}}
 \doxysubsubsection{\texorpdfstring{Updates()}{Updates()}}
-{\footnotesize\ttfamily std\+::span$<$ const \mbox{\hyperlink{namespace_compact_star_1_1_physics_1_1_state_af14f5554b0d9be50c5ea718733bc424b}{State\+::\+State\+Tag}} $>$ Compact\+Star\+::\+Physics\+::\+Driver\+::\+Thermal\+::\+Photon\+Cooling\+::\+Updates (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+{\footnotesize\ttfamily const std\+::vector$<$ \mbox{\hyperlink{namespace_compact_star_1_1_physics_1_1_state_af14f5554b0d9be50c5ea718733bc424b}{State\+::\+State\+Tag}} $>$ \& Compact\+Star\+::\+Physics\+::\+Driver\+::\+Thermal\+::\+Photon\+Cooling\+::\+Updates (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
 
 
 
-Which state blocks this driver updates (adds contributions to). 
+\mbox{\hyperlink{namespace_compact_star_1_1_physics_1_1_state}{State}} blocks this driver updates (accumulates into RHS). 
 
-Drivers should return a reference to a static container (e.\+g. a static const std\+::vector$<$\+State\+Tag$>$). 
+
 
 Implements \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_i_driver_a24a531cb99a43313f30018d1687241a7}{Compact\+Star\+::\+Physics\+::\+IDriver}}.
 
 
 
-The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 
-Compact\+Star/\+Physics/\+Driver/\+Thermal/\mbox{\hyperlink{_photon_cooling_8hpp}{Photon\+Cooling.\+hpp}}\end{DoxyCompactItemize}
+Compact\+Star/\+Physics/\+Driver/\+Thermal/\mbox{\hyperlink{_photon_cooling_8hpp}{Photon\+Cooling.\+hpp}}\item 
+Compact\+Star/\+Physics/\+Driver/\+Thermal/src/\mbox{\hyperlink{_photon_cooling_8cpp}{Photon\+Cooling.\+cpp}}\end{DoxyCompactItemize}

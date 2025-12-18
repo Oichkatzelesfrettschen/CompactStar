@@ -1,0 +1,170 @@
+\hypertarget{class_compact_star_1_1_core_1_1_analysis}{}\doxysection{Compact\+Star\+::Core\+::Analysis Class Reference}
+\label{class_compact_star_1_1_core_1_1_analysis}\index{CompactStar::Core::Analysis@{CompactStar::Core::Analysis}}
+
+
+Abstract base class for implementing neutron star (NS) analysis routines.  
+
+
+
+
+{\ttfamily \#include $<$Analysis.\+hpp$>$}
+
+Inheritance diagram for Compact\+Star\+::Core\+::Analysis\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=1.564246cm]{d8/dfd/class_compact_star_1_1_core_1_1_analysis}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_compact_star_1_1_core_1_1_analysis_a1cf251eb8dc62b30815ab5548ad88f73}{Analysis}} ()
+\begin{DoxyCompactList}\small\item\em Default constructor. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_compact_star_1_1_core_1_1_analysis_a172ae0a3cbb68daa373baf081f5c00d9}{$\sim$\+Analysis}} ()
+\begin{DoxyCompactList}\small\item\em Virtual destructor. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{class_compact_star_1_1_core_1_1_analysis_ab5ec0bdec10bcad94d755591d6554654}{Analyze}} (\mbox{\hyperlink{class_compact_star_1_1_core_1_1_mixed_star}{Mixed\+Star}} $\ast$in\+\_\+star)=0
+\begin{DoxyCompactList}\small\item\em Pure virtual function to analyze a mixed star. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{class_compact_star_1_1_core_1_1_analysis_ae290c7a8cd8e6d79afa0f51dc7448ce4}{Analyze}} (\mbox{\hyperlink{class_compact_star_1_1_core_1_1_n_star}{NStar}} $\ast$in\+\_\+star)=0
+\begin{DoxyCompactList}\small\item\em Pure virtual function to analyze a neutron star. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{class_compact_star_1_1_core_1_1_analysis_aabe3f04ac70fbc4dd14ae3e5ca9cd97a}{Export}} (const \mbox{\hyperlink{class_zaki_1_1_string_1_1_directory}{Zaki\+::\+String\+::\+Directory}} \&)=0
+\begin{DoxyCompactList}\small\item\em Pure virtual function to export analysis results. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{class_compact_star_1_1_core_1_1_analysis_a420002bdacf7916fbdeb493058626ead}{Set\+Label}} (const std\+::string \&in\+\_\+label)
+\begin{DoxyCompactList}\small\item\em Sets a label for the analysis. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+std\+::string \mbox{\hyperlink{class_compact_star_1_1_core_1_1_analysis_ac4f29e04e0306445969bfff13463ef6e}{label}}
+\begin{DoxyCompactList}\small\item\em Label associated with the analysis. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Additional Inherited Members}
+
+
+\doxysubsection{Detailed Description}
+Abstract base class for implementing neutron star (NS) analysis routines. 
+
+The {\ttfamily \mbox{\hyperlink{class_compact_star_1_1_core_1_1_analysis}{Analysis}}} class is a virtual interface meant to be extended by specific analysis strategies. It provides hooks for analyzing both pure neutron stars ({\ttfamily \mbox{\hyperlink{class_compact_star_1_1_core_1_1_n_star}{NStar}}}) and dark-\/visible mixed stars ({\ttfamily \mbox{\hyperlink{class_compact_star_1_1_core_1_1_mixed_star}{Mixed\+Star}}}) as part of TOV sequence scans.
+
+Results can be exported using the {\ttfamily \mbox{\hyperlink{class_compact_star_1_1_core_1_1_analysis_aabe3f04ac70fbc4dd14ae3e5ca9cd97a}{Export()}}} method. A label is also associated with the analysis for easy identification. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_compact_star_1_1_core_1_1_analysis_a1cf251eb8dc62b30815ab5548ad88f73}\label{class_compact_star_1_1_core_1_1_analysis_a1cf251eb8dc62b30815ab5548ad88f73}} 
+\index{CompactStar::Core::Analysis@{CompactStar::Core::Analysis}!Analysis@{Analysis}}
+\index{Analysis@{Analysis}!CompactStar::Core::Analysis@{CompactStar::Core::Analysis}}
+\doxysubsubsection{\texorpdfstring{Analysis()}{Analysis()}}
+{\footnotesize\ttfamily Analysis\+::\+Analysis (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Default constructor. 
+
+Constructor for the \mbox{\hyperlink{class_compact_star_1_1_core_1_1_analysis}{Analysis}} class. Initializes the base \mbox{\hyperlink{class_compact_star_1_1_core_1_1_prog}{Prog}} class with the label \char`\"{}\+Analysis\char`\"{}. \mbox{\Hypertarget{class_compact_star_1_1_core_1_1_analysis_a172ae0a3cbb68daa373baf081f5c00d9}\label{class_compact_star_1_1_core_1_1_analysis_a172ae0a3cbb68daa373baf081f5c00d9}} 
+\index{CompactStar::Core::Analysis@{CompactStar::Core::Analysis}!````~Analysis@{$\sim$Analysis}}
+\index{````~Analysis@{$\sim$Analysis}!CompactStar::Core::Analysis@{CompactStar::Core::Analysis}}
+\doxysubsubsection{\texorpdfstring{$\sim$Analysis()}{~Analysis()}}
+{\footnotesize\ttfamily Analysis\+::$\sim$\+Analysis (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Virtual destructor. 
+
+Virtual destructor for the \mbox{\hyperlink{class_compact_star_1_1_core_1_1_analysis}{Analysis}} class. 
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_compact_star_1_1_core_1_1_analysis_ab5ec0bdec10bcad94d755591d6554654}\label{class_compact_star_1_1_core_1_1_analysis_ab5ec0bdec10bcad94d755591d6554654}} 
+\index{CompactStar::Core::Analysis@{CompactStar::Core::Analysis}!Analyze@{Analyze}}
+\index{Analyze@{Analyze}!CompactStar::Core::Analysis@{CompactStar::Core::Analysis}}
+\doxysubsubsection{\texorpdfstring{Analyze()}{Analyze()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily virtual void Compact\+Star\+::\+Core\+::\+Analysis\+::\+Analyze (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_compact_star_1_1_core_1_1_mixed_star}{Mixed\+Star}} $\ast$}]{in\+\_\+star }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Pure virtual function to analyze a mixed star. 
+
+This method must be implemented by any derived class.
+
+
+\begin{DoxyParams}{Parameters}
+{\em in\+\_\+star} & Pointer to the \mbox{\hyperlink{class_compact_star_1_1_core_1_1_mixed_star}{Mixed\+Star}} object to analyze. \\
+\hline
+\end{DoxyParams}
+
+
+Implemented in \mbox{\hyperlink{class_compact_star_1_1_dark_core___analysis_a61ec23c9f97382026af3bffd47656a26}{Compact\+Star\+::\+Dark\+Core\+\_\+\+Analysis}}, \mbox{\hyperlink{class_compact_star_1_1_microphysics_1_1_b_n_v_1_1_analysis_1_1_b_n_v___analysis_a1896cff67a9afe62b1c3f4adca8a9fc3}{Compact\+Star\+::\+Microphysics\+::\+BNV\+::\+Analysis\+::\+BNV\+\_\+\+Analysis}}, and \mbox{\hyperlink{class_compact_star_1_1_microphysics_1_1_b_n_v_1_1_analysis_1_1_decay___analysis_a2e450bd4d9cd1d706ffce2481ea4316a}{Compact\+Star\+::\+Microphysics\+::\+BNV\+::\+Analysis\+::\+Decay\+\_\+\+Analysis}}.
+
+\mbox{\Hypertarget{class_compact_star_1_1_core_1_1_analysis_ae290c7a8cd8e6d79afa0f51dc7448ce4}\label{class_compact_star_1_1_core_1_1_analysis_ae290c7a8cd8e6d79afa0f51dc7448ce4}} 
+\index{CompactStar::Core::Analysis@{CompactStar::Core::Analysis}!Analyze@{Analyze}}
+\index{Analyze@{Analyze}!CompactStar::Core::Analysis@{CompactStar::Core::Analysis}}
+\doxysubsubsection{\texorpdfstring{Analyze()}{Analyze()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily virtual void Compact\+Star\+::\+Core\+::\+Analysis\+::\+Analyze (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_compact_star_1_1_core_1_1_n_star}{NStar}} $\ast$}]{in\+\_\+star }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Pure virtual function to analyze a neutron star. 
+
+This method must be implemented by any derived class.
+
+
+\begin{DoxyParams}{Parameters}
+{\em in\+\_\+star} & Pointer to the \mbox{\hyperlink{class_compact_star_1_1_core_1_1_n_star}{NStar}} object to analyze. \\
+\hline
+\end{DoxyParams}
+
+
+Implemented in \mbox{\hyperlink{class_compact_star_1_1_dark_core___analysis_a8a27777f0f7ea82f0a6203c64f4bbeb9}{Compact\+Star\+::\+Dark\+Core\+\_\+\+Analysis}}, \mbox{\hyperlink{class_compact_star_1_1_microphysics_1_1_b_n_v_1_1_analysis_1_1_b_n_v___analysis_a246b88e2a3ec23ed988a009a9fa1802f}{Compact\+Star\+::\+Microphysics\+::\+BNV\+::\+Analysis\+::\+BNV\+\_\+\+Analysis}}, and \mbox{\hyperlink{class_compact_star_1_1_microphysics_1_1_b_n_v_1_1_analysis_1_1_decay___analysis_a82e42ba730e313365271ea38e994be09}{Compact\+Star\+::\+Microphysics\+::\+BNV\+::\+Analysis\+::\+Decay\+\_\+\+Analysis}}.
+
+\mbox{\Hypertarget{class_compact_star_1_1_core_1_1_analysis_aabe3f04ac70fbc4dd14ae3e5ca9cd97a}\label{class_compact_star_1_1_core_1_1_analysis_aabe3f04ac70fbc4dd14ae3e5ca9cd97a}} 
+\index{CompactStar::Core::Analysis@{CompactStar::Core::Analysis}!Export@{Export}}
+\index{Export@{Export}!CompactStar::Core::Analysis@{CompactStar::Core::Analysis}}
+\doxysubsubsection{\texorpdfstring{Export()}{Export()}}
+{\footnotesize\ttfamily virtual void Compact\+Star\+::\+Core\+::\+Analysis\+::\+Export (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_zaki_1_1_string_1_1_directory}{Zaki\+::\+String\+::\+Directory}} \&}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Pure virtual function to export analysis results. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em dir} & Directory where output should be saved. \\
+\hline
+\end{DoxyParams}
+
+
+Implemented in \mbox{\hyperlink{class_compact_star_1_1_dark_core___analysis_a950ad1404e462e749d29eca7baa76d4d}{Compact\+Star\+::\+Dark\+Core\+\_\+\+Analysis}}, \mbox{\hyperlink{class_compact_star_1_1_microphysics_1_1_b_n_v_1_1_analysis_1_1_b_n_v___analysis_aecdda1f6d9988932065729f2d1ca7cc2}{Compact\+Star\+::\+Microphysics\+::\+BNV\+::\+Analysis\+::\+BNV\+\_\+\+Analysis}}, and \mbox{\hyperlink{class_compact_star_1_1_microphysics_1_1_b_n_v_1_1_analysis_1_1_decay___analysis_a3246dd79dda633a791c659eff5c5922f}{Compact\+Star\+::\+Microphysics\+::\+BNV\+::\+Analysis\+::\+Decay\+\_\+\+Analysis}}.
+
+\mbox{\Hypertarget{class_compact_star_1_1_core_1_1_analysis_a420002bdacf7916fbdeb493058626ead}\label{class_compact_star_1_1_core_1_1_analysis_a420002bdacf7916fbdeb493058626ead}} 
+\index{CompactStar::Core::Analysis@{CompactStar::Core::Analysis}!SetLabel@{SetLabel}}
+\index{SetLabel@{SetLabel}!CompactStar::Core::Analysis@{CompactStar::Core::Analysis}}
+\doxysubsubsection{\texorpdfstring{SetLabel()}{SetLabel()}}
+{\footnotesize\ttfamily void Analysis\+::\+Set\+Label (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{in\+\_\+label }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Sets a label for the analysis. 
+
+Sets the label for the analysis.
+
+
+\begin{DoxyParams}{Parameters}
+{\em in\+\_\+label} & The label to assign.\\
+\hline
+{\em in\+\_\+label} & A string label used to tag or identify this analysis. \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{class_compact_star_1_1_core_1_1_analysis_ac4f29e04e0306445969bfff13463ef6e}\label{class_compact_star_1_1_core_1_1_analysis_ac4f29e04e0306445969bfff13463ef6e}} 
+\index{CompactStar::Core::Analysis@{CompactStar::Core::Analysis}!label@{label}}
+\index{label@{label}!CompactStar::Core::Analysis@{CompactStar::Core::Analysis}}
+\doxysubsubsection{\texorpdfstring{label}{label}}
+{\footnotesize\ttfamily std\+::string Compact\+Star\+::\+Core\+::\+Analysis\+::label\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Label associated with the analysis. 
+
+This string can be used to tag output files or to identify which type of analysis was performed. 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Compact\+Star/\+Core/\mbox{\hyperlink{_analysis_8hpp}{Analysis.\+hpp}}\item 
+Compact\+Star/\+Core/src/Analysis.\+cpp\end{DoxyCompactItemize}

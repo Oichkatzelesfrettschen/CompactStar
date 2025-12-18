@@ -28,42 +28,42 @@
 \DoxyCodeLine{24 \textcolor{comment}{ * SOFTWARE.}}
 \DoxyCodeLine{25 \textcolor{comment}{ */}}
 \DoxyCodeLine{26 }
-\DoxyCodeLine{39 \textcolor{preprocessor}{\#ifndef CompactStar\_Analysis\_H}}
-\DoxyCodeLine{40 \textcolor{preprocessor}{\#define CompactStar\_Analysis\_H}}
+\DoxyCodeLine{39 \textcolor{preprocessor}{\#ifndef CompactStar\_Core\_Analysis\_H}}
+\DoxyCodeLine{40 \textcolor{preprocessor}{\#define CompactStar\_Core\_Analysis\_H}}
 \DoxyCodeLine{41 }
 \DoxyCodeLine{42 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_prog_8hpp}{CompactStar/Core/Prog.hpp}}"{}}}
 \DoxyCodeLine{43 }
 \DoxyCodeLine{44 \textcolor{comment}{//==============================================================}}
-\DoxyCodeLine{45 \textcolor{keyword}{namespace }CompactStar}
+\DoxyCodeLine{45 \textcolor{keyword}{namespace }CompactStar::Core}
 \DoxyCodeLine{46 \{}
 \DoxyCodeLine{47 }
 \DoxyCodeLine{48 \textcolor{keyword}{class }MixedStar;}
 \DoxyCodeLine{49 \textcolor{keyword}{class }NStar;}
 \DoxyCodeLine{50 }
 \DoxyCodeLine{51 \textcolor{comment}{//==============================================================}}
-\DoxyCodeLine{64 \textcolor{comment}{}\textcolor{keyword}{class }\mbox{\hyperlink{class_compact_star_1_1_analysis}{Analysis}} : \textcolor{keyword}{public} \mbox{\hyperlink{class_compact_star_1_1_prog}{Prog}}}
+\DoxyCodeLine{64 \textcolor{comment}{}\textcolor{keyword}{class }\mbox{\hyperlink{class_compact_star_1_1_core_1_1_analysis}{Analysis}} : \textcolor{keyword}{public} \mbox{\hyperlink{class_compact_star_1_1_core_1_1_prog}{Prog}}}
 \DoxyCodeLine{65 \{}
 \DoxyCodeLine{66   \textcolor{keyword}{protected}:}
-\DoxyCodeLine{73     std::string \mbox{\hyperlink{class_compact_star_1_1_analysis_a1639e1e53d30a47265cd4181b1e0d7cf}{label}};}
+\DoxyCodeLine{73     std::string \mbox{\hyperlink{class_compact_star_1_1_core_1_1_analysis_ac4f29e04e0306445969bfff13463ef6e}{label}};}
 \DoxyCodeLine{74 }
 \DoxyCodeLine{75     \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
 \DoxyCodeLine{76   \textcolor{keyword}{public}:}
-\DoxyCodeLine{80     \mbox{\hyperlink{class_compact_star_1_1_analysis_ac964f5635ab924b7f31015573a66e99e}{Analysis}}();}
+\DoxyCodeLine{80     \mbox{\hyperlink{class_compact_star_1_1_core_1_1_analysis_a1cf251eb8dc62b30815ab5548ad88f73}{Analysis}}();}
 \DoxyCodeLine{81 }
-\DoxyCodeLine{85     \mbox{\hyperlink{class_compact_star_1_1_analysis_afc59b905f752b74f140c7adb4c8bb377}{\string~Analysis}}();}
+\DoxyCodeLine{85     \mbox{\hyperlink{class_compact_star_1_1_core_1_1_analysis_a172ae0a3cbb68daa373baf081f5c00d9}{\string~Analysis}}();}
 \DoxyCodeLine{86 }
-\DoxyCodeLine{94     \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_compact_star_1_1_analysis_adea8b1f4cea3766159c26e4b6f2b47b2}{Analyze}}(\mbox{\hyperlink{class_compact_star_1_1_mixed_star}{MixedStar}} *in\_star) = 0;}
+\DoxyCodeLine{94     \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_compact_star_1_1_core_1_1_analysis_ab5ec0bdec10bcad94d755591d6554654}{Analyze}}(\mbox{\hyperlink{class_compact_star_1_1_core_1_1_mixed_star}{MixedStar}} *in\_star) = 0;}
 \DoxyCodeLine{95 }
-\DoxyCodeLine{103     \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_compact_star_1_1_analysis_a643f58d89958f3b126f4da12ee5c2676}{Analyze}}(\mbox{\hyperlink{class_compact_star_1_1_n_star}{NStar}} *in\_star) = 0;}
+\DoxyCodeLine{103     \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_compact_star_1_1_core_1_1_analysis_ae290c7a8cd8e6d79afa0f51dc7448ce4}{Analyze}}(\mbox{\hyperlink{class_compact_star_1_1_core_1_1_n_star}{NStar}} *in\_star) = 0;}
 \DoxyCodeLine{104 }
-\DoxyCodeLine{110     \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_compact_star_1_1_analysis_aa24c5cec2864ded99241ddba1431b217}{Export}}(\textcolor{keyword}{const} \mbox{\hyperlink{class_zaki_1_1_string_1_1_directory}{Zaki::String::Directory}} \&) = 0;}
+\DoxyCodeLine{110     \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_compact_star_1_1_core_1_1_analysis_aabe3f04ac70fbc4dd14ae3e5ca9cd97a}{Export}}(\textcolor{keyword}{const} \mbox{\hyperlink{class_zaki_1_1_string_1_1_directory}{Zaki::String::Directory}} \&) = 0;}
 \DoxyCodeLine{111 }
-\DoxyCodeLine{117     \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_compact_star_1_1_analysis_a21fbd806d40d6fb8937c21192f5c1757}{SetLabel}}(\textcolor{keyword}{const} std::string \&in\_label);}
+\DoxyCodeLine{117     \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_compact_star_1_1_core_1_1_analysis_a420002bdacf7916fbdeb493058626ead}{SetLabel}}(\textcolor{keyword}{const} std::string \&in\_label);}
 \DoxyCodeLine{118 \};}
 \DoxyCodeLine{119 }
 \DoxyCodeLine{120 \textcolor{comment}{//==============================================================}}
-\DoxyCodeLine{121 \} \textcolor{comment}{// namespace CompactStar}}
+\DoxyCodeLine{121 \} \textcolor{comment}{// namespace CompactStar::Core}}
 \DoxyCodeLine{122 \textcolor{comment}{//==============================================================}}
-\DoxyCodeLine{123 \textcolor{preprocessor}{\#endif }\textcolor{comment}{/*CompactStar\_Analysis\_H*/}\textcolor{preprocessor}{}}
+\DoxyCodeLine{123 \textcolor{preprocessor}{\#endif }\textcolor{comment}{/*CompactStar\_Core\_Analysis\_H*/}\textcolor{preprocessor}{}}
 
 \end{DoxyCode}

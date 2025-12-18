@@ -29,8 +29,8 @@
 \DoxyCodeLine{25 \textcolor{comment}{ */}}
 \DoxyCodeLine{26 }
 \DoxyCodeLine{38 \textcolor{comment}{// Created on May 9, 2022}}
-\DoxyCodeLine{39 \textcolor{preprocessor}{\#ifndef CompactStar\_TOVSolver\_Thread\_H}}
-\DoxyCodeLine{40 \textcolor{preprocessor}{\#define CompactStar\_TOVSolver\_Thread\_H}}
+\DoxyCodeLine{39 \textcolor{preprocessor}{\#ifndef CompactStar\_Core\_TOVSolver\_Thread\_H}}
+\DoxyCodeLine{40 \textcolor{preprocessor}{\#define CompactStar\_Core\_TOVSolver\_Thread\_H}}
 \DoxyCodeLine{41 }
 \DoxyCodeLine{42 \textcolor{preprocessor}{\#include <thread>}}
 \DoxyCodeLine{43 \textcolor{comment}{// \#include <vector>}}
@@ -42,11 +42,11 @@
 \DoxyCodeLine{49 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_t_o_v_solver_8hpp}{CompactStar/Core/TOVSolver.hpp}}"{}}}
 \DoxyCodeLine{50 }
 \DoxyCodeLine{51 \textcolor{comment}{//==============================================================}}
-\DoxyCodeLine{52 \textcolor{keyword}{namespace }CompactStar}
+\DoxyCodeLine{52 \textcolor{keyword}{namespace }CompactStar::Core}
 \DoxyCodeLine{53 \{}
 \DoxyCodeLine{54 }
 \DoxyCodeLine{55 \textcolor{comment}{//==============================================================}}
-\DoxyCodeLine{56 \textcolor{keyword}{class }\mbox{\hyperlink{class_compact_star_1_1_t_o_v_solver___thread}{TOVSolver\_Thread}} : \textcolor{keyword}{public} \mbox{\hyperlink{class_compact_star_1_1_t_o_v_solver}{TOVSolver}}}
+\DoxyCodeLine{56 \textcolor{keyword}{class }\mbox{\hyperlink{class_compact_star_1_1_core_1_1_t_o_v_solver___thread}{TOVSolver\_Thread}} : \textcolor{keyword}{public} \mbox{\hyperlink{class_compact_star_1_1_core_1_1_t_o_v_solver}{TOVSolver}}}
 \DoxyCodeLine{57 \{}
 \DoxyCodeLine{58     \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
 \DoxyCodeLine{59   \textcolor{keyword}{private}:}
@@ -54,7 +54,7 @@
 \DoxyCodeLine{62 }
 \DoxyCodeLine{63     std::mutex m\_mutex;}
 \DoxyCodeLine{64 }
-\DoxyCodeLine{65     \textcolor{keyword}{static} \textcolor{keyword}{inline} \mbox{\hyperlink{class_compact_star_1_1_mixed_sequence}{MixedSequence}} mixed\_seq\_static;}
+\DoxyCodeLine{65     \textcolor{keyword}{static} \textcolor{keyword}{inline} \mbox{\hyperlink{class_compact_star_1_1_core_1_1_mixed_sequence}{MixedSequence}} mixed\_seq\_static;}
 \DoxyCodeLine{66 }
 \DoxyCodeLine{68     \textcolor{keyword}{static} \textcolor{keyword}{const} \textcolor{keywordtype}{short} \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} num\_of\_thrds = 2;}
 \DoxyCodeLine{69 }
@@ -67,23 +67,23 @@
 \DoxyCodeLine{78 }
 \DoxyCodeLine{79     \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
 \DoxyCodeLine{80   \textcolor{keyword}{public}:}
-\DoxyCodeLine{81     \mbox{\hyperlink{class_compact_star_1_1_t_o_v_solver___thread}{TOVSolver\_Thread}}(\textcolor{keyword}{const} \textcolor{keywordtype}{short} \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} \&in\_task\_id);}
-\DoxyCodeLine{82     \mbox{\hyperlink{class_compact_star_1_1_t_o_v_solver___thread}{\string~TOVSolver\_Thread}}();}
+\DoxyCodeLine{81     \mbox{\hyperlink{class_compact_star_1_1_core_1_1_t_o_v_solver___thread}{TOVSolver\_Thread}}(\textcolor{keyword}{const} \textcolor{keywordtype}{short} \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} \&in\_task\_id);}
+\DoxyCodeLine{82     \mbox{\hyperlink{class_compact_star_1_1_core_1_1_t_o_v_solver___thread}{\string~TOVSolver\_Thread}}();}
 \DoxyCodeLine{83 }
 \DoxyCodeLine{84     \textcolor{keywordtype}{void} SetSeqFileName(\textcolor{keyword}{const} std::string \&in\_file);}
 \DoxyCodeLine{85 }
-\DoxyCodeLine{87     \mbox{\hyperlink{class_compact_star_1_1_t_o_v_solver___thread_a905094ac0dbef7171a09ae903b09dfcc}{TOVSolver\_Thread}}(\textcolor{keyword}{const} \mbox{\hyperlink{class_compact_star_1_1_t_o_v_solver___thread}{TOVSolver\_Thread}} \&) = \textcolor{keyword}{delete};}
+\DoxyCodeLine{87     \mbox{\hyperlink{class_compact_star_1_1_core_1_1_t_o_v_solver___thread_a5cdeeafd16728d439979a7078b317f3a}{TOVSolver\_Thread}}(\textcolor{keyword}{const} \mbox{\hyperlink{class_compact_star_1_1_core_1_1_t_o_v_solver___thread}{TOVSolver\_Thread}} \&) = \textcolor{keyword}{delete};}
 \DoxyCodeLine{88 }
-\DoxyCodeLine{90     \mbox{\hyperlink{class_compact_star_1_1_t_o_v_solver___thread}{TOVSolver\_Thread}} \&\mbox{\hyperlink{class_compact_star_1_1_t_o_v_solver___thread_af65e694b465d0c85b2ddd2c52893db96}{operator=}}(\textcolor{keyword}{const} \mbox{\hyperlink{class_compact_star_1_1_t_o_v_solver___thread}{TOVSolver\_Thread}} \&) = \textcolor{keyword}{delete};}
+\DoxyCodeLine{90     \mbox{\hyperlink{class_compact_star_1_1_core_1_1_t_o_v_solver___thread}{TOVSolver\_Thread}} \&\mbox{\hyperlink{class_compact_star_1_1_core_1_1_t_o_v_solver___thread_a9825f90e577e57fa8c4a77b25845a6ed}{operator=}}(\textcolor{keyword}{const} \mbox{\hyperlink{class_compact_star_1_1_core_1_1_t_o_v_solver___thread}{TOVSolver\_Thread}} \&) = \textcolor{keyword}{delete};}
 \DoxyCodeLine{91 }
-\DoxyCodeLine{103     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_compact_star_1_1_t_o_v_solver___thread_a3e5ed61c9c44c898a97079b8df9c8760}{OnWorkDirChanged}}(\textcolor{keyword}{const} \mbox{\hyperlink{class_zaki_1_1_string_1_1_directory}{Zaki::String::Directory}} \&dir) \textcolor{keyword}{override};}
+\DoxyCodeLine{103     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_compact_star_1_1_core_1_1_t_o_v_solver___thread_a3e5ed61c9c44c898a97079b8df9c8760}{OnWorkDirChanged}}(\textcolor{keyword}{const} \mbox{\hyperlink{class_zaki_1_1_string_1_1_directory}{Zaki::String::Directory}} \&dir) \textcolor{keyword}{override};}
 \DoxyCodeLine{104 }
-\DoxyCodeLine{106     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_compact_star_1_1_t_o_v_solver___thread_a027f700c453c57b23025cc4f56dbb225}{ExportMixedSequence}}(\textcolor{keyword}{const} \mbox{\hyperlink{class_zaki_1_1_string_1_1_directory}{Zaki::String::Directory}} \&) \textcolor{keyword}{override};}
+\DoxyCodeLine{106     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_compact_star_1_1_core_1_1_t_o_v_solver___thread_a027f700c453c57b23025cc4f56dbb225}{ExportMixedSequence}}(\textcolor{keyword}{const} \mbox{\hyperlink{class_zaki_1_1_string_1_1_directory}{Zaki::String::Directory}} \&) \textcolor{keyword}{override};}
 \DoxyCodeLine{107 }
-\DoxyCodeLine{109     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_compact_star_1_1_t_o_v_solver___thread_adb0223898581ce67774853a70cec89ee}{ExportMixedStarProfile}}(\textcolor{keyword}{const} \textcolor{keywordtype}{size\_t} \&v\_idx,}
+\DoxyCodeLine{109     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_compact_star_1_1_core_1_1_t_o_v_solver___thread_adb0223898581ce67774853a70cec89ee}{ExportMixedStarProfile}}(\textcolor{keyword}{const} \textcolor{keywordtype}{size\_t} \&v\_idx,}
 \DoxyCodeLine{110                                 \textcolor{keyword}{const} \textcolor{keywordtype}{size\_t} \&d\_idx, \textcolor{keyword}{const} \mbox{\hyperlink{class_zaki_1_1_string_1_1_directory}{Zaki::String::Directory}} \&) \textcolor{keyword}{override};}
 \DoxyCodeLine{111 }
-\DoxyCodeLine{112     \textcolor{keywordtype}{void} SurfaceIsReached(\textcolor{keyword}{const} \textcolor{keywordtype}{size\_t} \&v\_idx,}
+\DoxyCodeLine{112     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_compact_star_1_1_core_1_1_t_o_v_solver_acbd44a86a8c5d261b0263eef52b84520}{SurfaceIsReached}}(\textcolor{keyword}{const} \textcolor{keywordtype}{size\_t} \&v\_idx,}
 \DoxyCodeLine{113                           \textcolor{keyword}{const} \textcolor{keywordtype}{size\_t} \&d\_idx) \textcolor{keyword}{override};}
 \DoxyCodeLine{114 }
 \DoxyCodeLine{115     \textcolor{keywordtype}{void} PrintStatus(\textcolor{keyword}{const} \textcolor{keywordtype}{size\_t} \&v\_idx,}
@@ -91,16 +91,16 @@
 \DoxyCodeLine{117                      \textcolor{keyword}{const} \textcolor{keywordtype}{size\_t} \&v\_res,}
 \DoxyCodeLine{118                      \textcolor{keyword}{const} \textcolor{keywordtype}{size\_t} \&d\_res) \textcolor{keyword}{override};}
 \DoxyCodeLine{119 }
-\DoxyCodeLine{121     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_compact_star_1_1_t_o_v_solver___thread_ad0e4937782b2a1871235e6dd5027f127}{SetMinIdxOffset}}(\textcolor{keyword}{const} \textcolor{keywordtype}{size\_t} \&in\_idx);}
+\DoxyCodeLine{121     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_compact_star_1_1_core_1_1_t_o_v_solver___thread_ad0e4937782b2a1871235e6dd5027f127}{SetMinIdxOffset}}(\textcolor{keyword}{const} \textcolor{keywordtype}{size\_t} \&in\_idx);}
 \DoxyCodeLine{122 }
-\DoxyCodeLine{124     \textcolor{keyword}{static} \mbox{\hyperlink{class_compact_star_1_1_mixed_sequence}{MixedSequence}} \mbox{\hyperlink{class_compact_star_1_1_t_o_v_solver___thread_a8b137494129751c755d892b83f9c1f01}{GetSequence}}();}
+\DoxyCodeLine{124     \textcolor{keyword}{static} \mbox{\hyperlink{class_compact_star_1_1_core_1_1_mixed_sequence}{MixedSequence}} \mbox{\hyperlink{class_compact_star_1_1_core_1_1_t_o_v_solver___thread_a8b137494129751c755d892b83f9c1f01}{GetSequence}}();}
 \DoxyCodeLine{125 \};}
 \DoxyCodeLine{126 }
 \DoxyCodeLine{127 \textcolor{comment}{//==============================================================}}
 \DoxyCodeLine{128 }
 \DoxyCodeLine{129 \textcolor{comment}{//==============================================================}}
-\DoxyCodeLine{130 \} \textcolor{comment}{// namespace CompactStar}}
+\DoxyCodeLine{130 \} \textcolor{comment}{// namespace CompactStar::Core}}
 \DoxyCodeLine{131 \textcolor{comment}{//==============================================================}}
-\DoxyCodeLine{132 \textcolor{preprocessor}{\#endif }\textcolor{comment}{/*CompactStar\_TOVSolver\_Thread\_H*/}\textcolor{preprocessor}{}}
+\DoxyCodeLine{132 \textcolor{preprocessor}{\#endif }\textcolor{comment}{/*CompactStar\_Core\_TOVSolver\_Thread\_H*/}\textcolor{preprocessor}{}}
 
 \end{DoxyCode}

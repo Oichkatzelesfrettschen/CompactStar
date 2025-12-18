@@ -1,0 +1,95 @@
+\hypertarget{_diagnostics_observer_8hpp_source}{}\doxysection{Diagnostics\+Observer.\+hpp}
+\label{_diagnostics_observer_8hpp_source}\index{CompactStar/Physics/Evolution/Observers/DiagnosticsObserver.hpp@{CompactStar/Physics/Evolution/Observers/DiagnosticsObserver.hpp}}
+\mbox{\hyperlink{_diagnostics_observer_8hpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#pragma once}}
+\DoxyCodeLine{2 \textcolor{comment}{// -\/*-\/ lsst-\/c++ -\/*-\/}}
+\DoxyCodeLine{3 \textcolor{comment}{/*}}
+\DoxyCodeLine{4 \textcolor{comment}{ * CompactStar}}
+\DoxyCodeLine{5 \textcolor{comment}{ * See License file at the top of the source tree.}}
+\DoxyCodeLine{6 \textcolor{comment}{ *}}
+\DoxyCodeLine{7 \textcolor{comment}{ * Copyright (c) 2025}}
+\DoxyCodeLine{8 \textcolor{comment}{ * Mohammadreza Zakeri}}
+\DoxyCodeLine{9 \textcolor{comment}{ *}}
+\DoxyCodeLine{10 \textcolor{comment}{ * MIT License — see LICENSE at repo root.}}
+\DoxyCodeLine{11 \textcolor{comment}{ */}}
+\DoxyCodeLine{12 }
+\DoxyCodeLine{32 \textcolor{preprocessor}{\#include <cstddef>}}
+\DoxyCodeLine{33 \textcolor{preprocessor}{\#include <fstream>}}
+\DoxyCodeLine{34 \textcolor{preprocessor}{\#include <memory>}}
+\DoxyCodeLine{35 \textcolor{preprocessor}{\#include <string>}}
+\DoxyCodeLine{36 \textcolor{preprocessor}{\#include <vector>}}
+\DoxyCodeLine{37 }
+\DoxyCodeLine{38 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_diagnostic_packet_8hpp}{CompactStar/Physics/Evolution/Diagnostics/DiagnosticPacket.hpp}}"{}}}
+\DoxyCodeLine{39 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_diagnostics_json_8hpp}{CompactStar/Physics/Evolution/Diagnostics/DiagnosticsJson.hpp}}"{}}}
+\DoxyCodeLine{40 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_unit_contract_8hpp}{CompactStar/Physics/Evolution/Diagnostics/UnitContract.hpp}}"{}}}
+\DoxyCodeLine{41 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_i_observer_8hpp}{CompactStar/Physics/Evolution/Observers/IObserver.hpp}}"{}}}
+\DoxyCodeLine{42 }
+\DoxyCodeLine{43 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_driver_diagnostics_8hpp}{CompactStar/Physics/Driver/Diagnostics/DriverDiagnostics.hpp}}"{}}}
+\DoxyCodeLine{44 }
+\DoxyCodeLine{45 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_directory_8hpp}{Zaki/String/Directory.hpp}}"{}}}
+\DoxyCodeLine{46 }
+\DoxyCodeLine{47 \textcolor{keyword}{namespace }CompactStar::Physics::Evolution::Observers}
+\DoxyCodeLine{48 \{}
+\DoxyCodeLine{49 }
+\DoxyCodeLine{53 \textcolor{keyword}{class }\mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_observers_1_1_diagnostics_observer}{DiagnosticsObserver}} final : \textcolor{keyword}{public} \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_observers_1_1_i_observer}{IObserver}}}
+\DoxyCodeLine{54 \{}
+\DoxyCodeLine{55   \textcolor{keyword}{public}:}
+\DoxyCodeLine{59     \textcolor{keyword}{struct }\mbox{\hyperlink{struct_compact_star_1_1_physics_1_1_evolution_1_1_observers_1_1_diagnostics_observer_1_1_options}{Options}}}
+\DoxyCodeLine{60     \{}
+\DoxyCodeLine{62         \mbox{\hyperlink{class_zaki_1_1_string_1_1_directory}{Zaki::String::Directory}} \mbox{\hyperlink{struct_compact_star_1_1_physics_1_1_evolution_1_1_observers_1_1_diagnostics_observer_1_1_options_af8515685b4edcf85068c17baa52b1d95}{output\_path}} = \textcolor{stringliteral}{"{}diagnostics.jsonl"{}};}
+\DoxyCodeLine{63 }
+\DoxyCodeLine{65         std::size\_t \mbox{\hyperlink{struct_compact_star_1_1_physics_1_1_evolution_1_1_observers_1_1_diagnostics_observer_1_1_options_afb79e6c765625695adeaec2c9f35baa3}{record\_every\_n\_steps}} = 0;}
+\DoxyCodeLine{66 }
+\DoxyCodeLine{68         \textcolor{keywordtype}{double} \mbox{\hyperlink{struct_compact_star_1_1_physics_1_1_evolution_1_1_observers_1_1_diagnostics_observer_1_1_options_a743512ee27120462a873ffe047a911d1}{record\_every\_dt}} = 0.0;}
+\DoxyCodeLine{69 }
+\DoxyCodeLine{71         \textcolor{keywordtype}{bool} \mbox{\hyperlink{struct_compact_star_1_1_physics_1_1_evolution_1_1_observers_1_1_diagnostics_observer_1_1_options_a0d8e613dd7e970e92bfc6d0fa57f3dd6}{record\_at\_start}} = \textcolor{keyword}{true};}
+\DoxyCodeLine{72 }
+\DoxyCodeLine{74         \textcolor{keywordtype}{bool} \mbox{\hyperlink{struct_compact_star_1_1_physics_1_1_evolution_1_1_observers_1_1_diagnostics_observer_1_1_options_ada60d206d3f872d91fc75dd29c3b845c}{append}} = \textcolor{keyword}{false};}
+\DoxyCodeLine{75 }
+\DoxyCodeLine{77         \mbox{\hyperlink{struct_compact_star_1_1_physics_1_1_evolution_1_1_diagnostics_1_1_json_options}{Diagnostics::JsonOptions}} \mbox{\hyperlink{struct_compact_star_1_1_physics_1_1_evolution_1_1_observers_1_1_diagnostics_observer_1_1_options_aa56b0db6f6e7eac41c39f9622977a4e2}{json\_opts}};}
+\DoxyCodeLine{78 }
+\DoxyCodeLine{80         \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_diagnostics_1_1_unit_vocabulary}{Diagnostics::UnitVocabulary}} \mbox{\hyperlink{struct_compact_star_1_1_physics_1_1_evolution_1_1_observers_1_1_diagnostics_observer_1_1_options_a33c63f88767aec623626ecfecb7ce3a6}{unit\_vocab}};}
+\DoxyCodeLine{81     \};}
+\DoxyCodeLine{82 }
+\DoxyCodeLine{84     \textcolor{keyword}{explicit} \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_observers_1_1_diagnostics_observer}{DiagnosticsObserver}}(\textcolor{keyword}{const} \mbox{\hyperlink{struct_compact_star_1_1_physics_1_1_evolution_1_1_observers_1_1_diagnostics_observer_1_1_options}{Options}} \&opts);}
+\DoxyCodeLine{85 }
+\DoxyCodeLine{87     \textcolor{keyword}{explicit} \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_observers_1_1_diagnostics_observer}{DiagnosticsObserver}}(\mbox{\hyperlink{struct_compact_star_1_1_physics_1_1_evolution_1_1_observers_1_1_diagnostics_observer_1_1_options}{Options}} \&\&opts);}
+\DoxyCodeLine{88 }
+\DoxyCodeLine{95     \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_observers_1_1_diagnostics_observer}{DiagnosticsObserver}}(\mbox{\hyperlink{struct_compact_star_1_1_physics_1_1_evolution_1_1_observers_1_1_diagnostics_observer_1_1_options}{Options}} opts,}
+\DoxyCodeLine{96                         std::vector<const Driver::Diagnostics::IDriverDiagnostics *> drivers);}
+\DoxyCodeLine{97 }
+\DoxyCodeLine{98     \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_observers_1_1_diagnostics_observer_a6c0d09976ddf5d4f4d2f87b035e07b96}{\string~DiagnosticsObserver}}() \textcolor{keyword}{override};}
+\DoxyCodeLine{99 }
+\DoxyCodeLine{103     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_observers_1_1_diagnostics_observer_a11c39761b8722bc0062df685ef78d1c9}{OnSample}}(\textcolor{keyword}{const} \mbox{\hyperlink{struct_compact_star_1_1_physics_1_1_evolution_1_1_observers_1_1_sample_info}{SampleInfo}} \&s,}
+\DoxyCodeLine{104                   \textcolor{keyword}{const} \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_state_vector}{StateVector}} \&Y,}
+\DoxyCodeLine{105                   \textcolor{keyword}{const} \mbox{\hyperlink{struct_compact_star_1_1_physics_1_1_evolution_1_1_driver_context}{DriverContext}} \&ctx) \textcolor{keyword}{override};}
+\DoxyCodeLine{106 }
+\DoxyCodeLine{114     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_observers_1_1_diagnostics_observer_aa2815290e01460c161090592b803ab8a}{OnStart}}(\textcolor{keyword}{const} \mbox{\hyperlink{struct_compact_star_1_1_physics_1_1_evolution_1_1_observers_1_1_run_info}{RunInfo}} \&run,}
+\DoxyCodeLine{115                  \textcolor{keyword}{const} \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_state_vector}{StateVector}} \&Y0,}
+\DoxyCodeLine{116                  \textcolor{keyword}{const} \mbox{\hyperlink{struct_compact_star_1_1_physics_1_1_evolution_1_1_driver_context}{DriverContext}} \&ctx) \textcolor{keyword}{override};}
+\DoxyCodeLine{117 }
+\DoxyCodeLine{118   \textcolor{keyword}{private}:}
+\DoxyCodeLine{120     \textcolor{keywordtype}{bool} ShouldRecord(\textcolor{keywordtype}{double} t) \textcolor{keyword}{const};}
+\DoxyCodeLine{121 }
+\DoxyCodeLine{123     \textcolor{keywordtype}{void} Record(\textcolor{keywordtype}{double} t, \textcolor{keyword}{const} \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_state_vector}{StateVector}} \&Y, \textcolor{keyword}{const} \mbox{\hyperlink{struct_compact_star_1_1_physics_1_1_evolution_1_1_driver_context}{DriverContext}} \&ctx);}
+\DoxyCodeLine{124 }
+\DoxyCodeLine{126     \textcolor{keywordtype}{void} OpenOutput();}
+\DoxyCodeLine{127 }
+\DoxyCodeLine{128   \textcolor{keyword}{private}:}
+\DoxyCodeLine{129     \mbox{\hyperlink{struct_compact_star_1_1_physics_1_1_evolution_1_1_observers_1_1_diagnostics_observer_1_1_options}{Options}} opts\_;}
+\DoxyCodeLine{130 }
+\DoxyCodeLine{131     std::vector<const Driver::Diagnostics::IDriverDiagnostics *> drivers\_;}
+\DoxyCodeLine{132 }
+\DoxyCodeLine{133     std::ofstream out\_;}
+\DoxyCodeLine{134 }
+\DoxyCodeLine{135     \textcolor{comment}{// Scheduling state}}
+\DoxyCodeLine{136     \textcolor{comment}{// bool first\_call\_ = true;}}
+\DoxyCodeLine{137     std::size\_t step\_counter\_ = 0;   }
+\DoxyCodeLine{138     \textcolor{keywordtype}{double} next\_time\_trigger\_ = 0.0; }
+\DoxyCodeLine{139     \textcolor{keywordtype}{bool} started\_ = \textcolor{keyword}{false};           }
+\DoxyCodeLine{140 \};}
+\DoxyCodeLine{141 }
+\DoxyCodeLine{142 \} \textcolor{comment}{// namespace CompactStar::Physics::Evolution::Observers}}
+
+\end{DoxyCode}

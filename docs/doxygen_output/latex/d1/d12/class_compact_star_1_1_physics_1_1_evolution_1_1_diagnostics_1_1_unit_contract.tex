@@ -1,0 +1,51 @@
+\hypertarget{class_compact_star_1_1_physics_1_1_evolution_1_1_diagnostics_1_1_unit_contract}{}\doxysection{Compact\+Star\+::Physics\+::Evolution\+::Diagnostics\+::Unit\+Contract Class Reference}
+\label{class_compact_star_1_1_physics_1_1_evolution_1_1_diagnostics_1_1_unit_contract}\index{CompactStar::Physics::Evolution::Diagnostics::UnitContract@{CompactStar::Physics::Evolution::Diagnostics::UnitContract}}
+
+
+A simple runtime contract describing unit conventions and assumptions.  
+
+
+
+
+{\ttfamily \#include $<$Unit\+Contract.\+hpp$>$}
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_diagnostics_1_1_unit_contract_ae267de44d6e51e76f64702f7f33d02db}{Add\+Line}} (std\+::string line)
+\begin{DoxyCompactList}\small\item\em Add one contract line. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_compact_star_1_1_physics_1_1_evolution_1_1_diagnostics_1_1_unit_contract_a65930f75230760055818a0b3c4a0a4f1}\label{class_compact_star_1_1_physics_1_1_evolution_1_1_diagnostics_1_1_unit_contract_a65930f75230760055818a0b3c4a0a4f1}} 
+const std\+::vector$<$ std\+::string $>$ \& {\bfseries Lines} () const
+\begin{DoxyCompactList}\small\item\em Return the lines. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_compact_star_1_1_physics_1_1_evolution_1_1_diagnostics_1_1_unit_contract_a9384d8bf0bd630bfaee6567de026bbb0}\label{class_compact_star_1_1_physics_1_1_evolution_1_1_diagnostics_1_1_unit_contract_a9384d8bf0bd630bfaee6567de026bbb0}} 
+bool {\bfseries Empty} () const
+\begin{DoxyCompactList}\small\item\em Return true if no lines exist. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+A simple runtime contract describing unit conventions and assumptions. 
+
+The contract is intended to be\+:
+\begin{DoxyItemize}
+\item stable (changes only when conventions/assumptions change),
+\item human-\/readable (printed in logs and exported),
+\item tool-\/friendly (line-\/based text). 
+\end{DoxyItemize}
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_compact_star_1_1_physics_1_1_evolution_1_1_diagnostics_1_1_unit_contract_ae267de44d6e51e76f64702f7f33d02db}\label{class_compact_star_1_1_physics_1_1_evolution_1_1_diagnostics_1_1_unit_contract_ae267de44d6e51e76f64702f7f33d02db}} 
+\index{CompactStar::Physics::Evolution::Diagnostics::UnitContract@{CompactStar::Physics::Evolution::Diagnostics::UnitContract}!AddLine@{AddLine}}
+\index{AddLine@{AddLine}!CompactStar::Physics::Evolution::Diagnostics::UnitContract@{CompactStar::Physics::Evolution::Diagnostics::UnitContract}}
+\doxysubsubsection{\texorpdfstring{AddLine()}{AddLine()}}
+{\footnotesize\ttfamily void Compact\+Star\+::\+Physics\+::\+Evolution\+::\+Diagnostics\+::\+Unit\+Contract\+::\+Add\+Line (\begin{DoxyParamCaption}\item[{std\+::string}]{line }\end{DoxyParamCaption})}
+
+
+
+Add one contract line. 
+
+Example\+: \char`\"{}\+T\+\_\+inf, T\+\_\+surf are Kelvin \mbox{[}\+K\mbox{]}\char`\"{} 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Compact\+Star/\+Physics/\+Evolution/\+Diagnostics/\mbox{\hyperlink{_unit_contract_8hpp}{Unit\+Contract.\+hpp}}\item 
+Compact\+Star/\+Physics/\+Evolution/\+Diagnostics/src/Unit\+Contract.\+cpp\end{DoxyCompactItemize}

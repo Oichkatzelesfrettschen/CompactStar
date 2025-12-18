@@ -1,0 +1,220 @@
+\hypertarget{class_compact_star_1_1_core_1_1_prog}{}\doxysection{Compact\+Star\+::Core\+::Prog Class Reference}
+\label{class_compact_star_1_1_core_1_1_prog}\index{CompactStar::Core::Prog@{CompactStar::Core::Prog}}
+Inheritance diagram for Compact\+Star\+::Core\+::Prog\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=12.000000cm]{d1/dbf/class_compact_star_1_1_core_1_1_prog}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{Indent}\textbf{ Construction \& Destruction}\par
+{\em Backward-\/compat hook (deprecated)\+: kept for source compatibility.
+
+Calls \mbox{\hyperlink{class_compact_star_1_1_core_1_1_prog_ab7917253a3c1eb49926e9a2192cb58f5}{On\+Work\+Dir\+Changed}} by default. \begin{DoxyRefDesc}{Deprecated}
+\item[\mbox{\hyperlink{deprecated__deprecated000001}{Deprecated}}]Prefer overriding \mbox{\hyperlink{class_compact_star_1_1_core_1_1_prog_ab7917253a3c1eb49926e9a2192cb58f5}{On\+Work\+Dir\+Changed()}}. \end{DoxyRefDesc}
+}\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_compact_star_1_1_core_1_1_prog_a2b4ec1cddf34f5902dd2f43e59318abc}\label{class_compact_star_1_1_core_1_1_prog_a2b4ec1cddf34f5902dd2f43e59318abc}} 
+{\bfseries Prog} ()=default
+\begin{DoxyCompactList}\small\item\em Default constructor. No I/O side effects. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_compact_star_1_1_core_1_1_prog_a1edcffeddf6d1f489f3bb98779ccdc4a}{Prog}} (const std\+::string \&prog\+\_\+name)
+\begin{DoxyCompactList}\small\item\em Construct with a name. No I/O side effects. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_compact_star_1_1_core_1_1_prog_affec6e8e6f1fb7764108089b147d61e7}\label{class_compact_star_1_1_core_1_1_prog_affec6e8e6f1fb7764108089b147d61e7}} 
+virtual {\bfseries $\sim$\+Prog} ()=default
+\begin{DoxyCompactList}\small\item\em Virtual destructor. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\end{Indent}
+\begin{Indent}\textbf{ Setters}\par
+\begin{DoxyCompactItemize}
+\item 
+virtual \mbox{\hyperlink{class_compact_star_1_1_core_1_1_prog}{Prog}} $\ast$ \mbox{\hyperlink{class_compact_star_1_1_core_1_1_prog_a706e1dda8945e018ad54e372e1eee4b9}{Set\+Wrk\+Dir}} (const \mbox{\hyperlink{class_zaki_1_1_string_1_1_directory}{Zaki\+::\+String\+::\+Directory}} \&dir)
+\begin{DoxyCompactList}\small\item\em Set the working directory and create it if needed. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{class_compact_star_1_1_core_1_1_prog_aa41208abb08d25e40229b48a2ebfb827}{Set\+Name}} (const std\+::string \&prog\+\_\+name)
+\begin{DoxyCompactList}\small\item\em Assign a name label to this instance. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\end{Indent}
+\begin{Indent}\textbf{ Getters}\par
+\begin{DoxyCompactItemize}
+\item 
+virtual \mbox{\hyperlink{class_zaki_1_1_string_1_1_directory}{Zaki\+::\+String\+::\+Directory}} \mbox{\hyperlink{class_compact_star_1_1_core_1_1_prog_a95981bebe85c84770d3c30604388e608}{Get\+Wrk\+Dir}} () const
+\begin{DoxyCompactList}\small\item\em Retrieve the current working directory. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_compact_star_1_1_core_1_1_prog_ad2218c6c2755069a2e57b633c3b18ea1}{Is\+Wrk\+Dir\+Set}} () const
+\begin{DoxyCompactList}\small\item\em Check if the working directory has been set. \end{DoxyCompactList}\item 
+virtual std\+::string \mbox{\hyperlink{class_compact_star_1_1_core_1_1_prog_af5fc8a40babf79e9e524c8f7ef99f270}{Get\+Name}} () const
+\begin{DoxyCompactList}\small\item\em Get the assigned name of this instance. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\end{Indent}
+\begin{Indent}\textbf{ Diagnostics}\par
+\begin{DoxyCompactItemize}
+\item 
+virtual void \mbox{\hyperlink{class_compact_star_1_1_core_1_1_prog_ac39c43ee91bdf6bbffe044d203c9be1b}{Print}} () const
+\begin{DoxyCompactList}\small\item\em Print a brief summary to stdout. \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{class_compact_star_1_1_core_1_1_prog_ad919280df6569735ccbc0d2fb224056b}{Ptr\+Str}} () const
+\begin{DoxyCompactList}\small\item\em Return this object\textquotesingle{}s address as a hex string (for logs). \end{DoxyCompactList}\end{DoxyCompactItemize}
+\end{Indent}
+\doxysubsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+virtual void \mbox{\hyperlink{class_compact_star_1_1_core_1_1_prog_ab7917253a3c1eb49926e9a2192cb58f5}{On\+Work\+Dir\+Changed}} (const \mbox{\hyperlink{class_zaki_1_1_string_1_1_directory}{Zaki\+::\+String\+::\+Directory}} \&dir)
+\begin{DoxyCompactList}\small\item\em Hook invoked after work directory is changed. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_compact_star_1_1_core_1_1_prog_aca59ff2c680e90357e4de7a94f0cc045}\label{class_compact_star_1_1_core_1_1_prog_aca59ff2c680e90357e4de7a94f0cc045}} 
+\mbox{\hyperlink{class_zaki_1_1_string_1_1_directory}{Zaki\+::\+String\+::\+Directory}} {\bfseries wrk\+\_\+dir\+\_\+} \{\char`\"{}\char`\"{}\}
+\begin{DoxyCompactList}\small\item\em Working directory for outputs produced by this object. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_compact_star_1_1_core_1_1_prog_a1eddd1918d358baaf4dc109cc87e7b9e}\label{class_compact_star_1_1_core_1_1_prog_a1eddd1918d358baaf4dc109cc87e7b9e}} 
+std\+::string {\bfseries name\+\_\+} \{\}
+\begin{DoxyCompactList}\small\item\em Human-\/readable label for this object instance. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_compact_star_1_1_core_1_1_prog_ae04879f14cb8f86a9968c97c050f952e}\label{class_compact_star_1_1_core_1_1_prog_ae04879f14cb8f86a9968c97c050f952e}} 
+bool {\bfseries set\+\_\+name\+\_\+flag\+\_\+} \{false\}
+\begin{DoxyCompactList}\small\item\em Flags indicating whether setters have been called. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_compact_star_1_1_core_1_1_prog_a1d9ad3c475c7d4241fc5c10b73c4e51a}\label{class_compact_star_1_1_core_1_1_prog_a1d9ad3c475c7d4241fc5c10b73c4e51a}} 
+bool {\bfseries set\+\_\+wrk\+\_\+dir\+\_\+flag\+\_\+} \{false\}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_compact_star_1_1_core_1_1_prog_a1edcffeddf6d1f489f3bb98779ccdc4a}\label{class_compact_star_1_1_core_1_1_prog_a1edcffeddf6d1f489f3bb98779ccdc4a}} 
+\index{CompactStar::Core::Prog@{CompactStar::Core::Prog}!Prog@{Prog}}
+\index{Prog@{Prog}!CompactStar::Core::Prog@{CompactStar::Core::Prog}}
+\doxysubsubsection{\texorpdfstring{Prog()}{Prog()}}
+{\footnotesize\ttfamily Compact\+Star\+::\+Core\+::\+Prog\+::\+Prog (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{prog\+\_\+name }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [explicit]}}
+
+
+
+Construct with a name. No I/O side effects. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em prog\+\_\+name} & Name to assign. \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_compact_star_1_1_core_1_1_prog_af5fc8a40babf79e9e524c8f7ef99f270}\label{class_compact_star_1_1_core_1_1_prog_af5fc8a40babf79e9e524c8f7ef99f270}} 
+\index{CompactStar::Core::Prog@{CompactStar::Core::Prog}!GetName@{GetName}}
+\index{GetName@{GetName}!CompactStar::Core::Prog@{CompactStar::Core::Prog}}
+\doxysubsubsection{\texorpdfstring{GetName()}{GetName()}}
+{\footnotesize\ttfamily std\+::string Compact\+Star\+::\+Core\+::\+Prog\+::\+Get\+Name (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Get the assigned name of this instance. 
+
+\begin{DoxyReturn}{Returns}
+Name string (may be empty if unset).
+\end{DoxyReturn}
+Logs an error if the name has not been set. \mbox{\Hypertarget{class_compact_star_1_1_core_1_1_prog_a95981bebe85c84770d3c30604388e608}\label{class_compact_star_1_1_core_1_1_prog_a95981bebe85c84770d3c30604388e608}} 
+\index{CompactStar::Core::Prog@{CompactStar::Core::Prog}!GetWrkDir@{GetWrkDir}}
+\index{GetWrkDir@{GetWrkDir}!CompactStar::Core::Prog@{CompactStar::Core::Prog}}
+\doxysubsubsection{\texorpdfstring{GetWrkDir()}{GetWrkDir()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_zaki_1_1_string_1_1_directory}{Zaki\+::\+String\+::\+Directory}} Compact\+Star\+::\+Core\+::\+Prog\+::\+Get\+Wrk\+Dir (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Retrieve the current working directory. 
+
+\begin{DoxyReturn}{Returns}
+Current working directory path.
+\end{DoxyReturn}
+Logs an error if no directory has been set yet. \mbox{\Hypertarget{class_compact_star_1_1_core_1_1_prog_ad2218c6c2755069a2e57b633c3b18ea1}\label{class_compact_star_1_1_core_1_1_prog_ad2218c6c2755069a2e57b633c3b18ea1}} 
+\index{CompactStar::Core::Prog@{CompactStar::Core::Prog}!IsWrkDirSet@{IsWrkDirSet}}
+\index{IsWrkDirSet@{IsWrkDirSet}!CompactStar::Core::Prog@{CompactStar::Core::Prog}}
+\doxysubsubsection{\texorpdfstring{IsWrkDirSet()}{IsWrkDirSet()}}
+{\footnotesize\ttfamily bool Compact\+Star\+::\+Core\+::\+Prog\+::\+Is\+Wrk\+Dir\+Set (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Check if the working directory has been set. 
+
+\begin{DoxyReturn}{Returns}
+True if \mbox{\hyperlink{class_compact_star_1_1_core_1_1_prog_a706e1dda8945e018ad54e372e1eee4b9}{Set\+Wrk\+Dir}} was called. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_compact_star_1_1_core_1_1_prog_ab7917253a3c1eb49926e9a2192cb58f5}\label{class_compact_star_1_1_core_1_1_prog_ab7917253a3c1eb49926e9a2192cb58f5}} 
+\index{CompactStar::Core::Prog@{CompactStar::Core::Prog}!OnWorkDirChanged@{OnWorkDirChanged}}
+\index{OnWorkDirChanged@{OnWorkDirChanged}!CompactStar::Core::Prog@{CompactStar::Core::Prog}}
+\doxysubsubsection{\texorpdfstring{OnWorkDirChanged()}{OnWorkDirChanged()}}
+{\footnotesize\ttfamily void Compact\+Star\+::\+Core\+::\+Prog\+::\+On\+Work\+Dir\+Changed (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_zaki_1_1_string_1_1_directory}{Zaki\+::\+String\+::\+Directory}} \&}]{dir }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [virtual]}}
+
+
+
+Hook invoked after work directory is changed. 
+
+Derived classes should override to push the new directory into owned members that also manage outputs. Default\+: no-\/op.
+
+
+\begin{DoxyParams}{Parameters}
+{\em dir} & Newly assigned working directory. \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented in \mbox{\hyperlink{class_compact_star_1_1_core_1_1_t_o_v_solver_adffee3ac13c04d67e63bdc6909d4a48b}{Compact\+Star\+::\+Core\+::\+TOVSolver}}, \mbox{\hyperlink{class_compact_star_1_1_core_1_1_t_o_v_solver___thread_a3e5ed61c9c44c898a97079b8df9c8760}{Compact\+Star\+::\+Core\+::\+TOVSolver\+\_\+\+Thread}}, and \mbox{\hyperlink{class_compact_star_1_1_microphysics_1_1_b_n_v_1_1_channels_1_1_b_n_v___b___chi___combo_a79b66d37224aaf800eda47826fec2b4b}{Compact\+Star\+::\+Microphysics\+::\+BNV\+::\+Channels\+::\+BNV\+\_\+\+B\+\_\+\+Chi\+\_\+\+Combo}}.
+
+\mbox{\Hypertarget{class_compact_star_1_1_core_1_1_prog_ac39c43ee91bdf6bbffe044d203c9be1b}\label{class_compact_star_1_1_core_1_1_prog_ac39c43ee91bdf6bbffe044d203c9be1b}} 
+\index{CompactStar::Core::Prog@{CompactStar::Core::Prog}!Print@{Print}}
+\index{Print@{Print}!CompactStar::Core::Prog@{CompactStar::Core::Prog}}
+\doxysubsubsection{\texorpdfstring{Print()}{Print()}}
+{\footnotesize\ttfamily void Compact\+Star\+::\+Core\+::\+Prog\+::\+Print (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Print a brief summary to stdout. 
+
+Designed for ad-\/hoc debugging; override to extend. 
+
+Reimplemented in \mbox{\hyperlink{class_compact_star_1_1_particle_ab74dcc86a69dccf09311f25fc93737c3}{Compact\+Star\+::\+Particle}}.
+
+\mbox{\Hypertarget{class_compact_star_1_1_core_1_1_prog_ad919280df6569735ccbc0d2fb224056b}\label{class_compact_star_1_1_core_1_1_prog_ad919280df6569735ccbc0d2fb224056b}} 
+\index{CompactStar::Core::Prog@{CompactStar::Core::Prog}!PtrStr@{PtrStr}}
+\index{PtrStr@{PtrStr}!CompactStar::Core::Prog@{CompactStar::Core::Prog}}
+\doxysubsubsection{\texorpdfstring{PtrStr()}{PtrStr()}}
+{\footnotesize\ttfamily std\+::string Compact\+Star\+::\+Core\+::\+Prog\+::\+Ptr\+Str (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Return this object\textquotesingle{}s address as a hex string (for logs). 
+
+\begin{DoxyReturn}{Returns}
+Hex string like \char`\"{}0x7ff…\char`\"{}. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_compact_star_1_1_core_1_1_prog_aa41208abb08d25e40229b48a2ebfb827}\label{class_compact_star_1_1_core_1_1_prog_aa41208abb08d25e40229b48a2ebfb827}} 
+\index{CompactStar::Core::Prog@{CompactStar::Core::Prog}!SetName@{SetName}}
+\index{SetName@{SetName}!CompactStar::Core::Prog@{CompactStar::Core::Prog}}
+\doxysubsubsection{\texorpdfstring{SetName()}{SetName()}}
+{\footnotesize\ttfamily void Compact\+Star\+::\+Core\+::\+Prog\+::\+Set\+Name (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{prog\+\_\+name }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Assign a name label to this instance. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em prog\+\_\+name} & Descriptive name for this object. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_compact_star_1_1_core_1_1_prog_a706e1dda8945e018ad54e372e1eee4b9}\label{class_compact_star_1_1_core_1_1_prog_a706e1dda8945e018ad54e372e1eee4b9}} 
+\index{CompactStar::Core::Prog@{CompactStar::Core::Prog}!SetWrkDir@{SetWrkDir}}
+\index{SetWrkDir@{SetWrkDir}!CompactStar::Core::Prog@{CompactStar::Core::Prog}}
+\doxysubsubsection{\texorpdfstring{SetWrkDir()}{SetWrkDir()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_compact_star_1_1_core_1_1_prog}{Prog}} $\ast$ Compact\+Star\+::\+Core\+::\+Prog\+::\+Set\+Wrk\+Dir (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_zaki_1_1_string_1_1_directory}{Zaki\+::\+String\+::\+Directory}} \&}]{dir }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Set the working directory and create it if needed. 
+
+Calls {\ttfamily dir.\+Create()} and then invokes \mbox{\hyperlink{class_compact_star_1_1_core_1_1_prog_ab7917253a3c1eb49926e9a2192cb58f5}{On\+Work\+Dir\+Changed}} so that derived classes may propagate the directory to their members.
+
+
+\begin{DoxyParams}{Parameters}
+{\em dir} & Desired working directory path. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+{\ttfamily this} for fluent chaining. 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Compact\+Star/\+Core/\mbox{\hyperlink{_prog_8hpp}{Prog.\+hpp}}\item 
+Compact\+Star/\+Core/src/Prog.\+cpp\end{DoxyCompactItemize}

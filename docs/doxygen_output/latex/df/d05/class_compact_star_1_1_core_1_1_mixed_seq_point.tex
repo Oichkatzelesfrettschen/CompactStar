@@ -1,0 +1,144 @@
+\hypertarget{class_compact_star_1_1_core_1_1_mixed_seq_point}{}\doxysection{Compact\+Star\+::Core\+::Mixed\+Seq\+Point Class Reference}
+\label{class_compact_star_1_1_core_1_1_mixed_seq_point}\index{CompactStar::Core::MixedSeqPoint@{CompactStar::Core::MixedSeqPoint}}
+
+
+Represents a data point in the sequence of mixed stars (visible + dark).  
+
+
+
+
+{\ttfamily \#include $<$Mixed\+Star.\+hpp$>$}
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_compact_star_1_1_core_1_1_mixed_seq_point_ac37dce98bf460b1bb7804e3f1f556dd1}\label{class_compact_star_1_1_core_1_1_mixed_seq_point_ac37dce98bf460b1bb7804e3f1f556dd1}} 
+{\bfseries Mixed\+Seq\+Point} ()
+\begin{DoxyCompactList}\small\item\em Default constructor. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_compact_star_1_1_core_1_1_mixed_seq_point_aa652e7b1894597fc095fd0d520728c85}{Mixed\+Seq\+Point}} (const size\+\_\+t \&in\+\_\+v\+\_\+idx, const \mbox{\hyperlink{class_compact_star_1_1_core_1_1_seq_point}{Seq\+Point}} \&in\+\_\+v, const size\+\_\+t \&in\+\_\+d\+\_\+idx, const \mbox{\hyperlink{class_compact_star_1_1_core_1_1_seq_point}{Seq\+Point}} \&in\+\_\+d)
+\item 
+\mbox{\hyperlink{class_compact_star_1_1_core_1_1_mixed_seq_point_a1809ea01d85dfd799408dec41739895d}{Mixed\+Seq\+Point}} (const size\+\_\+t \&in\+\_\+v\+\_\+idx, const size\+\_\+t \&in\+\_\+d\+\_\+idx, const std\+::vector$<$ double $>$ \&in\+\_\+seq\+\_\+row)
+\item 
+std\+::string \mbox{\hyperlink{class_compact_star_1_1_core_1_1_mixed_seq_point_a07fd60601915192e7170ff7b565abe7c}{Str}} () const
+\begin{DoxyCompactList}\small\item\em Prints the string representation of the sequence point. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_compact_star_1_1_core_1_1_mixed_seq_point_a17d208b830fe0a5e0b2efedc582556ca}\label{class_compact_star_1_1_core_1_1_mixed_seq_point_a17d208b830fe0a5e0b2efedc582556ca}} 
+void {\bfseries Reset} ()
+\begin{DoxyCompactList}\small\item\em Resets the sequence point to default. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_compact_star_1_1_core_1_1_mixed_seq_point}{Mixed\+Seq\+Point}} \mbox{\hyperlink{class_compact_star_1_1_core_1_1_mixed_seq_point_ad4f8c6c90cae3238cd219854c5b82cfd}{operator+}} (const \mbox{\hyperlink{class_compact_star_1_1_core_1_1_mixed_seq_point}{Mixed\+Seq\+Point}} \&seq) const
+\begin{DoxyCompactList}\small\item\em Adds two mixed sequence points. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_compact_star_1_1_core_1_1_mixed_seq_point}{Mixed\+Seq\+Point}} \mbox{\hyperlink{class_compact_star_1_1_core_1_1_mixed_seq_point_a4b8dfc15a2ec97abdd0354f697c5ef3f}{operator$\ast$}} (const double \&num) const
+\begin{DoxyCompactList}\small\item\em Multiplies a sequence point by a scalar. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_compact_star_1_1_core_1_1_mixed_seq_point_ae3f813a87d21959f6ebe09e858fa23b9}\label{class_compact_star_1_1_core_1_1_mixed_seq_point_ae3f813a87d21959f6ebe09e858fa23b9}} 
+\mbox{\hyperlink{class_compact_star_1_1_core_1_1_seq_point}{Seq\+Point}} {\bfseries v}
+\item 
+\mbox{\Hypertarget{class_compact_star_1_1_core_1_1_mixed_seq_point_ae27f86e239fecbd785373860617a40aa}\label{class_compact_star_1_1_core_1_1_mixed_seq_point_ae27f86e239fecbd785373860617a40aa}} 
+\mbox{\hyperlink{class_compact_star_1_1_core_1_1_seq_point}{Seq\+Point}} {\bfseries d}
+\begin{DoxyCompactList}\small\item\em Visible and dark sequence points. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_compact_star_1_1_core_1_1_mixed_seq_point_a5235cea0bb3e31e4d21ffc0da56de635}\label{class_compact_star_1_1_core_1_1_mixed_seq_point_a5235cea0bb3e31e4d21ffc0da56de635}} 
+size\+\_\+t {\bfseries v\+\_\+idx} = 0
+\item 
+\mbox{\Hypertarget{class_compact_star_1_1_core_1_1_mixed_seq_point_a05cbe1ceafc8c4788c9582f204fb784e}\label{class_compact_star_1_1_core_1_1_mixed_seq_point_a05cbe1ceafc8c4788c9582f204fb784e}} 
+size\+\_\+t {\bfseries d\+\_\+idx} = 0
+\begin{DoxyCompactList}\small\item\em Indices of visible and dark points in the sequence. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Represents a data point in the sequence of mixed stars (visible + dark). 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_compact_star_1_1_core_1_1_mixed_seq_point_aa652e7b1894597fc095fd0d520728c85}\label{class_compact_star_1_1_core_1_1_mixed_seq_point_aa652e7b1894597fc095fd0d520728c85}} 
+\index{CompactStar::Core::MixedSeqPoint@{CompactStar::Core::MixedSeqPoint}!MixedSeqPoint@{MixedSeqPoint}}
+\index{MixedSeqPoint@{MixedSeqPoint}!CompactStar::Core::MixedSeqPoint@{CompactStar::Core::MixedSeqPoint}}
+\doxysubsubsection{\texorpdfstring{MixedSeqPoint()}{MixedSeqPoint()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily Compact\+Star\+::\+Core\+::\+Mixed\+Seq\+Point\+::\+Mixed\+Seq\+Point (\begin{DoxyParamCaption}\item[{const size\+\_\+t \&}]{in\+\_\+v\+\_\+idx,  }\item[{const \mbox{\hyperlink{class_compact_star_1_1_core_1_1_seq_point}{Seq\+Point}} \&}]{in\+\_\+v,  }\item[{const size\+\_\+t \&}]{in\+\_\+d\+\_\+idx,  }\item[{const \mbox{\hyperlink{class_compact_star_1_1_core_1_1_seq_point}{Seq\+Point}} \&}]{in\+\_\+d }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Constructor from visible and dark sequence points 
+\begin{DoxyParams}{Parameters}
+{\em in\+\_\+v\+\_\+idx} & Index of the visible sequence point \\
+\hline
+{\em in\+\_\+v} & Visible sequence point \\
+\hline
+{\em in\+\_\+d\+\_\+idx} & Index of the dark sequence point \\
+\hline
+{\em in\+\_\+d} & Dark sequence point \\
+\hline
+\end{DoxyParams}
+\begin{DoxyNote}{Note}
+The indices are used to identify the sequence points in the mixed star sequence. 
+\end{DoxyNote}
+\mbox{\Hypertarget{class_compact_star_1_1_core_1_1_mixed_seq_point_a1809ea01d85dfd799408dec41739895d}\label{class_compact_star_1_1_core_1_1_mixed_seq_point_a1809ea01d85dfd799408dec41739895d}} 
+\index{CompactStar::Core::MixedSeqPoint@{CompactStar::Core::MixedSeqPoint}!MixedSeqPoint@{MixedSeqPoint}}
+\index{MixedSeqPoint@{MixedSeqPoint}!CompactStar::Core::MixedSeqPoint@{CompactStar::Core::MixedSeqPoint}}
+\doxysubsubsection{\texorpdfstring{MixedSeqPoint()}{MixedSeqPoint()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily Compact\+Star\+::\+Core\+::\+Mixed\+Seq\+Point\+::\+Mixed\+Seq\+Point (\begin{DoxyParamCaption}\item[{const size\+\_\+t \&}]{in\+\_\+v\+\_\+idx,  }\item[{const size\+\_\+t \&}]{in\+\_\+d\+\_\+idx,  }\item[{const std\+::vector$<$ double $>$ \&}]{in\+\_\+seq\+\_\+row }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Constructor from visible and dark sequence points 
+\begin{DoxyParams}{Parameters}
+{\em in\+\_\+v\+\_\+idx} & Index of the visible sequence point \\
+\hline
+{\em in\+\_\+d\+\_\+idx} & Index of the dark sequence point \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_compact_star_1_1_core_1_1_mixed_seq_point_a4b8dfc15a2ec97abdd0354f697c5ef3f}\label{class_compact_star_1_1_core_1_1_mixed_seq_point_a4b8dfc15a2ec97abdd0354f697c5ef3f}} 
+\index{CompactStar::Core::MixedSeqPoint@{CompactStar::Core::MixedSeqPoint}!operator$\ast$@{operator$\ast$}}
+\index{operator$\ast$@{operator$\ast$}!CompactStar::Core::MixedSeqPoint@{CompactStar::Core::MixedSeqPoint}}
+\doxysubsubsection{\texorpdfstring{operator$\ast$()}{operator*()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_compact_star_1_1_core_1_1_mixed_seq_point}{Mixed\+Seq\+Point}} Compact\+Star\+::\+Core\+::\+Mixed\+Seq\+Point\+::operator$\ast$ (\begin{DoxyParamCaption}\item[{const double \&}]{num }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Multiplies a sequence point by a scalar. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em num} & The scalar to multiply with. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A new mixed sequence point that is the product of this and the given scalar. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_compact_star_1_1_core_1_1_mixed_seq_point_ad4f8c6c90cae3238cd219854c5b82cfd}\label{class_compact_star_1_1_core_1_1_mixed_seq_point_ad4f8c6c90cae3238cd219854c5b82cfd}} 
+\index{CompactStar::Core::MixedSeqPoint@{CompactStar::Core::MixedSeqPoint}!operator+@{operator+}}
+\index{operator+@{operator+}!CompactStar::Core::MixedSeqPoint@{CompactStar::Core::MixedSeqPoint}}
+\doxysubsubsection{\texorpdfstring{operator+()}{operator+()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_compact_star_1_1_core_1_1_mixed_seq_point}{Mixed\+Seq\+Point}} Compact\+Star\+::\+Core\+::\+Mixed\+Seq\+Point\+::operator+ (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_compact_star_1_1_core_1_1_mixed_seq_point}{Mixed\+Seq\+Point}} \&}]{seq }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Adds two mixed sequence points. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em seq} & The mixed sequence point to add. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A new mixed sequence point that is the sum of this and the given point. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_compact_star_1_1_core_1_1_mixed_seq_point_a07fd60601915192e7170ff7b565abe7c}\label{class_compact_star_1_1_core_1_1_mixed_seq_point_a07fd60601915192e7170ff7b565abe7c}} 
+\index{CompactStar::Core::MixedSeqPoint@{CompactStar::Core::MixedSeqPoint}!Str@{Str}}
+\index{Str@{Str}!CompactStar::Core::MixedSeqPoint@{CompactStar::Core::MixedSeqPoint}}
+\doxysubsubsection{\texorpdfstring{Str()}{Str()}}
+{\footnotesize\ttfamily std\+::string Compact\+Star\+::\+Core\+::\+Mixed\+Seq\+Point\+::\+Str (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Prints the string representation of the sequence point. 
+
+\begin{DoxyReturn}{Returns}
+A string representation of the sequence point. 
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+The string format is\+: \char`\"{}v\+\_\+idx d\+\_\+idx v\+\_\+str d\+\_\+str\char`\"{} where v\+\_\+str and d\+\_\+str are the string representations of the visible and dark sequence points, respectively. 
+\end{DoxyNote}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Compact\+Star/\+Core/\mbox{\hyperlink{_mixed_star_8hpp}{Mixed\+Star.\+hpp}}\end{DoxyCompactItemize}

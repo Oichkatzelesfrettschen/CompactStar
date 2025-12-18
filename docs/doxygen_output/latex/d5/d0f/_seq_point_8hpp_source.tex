@@ -157,189 +157,186 @@
 \DoxyCodeLine{153 \textcolor{comment}{ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE}}
 \DoxyCodeLine{154 \textcolor{comment}{ * SOFTWARE.}}
 \DoxyCodeLine{155 \textcolor{comment}{ */}}
-\DoxyCodeLine{170 \textcolor{preprocessor}{\#ifndef CompactStar\_SeqPoint\_H}}
-\DoxyCodeLine{171 \textcolor{preprocessor}{\#define CompactStar\_SeqPoint\_H}}
+\DoxyCodeLine{170 \textcolor{preprocessor}{\#ifndef CompactStar\_Core\_SeqPoint\_H}}
+\DoxyCodeLine{171 \textcolor{preprocessor}{\#define CompactStar\_Core\_SeqPoint\_H}}
 \DoxyCodeLine{172 }
 \DoxyCodeLine{173 \textcolor{preprocessor}{\#include <cstdio>} \textcolor{comment}{// snprintf}}
 \DoxyCodeLine{174 \textcolor{preprocessor}{\#include <sstream>}}
 \DoxyCodeLine{175 \textcolor{preprocessor}{\#include <string>}}
 \DoxyCodeLine{176 \textcolor{preprocessor}{\#include <vector>}}
 \DoxyCodeLine{177 }
-\DoxyCodeLine{178 \textcolor{comment}{// If you have a logging macro like Z\_LOG\_ERROR declared elsewhere, it will be used.}}
-\DoxyCodeLine{179 \textcolor{comment}{// Otherwise, this header remains agnostic and does not depend on it.}}
+\DoxyCodeLine{178 \textcolor{keyword}{namespace }CompactStar::Core}
+\DoxyCodeLine{179 \{}
 \DoxyCodeLine{180 }
-\DoxyCodeLine{181 \textcolor{keyword}{namespace }CompactStar}
-\DoxyCodeLine{182 \{}
-\DoxyCodeLine{183 }
-\DoxyCodeLine{184 \textcolor{comment}{//==============================================================}}
-\DoxyCodeLine{185 \textcolor{comment}{//                        SeqPoint}}
-\DoxyCodeLine{186 \textcolor{comment}{//==============================================================}}
-\DoxyCodeLine{203 \textcolor{comment}{}\textcolor{keyword}{class }\mbox{\hyperlink{class_compact_star_1_1_seq_point}{SeqPoint}}}
-\DoxyCodeLine{204 \{}
-\DoxyCodeLine{205   \textcolor{keyword}{public}:}
-\DoxyCodeLine{207     \textcolor{keyword}{static} \textcolor{keyword}{constexpr} std::size\_t \mbox{\hyperlink{class_compact_star_1_1_seq_point_ae1e4db463fe1308f9591bdf0b8adcb0a}{kSize}} = 6;}
-\DoxyCodeLine{208 }
-\DoxyCodeLine{209     \textcolor{comment}{// -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
-\DoxyCodeLine{210     \textcolor{comment}{// Data members (public POD for convenience)}}
-\DoxyCodeLine{211     \textcolor{comment}{// -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
-\DoxyCodeLine{212 }
-\DoxyCodeLine{213     \textcolor{keywordtype}{double} \mbox{\hyperlink{class_compact_star_1_1_seq_point_a5c2f83e3243384f3ad31fd67626efb34}{ec}} = 0.0; }
-\DoxyCodeLine{214     \textcolor{keywordtype}{double} \mbox{\hyperlink{class_compact_star_1_1_seq_point_aac3e5ddc0344b1c1d796349e8793b0a8}{m}} = 0.0;     }
-\DoxyCodeLine{215     \textcolor{keywordtype}{double} \mbox{\hyperlink{class_compact_star_1_1_seq_point_a68c1a5f589acd078100b6d015f94ef40}{r}} = 0.0;     }
-\DoxyCodeLine{216     \textcolor{keywordtype}{double} \mbox{\hyperlink{class_compact_star_1_1_seq_point_aee457020f84d04f106f7fcc9bf3c9814}{pc}} = 0.0; }
-\DoxyCodeLine{217     \textcolor{keywordtype}{double} \mbox{\hyperlink{class_compact_star_1_1_seq_point_a2699ebe377e636db80801125885d4cd0}{b}} = 0.0;     }
-\DoxyCodeLine{218     \textcolor{keywordtype}{double} \mbox{\hyperlink{class_compact_star_1_1_seq_point_addc0aa6c519d4410c041452124665209}{I}} = 0.0;     }
-\DoxyCodeLine{219 }
-\DoxyCodeLine{220     \textcolor{comment}{// -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
-\DoxyCodeLine{221     \textcolor{comment}{// Construction}}
-\DoxyCodeLine{222     \textcolor{comment}{// -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
-\DoxyCodeLine{223 }
-\DoxyCodeLine{227     \mbox{\hyperlink{class_compact_star_1_1_seq_point_a460914e79970ee2840985fecf459e049}{SeqPoint}}() = \textcolor{keywordflow}{default};}
-\DoxyCodeLine{228 }
-\DoxyCodeLine{238     \mbox{\hyperlink{class_compact_star_1_1_seq_point_a7d3b6a449ec7f73d4b685e917e988f59}{SeqPoint}}(\textcolor{keywordtype}{double} in\_ec, \textcolor{keywordtype}{double} in\_m, \textcolor{keywordtype}{double} in\_r,}
-\DoxyCodeLine{239              \textcolor{keywordtype}{double} in\_pc, \textcolor{keywordtype}{double} in\_b, \textcolor{keywordtype}{double} in\_I)}
-\DoxyCodeLine{240         : \mbox{\hyperlink{class_compact_star_1_1_seq_point_a5c2f83e3243384f3ad31fd67626efb34}{ec}}(in\_ec), \mbox{\hyperlink{class_compact_star_1_1_seq_point_aac3e5ddc0344b1c1d796349e8793b0a8}{m}}(in\_m), \mbox{\hyperlink{class_compact_star_1_1_seq_point_a68c1a5f589acd078100b6d015f94ef40}{r}}(in\_r), \mbox{\hyperlink{class_compact_star_1_1_seq_point_aee457020f84d04f106f7fcc9bf3c9814}{pc}}(in\_pc), \mbox{\hyperlink{class_compact_star_1_1_seq_point_a2699ebe377e636db80801125885d4cd0}{b}}(in\_b), \mbox{\hyperlink{class_compact_star_1_1_seq_point_addc0aa6c519d4410c041452124665209}{I}}(in\_I) \{\}}
-\DoxyCodeLine{241 }
-\DoxyCodeLine{250     \textcolor{keyword}{explicit} \mbox{\hyperlink{class_compact_star_1_1_seq_point_a829a39c4c2da2e827a374f574f5aace2}{SeqPoint}}(\textcolor{keyword}{const} std::vector<double> \&row)}
-\DoxyCodeLine{251     \{}
-\DoxyCodeLine{252         \textcolor{keywordflow}{if} (row.size() == \mbox{\hyperlink{class_compact_star_1_1_seq_point_ae1e4db463fe1308f9591bdf0b8adcb0a}{kSize}})}
-\DoxyCodeLine{253         \{}
-\DoxyCodeLine{254             \mbox{\hyperlink{class_compact_star_1_1_seq_point_a5c2f83e3243384f3ad31fd67626efb34}{ec}} = row[0];}
-\DoxyCodeLine{255             \mbox{\hyperlink{class_compact_star_1_1_seq_point_aac3e5ddc0344b1c1d796349e8793b0a8}{m}} = row[1];}
-\DoxyCodeLine{256             \mbox{\hyperlink{class_compact_star_1_1_seq_point_a68c1a5f589acd078100b6d015f94ef40}{r}} = row[2];}
-\DoxyCodeLine{257             \mbox{\hyperlink{class_compact_star_1_1_seq_point_aee457020f84d04f106f7fcc9bf3c9814}{pc}} = row[3];}
-\DoxyCodeLine{258             \mbox{\hyperlink{class_compact_star_1_1_seq_point_a2699ebe377e636db80801125885d4cd0}{b}} = row[4];}
-\DoxyCodeLine{259             \mbox{\hyperlink{class_compact_star_1_1_seq_point_addc0aa6c519d4410c041452124665209}{I}} = row[5];}
-\DoxyCodeLine{260         \}}
-\DoxyCodeLine{261         \textcolor{keywordflow}{else}}
-\DoxyCodeLine{262         \{}
-\DoxyCodeLine{263             \mbox{\hyperlink{class_compact_star_1_1_seq_point_aea3f17097ce4a553f2d25006e9690574}{clear}}();}
-\DoxyCodeLine{264             \textcolor{comment}{// Optionally log here (e.g., Z\_LOG\_ERROR("{}SeqPoint row size != 6"{}));}}
-\DoxyCodeLine{265         \}}
-\DoxyCodeLine{266     \}}
-\DoxyCodeLine{267 }
-\DoxyCodeLine{277     \mbox{\hyperlink{class_compact_star_1_1_seq_point}{SeqPoint}} \&\mbox{\hyperlink{class_compact_star_1_1_seq_point_ad2e072118a010a0859944fcaccc9c6e0}{operator=}}(\textcolor{keyword}{const} std::vector<double> \&row)}
-\DoxyCodeLine{278     \{}
-\DoxyCodeLine{279         \textcolor{keywordflow}{if} (row.size() == \mbox{\hyperlink{class_compact_star_1_1_seq_point_ae1e4db463fe1308f9591bdf0b8adcb0a}{kSize}})}
-\DoxyCodeLine{280         \{}
-\DoxyCodeLine{281             \mbox{\hyperlink{class_compact_star_1_1_seq_point_a5c2f83e3243384f3ad31fd67626efb34}{ec}} = row[0];}
-\DoxyCodeLine{282             \mbox{\hyperlink{class_compact_star_1_1_seq_point_aac3e5ddc0344b1c1d796349e8793b0a8}{m}} = row[1];}
-\DoxyCodeLine{283             \mbox{\hyperlink{class_compact_star_1_1_seq_point_a68c1a5f589acd078100b6d015f94ef40}{r}} = row[2];}
-\DoxyCodeLine{284             \mbox{\hyperlink{class_compact_star_1_1_seq_point_aee457020f84d04f106f7fcc9bf3c9814}{pc}} = row[3];}
-\DoxyCodeLine{285             \mbox{\hyperlink{class_compact_star_1_1_seq_point_a2699ebe377e636db80801125885d4cd0}{b}} = row[4];}
-\DoxyCodeLine{286             \mbox{\hyperlink{class_compact_star_1_1_seq_point_addc0aa6c519d4410c041452124665209}{I}} = row[5];}
-\DoxyCodeLine{287         \}}
-\DoxyCodeLine{288         \textcolor{keywordflow}{else}}
-\DoxyCodeLine{289         \{}
-\DoxyCodeLine{290             \mbox{\hyperlink{class_compact_star_1_1_seq_point_aea3f17097ce4a553f2d25006e9690574}{clear}}();}
-\DoxyCodeLine{291         \}}
-\DoxyCodeLine{292         \textcolor{keywordflow}{return} *\textcolor{keyword}{this};}
-\DoxyCodeLine{293     \}}
-\DoxyCodeLine{294 }
-\DoxyCodeLine{303     \mbox{\hyperlink{class_compact_star_1_1_seq_point_ac6dadb1cb94acf21a3453a0055fdaff8}{SeqPoint}}(std::initializer\_list<double> list)}
-\DoxyCodeLine{304     \{}
-\DoxyCodeLine{305         \textcolor{keywordflow}{if} (list.size() == \mbox{\hyperlink{class_compact_star_1_1_seq_point_ae1e4db463fe1308f9591bdf0b8adcb0a}{kSize}})}
-\DoxyCodeLine{306         \{}
-\DoxyCodeLine{307             \textcolor{keyword}{auto} it = list.begin();}
-\DoxyCodeLine{308             \mbox{\hyperlink{class_compact_star_1_1_seq_point_a5c2f83e3243384f3ad31fd67626efb34}{ec}} = *it++;}
-\DoxyCodeLine{309             \mbox{\hyperlink{class_compact_star_1_1_seq_point_aac3e5ddc0344b1c1d796349e8793b0a8}{m}} = *it++;}
-\DoxyCodeLine{310             \mbox{\hyperlink{class_compact_star_1_1_seq_point_a68c1a5f589acd078100b6d015f94ef40}{r}} = *it++;}
-\DoxyCodeLine{311             \mbox{\hyperlink{class_compact_star_1_1_seq_point_aee457020f84d04f106f7fcc9bf3c9814}{pc}} = *it++;}
-\DoxyCodeLine{312             \mbox{\hyperlink{class_compact_star_1_1_seq_point_a2699ebe377e636db80801125885d4cd0}{b}} = *it++;}
-\DoxyCodeLine{313             \mbox{\hyperlink{class_compact_star_1_1_seq_point_addc0aa6c519d4410c041452124665209}{I}} = *it++;}
-\DoxyCodeLine{314         \}}
-\DoxyCodeLine{315         \textcolor{keywordflow}{else}}
-\DoxyCodeLine{316         \{}
-\DoxyCodeLine{317             \mbox{\hyperlink{class_compact_star_1_1_seq_point_aea3f17097ce4a553f2d25006e9690574}{clear}}();}
-\DoxyCodeLine{318         \}}
-\DoxyCodeLine{319     \}}
-\DoxyCodeLine{320 }
-\DoxyCodeLine{330     \mbox{\hyperlink{class_compact_star_1_1_seq_point}{SeqPoint}} \&\mbox{\hyperlink{class_compact_star_1_1_seq_point_ae98e81678613ee9963f8b036214057f4}{operator=}}(std::initializer\_list<double> list)}
-\DoxyCodeLine{331     \{}
-\DoxyCodeLine{332         \textcolor{keywordflow}{if} (list.size() == \mbox{\hyperlink{class_compact_star_1_1_seq_point_ae1e4db463fe1308f9591bdf0b8adcb0a}{kSize}})}
-\DoxyCodeLine{333         \{}
-\DoxyCodeLine{334             \textcolor{keyword}{auto} it = list.begin();}
-\DoxyCodeLine{335             \mbox{\hyperlink{class_compact_star_1_1_seq_point_a5c2f83e3243384f3ad31fd67626efb34}{ec}} = *it++;}
-\DoxyCodeLine{336             \mbox{\hyperlink{class_compact_star_1_1_seq_point_aac3e5ddc0344b1c1d796349e8793b0a8}{m}} = *it++;}
-\DoxyCodeLine{337             \mbox{\hyperlink{class_compact_star_1_1_seq_point_a68c1a5f589acd078100b6d015f94ef40}{r}} = *it++;}
-\DoxyCodeLine{338             \mbox{\hyperlink{class_compact_star_1_1_seq_point_aee457020f84d04f106f7fcc9bf3c9814}{pc}} = *it++;}
-\DoxyCodeLine{339             \mbox{\hyperlink{class_compact_star_1_1_seq_point_a2699ebe377e636db80801125885d4cd0}{b}} = *it++;}
-\DoxyCodeLine{340             \mbox{\hyperlink{class_compact_star_1_1_seq_point_addc0aa6c519d4410c041452124665209}{I}} = *it++;}
-\DoxyCodeLine{341         \}}
-\DoxyCodeLine{342         \textcolor{keywordflow}{else}}
-\DoxyCodeLine{343         \{}
-\DoxyCodeLine{344             \mbox{\hyperlink{class_compact_star_1_1_seq_point_aea3f17097ce4a553f2d25006e9690574}{clear}}();}
-\DoxyCodeLine{345         \}}
-\DoxyCodeLine{346         \textcolor{keywordflow}{return} *\textcolor{keyword}{this};}
-\DoxyCodeLine{347     \}}
-\DoxyCodeLine{348 }
-\DoxyCodeLine{354     [[nodiscard]] \textcolor{keyword}{static} \mbox{\hyperlink{class_compact_star_1_1_seq_point}{SeqPoint}} \mbox{\hyperlink{class_compact_star_1_1_seq_point_a2213321094f39fdbeb68e2a987173a5e}{FromRow}}(\textcolor{keyword}{const} std::vector<double> \&row)}
-\DoxyCodeLine{355     \{}
-\DoxyCodeLine{356         \textcolor{keywordflow}{return} \mbox{\hyperlink{class_compact_star_1_1_seq_point_a460914e79970ee2840985fecf459e049}{SeqPoint}}(row);}
-\DoxyCodeLine{357     \}}
-\DoxyCodeLine{358 }
-\DoxyCodeLine{359     \textcolor{comment}{// -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
-\DoxyCodeLine{360     \textcolor{comment}{// Utilities}}
-\DoxyCodeLine{361     \textcolor{comment}{// -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
-\DoxyCodeLine{362 }
-\DoxyCodeLine{366     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_compact_star_1_1_seq_point_aea3f17097ce4a553f2d25006e9690574}{clear}}() \{ \mbox{\hyperlink{class_compact_star_1_1_seq_point_a5c2f83e3243384f3ad31fd67626efb34}{ec}} = \mbox{\hyperlink{class_compact_star_1_1_seq_point_aac3e5ddc0344b1c1d796349e8793b0a8}{m}} = \mbox{\hyperlink{class_compact_star_1_1_seq_point_a68c1a5f589acd078100b6d015f94ef40}{r}} = \mbox{\hyperlink{class_compact_star_1_1_seq_point_aee457020f84d04f106f7fcc9bf3c9814}{pc}} = \mbox{\hyperlink{class_compact_star_1_1_seq_point_a2699ebe377e636db80801125885d4cd0}{b}} = \mbox{\hyperlink{class_compact_star_1_1_seq_point_addc0aa6c519d4410c041452124665209}{I}} = 0.0; \}}
-\DoxyCodeLine{367 }
-\DoxyCodeLine{374     [[nodiscard]] std::string \mbox{\hyperlink{class_compact_star_1_1_seq_point_ad011ef3fc4be7164403486f04e90cac7}{Str}}()\textcolor{keyword}{ const}}
-\DoxyCodeLine{375 \textcolor{keyword}{    }\{}
-\DoxyCodeLine{376         std::stringstream ss;}
-\DoxyCodeLine{377         \textcolor{keywordtype}{char} tmp[160];}
-\DoxyCodeLine{378         std::snprintf(tmp, \textcolor{keyword}{sizeof}(tmp),}
-\DoxyCodeLine{379                       \textcolor{stringliteral}{"{}\%.8e\(\backslash\)t\%.8e\(\backslash\)t\%.8e\(\backslash\)t\%.8e\(\backslash\)t\%.8e\(\backslash\)t\%.8e"{}},}
-\DoxyCodeLine{380                       \mbox{\hyperlink{class_compact_star_1_1_seq_point_a5c2f83e3243384f3ad31fd67626efb34}{ec}}, \mbox{\hyperlink{class_compact_star_1_1_seq_point_aac3e5ddc0344b1c1d796349e8793b0a8}{m}}, \mbox{\hyperlink{class_compact_star_1_1_seq_point_a68c1a5f589acd078100b6d015f94ef40}{r}}, \mbox{\hyperlink{class_compact_star_1_1_seq_point_aee457020f84d04f106f7fcc9bf3c9814}{pc}}, \mbox{\hyperlink{class_compact_star_1_1_seq_point_a2699ebe377e636db80801125885d4cd0}{b}}, \mbox{\hyperlink{class_compact_star_1_1_seq_point_addc0aa6c519d4410c041452124665209}{I}});}
-\DoxyCodeLine{381         ss << tmp;}
-\DoxyCodeLine{382         \textcolor{keywordflow}{return} ss.str();}
-\DoxyCodeLine{383     \}}
-\DoxyCodeLine{384 }
-\DoxyCodeLine{389     [[nodiscard]] std::vector<double> \mbox{\hyperlink{class_compact_star_1_1_seq_point_af5f6a6480e22049ef628c9c1bf529847}{ToRow}}()\textcolor{keyword}{ const}}
-\DoxyCodeLine{390 \textcolor{keyword}{    }\{}
-\DoxyCodeLine{391         \textcolor{keywordflow}{return} \{\mbox{\hyperlink{class_compact_star_1_1_seq_point_a5c2f83e3243384f3ad31fd67626efb34}{ec}}, \mbox{\hyperlink{class_compact_star_1_1_seq_point_aac3e5ddc0344b1c1d796349e8793b0a8}{m}}, \mbox{\hyperlink{class_compact_star_1_1_seq_point_a68c1a5f589acd078100b6d015f94ef40}{r}}, \mbox{\hyperlink{class_compact_star_1_1_seq_point_aee457020f84d04f106f7fcc9bf3c9814}{pc}}, \mbox{\hyperlink{class_compact_star_1_1_seq_point_a2699ebe377e636db80801125885d4cd0}{b}}, \mbox{\hyperlink{class_compact_star_1_1_seq_point_addc0aa6c519d4410c041452124665209}{I}}\};}
-\DoxyCodeLine{392     \}}
-\DoxyCodeLine{393 }
-\DoxyCodeLine{394     \textcolor{comment}{// -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
-\DoxyCodeLine{395     \textcolor{comment}{// Arithmetic (component-\/wise)}}
-\DoxyCodeLine{396     \textcolor{comment}{// -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
-\DoxyCodeLine{397 }
-\DoxyCodeLine{403     [[nodiscard]] \mbox{\hyperlink{class_compact_star_1_1_seq_point}{SeqPoint}} \mbox{\hyperlink{class_compact_star_1_1_seq_point_ae70c6c791a41dc4e6bc4032c10c9cd3a}{operator+}}(\textcolor{keyword}{const} \mbox{\hyperlink{class_compact_star_1_1_seq_point}{SeqPoint}} \&rhs)\textcolor{keyword}{ const}}
-\DoxyCodeLine{404 \textcolor{keyword}{    }\{}
-\DoxyCodeLine{405         \textcolor{keywordflow}{return} \mbox{\hyperlink{class_compact_star_1_1_seq_point_a460914e79970ee2840985fecf459e049}{SeqPoint}}(\mbox{\hyperlink{class_compact_star_1_1_seq_point_a5c2f83e3243384f3ad31fd67626efb34}{ec}} + rhs.\mbox{\hyperlink{class_compact_star_1_1_seq_point_a5c2f83e3243384f3ad31fd67626efb34}{ec}}, \mbox{\hyperlink{class_compact_star_1_1_seq_point_aac3e5ddc0344b1c1d796349e8793b0a8}{m}} + rhs.\mbox{\hyperlink{class_compact_star_1_1_seq_point_aac3e5ddc0344b1c1d796349e8793b0a8}{m}}, \mbox{\hyperlink{class_compact_star_1_1_seq_point_a68c1a5f589acd078100b6d015f94ef40}{r}} + rhs.\mbox{\hyperlink{class_compact_star_1_1_seq_point_a68c1a5f589acd078100b6d015f94ef40}{r}},}
-\DoxyCodeLine{406                         \mbox{\hyperlink{class_compact_star_1_1_seq_point_aee457020f84d04f106f7fcc9bf3c9814}{pc}} + rhs.\mbox{\hyperlink{class_compact_star_1_1_seq_point_aee457020f84d04f106f7fcc9bf3c9814}{pc}}, \mbox{\hyperlink{class_compact_star_1_1_seq_point_a2699ebe377e636db80801125885d4cd0}{b}} + rhs.\mbox{\hyperlink{class_compact_star_1_1_seq_point_a2699ebe377e636db80801125885d4cd0}{b}}, \mbox{\hyperlink{class_compact_star_1_1_seq_point_addc0aa6c519d4410c041452124665209}{I}} + rhs.\mbox{\hyperlink{class_compact_star_1_1_seq_point_addc0aa6c519d4410c041452124665209}{I}});}
-\DoxyCodeLine{407     \}}
-\DoxyCodeLine{408 }
-\DoxyCodeLine{414     \mbox{\hyperlink{class_compact_star_1_1_seq_point}{SeqPoint}} \&\mbox{\hyperlink{class_compact_star_1_1_seq_point_a1707db2457368c0d849d5724732f7b51}{operator+=}}(\textcolor{keyword}{const} \mbox{\hyperlink{class_compact_star_1_1_seq_point}{SeqPoint}} \&rhs)}
-\DoxyCodeLine{415     \{}
-\DoxyCodeLine{416         \mbox{\hyperlink{class_compact_star_1_1_seq_point_a5c2f83e3243384f3ad31fd67626efb34}{ec}} += rhs.\mbox{\hyperlink{class_compact_star_1_1_seq_point_a5c2f83e3243384f3ad31fd67626efb34}{ec}};}
-\DoxyCodeLine{417         \mbox{\hyperlink{class_compact_star_1_1_seq_point_aac3e5ddc0344b1c1d796349e8793b0a8}{m}} += rhs.\mbox{\hyperlink{class_compact_star_1_1_seq_point_aac3e5ddc0344b1c1d796349e8793b0a8}{m}};}
-\DoxyCodeLine{418         \mbox{\hyperlink{class_compact_star_1_1_seq_point_a68c1a5f589acd078100b6d015f94ef40}{r}} += rhs.\mbox{\hyperlink{class_compact_star_1_1_seq_point_a68c1a5f589acd078100b6d015f94ef40}{r}};}
-\DoxyCodeLine{419         \mbox{\hyperlink{class_compact_star_1_1_seq_point_aee457020f84d04f106f7fcc9bf3c9814}{pc}} += rhs.\mbox{\hyperlink{class_compact_star_1_1_seq_point_aee457020f84d04f106f7fcc9bf3c9814}{pc}};}
-\DoxyCodeLine{420         \mbox{\hyperlink{class_compact_star_1_1_seq_point_a2699ebe377e636db80801125885d4cd0}{b}} += rhs.\mbox{\hyperlink{class_compact_star_1_1_seq_point_a2699ebe377e636db80801125885d4cd0}{b}};}
-\DoxyCodeLine{421         \mbox{\hyperlink{class_compact_star_1_1_seq_point_addc0aa6c519d4410c041452124665209}{I}} += rhs.\mbox{\hyperlink{class_compact_star_1_1_seq_point_addc0aa6c519d4410c041452124665209}{I}};}
-\DoxyCodeLine{422         \textcolor{keywordflow}{return} *\textcolor{keyword}{this};}
-\DoxyCodeLine{423     \}}
-\DoxyCodeLine{424 }
-\DoxyCodeLine{430     [[nodiscard]] \mbox{\hyperlink{class_compact_star_1_1_seq_point}{SeqPoint}} \mbox{\hyperlink{class_compact_star_1_1_seq_point_a457be260b52f920af5f576d97dee04d7}{operator*}}(\textcolor{keywordtype}{double} s)\textcolor{keyword}{ const}}
-\DoxyCodeLine{431 \textcolor{keyword}{    }\{}
-\DoxyCodeLine{432         \textcolor{keywordflow}{return} \mbox{\hyperlink{class_compact_star_1_1_seq_point_a460914e79970ee2840985fecf459e049}{SeqPoint}}(\mbox{\hyperlink{class_compact_star_1_1_seq_point_a5c2f83e3243384f3ad31fd67626efb34}{ec}} * s, \mbox{\hyperlink{class_compact_star_1_1_seq_point_aac3e5ddc0344b1c1d796349e8793b0a8}{m}} * s, \mbox{\hyperlink{class_compact_star_1_1_seq_point_a68c1a5f589acd078100b6d015f94ef40}{r}} * s, \mbox{\hyperlink{class_compact_star_1_1_seq_point_aee457020f84d04f106f7fcc9bf3c9814}{pc}} * s, \mbox{\hyperlink{class_compact_star_1_1_seq_point_a2699ebe377e636db80801125885d4cd0}{b}} * s, \mbox{\hyperlink{class_compact_star_1_1_seq_point_addc0aa6c519d4410c041452124665209}{I}} * s);}
-\DoxyCodeLine{433     \}}
-\DoxyCodeLine{434 }
-\DoxyCodeLine{440     \mbox{\hyperlink{class_compact_star_1_1_seq_point}{SeqPoint}} \&\mbox{\hyperlink{class_compact_star_1_1_seq_point_a8685a3166437ca114fee8b1ed6fe7809}{operator*=}}(\textcolor{keywordtype}{double} s)}
-\DoxyCodeLine{441     \{}
-\DoxyCodeLine{442         \mbox{\hyperlink{class_compact_star_1_1_seq_point_a5c2f83e3243384f3ad31fd67626efb34}{ec}} *= s;}
-\DoxyCodeLine{443         \mbox{\hyperlink{class_compact_star_1_1_seq_point_aac3e5ddc0344b1c1d796349e8793b0a8}{m}} *= s;}
-\DoxyCodeLine{444         \mbox{\hyperlink{class_compact_star_1_1_seq_point_a68c1a5f589acd078100b6d015f94ef40}{r}} *= s;}
-\DoxyCodeLine{445         \mbox{\hyperlink{class_compact_star_1_1_seq_point_aee457020f84d04f106f7fcc9bf3c9814}{pc}} *= s;}
-\DoxyCodeLine{446         \mbox{\hyperlink{class_compact_star_1_1_seq_point_a2699ebe377e636db80801125885d4cd0}{b}} *= s;}
-\DoxyCodeLine{447         \mbox{\hyperlink{class_compact_star_1_1_seq_point_addc0aa6c519d4410c041452124665209}{I}} *= s;}
-\DoxyCodeLine{448         \textcolor{keywordflow}{return} *\textcolor{keyword}{this};}
-\DoxyCodeLine{449     \}}
-\DoxyCodeLine{450 \};}
-\DoxyCodeLine{451 }
-\DoxyCodeLine{452 \} \textcolor{comment}{// namespace CompactStar}}
-\DoxyCodeLine{453 }
-\DoxyCodeLine{454 \textcolor{preprocessor}{\#endif }\textcolor{comment}{/* CompactStar\_SeqPoint\_H */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{181 \textcolor{comment}{//==============================================================}}
+\DoxyCodeLine{182 \textcolor{comment}{//                        SeqPoint}}
+\DoxyCodeLine{183 \textcolor{comment}{//==============================================================}}
+\DoxyCodeLine{200 \textcolor{comment}{}\textcolor{keyword}{class }\mbox{\hyperlink{class_compact_star_1_1_core_1_1_seq_point}{SeqPoint}}}
+\DoxyCodeLine{201 \{}
+\DoxyCodeLine{202   \textcolor{keyword}{public}:}
+\DoxyCodeLine{204     \textcolor{keyword}{static} \textcolor{keyword}{constexpr} std::size\_t \mbox{\hyperlink{class_compact_star_1_1_core_1_1_seq_point_a8881c498e54fa4e21a3ad5c718ca7e97}{kSize}} = 6;}
+\DoxyCodeLine{205 }
+\DoxyCodeLine{206     \textcolor{comment}{// -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{207     \textcolor{comment}{// Data members (public POD for convenience)}}
+\DoxyCodeLine{208     \textcolor{comment}{// -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{209 }
+\DoxyCodeLine{210     \textcolor{keywordtype}{double} \mbox{\hyperlink{class_compact_star_1_1_core_1_1_seq_point_a5379c21a4201ee3da9b8f839de54f274}{ec}} = 0.0; }
+\DoxyCodeLine{211     \textcolor{keywordtype}{double} \mbox{\hyperlink{class_compact_star_1_1_core_1_1_seq_point_a33bd1d3e355a595663e31d6a005baa7c}{m}} = 0.0;     }
+\DoxyCodeLine{212     \textcolor{keywordtype}{double} \mbox{\hyperlink{class_compact_star_1_1_core_1_1_seq_point_a9238e3d764af8edd9ec01b17daf2d42f}{r}} = 0.0;     }
+\DoxyCodeLine{213     \textcolor{keywordtype}{double} \mbox{\hyperlink{class_compact_star_1_1_core_1_1_seq_point_acea10b3f3c88d95dc2e6ff69669074bd}{pc}} = 0.0; }
+\DoxyCodeLine{214     \textcolor{keywordtype}{double} \mbox{\hyperlink{class_compact_star_1_1_core_1_1_seq_point_a53be265507140472c83bceac01f221a3}{b}} = 0.0;     }
+\DoxyCodeLine{215     \textcolor{keywordtype}{double} \mbox{\hyperlink{class_compact_star_1_1_core_1_1_seq_point_af08a8d56b9be3f654ceb1ced4c11b1e5}{I}} = 0.0;     }
+\DoxyCodeLine{216 }
+\DoxyCodeLine{217     \textcolor{comment}{// -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{218     \textcolor{comment}{// Construction}}
+\DoxyCodeLine{219     \textcolor{comment}{// -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{220 }
+\DoxyCodeLine{224     \mbox{\hyperlink{class_compact_star_1_1_core_1_1_seq_point_a37d465605121aa42ced6c578d808933f}{SeqPoint}}() = \textcolor{keywordflow}{default};}
+\DoxyCodeLine{225 }
+\DoxyCodeLine{235     \mbox{\hyperlink{class_compact_star_1_1_core_1_1_seq_point_a4777f005bff52b9f98c7ad083bc44473}{SeqPoint}}(\textcolor{keywordtype}{double} in\_ec, \textcolor{keywordtype}{double} in\_m, \textcolor{keywordtype}{double} in\_r,}
+\DoxyCodeLine{236              \textcolor{keywordtype}{double} in\_pc, \textcolor{keywordtype}{double} in\_b, \textcolor{keywordtype}{double} in\_I)}
+\DoxyCodeLine{237         : \mbox{\hyperlink{class_compact_star_1_1_core_1_1_seq_point_a5379c21a4201ee3da9b8f839de54f274}{ec}}(in\_ec), \mbox{\hyperlink{class_compact_star_1_1_core_1_1_seq_point_a33bd1d3e355a595663e31d6a005baa7c}{m}}(in\_m), \mbox{\hyperlink{class_compact_star_1_1_core_1_1_seq_point_a9238e3d764af8edd9ec01b17daf2d42f}{r}}(in\_r), \mbox{\hyperlink{class_compact_star_1_1_core_1_1_seq_point_acea10b3f3c88d95dc2e6ff69669074bd}{pc}}(in\_pc), \mbox{\hyperlink{class_compact_star_1_1_core_1_1_seq_point_a53be265507140472c83bceac01f221a3}{b}}(in\_b), \mbox{\hyperlink{class_compact_star_1_1_core_1_1_seq_point_af08a8d56b9be3f654ceb1ced4c11b1e5}{I}}(in\_I) \{\}}
+\DoxyCodeLine{238 }
+\DoxyCodeLine{247     \textcolor{keyword}{explicit} \mbox{\hyperlink{class_compact_star_1_1_core_1_1_seq_point_a7d8a30c411762bc2961fd450989d1328}{SeqPoint}}(\textcolor{keyword}{const} std::vector<double> \&row)}
+\DoxyCodeLine{248     \{}
+\DoxyCodeLine{249         \textcolor{keywordflow}{if} (row.size() == \mbox{\hyperlink{class_compact_star_1_1_core_1_1_seq_point_a8881c498e54fa4e21a3ad5c718ca7e97}{kSize}})}
+\DoxyCodeLine{250         \{}
+\DoxyCodeLine{251             \mbox{\hyperlink{class_compact_star_1_1_core_1_1_seq_point_a5379c21a4201ee3da9b8f839de54f274}{ec}} = row[0];}
+\DoxyCodeLine{252             \mbox{\hyperlink{class_compact_star_1_1_core_1_1_seq_point_a33bd1d3e355a595663e31d6a005baa7c}{m}} = row[1];}
+\DoxyCodeLine{253             \mbox{\hyperlink{class_compact_star_1_1_core_1_1_seq_point_a9238e3d764af8edd9ec01b17daf2d42f}{r}} = row[2];}
+\DoxyCodeLine{254             \mbox{\hyperlink{class_compact_star_1_1_core_1_1_seq_point_acea10b3f3c88d95dc2e6ff69669074bd}{pc}} = row[3];}
+\DoxyCodeLine{255             \mbox{\hyperlink{class_compact_star_1_1_core_1_1_seq_point_a53be265507140472c83bceac01f221a3}{b}} = row[4];}
+\DoxyCodeLine{256             \mbox{\hyperlink{class_compact_star_1_1_core_1_1_seq_point_af08a8d56b9be3f654ceb1ced4c11b1e5}{I}} = row[5];}
+\DoxyCodeLine{257         \}}
+\DoxyCodeLine{258         \textcolor{keywordflow}{else}}
+\DoxyCodeLine{259         \{}
+\DoxyCodeLine{260             \mbox{\hyperlink{class_compact_star_1_1_core_1_1_seq_point_a2a164c0570e161eed79e9b71cdbeefad}{clear}}();}
+\DoxyCodeLine{261             \textcolor{comment}{// Optionally log here (e.g., Z\_LOG\_ERROR("{}SeqPoint row size != 6"{}));}}
+\DoxyCodeLine{262         \}}
+\DoxyCodeLine{263     \}}
+\DoxyCodeLine{264 }
+\DoxyCodeLine{274     \mbox{\hyperlink{class_compact_star_1_1_core_1_1_seq_point}{SeqPoint}} \&\mbox{\hyperlink{class_compact_star_1_1_core_1_1_seq_point_ae91b6cf6415457114339ef845c0aa6a1}{operator=}}(\textcolor{keyword}{const} std::vector<double> \&row)}
+\DoxyCodeLine{275     \{}
+\DoxyCodeLine{276         \textcolor{keywordflow}{if} (row.size() == \mbox{\hyperlink{class_compact_star_1_1_core_1_1_seq_point_a8881c498e54fa4e21a3ad5c718ca7e97}{kSize}})}
+\DoxyCodeLine{277         \{}
+\DoxyCodeLine{278             \mbox{\hyperlink{class_compact_star_1_1_core_1_1_seq_point_a5379c21a4201ee3da9b8f839de54f274}{ec}} = row[0];}
+\DoxyCodeLine{279             \mbox{\hyperlink{class_compact_star_1_1_core_1_1_seq_point_a33bd1d3e355a595663e31d6a005baa7c}{m}} = row[1];}
+\DoxyCodeLine{280             \mbox{\hyperlink{class_compact_star_1_1_core_1_1_seq_point_a9238e3d764af8edd9ec01b17daf2d42f}{r}} = row[2];}
+\DoxyCodeLine{281             \mbox{\hyperlink{class_compact_star_1_1_core_1_1_seq_point_acea10b3f3c88d95dc2e6ff69669074bd}{pc}} = row[3];}
+\DoxyCodeLine{282             \mbox{\hyperlink{class_compact_star_1_1_core_1_1_seq_point_a53be265507140472c83bceac01f221a3}{b}} = row[4];}
+\DoxyCodeLine{283             \mbox{\hyperlink{class_compact_star_1_1_core_1_1_seq_point_af08a8d56b9be3f654ceb1ced4c11b1e5}{I}} = row[5];}
+\DoxyCodeLine{284         \}}
+\DoxyCodeLine{285         \textcolor{keywordflow}{else}}
+\DoxyCodeLine{286         \{}
+\DoxyCodeLine{287             \mbox{\hyperlink{class_compact_star_1_1_core_1_1_seq_point_a2a164c0570e161eed79e9b71cdbeefad}{clear}}();}
+\DoxyCodeLine{288         \}}
+\DoxyCodeLine{289         \textcolor{keywordflow}{return} *\textcolor{keyword}{this};}
+\DoxyCodeLine{290     \}}
+\DoxyCodeLine{291 }
+\DoxyCodeLine{300     \mbox{\hyperlink{class_compact_star_1_1_core_1_1_seq_point_a953105e51ff9b9da1d719867177eddf4}{SeqPoint}}(std::initializer\_list<double> list)}
+\DoxyCodeLine{301     \{}
+\DoxyCodeLine{302         \textcolor{keywordflow}{if} (list.size() == \mbox{\hyperlink{class_compact_star_1_1_core_1_1_seq_point_a8881c498e54fa4e21a3ad5c718ca7e97}{kSize}})}
+\DoxyCodeLine{303         \{}
+\DoxyCodeLine{304             \textcolor{keyword}{auto} it = list.begin();}
+\DoxyCodeLine{305             \mbox{\hyperlink{class_compact_star_1_1_core_1_1_seq_point_a5379c21a4201ee3da9b8f839de54f274}{ec}} = *it++;}
+\DoxyCodeLine{306             \mbox{\hyperlink{class_compact_star_1_1_core_1_1_seq_point_a33bd1d3e355a595663e31d6a005baa7c}{m}} = *it++;}
+\DoxyCodeLine{307             \mbox{\hyperlink{class_compact_star_1_1_core_1_1_seq_point_a9238e3d764af8edd9ec01b17daf2d42f}{r}} = *it++;}
+\DoxyCodeLine{308             \mbox{\hyperlink{class_compact_star_1_1_core_1_1_seq_point_acea10b3f3c88d95dc2e6ff69669074bd}{pc}} = *it++;}
+\DoxyCodeLine{309             \mbox{\hyperlink{class_compact_star_1_1_core_1_1_seq_point_a53be265507140472c83bceac01f221a3}{b}} = *it++;}
+\DoxyCodeLine{310             \mbox{\hyperlink{class_compact_star_1_1_core_1_1_seq_point_af08a8d56b9be3f654ceb1ced4c11b1e5}{I}} = *it++;}
+\DoxyCodeLine{311         \}}
+\DoxyCodeLine{312         \textcolor{keywordflow}{else}}
+\DoxyCodeLine{313         \{}
+\DoxyCodeLine{314             \mbox{\hyperlink{class_compact_star_1_1_core_1_1_seq_point_a2a164c0570e161eed79e9b71cdbeefad}{clear}}();}
+\DoxyCodeLine{315         \}}
+\DoxyCodeLine{316     \}}
+\DoxyCodeLine{317 }
+\DoxyCodeLine{327     \mbox{\hyperlink{class_compact_star_1_1_core_1_1_seq_point}{SeqPoint}} \&\mbox{\hyperlink{class_compact_star_1_1_core_1_1_seq_point_a1e37dfcbce5eefd51dce23cc034b750c}{operator=}}(std::initializer\_list<double> list)}
+\DoxyCodeLine{328     \{}
+\DoxyCodeLine{329         \textcolor{keywordflow}{if} (list.size() == \mbox{\hyperlink{class_compact_star_1_1_core_1_1_seq_point_a8881c498e54fa4e21a3ad5c718ca7e97}{kSize}})}
+\DoxyCodeLine{330         \{}
+\DoxyCodeLine{331             \textcolor{keyword}{auto} it = list.begin();}
+\DoxyCodeLine{332             \mbox{\hyperlink{class_compact_star_1_1_core_1_1_seq_point_a5379c21a4201ee3da9b8f839de54f274}{ec}} = *it++;}
+\DoxyCodeLine{333             \mbox{\hyperlink{class_compact_star_1_1_core_1_1_seq_point_a33bd1d3e355a595663e31d6a005baa7c}{m}} = *it++;}
+\DoxyCodeLine{334             \mbox{\hyperlink{class_compact_star_1_1_core_1_1_seq_point_a9238e3d764af8edd9ec01b17daf2d42f}{r}} = *it++;}
+\DoxyCodeLine{335             \mbox{\hyperlink{class_compact_star_1_1_core_1_1_seq_point_acea10b3f3c88d95dc2e6ff69669074bd}{pc}} = *it++;}
+\DoxyCodeLine{336             \mbox{\hyperlink{class_compact_star_1_1_core_1_1_seq_point_a53be265507140472c83bceac01f221a3}{b}} = *it++;}
+\DoxyCodeLine{337             \mbox{\hyperlink{class_compact_star_1_1_core_1_1_seq_point_af08a8d56b9be3f654ceb1ced4c11b1e5}{I}} = *it++;}
+\DoxyCodeLine{338         \}}
+\DoxyCodeLine{339         \textcolor{keywordflow}{else}}
+\DoxyCodeLine{340         \{}
+\DoxyCodeLine{341             \mbox{\hyperlink{class_compact_star_1_1_core_1_1_seq_point_a2a164c0570e161eed79e9b71cdbeefad}{clear}}();}
+\DoxyCodeLine{342         \}}
+\DoxyCodeLine{343         \textcolor{keywordflow}{return} *\textcolor{keyword}{this};}
+\DoxyCodeLine{344     \}}
+\DoxyCodeLine{345 }
+\DoxyCodeLine{351     [[nodiscard]] \textcolor{keyword}{static} \mbox{\hyperlink{class_compact_star_1_1_core_1_1_seq_point}{SeqPoint}} \mbox{\hyperlink{class_compact_star_1_1_core_1_1_seq_point_ab6a9749ce5a6ac8655f3f1964ce96059}{FromRow}}(\textcolor{keyword}{const} std::vector<double> \&row)}
+\DoxyCodeLine{352     \{}
+\DoxyCodeLine{353         \textcolor{keywordflow}{return} \mbox{\hyperlink{class_compact_star_1_1_core_1_1_seq_point_a37d465605121aa42ced6c578d808933f}{SeqPoint}}(row);}
+\DoxyCodeLine{354     \}}
+\DoxyCodeLine{355 }
+\DoxyCodeLine{356     \textcolor{comment}{// -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{357     \textcolor{comment}{// Utilities}}
+\DoxyCodeLine{358     \textcolor{comment}{// -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{359 }
+\DoxyCodeLine{363     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_compact_star_1_1_core_1_1_seq_point_a2a164c0570e161eed79e9b71cdbeefad}{clear}}() \{ \mbox{\hyperlink{class_compact_star_1_1_core_1_1_seq_point_a5379c21a4201ee3da9b8f839de54f274}{ec}} = \mbox{\hyperlink{class_compact_star_1_1_core_1_1_seq_point_a33bd1d3e355a595663e31d6a005baa7c}{m}} = \mbox{\hyperlink{class_compact_star_1_1_core_1_1_seq_point_a9238e3d764af8edd9ec01b17daf2d42f}{r}} = \mbox{\hyperlink{class_compact_star_1_1_core_1_1_seq_point_acea10b3f3c88d95dc2e6ff69669074bd}{pc}} = \mbox{\hyperlink{class_compact_star_1_1_core_1_1_seq_point_a53be265507140472c83bceac01f221a3}{b}} = \mbox{\hyperlink{class_compact_star_1_1_core_1_1_seq_point_af08a8d56b9be3f654ceb1ced4c11b1e5}{I}} = 0.0; \}}
+\DoxyCodeLine{364 }
+\DoxyCodeLine{371     [[nodiscard]] std::string \mbox{\hyperlink{class_compact_star_1_1_core_1_1_seq_point_aa3f5903935bf8e6e5ca071622523eccc}{Str}}()\textcolor{keyword}{ const}}
+\DoxyCodeLine{372 \textcolor{keyword}{    }\{}
+\DoxyCodeLine{373         std::stringstream ss;}
+\DoxyCodeLine{374         \textcolor{keywordtype}{char} tmp[160];}
+\DoxyCodeLine{375         std::snprintf(tmp, \textcolor{keyword}{sizeof}(tmp),}
+\DoxyCodeLine{376                       \textcolor{stringliteral}{"{}\%.8e\(\backslash\)t\%.8e\(\backslash\)t\%.8e\(\backslash\)t\%.8e\(\backslash\)t\%.8e\(\backslash\)t\%.8e"{}},}
+\DoxyCodeLine{377                       \mbox{\hyperlink{class_compact_star_1_1_core_1_1_seq_point_a5379c21a4201ee3da9b8f839de54f274}{ec}}, \mbox{\hyperlink{class_compact_star_1_1_core_1_1_seq_point_a33bd1d3e355a595663e31d6a005baa7c}{m}}, \mbox{\hyperlink{class_compact_star_1_1_core_1_1_seq_point_a9238e3d764af8edd9ec01b17daf2d42f}{r}}, \mbox{\hyperlink{class_compact_star_1_1_core_1_1_seq_point_acea10b3f3c88d95dc2e6ff69669074bd}{pc}}, \mbox{\hyperlink{class_compact_star_1_1_core_1_1_seq_point_a53be265507140472c83bceac01f221a3}{b}}, \mbox{\hyperlink{class_compact_star_1_1_core_1_1_seq_point_af08a8d56b9be3f654ceb1ced4c11b1e5}{I}});}
+\DoxyCodeLine{378         ss << tmp;}
+\DoxyCodeLine{379         \textcolor{keywordflow}{return} ss.str();}
+\DoxyCodeLine{380     \}}
+\DoxyCodeLine{381 }
+\DoxyCodeLine{386     [[nodiscard]] std::vector<double> \mbox{\hyperlink{class_compact_star_1_1_core_1_1_seq_point_a0efb019e8ebb76ac1f9826c09b8c5ecf}{ToRow}}()\textcolor{keyword}{ const}}
+\DoxyCodeLine{387 \textcolor{keyword}{    }\{}
+\DoxyCodeLine{388         \textcolor{keywordflow}{return} \{\mbox{\hyperlink{class_compact_star_1_1_core_1_1_seq_point_a5379c21a4201ee3da9b8f839de54f274}{ec}}, \mbox{\hyperlink{class_compact_star_1_1_core_1_1_seq_point_a33bd1d3e355a595663e31d6a005baa7c}{m}}, \mbox{\hyperlink{class_compact_star_1_1_core_1_1_seq_point_a9238e3d764af8edd9ec01b17daf2d42f}{r}}, \mbox{\hyperlink{class_compact_star_1_1_core_1_1_seq_point_acea10b3f3c88d95dc2e6ff69669074bd}{pc}}, \mbox{\hyperlink{class_compact_star_1_1_core_1_1_seq_point_a53be265507140472c83bceac01f221a3}{b}}, \mbox{\hyperlink{class_compact_star_1_1_core_1_1_seq_point_af08a8d56b9be3f654ceb1ced4c11b1e5}{I}}\};}
+\DoxyCodeLine{389     \}}
+\DoxyCodeLine{390 }
+\DoxyCodeLine{391     \textcolor{comment}{// -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{392     \textcolor{comment}{// Arithmetic (component-\/wise)}}
+\DoxyCodeLine{393     \textcolor{comment}{// -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{394 }
+\DoxyCodeLine{400     [[nodiscard]] \mbox{\hyperlink{class_compact_star_1_1_core_1_1_seq_point}{SeqPoint}} \mbox{\hyperlink{class_compact_star_1_1_core_1_1_seq_point_aea6227d409f064fce597d4a87fbf9035}{operator+}}(\textcolor{keyword}{const} \mbox{\hyperlink{class_compact_star_1_1_core_1_1_seq_point}{SeqPoint}} \&rhs)\textcolor{keyword}{ const}}
+\DoxyCodeLine{401 \textcolor{keyword}{    }\{}
+\DoxyCodeLine{402         \textcolor{keywordflow}{return} \mbox{\hyperlink{class_compact_star_1_1_core_1_1_seq_point_a37d465605121aa42ced6c578d808933f}{SeqPoint}}(\mbox{\hyperlink{class_compact_star_1_1_core_1_1_seq_point_a5379c21a4201ee3da9b8f839de54f274}{ec}} + rhs.\mbox{\hyperlink{class_compact_star_1_1_core_1_1_seq_point_a5379c21a4201ee3da9b8f839de54f274}{ec}}, \mbox{\hyperlink{class_compact_star_1_1_core_1_1_seq_point_a33bd1d3e355a595663e31d6a005baa7c}{m}} + rhs.\mbox{\hyperlink{class_compact_star_1_1_core_1_1_seq_point_a33bd1d3e355a595663e31d6a005baa7c}{m}}, \mbox{\hyperlink{class_compact_star_1_1_core_1_1_seq_point_a9238e3d764af8edd9ec01b17daf2d42f}{r}} + rhs.\mbox{\hyperlink{class_compact_star_1_1_core_1_1_seq_point_a9238e3d764af8edd9ec01b17daf2d42f}{r}},}
+\DoxyCodeLine{403                         \mbox{\hyperlink{class_compact_star_1_1_core_1_1_seq_point_acea10b3f3c88d95dc2e6ff69669074bd}{pc}} + rhs.\mbox{\hyperlink{class_compact_star_1_1_core_1_1_seq_point_acea10b3f3c88d95dc2e6ff69669074bd}{pc}}, \mbox{\hyperlink{class_compact_star_1_1_core_1_1_seq_point_a53be265507140472c83bceac01f221a3}{b}} + rhs.\mbox{\hyperlink{class_compact_star_1_1_core_1_1_seq_point_a53be265507140472c83bceac01f221a3}{b}}, \mbox{\hyperlink{class_compact_star_1_1_core_1_1_seq_point_af08a8d56b9be3f654ceb1ced4c11b1e5}{I}} + rhs.\mbox{\hyperlink{class_compact_star_1_1_core_1_1_seq_point_af08a8d56b9be3f654ceb1ced4c11b1e5}{I}});}
+\DoxyCodeLine{404     \}}
+\DoxyCodeLine{405 }
+\DoxyCodeLine{411     \mbox{\hyperlink{class_compact_star_1_1_core_1_1_seq_point}{SeqPoint}} \&\mbox{\hyperlink{class_compact_star_1_1_core_1_1_seq_point_a7887a9b7ef49fd93070744dc4e6f28e7}{operator+=}}(\textcolor{keyword}{const} \mbox{\hyperlink{class_compact_star_1_1_core_1_1_seq_point}{SeqPoint}} \&rhs)}
+\DoxyCodeLine{412     \{}
+\DoxyCodeLine{413         \mbox{\hyperlink{class_compact_star_1_1_core_1_1_seq_point_a5379c21a4201ee3da9b8f839de54f274}{ec}} += rhs.\mbox{\hyperlink{class_compact_star_1_1_core_1_1_seq_point_a5379c21a4201ee3da9b8f839de54f274}{ec}};}
+\DoxyCodeLine{414         \mbox{\hyperlink{class_compact_star_1_1_core_1_1_seq_point_a33bd1d3e355a595663e31d6a005baa7c}{m}} += rhs.\mbox{\hyperlink{class_compact_star_1_1_core_1_1_seq_point_a33bd1d3e355a595663e31d6a005baa7c}{m}};}
+\DoxyCodeLine{415         \mbox{\hyperlink{class_compact_star_1_1_core_1_1_seq_point_a9238e3d764af8edd9ec01b17daf2d42f}{r}} += rhs.\mbox{\hyperlink{class_compact_star_1_1_core_1_1_seq_point_a9238e3d764af8edd9ec01b17daf2d42f}{r}};}
+\DoxyCodeLine{416         \mbox{\hyperlink{class_compact_star_1_1_core_1_1_seq_point_acea10b3f3c88d95dc2e6ff69669074bd}{pc}} += rhs.\mbox{\hyperlink{class_compact_star_1_1_core_1_1_seq_point_acea10b3f3c88d95dc2e6ff69669074bd}{pc}};}
+\DoxyCodeLine{417         \mbox{\hyperlink{class_compact_star_1_1_core_1_1_seq_point_a53be265507140472c83bceac01f221a3}{b}} += rhs.\mbox{\hyperlink{class_compact_star_1_1_core_1_1_seq_point_a53be265507140472c83bceac01f221a3}{b}};}
+\DoxyCodeLine{418         \mbox{\hyperlink{class_compact_star_1_1_core_1_1_seq_point_af08a8d56b9be3f654ceb1ced4c11b1e5}{I}} += rhs.\mbox{\hyperlink{class_compact_star_1_1_core_1_1_seq_point_af08a8d56b9be3f654ceb1ced4c11b1e5}{I}};}
+\DoxyCodeLine{419         \textcolor{keywordflow}{return} *\textcolor{keyword}{this};}
+\DoxyCodeLine{420     \}}
+\DoxyCodeLine{421 }
+\DoxyCodeLine{427     [[nodiscard]] \mbox{\hyperlink{class_compact_star_1_1_core_1_1_seq_point}{SeqPoint}} \mbox{\hyperlink{class_compact_star_1_1_core_1_1_seq_point_a93be4d17b0da080d86f7a20a3a039263}{operator*}}(\textcolor{keywordtype}{double} s)\textcolor{keyword}{ const}}
+\DoxyCodeLine{428 \textcolor{keyword}{    }\{}
+\DoxyCodeLine{429         \textcolor{keywordflow}{return} \mbox{\hyperlink{class_compact_star_1_1_core_1_1_seq_point_a37d465605121aa42ced6c578d808933f}{SeqPoint}}(\mbox{\hyperlink{class_compact_star_1_1_core_1_1_seq_point_a5379c21a4201ee3da9b8f839de54f274}{ec}} * s, \mbox{\hyperlink{class_compact_star_1_1_core_1_1_seq_point_a33bd1d3e355a595663e31d6a005baa7c}{m}} * s, \mbox{\hyperlink{class_compact_star_1_1_core_1_1_seq_point_a9238e3d764af8edd9ec01b17daf2d42f}{r}} * s, \mbox{\hyperlink{class_compact_star_1_1_core_1_1_seq_point_acea10b3f3c88d95dc2e6ff69669074bd}{pc}} * s, \mbox{\hyperlink{class_compact_star_1_1_core_1_1_seq_point_a53be265507140472c83bceac01f221a3}{b}} * s, \mbox{\hyperlink{class_compact_star_1_1_core_1_1_seq_point_af08a8d56b9be3f654ceb1ced4c11b1e5}{I}} * s);}
+\DoxyCodeLine{430     \}}
+\DoxyCodeLine{431 }
+\DoxyCodeLine{437     \mbox{\hyperlink{class_compact_star_1_1_core_1_1_seq_point}{SeqPoint}} \&\mbox{\hyperlink{class_compact_star_1_1_core_1_1_seq_point_ada0b98ac20ef88c03e445aa431e12ec9}{operator*=}}(\textcolor{keywordtype}{double} s)}
+\DoxyCodeLine{438     \{}
+\DoxyCodeLine{439         \mbox{\hyperlink{class_compact_star_1_1_core_1_1_seq_point_a5379c21a4201ee3da9b8f839de54f274}{ec}} *= s;}
+\DoxyCodeLine{440         \mbox{\hyperlink{class_compact_star_1_1_core_1_1_seq_point_a33bd1d3e355a595663e31d6a005baa7c}{m}} *= s;}
+\DoxyCodeLine{441         \mbox{\hyperlink{class_compact_star_1_1_core_1_1_seq_point_a9238e3d764af8edd9ec01b17daf2d42f}{r}} *= s;}
+\DoxyCodeLine{442         \mbox{\hyperlink{class_compact_star_1_1_core_1_1_seq_point_acea10b3f3c88d95dc2e6ff69669074bd}{pc}} *= s;}
+\DoxyCodeLine{443         \mbox{\hyperlink{class_compact_star_1_1_core_1_1_seq_point_a53be265507140472c83bceac01f221a3}{b}} *= s;}
+\DoxyCodeLine{444         \mbox{\hyperlink{class_compact_star_1_1_core_1_1_seq_point_af08a8d56b9be3f654ceb1ced4c11b1e5}{I}} *= s;}
+\DoxyCodeLine{445         \textcolor{keywordflow}{return} *\textcolor{keyword}{this};}
+\DoxyCodeLine{446     \}}
+\DoxyCodeLine{447 \};}
+\DoxyCodeLine{448 }
+\DoxyCodeLine{449 \} \textcolor{comment}{// namespace CompactStar::Core}}
+\DoxyCodeLine{450 }
+\DoxyCodeLine{451 \textcolor{preprocessor}{\#endif }\textcolor{comment}{/* CompactStar\_Core\_SeqPoint\_H */}\textcolor{preprocessor}{}}
 
 \end{DoxyCode}

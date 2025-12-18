@@ -4,213 +4,232 @@
 \begin{DoxyCode}{0}
 \DoxyCodeLine{1 \textcolor{comment}{// -\/*-\/ lsst-\/c++ -\/*-\/}}
 \DoxyCodeLine{2 \textcolor{comment}{/*}}
-\DoxyCodeLine{3 \textcolor{comment}{* Zaki's Common Library}}
-\DoxyCodeLine{4 \textcolor{comment}{* See License file at the top of the source tree.}}
-\DoxyCodeLine{5 \textcolor{comment}{*}}
-\DoxyCodeLine{6 \textcolor{comment}{* Copyright (c) 2023 Mohammadreza Zakeri}}
-\DoxyCodeLine{7 \textcolor{comment}{*}}
-\DoxyCodeLine{8 \textcolor{comment}{* Permission is hereby granted, free of charge, to any person obtaining a copy}}
-\DoxyCodeLine{9 \textcolor{comment}{* of this software and associated documentation files (the "{}Software"{}), to deal}}
-\DoxyCodeLine{10 \textcolor{comment}{* in the Software without restriction, including without limitation the rights}}
-\DoxyCodeLine{11 \textcolor{comment}{* to use, copy, modify, merge, publish, distribute, sublicense, and/or sell}}
-\DoxyCodeLine{12 \textcolor{comment}{* copies of the Software, and to permit persons to whom the Software is}}
-\DoxyCodeLine{13 \textcolor{comment}{* furnished to do so, subject to the following conditions:}}
-\DoxyCodeLine{14 \textcolor{comment}{*}}
-\DoxyCodeLine{15 \textcolor{comment}{* The above copyright notice and this permission notice shall be included in all}}
-\DoxyCodeLine{16 \textcolor{comment}{* copies or substantial portions of the Software.}}
-\DoxyCodeLine{17 \textcolor{comment}{*}}
-\DoxyCodeLine{18 \textcolor{comment}{* THE SOFTWARE IS PROVIDED "{}AS IS"{}, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR}}
-\DoxyCodeLine{19 \textcolor{comment}{* IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,}}
-\DoxyCodeLine{20 \textcolor{comment}{* FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE}}
-\DoxyCodeLine{21 \textcolor{comment}{* AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER}}
-\DoxyCodeLine{22 \textcolor{comment}{* LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,}}
-\DoxyCodeLine{23 \textcolor{comment}{* OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE}}
-\DoxyCodeLine{24 \textcolor{comment}{* SOFTWARE.}}
-\DoxyCodeLine{25 \textcolor{comment}{*/}}
+\DoxyCodeLine{3 \textcolor{comment}{ * Zaki's Common Library}}
+\DoxyCodeLine{4 \textcolor{comment}{ * See License file at the top of the source tree.}}
+\DoxyCodeLine{5 \textcolor{comment}{ *}}
+\DoxyCodeLine{6 \textcolor{comment}{ * Copyright (c) 2023 Mohammadreza Zakeri}}
+\DoxyCodeLine{7 \textcolor{comment}{ *}}
+\DoxyCodeLine{8 \textcolor{comment}{ * Permission is hereby granted, free of charge, to any person obtaining a copy}}
+\DoxyCodeLine{9 \textcolor{comment}{ * of this software and associated documentation files (the "{}Software"{}), to deal}}
+\DoxyCodeLine{10 \textcolor{comment}{ * in the Software without restriction, including without limitation the rights}}
+\DoxyCodeLine{11 \textcolor{comment}{ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell}}
+\DoxyCodeLine{12 \textcolor{comment}{ * copies of the Software, and to permit persons to whom the Software is}}
+\DoxyCodeLine{13 \textcolor{comment}{ * furnished to do so, subject to the following conditions:}}
+\DoxyCodeLine{14 \textcolor{comment}{ *}}
+\DoxyCodeLine{15 \textcolor{comment}{ * The above copyright notice and this permission notice shall be included in all}}
+\DoxyCodeLine{16 \textcolor{comment}{ * copies or substantial portions of the Software.}}
+\DoxyCodeLine{17 \textcolor{comment}{ *}}
+\DoxyCodeLine{18 \textcolor{comment}{ * THE SOFTWARE IS PROVIDED "{}AS IS"{}, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR}}
+\DoxyCodeLine{19 \textcolor{comment}{ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,}}
+\DoxyCodeLine{20 \textcolor{comment}{ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE}}
+\DoxyCodeLine{21 \textcolor{comment}{ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER}}
+\DoxyCodeLine{22 \textcolor{comment}{ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,}}
+\DoxyCodeLine{23 \textcolor{comment}{ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE}}
+\DoxyCodeLine{24 \textcolor{comment}{ * SOFTWARE.}}
+\DoxyCodeLine{25 \textcolor{comment}{ */}}
 \DoxyCodeLine{26 }
 \DoxyCodeLine{39 \textcolor{preprocessor}{\#ifndef Zaki\_Util\_Logger\_H}}
 \DoxyCodeLine{40 \textcolor{preprocessor}{\#define Zaki\_Util\_Logger\_H}}
 \DoxyCodeLine{41 }
-\DoxyCodeLine{42 \textcolor{preprocessor}{\#include <iostream>}}
-\DoxyCodeLine{43 \textcolor{preprocessor}{\#include <string>}}
-\DoxyCodeLine{44 \textcolor{preprocessor}{\#include <fstream>}}
+\DoxyCodeLine{42 \textcolor{preprocessor}{\#include <cstring>}}
+\DoxyCodeLine{43 \textcolor{preprocessor}{\#include <fstream>}}
+\DoxyCodeLine{44 \textcolor{preprocessor}{\#include <iostream>}}
 \DoxyCodeLine{45 \textcolor{preprocessor}{\#include <mutex>}}
-\DoxyCodeLine{46 \textcolor{preprocessor}{\#include <time.h>}}
-\DoxyCodeLine{47 \textcolor{preprocessor}{\#include <cstring>}}
+\DoxyCodeLine{46 \textcolor{preprocessor}{\#include <string>}}
+\DoxyCodeLine{47 \textcolor{preprocessor}{\#include <time.h>}}
 \DoxyCodeLine{48 }
-\DoxyCodeLine{49 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_string___basic_8hpp}{Zaki/String/String\_Basic.hpp}}"{}}}
-\DoxyCodeLine{50 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_directory_8hpp}{Zaki/String/Directory.hpp}}"{}}}
+\DoxyCodeLine{49 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_directory_8hpp}{Zaki/String/Directory.hpp}}"{}}}
+\DoxyCodeLine{50 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_string___basic_8hpp}{Zaki/String/String\_Basic.hpp}}"{}}}
 \DoxyCodeLine{51 }
 \DoxyCodeLine{52 \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
 \DoxyCodeLine{53 \textcolor{keyword}{namespace }Zaki::Util}
 \DoxyCodeLine{54 \{}
 \DoxyCodeLine{55 }
 \DoxyCodeLine{56 \textcolor{comment}{// Forward declration}}
-\DoxyCodeLine{57 \textcolor{keyword}{struct }LogEntry ;}
+\DoxyCodeLine{57 \textcolor{keyword}{struct }LogEntry;}
 \DoxyCodeLine{58 }
 \DoxyCodeLine{59 \textcolor{comment}{//==============================================================}}
 \DoxyCodeLine{60 \textcolor{keyword}{enum class} LogLevel}
 \DoxyCodeLine{61 \{}
-\DoxyCodeLine{62   Error = 0, Warning, Info, Verbose    }
-\DoxyCodeLine{63 \} ;}
-\DoxyCodeLine{64 }
-\DoxyCodeLine{65 \textcolor{comment}{//==============================================================}}
-\DoxyCodeLine{66 \textcolor{comment}{// Singleton log manager class}}
-\DoxyCodeLine{67 \textcolor{keyword}{class }\mbox{\hyperlink{class_zaki_1_1_util_1_1_log_manager}{LogManager}} }
-\DoxyCodeLine{68 \{}
-\DoxyCodeLine{69 }
-\DoxyCodeLine{70   \textcolor{keyword}{public}:}
-\DoxyCodeLine{71 }
-\DoxyCodeLine{72     \textcolor{comment}{// Destructor}}
-\DoxyCodeLine{73     \mbox{\hyperlink{class_zaki_1_1_util_1_1_log_manager}{\string~LogManager}}() ;}
-\DoxyCodeLine{74 }
-\DoxyCodeLine{75     \textcolor{comment}{// Copy constructor}}
-\DoxyCodeLine{76     \mbox{\hyperlink{class_zaki_1_1_util_1_1_log_manager}{LogManager}}(\textcolor{keyword}{const} \mbox{\hyperlink{class_zaki_1_1_util_1_1_log_manager}{LogManager}}\&) = delete ;}
-\DoxyCodeLine{77 }
-\DoxyCodeLine{78     \textcolor{keyword}{static} \mbox{\hyperlink{class_zaki_1_1_util_1_1_log_manager}{LogManager}}\& Get();}
+\DoxyCodeLine{62     Error = 0,}
+\DoxyCodeLine{63     Warning,}
+\DoxyCodeLine{64     Info,}
+\DoxyCodeLine{65     Verbose}
+\DoxyCodeLine{66 \};}
+\DoxyCodeLine{67 }
+\DoxyCodeLine{68 \textcolor{comment}{//==============================================================}}
+\DoxyCodeLine{69 \textcolor{comment}{// Singleton log manager class}}
+\DoxyCodeLine{70 \textcolor{keyword}{class }\mbox{\hyperlink{class_zaki_1_1_util_1_1_log_manager}{LogManager}}}
+\DoxyCodeLine{71 \{}
+\DoxyCodeLine{72 }
+\DoxyCodeLine{73   \textcolor{keyword}{public}:}
+\DoxyCodeLine{74     \textcolor{comment}{// Destructor}}
+\DoxyCodeLine{75     \mbox{\hyperlink{class_zaki_1_1_util_1_1_log_manager}{\string~LogManager}}();}
+\DoxyCodeLine{76 }
+\DoxyCodeLine{77     \textcolor{comment}{// Copy constructor}}
+\DoxyCodeLine{78     \mbox{\hyperlink{class_zaki_1_1_util_1_1_log_manager}{LogManager}}(\textcolor{keyword}{const} \mbox{\hyperlink{class_zaki_1_1_util_1_1_log_manager}{LogManager}} \&) = \textcolor{keyword}{delete};}
 \DoxyCodeLine{79 }
-\DoxyCodeLine{80     \textcolor{keyword}{static} \textcolor{keywordtype}{void} Emit(\textcolor{keyword}{const} \mbox{\hyperlink{struct_zaki_1_1_util_1_1_log_entry}{LogEntry}}\&);}
+\DoxyCodeLine{80     \textcolor{keyword}{static} \mbox{\hyperlink{class_zaki_1_1_util_1_1_log_manager}{LogManager}} \&Get();}
 \DoxyCodeLine{81 }
-\DoxyCodeLine{82     \textcolor{comment}{// Setters}}
-\DoxyCodeLine{83     \textcolor{comment}{// static void SetSettings(const LogSettings\&);}}
-\DoxyCodeLine{84     \textcolor{keyword}{static} \textcolor{keywordtype}{void} SetLogLevels(\textcolor{keyword}{const} LogLevel\&, \textcolor{keyword}{const} LogLevel\&) ;}
-\DoxyCodeLine{85     \textcolor{keyword}{static} \textcolor{keywordtype}{void} SetLogLevels(\textcolor{keyword}{const} LogLevel\&) ;}
-\DoxyCodeLine{86     \textcolor{keyword}{static} \textcolor{keywordtype}{void} SetLogFile(\textcolor{keyword}{const} \mbox{\hyperlink{class_zaki_1_1_string_1_1_directory}{Zaki::String::Directory}}\&) ;}
-\DoxyCodeLine{87     \textcolor{keyword}{static} \textcolor{keywordtype}{void} SetBlackWhite(\textcolor{keyword}{const} \textcolor{keywordtype}{bool}\&) ;}
-\DoxyCodeLine{88 }
-\DoxyCodeLine{89   \textcolor{keyword}{private}:}
-\DoxyCodeLine{90     \textcolor{comment}{// Constructor 1 with the default settings}}
-\DoxyCodeLine{91     \mbox{\hyperlink{class_zaki_1_1_util_1_1_log_manager}{LogManager}}() \{ \}}
-\DoxyCodeLine{92 }
-\DoxyCodeLine{93     \textcolor{keywordtype}{void} IEmit(\textcolor{keyword}{const} \mbox{\hyperlink{struct_zaki_1_1_util_1_1_log_entry}{LogEntry}}\&) ;}
-\DoxyCodeLine{94     \textcolor{keywordtype}{void} Print(\textcolor{keyword}{const} \mbox{\hyperlink{struct_zaki_1_1_util_1_1_log_entry}{LogEntry}}\&) ;}
-\DoxyCodeLine{95     \textcolor{keywordtype}{void} ShowReport() ;}
-\DoxyCodeLine{96     \textcolor{keywordtype}{void} AddFooter() ;}
-\DoxyCodeLine{97     \textcolor{keywordtype}{void} Export(\textcolor{keyword}{const} \mbox{\hyperlink{struct_zaki_1_1_util_1_1_log_entry}{LogEntry}}\&) ;}
-\DoxyCodeLine{98     std::string GetLogFileHeader() ;}
-\DoxyCodeLine{99 }
-\DoxyCodeLine{100     \textcolor{comment}{// Get current date/time, format is YYYY-\/MM-\/DD.HH:mm:ss}}
-\DoxyCodeLine{101     std::string CurrentDateTime(\textcolor{keyword}{const} std::string\&) \textcolor{keyword}{const} ;}
-\DoxyCodeLine{102 }
-\DoxyCodeLine{103     \mbox{\hyperlink{class_zaki_1_1_string_1_1_directory}{Zaki::String::Directory}} file\_name = \textcolor{stringliteral}{"{}"{}};}
-\DoxyCodeLine{104     LogLevel file\_thresh = LogLevel::Info ;}
-\DoxyCodeLine{105     LogLevel term\_thresh = LogLevel::Info ;}
-\DoxyCodeLine{106     std::mutex mtx;}
-\DoxyCodeLine{107     }
-\DoxyCodeLine{108     \textcolor{keywordtype}{bool} export\_flag = false ;}
-\DoxyCodeLine{109     \textcolor{keywordtype}{bool} first\_time\_writing = true ;}
-\DoxyCodeLine{110 }
-\DoxyCodeLine{111     \textcolor{comment}{// Black \& white format}}
-\DoxyCodeLine{112     \textcolor{keywordtype}{bool} blackWhite\_format = false ;}
-\DoxyCodeLine{113 }
-\DoxyCodeLine{114     \textcolor{comment}{// LogSettings settings ; }}
-\DoxyCodeLine{115     \textcolor{keywordtype}{int} num\_warnings = 0;}
-\DoxyCodeLine{116     \textcolor{keywordtype}{int} num\_errors  = 0;}
-\DoxyCodeLine{117 \};}
-\DoxyCodeLine{118 }
-\DoxyCodeLine{119 \textcolor{comment}{//==============================================================}}
-\DoxyCodeLine{120 \textcolor{keyword}{struct }\mbox{\hyperlink{struct_zaki_1_1_util_1_1_log_format}{LogFormat}} }
-\DoxyCodeLine{121 \{}
-\DoxyCodeLine{122   LogLevel level ;}
-\DoxyCodeLine{123   std::string tag ;}
-\DoxyCodeLine{124   \mbox{\hyperlink{struct_zaki_1_1_string_1_1_color}{Zaki::String::Color}} tag\_color, txt\_color;}
-\DoxyCodeLine{125 }
-\DoxyCodeLine{126   \textcolor{comment}{// Default Constructor}}
-\DoxyCodeLine{127   \textcolor{comment}{// LogFormat() ;}}
-\DoxyCodeLine{128 }
-\DoxyCodeLine{129   \textcolor{comment}{// Constructor from LogLevel}}
-\DoxyCodeLine{130   \mbox{\hyperlink{struct_zaki_1_1_util_1_1_log_format}{LogFormat}}(\textcolor{keyword}{const} LogLevel\& in\_lvl) }
-\DoxyCodeLine{131     : level(in\_lvl)}
-\DoxyCodeLine{132   \{}
-\DoxyCodeLine{133     \textcolor{keywordflow}{switch} (in\_lvl)}
+\DoxyCodeLine{82     \textcolor{keyword}{static} \textcolor{keywordtype}{void} Emit(\textcolor{keyword}{const} \mbox{\hyperlink{struct_zaki_1_1_util_1_1_log_entry}{LogEntry}} \&);}
+\DoxyCodeLine{83 }
+\DoxyCodeLine{84     \textcolor{comment}{// Setters}}
+\DoxyCodeLine{85     \textcolor{comment}{// static void SetSettings(const LogSettings\&);}}
+\DoxyCodeLine{86     \textcolor{keyword}{static} \textcolor{keywordtype}{void} SetLogLevels(\textcolor{keyword}{const} LogLevel \&, \textcolor{keyword}{const} LogLevel \&);}
+\DoxyCodeLine{87     \textcolor{keyword}{static} \textcolor{keywordtype}{void} SetLogLevels(\textcolor{keyword}{const} LogLevel \&);}
+\DoxyCodeLine{88     \textcolor{keyword}{static} \textcolor{keywordtype}{void} SetLogFile(\textcolor{keyword}{const} \mbox{\hyperlink{class_zaki_1_1_string_1_1_directory}{Zaki::String::Directory}} \&);}
+\DoxyCodeLine{89     \textcolor{keyword}{static} \textcolor{keywordtype}{void} SetBlackWhite(\textcolor{keyword}{const} \textcolor{keywordtype}{bool} \&);}
+\DoxyCodeLine{90 }
+\DoxyCodeLine{91   \textcolor{keyword}{private}:}
+\DoxyCodeLine{92     \textcolor{comment}{// Constructor 1 with the default settings}}
+\DoxyCodeLine{93     \mbox{\hyperlink{class_zaki_1_1_util_1_1_log_manager}{LogManager}}() \{\}}
+\DoxyCodeLine{94 }
+\DoxyCodeLine{95     \textcolor{keywordtype}{void} IEmit(\textcolor{keyword}{const} \mbox{\hyperlink{struct_zaki_1_1_util_1_1_log_entry}{LogEntry}} \&);}
+\DoxyCodeLine{96     \textcolor{keywordtype}{void} Print(\textcolor{keyword}{const} \mbox{\hyperlink{struct_zaki_1_1_util_1_1_log_entry}{LogEntry}} \&);}
+\DoxyCodeLine{97     \textcolor{keywordtype}{void} ShowReport();}
+\DoxyCodeLine{98     \textcolor{keywordtype}{void} AddFooter();}
+\DoxyCodeLine{99     \textcolor{keywordtype}{void} Export(\textcolor{keyword}{const} \mbox{\hyperlink{struct_zaki_1_1_util_1_1_log_entry}{LogEntry}} \&);}
+\DoxyCodeLine{100     std::string GetLogFileHeader();}
+\DoxyCodeLine{101 }
+\DoxyCodeLine{102     \textcolor{comment}{// Get current date/time, format is YYYY-\/MM-\/DD.HH:mm:ss}}
+\DoxyCodeLine{103     std::string CurrentDateTime(\textcolor{keyword}{const} std::string \&) \textcolor{keyword}{const};}
+\DoxyCodeLine{104 }
+\DoxyCodeLine{105     \mbox{\hyperlink{class_zaki_1_1_string_1_1_directory}{Zaki::String::Directory}} file\_name = \textcolor{stringliteral}{"{}"{}};}
+\DoxyCodeLine{106     LogLevel file\_thresh = LogLevel::Info;}
+\DoxyCodeLine{107     LogLevel term\_thresh = LogLevel::Info;}
+\DoxyCodeLine{108     std::mutex mtx;}
+\DoxyCodeLine{109 }
+\DoxyCodeLine{110     \textcolor{keywordtype}{bool} export\_flag = \textcolor{keyword}{false};}
+\DoxyCodeLine{111     \textcolor{keywordtype}{bool} first\_time\_writing = \textcolor{keyword}{true};}
+\DoxyCodeLine{112 }
+\DoxyCodeLine{113     \textcolor{comment}{// Black \& white format}}
+\DoxyCodeLine{114     \textcolor{keywordtype}{bool} blackWhite\_format = \textcolor{keyword}{false};}
+\DoxyCodeLine{115 }
+\DoxyCodeLine{116     \textcolor{comment}{// LogSettings settings ;}}
+\DoxyCodeLine{117     \textcolor{keywordtype}{int} num\_warnings = 0;}
+\DoxyCodeLine{118     \textcolor{keywordtype}{int} num\_errors = 0;}
+\DoxyCodeLine{119 \};}
+\DoxyCodeLine{120 }
+\DoxyCodeLine{121 \textcolor{comment}{//==============================================================}}
+\DoxyCodeLine{122 \textcolor{keyword}{struct }\mbox{\hyperlink{struct_zaki_1_1_util_1_1_log_format}{LogFormat}}}
+\DoxyCodeLine{123 \{}
+\DoxyCodeLine{124     LogLevel level;}
+\DoxyCodeLine{125     std::string tag;}
+\DoxyCodeLine{126     \mbox{\hyperlink{struct_zaki_1_1_string_1_1_color}{Zaki::String::Color}} tag\_color, txt\_color;}
+\DoxyCodeLine{127 }
+\DoxyCodeLine{128     \textcolor{comment}{// Default Constructor}}
+\DoxyCodeLine{129     \textcolor{comment}{// LogFormat() ;}}
+\DoxyCodeLine{130 }
+\DoxyCodeLine{131     \textcolor{comment}{// Constructor from LogLevel}}
+\DoxyCodeLine{132     \mbox{\hyperlink{struct_zaki_1_1_util_1_1_log_format}{LogFormat}}(\textcolor{keyword}{const} LogLevel \&in\_lvl)}
+\DoxyCodeLine{133         : level(in\_lvl)}
 \DoxyCodeLine{134     \{}
-\DoxyCodeLine{135     }
-\DoxyCodeLine{136     \textcolor{keywordflow}{case} LogLevel::Verbose:}
-\DoxyCodeLine{137         tag = \textcolor{stringliteral}{"{}Note"{}} ;}
-\DoxyCodeLine{138         tag\_color = \{Zaki::String::FGColor::Green\} ;}
-\DoxyCodeLine{139         txt\_color = \{Zaki::String::FGColor::LGreen\} ;}
-\DoxyCodeLine{140       \textcolor{keywordflow}{break};}
-\DoxyCodeLine{141     }
-\DoxyCodeLine{142     \textcolor{keywordflow}{case} LogLevel::Info:}
-\DoxyCodeLine{143         tag = \textcolor{stringliteral}{"{}Info"{}} ;}
-\DoxyCodeLine{144         tag\_color = \{Zaki::String::FGColor::Cyan\} ;}
-\DoxyCodeLine{145         txt\_color = \{Zaki::String::FGColor::LCyan\} ;}
-\DoxyCodeLine{146       \textcolor{keywordflow}{break};}
-\DoxyCodeLine{147 }
-\DoxyCodeLine{148     \textcolor{keywordflow}{case} LogLevel::Warning:}
-\DoxyCodeLine{149         tag = \textcolor{stringliteral}{"{}Warning"{}} ;}
-\DoxyCodeLine{150         tag\_color = \{Zaki::String::FGColor::Yellow\} ;}
-\DoxyCodeLine{151         txt\_color = \{Zaki::String::FGColor::LYellow\} ;}
-\DoxyCodeLine{152       \textcolor{keywordflow}{break};}
-\DoxyCodeLine{153 }
-\DoxyCodeLine{154     \textcolor{keywordflow}{case} LogLevel::Error:}
-\DoxyCodeLine{155         tag = \textcolor{stringliteral}{"{}Error"{}} ;}
-\DoxyCodeLine{156         tag\_color = \{Zaki::String::FGColor::Red\} ;}
-\DoxyCodeLine{157         txt\_color = \{Zaki::String::FGColor::LRed\} ;}
-\DoxyCodeLine{158       \textcolor{keywordflow}{break};}
-\DoxyCodeLine{159 }
-\DoxyCodeLine{160     \textcolor{keywordflow}{default}:}
-\DoxyCodeLine{161       \textcolor{keywordflow}{break};}
-\DoxyCodeLine{162     \}}
-\DoxyCodeLine{163   \}}
-\DoxyCodeLine{164 }
-\DoxyCodeLine{165   \textcolor{keyword}{static} std::string ResetColor() }
-\DoxyCodeLine{166   \{}
-\DoxyCodeLine{167     \textcolor{keywordflow}{return} \textcolor{stringliteral}{"{}\(\backslash\)E[0m"{}} ;}
-\DoxyCodeLine{168   \}}
-\DoxyCodeLine{169 }
-\DoxyCodeLine{170 \};}
-\DoxyCodeLine{171 }
-\DoxyCodeLine{172 \textcolor{comment}{//==============================================================}}
-\DoxyCodeLine{173 \textcolor{keyword}{struct }\mbox{\hyperlink{struct_zaki_1_1_util_1_1_log_entry}{LogEntry}}}
-\DoxyCodeLine{174 \{}
-\DoxyCodeLine{175   \textcolor{keyword}{friend} \textcolor{keyword}{class }\mbox{\hyperlink{class_zaki_1_1_util_1_1_log_manager}{LogManager}} ;}
-\DoxyCodeLine{176   }
-\DoxyCodeLine{177   \textcolor{keyword}{private}:}
-\DoxyCodeLine{178     std::string Message ;}
-\DoxyCodeLine{179     \textcolor{keywordtype}{int} Line = 0 ;}
-\DoxyCodeLine{180     std::string FuncName ;}
-\DoxyCodeLine{181     std::string FileName ;}
-\DoxyCodeLine{182     \textcolor{comment}{// std::string time\_stamp = "{}"{};}}
-\DoxyCodeLine{183     \mbox{\hyperlink{struct_zaki_1_1_util_1_1_log_format}{LogFormat}} Format;}
-\DoxyCodeLine{184 }
-\DoxyCodeLine{185 }
-\DoxyCodeLine{186   \textcolor{keyword}{public}:}
-\DoxyCodeLine{187     \textcolor{comment}{// Constructor}}
-\DoxyCodeLine{188     \mbox{\hyperlink{struct_zaki_1_1_util_1_1_log_entry}{LogEntry}}(\textcolor{keyword}{const} std::string\& in\_mes, \textcolor{keywordtype}{int} in\_line,}
-\DoxyCodeLine{189              \textcolor{keyword}{const} std::string\& in\_func, \textcolor{keyword}{const} std::string\& in\_file, \textcolor{keyword}{const} LogLevel\& in\_lev)}
-\DoxyCodeLine{190              : Message(in\_mes), Line(in\_line), FuncName(in\_func),}
-\DoxyCodeLine{191                FileName(in\_file), Format(in\_lev)}
-\DoxyCodeLine{192     \{}
-\DoxyCodeLine{193       LogManager::Emit(*\textcolor{keyword}{this}) ;}
-\DoxyCodeLine{194     \}}
-\DoxyCodeLine{195 \} ;}
-\DoxyCodeLine{196 }
-\DoxyCodeLine{197 \textcolor{comment}{//==============================================================}}
+\DoxyCodeLine{135         \textcolor{keywordflow}{switch} (in\_lvl)}
+\DoxyCodeLine{136         \{}
+\DoxyCodeLine{137 }
+\DoxyCodeLine{138         \textcolor{keywordflow}{case} LogLevel::Verbose:}
+\DoxyCodeLine{139             tag = \textcolor{stringliteral}{"{}Note"{}};}
+\DoxyCodeLine{140             tag\_color = \{Zaki::String::FGColor::Green\};}
+\DoxyCodeLine{141             txt\_color = \{Zaki::String::FGColor::LGreen\};}
+\DoxyCodeLine{142             \textcolor{keywordflow}{break};}
+\DoxyCodeLine{143 }
+\DoxyCodeLine{144         \textcolor{keywordflow}{case} LogLevel::Info:}
+\DoxyCodeLine{145             tag = \textcolor{stringliteral}{"{}Info"{}};}
+\DoxyCodeLine{146             tag\_color = \{Zaki::String::FGColor::Cyan\};}
+\DoxyCodeLine{147             txt\_color = \{Zaki::String::FGColor::LCyan\};}
+\DoxyCodeLine{148             \textcolor{keywordflow}{break};}
+\DoxyCodeLine{149 }
+\DoxyCodeLine{150         \textcolor{keywordflow}{case} LogLevel::Warning:}
+\DoxyCodeLine{151             tag = \textcolor{stringliteral}{"{}Warning"{}};}
+\DoxyCodeLine{152             tag\_color = \{Zaki::String::FGColor::Yellow\};}
+\DoxyCodeLine{153             txt\_color = \{Zaki::String::FGColor::LYellow\};}
+\DoxyCodeLine{154             \textcolor{keywordflow}{break};}
+\DoxyCodeLine{155 }
+\DoxyCodeLine{156         \textcolor{keywordflow}{case} LogLevel::Error:}
+\DoxyCodeLine{157             tag = \textcolor{stringliteral}{"{}Error"{}};}
+\DoxyCodeLine{158             tag\_color = \{Zaki::String::FGColor::Red\};}
+\DoxyCodeLine{159             txt\_color = \{Zaki::String::FGColor::LRed\};}
+\DoxyCodeLine{160             \textcolor{keywordflow}{break};}
+\DoxyCodeLine{161 }
+\DoxyCodeLine{162         \textcolor{keywordflow}{default}:}
+\DoxyCodeLine{163             \textcolor{keywordflow}{break};}
+\DoxyCodeLine{164         \}}
+\DoxyCodeLine{165     \}}
+\DoxyCodeLine{166 }
+\DoxyCodeLine{167     \textcolor{keyword}{static} std::string ResetColor()}
+\DoxyCodeLine{168     \{}
+\DoxyCodeLine{169         \textcolor{keywordflow}{return} \textcolor{stringliteral}{"{}\(\backslash\)E[0m"{}};}
+\DoxyCodeLine{170     \}}
+\DoxyCodeLine{171 \};}
+\DoxyCodeLine{172 }
+\DoxyCodeLine{173 \textcolor{comment}{//==============================================================}}
+\DoxyCodeLine{174 \textcolor{keyword}{struct }\mbox{\hyperlink{struct_zaki_1_1_util_1_1_log_entry}{LogEntry}}}
+\DoxyCodeLine{175 \{}
+\DoxyCodeLine{176     \textcolor{keyword}{friend} \textcolor{keyword}{class }\mbox{\hyperlink{class_zaki_1_1_util_1_1_log_manager}{LogManager}};}
+\DoxyCodeLine{177 }
+\DoxyCodeLine{178   \textcolor{keyword}{private}:}
+\DoxyCodeLine{179     std::string Message;}
+\DoxyCodeLine{180     \textcolor{keywordtype}{int} Line = 0;}
+\DoxyCodeLine{181     std::string FuncName;}
+\DoxyCodeLine{182     std::string FileName;}
+\DoxyCodeLine{183     \textcolor{keywordtype}{int} Id = -\/1; \textcolor{comment}{// NEW}}
+\DoxyCodeLine{184     \textcolor{comment}{// std::string time\_stamp = "{}"{};}}
+\DoxyCodeLine{185     \mbox{\hyperlink{struct_zaki_1_1_util_1_1_log_format}{LogFormat}} Format;}
+\DoxyCodeLine{186 }
+\DoxyCodeLine{187   \textcolor{keyword}{public}:}
+\DoxyCodeLine{188     \textcolor{comment}{// Constructor}}
+\DoxyCodeLine{189     \mbox{\hyperlink{struct_zaki_1_1_util_1_1_log_entry}{LogEntry}}(\textcolor{keyword}{const} std::string \&in\_mes, \textcolor{keywordtype}{int} in\_line,}
+\DoxyCodeLine{190              \textcolor{keyword}{const} std::string \&in\_func, \textcolor{keyword}{const} std::string \&in\_file,}
+\DoxyCodeLine{191              \textcolor{keyword}{const} LogLevel \&in\_lev, \textcolor{keywordtype}{int} in\_id = -\/1)}
+\DoxyCodeLine{192         : Message(in\_mes), Line(in\_line), FuncName(in\_func),}
+\DoxyCodeLine{193           FileName(in\_file), Format(in\_lev), Id(in\_id)}
+\DoxyCodeLine{194     \{}
+\DoxyCodeLine{195         LogManager::Emit(*\textcolor{keyword}{this});}
+\DoxyCodeLine{196     \}}
+\DoxyCodeLine{197 \};}
 \DoxyCodeLine{198 }
-\DoxyCodeLine{199 \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
-\DoxyCodeLine{200 \} \textcolor{comment}{// End of namespace Zaki::Util}}
-\DoxyCodeLine{201 \textcolor{comment}{//==============================================================}}
-\DoxyCodeLine{202 \textcolor{comment}{//                     Logging}}
-\DoxyCodeLine{203 \textcolor{comment}{// \#define \_\_FILENAME\_\_ (strrchr(\_\_FILE\_\_, '/') ? strrchr(\_\_FILE\_\_, '/') + 1 : \_\_FILE\_\_)}}
-\DoxyCodeLine{204 \textcolor{preprocessor}{\#define \_\_FILENAME\_\_ strrchr("{}/"{}} \_\_FILE\_\_, '/') + 1}
-\DoxyCodeLine{205 }
-\DoxyCodeLine{206 \textcolor{preprocessor}{\#define Z\_LOG\_HIDDEN(MSG, LEVEL, L)  Zaki::Util::LogEntry \_\_CONCAT(logEntry,L)(MSG,  \_\_LINE\_\_, \_\_func\_\_, \_\_FILENAME\_\_, LEVEL)}}
-\DoxyCodeLine{207 \textcolor{preprocessor}{\#define Z\_LOG(MSG, LEVEL)  Z\_LOG\_HIDDEN(MSG, LEVEL, \_\_COUNTER\_\_)}}
-\DoxyCodeLine{208 \textcolor{comment}{/* \#define Z\_LOG(MSG, LEVEL) \(\backslash\)}}
-\DoxyCodeLine{209 \textcolor{comment}{  // do \{ \(\backslash\)}}
-\DoxyCodeLine{210 \textcolor{comment}{    // Zaki::Util::LogEntry \_\_CONCAT(logEntry,\_\_COUNTER\_\_)(MSG,  \_\_LINE\_\_, \_\_func\_\_, \_\_FILENAME\_\_, LEVEL); \(\backslash\)}}
-\DoxyCodeLine{211 \textcolor{comment}{    // return ; \(\backslash\)}}
-\DoxyCodeLine{212 \textcolor{comment}{  // \} while (0)}}
-\DoxyCodeLine{213 \textcolor{comment}{// \#define Z\_LOG(MSG, LEVEL)  Zaki::Util::LogEntry logEntry\#\#\_\_LINE\_\_(MSG,  \_\_LINE\_\_, \_\_func\_\_, \_\_FILE\_\_, LEVEL)}}
-\DoxyCodeLine{214 \textcolor{comment}{ */}}
-\DoxyCodeLine{215 }
-\DoxyCodeLine{216 \textcolor{preprocessor}{\#define Z\_LOG\_NOTE(MSG)  Z\_LOG(MSG, Zaki::Util::LogLevel::Verbose)}}
-\DoxyCodeLine{217 \textcolor{preprocessor}{\#define Z\_LOG\_INFO(MSG)  Z\_LOG(MSG, Zaki::Util::LogLevel::Info)}}
-\DoxyCodeLine{218 \textcolor{preprocessor}{\#define Z\_LOG\_WARNING(MSG)  Z\_LOG(MSG, Zaki::Util::LogLevel::Warning)}}
-\DoxyCodeLine{219 \textcolor{preprocessor}{\#define Z\_LOG\_ERROR(MSG)  Z\_LOG(MSG, Zaki::Util::LogLevel::Error)}}
-\DoxyCodeLine{220 }
-\DoxyCodeLine{221 \textcolor{comment}{//==============================================================}}
-\DoxyCodeLine{222 \textcolor{preprocessor}{\#endif }\textcolor{comment}{/*Zaki\_Util\_Logger\_H*/}\textcolor{preprocessor}{}}
+\DoxyCodeLine{199 \textcolor{comment}{//==============================================================}}
+\DoxyCodeLine{200 }
+\DoxyCodeLine{201 \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{202 \} \textcolor{comment}{// End of namespace Zaki::Util}}
+\DoxyCodeLine{203 \textcolor{comment}{//==============================================================}}
+\DoxyCodeLine{204 \textcolor{comment}{//                     Logging}}
+\DoxyCodeLine{205 \textcolor{comment}{// \#define \_\_FILENAME\_\_ (strrchr(\_\_FILE\_\_, '/') ? strrchr(\_\_FILE\_\_, '/') + 1 : \_\_FILE\_\_)}}
+\DoxyCodeLine{206 \textcolor{comment}{// \#define \_\_FILENAME\_\_ strrchr("{}/"{} \_\_FILE\_\_, '/') + 1}}
+\DoxyCodeLine{207 }
+\DoxyCodeLine{208 \textcolor{comment}{// \#define Z\_LOG\_HIDDEN(MSG, LEVEL, L) Zaki::Util::LogEntry \_\_CONCAT(logEntry, L)(MSG, \_\_LINE\_\_, \_\_func\_\_, \_\_FILENAME\_\_, LEVEL)}}
+\DoxyCodeLine{209 \textcolor{comment}{// \#define Z\_LOG(MSG, LEVEL)                                                       \(\backslash\)}}
+\DoxyCodeLine{210 \textcolor{comment}{//  do                                                                          \(\backslash\)}}
+\DoxyCodeLine{211 \textcolor{comment}{//  \{                                                                           \(\backslash\)}}
+\DoxyCodeLine{212 \textcolor{comment}{//      Zaki::Util::LogEntry((MSG), \_\_LINE\_\_, \_\_func\_\_, \_\_FILENAME\_\_, (LEVEL)); \(\backslash\)}}
+\DoxyCodeLine{213 \textcolor{comment}{//  \} while (0)}}
+\DoxyCodeLine{214 \textcolor{comment}{// \#define Z\_LOG(MSG, LEVEL) Z\_LOG\_HIDDEN(MSG, LEVEL, \_\_COUNTER\_\_)}}
+\DoxyCodeLine{215 \textcolor{comment}{// /* \#define Z\_LOG(MSG, LEVEL) \(\backslash\)}}
+\DoxyCodeLine{216 \textcolor{comment}{//   // do \{ \(\backslash\)}}
+\DoxyCodeLine{217 \textcolor{comment}{//  // Zaki::Util::LogEntry \_\_CONCAT(logEntry,\_\_COUNTER\_\_)(MSG,  \_\_LINE\_\_, \_\_func\_\_, \_\_FILENAME\_\_, LEVEL); \(\backslash\)}}
+\DoxyCodeLine{218 \textcolor{comment}{//  // return ; \(\backslash\)}}
+\DoxyCodeLine{219 \textcolor{comment}{//   // \} while (0)}}
+\DoxyCodeLine{220 \textcolor{comment}{// // \#define Z\_LOG(MSG, LEVEL)  Zaki::Util::LogEntry logEntry\#\#\_\_LINE\_\_(MSG,  \_\_LINE\_\_, \_\_func\_\_, \_\_FILE\_\_, LEVEL)}}
+\DoxyCodeLine{221 \textcolor{comment}{//  */}}
+\DoxyCodeLine{222 }
+\DoxyCodeLine{223 \textcolor{comment}{// \#define Z\_LOG\_NOTE(MSG) Z\_LOG(MSG, Zaki::Util::LogLevel::Verbose)}}
+\DoxyCodeLine{224 \textcolor{comment}{// \#define Z\_LOG\_INFO(MSG) Z\_LOG(MSG, Zaki::Util::LogLevel::Info)}}
+\DoxyCodeLine{225 \textcolor{comment}{// \#define Z\_LOG\_WARNING(MSG) Z\_LOG(MSG, Zaki::Util::LogLevel::Warning)}}
+\DoxyCodeLine{226 \textcolor{comment}{// \#define Z\_LOG\_ERROR(MSG) Z\_LOG(MSG, Zaki::Util::LogLevel::Error)}}
+\DoxyCodeLine{227 }
+\DoxyCodeLine{228 \textcolor{preprocessor}{\#define \_\_FILENAME\_\_ strrchr("{}/"{}} \_\_FILE\_\_, '/') + 1}
+\DoxyCodeLine{229 }
+\DoxyCodeLine{230 \textcolor{preprocessor}{\#define Z\_LOG(MSG, LEVEL)                                                                    \(\backslash\)}}
+\DoxyCodeLine{231 \textcolor{preprocessor}{    do                                                                                       \(\backslash\)}}
+\DoxyCodeLine{232 \textcolor{preprocessor}{    \{                                                                                        \(\backslash\)}}
+\DoxyCodeLine{233 \textcolor{preprocessor}{        Zaki::Util::LogEntry((MSG), \_\_LINE\_\_, \_\_func\_\_, \_\_FILENAME\_\_, (LEVEL), \_\_COUNTER\_\_); \(\backslash\)}}
+\DoxyCodeLine{234 \textcolor{preprocessor}{    \} while (0)}}
+\DoxyCodeLine{235 }
+\DoxyCodeLine{236 \textcolor{preprocessor}{\#define Z\_LOG\_NOTE(MSG) Z\_LOG(MSG, Zaki::Util::LogLevel::Verbose)}}
+\DoxyCodeLine{237 \textcolor{preprocessor}{\#define Z\_LOG\_INFO(MSG) Z\_LOG(MSG, Zaki::Util::LogLevel::Info)}}
+\DoxyCodeLine{238 \textcolor{preprocessor}{\#define Z\_LOG\_WARNING(MSG) Z\_LOG(MSG, Zaki::Util::LogLevel::Warning)}}
+\DoxyCodeLine{239 \textcolor{preprocessor}{\#define Z\_LOG\_ERROR(MSG) Z\_LOG(MSG, Zaki::Util::LogLevel::Error)}}
+\DoxyCodeLine{240 \textcolor{comment}{//==============================================================}}
+\DoxyCodeLine{241 \textcolor{preprocessor}{\#endif }\textcolor{comment}{/*Zaki\_Util\_Logger\_H*/}\textcolor{preprocessor}{}}
 
 \end{DoxyCode}

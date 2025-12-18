@@ -1,0 +1,53 @@
+\hypertarget{_diagnostics_observer_8hpp}{}\doxysection{Compact\+Star/\+Physics/\+Evolution/\+Observers/\+Diagnostics\+Observer.hpp File Reference}
+\label{_diagnostics_observer_8hpp}\index{CompactStar/Physics/Evolution/Observers/DiagnosticsObserver.hpp@{CompactStar/Physics/Evolution/Observers/DiagnosticsObserver.hpp}}
+
+
+Observer that periodically records driver diagnostics to JSONL.  
+
+
+{\ttfamily \#include $<$cstddef$>$}\newline
+{\ttfamily \#include $<$fstream$>$}\newline
+{\ttfamily \#include $<$memory$>$}\newline
+{\ttfamily \#include $<$string$>$}\newline
+{\ttfamily \#include $<$vector$>$}\newline
+{\ttfamily \#include \char`\"{}Compact\+Star/\+Physics/\+Evolution/\+Diagnostics/\+Diagnostic\+Packet.\+hpp\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}Compact\+Star/\+Physics/\+Evolution/\+Diagnostics/\+Diagnostics\+Json.\+hpp\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}Compact\+Star/\+Physics/\+Evolution/\+Diagnostics/\+Unit\+Contract.\+hpp\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}Compact\+Star/\+Physics/\+Evolution/\+Observers/\+IObserver.\+hpp\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}Compact\+Star/\+Physics/\+Driver/\+Diagnostics/\+Driver\+Diagnostics.\+hpp\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}Zaki/\+String/\+Directory.\+hpp\char`\"{}}\newline
+\doxysubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_observers_1_1_diagnostics_observer}{Compact\+Star\+::\+Physics\+::\+Evolution\+::\+Observers\+::\+Diagnostics\+Observer}}
+\begin{DoxyCompactList}\small\item\em Periodic diagnostics writer for drivers (JSONL). \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{struct_compact_star_1_1_physics_1_1_evolution_1_1_observers_1_1_diagnostics_observer_1_1_options}{Compact\+Star\+::\+Physics\+::\+Evolution\+::\+Observers\+::\+Diagnostics\+Observer\+::\+Options}}
+\begin{DoxyCompactList}\small\item\em Configuration for \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_observers_1_1_diagnostics_observer}{Diagnostics\+Observer}}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Namespaces}
+\begin{DoxyCompactItemize}
+\item 
+namespace \mbox{\hyperlink{namespace_compact_star_1_1_physics}{Compact\+Star\+::\+Physics}}
+\begin{DoxyCompactList}\small\item\em High-\/level physical modeling layer for compact stars. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Observer that periodically records driver diagnostics to JSONL. 
+
+This observer is intended to be\+:
+\begin{DoxyItemize}
+\item separate from physics (no effect on integration),
+\item deterministic output for regression testing,
+\item flexible about what drivers expose diagnostics (opt-\/in interface).
+\end{DoxyItemize}
+
+Operation\+:
+\begin{DoxyItemize}
+\item At Observe(t, Y, ctx) it checks whether it\textquotesingle{}s time to record.
+\item It queries each registered driver diagnostics interface and writes one JSON object per driver (JSONL) into an output file.
+\end{DoxyItemize}
+
+Output format\+:
+\begin{DoxyItemize}
+\item JSONL (one object per line), which scales and is tooling-\/friendly.
+\item Each line includes producer/time/step/scalars/contract/messages. 
+\end{DoxyItemize}

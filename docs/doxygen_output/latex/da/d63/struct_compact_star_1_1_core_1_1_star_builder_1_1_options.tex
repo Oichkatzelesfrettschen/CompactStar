@@ -1,0 +1,57 @@
+\hypertarget{struct_compact_star_1_1_core_1_1_star_builder_1_1_options}{}\doxysection{Compact\+Star\+::Core\+::Star\+Builder\+::Options Struct Reference}
+\label{struct_compact_star_1_1_core_1_1_star_builder_1_1_options}\index{CompactStar::Core::StarBuilder::Options@{CompactStar::Core::StarBuilder::Options}}
+
+
+\mbox{\hyperlink{struct_compact_star_1_1_core_1_1_star_builder_1_1_options}{Options}} controlling how the builder treats blanket / DUrca, etc.  
+
+
+
+
+{\ttfamily \#include $<$Star\+Builder.\+hpp$>$}
+
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+double \mbox{\hyperlink{struct_compact_star_1_1_core_1_1_star_builder_1_1_options_adc15708489b2f1af44b5bfdb90872da9}{blanket\+\_\+energy\+\_\+density\+\_\+km2}} = 7.\+4237e-\/9
+\begin{DoxyCompactList}\small\item\em Energy density used to define the heat-\/blanket radius. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{struct_compact_star_1_1_core_1_1_star_builder_1_1_options_a2e1dc1f548278628ce81059440fa2f93}{compute\+\_\+durca\+\_\+mask}} = true
+\begin{DoxyCompactList}\small\item\em Whether to try to build a DUrca mask from composition. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\mbox{\hyperlink{struct_compact_star_1_1_core_1_1_star_builder_1_1_options}{Options}} controlling how the builder treats blanket / DUrca, etc. 
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{struct_compact_star_1_1_core_1_1_star_builder_1_1_options_adc15708489b2f1af44b5bfdb90872da9}\label{struct_compact_star_1_1_core_1_1_star_builder_1_1_options_adc15708489b2f1af44b5bfdb90872da9}} 
+\index{CompactStar::Core::StarBuilder::Options@{CompactStar::Core::StarBuilder::Options}!blanket\_energy\_density\_km2@{blanket\_energy\_density\_km2}}
+\index{blanket\_energy\_density\_km2@{blanket\_energy\_density\_km2}!CompactStar::Core::StarBuilder::Options@{CompactStar::Core::StarBuilder::Options}}
+\doxysubsubsection{\texorpdfstring{blanket\_energy\_density\_km2}{blanket\_energy\_density\_km2}}
+{\footnotesize\ttfamily double Compact\+Star\+::\+Core\+::\+Star\+Builder\+::\+Options\+::blanket\+\_\+energy\+\_\+density\+\_\+km2 = 7.\+4237e-\/9}
+
+
+
+Energy density used to define the heat-\/blanket radius. 
+
+In the old code this was $ \varepsilon \simeq 10^{10}\ \text{g cm}^{-3} \approx 7.4237\times10^{-9}\ \text{km}^{-2} $. \mbox{\Hypertarget{struct_compact_star_1_1_core_1_1_star_builder_1_1_options_a2e1dc1f548278628ce81059440fa2f93}\label{struct_compact_star_1_1_core_1_1_star_builder_1_1_options_a2e1dc1f548278628ce81059440fa2f93}} 
+\index{CompactStar::Core::StarBuilder::Options@{CompactStar::Core::StarBuilder::Options}!compute\_durca\_mask@{compute\_durca\_mask}}
+\index{compute\_durca\_mask@{compute\_durca\_mask}!CompactStar::Core::StarBuilder::Options@{CompactStar::Core::StarBuilder::Options}}
+\doxysubsubsection{\texorpdfstring{compute\_durca\_mask}{compute\_durca\_mask}}
+{\footnotesize\ttfamily bool Compact\+Star\+::\+Core\+::\+Star\+Builder\+::\+Options\+::compute\+\_\+durca\+\_\+mask = true}
+
+
+
+Whether to try to build a DUrca mask from composition. 
+
+This requires columns\+:
+\begin{DoxyItemize}
+\item total baryon density → column index 5 in our old profile
+\item neutron fraction → label \char`\"{}10\char`\"{}
+\item proton fraction → label \char`\"{}11\char`\"{}
+\item electron fraction → label \char`\"{}0\char`\"{}
+\end{DoxyItemize}
+
+If any of these are missing, the builder will simply leave the mask empty. 
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Compact\+Star/\+Core/\mbox{\hyperlink{_star_builder_8hpp}{Star\+Builder.\+hpp}}\end{DoxyCompactItemize}

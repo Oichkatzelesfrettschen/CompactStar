@@ -28,92 +28,74 @@
 \DoxyCodeLine{24 \textcolor{comment}{ * SOFTWARE.}}
 \DoxyCodeLine{25 \textcolor{comment}{ */}}
 \DoxyCodeLine{26 }
-\DoxyCodeLine{38 \textcolor{preprocessor}{\#ifndef CompactStar\_Physics\_Evolution\_StarContext\_H}}
-\DoxyCodeLine{39 \textcolor{preprocessor}{\#define CompactStar\_Physics\_Evolution\_StarContext\_H}}
-\DoxyCodeLine{40 }
+\DoxyCodeLine{37 \textcolor{preprocessor}{\#ifndef CompactStar\_Physics\_Evolution\_StarContext\_H}}
+\DoxyCodeLine{38 \textcolor{preprocessor}{\#define CompactStar\_Physics\_Evolution\_StarContext\_H}}
+\DoxyCodeLine{39 }
+\DoxyCodeLine{40 \textcolor{preprocessor}{\#include <\mbox{\hyperlink{_data_set_8hpp}{Zaki/Vector/DataSet.hpp}}>}}
 \DoxyCodeLine{41 \textcolor{preprocessor}{\#include <cstddef>}}
-\DoxyCodeLine{42 \textcolor{preprocessor}{\#include <string>}}
-\DoxyCodeLine{43 \textcolor{preprocessor}{\#include <vector>}}
-\DoxyCodeLine{44 }
-\DoxyCodeLine{45 \textcolor{keyword}{namespace }Zaki}
-\DoxyCodeLine{46 \{}
-\DoxyCodeLine{47 \textcolor{keyword}{namespace }Vector}
+\DoxyCodeLine{42 \textcolor{comment}{// namespace Zaki::Vector}}
+\DoxyCodeLine{43 \textcolor{comment}{// \{}}
+\DoxyCodeLine{44 \textcolor{comment}{// class DataColumn;}}
+\DoxyCodeLine{45 \textcolor{comment}{// \}}}
+\DoxyCodeLine{46 }
+\DoxyCodeLine{47 \textcolor{keyword}{namespace }CompactStar::Core}
 \DoxyCodeLine{48 \{}
-\DoxyCodeLine{49 \textcolor{keyword}{class }DataSet;}
-\DoxyCodeLine{50 \textcolor{keyword}{class }DataColumn;}
-\DoxyCodeLine{51 \} \textcolor{comment}{// namespace Vector}}
-\DoxyCodeLine{52 \} \textcolor{comment}{// namespace Zaki}}
-\DoxyCodeLine{53 }
-\DoxyCodeLine{54 \textcolor{keyword}{namespace }CompactStar}
-\DoxyCodeLine{55 \{}
-\DoxyCodeLine{56 \textcolor{keyword}{class }NStar;          \textcolor{comment}{// Core/NStar.hpp}}
-\DoxyCodeLine{57 \textcolor{keyword}{class }RotationSolver; \textcolor{comment}{// Core/RotationSolver.hpp (if needed later)}}
-\DoxyCodeLine{58 \textcolor{keyword}{namespace }EOS}
-\DoxyCodeLine{59 \{}
-\DoxyCodeLine{60 \textcolor{keyword}{class }Model;}
-\DoxyCodeLine{61 \} \textcolor{comment}{// namespace EOS}}
-\DoxyCodeLine{62 \} \textcolor{comment}{// namespace CompactStar}}
-\DoxyCodeLine{63 }
-\DoxyCodeLine{64 \textcolor{keyword}{namespace }CompactStar}
-\DoxyCodeLine{65 \{}
-\DoxyCodeLine{66 \textcolor{keyword}{namespace }Physics}
+\DoxyCodeLine{49 \textcolor{keyword}{class }StarProfile; \textcolor{comment}{// Core/StarProfile.hpp}}
+\DoxyCodeLine{50 \}}
+\DoxyCodeLine{51 }
+\DoxyCodeLine{52 \textcolor{keyword}{namespace }CompactStar::Physics::Evolution}
+\DoxyCodeLine{53 \{}
+\DoxyCodeLine{54 }
+\DoxyCodeLine{55 \textcolor{comment}{//==============================================================}}
+\DoxyCodeLine{56 \textcolor{comment}{//                      StarContext Class}}
+\DoxyCodeLine{57 \textcolor{comment}{//==============================================================}}
+\DoxyCodeLine{66 \textcolor{comment}{}\textcolor{keyword}{class }\mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_star_context}{StarContext}}}
 \DoxyCodeLine{67 \{}
-\DoxyCodeLine{68 \textcolor{keyword}{namespace }Evolution}
-\DoxyCodeLine{69 \{}
-\DoxyCodeLine{70 }
-\DoxyCodeLine{71 \textcolor{comment}{//==============================================================}}
-\DoxyCodeLine{72 \textcolor{comment}{//                      StarContext Class}}
-\DoxyCodeLine{73 \textcolor{comment}{//==============================================================}}
-\DoxyCodeLine{84 \textcolor{comment}{}\textcolor{keyword}{class }\mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_star_context}{StarContext}}}
-\DoxyCodeLine{85 \{}
-\DoxyCodeLine{86   \textcolor{keyword}{public}:}
-\DoxyCodeLine{88     \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_star_context_ab27dfa3cd8109547ef0f347ed674cf85}{StarContext}}() = \textcolor{keywordflow}{default};}
+\DoxyCodeLine{68   \textcolor{keyword}{public}:}
+\DoxyCodeLine{70     \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_star_context_ab27dfa3cd8109547ef0f347ed674cf85}{StarContext}}() = \textcolor{keywordflow}{default};}
+\DoxyCodeLine{71 }
+\DoxyCodeLine{76     \textcolor{keyword}{explicit} \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_star_context_ab27dfa3cd8109547ef0f347ed674cf85}{StarContext}}(\textcolor{keyword}{const} \mbox{\hyperlink{struct_compact_star_1_1_core_1_1_star_profile}{CompactStar::Core::StarProfile}} \&prof);}
+\DoxyCodeLine{77 }
+\DoxyCodeLine{79     \textcolor{keywordtype}{bool} \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_star_context_a779d0781a6098f4d633753551a6aea28}{IsValid}}()\textcolor{keyword}{ const }\{ \textcolor{keywordflow}{return} m\_prof != \textcolor{keyword}{nullptr} \&\& m\_r != \textcolor{keyword}{nullptr} \&\& m\_m != \textcolor{keyword}{nullptr}; \}}
+\DoxyCodeLine{80 }
+\DoxyCodeLine{81     \textcolor{comment}{// -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{82     \textcolor{comment}{// Basic geometry / grid}}
+\DoxyCodeLine{83     \textcolor{comment}{// -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{84     std::size\_t \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_star_context_afcc4b85c86e2bdd9fe0210ea124fa53a}{Size}}() \textcolor{keyword}{const};                                        }
+\DoxyCodeLine{85     \textcolor{keyword}{const} \mbox{\hyperlink{struct_zaki_1_1_vector_1_1_data_column}{Zaki::Vector::DataColumn}} *\mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_star_context_ae367f2d7eb043bde1fcbc49a30b4d03f}{Radius}}()\textcolor{keyword}{ const }\{ \textcolor{keywordflow}{return} m\_r; \}     }
+\DoxyCodeLine{86     \textcolor{keyword}{const} \mbox{\hyperlink{struct_zaki_1_1_vector_1_1_data_column}{Zaki::Vector::DataColumn}} *\mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_star_context_ad5915364679ddd7e26d9996c5a21c56d}{Mass}}()\textcolor{keyword}{ const }\{ \textcolor{keywordflow}{return} m\_m; \}     }
+\DoxyCodeLine{87     \textcolor{keyword}{const} \mbox{\hyperlink{struct_zaki_1_1_vector_1_1_data_column}{Zaki::Vector::DataColumn}} *\mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_star_context_a40b97b068da2afcd4ec30490de825e8f}{Nu}}()\textcolor{keyword}{ const }\{ \textcolor{keywordflow}{return} m\_nu; \}        }
+\DoxyCodeLine{88     \textcolor{keyword}{const} \mbox{\hyperlink{struct_zaki_1_1_vector_1_1_data_column}{Zaki::Vector::DataColumn}} *\mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_star_context_a1055450caef85e681d66b6cc69f022c7}{Lambda}}()\textcolor{keyword}{ const }\{ \textcolor{keywordflow}{return} m\_lam; \} }
 \DoxyCodeLine{89 }
-\DoxyCodeLine{95     \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_star_context_ab27dfa3cd8109547ef0f347ed674cf85}{StarContext}}(\textcolor{keyword}{const} \mbox{\hyperlink{class_compact_star_1_1_n_star}{CompactStar::NStar}} \&ns,}
-\DoxyCodeLine{96                 \textcolor{keyword}{const} CompactStar::EOS::Model *eos = 0);}
-\DoxyCodeLine{97 }
-\DoxyCodeLine{100 }
-\DoxyCodeLine{101     std::size\_t \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_star_context_afcc4b85c86e2bdd9fe0210ea124fa53a}{Size}}() \textcolor{keyword}{const};}
-\DoxyCodeLine{102 }
-\DoxyCodeLine{104     \textcolor{keyword}{const} \mbox{\hyperlink{struct_zaki_1_1_vector_1_1_data_column}{Zaki::Vector::DataColumn}} *\mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_star_context_ae367f2d7eb043bde1fcbc49a30b4d03f}{Radius}}() \textcolor{keyword}{const};}
+\DoxyCodeLine{90     \textcolor{comment}{// -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{91     \textcolor{comment}{// Thermodynamic background (optional)}}
+\DoxyCodeLine{92     \textcolor{comment}{// -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{93     \textcolor{keyword}{const} \mbox{\hyperlink{struct_zaki_1_1_vector_1_1_data_column}{Zaki::Vector::DataColumn}} *\mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_star_context_a95225261475e0e3256348b5581fbf792}{BaryonDensity}}()\textcolor{keyword}{ const }\{ \textcolor{keywordflow}{return} m\_nb; \} }
+\DoxyCodeLine{94 }
+\DoxyCodeLine{95     \textcolor{comment}{// -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{96     \textcolor{comment}{// Global scalars (derived from columns)}}
+\DoxyCodeLine{97     \textcolor{comment}{// -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{98     \textcolor{keywordtype}{double} \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_star_context_af6fb20f678a782fa4104b39ce0d68f9b}{RadiusSurface}}() \textcolor{keyword}{const}; }
+\DoxyCodeLine{99     \textcolor{keywordtype}{double} \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_star_context_a669582110bc36249497fb5cf1ae46ff0}{MassSurface}}() \textcolor{keyword}{const};    }
+\DoxyCodeLine{100     \textcolor{keywordtype}{double} \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_star_context_a2d80e28892a24f43682eb5fa01685458}{ExpNuSurface}}() \textcolor{keyword}{const};  }
+\DoxyCodeLine{101 }
+\DoxyCodeLine{102   \textcolor{keyword}{private}:}
+\DoxyCodeLine{103     \textcolor{keywordtype}{void} BindColumnsOrThrow\_(); \textcolor{comment}{// sets m\_r/m\_m/m\_nu/m\_lam/m\_nb}}
+\DoxyCodeLine{104     \textcolor{keywordtype}{void} ValidateOrThrow\_();    \textcolor{comment}{// checks consistent row counts for required cols}}
 \DoxyCodeLine{105 }
-\DoxyCodeLine{107     \textcolor{keyword}{const} \mbox{\hyperlink{struct_zaki_1_1_vector_1_1_data_column}{Zaki::Vector::DataColumn}} *\mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_star_context_a40b97b068da2afcd4ec30490de825e8f}{Nu}}() \textcolor{keyword}{const};}
+\DoxyCodeLine{106   \textcolor{keyword}{private}:}
+\DoxyCodeLine{107     \textcolor{keyword}{const} \mbox{\hyperlink{struct_compact_star_1_1_core_1_1_star_profile}{CompactStar::Core::StarProfile}} *m\_prof = \textcolor{keyword}{nullptr};}
 \DoxyCodeLine{108 }
-\DoxyCodeLine{110     \textcolor{keyword}{const} \mbox{\hyperlink{struct_zaki_1_1_vector_1_1_data_column}{Zaki::Vector::DataColumn}} *\mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_star_context_a641c163d01ac5b0027af3168a5f50d1c}{ExpLambda}}() \textcolor{keyword}{const};}
-\DoxyCodeLine{111 }
-\DoxyCodeLine{113     \textcolor{keyword}{const} \mbox{\hyperlink{struct_zaki_1_1_vector_1_1_data_column}{Zaki::Vector::DataColumn}} *\mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_star_context_ad5915364679ddd7e26d9996c5a21c56d}{Mass}}() \textcolor{keyword}{const};}
-\DoxyCodeLine{115 }
+\DoxyCodeLine{109     \textcolor{comment}{// Non-\/owning cached pointers to frequently accessed columns (set in ctor).}}
+\DoxyCodeLine{110     \textcolor{keyword}{const} \mbox{\hyperlink{struct_zaki_1_1_vector_1_1_data_column}{Zaki::Vector::DataColumn}} *m\_r = \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{111     \textcolor{keyword}{const} \mbox{\hyperlink{struct_zaki_1_1_vector_1_1_data_column}{Zaki::Vector::DataColumn}} *m\_m = \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{112     \textcolor{keyword}{const} \mbox{\hyperlink{struct_zaki_1_1_vector_1_1_data_column}{Zaki::Vector::DataColumn}} *m\_nu = \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{113     \textcolor{keyword}{const} \mbox{\hyperlink{struct_zaki_1_1_vector_1_1_data_column}{Zaki::Vector::DataColumn}} *m\_lam = \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{114     \textcolor{keyword}{const} \mbox{\hyperlink{struct_zaki_1_1_vector_1_1_data_column}{Zaki::Vector::DataColumn}} *m\_nb = \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{115 \};}
+\DoxyCodeLine{116 }
+\DoxyCodeLine{117 \} \textcolor{comment}{// namespace CompactStar::Physics::Evolution}}
 \DoxyCodeLine{118 }
-\DoxyCodeLine{119     \textcolor{keyword}{const} \mbox{\hyperlink{struct_zaki_1_1_vector_1_1_data_column}{Zaki::Vector::DataColumn}} *\mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_star_context_a95225261475e0e3256348b5581fbf792}{BaryonDensity}}() \textcolor{keyword}{const};}
-\DoxyCodeLine{120 }
-\DoxyCodeLine{122     \textcolor{keyword}{const} \mbox{\hyperlink{struct_zaki_1_1_vector_1_1_data_column}{Zaki::Vector::DataColumn}} *\mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_star_context_a74d298c4e3e0dcb4832e7e386307b259}{ProtonFraction}}() \textcolor{keyword}{const};}
-\DoxyCodeLine{124 }
-\DoxyCodeLine{127 }
-\DoxyCodeLine{128     \textcolor{keywordtype}{double} \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_star_context_af6fb20f678a782fa4104b39ce0d68f9b}{RadiusSurface}}() \textcolor{keyword}{const};}
-\DoxyCodeLine{129 }
-\DoxyCodeLine{131     \textcolor{keywordtype}{double} \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_star_context_a669582110bc36249497fb5cf1ae46ff0}{MassSurface}}() \textcolor{keyword}{const};}
-\DoxyCodeLine{132 }
-\DoxyCodeLine{134     \textcolor{keywordtype}{double} \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_star_context_a2d80e28892a24f43682eb5fa01685458}{ExpNuSurface}}() \textcolor{keyword}{const};}
-\DoxyCodeLine{136 }
-\DoxyCodeLine{137   \textcolor{keyword}{private}:}
-\DoxyCodeLine{138     \textcolor{keyword}{const} \mbox{\hyperlink{class_compact_star_1_1_n_star}{CompactStar::NStar}} *m\_ns = 0;}
-\DoxyCodeLine{139     \textcolor{keyword}{const} CompactStar::EOS::Model *m\_eos = 0;}
-\DoxyCodeLine{140 }
-\DoxyCodeLine{141     \textcolor{comment}{// Non-\/owning cached pointers to frequently accessed columns (set in ctor).}}
-\DoxyCodeLine{142     \textcolor{keyword}{const} \mbox{\hyperlink{struct_zaki_1_1_vector_1_1_data_column}{Zaki::Vector::DataColumn}} *m\_r = 0;}
-\DoxyCodeLine{143     \textcolor{keyword}{const} \mbox{\hyperlink{struct_zaki_1_1_vector_1_1_data_column}{Zaki::Vector::DataColumn}} *m\_nu = 0;}
-\DoxyCodeLine{144     \textcolor{keyword}{const} \mbox{\hyperlink{struct_zaki_1_1_vector_1_1_data_column}{Zaki::Vector::DataColumn}} *m\_elam = 0;}
-\DoxyCodeLine{145     \textcolor{keyword}{const} \mbox{\hyperlink{struct_zaki_1_1_vector_1_1_data_column}{Zaki::Vector::DataColumn}} *m\_m = 0;}
-\DoxyCodeLine{146     \textcolor{keyword}{const} \mbox{\hyperlink{struct_zaki_1_1_vector_1_1_data_column}{Zaki::Vector::DataColumn}} *m\_nb = 0;}
-\DoxyCodeLine{147     \textcolor{keyword}{const} \mbox{\hyperlink{struct_zaki_1_1_vector_1_1_data_column}{Zaki::Vector::DataColumn}} *m\_yp = 0;}
-\DoxyCodeLine{148 \};}
-\DoxyCodeLine{149 \textcolor{comment}{//==============================================================}}
-\DoxyCodeLine{150 \} \textcolor{comment}{// namespace Evolution}}
-\DoxyCodeLine{151 \textcolor{comment}{//==============================================================}}
-\DoxyCodeLine{152 \} \textcolor{comment}{// namespace Physics}}
-\DoxyCodeLine{153 \textcolor{comment}{//==============================================================}}
-\DoxyCodeLine{154 \} \textcolor{comment}{// namespace CompactStar}}
-\DoxyCodeLine{155 \textcolor{comment}{//==============================================================}}
-\DoxyCodeLine{156 \textcolor{preprocessor}{\#endif }\textcolor{comment}{/* CompactStar\_Physics\_Evolution\_StarContext\_H */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{119 \textcolor{preprocessor}{\#endif }\textcolor{comment}{/* CompactStar\_Physics\_Evolution\_StarContext\_H */}\textcolor{preprocessor}{}}
 
 \end{DoxyCode}

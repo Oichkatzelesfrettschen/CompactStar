@@ -1,0 +1,87 @@
+\hypertarget{struct_compact_star_1_1_core_1_1_star_builder_1_1_output}{}\doxysection{Compact\+Star\+::Core\+::Star\+Builder\+::Output Struct Reference}
+\label{struct_compact_star_1_1_core_1_1_star_builder_1_1_output}\index{CompactStar::Core::StarBuilder::Output@{CompactStar::Core::StarBuilder::Output}}
+
+
+Full output of the builder.  
+
+
+
+
+{\ttfamily \#include $<$Star\+Builder.\+hpp$>$}
+
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_zaki_1_1_vector_1_1_data_set}{Zaki\+::\+Vector\+::\+Data\+Set}} \mbox{\hyperlink{struct_compact_star_1_1_core_1_1_star_builder_1_1_output_af46cfb8a3058f34d6c4591a9d0e58da7}{profile}}
+\begin{DoxyCompactList}\small\item\em The {\itshape radial} profile (radius, mass, energy density, composition...). \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{struct_compact_star_1_1_core_1_1_star_builder_1_1_output_aeab0a1e7a669cba2249ea216e6156462}\label{struct_compact_star_1_1_core_1_1_star_builder_1_1_output_aeab0a1e7a669cba2249ea216e6156462}} 
+\mbox{\hyperlink{class_compact_star_1_1_core_1_1_seq_point}{Seq\+Point}} {\bfseries seq\+\_\+point}
+\begin{DoxyCompactList}\small\item\em The sequence point we landed on (or interpolated to). \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{struct_compact_star_1_1_core_1_1_star_builder_1_1_output_acbd146a449bfffe2e112e13b45a80256}{seq\+\_\+index}} = -\/1
+\begin{DoxyCompactList}\small\item\em Index of the sequence entry we took as “closest”. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{struct_compact_star_1_1_core_1_1_star_builder_1_1_output_a4ebe5e081945a0579dc63c12a4420850}\label{struct_compact_star_1_1_core_1_1_star_builder_1_1_output_a4ebe5e081945a0579dc63c12a4420850}} 
+double {\bfseries eta\+\_\+I} = 0.\+0
+\begin{DoxyCompactList}\small\item\em η\+\_\+I as defined in \mbox{[}ar\+Xiv\+:2201.\+02637\mbox{]} logic\+: $ \eta_I = \frac{b}{dB/d\varepsilon_c} \frac{dI/d\varepsilon_c}{I} $. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{struct_compact_star_1_1_core_1_1_star_builder_1_1_output_abafd1ba938ee9838b914cba2b4419536}\label{struct_compact_star_1_1_core_1_1_star_builder_1_1_output_abafd1ba938ee9838b914cba2b4419536}} 
+double {\bfseries r\+\_\+blanket\+\_\+km} = 0.\+0
+\begin{DoxyCompactList}\small\item\em Radius (km) where the heat-\/blanket density threshold is reached. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{struct_compact_star_1_1_core_1_1_star_builder_1_1_output_a082129d26780ceb5b61de8ee862942df}\label{struct_compact_star_1_1_core_1_1_star_builder_1_1_output_a082129d26780ceb5b61de8ee862942df}} 
+int {\bfseries r\+\_\+blanket\+\_\+idx} = -\/1
+\begin{DoxyCompactList}\small\item\em Index in the radial grid corresponding to \mbox{\hyperlink{struct_compact_star_1_1_core_1_1_star_builder_1_1_output_abafd1ba938ee9838b914cba2b4419536}{r\+\_\+blanket\+\_\+km}}. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{struct_compact_star_1_1_core_1_1_star_builder_1_1_output_aab52a67c8a6aa825697456addd46342c}{r\+\_\+durca\+\_\+km}} = 0.\+0
+\begin{DoxyCompactList}\small\item\em Radius (km) where the DUrca threshold is reached. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{struct_zaki_1_1_vector_1_1_data_column}{Zaki\+::\+Vector\+::\+Data\+Column}} \mbox{\hyperlink{struct_compact_star_1_1_core_1_1_star_builder_1_1_output_a700438831d2c7ba93095ce4fc90de4af}{durca\+\_\+mask}}
+\begin{DoxyCompactList}\small\item\em A 0/1 column that is 1 for r \texorpdfstring{$<$}{<} r\+\_\+\+DUrca and 0 outside. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Full output of the builder. 
+
+This is everything our old {\ttfamily Pulsar\+::\+Find\+Profile(...)} produced, but gathered into a single struct. 
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{struct_compact_star_1_1_core_1_1_star_builder_1_1_output_a700438831d2c7ba93095ce4fc90de4af}\label{struct_compact_star_1_1_core_1_1_star_builder_1_1_output_a700438831d2c7ba93095ce4fc90de4af}} 
+\index{CompactStar::Core::StarBuilder::Output@{CompactStar::Core::StarBuilder::Output}!durca\_mask@{durca\_mask}}
+\index{durca\_mask@{durca\_mask}!CompactStar::Core::StarBuilder::Output@{CompactStar::Core::StarBuilder::Output}}
+\doxysubsubsection{\texorpdfstring{durca\_mask}{durca\_mask}}
+{\footnotesize\ttfamily \mbox{\hyperlink{struct_zaki_1_1_vector_1_1_data_column}{Zaki\+::\+Vector\+::\+Data\+Column}} Compact\+Star\+::\+Core\+::\+Star\+Builder\+::\+Output\+::durca\+\_\+mask}
+
+
+
+A 0/1 column that is 1 for r \texorpdfstring{$<$}{<} r\+\_\+\+DUrca and 0 outside. 
+
+Same object we used to call {\ttfamily r\+\_\+durca\+\_\+cond} in the old code. \mbox{\Hypertarget{struct_compact_star_1_1_core_1_1_star_builder_1_1_output_af46cfb8a3058f34d6c4591a9d0e58da7}\label{struct_compact_star_1_1_core_1_1_star_builder_1_1_output_af46cfb8a3058f34d6c4591a9d0e58da7}} 
+\index{CompactStar::Core::StarBuilder::Output@{CompactStar::Core::StarBuilder::Output}!profile@{profile}}
+\index{profile@{profile}!CompactStar::Core::StarBuilder::Output@{CompactStar::Core::StarBuilder::Output}}
+\doxysubsubsection{\texorpdfstring{profile}{profile}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_zaki_1_1_vector_1_1_data_set}{Zaki\+::\+Vector\+::\+Data\+Set}} Compact\+Star\+::\+Core\+::\+Star\+Builder\+::\+Output\+::profile}
+
+
+
+The {\itshape radial} profile (radius, mass, energy density, composition...). 
+
+This is what we will most often move into {\ttfamily \mbox{\hyperlink{struct_compact_star_1_1_core_1_1_star_profile}{Star\+Profile}}} or hand to {\ttfamily \mbox{\hyperlink{struct_compact_star_1_1_core_1_1_star_profile_view}{Star\+Profile\+View}}}. \mbox{\Hypertarget{struct_compact_star_1_1_core_1_1_star_builder_1_1_output_aab52a67c8a6aa825697456addd46342c}\label{struct_compact_star_1_1_core_1_1_star_builder_1_1_output_aab52a67c8a6aa825697456addd46342c}} 
+\index{CompactStar::Core::StarBuilder::Output@{CompactStar::Core::StarBuilder::Output}!r\_durca\_km@{r\_durca\_km}}
+\index{r\_durca\_km@{r\_durca\_km}!CompactStar::Core::StarBuilder::Output@{CompactStar::Core::StarBuilder::Output}}
+\doxysubsubsection{\texorpdfstring{r\_durca\_km}{r\_durca\_km}}
+{\footnotesize\ttfamily double Compact\+Star\+::\+Core\+::\+Star\+Builder\+::\+Output\+::r\+\_\+durca\+\_\+km = 0.\+0}
+
+
+
+Radius (km) where the DUrca threshold is reached. 
+
+Only set if we could actually compute the DUrca mask. \mbox{\Hypertarget{struct_compact_star_1_1_core_1_1_star_builder_1_1_output_acbd146a449bfffe2e112e13b45a80256}\label{struct_compact_star_1_1_core_1_1_star_builder_1_1_output_acbd146a449bfffe2e112e13b45a80256}} 
+\index{CompactStar::Core::StarBuilder::Output@{CompactStar::Core::StarBuilder::Output}!seq\_index@{seq\_index}}
+\index{seq\_index@{seq\_index}!CompactStar::Core::StarBuilder::Output@{CompactStar::Core::StarBuilder::Output}}
+\doxysubsubsection{\texorpdfstring{seq\_index}{seq\_index}}
+{\footnotesize\ttfamily int Compact\+Star\+::\+Core\+::\+Star\+Builder\+::\+Output\+::seq\+\_\+index = -\/1}
+
+
+
+Index of the sequence entry we took as “closest”. 
+
+If interpolation was needed, this is still the upper index. 
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Compact\+Star/\+Core/\mbox{\hyperlink{_star_builder_8hpp}{Star\+Builder.\+hpp}}\end{DoxyCompactItemize}

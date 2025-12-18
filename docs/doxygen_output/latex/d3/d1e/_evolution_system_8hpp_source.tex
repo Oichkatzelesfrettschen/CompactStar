@@ -7,91 +7,112 @@
 \DoxyCodeLine{3 \textcolor{comment}{ * CompactStar}}
 \DoxyCodeLine{4 \textcolor{comment}{ * See License file at the top of the source tree.}}
 \DoxyCodeLine{5 \textcolor{comment}{ *}}
-\DoxyCodeLine{6 \textcolor{comment}{ * Copyright (c) 2025 Mohammadreza Zakeri}}
-\DoxyCodeLine{7 \textcolor{comment}{ *}}
-\DoxyCodeLine{8 \textcolor{comment}{ * Permission is hereby granted, free of charge, to any person obtaining a copy}}
-\DoxyCodeLine{9 \textcolor{comment}{ * of this software and associated documentation files (the "{}Software"{}), to deal}}
-\DoxyCodeLine{10 \textcolor{comment}{ * in the Software without restriction, including without limitation the rights}}
-\DoxyCodeLine{11 \textcolor{comment}{ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell}}
-\DoxyCodeLine{12 \textcolor{comment}{ * copies of the Software, and to permit persons to whom the Software is}}
-\DoxyCodeLine{13 \textcolor{comment}{ * furnished to do so, subject to the following conditions:}}
-\DoxyCodeLine{14 \textcolor{comment}{ *}}
-\DoxyCodeLine{15 \textcolor{comment}{ * The above copyright notice and this permission notice shall be included in all}}
-\DoxyCodeLine{16 \textcolor{comment}{ * copies or substantial portions of the Software.}}
-\DoxyCodeLine{17 \textcolor{comment}{ *}}
-\DoxyCodeLine{18 \textcolor{comment}{ * THE SOFTWARE IS PROVIDED "{}AS IS"{}, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR}}
-\DoxyCodeLine{19 \textcolor{comment}{ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,}}
-\DoxyCodeLine{20 \textcolor{comment}{ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE}}
-\DoxyCodeLine{21 \textcolor{comment}{ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER}}
-\DoxyCodeLine{22 \textcolor{comment}{ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,}}
-\DoxyCodeLine{23 \textcolor{comment}{ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE}}
-\DoxyCodeLine{24 \textcolor{comment}{ * SOFTWARE.}}
-\DoxyCodeLine{25 \textcolor{comment}{ */}}
-\DoxyCodeLine{40 \textcolor{preprocessor}{\#ifndef CompactStar\_Physics\_Evolution\_EvolutionSystem\_H}}
-\DoxyCodeLine{41 \textcolor{preprocessor}{\#define CompactStar\_Physics\_Evolution\_EvolutionSystem\_H}}
-\DoxyCodeLine{42 }
-\DoxyCodeLine{43 \textcolor{comment}{// \#include <vector>}}
+\DoxyCodeLine{6 \textcolor{comment}{ * Copyright (c) 2025}}
+\DoxyCodeLine{7 \textcolor{comment}{ * Mohammadreza Zakeri}}
+\DoxyCodeLine{8 \textcolor{comment}{ *}}
+\DoxyCodeLine{9 \textcolor{comment}{ * MIT License — see LICENSE at repo root.}}
+\DoxyCodeLine{10 \textcolor{comment}{ */}}
+\DoxyCodeLine{39 \textcolor{preprocessor}{\#ifndef CompactStar\_Physics\_Evolution\_EvolutionSystem\_H}}
+\DoxyCodeLine{40 \textcolor{preprocessor}{\#define CompactStar\_Physics\_Evolution\_EvolutionSystem\_H}}
+\DoxyCodeLine{41 }
+\DoxyCodeLine{42 \textcolor{preprocessor}{\#include <memory>}}
+\DoxyCodeLine{43 \textcolor{preprocessor}{\#include <vector>}}
 \DoxyCodeLine{44 }
-\DoxyCodeLine{45 \textcolor{keyword}{namespace }CompactStar}
-\DoxyCodeLine{46 \{}
-\DoxyCodeLine{47 \textcolor{keyword}{namespace }Physics}
+\DoxyCodeLine{45 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_driver_context_8hpp}{CompactStar/Physics/Evolution/DriverContext.hpp}}"{}}}
+\DoxyCodeLine{46 }
+\DoxyCodeLine{47 \textcolor{keyword}{namespace }CompactStar}
 \DoxyCodeLine{48 \{}
-\DoxyCodeLine{49 \textcolor{keyword}{namespace }Thermal}
+\DoxyCodeLine{49 \textcolor{keyword}{namespace }Physics}
 \DoxyCodeLine{50 \{}
-\DoxyCodeLine{51 \textcolor{keyword}{class }\mbox{\hyperlink{class_compact_star_1_1_physics_1_1_thermal_1_1_i_envelope}{IEnvelope}};}
-\DoxyCodeLine{52 \}}
-\DoxyCodeLine{53 \textcolor{keyword}{namespace }Evolution}
-\DoxyCodeLine{54 \{}
-\DoxyCodeLine{55 \textcolor{keyword}{class }StarContext;}
-\DoxyCodeLine{56 \textcolor{keyword}{class }StateVector;}
-\DoxyCodeLine{57 \textcolor{keyword}{class }GeometryCache;}
-\DoxyCodeLine{58 \textcolor{keyword}{class }RHSAccumulator;}
-\DoxyCodeLine{59 \textcolor{comment}{// class RateSet;}}
-\DoxyCodeLine{60 \textcolor{keyword}{struct }Config;}
-\DoxyCodeLine{61 \} \textcolor{comment}{// namespace Evolution}}
-\DoxyCodeLine{62 \} \textcolor{comment}{// namespace Physics}}
-\DoxyCodeLine{63 \} \textcolor{comment}{// namespace CompactStar}}
-\DoxyCodeLine{64 }
-\DoxyCodeLine{65 \textcolor{keyword}{namespace }CompactStar}
-\DoxyCodeLine{66 \{}
-\DoxyCodeLine{67 \textcolor{keyword}{namespace }Physics}
-\DoxyCodeLine{68 \{}
-\DoxyCodeLine{69 \textcolor{keyword}{namespace }Evolution}
-\DoxyCodeLine{70 \{}
-\DoxyCodeLine{71 }
-\DoxyCodeLine{72 \textcolor{comment}{//==============================================================}}
-\DoxyCodeLine{73 \textcolor{comment}{//                      EvolutionSystem Class}}
-\DoxyCodeLine{74 \textcolor{comment}{//==============================================================}}
-\DoxyCodeLine{79 \textcolor{comment}{}\textcolor{keyword}{class }\mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_evolution_system}{EvolutionSystem}}}
-\DoxyCodeLine{80 \{}
-\DoxyCodeLine{81   \textcolor{keyword}{public}:}
-\DoxyCodeLine{85     \textcolor{keyword}{struct }\mbox{\hyperlink{struct_compact_star_1_1_physics_1_1_evolution_1_1_evolution_system_1_1_context}{Context}}}
-\DoxyCodeLine{86     \{}
-\DoxyCodeLine{87         \textcolor{keyword}{const} \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_star_context}{StarContext}} *star = \textcolor{keyword}{nullptr};}
-\DoxyCodeLine{88         \textcolor{keyword}{const} \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_geometry_cache}{GeometryCache}} *geo = \textcolor{keyword}{nullptr};}
-\DoxyCodeLine{89         \textcolor{keyword}{const} \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_thermal_1_1_i_envelope}{Thermal::IEnvelope}} *envelope = \textcolor{keyword}{nullptr};}
-\DoxyCodeLine{90         \textcolor{keyword}{const} \mbox{\hyperlink{struct_compact_star_1_1_physics_1_1_evolution_1_1_config}{Config}} *cfg = \textcolor{keyword}{nullptr};}
-\DoxyCodeLine{91         \textcolor{comment}{// maybe Microphysics, RateSet later, still static}}
-\DoxyCodeLine{92     \};}
-\DoxyCodeLine{93 }
-\DoxyCodeLine{95     \textcolor{keyword}{explicit} \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_evolution_system}{EvolutionSystem}}(\textcolor{keyword}{const} \mbox{\hyperlink{struct_compact_star_1_1_physics_1_1_evolution_1_1_evolution_system_1_1_context}{Context}} \&ctx,}
-\DoxyCodeLine{96                              \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_state_vector}{StateVector}} \&state,}
-\DoxyCodeLine{97                              \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_r_h_s_accumulator}{RHSAccumulator}} \&rhs);}
-\DoxyCodeLine{98 }
-\DoxyCodeLine{112     \textcolor{keywordtype}{int} \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_evolution_system_a9e015fdf5586e8361e7f404a7e58ed0b}{operator()}}(\textcolor{keywordtype}{double} t, \textcolor{keyword}{const} \textcolor{keywordtype}{double} y[], \textcolor{keywordtype}{double} dydt[]) \textcolor{keyword}{const};}
-\DoxyCodeLine{113 }
-\DoxyCodeLine{114   \textcolor{keyword}{private}:}
-\DoxyCodeLine{115     \mbox{\hyperlink{struct_compact_star_1_1_physics_1_1_evolution_1_1_evolution_system_1_1_context}{Context}} m\_ctx;}
-\DoxyCodeLine{116     \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_state_vector}{StateVector}} \&m\_state;  \textcolor{comment}{// dynamic: how we interpret y[]}}
-\DoxyCodeLine{117     \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_r_h_s_accumulator}{RHSAccumulator}} \&m\_rhs; \textcolor{comment}{// dynamic: scratch for dY/dt}}
-\DoxyCodeLine{118 \};}
-\DoxyCodeLine{119 \textcolor{comment}{//==============================================================}}
-\DoxyCodeLine{120 \} \textcolor{comment}{// namespace Evolution}}
-\DoxyCodeLine{121 \textcolor{comment}{//==============================================================}}
-\DoxyCodeLine{122 \} \textcolor{comment}{// namespace Physics}}
-\DoxyCodeLine{123 \textcolor{comment}{//==============================================================}}
-\DoxyCodeLine{124 \} \textcolor{comment}{// namespace CompactStar}}
-\DoxyCodeLine{125 \textcolor{comment}{//==============================================================}}
-\DoxyCodeLine{126 \textcolor{preprocessor}{\#endif }\textcolor{comment}{/* CompactStar\_Physics\_Evolution\_EvolutionSystem\_H */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{51 \textcolor{comment}{// Forward declarations for static context pieces}}
+\DoxyCodeLine{52 \textcolor{comment}{// namespace Thermal}}
+\DoxyCodeLine{53 \textcolor{comment}{// \{}}
+\DoxyCodeLine{54 \textcolor{comment}{// class IEnvelope;}}
+\DoxyCodeLine{55 \textcolor{comment}{// \}}}
+\DoxyCodeLine{56 }
+\DoxyCodeLine{57 \textcolor{comment}{// namespace Evolution}}
+\DoxyCodeLine{58 \textcolor{comment}{// \{}}
+\DoxyCodeLine{59 \textcolor{comment}{// // class StarContext;}}
+\DoxyCodeLine{60 \textcolor{comment}{// // class StateVector;}}
+\DoxyCodeLine{61 \textcolor{comment}{// // class GeometryCache;}}
+\DoxyCodeLine{62 \textcolor{comment}{// // class RHSAccumulator;}}
+\DoxyCodeLine{63 \textcolor{comment}{// // class StateLayout;}}
+\DoxyCodeLine{64 \textcolor{comment}{// // struct Config;}}
+\DoxyCodeLine{65 \textcolor{comment}{// // struct DriverContext;}}
+\DoxyCodeLine{66 \textcolor{comment}{// \} // namespace Evolution}}
+\DoxyCodeLine{67 }
+\DoxyCodeLine{68 \textcolor{comment}{// Driver interface lives at the Physics level (see IDriver.hpp)}}
+\DoxyCodeLine{69 \textcolor{keyword}{class }IDriver;}
+\DoxyCodeLine{70 }
+\DoxyCodeLine{71 \} \textcolor{comment}{// namespace Physics}}
+\DoxyCodeLine{72 \} \textcolor{comment}{// namespace CompactStar}}
+\DoxyCodeLine{73 }
+\DoxyCodeLine{74 \textcolor{keyword}{namespace }CompactStar}
+\DoxyCodeLine{75 \{}
+\DoxyCodeLine{76 \textcolor{keyword}{namespace }Physics}
+\DoxyCodeLine{77 \{}
+\DoxyCodeLine{78 \textcolor{keyword}{namespace }Evolution}
+\DoxyCodeLine{79 \{}
+\DoxyCodeLine{80 }
+\DoxyCodeLine{81 \textcolor{keyword}{namespace }Observers}
+\DoxyCodeLine{82 \{}
+\DoxyCodeLine{83 \textcolor{keyword}{class }IObserver;}
+\DoxyCodeLine{84 \}}
+\DoxyCodeLine{85 }
+\DoxyCodeLine{86 \textcolor{comment}{// Shared-\/pointer alias for owning driver instances.}}
+\DoxyCodeLine{87 \textcolor{keyword}{using }DriverPtr = std::shared\_ptr<Physics::IDriver>;}
+\DoxyCodeLine{88 \textcolor{keyword}{using }ObserverPtr = std::shared\_ptr<Observers::IObserver>;}
+\DoxyCodeLine{89 \textcolor{comment}{//==============================================================}}
+\DoxyCodeLine{90 \textcolor{comment}{//                      EvolutionSystem Class}}
+\DoxyCodeLine{91 \textcolor{comment}{//==============================================================}}
+\DoxyCodeLine{101 \textcolor{comment}{}\textcolor{keyword}{class }\mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_evolution_system}{EvolutionSystem}}}
+\DoxyCodeLine{102 \{}
+\DoxyCodeLine{103   \textcolor{keyword}{public}:}
+\DoxyCodeLine{104     \textcolor{comment}{// /**}}
+\DoxyCodeLine{105     \textcolor{comment}{//  * @brief Bundles read-\/only references to static model components.}}
+\DoxyCodeLine{106     \textcolor{comment}{//  */}}
+\DoxyCodeLine{107     \textcolor{comment}{// struct RuntimeContext}}
+\DoxyCodeLine{108     \textcolor{comment}{// \{}}
+\DoxyCodeLine{109     \textcolor{comment}{//  const StarContext *star = nullptr;            ///< geometry, EOS, profiles}}
+\DoxyCodeLine{110     \textcolor{comment}{//  const GeometryCache *geo = nullptr;           ///< precomputed weights}}
+\DoxyCodeLine{111     \textcolor{comment}{//  const Thermal::IEnvelope *envelope = nullptr; ///< surface T\_b → T\_s}}
+\DoxyCodeLine{112     \textcolor{comment}{//  const Config *cfg = nullptr;                  ///< evolution configuration}}
+\DoxyCodeLine{113     \textcolor{comment}{// \};}}
+\DoxyCodeLine{114 }
+\DoxyCodeLine{130     \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_evolution_system}{EvolutionSystem}}(\textcolor{keyword}{const} \mbox{\hyperlink{struct_compact_star_1_1_physics_1_1_evolution_1_1_driver_context}{DriverContext}} \&ctx,}
+\DoxyCodeLine{131                     \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_state_vector}{StateVector}} \&state,}
+\DoxyCodeLine{132                     \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_r_h_s_accumulator}{RHSAccumulator}} \&rhs,}
+\DoxyCodeLine{133                     \textcolor{keyword}{const} \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_state_layout}{StateLayout}} \&layout,}
+\DoxyCodeLine{134                     std::vector<DriverPtr> drivers);}
+\DoxyCodeLine{135 }
+\DoxyCodeLine{145     \textcolor{keywordtype}{int} \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_evolution_system_a42fb560c16ef9608bc0761e0c7bd6dda}{operator()}}(\textcolor{keywordtype}{double} t, \textcolor{keyword}{const} \textcolor{keywordtype}{double} *y, \textcolor{keywordtype}{double} *dydt) \textcolor{keyword}{const};}
+\DoxyCodeLine{146 }
+\DoxyCodeLine{158     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_evolution_system_a905a4d65c7dc3b4b5c36f0272375d257}{AddObserver}}(ObserverPtr obs);}
+\DoxyCodeLine{159 }
+\DoxyCodeLine{165     [[nodiscard]] \textcolor{keyword}{const} std::vector<ObserverPtr> \&\mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_evolution_system_ab2fd6ddf928c3db5d47da5f0a38ef9ad}{ObserversList}}()\textcolor{keyword}{ const }\{ \textcolor{keywordflow}{return} m\_observers; \}}
+\DoxyCodeLine{166 }
+\DoxyCodeLine{173     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_evolution_system_a050094910e796895d585451887cac700}{NotifyStart}}(\textcolor{keywordtype}{double} t0, \textcolor{keywordtype}{double} t1, \textcolor{keyword}{const} \textcolor{keywordtype}{double} *y0) \textcolor{keyword}{const};}
+\DoxyCodeLine{174 }
+\DoxyCodeLine{181     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_evolution_system_a5a322f14f7fd7750e74eb253f995377b}{NotifySample}}(\textcolor{keywordtype}{double} t, \textcolor{keyword}{const} \textcolor{keywordtype}{double} *y, std::size\_t sample\_index) \textcolor{keyword}{const};}
+\DoxyCodeLine{182 }
+\DoxyCodeLine{189     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_evolution_system_a306557933222720ed97b8e3367c41c8e}{NotifyFinish}}(\textcolor{keywordtype}{double} t, \textcolor{keyword}{const} \textcolor{keywordtype}{double} *y, \textcolor{keywordtype}{bool} ok) \textcolor{keyword}{const};}
+\DoxyCodeLine{190 }
+\DoxyCodeLine{191   \textcolor{keyword}{private}:}
+\DoxyCodeLine{193     \textcolor{keywordtype}{void} ValidateContext() \textcolor{keyword}{const};}
+\DoxyCodeLine{194 }
+\DoxyCodeLine{195     \mbox{\hyperlink{struct_compact_star_1_1_physics_1_1_evolution_1_1_driver_context}{DriverContext}} m\_ctx;             }
+\DoxyCodeLine{196     \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_state_vector}{StateVector}} \&m\_state;              }
+\DoxyCodeLine{197     \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_r_h_s_accumulator}{RHSAccumulator}} \&m\_rhs;              }
+\DoxyCodeLine{198     \textcolor{keyword}{const} \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_state_layout}{StateLayout}} \&m\_layout;   }
+\DoxyCodeLine{199     std::vector<DriverPtr> m\_drivers; }
+\DoxyCodeLine{200 }
+\DoxyCodeLine{208     std::vector<ObserverPtr> m\_observers;}
+\DoxyCodeLine{209 \};}
+\DoxyCodeLine{210 }
+\DoxyCodeLine{211 \} \textcolor{comment}{// namespace Evolution}}
+\DoxyCodeLine{212 \} \textcolor{comment}{// namespace Physics}}
+\DoxyCodeLine{213 \} \textcolor{comment}{// namespace CompactStar}}
+\DoxyCodeLine{214 }
+\DoxyCodeLine{215 \textcolor{preprocessor}{\#endif }\textcolor{comment}{/* CompactStar\_Physics\_Evolution\_EvolutionSystem\_H */}\textcolor{preprocessor}{}}
 
 \end{DoxyCode}

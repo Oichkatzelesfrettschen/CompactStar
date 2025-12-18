@@ -1,155 +1,169 @@
+#pragma once
 // -*- lsst-c++ -*-
 /*
  * CompactStar
  * See License file at the top of the source tree.
  *
- * Copyright (c) 2025 Mohammadreza Zakeri
+ * Copyright (c) 2025
+ * Mohammadreza Zakeri
  *
- * Permission is hereby granted, free of charge, to any person obtaining a copy
- * of this software and associated documentation files (the "Software"), to deal
- * in the Software without restriction, including without limitation the rights
- * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
- * copies of the Software, and to permit persons to whom the Software is
- * furnished to do so, subject to the following conditions:
- *
- * The above copyright notice and this permission notice shall be included in all
- * copies or substantial portions of the Software.
- *
- * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
- * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
- * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
- * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
- * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
- * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
- * SOFTWARE.
+ * MIT License — see LICENSE at repo root.
  */
 
 /**
- * @file Observers.hpp
- * @brief Observer interfaces and a basic recorder for time-series outputs.
+ * @file IObserver.hpp
+ * @brief Core observer interface for Evolution module.
  *
- * Observers receive snapshots during integration and write to
- * Zaki::Vector::DataSet columns (t, T^∞, T_s, L_ν^∞, L_γ^∞, H^∞, η_i, …).
+ * Observers are passive callbacks invoked by the integrator / evolution driver
+ * to record or export information (time series, checkpoints, diagnostics, logs).
  *
- * @ingroup ChemicalHeating
+ * Key design points:
+ *  - Observers see the full composite state (Evolution::StateVector) and
+ *    the read-only runtime context (Evolution::DriverContext).
+ *  - Observers MUST NOT mutate the ODE state or context.
+ *  - Observers are scheduled by the evolution loop (e.g., dt_save). The interface
+ *    does not prescribe scheduling logic; it just provides hooks.
+ *
+ * Typical call pattern:
+ *  1) obs->OnStart(run, Y0, ctx)
+ *  2) During integration, at each "save point":
+ *        obs->OnSample(sample, Y, ctx)
+ *     (optionally, future: obs->OnStep(step, Y, ctx) for every integrator step)
+ *  3) obs->OnFinish(result, Y_final, ctx)
+ *
+ * @ingroup Evolution
  */
-#ifndef CompactStar_ChemicalHeating_Observers_H
-#define CompactStar_ChemicalHeating_Observers_H
 
+#include <cstdint>
 #include <string>
-#include <vector>
 
-namespace Zaki
+namespace CompactStar::Physics::Evolution
 {
-namespace Vector
-{
-class DataSet;
-}
-} // namespace Zaki
+class StateVector;
+class DriverContext;
+} // namespace CompactStar::Physics::Evolution
 
-namespace CompactStar
-{
-namespace ChemicalHeating
-{
-struct EvolutionState;
-}
-} // namespace CompactStar
-//==============================================================
-namespace CompactStar
-{
-//==============================================================
-namespace ChemicalHeating
+namespace CompactStar::Physics::Evolution::Observers
 {
 
-//==============================================================
-//                       Derived Struct
-//==============================================================
 /**
- * @struct Derived
- * @brief Derived observables computed at each save point.
+ * @brief Run-level metadata for observer initialization.
  *
- * This carries quantities not stored directly in @c EvolutionState but useful
- * for diagnostics and plotting (e.g., luminosities and heat capacity).
+ * This is intentionally small and stable. Add fields only if they are
+ * truly run-level (not per-sample).
  */
-struct Derived
+struct RunInfo
 {
-	double Ts_local = 0.0;	 /*!< Surface temperature (K), local frame.          */
-	double Lnu_inf = 0.0;	 /*!< Neutrino luminosity at infinity [erg s^-1].    */
-	double Lgamma_inf = 0.0; /*!< Photon luminosity at infinity [erg s^-1].      */
-	double H_inf = 0.0;		 /*!< Total internal heating at infinity [erg s^-1]. */
-	double C_tot = 0.0;		 /*!< Total heat capacity [erg K^-1].                */
-};
-//==============================================================
+	/// Optional label for the run (useful in filenames / metadata).
+	std::string tag;
 
-//==============================================================
-//                        Observer Class
-//==============================================================
+	/// Output directory chosen by the driver (observers may create subdirs).
+	std::string output_dir;
+
+	/// The integrator's notion of initial time.
+	double t0 = 0.0;
+
+	/// The integrator's notion of target/final time (if known).
+	double tf = 0.0;
+};
+
 /**
- * @class Observer
- * @brief Callback interface invoked by the integrator.
+ * @brief Snapshot metadata for a recorded sample.
+ *
+ * A "sample" is typically emitted every dt_save (or at explicit output times).
+ * This is not necessarily each internal integrator step.
  */
-class Observer
+struct SampleInfo
+{
+	/// Simulation time at the sample.
+	double t = 0.0;
+
+	/// Monotonic sample counter: 0,1,2,... (not necessarily equal to integrator step count).
+	std::uint64_t sample_index = 0;
+
+	/// Optional: integrator internal step counter if you want to expose it (0 if unknown).
+	std::uint64_t step_index = 0;
+};
+
+/**
+ * @brief Outcome of the integration for observer finalization.
+ */
+struct FinishInfo
+{
+	/// Time at which the integration terminated (success or failure).
+	double t_final = 0.0;
+
+	/// True if the evolution reached the intended target condition (e.g. t >= tf).
+	bool ok = false;
+
+	/// If !ok, a brief reason string (may be empty).
+	std::string message;
+};
+
+/**
+ * @brief Base interface for evolution observers.
+ *
+ * Observers should be cheap to construct; heavy resources should be opened in OnStart.
+ */
+class IObserver
 {
   public:
-	virtual ~Observer() {}
+	virtual ~IObserver();
 
 	/**
-	 * @brief Called whenever the integrator saves a sample (every dt_save).
-	 * @param state Current ODE state (t, T^∞, η, …).
-	 * @param d     Derived diagnostics and luminosities.
+	 * @brief Called once before integration begins.
+	 *
+	 * Use this for:
+	 *  - opening output files,
+	 *  - writing headers/metadata,
+	 *  - allocating datasets/buffers,
+	 *  - validating required context dependencies.
+	 *
+	 * @param run Run-level metadata.
+	 * @param Y0  Initial state snapshot (read-only).
+	 * @param ctx Driver context (read-only).
 	 */
-	virtual void on_sample(const EvolutionState &state, const Derived &d) = 0;
+	virtual void OnStart(const RunInfo &run,
+						 const Evolution::StateVector &Y0,
+						 const Evolution::DriverContext &ctx);
 
 	/**
-	 * @brief Called once the integration finishes (success or failure).
-	 * @param state Final state.
-	 * @param ok    True if reached the target time.
+	 * @brief Called whenever the evolution loop decides to record a sample.
+	 *
+	 * This is the primary callback for:
+	 *  - time-series recording,
+	 *  - checkpoints (if checkpointing on dt_save),
+	 *  - diagnostics snapshots,
+	 *  - lightweight logging.
+	 *
+	 * @param s   Sample metadata.
+	 * @param Y   Current state snapshot (read-only).
+	 * @param ctx Driver context (read-only).
 	 */
-	virtual void on_finish(const EvolutionState &state, bool ok)
-	{
-		(void)state;
-		(void)ok;
-	}
+	virtual void OnSample(const SampleInfo &s,
+						  const Evolution::StateVector &Y,
+						  const Evolution::DriverContext &ctx) = 0;
+
+	/**
+	 * @brief Called once after the integration ends (success or failure).
+	 *
+	 * Use this for:
+	 *  - flushing/closing files,
+	 *  - writing final metadata,
+	 *  - emitting summary lines.
+	 *
+	 * @param fin Finalization info (ok flag, final time, optional message).
+	 * @param Yf  Final state snapshot (read-only).
+	 * @param ctx Driver context (read-only).
+	 */
+	virtual void OnFinish(const FinishInfo &fin,
+						  const Evolution::StateVector &Yf,
+						  const Evolution::DriverContext &ctx);
+
+	/**
+	 * @brief Optional human-readable observer name for logs.
+	 */
+	[[nodiscard]] virtual std::string Name() const;
 };
-//==============================================================
 
-//==============================================================
-//                  TimeSeriesRecorder Class
-//==============================================================
-/**
- * @class TimeSeriesRecorder
- * @brief Writes samples to a @c Zaki::Vector::DataSet as columns.
- *
- * Column layout (created on first use):
- *  t[s], Tinf[K], Ts[K], Lnu_inf[erg/s], Lgamma_inf[erg/s], H_inf[erg/s],
- *  C_tot[erg/K], eta_0, eta_1, ...
- */
-class TimeSeriesRecorder : public Observer
-{
-  public:
-	/**
-	 * @brief Construct with a target dataset.
-	 * @param ds   Dataset to receive appended rows.
-	 * @param tag  Optional run label to embed in metadata.
-	 */
-	explicit TimeSeriesRecorder(Zaki::Vector::DataSet &ds,
-								const std::string &tag = std::string());
-
-	/// @copydoc Observer::on_sample
-	void on_sample(const EvolutionState &state, const Derived &d) override;
-
-	/// @copydoc Observer::on_finish
-	void on_finish(const EvolutionState &state, bool ok) override;
-
-  private:
-	Zaki::Vector::DataSet *m_ds = 0;
-	std::string m_tag;
-	bool m_initialized = false;
-};
-//==============================================================
-} // namespace ChemicalHeating
-//==============================================================
-} // namespace CompactStar
-//==============================================================
-
-#endif /* CompactStar_ChemicalHeating_Observers_H */
+} // namespace CompactStar::Physics::Evolution::Observers

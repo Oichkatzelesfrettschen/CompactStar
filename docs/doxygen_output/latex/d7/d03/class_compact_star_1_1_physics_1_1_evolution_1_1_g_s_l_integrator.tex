@@ -1,0 +1,84 @@
+\hypertarget{class_compact_star_1_1_physics_1_1_evolution_1_1_g_s_l_integrator}{}\doxysection{Compact\+Star\+::Physics\+::Evolution\+::GSLIntegrator Class Reference}
+\label{class_compact_star_1_1_physics_1_1_evolution_1_1_g_s_l_integrator}\index{CompactStar::Physics::Evolution::GSLIntegrator@{CompactStar::Physics::Evolution::GSLIntegrator}}
+
+
+Thin RAII wrapper around {\ttfamily gsl\+\_\+odeiv2\+\_\+driver}.  
+
+
+
+
+{\ttfamily \#include $<$GSLIntegrator.\+hpp$>$}
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_g_s_l_integrator_a4d1ade8c620c47088be6a0e0253f3f40}{GSLIntegrator}} (const \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_evolution_system}{Evolution\+System}} \&sys, const \mbox{\hyperlink{struct_compact_star_1_1_physics_1_1_evolution_1_1_config}{Config}} \&cfg, std\+::size\+\_\+t dim)
+\begin{DoxyCompactList}\small\item\em Construct from RHS functor, configuration, and dimension. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_g_s_l_integrator_a6fe4efb0231b35f2b056716708862387}{Integrate}} (double t0, double t1, double $\ast$y) const
+\begin{DoxyCompactList}\small\item\em Integrate from t0 to t1 in-\/place on y\mbox{[}\mbox{]}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Thin RAII wrapper around {\ttfamily gsl\+\_\+odeiv2\+\_\+driver}. 
+
+Usage sketch\+:
+\begin{DoxyItemize}
+\item Construct the \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_state_vector}{State\+Vector}} / \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_state_layout}{State\+Layout}} / \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_r_h_s_accumulator}{RHSAccumulator}} / \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_evolution_system}{Evolution\+System}}.
+\item Let N = layout.\+Total\+Size().
+\item Allocate {\ttfamily std\+::vector\texorpdfstring{$<$}{<}double\texorpdfstring{$>$}{>} y(\+N)} and pack the \mbox{\hyperlink{namespace_compact_star_1_1_physics_1_1_state}{State}} blocks into it.
+\item Construct {\ttfamily \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_g_s_l_integrator}{GSLIntegrator}} integrator(sys, cfg, N);}
+\item Call {\ttfamily integrator.\+Integrate(t0, t1, y.\+data());}
+\item Unpack {\ttfamily y} back into \mbox{\hyperlink{namespace_compact_star_1_1_physics_1_1_state}{State}} blocks. 
+\end{DoxyItemize}
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_compact_star_1_1_physics_1_1_evolution_1_1_g_s_l_integrator_a4d1ade8c620c47088be6a0e0253f3f40}\label{class_compact_star_1_1_physics_1_1_evolution_1_1_g_s_l_integrator_a4d1ade8c620c47088be6a0e0253f3f40}} 
+\index{CompactStar::Physics::Evolution::GSLIntegrator@{CompactStar::Physics::Evolution::GSLIntegrator}!GSLIntegrator@{GSLIntegrator}}
+\index{GSLIntegrator@{GSLIntegrator}!CompactStar::Physics::Evolution::GSLIntegrator@{CompactStar::Physics::Evolution::GSLIntegrator}}
+\doxysubsubsection{\texorpdfstring{GSLIntegrator()}{GSLIntegrator()}}
+{\footnotesize\ttfamily Compact\+Star\+::\+Physics\+::\+Evolution\+::\+GSLIntegrator\+::\+GSLIntegrator (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_evolution_system}{Evolution\+System}} \&}]{sys,  }\item[{const \mbox{\hyperlink{struct_compact_star_1_1_physics_1_1_evolution_1_1_config}{Config}} \&}]{cfg,  }\item[{std\+::size\+\_\+t}]{dim }\end{DoxyParamCaption})}
+
+
+
+Construct from RHS functor, configuration, and dimension. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em sys} & Reference to the evolution RHS functor. \\
+\hline
+{\em cfg} & Evolution configuration (tolerances, stepper, max\+\_\+steps, dt\+\_\+save). \\
+\hline
+{\em dim} & Dimension of the flat ODE vector y\mbox{[}\mbox{]} (must match \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_state_layout_a9b32f1c96f528d596ab57940a1ace2cc}{State\+Layout\+::\+Total\+Size()}}). \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_compact_star_1_1_physics_1_1_evolution_1_1_g_s_l_integrator_a6fe4efb0231b35f2b056716708862387}\label{class_compact_star_1_1_physics_1_1_evolution_1_1_g_s_l_integrator_a6fe4efb0231b35f2b056716708862387}} 
+\index{CompactStar::Physics::Evolution::GSLIntegrator@{CompactStar::Physics::Evolution::GSLIntegrator}!Integrate@{Integrate}}
+\index{Integrate@{Integrate}!CompactStar::Physics::Evolution::GSLIntegrator@{CompactStar::Physics::Evolution::GSLIntegrator}}
+\doxysubsubsection{\texorpdfstring{Integrate()}{Integrate()}}
+{\footnotesize\ttfamily bool Compact\+Star\+::\+Physics\+::\+Evolution\+::\+GSLIntegrator\+::\+Integrate (\begin{DoxyParamCaption}\item[{double}]{t0,  }\item[{double}]{t1,  }\item[{double $\ast$}]{y }\end{DoxyParamCaption}) const}
+
+
+
+Integrate from t0 to t1 in-\/place on y\mbox{[}\mbox{]}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em t0} & Start time (s). \\
+\hline
+{\em t1} & End time (s). \\
+\hline
+{\em y} & In/out state vector of length {\ttfamily dim} (provided at construction).\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if the integration reached t1 successfully; false if GSL reported an error or max\+\_\+steps was exceeded. 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Compact\+Star/\+Physics/\+Evolution/\+Integrator/\mbox{\hyperlink{_g_s_l_integrator_8hpp}{GSLIntegrator.\+hpp}}\item 
+Compact\+Star/\+Physics/\+Evolution/\+Integrator/src/\mbox{\hyperlink{_g_s_l_integrator_8cpp}{GSLIntegrator.\+cpp}}\end{DoxyCompactItemize}

@@ -1,0 +1,67 @@
+\hypertarget{_diagnostics_json_8hpp_source}{}\doxysection{Diagnostics\+Json.\+hpp}
+\label{_diagnostics_json_8hpp_source}\index{CompactStar/Physics/Evolution/Diagnostics/DiagnosticsJson.hpp@{CompactStar/Physics/Evolution/Diagnostics/DiagnosticsJson.hpp}}
+\mbox{\hyperlink{_diagnostics_json_8hpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#pragma once}}
+\DoxyCodeLine{2 \textcolor{comment}{// -\/*-\/ lsst-\/c++ -\/*-\/}}
+\DoxyCodeLine{3 \textcolor{comment}{/*}}
+\DoxyCodeLine{4 \textcolor{comment}{ * CompactStar}}
+\DoxyCodeLine{5 \textcolor{comment}{ * See License file at the top of the source tree.}}
+\DoxyCodeLine{6 \textcolor{comment}{ *}}
+\DoxyCodeLine{7 \textcolor{comment}{ * Copyright (c) 2025}}
+\DoxyCodeLine{8 \textcolor{comment}{ * Mohammadreza Zakeri}}
+\DoxyCodeLine{9 \textcolor{comment}{ *}}
+\DoxyCodeLine{10 \textcolor{comment}{ * MIT License — see LICENSE at repo root.}}
+\DoxyCodeLine{11 \textcolor{comment}{ */}}
+\DoxyCodeLine{12 }
+\DoxyCodeLine{31 \textcolor{preprocessor}{\#include <ostream>}}
+\DoxyCodeLine{32 \textcolor{preprocessor}{\#include <string>}}
+\DoxyCodeLine{33 }
+\DoxyCodeLine{34 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_diagnostic_packet_8hpp}{CompactStar/Physics/Evolution/Diagnostics/DiagnosticPacket.hpp}}"{}}}
+\DoxyCodeLine{35 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_unit_contract_8hpp}{CompactStar/Physics/Evolution/Diagnostics/UnitContract.hpp}}"{}}}
+\DoxyCodeLine{36 }
+\DoxyCodeLine{37 \textcolor{keyword}{namespace }CompactStar::Physics::Evolution::Diagnostics}
+\DoxyCodeLine{38 \{}
+\DoxyCodeLine{39 }
+\DoxyCodeLine{43 \textcolor{keyword}{struct }\mbox{\hyperlink{struct_compact_star_1_1_physics_1_1_evolution_1_1_diagnostics_1_1_json_options}{JsonOptions}}}
+\DoxyCodeLine{44 \{}
+\DoxyCodeLine{46     \textcolor{keywordtype}{bool} \mbox{\hyperlink{struct_compact_star_1_1_physics_1_1_evolution_1_1_diagnostics_1_1_json_options_ae9423ec6373713c5a37aa38378da8e20}{pretty}} = \textcolor{keyword}{true};}
+\DoxyCodeLine{47 }
+\DoxyCodeLine{49     \textcolor{keywordtype}{int} \mbox{\hyperlink{struct_compact_star_1_1_physics_1_1_evolution_1_1_diagnostics_1_1_json_options_a30fa933f5b8d899024c5f6f08f3f3de8}{indent\_spaces}} = 2;}
+\DoxyCodeLine{50 }
+\DoxyCodeLine{52     \textcolor{keywordtype}{bool} \mbox{\hyperlink{struct_compact_star_1_1_physics_1_1_evolution_1_1_diagnostics_1_1_json_options_ae9b6cd2a26ceabdf93cc0659f095cbe7}{include\_contract}} = \textcolor{keyword}{true};}
+\DoxyCodeLine{53 }
+\DoxyCodeLine{55     \textcolor{keywordtype}{bool} \mbox{\hyperlink{struct_compact_star_1_1_physics_1_1_evolution_1_1_diagnostics_1_1_json_options_abe3bb1d9961b5a4d6130c40aa02c5bf5}{include\_messages}} = \textcolor{keyword}{true};}
+\DoxyCodeLine{56 }
+\DoxyCodeLine{58     \textcolor{keywordtype}{bool} \mbox{\hyperlink{struct_compact_star_1_1_physics_1_1_evolution_1_1_diagnostics_1_1_json_options_ae1b8386b6b39f391843b7d8bd9e426ab}{include\_scalar\_metadata}} = \textcolor{keyword}{true};}
+\DoxyCodeLine{59 \};}
+\DoxyCodeLine{60 }
+\DoxyCodeLine{64 \textcolor{keyword}{class }\mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_diagnostics_1_1_diagnostics_json}{DiagnosticsJson}}}
+\DoxyCodeLine{65 \{}
+\DoxyCodeLine{66   \textcolor{keyword}{public}:}
+\DoxyCodeLine{78     \textcolor{keyword}{static} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_diagnostics_1_1_diagnostics_json_a099bdd74319166ef1ddb7262d9882e37}{WritePacket}}(std::ostream \&os,}
+\DoxyCodeLine{79                             \textcolor{keyword}{const} \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_diagnostics_1_1_diagnostic_packet}{DiagnosticPacket}} \&pkt,}
+\DoxyCodeLine{80                             \textcolor{keyword}{const} \mbox{\hyperlink{struct_compact_star_1_1_physics_1_1_evolution_1_1_diagnostics_1_1_json_options}{JsonOptions}} \&opts = \{\},}
+\DoxyCodeLine{81                             \textcolor{keyword}{const} \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_diagnostics_1_1_unit_vocabulary}{UnitVocabulary}} *vocab = \textcolor{keyword}{nullptr});}
+\DoxyCodeLine{82 }
+\DoxyCodeLine{89     \textcolor{keyword}{static} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_diagnostics_1_1_diagnostics_json_aeea40e3a9f6c92a653c1a9f4bc1045b1}{WritePacketJsonl}}(std::ostream \&os,}
+\DoxyCodeLine{90                                  \textcolor{keyword}{const} \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_diagnostics_1_1_diagnostic_packet}{DiagnosticPacket}} \&pkt,}
+\DoxyCodeLine{91                                  \textcolor{keyword}{const} \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_diagnostics_1_1_unit_vocabulary}{UnitVocabulary}} *vocab = \textcolor{keyword}{nullptr});}
+\DoxyCodeLine{92 }
+\DoxyCodeLine{93   \textcolor{keyword}{private}:}
+\DoxyCodeLine{94     \textcolor{keyword}{static} \textcolor{keywordtype}{void} WriteEscapedString(std::ostream \&os, \textcolor{keyword}{const} std::string \&s);}
+\DoxyCodeLine{95 }
+\DoxyCodeLine{96     \textcolor{keyword}{static} \textcolor{keywordtype}{void} Indent(std::ostream \&os, \textcolor{keywordtype}{int} n);}
+\DoxyCodeLine{97 }
+\DoxyCodeLine{98     \textcolor{keyword}{static} \textcolor{keywordtype}{void} Newline(std::ostream \&os, \textcolor{keywordtype}{bool} pretty);}
+\DoxyCodeLine{99 }
+\DoxyCodeLine{100     \textcolor{keyword}{static} \textcolor{keywordtype}{void} Sep(std::ostream \&os, \textcolor{keywordtype}{bool} pretty, \textcolor{keywordtype}{int} indent);}
+\DoxyCodeLine{101 }
+\DoxyCodeLine{102     \textcolor{keyword}{static} \textcolor{keywordtype}{void} Key(std::ostream \&os, \textcolor{keyword}{const} std::string \&k);}
+\DoxyCodeLine{103 }
+\DoxyCodeLine{104     \textcolor{keyword}{static} \textcolor{keywordtype}{void} Bool(std::ostream \&os, \textcolor{keywordtype}{bool} v);}
+\DoxyCodeLine{105 \};}
+\DoxyCodeLine{106 }
+\DoxyCodeLine{107 \} \textcolor{comment}{// namespace CompactStar::Physics::Evolution::Diagnostics}}
+
+\end{DoxyCode}
