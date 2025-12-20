@@ -332,6 +332,7 @@ class PhotonCooling final : public IDriver,
 	// --- IDriverDiagnostics ---
 	[[nodiscard]] std::string DiagnosticsName() const override;
 	[[nodiscard]] Evolution::Diagnostics::UnitContract UnitContract() const override;
+	[[nodiscard]] Evolution::Diagnostics::ProducerCatalog DiagnosticsCatalog() const override;
 
 	void DiagnoseSnapshot(double t,
 						  const Evolution::StateVector &Y,

@@ -230,6 +230,8 @@ int main()
 	dopts.output_path = base_results_dir + "/" + out_dir + "/diagnostics.jsonl";
 	dopts.record_every_n_steps = 1000; // Record every 1000 steps
 	dopts.record_at_start = true;	   // common choice
+	dopts.write_catalog = true;
+	dopts.catalog_output_path = base_results_dir + "/" + out_dir + "/diagnostics.catalog.json";
 
 	std::vector<const Physics::Driver::Diagnostics::IDriverDiagnostics *> diag_drivers;
 
@@ -260,41 +262,52 @@ int main()
 		topts.write_sidecar_metadata = true;
 		topts.float_precision = 17;
 
-		// Columns (in the exact order written)
-		{
-			TS::Column c;
+		// NEW: schema-driven columns from diagnostics catalog
+		topts.use_catalog = true;
+		topts.catalog_path = base_results_dir + "/" + out_dir + "/diagnostics.catalog.json";
 
-			c.key = "t_s";
-			c.source = TS::ColumnSource::BuiltinState;
-			c.unit = "s";
-			c.description = "Simulation time";
-			c.builtin = TS::Column::Builtin::Time;
-			topts.columns.push_back(c);
+		// Pick the profile(s) you want (must exist in ProducerCatalog::profiles)
+		topts.catalog_profiles = {"timeseries_default"};
 
-			c = TS::Column{};
-			c.key = "sample_index";
-			c.source = TS::ColumnSource::BuiltinState;
-			c.unit = "";
-			c.description = "Monotonic sample counter";
-			c.builtin = TS::Column::Builtin::SampleIndex;
-			topts.columns.push_back(c);
+		// Optional convenience
+		topts.include_builtin_time = true;
+		topts.include_builtin_sample_index = true;
 
-			c = TS::Column{};
-			c.key = "Tinf_K";
-			c.source = TS::ColumnSource::BuiltinState;
-			c.unit = "K";
-			c.description = "Redshifted internal temperature";
-			c.builtin = TS::Column::Builtin::Tinf_K;
-			topts.columns.push_back(c);
+		// // Columns (in the exact order written)
+		// {
+		// 	TS::Column c;
 
-			c = TS::Column{};
-			c.key = "Omega_rad_s";
-			c.source = TS::ColumnSource::BuiltinState;
-			c.unit = "rad/s";
-			c.description = "Spin angular frequency";
-			c.builtin = TS::Column::Builtin::Omega_rad_s;
-			topts.columns.push_back(c);
-		}
+		// 	c.key = "t_s";
+		// 	c.source = TS::ColumnSource::BuiltinState;
+		// 	c.unit = "s";
+		// 	c.description = "Simulation time";
+		// 	c.builtin = TS::Column::Builtin::Time;
+		// 	topts.columns.push_back(c);
+
+		// 	c = TS::Column{};
+		// 	c.key = "sample_index";
+		// 	c.source = TS::ColumnSource::BuiltinState;
+		// 	c.unit = "";
+		// 	c.description = "Monotonic sample counter";
+		// 	c.builtin = TS::Column::Builtin::SampleIndex;
+		// 	topts.columns.push_back(c);
+
+		// 	c = TS::Column{};
+		// 	c.key = "Tinf_K";
+		// 	c.source = TS::ColumnSource::BuiltinState;
+		// 	c.unit = "K";
+		// 	c.description = "Redshifted internal temperature";
+		// 	c.builtin = TS::Column::Builtin::Tinf_K;
+		// 	topts.columns.push_back(c);
+
+		// 	c = TS::Column{};
+		// 	c.key = "Omega_rad_s";
+		// 	c.source = TS::ColumnSource::BuiltinState;
+		// 	c.unit = "rad/s";
+		// 	c.description = "Spin angular frequency";
+		// 	c.builtin = TS::Column::Builtin::Omega_rad_s;
+		// 	topts.columns.push_back(c);
+		// }
 
 		// If (later) you add DriverScalar columns, pass diagnostics-capable drivers here.
 		std::vector<const Physics::Driver::Diagnostics::IDriverDiagnostics *> ts_drivers;

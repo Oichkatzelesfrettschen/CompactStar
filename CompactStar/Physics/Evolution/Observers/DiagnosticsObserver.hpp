@@ -37,12 +37,14 @@
 #include <unordered_set>
 #include <vector>
 
+#include "CompactStar/Physics/Driver/Diagnostics/DriverDiagnostics.hpp"
+#include "CompactStar/Physics/Evolution/Diagnostics/DiagnosticCatalog.hpp"
 #include "CompactStar/Physics/Evolution/Diagnostics/DiagnosticPacket.hpp"
+#include "CompactStar/Physics/Evolution/Diagnostics/DiagnosticsCatalogJson.hpp"
 #include "CompactStar/Physics/Evolution/Diagnostics/DiagnosticsJson.hpp"
 #include "CompactStar/Physics/Evolution/Diagnostics/UnitContract.hpp"
-#include "CompactStar/Physics/Evolution/Observers/IObserver.hpp"
 
-#include "CompactStar/Physics/Driver/Diagnostics/DriverDiagnostics.hpp"
+#include "CompactStar/Physics/Evolution/Observers/IObserver.hpp"
 
 #include "Zaki/String/Directory.hpp"
 
@@ -86,6 +88,12 @@ class DiagnosticsObserver final : public IObserver
 
 		/// @brief Relative tolerance for "on change" detection.
 		double on_change_rtol = 1e-12;
+
+		/// If true, write a schema catalog JSON once at OnStart().
+		bool write_catalog = true;
+
+		/// Output path for the catalog JSON. If empty, derive from output_path.
+		Zaki::String::Directory catalog_output_path = "";
 	};
 
 	/// Construct from options (copy).
@@ -155,6 +163,13 @@ class DiagnosticsObserver final : public IObserver
 	std::size_t step_counter_ = 0;	 ///< counts OnSample calls
 	double next_time_trigger_ = 0.0; ///< next eligible record time for time-trigger mode
 	bool started_ = false;			 ///< true after OnStart has run
+
+	// Cached schema catalog for this run (built at OnStart).
+	Diagnostics::DiagnosticCatalog catalog_;
+	bool catalog_built_ = false;
+
+	/// Validate packet scalars against the catalog (warnings/errors).
+	void ValidateAgainstCatalog(Diagnostics::DiagnosticPacket &pkt) const;
 };
 
 } // namespace CompactStar::Physics::Evolution::Observers

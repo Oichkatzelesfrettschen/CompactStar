@@ -49,6 +49,9 @@
  *   to GeometryCache via ctx.geo (preferred), plus optional envelope via ctx.envelope.
  */
 
+#include "CompactStar/Physics/Evolution/Diagnostics/DiagnosticCatalog.hpp" // ProducerCatalog, ScalarDescriptor
+#include "CompactStar/Physics/Evolution/Diagnostics/DiagnosticPacket.hpp"  // Cadence
+
 #include "CompactStar/Physics/Driver/Thermal/PhotonCooling.hpp"
 #include "CompactStar/Physics/Driver/Thermal/PhotonCooling_Details.hpp"
 
@@ -155,6 +158,44 @@ Evolution::Diagnostics::UnitContract PhotonCooling::UnitContract() const
 	// Fill using *your* UnitContract API (whatever fields you defined).
 	// e.g., c.title="PhotonCooling"; c.lines.push_back("Tinf, Tsurf in [K] ...");
 	return c;
+}
+
+// -----------------------------------------------------------------------------
+//  DiagnosticsCatalog interface
+// -----------------------------------------------------------------------------
+Evolution::Diagnostics::ProducerCatalog PhotonCooling::DiagnosticsCatalog() const
+{
+	using namespace CompactStar::Physics::Evolution::Diagnostics;
+
+	ProducerCatalog pc;
+	pc.producer = DiagnosticsName(); // must match packet Producer used by observer
+
+	// Keep this list stable (schema-level). Add scalars you actually emit in DiagnoseSnapshot().
+	{
+		ScalarDescriptor sd;
+		sd.key = "Tinf_K";
+		sd.unit = "K";
+		sd.description = "Redshifted internal temperature";
+		sd.source_hint = "state";
+		sd.default_cadence = Cadence::Always;
+		sd.required = true; // if you always emit it
+		pc.scalars.push_back(sd);
+	}
+
+	{
+		ScalarDescriptor sd;
+		sd.key = "L_gamma_inf_erg_s";
+		sd.unit = "erg/s";
+		sd.description = "Photon luminosity at infinity";
+		sd.source_hint = "computed";
+		sd.default_cadence = Cadence::OnChange; // optional
+		sd.required = false;					// set true only if always present
+		pc.scalars.push_back(sd);
+	}
+
+	// Add more descriptors matching your actual emitted keys.
+
+	return pc;
 }
 
 // -----------------------------------------------------------------------------

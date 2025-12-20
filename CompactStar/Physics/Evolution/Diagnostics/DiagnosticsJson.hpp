@@ -102,6 +102,24 @@ class DiagnosticsJson
 	static void Key(std::ostream &os, const std::string &k);
 
 	static void Bool(std::ostream &os, bool v);
+
+	// Convenience: convert Cadence enum to string
+	static const char *CadenceToString(Cadence c);
+
+	// ---- new structural helpers ----
+	static void EmitObjectBegin(std::ostream &os, bool pretty, int indent_level,
+								bool &first_field, const std::string &key);
+
+	static void EmitObjectEnd(std::ostream &os, bool pretty, int indent_level);
+
+	static void EmitArrayBegin(std::ostream &os, bool pretty, int indent_level,
+							   bool &first_field, const std::string &key);
+
+	static void EmitArrayEnd(std::ostream &os, bool pretty, int indent_level);
+
+	// Convenience: begin a field by emitting comma/newline if needed + "key":
+	static void EmitFieldKey(std::ostream &os, bool pretty, int indent_level,
+							 bool &first_field, const std::string &key);
 };
 
 } // namespace CompactStar::Physics::Evolution::Diagnostics

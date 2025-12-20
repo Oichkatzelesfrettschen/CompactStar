@@ -39,6 +39,81 @@ void DiagnosticsObserver::OpenOutput()
 }
 
 // -----------------------------------------------------------------------------
+static Zaki::String::Directory DeriveCatalogPath(const Zaki::String::Directory &jsonl_path)
+{
+	// Example: diagnostics.jsonl -> diagnostics.catalog.json
+	const std::string p = jsonl_path.Str();
+
+	// Simple policy: append ".catalog.json" after stripping a trailing ".jsonl" if present.
+	const std::string suffix = ".jsonl";
+	if (p.size() >= suffix.size() && p.compare(p.size() - suffix.size(), suffix.size(), suffix) == 0)
+	{
+		return Zaki::String::Directory(p.substr(0, p.size() - suffix.size()) + ".catalog.json");
+	}
+
+	// Otherwise: just append.
+	return Zaki::String::Directory(p + ".catalog.json");
+}
+
+// -----------------------------------------------------------------------------
+void DiagnosticsObserver::ValidateAgainstCatalog(Diagnostics::DiagnosticPacket &pkt) const
+{
+	if (!catalog_built_)
+		return;
+
+	const auto &prod = pkt.Producer();
+
+	const auto &prods = catalog_.Producers();
+	auto pit = prods.find(prod);
+	if (pit == prods.end())
+	{
+		pkt.AddWarning("catalog: producer not found: " + prod);
+		return;
+	}
+
+	const auto &pc = pit->second;
+
+	// Build a quick lookup of packet keys
+	// (pkt.Scalars() is std::map so HasScalar is fine too; this is just explicit)
+	for (const auto &sd : pc.scalars)
+	{
+		if (!sd.required)
+			continue;
+
+		if (!pkt.HasScalar(sd.key))
+		{
+			pkt.AddError("catalog: missing required scalar: " + sd.key);
+		}
+	}
+
+	// Optional: unit checks (catalog-declared unit match)
+	// Only if packet includes metadata (unit strings) — which it does.
+	for (const auto &sd : pc.scalars)
+	{
+		// If catalog doesn't specify a unit, skip.
+		if (sd.unit.empty())
+			continue;
+
+		if (!pkt.HasScalar(sd.key))
+			continue;
+
+		const auto &e = pkt.GetScalar(sd.key);
+		if (e.unit != sd.unit)
+		{
+			pkt.AddWarning("catalog: unit mismatch for '" + sd.key +
+						   "': packet='" + e.unit + "' catalog='" + sd.unit + "'");
+		}
+	}
+
+	// Optional: vocabulary enforcement is already supported via unit_vocab in json writer,
+	// but you can also escalate here:
+	// - if opts_.unit_vocab non-empty and unit not allowed => pkt.AddError(...)
+}
+
+// ==============================================================================
+//  DiagnosticsObserver implementation
+// ==============================================================================
+// -----------------------------------------------------------------------------
 //  Constructor / Destructor
 // -----------------------------------------------------------------------------
 DiagnosticsObserver::DiagnosticsObserver(const Options &opts)
@@ -163,6 +238,9 @@ void DiagnosticsObserver::Record(double t,
 		// Driver snapshot scalars
 		drv->DiagnoseSnapshot(t, Y, ctx, pkt);
 
+		// Validate against catalog BEFORE cadence filtering (required fields shouldn’t be filtered out)
+		ValidateAgainstCatalog(pkt);
+
 		// Apply cadence filtering (observer-level policy)
 		ApplyCadenceFilter(pkt);
 
@@ -212,6 +290,49 @@ void DiagnosticsObserver::OnStart(const RunInfo &run,
 	// Reset step counter
 	step_counter_ = 0;
 
+	// -----------------------------------------------------------------
+	//  Catalog (schema) emission: write once per run
+	// -----------------------------------------------------------------
+	if (opts_.write_catalog)
+	{
+		Diagnostics::DiagnosticCatalog catalog;
+
+		for (const auto *drv : drivers_)
+		{
+			if (!drv)
+				continue;
+
+			// Driver-provided schema section
+			auto pc = drv->DiagnosticsCatalog();
+
+			// Optional: keep contract lines in the catalog too (useful for tooling)
+			const auto contract = drv->UnitContract();
+			for (const auto &line : contract.Lines())
+				pc.contract_lines.push_back(line);
+
+			catalog.AddProducer(std::move(pc));
+		}
+
+		catalog_ = catalog; // copy (or std::move)
+		catalog_built_ = true;
+
+		// Decide output path
+		Zaki::String::Directory cat_path = opts_.catalog_output_path;
+		if (cat_path.Str().empty())
+			cat_path = DeriveCatalogPath(opts_.output_path);
+
+		std::ofstream cat_out(cat_path.Str(), std::ios::out | std::ios::trunc);
+		if (!cat_out)
+		{
+			Z_LOG_WARNING("DiagnosticsObserver: failed to open catalog output file: " + cat_path.Str());
+		}
+		else
+		{
+			Diagnostics::DiagnosticsCatalogJson::WriteCatalog(cat_out, catalog /*, opts if you add them later */);
+			cat_out.flush();
+		}
+	}
+	// -----------------------------------
 	// Initialize time trigger schedule
 	if (opts_.record_every_dt > 0.0)
 	{

@@ -25,20 +25,6 @@
       "unit": "",
       "description": "Monotonic sample counter",
       "builtin": "SampleIndex"
-    },
-    {
-      "key": "Tinf_K",
-      "source": "BuiltinState",
-      "unit": "K",
-      "description": "Redshifted internal temperature",
-      "builtin": "Tinf_K"
-    },
-    {
-      "key": "Omega_rad_s",
-      "source": "BuiltinState",
-      "unit": "rad/s",
-      "description": "Spin angular frequency",
-      "builtin": "Omega_rad_s"
     }
   ]
 }

@@ -35,10 +35,13 @@
 #include <iomanip>
 #include <limits>
 #include <stdexcept>
+#include <unordered_set>
 
 #include <Zaki/Util/Logger.hpp>
 
 #include "CompactStar/Physics/Evolution/Diagnostics/DiagnosticPacket.hpp"
+#include "CompactStar/Physics/Evolution/Diagnostics/DiagnosticsCatalogJson.hpp"
+
 #include "CompactStar/Physics/Evolution/StateVector.hpp"
 #include "CompactStar/Physics/State/SpinState.hpp"
 #include "CompactStar/Physics/State/ThermalState.hpp"
@@ -118,6 +121,17 @@ TimeSeriesObserver::TimeSeriesObserver(
 	std::vector<const Driver::Diagnostics::IDriverDiagnostics *> drivers)
 	: opts_(std::move(opts)),
 	  drivers_(std::move(drivers))
+{
+}
+
+//------------------------------------------------------------------------------
+TimeSeriesObserver::TimeSeriesObserver(
+	Options opts,
+	std::vector<const Driver::Diagnostics::IDriverDiagnostics *> drivers,
+	std::shared_ptr<const Diagnostics::DiagnosticCatalog> catalog)
+	: opts_(std::move(opts)),
+	  drivers_(std::move(drivers)),
+	  catalog_(std::move(catalog))
 {
 }
 
@@ -292,10 +306,10 @@ void TimeSeriesObserver::WriteSidecarMetadata(const RunInfo &run) const
 		// DriverScalar details
 		if (c.source == ColumnSource::DriverScalar)
 		{
-			meta << ",\n      \"driver_name\": ";
-			WriteJsonEscaped(meta, c.driver_name);
-			meta << ",\n      \"driver_key\": ";
-			WriteJsonEscaped(meta, c.driver_key);
+			meta << ",\n      \"producer\": ";
+			WriteJsonEscaped(meta, c.catalog_ref.producer);
+			meta << ",\n      \"scalar_key\": ";
+			WriteJsonEscaped(meta, c.catalog_ref.key);
 		}
 
 		// BuiltinState details
@@ -395,26 +409,24 @@ void TimeSeriesObserver::WriteRow(const SampleInfo &s,
 //  Driver lookup / extraction
 //------------------------------------------------------------------------------
 const Driver::Diagnostics::IDriverDiagnostics *
-TimeSeriesObserver::FindDriverByName(const std::string &name) const
+TimeSeriesObserver::FindDriverByProducer(const std::string &producer) const
 {
-	// Cached lookup.
-	auto it = driver_cache_.find(name);
+	auto it = driver_cache_.find(producer);
 	if (it != driver_cache_.end())
 		return it->second;
 
-	// Linear scan fallback.
 	for (const auto *drv : drivers_)
 	{
 		if (!drv)
 			continue;
-		if (drv->DiagnosticsName() == name)
+		if (drv->DiagnosticsName() == producer)
 		{
-			driver_cache_[name] = drv;
+			driver_cache_[producer] = drv;
 			return drv;
 		}
 	}
 
-	driver_cache_[name] = nullptr;
+	driver_cache_[producer] = nullptr;
 	return nullptr;
 }
 
@@ -424,24 +436,195 @@ double TimeSeriesObserver::ExtractDriverScalar(const Column &col,
 											   const Evolution::StateVector &Y,
 											   const Evolution::DriverContext &ctx) const
 {
-	if (col.driver_name.empty() || col.driver_key.empty())
+	const auto &producer = col.catalog_ref.producer;
+	const auto &key = col.catalog_ref.key;
+
+	if (producer.empty() || key.empty())
 		return std::numeric_limits<double>::quiet_NaN();
 
-	const auto *drv = FindDriverByName(col.driver_name);
+	const auto *drv = FindDriverByProducer(producer);
 	if (!drv)
 		return std::numeric_limits<double>::quiet_NaN();
 
-	// Ask driver for a snapshot and extract one scalar by key.
 	Physics::Evolution::Diagnostics::DiagnosticPacket pkt(drv->DiagnosticsName());
 	pkt.SetTime(s.t);
 	pkt.SetStepIndex(static_cast<std::size_t>(s.sample_index));
 
 	drv->DiagnoseSnapshot(s.t, Y, ctx, pkt);
 
-	if (!pkt.HasScalar(col.driver_key))
+	if (!pkt.HasScalar(key))
 		return std::numeric_limits<double>::quiet_NaN();
 
-	return pkt.GetScalar(col.driver_key).value;
+	return pkt.GetScalar(key).value;
+}
+
+//------------------------------------------------------------------------------
+void TimeSeriesObserver::LoadCatalogIfNeeded()
+{
+	if (catalog_)
+		return;
+
+	if (!opts_.use_catalog)
+		return;
+
+	if (opts_.catalog_path.Str().empty())
+	{
+		Z_LOG_WARNING("TimeSeriesObserver: use_catalog=true but no catalog_ and Options.catalog_path is empty.");
+		return;
+	}
+
+	std::ifstream in(opts_.catalog_path.Str());
+	if (!in)
+	{
+		Z_LOG_WARNING("TimeSeriesObserver: failed to open catalog_path: " + opts_.catalog_path.Str());
+		return;
+	}
+
+	auto cat = std::make_shared<Diagnostics::DiagnosticCatalog>();
+	// You need to implement ReadCatalog(...) (or similar) in DiagnosticsCatalogJson.
+	// If your DiagnosticsCatalogJson currently only writes, then for now:
+	//   - either skip parsing and require passing catalog_ in,
+	//   - or implement a minimal reader.
+	Diagnostics::DiagnosticsCatalogJson::ReadCatalog(in, *cat);
+
+	catalog_ = std::move(cat);
+}
+
+//------------------------------------------------------------------------------
+void TimeSeriesObserver::BuildColumnsFromCatalog()
+{
+	if (!opts_.use_catalog)
+		return;
+
+	LoadCatalogIfNeeded();
+	if (!catalog_)
+	{
+		Z_LOG_WARNING("TimeSeriesObserver: use_catalog=true but no catalog available; leaving columns unchanged.");
+		return;
+	}
+
+	producer_catalog_cache_.clear();
+	for (const auto &kv : catalog_->Producers())
+		producer_catalog_cache_[kv.first] = &kv.second;
+
+	std::vector<Column> built;
+
+	// Builtins first (optional)
+	if (opts_.include_builtin_time)
+	{
+		Column c;
+		c.key = "t_s";
+		c.source = ColumnSource::BuiltinState;
+		c.unit = "s";
+		c.description = "Simulation time";
+		c.builtin = Column::Builtin::Time;
+		built.push_back(std::move(c));
+	}
+
+	if (opts_.include_builtin_sample_index)
+	{
+		Column c;
+		c.key = "sample_index";
+		c.source = ColumnSource::BuiltinState;
+		c.unit = "";
+		c.description = "Monotonic sample counter";
+		c.builtin = Column::Builtin::SampleIndex;
+		built.push_back(std::move(c));
+	}
+
+	// Helper: append scalars for a producer, optionally filtered by profile keys.
+	auto append_keys_for_producer = [&](const std::string &producer,
+										const std::vector<std::string> &keys)
+	{
+		auto it = producer_catalog_cache_.find(producer);
+		if (it == producer_catalog_cache_.end() || !it->second)
+			return;
+
+		const auto *pc = it->second;
+
+		// Build a set for membership test
+		std::unordered_map<std::string, const Diagnostics::ScalarDescriptor *> sd_map;
+		sd_map.reserve(pc->scalars.size());
+		for (const auto &sd : pc->scalars)
+			sd_map[sd.key] = &sd;
+
+		for (const auto &k : keys)
+		{
+			auto jt = sd_map.find(k);
+			if (jt == sd_map.end() || !jt->second)
+				continue;
+
+			const auto &sd = *jt->second;
+
+			Column c;
+			c.key = sd.key; // header label default = scalar key
+			c.source = ColumnSource::DriverScalar;
+			c.unit = sd.unit;
+			c.description = sd.description;
+			c.catalog_ref.producer = producer;
+			c.catalog_ref.key = sd.key;
+			built.push_back(std::move(c));
+		}
+	};
+
+	// Strategy:
+	// - If catalog_profiles provided: for each producer, if it has those profiles, append keys.
+	// - Otherwise: if producer has profile "timeseries_default", use that.
+	// - Otherwise: append nothing (conservative).
+	const auto &producers = catalog_->Producers();
+	for (const auto &kv : producers)
+	{
+		const std::string &producer = kv.first;
+		const auto &pc = kv.second;
+
+		auto use_profile = [&](const std::string &pname) -> bool
+		{
+			for (const auto &p : pc.profiles)
+			{
+				if (p.name == pname)
+				{
+					append_keys_for_producer(producer, p.keys);
+					return true;
+				}
+			}
+			return false;
+		};
+
+		bool used_any = false;
+
+		if (!opts_.catalog_profiles.empty())
+		{
+			for (const auto &pname : opts_.catalog_profiles)
+				used_any = use_profile(pname) || used_any;
+		}
+		else
+		{
+			used_any = use_profile("timeseries_default");
+		}
+
+		(void)used_any;
+	}
+
+	// Merge policy:
+	// If user already provided explicit columns, append built driver scalars to them,
+	// but keep explicit columns first (user intent).
+	if (!opts_.columns.empty())
+	{
+		// Avoid duplicates by header key (simple). You can refine later.
+		std::unordered_set<std::string> seen;
+		for (const auto &c : opts_.columns)
+			seen.insert(c.key);
+
+		for (auto &c : built)
+		{
+			if (seen.insert(c.key).second)
+				opts_.columns.push_back(std::move(c));
+		}
+	}
+	else
+	{
+		opts_.columns = std::move(built);
+	}
 }
 
 //------------------------------------------------------------------------------
@@ -498,6 +681,9 @@ void TimeSeriesObserver::OnStart(const RunInfo &run,
 	started_ = true;
 	header_written_ = false;
 	driver_cache_.clear();
+
+	producer_catalog_cache_.clear();
+	BuildColumnsFromCatalog();
 
 	OpenOutput();
 

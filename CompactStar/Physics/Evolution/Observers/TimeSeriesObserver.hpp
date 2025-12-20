@@ -64,6 +64,7 @@
 
 // Optional: allow pulling from driver diagnostics providers (same concept as DiagnosticsObserver).
 #include "CompactStar/Physics/Driver/Diagnostics/DriverDiagnostics.hpp"
+#include "CompactStar/Physics/Evolution/Diagnostics/DiagnosticCatalog.hpp"
 
 #include "Zaki/String/Directory.hpp"
 
@@ -109,6 +110,19 @@ class TimeSeriesObserver final : public IObserver
 	};
 
 	/**
+	 * @brief Reference to a scalar in the diagnostics catalog.
+	 *
+	 * This is the schema-driven version of DriverScalar lookup:
+	 * producer = driver DiagnosticsName() (packet producer string)
+	 * key      = scalar key within that producer's scalars
+	 */
+	struct CatalogScalarRef
+	{
+		std::string producer;
+		std::string key;
+	};
+
+	/**
 	 * @brief Column source kind.
 	 *
 	 * A "column" is a named scalar recorded in the output table.
@@ -141,7 +155,7 @@ class TimeSeriesObserver final : public IObserver
 	 *  - `key` should be tooling-friendly and stable (snake_case recommended).
 	 *  - `unit` and `description` are written once (optional) via a sidecar file
 	 *    if enabled; they are not repeated in the table itself.
-	 *  - For ColumnSource::DriverScalar, `driver_name` and `driver_key` must be set.
+	 *  - For ColumnSource::DriverScalar, `catalog_ref` must be set.
 	 */
 	struct Column
 	{
@@ -159,19 +173,25 @@ class TimeSeriesObserver final : public IObserver
 
 		/// ---- DriverScalar fields ----
 
-		/**
-		 * @brief Driver diagnostics producer name to query (matches DiagnosticsName()).
-		 *
-		 * Only used when source == ColumnSource::DriverScalar.
-		 */
-		std::string driver_name;
+		// /**
+		//  * @brief Driver diagnostics producer name to query (matches DiagnosticsName()).
+		//  *
+		//  * Only used when source == ColumnSource::DriverScalar.
+		//  */
+		// std::string driver_name;
+
+		// /**
+		//  * @brief Scalar key inside the driver's DiagnosticPacket to extract.
+		//  *
+		//  * Only used when source == ColumnSource::DriverScalar.
+		//  */
+		// std::string driver_key;
 
 		/**
-		 * @brief Scalar key inside the driver's DiagnosticPacket to extract.
+		 * @brief Reference to a scalar in the diagnostics catalog.
 		 *
-		 * Only used when source == ColumnSource::DriverScalar.
 		 */
-		std::string driver_key;
+		CatalogScalarRef catalog_ref;
 
 		/// ---- BuiltinState fields ----
 
@@ -183,11 +203,11 @@ class TimeSeriesObserver final : public IObserver
 		 * This keeps common plots trivial:
 		 *   - time, Tinf, Omega, etc.
 		 *
-		 * If you later want arbitrary expressions, add a callback mechanism in cpp.
+		 * For arbitrary expressions, add a callback mechanism in cpp.
 		 */
 		enum class Builtin
 		{
-			Time,		 ///< t [s], usually emitted automatically; include only if you want it as a column.
+			Time,		 ///< t [s], usually emitted automatically; include only if we want it as a column.
 			SampleIndex, ///< sample_index (monotonic output counter).
 			StepIndex,	 ///< integrator step_index if provided (0 if unknown).
 			Tinf_K,		 ///< redshifted internal temperature [K] from ThermalState.
@@ -267,12 +287,48 @@ class TimeSeriesObserver final : public IObserver
 		 * The observer will not reorder; this is the authoritative ordering.
 		 */
 		std::vector<Column> columns;
+
+		/**
+		 * @brief If true, build columns automatically from the diagnostics catalog.
+		 *
+		 * This is the schema-driven path: no hardcoded column list in main.
+		 * If enabled, the observer will append (or replace) Options::columns
+		 * based on catalog profiles and/or explicit key lists.
+		 */
+		bool use_catalog = false;
+
+		/**
+		 * @brief Optional: path to the catalog JSON (diagnostics.catalog.json).
+		 *
+		 * Used when use_catalog==true and no in-memory catalog is supplied.
+		 */
+		Zaki::String::Directory catalog_path = "";
+
+		/**
+		 * @brief Optional: which catalog profile(s) to use when auto-building columns.
+		 *
+		 * Examples:
+		 *   "timeseries_default"
+		 *   "regression_minimal"
+		 *
+		 * If empty, you can fall back to "timeseries_default" if present,
+		 * otherwise use all scalars or none (cpp policy).
+		 */
+		std::vector<std::string> catalog_profiles;
+
+		/**
+		 * @brief If true, prepend/ensure common builtin columns (time, sample_index).
+		 *
+		 * Useful when catalog-driven columns only cover driver scalars.
+		 */
+		bool include_builtin_time = true;
+		bool include_builtin_sample_index = true;
 	};
 
 	/**
 	 * @brief Construct with options only (state-only columns).
 	 *
-	 * If you plan to use DriverScalar columns, use the constructor that accepts drivers.
+	 * For using DriverScalar columns, we'd use the constructor that accepts drivers.
 	 */
 	explicit TimeSeriesObserver(const Options &opts);
 
@@ -295,6 +351,21 @@ class TimeSeriesObserver final : public IObserver
 	 */
 	TimeSeriesObserver(Options opts,
 					   std::vector<const Driver::Diagnostics::IDriverDiagnostics *> drivers);
+
+	/**
+	 * @brief Construct with options, driver diagnostics, and a diagnostics catalog.
+	 *
+	 * This enables DriverScalar columns, which are extracted by:
+	 *  - asking the driver to populate a DiagnosticPacket,
+	 *  - retrieving pkt.GetScalar(driver_key).value.
+	 * Drivers are not owned by this observer; they must outlive the observer.
+	 * @param opts Observer configuration options.
+	 * @param drivers Driver diagnostics providers (non-owning).
+	 * @param catalog Shared pointer to a diagnostics catalog for schema-driven columns.
+	 */
+	TimeSeriesObserver(Options opts,
+					   std::vector<const Driver::Diagnostics::IDriverDiagnostics *> drivers,
+					   std::shared_ptr<const Diagnostics::DiagnosticCatalog> catalog);
 
 	~TimeSeriesObserver() override;
 
@@ -386,8 +457,14 @@ class TimeSeriesObserver final : public IObserver
 							   const Evolution::StateVector &Y,
 							   const Evolution::DriverContext &ctx) const;
 
-	/// Find a driver diagnostics provider by DiagnosticsName() (cached lookup recommended).
-	const Driver::Diagnostics::IDriverDiagnostics *FindDriverByName(const std::string &name) const;
+	/// Find a driver diagnostics provider via producer-based lookup (cached lookup recommended).
+	const Driver::Diagnostics::IDriverDiagnostics *FindDriverByProducer(const std::string &name) const;
+
+	/// Build/append columns from the catalog according to opts_.catalog_profiles.
+	void BuildColumnsFromCatalog();
+
+	/// Load catalog from opts_.catalog_path if catalog_ is not provided.
+	void LoadCatalogIfNeeded();
 
   private:
 	Options opts_;
@@ -407,6 +484,12 @@ class TimeSeriesObserver final : public IObserver
 
 	// Optional: cache driver-name lookup to avoid linear search each row.
 	mutable std::unordered_map<std::string, const Driver::Diagnostics::IDriverDiagnostics *> driver_cache_;
+
+	// Cached schema info for quick validation/lookups:
+	mutable std::unordered_map<std::string, const Diagnostics::ProducerCatalog *> producer_catalog_cache_;
+
+	// Diagnostics catalog for schema-driven columns.
+	std::shared_ptr<const Diagnostics::DiagnosticCatalog> catalog_;
 };
 
 } // namespace CompactStar::Physics::Evolution::Observers
