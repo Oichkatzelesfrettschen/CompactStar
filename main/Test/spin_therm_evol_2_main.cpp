@@ -82,7 +82,7 @@ int main()
 	// -------------------------------------------------------
 	gsl_set_error_handler(&my_gsl_error_handler);
 	Zaki::Util::LogManager::SetLogLevels(Zaki::Util::LogLevel::Info);
-	Zaki::Util::LogManager::SetBlackWhite(true);
+	Zaki::Util::LogManager::SetBlackWhite(false);
 	Zaki::Util::LogManager::SetLogFile(dir + "spin_therm_evol_2_main.log");
 	// -------------------------------------------------------
 	// 1) Build a star the NEW way: SolveTOV_Profile -> StarProfile

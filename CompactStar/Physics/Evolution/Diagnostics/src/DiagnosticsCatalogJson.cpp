@@ -128,7 +128,7 @@ void DiagnosticsCatalogJson::WriteCatalog(std::ostream &os,
 			// Contract lines (optional)
 			if (opts.include_contract && !pc.contract_lines.empty())
 			{
-				EmitArrayBegin(os, pretty, indent * 3, first_prod_field, "contract");
+				EmitArrayBegin(os, pretty, indent * 3, first_prod_field, "contract_lines");
 				for (std::size_t j = 0; j < pc.contract_lines.size(); ++j)
 				{
 					Indent(os, indent * 4);
@@ -162,16 +162,16 @@ void DiagnosticsCatalogJson::WriteCatalog(std::ostream &os,
 				EmitFieldKey(os, pretty, indent * 5, first_sd, "description");
 				WriteEscapedString(os, sd.description);
 
-				EmitFieldKey(os, pretty, indent * 5, first_sd, "source");
+				EmitFieldKey(os, pretty, indent * 5, first_sd, "source_hint");
 				WriteEscapedString(os, sd.source_hint);
 
-				EmitFieldKey(os, pretty, indent * 5, first_sd, "cadence");
+				EmitFieldKey(os, pretty, indent * 5, first_sd, "default_cadence");
 				WriteEscapedString(os, CadenceToString(sd.default_cadence));
 
 				EmitFieldKey(os, pretty, indent * 5, first_sd, "required");
 				Bool(os, sd.required);
 
-				EmitFieldKey(os, pretty, indent * 5, first_sd, "dimensionless");
+				EmitFieldKey(os, pretty, indent * 5, first_sd, "is_dimensionless");
 				Bool(os, sd.is_dimensionless);
 
 				Newline(os, pretty);
@@ -184,6 +184,46 @@ void DiagnosticsCatalogJson::WriteCatalog(std::ostream &os,
 			}
 
 			EmitArrayEnd(os, pretty, indent * 3);
+			// Profiles array (optional)
+			if (!pc.profiles.empty())
+			{
+				EmitArrayBegin(os, pretty, indent * 3, first_prod_field, "profiles");
+
+				for (std::size_t j = 0; j < pc.profiles.size(); ++j)
+				{
+					const auto &prof = pc.profiles[j];
+
+					Indent(os, indent * 4);
+					os << "{";
+					Newline(os, pretty);
+
+					bool first_pf = true;
+
+					EmitFieldKey(os, pretty, indent * 5, first_pf, "name");
+					WriteEscapedString(os, prof.name);
+
+					EmitArrayBegin(os, pretty, indent * 5, first_pf, "keys");
+					for (std::size_t k = 0; k < prof.keys.size(); ++k)
+					{
+						Indent(os, indent * 6);
+						WriteEscapedString(os, prof.keys[k]);
+						if (k + 1 < prof.keys.size())
+							os << ",";
+						Newline(os, pretty);
+					}
+					EmitArrayEnd(os, pretty, indent * 5);
+
+					Newline(os, pretty);
+					Indent(os, indent * 4);
+					os << "}";
+
+					if (j + 1 < pc.profiles.size())
+						os << ",";
+					Newline(os, pretty);
+				}
+
+				EmitArrayEnd(os, pretty, indent * 3);
+			}
 
 			// Close producer object
 			Newline(os, pretty);
@@ -198,6 +238,7 @@ void DiagnosticsCatalogJson::WriteCatalog(std::ostream &os,
 	Newline(os, pretty);
 	os << "}";
 }
+
 //--------------------------------------------------------------
 void DiagnosticsCatalogJson::WriteEscapedString(std::ostream &os, const std::string &s)
 {
@@ -754,7 +795,7 @@ void DiagnosticsCatalogJson::ReadCatalog(std::istream &is, DiagnosticCatalog &ou
 			"DiagnosticsCatalogJson::ReadCatalog: schema mismatch (expected CatalogId)");
 	}
 
-	// Support either "schema_version" or "catalog_version" (choose one convention later)
+	// Support either "schema_version" or "schema_version" (choose one convention later)
 	std::size_t ver = 0;
 	if (const JValue *sv = GetField(root, "schema_version"))
 	{
@@ -763,7 +804,7 @@ void DiagnosticsCatalogJson::ReadCatalog(std::istream &is, DiagnosticCatalog &ou
 	}
 	if (ver == 0)
 	{
-		if (const JValue *cv = GetField(root, "catalog_version"))
+		if (const JValue *cv = GetField(root, "schema_version"))
 		{
 			if (cv->type == JValue::Type::Number)
 				ver = static_cast<std::size_t>(cv->num);

@@ -162,13 +162,13 @@ void DiagnosticsJson::WritePacket(std::ostream &os,
 			EmitFieldKey(os, pretty, indent * 3, first_meta, "description");
 			WriteEscapedString(os, e.description);
 
-			EmitFieldKey(os, pretty, indent * 3, first_meta, "source");
+			EmitFieldKey(os, pretty, indent * 3, first_meta, "source_hint");
 			WriteEscapedString(os, e.source);
 
 			EmitFieldKey(os, pretty, indent * 3, first_meta, "finite");
 			Bool(os, e.is_finite);
 
-			EmitFieldKey(os, pretty, indent * 3, first_meta, "cadence");
+			EmitFieldKey(os, pretty, indent * 3, first_meta, "default_cadence");
 			WriteEscapedString(os, CadenceToString(e.cadence));
 
 			if (vocab)
@@ -355,7 +355,7 @@ void DiagnosticsJson::WritePacket(std::ostream &os,
 // 			Newline(os, pretty);
 
 // 			Indent(os, indent * 3);
-// 			Key(os, "source");
+// 			Key(os, "source_hint");
 // 			WriteEscapedString(os, e.source);
 // 			os << ",";
 // 			Newline(os, pretty);

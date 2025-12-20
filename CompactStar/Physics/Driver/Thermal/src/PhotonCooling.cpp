@@ -193,6 +193,12 @@ Evolution::Diagnostics::ProducerCatalog PhotonCooling::DiagnosticsCatalog() cons
 		pc.scalars.push_back(sd);
 	}
 
+	// Add profile(s)
+	ProducerCatalog::Profile p;
+	p.name = "timeseries_default";
+	p.keys = {"Tinf_K", "L_gamma_inf_erg_s"};
+	pc.profiles.push_back(std::move(p));
+
 	// Add more descriptors matching your actual emitted keys.
 
 	return pc;

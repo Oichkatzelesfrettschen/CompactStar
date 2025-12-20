@@ -8,19 +8,30 @@
           "key": "Tinf_K",
           "unit": "K",
           "description": "Redshifted internal temperature",
-          "source": "state",
-          "cadence": "Always",
+          "source_hint": "state",
+          "default_cadence": "Always",
           "required": true,
-          "dimensionless": false
+          "is_dimensionless": false
         },
         {
           "key": "L_gamma_inf_erg_s",
           "unit": "erg/s",
           "description": "Photon luminosity at infinity",
-          "source": "computed",
-          "cadence": "OnChange",
+          "source_hint": "computed",
+          "default_cadence": "OnChange",
           "required": false,
-          "dimensionless": false
+          "is_dimensionless": false
+        }
+
+      ],
+      "profiles": [
+        {
+          "name": "timeseries_default",
+          "keys": [
+            "Tinf_K",
+            "L_gamma_inf_erg_s"
+
+          ]
         }
 
       ]

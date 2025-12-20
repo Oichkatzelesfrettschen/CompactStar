@@ -68,8 +68,8 @@ class DiagnosticsCatalogJson
 	 *     "<producer>": {
 	 *       "contract": [...],
 	 *       "scalars": [
-	 *         { "key": "...", "unit": "...", "description": "...", "source": "...",
-	 *           "cadence": "...", "required": true/false, "dimensionless": true/false }
+	 *         { "key": "...", "unit": "...", "description": "...", "source_hint": "...",
+	 *           "default_cadence": "...", "required": true/false, "is_dimensionless": true/false }
 	 *       ]
 	 *     }
 	 *   }

@@ -25,6 +25,22 @@
       "unit": "",
       "description": "Monotonic sample counter",
       "builtin": "SampleIndex"
+    },
+    {
+      "key": "Tinf_K",
+      "source": "DriverScalar",
+      "unit": "K",
+      "description": "Redshifted internal temperature",
+      "producer": "PhotonCooling",
+      "scalar_key": "Tinf_K"
+    },
+    {
+      "key": "L_gamma_inf_erg_s",
+      "source": "DriverScalar",
+      "unit": "erg/s",
+      "description": "Photon luminosity at infinity",
+      "producer": "PhotonCooling",
+      "scalar_key": "L_gamma_inf_erg_s"
     }
   ]
 }
