@@ -168,17 +168,55 @@ Evolution::Diagnostics::ProducerCatalog PhotonCooling::DiagnosticsCatalog() cons
 	using namespace CompactStar::Physics::Evolution::Diagnostics;
 
 	ProducerCatalog pc;
-	pc.producer = DiagnosticsName(); // must match packet Producer used by observer
+	pc.producer = DiagnosticsName(); // must match packet Producer
 
-	// Keep this list stable (schema-level). Add scalars you actually emit in DiagnoseSnapshot().
+	// ------------------------------------------------------------------
+	// Scalars (schema-level; must match DiagnoseSnapshot emission keys)
+	// ------------------------------------------------------------------
+
 	{
 		ScalarDescriptor sd;
 		sd.key = "Tinf_K";
 		sd.unit = "K";
-		sd.description = "Redshifted internal temperature";
+		sd.description = "Redshifted internal temperature T_infinity";
 		sd.source_hint = "state";
 		sd.default_cadence = Cadence::Always;
-		sd.required = true; // if you always emit it
+		sd.required = true;
+		pc.scalars.push_back(sd);
+	}
+
+	{
+		ScalarDescriptor sd;
+		sd.key = "Tsurf_K";
+		sd.unit = "K";
+		sd.description = "Local effective surface temperature used in photon cooling";
+		sd.source_hint = "computed";
+		sd.default_cadence = Cadence::Always;
+		sd.required = true; // always emitted (even if ApproxFromTinf)
+		pc.scalars.push_back(sd);
+	}
+
+	{
+		ScalarDescriptor sd;
+		sd.key = "Tb_K";
+		sd.unit = "K";
+		sd.description =
+			"Local temperature at the base of the envelope (Tb) used for Tb→Ts mapping";
+		sd.source_hint = "computed";
+		sd.default_cadence = Cadence::Always;
+		sd.required = false; // may be omitted if not using EnvelopeTbTs
+		pc.scalars.push_back(sd);
+	}
+
+	{
+		ScalarDescriptor sd;
+		sd.key = "g14";
+		sd.unit = ""; // dimensionless
+		sd.description =
+			"Surface gravity in units of 1e14 cm s^-2 used in envelope fit";
+		sd.source_hint = "computed";
+		sd.default_cadence = Cadence::OncePerRun;
+		sd.required = false; // depends on envelope usage
 		pc.scalars.push_back(sd);
 	}
 
@@ -188,18 +226,37 @@ Evolution::Diagnostics::ProducerCatalog PhotonCooling::DiagnosticsCatalog() cons
 		sd.unit = "erg/s";
 		sd.description = "Photon luminosity at infinity";
 		sd.source_hint = "computed";
-		sd.default_cadence = Cadence::OnChange; // optional
-		sd.required = false;					// set true only if always present
+		sd.default_cadence = Cadence::OnChange;
+		sd.required = false;
 		pc.scalars.push_back(sd);
 	}
 
-	// Add profile(s)
-	ProducerCatalog::Profile p;
-	p.name = "timeseries_default";
-	p.keys = {"L_gamma_inf_erg_s"};
-	pc.profiles.push_back(std::move(p));
+	{
+		ScalarDescriptor sd;
+		sd.key = "dLnTinf_dt_1_s";
+		sd.unit = "1/s";
+		sd.description =
+			"Photon cooling contribution to d/dt ln(Tinf / Tref)";
+		sd.source_hint = "computed";
+		sd.default_cadence = Cadence::Always;
+		sd.required = false;
+		pc.scalars.push_back(sd);
+	}
 
-	// Add more descriptors matching your actual emitted keys.
+	// ------------------------------------------------------------------
+	// Profiles (time series)
+	// ------------------------------------------------------------------
+	{
+		ProducerCatalog::Profile p;
+		p.name = "timeseries_default";
+		p.keys = {
+			"Tinf_K",
+			"Tsurf_K",
+			"Tb_K",
+			"L_gamma_inf_erg_s",
+			"dLnTinf_dt_1_s"};
+		pc.profiles.push_back(std::move(p));
+	}
 
 	return pc;
 }

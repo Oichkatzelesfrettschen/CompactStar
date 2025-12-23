@@ -75,14 +75,14 @@ void EvolutionSystem::ValidateContext() const
 	{
 		throw std::runtime_error("EvolutionSystem: Context.geo is null.");
 	}
-	// if (!m_ctx.envelope)
-	// {
-	// 	throw std::runtime_error("EvolutionSystem: Context.envelope is null.");
-	// }
+
 	if (!m_ctx.cfg)
 	{
 		throw std::runtime_error("EvolutionSystem: Context.cfg is null.");
 	}
+
+	// NOTE: m_ctx.envelope is optional and must be validated by drivers
+	// that require it (based on their Options/surface model).
 
 	// Additional invariants could be checked here, e.g.:
 	//  - that StateLayout::TotalSize() matches what the integrator expects,

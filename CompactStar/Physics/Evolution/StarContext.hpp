@@ -39,10 +39,6 @@
 
 #include <Zaki/Vector/DataSet.hpp>
 #include <cstddef>
-// namespace Zaki::Vector
-// {
-// class DataColumn;
-// }
 
 namespace CompactStar::Core
 {
@@ -90,7 +86,9 @@ class StarContext
 	// --------------------
 	// Thermodynamic background (optional)
 	// --------------------
-	const Zaki::Vector::DataColumn *BaryonDensity() const { return m_nb; } ///< nB(fm^-3) or nullptr
+	const Zaki::Vector::DataColumn *BaryonDensity() const { return m_nb; }	///< nB(fm^-3) or nullptr
+	const Zaki::Vector::DataColumn *Pressure() const { return m_pre; }		///< p (km^-2)
+	const Zaki::Vector::DataColumn *EnergyDensity() const { return m_eps; } ///< eps (km^-2)
 
 	// --------------------
 	// Global scalars (derived from columns)
@@ -100,18 +98,21 @@ class StarContext
 	double ExpNuSurface() const;  ///< exp(nu[-1]) if nu exists, else 0
 
   private:
-	void BindColumnsOrThrow_(); // sets m_r/m_m/m_nu/m_lam/m_nb
+	void BindColumnsOrThrow_(); // sets m_r/m_m/m_nu/m_lam/m_nb/m_pre/m_eps
 	void ValidateOrThrow_();	// checks consistent row counts for required cols
 
   private:
 	const CompactStar::Core::StarProfile *m_prof = nullptr;
 
 	// Non-owning cached pointers to frequently accessed columns (set in ctor).
-	const Zaki::Vector::DataColumn *m_r = nullptr;
-	const Zaki::Vector::DataColumn *m_m = nullptr;
-	const Zaki::Vector::DataColumn *m_nu = nullptr;
-	const Zaki::Vector::DataColumn *m_lam = nullptr;
-	const Zaki::Vector::DataColumn *m_nb = nullptr;
+
+	const Zaki::Vector::DataColumn *m_r = nullptr;	 ///< r(km)
+	const Zaki::Vector::DataColumn *m_m = nullptr;	 ///< m(km)
+	const Zaki::Vector::DataColumn *m_nu = nullptr;	 ///< nu
+	const Zaki::Vector::DataColumn *m_lam = nullptr; ///< lambda
+	const Zaki::Vector::DataColumn *m_nb = nullptr;	 ///< nB(fm^-3)
+	const Zaki::Vector::DataColumn *m_pre = nullptr; ///< p (km^-2)
+	const Zaki::Vector::DataColumn *m_eps = nullptr; ///< eps (km^-2)
 };
 
 } // namespace CompactStar::Physics::Evolution

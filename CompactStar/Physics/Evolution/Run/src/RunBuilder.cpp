@@ -52,13 +52,30 @@ Evolution::DriverContext MakeDriverContext(Evolution::StarContext &star,
 										   Evolution::GeometryCache &geo,
 										   Evolution::Config &cfg)
 {
+	// Evolution::DriverContext ctx;
+	// ctx.star = &star;
+	// ctx.geo = &geo;
+	// // ctx.envelope = nullptr; // reserved for future
+	// ctx.cfg = &cfg;
+	// return ctx;
+
+	return MakeDriverContext(star, geo, cfg, nullptr);
+}
+
+//--------------------------------------------------------------
+Evolution::DriverContext MakeDriverContext(Evolution::StarContext &star,
+										   Evolution::GeometryCache &geo,
+										   Evolution::Config &cfg,
+										   const Physics::Driver::Thermal::Boundary::IEnvelope *env)
+{
 	Evolution::DriverContext ctx;
 	ctx.star = &star;
 	ctx.geo = &geo;
-	ctx.envelope = nullptr; // reserved for future
+	ctx.envelope = env; // <-- enable envelope wiring
 	ctx.cfg = &cfg;
 	return ctx;
 }
+
 //--------------------------------------------------------------
 void ConfigureLayout(StateWiring &wiring,
 					 const std::vector<Physics::State::StateTag> &order)

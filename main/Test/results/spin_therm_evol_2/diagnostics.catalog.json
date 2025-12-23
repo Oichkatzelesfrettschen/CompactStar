@@ -86,10 +86,37 @@
         {
           "key": "Tinf_K",
           "unit": "K",
-          "description": "Redshifted internal temperature",
+          "description": "Redshifted internal temperature T_infinity",
           "source_hint": "state",
           "default_cadence": "Always",
           "required": true,
+          "is_dimensionless": false
+        },
+        {
+          "key": "Tsurf_K",
+          "unit": "K",
+          "description": "Local effective surface temperature used in photon cooling",
+          "source_hint": "computed",
+          "default_cadence": "Always",
+          "required": true,
+          "is_dimensionless": false
+        },
+        {
+          "key": "Tb_K",
+          "unit": "K",
+          "description": "Local temperature at the base of the envelope (Tb) used for Tb→Ts mapping",
+          "source_hint": "computed",
+          "default_cadence": "Always",
+          "required": false,
+          "is_dimensionless": false
+        },
+        {
+          "key": "g14",
+          "unit": "",
+          "description": "Surface gravity in units of 1e14 cm s^-2 used in envelope fit",
+          "source_hint": "computed",
+          "default_cadence": "OncePerRun",
+          "required": false,
           "is_dimensionless": false
         },
         {
@@ -100,6 +127,15 @@
           "default_cadence": "OnChange",
           "required": false,
           "is_dimensionless": false
+        },
+        {
+          "key": "dLnTinf_dt_1_s",
+          "unit": "1/s",
+          "description": "Photon cooling contribution to d/dt ln(Tinf / Tref)",
+          "source_hint": "computed",
+          "default_cadence": "Always",
+          "required": false,
+          "is_dimensionless": false
         }
 
       ],
@@ -107,7 +143,11 @@
         {
           "name": "timeseries_default",
           "keys": [
-            "L_gamma_inf_erg_s"
+            "Tinf_K",
+            "Tsurf_K",
+            "Tb_K",
+            "L_gamma_inf_erg_s",
+            "dLnTinf_dt_1_s"
 
           ]
         }

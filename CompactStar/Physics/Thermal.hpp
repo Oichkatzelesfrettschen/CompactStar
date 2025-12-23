@@ -41,35 +41,13 @@
 
 /**
  * @namespace CompactStar::Physics::Thermal
- * @brief Thermal utilities: envelope models, cooling/heating helpers.
+ * @brief Thermal utilities: cooling/heating helpers.
  *
- * Contains static thermal functions (e.g., neutrino luminosities,
- * envelope T_b → T_s mappings) and interfaces used by thermal drivers.
+ * Contains static thermal functions (e.g., neutrino luminosities)
+ *  and interfaces used by thermal drivers.
  */
 namespace CompactStar::Physics::Thermal
 {
-
-/**
- * @class IEnvelope
- * @brief Strategy for Tb -> Ts mapping (thermal boundary condition).
- *
- * Given base-of-envelope temperature Tb, surface gravity g14, and a light-element
- * parameter xi, returns the local surface temperature Ts.
- */
-class IEnvelope
-{
-  public:
-	virtual ~IEnvelope() = default;
-
-	/**
-	 * @brief Map base temperature to surface temperature.
-	 * @param Tb   Base-of-envelope temperature [K], local frame.
-	 * @param g14  Surface gravity in units of 1e14 cm s^-2.
-	 * @param xi   Light-element/light-element column parameter.
-	 * @return Local surface temperature Ts [K].
-	 */
-	virtual double Ts_from_Tb(double Tb, double g14, double xi) const = 0;
-};
 
 /**
  * @brief Redshifted photon luminosity \(L_\infty\) from the surface.

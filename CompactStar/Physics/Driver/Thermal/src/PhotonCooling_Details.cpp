@@ -21,7 +21,12 @@
 
 #include "CompactStar/Physics/Driver/Thermal/PhotonCooling_Details.hpp"
 #include "CompactStar/Physics/Driver/Thermal/PhotonCooling.hpp"
-// --- Full definitions needed here ---
+
+#include "CompactStar/Physics/Driver/Thermal/Boundary/EnvelopePotekhin1997.hpp" // optional
+#include "CompactStar/Physics/Driver/Thermal/Boundary/EnvelopePotekhin2003.hpp" // or 1997 if we want
+#include "CompactStar/Physics/Driver/Thermal/Boundary/SurfaceGravity.hpp"
+#include "CompactStar/Physics/Driver/Thermal/Boundary/TbDefinition.hpp"
+
 #include <cmath>
 #include <string>
 
@@ -85,10 +90,125 @@ PhotonCooling_Details ComputeDerived(const PhotonCooling &drv,
 		d.Tsurf_K = (thermal.T_surf > 0.0) ? thermal.T_surf : d.Tinf_K;
 		break;
 
-	case PhotonCooling::Options::SurfaceModel::EnvelopeMapping:
-		// Placeholder until stable envelope API exists.
-		d.Tsurf_K = d.Tinf_K;
+	// case PhotonCooling::Options::SurfaceModel::EnvelopeTbTs:
+	// {
+	// 	// We need star context to locate rho_b and compute Tb, and we need star/geo to compute g14.
+	// 	if (!ctx.star)
+	// 	{
+	// 		d.ok = false;
+	// 		d.message = "SurfaceModel::EnvelopeTbTs selected but ctx.star == nullptr.";
+	// 		return d;
+	// 	}
+
+	// 	// 1) Define the Tb boundary policy from driver options.
+	// 	Boundary::TbDefinition def;
+	// 	def.rho_b = drv.GetOptions().rho_b;		 // g/cm^3
+	// 	def.assume_isothermal_redshifted = true; // Tb derived from T_inf via redshift
+	// 	def.prefer_geometry_cache = true;		 // use geo->ExpNu if present
+	// 	// def.prefer_geometry_cache remains true even if ctx.geo==nullptr; ComputeTb will fall back to star.Nu()
+
+	// 	// 2) Compute local Tb at rho_b.
+	// 	const double Tb_K = Boundary::ComputeTb(*ctx.star, ctx.geo, d.Tinf_K, def);
+	// 	if (!(Tb_K > 0.0))
+	// 	{
+	// 		d.ok = false;
+	// 		d.message = "EnvelopeTbTs: computed Tb <= 0.";
+	// 		return d;
+	// 	}
+
+	// 	// 3) Compute g14 at the surface (dimensionless).
+	// 	// If you want EnvelopeTbTs to REQUIRE geo, make SurfaceGravity_g14 strict internally.
+	// 	const double g14 = Boundary::SurfaceGravity_g14(*ctx.star, ctx.geo);
+	// 	if (!(g14 > 0.0))
+	// 	{
+	// 		d.ok = false;
+	// 		d.message = "EnvelopeTbTs: computed g14 <= 0.";
+	// 		return d;
+	// 	}
+
+	// 	// 4) Apply the selected envelope fit.
+	// 	const double xi = drv.GetOptions().envelope_xi;
+
+	// 	switch (drv.GetOptions().envelope)
+	// 	{
+	// 	case PhotonCooling::EnvelopeModel::Iron:
+	// 		d.Tsurf_K = Boundary::EnvelopePotekhin2003_Iron{}.Ts_from_Tb(Tb_K, g14, xi);
+	// 		break;
+
+	// 	case PhotonCooling::EnvelopeModel::Accreted:
+	// 		d.Tsurf_K = Boundary::EnvelopePotekhin2003_Accreted{}.Ts_from_Tb(Tb_K, g14, xi);
+	// 		break;
+
+	// 	case PhotonCooling::EnvelopeModel::Custom:
+	// 	default:
+	// 		d.ok = false;
+	// 		d.message = "EnvelopeTbTs: EnvelopeModel::Custom selected but no custom mapping is wired.";
+	// 		return d;
+	// 	}
+
+	// 	break;
+	// }
+	case PhotonCooling::Options::SurfaceModel::EnvelopeTbTs:
+	{
+		if (!ctx.star)
+		{
+			d.ok = false;
+			d.message = "SurfaceModel::EnvelopeTbTs selected but ctx.star == nullptr.";
+			return d;
+		}
+
+		// 1) Tb boundary policy (rho_b in g/cm^3)
+		Boundary::TbDefinition def;
+		def.rho_b = drv.GetOptions().rho_b;
+		def.assume_isothermal_redshifted = true;
+		def.prefer_geometry_cache = true;
+
+		// 2) Compute local Tb at rho_b
+		const double Tb_K = Boundary::ComputeTb(*ctx.star, ctx.geo, d.Tinf_K, def);
+		if (!(Tb_K > 0.0))
+		{
+			d.ok = false;
+			d.message = "EnvelopeTbTs: computed Tb <= 0.";
+			return d;
+		}
+		d.Tb_K = Tb_K;
+
+		// 3) Compute g14 at the surface
+		const double g14 = Boundary::SurfaceGravity_g14(*ctx.star, ctx.geo);
+		if (!(g14 > 0.0))
+		{
+			d.ok = false;
+			d.message = "EnvelopeTbTs: computed g14 <= 0.";
+			return d;
+		}
+		d.g14 = g14;
+
+		// 4) Apply envelope fit
+		const double xi = drv.GetOptions().envelope_xi;
+
+		switch (drv.GetOptions().envelope)
+		{
+		case PhotonCooling::EnvelopeModel::Iron:
+		{
+			static const Boundary::EnvelopePotekhin2003_Iron model{};
+			d.Tsurf_K = model.Ts_from_Tb(Tb_K, g14, xi);
+			break;
+		}
+		case PhotonCooling::EnvelopeModel::Accreted:
+		{
+			static const Boundary::EnvelopePotekhin2003_Accreted model{};
+			d.Tsurf_K = model.Ts_from_Tb(Tb_K, g14, xi);
+			break;
+		}
+		case PhotonCooling::EnvelopeModel::Custom:
+		default:
+			d.ok = false;
+			d.message = "EnvelopeTbTs: EnvelopeModel::Custom selected but no custom mapping is wired.";
+			return d;
+		}
+
 		break;
+	}
 
 	case PhotonCooling::Options::SurfaceModel::ApproxFromTinf:
 	default:
@@ -248,6 +368,15 @@ void Diagnose(const PhotonCooling &self,
 
 	out.AddScalar("Tsurf_K", d.Tsurf_K, "K",
 				  "Surface temperature used in photon luminosity", "computed");
+
+	out.AddScalar("Tb_K", d.Tb_K, "K",
+				  "Local temperature at the base of the envelope (Tb) used for Tb→Ts mapping",
+				  "computed");
+
+	out.AddScalar("g14", d.g14, "",
+				  "Surface gravity in units of 1e14 cm s^-2 used in envelope fit",
+				  "computed",
+				  Evolution::Diagnostics::Cadence::OncePerRun);
 
 	out.AddScalar("R_surf_km", d.R_surf_km, "km",
 				  "Surface radius from GeometryCache (last grid point)", "cache",

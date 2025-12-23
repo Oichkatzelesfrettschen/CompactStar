@@ -189,7 +189,11 @@ class EvolutionSystem
 	void NotifyFinish(double t, const double *y, bool ok) const;
 
   private:
-	/// Validate that the static Context is non-null / self-consistent.
+	/**
+	 * @brief Validate that the static Context is non-null / self-consistent.
+	 *
+	 * @throws std::runtime_error if any required context piece is null.
+	 */
 	void ValidateContext() const;
 
 	DriverContext m_ctx;			  ///< static model context (non-owning pointers)

@@ -15,17 +15,22 @@
  *
  * @ingroup PhysicsEvolution
  *
- * This file defines a **non-owning aggregation of static model data**
- * that evolution drivers may need in order to compute RHS contributions.
+ * DriverContext is a **non-owning** bundle of pointers to slowly-varying / static
+ * objects that drivers may consult when computing RHS contributions.
  *
- * The DriverContext is intentionally:
- *  - **small** (just pointers),
- *  - **read-only** (drivers must not mutate it),
- *  - **stable across time steps** (unlike StateVector),
- *  - **decoupled from EvolutionSystem internals**.
+ * Design goals:
+ *  - Keep the driver interface explicit and stable.
+ *  - Avoid circular dependencies between drivers and EvolutionSystem.
+ *  - Prevent heavy includes in driver-facing headers.
  *
- * This avoids circular dependencies between IDriver and EvolutionSystem,
- * and makes the driver interface explicit and robust.
+ * Ownership:
+ *  - All pointers are **non-owning** and must remain valid for the duration of
+ *    the evolution run (typically owned by EvolutionSystem or the caller).
+ *
+ * Optional components:
+ *  - Some pointers (e.g., envelope boundary condition models) may be nullptr.
+ *    They are **not** required globally; drivers that require them must validate
+ *    their presence based on their own Options/configuration.
  */
 
 #ifndef CompactStar_Physics_Evolution_DriverContext_H
@@ -36,109 +41,94 @@ namespace CompactStar
 namespace Physics
 {
 
-namespace Thermal
-{
-class IEnvelope;
-}
-
+// -----------------------------------------------------------------------------
+// Forward declarations (keep this header lightweight).
+// -----------------------------------------------------------------------------
 namespace Evolution
 {
-
-// Forward declarations only — no heavy includes here
 class StarContext;
 class GeometryCache;
 struct Config;
+
 class StateVector;	  ///< Composite view over sub-states (Spin/Thermal/Chem/…)
 class RHSAccumulator; ///< Write-only accumulator for dY/dt components
 class StateLayout;	  ///< Layout of the StateVector
+} // namespace Evolution
+
+namespace Driver
+{
+namespace Thermal
+{
+namespace Boundary
+{
+class IEnvelope; ///< Tb -> Ts boundary condition interface (optional in context).
+} // namespace Boundary
+} // namespace Thermal
+} // namespace Driver
+
+namespace Evolution
+{
 
 /**
  * @struct DriverContext
  * @brief Read-only static context for evolution drivers.
  *
- * DriverContext bundles together *all static, slowly-varying objects*
- * that physics drivers may consult when computing dY/dt.
+ * DriverContext bundles together pointers to static model objects that drivers
+ * may consult while computing dY/dt.
  *
  * It is passed **by const reference** into IDriver::AccumulateRHS().
  *
- * ### Design principles
- * - **Non-owning**: all pointers refer to objects owned elsewhere
- *   (typically by the calling code / EvolutionSystem).
- * - **Read-only**: drivers must treat everything here as immutable.
- * - **Optional components**: pointers may be null if a given feature
- *   is not enabled (e.g. envelope models).
+ * Key principles:
+ *  - **Non-owning** pointers
+ *  - **Read-only** usage contract for drivers
+ *  - **Optional components** allowed (nullptr is valid)
  *
- * ### Typical usage inside a driver
- * @code
- * void MyDriver::AccumulateRHS(..., const DriverContext& ctx) const
- * {
- *     if (ctx.geo)
- *     {
- *         const auto& w = ctx.geo->WC();
- *         ...
- *     }
- *
- *     if (ctx.star)
- *     {
- *         const auto& prof = ctx.star->Profile();
- *         ...
- *     }
- * }
- * @endcode
+ * Validation policy:
+ *  - EvolutionSystem should validate only globally required pointers (e.g. star/geo/cfg
+ *    depending on your run mode).
+ *  - Feature-specific pointers (e.g. envelope) must be validated by the driver that
+ *    uses them, based on driver Options.
  */
 struct DriverContext
 {
 	/**
-	 * @brief Pointer to the stellar structure context.
+	 * @brief Stellar structure context (static background star).
 	 *
-	 * Provides access to:
-	 *  - radial grids,
-	 *  - metric functions,
-	 *  - EOS hooks,
-	 *  - composition profiles,
-	 *  - any cached background quantities.
+	 * Provides access to structure profiles, metric functions, EOS hooks, etc.
 	 *
-	 * Typically constructed from a solved NStar / TOV profile.
-	 *
-	 * May be null if a driver does not require structural data.
+	 * May be null for drivers that are purely local / toy models, but most physics
+	 * drivers will require this.
 	 */
 	const StarContext *star = nullptr;
 
 	/**
-	 * @brief Pointer to precomputed geometric integration weights.
+	 * @brief Precomputed geometric cache for spatial integrals and metric factors.
 	 *
-	 * GeometryCache contains commonly-used metric combinations such as:
-	 *  - proper-volume factors,
-	 *  - redshifted shell weights,
-	 *  - exp(ν), exp(2ν), exp(Λ), etc.
+	 * Provides commonly used quantities such as:
+	 *  - proper-volume weights,
+	 *  - exp(nu), exp(2 nu), exp(lambda), etc.
 	 *
-	 * Drivers performing spatial integrals (cooling, heating, luminosities)
-	 * should prefer using GeometryCache over recomputing these factors.
-	 *
-	 * May be null for purely local / toy drivers.
+	 * May be null for drivers that do not perform spatial integrals.
 	 */
 	const GeometryCache *geo = nullptr;
 
 	/**
-	 * @brief Pointer to thermal envelope / atmosphere model.
+	 * @brief Optional thermal boundary condition model (Tb -> Ts mapping).
 	 *
-	 * Provides mappings such as:
-	 *   T_core → T_surface
-	 *   T_surface → photon luminosity
+	 * This is the envelope/blanket interface used to map base-of-envelope temperature
+	 * to an effective surface temperature.
 	 *
-	 * Optional; may be null if no envelope model is configured.
+	 * Notes:
+	 *  - This pointer is **optional** and may be nullptr.
+	 *  - Drivers must only require it when their configured surface model needs it
+	 *    (e.g., PhotonCooling with SurfaceModel::EnvelopeTbTs).
 	 */
-	const Thermal::IEnvelope *envelope = nullptr;
+	const Driver::Thermal::Boundary::IEnvelope *envelope = nullptr;
 
 	/**
-	 * @brief Pointer to global evolution configuration.
+	 * @brief Global evolution configuration (policy + toggles + numerics).
 	 *
-	 * Provides access to:
-	 *  - numerical tolerances,
-	 *  - enabled physics switches,
-	 *  - model-wide flags.
-	 *
-	 * Drivers should treat this as read-only policy information.
+	 * Treated as read-only by all drivers.
 	 */
 	const Config *cfg = nullptr;
 };

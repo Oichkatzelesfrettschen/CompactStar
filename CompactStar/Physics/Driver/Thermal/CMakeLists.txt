@@ -1,3 +1,5 @@
+add_subdirectory(Boundary)
+
 set(CompactStar_Physics_Driver_Thermal_headers
 
     # HeatingFromChem.hpp
@@ -16,5 +18,16 @@ set(CompactStar_Physics_Driver_Thermal_sources
     CompactStar/Physics/Driver/Thermal/src/NeutrinoCooling.cpp
     CompactStar/Physics/Driver/Thermal/src/NeutrinoCooling_Details.cpp
 
+    # PARENT_SCOPE
+)
+
+# Append integrator sources
+list(APPEND CompactStar_Physics_Driver_Thermal_sources
+    ${CompactStar_Physics_Driver_Thermal_Boundary_sources}
+)
+
+# NOW export the final list
+set(CompactStar_Physics_Driver_Thermal_sources
+    ${CompactStar_Physics_Driver_Thermal_sources}
     PARENT_SCOPE
 )

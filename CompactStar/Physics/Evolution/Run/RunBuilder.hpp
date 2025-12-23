@@ -103,6 +103,20 @@ Evolution::DriverContext MakeDriverContext(Evolution::StarContext &star,
 										   Evolution::Config &cfg);
 
 /**
+ * @brief Wire a DriverContext from pre-built StarContext/GeometryCache, Config, and Envelope.
+ *
+ * @param star StarContext (must outlive ctx).
+ * @param geo  GeometryCache (must outlive ctx).
+ * @param cfg  Evolution::Config (must outlive ctx).
+ * @param env  Envelope model (must outlive ctx).
+ * @return * Evolution::DriverContext
+ */
+Evolution::DriverContext MakeDriverContext(Evolution::StarContext &star,
+										   Evolution::GeometryCache &geo,
+										   Evolution::Config &cfg,
+										   const Physics::Driver::Thermal::Boundary::IEnvelope *env);
+
+/**
  * @brief Configure StateLayout packing order for the given tags.
  *
  * @param wiring StateWiring with state_vec already registered.

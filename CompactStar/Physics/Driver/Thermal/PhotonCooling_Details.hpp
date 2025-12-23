@@ -31,7 +31,7 @@
 // #include "CompactStar/Physics/Driver/Thermal/PhotonCooling.hpp"
 #include "CompactStar/Physics/Evolution/DriverContext.hpp"
 #include "CompactStar/Physics/Evolution/StateVector.hpp"
-#include "CompactStar/Physics/State/ThermalState.hpp"
+// #include "CompactStar/Physics/State/ThermalState.hpp"
 
 namespace CompactStar::Physics::Evolution
 {
@@ -65,6 +65,10 @@ struct PhotonCooling_Details
 	// Inputs (resolved)
 	double Tinf_K = 0.0;
 	double Tsurf_K = 0.0;
+
+	// NEW: Envelope inputs (resolved)
+	double Tb_K = 0.0; // local base-of-envelope temperature [K] at rho_b
+	double g14 = 0.0;  // surface gravity in units of 1e14 cm s^-2
 
 	// Geometry/redshift
 	double R_surf_km = 0.0;

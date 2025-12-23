@@ -54,16 +54,16 @@ enum class StepperType
 };
 
 //==============================================================
-/**
- * @enum EnvelopeModel
- * @brief Surface boundary models mapping \f$T_b \to T_s\f$.
- */
-enum class EnvelopeModel
-{
-	Iron,
-	Accreted,
-	Custom /*!< Provide a custom callable in Phase 2+. */
-};
+// /**
+//  * @enum EnvelopeModel
+//  * @brief Surface boundary models mapping \f$T_b \to T_s\f$.
+//  */
+// enum class EnvelopeModel
+// {
+// 	Iron,
+// 	Accreted,
+// 	Custom /*!< Provide a custom callable in Phase 2+. */
+// };
 //==============================================================
 
 /**
@@ -103,11 +103,11 @@ struct Config
 	bool enable_rotochem_driver = false; /*!< Spin-down driver for \f$\eta\f$.       */
 	bool couple_spin = false;			 /*!< Include \f$\Omega\f$ in the state.     */
 
-	// ---- Envelope and gaps -----------------------------------------------
-	EnvelopeModel envelope = EnvelopeModel::Iron;
-	double envelope_xi = 0.0; /*!< Light-element column parameter (if used). */
-	bool superfluid_n = false;
-	bool superfluid_p = false;
+	// // ---- Envelope and gaps -----------------------------------------------
+	// EnvelopeModel envelope = EnvelopeModel::Iron;
+	// double envelope_xi = 0.0; /*!< Light-element column parameter (if used). */
+	// bool superfluid_n = false;
+	// bool superfluid_p = false;
 
 	// ---- Chemical imbalances ---------------------------------------------
 	std::size_t n_eta = 1; /*!< Number of \f$\eta_i\f$ components. */

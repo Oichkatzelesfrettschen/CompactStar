@@ -106,9 +106,9 @@ int main()
 	cfg.dt_save = 1.0e5; // not used directly by GSLIntegrator yet, but kept for consistency
 
 	CompactStar::Physics::Evolution::DriverContext ctx;
-	ctx.star = &starCtx;	// e.g. pointer to StarContext built from NStar + EOS
-	ctx.geo = &geo;			// e.g. GeometryCache
-	ctx.envelope = nullptr; // e.g. Thermal::IEnvelope implementation
+	ctx.star = &starCtx; // e.g. pointer to StarContext built from NStar + EOS
+	ctx.geo = &geo;		 // e.g. GeometryCache
+	// ctx.envelope = nullptr; // e.g. Thermal::IEnvelope implementation
 	ctx.cfg = &cfg;
 
 	return 0;

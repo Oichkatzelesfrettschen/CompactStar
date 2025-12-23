@@ -110,6 +110,7 @@ class GeometryCache
 	/** @name Primitive grids / exponentials */
 	///@{
 	const Zaki::Vector::DataColumn &R() const;				///< r(km)
+	const Zaki::Vector::DataColumn &Mass() const;			///< m(km)
 	const Zaki::Vector::DataColumn &Area() const;			///< 4*pi*r^2
 	const Zaki::Vector::DataColumn &ExpNu() const;			///< exp(nu)
 	const Zaki::Vector::DataColumn &ExpMinusNu() const;		///< exp(-nu)
@@ -159,6 +160,7 @@ class GeometryCache
 	//--------------------------------------------------------------
 	// Cached columns
 	Zaki::Vector::DataColumn m_r;
+	Zaki::Vector::DataColumn m_mass; // in km
 	Zaki::Vector::DataColumn m_area;
 
 	Zaki::Vector::DataColumn m_expNu;

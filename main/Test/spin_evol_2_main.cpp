@@ -34,12 +34,12 @@ int main()
 
 	// For this minimal spin-only test, StarContext / GeometryCache / envelope
 	// are not actually used by MagneticDipole. We keep them as nullptr for now.
-	Physics::Thermal::IEnvelope *envelope = nullptr;
+	// Physics::Thermal::IEnvelope *envelope = nullptr;
 
 	Physics::Evolution::DriverContext ctx;
-	ctx.star = nullptr;		 // TODO: hook to real StarContext
-	ctx.geo = nullptr;		 // TODO: hook to real GeometryCache
-	ctx.envelope = envelope; // may remain nullptr until thermal is wired
+	ctx.star = nullptr; // TODO: hook to real StarContext
+	ctx.geo = nullptr;	// TODO: hook to real GeometryCache
+	// ctx.envelope = envelope; // may remain nullptr until thermal is wired
 	ctx.cfg = &cfg;
 
 	// ---------------------------------------------------------------------

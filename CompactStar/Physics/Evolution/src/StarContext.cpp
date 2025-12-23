@@ -81,6 +81,8 @@ void StarContext::BindColumnsOrThrow_()
 
 	// Optional thermodynamics
 	m_nb = m_prof->GetBaryonDensity();
+	m_pre = m_prof->GetPressure();
+	m_eps = m_prof->GetEnergyDensity();
 }
 
 //--------------------------------------------------------------
@@ -106,6 +108,8 @@ void StarContext::ValidateOrThrow_()
 	check(m_nu, "nu");
 	check(m_lam, "lambda");
 	check(m_nb, "nB");
+	check(m_pre, "p");
+	check(m_eps, "eps");
 }
 
 //==============================================================

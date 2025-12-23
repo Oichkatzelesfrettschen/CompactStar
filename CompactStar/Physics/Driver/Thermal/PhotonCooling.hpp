@@ -1,3 +1,5 @@
+#ifndef COMPACTSTAR_PHYSICS_DRIVER_THERMAL_PHOTONCOOLING_HPP
+#define COMPACTSTAR_PHYSICS_DRIVER_THERMAL_PHOTONCOOLING_HPP
 // -*- lsst-c++ -*-
 /*
  * CompactStar
@@ -11,238 +13,263 @@
 
 /**
  * @file PhotonCooling.hpp
- * @brief Driver that contributes surface photon cooling to the thermal evolution RHS.
+ * @brief Photon (surface) cooling driver for the thermal evolution subsystem.
  *
  * @ingroup PhysicsDriver
  *
- * ## Physical intent
- * This driver adds a **photon luminosity loss** term to the redshifted thermal
- * degree of freedom (typically \(T_\infty\)), producing a contribution
+ * This driver contributes **surface photon emission** as an energy-loss term
+ * in the thermal evolution equation. It is intentionally minimal and is meant
+ * to be composed with other thermal drivers (neutrino cooling, heating, etc.).
+ *
+ * ## Thermal variable convention
+ * CompactStar evolves a dimensionless logarithmic thermal variable:
  *
  * \f[
- *   \frac{d\ln (T_\infty / T_{\rm ref})}{dt} = - \frac{L_{\gamma,\infty}}{C_{\rm eff}\,T_\infty}
+ *   y_T \equiv \ln\!\left(\frac{T_\infty}{T_{\rm ref}}\right),
  * \f]
  *
- * where \(T_\infty\) is the redshifted isothermal-core temperature in Kelvin.
- *
- * @note **ODE variable convention:** CompactStar evolves the dimensionless logarithmic variable
- *       \(\ln (T_\infty / T_{\rm ref})\). If a physical model naturally computes \(dT_\infty/dt\),
- *       it must be converted via:
- * \f[
- *   \frac{d\ln (T_\infty / T_{\rm ref})}{dt} = \frac{1}{T_\infty}\,\frac{dT_\infty}{dt}.
- * \f]
- *
- * with a simple blackbody-like luminosity at infinity:
+ * where \(T_\infty\) is a redshifted (isothermal-core) temperature in Kelvin.
+ * If a physical model yields \(dT_\infty/dt\), it must be converted as:
  *
  * \f[
- *   L_{\gamma,\infty} = \mathcal{F}_{\rm rad}\; A_{\infty}\; \sigma_{\rm SB}\; T_{\rm surf}^4 .
+ *   \frac{dy_T}{dt} = \frac{1}{T_\infty}\frac{dT_\infty}{dt}.
  * \f]
  *
- * Where:
- * - \f$T_{\rm surf}\f$ is a local-frame surface temperature [K].
- * - \f$\sigma_{\rm SB}\f$ is the Stefan–Boltzmann constant.
- * - \f$A_{\infty}\f$ is the **redshifted emitting area** appropriate for
- *   luminosity measured at infinity.
- * - \f$\mathcal{F}_{\rm rad}\f$ is a **dimensionless** prefactor capturing
- *   partial surface emission (hot spots, beaming, opacity fudge, etc.).
- *
- * ## Units policy (IMPORTANT)
- * This header documents the unit expectations; the implementation must be
- * consistent with whatever unit conventions CompactStar uses.
- *
- * ### Temperature
- * - \(T_{\rm surf}\), \(T_\infty\): **Kelvin [K]**.
- *
- * ### Luminosity
- * If \(\sigma_{\rm SB}\) is taken in **cgs**,
- * \(\sigma_{\rm SB} \approx 5.670374419\times10^{-5}\;{\rm erg\,cm^{-2}\,s^{-1}\,K^{-4}}\),
- * then:
- * - \(A_\infty\) must be in **cm²**
- * - \(L_{\gamma,\infty}\) is in **erg/s**
- *
- * ### Heat capacity
- * - C_eff must be [erg/K] so that \(dT_\infty/dt\) is [K/s].
- *   When evolving \(\ln T_\infty\), the driver ultimately contributes
- *   \(d(\ln T_\infty)/dt\) with units [1/s].
- *
- * ### Geometry input
- * CompactStar structure profiles often store radius in **km**.
- * If the GeometryCache provides \(R\) in km, the implementation must convert:
- * - \(R_{\rm cm} = 10^5 \, R_{\rm km}\)
- * before constructing \(A_\infty\).
- *
- * ### Redshift convention
- * For a static metric with \(\nu(r)\) defined via \(g_{tt}=-e^{2\nu(r)}\),
- * the luminosity observed at infinity from a local surface blackbody scales as:
+ * ## Photon luminosity at infinity
+ * For a static metric with \(g_{tt}=-e^{2\nu(r)}\), a local blackbody surface
+ * emission corresponds to:
  *
  * \f[
- *   L_{\gamma,\infty} = 4\pi R^2 \, e^{2\nu(R)} \, \sigma_{\rm SB}\, T_{\rm surf}^4 ,
+ *   L_{\gamma,\infty}
+ *   = \mathcal{S}\;\mathcal{F}_{\rm rad}\;A_\infty\;\sigma_{\rm SB}\;T_{\rm surf}^4,
+ * \quad
+ *   A_\infty \equiv 4\pi R^2 e^{2\nu(R)}.
  * \f]
  *
- * i.e. the area factor used here is:
+ * - \(T_{\rm surf}\): local effective surface temperature [K]
+ * - \(\sigma_{\rm SB}\): Stefan–Boltzmann constant
+ * - \(A_\infty\): redshifted emitting area for luminosity measured at infinity
+ * - \(\mathcal{F}_{\rm rad}\): dimensionless “radiating fraction” (hot spots, emissivity, etc.)
+ * - \(\mathcal{S}\): additional dimensionless global scale (debug / knob)
+ *
+ * The RHS contribution (in terms of the evolved variable) is:
+ *
  * \f[
- *   A_\infty \equiv 4\pi R^2 e^{2\nu(R)} .
+ *   \frac{dy_T}{dt}
+ *   \mathrel{+}= - \frac{L_{\gamma,\infty}}{C_{\rm eff}\,T_\infty}.
  * \f]
  *
- * The driver will obtain the needed metric/redshift factors from the
- * GeometryCache (via DriverContext::geo) when available.
+ * where \(C_{\rm eff}\) is an effective heat capacity [erg/K] (in cgs conventions).
  *
- * ## DriverContext usage
- * - `ctx.geo` (GeometryCache) is the preferred source for \(R\) and \(e^{2\nu}\).
- * - `ctx.envelope` may later supply a physically motivated mapping
- *   \(T_\infty \mapsto T_{\rm surf}\) (or \(T_{\rm core}\mapsto T_{\rm surf}\)).
+ * ## Envelope / blanket modeling
+ * Determining \(T_{\rm surf}\) from an interior temperature requires an envelope
+ * (“blanket”) prescription. In the new architecture, **the envelope choice and
+ * parameters live in PhotonCooling::Options**, not in the global Evolution config
+ * and not in DriverContext.
  *
- * ## Scope / limitations
- * This is intentionally minimal:
- * - No neutrino cooling, no internal heating, no envelope microphysics by default.
- * - `C_eff` is treated as an externally provided effective heat capacity.
- *   A future model should compute \(C_{\rm eff}(T)\) from microphysics + structure.
+ * The driver may obtain \(T_{\rm surf}\) by:
+ *  - direct use of a stored \(T_{\rm surf}\) in ThermalState (if provided),
+ *  - computing \(T_{\rm surf}\) from a Tb→Ts envelope mapping (preferred path),
+ *  - using a simple approximation for debugging (e.g., \(T_{\rm surf}\approx T_\infty\)).
+ *
+ * ## Units policy (implementation must be consistent)
+ * This header documents intended units; the implementation must honor them.
+ *
+ * - Temperatures: Kelvin [K]
+ * - Luminosity: erg/s
+ * - Heat capacity \(C_{\rm eff}\): erg/K
+ * - If \(\sigma_{\rm SB}\) is cgs:
+ *     \(\sigma_{\rm SB}\approx 5.670374419\times 10^{-5}\,{\rm erg\,cm^{-2}\,s^{-1}\,K^{-4}}\),
+ *   then \(A_\infty\) must be in cm².
+ *
+ * CompactStar profiles commonly store radius in km; the implementation must
+ * convert \(R_{\rm km}\to R_{\rm cm}\) before forming areas when using cgs.
+ *
+ * ## Context usage
+ * - `ctx.geo` is the preferred source for \(R\) and \(e^{2\nu(R)}\) (via cached geometry).
+ * - `ctx.star` may be used to compute surface gravity \(g_{14}\) for envelope fits.
+ * - This driver does **not** require `ctx.envelope`; envelope policy is internal to Options.
  */
-
-#ifndef CompactStar_Physics_Driver_Thermal_PhotonCooling_H
-#define CompactStar_Physics_Driver_Thermal_PhotonCooling_H
 
 #include <string>
 #include <vector>
 
+#include "CompactStar/Physics/Driver/Diagnostics/DriverDiagnostics.hpp"
 #include "CompactStar/Physics/Driver/IDriver.hpp"
 #include "CompactStar/Physics/State/Tags.hpp"
 
 namespace CompactStar::Physics::Driver::Thermal::Detail
 {
 struct PhotonCooling_Details;
-}
+} // namespace CompactStar::Physics::Driver::Thermal::Detail
+
 namespace CompactStar::Physics::Driver::Thermal
 {
 
 /**
  * @class PhotonCooling
- * @brief Adds a photon-cooling contribution to the thermal RHS (redshifted frame).
+ * @brief Surface photon cooling driver (redshifted frame).
  *
  * **Depends on:** Thermal
  * **Updates:**    Thermal
  *
- * ### What this driver does
- * 1. Determines a surface temperature \(T_{\rm surf}\) (K) from the Thermal state:
- *    - directly from the auxiliary ThermalState::T_surf, or
- *    - via an envelope mapping (future), or
- *    - via a simple approximation from \(T_\infty\).
- * 2. Computes \(L_{\gamma,\infty}\) using geometry + Stefan–Boltzmann.
- * 3. Adds \(-L_{\gamma,\infty}/C_{\rm eff}\) to the RHS for the evolved thermal DOF.
+ * This driver:
+ *  1) obtains \(T_\infty\) from ThermalState,
+ *  2) determines a local \(T_{\rm surf}\) using the selected surface/envelope model,
+ *  3) computes \(L_{\gamma,\infty}\) using geometry and redshift factors,
+ *  4) accumulates \(-L_{\gamma,\infty}/(C_{\rm eff}T_\infty)\) into the thermal RHS.
  *
- * ### What this driver does *not* do
- * - It does not modify the static star structure.
- * - It does not compute \(C_{\rm eff}\) from EOS/microphysics (yet).
- * - It does not implement a realistic envelope unless provided externally.
+ * It does not compute \(C_{\rm eff}\) from EOS/microphysics (yet), and it does not
+ * evolve a multi-zone temperature profile (isothermal-core assumption).
  */
 class PhotonCooling final : public IDriver,
 							public Driver::Diagnostics::IDriverDiagnostics
 {
   public:
+	//==============================================================
+	/**
+	 * @enum EnvelopeModel
+	 * @brief Canonical envelope/blanket prescriptions (Tb → Ts).
+	 *
+	 * These values encode which analytic fit / table is used internally.
+	 * The meaning of `xi` depends on the chosen model; see Options::envelope_xi.
+	 */
+	enum class EnvelopeModel
+	{
+		Iron,	  ///< Heavy-element (iron-like) envelope.
+		Accreted, ///< Light-element (accreted) envelope; typically hotter Ts for same Tb.
+		Custom	  ///< Reserved: user-supplied mapping (Phase 2+).
+	};
+	//==============================================================
+
 	/**
 	 * @struct Options
 	 * @brief Configuration parameters for PhotonCooling.
 	 *
-	 * The goal is to keep these **physically interpretable** and
-	 * **unit-consistent**:
-	 * - Temperatures are in Kelvin.
-	 * - Heat capacity is in erg/K if we use cgs \(\sigma_{\rm SB}\).
-	 * - All scale factors are dimensionless.
+	 * Design goals:
+	 *  - Parameters should be physically interpretable.
+	 *  - All scale factors are dimensionless.
+	 *  - Temperatures are in Kelvin.
+	 *  - Heat capacity is in erg/K (if using cgs σ_SB).
+	 *
+	 * Validation policy (recommended in implementation):
+	 *  - If radiating_fraction <= 0 or global_scale <= 0: treat as intentionally disabled
+	 *    and produce zero RHS contribution (no exception).
+	 *  - If C_eff <= 0: this is physically invalid; throw or log+skip (choose one policy).
 	 */
 	struct Options
 	{
 		/**
 		 * @enum SurfaceModel
-		 * @brief Specifies how the driver obtains \(T_{\rm surf}\).
+		 * @brief How the driver obtains the local surface temperature \(T_{\rm surf}\).
 		 */
 		enum class SurfaceModel
 		{
 			/**
 			 * Use ThermalState::T_surf directly.
 			 *
-			 * This assumes the caller (or another driver) has already
-			 * populated `ThermalState::T_surf` in Kelvin.
+			 * Assumes some external code populated ThermalState with a local
+			 * surface temperature (Kelvin).
 			 */
 			DirectTSurf,
 
 			/**
-			 * Use a physically motivated envelope model.
+			 * Use an envelope (blanket) model Tb → Ts.
 			 *
-			 * Reserved for: `ctx.envelope != nullptr`.
-			 * The envelope typically maps from \(T_\infty\) or \(T_{\rm core}\)
-			 * (and possibly surface gravity) to \(T_{\rm surf}\).
+			 * The driver computes/assumes a base-of-envelope temperature Tb
+			 * (local frame) from the evolved interior temperature variable,
+			 * then applies the selected EnvelopeModel.
+			 *
+			 * This is the physically preferred mode once Tb is defined consistently.
 			 */
-			EnvelopeMapping,
+			EnvelopeTbTs,
 
 			/**
-			 * Simple fallback model.
+			 * Simple fallback approximation for infrastructure testing.
 			 *
-			 * For infrastructure testing: \(T_{\rm surf} \approx T_\infty\).
-			 * This is *not* physically accurate but is useful for wiring tests.
+			 * For debugging only: \(T_{\rm surf} \approx T_\infty\).
+			 * Not physically accurate.
 			 */
 			ApproxFromTinf
 
-		} surface_model = SurfaceModel::ApproxFromTinf;
+		} surface_model = SurfaceModel::EnvelopeTbTs;
 
 		/**
 		 * @brief Dimensionless radiating fraction \f$\mathcal{F}_{\rm rad}\f$.
 		 *
-		 * Multiplies the redshifted geometric area \(A_\infty\) to represent:
-		 * - partial surface emission (hot spots),
-		 * - effective emissivity < 1,
-		 * - crude beaming / atmosphere suppression factors,
-		 * - quick “knob” for unit tests.
+		 * Multiplies the redshifted emitting area to represent:
+		 *  - partial surface emission (hot spots),
+		 *  - effective emissivity < 1,
+		 *  - crude atmosphere suppression factors,
+		 *  - a convenient knob for controlled tests.
 		 *
-		 * ### Units
-		 * - Dimensionless.
+		 * Units: dimensionless.
 		 *
-		 * ### Recommended behavior
-		 * - If set to 1: full surface emission.
-		 * - If set to 0 (or ≤ 0): disables photon cooling from this driver.
-		 *
-		 * @note **Disabled-but-valid policy:** if `radiating_fraction <= 0`, this driver
-		 *       is treated as intentionally disabled and produces a **zero** luminosity
-		 *       and **zero** RHS contribution (not an error condition).
+		 * Convention:
+		 *  - 1.0 : full-surface emission
+		 *  - 0.0 : disabled (no photon cooling)
 		 */
 		double radiating_fraction = 1.0;
 
 		/**
-		 * @brief Effective heat capacity of the evolved thermal DOF.
+		 * @brief Effective heat capacity \(C_{\rm eff}\) of the evolved thermal DOF.
 		 *
-		 * This is the denominator in:
+		 * Enters as:
 		 * \f[
-		 *   \frac{dT_\infty}{dt} = -\frac{L_{\gamma,\infty}}{C_{\rm eff}} .
+		 *   \frac{dT_\infty}{dt} = -\frac{L_{\gamma,\infty}}{C_{\rm eff}}.
 		 * \f]
 		 *
-		 * ### Units
-		 * If \(L_{\gamma,\infty}\) is in erg/s and \(T\) is in K:
-		 * - \(C_{\rm eff}\) must be in **erg/K**.
+		 * Units:
+		 *  - erg/K (if \(L\) is erg/s and \(T\) is K).
 		 *
-		 * ### Notes
-		 * - In realistic models, \(C_{\rm eff}\) is computed from structure +
-		 *   microphysics (composition, superfluidity, etc.) and can depend on T.
-		 * - Here it is a user-provided effective constant for simplicity.
+		 * Notes:
+		 *  - In realistic models, \(C_{\rm eff}\) depends on T and composition.
+		 *  - Here it is treated as a user-provided effective constant.
 		 */
 		double C_eff = 1.0e40;
 
 		/**
-		 * @brief Global dimensionless multiplicative scale.
+		 * @brief Global dimensionless multiplicative scale \f$\mathcal{S}\f$.
 		 *
-		 * A final multiplicative factor applied to the luminosity.
+		 * Applied as a final factor multiplying the luminosity.
 		 * Useful for:
-		 * - controlled unit tests,
-		 * - turning effects up/down without changing Options semantics,
-		 * - debugging sensitivity.
+		 *  - debugging sensitivity,
+		 *  - controlled unit tests,
+		 *  - temporary “turn up/down” without changing semantic parameters.
 		 *
-		 * ### Units
-		 * - Dimensionless.
-		 *
-		 *
-		 * @note **Disabled-but-valid policy:** if `global_scale <= 0`, the driver
-		 *       produces a **zero** luminosity and **zero** RHS contribution
-		 *       (not an error condition).
+		 * Units: dimensionless.
 		 */
 		double global_scale = 1.0;
+
+		// ---- Envelope / blanket policy -----------------------------------
+
+		/**
+		 * @brief Select which analytic envelope prescription is used (Tb → Ts).
+		 */
+		EnvelopeModel envelope = EnvelopeModel::Iron;
+
+		/**
+		 * @brief Envelope composition/column parameter \f$\xi\f$ (model-dependent).
+		 *
+		 * Interpretation depends on the chosen `envelope` prescription.
+		 * For some common fits, this may represent an effective light-element
+		 * column depth or a proxy parameter controlling the transition between
+		 * iron-like and fully accreted envelopes.
+		 *
+		 * Units: model-defined (often treated as dimensionless in fit formulas).
+		 */
+		double envelope_xi = 0.0;
+
+		/**
+		 * @brief Base-of-envelope density threshold (for documentation / future use).
+		 *
+		 * Many envelope fits define Tb at a fiducial density \(\rho_b\sim 10^{10}\,{\rm g\,cm^{-3}}\).
+		 * This option is included to make that boundary explicit; it may become active
+		 * once Tb is computed from a resolved crust model or a stored profile marker.
+		 *
+		 * Units: g/cm^3.
+		 */
+		double rho_b = 1.0e10;
 	};
 
 	/// Default-construct with Options() defaults.
@@ -273,46 +300,21 @@ class PhotonCooling final : public IDriver,
 	}
 
 	/**
-	 * @brief Add photon cooling contribution to the thermal RHS.
+	 * @brief Accumulate photon-cooling contribution into the thermal RHS.
 	 *
 	 * This method must **accumulate** into @p dYdt (never overwrite).
 	 *
-	 * ### Algorithm outline
-	 * 1. Read Thermal state from @p Y and obtain \(T_\infty\).
-	 * 2. Determine \(T_{\rm surf}\) according to Options::surface_model:
-	 *    - DirectTSurf: use ThermalState::T_surf if set (>0), else fallback.
-	 *    - EnvelopeMapping: if ctx.envelope exists, use it (future).
-	 *    - ApproxFromTinf: set \(T_{\rm surf} \leftarrow T_\infty\).
-	 * 3. Determine \(A_\infty\) from geometry (preferred):
-	 *    \f[
-	 *       A_\infty = 4\pi R^2 e^{2\nu(R)} .
-	 *    \f]
-	 *    taking care to convert \(R\) into cm if \(\sigma_{\rm SB}\) is cgs.
-	 * 4. Form the luminosity and the physical cooling rate:
-	 *    \f[
-	 *      L_{\gamma,\infty} = \mathrm{global\_scale}\;
-	 *                          \mathrm{radiating\_fraction}\;
-	 *                          A_\infty\;
-	 *                          \sigma_{\rm SB}\;
-	 *                          T_{\rm surf}^4 ,
-	 *    \f]
-	 *    \f[
-	 *      \frac{dT_\infty}{dt} = -\frac{L_{\gamma,\infty}}{C_{\rm eff}} .
-	 *    \f]
+	 * Outline:
+	 *  1) Read \(T_\infty\) from Thermal state.
+	 *  2) Compute \(T_{\rm surf}\) per Options::surface_model.
+	 *  3) Compute \(A_\infty = 4\pi R^2 e^{2\nu(R)}\) (prefer ctx.geo).
+	 *  4) Compute \(L_{\gamma,\infty}\).
+	 *  5) Add \(-L_{\gamma,\infty}/(C_{\rm eff}T_\infty)\) to the thermal RHS element.
 	 *
-	 * 5. Convert to the evolved ODE variable and accumulate into the RHS:
-	 *    \f[
-	 *      \frac{d\ln (T_\infty / T_{\rm ref})}{dt} \mathrel{+}= \frac{1}{T_\infty}\,\frac{dT_\infty}{dt}
-	 *      = -\frac{L_{\gamma,\infty}}{C_{\rm eff}\,T_\infty}.
-	 *    \f]
-	 *
-	 * @note CompactStar evolves \(\ln (T_\infty / T_{\rm ref})\) (not \(T_\infty\)) in the thermal
-	 *       state vector. Drivers must therefore contribute \(d(\ln (T_\infty / T_{\rm ref}))/dt\).
-	 *
-	 * @param t     Current time (seconds, by convention for evolution drivers).
-	 * @param Y     Read-only composite state vector.
-	 * @param dYdt  Write-only RHS accumulator (driver adds to it).
-	 * @param ctx   Static driver context (geometry, star, envelope, config).
+	 * @param t     Current time [s] (by convention).
+	 * @param Y     Composite state vector (read-only).
+	 * @param dYdt  RHS accumulator (write-only; driver adds its contribution).
+	 * @param ctx   Static driver context (geometry/star/config).
 	 */
 	void AccumulateRHS(double t,
 					   const Evolution::StateVector &Y,
@@ -323,13 +325,15 @@ class PhotonCooling final : public IDriver,
 	//  Options access
 	// --------------------------------------------------------------
 
-	/// Get current options (read-only).
+	/// Current options (read-only).
 	const Options &GetOptions() const { return opts_; }
 
-	/// Replace options (by value).
+	/// Replace options.
 	void SetOptions(const Options &o) { opts_ = o; }
 
-	// --- IDriverDiagnostics ---
+	// --------------------------------------------------------------
+	//  Diagnostics interface (IDriverDiagnostics)
+	// --------------------------------------------------------------
 	[[nodiscard]] std::string DiagnosticsName() const override;
 	[[nodiscard]] Evolution::Diagnostics::UnitContract UnitContract() const override;
 	[[nodiscard]] Evolution::Diagnostics::ProducerCatalog DiagnosticsCatalog() const override;
@@ -340,13 +344,12 @@ class PhotonCooling final : public IDriver,
 						  Evolution::Diagnostics::DiagnosticPacket &out) const override;
 
   private:
-	/// Stored configuration options.
 	Options opts_{};
 
-	/// Allow PhotonCooling_Details to access private members.
+	// Allow details layer to access internals (constants/helpers) without bloating the header.
 	friend struct CompactStar::Physics::Driver::Thermal::Detail::PhotonCooling_Details;
 };
 
 } // namespace CompactStar::Physics::Driver::Thermal
 
-#endif /* CompactStar_Physics_Driver_Thermal_PhotonCooling_H */
+#endif /* COMPACTSTAR_PHYSICS_DRIVER_THERMAL_PHOTONCOOLING_HPP */

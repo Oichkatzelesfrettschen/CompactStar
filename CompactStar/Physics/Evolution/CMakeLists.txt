@@ -28,18 +28,13 @@ set(CompactStar_Physics_Evolution_sources
     CompactStar/Physics/Evolution/src/GeometryCache.cpp
 )
 
-# Append integrator sources that were bubbled up from Integrator/CMakeLists.txt
+# Append integrator sources
 list(APPEND CompactStar_Physics_Evolution_sources
     ${CompactStar_Physics_Evolution_Integrator_sources}
     ${CompactStar_Physics_Evolution_Diagnostics_sources}
     ${CompactStar_Physics_Evolution_Observer_sources}
     ${CompactStar_Physics_Evolution_Run_sources}
 )
-
-# If/when you add Observer .cpps, you can do the same:
-# list(APPEND CompactStar_Physics_Evolution_sources
-# ${CompactStar_Physics_Evolution_Observer_sources}
-# )
 
 # Re-export combined list to parent
 set(CompactStar_Physics_Evolution_sources

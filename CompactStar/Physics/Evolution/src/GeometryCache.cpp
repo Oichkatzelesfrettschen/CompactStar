@@ -40,6 +40,11 @@ std::size_t GeometryCache::Size() const
 const Zaki::Vector::DataColumn &GeometryCache::R() const { return m_r; }
 
 // -------------------------------------------------------
+// GeometryCache::Mass in km
+// -------------------------------------------------------
+const Zaki::Vector::DataColumn &GeometryCache::Mass() const { return m_mass; }
+
+// -------------------------------------------------------
 // GeometryCache::Area
 // -------------------------------------------------------
 const Zaki::Vector::DataColumn &GeometryCache::Area() const { return m_area; }
@@ -134,6 +139,7 @@ GeometryCache::DeriveLambdaFromMR_(const Zaki::Vector::DataColumn &r,
 // GeometryCache::Build_
 //
 // Build with DataColumn expressions:
+//   Mass      = m(km)
 //   area      = 4*pi * r^2
 //   expNu     = exp(nu)
 //   exp2Nu    = expNu * expNu
@@ -161,9 +167,16 @@ void GeometryCache::Build_(const StarContext &ctx)
 	if (!nu_col || nu_col->Size() != N)
 		throw std::runtime_error("GeometryCache: missing/invalid nu column (size mismatch)");
 
-	// Copy primitive columns (we cache values locally)
+	// -----------------------------
+	//    Copy primitive columns
+	//	 (we cache values locally)
+	// -----------------------------
 	m_r = *r_col;
 	m_r.label = "r(km)";
+
+	m_mass = *m_col;
+	m_mass.label = "m(km)";
+	// -----------------------------
 
 	// -----------------------------
 	// Lambda: use profile if present, else derive from m,r
@@ -223,5 +236,5 @@ void GeometryCache::Build_(const StarContext &ctx)
 	m_wVExp2Nu = m_wV * m_exp2Nu;
 	m_wVExp2Nu.label = "wV*exp(2nu)";
 }
-
+// -------------------------------------------------------
 } // namespace CompactStar::Physics::Evolution

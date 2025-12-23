@@ -397,6 +397,7 @@
 // Drivers
 // -------------------------------------------------------
 #include "CompactStar/Physics/Driver/Spin/MagneticDipole.hpp"
+#include "CompactStar/Physics/Driver/Thermal/Boundary/EnvelopePotekhin1997.hpp"
 #include "CompactStar/Physics/Driver/Thermal/NeutrinoCooling.hpp"
 #include "CompactStar/Physics/Driver/Thermal/PhotonCooling.hpp"
 
@@ -497,8 +498,12 @@ int main()
 	// -------------------------------------------------------
 	// 4) DriverContext wiring
 	// -------------------------------------------------------
+	// Physics::Evolution::DriverContext ctx =
+	// 	Physics::Evolution::Run::MakeDriverContext(starCtx, geo, cfg);
+	Physics::Driver::Thermal::Boundary::EnvelopePotekhin1997_Iron env97_fe;
+
 	Physics::Evolution::DriverContext ctx =
-		Physics::Evolution::Run::MakeDriverContext(starCtx, geo, cfg);
+		Physics::Evolution::Run::MakeDriverContext(starCtx, geo, cfg, &env97_fe);
 
 	// -------------------------------------------------------
 	// 5) Dynamic states: Thermal + Spin
@@ -546,8 +551,10 @@ int main()
 		std::make_shared<Physics::Driver::Spin::MagneticDipole>(spinOpts);
 
 	Physics::Driver::Thermal::PhotonCooling::Options photonOpts;
+	// photonOpts.surface_model =
+	// 	Physics::Driver::Thermal::PhotonCooling::Options::SurfaceModel::ApproxFromTinf;
 	photonOpts.surface_model =
-		Physics::Driver::Thermal::PhotonCooling::Options::SurfaceModel::ApproxFromTinf;
+		Physics::Driver::Thermal::PhotonCooling::Options::SurfaceModel::EnvelopeTbTs;
 	photonOpts.radiating_fraction = 1.0;
 	photonOpts.C_eff = 1.0e40;
 	photonOpts.global_scale = 1.0;

@@ -100,8 +100,8 @@ int main()
 	// can leave them as nullptr. Later, when we wire in real microphysics
 	// and envelope models, we’ll fill these.
 	Physics::Evolution::DriverContext ctx;
-	ctx.star = &starCtx;	// e.g. pointer to StarContext built from NStar + EOS
-	ctx.geo = &geo;			// e.g. GeometryCache
+	ctx.star = &starCtx; // e.g. pointer to StarContext built from NStar + EOS
+	ctx.geo = &geo;		 // e.g. GeometryCache
 	ctx.envelope = nullptr; // e.g. Thermal::IEnvelope implementation
 	ctx.cfg = &cfg;
 
