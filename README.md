@@ -15,6 +15,59 @@ CompactStar is written in **C++17**, designed for **flexibility, reproducibility
 
 ---
 
+# Design Philosophy
+
+CompactStar is built around the following principles:
+
+- **Physics-first abstractions**: physical subsystems (spin, thermal, chemical, BNV)
+  are modeled explicitly and evolve independently via tagged state blocks.
+- **Strict separation of concerns**:
+  - Core: structure, EOS, geometry, datasets
+  - Physics/State: degrees of freedom
+  - Physics/Driver: RHS contributions
+  - Evolution: integration, diagnostics, orchestration
+- **Schema-driven diagnostics**: diagnostics are self-describing, versioned,
+  and machine-readable.
+- **No hidden global state**: all evolution is driven through explicit context objects.
+
+---
+
+# Drivers vs Microphysics
+
+CompactStar distinguishes between:
+
+- **Microphysics**:
+
+  - reaction rates
+  - matrix elements
+  - particle models
+  - EOS-level inputs
+
+- **Drivers**:
+  - convert microphysics into time derivatives
+  - operate on State blocks
+  - are stateless apart from configuration
+  - are pluggable and composable
+
+Microphysics never modifies state directly.
+All time evolution enters the system exclusively through Drivers.
+
+---
+
+# Extending CompactStar
+
+To add a new physical process:
+
+1. Define a new State block if new DOFs are required
+2. Implement a Driver that:
+   - declares its StateTag dependencies
+   - contributes to RHS accumulation
+   - optionally exposes diagnostics
+3. Register the driver with the EvolutionSystem
+4. (Optional) add diagnostics catalog entries
+
+## No changes to the integrator or solver core are required.
+
 # Core Capabilities
 
 ### Stellar Structure
@@ -73,39 +126,139 @@ Provided by the new Core module:
 
 ---
 
+# Typical Workflow
+
+1. Build a stellar profile using Core (e.g. `NStar::SolveTOV_Profile`)
+2. Construct `StarContext` and `GeometryCache`
+3. Define evolved state blocks (ThermalState, SpinState, etc.)
+4. Register state blocks and packing order
+5. Attach physics drivers (cooling, heating, torques, …)
+6. Assemble `EvolutionSystem`
+7. Attach observers (Diagnostics, TimeSeries)
+8. Integrate forward in time
+
+---
+
+# Diagnostics and Provenance
+
+CompactStar treats diagnostics as first-class, schema-defined data products.
+
+Every physical quantity emitted during evolution is:
+
+- explicitly named,
+- unit-labeled,
+- source-typed (`state`, `computed`, `cache`),
+- cadence-controlled (always, on change, once per run),
+- versioned via a diagnostics catalog.
+
+Diagnostics are emitted in three complementary forms:
+
+- **JSONL packets**  
+  Full-fidelity diagnostic records, suitable for post-processing, validation,
+  and long-term archival.
+
+- **Schema catalogs (JSON)**  
+  Machine-readable descriptions of all diagnostics, including units,
+  descriptions, and provenance. These act as a contract between physics
+  drivers and observers.
+
+- **Compact time-series tables (CSV/TSV)**  
+  Plot-friendly, schema-driven tables derived directly from the catalog,
+  guaranteeing consistency between raw diagnostics and reduced outputs.
+
+This design ensures:
+
+- reproducibility across runs and code versions,
+- safe post-processing without hard-coded column assumptions,
+- clear provenance for every reported physical quantity.
+
+---
+
 # Project Structure
 
 ```
 CompactStar/
-├── Core/                           # Math, physics primitives, TOV/Hartle solvers, star builders
+├── CMakeLists.txt                  # Top-level build
+│
+├── Core/                           # Star construction + stellar structure solvers + core utilities
+│   ├── CMakeLists.txt
 │   ├── src/                        # Implementations for Core classes
-│   └── (various headers)           # NStar, Pulsar, RotationSolver, StarBuilder, etc.
+│   └── (headers)                   # NStar, Pulsar, MixedStar, TOVSolver(+Thread), RotationSolver,
+│                                   # StarBuilder, StarProfile, Analysis, TaskManager, etc.
 │
-├── EOS/                            # Equation of state models and infrastructure
-│   └── src/                        # EOS implementations (CompOSE, Fermi gas, sigma-omega models)
+├── EOS/                            # Equation-of-state models and infrastructure
+│   ├── CMakeLists.txt
+│   ├── src/                        # EOS implementations (CompOSE, Fermi gas, sigma-omega(-rho), polytropes, etc.)
+│   └── (headers)                   # Baryon/Lepton/Particle/Model, CoulombLattice, CompOSE_EOS, SigmaOmega*, ...
 │
-├── Physics/                        # Full evolution engine (thermal + spin + chemical + BNV coupling)
-│   ├── Driver/                     # Thermal, chemical, and spin drivers (pluggable modules)
-│   │   ├── Chem/                   # Rotochemical, weak restoration, BNV chemical sources
-│   │   ├── Spin/                   # Spin-down, accretion, BNV torque models
-│   │   └── Thermal/                # Cooling/heating channels
-│   ├── Evolution/                  # Integrators, observers, system assembly
-│   │   ├── Integrator/             # GSL integrator bindings
-│   │   └── Observers/              # Logging, checkpointing, diagnostics
-│   └── State/                      # ThermalState, SpinState, ChemState, BNVState
+├── Microphysics/                   # Reaction-level particle/nuclear microphysics
+│   ├── CMakeLists.txt
+│   ├── Rates/                      # Shared microphysical rate tables / parametrizations (e.g., Urca.hpp)
+│   └── BNV/                        # Baryon-number-violating microphysics package
+│       ├── CMakeLists.txt
+│       ├── Analysis/               # BNV diagnostic tools, sequences, decay analysis
+│       │   ├── CMakeLists.txt
+│       │   └── src/
+│       ├── Channels/               # Concrete BNV reaction channels
+│       │   ├── CMakeLists.txt
+│       │   └── src/
+│       └── Internal/               # Internal BNV particle/field definitions
+│           ├── CMakeLists.txt
+│           └── src/
 │
-├── Microphysics/                   # Reaction-level particle physics (BNV, Urca, etc.)
-│   ├── BNV/                        # Baryon-number-violating models
-│   │   ├── Analysis/               # BNV diagnostic tools, sequences, decay analysis
-│   │   ├── Channels/               # BNV reaction channels
-│   │   └── Internal/               # BNV particle/field definitions
-│   └── Rates/                      # Urca and related microphysical rates
+├── Physics/                        # Evolution engine (state + drivers + integrators + diagnostics)
+│   ├── CMakeLists.txt
+│   ├── State/                      # Evolved state blocks and tags
+│   │   ├── CMakeLists.txt
+│   │   ├── src/
+│   │   └── (headers)               # ThermalState, SpinState, ChemState, BNVState, Tags, base State.hpp
+│   │
+│   ├── Driver/                     # Pluggable RHS “drivers” (thermal/spin/chem) + coupling + diagnostics interfaces
+│   │   ├── CMakeLists.txt
+│   │   ├── IDriver.hpp
+│   │   ├── Coupling.hpp
+│   │   ├── Diagnostics/            # Driver diagnostics interface (IDriverDiagnostics)
+│   │   │   └── DriverDiagnostics.hpp
+│   │   ├── Thermal/                # Photon/Neutrino cooling, heating from chemistry, etc.
+│   │   │   ├── CMakeLists.txt
+│   │   │   ├── src/
+│   │   │   └── (headers)           # PhotonCooling(+Details), NeutrinoCooling(+Details), HeatingFromChem, ...
+│   │   ├── Spin/                   # Spin evolution drivers (e.g., MagneticDipole, AccretionTorque, BNV torques)
+│   │   │   ├── CMakeLists.txt
+│   │   │   ├── src/
+│   │   │   └── (headers)
+│   │   └── Chem/                   # Chemical evolution drivers (rotochemical, weak restoration, BNV sources)
+│   │       ├── CMakeLists.txt
+│   │       └── (headers)
+│   │
+│   └── Evolution/                  # System assembly, integrators, observers, diagnostics, run helpers
+│       ├── CMakeLists.txt
+│       ├── src/                    # Evolution core implementations
+│       ├── Integrator/             # Numerical integrators (GSL bindings)
+│       │   ├── CMakeLists.txt
+│       │   └── src/
+│       ├── Observers/              # Diagnostics/time series/checkpoint observers
+│       │   ├── CMakeLists.txt
+│       │   └── src/
+│       ├── Diagnostics/            # JSONL diagnostics packets + catalog schema/contracts
+│       │   ├── CMakeLists.txt
+│       │   └── src/
+│       └── Run/                    # Run-level orchestration helpers (paths, builders, observer factories)
+│           ├── CMakeLists.txt
+│           ├── RunPaths.hpp
+│           ├── RunBuilder.hpp
+│           ├── RunObservers.hpp
+│           └── src/
 │
 ├── Extensions/                     # Optional add-ons beyond the core framework
-│   ├── LightDM/                    # Light dark-matter scalar density models
-│   └── MixedStar/                  # Dark–visible mixed star analysis extensions
+│   ├── CMakeLists.txt
+│   ├── LightDM/                    # Light dark-matter scalar density extension
+│   │   ├── CMakeLists.txt
+│   │   └── src/
+│   └── MixedStar/                  # Dark–visible mixed star analysis extension(s)
+│       ├── CMakeLists.txt
+│       └── src/
 │
-├── CMakeLists.txt                  # Build system
 └── (other top-level support files)
 ```
 
@@ -174,6 +327,13 @@ This enables:
 - custom block sizes
 - clean separation between the physics model and GSL/Sundials interfaces
 - modular drivers that specify dependencies via `StateTag`
+
+# Numerical Considerations
+
+- Evolution uses adaptive explicit Runge–Kutta (RKF45 via GSL)
+- State blocks are packed contiguously for solver compatibility
+- Stiff processes should be modeled carefully (implicit solvers may be added later)
+- Conservation laws are enforced at the driver level, not globally
 
 ---
 
