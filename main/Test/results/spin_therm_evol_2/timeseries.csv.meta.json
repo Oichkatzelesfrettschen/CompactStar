@@ -28,11 +28,26 @@
     },
     {
       "key": "Tinf_K",
-      "source": "DriverScalar",
+      "source": "BuiltinState",
       "unit": "K",
-      "description": "Redshifted internal temperature",
-      "producer": "PhotonCooling",
-      "scalar_key": "Tinf_K"
+      "description": "Redshifted internal temperature (evolved DOF)",
+      "builtin": "Tinf_K"
+    },
+    {
+      "key": "L_nu_inf_erg_s",
+      "source": "DriverScalar",
+      "unit": "erg/s",
+      "description": "Total neutrino luminosity at infinity",
+      "producer": "NeutrinoCooling",
+      "scalar_key": "L_nu_inf_erg_s"
+    },
+    {
+      "key": "dLnTinf_dt_1_s",
+      "source": "DriverScalar",
+      "unit": "1/s",
+      "description": "NeutrinoCooling contribution to d/dt ln(Tinf/Tref)",
+      "producer": "NeutrinoCooling",
+      "scalar_key": "dLnTinf_dt_1_s"
     },
     {
       "key": "L_gamma_inf_erg_s",

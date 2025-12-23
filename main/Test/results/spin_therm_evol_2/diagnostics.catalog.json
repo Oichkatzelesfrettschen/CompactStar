@@ -2,6 +2,85 @@
   "schema": "compactstar.diagnostics.catalog",
   "schema_version": 1,
   "producers": {
+    "NeutrinoCooling": {
+      "scalars": [
+        {
+          "key": "Tinf_K",
+          "unit": "K",
+          "description": "Redshifted internal temperature (evolved DOF)",
+          "source_hint": "state",
+          "default_cadence": "Always",
+          "required": true,
+          "is_dimensionless": false
+        },
+        {
+          "key": "L_nu_inf_erg_s",
+          "unit": "erg/s",
+          "description": "Total neutrino luminosity at infinity",
+          "source_hint": "computed",
+          "default_cadence": "Always",
+          "required": false,
+          "is_dimensionless": false
+        },
+        {
+          "key": "L_nu_DU_inf_erg_s",
+          "unit": "erg/s",
+          "description": "Direct Urca neutrino luminosity at infinity",
+          "source_hint": "computed",
+          "default_cadence": "OnChange",
+          "required": false,
+          "is_dimensionless": false
+        },
+        {
+          "key": "L_nu_MU_inf_erg_s",
+          "unit": "erg/s",
+          "description": "Modified Urca neutrino luminosity at infinity",
+          "source_hint": "computed",
+          "default_cadence": "OnChange",
+          "required": false,
+          "is_dimensionless": false
+        },
+        {
+          "key": "L_nu_PBF_inf_erg_s",
+          "unit": "erg/s",
+          "description": "Pair breaking/formation neutrino luminosity at infinity",
+          "source_hint": "computed",
+          "default_cadence": "OnChange",
+          "required": false,
+          "is_dimensionless": false
+        },
+        {
+          "key": "dTinf_dt_K_s",
+          "unit": "K/s",
+          "description": "NeutrinoCooling contribution to dTinf/dt",
+          "source_hint": "computed",
+          "default_cadence": "Always",
+          "required": false,
+          "is_dimensionless": false
+        },
+        {
+          "key": "dLnTinf_dt_1_s",
+          "unit": "1/s",
+          "description": "NeutrinoCooling contribution to d/dt ln(Tinf/Tref)",
+          "source_hint": "computed",
+          "default_cadence": "Always",
+          "required": false,
+          "is_dimensionless": false
+        }
+
+      ],
+      "profiles": [
+        {
+          "name": "timeseries_default",
+          "keys": [
+            "L_nu_inf_erg_s",
+            "dLnTinf_dt_1_s"
+
+          ]
+        }
+
+      ]
+    },
     "PhotonCooling": {
       "scalars": [
         {
@@ -28,7 +107,6 @@
         {
           "name": "timeseries_default",
           "keys": [
-            "Tinf_K",
             "L_gamma_inf_erg_s"
 
           ]

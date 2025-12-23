@@ -48,6 +48,9 @@ constexpr double SigmaSB_cgs = 5.670374419e-5;
 constexpr double KM_TO_CM = 1.0e5;
 } // namespace
 
+// -----------------------------------------------------------------------------
+//  ComputeDerived
+// -----------------------------------------------------------------------------
 PhotonCooling_Details ComputeDerived(const PhotonCooling &drv,
 									 const Evolution::StateVector &Y,
 									 const Evolution::DriverContext &ctx)

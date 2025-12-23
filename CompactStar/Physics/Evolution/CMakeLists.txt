@@ -1,6 +1,7 @@
 add_subdirectory(Integrator)
 add_subdirectory(Observers)
 add_subdirectory(Diagnostics)
+add_subdirectory(Run)
 
 set(CompactStar_Physics_Evolution_headers
     EvolutionConfig.hpp
@@ -32,6 +33,7 @@ list(APPEND CompactStar_Physics_Evolution_sources
     ${CompactStar_Physics_Evolution_Integrator_sources}
     ${CompactStar_Physics_Evolution_Diagnostics_sources}
     ${CompactStar_Physics_Evolution_Observer_sources}
+    ${CompactStar_Physics_Evolution_Run_sources}
 )
 
 # If/when you add Observer .cpps, you can do the same:

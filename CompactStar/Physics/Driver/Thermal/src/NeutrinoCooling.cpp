@@ -13,64 +13,42 @@
  * @file NeutrinoCooling.cpp
  * @brief Implementation of NeutrinoCooling driver (core neutrino cooling).
  *
- * This file implements:
- *   CompactStar::Physics::Driver::Thermal::NeutrinoCooling::AccumulateRHS
- *
- * ---------------------------------------------------------------------------
- * CURRENT SCOPE (minimal working driver):
- * ---------------------------------------------------------------------------
- * - The goal is to wire neutrino cooling into the evolution loop *correctly*
- *   without requiring the full microphysics/integration machinery yet.
- *
- * - Therefore, this implementation computes a phenomenological cooling term in
- *   the evolved variable:
- *
- *     x := ln(T_inf / T_ref)
- *
- *   and accumulates:
- *
- *     dx/dt += dLnTinf_dt_1_s
- *
- * - This matches the pattern used by PhotonCooling, which also evolves the log
- *   temperature variable and adds to Thermal tag index 0.
- *
- * ---------------------------------------------------------------------------
- * PHYSICS NOTES (placeholder model):
- * ---------------------------------------------------------------------------
- * In a full implementation, one would compute:
- *   L_{nu,∞} = ∫ dV_proper  Q_nu(r) * redshift_factors
- * and then:
- *   dT_inf/dt = - L_{nu,∞} / C_eff(T, composition, SF suppression, ...)
- *   d/dt ln(T_inf/T_ref) = (1/T_inf) dT_inf/dt
- *
- * Here we do a minimal version that does NOT require C_eff or EOS access:
- *
- *   d/dt ln(T_inf/T_ref) = - [ A_DU (T/1e9 K)^{p_DU} + A_MU (T/1e9 K)^{p_MU} + ... ]
- *
- * where:
- *  - A_* have units [1/s]
- *  - p_* are chosen to roughly mimic expected steep temperature dependence
- *    (DUrca faster than MUrca).
- *
- * IMPORTANT:
- * - The constants below are placeholders intended for infrastructure testing.
- * - Replace the model with volume-integrated emissivities + C_eff once your
- *   Microphysics hooks are ready.
- *
- * ---------------------------------------------------------------------------
- * UNITS:
- * ---------------------------------------------------------------------------
- * - T_inf is in Kelvin [K]
- * - dLnTinf_dt is in [1/s]
- *
  * @ingroup PhysicsDriver
+ *
+ * This file implements:
+ * - NeutrinoCooling::AccumulateRHS
+ * - IDriverDiagnostics interface methods
+ *
+ * ## Design policy
+ * This driver mirrors PhotonCooling's architecture:
+ * - The *only* physics done here is to call `Detail::ComputeDerived()` and add
+ *   the derived RHS contribution.
+ * - Diagnostics are produced by calling `Detail::Diagnose()` to prevent drift.
+ *
+ * ## Why derived helpers matter
+ * Neutrino cooling will evolve quickly (DUrca thresholds, composition masks,
+ * superfluid suppression, PBF, etc.). If you compute `L_nu` one way in physics
+ * and re-implement it differently in diagnostics, they will diverge.
+ *
+ * Centralizing the model in the details layer ensures:
+ * - a single definition of `L_nu_inf`, `dT/dt`, and `d/dt ln(Tinf/Tref)`,
+ * - consistent output between RHS and packets,
+ * - easier maintenance as microphysics matures.
  */
 
 #include "CompactStar/Physics/Driver/Thermal/NeutrinoCooling.hpp"
 
-#include <cmath>  // std::pow, std::isfinite
-#include <limits> // quiet_NaN
+// Diagnostics schema/packet types
+#include "CompactStar/Physics/Evolution/Diagnostics/DiagnosticCatalog.hpp"
+#include "CompactStar/Physics/Evolution/Diagnostics/DiagnosticPacket.hpp"
 
+// Details helpers (ComputeDerived, Diagnose)
+#include "CompactStar/Physics/Driver/Thermal/NeutrinoCooling_Details.hpp"
+
+#include <cmath>
+#include <limits>
+
+#include "CompactStar/Physics/Evolution/DriverContext.hpp"
 #include "CompactStar/Physics/Evolution/RHSAccumulator.hpp"
 #include "CompactStar/Physics/Evolution/StateVector.hpp"
 #include "CompactStar/Physics/State/ThermalState.hpp"
@@ -80,61 +58,7 @@
 
 namespace CompactStar::Physics::Driver::Thermal
 {
-namespace
-{
-/**
- * @brief Safe power for nonnegative base values.
- *
- * @param x Base (should be >= 0).
- * @param p Exponent.
- * @return x^p for x>0; 0 for x==0; NaN for x<0 or non-finite.
- */
-double PowNonneg(double x, double p)
-{
-	if (!std::isfinite(x) || x < 0.0)
-		return std::numeric_limits<double>::quiet_NaN();
-	if (x == 0.0)
-		return 0.0;
-	return std::pow(x, p);
-}
-
-/**
- * @brief Convert temperature in K to the dimensionless ratio (T / 1e9 K).
- */
-double Theta9(double T_K)
-{
-	return (T_K / 1.0e9);
-}
-
-/**
- * @brief Placeholder coefficients for minimal neutrino cooling law.
- *
- * These are **not** meant to be physical defaults.
- * They are chosen to be numerically tame so the driver can be enabled for
- * wiring/tests without instantly dominating the evolution.
- *
- * Replace with real emissivity integrals + C_eff later.
- */
-struct PlaceholderLaw
-{
-	// DUrca-like (fast) and MUrca-like (slower) contributions in d(ln T)/dt.
-	// Units: [1/s]
-	double A_DU_1_s = 0.0;	  ///< default off unless you want it on by default
-	double A_MU_1_s = 1.0e-3; ///< small but nonzero for wiring tests
-
-	// Exponents in (T/1e9)^p for d(ln T)/dt.
-	// Rough intuition: if L ~ T^n and C ~ T, then dlnT/dt ~ T^{n-1}.
-	// DUrca: n~6 -> p~5 ; MUrca: n~8 -> p~7.
-	double p_DU = 5.0;
-	double p_MU = 7.0;
-
-	// Optional placeholder for Pair-Breaking/Formation (PBF) cooling
-	double A_PBF_1_s = 0.0;
-	double p_PBF = 7.0;
-};
-
-} // namespace
-
+// -----------------------------------------------------------------------------
 NeutrinoCooling::NeutrinoCooling(const Options &opts)
 	: opts_(opts)
 {
@@ -155,72 +79,183 @@ void NeutrinoCooling::AccumulateRHS(double t,
 {
 	PROFILE_FUNCTION();
 
+	// The current implementation has no explicit time dependence.
 	(void)t;
-	(void)ctx;
 
 	// -------------------------------------------------------------------------
-	// Sanity: do we have a thermal DOF to update?
+	//  Centralized computation (shared with diagnostics)
 	// -------------------------------------------------------------------------
+	// Compute all quantities through the details helper to prevent drift.
+	const auto d = Detail::ComputeDerived(*this, Y, ctx);
+
+	// If the helper cannot compute a well-defined contribution, do nothing.
+	// This should not be treated as an error in infrastructure-first runs.
+	if (!d.ok)
+	{
+		// Optional debug:
+		// Z_LOG_WARNING("NeutrinoCooling skipped: " + d.message);
+		return;
+	}
+
+	// Informational notes can be logged if desired (kept silent by default).
+	// if (!d.message.empty()) { Z_LOG_INFO("NeutrinoCooling note: " + d.message); }
+
+	// -------------------------------------------------------------------------
+	//  Accumulate RHS contribution
+	// -------------------------------------------------------------------------
+	// CompactStar evolves x = ln(Tinf/Tref). The Details layer should provide:
+	//   dLnTinf_dt_1_s = dx/dt  [1/s]
 	if (Y.GetThermal().Size() == 0)
 		return;
 
-	const double Tinf_K = Y.GetThermal().Tinf();
-
-	// Defensive: require a physical, finite temperature
-	if (!std::isfinite(Tinf_K) || !(Tinf_K > 0.0))
-	{
-		// Keep warning muted by default; adaptive integrators can probe trial states.
-		// Z_LOG_WARNING("NeutrinoCooling: nonphysical Tinf encountered; skipping.");
-		return;
-	}
-
-	// -------------------------------------------------------------------------
-	// Placeholder cooling law in d/dt ln(Tinf/Tref)
-	// -------------------------------------------------------------------------
-	const PlaceholderLaw law;
-
-	const double th9 = Theta9(Tinf_K);
-	if (!std::isfinite(th9) || th9 < 0.0)
+	// Defensive: avoid poisoning RHS with NaN/Inf.
+	if (!std::isfinite(d.dLnTinf_dt_1_s))
 		return;
 
-	double dLnTinf_dt_1_s = 0.0;
-
-	// DUrca-like contribution
-	if (opts_.include_direct_urca)
-	{
-		const double term = PowNonneg(th9, law.p_DU);
-		if (std::isfinite(term))
-			dLnTinf_dt_1_s -= law.A_DU_1_s * term;
-	}
-
-	// MUrca-like contribution
-	if (opts_.include_modified_urca)
-	{
-		const double term = PowNonneg(th9, law.p_MU);
-		if (std::isfinite(term))
-			dLnTinf_dt_1_s -= law.A_MU_1_s * term;
-	}
-
-	// PBF hook (future SF physics); placeholder only
-	if (opts_.include_pair_breaking)
-	{
-		const double term = PowNonneg(th9, law.p_PBF);
-		if (std::isfinite(term))
-			dLnTinf_dt_1_s -= law.A_PBF_1_s * term;
-	}
-
-	// Apply a global multiplicative scaling factor (safety/testing knob).
-	dLnTinf_dt_1_s *= opts_.global_scale;
-
-	// If the computed value is non-finite, skip (do not poison RHS).
-	if (!std::isfinite(dLnTinf_dt_1_s))
-		return;
-
-	// -------------------------------------------------------------------------
-	// Accumulate RHS contribution
-	// -------------------------------------------------------------------------
-	// We evolve x = ln(Tinf/Tref), so add dx/dt directly:
-	dYdt.AddTo(State::StateTag::Thermal, 0, dLnTinf_dt_1_s);
+	dYdt.AddTo(State::StateTag::Thermal, 0, d.dLnTinf_dt_1_s);
 }
 
+// -----------------------------------------------------------------------------
+//  IDriverDiagnostics interface
+// -----------------------------------------------------------------------------
+std::string NeutrinoCooling::DiagnosticsName() const
+{
+	return "NeutrinoCooling";
+}
+
+// -----------------------------------------------------------------------------
+//  UnitContract interface
+// -----------------------------------------------------------------------------
+Evolution::Diagnostics::UnitContract NeutrinoCooling::UnitContract() const
+{
+	Evolution::Diagnostics::UnitContract c;
+	// Fill using your UnitContract API (left as project-specific).
+	// Example intent:
+	// - Tinf in K
+	// - L_nu_inf in erg/s
+	// - dLnTinf_dt in 1/s
+	return c;
+}
+
+// -----------------------------------------------------------------------------
+//  DiagnosticsCatalog interface
+// -----------------------------------------------------------------------------
+Evolution::Diagnostics::ProducerCatalog NeutrinoCooling::DiagnosticsCatalog() const
+{
+	using namespace CompactStar::Physics::Evolution::Diagnostics;
+
+	ProducerCatalog pc;
+	pc.producer = DiagnosticsName();
+
+	// -------------------------------------------------------------------------
+	// Scalars emitted by Detail::Diagnose() for this driver
+	// -------------------------------------------------------------------------
+	{
+		ScalarDescriptor sd;
+		sd.key = "Tinf_K";
+		sd.unit = "K";
+		sd.description = "Redshifted internal temperature (evolved DOF)";
+		sd.source_hint = "state";
+		sd.default_cadence = Cadence::Always;
+		sd.required = true;
+		pc.scalars.push_back(sd);
+	}
+
+	{
+		ScalarDescriptor sd;
+		sd.key = "L_nu_inf_erg_s";
+		sd.unit = "erg/s";
+		sd.description = "Total neutrino luminosity at infinity";
+		sd.source_hint = "computed";
+		sd.default_cadence = Cadence::Always; // or OnChange if you prefer
+		sd.required = false;
+		pc.scalars.push_back(sd);
+	}
+
+	// Optional partitions (keep if your Details layer emits them)
+	{
+		ScalarDescriptor sd;
+		sd.key = "L_nu_DU_inf_erg_s";
+		sd.unit = "erg/s";
+		sd.description = "Direct Urca neutrino luminosity at infinity";
+		sd.source_hint = "computed";
+		sd.default_cadence = Cadence::OnChange;
+		sd.required = false;
+		pc.scalars.push_back(sd);
+	}
+
+	{
+		ScalarDescriptor sd;
+		sd.key = "L_nu_MU_inf_erg_s";
+		sd.unit = "erg/s";
+		sd.description = "Modified Urca neutrino luminosity at infinity";
+		sd.source_hint = "computed";
+		sd.default_cadence = Cadence::OnChange;
+		sd.required = false;
+		pc.scalars.push_back(sd);
+	}
+
+	{
+		ScalarDescriptor sd;
+		sd.key = "L_nu_PBF_inf_erg_s";
+		sd.unit = "erg/s";
+		sd.description = "Pair breaking/formation neutrino luminosity at infinity";
+		sd.source_hint = "computed";
+		sd.default_cadence = Cadence::OnChange;
+		sd.required = false;
+		pc.scalars.push_back(sd);
+	}
+
+	{
+		ScalarDescriptor sd;
+		sd.key = "dTinf_dt_K_s";
+		sd.unit = "K/s";
+		sd.description = "NeutrinoCooling contribution to dTinf/dt";
+		sd.source_hint = "computed";
+		sd.default_cadence = Cadence::Always;
+		sd.required = false;
+		pc.scalars.push_back(sd);
+	}
+
+	{
+		ScalarDescriptor sd;
+		sd.key = "dLnTinf_dt_1_s";
+		sd.unit = "1/s";
+		sd.description = "NeutrinoCooling contribution to d/dt ln(Tinf/Tref)";
+		sd.source_hint = "computed";
+		sd.default_cadence = Cadence::Always;
+		sd.required = false;
+		pc.scalars.push_back(sd);
+	}
+
+	// -------------------------------------------------------------------------
+	// Profiles (schema-driven time series)
+	// -------------------------------------------------------------------------
+	ProducerCatalog::Profile p;
+	p.name = "timeseries_default";
+	p.keys = {
+		// "Tinf_K",
+		"L_nu_inf_erg_s",
+		// keep partitions if you want them in the default CSV:
+		// "L_nu_DU_inf_erg_s",
+		// "L_nu_MU_inf_erg_s",
+		// "L_nu_PBF_inf_erg_s",
+		"dLnTinf_dt_1_s"};
+	pc.profiles.push_back(std::move(p));
+
+	return pc;
+}
+
+// -----------------------------------------------------------------------------
+//  DiagnoseSnapshot interface
+// -----------------------------------------------------------------------------
+void NeutrinoCooling::DiagnoseSnapshot(double t,
+									   const Evolution::StateVector &Y,
+									   const Evolution::DriverContext &ctx,
+									   Evolution::Diagnostics::DiagnosticPacket &out) const
+{
+	// Overwrite/fill `out` deterministically using the shared details path.
+	Detail::Diagnose(*this, t, Y, ctx, out);
+}
+// -----------------------------------------------------------------------------
 } // namespace CompactStar::Physics::Driver::Thermal

@@ -25,10 +25,10 @@ namespace CompactStar::Physics::Evolution
 {
 
 //--------------------------------------------------------------
-// StateLayout::Configure
+// StateLayout::Configure (initializer_list)
 //--------------------------------------------------------------
 void StateLayout::Configure(const StateVector &state,
-							std::initializer_list<Physics::State::StateTag> tags)
+							const std::initializer_list<Physics::State::StateTag> &tags)
 {
 	// Reset all blocks to inactive and zero size.
 	for (auto &b : m_blocks)
@@ -49,6 +49,43 @@ void StateLayout::Configure(const StateVector &state,
 		// Query the registered State block for this tag. If the tag is not
 		// registered, StateVector::Get(tag) will throw; we deliberately
 		// propagate that error so misconfigured runs fail loudly.
+		const auto &blockState = state.Get(tag);
+
+		const std::size_t n = blockState.Size();
+
+		Block &b = m_blocks[idx];
+		b.offset = m_totalSize;
+		b.size = n;
+		b.active = true;
+
+		m_totalSize += n;
+	}
+}
+
+//--------------------------------------------------------------
+// StateLayout::Configure (vector)
+//--------------------------------------------------------------
+void StateLayout::Configure(const StateVector &state,
+							const std::vector<Physics::State::StateTag> &tags)
+{
+	// Delegate to the existing implementation without duplicating logic.
+	// We cannot construct an initializer_list from a vector, so we just
+	// run the same logic by iterating the vector through the same code path.
+	// Easiest is to inline the loop here while sharing the reset section.
+
+	// Reset all blocks to inactive and zero size.
+	for (auto &b : m_blocks)
+	{
+		b.offset = 0;
+		b.size = 0;
+		b.active = false;
+	}
+
+	m_totalSize = 0;
+
+	for (auto tag : tags)
+	{
+		const auto idx = Index(tag);
 		const auto &blockState = state.Get(tag);
 
 		const std::size_t n = blockState.Size();

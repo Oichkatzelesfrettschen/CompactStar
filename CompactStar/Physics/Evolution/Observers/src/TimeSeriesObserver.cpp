@@ -491,6 +491,194 @@ void TimeSeriesObserver::LoadCatalogIfNeeded()
 }
 
 //------------------------------------------------------------------------------
+//  Catalog-driven column policies
+//------------------------------------------------------------------------------
+/**
+ * @brief Return true if a scalar key should be treated as a "state scalar"
+ *        and therefore NOT emitted as a DriverScalar column.
+ *
+ * Policy rationale:
+ * - State scalars (e.g. Tinf_K) should be owned by the state/builtin layer,
+ *   not duplicated across multiple drivers. Drivers may still emit them in
+ *   diagnostics packets for auditing, but TimeSeries should not flatten them
+ *   multiple times into the table.
+ */
+bool IsStateScalarKey(const std::string &key)
+{
+	// Extend this list as needed.
+	// Examples we might add later:
+	//   "Omega_rad_s" (if drivers begin emitting it)
+	//   "StepIndex" etc.
+	return (key == "Tinf_K");
+}
+
+//------------------------------------------------------------------------------
+/**
+ * @brief Generate a unique, deterministic column header for DriverScalar columns.
+ *
+ * - First tries base_key (e.g. "dLnTinf_dt_1_s").
+ * - If collision, uses "Producer__base_key".
+ * - If still collision (rare), appends "_N".
+ */
+std::string MakeUniqueDriverColumnKey(const std::string &producer,
+									  const std::string &base_key,
+									  std::unordered_set<std::string> &seen)
+{
+	// Prefer short key when it is unique.
+	if (seen.insert(base_key).second)
+		return base_key;
+
+	// Namespaced fallback.
+	std::string ns = producer + "__" + base_key;
+	if (seen.insert(ns).second)
+		return ns;
+
+	// Extremely rare: multiple producers with same name, or user already used that key.
+	for (std::size_t i = 2;; ++i)
+	{
+		std::string cand = ns + "_" + std::to_string(i);
+		if (seen.insert(cand).second)
+			return cand;
+	}
+}
+
+//------------------------------------------------------------------------------
+// void TimeSeriesObserver::BuildColumnsFromCatalog()
+// {
+// 	if (!opts_.use_catalog)
+// 		return;
+
+// 	LoadCatalogIfNeeded();
+// 	if (!catalog_)
+// 	{
+// 		Z_LOG_WARNING("TimeSeriesObserver: use_catalog=true but no catalog available; leaving columns unchanged.");
+// 		return;
+// 	}
+
+// 	producer_catalog_cache_.clear();
+// 	for (const auto &kv : catalog_->Producers())
+// 		producer_catalog_cache_[kv.first] = &kv.second;
+
+// 	std::vector<Column> built;
+
+// 	// Builtins first (optional)
+// 	if (opts_.include_builtin_time)
+// 	{
+// 		Column c;
+// 		c.key = "t_s";
+// 		c.source = ColumnSource::BuiltinState;
+// 		c.unit = "s";
+// 		c.description = "Simulation time";
+// 		c.builtin = Column::Builtin::Time;
+// 		built.push_back(std::move(c));
+// 	}
+
+// 	if (opts_.include_builtin_sample_index)
+// 	{
+// 		Column c;
+// 		c.key = "sample_index";
+// 		c.source = ColumnSource::BuiltinState;
+// 		c.unit = "";
+// 		c.description = "Monotonic sample counter";
+// 		c.builtin = Column::Builtin::SampleIndex;
+// 		built.push_back(std::move(c));
+// 	}
+
+// 	// Helper: append scalars for a producer, optionally filtered by profile keys.
+// 	auto append_keys_for_producer = [&](const std::string &producer,
+// 										const std::vector<std::string> &keys)
+// 	{
+// 		auto it = producer_catalog_cache_.find(producer);
+// 		if (it == producer_catalog_cache_.end() || !it->second)
+// 			return;
+
+// 		const auto *pc = it->second;
+
+// 		// Build a set for membership test
+// 		std::unordered_map<std::string, const Diagnostics::ScalarDescriptor *> sd_map;
+// 		sd_map.reserve(pc->scalars.size());
+// 		for (const auto &sd : pc->scalars)
+// 			sd_map[sd.key] = &sd;
+
+// 		for (const auto &k : keys)
+// 		{
+// 			auto jt = sd_map.find(k);
+// 			if (jt == sd_map.end() || !jt->second)
+// 				continue;
+
+// 			const auto &sd = *jt->second;
+
+// 			Column c;
+// 			c.key = sd.key; // header label default = scalar key
+// 			c.source = ColumnSource::DriverScalar;
+// 			c.unit = sd.unit;
+// 			c.description = sd.description;
+// 			c.catalog_ref.producer = producer;
+// 			c.catalog_ref.key = sd.key;
+// 			built.push_back(std::move(c));
+// 		}
+// 	};
+
+// 	// Strategy:
+// 	// - If catalog_profiles provided: for each producer, if it has those profiles, append keys.
+// 	// - Otherwise: if producer has profile "timeseries_default", use that.
+// 	// - Otherwise: append nothing (conservative).
+// 	const auto &producers = catalog_->Producers();
+// 	for (const auto &kv : producers)
+// 	{
+// 		const std::string &producer = kv.first;
+// 		const auto &pc = kv.second;
+
+// 		auto use_profile = [&](const std::string &pname) -> bool
+// 		{
+// 			for (const auto &p : pc.profiles)
+// 			{
+// 				if (p.name == pname)
+// 				{
+// 					append_keys_for_producer(producer, p.keys);
+// 					return true;
+// 				}
+// 			}
+// 			return false;
+// 		};
+
+// 		bool used_any = false;
+
+// 		if (!opts_.catalog_profiles.empty())
+// 		{
+// 			for (const auto &pname : opts_.catalog_profiles)
+// 				used_any = use_profile(pname) || used_any;
+// 		}
+// 		else
+// 		{
+// 			used_any = use_profile("timeseries_default");
+// 		}
+
+// 		(void)used_any;
+// 	}
+
+// 	// Merge policy:
+// 	// If user already provided explicit columns, append built driver scalars to them,
+// 	// but keep explicit columns first (user intent).
+// 	if (!opts_.columns.empty())
+// 	{
+// 		// Avoid duplicates by header key (simple). You can refine later.
+// 		std::unordered_set<std::string> seen;
+// 		for (const auto &c : opts_.columns)
+// 			seen.insert(c.key);
+
+// 		for (auto &c : built)
+// 		{
+// 			if (seen.insert(c.key).second)
+// 				opts_.columns.push_back(std::move(c));
+// 		}
+// 	}
+// 	else
+// 	{
+// 		opts_.columns = std::move(built);
+// 	}
+// }
+//------------------------------------------------------------------------------
 void TimeSeriesObserver::BuildColumnsFromCatalog()
 {
 	if (!opts_.use_catalog)
@@ -503,13 +691,28 @@ void TimeSeriesObserver::BuildColumnsFromCatalog()
 		return;
 	}
 
+	// Cache producer catalogs for lookups
 	producer_catalog_cache_.clear();
 	for (const auto &kv : catalog_->Producers())
 		producer_catalog_cache_[kv.first] = &kv.second;
 
+	// We build a fresh list of catalog-driven columns into `built`,
+	// then merge with user-provided explicit columns.
 	std::vector<Column> built;
+	built.reserve(32);
 
+	// Track seen header keys to enforce uniqueness (A).
+	std::unordered_set<std::string> seen;
+	seen.reserve(64);
+
+	// Seed `seen` with any explicit columns the user already provided.
+	// This ensures catalog-driven keys don't silently collide with user intent.
+	for (const auto &c : opts_.columns)
+		seen.insert(c.key);
+
+	// ------------------------------------------------------------
 	// Builtins first (optional)
+	// ------------------------------------------------------------
 	if (opts_.include_builtin_time)
 	{
 		Column c;
@@ -518,7 +721,10 @@ void TimeSeriesObserver::BuildColumnsFromCatalog()
 		c.unit = "s";
 		c.description = "Simulation time";
 		c.builtin = Column::Builtin::Time;
-		built.push_back(std::move(c));
+
+		// Ensure uniqueness (in case user already has "t_s")
+		if (seen.insert(c.key).second)
+			built.push_back(std::move(c));
 	}
 
 	if (opts_.include_builtin_sample_index)
@@ -529,12 +735,19 @@ void TimeSeriesObserver::BuildColumnsFromCatalog()
 		c.unit = "";
 		c.description = "Monotonic sample counter";
 		c.builtin = Column::Builtin::SampleIndex;
-		built.push_back(std::move(c));
+
+		if (seen.insert(c.key).second)
+			built.push_back(std::move(c));
 	}
 
-	// Helper: append scalars for a producer, optionally filtered by profile keys.
-	auto append_keys_for_producer = [&](const std::string &producer,
-										const std::vector<std::string> &keys)
+	// ------------------------------------------------------------
+	// Decide which profiles we will use per producer
+	// ------------------------------------------------------------
+	const auto &producers = catalog_->Producers();
+
+	// Helper: append driver scalars for a producer based on a list of scalar keys.
+	auto append_keys_for_producer =
+		[&](const std::string &producer, const std::vector<std::string> &keys)
 	{
 		auto it = producer_catalog_cache_.find(producer);
 		if (it == producer_catalog_cache_.end() || !it->second)
@@ -542,7 +755,7 @@ void TimeSeriesObserver::BuildColumnsFromCatalog()
 
 		const auto *pc = it->second;
 
-		// Build a set for membership test
+		// Map scalar key -> descriptor
 		std::unordered_map<std::string, const Diagnostics::ScalarDescriptor *> sd_map;
 		sd_map.reserve(pc->scalars.size());
 		for (const auto &sd : pc->scalars)
@@ -550,6 +763,10 @@ void TimeSeriesObserver::BuildColumnsFromCatalog()
 
 		for (const auto &k : keys)
 		{
+			// (B) Do not flatten state scalars as DriverScalar columns.
+			if (IsStateScalarKey(k))
+				continue;
+
 			auto jt = sd_map.find(k);
 			if (jt == sd_map.end() || !jt->second)
 				continue;
@@ -557,67 +774,150 @@ void TimeSeriesObserver::BuildColumnsFromCatalog()
 			const auto &sd = *jt->second;
 
 			Column c;
-			c.key = sd.key; // header label default = scalar key
 			c.source = ColumnSource::DriverScalar;
 			c.unit = sd.unit;
 			c.description = sd.description;
+
 			c.catalog_ref.producer = producer;
 			c.catalog_ref.key = sd.key;
+
+			// (A) Enforce unique header keys for DriverScalar columns.
+			c.key = MakeUniqueDriverColumnKey(producer, sd.key, seen);
+
 			built.push_back(std::move(c));
 		}
 	};
 
-	// Strategy:
-	// - If catalog_profiles provided: for each producer, if it has those profiles, append keys.
-	// - Otherwise: if producer has profile "timeseries_default", use that.
-	// - Otherwise: append nothing (conservative).
-	const auto &producers = catalog_->Producers();
+	// Helper: use profile if present
+	auto use_profile_if_present =
+		[&](const std::string &producer, const Diagnostics::ProducerCatalog &pc, const std::string &pname) -> bool
+	{
+		for (const auto &p : pc.profiles)
+		{
+			if (p.name == pname)
+			{
+				append_keys_for_producer(producer, p.keys);
+				return true;
+			}
+		}
+		return false;
+	};
+
+	// ------------------------------------------------------------
+	// Build driver-scalar columns from selected profile(s)
+	// ------------------------------------------------------------
 	for (const auto &kv : producers)
 	{
 		const std::string &producer = kv.first;
 		const auto &pc = kv.second;
-
-		auto use_profile = [&](const std::string &pname) -> bool
-		{
-			for (const auto &p : pc.profiles)
-			{
-				if (p.name == pname)
-				{
-					append_keys_for_producer(producer, p.keys);
-					return true;
-				}
-			}
-			return false;
-		};
 
 		bool used_any = false;
 
 		if (!opts_.catalog_profiles.empty())
 		{
 			for (const auto &pname : opts_.catalog_profiles)
-				used_any = use_profile(pname) || used_any;
+				used_any = use_profile_if_present(producer, pc, pname) || used_any;
 		}
 		else
 		{
-			used_any = use_profile("timeseries_default");
+			used_any = use_profile_if_present(producer, pc, "timeseries_default");
 		}
 
 		(void)used_any;
 	}
 
+	// ------------------------------------------------------------
+	// (B) Ensure state-level "Tinf_K" appears once as a BuiltinState column
+	//     when catalog mode is enabled and any producer attempted to export it.
+	//
+	// Policy: if *any* producer catalog contains Tinf_K, TimeSeries will include
+	// a single Builtin Tinf_K column (unless the user already provided one).
+	// ------------------------------------------------------------
+	bool user_already_has_Tinf = false;
+	for (const auto &c : opts_.columns)
+	{
+		if (c.source == ColumnSource::BuiltinState && c.builtin == Column::Builtin::Tinf_K)
+		{
+			user_already_has_Tinf = true;
+			break;
+		}
+		if (c.key == "Tinf_K")
+		{
+			// Conservative: if user already explicitly named a column "Tinf_K"
+			// (even if it was DriverScalar), don't auto-insert another.
+			user_already_has_Tinf = true;
+			break;
+		}
+	}
+
+	bool catalog_mentions_Tinf = false;
+	for (const auto &kv : producers)
+	{
+		const auto &pc = kv.second;
+		for (const auto &sd : pc.scalars)
+		{
+			if (sd.key == "Tinf_K")
+			{
+				catalog_mentions_Tinf = true;
+				break;
+			}
+		}
+		if (catalog_mentions_Tinf)
+			break;
+	}
+
+	if (!user_already_has_Tinf && catalog_mentions_Tinf)
+	{
+		Column c;
+		c.key = "Tinf_K";
+		c.source = ColumnSource::BuiltinState;
+		c.unit = "K";
+		c.description = "Redshifted internal temperature (evolved DOF)";
+		c.builtin = Column::Builtin::Tinf_K;
+
+		// Insert after time/sample_index if present; otherwise at front.
+		// We already have `seen` tracking uniqueness.
+		if (seen.insert(c.key).second)
+		{
+			// Put it after any builtins we already pushed (t_s, sample_index).
+			// That keeps your table as: t_s, sample_index, Tinf_K, ...
+			std::size_t insert_pos = built.size();
+			// We want it right after the builtins; builtins are at the front by construction.
+			// So we can safely insert at position = number of currently present builtins.
+			// That is exactly the current built.size() at this stage only if no driver scalars were added yet,
+			// but driver scalars were already added. Instead, we place it after the builtins by scanning:
+			insert_pos = 0;
+			while (insert_pos < built.size() && built[insert_pos].source == ColumnSource::BuiltinState)
+				++insert_pos;
+
+			built.insert(built.begin() + static_cast<std::ptrdiff_t>(insert_pos), std::move(c));
+		}
+	}
+
+	// ------------------------------------------------------------
 	// Merge policy:
-	// If user already provided explicit columns, append built driver scalars to them,
-	// but keep explicit columns first (user intent).
+	// - If user already provided explicit columns, keep them first (user intent),
+	//   then append catalog-built columns that don't duplicate header keys.
+	// - If user provided no columns, use the built list wholesale.
+	// ------------------------------------------------------------
 	if (!opts_.columns.empty())
 	{
-		// Avoid duplicates by header key (simple). You can refine later.
-		std::unordered_set<std::string> seen;
-		for (const auto &c : opts_.columns)
-			seen.insert(c.key);
-
+		// seen already contains opts_.columns keys, so only append new ones.
 		for (auto &c : built)
 		{
-			if (seen.insert(c.key).second)
+			// Note: built columns have already inserted into `seen` during construction.
+			// But `seen` was seeded with opts_.columns keys too, so collision-free here.
+			// We can still guard by checking existence in opts_.columns set:
+			bool exists = false;
+			for (const auto &u : opts_.columns)
+			{
+				if (u.key == c.key)
+				{
+					exists = true;
+					break;
+				}
+			}
+			if (!exists)
 				opts_.columns.push_back(std::move(c));
 		}
 	}

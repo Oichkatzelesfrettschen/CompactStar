@@ -108,7 +108,11 @@ class StateLayout
 	 *         the provided StateVector.
 	 */
 	void Configure(const StateVector &state,
-				   std::initializer_list<Physics::State::StateTag> tags);
+				   const std::initializer_list<Physics::State::StateTag> &tags);
+
+	// NEW: vector-friendly overload
+	void Configure(const StateVector &state,
+				   const std::vector<Physics::State::StateTag> &tags);
 
 	// ---------------------------------------------------------------------
 	//  Queries

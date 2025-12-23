@@ -196,7 +196,7 @@ Evolution::Diagnostics::ProducerCatalog PhotonCooling::DiagnosticsCatalog() cons
 	// Add profile(s)
 	ProducerCatalog::Profile p;
 	p.name = "timeseries_default";
-	p.keys = {"Tinf_K", "L_gamma_inf_erg_s"};
+	p.keys = {"L_gamma_inf_erg_s"};
 	pc.profiles.push_back(std::move(p));
 
 	// Add more descriptors matching your actual emitted keys.
@@ -215,5 +215,5 @@ void PhotonCooling::DiagnoseSnapshot(double t,
 	// Overwrite/fill `out` deterministically.
 	Detail::Diagnose(*this, t, Y, ctx, out);
 }
-
+// -----------------------------------------------------------------------------
 } // namespace CompactStar::Physics::Driver::Thermal
