@@ -1,0 +1,45 @@
+\hypertarget{struct_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_boundary_1_1_tb_definition}{}\doxysection{Compact\+Star\+::Physics\+::Driver\+::Thermal\+::Boundary\+::Tb\+Definition Struct Reference}
+\label{struct_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_boundary_1_1_tb_definition}\index{CompactStar::Physics::Driver::Thermal::Boundary::TbDefinition@{CompactStar::Physics::Driver::Thermal::Boundary::TbDefinition}}
+
+
+Policy for defining the base-\/of-\/envelope location.  
+
+
+
+
+{\ttfamily \#include $<$Tb\+Definition.\+hpp$>$}
+
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{struct_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_boundary_1_1_tb_definition_a136b61fb11a42680646a93e304494192}\label{struct_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_boundary_1_1_tb_definition_a136b61fb11a42680646a93e304494192}} 
+double {\bfseries rho\+\_\+b} = 1.\+0e10
+\begin{DoxyCompactList}\small\item\em Base density ρ\+\_\+b in g/cm$^\wedge$3 (classic choice\+: 1e10). \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{struct_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_boundary_1_1_tb_definition_a643fe33b8bed41aa185fa40a190bb4c9}{assume\+\_\+isothermal\+\_\+redshifted}} = true
+\begin{DoxyCompactList}\small\item\em If true, Tb is computed from isothermal redshifted T\+\_\+inf\+: \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{struct_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_boundary_1_1_tb_definition_af6bce3e28e31b7c0833af3594e01bb95}\label{struct_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_boundary_1_1_tb_definition_af6bce3e28e31b7c0833af3594e01bb95}} 
+bool {\bfseries prefer\+\_\+geometry\+\_\+cache} = true
+\begin{DoxyCompactList}\small\item\em If true, prefer Geometry\+Cache for metric factors at r\+\_\+b. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Policy for defining the base-\/of-\/envelope location. 
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{struct_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_boundary_1_1_tb_definition_a643fe33b8bed41aa185fa40a190bb4c9}\label{struct_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_boundary_1_1_tb_definition_a643fe33b8bed41aa185fa40a190bb4c9}} 
+\index{CompactStar::Physics::Driver::Thermal::Boundary::TbDefinition@{CompactStar::Physics::Driver::Thermal::Boundary::TbDefinition}!assume\_isothermal\_redshifted@{assume\_isothermal\_redshifted}}
+\index{assume\_isothermal\_redshifted@{assume\_isothermal\_redshifted}!CompactStar::Physics::Driver::Thermal::Boundary::TbDefinition@{CompactStar::Physics::Driver::Thermal::Boundary::TbDefinition}}
+\doxysubsubsection{\texorpdfstring{assume\_isothermal\_redshifted}{assume\_isothermal\_redshifted}}
+{\footnotesize\ttfamily bool Compact\+Star\+::\+Physics\+::\+Driver\+::\+Thermal\+::\+Boundary\+::\+Tb\+Definition\+::assume\+\_\+isothermal\+\_\+redshifted = true}
+
+
+
+If true, Tb is computed from isothermal redshifted T\+\_\+inf\+: 
+
+Tb = T\+\_\+inf $\ast$ exp(-\/ν(r\+\_\+b))
+
+Otherwise, caller may supply Tb directly or compute via another model. 
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Compact\+Star/\+Physics/\+Driver/\+Thermal/\+Boundary/\mbox{\hyperlink{_tb_definition_8hpp}{Tb\+Definition.\+hpp}}\end{DoxyCompactItemize}

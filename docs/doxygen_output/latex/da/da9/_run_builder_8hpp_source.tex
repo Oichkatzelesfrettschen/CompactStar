@@ -1,0 +1,72 @@
+\hypertarget{_run_builder_8hpp_source}{}\doxysection{Run\+Builder.\+hpp}
+\label{_run_builder_8hpp_source}\index{CompactStar/Physics/Evolution/Run/RunBuilder.hpp@{CompactStar/Physics/Evolution/Run/RunBuilder.hpp}}
+\mbox{\hyperlink{_run_builder_8hpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#pragma once}}
+\DoxyCodeLine{2 \textcolor{comment}{// -\/*-\/ lsst-\/c++ -\/*-\/}}
+\DoxyCodeLine{3 \textcolor{comment}{/*}}
+\DoxyCodeLine{4 \textcolor{comment}{ * CompactStar}}
+\DoxyCodeLine{5 \textcolor{comment}{ * See License file at the top of the source tree.}}
+\DoxyCodeLine{6 \textcolor{comment}{ *}}
+\DoxyCodeLine{7 \textcolor{comment}{ * Copyright (c) 2025}}
+\DoxyCodeLine{8 \textcolor{comment}{ * Mohammadreza Zakeri}}
+\DoxyCodeLine{9 \textcolor{comment}{ *}}
+\DoxyCodeLine{10 \textcolor{comment}{ * MIT License — see LICENSE at repo root.}}
+\DoxyCodeLine{11 \textcolor{comment}{ */}}
+\DoxyCodeLine{12 }
+\DoxyCodeLine{30 \textcolor{preprocessor}{\#include <cstddef>}}
+\DoxyCodeLine{31 \textcolor{preprocessor}{\#include <memory>}}
+\DoxyCodeLine{32 \textcolor{preprocessor}{\#include <vector>}}
+\DoxyCodeLine{33 }
+\DoxyCodeLine{34 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_driver_context_8hpp}{CompactStar/Physics/Evolution/DriverContext.hpp}}"{}}}
+\DoxyCodeLine{35 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_evolution_config_8hpp}{CompactStar/Physics/Evolution/EvolutionConfig.hpp}}"{}}}
+\DoxyCodeLine{36 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_evolution_system_8hpp}{CompactStar/Physics/Evolution/EvolutionSystem.hpp}}"{}}}
+\DoxyCodeLine{37 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_r_h_s_accumulator_8hpp}{CompactStar/Physics/Evolution/RHSAccumulator.hpp}}"{}}}
+\DoxyCodeLine{38 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_state_layout_8hpp}{CompactStar/Physics/Evolution/StateLayout.hpp}}"{}}}
+\DoxyCodeLine{39 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_state_vector_8hpp}{CompactStar/Physics/Evolution/StateVector.hpp}}"{}}}
+\DoxyCodeLine{40 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_tags_8hpp}{CompactStar/Physics/State/Tags.hpp}}"{}}}
+\DoxyCodeLine{41 }
+\DoxyCodeLine{42 \textcolor{comment}{// Diagnostics interface (used only for collecting pointers).}}
+\DoxyCodeLine{43 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_driver_diagnostics_8hpp}{CompactStar/Physics/Driver/Diagnostics/DriverDiagnostics.hpp}}"{}}}
+\DoxyCodeLine{44 }
+\DoxyCodeLine{45 \textcolor{keyword}{namespace }CompactStar::Physics::Evolution}
+\DoxyCodeLine{46 \{}
+\DoxyCodeLine{47 \textcolor{keyword}{class }StarContext;}
+\DoxyCodeLine{48 \textcolor{keyword}{class }GeometryCache;}
+\DoxyCodeLine{49 \} \textcolor{comment}{// namespace CompactStar::Physics::Evolution}}
+\DoxyCodeLine{50 }
+\DoxyCodeLine{51 \textcolor{keyword}{namespace }CompactStar::Physics::Evolution::Run}
+\DoxyCodeLine{52 \{}
+\DoxyCodeLine{53 }
+\DoxyCodeLine{69 \textcolor{keyword}{struct }\mbox{\hyperlink{struct_compact_star_1_1_physics_1_1_evolution_1_1_run_1_1_state_wiring}{StateWiring}}}
+\DoxyCodeLine{70 \{}
+\DoxyCodeLine{71     \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_state_vector}{Evolution::StateVector}} state\_vec;}
+\DoxyCodeLine{72     \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_state_layout}{Evolution::StateLayout}} layout;}
+\DoxyCodeLine{73     \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_r_h_s_accumulator}{Evolution::RHSAccumulator}} rhs;}
+\DoxyCodeLine{74 }
+\DoxyCodeLine{76     std::size\_t \mbox{\hyperlink{struct_compact_star_1_1_physics_1_1_evolution_1_1_run_1_1_state_wiring_a6ccf8eb7f17f73e8831553f3d39eb24d}{dim}} = 0;}
+\DoxyCodeLine{77 \};}
+\DoxyCodeLine{78 }
+\DoxyCodeLine{90 \mbox{\hyperlink{struct_compact_star_1_1_physics_1_1_evolution_1_1_config}{Evolution::Config}} \mbox{\hyperlink{_run_builder_8hpp_a018582771ad0d4ec1ddb6e7812158c66}{MakeDefaultConfig}}();}
+\DoxyCodeLine{91 }
+\DoxyCodeLine{101 \mbox{\hyperlink{struct_compact_star_1_1_physics_1_1_evolution_1_1_driver_context}{Evolution::DriverContext}} \mbox{\hyperlink{_run_builder_8hpp_a5053de4181e162c95a7f8bb9bf9672e8}{MakeDriverContext}}(\mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_star_context}{Evolution::StarContext}} \&star,}
+\DoxyCodeLine{102                                            \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_geometry_cache}{Evolution::GeometryCache}} \&geo,}
+\DoxyCodeLine{103                                            \mbox{\hyperlink{struct_compact_star_1_1_physics_1_1_evolution_1_1_config}{Evolution::Config}} \&cfg);}
+\DoxyCodeLine{104 }
+\DoxyCodeLine{114 \mbox{\hyperlink{struct_compact_star_1_1_physics_1_1_evolution_1_1_driver_context}{Evolution::DriverContext}} \mbox{\hyperlink{_run_builder_8hpp_a5053de4181e162c95a7f8bb9bf9672e8}{MakeDriverContext}}(\mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_star_context}{Evolution::StarContext}} \&star,}
+\DoxyCodeLine{115                                            \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_geometry_cache}{Evolution::GeometryCache}} \&geo,}
+\DoxyCodeLine{116                                            \mbox{\hyperlink{struct_compact_star_1_1_physics_1_1_evolution_1_1_config}{Evolution::Config}} \&cfg,}
+\DoxyCodeLine{117                                            \textcolor{keyword}{const} \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_boundary_1_1_i_envelope}{Physics::Driver::Thermal::Boundary::IEnvelope}} *env);}
+\DoxyCodeLine{118 }
+\DoxyCodeLine{125 \textcolor{keywordtype}{void} \mbox{\hyperlink{_run_builder_8hpp_a7851f1b1c90c72e1ccc82b28e403b802}{ConfigureLayout}}(\mbox{\hyperlink{struct_compact_star_1_1_physics_1_1_evolution_1_1_run_1_1_state_wiring}{StateWiring}} \&wiring,}
+\DoxyCodeLine{126                      \textcolor{keyword}{const} std::vector<Physics::State::StateTag> \&order);}
+\DoxyCodeLine{127 }
+\DoxyCodeLine{136 \textcolor{keywordtype}{void} \mbox{\hyperlink{_run_builder_8hpp_af80df2383109297454afef6cb4f63bd7}{ConfigureRHS}}(\mbox{\hyperlink{struct_compact_star_1_1_physics_1_1_evolution_1_1_run_1_1_state_wiring}{StateWiring}} \&wiring,}
+\DoxyCodeLine{137                   \textcolor{keyword}{const} std::vector<Physics::State::StateTag> \&tags);}
+\DoxyCodeLine{138 }
+\DoxyCodeLine{150 std::vector<const Physics::Driver::Diagnostics::IDriverDiagnostics *>}
+\DoxyCodeLine{151 \mbox{\hyperlink{_run_builder_8hpp_a04ce978cf3af7c7c7f6aa945f0df5dfc}{CollectDiagnosticsDrivers}}(\textcolor{keyword}{const} std::vector<Evolution::DriverPtr> \&drivers);}
+\DoxyCodeLine{152 }
+\DoxyCodeLine{153 \} \textcolor{comment}{// namespace CompactStar::Physics::Evolution::Run}}
+
+\end{DoxyCode}

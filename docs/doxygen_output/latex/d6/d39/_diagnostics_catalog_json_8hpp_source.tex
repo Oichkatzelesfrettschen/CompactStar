@@ -1,0 +1,75 @@
+\hypertarget{_diagnostics_catalog_json_8hpp_source}{}\doxysection{Diagnostics\+Catalog\+Json.\+hpp}
+\label{_diagnostics_catalog_json_8hpp_source}\index{CompactStar/Physics/Evolution/Diagnostics/DiagnosticsCatalogJson.hpp@{CompactStar/Physics/Evolution/Diagnostics/DiagnosticsCatalogJson.hpp}}
+\mbox{\hyperlink{_diagnostics_catalog_json_8hpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#pragma once}}
+\DoxyCodeLine{2 \textcolor{comment}{// -\/*-\/ lsst-\/c++ -\/*-\/}}
+\DoxyCodeLine{3 \textcolor{comment}{/*}}
+\DoxyCodeLine{4 \textcolor{comment}{ * CompactStar}}
+\DoxyCodeLine{5 \textcolor{comment}{ * See License file at the top of the source tree.}}
+\DoxyCodeLine{6 \textcolor{comment}{ *}}
+\DoxyCodeLine{7 \textcolor{comment}{ * Copyright (c) 2025}}
+\DoxyCodeLine{8 \textcolor{comment}{ * Mohammadreza Zakeri}}
+\DoxyCodeLine{9 \textcolor{comment}{ *}}
+\DoxyCodeLine{10 \textcolor{comment}{ * MIT License — see LICENSE at repo root.}}
+\DoxyCodeLine{11 \textcolor{comment}{ */}}
+\DoxyCodeLine{12 }
+\DoxyCodeLine{30 \textcolor{preprocessor}{\#include <ostream>}}
+\DoxyCodeLine{31 \textcolor{preprocessor}{\#include <string>}}
+\DoxyCodeLine{32 }
+\DoxyCodeLine{33 \textcolor{preprocessor}{\#include "{}CompactStar/Physics/Evolution/Diagnostics/DiagnosticCatalog.hpp"{}}}
+\DoxyCodeLine{34 \textcolor{preprocessor}{\#include "{}CompactStar/Physics/Evolution/Diagnostics/Schema.hpp"{}}}
+\DoxyCodeLine{35 }
+\DoxyCodeLine{36 \textcolor{keyword}{namespace }CompactStar::Physics::Evolution::Diagnostics}
+\DoxyCodeLine{37 \{}
+\DoxyCodeLine{38 }
+\DoxyCodeLine{42 \textcolor{keyword}{struct }\mbox{\hyperlink{struct_compact_star_1_1_physics_1_1_evolution_1_1_diagnostics_1_1_catalog_json_options}{CatalogJsonOptions}}}
+\DoxyCodeLine{43 \{}
+\DoxyCodeLine{45     \textcolor{keywordtype}{bool} \mbox{\hyperlink{struct_compact_star_1_1_physics_1_1_evolution_1_1_diagnostics_1_1_catalog_json_options_af02a5b8568dbfb3f149a1865e5859212}{pretty}} = \textcolor{keyword}{true};}
+\DoxyCodeLine{46 }
+\DoxyCodeLine{48     \textcolor{keywordtype}{int} \mbox{\hyperlink{struct_compact_star_1_1_physics_1_1_evolution_1_1_diagnostics_1_1_catalog_json_options_a49110d0d3f664511bdac7116a01e34dc}{indent\_spaces}} = 2;}
+\DoxyCodeLine{49 }
+\DoxyCodeLine{51     \textcolor{keywordtype}{bool} \mbox{\hyperlink{struct_compact_star_1_1_physics_1_1_evolution_1_1_diagnostics_1_1_catalog_json_options_a5f7b429f4593b7cc9c83c4b1685277a3}{include\_contract}} = \textcolor{keyword}{true};}
+\DoxyCodeLine{52 \};}
+\DoxyCodeLine{53 }
+\DoxyCodeLine{57 \textcolor{keyword}{class }\mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_diagnostics_1_1_diagnostics_catalog_json}{DiagnosticsCatalogJson}}}
+\DoxyCodeLine{58 \{}
+\DoxyCodeLine{59   \textcolor{keyword}{public}:}
+\DoxyCodeLine{78     \textcolor{keyword}{static} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_diagnostics_1_1_diagnostics_catalog_json_a1113ace8a7f04d85dff10408380284bd}{WriteCatalog}}(std::ostream \&os,}
+\DoxyCodeLine{79                              \textcolor{keyword}{const} \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_diagnostics_1_1_diagnostic_catalog}{DiagnosticCatalog}} \&catalog,}
+\DoxyCodeLine{80                              \textcolor{keyword}{const} \mbox{\hyperlink{struct_compact_star_1_1_physics_1_1_evolution_1_1_diagnostics_1_1_catalog_json_options}{CatalogJsonOptions}} \&opts = \{\});}
+\DoxyCodeLine{81 }
+\DoxyCodeLine{82     \textcolor{comment}{// Minimal reader for schema-\/driven TimeSeriesObserver}}
+\DoxyCodeLine{83     \textcolor{keyword}{static} \textcolor{keywordtype}{void} ReadCatalog(std::istream \&is, \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_diagnostics_1_1_diagnostic_catalog}{DiagnosticCatalog}} \&out);}
+\DoxyCodeLine{84 }
+\DoxyCodeLine{85   \textcolor{keyword}{private}:}
+\DoxyCodeLine{86     \textcolor{comment}{// -\/-\/-\/-\/ low-\/level helpers (kept private; mirrors DiagnosticsJson style) -\/-\/-\/-\/}}
+\DoxyCodeLine{87     \textcolor{keyword}{static} \textcolor{keywordtype}{void} WriteEscapedString(std::ostream \&os, \textcolor{keyword}{const} std::string \&s);}
+\DoxyCodeLine{88 }
+\DoxyCodeLine{89     \textcolor{keyword}{static} \textcolor{keywordtype}{void} Indent(std::ostream \&os, \textcolor{keywordtype}{int} n);}
+\DoxyCodeLine{90 }
+\DoxyCodeLine{91     \textcolor{keyword}{static} \textcolor{keywordtype}{void} Newline(std::ostream \&os, \textcolor{keywordtype}{bool} pretty);}
+\DoxyCodeLine{92 }
+\DoxyCodeLine{93     \textcolor{keyword}{static} \textcolor{keywordtype}{void} Key(std::ostream \&os, \textcolor{keyword}{const} std::string \&k);}
+\DoxyCodeLine{94 }
+\DoxyCodeLine{95     \textcolor{keyword}{static} \textcolor{keywordtype}{void} Bool(std::ostream \&os, \textcolor{keywordtype}{bool} v);}
+\DoxyCodeLine{96 }
+\DoxyCodeLine{97     \textcolor{keyword}{static} \textcolor{keywordtype}{void} EmitFieldKey(std::ostream \&os, \textcolor{keywordtype}{bool} pretty, \textcolor{keywordtype}{int} indent\_level,}
+\DoxyCodeLine{98                              \textcolor{keywordtype}{bool} \&first\_field, \textcolor{keyword}{const} std::string \&key);}
+\DoxyCodeLine{99 }
+\DoxyCodeLine{100     \textcolor{keyword}{static} \textcolor{keywordtype}{void} EmitObjectBegin(std::ostream \&os, \textcolor{keywordtype}{bool} pretty, \textcolor{keywordtype}{int} indent\_level,}
+\DoxyCodeLine{101                                 \textcolor{keywordtype}{bool} \&first\_field, \textcolor{keyword}{const} std::string \&key);}
+\DoxyCodeLine{102 }
+\DoxyCodeLine{103     \textcolor{keyword}{static} \textcolor{keywordtype}{void} EmitObjectEnd(std::ostream \&os, \textcolor{keywordtype}{bool} pretty, \textcolor{keywordtype}{int} indent\_level);}
+\DoxyCodeLine{104 }
+\DoxyCodeLine{105     \textcolor{keyword}{static} \textcolor{keywordtype}{void} EmitArrayBegin(std::ostream \&os, \textcolor{keywordtype}{bool} pretty, \textcolor{keywordtype}{int} indent\_level,}
+\DoxyCodeLine{106                                \textcolor{keywordtype}{bool} \&first\_field, \textcolor{keyword}{const} std::string \&key);}
+\DoxyCodeLine{107 }
+\DoxyCodeLine{108     \textcolor{keyword}{static} \textcolor{keywordtype}{void} EmitArrayEnd(std::ostream \&os, \textcolor{keywordtype}{bool} pretty, \textcolor{keywordtype}{int} indent\_level);}
+\DoxyCodeLine{109 }
+\DoxyCodeLine{110     \textcolor{keyword}{static} \textcolor{keyword}{const} \textcolor{keywordtype}{char} *CadenceToString(\mbox{\hyperlink{_diagnostic_packet_8hpp_a0b4a78e3cbdcedd41943393c406987d1}{Cadence}} c);}
+\DoxyCodeLine{111 \};}
+\DoxyCodeLine{112 }
+\DoxyCodeLine{113 \} \textcolor{comment}{// namespace CompactStar::Physics::Evolution::Diagnostics}}
+
+\end{DoxyCode}

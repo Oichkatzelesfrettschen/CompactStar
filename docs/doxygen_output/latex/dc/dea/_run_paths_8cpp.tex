@@ -1,0 +1,74 @@
+\hypertarget{_run_paths_8cpp}{}\doxysection{Compact\+Star/\+Physics/\+Evolution/\+Run/src/\+Run\+Paths.cpp File Reference}
+\label{_run_paths_8cpp}\index{CompactStar/Physics/Evolution/Run/src/RunPaths.cpp@{CompactStar/Physics/Evolution/Run/src/RunPaths.cpp}}
+
+
+Implementation of Evolution run path helpers.  
+
+
+{\ttfamily \#include \char`\"{}Compact\+Star/\+Physics/\+Evolution/\+Run/\+Run\+Paths.\+hpp\char`\"{}}\newline
+{\ttfamily \#include $<$iostream$>$}\newline
+\doxysubsection*{Namespaces}
+\begin{DoxyCompactItemize}
+\item 
+namespace \mbox{\hyperlink{namespace_compact_star_1_1_physics}{Compact\+Star\+::\+Physics}}
+\begin{DoxyCompactList}\small\item\em High-\/level physical modeling layer for compact stars. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_zaki_1_1_string_1_1_directory}{Zaki\+::\+String\+::\+Directory}} \mbox{\hyperlink{_run_paths_8hpp_a5c642a00734af1b4e319e08c6edda5a7}{Compact\+Star\+::\+Physics\+::\+Evolution\+::\+Run\+::\+Under\+Run\+Dir}} (const Run\+Paths \&p, const std\+::string \&filename)
+\begin{DoxyCompactList}\small\item\em Convenience helper\+: make a path under the run directory. \end{DoxyCompactList}\item 
+Run\+Paths \mbox{\hyperlink{_run_paths_8hpp_a98a568d982c5aaeba174b2eef166862b}{Compact\+Star\+::\+Physics\+::\+Evolution\+::\+Run\+::\+Make\+Run\+Paths}} (const \mbox{\hyperlink{class_zaki_1_1_string_1_1_directory}{Zaki\+::\+String\+::\+Directory}} \&base\+\_\+results\+\_\+dir, const \mbox{\hyperlink{class_zaki_1_1_string_1_1_directory}{Zaki\+::\+String\+::\+Directory}} \&out\+\_\+dir, const std\+::string \&log\+\_\+file\+\_\+name=\char`\"{}\char`\"{})
+\begin{DoxyCompactList}\small\item\em Build canonical Evolution run output paths. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Implementation of Evolution run path helpers. 
+
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{_run_paths_8hpp_a98a568d982c5aaeba174b2eef166862b}\label{_run_paths_8hpp_a98a568d982c5aaeba174b2eef166862b}} 
+\index{RunPaths.cpp@{RunPaths.cpp}!MakeRunPaths@{MakeRunPaths}}
+\index{MakeRunPaths@{MakeRunPaths}!RunPaths.cpp@{RunPaths.cpp}}
+\doxysubsubsection{\texorpdfstring{MakeRunPaths()}{MakeRunPaths()}}
+{\footnotesize\ttfamily Run\+Paths Compact\+Star\+::\+Physics\+::\+Evolution\+::\+Run\+::\+Make\+Run\+Paths (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_zaki_1_1_string_1_1_directory}{Zaki\+::\+String\+::\+Directory}} \&}]{base\+\_\+results\+\_\+dir,  }\item[{const \mbox{\hyperlink{class_zaki_1_1_string_1_1_directory}{Zaki\+::\+String\+::\+Directory}} \&}]{out\+\_\+dir,  }\item[{const std\+::string \&}]{log\+\_\+file\+\_\+name = {\ttfamily \char`\"{}\char`\"{}} }\end{DoxyParamCaption})}
+
+
+
+Build canonical Evolution run output paths. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em base\+\_\+results\+\_\+dir} & Directory that contains all runs (e.\+g. \char`\"{}.../results\char`\"{}). \\
+\hline
+{\em out\+\_\+dir} & Run folder name (e.\+g. \char`\"{}spin\+\_\+therm\+\_\+evol\+\_\+2\char`\"{}). \\
+\hline
+{\em log\+\_\+file\+\_\+name} & Optional log filename; if empty, log\+\_\+file is left empty.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Fully populated Run\+Paths with deterministic filenames.
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+This function does not create directories. It only computes paths. 
+\end{DoxyNote}
+\mbox{\Hypertarget{_run_paths_8hpp_a5c642a00734af1b4e319e08c6edda5a7}\label{_run_paths_8hpp_a5c642a00734af1b4e319e08c6edda5a7}} 
+\index{RunPaths.cpp@{RunPaths.cpp}!UnderRunDir@{UnderRunDir}}
+\index{UnderRunDir@{UnderRunDir}!RunPaths.cpp@{RunPaths.cpp}}
+\doxysubsubsection{\texorpdfstring{UnderRunDir()}{UnderRunDir()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_zaki_1_1_string_1_1_directory}{Zaki\+::\+String\+::\+Directory}} Compact\+Star\+::\+Physics\+::\+Evolution\+::\+Run\+::\+Under\+Run\+Dir (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{struct_compact_star_1_1_physics_1_1_evolution_1_1_run_1_1_run_paths}{Run\+Paths}} \&}]{p,  }\item[{const std\+::string \&}]{filename }\end{DoxyParamCaption})}
+
+
+
+Convenience helper\+: make a path under the run directory. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em p} & Run\+Paths. \\
+\hline
+{\em filename} & File name relative to run\+\_\+dir (no leading slash). \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+p.\+run\+\_\+dir + \char`\"{}/\char`\"{} + filename 
+\end{DoxyReturn}

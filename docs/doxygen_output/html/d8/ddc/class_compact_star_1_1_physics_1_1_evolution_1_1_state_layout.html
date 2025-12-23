@@ -98,9 +98,12 @@ Public Member Functions</h2></td></tr>
 &#160;</td><td class="memItemRight" valign="bottom"><b>StateLayout</b> ()=default</td></tr>
 <tr class="memdesc:aea7cbb39ad8cd9aa81134c560daa85b2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Default constructor: all blocks inactive, total size = 0. <br /></td></tr>
 <tr class="separator:aea7cbb39ad8cd9aa81134c560daa85b2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab444e011bdc1266189ddf7ac55d6bebf"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d8/ddc/class_compact_star_1_1_physics_1_1_evolution_1_1_state_layout.html#ab444e011bdc1266189ddf7ac55d6bebf">Configure</a> (const <a class="el" href="../../da/d36/class_compact_star_1_1_physics_1_1_evolution_1_1_state_vector.html">StateVector</a> &amp;state, std::initializer_list&lt; <a class="el" href="../../da/d7b/namespace_compact_star_1_1_physics_1_1_state.html#af14f5554b0d9be50c5ea718733bc424b">Physics::State::StateTag</a> &gt; tags)</td></tr>
-<tr class="memdesc:ab444e011bdc1266189ddf7ac55d6bebf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Configure layout from a <a class="el" href="../../da/d36/class_compact_star_1_1_physics_1_1_evolution_1_1_state_vector.html" title="Composite view over the current ODE state (tag → State*).">StateVector</a> and an ordered list of tags.  <a href="../../d8/ddc/class_compact_star_1_1_physics_1_1_evolution_1_1_state_layout.html#ab444e011bdc1266189ddf7ac55d6bebf">More...</a><br /></td></tr>
-<tr class="separator:ab444e011bdc1266189ddf7ac55d6bebf"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a15a5ae4230a16c4f3855cc2612decc9c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d8/ddc/class_compact_star_1_1_physics_1_1_evolution_1_1_state_layout.html#a15a5ae4230a16c4f3855cc2612decc9c">Configure</a> (const <a class="el" href="../../da/d36/class_compact_star_1_1_physics_1_1_evolution_1_1_state_vector.html">StateVector</a> &amp;state, const std::initializer_list&lt; <a class="el" href="../../da/d7b/namespace_compact_star_1_1_physics_1_1_state.html#af14f5554b0d9be50c5ea718733bc424b">Physics::State::StateTag</a> &gt; &amp;tags)</td></tr>
+<tr class="memdesc:a15a5ae4230a16c4f3855cc2612decc9c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Configure layout from a <a class="el" href="../../da/d36/class_compact_star_1_1_physics_1_1_evolution_1_1_state_vector.html" title="Composite view over the current ODE state (tag → State*).">StateVector</a> and an ordered list of tags.  <a href="../../d8/ddc/class_compact_star_1_1_physics_1_1_evolution_1_1_state_layout.html#a15a5ae4230a16c4f3855cc2612decc9c">More...</a><br /></td></tr>
+<tr class="separator:a15a5ae4230a16c4f3855cc2612decc9c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afaed840890f4ac1203ad6d4f7026659c"><td class="memItemLeft" align="right" valign="top"><a id="afaed840890f4ac1203ad6d4f7026659c" name="afaed840890f4ac1203ad6d4f7026659c"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>Configure</b> (const <a class="el" href="../../da/d36/class_compact_star_1_1_physics_1_1_evolution_1_1_state_vector.html">StateVector</a> &amp;state, const std::vector&lt; <a class="el" href="../../da/d7b/namespace_compact_star_1_1_physics_1_1_state.html#af14f5554b0d9be50c5ea718733bc424b">Physics::State::StateTag</a> &gt; &amp;tags)</td></tr>
+<tr class="separator:afaed840890f4ac1203ad6d4f7026659c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9b32f1c96f528d596ab57940a1ace2cc"><td class="memItemLeft" align="right" valign="top"><a id="a9b32f1c96f528d596ab57940a1ace2cc" name="a9b32f1c96f528d596ab57940a1ace2cc"></a>
 std::size_t&#160;</td><td class="memItemRight" valign="bottom"><b>TotalSize</b> () const noexcept</td></tr>
 <tr class="memdesc:a9b32f1c96f528d596ab57940a1ace2cc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Total dimension of the flat ODE vector y[] after configuration. <br /></td></tr>
@@ -150,8 +153,8 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><b>IsActive</b> (<a clas
 
 </div>
 </div>
-<a id="ab444e011bdc1266189ddf7ac55d6bebf" name="ab444e011bdc1266189ddf7ac55d6bebf"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ab444e011bdc1266189ddf7ac55d6bebf">&#9670;&#160;</a></span>Configure()</h2>
+<a id="a15a5ae4230a16c4f3855cc2612decc9c" name="a15a5ae4230a16c4f3855cc2612decc9c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a15a5ae4230a16c4f3855cc2612decc9c">&#9670;&#160;</a></span>Configure()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -165,7 +168,7 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><b>IsActive</b> (<a clas
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">std::initializer_list&lt; <a class="el" href="../../da/d7b/namespace_compact_star_1_1_physics_1_1_state.html#af14f5554b0d9be50c5ea718733bc424b">Physics::State::StateTag</a> &gt;&#160;</td>
+          <td class="paramtype">const std::initializer_list&lt; <a class="el" href="../../da/d7b/namespace_compact_star_1_1_physics_1_1_state.html#af14f5554b0d9be50c5ea718733bc424b">Physics::State::StateTag</a> &gt; &amp;&#160;</td>
           <td class="paramname"><em>tags</em>&#160;</td>
         </tr>
         <tr>

@@ -1,0 +1,109 @@
+\hypertarget{_tb_definition_8cpp}{}\doxysection{Compact\+Star/\+Physics/\+Driver/\+Thermal/\+Boundary/src/\+Tb\+Definition.cpp File Reference}
+\label{_tb_definition_8cpp}\index{CompactStar/Physics/Driver/Thermal/Boundary/src/TbDefinition.cpp@{CompactStar/Physics/Driver/Thermal/Boundary/src/TbDefinition.cpp}}
+
+
+Helpers for defining the base-\/of-\/envelope temperature Tb and locating the envelope boundary by density.  
+
+
+{\ttfamily \#include \char`\"{}Compact\+Star/\+Physics/\+Driver/\+Thermal/\+Boundary/\+Tb\+Definition.\+hpp\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}Compact\+Star/\+Physics/\+Evolution/\+Geometry\+Cache.\+hpp\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}Compact\+Star/\+Physics/\+Evolution/\+Star\+Context.\+hpp\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}Zaki/\+Physics/\+Constants.\+hpp\char`\"{}}\newline
+{\ttfamily \#include $<$cmath$>$}\newline
+{\ttfamily \#include $<$cstddef$>$}\newline
+{\ttfamily \#include $<$stdexcept$>$}\newline
+\doxysubsection*{Namespaces}
+\begin{DoxyCompactItemize}
+\item 
+namespace \mbox{\hyperlink{namespace_compact_star_1_1_physics}{Compact\+Star\+::\+Physics}}
+\begin{DoxyCompactList}\small\item\em High-\/level physical modeling layer for compact stars. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+std\+::size\+\_\+t \mbox{\hyperlink{_tb_definition_8cpp_a5b615534bdb8b02d3098e5a3b92682ee}{Compact\+Star\+::\+Physics\+::\+Driver\+::\+Thermal\+::\+Boundary\+::\+Find\+Tb\+Index}} (const Evolution\+::\+Star\+Context \&star, double rho\+\_\+b)
+\begin{DoxyCompactList}\small\item\em Find the index of the base-\/of-\/envelope radius (r\+\_\+b) in the star grid. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{_tb_definition_8cpp_a15c7287afe10e84a037a634caed1e4cb}{Compact\+Star\+::\+Physics\+::\+Driver\+::\+Thermal\+::\+Boundary\+::\+Compute\+Tb}} (const Evolution\+::\+Star\+Context \&star, const Evolution\+::\+Geometry\+Cache $\ast$geo, double T\+\_\+inf, const Tb\+Definition \&def)
+\begin{DoxyCompactList}\small\item\em Compute Tb (local) given T\+\_\+inf and a \mbox{\hyperlink{struct_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_boundary_1_1_tb_definition}{Tb\+Definition}} policy. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Helpers for defining the base-\/of-\/envelope temperature Tb and locating the envelope boundary by density. 
+
+This translation unit implements\+:
+\begin{DoxyItemize}
+\item Find\+Tb\+Index()\+: selects the radial index i\+\_\+b corresponding to a chosen envelope-\/base density threshold rho\+\_\+b.
+\item Compute\+Tb()\+: computes the local base-\/of-\/envelope temperature Tb from a redshifted isothermal-\/core temperature T\+\_\+inf.
+\end{DoxyItemize}\hypertarget{_tb_definition_8cpp_autotoc_md22}{}\doxysubsubsection{Physical meaning}\label{_tb_definition_8cpp_autotoc_md22}
+In neutron-\/star cooling models, the outer heat-\/blanketing envelope is often treated via a boundary condition at a fiducial mass/energy density rho\+\_\+b (commonly $\sim$1e10 g/cm$^\wedge$3). The mapping Tb -\/\texorpdfstring{$>$}{>} Ts is then supplied by an envelope model (e.\+g., Potekhin fits), while the interior is assumed isothermal in the redshifted sense\+:
+
+T\+\_\+inf = exp(nu(r)) $\ast$ T\+\_\+local(r) (constant in the isothermal interior),
+
+so that at the envelope base (index i\+\_\+b)\+:
+
+Tb = T\+\_\+local(r\+\_\+b) = T\+\_\+inf / exp(nu(r\+\_\+b)).\hypertarget{_tb_definition_8cpp_autotoc_md23}{}\doxysubsubsection{Units and conversions}\label{_tb_definition_8cpp_autotoc_md23}
+Compact\+Star stores the stellar energy density in geometric units as eps \mbox{[}km$^\wedge$-\/2\mbox{]}. The envelope threshold rho\+\_\+b is typically specified in cgs mass density units \mbox{[}g/cm$^\wedge$3\mbox{]}.
+
+Conversion is performed using Zaki\+::\+Physics constants\+:
+\begin{DoxyItemize}
+\item MEV\+\_\+\+FM3\+\_\+2\+\_\+\+INV\+\_\+\+KM2 \+: (Me\+V/fm$^\wedge$3) -\/\texorpdfstring{$>$}{>} (km$^\wedge$-\/2)
+\item MEV\+\_\+\+FM3\+\_\+2\+\_\+\+G\+\_\+\+CM3 \+: (Me\+V/fm$^\wedge$3) -\/\texorpdfstring{$>$}{>} (g/cm$^\wedge$3)
+\end{DoxyItemize}
+
+Therefore\+:
+\begin{DoxyItemize}
+\item eps\mbox{[}km$^\wedge$-\/2\mbox{]} -\/\texorpdfstring{$>$}{>} rho\mbox{[}g/cm$^\wedge$3\mbox{]} uses\+: rho = (eps / MEV\+\_\+\+FM3\+\_\+2\+\_\+\+INV\+\_\+\+KM2) $\ast$ MEV\+\_\+\+FM3\+\_\+2\+\_\+\+G\+\_\+\+CM3
+\item rho\mbox{[}g/cm$^\wedge$3\mbox{]} -\/\texorpdfstring{$>$}{>} eps\mbox{[}km$^\wedge$-\/2\mbox{]} uses the inverse\+: eps = (rho / MEV\+\_\+\+FM3\+\_\+2\+\_\+\+G\+\_\+\+CM3) $\ast$ MEV\+\_\+\+FM3\+\_\+2\+\_\+\+INV\+\_\+\+KM2
+\end{DoxyItemize}\hypertarget{_tb_definition_8cpp_autotoc_md24}{}\doxysubsubsection{Algorithmic notes}\label{_tb_definition_8cpp_autotoc_md24}
+Find\+Tb\+Index() assumes the stored energy density decreases monotonically with radius. It returns the first index i where eps(r\+\_\+i) \texorpdfstring{$<$}{<}= eps\+\_\+b. Depending on convention, users may prefer the last index above threshold (i-\/1) or an interpolated boundary radius.\hypertarget{_tb_definition_8cpp_autotoc_md25}{}\doxysubsubsection{Error handling}\label{_tb_definition_8cpp_autotoc_md25}
+These functions throw std\+::runtime\+\_\+error if required profile arrays are missing/inconsistent or if the requested threshold is not reached within the profile. 
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{_tb_definition_8cpp_a15c7287afe10e84a037a634caed1e4cb}\label{_tb_definition_8cpp_a15c7287afe10e84a037a634caed1e4cb}} 
+\index{TbDefinition.cpp@{TbDefinition.cpp}!ComputeTb@{ComputeTb}}
+\index{ComputeTb@{ComputeTb}!TbDefinition.cpp@{TbDefinition.cpp}}
+\doxysubsubsection{\texorpdfstring{ComputeTb()}{ComputeTb()}}
+{\footnotesize\ttfamily double Compact\+Star\+::\+Physics\+::\+Driver\+::\+Thermal\+::\+Boundary\+::\+Compute\+Tb (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_star_context}{Evolution\+::\+Star\+Context}} \&}]{star,  }\item[{const \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_geometry_cache}{Evolution\+::\+Geometry\+Cache}} $\ast$}]{geo,  }\item[{double}]{T\+\_\+inf,  }\item[{const \mbox{\hyperlink{struct_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_boundary_1_1_tb_definition}{Tb\+Definition}} \&}]{def }\end{DoxyParamCaption})}
+
+
+
+Compute Tb (local) given T\+\_\+inf and a Tb\+Definition policy. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em star} & Star\+Context (structure + profile). \\
+\hline
+{\em geo} & Optional Geometry\+Cache for exp(-\/ν) or exp(2ν) at r\+\_\+b. \\
+\hline
+{\em T\+\_\+inf} & Redshifted isothermal temperature \mbox{[}K\mbox{]}. \\
+\hline
+{\em def} & Policy describing rho\+\_\+b and how to compute Tb.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Tb in Kelvin (local frame at base of envelope). 
+\end{DoxyReturn}
+\mbox{\Hypertarget{_tb_definition_8cpp_a5b615534bdb8b02d3098e5a3b92682ee}\label{_tb_definition_8cpp_a5b615534bdb8b02d3098e5a3b92682ee}} 
+\index{TbDefinition.cpp@{TbDefinition.cpp}!FindTbIndex@{FindTbIndex}}
+\index{FindTbIndex@{FindTbIndex}!TbDefinition.cpp@{TbDefinition.cpp}}
+\doxysubsubsection{\texorpdfstring{FindTbIndex()}{FindTbIndex()}}
+{\footnotesize\ttfamily std\+::size\+\_\+t Compact\+Star\+::\+Physics\+::\+Driver\+::\+Thermal\+::\+Boundary\+::\+Find\+Tb\+Index (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_star_context}{Evolution\+::\+Star\+Context}} \&}]{star,  }\item[{double}]{rho\+\_\+b }\end{DoxyParamCaption})}
+
+
+
+Find the index of the base-\/of-\/envelope radius (r\+\_\+b) in the star grid. 
+
+Strategy\+:
+\begin{DoxyItemize}
+\item Use the Star\+Context profile to find the first radius where ρ(r) \texorpdfstring{$<$}{<}= ρ\+\_\+b (i.\+e., moving outward from core to crust/envelope).
+\end{DoxyItemize}
+
+Requirements\+:
+\begin{DoxyItemize}
+\item Star\+Context\+::\+Profile() exposes density column ρ(r) in g/cm$^\wedge$3 and radius grid R (km).
+\end{DoxyItemize}
+
+
+\begin{DoxyExceptions}{Exceptions}
+{\em std\+::runtime\+\_\+error} & if density profile is missing or the threshold cannot be bracketed. \\
+\hline
+\end{DoxyExceptions}

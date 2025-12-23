@@ -1,0 +1,48 @@
+\hypertarget{_envelope_potekhin1997_8hpp_source}{}\doxysection{Envelope\+Potekhin1997.\+hpp}
+\label{_envelope_potekhin1997_8hpp_source}\index{CompactStar/Physics/Driver/Thermal/Boundary/EnvelopePotekhin1997.hpp@{CompactStar/Physics/Driver/Thermal/Boundary/EnvelopePotekhin1997.hpp}}
+\mbox{\hyperlink{_envelope_potekhin1997_8hpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#ifndef COMPACTSTAR\_PHYSICS\_DRIVER\_THERMAL\_BOUNDARY\_ENVELOPEPOTEKHIN1997\_HPP}}
+\DoxyCodeLine{2 \textcolor{preprocessor}{\#define COMPACTSTAR\_PHYSICS\_DRIVER\_THERMAL\_BOUNDARY\_ENVELOPEPOTEKHIN1997\_HPP}}
+\DoxyCodeLine{3 }
+\DoxyCodeLine{4 \textcolor{comment}{// -\/*-\/ lsst-\/c++ -\/*-\/}}
+\DoxyCodeLine{5 \textcolor{comment}{/*}}
+\DoxyCodeLine{6 \textcolor{comment}{ * CompactStar}}
+\DoxyCodeLine{7 \textcolor{comment}{ * See License file at the top of the source tree.}}
+\DoxyCodeLine{8 \textcolor{comment}{ *}}
+\DoxyCodeLine{9 \textcolor{comment}{ * Copyright (c) 2025}}
+\DoxyCodeLine{10 \textcolor{comment}{ * Mohammadreza Zakeri}}
+\DoxyCodeLine{11 \textcolor{comment}{ *}}
+\DoxyCodeLine{12 \textcolor{comment}{ * MIT License — see LICENSE at repo root.}}
+\DoxyCodeLine{13 \textcolor{comment}{ */}}
+\DoxyCodeLine{14 }
+\DoxyCodeLine{49 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_i_envelope_8hpp}{CompactStar/Physics/Driver/Thermal/Boundary/IEnvelope.hpp}}"{}}}
+\DoxyCodeLine{50 }
+\DoxyCodeLine{51 \textcolor{keyword}{namespace }CompactStar::Physics::Driver::Thermal::Boundary}
+\DoxyCodeLine{52 \{}
+\DoxyCodeLine{53 }
+\DoxyCodeLine{62 \textcolor{keyword}{class }\mbox{\hyperlink{class_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_boundary_1_1_envelope_potekhin1997___iron}{EnvelopePotekhin1997\_Iron}} final : \textcolor{keyword}{public} \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_boundary_1_1_i_envelope}{IEnvelope}}}
+\DoxyCodeLine{63 \{}
+\DoxyCodeLine{64   \textcolor{keyword}{public}:}
+\DoxyCodeLine{65     \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_boundary_1_1_envelope_potekhin1997___iron}{\string~EnvelopePotekhin1997\_Iron}}() \textcolor{keyword}{override} = \textcolor{keywordflow}{default};}
+\DoxyCodeLine{66 }
+\DoxyCodeLine{74     \textcolor{keywordtype}{double} \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_boundary_1_1_envelope_potekhin1997___iron_a3c1f63e8281120ebde204427978a615f}{Ts\_from\_Tb}}(\textcolor{keywordtype}{double} Tb, \textcolor{keywordtype}{double} g14, \textcolor{keywordtype}{double} xi) \textcolor{keyword}{const override};}
+\DoxyCodeLine{75 }
+\DoxyCodeLine{77     \textcolor{keyword}{const} \textcolor{keywordtype}{char} *\mbox{\hyperlink{class_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_boundary_1_1_envelope_potekhin1997___iron_a9a3da445d08eab61ac4eb1de636d43c3}{ModelName}}() \{ \textcolor{keywordflow}{return} \textcolor{stringliteral}{"{}Potekhin1997\_Iron"{}}; \}}
+\DoxyCodeLine{78 \};}
+\DoxyCodeLine{79 }
+\DoxyCodeLine{89 \textcolor{keyword}{class }\mbox{\hyperlink{class_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_boundary_1_1_envelope_potekhin1997___accreted}{EnvelopePotekhin1997\_Accreted}} final : \textcolor{keyword}{public} \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_boundary_1_1_i_envelope}{IEnvelope}}}
+\DoxyCodeLine{90 \{}
+\DoxyCodeLine{91   \textcolor{keyword}{public}:}
+\DoxyCodeLine{92     \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_boundary_1_1_envelope_potekhin1997___accreted}{\string~EnvelopePotekhin1997\_Accreted}}() \textcolor{keyword}{override} = \textcolor{keywordflow}{default};}
+\DoxyCodeLine{93 }
+\DoxyCodeLine{101     \textcolor{keywordtype}{double} \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_boundary_1_1_envelope_potekhin1997___accreted_a42569da7996e51fbd29f5fb38c70df92}{Ts\_from\_Tb}}(\textcolor{keywordtype}{double} Tb, \textcolor{keywordtype}{double} g14, \textcolor{keywordtype}{double} xi) \textcolor{keyword}{const override};}
+\DoxyCodeLine{102 }
+\DoxyCodeLine{103     \textcolor{keyword}{const} \textcolor{keywordtype}{char} *\mbox{\hyperlink{class_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_boundary_1_1_envelope_potekhin1997___accreted_adf9d77a34a848c903853a6f55944adac}{ModelName}}()\textcolor{keyword}{ override }\{ \textcolor{keywordflow}{return} \textcolor{stringliteral}{"{}Potekhin1997\_Accreted"{}}; \}}
+\DoxyCodeLine{104 \};}
+\DoxyCodeLine{105 }
+\DoxyCodeLine{106 \} \textcolor{comment}{// namespace CompactStar::Physics::Driver::Thermal::Boundary}}
+\DoxyCodeLine{107 }
+\DoxyCodeLine{108 \textcolor{preprocessor}{\#endif }\textcolor{comment}{/* COMPACTSTAR\_PHYSICS\_DRIVER\_THERMAL\_BOUNDARY\_ENVELOPEPOTEKHIN1997\_HPP */}\textcolor{preprocessor}{}}
+
+\end{DoxyCode}

@@ -99,6 +99,10 @@ std::size_t&#160;</td><td class="memItemRight" valign="bottom"><b>Size</b> () co
 const <a class="el" href="../../d3/dd3/struct_zaki_1_1_vector_1_1_data_column.html">Zaki::Vector::DataColumn</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>R</b> () const</td></tr>
 <tr class="memdesc:af9782646d70879b09ce4d89084e306ad"><td class="mdescLeft">&#160;</td><td class="mdescRight">r(km) <br /></td></tr>
 <tr class="separator:af9782646d70879b09ce4d89084e306ad"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a28053469d47ce3f8c3316a87f49035b6"><td class="memItemLeft" align="right" valign="top"><a id="a28053469d47ce3f8c3316a87f49035b6" name="a28053469d47ce3f8c3316a87f49035b6"></a>
+const <a class="el" href="../../d3/dd3/struct_zaki_1_1_vector_1_1_data_column.html">Zaki::Vector::DataColumn</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>Mass</b> () const</td></tr>
+<tr class="memdesc:a28053469d47ce3f8c3316a87f49035b6"><td class="mdescLeft">&#160;</td><td class="mdescRight">m(km) <br /></td></tr>
+<tr class="separator:a28053469d47ce3f8c3316a87f49035b6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aafe7c5b33665721e466aa28fb5b38af0"><td class="memItemLeft" align="right" valign="top"><a id="aafe7c5b33665721e466aa28fb5b38af0" name="aafe7c5b33665721e466aa28fb5b38af0"></a>
 const <a class="el" href="../../d3/dd3/struct_zaki_1_1_vector_1_1_data_column.html">Zaki::Vector::DataColumn</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>Area</b> () const</td></tr>
 <tr class="memdesc:aafe7c5b33665721e466aa28fb5b38af0"><td class="mdescLeft">&#160;</td><td class="mdescRight">4*pi*r^2 <br /></td></tr>
@@ -186,9 +190,9 @@ const <a class="el" href="../../d3/dd3/struct_zaki_1_1_vector_1_1_data_column.ht
 <p>Lambda handling:</p><ul>
 <li>If ctx.Lambda() exists and matches <a class="el" href="../../d2/d50/class_compact_star_1_1_physics_1_1_evolution_1_1_geometry_cache.html#ae9b06cbe27c75ff4d2814a991655197c" title="Number of radial samples (N).">Size()</a>, use it.</li>
 <li>Otherwise derive Lambda from (m,r):  <p class="formulaDsp">
-<picture><source srcset="../../form_48_dark.png" media="(prefers-color-scheme: dark)"/><img class="formulaDsp" alt="\[
+<picture><source srcset="../../form_60_dark.png" media="(prefers-color-scheme: dark)"/><img class="formulaDsp" alt="\[
      \Lambda = -\tfrac12\ln(1-2m/r)
-   \]" src="../../form_48.png"/></picture>
+   \]" src="../../form_60.png"/></picture>
 </p>
  with a small clamp if (1-2m/r) &lt;= 0. </li>
 </ul>

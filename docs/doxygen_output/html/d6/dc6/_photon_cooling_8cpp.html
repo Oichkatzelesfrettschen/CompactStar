@@ -81,7 +81,9 @@ $(function() {
 
 <p>Implementation of PhotonCooling driver (surface photon cooling).  
 <a href="#details">More...</a></p>
-<div class="textblock"><code>#include &quot;<a class="el" href="../../db/d12/_photon_cooling_8hpp_source.html">CompactStar/Physics/Driver/Thermal/PhotonCooling.hpp</a>&quot;</code><br />
+<div class="textblock"><code>#include &quot;CompactStar/Physics/Evolution/Diagnostics/DiagnosticCatalog.hpp&quot;</code><br />
+<code>#include &quot;<a class="el" href="../../dc/d74/_diagnostic_packet_8hpp_source.html">CompactStar/Physics/Evolution/Diagnostics/DiagnosticPacket.hpp</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="../../db/d12/_photon_cooling_8hpp_source.html">CompactStar/Physics/Driver/Thermal/PhotonCooling.hpp</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="../../df/db4/_photon_cooling___details_8hpp_source.html">CompactStar/Physics/Driver/Thermal/PhotonCooling_Details.hpp</a>&quot;</code><br />
 <code>#include &lt;cmath&gt;</code><br />
 <code>#include &lt;limits&gt;</code><br />
@@ -102,13 +104,13 @@ Namespaces</h2></td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Implementation of PhotonCooling driver (surface photon cooling). </p>
-<p>This file implements: <a class="el" href="../../d8/df7/class_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_photon_cooling.html#a30a11d918558a08eb44bed1272a7a486" title="Add photon cooling contribution to the thermal RHS.">CompactStar::Physics::Driver::Thermal::PhotonCooling::AccumulateRHS</a></p>
+<p>This file implements: <a class="el" href="../../d8/df7/class_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_photon_cooling.html#a30a11d918558a08eb44bed1272a7a486" title="Accumulate photon-cooling contribution into the thermal RHS.">CompactStar::Physics::Driver::Thermal::PhotonCooling::AccumulateRHS</a></p>
 <p>The driver contributes a cooling term to the redshifted thermal degree of freedom (typically T_inf), using a blackbody-like photon luminosity measured at infinity:</p>
 <p>L_{γ,∞} = F_rad * A_∞ * σ_SB * T_surf^4 * global_scale</p>
 <p>and:</p>
 <p>dT_inf/dt += - L_{γ,∞} / C_eff .</p>
 <hr  />
- <h2><a class="anchor" id="autotoc_md23"></a>
+ <h2><a class="anchor" id="autotoc_md42"></a>
 UNITS (must remain consistent):</h2>
 <ul>
 <li>T_surf, T_inf are in Kelvin [K]</li>

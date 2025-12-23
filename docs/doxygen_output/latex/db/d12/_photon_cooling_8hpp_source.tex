@@ -2,108 +2,130 @@
 \label{_photon_cooling_8hpp_source}\index{CompactStar/Physics/Driver/Thermal/PhotonCooling.hpp@{CompactStar/Physics/Driver/Thermal/PhotonCooling.hpp}}
 \mbox{\hyperlink{_photon_cooling_8hpp}{Go to the documentation of this file.}}
 \begin{DoxyCode}{0}
-\DoxyCodeLine{1 \textcolor{comment}{// -\/*-\/ lsst-\/c++ -\/*-\/}}
-\DoxyCodeLine{2 \textcolor{comment}{/*}}
-\DoxyCodeLine{3 \textcolor{comment}{ * CompactStar}}
-\DoxyCodeLine{4 \textcolor{comment}{ * See License file at the top of the source tree.}}
-\DoxyCodeLine{5 \textcolor{comment}{ *}}
-\DoxyCodeLine{6 \textcolor{comment}{ * Copyright (c) 2025}}
-\DoxyCodeLine{7 \textcolor{comment}{ * Mohammadreza Zakeri}}
-\DoxyCodeLine{8 \textcolor{comment}{ *}}
-\DoxyCodeLine{9 \textcolor{comment}{ * MIT License — see LICENSE at repo root.}}
-\DoxyCodeLine{10 \textcolor{comment}{ */}}
-\DoxyCodeLine{11 }
-\DoxyCodeLine{102 \textcolor{preprocessor}{\#ifndef CompactStar\_Physics\_Driver\_Thermal\_PhotonCooling\_H}}
-\DoxyCodeLine{103 \textcolor{preprocessor}{\#define CompactStar\_Physics\_Driver\_Thermal\_PhotonCooling\_H}}
-\DoxyCodeLine{104 }
-\DoxyCodeLine{105 \textcolor{preprocessor}{\#include <string>}}
-\DoxyCodeLine{106 \textcolor{preprocessor}{\#include <vector>}}
-\DoxyCodeLine{107 }
-\DoxyCodeLine{108 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_i_driver_8hpp}{CompactStar/Physics/Driver/IDriver.hpp}}"{}}}
-\DoxyCodeLine{109 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_tags_8hpp}{CompactStar/Physics/State/Tags.hpp}}"{}}}
-\DoxyCodeLine{110 }
-\DoxyCodeLine{111 \textcolor{keyword}{namespace }CompactStar::Physics::Driver::Thermal::Detail}
-\DoxyCodeLine{112 \{}
-\DoxyCodeLine{113 \textcolor{keyword}{struct }PhotonCooling\_Details;}
-\DoxyCodeLine{114 \}}
-\DoxyCodeLine{115 \textcolor{keyword}{namespace }CompactStar::Physics::Driver::Thermal}
-\DoxyCodeLine{116 \{}
-\DoxyCodeLine{117 }
-\DoxyCodeLine{138 \textcolor{keyword}{class }\mbox{\hyperlink{class_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_photon_cooling}{PhotonCooling}} final : \textcolor{keyword}{public} \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_i_driver}{IDriver}},}
-\DoxyCodeLine{139                             \textcolor{keyword}{public} \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_driver_1_1_diagnostics_1_1_i_driver_diagnostics}{Driver::Diagnostics::IDriverDiagnostics}}}
-\DoxyCodeLine{140 \{}
-\DoxyCodeLine{141   \textcolor{keyword}{public}:}
-\DoxyCodeLine{152     \textcolor{keyword}{struct }\mbox{\hyperlink{struct_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_photon_cooling_1_1_options}{Options}}}
-\DoxyCodeLine{153     \{}
-\DoxyCodeLine{158         \textcolor{keyword}{enum class} \mbox{\hyperlink{struct_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_photon_cooling_1_1_options_a1db89fd4a5a8c77fc76d2570512180b0}{SurfaceModel}}}
-\DoxyCodeLine{159         \{}
-\DoxyCodeLine{166             \mbox{\hyperlink{struct_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_photon_cooling_1_1_options_a1db89fd4a5a8c77fc76d2570512180b0a31df53c693659e5e312ab6387c68ee4a}{DirectTSurf}},}
-\DoxyCodeLine{167 }
-\DoxyCodeLine{175             \mbox{\hyperlink{struct_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_photon_cooling_1_1_options_a1db89fd4a5a8c77fc76d2570512180b0aa4fea34445f4251020fd1c3c14acd626}{EnvelopeMapping}},}
-\DoxyCodeLine{176 }
-\DoxyCodeLine{183             \mbox{\hyperlink{struct_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_photon_cooling_1_1_options_a1db89fd4a5a8c77fc76d2570512180b0a98f677e2b96d80e0c853d448714c5731}{ApproxFromTinf}}}
-\DoxyCodeLine{184 }
-\DoxyCodeLine{185         \} surface\_model = \mbox{\hyperlink{struct_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_photon_cooling_1_1_options_a1db89fd4a5a8c77fc76d2570512180b0a98f677e2b96d80e0c853d448714c5731}{SurfaceModel::ApproxFromTinf}};}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#ifndef COMPACTSTAR\_PHYSICS\_DRIVER\_THERMAL\_PHOTONCOOLING\_HPP}}
+\DoxyCodeLine{2 \textcolor{preprocessor}{\#define COMPACTSTAR\_PHYSICS\_DRIVER\_THERMAL\_PHOTONCOOLING\_HPP}}
+\DoxyCodeLine{3 \textcolor{comment}{// -\/*-\/ lsst-\/c++ -\/*-\/}}
+\DoxyCodeLine{4 \textcolor{comment}{/*}}
+\DoxyCodeLine{5 \textcolor{comment}{ * CompactStar}}
+\DoxyCodeLine{6 \textcolor{comment}{ * See License file at the top of the source tree.}}
+\DoxyCodeLine{7 \textcolor{comment}{ *}}
+\DoxyCodeLine{8 \textcolor{comment}{ * Copyright (c) 2025}}
+\DoxyCodeLine{9 \textcolor{comment}{ * Mohammadreza Zakeri}}
+\DoxyCodeLine{10 \textcolor{comment}{ *}}
+\DoxyCodeLine{11 \textcolor{comment}{ * MIT License — see LICENSE at repo root.}}
+\DoxyCodeLine{12 \textcolor{comment}{ */}}
+\DoxyCodeLine{13 }
+\DoxyCodeLine{94 \textcolor{preprocessor}{\#include <string>}}
+\DoxyCodeLine{95 \textcolor{preprocessor}{\#include <vector>}}
+\DoxyCodeLine{96 }
+\DoxyCodeLine{97 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_driver_diagnostics_8hpp}{CompactStar/Physics/Driver/Diagnostics/DriverDiagnostics.hpp}}"{}}}
+\DoxyCodeLine{98 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_i_driver_8hpp}{CompactStar/Physics/Driver/IDriver.hpp}}"{}}}
+\DoxyCodeLine{99 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_tags_8hpp}{CompactStar/Physics/State/Tags.hpp}}"{}}}
+\DoxyCodeLine{100 }
+\DoxyCodeLine{101 \textcolor{keyword}{namespace }CompactStar::Physics::Driver::Thermal::Detail}
+\DoxyCodeLine{102 \{}
+\DoxyCodeLine{103 \textcolor{keyword}{struct }PhotonCooling\_Details;}
+\DoxyCodeLine{104 \} \textcolor{comment}{// namespace CompactStar::Physics::Driver::Thermal::Detail}}
+\DoxyCodeLine{105 }
+\DoxyCodeLine{106 \textcolor{keyword}{namespace }CompactStar::Physics::Driver::Thermal}
+\DoxyCodeLine{107 \{}
+\DoxyCodeLine{108 }
+\DoxyCodeLine{125 \textcolor{keyword}{class }\mbox{\hyperlink{class_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_photon_cooling}{PhotonCooling}} final : \textcolor{keyword}{public} \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_i_driver}{IDriver}},}
+\DoxyCodeLine{126                             \textcolor{keyword}{public} \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_driver_1_1_diagnostics_1_1_i_driver_diagnostics}{Driver::Diagnostics::IDriverDiagnostics}}}
+\DoxyCodeLine{127 \{}
+\DoxyCodeLine{128   \textcolor{keyword}{public}:}
+\DoxyCodeLine{129     \textcolor{comment}{//==============================================================}}
+\DoxyCodeLine{137 \textcolor{comment}{}    \textcolor{keyword}{enum class} \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_photon_cooling_a96bcc265f89cbaab1819395ba3abcf24}{EnvelopeModel}}}
+\DoxyCodeLine{138     \{}
+\DoxyCodeLine{139         \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_photon_cooling_a96bcc265f89cbaab1819395ba3abcf24acefa8a9606819ed409dc761ca6080887}{Iron}},     }
+\DoxyCodeLine{140         \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_photon_cooling_a96bcc265f89cbaab1819395ba3abcf24aa2a70d796a6cabb6e82b3b61c9e9d004}{Accreted}}, }
+\DoxyCodeLine{141         \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_photon_cooling_a96bcc265f89cbaab1819395ba3abcf24a90589c47f06eb971d548591f23c285af}{Custom}}      }
+\DoxyCodeLine{142     \};}
+\DoxyCodeLine{143     \textcolor{comment}{//==============================================================}}
+\DoxyCodeLine{144 }
+\DoxyCodeLine{160     \textcolor{keyword}{struct }\mbox{\hyperlink{struct_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_photon_cooling_1_1_options}{Options}}}
+\DoxyCodeLine{161     \{}
+\DoxyCodeLine{166         \textcolor{keyword}{enum class} \mbox{\hyperlink{struct_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_photon_cooling_1_1_options_a1db89fd4a5a8c77fc76d2570512180b0}{SurfaceModel}}}
+\DoxyCodeLine{167         \{}
+\DoxyCodeLine{174             \mbox{\hyperlink{struct_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_photon_cooling_1_1_options_a1db89fd4a5a8c77fc76d2570512180b0a31df53c693659e5e312ab6387c68ee4a}{DirectTSurf}},}
+\DoxyCodeLine{175 }
+\DoxyCodeLine{185             \mbox{\hyperlink{struct_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_photon_cooling_1_1_options_a1db89fd4a5a8c77fc76d2570512180b0ae59965b5d60645672c0223a3c8299b36}{EnvelopeTbTs}},}
 \DoxyCodeLine{186 }
-\DoxyCodeLine{207         \textcolor{keywordtype}{double} \mbox{\hyperlink{struct_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_photon_cooling_1_1_options_aa1cfded12d2ee64573749ee89121d44f}{radiating\_fraction}} = 1.0;}
-\DoxyCodeLine{208 }
-\DoxyCodeLine{226         \textcolor{keywordtype}{double} \mbox{\hyperlink{struct_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_photon_cooling_1_1_options_a5493255a672378d4ced037d3308b9610}{C\_eff}} = 1.0e40;}
-\DoxyCodeLine{227 }
-\DoxyCodeLine{245         \textcolor{keywordtype}{double} \mbox{\hyperlink{struct_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_photon_cooling_1_1_options_a2859ac2d399d27d8d9ee410c8175b9ae}{global\_scale}} = 1.0;}
-\DoxyCodeLine{246     \};}
-\DoxyCodeLine{247 }
-\DoxyCodeLine{249     \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_photon_cooling_a73a3516839e327277df85d9a6ff00bd0}{PhotonCooling}}() = \textcolor{keywordflow}{default};}
+\DoxyCodeLine{193             \mbox{\hyperlink{struct_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_photon_cooling_1_1_options_a1db89fd4a5a8c77fc76d2570512180b0a98f677e2b96d80e0c853d448714c5731}{ApproxFromTinf}}}
+\DoxyCodeLine{194 }
+\DoxyCodeLine{195         \} surface\_model = \mbox{\hyperlink{struct_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_photon_cooling_1_1_options_a1db89fd4a5a8c77fc76d2570512180b0ae59965b5d60645672c0223a3c8299b36}{SurfaceModel::EnvelopeTbTs}};}
+\DoxyCodeLine{196 }
+\DoxyCodeLine{212         \textcolor{keywordtype}{double} \mbox{\hyperlink{struct_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_photon_cooling_1_1_options_aa1cfded12d2ee64573749ee89121d44f}{radiating\_fraction}} = 1.0;}
+\DoxyCodeLine{213 }
+\DoxyCodeLine{229         \textcolor{keywordtype}{double} \mbox{\hyperlink{struct_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_photon_cooling_1_1_options_a5493255a672378d4ced037d3308b9610}{C\_eff}} = 1.0e40;}
+\DoxyCodeLine{230 }
+\DoxyCodeLine{242         \textcolor{keywordtype}{double} \mbox{\hyperlink{struct_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_photon_cooling_1_1_options_a2859ac2d399d27d8d9ee410c8175b9ae}{global\_scale}} = 1.0;}
+\DoxyCodeLine{243 }
+\DoxyCodeLine{244         \textcolor{comment}{// -\/-\/-\/-\/ Envelope / blanket policy -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{245 }
+\DoxyCodeLine{249         \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_photon_cooling_a96bcc265f89cbaab1819395ba3abcf24}{EnvelopeModel}} \mbox{\hyperlink{struct_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_photon_cooling_1_1_options_a30dfac9d1374cac18c1e3c1d0819c7dc}{envelope}} = \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_photon_cooling_a96bcc265f89cbaab1819395ba3abcf24acefa8a9606819ed409dc761ca6080887}{EnvelopeModel::Iron}};}
 \DoxyCodeLine{250 }
-\DoxyCodeLine{252     \textcolor{keyword}{explicit} \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_photon_cooling_a34af3f990be0332bee9c7b0572b24b50}{PhotonCooling}}(\textcolor{keyword}{const} \mbox{\hyperlink{struct_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_photon_cooling_1_1_options}{Options}} \&opts) : opts\_(opts) \{\}}
-\DoxyCodeLine{253 }
-\DoxyCodeLine{254     \textcolor{comment}{// -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
-\DoxyCodeLine{255     \textcolor{comment}{//  IDriver interface}}
-\DoxyCodeLine{256     \textcolor{comment}{// -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
-\DoxyCodeLine{257 }
-\DoxyCodeLine{259     std::string \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_photon_cooling_a9953abae9587b8953309a1ecb9066cf3}{Name}}()\textcolor{keyword}{ const override }\{ \textcolor{keywordflow}{return} \textcolor{stringliteral}{"{}PhotonCooling"{}}; \}}
-\DoxyCodeLine{260 }
-\DoxyCodeLine{262     \textcolor{keyword}{const} std::vector<State::StateTag> \&\mbox{\hyperlink{class_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_photon_cooling_a1e27f52db93a97bad80c9457d7e1b1f0}{DependsOn}}()\textcolor{keyword}{ const override}}
-\DoxyCodeLine{263 \textcolor{keyword}{    }\{}
-\DoxyCodeLine{264         \textcolor{keyword}{static} \textcolor{keyword}{const} std::vector<State::StateTag> deps\{\mbox{\hyperlink{namespace_compact_star_1_1_physics_1_1_state_af14f5554b0d9be50c5ea718733bc424bafdf1e200d60089abcb4a4c80ecd2bb75}{State::StateTag::Thermal}}\};}
-\DoxyCodeLine{265         \textcolor{keywordflow}{return} deps;}
-\DoxyCodeLine{266     \}}
-\DoxyCodeLine{267 }
-\DoxyCodeLine{269     \textcolor{keyword}{const} std::vector<State::StateTag> \&\mbox{\hyperlink{class_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_photon_cooling_ae0fef08a30b8f5ac85aa8330ffe201ae}{Updates}}()\textcolor{keyword}{ const override}}
-\DoxyCodeLine{270 \textcolor{keyword}{    }\{}
-\DoxyCodeLine{271         \textcolor{keyword}{static} \textcolor{keyword}{const} std::vector<State::StateTag> ups\{\mbox{\hyperlink{namespace_compact_star_1_1_physics_1_1_state_af14f5554b0d9be50c5ea718733bc424bafdf1e200d60089abcb4a4c80ecd2bb75}{State::StateTag::Thermal}}\};}
-\DoxyCodeLine{272         \textcolor{keywordflow}{return} ups;}
-\DoxyCodeLine{273     \}}
+\DoxyCodeLine{261         \textcolor{keywordtype}{double} \mbox{\hyperlink{struct_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_photon_cooling_1_1_options_a779d1abdc6a31e44a9a580e2d271ffc6}{envelope\_xi}} = 0.0;}
+\DoxyCodeLine{262 }
+\DoxyCodeLine{272         \textcolor{keywordtype}{double} \mbox{\hyperlink{struct_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_photon_cooling_1_1_options_a9900900e32dd8527663359a6553cc307}{rho\_b}} = 1.0e10;}
+\DoxyCodeLine{273     \};}
 \DoxyCodeLine{274 }
-\DoxyCodeLine{317     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_photon_cooling_a30a11d918558a08eb44bed1272a7a486}{AccumulateRHS}}(\textcolor{keywordtype}{double} t,}
-\DoxyCodeLine{318                        \textcolor{keyword}{const} \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_state_vector}{Evolution::StateVector}} \&Y,}
-\DoxyCodeLine{319                        \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_r_h_s_accumulator}{Evolution::RHSAccumulator}} \&dYdt,}
-\DoxyCodeLine{320                        \textcolor{keyword}{const} \mbox{\hyperlink{struct_compact_star_1_1_physics_1_1_evolution_1_1_driver_context}{Evolution::DriverContext}} \&ctx) \textcolor{keyword}{const override};}
-\DoxyCodeLine{321 }
-\DoxyCodeLine{322     \textcolor{comment}{// -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
-\DoxyCodeLine{323     \textcolor{comment}{//  Options access}}
+\DoxyCodeLine{276     \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_photon_cooling_a73a3516839e327277df85d9a6ff00bd0}{PhotonCooling}}() = \textcolor{keywordflow}{default};}
+\DoxyCodeLine{277 }
+\DoxyCodeLine{279     \textcolor{keyword}{explicit} \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_photon_cooling_a34af3f990be0332bee9c7b0572b24b50}{PhotonCooling}}(\textcolor{keyword}{const} \mbox{\hyperlink{struct_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_photon_cooling_1_1_options}{Options}} \&opts) : opts\_(opts) \{\}}
+\DoxyCodeLine{280 }
+\DoxyCodeLine{281     \textcolor{comment}{// -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{282     \textcolor{comment}{//  IDriver interface}}
+\DoxyCodeLine{283     \textcolor{comment}{// -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{284 }
+\DoxyCodeLine{286     std::string \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_photon_cooling_a9953abae9587b8953309a1ecb9066cf3}{Name}}()\textcolor{keyword}{ const override }\{ \textcolor{keywordflow}{return} \textcolor{stringliteral}{"{}PhotonCooling"{}}; \}}
+\DoxyCodeLine{287 }
+\DoxyCodeLine{289     \textcolor{keyword}{const} std::vector<State::StateTag> \&\mbox{\hyperlink{class_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_photon_cooling_a1e27f52db93a97bad80c9457d7e1b1f0}{DependsOn}}()\textcolor{keyword}{ const override}}
+\DoxyCodeLine{290 \textcolor{keyword}{    }\{}
+\DoxyCodeLine{291         \textcolor{keyword}{static} \textcolor{keyword}{const} std::vector<State::StateTag> deps\{\mbox{\hyperlink{namespace_compact_star_1_1_physics_1_1_state_af14f5554b0d9be50c5ea718733bc424bafdf1e200d60089abcb4a4c80ecd2bb75}{State::StateTag::Thermal}}\};}
+\DoxyCodeLine{292         \textcolor{keywordflow}{return} deps;}
+\DoxyCodeLine{293     \}}
+\DoxyCodeLine{294 }
+\DoxyCodeLine{296     \textcolor{keyword}{const} std::vector<State::StateTag> \&\mbox{\hyperlink{class_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_photon_cooling_ae0fef08a30b8f5ac85aa8330ffe201ae}{Updates}}()\textcolor{keyword}{ const override}}
+\DoxyCodeLine{297 \textcolor{keyword}{    }\{}
+\DoxyCodeLine{298         \textcolor{keyword}{static} \textcolor{keyword}{const} std::vector<State::StateTag> ups\{\mbox{\hyperlink{namespace_compact_star_1_1_physics_1_1_state_af14f5554b0d9be50c5ea718733bc424bafdf1e200d60089abcb4a4c80ecd2bb75}{State::StateTag::Thermal}}\};}
+\DoxyCodeLine{299         \textcolor{keywordflow}{return} ups;}
+\DoxyCodeLine{300     \}}
+\DoxyCodeLine{301 }
+\DoxyCodeLine{319     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_photon_cooling_a30a11d918558a08eb44bed1272a7a486}{AccumulateRHS}}(\textcolor{keywordtype}{double} t,}
+\DoxyCodeLine{320                        \textcolor{keyword}{const} \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_state_vector}{Evolution::StateVector}} \&Y,}
+\DoxyCodeLine{321                        \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_r_h_s_accumulator}{Evolution::RHSAccumulator}} \&dYdt,}
+\DoxyCodeLine{322                        \textcolor{keyword}{const} \mbox{\hyperlink{struct_compact_star_1_1_physics_1_1_evolution_1_1_driver_context}{Evolution::DriverContext}} \&ctx) \textcolor{keyword}{const override};}
+\DoxyCodeLine{323 }
 \DoxyCodeLine{324     \textcolor{comment}{// -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
-\DoxyCodeLine{325 }
-\DoxyCodeLine{327     \textcolor{keyword}{const} \mbox{\hyperlink{struct_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_photon_cooling_1_1_options}{Options}} \&\mbox{\hyperlink{class_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_photon_cooling_a8855b0a423c6fab5bfdbf8124534fd77}{GetOptions}}()\textcolor{keyword}{ const }\{ \textcolor{keywordflow}{return} opts\_; \}}
-\DoxyCodeLine{328 }
-\DoxyCodeLine{330     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_photon_cooling_a0a3209e025fbe7669a9944e09d10e9d5}{SetOptions}}(\textcolor{keyword}{const} \mbox{\hyperlink{struct_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_photon_cooling_1_1_options}{Options}} \&o) \{ opts\_ = o; \}}
-\DoxyCodeLine{331 }
-\DoxyCodeLine{332     \textcolor{comment}{// -\/-\/-\/ IDriverDiagnostics -\/-\/-\/}}
-\DoxyCodeLine{333     [[nodiscard]] std::string \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_photon_cooling_a80765fd32881122d00150939a4119f03}{DiagnosticsName}}() \textcolor{keyword}{const override};}
-\DoxyCodeLine{334     [[nodiscard]] \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_diagnostics_1_1_unit_contract}{Evolution::Diagnostics::UnitContract}} \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_photon_cooling_a7b609acb6e931f07674ef9b2312324fc}{UnitContract}}() \textcolor{keyword}{const override};}
-\DoxyCodeLine{335 }
-\DoxyCodeLine{336     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_photon_cooling_a66ec050c82074aa8847ed1d3872d257e}{DiagnoseSnapshot}}(\textcolor{keywordtype}{double} t,}
-\DoxyCodeLine{337                           \textcolor{keyword}{const} \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_state_vector}{Evolution::StateVector}} \&Y,}
-\DoxyCodeLine{338                           \textcolor{keyword}{const} \mbox{\hyperlink{struct_compact_star_1_1_physics_1_1_evolution_1_1_driver_context}{Evolution::DriverContext}} \&ctx,}
-\DoxyCodeLine{339                           \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_diagnostics_1_1_diagnostic_packet}{Evolution::Diagnostics::DiagnosticPacket}} \&out) \textcolor{keyword}{const override};}
+\DoxyCodeLine{325     \textcolor{comment}{//  Options access}}
+\DoxyCodeLine{326     \textcolor{comment}{// -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{327 }
+\DoxyCodeLine{329     \textcolor{keyword}{const} \mbox{\hyperlink{struct_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_photon_cooling_1_1_options}{Options}} \&\mbox{\hyperlink{class_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_photon_cooling_a8855b0a423c6fab5bfdbf8124534fd77}{GetOptions}}()\textcolor{keyword}{ const }\{ \textcolor{keywordflow}{return} opts\_; \}}
+\DoxyCodeLine{330 }
+\DoxyCodeLine{332     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_photon_cooling_a0a3209e025fbe7669a9944e09d10e9d5}{SetOptions}}(\textcolor{keyword}{const} \mbox{\hyperlink{struct_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_photon_cooling_1_1_options}{Options}} \&o) \{ opts\_ = o; \}}
+\DoxyCodeLine{333 }
+\DoxyCodeLine{334     \textcolor{comment}{// -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{335     \textcolor{comment}{//  Diagnostics interface (IDriverDiagnostics)}}
+\DoxyCodeLine{336     \textcolor{comment}{// -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{337     [[nodiscard]] std::string \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_photon_cooling_a80765fd32881122d00150939a4119f03}{DiagnosticsName}}() \textcolor{keyword}{const override};}
+\DoxyCodeLine{338     [[nodiscard]] \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_diagnostics_1_1_unit_contract}{Evolution::Diagnostics::UnitContract}} \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_photon_cooling_a7b609acb6e931f07674ef9b2312324fc}{UnitContract}}() \textcolor{keyword}{const override};}
+\DoxyCodeLine{339     [[nodiscard]] \mbox{\hyperlink{struct_compact_star_1_1_physics_1_1_evolution_1_1_diagnostics_1_1_producer_catalog}{Evolution::Diagnostics::ProducerCatalog}} \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_photon_cooling_a776205ce86f52382ebba846fa5bff698}{DiagnosticsCatalog}}() \textcolor{keyword}{const override};}
 \DoxyCodeLine{340 }
-\DoxyCodeLine{341   \textcolor{keyword}{private}:}
-\DoxyCodeLine{343     Options opts\_\{\};}
-\DoxyCodeLine{344 }
-\DoxyCodeLine{346     \textcolor{keyword}{friend} \textcolor{keyword}{struct }\mbox{\hyperlink{struct_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_detail_1_1_photon_cooling___details}{CompactStar::Physics::Driver::Thermal::Detail::PhotonCooling\_Details}};}
-\DoxyCodeLine{347 \};}
+\DoxyCodeLine{341     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_photon_cooling_a66ec050c82074aa8847ed1d3872d257e}{DiagnoseSnapshot}}(\textcolor{keywordtype}{double} t,}
+\DoxyCodeLine{342                           \textcolor{keyword}{const} \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_state_vector}{Evolution::StateVector}} \&Y,}
+\DoxyCodeLine{343                           \textcolor{keyword}{const} \mbox{\hyperlink{struct_compact_star_1_1_physics_1_1_evolution_1_1_driver_context}{Evolution::DriverContext}} \&ctx,}
+\DoxyCodeLine{344                           \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_diagnostics_1_1_diagnostic_packet}{Evolution::Diagnostics::DiagnosticPacket}} \&out) \textcolor{keyword}{const override};}
+\DoxyCodeLine{345 }
+\DoxyCodeLine{346   \textcolor{keyword}{private}:}
+\DoxyCodeLine{347     Options opts\_\{\};}
 \DoxyCodeLine{348 }
-\DoxyCodeLine{349 \} \textcolor{comment}{// namespace CompactStar::Physics::Driver::Thermal}}
-\DoxyCodeLine{350 }
-\DoxyCodeLine{351 \textcolor{preprocessor}{\#endif }\textcolor{comment}{/* CompactStar\_Physics\_Driver\_Thermal\_PhotonCooling\_H */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{349     \textcolor{comment}{// Allow details layer to access internals (constants/helpers) without bloating the header.}}
+\DoxyCodeLine{350     \textcolor{keyword}{friend} \textcolor{keyword}{struct }\mbox{\hyperlink{struct_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_detail_1_1_photon_cooling___details}{CompactStar::Physics::Driver::Thermal::Detail::PhotonCooling\_Details}};}
+\DoxyCodeLine{351 \};}
+\DoxyCodeLine{352 }
+\DoxyCodeLine{353 \} \textcolor{comment}{// namespace CompactStar::Physics::Driver::Thermal}}
+\DoxyCodeLine{354 }
+\DoxyCodeLine{355 \textcolor{preprocessor}{\#endif }\textcolor{comment}{/* COMPACTSTAR\_PHYSICS\_DRIVER\_THERMAL\_PHOTONCOOLING\_HPP */}\textcolor{preprocessor}{}}
 
 \end{DoxyCode}

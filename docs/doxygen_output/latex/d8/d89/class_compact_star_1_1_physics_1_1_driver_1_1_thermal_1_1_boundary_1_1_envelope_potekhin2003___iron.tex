@@ -1,0 +1,69 @@
+\hypertarget{class_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_boundary_1_1_envelope_potekhin2003___iron}{}\doxysection{Compact\+Star\+::Physics\+::Driver\+::Thermal\+::Boundary\+::Envelope\+Potekhin2003\+\_\+\+Iron Class Reference}
+\label{class_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_boundary_1_1_envelope_potekhin2003___iron}\index{CompactStar::Physics::Driver::Thermal::Boundary::EnvelopePotekhin2003\_Iron@{CompactStar::Physics::Driver::Thermal::Boundary::EnvelopePotekhin2003\_Iron}}
+
+
+Potekhin2003 iron envelope model (currently delegates to Potekhin1997 iron fit).  
+
+
+
+
+{\ttfamily \#include $<$Envelope\+Potekhin2003.\+hpp$>$}
+
+Inheritance diagram for Compact\+Star\+::Physics\+::Driver\+::Thermal\+::Boundary\+::Envelope\+Potekhin2003\+\_\+\+Iron\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{d8/d89/class_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_boundary_1_1_envelope_potekhin2003___iron}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+double \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_boundary_1_1_envelope_potekhin2003___iron_ade39bb606642295d8bbe4555ab49519a}{Ts\+\_\+from\+\_\+\+Tb}} (double Tb, double g14, double xi) const override
+\begin{DoxyCompactList}\small\item\em Map Tb→\+Ts using the 2003-\/family interface (delegates for now). \end{DoxyCompactList}\item 
+const char $\ast$ \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_boundary_1_1_envelope_potekhin2003___iron_a84b9a26f6a535044cb74eed440ebbe58}{Model\+Name}} ()
+\begin{DoxyCompactList}\small\item\em Get the unique model name/identifier. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Potekhin2003 iron envelope model (currently delegates to Potekhin1997 iron fit). 
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_boundary_1_1_envelope_potekhin2003___iron_a84b9a26f6a535044cb74eed440ebbe58}\label{class_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_boundary_1_1_envelope_potekhin2003___iron_a84b9a26f6a535044cb74eed440ebbe58}} 
+\index{CompactStar::Physics::Driver::Thermal::Boundary::EnvelopePotekhin2003\_Iron@{CompactStar::Physics::Driver::Thermal::Boundary::EnvelopePotekhin2003\_Iron}!ModelName@{ModelName}}
+\index{ModelName@{ModelName}!CompactStar::Physics::Driver::Thermal::Boundary::EnvelopePotekhin2003\_Iron@{CompactStar::Physics::Driver::Thermal::Boundary::EnvelopePotekhin2003\_Iron}}
+\doxysubsubsection{\texorpdfstring{ModelName()}{ModelName()}}
+{\footnotesize\ttfamily const char $\ast$ Compact\+Star\+::\+Physics\+::\+Driver\+::\+Thermal\+::\+Boundary\+::\+Envelope\+Potekhin2003\+\_\+\+Iron\+::\+Model\+Name (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Get the unique model name/identifier. 
+
+Used for diagnostics, logging, and configuration.
+
+\begin{DoxyReturn}{Returns}
+Null-\/terminated string with the model name. 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_boundary_1_1_i_envelope_a56874e396192ab511a15fca5526f2f85}{Compact\+Star\+::\+Physics\+::\+Driver\+::\+Thermal\+::\+Boundary\+::\+IEnvelope}}.
+
+\mbox{\Hypertarget{class_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_boundary_1_1_envelope_potekhin2003___iron_ade39bb606642295d8bbe4555ab49519a}\label{class_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_boundary_1_1_envelope_potekhin2003___iron_ade39bb606642295d8bbe4555ab49519a}} 
+\index{CompactStar::Physics::Driver::Thermal::Boundary::EnvelopePotekhin2003\_Iron@{CompactStar::Physics::Driver::Thermal::Boundary::EnvelopePotekhin2003\_Iron}!Ts\_from\_Tb@{Ts\_from\_Tb}}
+\index{Ts\_from\_Tb@{Ts\_from\_Tb}!CompactStar::Physics::Driver::Thermal::Boundary::EnvelopePotekhin2003\_Iron@{CompactStar::Physics::Driver::Thermal::Boundary::EnvelopePotekhin2003\_Iron}}
+\doxysubsubsection{\texorpdfstring{Ts\_from\_Tb()}{Ts\_from\_Tb()}}
+{\footnotesize\ttfamily double Compact\+Star\+::\+Physics\+::\+Driver\+::\+Thermal\+::\+Boundary\+::\+Envelope\+Potekhin2003\+\_\+\+Iron\+::\+Ts\+\_\+from\+\_\+\+Tb (\begin{DoxyParamCaption}\item[{double}]{Tb,  }\item[{double}]{g14,  }\item[{double}]{xi }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Map Tb→\+Ts using the 2003-\/family interface (delegates for now). 
+
+
+
+Implements \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_boundary_1_1_i_envelope_ab6a2838aed45caff401eff3d5142f201}{Compact\+Star\+::\+Physics\+::\+Driver\+::\+Thermal\+::\+Boundary\+::\+IEnvelope}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Compact\+Star/\+Physics/\+Driver/\+Thermal/\+Boundary/\mbox{\hyperlink{_envelope_potekhin2003_8hpp}{Envelope\+Potekhin2003.\+hpp}}\item 
+Compact\+Star/\+Physics/\+Driver/\+Thermal/\+Boundary/src/\mbox{\hyperlink{_envelope_potekhin2003_8cpp}{Envelope\+Potekhin2003.\+cpp}}\end{DoxyCompactItemize}

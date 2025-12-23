@@ -80,10 +80,11 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 
-<p>Driver that contributes surface photon cooling to the thermal evolution RHS.  
+<p>Photon (surface) cooling driver for the thermal evolution subsystem.  
 <a href="#details">More...</a></p>
 <div class="textblock"><code>#include &lt;string&gt;</code><br />
 <code>#include &lt;vector&gt;</code><br />
+<code>#include &quot;<a class="el" href="../../de/d7f/_driver_diagnostics_8hpp_source.html">CompactStar/Physics/Driver/Diagnostics/DriverDiagnostics.hpp</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="../../d7/d2e/_i_driver_8hpp_source.html">CompactStar/Physics/Driver/IDriver.hpp</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="../../dd/de3/_tags_8hpp_source.html">CompactStar/Physics/State/Tags.hpp</a>&quot;</code><br />
 </div>
@@ -92,10 +93,10 @@ $(function() {
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="nested-classes" name="nested-classes"></a>
 Classes</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d8/df7/class_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_photon_cooling.html">CompactStar::Physics::Driver::Thermal::PhotonCooling</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Adds a photon-cooling contribution to the thermal RHS (redshifted frame).  <a href="../../d8/df7/class_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_photon_cooling.html#details">More...</a><br /></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Surface photon cooling driver (redshifted frame).  <a href="../../d8/df7/class_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_photon_cooling.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d4/d9a/struct_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_photon_cooling_1_1_options.html">CompactStar::Physics::Driver::Thermal::PhotonCooling::Options</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Configuration parameters for <a class="el" href="../../d8/df7/class_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_photon_cooling.html" title="Adds a photon-cooling contribution to the thermal RHS (redshifted frame).">PhotonCooling</a>.  <a href="../../d4/d9a/struct_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_photon_cooling_1_1_options.html#details">More...</a><br /></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Configuration parameters for <a class="el" href="../../d8/df7/class_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_photon_cooling.html" title="Surface photon cooling driver (redshifted frame).">PhotonCooling</a>.  <a href="../../d4/d9a/struct_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_photon_cooling_1_1_options.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="namespaces" name="namespaces"></a>
@@ -105,83 +106,72 @@ Namespaces</h2></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Driver that contributes surface photon cooling to the thermal evolution RHS. </p>
-<h2><a class="anchor" id="autotoc_md5"></a>
-Physical intent</h2>
-<p>This driver adds a <b>photon luminosity loss</b> term to the redshifted thermal degree of freedom (typically (T_\infty)), producing a contribution</p>
+<div class="textblock"><p>Photon (surface) cooling driver for the thermal evolution subsystem. </p>
+<p>This driver contributes <b>surface photon emission</b> as an energy-loss term in the thermal evolution equation. It is intentionally minimal and is meant to be composed with other thermal drivers (neutrino cooling, heating, etc.).</p>
+<h2><a class="anchor" id="autotoc_md34"></a>
+Thermal variable convention</h2>
+<p>CompactStar evolves a dimensionless logarithmic thermal variable:</p>
 <p class="formulaDsp">
-<picture><source srcset="../../form_14_dark.png" media="(prefers-color-scheme: dark)"/><img class="formulaDsp" alt="\[
-  \frac{d\ln (T_\infty / T_{\rm ref})}{dt} = - \frac{L_{\gamma,\infty}}{C_{\rm eff}\,T_\infty}
-\]" src="../../form_14.png"/></picture>
+<picture><source srcset="../../form_33_dark.png" media="(prefers-color-scheme: dark)"/><img class="formulaDsp" alt="\[
+  y_T \equiv \ln\!\left(\frac{T_\infty}{T_{\rm ref}}\right),
+\]" src="../../form_33.png"/></picture>
 </p>
-<p>where (T_\infty) is the redshifted isothermal-core temperature in Kelvin.</p>
-<dl class="section note"><dt>Note</dt><dd><b>ODE variable convention:</b> CompactStar evolves the dimensionless logarithmic variable (\ln (T_\infty / T_{\rm ref})). If a physical model naturally computes (dT_\infty/dt), it must be converted via:  <p class="formulaDsp">
-<picture><source srcset="../../form_15_dark.png" media="(prefers-color-scheme: dark)"/><img class="formulaDsp" alt="\[
-  \frac{d\ln (T_\infty / T_{\rm ref})}{dt} = \frac{1}{T_\infty}\,\frac{dT_\infty}{dt}.
-\]" src="../../form_15.png"/></picture>
-</p>
-</dd></dl>
-<p>with a simple blackbody-like luminosity at infinity:</p>
+<p>where (T_\infty) is a redshifted (isothermal-core) temperature in Kelvin. If a physical model yields (dT_\infty/dt), it must be converted as:</p>
 <p class="formulaDsp">
-<picture><source srcset="../../form_16_dark.png" media="(prefers-color-scheme: dark)"/><img class="formulaDsp" alt="\[
-  L_{\gamma,\infty} = \mathcal{F}_{\rm rad}\; A_{\infty}\; \sigma_{\rm SB}\; T_{\rm surf}^4 .
-\]" src="../../form_16.png"/></picture>
+<picture><source srcset="../../form_34_dark.png" media="(prefers-color-scheme: dark)"/><img class="formulaDsp" alt="\[
+  \frac{dy_T}{dt} = \frac{1}{T_\infty}\frac{dT_\infty}{dt}.
+\]" src="../../form_34.png"/></picture>
 </p>
-<p>Where:</p><ul>
-<li><picture><source srcset="../../form_17_dark.png" media="(prefers-color-scheme: dark)"/><img class="formulaInl" alt="$T_{\rm surf}$" src="../../form_17.png"/></picture> is a local-frame surface temperature [K].</li>
-<li><picture><source srcset="../../form_18_dark.png" media="(prefers-color-scheme: dark)"/><img class="formulaInl" alt="$\sigma_{\rm SB}$" src="../../form_18.png"/></picture> is the Stefan–Boltzmann constant.</li>
-<li><picture><source srcset="../../form_19_dark.png" media="(prefers-color-scheme: dark)"/><img class="formulaInl" alt="$A_{\infty}$" src="../../form_19.png"/></picture> is the <b>redshifted emitting area</b> appropriate for luminosity measured at infinity.</li>
-<li><picture><source srcset="../../form_20_dark.png" media="(prefers-color-scheme: dark)"/><img class="formulaInl" alt="$\mathcal{F}_{\rm rad}$" src="../../form_20.png"/></picture> is a <b>dimensionless</b> prefactor capturing partial surface emission (hot spots, beaming, opacity fudge, etc.).</li>
-</ul>
-<h2><a class="anchor" id="autotoc_md6"></a>
-Units policy (IMPORTANT)</h2>
-<p>This header documents the unit expectations; the implementation must be consistent with whatever unit conventions CompactStar uses.</p>
-<h3><a class="anchor" id="autotoc_md7"></a>
-Temperature</h3>
-<ul>
-<li>(T_{\rm surf}), (T_\infty): <b>Kelvin [K]</b>.</li>
-</ul>
-<h3><a class="anchor" id="autotoc_md8"></a>
-Luminosity</h3>
-<p>If (\sigma_{\rm SB}) is taken in <b>cgs</b>, (\sigma_{\rm SB} \approx 5.670374419\times10^{-5}\;{\rm erg\,cm^{-2}\,s^{-1}\,K^{-4}}), then:</p><ul>
-<li>(A_\infty) must be in <b>cm²</b></li>
-<li>(L_{\gamma,\infty}) is in <b>erg/s</b></li>
-</ul>
-<h3><a class="anchor" id="autotoc_md9"></a>
-Heat capacity</h3>
-<ul>
-<li>C_eff must be [erg/K] so that (dT_\infty/dt) is [K/s]. When evolving (\ln T_\infty), the driver ultimately contributes (d(\ln T_\infty)/dt) with units [1/s].</li>
-</ul>
-<h3><a class="anchor" id="autotoc_md10"></a>
-Geometry input</h3>
-<p>CompactStar structure profiles often store radius in <b>km</b>. If the GeometryCache provides (R) in km, the implementation must convert:</p><ul>
-<li>(R_{\rm cm} = 10^5 \, R_{\rm km}) before constructing (A_\infty).</li>
-</ul>
-<h3><a class="anchor" id="autotoc_md11"></a>
-Redshift convention</h3>
-<p>For a static metric with (\nu(r)) defined via (g_{tt}=-e^{2\nu(r)}), the luminosity observed at infinity from a local surface blackbody scales as:</p>
+<h2><a class="anchor" id="autotoc_md35"></a>
+Photon luminosity at infinity</h2>
+<p>For a static metric with (g_{tt}=-e^{2\nu(r)}), a local blackbody surface emission corresponds to:</p>
 <p class="formulaDsp">
-<picture><source srcset="../../form_21_dark.png" media="(prefers-color-scheme: dark)"/><img class="formulaDsp" alt="\[
-  L_{\gamma,\infty} = 4\pi R^2 \, e^{2\nu(R)} \, \sigma_{\rm SB}\, T_{\rm surf}^4 ,
-\]" src="../../form_21.png"/></picture>
+<picture><source srcset="../../form_35_dark.png" media="(prefers-color-scheme: dark)"/><img class="formulaDsp" alt="\[
+  L_{\gamma,\infty}
+  = \mathcal{S}\;\mathcal{F}_{\rm rad}\;A_\infty\;\sigma_{\rm SB}\;T_{\rm surf}^4,
+\quad
+  A_\infty \equiv 4\pi R^2 e^{2\nu(R)}.
+\]" src="../../form_35.png"/></picture>
 </p>
-<p>i.e. the area factor used here is:  </p><p class="formulaDsp">
-<picture><source srcset="../../form_22_dark.png" media="(prefers-color-scheme: dark)"/><img class="formulaDsp" alt="\[
-  A_\infty \equiv 4\pi R^2 e^{2\nu(R)} .
-\]" src="../../form_22.png"/></picture>
-</p>
-<p>The driver will obtain the needed metric/redshift factors from the GeometryCache (via DriverContext::geo) when available.</p>
-<h2><a class="anchor" id="autotoc_md12"></a>
-DriverContext usage</h2>
 <ul>
-<li><code>ctx.geo</code> (GeometryCache) is the preferred source for (R) and (e^{2\nu}).</li>
-<li><code>ctx.envelope</code> may later supply a physically motivated mapping (T_\infty \mapsto T_{\rm surf}) (or (T_{\rm core}\mapsto T_{\rm surf})).</li>
+<li>(T_{\rm surf}): local effective surface temperature [K]</li>
+<li>(\sigma_{\rm SB}): Stefan–Boltzmann constant</li>
+<li>(A_\infty): redshifted emitting area for luminosity measured at infinity</li>
+<li>(\mathcal{F}_{\rm rad}): dimensionless “radiating fraction” (hot spots, emissivity, etc.)</li>
+<li>(\mathcal{S}): additional dimensionless global scale (debug / knob)</li>
 </ul>
-<h2><a class="anchor" id="autotoc_md13"></a>
-Scope / limitations</h2>
-<p>This is intentionally minimal:</p><ul>
-<li>No neutrino cooling, no internal heating, no envelope microphysics by default.</li>
-<li><code>C_eff</code> is treated as an externally provided effective heat capacity. A future model should compute (C_{\rm eff}(T)) from microphysics + structure. </li>
+<p>The RHS contribution (in terms of the evolved variable) is:</p>
+<p class="formulaDsp">
+<picture><source srcset="../../form_36_dark.png" media="(prefers-color-scheme: dark)"/><img class="formulaDsp" alt="\[
+  \frac{dy_T}{dt}
+  \mathrel{+}= - \frac{L_{\gamma,\infty}}{C_{\rm eff}\,T_\infty}.
+\]" src="../../form_36.png"/></picture>
+</p>
+<p>where (C_{\rm eff}) is an effective heat capacity [erg/K] (in cgs conventions).</p>
+<h2><a class="anchor" id="autotoc_md36"></a>
+Envelope / blanket modeling</h2>
+<p>Determining (T_{\rm surf}) from an interior temperature requires an envelope (“blanket”) prescription. In the new architecture, <b>the envelope choice and parameters live in PhotonCooling::Options</b>, not in the global Evolution config and not in DriverContext.</p>
+<p>The driver may obtain (T_{\rm surf}) by:</p><ul>
+<li>direct use of a stored (T_{\rm surf}) in ThermalState (if provided),</li>
+<li>computing (T_{\rm surf}) from a Tb→Ts envelope mapping (preferred path),</li>
+<li>using a simple approximation for debugging (e.g., (T_{\rm surf}\approx T_\infty)).</li>
+</ul>
+<h2><a class="anchor" id="autotoc_md37"></a>
+Units policy (implementation must be consistent)</h2>
+<p>This header documents intended units; the implementation must honor them.</p>
+<ul>
+<li>Temperatures: Kelvin [K]</li>
+<li>Luminosity: erg/s</li>
+<li>Heat capacity (C_{\rm eff}): erg/K</li>
+<li>If (\sigma_{\rm SB}) is cgs: (\sigma_{\rm SB}\approx 5.670374419\times 10^{-5}\,{\rm erg\,cm^{-2}\,s^{-1}\,K^{-4}}), then (A_\infty) must be in cm².</li>
+</ul>
+<p>CompactStar profiles commonly store radius in km; the implementation must convert (R_{\rm km}\to R_{\rm cm}) before forming areas when using cgs.</p>
+<h2><a class="anchor" id="autotoc_md38"></a>
+Context usage</h2>
+<ul>
+<li><code>ctx.geo</code> is the preferred source for (R) and (e^{2\nu(R)}) (via cached geometry).</li>
+<li><code>ctx.star</code> may be used to compute surface gravity (g_{14}) for envelope fits.</li>
+<li>This driver does <b>not</b> require <code>ctx.envelope</code>; envelope policy is internal to Options. </li>
 </ul>
 </div></div><!-- contents -->
 <!-- start footer part -->

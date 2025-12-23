@@ -1,0 +1,69 @@
+\hypertarget{class_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_boundary_1_1_envelope_potekhin2003___accreted}{}\doxysection{Compact\+Star\+::Physics\+::Driver\+::Thermal\+::Boundary\+::Envelope\+Potekhin2003\+\_\+\+Accreted Class Reference}
+\label{class_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_boundary_1_1_envelope_potekhin2003___accreted}\index{CompactStar::Physics::Driver::Thermal::Boundary::EnvelopePotekhin2003\_Accreted@{CompactStar::Physics::Driver::Thermal::Boundary::EnvelopePotekhin2003\_Accreted}}
+
+
+Potekhin2003 accreted envelope model (currently delegates to Potekhin1997 accreted fit).  
+
+
+
+
+{\ttfamily \#include $<$Envelope\+Potekhin2003.\+hpp$>$}
+
+Inheritance diagram for Compact\+Star\+::Physics\+::Driver\+::Thermal\+::Boundary\+::Envelope\+Potekhin2003\+\_\+\+Accreted\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{d0/df9/class_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_boundary_1_1_envelope_potekhin2003___accreted}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+double \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_boundary_1_1_envelope_potekhin2003___accreted_a61341238ae3f786f3361307eaff8ba31}{Ts\+\_\+from\+\_\+\+Tb}} (double Tb, double g14, double xi) const override
+\begin{DoxyCompactList}\small\item\em Map Tb→\+Ts using the 2003-\/family interface (delegates for now). \end{DoxyCompactList}\item 
+const char $\ast$ \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_boundary_1_1_envelope_potekhin2003___accreted_a177e807fc7cb8257b4421a716690c3d7}{Model\+Name}} () override
+\begin{DoxyCompactList}\small\item\em Get the unique model name/identifier. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Potekhin2003 accreted envelope model (currently delegates to Potekhin1997 accreted fit). 
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_boundary_1_1_envelope_potekhin2003___accreted_a177e807fc7cb8257b4421a716690c3d7}\label{class_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_boundary_1_1_envelope_potekhin2003___accreted_a177e807fc7cb8257b4421a716690c3d7}} 
+\index{CompactStar::Physics::Driver::Thermal::Boundary::EnvelopePotekhin2003\_Accreted@{CompactStar::Physics::Driver::Thermal::Boundary::EnvelopePotekhin2003\_Accreted}!ModelName@{ModelName}}
+\index{ModelName@{ModelName}!CompactStar::Physics::Driver::Thermal::Boundary::EnvelopePotekhin2003\_Accreted@{CompactStar::Physics::Driver::Thermal::Boundary::EnvelopePotekhin2003\_Accreted}}
+\doxysubsubsection{\texorpdfstring{ModelName()}{ModelName()}}
+{\footnotesize\ttfamily const char $\ast$ Compact\+Star\+::\+Physics\+::\+Driver\+::\+Thermal\+::\+Boundary\+::\+Envelope\+Potekhin2003\+\_\+\+Accreted\+::\+Model\+Name (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Get the unique model name/identifier. 
+
+Used for diagnostics, logging, and configuration.
+
+\begin{DoxyReturn}{Returns}
+Null-\/terminated string with the model name. 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_boundary_1_1_i_envelope_a56874e396192ab511a15fca5526f2f85}{Compact\+Star\+::\+Physics\+::\+Driver\+::\+Thermal\+::\+Boundary\+::\+IEnvelope}}.
+
+\mbox{\Hypertarget{class_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_boundary_1_1_envelope_potekhin2003___accreted_a61341238ae3f786f3361307eaff8ba31}\label{class_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_boundary_1_1_envelope_potekhin2003___accreted_a61341238ae3f786f3361307eaff8ba31}} 
+\index{CompactStar::Physics::Driver::Thermal::Boundary::EnvelopePotekhin2003\_Accreted@{CompactStar::Physics::Driver::Thermal::Boundary::EnvelopePotekhin2003\_Accreted}!Ts\_from\_Tb@{Ts\_from\_Tb}}
+\index{Ts\_from\_Tb@{Ts\_from\_Tb}!CompactStar::Physics::Driver::Thermal::Boundary::EnvelopePotekhin2003\_Accreted@{CompactStar::Physics::Driver::Thermal::Boundary::EnvelopePotekhin2003\_Accreted}}
+\doxysubsubsection{\texorpdfstring{Ts\_from\_Tb()}{Ts\_from\_Tb()}}
+{\footnotesize\ttfamily double Compact\+Star\+::\+Physics\+::\+Driver\+::\+Thermal\+::\+Boundary\+::\+Envelope\+Potekhin2003\+\_\+\+Accreted\+::\+Ts\+\_\+from\+\_\+\+Tb (\begin{DoxyParamCaption}\item[{double}]{Tb,  }\item[{double}]{g14,  }\item[{double}]{xi }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Map Tb→\+Ts using the 2003-\/family interface (delegates for now). 
+
+
+
+Implements \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_boundary_1_1_i_envelope_ab6a2838aed45caff401eff3d5142f201}{Compact\+Star\+::\+Physics\+::\+Driver\+::\+Thermal\+::\+Boundary\+::\+IEnvelope}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Compact\+Star/\+Physics/\+Driver/\+Thermal/\+Boundary/\mbox{\hyperlink{_envelope_potekhin2003_8hpp}{Envelope\+Potekhin2003.\+hpp}}\item 
+Compact\+Star/\+Physics/\+Driver/\+Thermal/\+Boundary/src/\mbox{\hyperlink{_envelope_potekhin2003_8cpp}{Envelope\+Potekhin2003.\+cpp}}\end{DoxyCompactItemize}

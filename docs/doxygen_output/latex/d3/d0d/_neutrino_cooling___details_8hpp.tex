@@ -1,0 +1,89 @@
+\hypertarget{_neutrino_cooling___details_8hpp}{}\doxysection{Compact\+Star/\+Physics/\+Driver/\+Thermal/\+Neutrino\+Cooling\+\_\+\+Details.hpp File Reference}
+\label{_neutrino_cooling___details_8hpp}\index{CompactStar/Physics/Driver/Thermal/NeutrinoCooling\_Details.hpp@{CompactStar/Physics/Driver/Thermal/NeutrinoCooling\_Details.hpp}}
+
+
+Shared computations for Neutrino\+Cooling (physics + diagnostics).  
+
+
+{\ttfamily \#include $<$string$>$}\newline
+{\ttfamily \#include $<$vector$>$}\newline
+{\ttfamily \#include \char`\"{}Compact\+Star/\+Physics/\+Evolution/\+Driver\+Context.\+hpp\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}Compact\+Star/\+Physics/\+Evolution/\+State\+Vector.\+hpp\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}Compact\+Star/\+Physics/\+State/\+Thermal\+State.\+hpp\char`\"{}}\newline
+\doxysubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{struct_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_detail_1_1_neutrino_cooling___details}{Compact\+Star\+::\+Physics\+::\+Driver\+::\+Thermal\+::\+Detail\+::\+Neutrino\+Cooling\+\_\+\+Details}}
+\begin{DoxyCompactList}\small\item\em Bundle of derived neutrino-\/cooling quantities for physics/diagnostics. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Namespaces}
+\begin{DoxyCompactItemize}
+\item 
+namespace \mbox{\hyperlink{namespace_compact_star_1_1_physics}{Compact\+Star\+::\+Physics}}
+\begin{DoxyCompactList}\small\item\em High-\/level physical modeling layer for compact stars. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+Neutrino\+Cooling\+\_\+\+Details \mbox{\hyperlink{_neutrino_cooling___details_8hpp_a017b32db80be303c7f5724ca4770e18f}{Compact\+Star\+::\+Physics\+::\+Driver\+::\+Thermal\+::\+Detail\+::\+Compute\+Derived}} (const Neutrino\+Cooling \&drv, const Evolution\+::\+State\+Vector \&Y, const Evolution\+::\+Driver\+Context \&ctx)
+\begin{DoxyCompactList}\small\item\em Compute derived quantities for \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_neutrino_cooling}{Neutrino\+Cooling}}. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{_neutrino_cooling___details_8hpp_a1207123648f14ac2377601828aa19e12}{Compact\+Star\+::\+Physics\+::\+Driver\+::\+Thermal\+::\+Detail\+::\+Diagnose}} (const Neutrino\+Cooling \&self, double t, const Evolution\+::\+State\+Vector \&Y, const Evolution\+::\+Driver\+Context \&ctx, Evolution\+::\+Diagnostics\+::\+Diagnostic\+Packet \&out)
+\begin{DoxyCompactList}\small\item\em Emit a diagnostics packet for \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_neutrino_cooling}{Neutrino\+Cooling}} at a given snapshot. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Shared computations for Neutrino\+Cooling (physics + diagnostics). 
+
+This module centralizes all computations used by both\+:
+\begin{DoxyItemize}
+\item Neutrino\+Cooling\+::\+Accumulate\+RHS (evolution physics), and
+\item Neutrino\+Cooling\+::\+Diagnose\+Snapshot (diagnostic output).
+\end{DoxyItemize}
+
+The key design goal is to prevent \char`\"{}diagnostics drift\char`\"{}\+: if the neutrino cooling model changes, diagnostics remain consistent automatically because they call the same Compute\+Derived() helper. 
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{_neutrino_cooling___details_8hpp_a017b32db80be303c7f5724ca4770e18f}\label{_neutrino_cooling___details_8hpp_a017b32db80be303c7f5724ca4770e18f}} 
+\index{NeutrinoCooling\_Details.hpp@{NeutrinoCooling\_Details.hpp}!ComputeDerived@{ComputeDerived}}
+\index{ComputeDerived@{ComputeDerived}!NeutrinoCooling\_Details.hpp@{NeutrinoCooling\_Details.hpp}}
+\doxysubsubsection{\texorpdfstring{ComputeDerived()}{ComputeDerived()}}
+{\footnotesize\ttfamily Neutrino\+Cooling\+\_\+\+Details Compact\+Star\+::\+Physics\+::\+Driver\+::\+Thermal\+::\+Detail\+::\+Compute\+Derived (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_neutrino_cooling}{Neutrino\+Cooling}} \&}]{drv,  }\item[{const \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_state_vector}{Evolution\+::\+State\+Vector}} \&}]{Y,  }\item[{const \mbox{\hyperlink{struct_compact_star_1_1_physics_1_1_evolution_1_1_driver_context}{Evolution\+::\+Driver\+Context}} \&}]{ctx }\end{DoxyParamCaption})}
+
+
+
+Compute derived quantities for Neutrino\+Cooling. 
+
+This function should\+: 1) extract Tinf from Thermal\+State, 2) validate driver options (C\+\_\+eff, global\+\_\+scale, enabled channels), 3) compute L\+\_\+nu\+\_\+inf by integrating emissivities over proper volume (future), 4) convert to d\+Tinf/dt = -\/L\+\_\+nu\+\_\+inf / C\+\_\+eff, 5) convert to d/dt ln(Tinf/\+Tref) = (1/\+Tinf) d\+Tinf/dt.
+
+
+\begin{DoxyParams}{Parameters}
+{\em drv} & Neutrino\+Cooling driver instance (options live in drv). \\
+\hline
+{\em Y} & Composite state vector (Thermal\+State read here). \\
+\hline
+{\em ctx} & Driver context (structure, EOS, microphysics hooks live here). \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{_neutrino_cooling___details_8hpp_a1207123648f14ac2377601828aa19e12}\label{_neutrino_cooling___details_8hpp_a1207123648f14ac2377601828aa19e12}} 
+\index{NeutrinoCooling\_Details.hpp@{NeutrinoCooling\_Details.hpp}!Diagnose@{Diagnose}}
+\index{Diagnose@{Diagnose}!NeutrinoCooling\_Details.hpp@{NeutrinoCooling\_Details.hpp}}
+\doxysubsubsection{\texorpdfstring{Diagnose()}{Diagnose()}}
+{\footnotesize\ttfamily void Compact\+Star\+::\+Physics\+::\+Driver\+::\+Thermal\+::\+Detail\+::\+Diagnose (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_neutrino_cooling}{Neutrino\+Cooling}} \&}]{self,  }\item[{double}]{t,  }\item[{const \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_state_vector}{Evolution\+::\+State\+Vector}} \&}]{Y,  }\item[{const \mbox{\hyperlink{struct_compact_star_1_1_physics_1_1_evolution_1_1_driver_context}{Evolution\+::\+Driver\+Context}} \&}]{ctx,  }\item[{\mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_diagnostics_1_1_diagnostic_packet}{Evolution\+::\+Diagnostics\+::\+Diagnostic\+Packet}} \&}]{out }\end{DoxyParamCaption})}
+
+
+
+Emit a diagnostics packet for Neutrino\+Cooling at a given snapshot. 
+
+Uses Compute\+Derived() so diagnostics remain consistent with physics.
+
+
+\begin{DoxyParams}{Parameters}
+{\em self} & Driver instance (used for name/options). \\
+\hline
+{\em t} & Current simulation time. \\
+\hline
+{\em Y} & Composite state vector. \\
+\hline
+{\em ctx} & Driver context. \\
+\hline
+{\em out} & Output packet (will be overwritten/deterministically filled). \\
+\hline
+\end{DoxyParams}

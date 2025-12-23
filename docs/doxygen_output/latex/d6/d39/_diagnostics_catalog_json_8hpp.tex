@@ -1,0 +1,43 @@
+\hypertarget{_diagnostics_catalog_json_8hpp}{}\doxysection{Compact\+Star/\+Physics/\+Evolution/\+Diagnostics/\+Diagnostics\+Catalog\+Json.hpp File Reference}
+\label{_diagnostics_catalog_json_8hpp}\index{CompactStar/Physics/Evolution/Diagnostics/DiagnosticsCatalogJson.hpp@{CompactStar/Physics/Evolution/Diagnostics/DiagnosticsCatalogJson.hpp}}
+
+
+Minimal JSON writer for diagnostics catalog.  
+
+
+{\ttfamily \#include $<$ostream$>$}\newline
+{\ttfamily \#include $<$string$>$}\newline
+{\ttfamily \#include \char`\"{}Compact\+Star/\+Physics/\+Evolution/\+Diagnostics/\+Diagnostic\+Catalog.\+hpp\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}Compact\+Star/\+Physics/\+Evolution/\+Diagnostics/\+Schema.\+hpp\char`\"{}}\newline
+\doxysubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{struct_compact_star_1_1_physics_1_1_evolution_1_1_diagnostics_1_1_catalog_json_options}{Compact\+Star\+::\+Physics\+::\+Evolution\+::\+Diagnostics\+::\+Catalog\+Json\+Options}}
+\begin{DoxyCompactList}\small\item\em Configuration options for catalog JSON rendering. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_diagnostics_1_1_diagnostics_catalog_json}{Compact\+Star\+::\+Physics\+::\+Evolution\+::\+Diagnostics\+::\+Diagnostics\+Catalog\+Json}}
+\begin{DoxyCompactList}\small\item\em JSON writer for \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_diagnostics_1_1_diagnostic_catalog}{Diagnostic\+Catalog}}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Namespaces}
+\begin{DoxyCompactItemize}
+\item 
+namespace \mbox{\hyperlink{namespace_compact_star_1_1_physics}{Compact\+Star\+::\+Physics}}
+\begin{DoxyCompactList}\small\item\em High-\/level physical modeling layer for compact stars. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Minimal JSON writer for diagnostics catalog. 
+
+Writes a stable “catalog schema” describing all producers and scalar descriptors.
+
+We intentionally do not use a full JSON library\+:
+\begin{DoxyItemize}
+\item avoids bringing in dependencies,
+\item keeps output deterministic and easy to diff,
+\item sufficient for tooling/regression tests.
+\end{DoxyItemize}
+
+Determinism\+:
+\begin{DoxyItemize}
+\item Producers iterate in key order due to std\+::map in Diagnostic\+Catalog.
+\item Scalars preserve insertion order from each Producer\+Catalog.
+\item Contract lines preserve insertion order. 
+\end{DoxyItemize}

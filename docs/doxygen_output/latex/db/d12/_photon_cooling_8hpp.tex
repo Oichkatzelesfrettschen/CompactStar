@@ -2,18 +2,19 @@
 \label{_photon_cooling_8hpp}\index{CompactStar/Physics/Driver/Thermal/PhotonCooling.hpp@{CompactStar/Physics/Driver/Thermal/PhotonCooling.hpp}}
 
 
-Driver that contributes surface photon cooling to the thermal evolution RHS.  
+Photon (surface) cooling driver for the thermal evolution subsystem.  
 
 
 {\ttfamily \#include $<$string$>$}\newline
 {\ttfamily \#include $<$vector$>$}\newline
+{\ttfamily \#include \char`\"{}Compact\+Star/\+Physics/\+Driver/\+Diagnostics/\+Driver\+Diagnostics.\+hpp\char`\"{}}\newline
 {\ttfamily \#include \char`\"{}Compact\+Star/\+Physics/\+Driver/\+IDriver.\+hpp\char`\"{}}\newline
 {\ttfamily \#include \char`\"{}Compact\+Star/\+Physics/\+State/\+Tags.\+hpp\char`\"{}}\newline
 \doxysubsection*{Classes}
 \begin{DoxyCompactItemize}
 \item 
 class \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_photon_cooling}{Compact\+Star\+::\+Physics\+::\+Driver\+::\+Thermal\+::\+Photon\+Cooling}}
-\begin{DoxyCompactList}\small\item\em Adds a photon-\/cooling contribution to the thermal RHS (redshifted frame). \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Surface photon cooling driver (redshifted frame). \end{DoxyCompactList}\item 
 struct \mbox{\hyperlink{struct_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_photon_cooling_1_1_options}{Compact\+Star\+::\+Physics\+::\+Driver\+::\+Thermal\+::\+Photon\+Cooling\+::\+Options}}
 \begin{DoxyCompactList}\small\item\em Configuration parameters for \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_photon_cooling}{Photon\+Cooling}}. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Namespaces}
@@ -24,71 +25,68 @@ namespace \mbox{\hyperlink{namespace_compact_star_1_1_physics}{Compact\+Star\+::
 
 
 \doxysubsection{Detailed Description}
-Driver that contributes surface photon cooling to the thermal evolution RHS. 
+Photon (surface) cooling driver for the thermal evolution subsystem. 
 
-\hypertarget{_photon_cooling_8hpp_autotoc_md5}{}\doxysubsubsection{Physical intent}\label{_photon_cooling_8hpp_autotoc_md5}
-This driver adds a {\bfseries{photon luminosity loss}} term to the redshifted thermal degree of freedom (typically (T\+\_\+\textbackslash{}infty)), producing a contribution
-
-\[
-  \frac{d\ln (T_\infty / T_{\rm ref})}{dt} = - \frac{L_{\gamma,\infty}}{C_{\rm eff}\,T_\infty}
-\]
-
-where (T\+\_\+\textbackslash{}infty) is the redshifted isothermal-\/core temperature in Kelvin.
-
-\begin{DoxyNote}{Note}
-{\bfseries{ODE variable convention\+:}} Compact\+Star evolves the dimensionless logarithmic variable (\textbackslash{}ln (T\+\_\+\textbackslash{}infty / T\+\_\+\{\textbackslash{}rm ref\})). If a physical model naturally computes (d\+T\+\_\+\textbackslash{}infty/dt), it must be converted via\+:  \[
-  \frac{d\ln (T_\infty / T_{\rm ref})}{dt} = \frac{1}{T_\infty}\,\frac{dT_\infty}{dt}.
-\]
-\end{DoxyNote}
-with a simple blackbody-\/like luminosity at infinity\+:
+This driver contributes {\bfseries{surface photon emission}} as an energy-\/loss term in the thermal evolution equation. It is intentionally minimal and is meant to be composed with other thermal drivers (neutrino cooling, heating, etc.).\hypertarget{_photon_cooling_8hpp_autotoc_md34}{}\doxysubsubsection{Thermal variable convention}\label{_photon_cooling_8hpp_autotoc_md34}
+Compact\+Star evolves a dimensionless logarithmic thermal variable\+:
 
 \[
-  L_{\gamma,\infty} = \mathcal{F}_{\rm rad}\; A_{\infty}\; \sigma_{\rm SB}\; T_{\rm surf}^4 .
+  y_T \equiv \ln\!\left(\frac{T_\infty}{T_{\rm ref}}\right),
 \]
 
-Where\+:
-\begin{DoxyItemize}
-\item $T_{\rm surf}$ is a local-\/frame surface temperature \mbox{[}K\mbox{]}.
-\item $\sigma_{\rm SB}$ is the Stefan–\+Boltzmann constant.
-\item $A_{\infty}$ is the {\bfseries{redshifted emitting area}} appropriate for luminosity measured at infinity.
-\item $\mathcal{F}_{\rm rad}$ is a {\bfseries{dimensionless}} prefactor capturing partial surface emission (hot spots, beaming, opacity fudge, etc.).
-\end{DoxyItemize}\hypertarget{_photon_cooling_8hpp_autotoc_md6}{}\doxysubsubsection{Units policy (\+IMPORTANT)}\label{_photon_cooling_8hpp_autotoc_md6}
-This header documents the unit expectations; the implementation must be consistent with whatever unit conventions Compact\+Star uses.\hypertarget{_photon_cooling_8hpp_autotoc_md7}{}\doxyparagraph{Temperature}\label{_photon_cooling_8hpp_autotoc_md7}
-
-\begin{DoxyItemize}
-\item (T\+\_\+\{\textbackslash{}rm surf\}), (T\+\_\+\textbackslash{}infty)\+: {\bfseries{Kelvin \mbox{[}K\mbox{]}}}.
-\end{DoxyItemize}\hypertarget{_photon_cooling_8hpp_autotoc_md8}{}\doxyparagraph{Luminosity}\label{_photon_cooling_8hpp_autotoc_md8}
-If (\textbackslash{}sigma\+\_\+\{\textbackslash{}rm SB\}) is taken in {\bfseries{cgs}}, (\textbackslash{}sigma\+\_\+\{\textbackslash{}rm SB\} \textbackslash{}approx 5.\+670374419\textbackslash{}times10$^\wedge$\{-\/5\}\textbackslash{};\{\textbackslash{}rm erg\textbackslash{},cm$^\wedge$\{-\/2\}\textbackslash{},s$^\wedge$\{-\/1\}\textbackslash{},K$^\wedge$\{-\/4\}\}), then\+:
-\begin{DoxyItemize}
-\item (A\+\_\+\textbackslash{}infty) must be in {\bfseries{cm²}}
-\item (L\+\_\+\{\textbackslash{}gamma,\textbackslash{}infty\}) is in {\bfseries{erg/s}}
-\end{DoxyItemize}\hypertarget{_photon_cooling_8hpp_autotoc_md9}{}\doxyparagraph{Heat capacity}\label{_photon_cooling_8hpp_autotoc_md9}
-
-\begin{DoxyItemize}
-\item C\+\_\+eff must be \mbox{[}erg/K\mbox{]} so that (d\+T\+\_\+\textbackslash{}infty/dt) is \mbox{[}K/s\mbox{]}. When evolving (\textbackslash{}ln T\+\_\+\textbackslash{}infty), the driver ultimately contributes (d(\textbackslash{}ln T\+\_\+\textbackslash{}infty)/dt) with units \mbox{[}1/s\mbox{]}.
-\end{DoxyItemize}\hypertarget{_photon_cooling_8hpp_autotoc_md10}{}\doxyparagraph{Geometry input}\label{_photon_cooling_8hpp_autotoc_md10}
-Compact\+Star structure profiles often store radius in {\bfseries{km}}. If the Geometry\+Cache provides (R) in km, the implementation must convert\+:
-\begin{DoxyItemize}
-\item (R\+\_\+\{\textbackslash{}rm cm\} = 10$^\wedge$5 \textbackslash{}, R\+\_\+\{\textbackslash{}rm km\}) before constructing (A\+\_\+\textbackslash{}infty).
-\end{DoxyItemize}\hypertarget{_photon_cooling_8hpp_autotoc_md11}{}\doxyparagraph{Redshift convention}\label{_photon_cooling_8hpp_autotoc_md11}
-For a static metric with (\textbackslash{}nu(r)) defined via (g\+\_\+\{tt\}=-\/e$^\wedge$\{2\textbackslash{}nu(r)\}), the luminosity observed at infinity from a local surface blackbody scales as\+:
+where (T\+\_\+\textbackslash{}infty) is a redshifted (isothermal-\/core) temperature in Kelvin. If a physical model yields (d\+T\+\_\+\textbackslash{}infty/dt), it must be converted as\+:
 
 \[
-  L_{\gamma,\infty} = 4\pi R^2 \, e^{2\nu(R)} \, \sigma_{\rm SB}\, T_{\rm surf}^4 ,
+  \frac{dy_T}{dt} = \frac{1}{T_\infty}\frac{dT_\infty}{dt}.
+\]\hypertarget{_photon_cooling_8hpp_autotoc_md35}{}\doxysubsubsection{Photon luminosity at infinity}\label{_photon_cooling_8hpp_autotoc_md35}
+For a static metric with (g\+\_\+\{tt\}=-\/e$^\wedge$\{2\textbackslash{}nu(r)\}), a local blackbody surface emission corresponds to\+:
+
+\[
+  L_{\gamma,\infty}
+  = \mathcal{S}\;\mathcal{F}_{\rm rad}\;A_\infty\;\sigma_{\rm SB}\;T_{\rm surf}^4,
+\quad
+  A_\infty \equiv 4\pi R^2 e^{2\nu(R)}.
 \]
 
-i.\+e. the area factor used here is\+:  \[
-  A_\infty \equiv 4\pi R^2 e^{2\nu(R)} .
+
+\begin{DoxyItemize}
+\item (T\+\_\+\{\textbackslash{}rm surf\})\+: local effective surface temperature \mbox{[}K\mbox{]}
+\item (\textbackslash{}sigma\+\_\+\{\textbackslash{}rm SB\})\+: Stefan–\+Boltzmann constant
+\item (A\+\_\+\textbackslash{}infty)\+: redshifted emitting area for luminosity measured at infinity
+\item (\textbackslash{}mathcal\{F\}\+\_\+\{\textbackslash{}rm rad\})\+: dimensionless “radiating fraction” (hot spots, emissivity, etc.)
+\item (\textbackslash{}mathcal\{S\})\+: additional dimensionless global scale (debug / knob)
+\end{DoxyItemize}
+
+The RHS contribution (in terms of the evolved variable) is\+:
+
+\[
+  \frac{dy_T}{dt}
+  \mathrel{+}= - \frac{L_{\gamma,\infty}}{C_{\rm eff}\,T_\infty}.
 \]
 
-The driver will obtain the needed metric/redshift factors from the Geometry\+Cache (via Driver\+Context\+::geo) when available.\hypertarget{_photon_cooling_8hpp_autotoc_md12}{}\doxysubsubsection{Driver\+Context usage}\label{_photon_cooling_8hpp_autotoc_md12}
+where (C\+\_\+\{\textbackslash{}rm eff\}) is an effective heat capacity \mbox{[}erg/K\mbox{]} (in cgs conventions).\hypertarget{_photon_cooling_8hpp_autotoc_md36}{}\doxysubsubsection{Envelope / blanket modeling}\label{_photon_cooling_8hpp_autotoc_md36}
+Determining (T\+\_\+\{\textbackslash{}rm surf\}) from an interior temperature requires an envelope (“blanket”) prescription. In the new architecture, {\bfseries{the envelope choice and parameters live in Photon\+Cooling\+::\+Options}}, not in the global Evolution config and not in Driver\+Context.
+
+The driver may obtain (T\+\_\+\{\textbackslash{}rm surf\}) by\+:
+\begin{DoxyItemize}
+\item direct use of a stored (T\+\_\+\{\textbackslash{}rm surf\}) in Thermal\+State (if provided),
+\item computing (T\+\_\+\{\textbackslash{}rm surf\}) from a Tb→\+Ts envelope mapping (preferred path),
+\item using a simple approximation for debugging (e.\+g., (T\+\_\+\{\textbackslash{}rm surf\}\textbackslash{}approx T\+\_\+\textbackslash{}infty)).
+\end{DoxyItemize}\hypertarget{_photon_cooling_8hpp_autotoc_md37}{}\doxysubsubsection{Units policy (implementation must be consistent)}\label{_photon_cooling_8hpp_autotoc_md37}
+This header documents intended units; the implementation must honor them.
+
 
 \begin{DoxyItemize}
-\item {\ttfamily ctx.\+geo} (Geometry\+Cache) is the preferred source for (R) and (e$^\wedge$\{2\textbackslash{}nu\}).
-\item {\ttfamily ctx.\+envelope} may later supply a physically motivated mapping (T\+\_\+\textbackslash{}infty \textbackslash{}mapsto T\+\_\+\{\textbackslash{}rm surf\}) (or (T\+\_\+\{\textbackslash{}rm core\}\textbackslash{}mapsto T\+\_\+\{\textbackslash{}rm surf\})).
-\end{DoxyItemize}\hypertarget{_photon_cooling_8hpp_autotoc_md13}{}\doxysubsubsection{Scope / limitations}\label{_photon_cooling_8hpp_autotoc_md13}
-This is intentionally minimal\+:
+\item Temperatures\+: Kelvin \mbox{[}K\mbox{]}
+\item Luminosity\+: erg/s
+\item Heat capacity (C\+\_\+\{\textbackslash{}rm eff\})\+: erg/K
+\item If (\textbackslash{}sigma\+\_\+\{\textbackslash{}rm SB\}) is cgs\+: (\textbackslash{}sigma\+\_\+\{\textbackslash{}rm SB\}\textbackslash{}approx 5.\+670374419\textbackslash{}times 10$^\wedge$\{-\/5\}\textbackslash{},\{\textbackslash{}rm erg\textbackslash{},cm$^\wedge$\{-\/2\}\textbackslash{},s$^\wedge$\{-\/1\}\textbackslash{},K$^\wedge$\{-\/4\}\}), then (A\+\_\+\textbackslash{}infty) must be in cm².
+\end{DoxyItemize}
+
+Compact\+Star profiles commonly store radius in km; the implementation must convert (R\+\_\+\{\textbackslash{}rm km\}\textbackslash{}to R\+\_\+\{\textbackslash{}rm cm\}) before forming areas when using cgs.\hypertarget{_photon_cooling_8hpp_autotoc_md38}{}\doxysubsubsection{Context usage}\label{_photon_cooling_8hpp_autotoc_md38}
+
 \begin{DoxyItemize}
-\item No neutrino cooling, no internal heating, no envelope microphysics by default.
-\item {\ttfamily C\+\_\+eff} is treated as an externally provided effective heat capacity. A future model should compute (C\+\_\+\{\textbackslash{}rm eff\}(T)) from microphysics + structure. 
+\item {\ttfamily ctx.\+geo} is the preferred source for (R) and (e$^\wedge$\{2\textbackslash{}nu(R)\}) (via cached geometry).
+\item {\ttfamily ctx.\+star} may be used to compute surface gravity (g\+\_\+\{14\}) for envelope fits.
+\item This driver does {\bfseries{not}} require {\ttfamily ctx.\+envelope}; envelope policy is internal to Options. 
 \end{DoxyItemize}

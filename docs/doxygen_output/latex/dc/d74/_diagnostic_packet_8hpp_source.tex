@@ -22,91 +22,107 @@
 \DoxyCodeLine{37 \textcolor{keyword}{namespace }CompactStar::Physics::Evolution::Diagnostics}
 \DoxyCodeLine{38 \{}
 \DoxyCodeLine{39 }
-\DoxyCodeLine{46 \textcolor{keyword}{struct }\mbox{\hyperlink{struct_compact_star_1_1_physics_1_1_evolution_1_1_diagnostics_1_1_scalar_entry}{ScalarEntry}}}
+\DoxyCodeLine{46 \textcolor{keyword}{enum class} \mbox{\hyperlink{_diagnostic_packet_8hpp_a0b4a78e3cbdcedd41943393c406987d1}{Cadence}}}
 \DoxyCodeLine{47 \{}
-\DoxyCodeLine{49     \textcolor{keywordtype}{double} \mbox{\hyperlink{struct_compact_star_1_1_physics_1_1_evolution_1_1_diagnostics_1_1_scalar_entry_ac7d1696c770c707cdd00e7405a644ecd}{value}} = 0.0;}
-\DoxyCodeLine{50 }
-\DoxyCodeLine{52     std::string \mbox{\hyperlink{struct_compact_star_1_1_physics_1_1_evolution_1_1_diagnostics_1_1_scalar_entry_afee4e62c559952485acc3531537d66d6}{unit}};}
-\DoxyCodeLine{53 }
-\DoxyCodeLine{55     std::string \mbox{\hyperlink{struct_compact_star_1_1_physics_1_1_evolution_1_1_diagnostics_1_1_scalar_entry_a7030b76a904a2b9714a26d0538d0b9d6}{description}};}
-\DoxyCodeLine{56 }
-\DoxyCodeLine{58     std::string \mbox{\hyperlink{struct_compact_star_1_1_physics_1_1_evolution_1_1_diagnostics_1_1_scalar_entry_a1bbbdfedc86b4ab0c7b0bcd420111ace}{source}};}
-\DoxyCodeLine{59 }
-\DoxyCodeLine{61     \textcolor{keywordtype}{bool} \mbox{\hyperlink{struct_compact_star_1_1_physics_1_1_evolution_1_1_diagnostics_1_1_scalar_entry_ad2705f83eca8baeffa684d1da71e1a73}{is\_finite}} = \textcolor{keyword}{true};}
-\DoxyCodeLine{62 \};}
+\DoxyCodeLine{48     Always,    \textcolor{comment}{// write every diagnostic sample}}
+\DoxyCodeLine{49     OnChange,  \textcolor{comment}{// write only if value changed (within tolerance)}}
+\DoxyCodeLine{50     OncePerRun \textcolor{comment}{// write once (step==0) and then never again}}
+\DoxyCodeLine{51 \};}
+\DoxyCodeLine{52 }
+\DoxyCodeLine{59 \textcolor{keyword}{struct }\mbox{\hyperlink{struct_compact_star_1_1_physics_1_1_evolution_1_1_diagnostics_1_1_scalar_entry}{ScalarEntry}}}
+\DoxyCodeLine{60 \{}
+\DoxyCodeLine{62     \textcolor{keywordtype}{double} \mbox{\hyperlink{struct_compact_star_1_1_physics_1_1_evolution_1_1_diagnostics_1_1_scalar_entry_ac7d1696c770c707cdd00e7405a644ecd}{value}} = 0.0;}
 \DoxyCodeLine{63 }
-\DoxyCodeLine{75 \textcolor{keyword}{class }\mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_diagnostics_1_1_diagnostic_packet}{DiagnosticPacket}}}
-\DoxyCodeLine{76 \{}
-\DoxyCodeLine{77   \textcolor{keyword}{public}:}
-\DoxyCodeLine{82     \textcolor{keyword}{explicit} \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_diagnostics_1_1_diagnostic_packet}{DiagnosticPacket}}(std::string producer = \textcolor{stringliteral}{"{}"{}});}
-\DoxyCodeLine{83 }
-\DoxyCodeLine{86 }
-\DoxyCodeLine{88     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_diagnostics_1_1_diagnostic_packet_a1cf87e0ecb00cc3bb2cbf6f151ddafe5}{SetTime}}(\textcolor{keywordtype}{double} t);}
-\DoxyCodeLine{89 }
-\DoxyCodeLine{91     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_diagnostics_1_1_diagnostic_packet_aceac7a9fe1232bd510012a4466a578de}{SetStepIndex}}(std::size\_t step);}
-\DoxyCodeLine{92 }
-\DoxyCodeLine{94     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_diagnostics_1_1_diagnostic_packet_a7be0f724e6d84630efdf1383ede2ab2f}{SetRunId}}(std::string run\_id);}
-\DoxyCodeLine{95 }
-\DoxyCodeLine{97     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_diagnostics_1_1_diagnostic_packet_a54a669a16d7fb7f507e4e9aaca86d5a1}{SetProducer}}(std::string producer);}
-\DoxyCodeLine{98 }
-\DoxyCodeLine{100 }
-\DoxyCodeLine{103 }
-\DoxyCodeLine{104     [[nodiscard]] \textcolor{keywordtype}{double} Time()\textcolor{keyword}{ const }\{ \textcolor{keywordflow}{return} time\_; \}}
-\DoxyCodeLine{105     [[nodiscard]] std::size\_t StepIndex()\textcolor{keyword}{ const }\{ \textcolor{keywordflow}{return} step\_index\_; \}}
-\DoxyCodeLine{106     [[nodiscard]] \textcolor{keyword}{const} std::string \&RunId()\textcolor{keyword}{ const }\{ \textcolor{keywordflow}{return} run\_id\_; \}}
-\DoxyCodeLine{107     [[nodiscard]] \textcolor{keyword}{const} std::string \&Producer()\textcolor{keyword}{ const }\{ \textcolor{keywordflow}{return} producer\_; \}}
+\DoxyCodeLine{65     std::string \mbox{\hyperlink{struct_compact_star_1_1_physics_1_1_evolution_1_1_diagnostics_1_1_scalar_entry_afee4e62c559952485acc3531537d66d6}{unit}};}
+\DoxyCodeLine{66 }
+\DoxyCodeLine{68     std::string \mbox{\hyperlink{struct_compact_star_1_1_physics_1_1_evolution_1_1_diagnostics_1_1_scalar_entry_a7030b76a904a2b9714a26d0538d0b9d6}{description}};}
+\DoxyCodeLine{69 }
+\DoxyCodeLine{71     std::string \mbox{\hyperlink{struct_compact_star_1_1_physics_1_1_evolution_1_1_diagnostics_1_1_scalar_entry_a1bbbdfedc86b4ab0c7b0bcd420111ace}{source}};}
+\DoxyCodeLine{72 }
+\DoxyCodeLine{74     \textcolor{keywordtype}{bool} \mbox{\hyperlink{struct_compact_star_1_1_physics_1_1_evolution_1_1_diagnostics_1_1_scalar_entry_ad2705f83eca8baeffa684d1da71e1a73}{is\_finite}} = \textcolor{keyword}{true};}
+\DoxyCodeLine{75 }
+\DoxyCodeLine{77     \mbox{\hyperlink{_diagnostic_packet_8hpp_a0b4a78e3cbdcedd41943393c406987d1}{Cadence}} \mbox{\hyperlink{struct_compact_star_1_1_physics_1_1_evolution_1_1_diagnostics_1_1_scalar_entry_ab462dbcda4e46d5b0fe928be7915f820}{cadence}} = Cadence::Always;}
+\DoxyCodeLine{78 \};}
+\DoxyCodeLine{79 }
+\DoxyCodeLine{91 \textcolor{keyword}{class }\mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_diagnostics_1_1_diagnostic_packet}{DiagnosticPacket}}}
+\DoxyCodeLine{92 \{}
+\DoxyCodeLine{93   \textcolor{keyword}{public}:}
+\DoxyCodeLine{98     \textcolor{keyword}{explicit} \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_diagnostics_1_1_diagnostic_packet}{DiagnosticPacket}}(std::string producer = \textcolor{stringliteral}{"{}"{}});}
+\DoxyCodeLine{99 }
+\DoxyCodeLine{102 }
+\DoxyCodeLine{104     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_diagnostics_1_1_diagnostic_packet_a1cf87e0ecb00cc3bb2cbf6f151ddafe5}{SetTime}}(\textcolor{keywordtype}{double} t);}
+\DoxyCodeLine{105 }
+\DoxyCodeLine{107     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_diagnostics_1_1_diagnostic_packet_aceac7a9fe1232bd510012a4466a578de}{SetStepIndex}}(std::size\_t step);}
 \DoxyCodeLine{108 }
-\DoxyCodeLine{110 }
-\DoxyCodeLine{113 }
-\DoxyCodeLine{125     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_diagnostics_1_1_diagnostic_packet_a3a0a6fd0da5d14923b2d6cb6d6d19873}{AddScalar}}(\textcolor{keyword}{const} std::string \&key,}
-\DoxyCodeLine{126                    \textcolor{keywordtype}{double} value,}
-\DoxyCodeLine{127                    std::string unit = \textcolor{stringliteral}{"{}"{}},}
-\DoxyCodeLine{128                    std::string description = \textcolor{stringliteral}{"{}"{}},}
-\DoxyCodeLine{129                    std::string source = \textcolor{stringliteral}{"{}"{}});}
-\DoxyCodeLine{130 }
-\DoxyCodeLine{134     [[nodiscard]] \textcolor{keywordtype}{bool} \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_diagnostics_1_1_diagnostic_packet_a2a2affd7d8fd21e1a254c1b4d13fc226}{HasScalar}}(\textcolor{keyword}{const} std::string \&key) \textcolor{keyword}{const};}
-\DoxyCodeLine{135 }
-\DoxyCodeLine{140     [[nodiscard]] \textcolor{keyword}{const} \mbox{\hyperlink{struct_compact_star_1_1_physics_1_1_evolution_1_1_diagnostics_1_1_scalar_entry}{ScalarEntry}} \&\mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_diagnostics_1_1_diagnostic_packet_a3bc5c1814b135c82ec1170b299b1c7ea}{GetScalar}}(\textcolor{keyword}{const} std::string \&key) \textcolor{keyword}{const};}
-\DoxyCodeLine{141 }
-\DoxyCodeLine{145     [[nodiscard]] \textcolor{keyword}{const} std::map<std::string, ScalarEntry> \&\mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_diagnostics_1_1_diagnostic_packet_af891926e63190f4d240693952ce56fe1}{Scalars}}()\textcolor{keyword}{ const }\{ \textcolor{keywordflow}{return} scalars\_; \}}
+\DoxyCodeLine{110     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_diagnostics_1_1_diagnostic_packet_a7be0f724e6d84630efdf1383ede2ab2f}{SetRunId}}(std::string run\_id);}
+\DoxyCodeLine{111 }
+\DoxyCodeLine{113     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_diagnostics_1_1_diagnostic_packet_a54a669a16d7fb7f507e4e9aaca86d5a1}{SetProducer}}(std::string producer);}
+\DoxyCodeLine{114 }
+\DoxyCodeLine{116 }
+\DoxyCodeLine{119 }
+\DoxyCodeLine{120     [[nodiscard]] \textcolor{keywordtype}{double} Time()\textcolor{keyword}{ const }\{ \textcolor{keywordflow}{return} time\_; \}}
+\DoxyCodeLine{121     [[nodiscard]] std::size\_t StepIndex()\textcolor{keyword}{ const }\{ \textcolor{keywordflow}{return} step\_index\_; \}}
+\DoxyCodeLine{122     [[nodiscard]] \textcolor{keyword}{const} std::string \&RunId()\textcolor{keyword}{ const }\{ \textcolor{keywordflow}{return} run\_id\_; \}}
+\DoxyCodeLine{123     [[nodiscard]] \textcolor{keyword}{const} std::string \&Producer()\textcolor{keyword}{ const }\{ \textcolor{keywordflow}{return} producer\_; \}}
+\DoxyCodeLine{124 }
+\DoxyCodeLine{126 }
+\DoxyCodeLine{129 }
+\DoxyCodeLine{141     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_diagnostics_1_1_diagnostic_packet_a3a0a6fd0da5d14923b2d6cb6d6d19873}{AddScalar}}(\textcolor{keyword}{const} std::string \&key,}
+\DoxyCodeLine{142                    \textcolor{keywordtype}{double} value,}
+\DoxyCodeLine{143                    std::string unit = \textcolor{stringliteral}{"{}"{}},}
+\DoxyCodeLine{144                    std::string description = \textcolor{stringliteral}{"{}"{}},}
+\DoxyCodeLine{145                    std::string source = \textcolor{stringliteral}{"{}"{}});}
 \DoxyCodeLine{146 }
-\DoxyCodeLine{148     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_diagnostics_1_1_diagnostic_packet_a7ed5e82d64e835536654eba0f9714b55}{ClearScalars}}();}
-\DoxyCodeLine{149 }
-\DoxyCodeLine{151 }
-\DoxyCodeLine{154 }
-\DoxyCodeLine{156     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_diagnostics_1_1_diagnostic_packet_a7b39b48cd63654da220633dc0bb6339e}{AddContractLine}}(std::string line);}
-\DoxyCodeLine{157 }
-\DoxyCodeLine{159     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_diagnostics_1_1_diagnostic_packet_a9f8580e7c1e24ac47cba76700d299b1e}{AddWarning}}(std::string line);}
-\DoxyCodeLine{160 }
-\DoxyCodeLine{162     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_diagnostics_1_1_diagnostic_packet_acebfe2ab85a507bcb16507567bd714ba}{AddError}}(std::string line);}
+\DoxyCodeLine{157     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_diagnostics_1_1_diagnostic_packet_a3a0a6fd0da5d14923b2d6cb6d6d19873}{AddScalar}}(\textcolor{keyword}{const} std::string \&key,}
+\DoxyCodeLine{158                    \textcolor{keywordtype}{double} value,}
+\DoxyCodeLine{159                    std::string unit,}
+\DoxyCodeLine{160                    std::string description,}
+\DoxyCodeLine{161                    std::string source,}
+\DoxyCodeLine{162                    \mbox{\hyperlink{_diagnostic_packet_8hpp_a0b4a78e3cbdcedd41943393c406987d1}{Cadence}} cadence);}
 \DoxyCodeLine{163 }
-\DoxyCodeLine{165     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_diagnostics_1_1_diagnostic_packet_a3196daa62c58c5344702fb1423179cac}{AddNote}}(std::string line);}
-\DoxyCodeLine{166 }
-\DoxyCodeLine{167     [[nodiscard]] \textcolor{keyword}{const} std::vector<std::string> \&ContractLines()\textcolor{keyword}{ const }\{ \textcolor{keywordflow}{return} contract\_lines\_; \}}
-\DoxyCodeLine{168     [[nodiscard]] \textcolor{keyword}{const} std::vector<std::string> \&Warnings()\textcolor{keyword}{ const }\{ \textcolor{keywordflow}{return} warnings\_; \}}
-\DoxyCodeLine{169     [[nodiscard]] \textcolor{keyword}{const} std::vector<std::string> \&Errors()\textcolor{keyword}{ const }\{ \textcolor{keywordflow}{return} errors\_; \}}
-\DoxyCodeLine{170     [[nodiscard]] \textcolor{keyword}{const} std::vector<std::string> \&Notes()\textcolor{keyword}{ const }\{ \textcolor{keywordflow}{return} notes\_; \}}
-\DoxyCodeLine{171 }
-\DoxyCodeLine{172     \textcolor{keywordtype}{void} ClearTextBlocks();}
-\DoxyCodeLine{173 }
-\DoxyCodeLine{175 }
-\DoxyCodeLine{185     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_diagnostics_1_1_diagnostic_packet_ad0989ec06d14d1c15b5281ba903bd8a3}{ValidateBasic}}();}
-\DoxyCodeLine{186 }
-\DoxyCodeLine{187   \textcolor{keyword}{private}:}
-\DoxyCodeLine{188     \textcolor{keywordtype}{double} time\_ = 0.0;}
-\DoxyCodeLine{189     std::size\_t step\_index\_ = 0;}
+\DoxyCodeLine{167     [[nodiscard]] \textcolor{keywordtype}{bool} \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_diagnostics_1_1_diagnostic_packet_a2a2affd7d8fd21e1a254c1b4d13fc226}{HasScalar}}(\textcolor{keyword}{const} std::string \&key) \textcolor{keyword}{const};}
+\DoxyCodeLine{168 }
+\DoxyCodeLine{173     [[nodiscard]] \textcolor{keyword}{const} \mbox{\hyperlink{struct_compact_star_1_1_physics_1_1_evolution_1_1_diagnostics_1_1_scalar_entry}{ScalarEntry}} \&\mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_diagnostics_1_1_diagnostic_packet_a3bc5c1814b135c82ec1170b299b1c7ea}{GetScalar}}(\textcolor{keyword}{const} std::string \&key) \textcolor{keyword}{const};}
+\DoxyCodeLine{174 }
+\DoxyCodeLine{178     [[nodiscard]] \textcolor{keyword}{const} std::map<std::string, ScalarEntry> \&\mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_diagnostics_1_1_diagnostic_packet_af891926e63190f4d240693952ce56fe1}{Scalars}}()\textcolor{keyword}{ const }\{ \textcolor{keywordflow}{return} scalars\_; \}}
+\DoxyCodeLine{179 }
+\DoxyCodeLine{181     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_diagnostics_1_1_diagnostic_packet_a7ed5e82d64e835536654eba0f9714b55}{ClearScalars}}();}
+\DoxyCodeLine{182 }
+\DoxyCodeLine{184 }
+\DoxyCodeLine{187 }
+\DoxyCodeLine{189     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_diagnostics_1_1_diagnostic_packet_a7b39b48cd63654da220633dc0bb6339e}{AddContractLine}}(std::string line);}
 \DoxyCodeLine{190 }
-\DoxyCodeLine{191     std::string run\_id\_;}
-\DoxyCodeLine{192     std::string producer\_;}
+\DoxyCodeLine{192     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_diagnostics_1_1_diagnostic_packet_a9f8580e7c1e24ac47cba76700d299b1e}{AddWarning}}(std::string line);}
 \DoxyCodeLine{193 }
-\DoxyCodeLine{194     std::map<std::string, ScalarEntry> scalars\_;}
-\DoxyCodeLine{195 }
-\DoxyCodeLine{196     std::vector<std::string> contract\_lines\_;}
-\DoxyCodeLine{197     std::vector<std::string> warnings\_;}
-\DoxyCodeLine{198     std::vector<std::string> errors\_;}
-\DoxyCodeLine{199     std::vector<std::string> notes\_;}
-\DoxyCodeLine{200 \};}
-\DoxyCodeLine{201 }
-\DoxyCodeLine{202 \} \textcolor{comment}{// namespace CompactStar::Physics::Evolution::Diagnostics}}
+\DoxyCodeLine{195     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_diagnostics_1_1_diagnostic_packet_acebfe2ab85a507bcb16507567bd714ba}{AddError}}(std::string line);}
+\DoxyCodeLine{196 }
+\DoxyCodeLine{198     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_diagnostics_1_1_diagnostic_packet_a3196daa62c58c5344702fb1423179cac}{AddNote}}(std::string line);}
+\DoxyCodeLine{199 }
+\DoxyCodeLine{200     [[nodiscard]] \textcolor{keyword}{const} std::vector<std::string> \&ContractLines()\textcolor{keyword}{ const }\{ \textcolor{keywordflow}{return} contract\_lines\_; \}}
+\DoxyCodeLine{201     [[nodiscard]] \textcolor{keyword}{const} std::vector<std::string> \&Warnings()\textcolor{keyword}{ const }\{ \textcolor{keywordflow}{return} warnings\_; \}}
+\DoxyCodeLine{202     [[nodiscard]] \textcolor{keyword}{const} std::vector<std::string> \&Errors()\textcolor{keyword}{ const }\{ \textcolor{keywordflow}{return} errors\_; \}}
+\DoxyCodeLine{203     [[nodiscard]] \textcolor{keyword}{const} std::vector<std::string> \&Notes()\textcolor{keyword}{ const }\{ \textcolor{keywordflow}{return} notes\_; \}}
+\DoxyCodeLine{204 }
+\DoxyCodeLine{205     \textcolor{keywordtype}{void} ClearTextBlocks();}
+\DoxyCodeLine{206 }
+\DoxyCodeLine{208 }
+\DoxyCodeLine{218     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_diagnostics_1_1_diagnostic_packet_ad0989ec06d14d1c15b5281ba903bd8a3}{ValidateBasic}}();}
+\DoxyCodeLine{219 }
+\DoxyCodeLine{220   \textcolor{keyword}{private}:}
+\DoxyCodeLine{221     \textcolor{keywordtype}{double} time\_ = 0.0;}
+\DoxyCodeLine{222     std::size\_t step\_index\_ = 0;}
+\DoxyCodeLine{223 }
+\DoxyCodeLine{224     std::string run\_id\_;}
+\DoxyCodeLine{225     std::string producer\_;}
+\DoxyCodeLine{226 }
+\DoxyCodeLine{227     std::map<std::string, ScalarEntry> scalars\_;}
+\DoxyCodeLine{228 }
+\DoxyCodeLine{229     std::vector<std::string> contract\_lines\_;}
+\DoxyCodeLine{230     std::vector<std::string> warnings\_;}
+\DoxyCodeLine{231     std::vector<std::string> errors\_;}
+\DoxyCodeLine{232     std::vector<std::string> notes\_;}
+\DoxyCodeLine{233 \};}
+\DoxyCodeLine{234 }
+\DoxyCodeLine{235 \} \textcolor{comment}{// namespace CompactStar::Physics::Evolution::Diagnostics}}
 
 \end{DoxyCode}

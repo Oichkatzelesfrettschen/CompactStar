@@ -1,0 +1,141 @@
+\hypertarget{_run_observers_8hpp}{}\doxysection{Compact\+Star/\+Physics/\+Evolution/\+Run/\+Run\+Observers.hpp File Reference}
+\label{_run_observers_8hpp}\index{CompactStar/Physics/Evolution/Run/RunObservers.hpp@{CompactStar/Physics/Evolution/Run/RunObservers.hpp}}
+
+
+Standard observer option presets and factories for Evolution runs.  
+
+
+{\ttfamily \#include $<$memory$>$}\newline
+{\ttfamily \#include $<$vector$>$}\newline
+{\ttfamily \#include \char`\"{}Compact\+Star/\+Physics/\+Evolution/\+Observers/\+Diagnostics\+Observer.\+hpp\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}Compact\+Star/\+Physics/\+Evolution/\+Observers/\+Time\+Series\+Observer.\+hpp\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}Compact\+Star/\+Physics/\+Evolution/\+Run/\+Run\+Paths.\+hpp\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}Compact\+Star/\+Physics/\+Driver/\+Diagnostics/\+Driver\+Diagnostics.\+hpp\char`\"{}}\newline
+\doxysubsection*{Namespaces}
+\begin{DoxyCompactItemize}
+\item 
+namespace \mbox{\hyperlink{namespace_compact_star_1_1_physics}{Compact\+Star\+::\+Physics}}
+\begin{DoxyCompactList}\small\item\em High-\/level physical modeling layer for compact stars. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+Observers\+::\+Diagnostics\+Observer\+::\+Options \mbox{\hyperlink{_run_observers_8hpp_af411d8cd9db356f250769e0bd0a7f0bc}{Compact\+Star\+::\+Physics\+::\+Evolution\+::\+Run\+::\+Make\+Default\+Diagnostics\+Options}} (const Run\+Paths \&p)
+\begin{DoxyCompactList}\small\item\em Build default Diagnostics\+Observer\+::\+Options using canonical \mbox{\hyperlink{struct_compact_star_1_1_physics_1_1_evolution_1_1_run_1_1_run_paths}{Run\+Paths}}. \end{DoxyCompactList}\item 
+Observers\+::\+Time\+Series\+Observer\+::\+Options \mbox{\hyperlink{_run_observers_8hpp_af01000e9ec6685961bde7b56fccbbaa7}{Compact\+Star\+::\+Physics\+::\+Evolution\+::\+Run\+::\+Make\+Default\+Time\+Series\+Options}} (const Run\+Paths \&p)
+\begin{DoxyCompactList}\small\item\em Build default Time\+Series\+Observer\+::\+Options using canonical \mbox{\hyperlink{struct_compact_star_1_1_physics_1_1_evolution_1_1_run_1_1_run_paths}{Run\+Paths}}. \end{DoxyCompactList}\item 
+std\+::shared\+\_\+ptr$<$ Observers\+::\+Diagnostics\+Observer $>$ \mbox{\hyperlink{_run_observers_8hpp_a3e59ca2e5f83d7a1917e0c6243fcdcad}{Compact\+Star\+::\+Physics\+::\+Evolution\+::\+Run\+::\+Make\+Diagnostics\+Observer}} (const Run\+Paths \&p, const std\+::vector$<$ const Driver\+::\+Diagnostics\+::\+IDriver\+Diagnostics $\ast$ $>$ \&diag\+\_\+drivers, const Observers\+::\+Diagnostics\+Observer\+::\+Options $\ast$overrides=nullptr)
+\begin{DoxyCompactList}\small\item\em Factory\+: construct a Diagnostics\+Observer for a run. \end{DoxyCompactList}\item 
+std\+::shared\+\_\+ptr$<$ Observers\+::\+Time\+Series\+Observer $>$ \mbox{\hyperlink{_run_observers_8hpp_a05791ee8f5a091db439c70193b638cb1}{Compact\+Star\+::\+Physics\+::\+Evolution\+::\+Run\+::\+Make\+Time\+Series\+Observer}} (const Run\+Paths \&p, const std\+::vector$<$ const Driver\+::\+Diagnostics\+::\+IDriver\+Diagnostics $\ast$ $>$ \&diag\+\_\+drivers, const Observers\+::\+Time\+Series\+Observer\+::\+Options $\ast$overrides=nullptr)
+\begin{DoxyCompactList}\small\item\em Factory\+: construct a Time\+Series\+Observer for a run. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Standard observer option presets and factories for Evolution runs. 
+
+This module centralizes {\itshape run-\/level} observer policy so debug mains stay small\+:
+\begin{DoxyItemize}
+\item Diagnostics\+Observer (JSONL packets + optional catalog)
+\item Time\+Series\+Observer (CSV/\+TSV table; optionally schema-\/driven via catalog)
+\end{DoxyItemize}
+
+This is intentionally separate from Observers/ implementation\+: Observers are generic components; this file encodes “how we like to run them”. 
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{_run_observers_8hpp_af411d8cd9db356f250769e0bd0a7f0bc}\label{_run_observers_8hpp_af411d8cd9db356f250769e0bd0a7f0bc}} 
+\index{RunObservers.hpp@{RunObservers.hpp}!MakeDefaultDiagnosticsOptions@{MakeDefaultDiagnosticsOptions}}
+\index{MakeDefaultDiagnosticsOptions@{MakeDefaultDiagnosticsOptions}!RunObservers.hpp@{RunObservers.hpp}}
+\doxysubsubsection{\texorpdfstring{MakeDefaultDiagnosticsOptions()}{MakeDefaultDiagnosticsOptions()}}
+{\footnotesize\ttfamily Observers\+::\+Diagnostics\+Observer\+::\+Options Compact\+Star\+::\+Physics\+::\+Evolution\+::\+Run\+::\+Make\+Default\+Diagnostics\+Options (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{struct_compact_star_1_1_physics_1_1_evolution_1_1_run_1_1_run_paths}{Run\+Paths}} \&}]{p }\end{DoxyParamCaption})}
+
+
+
+Build default Diagnostics\+Observer\+::\+Options using canonical Run\+Paths. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em p} & Run\+Paths for this run.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Options with\+:
+\begin{DoxyItemize}
+\item output\+\_\+path = p.\+diagnostics\+\_\+jsonl
+\item record\+\_\+every\+\_\+n\+\_\+steps = 1000
+\item record\+\_\+at\+\_\+start = true
+\item write\+\_\+catalog = true
+\item catalog\+\_\+output\+\_\+path = p.\+diagnostics\+\_\+catalog\+\_\+json 
+\end{DoxyItemize}
+\end{DoxyReturn}
+\mbox{\Hypertarget{_run_observers_8hpp_af01000e9ec6685961bde7b56fccbbaa7}\label{_run_observers_8hpp_af01000e9ec6685961bde7b56fccbbaa7}} 
+\index{RunObservers.hpp@{RunObservers.hpp}!MakeDefaultTimeSeriesOptions@{MakeDefaultTimeSeriesOptions}}
+\index{MakeDefaultTimeSeriesOptions@{MakeDefaultTimeSeriesOptions}!RunObservers.hpp@{RunObservers.hpp}}
+\doxysubsubsection{\texorpdfstring{MakeDefaultTimeSeriesOptions()}{MakeDefaultTimeSeriesOptions()}}
+{\footnotesize\ttfamily Observers\+::\+Time\+Series\+Observer\+::\+Options Compact\+Star\+::\+Physics\+::\+Evolution\+::\+Run\+::\+Make\+Default\+Time\+Series\+Options (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{struct_compact_star_1_1_physics_1_1_evolution_1_1_run_1_1_run_paths}{Run\+Paths}} \&}]{p }\end{DoxyParamCaption})}
+
+
+
+Build default Time\+Series\+Observer\+::\+Options using canonical Run\+Paths. 
+
+This uses schema-\/driven columns by default\+:
+\begin{DoxyItemize}
+\item use\+\_\+catalog = true
+\item catalog\+\_\+path = p.\+diagnostics\+\_\+catalog\+\_\+json
+\item catalog\+\_\+profiles = \{\char`\"{}timeseries\+\_\+default\char`\"{}\}
+\item includes builtin time + sample\+\_\+index
+\end{DoxyItemize}
+
+
+\begin{DoxyParams}{Parameters}
+{\em p} & Run\+Paths for this run.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Options for a compact CSV time series. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{_run_observers_8hpp_a3e59ca2e5f83d7a1917e0c6243fcdcad}\label{_run_observers_8hpp_a3e59ca2e5f83d7a1917e0c6243fcdcad}} 
+\index{RunObservers.hpp@{RunObservers.hpp}!MakeDiagnosticsObserver@{MakeDiagnosticsObserver}}
+\index{MakeDiagnosticsObserver@{MakeDiagnosticsObserver}!RunObservers.hpp@{RunObservers.hpp}}
+\doxysubsubsection{\texorpdfstring{MakeDiagnosticsObserver()}{MakeDiagnosticsObserver()}}
+{\footnotesize\ttfamily std\+::shared\+\_\+ptr$<$ Observers\+::\+Diagnostics\+Observer $>$ Compact\+Star\+::\+Physics\+::\+Evolution\+::\+Run\+::\+Make\+Diagnostics\+Observer (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{struct_compact_star_1_1_physics_1_1_evolution_1_1_run_1_1_run_paths}{Run\+Paths}} \&}]{p,  }\item[{const std\+::vector$<$ const \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_driver_1_1_diagnostics_1_1_i_driver_diagnostics}{Driver\+::\+Diagnostics\+::\+IDriver\+Diagnostics}} $\ast$ $>$ \&}]{diag\+\_\+drivers,  }\item[{const \mbox{\hyperlink{struct_compact_star_1_1_physics_1_1_evolution_1_1_observers_1_1_diagnostics_observer_1_1_options}{Observers\+::\+Diagnostics\+Observer\+::\+Options}} $\ast$}]{overrides = {\ttfamily nullptr} }\end{DoxyParamCaption})}
+
+
+
+Factory\+: construct a Diagnostics\+Observer for a run. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em p} & Run\+Paths for output/cat paths. \\
+\hline
+{\em diag\+\_\+drivers} & Non-\/owning pointers to diagnostics-\/capable drivers. \\
+\hline
+{\em overrides} & Optional overrides (applied after defaults).\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Shared pointer to Diagnostics\+Observer. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{_run_observers_8hpp_a05791ee8f5a091db439c70193b638cb1}\label{_run_observers_8hpp_a05791ee8f5a091db439c70193b638cb1}} 
+\index{RunObservers.hpp@{RunObservers.hpp}!MakeTimeSeriesObserver@{MakeTimeSeriesObserver}}
+\index{MakeTimeSeriesObserver@{MakeTimeSeriesObserver}!RunObservers.hpp@{RunObservers.hpp}}
+\doxysubsubsection{\texorpdfstring{MakeTimeSeriesObserver()}{MakeTimeSeriesObserver()}}
+{\footnotesize\ttfamily std\+::shared\+\_\+ptr$<$ Observers\+::\+Time\+Series\+Observer $>$ Compact\+Star\+::\+Physics\+::\+Evolution\+::\+Run\+::\+Make\+Time\+Series\+Observer (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{struct_compact_star_1_1_physics_1_1_evolution_1_1_run_1_1_run_paths}{Run\+Paths}} \&}]{p,  }\item[{const std\+::vector$<$ const \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_driver_1_1_diagnostics_1_1_i_driver_diagnostics}{Driver\+::\+Diagnostics\+::\+IDriver\+Diagnostics}} $\ast$ $>$ \&}]{diag\+\_\+drivers,  }\item[{const \mbox{\hyperlink{struct_compact_star_1_1_physics_1_1_evolution_1_1_observers_1_1_time_series_observer_1_1_options}{Observers\+::\+Time\+Series\+Observer\+::\+Options}} $\ast$}]{overrides = {\ttfamily nullptr} }\end{DoxyParamCaption})}
+
+
+
+Factory\+: construct a Time\+Series\+Observer for a run. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em p} & Run\+Paths for timeseries path and catalog path. \\
+\hline
+{\em diag\+\_\+drivers} & Non-\/owning pointers to diagnostics-\/capable drivers. \\
+\hline
+{\em overrides} & Optional overrides (applied after defaults).\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Shared pointer to Time\+Series\+Observer.
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+Time\+Series\+Observer reads the catalog JSON at runtime if use\+\_\+catalog==true. Therefore, ensure Diagnostics\+Observer writes the catalog early enough. Your current flow (record\+\_\+at\+\_\+start + write\+\_\+catalog) is compatible. 
+\end{DoxyNote}

@@ -1,0 +1,44 @@
+\hypertarget{_i_envelope_8hpp}{}\doxysection{Compact\+Star/\+Physics/\+Driver/\+Thermal/\+Boundary/\+IEnvelope.hpp File Reference}
+\label{_i_envelope_8hpp}\index{CompactStar/Physics/Driver/Thermal/Boundary/IEnvelope.hpp@{CompactStar/Physics/Driver/Thermal/Boundary/IEnvelope.hpp}}
+
+
+Thermal envelope (blanket) interface\+: maps base temperature Tb to surface temperature Ts.  
+
+
+\doxysubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_boundary_1_1_i_envelope}{Compact\+Star\+::\+Physics\+::\+Driver\+::\+Thermal\+::\+Boundary\+::\+IEnvelope}}
+\begin{DoxyCompactList}\small\item\em Abstract strategy for the thermal boundary condition Tb → Ts. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Namespaces}
+\begin{DoxyCompactItemize}
+\item 
+namespace \mbox{\hyperlink{namespace_compact_star_1_1_physics}{Compact\+Star\+::\+Physics}}
+\begin{DoxyCompactList}\small\item\em High-\/level physical modeling layer for compact stars. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Thermal envelope (blanket) interface\+: maps base temperature Tb to surface temperature Ts. 
+
+This header defines the abstract interface for neutron-\/star envelope/blanket models. Envelope models provide the thermal boundary condition connecting the nearly-\/isothermal interior to the radiating surface\+:
+
+
+\begin{DoxyItemize}
+\item The interior is typically evolved in terms of a single temperature variable (e.\+g., redshifted temperature T∞ or a local core temperature).
+\item The outer envelope (ρ ≲ 10$^\wedge$10 g cm$^\wedge$-\/3, order-\/of-\/magnitude) is not evolved explicitly in the ODE system; instead its effect is encoded in a phenomenological/fit mapping Tb → Ts that depends on surface gravity and composition (light-\/element content).
+\end{DoxyItemize}
+
+Typical usage\+:
+\begin{DoxyItemize}
+\item Photon\+Cooling evaluates Ts(\+Tb, g14, xi) and then computes Lγ,∞.
+\item The implementation choice (iron vs accreted vs custom) is injected via options/config.
+\end{DoxyItemize}
+
+Conventions\+:
+\begin{DoxyItemize}
+\item Tb and Ts are {\bfseries{local-\/frame}} temperatures \mbox{[}K\mbox{]} (not redshifted).
+\item g14 is surface gravity in units of 10$^\wedge$14 cm s$^\wedge$-\/2.
+\item xi is a model-\/dependent “light-\/element” parameter. Its meaning depends on the chosen envelope prescription (e.\+g., column depth, composition proxy, etc.).
+\end{DoxyItemize}
+
+This interface is intentionally small and pure; it carries no ownership of star structure, geometry caches, or EOS. Those belong in higher-\/level objects (Star\+Context/\+Geometry\+Cache) and are used by drivers to compute inputs like g14 or to decide what Tb represents. 

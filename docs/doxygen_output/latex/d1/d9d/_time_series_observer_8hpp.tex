@@ -1,0 +1,75 @@
+\hypertarget{_time_series_observer_8hpp}{}\doxysection{Compact\+Star/\+Physics/\+Evolution/\+Observers/\+Time\+Series\+Observer.hpp File Reference}
+\label{_time_series_observer_8hpp}\index{CompactStar/Physics/Evolution/Observers/TimeSeriesObserver.hpp@{CompactStar/Physics/Evolution/Observers/TimeSeriesObserver.hpp}}
+
+
+Lightweight, plotting-\/oriented time series recorder for Evolution runs.  
+
+
+{\ttfamily \#include $<$cstddef$>$}\newline
+{\ttfamily \#include $<$cstdint$>$}\newline
+{\ttfamily \#include $<$fstream$>$}\newline
+{\ttfamily \#include $<$memory$>$}\newline
+{\ttfamily \#include $<$string$>$}\newline
+{\ttfamily \#include $<$unordered\+\_\+map$>$}\newline
+{\ttfamily \#include $<$utility$>$}\newline
+{\ttfamily \#include $<$vector$>$}\newline
+{\ttfamily \#include \char`\"{}Compact\+Star/\+Physics/\+Evolution/\+Observers/\+IObserver.\+hpp\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}Compact\+Star/\+Physics/\+Driver/\+Diagnostics/\+Driver\+Diagnostics.\+hpp\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}Compact\+Star/\+Physics/\+Evolution/\+Diagnostics/\+Diagnostic\+Catalog.\+hpp\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}Zaki/\+String/\+Directory.\+hpp\char`\"{}}\newline
+\doxysubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_observers_1_1_time_series_observer}{Compact\+Star\+::\+Physics\+::\+Evolution\+::\+Observers\+::\+Time\+Series\+Observer}}
+\begin{DoxyCompactList}\small\item\em Minimal time-\/series recorder for selected scalar quantities. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{struct_compact_star_1_1_physics_1_1_evolution_1_1_observers_1_1_time_series_observer_1_1_catalog_scalar_ref}{Compact\+Star\+::\+Physics\+::\+Evolution\+::\+Observers\+::\+Time\+Series\+Observer\+::\+Catalog\+Scalar\+Ref}}
+\begin{DoxyCompactList}\small\item\em Reference to a scalar in the diagnostics catalog. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{struct_compact_star_1_1_physics_1_1_evolution_1_1_observers_1_1_time_series_observer_1_1_column}{Compact\+Star\+::\+Physics\+::\+Evolution\+::\+Observers\+::\+Time\+Series\+Observer\+::\+Column}}
+\begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{struct_compact_star_1_1_physics_1_1_evolution_1_1_observers_1_1_time_series_observer_1_1_column}{Column}} specification for \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_observers_1_1_time_series_observer}{Time\+Series\+Observer}} output. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{struct_compact_star_1_1_physics_1_1_evolution_1_1_observers_1_1_time_series_observer_1_1_options}{Compact\+Star\+::\+Physics\+::\+Evolution\+::\+Observers\+::\+Time\+Series\+Observer\+::\+Options}}
+\begin{DoxyCompactList}\small\item\em Configuration for \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_observers_1_1_time_series_observer}{Time\+Series\+Observer}}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Namespaces}
+\begin{DoxyCompactItemize}
+\item 
+namespace \mbox{\hyperlink{namespace_compact_star_1_1_physics}{Compact\+Star\+::\+Physics}}
+\begin{DoxyCompactList}\small\item\em High-\/level physical modeling layer for compact stars. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Lightweight, plotting-\/oriented time series recorder for Evolution runs. 
+
+The Time\+Series\+Observer is intentionally distinct from Diagnostics\+Observer\+:
+
+
+\begin{DoxyItemize}
+\item Diagnostics\+Observer is designed for auditing, unit contracts, regression testing, and structured per-\/driver snapshots (JSONL with rich metadata).
+\item Time\+Series\+Observer is designed for {\itshape plotting and analysis}\+: it records a narrow set of scalar quantities (e.\+g. evolved DOF like temperature and spin frequency) as a function of time, with minimal overhead and minimal repetition.
+\end{DoxyItemize}
+
+Design goals\+:
+\begin{DoxyItemize}
+\item Deterministic column ordering.
+\item Simple, tooling-\/friendly output (CSV by default).
+\item No \char`\"{}contract\char`\"{}, warnings, or verbose metadata in each row.
+\item Observer must never mutate state or context (read-\/only).
+\end{DoxyItemize}
+
+Typical output row\+: t, sample\+\_\+index, Tinf\+\_\+K, Omega\+\_\+rad\+\_\+s, d\+Ln\+Tinf\+\_\+dt\+\_\+1\+\_\+s, d\+Omega\+\_\+dt\+\_\+rad\+\_\+s2, ...
+
+Column selection\+:
+\begin{DoxyItemize}
+\item The observer supports an explicit list of columns (keys) to record.
+\item Columns can be sourced from\+: (a) state-\/only accessors (e.\+g. Thermal\+State\+::\+Tinf()), (b) registered driver diagnostics providers (IDriver\+Diagnostics), (c) future\+: derived/computed columns (via callback hooks).
+\end{DoxyItemize}
+
+NOTE\+:
+\begin{DoxyItemize}
+\item This header defines the interface and configuration only.
+\item The implementation (cpp) is expected to\+:
+\begin{DoxyItemize}
+\item open/close files in On\+Start/\+On\+Finish,
+\item write a single header line,
+\item write one row per recorded sample,
+\item enforce stable ordering and minimal allocations. 
+\end{DoxyItemize}
+\end{DoxyItemize}

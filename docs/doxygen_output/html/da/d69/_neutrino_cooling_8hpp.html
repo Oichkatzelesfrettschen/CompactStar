@@ -80,20 +80,23 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 
-<p>Driver for core neutrino cooling (DUrca, MUrca, …) contribution to dT̃/dt.  
+<p>Core neutrino-cooling driver (DUrca, MUrca, PBF hooks) for thermal evolution.  
 <a href="#details">More...</a></p>
-<div class="textblock"><code>#include &quot;<a class="el" href="../../d7/d2e/_i_driver_8hpp_source.html">CompactStar/Physics/Driver/IDriver.hpp</a>&quot;</code><br />
-<code>#include &lt;string&gt;</code><br />
+<div class="textblock"><code>#include &lt;string&gt;</code><br />
 <code>#include &lt;vector&gt;</code><br />
+<code>#include &quot;<a class="el" href="../../d7/d2e/_i_driver_8hpp_source.html">CompactStar/Physics/Driver/IDriver.hpp</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="../../dd/de3/_tags_8hpp_source.html">CompactStar/Physics/State/Tags.hpp</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="../../de/d7f/_driver_diagnostics_8hpp_source.html">CompactStar/Physics/Driver/Diagnostics/DriverDiagnostics.hpp</a>&quot;</code><br />
 </div>
 <p><a href="../../da/d69/_neutrino_cooling_8hpp_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="nested-classes" name="nested-classes"></a>
 Classes</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d7/daf/class_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_neutrino_cooling.html">CompactStar::Physics::Driver::Thermal::NeutrinoCooling</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Adds −L_ν/C_eff to the thermal RHS (redshifted frame).  <a href="../../d7/daf/class_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_neutrino_cooling.html#details">More...</a><br /></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Adds a neutrino-cooling contribution to the thermal RHS (redshifted frame).  <a href="../../d7/daf/class_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_neutrino_cooling.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d4/d20/struct_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_neutrino_cooling_1_1_options.html">CompactStar::Physics::Driver::Thermal::NeutrinoCooling::Options</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Configuration knobs controlling which neutrino channels are enabled.  <a href="../../d4/d20/struct_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_neutrino_cooling_1_1_options.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="namespaces" name="namespaces"></a>
@@ -103,8 +106,53 @@ Namespaces</h2></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Driver for core neutrino cooling (DUrca, MUrca, …) contribution to dT̃/dt. </p>
-<p>Integrates emissivities over proper volume (with metric factors available via StarContext / EOS hooks) and converts total L_ν,∞ into a redshifted thermal cooling term. Superfluid suppression, thresholds, and composition masks are delegated to Microphysics and the context. </p>
+<div class="textblock"><p>Core neutrino-cooling driver (DUrca, MUrca, PBF hooks) for thermal evolution. </p>
+<h2><a class="anchor" id="autotoc_md26"></a>
+Physical intent</h2>
+<p>This driver contributes a <b>neutrino luminosity loss</b> term to the redshifted thermal degree of freedom (typically (T_\infty)). CompactStar evolves a <b>logarithmic temperature variable</b>:</p>
+<p class="formulaDsp">
+<picture><source srcset="../../form_27_dark.png" media="(prefers-color-scheme: dark)"/><img class="formulaDsp" alt="\[
+  x \equiv \ln\!\left(\frac{T_\infty}{T_{\rm ref}}\right),
+\]" src="../../form_27.png"/></picture>
+</p>
+<p>so the driver must accumulate (dx/dt) into the thermal RHS:</p>
+<p class="formulaDsp">
+<picture><source srcset="../../form_28_dark.png" media="(prefers-color-scheme: dark)"/><img class="formulaDsp" alt="\[
+  \frac{dx}{dt} = \frac{1}{T_\infty}\,\frac{dT_\infty}{dt}.
+\]" src="../../form_28.png"/></picture>
+</p>
+<p>In a full neutrino-cooling model one would compute:</p>
+<p class="formulaDsp">
+<picture><source srcset="../../form_29_dark.png" media="(prefers-color-scheme: dark)"/><img class="formulaDsp" alt="\[
+  L_{\nu,\infty} = \int dV_{\rm proper}\; Q_\nu(r)\times(\text{redshift factors}),
+\]" src="../../form_29.png"/></picture>
+</p>
+  <p class="formulaDsp">
+<picture><source srcset="../../form_30_dark.png" media="(prefers-color-scheme: dark)"/><img class="formulaDsp" alt="\[
+  \frac{dT_\infty}{dt} = -\frac{L_{\nu,\infty}}{C_{\rm eff}},
+\]" src="../../form_30.png"/></picture>
+</p>
+  <p class="formulaDsp">
+<picture><source srcset="../../form_31_dark.png" media="(prefers-color-scheme: dark)"/><img class="formulaDsp" alt="\[
+  \frac{dx}{dt} = -\frac{L_{\nu,\infty}}{C_{\rm eff}\,T_\infty}.
+\]" src="../../form_31.png"/></picture>
+</p>
+<h2><a class="anchor" id="autotoc_md27"></a>
+Implementation pattern</h2>
+<p>This driver follows the same architecture as PhotonCooling:</p><ul>
+<li>Physics and diagnostics share the same computation via <code>NeutrinoCooling_Details</code>.</li>
+<li><code>AccumulateRHS()</code> calls <code>Detail::ComputeDerived()</code> and adds only the derived (dx/dt) contribution.</li>
+<li><code>DiagnoseSnapshot()</code> calls <code>Detail::Diagnose()</code> so diagnostics cannot drift from the physics implementation.</li>
+</ul>
+<h2><a class="anchor" id="autotoc_md28"></a>
+Units policy</h2>
+<p>This header documents expected units; the implementation must remain consistent:</p><ul>
+<li>(T_\infty): Kelvin [K]</li>
+<li>(L_{\nu,\infty}): [erg/s]</li>
+<li>(C_{\rm eff}): [erg/K]</li>
+<li>(dT_\infty/dt): [K/s]</li>
+<li>(dx/dt): [1/s] </li>
+</ul>
 </div></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

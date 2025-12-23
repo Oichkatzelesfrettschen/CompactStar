@@ -53,6 +53,8 @@ const std\+::string \& {\bfseries Producer} () const
 \item 
 void \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_diagnostics_1_1_diagnostic_packet_a3a0a6fd0da5d14923b2d6cb6d6d19873}{Add\+Scalar}} (const std\+::string \&key, double value, std\+::string unit=\char`\"{}\char`\"{}, std\+::string description=\char`\"{}\char`\"{}, std\+::string source=\char`\"{}\char`\"{})
 \begin{DoxyCompactList}\small\item\em Add/replace a scalar. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_diagnostics_1_1_diagnostic_packet_ae3e2b9e173bd89094aa5c37fa3d243a9}{Add\+Scalar}} (const std\+::string \&key, double value, std\+::string unit, std\+::string description, std\+::string source, \mbox{\hyperlink{_diagnostic_packet_8hpp_a0b4a78e3cbdcedd41943393c406987d1}{Cadence}} cadence)
+\begin{DoxyCompactList}\small\item\em Add/replace a scalar with cadence hint. If the key already exists, it is overwritten (deterministic). \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{class_compact_star_1_1_physics_1_1_evolution_1_1_diagnostics_1_1_diagnostic_packet_a2a2affd7d8fd21e1a254c1b4d13fc226}\label{class_compact_star_1_1_physics_1_1_evolution_1_1_diagnostics_1_1_diagnostic_packet_a2a2affd7d8fd21e1a254c1b4d13fc226}} 
 bool {\bfseries Has\+Scalar} (const std\+::string \&key) const
 \begin{DoxyCompactList}\small\item\em Returns true if the scalar exists. \end{DoxyCompactList}\item 
@@ -130,10 +132,35 @@ Construct an empty packet.
 
 
 \doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_compact_star_1_1_physics_1_1_evolution_1_1_diagnostics_1_1_diagnostic_packet_ae3e2b9e173bd89094aa5c37fa3d243a9}\label{class_compact_star_1_1_physics_1_1_evolution_1_1_diagnostics_1_1_diagnostic_packet_ae3e2b9e173bd89094aa5c37fa3d243a9}} 
+\index{CompactStar::Physics::Evolution::Diagnostics::DiagnosticPacket@{CompactStar::Physics::Evolution::Diagnostics::DiagnosticPacket}!AddScalar@{AddScalar}}
+\index{AddScalar@{AddScalar}!CompactStar::Physics::Evolution::Diagnostics::DiagnosticPacket@{CompactStar::Physics::Evolution::Diagnostics::DiagnosticPacket}}
+\doxysubsubsection{\texorpdfstring{AddScalar()}{AddScalar()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily void Compact\+Star\+::\+Physics\+::\+Evolution\+::\+Diagnostics\+::\+Diagnostic\+Packet\+::\+Add\+Scalar (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{key,  }\item[{double}]{value,  }\item[{std\+::string}]{unit,  }\item[{std\+::string}]{description,  }\item[{std\+::string}]{source,  }\item[{\mbox{\hyperlink{_diagnostic_packet_8hpp_a0b4a78e3cbdcedd41943393c406987d1}{Cadence}}}]{cadence }\end{DoxyParamCaption})}
+
+
+
+Add/replace a scalar with cadence hint. If the key already exists, it is overwritten (deterministic). 
+
+
+\begin{DoxyParams}{Parameters}
+{\em key} & Stable key name (tooling-\/friendly). \\
+\hline
+{\em value} & Numeric value. \\
+\hline
+{\em unit} & Optional unit string. \\
+\hline
+{\em description} & Optional one-\/line description. \\
+\hline
+{\em source} & Optional provenance label (e.\+g., \char`\"{}computed\char`\"{}, \char`\"{}state\char`\"{}). \\
+\hline
+{\em cadence} & Cadence hint for recording this scalar. \\
+\hline
+\end{DoxyParams}
 \mbox{\Hypertarget{class_compact_star_1_1_physics_1_1_evolution_1_1_diagnostics_1_1_diagnostic_packet_a3a0a6fd0da5d14923b2d6cb6d6d19873}\label{class_compact_star_1_1_physics_1_1_evolution_1_1_diagnostics_1_1_diagnostic_packet_a3a0a6fd0da5d14923b2d6cb6d6d19873}} 
 \index{CompactStar::Physics::Evolution::Diagnostics::DiagnosticPacket@{CompactStar::Physics::Evolution::Diagnostics::DiagnosticPacket}!AddScalar@{AddScalar}}
 \index{AddScalar@{AddScalar}!CompactStar::Physics::Evolution::Diagnostics::DiagnosticPacket@{CompactStar::Physics::Evolution::Diagnostics::DiagnosticPacket}}
-\doxysubsubsection{\texorpdfstring{AddScalar()}{AddScalar()}}
+\doxysubsubsection{\texorpdfstring{AddScalar()}{AddScalar()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
 {\footnotesize\ttfamily void Compact\+Star\+::\+Physics\+::\+Evolution\+::\+Diagnostics\+::\+Diagnostic\+Packet\+::\+Add\+Scalar (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{key,  }\item[{double}]{value,  }\item[{std\+::string}]{unit = {\ttfamily \char`\"{}\char`\"{}},  }\item[{std\+::string}]{description = {\ttfamily \char`\"{}\char`\"{}},  }\item[{std\+::string}]{source = {\ttfamily \char`\"{}\char`\"{}} }\end{DoxyParamCaption})}
 
 

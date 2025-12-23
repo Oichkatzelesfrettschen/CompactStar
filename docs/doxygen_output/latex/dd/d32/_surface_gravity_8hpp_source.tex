@@ -1,0 +1,43 @@
+\hypertarget{_surface_gravity_8hpp_source}{}\doxysection{Surface\+Gravity.\+hpp}
+\label{_surface_gravity_8hpp_source}\index{CompactStar/Physics/Driver/Thermal/Boundary/SurfaceGravity.hpp@{CompactStar/Physics/Driver/Thermal/Boundary/SurfaceGravity.hpp}}
+\mbox{\hyperlink{_surface_gravity_8hpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#ifndef CompactStar\_Physics\_Driver\_Thermal\_Boundary\_SurfaceGravity\_H}}
+\DoxyCodeLine{2 \textcolor{preprocessor}{\#define CompactStar\_Physics\_Driver\_Thermal\_Boundary\_SurfaceGravity\_H}}
+\DoxyCodeLine{3 }
+\DoxyCodeLine{4 \textcolor{comment}{// -\/*-\/ lsst-\/c++ -\/*-\/}}
+\DoxyCodeLine{5 \textcolor{comment}{/*}}
+\DoxyCodeLine{6 \textcolor{comment}{ * CompactStar}}
+\DoxyCodeLine{7 \textcolor{comment}{ * See License file at the top of the source tree.}}
+\DoxyCodeLine{8 \textcolor{comment}{ *}}
+\DoxyCodeLine{9 \textcolor{comment}{ * Copyright (c) 2025}}
+\DoxyCodeLine{10 \textcolor{comment}{ * Mohammadreza Zakeri}}
+\DoxyCodeLine{11 \textcolor{comment}{ *}}
+\DoxyCodeLine{12 \textcolor{comment}{ * MIT License — see LICENSE at repo root.}}
+\DoxyCodeLine{13 \textcolor{comment}{ */}}
+\DoxyCodeLine{14 }
+\DoxyCodeLine{44 \textcolor{preprocessor}{\#include <cmath>}}
+\DoxyCodeLine{45 \textcolor{preprocessor}{\#include <stdexcept>}}
+\DoxyCodeLine{46 }
+\DoxyCodeLine{47 \textcolor{keyword}{namespace }CompactStar::Physics::Evolution}
+\DoxyCodeLine{48 \{}
+\DoxyCodeLine{49 \textcolor{keyword}{class }StarContext;}
+\DoxyCodeLine{50 \textcolor{keyword}{class }GeometryCache;}
+\DoxyCodeLine{51 \} \textcolor{comment}{// namespace CompactStar::Physics::Evolution}}
+\DoxyCodeLine{52 }
+\DoxyCodeLine{53 \textcolor{keyword}{namespace }CompactStar::Physics::Driver::Thermal::Boundary}
+\DoxyCodeLine{54 \{}
+\DoxyCodeLine{55 }
+\DoxyCodeLine{77 \textcolor{keywordtype}{double} \mbox{\hyperlink{_surface_gravity_8cpp_ae15e8c29fea87faac51d5f05f194d5d6}{SurfaceGravity\_g14}}(\textcolor{keyword}{const} Evolution::StarContext \&star,}
+\DoxyCodeLine{78                           \textcolor{keyword}{const} Evolution::GeometryCache *geo = \textcolor{keyword}{nullptr});}
+\DoxyCodeLine{79 }
+\DoxyCodeLine{85 \textcolor{keyword}{inline} \textcolor{keywordtype}{double} \mbox{\hyperlink{_surface_gravity_8hpp_aa16ab4db6c51bd9087451d0ad5cb68c7}{g\_cgs\_from\_g14}}(\textcolor{keywordtype}{double} g14)}
+\DoxyCodeLine{86 \{}
+\DoxyCodeLine{87     \textcolor{keywordflow}{return} g14 * 1.0e14; \textcolor{comment}{// cm s\string^-\/2}}
+\DoxyCodeLine{88 \}}
+\DoxyCodeLine{89 }
+\DoxyCodeLine{90 \} \textcolor{comment}{// namespace CompactStar::Physics::Driver::Thermal::Boundary}}
+\DoxyCodeLine{91 }
+\DoxyCodeLine{92 \textcolor{preprocessor}{\#endif }\textcolor{comment}{/* CompactStar\_Physics\_Driver\_Thermal\_Boundary\_SurfaceGravity\_H */}\textcolor{preprocessor}{}}
+
+\end{DoxyCode}

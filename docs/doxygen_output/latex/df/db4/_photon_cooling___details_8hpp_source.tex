@@ -20,7 +20,7 @@
 \DoxyCodeLine{31 \textcolor{comment}{// \#include "{}CompactStar/Physics/Driver/Thermal/PhotonCooling.hpp"{}}}
 \DoxyCodeLine{32 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_driver_context_8hpp}{CompactStar/Physics/Evolution/DriverContext.hpp}}"{}}}
 \DoxyCodeLine{33 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_state_vector_8hpp}{CompactStar/Physics/Evolution/StateVector.hpp}}"{}}}
-\DoxyCodeLine{34 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_thermal_state_8hpp}{CompactStar/Physics/State/ThermalState.hpp}}"{}}}
+\DoxyCodeLine{34 \textcolor{comment}{// \#include "{}CompactStar/Physics/State/ThermalState.hpp"{}}}
 \DoxyCodeLine{35 }
 \DoxyCodeLine{36 \textcolor{keyword}{namespace }CompactStar::Physics::Evolution}
 \DoxyCodeLine{37 \{}
@@ -49,31 +49,35 @@
 \DoxyCodeLine{66     \textcolor{keywordtype}{double} Tinf\_K = 0.0;}
 \DoxyCodeLine{67     \textcolor{keywordtype}{double} Tsurf\_K = 0.0;}
 \DoxyCodeLine{68 }
-\DoxyCodeLine{69     \textcolor{comment}{// Geometry/redshift}}
-\DoxyCodeLine{70     \textcolor{keywordtype}{double} R\_surf\_km = 0.0;}
-\DoxyCodeLine{71     \textcolor{keywordtype}{double} R\_surf\_cm = 0.0;}
-\DoxyCodeLine{72     \textcolor{keywordtype}{double} exp2nu\_surf = 0.0;}
-\DoxyCodeLine{73 }
-\DoxyCodeLine{74     \textcolor{comment}{// Areas}}
-\DoxyCodeLine{75     \textcolor{keywordtype}{double} A\_inf\_cm2 = 0.0;}
-\DoxyCodeLine{76     \textcolor{keywordtype}{double} A\_eff\_inf\_cm2 = 0.0;}
+\DoxyCodeLine{69     \textcolor{comment}{// NEW: Envelope inputs (resolved)}}
+\DoxyCodeLine{70     \textcolor{keywordtype}{double} Tb\_K = 0.0; \textcolor{comment}{// local base-\/of-\/envelope temperature [K] at rho\_b}}
+\DoxyCodeLine{71     \textcolor{keywordtype}{double} g14 = 0.0;  \textcolor{comment}{// surface gravity in units of 1e14 cm s\string^-\/2}}
+\DoxyCodeLine{72 }
+\DoxyCodeLine{73     \textcolor{comment}{// Geometry/redshift}}
+\DoxyCodeLine{74     \textcolor{keywordtype}{double} R\_surf\_km = 0.0;}
+\DoxyCodeLine{75     \textcolor{keywordtype}{double} R\_surf\_cm = 0.0;}
+\DoxyCodeLine{76     \textcolor{keywordtype}{double} exp2nu\_surf = 0.0;}
 \DoxyCodeLine{77 }
-\DoxyCodeLine{78     \textcolor{comment}{// Luminosity and RHS}}
-\DoxyCodeLine{79     \textcolor{keywordtype}{double} L\_gamma\_inf\_erg\_s = 0.0;}
-\DoxyCodeLine{80     \textcolor{keywordtype}{double} dTinf\_dt\_K\_s = 0.0;   \textcolor{comment}{// physical cooling rate [K/s]}}
-\DoxyCodeLine{81     \textcolor{keywordtype}{double} dLnTinf\_dt\_1\_s = 0.0; \textcolor{comment}{// ODE RHS contribution [1/s]}}
-\DoxyCodeLine{82 \};}
-\DoxyCodeLine{83 }
-\DoxyCodeLine{91 \mbox{\hyperlink{struct_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_detail_1_1_photon_cooling___details}{PhotonCooling\_Details}} \mbox{\hyperlink{_photon_cooling___details_8hpp_ac2ce0fa8a68ea72614488a1af1990412}{ComputeDerived}}(\textcolor{keyword}{const} \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_photon_cooling}{PhotonCooling}} \&drv,}
-\DoxyCodeLine{92                                      \textcolor{keyword}{const} \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_state_vector}{Evolution::StateVector}} \&Y,}
-\DoxyCodeLine{93                                      \textcolor{keyword}{const} \mbox{\hyperlink{struct_compact_star_1_1_physics_1_1_evolution_1_1_driver_context}{Evolution::DriverContext}} \&ctx);}
-\DoxyCodeLine{94 }
-\DoxyCodeLine{100 \textcolor{keywordtype}{void} \mbox{\hyperlink{_photon_cooling___details_8hpp_a1e44508228bc6939a8378a0afd300a93}{Diagnose}}(\textcolor{keyword}{const} \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_photon_cooling}{PhotonCooling}} \&self,}
-\DoxyCodeLine{101               \textcolor{keywordtype}{double} t,}
-\DoxyCodeLine{102               \textcolor{keyword}{const} \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_state_vector}{Evolution::StateVector}} \&Y,}
-\DoxyCodeLine{103               \textcolor{keyword}{const} \mbox{\hyperlink{struct_compact_star_1_1_physics_1_1_evolution_1_1_driver_context}{Evolution::DriverContext}} \&ctx,}
-\DoxyCodeLine{104               \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_diagnostics_1_1_diagnostic_packet}{Evolution::Diagnostics::DiagnosticPacket}} \&out);}
-\DoxyCodeLine{105 }
-\DoxyCodeLine{106 \} \textcolor{comment}{// namespace CompactStar::Physics::Driver::Thermal::Detail}}
+\DoxyCodeLine{78     \textcolor{comment}{// Areas}}
+\DoxyCodeLine{79     \textcolor{keywordtype}{double} A\_inf\_cm2 = 0.0;}
+\DoxyCodeLine{80     \textcolor{keywordtype}{double} A\_eff\_inf\_cm2 = 0.0;}
+\DoxyCodeLine{81 }
+\DoxyCodeLine{82     \textcolor{comment}{// Luminosity and RHS}}
+\DoxyCodeLine{83     \textcolor{keywordtype}{double} L\_gamma\_inf\_erg\_s = 0.0;}
+\DoxyCodeLine{84     \textcolor{keywordtype}{double} dTinf\_dt\_K\_s = 0.0;   \textcolor{comment}{// physical cooling rate [K/s]}}
+\DoxyCodeLine{85     \textcolor{keywordtype}{double} dLnTinf\_dt\_1\_s = 0.0; \textcolor{comment}{// ODE RHS contribution [1/s]}}
+\DoxyCodeLine{86 \};}
+\DoxyCodeLine{87 }
+\DoxyCodeLine{95 \mbox{\hyperlink{struct_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_detail_1_1_photon_cooling___details}{PhotonCooling\_Details}} \mbox{\hyperlink{_neutrino_cooling___details_8hpp_a017b32db80be303c7f5724ca4770e18f}{ComputeDerived}}(\textcolor{keyword}{const} \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_photon_cooling}{PhotonCooling}} \&drv,}
+\DoxyCodeLine{96                                      \textcolor{keyword}{const} \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_state_vector}{Evolution::StateVector}} \&Y,}
+\DoxyCodeLine{97                                      \textcolor{keyword}{const} \mbox{\hyperlink{struct_compact_star_1_1_physics_1_1_evolution_1_1_driver_context}{Evolution::DriverContext}} \&ctx);}
+\DoxyCodeLine{98 }
+\DoxyCodeLine{104 \textcolor{keywordtype}{void} \mbox{\hyperlink{_neutrino_cooling___details_8hpp_a1207123648f14ac2377601828aa19e12}{Diagnose}}(\textcolor{keyword}{const} \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_photon_cooling}{PhotonCooling}} \&self,}
+\DoxyCodeLine{105               \textcolor{keywordtype}{double} t,}
+\DoxyCodeLine{106               \textcolor{keyword}{const} \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_state_vector}{Evolution::StateVector}} \&Y,}
+\DoxyCodeLine{107               \textcolor{keyword}{const} \mbox{\hyperlink{struct_compact_star_1_1_physics_1_1_evolution_1_1_driver_context}{Evolution::DriverContext}} \&ctx,}
+\DoxyCodeLine{108               \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_diagnostics_1_1_diagnostic_packet}{Evolution::Diagnostics::DiagnosticPacket}} \&out);}
+\DoxyCodeLine{109 }
+\DoxyCodeLine{110 \} \textcolor{comment}{// namespace CompactStar::Physics::Driver::Thermal::Detail}}
 
 \end{DoxyCode}

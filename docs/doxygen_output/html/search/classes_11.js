@@ -9,5 +9,6 @@ var searchData=
   ['rhsaccumulator_6',['RHSAccumulator',['../d6/d26/class_compact_star_1_1_physics_1_1_evolution_1_1_r_h_s_accumulator.html',1,'CompactStar::Physics::Evolution']]],
   ['rotationsolver_7',['RotationSolver',['../d7/d64/class_compact_star_1_1_core_1_1_rotation_solver.html',1,'CompactStar::Core']]],
   ['row_8',['Row',['../de/df9/struct_zaki_1_1_vector_1_1_row.html',1,'Zaki::Vector']]],
-  ['runinfo_9',['RunInfo',['../da/d2a/struct_compact_star_1_1_physics_1_1_evolution_1_1_observers_1_1_run_info.html',1,'CompactStar::Physics::Evolution::Observers']]]
+  ['runinfo_9',['RunInfo',['../da/d2a/struct_compact_star_1_1_physics_1_1_evolution_1_1_observers_1_1_run_info.html',1,'CompactStar::Physics::Evolution::Observers']]],
+  ['runpaths_10',['RunPaths',['../d4/d14/struct_compact_star_1_1_physics_1_1_evolution_1_1_run_1_1_run_paths.html',1,'CompactStar::Physics::Evolution::Run']]]
 ];

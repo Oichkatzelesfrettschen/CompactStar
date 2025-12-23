@@ -1,20 +1,39 @@
 \hypertarget{struct_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_neutrino_cooling_1_1_options}{}\doxysection{Compact\+Star\+::Physics\+::Driver\+::Thermal\+::Neutrino\+Cooling\+::Options Struct Reference}
 \label{struct_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_neutrino_cooling_1_1_options}\index{CompactStar::Physics::Driver::Thermal::NeutrinoCooling::Options@{CompactStar::Physics::Driver::Thermal::NeutrinoCooling::Options}}
+
+
+Configuration knobs controlling which neutrino channels are enabled.  
+
+
+
+
+{\ttfamily \#include $<$Neutrino\+Cooling.\+hpp$>$}
+
 \doxysubsection*{Public Attributes}
 \begin{DoxyCompactItemize}
 \item 
 \mbox{\Hypertarget{struct_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_neutrino_cooling_1_1_options_afd1367d321e8c97c33d72e5abb0855b6}\label{struct_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_neutrino_cooling_1_1_options_afd1367d321e8c97c33d72e5abb0855b6}} 
 bool {\bfseries include\+\_\+direct\+\_\+urca} = true
-\item 
+\begin{DoxyCompactList}\small\item\em Enable direct Urca contribution (if available in your details implementation). \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{struct_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_neutrino_cooling_1_1_options_a633d9bd23f1df770f9cadc25a8d20df5}\label{struct_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_neutrino_cooling_1_1_options_a633d9bd23f1df770f9cadc25a8d20df5}} 
 bool {\bfseries include\+\_\+modified\+\_\+urca} = true
-\item 
+\begin{DoxyCompactList}\small\item\em Enable modified Urca contribution (if available in your details implementation). \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{struct_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_neutrino_cooling_1_1_options_a6f5e5291a5b0360ef53d05f0255010db}\label{struct_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_neutrino_cooling_1_1_options_a6f5e5291a5b0360ef53d05f0255010db}} 
 bool {\bfseries include\+\_\+pair\+\_\+breaking} = false
-\begin{DoxyCompactList}\small\item\em hook for future superfluid PBF \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Enable pair-\/breaking/formation contribution (future superfluid hook). \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{struct_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_neutrino_cooling_1_1_options_a59de0098d47f8473fa382b6b4ac209ac}\label{struct_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_neutrino_cooling_1_1_options_a59de0098d47f8473fa382b6b4ac209ac}} 
 double {\bfseries global\+\_\+scale} = 1.\+0
-\begin{DoxyCompactList}\small\item\em multiplicative safety factor \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Dimensionless multiplicative scale applied to the net cooling rate. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Configuration knobs controlling which neutrino channels are enabled. 
+
+These options are intended to map to future microphysics channel selection. {\ttfamily global\+\_\+scale} provides a convenient dimensionless knob for debugging/tests.
+
+\begin{DoxyNote}{Note}
+For a physically meaningful model, you will eventually also want a policy for (C\+\_\+\{\textbackslash{}rm eff\}) (either in \mbox{\hyperlink{struct_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_neutrino_cooling_1_1_options}{Options}} or supplied by {\ttfamily ctx}). 
+\end{DoxyNote}
 
 
 The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}

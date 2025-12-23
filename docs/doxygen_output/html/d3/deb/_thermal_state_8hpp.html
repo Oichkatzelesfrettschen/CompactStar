@@ -106,14 +106,14 @@ Namespaces</h2></td></tr>
 <div class="textblock"><p>Thermal evolution state block for a compact star. </p>
 <p>This class provides the <b>dynamical thermal degrees of freedom</b> used by the evolution system (typically the redshifted internal temperature T∞, or multiple temperature components if needed), as well as optional auxiliary temperatures used by microphysics or cooling models.</p>
 <p>Directory-based namespace: <a class="el" href="../../da/d7b/namespace_compact_star_1_1_physics_1_1_state.html">CompactStar::Physics::State</a></p>
-<h3><a class="anchor" id="autotoc_md27"></a>
+<h3><a class="anchor" id="autotoc_md44"></a>
 Design</h3>
 <ul>
 <li>The evolution DOFs live in a contiguous vector (<code>values_</code>).</li>
 <li>A typical minimal configuration has just one DOF = T∞.</li>
 <li>Subclasses or callers may configure multiple components by calling Resize().</li>
 </ul>
-<h3><a class="anchor" id="autotoc_md28"></a>
+<h3><a class="anchor" id="autotoc_md45"></a>
 Auxiliary variables</h3>
 <p>The local-frame temperatures (T_core, T_blanket, T_surf) are <b>not</b> part of the ODE vector. They are cached values used by cooling models, envelopes, emissivity computations, and diagnostics. </p>
 </div></div><!-- contents -->

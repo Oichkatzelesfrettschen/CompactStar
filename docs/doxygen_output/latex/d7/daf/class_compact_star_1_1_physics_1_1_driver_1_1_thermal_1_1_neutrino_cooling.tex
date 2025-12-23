@@ -2,7 +2,7 @@
 \label{class_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_neutrino_cooling}\index{CompactStar::Physics::Driver::Thermal::NeutrinoCooling@{CompactStar::Physics::Driver::Thermal::NeutrinoCooling}}
 
 
-Adds −\+L\+\_\+ν/\+C\+\_\+eff to the thermal RHS (redshifted frame).  
+Adds a neutrino-\/cooling contribution to the thermal RHS (redshifted frame).  
 
 
 
@@ -12,40 +12,122 @@ Adds −\+L\+\_\+ν/\+C\+\_\+eff to the thermal RHS (redshifted frame).
 Inheritance diagram for Compact\+Star\+::Physics\+::Driver\+::Thermal\+::Neutrino\+Cooling\+:\begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[height=2.000000cm]{d7/daf/class_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_neutrino_cooling}
+\includegraphics[height=1.534247cm]{d7/daf/class_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_neutrino_cooling}
 \end{center}
 \end{figure}
 \doxysubsection*{Classes}
 \begin{DoxyCompactItemize}
 \item 
 struct \mbox{\hyperlink{struct_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_neutrino_cooling_1_1_options}{Options}}
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Configuration knobs controlling which neutrino channels are enabled. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\Hypertarget{class_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_neutrino_cooling_a8da146e00e6d466c0b75de734434c181}\label{class_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_neutrino_cooling_a8da146e00e6d466c0b75de734434c181}} 
-{\bfseries Neutrino\+Cooling} (\mbox{\hyperlink{struct_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_neutrino_cooling_1_1_options}{Options}} opts=\{\})
-\item 
+\mbox{\hyperlink{class_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_neutrino_cooling_af93163d3b2239b0cd9eab120b6622d14}{Neutrino\+Cooling}} ()=default
+\begin{DoxyCompactList}\small\item\em Default constructor. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_neutrino_cooling_a254fbb66d5f48bbd4c6950bfa0cc23a5}{Neutrino\+Cooling}} (const \mbox{\hyperlink{struct_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_neutrino_cooling_1_1_options}{Options}} \&opts)
+\begin{DoxyCompactList}\small\item\em Construct with explicit options (copy). \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_neutrino_cooling_a1dc8f16787029abc645fd4d5a61aabb3}{Neutrino\+Cooling}} (\mbox{\hyperlink{struct_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_neutrino_cooling_1_1_options}{Options}} \&\&opts)
+\begin{DoxyCompactList}\small\item\em Construct with explicit options (move). \end{DoxyCompactList}\item 
 std\+::string \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_neutrino_cooling_ae1d299290511e369d2003833f9c74aae}{Name}} () const override
-\begin{DoxyCompactList}\small\item\em Human-\/readable name for diagnostics/logging. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Stable driver identifier. \end{DoxyCompactList}\item 
 const std\+::vector$<$ \mbox{\hyperlink{namespace_compact_star_1_1_physics_1_1_state_af14f5554b0d9be50c5ea718733bc424b}{State\+::\+State\+Tag}} $>$ \& \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_neutrino_cooling_aa42814553d2918595b45d411648656c2}{Depends\+On}} () const override
-\begin{DoxyCompactList}\small\item\em Which state blocks this driver reads. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{namespace_compact_star_1_1_physics_1_1_state}{State}} blocks this driver reads. \end{DoxyCompactList}\item 
 const std\+::vector$<$ \mbox{\hyperlink{namespace_compact_star_1_1_physics_1_1_state_af14f5554b0d9be50c5ea718733bc424b}{State\+::\+State\+Tag}} $>$ \& \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_neutrino_cooling_a3e430568095c4bc88f22f9e6730e2bdc}{Updates}} () const override
-\begin{DoxyCompactList}\small\item\em Which state blocks this driver updates (adds contributions to). \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{namespace_compact_star_1_1_physics_1_1_state}{State}} blocks this driver updates (accumulates into RHS). \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_neutrino_cooling_ab9ed44b6727390735bb257b656daca44}{Accumulate\+RHS}} (double t, const \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_state_vector}{Evolution\+::\+State\+Vector}} \&Y, \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_r_h_s_accumulator}{Evolution\+::\+RHSAccumulator}} \&d\+Ydt, const \mbox{\hyperlink{struct_compact_star_1_1_physics_1_1_evolution_1_1_driver_context}{Evolution\+::\+Driver\+Context}} \&ctx) const override
-\begin{DoxyCompactList}\small\item\em Add this driver’s contribution to the global RHS d\+Y/dt. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Accumulate neutrino-\/cooling contribution into the thermal RHS. \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{class_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_neutrino_cooling_ac40acbe0b970fe40a2eeba0d5e1c9210}\label{class_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_neutrino_cooling_ac40acbe0b970fe40a2eeba0d5e1c9210}} 
 const \mbox{\hyperlink{struct_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_neutrino_cooling_1_1_options}{Options}} \& {\bfseries Get\+Options} () const
-\item 
+\begin{DoxyCompactList}\small\item\em Get current configuration options. \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{class_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_neutrino_cooling_aefff6afb40108cb08a61dd742c74d73a}\label{class_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_neutrino_cooling_aefff6afb40108cb08a61dd742c74d73a}} 
 void {\bfseries Set\+Options} (const \mbox{\hyperlink{struct_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_neutrino_cooling_1_1_options}{Options}} \&o)
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Replace configuration options. \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_neutrino_cooling_aab15bad47f18a6075c5e768513254af6}{Diagnostics\+Name}} () const override
+\begin{DoxyCompactList}\small\item\em Producer name used in diagnostics packets and the catalog. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_diagnostics_1_1_unit_contract}{Evolution\+::\+Diagnostics\+::\+Unit\+Contract}} \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_neutrino_cooling_a4b62bd4b829c22cb169093ad03995758}{Unit\+Contract}} () const override
+\begin{DoxyCompactList}\small\item\em Unit contract describing this driver\textquotesingle{}s assumptions. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{struct_compact_star_1_1_physics_1_1_evolution_1_1_diagnostics_1_1_producer_catalog}{Evolution\+::\+Diagnostics\+::\+Producer\+Catalog}} \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_neutrino_cooling_a60ac72882c5a4d8946e9ea3211362474}{Diagnostics\+Catalog}} () const override
+\begin{DoxyCompactList}\small\item\em Diagnostics schema catalog for this driver. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_neutrino_cooling_aa74afbc210c241667811ee958c5bbc4d}{Diagnose\+Snapshot}} (double t, const \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_state_vector}{Evolution\+::\+State\+Vector}} \&Y, const \mbox{\hyperlink{struct_compact_star_1_1_physics_1_1_evolution_1_1_driver_context}{Evolution\+::\+Driver\+Context}} \&ctx, \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_diagnostics_1_1_diagnostic_packet}{Evolution\+::\+Diagnostics\+::\+Diagnostic\+Packet}} \&out) const override
+\begin{DoxyCompactList}\small\item\em Emit diagnostics scalars at a snapshot in time. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Friends}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_neutrino_cooling_a744da07acc76fce9f881d27805ae855c}\label{class_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_neutrino_cooling_a744da07acc76fce9f881d27805ae855c}} 
+struct \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_neutrino_cooling_a744da07acc76fce9f881d27805ae855c}{Compact\+Star\+::\+Physics\+::\+Driver\+::\+Thermal\+::\+Detail\+::\+Neutrino\+Cooling\+\_\+\+Details}}
+\begin{DoxyCompactList}\small\item\em Allow the Details bundle to access private members if needed. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}
-Adds −\+L\+\_\+ν/\+C\+\_\+eff to the thermal RHS (redshifted frame). 
+Adds a neutrino-\/cooling contribution to the thermal RHS (redshifted frame). 
 
-{\bfseries{Depends on\+:}} \mbox{\hyperlink{namespace_compact_star_1_1_physics_1_1_thermal}{Thermal}} (and possibly Chem via ctx/microphysics) {\bfseries{Updates\+:}} \mbox{\hyperlink{namespace_compact_star_1_1_physics_1_1_thermal}{Thermal}} 
+{\bfseries{Depends on\+:}} \mbox{\hyperlink{namespace_compact_star_1_1_physics_1_1_thermal}{Thermal}} {\bfseries{Updates\+:}} \mbox{\hyperlink{namespace_compact_star_1_1_physics_1_1_thermal}{Thermal}}\hypertarget{class_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_neutrino_cooling_autotoc_md29}{}\doxyparagraph{What this driver does}\label{class_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_neutrino_cooling_autotoc_md29}
+
+\begin{DoxyEnumerate}
+\item Reads the evolved thermal DOF (T\+\_\+\textbackslash{}infty) from the Thermal\+State in {\ttfamily Y}.
+\item Computes derived neutrino cooling quantities through {\ttfamily \mbox{\hyperlink{_neutrino_cooling___details_8hpp_a017b32db80be303c7f5724ca4770e18f}{Detail\+::\+Compute\+Derived()}}}.
+\item Accumulates the derived (dx/dt = d/dt\textbackslash{}ln(T\+\_\+\textbackslash{}infty/\+T\+\_\+\{\textbackslash{}rm ref\})) into the RHS.
+\end{DoxyEnumerate}\hypertarget{class_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_neutrino_cooling_autotoc_md30}{}\doxyparagraph{What this driver does not do (yet)}\label{class_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_neutrino_cooling_autotoc_md30}
+
+\begin{DoxyItemize}
+\item It does not implement the full microphysics emissivity set by default.
+\item It does not compute (C\+\_\+\{\textbackslash{}rm eff\}) from EOS/microphysics unless you wire it.
+\item It does not modify structure (TOV/geometry profiles).
+\end{DoxyItemize}\hypertarget{class_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_neutrino_cooling_autotoc_md31}{}\doxyparagraph{Determinism contract}\label{class_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_neutrino_cooling_autotoc_md31}
+
+\begin{DoxyItemize}
+\item The driver is pure with respect to {\ttfamily Y} and {\ttfamily ctx} (read-\/only).
+\item For fixed {\ttfamily (t, Y, ctx)} it produces deterministic output. 
+\end{DoxyItemize}
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_neutrino_cooling_af93163d3b2239b0cd9eab120b6622d14}\label{class_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_neutrino_cooling_af93163d3b2239b0cd9eab120b6622d14}} 
+\index{CompactStar::Physics::Driver::Thermal::NeutrinoCooling@{CompactStar::Physics::Driver::Thermal::NeutrinoCooling}!NeutrinoCooling@{NeutrinoCooling}}
+\index{NeutrinoCooling@{NeutrinoCooling}!CompactStar::Physics::Driver::Thermal::NeutrinoCooling@{CompactStar::Physics::Driver::Thermal::NeutrinoCooling}}
+\doxysubsubsection{\texorpdfstring{NeutrinoCooling()}{NeutrinoCooling()}\hspace{0.1cm}{\footnotesize\ttfamily [1/3]}}
+{\footnotesize\ttfamily Compact\+Star\+::\+Physics\+::\+Driver\+::\+Thermal\+::\+Neutrino\+Cooling\+::\+Neutrino\+Cooling (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [default]}}
+
+
+
+Default constructor. 
+
+Uses default \mbox{\hyperlink{struct_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_neutrino_cooling_1_1_options}{Options}} values.
+
+\begin{DoxyNote}{Note}
+This avoids the toolchain pitfall where {\ttfamily \mbox{\hyperlink{struct_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_neutrino_cooling_1_1_options}{Options}} opts = \{\}} combined with default member initializers in nested structs can fail under some configurations. 
+\end{DoxyNote}
+\mbox{\Hypertarget{class_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_neutrino_cooling_a254fbb66d5f48bbd4c6950bfa0cc23a5}\label{class_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_neutrino_cooling_a254fbb66d5f48bbd4c6950bfa0cc23a5}} 
+\index{CompactStar::Physics::Driver::Thermal::NeutrinoCooling@{CompactStar::Physics::Driver::Thermal::NeutrinoCooling}!NeutrinoCooling@{NeutrinoCooling}}
+\index{NeutrinoCooling@{NeutrinoCooling}!CompactStar::Physics::Driver::Thermal::NeutrinoCooling@{CompactStar::Physics::Driver::Thermal::NeutrinoCooling}}
+\doxysubsubsection{\texorpdfstring{NeutrinoCooling()}{NeutrinoCooling()}\hspace{0.1cm}{\footnotesize\ttfamily [2/3]}}
+{\footnotesize\ttfamily Compact\+Star\+::\+Physics\+::\+Driver\+::\+Thermal\+::\+Neutrino\+Cooling\+::\+Neutrino\+Cooling (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{struct_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_neutrino_cooling_1_1_options}{Options}} \&}]{opts }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [explicit]}}
+
+
+
+Construct with explicit options (copy). 
+
+
+\begin{DoxyParams}{Parameters}
+{\em opts} & Configuration options. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_neutrino_cooling_a1dc8f16787029abc645fd4d5a61aabb3}\label{class_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_neutrino_cooling_a1dc8f16787029abc645fd4d5a61aabb3}} 
+\index{CompactStar::Physics::Driver::Thermal::NeutrinoCooling@{CompactStar::Physics::Driver::Thermal::NeutrinoCooling}!NeutrinoCooling@{NeutrinoCooling}}
+\index{NeutrinoCooling@{NeutrinoCooling}!CompactStar::Physics::Driver::Thermal::NeutrinoCooling@{CompactStar::Physics::Driver::Thermal::NeutrinoCooling}}
+\doxysubsubsection{\texorpdfstring{NeutrinoCooling()}{NeutrinoCooling()}\hspace{0.1cm}{\footnotesize\ttfamily [3/3]}}
+{\footnotesize\ttfamily Compact\+Star\+::\+Physics\+::\+Driver\+::\+Thermal\+::\+Neutrino\+Cooling\+::\+Neutrino\+Cooling (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_neutrino_cooling_1_1_options}{Options}} \&\&}]{opts }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [explicit]}}
+
+
+
+Construct with explicit options (move). 
+
+
+\begin{DoxyParams}{Parameters}
+{\em opts} & Configuration options. \\
+\hline
+\end{DoxyParams}
+
 
 \doxysubsection{Member Function Documentation}
 \mbox{\Hypertarget{class_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_neutrino_cooling_ab9ed44b6727390735bb257b656daca44}\label{class_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_neutrino_cooling_ab9ed44b6727390735bb257b656daca44}} 
@@ -56,19 +138,27 @@ Adds −\+L\+\_\+ν/\+C\+\_\+eff to the thermal RHS (redshifted frame).
 
 
 
-Add this driver’s contribution to the global RHS d\+Y/dt. 
+Accumulate neutrino-\/cooling contribution into the thermal RHS. 
 
-Implementations must {\itshape accumulate} into {\ttfamily d\+Ydt} (i.\+e., add), and must not assume any specific call order beyond what the Evolution graph resolves.
+This method must {\bfseries{accumulate}} into {\ttfamily d\+Ydt} (never overwrite).\hypertarget{class_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_neutrino_cooling_autotoc_md32}{}\doxyparagraph{Algorithm outline}\label{class_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_neutrino_cooling_autotoc_md32}
+
+\begin{DoxyEnumerate}
+\item Compute derived neutrino quantities via {\ttfamily Detail\+::\+Compute\+Derived($\ast$this, Y, ctx)}.
+\item If the derived bundle is not valid ({\ttfamily ok=false}), skip contribution.
+\item Otherwise add\+:  \[
+     \frac{dx}{dt} \mathrel{+}= \left(\frac{d}{dt}\ln(T_\infty/T_{\rm ref})\right)_{\nu}
+   \] to the \mbox{\hyperlink{namespace_compact_star_1_1_physics_1_1_thermal}{Thermal}} state component 0.
+\end{DoxyEnumerate}
 
 
 \begin{DoxyParams}{Parameters}
-{\em t} & Current time (model units; typically seconds). \\
+{\em t} & Current simulation time (seconds by convention). \\
 \hline
-{\em Y} & Read-\/only composite state vector (Spin/\+Thermal/\+Chem/…). \\
+{\em Y} & Composite state vector (read-\/only). \\
 \hline
-{\em d\+Ydt} & Write-\/only accumulator for RHS components (add to it). \\
+{\em d\+Ydt} & RHS accumulator (write-\/only additive). \\
 \hline
-{\em ctx} & Read-\/only star/context data (geometry, EOS, microphysics). \\
+{\em ctx} & Driver context (geometry, EOS, microphysics handles, etc.). \\
 \hline
 \end{DoxyParams}
 
@@ -83,11 +173,66 @@ Implements \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_i_driver_ab4c100e
 
 
 
-Which state blocks this driver reads. 
+\mbox{\hyperlink{namespace_compact_star_1_1_physics_1_1_state}{State}} blocks this driver reads. 
 
-Drivers should return a reference to a static container (e.\+g. a static const std\+::vector$<$\+State\+Tag$>$). 
+
 
 Implements \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_i_driver_a813f52e0fad2ee496611eb6a18114354}{Compact\+Star\+::\+Physics\+::\+IDriver}}.
+
+\mbox{\Hypertarget{class_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_neutrino_cooling_aa74afbc210c241667811ee958c5bbc4d}\label{class_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_neutrino_cooling_aa74afbc210c241667811ee958c5bbc4d}} 
+\index{CompactStar::Physics::Driver::Thermal::NeutrinoCooling@{CompactStar::Physics::Driver::Thermal::NeutrinoCooling}!DiagnoseSnapshot@{DiagnoseSnapshot}}
+\index{DiagnoseSnapshot@{DiagnoseSnapshot}!CompactStar::Physics::Driver::Thermal::NeutrinoCooling@{CompactStar::Physics::Driver::Thermal::NeutrinoCooling}}
+\doxysubsubsection{\texorpdfstring{DiagnoseSnapshot()}{DiagnoseSnapshot()}}
+{\footnotesize\ttfamily void Compact\+Star\+::\+Physics\+::\+Driver\+::\+Thermal\+::\+Neutrino\+Cooling\+::\+Diagnose\+Snapshot (\begin{DoxyParamCaption}\item[{double}]{t,  }\item[{const \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_state_vector}{Evolution\+::\+State\+Vector}} \&}]{Y,  }\item[{const \mbox{\hyperlink{struct_compact_star_1_1_physics_1_1_evolution_1_1_driver_context}{Evolution\+::\+Driver\+Context}} \&}]{ctx,  }\item[{\mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_diagnostics_1_1_diagnostic_packet}{Evolution\+::\+Diagnostics\+::\+Diagnostic\+Packet}} \&}]{out }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Emit diagnostics scalars at a snapshot in time. 
+
+This function should be deterministic. It delegates to {\ttfamily \mbox{\hyperlink{_neutrino_cooling___details_8hpp_a1207123648f14ac2377601828aa19e12}{Detail\+::\+Diagnose()}}} so the emitted diagnostics stay consistent with the physics computation.
+
+
+\begin{DoxyParams}{Parameters}
+{\em t} & Current time. \\
+\hline
+{\em Y} & Current composite state (read-\/only). \\
+\hline
+{\em ctx} & Driver context (read-\/only). \\
+\hline
+{\em out} & Packet object to populate. \\
+\hline
+\end{DoxyParams}
+
+
+Implements \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_driver_1_1_diagnostics_1_1_i_driver_diagnostics_a282ccc724f51a04081b59ca8e6eea0bb}{Compact\+Star\+::\+Physics\+::\+Driver\+::\+Diagnostics\+::\+IDriver\+Diagnostics}}.
+
+\mbox{\Hypertarget{class_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_neutrino_cooling_a60ac72882c5a4d8946e9ea3211362474}\label{class_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_neutrino_cooling_a60ac72882c5a4d8946e9ea3211362474}} 
+\index{CompactStar::Physics::Driver::Thermal::NeutrinoCooling@{CompactStar::Physics::Driver::Thermal::NeutrinoCooling}!DiagnosticsCatalog@{DiagnosticsCatalog}}
+\index{DiagnosticsCatalog@{DiagnosticsCatalog}!CompactStar::Physics::Driver::Thermal::NeutrinoCooling@{CompactStar::Physics::Driver::Thermal::NeutrinoCooling}}
+\doxysubsubsection{\texorpdfstring{DiagnosticsCatalog()}{DiagnosticsCatalog()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{struct_compact_star_1_1_physics_1_1_evolution_1_1_diagnostics_1_1_producer_catalog}{Evolution\+::\+Diagnostics\+::\+Producer\+Catalog}} Compact\+Star\+::\+Physics\+::\+Driver\+::\+Thermal\+::\+Neutrino\+Cooling\+::\+Diagnostics\+Catalog (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Diagnostics schema catalog for this driver. 
+
+Declares which scalar keys this driver may emit, and defines profile(s) such as {\ttfamily timeseries\+\_\+default} used by the Time\+Series\+Observer. 
+
+Implements \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_driver_1_1_diagnostics_1_1_i_driver_diagnostics_ad256b3ad094d1dd5343a018c54a498e5}{Compact\+Star\+::\+Physics\+::\+Driver\+::\+Diagnostics\+::\+IDriver\+Diagnostics}}.
+
+\mbox{\Hypertarget{class_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_neutrino_cooling_aab15bad47f18a6075c5e768513254af6}\label{class_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_neutrino_cooling_aab15bad47f18a6075c5e768513254af6}} 
+\index{CompactStar::Physics::Driver::Thermal::NeutrinoCooling@{CompactStar::Physics::Driver::Thermal::NeutrinoCooling}!DiagnosticsName@{DiagnosticsName}}
+\index{DiagnosticsName@{DiagnosticsName}!CompactStar::Physics::Driver::Thermal::NeutrinoCooling@{CompactStar::Physics::Driver::Thermal::NeutrinoCooling}}
+\doxysubsubsection{\texorpdfstring{DiagnosticsName()}{DiagnosticsName()}}
+{\footnotesize\ttfamily std\+::string Compact\+Star\+::\+Physics\+::\+Driver\+::\+Thermal\+::\+Neutrino\+Cooling\+::\+Diagnostics\+Name (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Producer name used in diagnostics packets and the catalog. 
+
+This must remain stable and match the producer string used by observers. 
+
+Implements \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_driver_1_1_diagnostics_1_1_i_driver_diagnostics_ae39990bca910f580804aaa21e347537c}{Compact\+Star\+::\+Physics\+::\+Driver\+::\+Diagnostics\+::\+IDriver\+Diagnostics}}.
 
 \mbox{\Hypertarget{class_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_neutrino_cooling_ae1d299290511e369d2003833f9c74aae}\label{class_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_neutrino_cooling_ae1d299290511e369d2003833f9c74aae}} 
 \index{CompactStar::Physics::Driver::Thermal::NeutrinoCooling@{CompactStar::Physics::Driver::Thermal::NeutrinoCooling}!Name@{Name}}
@@ -97,11 +242,25 @@ Implements \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_i_driver_a813f52e
 
 
 
-Human-\/readable name for diagnostics/logging. 
+Stable driver identifier. 
 
 
 
 Implements \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_i_driver_a1337b0292d71b672785c37ba4d7e8564}{Compact\+Star\+::\+Physics\+::\+IDriver}}.
+
+\mbox{\Hypertarget{class_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_neutrino_cooling_a4b62bd4b829c22cb169093ad03995758}\label{class_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_neutrino_cooling_a4b62bd4b829c22cb169093ad03995758}} 
+\index{CompactStar::Physics::Driver::Thermal::NeutrinoCooling@{CompactStar::Physics::Driver::Thermal::NeutrinoCooling}!UnitContract@{UnitContract}}
+\index{UnitContract@{UnitContract}!CompactStar::Physics::Driver::Thermal::NeutrinoCooling@{CompactStar::Physics::Driver::Thermal::NeutrinoCooling}}
+\doxysubsubsection{\texorpdfstring{UnitContract()}{UnitContract()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_diagnostics_1_1_unit_contract}{Evolution\+::\+Diagnostics\+::\+Unit\+Contract}} Compact\+Star\+::\+Physics\+::\+Driver\+::\+Thermal\+::\+Neutrino\+Cooling\+::\+Unit\+Contract (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Unit contract describing this driver\textquotesingle{}s assumptions. 
+
+Use this to document unit conventions and interpretability constraints. 
+
+Implements \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_driver_1_1_diagnostics_1_1_i_driver_diagnostics_a11b182179ee903feb396c131ca0404d8}{Compact\+Star\+::\+Physics\+::\+Driver\+::\+Diagnostics\+::\+IDriver\+Diagnostics}}.
 
 \mbox{\Hypertarget{class_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_neutrino_cooling_a3e430568095c4bc88f22f9e6730e2bdc}\label{class_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_neutrino_cooling_a3e430568095c4bc88f22f9e6730e2bdc}} 
 \index{CompactStar::Physics::Driver::Thermal::NeutrinoCooling@{CompactStar::Physics::Driver::Thermal::NeutrinoCooling}!Updates@{Updates}}
@@ -111,14 +270,15 @@ Implements \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_i_driver_a1337b02
 
 
 
-Which state blocks this driver updates (adds contributions to). 
+\mbox{\hyperlink{namespace_compact_star_1_1_physics_1_1_state}{State}} blocks this driver updates (accumulates into RHS). 
 
-Drivers should return a reference to a static container (e.\+g. a static const std\+::vector$<$\+State\+Tag$>$). 
+
 
 Implements \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_i_driver_a24a531cb99a43313f30018d1687241a7}{Compact\+Star\+::\+Physics\+::\+IDriver}}.
 
 
 
-The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 
-Compact\+Star/\+Physics/\+Driver/\+Thermal/\mbox{\hyperlink{_neutrino_cooling_8hpp}{Neutrino\+Cooling.\+hpp}}\end{DoxyCompactItemize}
+Compact\+Star/\+Physics/\+Driver/\+Thermal/\mbox{\hyperlink{_neutrino_cooling_8hpp}{Neutrino\+Cooling.\+hpp}}\item 
+Compact\+Star/\+Physics/\+Driver/\+Thermal/src/\mbox{\hyperlink{_neutrino_cooling_8cpp}{Neutrino\+Cooling.\+cpp}}\end{DoxyCompactItemize}

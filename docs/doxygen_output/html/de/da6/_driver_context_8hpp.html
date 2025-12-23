@@ -88,7 +88,7 @@ $(function() {
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="nested-classes" name="nested-classes"></a>
 Classes</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d1/db5/struct_compact_star_1_1_physics_1_1_evolution_1_1_driver_context.html">CompactStar::Physics::Evolution::DriverContext</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Layout of the <a class="el" href="../../da/d36/class_compact_star_1_1_physics_1_1_evolution_1_1_state_vector.html" title="Composite view over the current ODE state (tag → State*).">StateVector</a>.  <a href="../../d1/db5/struct_compact_star_1_1_physics_1_1_evolution_1_1_driver_context.html#details">More...</a><br /></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Read-only static context for evolution drivers.  <a href="../../d1/db5/struct_compact_star_1_1_physics_1_1_evolution_1_1_driver_context.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="namespaces" name="namespaces"></a>
@@ -96,20 +96,21 @@ Namespaces</h2></td></tr>
 <tr class="memitem:dc/dab/namespace_compact_star_1_1_physics"><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dc/dab/namespace_compact_star_1_1_physics.html">CompactStar::Physics</a></td></tr>
 <tr class="memdesc:dc/dab/namespace_compact_star_1_1_physics"><td class="mdescLeft">&#160;</td><td class="mdescRight">High-level physical modeling layer for compact stars. <br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:db/da9/namespace_compact_star_1_1_physics_1_1_thermal"><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/da9/namespace_compact_star_1_1_physics_1_1_thermal.html">CompactStar::Physics::Thermal</a></td></tr>
-<tr class="memdesc:db/da9/namespace_compact_star_1_1_physics_1_1_thermal"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="../../db/da9/namespace_compact_star_1_1_physics_1_1_thermal.html" title="Thermal utilities: envelope models, cooling/heating helpers.">Thermal</a> utilities: envelope models, cooling/heating helpers. <br /></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Lightweight read-only context passed to evolution drivers. </p>
-<p>This file defines a <b>non-owning aggregation of static model data</b> that evolution drivers may need in order to compute RHS contributions.</p>
-<p>The DriverContext is intentionally:</p><ul>
-<li><b>small</b> (just pointers),</li>
-<li><b>read-only</b> (drivers must not mutate it),</li>
-<li><b>stable across time steps</b> (unlike StateVector),</li>
-<li><b>decoupled from EvolutionSystem internals</b>.</li>
+<p>DriverContext is a <b>non-owning</b> bundle of pointers to slowly-varying / static objects that drivers may consult when computing RHS contributions.</p>
+<p>Design goals:</p><ul>
+<li>Keep the driver interface explicit and stable.</li>
+<li>Avoid circular dependencies between drivers and EvolutionSystem.</li>
+<li>Prevent heavy includes in driver-facing headers.</li>
 </ul>
-<p>This avoids circular dependencies between IDriver and EvolutionSystem, and makes the driver interface explicit and robust. </p>
+<p>Ownership:</p><ul>
+<li>All pointers are <b>non-owning</b> and must remain valid for the duration of the evolution run (typically owned by EvolutionSystem or the caller).</li>
+</ul>
+<p>Optional components:</p><ul>
+<li>Some pointers (e.g., envelope boundary condition models) may be nullptr. They are <b>not</b> required globally; drivers that require them must validate their presence based on their own Options/configuration. </li>
+</ul>
 </div></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

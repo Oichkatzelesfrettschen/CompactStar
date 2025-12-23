@@ -138,10 +138,10 @@ const double &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>Value</
 <tr class="memdesc:a8385b3f119f4e3039b7f7a9d93924b06"><td class="mdescLeft">&#160;</td><td class="mdescRight">Const access to i-th component. <br /></td></tr>
 <tr class="separator:a8385b3f119f4e3039b7f7a9d93924b06"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a07130a374ce630acfb4a8304d1afe326"><td class="memItemLeft" align="right" valign="top">double &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../de/d39/class_compact_star_1_1_physics_1_1_state_1_1_thermal_state.html#a07130a374ce630acfb4a8304d1afe326">LnTinfOverTref</a> ()</td></tr>
-<tr class="memdesc:a07130a374ce630acfb4a8304d1afe326"><td class="mdescLeft">&#160;</td><td class="mdescRight">Access the <b>dimensionless evolved thermal variable</b> <picture><source srcset="../../form_54_dark.png" media="(prefers-color-scheme: dark)"/><img class="formulaInl" alt="$ x \equiv \ln(T_\infty / T_{\rm ref}) $" src="../../form_54.png"/></picture>.  <a href="../../de/d39/class_compact_star_1_1_physics_1_1_state_1_1_thermal_state.html#a07130a374ce630acfb4a8304d1afe326">More...</a><br /></td></tr>
+<tr class="memdesc:a07130a374ce630acfb4a8304d1afe326"><td class="mdescLeft">&#160;</td><td class="mdescRight">Access the <b>dimensionless evolved thermal variable</b> <picture><source srcset="../../form_66_dark.png" media="(prefers-color-scheme: dark)"/><img class="formulaInl" alt="$ x \equiv \ln(T_\infty / T_{\rm ref}) $" src="../../form_66.png"/></picture>.  <a href="../../de/d39/class_compact_star_1_1_physics_1_1_state_1_1_thermal_state.html#a07130a374ce630acfb4a8304d1afe326">More...</a><br /></td></tr>
 <tr class="separator:a07130a374ce630acfb4a8304d1afe326"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:afc25634b075018b07c8d786bc5e73674"><td class="memItemLeft" align="right" valign="top">const double &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../de/d39/class_compact_star_1_1_physics_1_1_state_1_1_thermal_state.html#afc25634b075018b07c8d786bc5e73674">LnTinfOverTref</a> () const</td></tr>
-<tr class="memdesc:afc25634b075018b07c8d786bc5e73674"><td class="mdescLeft">&#160;</td><td class="mdescRight">Const access to the dimensionless evolved thermal variable <picture><source srcset="../../form_54_dark.png" media="(prefers-color-scheme: dark)"/><img class="formulaInl" alt="$ x \equiv \ln(T_\infty / T_{\rm ref}) $" src="../../form_54.png"/></picture>.  <a href="../../de/d39/class_compact_star_1_1_physics_1_1_state_1_1_thermal_state.html#afc25634b075018b07c8d786bc5e73674">More...</a><br /></td></tr>
+<tr class="memdesc:afc25634b075018b07c8d786bc5e73674"><td class="mdescLeft">&#160;</td><td class="mdescRight">Const access to the dimensionless evolved thermal variable <picture><source srcset="../../form_66_dark.png" media="(prefers-color-scheme: dark)"/><img class="formulaInl" alt="$ x \equiv \ln(T_\infty / T_{\rm ref}) $" src="../../form_66.png"/></picture>.  <a href="../../de/d39/class_compact_star_1_1_physics_1_1_state_1_1_thermal_state.html#afc25634b075018b07c8d786bc5e73674">More...</a><br /></td></tr>
 <tr class="separator:afc25634b075018b07c8d786bc5e73674"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac84d797bad64d4edad475aa1e8aa4634"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../de/d39/class_compact_star_1_1_physics_1_1_state_1_1_thermal_state.html#ac84d797bad64d4edad475aa1e8aa4634">Tinf</a> () const</td></tr>
 <tr class="memdesc:ac84d797bad64d4edad475aa1e8aa4634"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return the <b>physical redshifted temperature</b> T∞ in Kelvin.  <a href="../../de/d39/class_compact_star_1_1_physics_1_1_state_1_1_thermal_state.html#ac84d797bad64d4edad475aa1e8aa4634">More...</a><br /></td></tr>
@@ -351,19 +351,19 @@ double&#160;</td><td class="memItemRight" valign="bottom"><b>T_surf</b> = 0.0</t
       </table>
 </div><div class="memdoc">
 
-<p>Access the <b>dimensionless evolved thermal variable</b> <picture><source srcset="../../form_54_dark.png" media="(prefers-color-scheme: dark)"/><img class="formulaInl" alt="$ x \equiv \ln(T_\infty / T_{\rm ref}) $" src="../../form_54.png"/></picture>. </p>
+<p>Access the <b>dimensionless evolved thermal variable</b> <picture><source srcset="../../form_66_dark.png" media="(prefers-color-scheme: dark)"/><img class="formulaInl" alt="$ x \equiv \ln(T_\infty / T_{\rm ref}) $" src="../../form_66.png"/></picture>. </p>
 <p>This function exposes the <em>actual ODE variable</em> stored in the thermal state vector:</p>
 <p>values_[0] ≡ ln(T∞ / T_ref) (dimensionless)</p>
-<h3><a class="anchor" id="autotoc_md29"></a>
+<h3><a class="anchor" id="autotoc_md46"></a>
 Usage</h3>
 <ul>
 <li>Evolution drivers and RHS accumulators <b>must operate on this variable</b> when contributing to the ODE system.</li>
-<li>If a physical model computes <picture><source srcset="../../form_55_dark.png" media="(prefers-color-scheme: dark)"/><img class="formulaInl" alt="$dT_\infty/dt$" src="../../form_55.png"/></picture>, convert via:</li>
+<li>If a physical model computes <picture><source srcset="../../form_67_dark.png" media="(prefers-color-scheme: dark)"/><img class="formulaInl" alt="$dT_\infty/dt$" src="../../form_67.png"/></picture>, convert via:</li>
 </ul>
 <p class="formulaDsp">
-<picture><source srcset="../../form_56_dark.png" media="(prefers-color-scheme: dark)"/><img class="formulaDsp" alt="\[
+<picture><source srcset="../../form_68_dark.png" media="(prefers-color-scheme: dark)"/><img class="formulaDsp" alt="\[
     \frac{dx}{dt} = \frac{1}{T_\infty}\frac{dT_\infty}{dt}.
-  \]" src="../../form_56.png"/></picture>
+  \]" src="../../form_68.png"/></picture>
 </p>
 <dl class="section warning"><dt>Warning</dt><dd>This returns a mutable reference to the ODE storage. Modifying it directly changes the evolved state. </dd></dl>
 
@@ -384,7 +384,7 @@ Usage</h3>
       </table>
 </div><div class="memdoc">
 
-<p>Const access to the dimensionless evolved thermal variable <picture><source srcset="../../form_54_dark.png" media="(prefers-color-scheme: dark)"/><img class="formulaInl" alt="$ x \equiv \ln(T_\infty / T_{\rm ref}) $" src="../../form_54.png"/></picture>. </p>
+<p>Const access to the dimensionless evolved thermal variable <picture><source srcset="../../form_66_dark.png" media="(prefers-color-scheme: dark)"/><img class="formulaInl" alt="$ x \equiv \ln(T_\infty / T_{\rm ref}) $" src="../../form_66.png"/></picture>. </p>
 <p>See the non-const overload for full documentation. </p>
 
 </div>
@@ -499,7 +499,7 @@ Usage</h3>
 <p>Set the physical redshifted temperature T∞ (in Kelvin). </p>
 <p>This is a convenience helper that converts the physical temperature into the stored ODE variable:</p>
 <p><a class="el" href="../../de/d39/class_compact_star_1_1_physics_1_1_state_1_1_thermal_state.html#a07130a374ce630acfb4a8304d1afe326" title="Access the dimensionless evolved thermal variable .">LnTinfOverTref()</a> ← ln(T∞ / T_ref).</p>
-<h3><a class="anchor" id="autotoc_md31"></a>
+<h3><a class="anchor" id="autotoc_md48"></a>
 Usage</h3>
 <ul>
 <li>Intended for <b>initial-condition setup</b> and controlled resets.</li>
@@ -564,7 +564,7 @@ Usage</h3>
 <p>Return the <b>physical redshifted temperature</b> T∞ in Kelvin. </p>
 <p>This value is <b>computed</b>, not stored:</p>
 <p>T∞ = T_ref * exp(LnTinfOverTref()).</p>
-<h3><a class="anchor" id="autotoc_md30"></a>
+<h3><a class="anchor" id="autotoc_md47"></a>
 Usage</h3>
 <ul>
 <li>Intended for diagnostics, microphysics, cooling laws, and logging.</li>
@@ -599,9 +599,9 @@ Usage</h3>
 
 <p>Reference temperature used to make the evolved log variable dimensionless. </p>
 <p>The primary evolved thermal variable is stored as:  </p><p class="formulaDsp">
-<picture><source srcset="../../form_53_dark.png" media="(prefers-color-scheme: dark)"/><img class="formulaDsp" alt="\[
+<picture><source srcset="../../form_65_dark.png" media="(prefers-color-scheme: dark)"/><img class="formulaDsp" alt="\[
   x \equiv \ln(T_\infty / T_{\rm ref})
-\]" src="../../form_53.png"/></picture>
+\]" src="../../form_65.png"/></picture>
 </p>
 <p> where both temperatures are in Kelvin.</p>
 <dl class="section return"><dt>Returns</dt><dd>Reference temperature in Kelvin. </dd></dl>

@@ -21,6 +21,14 @@ class \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_diagnost
 \item 
 namespace \mbox{\hyperlink{namespace_compact_star_1_1_physics}{Compact\+Star\+::\+Physics}}
 \begin{DoxyCompactList}\small\item\em High-\/level physical modeling layer for compact stars. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum class \mbox{\hyperlink{_diagnostic_packet_8hpp_a0b4a78e3cbdcedd41943393c406987d1}{Compact\+Star\+::\+Physics\+::\+Evolution\+::\+Diagnostics\+::\+Cadence}} \{ {\bfseries Always}
+, {\bfseries On\+Change}
+, {\bfseries Once\+Per\+Run}
+ \}
+\begin{DoxyCompactList}\small\item\em Cadence hint for recording this scalar. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}
@@ -44,4 +52,22 @@ Notes on design\+:
 \item This module intentionally stores {\itshape only doubles} as numeric payloads.
 \item Unit strings are metadata only (no unit arithmetic); they support auditing.
 \item Storage uses an ordered map (std\+::map) for deterministic output ordering. 
+\end{DoxyItemize}
+
+\doxysubsection{Enumeration Type Documentation}
+\mbox{\Hypertarget{_diagnostic_packet_8hpp_a0b4a78e3cbdcedd41943393c406987d1}\label{_diagnostic_packet_8hpp_a0b4a78e3cbdcedd41943393c406987d1}} 
+\index{DiagnosticPacket.hpp@{DiagnosticPacket.hpp}!Cadence@{Cadence}}
+\index{Cadence@{Cadence}!DiagnosticPacket.hpp@{DiagnosticPacket.hpp}}
+\doxysubsubsection{\texorpdfstring{Cadence}{Cadence}}
+{\footnotesize\ttfamily enum class \mbox{\hyperlink{_diagnostic_packet_8hpp_a0b4a78e3cbdcedd41943393c406987d1}{Compact\+Star\+::\+Physics\+::\+Evolution\+::\+Diagnostics\+::\+Cadence}}\hspace{0.3cm}{\ttfamily [strong]}}
+
+
+
+Cadence hint for recording this scalar. 
+
+
+\begin{DoxyItemize}
+\item Always\+: write every sample.
+\item On\+Change\+: write only if the value changed (within tolerance).
+\item Once\+Per\+Run\+: write once (step==0) and then never again. 
 \end{DoxyItemize}

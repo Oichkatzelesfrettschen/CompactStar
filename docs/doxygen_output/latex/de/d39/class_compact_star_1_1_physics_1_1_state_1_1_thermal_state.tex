@@ -168,7 +168,7 @@ Access the {\bfseries{dimensionless evolved thermal variable}} $ x \equiv \ln(T_
 
 This function exposes the {\itshape actual ODE variable} stored in the thermal state vector\+:
 
-values\+\_\+\mbox{[}0\mbox{]} ≡ ln(T∞ / T\+\_\+ref) (dimensionless)\hypertarget{class_compact_star_1_1_physics_1_1_state_1_1_thermal_state_autotoc_md29}{}\doxyparagraph{Usage}\label{class_compact_star_1_1_physics_1_1_state_1_1_thermal_state_autotoc_md29}
+values\+\_\+\mbox{[}0\mbox{]} ≡ ln(T∞ / T\+\_\+ref) (dimensionless)\hypertarget{class_compact_star_1_1_physics_1_1_state_1_1_thermal_state_autotoc_md46}{}\doxyparagraph{Usage}\label{class_compact_star_1_1_physics_1_1_state_1_1_thermal_state_autotoc_md46}
 
 \begin{DoxyItemize}
 \item Evolution drivers and RHS accumulators {\bfseries{must operate on this variable}} when contributing to the ODE system.
@@ -248,7 +248,7 @@ Set the physical redshifted temperature T∞ (in Kelvin).
 
 This is a convenience helper that converts the physical temperature into the stored ODE variable\+:
 
-\mbox{\hyperlink{class_compact_star_1_1_physics_1_1_state_1_1_thermal_state_a07130a374ce630acfb4a8304d1afe326}{Ln\+Tinf\+Over\+Tref()}} ← ln(T∞ / T\+\_\+ref).\hypertarget{class_compact_star_1_1_physics_1_1_state_1_1_thermal_state_autotoc_md31}{}\doxyparagraph{Usage}\label{class_compact_star_1_1_physics_1_1_state_1_1_thermal_state_autotoc_md31}
+\mbox{\hyperlink{class_compact_star_1_1_physics_1_1_state_1_1_thermal_state_a07130a374ce630acfb4a8304d1afe326}{Ln\+Tinf\+Over\+Tref()}} ← ln(T∞ / T\+\_\+ref).\hypertarget{class_compact_star_1_1_physics_1_1_state_1_1_thermal_state_autotoc_md48}{}\doxyparagraph{Usage}\label{class_compact_star_1_1_physics_1_1_state_1_1_thermal_state_autotoc_md48}
 
 \begin{DoxyItemize}
 \item Intended for {\bfseries{initial-\/condition setup}} and controlled resets.
@@ -291,7 +291,7 @@ Return the {\bfseries{physical redshifted temperature}} T∞ in Kelvin.
 
 This value is {\bfseries{computed}}, not stored\+:
 
-T∞ = T\+\_\+ref $\ast$ exp(\+Ln\+Tinf\+Over\+Tref()).\hypertarget{class_compact_star_1_1_physics_1_1_state_1_1_thermal_state_autotoc_md30}{}\doxyparagraph{Usage}\label{class_compact_star_1_1_physics_1_1_state_1_1_thermal_state_autotoc_md30}
+T∞ = T\+\_\+ref $\ast$ exp(\+Ln\+Tinf\+Over\+Tref()).\hypertarget{class_compact_star_1_1_physics_1_1_state_1_1_thermal_state_autotoc_md47}{}\doxyparagraph{Usage}\label{class_compact_star_1_1_physics_1_1_state_1_1_thermal_state_autotoc_md47}
 
 \begin{DoxyItemize}
 \item Intended for diagnostics, microphysics, cooling laws, and logging.

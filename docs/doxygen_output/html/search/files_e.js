@@ -21,5 +21,7 @@ var searchData=
   ['statevector_2ecpp_18',['StateVector.cpp',['../d6/dd0/_state_vector_8cpp.html',1,'']]],
   ['statevector_2ehpp_19',['StateVector.hpp',['../d6/df0/_state_vector_8hpp.html',1,'']]],
   ['string_5fbasic_2ehpp_20',['String_Basic.hpp',['../dd/d24/_string___basic_8hpp.html',1,'']]],
-  ['sun_2ehpp_21',['Sun.hpp',['../d3/d5a/_sun_8hpp.html',1,'']]]
+  ['sun_2ehpp_21',['Sun.hpp',['../d3/d5a/_sun_8hpp.html',1,'']]],
+  ['surfacegravity_2ecpp_22',['SurfaceGravity.cpp',['../dd/dd9/_surface_gravity_8cpp.html',1,'']]],
+  ['surfacegravity_2ehpp_23',['SurfaceGravity.hpp',['../dd/d32/_surface_gravity_8hpp.html',1,'']]]
 ];

@@ -1,0 +1,49 @@
+\hypertarget{_run_observers_8hpp_source}{}\doxysection{Run\+Observers.\+hpp}
+\label{_run_observers_8hpp_source}\index{CompactStar/Physics/Evolution/Run/RunObservers.hpp@{CompactStar/Physics/Evolution/Run/RunObservers.hpp}}
+\mbox{\hyperlink{_run_observers_8hpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#pragma once}}
+\DoxyCodeLine{2 \textcolor{comment}{// -\/*-\/ lsst-\/c++ -\/*-\/}}
+\DoxyCodeLine{3 \textcolor{comment}{/*}}
+\DoxyCodeLine{4 \textcolor{comment}{ * CompactStar}}
+\DoxyCodeLine{5 \textcolor{comment}{ * See License file at the top of the source tree.}}
+\DoxyCodeLine{6 \textcolor{comment}{ *}}
+\DoxyCodeLine{7 \textcolor{comment}{ * Copyright (c) 2025}}
+\DoxyCodeLine{8 \textcolor{comment}{ * Mohammadreza Zakeri}}
+\DoxyCodeLine{9 \textcolor{comment}{ *}}
+\DoxyCodeLine{10 \textcolor{comment}{ * MIT License — see LICENSE at repo root.}}
+\DoxyCodeLine{11 \textcolor{comment}{ */}}
+\DoxyCodeLine{12 }
+\DoxyCodeLine{27 \textcolor{preprocessor}{\#include <memory>}}
+\DoxyCodeLine{28 \textcolor{preprocessor}{\#include <vector>}}
+\DoxyCodeLine{29 }
+\DoxyCodeLine{30 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_diagnostics_observer_8hpp}{CompactStar/Physics/Evolution/Observers/DiagnosticsObserver.hpp}}"{}}}
+\DoxyCodeLine{31 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_time_series_observer_8hpp}{CompactStar/Physics/Evolution/Observers/TimeSeriesObserver.hpp}}"{}}}
+\DoxyCodeLine{32 }
+\DoxyCodeLine{33 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_run_paths_8hpp}{CompactStar/Physics/Evolution/Run/RunPaths.hpp}}"{}}}
+\DoxyCodeLine{34 }
+\DoxyCodeLine{35 \textcolor{comment}{// diagnostics provider interface}}
+\DoxyCodeLine{36 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_driver_diagnostics_8hpp}{CompactStar/Physics/Driver/Diagnostics/DriverDiagnostics.hpp}}"{}}}
+\DoxyCodeLine{37 }
+\DoxyCodeLine{38 \textcolor{keyword}{namespace }CompactStar::Physics::Evolution::Run}
+\DoxyCodeLine{39 \{}
+\DoxyCodeLine{40 }
+\DoxyCodeLine{53 Observers::DiagnosticsObserver::Options}
+\DoxyCodeLine{54 \mbox{\hyperlink{_run_observers_8hpp_af411d8cd9db356f250769e0bd0a7f0bc}{MakeDefaultDiagnosticsOptions}}(\textcolor{keyword}{const} RunPaths \&p);}
+\DoxyCodeLine{55 }
+\DoxyCodeLine{69 Observers::TimeSeriesObserver::Options}
+\DoxyCodeLine{70 \mbox{\hyperlink{_run_observers_8hpp_af01000e9ec6685961bde7b56fccbbaa7}{MakeDefaultTimeSeriesOptions}}(\textcolor{keyword}{const} RunPaths \&p);}
+\DoxyCodeLine{71 }
+\DoxyCodeLine{81 std::shared\_ptr<Observers::DiagnosticsObserver>}
+\DoxyCodeLine{82 \mbox{\hyperlink{_run_observers_8hpp_a3e59ca2e5f83d7a1917e0c6243fcdcad}{MakeDiagnosticsObserver}}(\textcolor{keyword}{const} RunPaths \&p,}
+\DoxyCodeLine{83                         \textcolor{keyword}{const} std::vector<const Driver::Diagnostics::IDriverDiagnostics *> \&diag\_drivers,}
+\DoxyCodeLine{84                         \textcolor{keyword}{const} Observers::DiagnosticsObserver::Options *overrides = \textcolor{keyword}{nullptr});}
+\DoxyCodeLine{85 }
+\DoxyCodeLine{99 std::shared\_ptr<Observers::TimeSeriesObserver>}
+\DoxyCodeLine{100 \mbox{\hyperlink{_run_observers_8hpp_a05791ee8f5a091db439c70193b638cb1}{MakeTimeSeriesObserver}}(\textcolor{keyword}{const} RunPaths \&p,}
+\DoxyCodeLine{101                        \textcolor{keyword}{const} std::vector<const Driver::Diagnostics::IDriverDiagnostics *> \&diag\_drivers,}
+\DoxyCodeLine{102                        \textcolor{keyword}{const} Observers::TimeSeriesObserver::Options *overrides = \textcolor{keyword}{nullptr});}
+\DoxyCodeLine{103 }
+\DoxyCodeLine{104 \} \textcolor{comment}{// namespace CompactStar::Physics::Evolution::Run}}
+
+\end{DoxyCode}

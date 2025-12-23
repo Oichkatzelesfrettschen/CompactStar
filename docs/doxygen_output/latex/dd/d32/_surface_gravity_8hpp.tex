@@ -1,0 +1,114 @@
+\hypertarget{_surface_gravity_8hpp}{}\doxysection{Compact\+Star/\+Physics/\+Driver/\+Thermal/\+Boundary/\+Surface\+Gravity.hpp File Reference}
+\label{_surface_gravity_8hpp}\index{CompactStar/Physics/Driver/Thermal/Boundary/SurfaceGravity.hpp@{CompactStar/Physics/Driver/Thermal/Boundary/SurfaceGravity.hpp}}
+
+
+Helpers to compute neutron-\/star surface gravity in the \char`\"{}g14\char`\"{} convention.  
+
+
+{\ttfamily \#include $<$cmath$>$}\newline
+{\ttfamily \#include $<$stdexcept$>$}\newline
+\doxysubsection*{Namespaces}
+\begin{DoxyCompactItemize}
+\item 
+namespace \mbox{\hyperlink{namespace_compact_star_1_1_physics}{Compact\+Star\+::\+Physics}}
+\begin{DoxyCompactList}\small\item\em High-\/level physical modeling layer for compact stars. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+double \mbox{\hyperlink{_surface_gravity_8cpp_ae15e8c29fea87faac51d5f05f194d5d6}{Compact\+Star\+::\+Physics\+::\+Driver\+::\+Thermal\+::\+Boundary\+::\+Surface\+Gravity\+\_\+g14}} (const Evolution\+::\+Star\+Context \&star, const Evolution\+::\+Geometry\+Cache $\ast$geo)
+\begin{DoxyCompactList}\small\item\em Surface gravity in g14 units\+: g14 ≡ g / (1e14 cm s$^\wedge$-\/2). \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{_surface_gravity_8hpp_aa16ab4db6c51bd9087451d0ad5cb68c7}{Compact\+Star\+::\+Physics\+::\+Driver\+::\+Thermal\+::\+Boundary\+::g\+\_\+cgs\+\_\+from\+\_\+g14}} (double g14)
+\begin{DoxyCompactList}\small\item\em Convenience\+: compute g (cgs) from g14. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Helpers to compute neutron-\/star surface gravity in the \char`\"{}g14\char`\"{} convention. 
+
+The envelope literature typically parameterizes the surface gravity as\+:
+
+g14 ≡ g / (1e14 cm s$^\wedge$-\/2)
+
+and then provides Ts(\+Tb, g14, ...).
+
+In GR, a commonly used effective surface gravity is\+:
+
+g\+\_\+s = (G M / R$^\wedge$2) $\ast$ (1 -\/ 2GM/(Rc$^\wedge$2))$^\wedge$\{-\/1/2\}
+
+(equivalently g\+\_\+s = GM e$^\wedge$\{-\/ν(\+R)\} / R$^\wedge$2 with e$^\wedge$\{ν(\+R)\} = sqrt(1-\/2GM/\+Rc$^\wedge$2) for a Schwarzschild exterior).
+
+Compact\+Star stores structure in geometric units internally; this helper avoids forcing any particular unit system into the envelope code. It computes g14 from Star\+Context/\+Geometry\+Cache using the metric and/or compactness.
+
+Requirements\+:
+\begin{DoxyItemize}
+\item Star\+Context provides surface radius R (km) and gravitational mass M (Msun or km), OR provides exterior metric factor at the surface (e$^\wedge$\{ν(\+R)\} or e$^\wedge$\{2ν(\+R)\}).
+\item If Geometry\+Cache is available, it may provide R and exp(2ν) at the surface.
+\end{DoxyItemize}
+
+If your Star\+Context API differs, adapt the small “adapter” functions in the .hpp. 
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{_surface_gravity_8hpp_aa16ab4db6c51bd9087451d0ad5cb68c7}\label{_surface_gravity_8hpp_aa16ab4db6c51bd9087451d0ad5cb68c7}} 
+\index{SurfaceGravity.hpp@{SurfaceGravity.hpp}!g\_cgs\_from\_g14@{g\_cgs\_from\_g14}}
+\index{g\_cgs\_from\_g14@{g\_cgs\_from\_g14}!SurfaceGravity.hpp@{SurfaceGravity.hpp}}
+\doxysubsubsection{\texorpdfstring{g\_cgs\_from\_g14()}{g\_cgs\_from\_g14()}}
+{\footnotesize\ttfamily double Compact\+Star\+::\+Physics\+::\+Driver\+::\+Thermal\+::\+Boundary\+::g\+\_\+cgs\+\_\+from\+\_\+g14 (\begin{DoxyParamCaption}\item[{double}]{g14 }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Convenience\+: compute g (cgs) from g14. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em g14} & Surface gravity in units of 1e14 cm s$^\wedge$-\/2. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Surface gravity g in cm s$^\wedge$-\/2. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{_surface_gravity_8cpp_ae15e8c29fea87faac51d5f05f194d5d6}\label{_surface_gravity_8cpp_ae15e8c29fea87faac51d5f05f194d5d6}} 
+\index{SurfaceGravity.hpp@{SurfaceGravity.hpp}!SurfaceGravity\_g14@{SurfaceGravity\_g14}}
+\index{SurfaceGravity\_g14@{SurfaceGravity\_g14}!SurfaceGravity.hpp@{SurfaceGravity.hpp}}
+\doxysubsubsection{\texorpdfstring{SurfaceGravity\_g14()}{SurfaceGravity\_g14()}}
+{\footnotesize\ttfamily double Compact\+Star\+::\+Physics\+::\+Driver\+::\+Thermal\+::\+Boundary\+::\+Surface\+Gravity\+\_\+g14 (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_star_context}{Evolution\+::\+Star\+Context}} \&}]{star,  }\item[{const \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_geometry_cache}{Evolution\+::\+Geometry\+Cache}} $\ast$}]{geo }\end{DoxyParamCaption})}
+
+
+
+Surface gravity in g14 units\+: g14 ≡ g / (1e14 cm s$^\wedge$-\/2). 
+
+Return g14 = g / (1e14 cm s$^\wedge$-\/2).
+
+Assumptions / conventions\+:
+\begin{DoxyItemize}
+\item R\+\_\+km is the circumferential radius at the surface \mbox{[}km\mbox{]}.
+\item M\+\_\+km is the gravitational mass in geometric length units \mbox{[}km\mbox{]}, i.\+e. M\+\_\+km = GM/c$^\wedge$2 expressed in km.
+\item expnu is exp(ν(\+R)), dimensionless. For an exterior Schwarzschild metric expnu = sqrt(1 -\/ 2 M\+\_\+km / R\+\_\+km).
+\end{DoxyItemize}
+
+Then\+: g\+\_\+cgs = c$^\wedge$2 $\ast$ M\+\_\+cm / (R\+\_\+cm$^\wedge$2 $\ast$ expnu)
+
+which matches\+: g = GM/\+R$^\wedge$2 / sqrt(1 -\/ 2GM/(Rc$^\wedge$2)).
+
+This tries (in order)\+: 1) Use Geometry\+Cache if it exposes R and exp(2ν) at the surface. 2) Use Star\+Context profile view if it exposes R and ν(\+R) / exp(ν(\+R)). 3) Fallback\+: if only compactness C = 2GM/(Rc$^\wedge$2) is available, use g\+\_\+s = GM/\+R$^\wedge$2 / sqrt(1 -\/ C).
+
+
+\begin{DoxyParams}{Parameters}
+{\em star} & Star\+Context providing mass/radius/metric info. \\
+\hline
+{\em geo} & Optional Geometry\+Cache for cached geometry at the surface.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Surface gravity g14 in units of 1e14 cm s$^\wedge$-\/2.
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em std\+::runtime\+\_\+error} & if required quantities cannot be obtained.\\
+\hline
+\end{DoxyExceptions}
+\begin{DoxyNote}{Note}
+Units\+:
+\begin{DoxyItemize}
+\item Input R is assumed in km.
+\item Mass is assumed in km if provided as GM/c$^\wedge$2. This helper uses explicit conversion constants below. 
+\end{DoxyItemize}
+\end{DoxyNote}

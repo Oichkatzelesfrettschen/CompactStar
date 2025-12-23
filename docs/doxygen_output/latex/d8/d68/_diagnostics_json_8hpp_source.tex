@@ -60,8 +60,26 @@
 \DoxyCodeLine{102     \textcolor{keyword}{static} \textcolor{keywordtype}{void} Key(std::ostream \&os, \textcolor{keyword}{const} std::string \&k);}
 \DoxyCodeLine{103 }
 \DoxyCodeLine{104     \textcolor{keyword}{static} \textcolor{keywordtype}{void} Bool(std::ostream \&os, \textcolor{keywordtype}{bool} v);}
-\DoxyCodeLine{105 \};}
-\DoxyCodeLine{106 }
-\DoxyCodeLine{107 \} \textcolor{comment}{// namespace CompactStar::Physics::Evolution::Diagnostics}}
+\DoxyCodeLine{105 }
+\DoxyCodeLine{106     \textcolor{comment}{// Convenience: convert Cadence enum to string}}
+\DoxyCodeLine{107     \textcolor{keyword}{static} \textcolor{keyword}{const} \textcolor{keywordtype}{char} *CadenceToString(\mbox{\hyperlink{_diagnostic_packet_8hpp_a0b4a78e3cbdcedd41943393c406987d1}{Cadence}} c);}
+\DoxyCodeLine{108 }
+\DoxyCodeLine{109     \textcolor{comment}{// -\/-\/-\/-\/ new structural helpers -\/-\/-\/-\/}}
+\DoxyCodeLine{110     \textcolor{keyword}{static} \textcolor{keywordtype}{void} EmitObjectBegin(std::ostream \&os, \textcolor{keywordtype}{bool} pretty, \textcolor{keywordtype}{int} indent\_level,}
+\DoxyCodeLine{111                                 \textcolor{keywordtype}{bool} \&first\_field, \textcolor{keyword}{const} std::string \&key);}
+\DoxyCodeLine{112 }
+\DoxyCodeLine{113     \textcolor{keyword}{static} \textcolor{keywordtype}{void} EmitObjectEnd(std::ostream \&os, \textcolor{keywordtype}{bool} pretty, \textcolor{keywordtype}{int} indent\_level);}
+\DoxyCodeLine{114 }
+\DoxyCodeLine{115     \textcolor{keyword}{static} \textcolor{keywordtype}{void} EmitArrayBegin(std::ostream \&os, \textcolor{keywordtype}{bool} pretty, \textcolor{keywordtype}{int} indent\_level,}
+\DoxyCodeLine{116                                \textcolor{keywordtype}{bool} \&first\_field, \textcolor{keyword}{const} std::string \&key);}
+\DoxyCodeLine{117 }
+\DoxyCodeLine{118     \textcolor{keyword}{static} \textcolor{keywordtype}{void} EmitArrayEnd(std::ostream \&os, \textcolor{keywordtype}{bool} pretty, \textcolor{keywordtype}{int} indent\_level);}
+\DoxyCodeLine{119 }
+\DoxyCodeLine{120     \textcolor{comment}{// Convenience: begin a field by emitting comma/newline if needed + "{}key"{}:}}
+\DoxyCodeLine{121     \textcolor{keyword}{static} \textcolor{keywordtype}{void} EmitFieldKey(std::ostream \&os, \textcolor{keywordtype}{bool} pretty, \textcolor{keywordtype}{int} indent\_level,}
+\DoxyCodeLine{122                              \textcolor{keywordtype}{bool} \&first\_field, \textcolor{keyword}{const} std::string \&key);}
+\DoxyCodeLine{123 \};}
+\DoxyCodeLine{124 }
+\DoxyCodeLine{125 \} \textcolor{comment}{// namespace CompactStar::Physics::Evolution::Diagnostics}}
 
 \end{DoxyCode}

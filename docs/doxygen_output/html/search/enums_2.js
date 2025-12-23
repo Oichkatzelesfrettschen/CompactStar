@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['envelopemodel_0',['EnvelopeModel',['../d4/d96/_evolution_config_8hpp.html#a77ec205aab45375896e1afc074f535bc',1,'CompactStar::Physics::Evolution']]]
+  ['dir_5ftype_0',['Dir_Type',['../dc/d4a/_comp_o_s_e___e_o_s_8hpp.html#a3b77b0ffc2178836bd34b6d37c8337f0',1,'CompactStar']]]
 ];

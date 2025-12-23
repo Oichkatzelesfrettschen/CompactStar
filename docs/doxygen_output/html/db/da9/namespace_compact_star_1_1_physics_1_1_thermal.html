@@ -74,21 +74,14 @@ $(function() {
 </div><!-- top -->
 <div class="header">
   <div class="summary">
-<a href="#nested-classes">Classes</a> &#124;
 <a href="#func-members">Functions</a>  </div>
   <div class="headertitle"><div class="title">CompactStar::Physics::Thermal Namespace Reference</div></div>
 </div><!--header-->
 <div class="contents">
 
-<p><a class="el" href="../../db/da9/namespace_compact_star_1_1_physics_1_1_thermal.html" title="Thermal utilities: envelope models, cooling/heating helpers.">Thermal</a> utilities: envelope models, cooling/heating helpers.  
+<p><a class="el" href="../../db/da9/namespace_compact_star_1_1_physics_1_1_thermal.html" title="Thermal utilities: cooling/heating helpers.">Thermal</a> utilities: cooling/heating helpers.  
 <a href="../../db/da9/namespace_compact_star_1_1_physics_1_1_thermal.html#details">More...</a></p>
 <table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="nested-classes" name="nested-classes"></a>
-Classes</h2></td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d2/d4f/class_compact_star_1_1_physics_1_1_thermal_1_1_i_envelope.html">IEnvelope</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Strategy for Tb -&gt; Ts mapping (thermal boundary condition).  <a href="../../d2/d4f/class_compact_star_1_1_physics_1_1_thermal_1_1_i_envelope.html#details">More...</a><br /></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
 <tr class="memitem:a5168ffadc229c5f0c464b70ef2283514"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/da9/namespace_compact_star_1_1_physics_1_1_thermal.html#a5168ffadc229c5f0c464b70ef2283514">SurfacePhotonLuminosity</a> (<a class="el" href="../../d1/df3/struct_compact_star_1_1_core_1_1_star_profile_view.html">Core::StarProfileView</a> view, const <a class="el" href="../../de/d39/class_compact_star_1_1_physics_1_1_state_1_1_thermal_state.html">State::ThermalState</a> &amp;state)</td></tr>
@@ -105,8 +98,8 @@ Functions</h2></td></tr>
 <tr class="separator:ae460db7591542c68a10d00fc99e5f223"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p><a class="el" href="../../db/da9/namespace_compact_star_1_1_physics_1_1_thermal.html" title="Thermal utilities: envelope models, cooling/heating helpers.">Thermal</a> utilities: envelope models, cooling/heating helpers. </p>
-<p>Contains static thermal functions (e.g., neutrino luminosities, envelope T_b → T_s mappings) and interfaces used by thermal drivers. </p>
+<div class="textblock"><p><a class="el" href="../../db/da9/namespace_compact_star_1_1_physics_1_1_thermal.html" title="Thermal utilities: cooling/heating helpers.">Thermal</a> utilities: cooling/heating helpers. </p>
+<p>Contains static thermal functions (e.g., neutrino luminosities) and interfaces used by thermal drivers. </p>
 </div><h2 class="groupheader">Function Documentation</h2>
 <a id="a9331f7b9198d04c3e1ad41c3cf3d7359" name="a9331f7b9198d04c3e1ad41c3cf3d7359"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a9331f7b9198d04c3e1ad41c3cf3d7359">&#9670;&#160;</a></span>DUrcaEmissivityPrefactor()</h2>
@@ -145,7 +138,7 @@ Functions</h2></td></tr>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">view</td><td>Structural profile (uses composition/threshold masks if available). </td></tr>
-    <tr><td class="paramname">state</td><td><a class="el" href="../../db/da9/namespace_compact_star_1_1_physics_1_1_thermal.html" title="Thermal utilities: envelope models, cooling/heating helpers.">Thermal</a> state (may use T_core if working in local frame). </td></tr>
+    <tr><td class="paramname">state</td><td><a class="el" href="../../db/da9/namespace_compact_star_1_1_physics_1_1_thermal.html" title="Thermal utilities: cooling/heating helpers.">Thermal</a> state (may use T_core if working in local frame). </td></tr>
     <tr><td class="paramname">r_km</td><td>Radius at which to evaluate [km]. </td></tr>
   </table>
   </dd>
@@ -190,7 +183,7 @@ Functions</h2></td></tr>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">view</td><td>Structural profile view. </td></tr>
-    <tr><td class="paramname">state</td><td><a class="el" href="../../db/da9/namespace_compact_star_1_1_physics_1_1_thermal.html" title="Thermal utilities: envelope models, cooling/heating helpers.">Thermal</a> state. </td></tr>
+    <tr><td class="paramname">state</td><td><a class="el" href="../../db/da9/namespace_compact_star_1_1_physics_1_1_thermal.html" title="Thermal utilities: cooling/heating helpers.">Thermal</a> state. </td></tr>
     <tr><td class="paramname">r_km</td><td>Radius [km]. </td></tr>
   </table>
   </dd>
@@ -230,7 +223,7 @@ Functions</h2></td></tr>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">view</td><td>Non-owning structural profile view (needs R and z_surf). </td></tr>
-    <tr><td class="paramname">state</td><td><a class="el" href="../../db/da9/namespace_compact_star_1_1_physics_1_1_thermal.html" title="Thermal utilities: envelope models, cooling/heating helpers.">Thermal</a> state (uses T_surf). </td></tr>
+    <tr><td class="paramname">state</td><td><a class="el" href="../../db/da9/namespace_compact_star_1_1_physics_1_1_thermal.html" title="Thermal utilities: cooling/heating helpers.">Thermal</a> state (uses T_surf). </td></tr>
   </table>
   </dd>
 </dl>
@@ -270,7 +263,7 @@ Functions</h2></td></tr>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">view</td><td>Structural profile view. </td></tr>
-    <tr><td class="paramname">state</td><td><a class="el" href="../../db/da9/namespace_compact_star_1_1_physics_1_1_thermal.html" title="Thermal utilities: envelope models, cooling/heating helpers.">Thermal</a> state. </td></tr>
+    <tr><td class="paramname">state</td><td><a class="el" href="../../db/da9/namespace_compact_star_1_1_physics_1_1_thermal.html" title="Thermal utilities: cooling/heating helpers.">Thermal</a> state. </td></tr>
   </table>
   </dd>
 </dl>

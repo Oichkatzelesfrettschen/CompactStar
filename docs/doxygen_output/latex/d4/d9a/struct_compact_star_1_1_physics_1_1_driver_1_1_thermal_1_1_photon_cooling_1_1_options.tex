@@ -13,32 +13,46 @@ Configuration parameters for \mbox{\hyperlink{class_compact_star_1_1_physics_1_1
 \begin{DoxyCompactItemize}
 \item 
 enum class \mbox{\hyperlink{struct_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_photon_cooling_1_1_options_a1db89fd4a5a8c77fc76d2570512180b0}{Surface\+Model}} \{ \mbox{\hyperlink{struct_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_photon_cooling_1_1_options_a1db89fd4a5a8c77fc76d2570512180b0a31df53c693659e5e312ab6387c68ee4a}{Direct\+TSurf}}
-, \mbox{\hyperlink{struct_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_photon_cooling_1_1_options_a1db89fd4a5a8c77fc76d2570512180b0aa4fea34445f4251020fd1c3c14acd626}{Envelope\+Mapping}}
+, \mbox{\hyperlink{struct_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_photon_cooling_1_1_options_a1db89fd4a5a8c77fc76d2570512180b0ae59965b5d60645672c0223a3c8299b36}{Envelope\+Tb\+Ts}}
 , \mbox{\hyperlink{struct_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_photon_cooling_1_1_options_a1db89fd4a5a8c77fc76d2570512180b0a98f677e2b96d80e0c853d448714c5731}{Approx\+From\+Tinf}}
  \}
-\begin{DoxyCompactList}\small\item\em Specifies how the driver obtains (T\+\_\+\{\textbackslash{}rm surf\}). \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em How the driver obtains the local surface temperature (T\+\_\+\{\textbackslash{}rm surf\}). \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Public Attributes}
 \begin{DoxyCompactItemize}
 \item 
 \mbox{\Hypertarget{struct_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_photon_cooling_1_1_options_ad86432222d490304b78ba4e919529f7f}\label{struct_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_photon_cooling_1_1_options_ad86432222d490304b78ba4e919529f7f}} 
-enum \mbox{\hyperlink{struct_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_photon_cooling_1_1_options_a1db89fd4a5a8c77fc76d2570512180b0}{Compact\+Star\+::\+Physics\+::\+Driver\+::\+Thermal\+::\+Photon\+Cooling\+::\+Options\+::\+Surface\+Model}} {\bfseries surface\+\_\+model} = \mbox{\hyperlink{struct_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_photon_cooling_1_1_options_a1db89fd4a5a8c77fc76d2570512180b0a98f677e2b96d80e0c853d448714c5731}{Surface\+Model\+::\+Approx\+From\+Tinf}}
+enum \mbox{\hyperlink{struct_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_photon_cooling_1_1_options_a1db89fd4a5a8c77fc76d2570512180b0}{Compact\+Star\+::\+Physics\+::\+Driver\+::\+Thermal\+::\+Photon\+Cooling\+::\+Options\+::\+Surface\+Model}} {\bfseries surface\+\_\+model} = \mbox{\hyperlink{struct_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_photon_cooling_1_1_options_a1db89fd4a5a8c77fc76d2570512180b0ae59965b5d60645672c0223a3c8299b36}{Surface\+Model\+::\+Envelope\+Tb\+Ts}}
 \item 
 double \mbox{\hyperlink{struct_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_photon_cooling_1_1_options_aa1cfded12d2ee64573749ee89121d44f}{radiating\+\_\+fraction}} = 1.\+0
 \begin{DoxyCompactList}\small\item\em Dimensionless radiating fraction $\mathcal{F}_{\rm rad}$. \end{DoxyCompactList}\item 
 double \mbox{\hyperlink{struct_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_photon_cooling_1_1_options_a5493255a672378d4ced037d3308b9610}{C\+\_\+eff}} = 1.\+0e40
-\begin{DoxyCompactList}\small\item\em Effective heat capacity of the evolved thermal DOF. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Effective heat capacity (C\+\_\+\{\textbackslash{}rm eff\}) of the evolved thermal DOF. \end{DoxyCompactList}\item 
 double \mbox{\hyperlink{struct_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_photon_cooling_1_1_options_a2859ac2d399d27d8d9ee410c8175b9ae}{global\+\_\+scale}} = 1.\+0
-\begin{DoxyCompactList}\small\item\em Global dimensionless multiplicative scale. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Global dimensionless multiplicative scale $\mathcal{S}$. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{struct_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_photon_cooling_1_1_options_a30dfac9d1374cac18c1e3c1d0819c7dc}\label{struct_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_photon_cooling_1_1_options_a30dfac9d1374cac18c1e3c1d0819c7dc}} 
+\mbox{\hyperlink{class_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_photon_cooling_a96bcc265f89cbaab1819395ba3abcf24}{Envelope\+Model}} {\bfseries envelope} = \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_photon_cooling_a96bcc265f89cbaab1819395ba3abcf24acefa8a9606819ed409dc761ca6080887}{Envelope\+Model\+::\+Iron}}
+\begin{DoxyCompactList}\small\item\em Select which analytic envelope prescription is used (Tb → Ts). \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{struct_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_photon_cooling_1_1_options_a779d1abdc6a31e44a9a580e2d271ffc6}{envelope\+\_\+xi}} = 0.\+0
+\begin{DoxyCompactList}\small\item\em Envelope composition/column parameter $\xi$ (model-\/dependent). \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{struct_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_photon_cooling_1_1_options_a9900900e32dd8527663359a6553cc307}{rho\+\_\+b}} = 1.\+0e10
+\begin{DoxyCompactList}\small\item\em Base-\/of-\/envelope density threshold (for documentation / future use). \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}
 Configuration parameters for \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_photon_cooling}{Photon\+Cooling}}. 
 
-The goal is to keep these {\bfseries{physically interpretable}} and {\bfseries{unit-\/consistent}}\+:
+Design goals\+:
 \begin{DoxyItemize}
+\item Parameters should be physically interpretable.
+\item All scale factors are dimensionless.
 \item Temperatures are in Kelvin.
-\item Heat capacity is in erg/K if we use cgs (\textbackslash{}sigma\+\_\+\{\textbackslash{}rm SB\}).
-\item All scale factors are dimensionless. 
+\item Heat capacity is in erg/K (if using cgs σ\+\_\+\+SB).
+\end{DoxyItemize}
+
+Validation policy (recommended in implementation)\+:
+\begin{DoxyItemize}
+\item If radiating\+\_\+fraction \texorpdfstring{$<$}{<}= 0 or global\+\_\+scale \texorpdfstring{$<$}{<}= 0\+: treat as intentionally disabled and produce zero RHS contribution (no exception).
+\item If C\+\_\+eff \texorpdfstring{$<$}{<}= 0\+: this is physically invalid; throw or log+skip (choose one policy). 
 \end{DoxyItemize}
 
 \doxysubsection{Member Enumeration Documentation}
@@ -50,25 +64,27 @@ The goal is to keep these {\bfseries{physically interpretable}} and {\bfseries{u
 
 
 
-Specifies how the driver obtains (T\+\_\+\{\textbackslash{}rm surf\}). 
+How the driver obtains the local surface temperature (T\+\_\+\{\textbackslash{}rm surf\}). 
 
 \begin{DoxyEnumFields}{Enumerator}
 \raisebox{\heightof{T}}[0pt][0pt]{\index{DirectTSurf@{DirectTSurf}!CompactStar::Physics::Driver::Thermal::PhotonCooling::Options@{CompactStar::Physics::Driver::Thermal::PhotonCooling::Options}}\index{CompactStar::Physics::Driver::Thermal::PhotonCooling::Options@{CompactStar::Physics::Driver::Thermal::PhotonCooling::Options}!DirectTSurf@{DirectTSurf}}}\mbox{\Hypertarget{struct_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_photon_cooling_1_1_options_a1db89fd4a5a8c77fc76d2570512180b0a31df53c693659e5e312ab6387c68ee4a}\label{struct_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_photon_cooling_1_1_options_a1db89fd4a5a8c77fc76d2570512180b0a31df53c693659e5e312ab6387c68ee4a}} 
 Direct\+TSurf&Use Thermal\+State\+::\+T\+\_\+surf directly.
 
-This assumes the caller (or another driver) has already populated {\ttfamily Thermal\+State\+::\+T\+\_\+surf} in Kelvin. \\
+Assumes some external code populated Thermal\+State with a local surface temperature (Kelvin). \\
 \hline
 
-\raisebox{\heightof{T}}[0pt][0pt]{\index{EnvelopeMapping@{EnvelopeMapping}!CompactStar::Physics::Driver::Thermal::PhotonCooling::Options@{CompactStar::Physics::Driver::Thermal::PhotonCooling::Options}}\index{CompactStar::Physics::Driver::Thermal::PhotonCooling::Options@{CompactStar::Physics::Driver::Thermal::PhotonCooling::Options}!EnvelopeMapping@{EnvelopeMapping}}}\mbox{\Hypertarget{struct_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_photon_cooling_1_1_options_a1db89fd4a5a8c77fc76d2570512180b0aa4fea34445f4251020fd1c3c14acd626}\label{struct_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_photon_cooling_1_1_options_a1db89fd4a5a8c77fc76d2570512180b0aa4fea34445f4251020fd1c3c14acd626}} 
-Envelope\+Mapping&Use a physically motivated envelope model.
+\raisebox{\heightof{T}}[0pt][0pt]{\index{EnvelopeTbTs@{EnvelopeTbTs}!CompactStar::Physics::Driver::Thermal::PhotonCooling::Options@{CompactStar::Physics::Driver::Thermal::PhotonCooling::Options}}\index{CompactStar::Physics::Driver::Thermal::PhotonCooling::Options@{CompactStar::Physics::Driver::Thermal::PhotonCooling::Options}!EnvelopeTbTs@{EnvelopeTbTs}}}\mbox{\Hypertarget{struct_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_photon_cooling_1_1_options_a1db89fd4a5a8c77fc76d2570512180b0ae59965b5d60645672c0223a3c8299b36}\label{struct_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_photon_cooling_1_1_options_a1db89fd4a5a8c77fc76d2570512180b0ae59965b5d60645672c0223a3c8299b36}} 
+Envelope\+Tb\+Ts&Use an envelope (blanket) model Tb → Ts.
 
-Reserved for\+: {\ttfamily ctx.\+envelope != nullptr}. The envelope typically maps from (T\+\_\+\textbackslash{}infty) or (T\+\_\+\{\textbackslash{}rm core\}) (and possibly surface gravity) to (T\+\_\+\{\textbackslash{}rm surf\}). \\
+The driver computes/assumes a base-\/of-\/envelope temperature Tb (local frame) from the evolved interior temperature variable, then applies the selected Envelope\+Model.
+
+This is the physically preferred mode once Tb is defined consistently. \\
 \hline
 
 \raisebox{\heightof{T}}[0pt][0pt]{\index{ApproxFromTinf@{ApproxFromTinf}!CompactStar::Physics::Driver::Thermal::PhotonCooling::Options@{CompactStar::Physics::Driver::Thermal::PhotonCooling::Options}}\index{CompactStar::Physics::Driver::Thermal::PhotonCooling::Options@{CompactStar::Physics::Driver::Thermal::PhotonCooling::Options}!ApproxFromTinf@{ApproxFromTinf}}}\mbox{\Hypertarget{struct_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_photon_cooling_1_1_options_a1db89fd4a5a8c77fc76d2570512180b0a98f677e2b96d80e0c853d448714c5731}\label{struct_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_photon_cooling_1_1_options_a1db89fd4a5a8c77fc76d2570512180b0a98f677e2b96d80e0c853d448714c5731}} 
-Approx\+From\+Tinf&Simple fallback model.
+Approx\+From\+Tinf&Simple fallback approximation for infrastructure testing.
 
-For infrastructure testing\+: (T\+\_\+\{\textbackslash{}rm surf\} \textbackslash{}approx T\+\_\+\textbackslash{}infty). This is {\itshape not} physically accurate but is useful for wiring tests. \\
+For debugging only\+: (T\+\_\+\{\textbackslash{}rm surf\} \textbackslash{}approx T\+\_\+\textbackslash{}infty). Not physically accurate. \\
 \hline
 
 \end{DoxyEnumFields}
@@ -83,20 +99,34 @@ For infrastructure testing\+: (T\+\_\+\{\textbackslash{}rm surf\} \textbackslash
 
 
 
-Effective heat capacity of the evolved thermal DOF. 
+Effective heat capacity (C\+\_\+\{\textbackslash{}rm eff\}) of the evolved thermal DOF. 
 
-This is the denominator in\+:  \[
-  \frac{dT_\infty}{dt} = -\frac{L_{\gamma,\infty}}{C_{\rm eff}} .
-\]\hypertarget{struct_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_photon_cooling_1_1_options_autotoc_md19}{}\doxyparagraph{Units}\label{struct_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_photon_cooling_1_1_options_autotoc_md19}
-If (L\+\_\+\{\textbackslash{}gamma,\textbackslash{}infty\}) is in erg/s and (T) is in K\+:
-\begin{DoxyItemize}
-\item (C\+\_\+\{\textbackslash{}rm eff\}) must be in {\bfseries{erg/K}}.
-\end{DoxyItemize}\hypertarget{struct_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_photon_cooling_1_1_options_autotoc_md20}{}\doxyparagraph{Notes}\label{struct_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_photon_cooling_1_1_options_autotoc_md20}
+Enters as\+:  \[
+  \frac{dT_\infty}{dt} = -\frac{L_{\gamma,\infty}}{C_{\rm eff}}.
+\]
 
+Units\+:
 \begin{DoxyItemize}
-\item In realistic models, (C\+\_\+\{\textbackslash{}rm eff\}) is computed from structure + microphysics (composition, superfluidity, etc.) and can depend on T.
-\item Here it is a user-\/provided effective constant for simplicity. 
-\end{DoxyItemize}\mbox{\Hypertarget{struct_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_photon_cooling_1_1_options_a2859ac2d399d27d8d9ee410c8175b9ae}\label{struct_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_photon_cooling_1_1_options_a2859ac2d399d27d8d9ee410c8175b9ae}} 
+\item erg/K (if (L) is erg/s and (T) is K).
+\end{DoxyItemize}
+
+Notes\+:
+\begin{DoxyItemize}
+\item In realistic models, (C\+\_\+\{\textbackslash{}rm eff\}) depends on T and composition.
+\item Here it is treated as a user-\/provided effective constant. 
+\end{DoxyItemize}\mbox{\Hypertarget{struct_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_photon_cooling_1_1_options_a779d1abdc6a31e44a9a580e2d271ffc6}\label{struct_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_photon_cooling_1_1_options_a779d1abdc6a31e44a9a580e2d271ffc6}} 
+\index{CompactStar::Physics::Driver::Thermal::PhotonCooling::Options@{CompactStar::Physics::Driver::Thermal::PhotonCooling::Options}!envelope\_xi@{envelope\_xi}}
+\index{envelope\_xi@{envelope\_xi}!CompactStar::Physics::Driver::Thermal::PhotonCooling::Options@{CompactStar::Physics::Driver::Thermal::PhotonCooling::Options}}
+\doxysubsubsection{\texorpdfstring{envelope\_xi}{envelope\_xi}}
+{\footnotesize\ttfamily double Compact\+Star\+::\+Physics\+::\+Driver\+::\+Thermal\+::\+Photon\+Cooling\+::\+Options\+::envelope\+\_\+xi = 0.\+0}
+
+
+
+Envelope composition/column parameter $\xi$ (model-\/dependent). 
+
+Interpretation depends on the chosen {\ttfamily envelope} prescription. For some common fits, this may represent an effective light-\/element column depth or a proxy parameter controlling the transition between iron-\/like and fully accreted envelopes.
+
+Units\+: model-\/defined (often treated as dimensionless in fit formulas). \mbox{\Hypertarget{struct_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_photon_cooling_1_1_options_a2859ac2d399d27d8d9ee410c8175b9ae}\label{struct_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_photon_cooling_1_1_options_a2859ac2d399d27d8d9ee410c8175b9ae}} 
 \index{CompactStar::Physics::Driver::Thermal::PhotonCooling::Options@{CompactStar::Physics::Driver::Thermal::PhotonCooling::Options}!global\_scale@{global\_scale}}
 \index{global\_scale@{global\_scale}!CompactStar::Physics::Driver::Thermal::PhotonCooling::Options@{CompactStar::Physics::Driver::Thermal::PhotonCooling::Options}}
 \doxysubsubsection{\texorpdfstring{global\_scale}{global\_scale}}
@@ -104,23 +134,16 @@ If (L\+\_\+\{\textbackslash{}gamma,\textbackslash{}infty\}) is in erg/s and (T) 
 
 
 
-Global dimensionless multiplicative scale. 
+Global dimensionless multiplicative scale $\mathcal{S}$. 
 
-A final multiplicative factor applied to the luminosity. Useful for\+:
+Applied as a final factor multiplying the luminosity. Useful for\+:
 \begin{DoxyItemize}
+\item debugging sensitivity,
 \item controlled unit tests,
-\item turning effects up/down without changing \mbox{\hyperlink{struct_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_photon_cooling_1_1_options}{Options}} semantics,
-\item debugging sensitivity.
-\end{DoxyItemize}\hypertarget{struct_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_photon_cooling_1_1_options_autotoc_md21}{}\doxyparagraph{Units}\label{struct_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_photon_cooling_1_1_options_autotoc_md21}
-
-\begin{DoxyItemize}
-\item Dimensionless.
+\item temporary “turn up/down” without changing semantic parameters.
 \end{DoxyItemize}
 
-\begin{DoxyNote}{Note}
-{\bfseries{Disabled-\/but-\/valid policy\+:}} if {\ttfamily global\+\_\+scale \texorpdfstring{$<$}{<}= 0}, the driver produces a {\bfseries{zero}} luminosity and {\bfseries{zero}} RHS contribution (not an error condition). 
-\end{DoxyNote}
-\mbox{\Hypertarget{struct_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_photon_cooling_1_1_options_aa1cfded12d2ee64573749ee89121d44f}\label{struct_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_photon_cooling_1_1_options_aa1cfded12d2ee64573749ee89121d44f}} 
+Units\+: dimensionless. \mbox{\Hypertarget{struct_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_photon_cooling_1_1_options_aa1cfded12d2ee64573749ee89121d44f}\label{struct_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_photon_cooling_1_1_options_aa1cfded12d2ee64573749ee89121d44f}} 
 \index{CompactStar::Physics::Driver::Thermal::PhotonCooling::Options@{CompactStar::Physics::Driver::Thermal::PhotonCooling::Options}!radiating\_fraction@{radiating\_fraction}}
 \index{radiating\_fraction@{radiating\_fraction}!CompactStar::Physics::Driver::Thermal::PhotonCooling::Options@{CompactStar::Physics::Driver::Thermal::PhotonCooling::Options}}
 \doxysubsubsection{\texorpdfstring{radiating\_fraction}{radiating\_fraction}}
@@ -130,27 +153,33 @@ A final multiplicative factor applied to the luminosity. Useful for\+:
 
 Dimensionless radiating fraction $\mathcal{F}_{\rm rad}$. 
 
-Multiplies the redshifted geometric area (A\+\_\+\textbackslash{}infty) to represent\+:
+Multiplies the redshifted emitting area to represent\+:
 \begin{DoxyItemize}
 \item partial surface emission (hot spots),
 \item effective emissivity \texorpdfstring{$<$}{<} 1,
-\item crude beaming / atmosphere suppression factors,
-\item quick “knob” for unit tests.
-\end{DoxyItemize}\hypertarget{struct_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_photon_cooling_1_1_options_autotoc_md17}{}\doxyparagraph{Units}\label{struct_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_photon_cooling_1_1_options_autotoc_md17}
-
-\begin{DoxyItemize}
-\item Dimensionless.
-\end{DoxyItemize}\hypertarget{struct_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_photon_cooling_1_1_options_autotoc_md18}{}\doxyparagraph{Recommended behavior}\label{struct_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_photon_cooling_1_1_options_autotoc_md18}
-
-\begin{DoxyItemize}
-\item If set to 1\+: full surface emission.
-\item If set to 0 (or ≤ 0)\+: disables photon cooling from this driver.
+\item crude atmosphere suppression factors,
+\item a convenient knob for controlled tests.
 \end{DoxyItemize}
 
-\begin{DoxyNote}{Note}
-{\bfseries{Disabled-\/but-\/valid policy\+:}} if {\ttfamily radiating\+\_\+fraction \texorpdfstring{$<$}{<}= 0}, this driver is treated as intentionally disabled and produces a {\bfseries{zero}} luminosity and {\bfseries{zero}} RHS contribution (not an error condition). 
-\end{DoxyNote}
+Units\+: dimensionless.
 
+Convention\+:
+\begin{DoxyItemize}
+\item 1.\+0 \+: full-\/surface emission
+\item 0.\+0 \+: disabled (no photon cooling) 
+\end{DoxyItemize}\mbox{\Hypertarget{struct_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_photon_cooling_1_1_options_a9900900e32dd8527663359a6553cc307}\label{struct_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_photon_cooling_1_1_options_a9900900e32dd8527663359a6553cc307}} 
+\index{CompactStar::Physics::Driver::Thermal::PhotonCooling::Options@{CompactStar::Physics::Driver::Thermal::PhotonCooling::Options}!rho\_b@{rho\_b}}
+\index{rho\_b@{rho\_b}!CompactStar::Physics::Driver::Thermal::PhotonCooling::Options@{CompactStar::Physics::Driver::Thermal::PhotonCooling::Options}}
+\doxysubsubsection{\texorpdfstring{rho\_b}{rho\_b}}
+{\footnotesize\ttfamily double Compact\+Star\+::\+Physics\+::\+Driver\+::\+Thermal\+::\+Photon\+Cooling\+::\+Options\+::rho\+\_\+b = 1.\+0e10}
+
+
+
+Base-\/of-\/envelope density threshold (for documentation / future use). 
+
+Many envelope fits define Tb at a fiducial density (\textbackslash{}rho\+\_\+b\textbackslash{}sim 10$^\wedge$\{10\}\textbackslash{},\{\textbackslash{}rm g\textbackslash{},cm$^\wedge$\{-\/3\}\}). This option is included to make that boundary explicit; it may become active once Tb is computed from a resolved crust model or a stored profile marker.
+
+Units\+: g/cm$^\wedge$3. 
 
 The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
 \item 

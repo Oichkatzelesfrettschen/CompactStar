@@ -80,7 +80,7 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 
-<p>Layout of the <a class="el" href="../../da/d36/class_compact_star_1_1_physics_1_1_evolution_1_1_state_vector.html" title="Composite view over the current ODE state (tag → State*).">StateVector</a>.  
+<p>Read-only static context for evolution drivers.  
  <a href="../../d1/db5/struct_compact_star_1_1_physics_1_1_evolution_1_1_driver_context.html#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="../../de/da6/_driver_context_8hpp_source.html">DriverContext.hpp</a>&gt;</code></p>
@@ -88,50 +88,32 @@ $(function() {
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
 <tr class="memitem:a7b9661a3ea07074e7e35d0052dc8017d"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="../../d9/d42/class_compact_star_1_1_physics_1_1_evolution_1_1_star_context.html">StarContext</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d1/db5/struct_compact_star_1_1_physics_1_1_evolution_1_1_driver_context.html#a7b9661a3ea07074e7e35d0052dc8017d">star</a> = nullptr</td></tr>
-<tr class="memdesc:a7b9661a3ea07074e7e35d0052dc8017d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Pointer to the stellar structure context.  <a href="../../d1/db5/struct_compact_star_1_1_physics_1_1_evolution_1_1_driver_context.html#a7b9661a3ea07074e7e35d0052dc8017d">More...</a><br /></td></tr>
+<tr class="memdesc:a7b9661a3ea07074e7e35d0052dc8017d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Stellar structure context (static background star).  <a href="../../d1/db5/struct_compact_star_1_1_physics_1_1_evolution_1_1_driver_context.html#a7b9661a3ea07074e7e35d0052dc8017d">More...</a><br /></td></tr>
 <tr class="separator:a7b9661a3ea07074e7e35d0052dc8017d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a91179844fc5b4edf1ace0a6c4aa9c952"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="../../d2/d50/class_compact_star_1_1_physics_1_1_evolution_1_1_geometry_cache.html">GeometryCache</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d1/db5/struct_compact_star_1_1_physics_1_1_evolution_1_1_driver_context.html#a91179844fc5b4edf1ace0a6c4aa9c952">geo</a> = nullptr</td></tr>
-<tr class="memdesc:a91179844fc5b4edf1ace0a6c4aa9c952"><td class="mdescLeft">&#160;</td><td class="mdescRight">Pointer to precomputed geometric integration weights.  <a href="../../d1/db5/struct_compact_star_1_1_physics_1_1_evolution_1_1_driver_context.html#a91179844fc5b4edf1ace0a6c4aa9c952">More...</a><br /></td></tr>
+<tr class="memdesc:a91179844fc5b4edf1ace0a6c4aa9c952"><td class="mdescLeft">&#160;</td><td class="mdescRight">Precomputed geometric cache for spatial integrals and metric factors.  <a href="../../d1/db5/struct_compact_star_1_1_physics_1_1_evolution_1_1_driver_context.html#a91179844fc5b4edf1ace0a6c4aa9c952">More...</a><br /></td></tr>
 <tr class="separator:a91179844fc5b4edf1ace0a6c4aa9c952"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3c1546224c30fc3477d457988a069699"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="../../d2/d4f/class_compact_star_1_1_physics_1_1_thermal_1_1_i_envelope.html">Thermal::IEnvelope</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d1/db5/struct_compact_star_1_1_physics_1_1_evolution_1_1_driver_context.html#a3c1546224c30fc3477d457988a069699">envelope</a> = nullptr</td></tr>
-<tr class="memdesc:a3c1546224c30fc3477d457988a069699"><td class="mdescLeft">&#160;</td><td class="mdescRight">Pointer to thermal envelope / atmosphere model.  <a href="../../d1/db5/struct_compact_star_1_1_physics_1_1_evolution_1_1_driver_context.html#a3c1546224c30fc3477d457988a069699">More...</a><br /></td></tr>
-<tr class="separator:a3c1546224c30fc3477d457988a069699"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a38b7cfc32423554ff8ffca784b9c2ae7"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="../../d8/ddc/class_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_boundary_1_1_i_envelope.html">Driver::Thermal::Boundary::IEnvelope</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d1/db5/struct_compact_star_1_1_physics_1_1_evolution_1_1_driver_context.html#a38b7cfc32423554ff8ffca784b9c2ae7">envelope</a> = nullptr</td></tr>
+<tr class="memdesc:a38b7cfc32423554ff8ffca784b9c2ae7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Optional thermal boundary condition model (Tb -&gt; Ts mapping).  <a href="../../d1/db5/struct_compact_star_1_1_physics_1_1_evolution_1_1_driver_context.html#a38b7cfc32423554ff8ffca784b9c2ae7">More...</a><br /></td></tr>
+<tr class="separator:a38b7cfc32423554ff8ffca784b9c2ae7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af829389d8f0608617550646a36412085"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="../../d5/d7b/struct_compact_star_1_1_physics_1_1_evolution_1_1_config.html">Config</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d1/db5/struct_compact_star_1_1_physics_1_1_evolution_1_1_driver_context.html#af829389d8f0608617550646a36412085">cfg</a> = nullptr</td></tr>
-<tr class="memdesc:af829389d8f0608617550646a36412085"><td class="mdescLeft">&#160;</td><td class="mdescRight">Pointer to global evolution configuration.  <a href="../../d1/db5/struct_compact_star_1_1_physics_1_1_evolution_1_1_driver_context.html#af829389d8f0608617550646a36412085">More...</a><br /></td></tr>
+<tr class="memdesc:af829389d8f0608617550646a36412085"><td class="mdescLeft">&#160;</td><td class="mdescRight">Global evolution configuration (policy + toggles + numerics).  <a href="../../d1/db5/struct_compact_star_1_1_physics_1_1_evolution_1_1_driver_context.html#af829389d8f0608617550646a36412085">More...</a><br /></td></tr>
 <tr class="separator:af829389d8f0608617550646a36412085"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Layout of the <a class="el" href="../../da/d36/class_compact_star_1_1_physics_1_1_evolution_1_1_state_vector.html" title="Composite view over the current ODE state (tag → State*).">StateVector</a>. </p>
-<p>Read-only static context for evolution drivers.</p>
-<p><a class="el" href="../../d1/db5/struct_compact_star_1_1_physics_1_1_evolution_1_1_driver_context.html" title="Layout of the StateVector.">DriverContext</a> bundles together <em>all static, slowly-varying objects</em> that physics drivers may consult when computing dY/dt.</p>
+<div class="textblock"><p>Read-only static context for evolution drivers. </p>
+<p><a class="el" href="../../d1/db5/struct_compact_star_1_1_physics_1_1_evolution_1_1_driver_context.html" title="Read-only static context for evolution drivers.">DriverContext</a> bundles together pointers to static model objects that drivers may consult while computing dY/dt.</p>
 <p>It is passed <b>by const reference</b> into <a class="el" href="../../da/dd4/class_compact_star_1_1_physics_1_1_i_driver.html#ab4c100ea49a9ec8bad3b43f9f84c17eb" title="Add this driver’s contribution to the global RHS dY/dt.">IDriver::AccumulateRHS()</a>.</p>
-<h3><a class="anchor" id="autotoc_md24"></a>
-Design principles</h3>
-<ul>
-<li><b>Non-owning</b>: all pointers refer to objects owned elsewhere (typically by the calling code / <a class="el" href="../../d1/d5f/class_compact_star_1_1_physics_1_1_evolution_1_1_evolution_system.html" title="GSL-compatible RHS functor for dY/dt.">EvolutionSystem</a>).</li>
-<li><b>Read-only</b>: drivers must treat everything here as immutable.</li>
-<li><b>Optional components</b>: pointers may be null if a given feature is not enabled (e.g. envelope models).</li>
+<p>Key principles:</p><ul>
+<li><b>Non-owning</b> pointers</li>
+<li><b>Read-only</b> usage contract for drivers</li>
+<li><b>Optional components</b> allowed (nullptr is valid)</li>
 </ul>
-<h3><a class="anchor" id="autotoc_md25"></a>
-Typical usage inside a driver</h3>
-<div class="fragment"><div class="line"><span class="keywordtype">void</span> MyDriver::AccumulateRHS(..., <span class="keyword">const</span> <a class="code hl_struct" href="../../d1/db5/struct_compact_star_1_1_physics_1_1_evolution_1_1_driver_context.html">DriverContext</a>&amp; ctx)<span class="keyword"> const</span></div>
-<div class="line"><span class="keyword"></span>{</div>
-<div class="line">    <span class="keywordflow">if</span> (ctx.<a class="code hl_variable" href="../../d1/db5/struct_compact_star_1_1_physics_1_1_evolution_1_1_driver_context.html#a91179844fc5b4edf1ace0a6c4aa9c952">geo</a>)</div>
-<div class="line">    {</div>
-<div class="line">        <span class="keyword">const</span> <span class="keyword">auto</span>&amp; w = ctx.<a class="code hl_variable" href="../../d1/db5/struct_compact_star_1_1_physics_1_1_evolution_1_1_driver_context.html#a91179844fc5b4edf1ace0a6c4aa9c952">geo</a>-&gt;WC();</div>
-<div class="line">        ...</div>
-<div class="line">    }</div>
-<div class="line"> </div>
-<div class="line">    <span class="keywordflow">if</span> (ctx.<a class="code hl_variable" href="../../d1/db5/struct_compact_star_1_1_physics_1_1_evolution_1_1_driver_context.html#a7b9661a3ea07074e7e35d0052dc8017d">star</a>)</div>
-<div class="line">    {</div>
-<div class="line">        <span class="keyword">const</span> <span class="keyword">auto</span>&amp; prof = ctx.<a class="code hl_variable" href="../../d1/db5/struct_compact_star_1_1_physics_1_1_evolution_1_1_driver_context.html#a7b9661a3ea07074e7e35d0052dc8017d">star</a>-&gt;Profile();</div>
-<div class="line">        ...</div>
-<div class="line">    }</div>
-<div class="line">}</div>
-<div class="ttc" id="astruct_compact_star_1_1_physics_1_1_evolution_1_1_driver_context_html"><div class="ttname"><a href="../../d1/db5/struct_compact_star_1_1_physics_1_1_evolution_1_1_driver_context.html">CompactStar::Physics::Evolution::DriverContext</a></div><div class="ttdoc">Layout of the StateVector.</div><div class="ttdef"><b>Definition:</b> DriverContext.hpp:90</div></div>
-<div class="ttc" id="astruct_compact_star_1_1_physics_1_1_evolution_1_1_driver_context_html_a7b9661a3ea07074e7e35d0052dc8017d"><div class="ttname"><a href="../../d1/db5/struct_compact_star_1_1_physics_1_1_evolution_1_1_driver_context.html#a7b9661a3ea07074e7e35d0052dc8017d">CompactStar::Physics::Evolution::DriverContext::star</a></div><div class="ttdeci">const StarContext * star</div><div class="ttdoc">Pointer to the stellar structure context.</div><div class="ttdef"><b>Definition:</b> DriverContext.hpp:105</div></div>
-<div class="ttc" id="astruct_compact_star_1_1_physics_1_1_evolution_1_1_driver_context_html_a91179844fc5b4edf1ace0a6c4aa9c952"><div class="ttname"><a href="../../d1/db5/struct_compact_star_1_1_physics_1_1_evolution_1_1_driver_context.html#a91179844fc5b4edf1ace0a6c4aa9c952">CompactStar::Physics::Evolution::DriverContext::geo</a></div><div class="ttdeci">const GeometryCache * geo</div><div class="ttdoc">Pointer to precomputed geometric integration weights.</div><div class="ttdef"><b>Definition:</b> DriverContext.hpp:120</div></div>
-</div><!-- fragment --> </div><h2 class="groupheader">Member Data Documentation</h2>
+<p>Validation policy:</p><ul>
+<li><a class="el" href="../../d1/d5f/class_compact_star_1_1_physics_1_1_evolution_1_1_evolution_system.html" title="GSL-compatible RHS functor for dY/dt.">EvolutionSystem</a> should validate only globally required pointers (e.g. star/geo/cfg depending on your run mode).</li>
+<li>Feature-specific pointers (e.g. envelope) must be validated by the driver that uses them, based on driver Options. </li>
+</ul>
+</div><h2 class="groupheader">Member Data Documentation</h2>
 <a id="af829389d8f0608617550646a36412085" name="af829389d8f0608617550646a36412085"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#af829389d8f0608617550646a36412085">&#9670;&#160;</a></span>cfg</h2>
 
@@ -144,31 +126,29 @@ Typical usage inside a driver</h3>
       </table>
 </div><div class="memdoc">
 
-<p>Pointer to global evolution configuration. </p>
-<p>Provides access to:</p><ul>
-<li>numerical tolerances,</li>
-<li>enabled physics switches,</li>
-<li>model-wide flags.</li>
-</ul>
-<p>Drivers should treat this as read-only policy information. </p>
+<p>Global evolution configuration (policy + toggles + numerics). </p>
+<p>Treated as read-only by all drivers. </p>
 
 </div>
 </div>
-<a id="a3c1546224c30fc3477d457988a069699" name="a3c1546224c30fc3477d457988a069699"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a3c1546224c30fc3477d457988a069699">&#9670;&#160;</a></span>envelope</h2>
+<a id="a38b7cfc32423554ff8ffca784b9c2ae7" name="a38b7cfc32423554ff8ffca784b9c2ae7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a38b7cfc32423554ff8ffca784b9c2ae7">&#9670;&#160;</a></span>envelope</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">const <a class="el" href="../../d2/d4f/class_compact_star_1_1_physics_1_1_thermal_1_1_i_envelope.html">Thermal::IEnvelope</a>* CompactStar::Physics::Evolution::DriverContext::envelope = nullptr</td>
+          <td class="memname">const <a class="el" href="../../d8/ddc/class_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_boundary_1_1_i_envelope.html">Driver::Thermal::Boundary::IEnvelope</a>* CompactStar::Physics::Evolution::DriverContext::envelope = nullptr</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p>Pointer to thermal envelope / atmosphere model. </p>
-<p>Provides mappings such as: T_core → T_surface T_surface → photon luminosity</p>
-<p>Optional; may be null if no envelope model is configured. </p>
+<p>Optional thermal boundary condition model (Tb -&gt; Ts mapping). </p>
+<p>This is the envelope/blanket interface used to map base-of-envelope temperature to an effective surface temperature.</p>
+<p>Notes:</p><ul>
+<li>This pointer is <b>optional</b> and may be nullptr.</li>
+<li>Drivers must only require it when their configured surface model needs it (e.g., PhotonCooling with SurfaceModel::EnvelopeTbTs). </li>
+</ul>
 
 </div>
 </div>
@@ -184,14 +164,12 @@ Typical usage inside a driver</h3>
       </table>
 </div><div class="memdoc">
 
-<p>Pointer to precomputed geometric integration weights. </p>
-<p><a class="el" href="../../d2/d50/class_compact_star_1_1_physics_1_1_evolution_1_1_geometry_cache.html" title="Geometry-only cached columns for repeated integrals.">GeometryCache</a> contains commonly-used metric combinations such as:</p><ul>
-<li>proper-volume factors,</li>
-<li>redshifted shell weights,</li>
-<li>exp(ν), exp(2ν), exp(Λ), etc.</li>
+<p>Precomputed geometric cache for spatial integrals and metric factors. </p>
+<p>Provides commonly used quantities such as:</p><ul>
+<li>proper-volume weights,</li>
+<li>exp(nu), exp(2 nu), exp(lambda), etc.</li>
 </ul>
-<p>Drivers performing spatial integrals (cooling, heating, luminosities) should prefer using <a class="el" href="../../d2/d50/class_compact_star_1_1_physics_1_1_evolution_1_1_geometry_cache.html" title="Geometry-only cached columns for repeated integrals.">GeometryCache</a> over recomputing these factors.</p>
-<p>May be null for purely local / toy drivers. </p>
+<p>May be null for drivers that do not perform spatial integrals. </p>
 
 </div>
 </div>
@@ -207,16 +185,9 @@ Typical usage inside a driver</h3>
       </table>
 </div><div class="memdoc">
 
-<p>Pointer to the stellar structure context. </p>
-<p>Provides access to:</p><ul>
-<li>radial grids,</li>
-<li>metric functions,</li>
-<li>EOS hooks,</li>
-<li>composition profiles,</li>
-<li>any cached background quantities.</li>
-</ul>
-<p>Typically constructed from a solved NStar / TOV profile.</p>
-<p>May be null if a driver does not require structural data. </p>
+<p>Stellar structure context (static background star). </p>
+<p>Provides access to structure profiles, metric functions, EOS hooks, etc.</p>
+<p>May be null for drivers that are purely local / toy models, but most physics drivers will require this. </p>
 
 </div>
 </div>

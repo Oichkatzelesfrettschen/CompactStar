@@ -36,12 +36,16 @@
 \DoxyCodeLine{54 \};}
 \DoxyCodeLine{55 }
 \DoxyCodeLine{56 \textcolor{comment}{//==============================================================}}
-\DoxyCodeLine{61 \textcolor{comment}{}\textcolor{keyword}{enum class} \mbox{\hyperlink{_evolution_config_8hpp_a77ec205aab45375896e1afc074f535bc}{EnvelopeModel}}}
-\DoxyCodeLine{62 \{}
-\DoxyCodeLine{63     Iron,}
-\DoxyCodeLine{64     Accreted,}
-\DoxyCodeLine{65     \mbox{\hyperlink{_evolution_config_8hpp_a77ec205aab45375896e1afc074f535bca90589c47f06eb971d548591f23c285af}{Custom}} }
-\DoxyCodeLine{66 \};}
+\DoxyCodeLine{57 \textcolor{comment}{// /**}}
+\DoxyCodeLine{58 \textcolor{comment}{//  * @enum EnvelopeModel}}
+\DoxyCodeLine{59 \textcolor{comment}{//  * @brief Surface boundary models mapping \(\backslash\)f\$T\_b \(\backslash\)to T\_s\(\backslash\)f\$.}}
+\DoxyCodeLine{60 \textcolor{comment}{//  */}}
+\DoxyCodeLine{61 \textcolor{comment}{// enum class EnvelopeModel}}
+\DoxyCodeLine{62 \textcolor{comment}{// \{}}
+\DoxyCodeLine{63 \textcolor{comment}{//  Iron,}}
+\DoxyCodeLine{64 \textcolor{comment}{//  Accreted,}}
+\DoxyCodeLine{65 \textcolor{comment}{//  Custom /*!< Provide a custom callable in Phase 2+. */}}
+\DoxyCodeLine{66 \textcolor{comment}{// \};}}
 \DoxyCodeLine{67 \textcolor{comment}{//==============================================================}}
 \DoxyCodeLine{68 }
 \DoxyCodeLine{85 \textcolor{keyword}{struct }\mbox{\hyperlink{struct_compact_star_1_1_physics_1_1_evolution_1_1_config}{Config}}}
@@ -63,11 +67,11 @@
 \DoxyCodeLine{102     \textcolor{keywordtype}{bool} \mbox{\hyperlink{struct_compact_star_1_1_physics_1_1_evolution_1_1_config_a2aa7e969c648e1e115879b00df71dba7}{enable\_BNV}} = \textcolor{keyword}{false};           }
 \DoxyCodeLine{103     \textcolor{keywordtype}{bool} \mbox{\hyperlink{struct_compact_star_1_1_physics_1_1_evolution_1_1_config_a7aa038ac3c3e393f3854a7b39fe67309}{enable\_rotochem\_driver}} = \textcolor{keyword}{false}; }
 \DoxyCodeLine{104     \textcolor{keywordtype}{bool} \mbox{\hyperlink{struct_compact_star_1_1_physics_1_1_evolution_1_1_config_afb3eba73bbc39057f6f04d905b0cc27b}{couple\_spin}} = \textcolor{keyword}{false};             }
-\DoxyCodeLine{106     \textcolor{comment}{// -\/-\/-\/-\/ Envelope and gaps -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
-\DoxyCodeLine{107     \mbox{\hyperlink{_evolution_config_8hpp_a77ec205aab45375896e1afc074f535bc}{EnvelopeModel}} envelope = EnvelopeModel::Iron;}
-\DoxyCodeLine{108     \textcolor{keywordtype}{double} \mbox{\hyperlink{struct_compact_star_1_1_physics_1_1_evolution_1_1_config_a956575775d60221464dd6732798fa247}{envelope\_xi}} = 0.0; }
-\DoxyCodeLine{109     \textcolor{keywordtype}{bool} superfluid\_n = \textcolor{keyword}{false};}
-\DoxyCodeLine{110     \textcolor{keywordtype}{bool} superfluid\_p = \textcolor{keyword}{false};}
+\DoxyCodeLine{106     \textcolor{comment}{// // -\/-\/-\/-\/ Envelope and gaps -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{107     \textcolor{comment}{// EnvelopeModel envelope = EnvelopeModel::Iron;}}
+\DoxyCodeLine{108     \textcolor{comment}{// double envelope\_xi = 0.0; /*!< Light-\/element column parameter (if used). */}}
+\DoxyCodeLine{109     \textcolor{comment}{// bool superfluid\_n = false;}}
+\DoxyCodeLine{110     \textcolor{comment}{// bool superfluid\_p = false;}}
 \DoxyCodeLine{111 }
 \DoxyCodeLine{112     \textcolor{comment}{// -\/-\/-\/-\/ Chemical imbalances -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
 \DoxyCodeLine{113     std::size\_t \mbox{\hyperlink{struct_compact_star_1_1_physics_1_1_evolution_1_1_config_ab2e24ae85b3b6f4d3b2496fde7d61a9d}{n\_eta}} = 1; }

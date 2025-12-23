@@ -1,0 +1,240 @@
+\hypertarget{class_compact_star_1_1_physics_1_1_evolution_1_1_observers_1_1_time_series_observer}{}\doxysection{Compact\+Star\+::Physics\+::Evolution\+::Observers\+::Time\+Series\+Observer Class Reference}
+\label{class_compact_star_1_1_physics_1_1_evolution_1_1_observers_1_1_time_series_observer}\index{CompactStar::Physics::Evolution::Observers::TimeSeriesObserver@{CompactStar::Physics::Evolution::Observers::TimeSeriesObserver}}
+
+
+Minimal time-\/series recorder for selected scalar quantities.  
+
+
+
+
+{\ttfamily \#include $<$Time\+Series\+Observer.\+hpp$>$}
+
+Inheritance diagram for Compact\+Star\+::Physics\+::Evolution\+::Observers\+::Time\+Series\+Observer\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{db/d81/class_compact_star_1_1_physics_1_1_evolution_1_1_observers_1_1_time_series_observer}
+\end{center}
+\end{figure}
+\doxysubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{struct_compact_star_1_1_physics_1_1_evolution_1_1_observers_1_1_time_series_observer_1_1_catalog_scalar_ref}{Catalog\+Scalar\+Ref}}
+\begin{DoxyCompactList}\small\item\em Reference to a scalar in the diagnostics catalog. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{struct_compact_star_1_1_physics_1_1_evolution_1_1_observers_1_1_time_series_observer_1_1_column}{Column}}
+\begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{struct_compact_star_1_1_physics_1_1_evolution_1_1_observers_1_1_time_series_observer_1_1_column}{Column}} specification for \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_observers_1_1_time_series_observer}{Time\+Series\+Observer}} output. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{struct_compact_star_1_1_physics_1_1_evolution_1_1_observers_1_1_time_series_observer_1_1_options}{Options}}
+\begin{DoxyCompactList}\small\item\em Configuration for \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_observers_1_1_time_series_observer}{Time\+Series\+Observer}}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+enum class \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_observers_1_1_time_series_observer_af22274949fdb7545a83fe6f520e1c3f4}{Output\+Format}} \{ \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_observers_1_1_time_series_observer_af22274949fdb7545a83fe6f520e1c3f4acc8d68c551c4a9a6d5313e07de4deafd}{CSV}}
+, \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_observers_1_1_time_series_observer_af22274949fdb7545a83fe6f520e1c3f4a1b05e94fb4b6889494e33649cc26f8c1}{TSV}}
+ \}
+\begin{DoxyCompactList}\small\item\em Output format for the time series. \end{DoxyCompactList}\item 
+enum class \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_observers_1_1_time_series_observer_a1bea35e165e0780dbb8b83b42183e255}{Column\+Source}} \{ {\bfseries Builtin\+State}
+, {\bfseries Driver\+Scalar}
+ \}
+\begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{struct_compact_star_1_1_physics_1_1_evolution_1_1_observers_1_1_time_series_observer_1_1_column}{Column}} source kind. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_observers_1_1_time_series_observer_a3c71da068a70dd266eb2ce5e5a92b03c}{Time\+Series\+Observer}} (const \mbox{\hyperlink{struct_compact_star_1_1_physics_1_1_evolution_1_1_observers_1_1_time_series_observer_1_1_options}{Options}} \&opts)
+\begin{DoxyCompactList}\small\item\em Construct with options only (state-\/only columns). \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_compact_star_1_1_physics_1_1_evolution_1_1_observers_1_1_time_series_observer_a0c7db2dcbdfaa7c4de3234a33151bbdc}\label{class_compact_star_1_1_physics_1_1_evolution_1_1_observers_1_1_time_series_observer_a0c7db2dcbdfaa7c4de3234a33151bbdc}} 
+{\bfseries Time\+Series\+Observer} (\mbox{\hyperlink{struct_compact_star_1_1_physics_1_1_evolution_1_1_observers_1_1_time_series_observer_1_1_options}{Options}} \&\&opts)
+\begin{DoxyCompactList}\small\item\em Construct with options only (move). \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_observers_1_1_time_series_observer_af3df9db0a99071295c0d61540ea3faa6}{Time\+Series\+Observer}} (\mbox{\hyperlink{struct_compact_star_1_1_physics_1_1_evolution_1_1_observers_1_1_time_series_observer_1_1_options}{Options}} opts, std\+::vector$<$ const \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_driver_1_1_diagnostics_1_1_i_driver_diagnostics}{Driver\+::\+Diagnostics\+::\+IDriver\+Diagnostics}} $\ast$ $>$ drivers)
+\begin{DoxyCompactList}\small\item\em Construct with options and driver diagnostics providers. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_observers_1_1_time_series_observer_a06f0ffbb0d54773d5c4904a7e7862c4a}{Time\+Series\+Observer}} (\mbox{\hyperlink{struct_compact_star_1_1_physics_1_1_evolution_1_1_observers_1_1_time_series_observer_1_1_options}{Options}} opts, std\+::vector$<$ const \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_driver_1_1_diagnostics_1_1_i_driver_diagnostics}{Driver\+::\+Diagnostics\+::\+IDriver\+Diagnostics}} $\ast$ $>$ drivers, std\+::shared\+\_\+ptr$<$ const \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_diagnostics_1_1_diagnostic_catalog}{Diagnostics\+::\+Diagnostic\+Catalog}} $>$ catalog)
+\begin{DoxyCompactList}\small\item\em Construct with options, driver diagnostics, and a diagnostics catalog. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_observers_1_1_time_series_observer_a4b11195e540dce6671de183647d338db}{On\+Start}} (const \mbox{\hyperlink{struct_compact_star_1_1_physics_1_1_evolution_1_1_observers_1_1_run_info}{Run\+Info}} \&run, const \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_state_vector}{Evolution\+::\+State\+Vector}} \&Y0, const \mbox{\hyperlink{struct_compact_star_1_1_physics_1_1_evolution_1_1_driver_context}{Evolution\+::\+Driver\+Context}} \&ctx) override
+\begin{DoxyCompactList}\small\item\em Called once before integration begins. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_observers_1_1_time_series_observer_aa6656929b81b4797703199f69f09a963}{On\+Sample}} (const \mbox{\hyperlink{struct_compact_star_1_1_physics_1_1_evolution_1_1_observers_1_1_sample_info}{Sample\+Info}} \&s, const \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_state_vector}{Evolution\+::\+State\+Vector}} \&Y, const \mbox{\hyperlink{struct_compact_star_1_1_physics_1_1_evolution_1_1_driver_context}{Evolution\+::\+Driver\+Context}} \&ctx) override
+\begin{DoxyCompactList}\small\item\em Called whenever the evolution loop emits a sample. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_observers_1_1_time_series_observer_aba66e59e3948534e3090fcdfec12211d}{On\+Finish}} (const \mbox{\hyperlink{struct_compact_star_1_1_physics_1_1_evolution_1_1_observers_1_1_finish_info}{Finish\+Info}} \&fin, const \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_state_vector}{Evolution\+::\+State\+Vector}} \&Yf, const \mbox{\hyperlink{struct_compact_star_1_1_physics_1_1_evolution_1_1_driver_context}{Evolution\+::\+Driver\+Context}} \&ctx) override
+\begin{DoxyCompactList}\small\item\em Called once after integration ends (success or failure). \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_observers_1_1_time_series_observer_ad09fe15d806b74be9ccdf045aa684b0a}{Name}} () const override
+\begin{DoxyCompactList}\small\item\em Observer name for logs. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Minimal time-\/series recorder for selected scalar quantities. 
+
+The \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_observers_1_1_time_series_observer}{Time\+Series\+Observer}} writes a single table-\/like stream where each row corresponds to a recorded sample time.
+
+It is meant to produce a compact dataset suitable for\+:
+\begin{DoxyItemize}
+\item quick plotting (Python, MATLAB, gnuplot),
+\item quick inspection,
+\item numerical regression comparisons at the level of {\itshape state variables}.
+\end{DoxyItemize}
+
+It is {\itshape not} meant to replace \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_observers_1_1_diagnostics_observer}{Diagnostics\+Observer}} for deep debugging, driver contracts, or per-\/driver introspection. 
+
+\doxysubsection{Member Enumeration Documentation}
+\mbox{\Hypertarget{class_compact_star_1_1_physics_1_1_evolution_1_1_observers_1_1_time_series_observer_a1bea35e165e0780dbb8b83b42183e255}\label{class_compact_star_1_1_physics_1_1_evolution_1_1_observers_1_1_time_series_observer_a1bea35e165e0780dbb8b83b42183e255}} 
+\index{CompactStar::Physics::Evolution::Observers::TimeSeriesObserver@{CompactStar::Physics::Evolution::Observers::TimeSeriesObserver}!ColumnSource@{ColumnSource}}
+\index{ColumnSource@{ColumnSource}!CompactStar::Physics::Evolution::Observers::TimeSeriesObserver@{CompactStar::Physics::Evolution::Observers::TimeSeriesObserver}}
+\doxysubsubsection{\texorpdfstring{ColumnSource}{ColumnSource}}
+{\footnotesize\ttfamily enum class \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_observers_1_1_time_series_observer_a1bea35e165e0780dbb8b83b42183e255}{Compact\+Star\+::\+Physics\+::\+Evolution\+::\+Observers\+::\+Time\+Series\+Observer\+::\+Column\+Source}}\hspace{0.3cm}{\ttfamily [strong]}}
+
+
+
+\mbox{\hyperlink{struct_compact_star_1_1_physics_1_1_evolution_1_1_observers_1_1_time_series_observer_1_1_column}{Column}} source kind. 
+
+A \char`\"{}column\char`\"{} is a named scalar recorded in the output table.
+
+
+\begin{DoxyItemize}
+\item Builtin\+State\+: value obtained directly from the \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_state_vector}{Evolution\+::\+State\+Vector}} and/or \mbox{\hyperlink{struct_compact_star_1_1_physics_1_1_evolution_1_1_driver_context}{Evolution\+::\+Driver\+Context}} via known accessors (e.\+g. Tinf, Omega).
+\item Driver\+Scalar\+: value fetched from a driver diagnostics provider by key. This uses IDriver\+Diagnostics\+::\+Diagnose\+Snapshot() to populate a packet, then extracts the requested scalar key.
+\end{DoxyItemize}
+
+This separation keeps the implementation simple and avoids pushing state-\/specific knowledge into drivers. \mbox{\Hypertarget{class_compact_star_1_1_physics_1_1_evolution_1_1_observers_1_1_time_series_observer_af22274949fdb7545a83fe6f520e1c3f4}\label{class_compact_star_1_1_physics_1_1_evolution_1_1_observers_1_1_time_series_observer_af22274949fdb7545a83fe6f520e1c3f4}} 
+\index{CompactStar::Physics::Evolution::Observers::TimeSeriesObserver@{CompactStar::Physics::Evolution::Observers::TimeSeriesObserver}!OutputFormat@{OutputFormat}}
+\index{OutputFormat@{OutputFormat}!CompactStar::Physics::Evolution::Observers::TimeSeriesObserver@{CompactStar::Physics::Evolution::Observers::TimeSeriesObserver}}
+\doxysubsubsection{\texorpdfstring{OutputFormat}{OutputFormat}}
+{\footnotesize\ttfamily enum class \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_observers_1_1_time_series_observer_af22274949fdb7545a83fe6f520e1c3f4}{Compact\+Star\+::\+Physics\+::\+Evolution\+::\+Observers\+::\+Time\+Series\+Observer\+::\+Output\+Format}}\hspace{0.3cm}{\ttfamily [strong]}}
+
+
+
+Output format for the time series. 
+
+CSV is the default because it is ubiquitous and easy to inspect. TSV is occasionally useful when units/descriptions include commas.
+
+JSONL output is intentionally not supported here because JSONL is already covered by \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_observers_1_1_diagnostics_observer}{Diagnostics\+Observer}}; the goal here is compact tables. \begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{CSV@{CSV}!CompactStar::Physics::Evolution::Observers::TimeSeriesObserver@{CompactStar::Physics::Evolution::Observers::TimeSeriesObserver}}\index{CompactStar::Physics::Evolution::Observers::TimeSeriesObserver@{CompactStar::Physics::Evolution::Observers::TimeSeriesObserver}!CSV@{CSV}}}\mbox{\Hypertarget{class_compact_star_1_1_physics_1_1_evolution_1_1_observers_1_1_time_series_observer_af22274949fdb7545a83fe6f520e1c3f4acc8d68c551c4a9a6d5313e07de4deafd}\label{class_compact_star_1_1_physics_1_1_evolution_1_1_observers_1_1_time_series_observer_af22274949fdb7545a83fe6f520e1c3f4acc8d68c551c4a9a6d5313e07de4deafd}} 
+CSV&Comma-\/separated values (default). \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{TSV@{TSV}!CompactStar::Physics::Evolution::Observers::TimeSeriesObserver@{CompactStar::Physics::Evolution::Observers::TimeSeriesObserver}}\index{CompactStar::Physics::Evolution::Observers::TimeSeriesObserver@{CompactStar::Physics::Evolution::Observers::TimeSeriesObserver}!TSV@{TSV}}}\mbox{\Hypertarget{class_compact_star_1_1_physics_1_1_evolution_1_1_observers_1_1_time_series_observer_af22274949fdb7545a83fe6f520e1c3f4a1b05e94fb4b6889494e33649cc26f8c1}\label{class_compact_star_1_1_physics_1_1_evolution_1_1_observers_1_1_time_series_observer_af22274949fdb7545a83fe6f520e1c3f4a1b05e94fb4b6889494e33649cc26f8c1}} 
+TSV&Tab-\/separated values. \\
+\hline
+
+\end{DoxyEnumFields}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_compact_star_1_1_physics_1_1_evolution_1_1_observers_1_1_time_series_observer_a3c71da068a70dd266eb2ce5e5a92b03c}\label{class_compact_star_1_1_physics_1_1_evolution_1_1_observers_1_1_time_series_observer_a3c71da068a70dd266eb2ce5e5a92b03c}} 
+\index{CompactStar::Physics::Evolution::Observers::TimeSeriesObserver@{CompactStar::Physics::Evolution::Observers::TimeSeriesObserver}!TimeSeriesObserver@{TimeSeriesObserver}}
+\index{TimeSeriesObserver@{TimeSeriesObserver}!CompactStar::Physics::Evolution::Observers::TimeSeriesObserver@{CompactStar::Physics::Evolution::Observers::TimeSeriesObserver}}
+\doxysubsubsection{\texorpdfstring{TimeSeriesObserver()}{TimeSeriesObserver()}\hspace{0.1cm}{\footnotesize\ttfamily [1/3]}}
+{\footnotesize\ttfamily Compact\+Star\+::\+Physics\+::\+Evolution\+::\+Observers\+::\+Time\+Series\+Observer\+::\+Time\+Series\+Observer (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{struct_compact_star_1_1_physics_1_1_evolution_1_1_observers_1_1_time_series_observer_1_1_options}{Options}} \&}]{opts }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [explicit]}}
+
+
+
+Construct with options only (state-\/only columns). 
+
+For using Driver\+Scalar columns, we\textquotesingle{}d use the constructor that accepts drivers. \mbox{\Hypertarget{class_compact_star_1_1_physics_1_1_evolution_1_1_observers_1_1_time_series_observer_af3df9db0a99071295c0d61540ea3faa6}\label{class_compact_star_1_1_physics_1_1_evolution_1_1_observers_1_1_time_series_observer_af3df9db0a99071295c0d61540ea3faa6}} 
+\index{CompactStar::Physics::Evolution::Observers::TimeSeriesObserver@{CompactStar::Physics::Evolution::Observers::TimeSeriesObserver}!TimeSeriesObserver@{TimeSeriesObserver}}
+\index{TimeSeriesObserver@{TimeSeriesObserver}!CompactStar::Physics::Evolution::Observers::TimeSeriesObserver@{CompactStar::Physics::Evolution::Observers::TimeSeriesObserver}}
+\doxysubsubsection{\texorpdfstring{TimeSeriesObserver()}{TimeSeriesObserver()}\hspace{0.1cm}{\footnotesize\ttfamily [2/3]}}
+{\footnotesize\ttfamily Compact\+Star\+::\+Physics\+::\+Evolution\+::\+Observers\+::\+Time\+Series\+Observer\+::\+Time\+Series\+Observer (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_compact_star_1_1_physics_1_1_evolution_1_1_observers_1_1_time_series_observer_1_1_options}{Options}}}]{opts,  }\item[{std\+::vector$<$ const \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_driver_1_1_diagnostics_1_1_i_driver_diagnostics}{Driver\+::\+Diagnostics\+::\+IDriver\+Diagnostics}} $\ast$ $>$}]{drivers }\end{DoxyParamCaption})}
+
+
+
+Construct with options and driver diagnostics providers. 
+
+This enables Driver\+Scalar columns, which are extracted by\+:
+\begin{DoxyItemize}
+\item asking the driver to populate a Diagnostic\+Packet,
+\item retrieving pkt.\+Get\+Scalar(driver\+\_\+key).value.
+\end{DoxyItemize}
+
+Drivers are not owned by this observer; they must outlive the observer.
+
+
+\begin{DoxyParams}{Parameters}
+{\em opts} & Observer configuration options. \\
+\hline
+{\em drivers} & Driver diagnostics providers (non-\/owning). \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_compact_star_1_1_physics_1_1_evolution_1_1_observers_1_1_time_series_observer_a06f0ffbb0d54773d5c4904a7e7862c4a}\label{class_compact_star_1_1_physics_1_1_evolution_1_1_observers_1_1_time_series_observer_a06f0ffbb0d54773d5c4904a7e7862c4a}} 
+\index{CompactStar::Physics::Evolution::Observers::TimeSeriesObserver@{CompactStar::Physics::Evolution::Observers::TimeSeriesObserver}!TimeSeriesObserver@{TimeSeriesObserver}}
+\index{TimeSeriesObserver@{TimeSeriesObserver}!CompactStar::Physics::Evolution::Observers::TimeSeriesObserver@{CompactStar::Physics::Evolution::Observers::TimeSeriesObserver}}
+\doxysubsubsection{\texorpdfstring{TimeSeriesObserver()}{TimeSeriesObserver()}\hspace{0.1cm}{\footnotesize\ttfamily [3/3]}}
+{\footnotesize\ttfamily Compact\+Star\+::\+Physics\+::\+Evolution\+::\+Observers\+::\+Time\+Series\+Observer\+::\+Time\+Series\+Observer (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_compact_star_1_1_physics_1_1_evolution_1_1_observers_1_1_time_series_observer_1_1_options}{Options}}}]{opts,  }\item[{std\+::vector$<$ const \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_driver_1_1_diagnostics_1_1_i_driver_diagnostics}{Driver\+::\+Diagnostics\+::\+IDriver\+Diagnostics}} $\ast$ $>$}]{drivers,  }\item[{std\+::shared\+\_\+ptr$<$ const \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_diagnostics_1_1_diagnostic_catalog}{Diagnostics\+::\+Diagnostic\+Catalog}} $>$}]{catalog }\end{DoxyParamCaption})}
+
+
+
+Construct with options, driver diagnostics, and a diagnostics catalog. 
+
+This enables Driver\+Scalar columns, which are extracted by\+:
+\begin{DoxyItemize}
+\item asking the driver to populate a Diagnostic\+Packet,
+\item retrieving pkt.\+Get\+Scalar(driver\+\_\+key).value. Drivers are not owned by this observer; they must outlive the observer. 
+\begin{DoxyParams}{Parameters}
+{\em opts} & Observer configuration options. \\
+\hline
+{\em drivers} & Driver diagnostics providers (non-\/owning). \\
+\hline
+{\em catalog} & Shared pointer to a diagnostics catalog for schema-\/driven columns. \\
+\hline
+\end{DoxyParams}
+
+\end{DoxyItemize}
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_compact_star_1_1_physics_1_1_evolution_1_1_observers_1_1_time_series_observer_ad09fe15d806b74be9ccdf045aa684b0a}\label{class_compact_star_1_1_physics_1_1_evolution_1_1_observers_1_1_time_series_observer_ad09fe15d806b74be9ccdf045aa684b0a}} 
+\index{CompactStar::Physics::Evolution::Observers::TimeSeriesObserver@{CompactStar::Physics::Evolution::Observers::TimeSeriesObserver}!Name@{Name}}
+\index{Name@{Name}!CompactStar::Physics::Evolution::Observers::TimeSeriesObserver@{CompactStar::Physics::Evolution::Observers::TimeSeriesObserver}}
+\doxysubsubsection{\texorpdfstring{Name()}{Name()}}
+{\footnotesize\ttfamily std\+::string Compact\+Star\+::\+Physics\+::\+Evolution\+::\+Observers\+::\+Time\+Series\+Observer\+::\+Name (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Observer name for logs. 
+
+
+
+Reimplemented from \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_observers_1_1_i_observer_aacc16e14cdf6031c4bb69f7ff8ea7e59}{Compact\+Star\+::\+Physics\+::\+Evolution\+::\+Observers\+::\+IObserver}}.
+
+\mbox{\Hypertarget{class_compact_star_1_1_physics_1_1_evolution_1_1_observers_1_1_time_series_observer_aba66e59e3948534e3090fcdfec12211d}\label{class_compact_star_1_1_physics_1_1_evolution_1_1_observers_1_1_time_series_observer_aba66e59e3948534e3090fcdfec12211d}} 
+\index{CompactStar::Physics::Evolution::Observers::TimeSeriesObserver@{CompactStar::Physics::Evolution::Observers::TimeSeriesObserver}!OnFinish@{OnFinish}}
+\index{OnFinish@{OnFinish}!CompactStar::Physics::Evolution::Observers::TimeSeriesObserver@{CompactStar::Physics::Evolution::Observers::TimeSeriesObserver}}
+\doxysubsubsection{\texorpdfstring{OnFinish()}{OnFinish()}}
+{\footnotesize\ttfamily void Compact\+Star\+::\+Physics\+::\+Evolution\+::\+Observers\+::\+Time\+Series\+Observer\+::\+On\+Finish (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{struct_compact_star_1_1_physics_1_1_evolution_1_1_observers_1_1_finish_info}{Finish\+Info}} \&}]{fin,  }\item[{const \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_state_vector}{Evolution\+::\+State\+Vector}} \&}]{Yf,  }\item[{const \mbox{\hyperlink{struct_compact_star_1_1_physics_1_1_evolution_1_1_driver_context}{Evolution\+::\+Driver\+Context}} \&}]{ctx }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Called once after integration ends (success or failure). 
+
+Flushes and closes the output stream. 
+
+Reimplemented from \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_observers_1_1_i_observer_a6c8f9110c9a1e13675c384d103f64782}{Compact\+Star\+::\+Physics\+::\+Evolution\+::\+Observers\+::\+IObserver}}.
+
+\mbox{\Hypertarget{class_compact_star_1_1_physics_1_1_evolution_1_1_observers_1_1_time_series_observer_aa6656929b81b4797703199f69f09a963}\label{class_compact_star_1_1_physics_1_1_evolution_1_1_observers_1_1_time_series_observer_aa6656929b81b4797703199f69f09a963}} 
+\index{CompactStar::Physics::Evolution::Observers::TimeSeriesObserver@{CompactStar::Physics::Evolution::Observers::TimeSeriesObserver}!OnSample@{OnSample}}
+\index{OnSample@{OnSample}!CompactStar::Physics::Evolution::Observers::TimeSeriesObserver@{CompactStar::Physics::Evolution::Observers::TimeSeriesObserver}}
+\doxysubsubsection{\texorpdfstring{OnSample()}{OnSample()}}
+{\footnotesize\ttfamily void Compact\+Star\+::\+Physics\+::\+Evolution\+::\+Observers\+::\+Time\+Series\+Observer\+::\+On\+Sample (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{struct_compact_star_1_1_physics_1_1_evolution_1_1_observers_1_1_sample_info}{Sample\+Info}} \&}]{s,  }\item[{const \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_state_vector}{Evolution\+::\+State\+Vector}} \&}]{Y,  }\item[{const \mbox{\hyperlink{struct_compact_star_1_1_physics_1_1_evolution_1_1_driver_context}{Evolution\+::\+Driver\+Context}} \&}]{ctx }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Called whenever the evolution loop emits a sample. 
+
+Writes one row if scheduling conditions are met. 
+
+Implements \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_observers_1_1_i_observer_ae8f5cf1b4c8bf1170402166950d9baab}{Compact\+Star\+::\+Physics\+::\+Evolution\+::\+Observers\+::\+IObserver}}.
+
+\mbox{\Hypertarget{class_compact_star_1_1_physics_1_1_evolution_1_1_observers_1_1_time_series_observer_a4b11195e540dce6671de183647d338db}\label{class_compact_star_1_1_physics_1_1_evolution_1_1_observers_1_1_time_series_observer_a4b11195e540dce6671de183647d338db}} 
+\index{CompactStar::Physics::Evolution::Observers::TimeSeriesObserver@{CompactStar::Physics::Evolution::Observers::TimeSeriesObserver}!OnStart@{OnStart}}
+\index{OnStart@{OnStart}!CompactStar::Physics::Evolution::Observers::TimeSeriesObserver@{CompactStar::Physics::Evolution::Observers::TimeSeriesObserver}}
+\doxysubsubsection{\texorpdfstring{OnStart()}{OnStart()}}
+{\footnotesize\ttfamily void Compact\+Star\+::\+Physics\+::\+Evolution\+::\+Observers\+::\+Time\+Series\+Observer\+::\+On\+Start (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{struct_compact_star_1_1_physics_1_1_evolution_1_1_observers_1_1_run_info}{Run\+Info}} \&}]{run,  }\item[{const \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_state_vector}{Evolution\+::\+State\+Vector}} \&}]{Y0,  }\item[{const \mbox{\hyperlink{struct_compact_star_1_1_physics_1_1_evolution_1_1_driver_context}{Evolution\+::\+Driver\+Context}} \&}]{ctx }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Called once before integration begins. 
+
+Opens the output stream, writes header/metadata, and resets scheduling state. 
+
+Reimplemented from \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_observers_1_1_i_observer_ac0fc3ae20bdb247ac53141d3e5772a4d}{Compact\+Star\+::\+Physics\+::\+Evolution\+::\+Observers\+::\+IObserver}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Compact\+Star/\+Physics/\+Evolution/\+Observers/\mbox{\hyperlink{_time_series_observer_8hpp}{Time\+Series\+Observer.\+hpp}}\item 
+Compact\+Star/\+Physics/\+Evolution/\+Observers/src/\mbox{\hyperlink{_time_series_observer_8cpp}{Time\+Series\+Observer.\+cpp}}\end{DoxyCompactItemize}

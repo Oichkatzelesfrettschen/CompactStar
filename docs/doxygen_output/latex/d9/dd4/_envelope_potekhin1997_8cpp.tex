@@ -1,0 +1,53 @@
+\hypertarget{_envelope_potekhin1997_8cpp}{}\doxysection{Compact\+Star/\+Physics/\+Driver/\+Thermal/\+Boundary/src/\+Envelope\+Potekhin1997.cpp File Reference}
+\label{_envelope_potekhin1997_8cpp}\index{CompactStar/Physics/Driver/Thermal/Boundary/src/EnvelopePotekhin1997.cpp@{CompactStar/Physics/Driver/Thermal/Boundary/src/EnvelopePotekhin1997.cpp}}
+
+
+Implementation of Potekhin-\/style Tb→\+Ts envelope fits declared in \mbox{\hyperlink{_envelope_potekhin1997_8hpp}{Envelope\+Potekhin1997.\+hpp}}.  
+
+
+{\ttfamily \#include \char`\"{}Compact\+Star/\+Physics/\+Driver/\+Thermal/\+Boundary/\+Envelope\+Potekhin1997.\+hpp\char`\"{}}\newline
+{\ttfamily \#include $<$cmath$>$}\newline
+{\ttfamily \#include $<$limits$>$}\newline
+\doxysubsection*{Namespaces}
+\begin{DoxyCompactItemize}
+\item 
+namespace \mbox{\hyperlink{namespace_compact_star_1_1_physics}{Compact\+Star\+::\+Physics}}
+\begin{DoxyCompactList}\small\item\em High-\/level physical modeling layer for compact stars. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Implementation of Potekhin-\/style Tb→\+Ts envelope fits declared in \mbox{\hyperlink{_envelope_potekhin1997_8hpp}{Envelope\+Potekhin1997.\+hpp}}. 
+
+\hypertarget{_envelope_potekhin1997_8cpp_autotoc_md10}{}\doxysubsubsection{Purpose}\label{_envelope_potekhin1997_8cpp_autotoc_md10}
+Implements concrete Boundary\+::\+IEnvelope models that provide the thermal boundary condition at the base of the blanketing envelope\+:
+
+\[
+  T_s = T_s(T_b, g_{14}, \xi)
+\]
+
+with the conventions\+:
+\begin{DoxyItemize}
+\item Tb \+: local temperature at the base of the envelope \mbox{[}K\mbox{]}
+\item Ts \+: local effective surface temperature \mbox{[}K\mbox{]}
+\item g14 \+: surface gravity in units of $10^{14}\,\mathrm{cm\,s^{-2}}$
+\item xi \+: light-\/element/accreted-\/envelope parameter (model dependent)
+\end{DoxyItemize}\hypertarget{_envelope_potekhin1997_8cpp_autotoc_md11}{}\doxysubsubsection{Validation policy}\label{_envelope_potekhin1997_8cpp_autotoc_md11}
+
+\begin{DoxyItemize}
+\item If Tb \texorpdfstring{$<$}{<}= 0 or g14 \texorpdfstring{$<$}{<}= 0, the functions return 0 (non-\/physical input).
+\item Na\+N/\+Inf inputs are treated as invalid and return 0.
+\item The iron fit ignores xi.
+\end{DoxyItemize}\hypertarget{_envelope_potekhin1997_8cpp_autotoc_md12}{}\doxysubsubsection{Notes on physics content}\label{_envelope_potekhin1997_8cpp_autotoc_md12}
+
+\begin{DoxyItemize}
+\item The iron fit here matches the compact form you used previously\+:
+\end{DoxyItemize}
+
+\[
+    T_s^4 = 10^{24}\, g_{14}\, \left( 1.81\, \frac{T_b}{10^8\,\mathrm{K}} \right)^{2.42}
+  \]
+
+
+\begin{DoxyItemize}
+\item The \char`\"{}accreted\char`\"{} model below is currently a conservative placeholder using xi as a monotonic interpolation knob. Replace it with the exact Potekhin/\+Yakovlev light-\/element column fits when you are ready; the interface remains stable. 
+\end{DoxyItemize}

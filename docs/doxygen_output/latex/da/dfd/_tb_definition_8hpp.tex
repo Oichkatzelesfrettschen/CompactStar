@@ -1,0 +1,100 @@
+\hypertarget{_tb_definition_8hpp}{}\doxysection{Compact\+Star/\+Physics/\+Driver/\+Thermal/\+Boundary/\+Tb\+Definition.hpp File Reference}
+\label{_tb_definition_8hpp}\index{CompactStar/Physics/Driver/Thermal/Boundary/TbDefinition.hpp@{CompactStar/Physics/Driver/Thermal/Boundary/TbDefinition.hpp}}
+
+
+Definition and helpers for the base-\/of-\/envelope temperature Tb.  
+
+
+{\ttfamily \#include $<$cstddef$>$}\newline
+{\ttfamily \#include $<$stdexcept$>$}\newline
+\doxysubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{struct_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_boundary_1_1_tb_definition}{Compact\+Star\+::\+Physics\+::\+Driver\+::\+Thermal\+::\+Boundary\+::\+Tb\+Definition}}
+\begin{DoxyCompactList}\small\item\em Policy for defining the base-\/of-\/envelope location. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Namespaces}
+\begin{DoxyCompactItemize}
+\item 
+namespace \mbox{\hyperlink{namespace_compact_star_1_1_physics}{Compact\+Star\+::\+Physics}}
+\begin{DoxyCompactList}\small\item\em High-\/level physical modeling layer for compact stars. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+std\+::size\+\_\+t \mbox{\hyperlink{_tb_definition_8cpp_a5b615534bdb8b02d3098e5a3b92682ee}{Compact\+Star\+::\+Physics\+::\+Driver\+::\+Thermal\+::\+Boundary\+::\+Find\+Tb\+Index}} (const Evolution\+::\+Star\+Context \&star, double rho\+\_\+b)
+\begin{DoxyCompactList}\small\item\em Find the index of the base-\/of-\/envelope radius (r\+\_\+b) in the star grid. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{_tb_definition_8cpp_a15c7287afe10e84a037a634caed1e4cb}{Compact\+Star\+::\+Physics\+::\+Driver\+::\+Thermal\+::\+Boundary\+::\+Compute\+Tb}} (const Evolution\+::\+Star\+Context \&star, const Evolution\+::\+Geometry\+Cache $\ast$geo, double T\+\_\+inf, const Tb\+Definition \&def)
+\begin{DoxyCompactList}\small\item\em Compute Tb (local) given T\+\_\+inf and a \mbox{\hyperlink{struct_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_boundary_1_1_tb_definition}{Tb\+Definition}} policy. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Definition and helpers for the base-\/of-\/envelope temperature Tb. 
+
+Envelope fits are typically expressed as Ts(\+Tb, g14, xi, ...), where Tb is the {\itshape local} temperature at the base of the heat blanketing envelope, often chosen at a fiducial density\+:
+
+ρ\+\_\+b ≈ 1e10 g/cm$^\wedge$3
+
+The interior is frequently assumed isothermal in the redshifted sense\+:
+
+T(r) = T\+\_\+inf $\ast$ exp(-\/ν(r))
+
+where T\+\_\+inf is constant through the isothermal region.
+
+This module encodes\+:
+\begin{DoxyItemize}
+\item A canonical \char`\"{}base density\char`\"{} choice.
+\item A strategy for picking the radius/index of the base-\/of-\/envelope.
+\item A helper that computes Tb from T\+\_\+inf and the metric at the base.
+\end{DoxyItemize}
+
+Important\+: this module is {\itshape policy}, not EOS microphysics. If we later implement crust/envelope conduction explicitly, this can be bypassed. 
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{_tb_definition_8cpp_a15c7287afe10e84a037a634caed1e4cb}\label{_tb_definition_8cpp_a15c7287afe10e84a037a634caed1e4cb}} 
+\index{TbDefinition.hpp@{TbDefinition.hpp}!ComputeTb@{ComputeTb}}
+\index{ComputeTb@{ComputeTb}!TbDefinition.hpp@{TbDefinition.hpp}}
+\doxysubsubsection{\texorpdfstring{ComputeTb()}{ComputeTb()}}
+{\footnotesize\ttfamily double Compact\+Star\+::\+Physics\+::\+Driver\+::\+Thermal\+::\+Boundary\+::\+Compute\+Tb (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_star_context}{Evolution\+::\+Star\+Context}} \&}]{star,  }\item[{const \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_geometry_cache}{Evolution\+::\+Geometry\+Cache}} $\ast$}]{geo,  }\item[{double}]{T\+\_\+inf,  }\item[{const \mbox{\hyperlink{struct_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_boundary_1_1_tb_definition}{Tb\+Definition}} \&}]{def }\end{DoxyParamCaption})}
+
+
+
+Compute Tb (local) given T\+\_\+inf and a Tb\+Definition policy. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em star} & Star\+Context (structure + profile). \\
+\hline
+{\em geo} & Optional Geometry\+Cache for exp(-\/ν) or exp(2ν) at r\+\_\+b. \\
+\hline
+{\em T\+\_\+inf} & Redshifted isothermal temperature \mbox{[}K\mbox{]}. \\
+\hline
+{\em def} & Policy describing rho\+\_\+b and how to compute Tb.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Tb in Kelvin (local frame at base of envelope). 
+\end{DoxyReturn}
+\mbox{\Hypertarget{_tb_definition_8cpp_a5b615534bdb8b02d3098e5a3b92682ee}\label{_tb_definition_8cpp_a5b615534bdb8b02d3098e5a3b92682ee}} 
+\index{TbDefinition.hpp@{TbDefinition.hpp}!FindTbIndex@{FindTbIndex}}
+\index{FindTbIndex@{FindTbIndex}!TbDefinition.hpp@{TbDefinition.hpp}}
+\doxysubsubsection{\texorpdfstring{FindTbIndex()}{FindTbIndex()}}
+{\footnotesize\ttfamily std\+::size\+\_\+t Compact\+Star\+::\+Physics\+::\+Driver\+::\+Thermal\+::\+Boundary\+::\+Find\+Tb\+Index (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_star_context}{Evolution\+::\+Star\+Context}} \&}]{star,  }\item[{double}]{rho\+\_\+b }\end{DoxyParamCaption})}
+
+
+
+Find the index of the base-\/of-\/envelope radius (r\+\_\+b) in the star grid. 
+
+Strategy\+:
+\begin{DoxyItemize}
+\item Use the Star\+Context profile to find the first radius where ρ(r) \texorpdfstring{$<$}{<}= ρ\+\_\+b (i.\+e., moving outward from core to crust/envelope).
+\end{DoxyItemize}
+
+Requirements\+:
+\begin{DoxyItemize}
+\item Star\+Context\+::\+Profile() exposes density column ρ(r) in g/cm$^\wedge$3 and radius grid R (km).
+\end{DoxyItemize}
+
+
+\begin{DoxyExceptions}{Exceptions}
+{\em std\+::runtime\+\_\+error} & if density profile is missing or the threshold cannot be bracketed. \\
+\hline
+\end{DoxyExceptions}

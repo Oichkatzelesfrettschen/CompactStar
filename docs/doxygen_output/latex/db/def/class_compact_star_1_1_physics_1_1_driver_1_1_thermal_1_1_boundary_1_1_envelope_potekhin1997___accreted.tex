@@ -1,0 +1,88 @@
+\hypertarget{class_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_boundary_1_1_envelope_potekhin1997___accreted}{}\doxysection{Compact\+Star\+::Physics\+::Driver\+::Thermal\+::Boundary\+::Envelope\+Potekhin1997\+\_\+\+Accreted Class Reference}
+\label{class_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_boundary_1_1_envelope_potekhin1997___accreted}\index{CompactStar::Physics::Driver::Thermal::Boundary::EnvelopePotekhin1997\_Accreted@{CompactStar::Physics::Driver::Thermal::Boundary::EnvelopePotekhin1997\_Accreted}}
+
+
+Potekhin-\/style light-\/element (accreted) envelope fit.  
+
+
+
+
+{\ttfamily \#include $<$Envelope\+Potekhin1997.\+hpp$>$}
+
+Inheritance diagram for Compact\+Star\+::Physics\+::Driver\+::Thermal\+::Boundary\+::Envelope\+Potekhin1997\+\_\+\+Accreted\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{db/def/class_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_boundary_1_1_envelope_potekhin1997___accreted}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+double \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_boundary_1_1_envelope_potekhin1997___accreted_a42569da7996e51fbd29f5fb38c70df92}{Ts\+\_\+from\+\_\+\+Tb}} (double Tb, double g14, double xi) const override
+\begin{DoxyCompactList}\small\item\em Map base-\/of-\/envelope temperature to surface temperature. \end{DoxyCompactList}\item 
+const char $\ast$ \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_boundary_1_1_envelope_potekhin1997___accreted_adf9d77a34a848c903853a6f55944adac}{Model\+Name}} () override
+\begin{DoxyCompactList}\small\item\em Get the unique model name/identifier. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Potekhin-\/style light-\/element (accreted) envelope fit. 
+
+Returns $T_s(T_b, g_{14}, \xi)$ for accreted/light-\/element envelopes. The parameter {\ttfamily xi} controls the amount of light elements (model-\/dependent).
+
+\begin{DoxyNote}{Note}
+Input validation (e.\+g., Tb\texorpdfstring{$>$}{>}0, g14\texorpdfstring{$>$}{>}0, finite xi) is performed in the .cpp implementation. 
+\end{DoxyNote}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_boundary_1_1_envelope_potekhin1997___accreted_adf9d77a34a848c903853a6f55944adac}\label{class_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_boundary_1_1_envelope_potekhin1997___accreted_adf9d77a34a848c903853a6f55944adac}} 
+\index{CompactStar::Physics::Driver::Thermal::Boundary::EnvelopePotekhin1997\_Accreted@{CompactStar::Physics::Driver::Thermal::Boundary::EnvelopePotekhin1997\_Accreted}!ModelName@{ModelName}}
+\index{ModelName@{ModelName}!CompactStar::Physics::Driver::Thermal::Boundary::EnvelopePotekhin1997\_Accreted@{CompactStar::Physics::Driver::Thermal::Boundary::EnvelopePotekhin1997\_Accreted}}
+\doxysubsubsection{\texorpdfstring{ModelName()}{ModelName()}}
+{\footnotesize\ttfamily const char $\ast$ Compact\+Star\+::\+Physics\+::\+Driver\+::\+Thermal\+::\+Boundary\+::\+Envelope\+Potekhin1997\+\_\+\+Accreted\+::\+Model\+Name (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Get the unique model name/identifier. 
+
+Used for diagnostics, logging, and configuration.
+
+\begin{DoxyReturn}{Returns}
+Null-\/terminated string with the model name. 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_boundary_1_1_i_envelope_a56874e396192ab511a15fca5526f2f85}{Compact\+Star\+::\+Physics\+::\+Driver\+::\+Thermal\+::\+Boundary\+::\+IEnvelope}}.
+
+\mbox{\Hypertarget{class_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_boundary_1_1_envelope_potekhin1997___accreted_a42569da7996e51fbd29f5fb38c70df92}\label{class_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_boundary_1_1_envelope_potekhin1997___accreted_a42569da7996e51fbd29f5fb38c70df92}} 
+\index{CompactStar::Physics::Driver::Thermal::Boundary::EnvelopePotekhin1997\_Accreted@{CompactStar::Physics::Driver::Thermal::Boundary::EnvelopePotekhin1997\_Accreted}!Ts\_from\_Tb@{Ts\_from\_Tb}}
+\index{Ts\_from\_Tb@{Ts\_from\_Tb}!CompactStar::Physics::Driver::Thermal::Boundary::EnvelopePotekhin1997\_Accreted@{CompactStar::Physics::Driver::Thermal::Boundary::EnvelopePotekhin1997\_Accreted}}
+\doxysubsubsection{\texorpdfstring{Ts\_from\_Tb()}{Ts\_from\_Tb()}}
+{\footnotesize\ttfamily double Compact\+Star\+::\+Physics\+::\+Driver\+::\+Thermal\+::\+Boundary\+::\+Envelope\+Potekhin1997\+\_\+\+Accreted\+::\+Ts\+\_\+from\+\_\+\+Tb (\begin{DoxyParamCaption}\item[{double}]{Tb,  }\item[{double}]{g14,  }\item[{double}]{xi }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Map base-\/of-\/envelope temperature to surface temperature. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Tb} & Base-\/of-\/envelope local temperature \mbox{[}K\mbox{]}. \\
+\hline
+{\em g14} & Surface gravity in units of 1e14 cm s$^\wedge$-\/2. \\
+\hline
+{\em xi} & Light-\/element column / accreted-\/envelope parameter. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Local effective surface temperature Ts \mbox{[}K\mbox{]}. 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_boundary_1_1_i_envelope_ab6a2838aed45caff401eff3d5142f201}{Compact\+Star\+::\+Physics\+::\+Driver\+::\+Thermal\+::\+Boundary\+::\+IEnvelope}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Compact\+Star/\+Physics/\+Driver/\+Thermal/\+Boundary/\mbox{\hyperlink{_envelope_potekhin1997_8hpp}{Envelope\+Potekhin1997.\+hpp}}\item 
+Compact\+Star/\+Physics/\+Driver/\+Thermal/\+Boundary/src/\mbox{\hyperlink{_envelope_potekhin1997_8cpp}{Envelope\+Potekhin1997.\+cpp}}\end{DoxyCompactItemize}

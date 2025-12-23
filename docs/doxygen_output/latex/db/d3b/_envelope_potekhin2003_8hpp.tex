@@ -1,0 +1,47 @@
+\hypertarget{_envelope_potekhin2003_8hpp}{}\doxysection{Compact\+Star/\+Physics/\+Driver/\+Thermal/\+Boundary/\+Envelope\+Potekhin2003.hpp File Reference}
+\label{_envelope_potekhin2003_8hpp}\index{CompactStar/Physics/Driver/Thermal/Boundary/EnvelopePotekhin2003.hpp@{CompactStar/Physics/Driver/Thermal/Boundary/EnvelopePotekhin2003.hpp}}
+
+
+Potekhin et al. (2003-\/era) Tb→\+Ts envelope interface (currently delegating to 1997 fits).  
+
+
+{\ttfamily \#include \char`\"{}Compact\+Star/\+Physics/\+Driver/\+Thermal/\+Boundary/\+IEnvelope.\+hpp\char`\"{}}\newline
+\doxysubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_boundary_1_1_envelope_potekhin2003___iron}{Compact\+Star\+::\+Physics\+::\+Driver\+::\+Thermal\+::\+Boundary\+::\+Envelope\+Potekhin2003\+\_\+\+Iron}}
+\begin{DoxyCompactList}\small\item\em Potekhin2003 iron envelope model (currently delegates to Potekhin1997 iron fit). \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_boundary_1_1_envelope_potekhin2003___accreted}{Compact\+Star\+::\+Physics\+::\+Driver\+::\+Thermal\+::\+Boundary\+::\+Envelope\+Potekhin2003\+\_\+\+Accreted}}
+\begin{DoxyCompactList}\small\item\em Potekhin2003 accreted envelope model (currently delegates to Potekhin1997 accreted fit). \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Namespaces}
+\begin{DoxyCompactItemize}
+\item 
+namespace \mbox{\hyperlink{namespace_compact_star_1_1_physics}{Compact\+Star\+::\+Physics}}
+\begin{DoxyCompactList}\small\item\em High-\/level physical modeling layer for compact stars. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Potekhin et al. (2003-\/era) Tb→\+Ts envelope interface (currently delegating to 1997 fits). 
+
+\hypertarget{_envelope_potekhin2003_8hpp_autotoc_md8}{}\doxysubsubsection{Status}\label{_envelope_potekhin2003_8hpp_autotoc_md8}
+This header provides the {\itshape 2003 model identifiers} and stable class names so that\+:
+\begin{DoxyItemize}
+\item Evolution\+::\+Config can select a \char`\"{}\+Potekhin2003\char`\"{} family without refactoring,
+\item drivers remain stable,
+\item you can later replace the implementation with the proper 2003 piecewise/log-\/polynomial fits.
+\end{DoxyItemize}\hypertarget{_envelope_potekhin2003_8hpp_autotoc_md9}{}\doxysubsubsection{Current behavior}\label{_envelope_potekhin2003_8hpp_autotoc_md9}
+The .cpp implementation currently delegates to the Potekhin1997 models\+:
+\begin{DoxyItemize}
+\item {\ttfamily Envelope\+Potekhin2003\+\_\+\+Iron} → {\ttfamily Envelope\+Potekhin1997\+\_\+\+Iron}
+\item {\ttfamily Envelope\+Potekhin2003\+\_\+\+Accreted} → {\ttfamily Envelope\+Potekhin1997\+\_\+\+Accreted}
+\end{DoxyItemize}
+
+The interface remains identical\+: Ts = Ts\+\_\+from\+\_\+\+Tb(\+Tb, g14, xi)
+
+Conventions\+:
+\begin{DoxyItemize}
+\item Tb \+: base-\/of-\/envelope local temperature \mbox{[}K\mbox{]}
+\item Ts \+: local effective surface temperature \mbox{[}K\mbox{]}
+\item g14 \+: surface gravity in units of 1e14 cm s$^\wedge$-\/2
+\item xi \+: light-\/element/accreted parameter (model dependent) 
+\end{DoxyItemize}

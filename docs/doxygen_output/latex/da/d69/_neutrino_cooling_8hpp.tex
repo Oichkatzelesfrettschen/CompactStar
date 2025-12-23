@@ -2,19 +2,21 @@
 \label{_neutrino_cooling_8hpp}\index{CompactStar/Physics/Driver/Thermal/NeutrinoCooling.hpp@{CompactStar/Physics/Driver/Thermal/NeutrinoCooling.hpp}}
 
 
-Driver for core neutrino cooling (DUrca, MUrca, …) contribution to d\+T̃/dt.  
+Core neutrino-\/cooling driver (DUrca, MUrca, PBF hooks) for thermal evolution.  
 
 
-{\ttfamily \#include \char`\"{}Compact\+Star/\+Physics/\+Driver/\+IDriver.\+hpp\char`\"{}}\newline
 {\ttfamily \#include $<$string$>$}\newline
 {\ttfamily \#include $<$vector$>$}\newline
+{\ttfamily \#include \char`\"{}Compact\+Star/\+Physics/\+Driver/\+IDriver.\+hpp\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}Compact\+Star/\+Physics/\+State/\+Tags.\+hpp\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}Compact\+Star/\+Physics/\+Driver/\+Diagnostics/\+Driver\+Diagnostics.\+hpp\char`\"{}}\newline
 \doxysubsection*{Classes}
 \begin{DoxyCompactItemize}
 \item 
 class \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_neutrino_cooling}{Compact\+Star\+::\+Physics\+::\+Driver\+::\+Thermal\+::\+Neutrino\+Cooling}}
-\begin{DoxyCompactList}\small\item\em Adds −\+L\+\_\+ν/\+C\+\_\+eff to the thermal RHS (redshifted frame). \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Adds a neutrino-\/cooling contribution to the thermal RHS (redshifted frame). \end{DoxyCompactList}\item 
 struct \mbox{\hyperlink{struct_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_neutrino_cooling_1_1_options}{Compact\+Star\+::\+Physics\+::\+Driver\+::\+Thermal\+::\+Neutrino\+Cooling\+::\+Options}}
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Configuration knobs controlling which neutrino channels are enabled. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Namespaces}
 \begin{DoxyCompactItemize}
 \item 
@@ -23,6 +25,41 @@ namespace \mbox{\hyperlink{namespace_compact_star_1_1_physics}{Compact\+Star\+::
 
 
 \doxysubsection{Detailed Description}
-Driver for core neutrino cooling (DUrca, MUrca, …) contribution to d\+T̃/dt. 
+Core neutrino-\/cooling driver (DUrca, MUrca, PBF hooks) for thermal evolution. 
 
-Integrates emissivities over proper volume (with metric factors available via Star\+Context / EOS hooks) and converts total L\+\_\+ν,∞ into a redshifted thermal cooling term. Superfluid suppression, thresholds, and composition masks are delegated to Microphysics and the context. 
+\hypertarget{_neutrino_cooling_8hpp_autotoc_md26}{}\doxysubsubsection{Physical intent}\label{_neutrino_cooling_8hpp_autotoc_md26}
+This driver contributes a {\bfseries{neutrino luminosity loss}} term to the redshifted thermal degree of freedom (typically (T\+\_\+\textbackslash{}infty)). Compact\+Star evolves a {\bfseries{logarithmic temperature variable}}\+:
+
+\[
+  x \equiv \ln\!\left(\frac{T_\infty}{T_{\rm ref}}\right),
+\]
+
+so the driver must accumulate (dx/dt) into the thermal RHS\+:
+
+\[
+  \frac{dx}{dt} = \frac{1}{T_\infty}\,\frac{dT_\infty}{dt}.
+\]
+
+In a full neutrino-\/cooling model one would compute\+:
+
+\[
+  L_{\nu,\infty} = \int dV_{\rm proper}\; Q_\nu(r)\times(\text{redshift factors}),
+\]  \[
+  \frac{dT_\infty}{dt} = -\frac{L_{\nu,\infty}}{C_{\rm eff}},
+\]  \[
+  \frac{dx}{dt} = -\frac{L_{\nu,\infty}}{C_{\rm eff}\,T_\infty}.
+\]\hypertarget{_neutrino_cooling_8hpp_autotoc_md27}{}\doxysubsubsection{Implementation pattern}\label{_neutrino_cooling_8hpp_autotoc_md27}
+This driver follows the same architecture as Photon\+Cooling\+:
+\begin{DoxyItemize}
+\item Physics and diagnostics share the same computation via {\ttfamily Neutrino\+Cooling\+\_\+\+Details}.
+\item {\ttfamily Accumulate\+RHS()} calls {\ttfamily Detail\+::\+Compute\+Derived()} and adds only the derived (dx/dt) contribution.
+\item {\ttfamily Diagnose\+Snapshot()} calls {\ttfamily Detail\+::\+Diagnose()} so diagnostics cannot drift from the physics implementation.
+\end{DoxyItemize}\hypertarget{_neutrino_cooling_8hpp_autotoc_md28}{}\doxysubsubsection{Units policy}\label{_neutrino_cooling_8hpp_autotoc_md28}
+This header documents expected units; the implementation must remain consistent\+:
+\begin{DoxyItemize}
+\item (T\+\_\+\textbackslash{}infty)\+: Kelvin \mbox{[}K\mbox{]}
+\item (L\+\_\+\{\textbackslash{}nu,\textbackslash{}infty\})\+: \mbox{[}erg/s\mbox{]}
+\item (C\+\_\+\{\textbackslash{}rm eff\})\+: \mbox{[}erg/K\mbox{]}
+\item (d\+T\+\_\+\textbackslash{}infty/dt)\+: \mbox{[}K/s\mbox{]}
+\item (dx/dt)\+: \mbox{[}1/s\mbox{]} 
+\end{DoxyItemize}

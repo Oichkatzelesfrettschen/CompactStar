@@ -1,0 +1,42 @@
+\hypertarget{_envelope_potekhin1997_8hpp}{}\doxysection{Compact\+Star/\+Physics/\+Driver/\+Thermal/\+Boundary/\+Envelope\+Potekhin1997.hpp File Reference}
+\label{_envelope_potekhin1997_8hpp}\index{CompactStar/Physics/Driver/Thermal/Boundary/EnvelopePotekhin1997.hpp@{CompactStar/Physics/Driver/Thermal/Boundary/EnvelopePotekhin1997.hpp}}
+
+
+Potekhin-\/style Tb→\+Ts envelope fits (1997-\/era / classic blanketing envelope models).  
+
+
+{\ttfamily \#include \char`\"{}Compact\+Star/\+Physics/\+Driver/\+Thermal/\+Boundary/\+IEnvelope.\+hpp\char`\"{}}\newline
+\doxysubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_boundary_1_1_envelope_potekhin1997___iron}{Compact\+Star\+::\+Physics\+::\+Driver\+::\+Thermal\+::\+Boundary\+::\+Envelope\+Potekhin1997\+\_\+\+Iron}}
+\begin{DoxyCompactList}\small\item\em Potekhin-\/style heavy-\/element (iron) envelope fit. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_boundary_1_1_envelope_potekhin1997___accreted}{Compact\+Star\+::\+Physics\+::\+Driver\+::\+Thermal\+::\+Boundary\+::\+Envelope\+Potekhin1997\+\_\+\+Accreted}}
+\begin{DoxyCompactList}\small\item\em Potekhin-\/style light-\/element (accreted) envelope fit. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Namespaces}
+\begin{DoxyCompactItemize}
+\item 
+namespace \mbox{\hyperlink{namespace_compact_star_1_1_physics}{Compact\+Star\+::\+Physics}}
+\begin{DoxyCompactList}\small\item\em High-\/level physical modeling layer for compact stars. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Potekhin-\/style Tb→\+Ts envelope fits (1997-\/era / classic blanketing envelope models). 
+
+This header declares concrete implementations of the Boundary\+::\+IEnvelope interface using Potekhin-\/style analytic fits. These provide the {\bfseries{thermal boundary condition}} relating the local temperature at the base of the blanketing envelope (Tb) to the local effective surface temperature (Ts).\hypertarget{_envelope_potekhin1997_8hpp_autotoc_md5}{}\doxysubsubsection{Definitions and conventions}\label{_envelope_potekhin1997_8hpp_autotoc_md5}
+
+\begin{DoxyItemize}
+\item {\bfseries{Tb}}\+: local temperature at the base of the envelope \mbox{[}K\mbox{]}. In Compact\+Star, Tb is typically evaluated at a density-\/defined boundary (e.\+g., $\rho_b \sim 10^{10}\,\mathrm{g\,cm^{-3}}$), chosen via Boundary\+::\+Tb\+Definition / Boundary\+::\+Find\+Tb\+Index().
+\item {\bfseries{Ts}}\+: local effective surface temperature \mbox{[}K\mbox{]}.
+\item {\bfseries{g14}}\+: surface gravity in units of $10^{14}\,\mathrm{cm\,s^{-2}}$, typically computed via Boundary\+::\+Surface\+Gravity\+\_\+g14().
+\item {\bfseries{xi}}\+: light-\/element column / accreted-\/envelope parameter (dimensionless “knob” used by accreted-\/envelope fits). For pure iron envelopes, xi is ignored.
+\end{DoxyItemize}\hypertarget{_envelope_potekhin1997_8hpp_autotoc_md6}{}\doxysubsubsection{Scope}\label{_envelope_potekhin1997_8hpp_autotoc_md6}
+
+\begin{DoxyItemize}
+\item These classes are intentionally small and stable; physics details live in the corresponding .cpp implementation (\mbox{\hyperlink{_envelope_potekhin1997_8cpp}{Envelope\+Potekhin1997.\+cpp}}).
+\item No star-\/structure queries occur here; callers supply Tb and g14 explicitly.
+\end{DoxyItemize}\hypertarget{_envelope_potekhin1997_8hpp_autotoc_md7}{}\doxysubsubsection{Notes}\label{_envelope_potekhin1997_8hpp_autotoc_md7}
+
+\begin{DoxyItemize}
+\item The Potekhin family of fits appears in several “generations” (1997/1999-\/era, later updates, and review-\/parameterizations). This header is for the classic 1997-\/style form; keep newer variants in separate headers (e.\+g., 2003) to avoid silent physics changes. 
+\end{DoxyItemize}

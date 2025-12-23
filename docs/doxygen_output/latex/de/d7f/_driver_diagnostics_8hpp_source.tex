@@ -16,34 +16,120 @@
 \DoxyCodeLine{12 }
 \DoxyCodeLine{36 \textcolor{preprocessor}{\#include <string>}}
 \DoxyCodeLine{37 }
-\DoxyCodeLine{38 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_diagnostic_packet_8hpp}{CompactStar/Physics/Evolution/Diagnostics/DiagnosticPacket.hpp}}"{}}}
-\DoxyCodeLine{39 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_unit_contract_8hpp}{CompactStar/Physics/Evolution/Diagnostics/UnitContract.hpp}}"{}}}
-\DoxyCodeLine{40 }
-\DoxyCodeLine{41 \textcolor{comment}{// Forward declarations to avoid heavy includes here.}}
-\DoxyCodeLine{42 \textcolor{keyword}{namespace }CompactStar::Physics::Evolution}
-\DoxyCodeLine{43 \{}
-\DoxyCodeLine{44 \textcolor{keyword}{class }StateVector;}
-\DoxyCodeLine{45 \textcolor{keyword}{class }DriverContext;}
-\DoxyCodeLine{46 \} \textcolor{comment}{// namespace CompactStar::Physics::Evolution}}
-\DoxyCodeLine{47 }
-\DoxyCodeLine{48 \textcolor{keyword}{namespace }CompactStar::Physics::Driver::Diagnostics}
-\DoxyCodeLine{49 \{}
-\DoxyCodeLine{50 }
-\DoxyCodeLine{58 \textcolor{keyword}{class }\mbox{\hyperlink{class_compact_star_1_1_physics_1_1_driver_1_1_diagnostics_1_1_i_driver_diagnostics}{IDriverDiagnostics}}}
-\DoxyCodeLine{59 \{}
-\DoxyCodeLine{60   \textcolor{keyword}{public}:}
-\DoxyCodeLine{61     \textcolor{keyword}{virtual} \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_driver_1_1_diagnostics_1_1_i_driver_diagnostics}{\string~IDriverDiagnostics}}() = \textcolor{keywordflow}{default};}
-\DoxyCodeLine{62 }
-\DoxyCodeLine{70     [[nodiscard]] \textcolor{keyword}{virtual} std::string \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_driver_1_1_diagnostics_1_1_i_driver_diagnostics_ae39990bca910f580804aaa21e347537c}{DiagnosticsName}}() \textcolor{keyword}{const} = 0;}
-\DoxyCodeLine{71 }
-\DoxyCodeLine{80     [[nodiscard]] \textcolor{keyword}{virtual} \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_diagnostics_1_1_unit_contract}{Evolution::Diagnostics::UnitContract}} \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_driver_1_1_diagnostics_1_1_i_driver_diagnostics_a11b182179ee903feb396c131ca0404d8}{UnitContract}}() \textcolor{keyword}{const} = 0;}
-\DoxyCodeLine{81 }
-\DoxyCodeLine{96     \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_driver_1_1_diagnostics_1_1_i_driver_diagnostics_a282ccc724f51a04081b59ca8e6eea0bb}{DiagnoseSnapshot}}(\textcolor{keywordtype}{double} t,}
-\DoxyCodeLine{97                                   \textcolor{keyword}{const} \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_state_vector}{Evolution::StateVector}} \&Y,}
-\DoxyCodeLine{98                                   \textcolor{keyword}{const} \mbox{\hyperlink{struct_compact_star_1_1_physics_1_1_evolution_1_1_driver_context}{Evolution::DriverContext}} \&ctx,}
-\DoxyCodeLine{99                                   \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_diagnostics_1_1_diagnostic_packet}{Evolution::Diagnostics::DiagnosticPacket}} \&out) \textcolor{keyword}{const} = 0;}
-\DoxyCodeLine{100 \};}
-\DoxyCodeLine{101 }
-\DoxyCodeLine{102 \} \textcolor{comment}{// namespace CompactStar::Physics::Driver::Diagnostics}}
+\DoxyCodeLine{38 \textcolor{preprocessor}{\#include "{}CompactStar/Physics/Evolution/Diagnostics/DiagnosticCatalog.hpp"{}}}
+\DoxyCodeLine{39 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_diagnostic_packet_8hpp}{CompactStar/Physics/Evolution/Diagnostics/DiagnosticPacket.hpp}}"{}}}
+\DoxyCodeLine{40 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_unit_contract_8hpp}{CompactStar/Physics/Evolution/Diagnostics/UnitContract.hpp}}"{}}}
+\DoxyCodeLine{41 }
+\DoxyCodeLine{42 \textcolor{comment}{// Forward declarations to avoid heavy includes here.}}
+\DoxyCodeLine{43 \textcolor{keyword}{namespace }CompactStar::Physics::Evolution}
+\DoxyCodeLine{44 \{}
+\DoxyCodeLine{45 \textcolor{keyword}{class }StateVector;}
+\DoxyCodeLine{46 \textcolor{keyword}{class }DriverContext;}
+\DoxyCodeLine{47 \} \textcolor{comment}{// namespace CompactStar::Physics::Evolution}}
+\DoxyCodeLine{48 }
+\DoxyCodeLine{49 \textcolor{keyword}{namespace }CompactStar::Physics::Driver::Diagnostics}
+\DoxyCodeLine{50 \{}
+\DoxyCodeLine{51 \textcolor{comment}{// /**}}
+\DoxyCodeLine{52 \textcolor{comment}{//  * @brief Describes one scalar that a driver may emit in diagnostics.}}
+\DoxyCodeLine{53 \textcolor{comment}{//  *}}
+\DoxyCodeLine{54 \textcolor{comment}{//  * This is a *schema* entry: it defines the key and its meaning.}}
+\DoxyCodeLine{55 \textcolor{comment}{//  * Values are produced at runtime in DiagnoseSnapshot().}}
+\DoxyCodeLine{56 \textcolor{comment}{//  */}}
+\DoxyCodeLine{57 \textcolor{comment}{// struct ScalarSchemaEntry}}
+\DoxyCodeLine{58 \textcolor{comment}{// \{}}
+\DoxyCodeLine{59 \textcolor{comment}{//  /// Stable scalar key used in DiagnosticPacket (e.g. "{}L\_gamma\_inf\_erg\_s"{}).}}
+\DoxyCodeLine{60 \textcolor{comment}{//  std::string key;}}
+\DoxyCodeLine{61 }
+\DoxyCodeLine{62 \textcolor{comment}{//  /// Optional unit string (e.g. "{}K"{}, "{}erg/s"{}). Metadata only (no unit arithmetic).}}
+\DoxyCodeLine{63 \textcolor{comment}{//  std::string unit;}}
+\DoxyCodeLine{64 }
+\DoxyCodeLine{65 \textcolor{comment}{//  /// One-\/line description of the scalar’s meaning.}}
+\DoxyCodeLine{66 \textcolor{comment}{//  std::string description;}}
+\DoxyCodeLine{67 }
+\DoxyCodeLine{68 \textcolor{comment}{//  /// Optional provenance label (e.g. "{}computed"{}, "{}state"{}, "{}cache"{}, "{}input"{}).}}
+\DoxyCodeLine{69 \textcolor{comment}{//  std::string source;}}
+\DoxyCodeLine{70 }
+\DoxyCodeLine{71 \textcolor{comment}{//  /// Cadence hint for observers (Always / OnChange / OncePerRun).}}
+\DoxyCodeLine{72 \textcolor{comment}{//  Evolution::Diagnostics::Cadence cadence =}}
+\DoxyCodeLine{73 \textcolor{comment}{//      Evolution::Diagnostics::Cadence::Always;}}
+\DoxyCodeLine{74 }
+\DoxyCodeLine{75 \textcolor{comment}{//  /**}}
+\DoxyCodeLine{76 \textcolor{comment}{//   * @brief Relative tolerance used for OnChange comparisons (if cadence == OnChange).}}
+\DoxyCodeLine{77 \textcolor{comment}{//   *}}
+\DoxyCodeLine{78 \textcolor{comment}{//   * Observers may treat values as “unchanged” if:}}
+\DoxyCodeLine{79 \textcolor{comment}{//   *   |x -\/ x\_prev| <= max(abs\_tol, rel\_tol * max(|x|, |x\_prev|))}}
+\DoxyCodeLine{80 \textcolor{comment}{//   *}}
+\DoxyCodeLine{81 \textcolor{comment}{//   * If rel\_tol < 0, observers should use their own default.}}
+\DoxyCodeLine{82 \textcolor{comment}{//   */}}
+\DoxyCodeLine{83 \textcolor{comment}{//  double rel\_tol = -\/1.0;}}
+\DoxyCodeLine{84 }
+\DoxyCodeLine{85 \textcolor{comment}{//  /**}}
+\DoxyCodeLine{86 \textcolor{comment}{//   * @brief Absolute tolerance used for OnChange comparisons (if cadence == OnChange).}}
+\DoxyCodeLine{87 \textcolor{comment}{//   *}}
+\DoxyCodeLine{88 \textcolor{comment}{//   * If abs\_tol < 0, observers should use their own default.}}
+\DoxyCodeLine{89 \textcolor{comment}{//   */}}
+\DoxyCodeLine{90 \textcolor{comment}{//  double abs\_tol = -\/1.0;}}
+\DoxyCodeLine{91 }
+\DoxyCodeLine{92 \textcolor{comment}{//  /**}}
+\DoxyCodeLine{93 \textcolor{comment}{//   * @brief If true, observers should treat absence of this scalar in a snapshot as an error.}}
+\DoxyCodeLine{94 \textcolor{comment}{//   *}}
+\DoxyCodeLine{95 \textcolor{comment}{//   * Useful for “must-\/have” fields that should always exist when the driver is active.}}
+\DoxyCodeLine{96 \textcolor{comment}{//   * For conditionally-\/defined scalars (e.g., only when ctx.geo exists), set false.}}
+\DoxyCodeLine{97 \textcolor{comment}{//   */}}
+\DoxyCodeLine{98 \textcolor{comment}{//  bool required = false;}}
+\DoxyCodeLine{99 \textcolor{comment}{// \};}}
+\DoxyCodeLine{100 }
+\DoxyCodeLine{101 \textcolor{comment}{// /**}}
+\DoxyCodeLine{102 \textcolor{comment}{//  * @brief Schema describing the diagnostics scalars provided by a driver.}}
+\DoxyCodeLine{103 \textcolor{comment}{//  *}}
+\DoxyCodeLine{104 \textcolor{comment}{//  * Observers use this schema to:}}
+\DoxyCodeLine{105 \textcolor{comment}{//  *  -\/ discover available keys,}}
+\DoxyCodeLine{106 \textcolor{comment}{//  *  -\/ auto-\/generate time-\/series columns,}}
+\DoxyCodeLine{107 \textcolor{comment}{//  *  -\/ validate packets for regression tests,}}
+\DoxyCodeLine{108 \textcolor{comment}{//  *  -\/ avoid hardcoding units/descriptions in observers.}}
+\DoxyCodeLine{109 \textcolor{comment}{//  */}}
+\DoxyCodeLine{110 \textcolor{comment}{// struct DiagnosticsSchema}}
+\DoxyCodeLine{111 \textcolor{comment}{// \{}}
+\DoxyCodeLine{112 \textcolor{comment}{//  /// Optional schema version string for tooling/regression stability.}}
+\DoxyCodeLine{113 \textcolor{comment}{//  std::string schema\_version;}}
+\DoxyCodeLine{114 }
+\DoxyCodeLine{115 \textcolor{comment}{//  /// Scalar definitions (stable ordering recommended; observers should not reorder unless they must).}}
+\DoxyCodeLine{116 \textcolor{comment}{//  std::vector<ScalarSchemaEntry> scalars;}}
+\DoxyCodeLine{117 }
+\DoxyCodeLine{118 \textcolor{comment}{//  /**}}
+\DoxyCodeLine{119 \textcolor{comment}{//   * @brief Optional named “profiles” of scalar keys.}}
+\DoxyCodeLine{120 \textcolor{comment}{//   *}}
+\DoxyCodeLine{121 \textcolor{comment}{//   * Example uses:}}
+\DoxyCodeLine{122 \textcolor{comment}{//   *  -\/ "{}timeseries\_default"{}: keys you want in a plotting CSV by default}}
+\DoxyCodeLine{123 \textcolor{comment}{//   *  -\/ "{}regression\_minimal"{}: small stable set for unit tests}}
+\DoxyCodeLine{124 \textcolor{comment}{//   *}}
+\DoxyCodeLine{125 \textcolor{comment}{//   * If unused, leave empty; observers can still select columns explicitly.}}
+\DoxyCodeLine{126 \textcolor{comment}{//   */}}
+\DoxyCodeLine{127 \textcolor{comment}{//  struct Profile}}
+\DoxyCodeLine{128 \textcolor{comment}{//  \{}}
+\DoxyCodeLine{129 \textcolor{comment}{//      std::string name;              ///< profile identifier}}
+\DoxyCodeLine{130 \textcolor{comment}{//      std::vector<std::string> keys; ///< ordered list of scalar keys}}
+\DoxyCodeLine{131 \textcolor{comment}{//  \};}}
+\DoxyCodeLine{132 \textcolor{comment}{//  std::vector<Profile> profiles;}}
+\DoxyCodeLine{133 \textcolor{comment}{// \};}}
+\DoxyCodeLine{134 }
+\DoxyCodeLine{142 \textcolor{keyword}{class }\mbox{\hyperlink{class_compact_star_1_1_physics_1_1_driver_1_1_diagnostics_1_1_i_driver_diagnostics}{IDriverDiagnostics}}}
+\DoxyCodeLine{143 \{}
+\DoxyCodeLine{144   \textcolor{keyword}{public}:}
+\DoxyCodeLine{145     \textcolor{keyword}{virtual} \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_driver_1_1_diagnostics_1_1_i_driver_diagnostics}{\string~IDriverDiagnostics}}() = \textcolor{keywordflow}{default};}
+\DoxyCodeLine{146 }
+\DoxyCodeLine{153     [[nodiscard]] \textcolor{keyword}{virtual} \mbox{\hyperlink{struct_compact_star_1_1_physics_1_1_evolution_1_1_diagnostics_1_1_producer_catalog}{Evolution::Diagnostics::ProducerCatalog}} \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_driver_1_1_diagnostics_1_1_i_driver_diagnostics_ad256b3ad094d1dd5343a018c54a498e5}{DiagnosticsCatalog}}() \textcolor{keyword}{const} = 0;}
+\DoxyCodeLine{154 }
+\DoxyCodeLine{162     [[nodiscard]] \textcolor{keyword}{virtual} std::string \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_driver_1_1_diagnostics_1_1_i_driver_diagnostics_ae39990bca910f580804aaa21e347537c}{DiagnosticsName}}() \textcolor{keyword}{const} = 0;}
+\DoxyCodeLine{163 }
+\DoxyCodeLine{172     [[nodiscard]] \textcolor{keyword}{virtual} \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_diagnostics_1_1_unit_contract}{Evolution::Diagnostics::UnitContract}} \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_driver_1_1_diagnostics_1_1_i_driver_diagnostics_a11b182179ee903feb396c131ca0404d8}{UnitContract}}() \textcolor{keyword}{const} = 0;}
+\DoxyCodeLine{173 }
+\DoxyCodeLine{188     \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_driver_1_1_diagnostics_1_1_i_driver_diagnostics_a282ccc724f51a04081b59ca8e6eea0bb}{DiagnoseSnapshot}}(\textcolor{keywordtype}{double} t,}
+\DoxyCodeLine{189                                   \textcolor{keyword}{const} \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_state_vector}{Evolution::StateVector}} \&Y,}
+\DoxyCodeLine{190                                   \textcolor{keyword}{const} \mbox{\hyperlink{struct_compact_star_1_1_physics_1_1_evolution_1_1_driver_context}{Evolution::DriverContext}} \&ctx,}
+\DoxyCodeLine{191                                   \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_diagnostics_1_1_diagnostic_packet}{Evolution::Diagnostics::DiagnosticPacket}} \&out) \textcolor{keyword}{const} = 0;}
+\DoxyCodeLine{192 \};}
+\DoxyCodeLine{193 }
+\DoxyCodeLine{194 \} \textcolor{comment}{// namespace CompactStar::Physics::Driver::Diagnostics}}
 
 \end{DoxyCode}

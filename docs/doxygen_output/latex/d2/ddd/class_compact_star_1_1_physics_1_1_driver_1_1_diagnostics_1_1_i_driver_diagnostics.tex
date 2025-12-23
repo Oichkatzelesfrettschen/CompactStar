@@ -12,12 +12,14 @@ Interface that a driver can implement to expose diagnostics.
 Inheritance diagram for Compact\+Star\+::Physics\+::Driver\+::Diagnostics\+::IDriver\+Diagnostics\+:\begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[height=2.000000cm]{d2/ddd/class_compact_star_1_1_physics_1_1_driver_1_1_diagnostics_1_1_i_driver_diagnostics}
+\includegraphics[height=1.534247cm]{d2/ddd/class_compact_star_1_1_physics_1_1_driver_1_1_diagnostics_1_1_i_driver_diagnostics}
 \end{center}
 \end{figure}
 \doxysubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
+virtual \mbox{\hyperlink{struct_compact_star_1_1_physics_1_1_evolution_1_1_diagnostics_1_1_producer_catalog}{Evolution\+::\+Diagnostics\+::\+Producer\+Catalog}} \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_driver_1_1_diagnostics_1_1_i_driver_diagnostics_ad256b3ad094d1dd5343a018c54a498e5}{Diagnostics\+Catalog}} () const =0
+\begin{DoxyCompactList}\small\item\em Return schema-\/level catalog entries (what this driver may emit). \end{DoxyCompactList}\item 
 virtual std\+::string \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_driver_1_1_diagnostics_1_1_i_driver_diagnostics_ae39990bca910f580804aaa21e347537c}{Diagnostics\+Name}} () const =0
 \begin{DoxyCompactList}\small\item\em Human-\/readable stable name for this driver instance. \end{DoxyCompactList}\item 
 virtual \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_diagnostics_1_1_unit_contract}{Evolution\+::\+Diagnostics\+::\+Unit\+Contract}} \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_driver_1_1_diagnostics_1_1_i_driver_diagnostics_a11b182179ee903feb396c131ca0404d8}{Unit\+Contract}} () const =0
@@ -66,7 +68,21 @@ This method should\+:
 \end{DoxyParams}
 
 
-Implemented in \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_photon_cooling_a66ec050c82074aa8847ed1d3872d257e}{Compact\+Star\+::\+Physics\+::\+Driver\+::\+Thermal\+::\+Photon\+Cooling}}.
+Implemented in \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_neutrino_cooling_aa74afbc210c241667811ee958c5bbc4d}{Compact\+Star\+::\+Physics\+::\+Driver\+::\+Thermal\+::\+Neutrino\+Cooling}}, and \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_photon_cooling_a66ec050c82074aa8847ed1d3872d257e}{Compact\+Star\+::\+Physics\+::\+Driver\+::\+Thermal\+::\+Photon\+Cooling}}.
+
+\mbox{\Hypertarget{class_compact_star_1_1_physics_1_1_driver_1_1_diagnostics_1_1_i_driver_diagnostics_ad256b3ad094d1dd5343a018c54a498e5}\label{class_compact_star_1_1_physics_1_1_driver_1_1_diagnostics_1_1_i_driver_diagnostics_ad256b3ad094d1dd5343a018c54a498e5}} 
+\index{CompactStar::Physics::Driver::Diagnostics::IDriverDiagnostics@{CompactStar::Physics::Driver::Diagnostics::IDriverDiagnostics}!DiagnosticsCatalog@{DiagnosticsCatalog}}
+\index{DiagnosticsCatalog@{DiagnosticsCatalog}!CompactStar::Physics::Driver::Diagnostics::IDriverDiagnostics@{CompactStar::Physics::Driver::Diagnostics::IDriverDiagnostics}}
+\doxysubsubsection{\texorpdfstring{DiagnosticsCatalog()}{DiagnosticsCatalog()}}
+{\footnotesize\ttfamily virtual \mbox{\hyperlink{struct_compact_star_1_1_physics_1_1_evolution_1_1_diagnostics_1_1_producer_catalog}{Evolution\+::\+Diagnostics\+::\+Producer\+Catalog}} Compact\+Star\+::\+Physics\+::\+Driver\+::\+Diagnostics\+::\+IDriver\+Diagnostics\+::\+Diagnostics\+Catalog (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Return schema-\/level catalog entries (what this driver may emit). 
+
+This should be static metadata only\+: keys, units, descriptions, cadence defaults. No runtime state access. 
+
+Implemented in \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_neutrino_cooling_a60ac72882c5a4d8946e9ea3211362474}{Compact\+Star\+::\+Physics\+::\+Driver\+::\+Thermal\+::\+Neutrino\+Cooling}}, and \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_photon_cooling_a776205ce86f52382ebba846fa5bff698}{Compact\+Star\+::\+Physics\+::\+Driver\+::\+Thermal\+::\+Photon\+Cooling}}.
 
 \mbox{\Hypertarget{class_compact_star_1_1_physics_1_1_driver_1_1_diagnostics_1_1_i_driver_diagnostics_ae39990bca910f580804aaa21e347537c}\label{class_compact_star_1_1_physics_1_1_driver_1_1_diagnostics_1_1_i_driver_diagnostics_ae39990bca910f580804aaa21e347537c}} 
 \index{CompactStar::Physics::Driver::Diagnostics::IDriverDiagnostics@{CompactStar::Physics::Driver::Diagnostics::IDriverDiagnostics}!DiagnosticsName@{DiagnosticsName}}
@@ -80,7 +96,7 @@ Human-\/readable stable name for this driver instance.
 
 Example\+: \char`\"{}\+Photon\+Cooling\char`\"{} If you have multiple instances (different options), you can include an instance suffix (e.\+g., \char`\"{}\+Photon\+Cooling\#0\char`\"{}) but keep it stable for tooling. 
 
-Implemented in \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_photon_cooling_a80765fd32881122d00150939a4119f03}{Compact\+Star\+::\+Physics\+::\+Driver\+::\+Thermal\+::\+Photon\+Cooling}}.
+Implemented in \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_neutrino_cooling_aab15bad47f18a6075c5e768513254af6}{Compact\+Star\+::\+Physics\+::\+Driver\+::\+Thermal\+::\+Neutrino\+Cooling}}, and \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_photon_cooling_a80765fd32881122d00150939a4119f03}{Compact\+Star\+::\+Physics\+::\+Driver\+::\+Thermal\+::\+Photon\+Cooling}}.
 
 \mbox{\Hypertarget{class_compact_star_1_1_physics_1_1_driver_1_1_diagnostics_1_1_i_driver_diagnostics_a11b182179ee903feb396c131ca0404d8}\label{class_compact_star_1_1_physics_1_1_driver_1_1_diagnostics_1_1_i_driver_diagnostics_a11b182179ee903feb396c131ca0404d8}} 
 \index{CompactStar::Physics::Driver::Diagnostics::IDriverDiagnostics@{CompactStar::Physics::Driver::Diagnostics::IDriverDiagnostics}!UnitContract@{UnitContract}}
@@ -99,7 +115,7 @@ This is intended to\+:
 \item document inputs/outputs and required unit systems. 
 \end{DoxyItemize}
 
-Implemented in \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_photon_cooling_a7b609acb6e931f07674ef9b2312324fc}{Compact\+Star\+::\+Physics\+::\+Driver\+::\+Thermal\+::\+Photon\+Cooling}}.
+Implemented in \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_neutrino_cooling_a4b62bd4b829c22cb169093ad03995758}{Compact\+Star\+::\+Physics\+::\+Driver\+::\+Thermal\+::\+Neutrino\+Cooling}}, and \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_photon_cooling_a7b609acb6e931f07674ef9b2312324fc}{Compact\+Star\+::\+Physics\+::\+Driver\+::\+Thermal\+::\+Photon\+Cooling}}.
 
 
 

@@ -15,21 +15,78 @@ Originally designed for dense-\/matter astrophysics research, the codebase has e
 Compact\+Star is written in {\bfseries{C++17}}, designed for {\bfseries{flexibility, reproducibility, and extensibility}}, and integrates cleanly into HPC workflows.
 
 \DoxyHorRuler{0}
-\hypertarget{md__r_e_a_d_m_e_autotoc_md34}{}\doxysection{Core Capabilities}\label{md__r_e_a_d_m_e_autotoc_md34}
-\hypertarget{md__r_e_a_d_m_e_autotoc_md35}{}\doxysubsubsection{Stellar Structure}\label{md__r_e_a_d_m_e_autotoc_md35}
+\hypertarget{md__r_e_a_d_m_e_autotoc_md51}{}\doxysection{Design Philosophy}\label{md__r_e_a_d_m_e_autotoc_md51}
+Compact\+Star is built around the following principles\+:
+
+
+\begin{DoxyItemize}
+\item {\bfseries{Physics-\/first abstractions}}\+: physical subsystems (spin, thermal, chemical, BNV) are modeled explicitly and evolve independently via tagged state blocks.
+\item {\bfseries{Strict separation of concerns}}\+:
+\begin{DoxyItemize}
+\item Core\+: structure, EOS, geometry, datasets
+\item Physics/\+State\+: degrees of freedom
+\item Physics/\+Driver\+: RHS contributions
+\item Evolution\+: integration, diagnostics, orchestration
+\end{DoxyItemize}
+\item {\bfseries{Schema-\/driven diagnostics}}\+: diagnostics are self-\/describing, versioned, and machine-\/readable.
+\item {\bfseries{No hidden global state}}\+: all evolution is driven through explicit context objects.
+\end{DoxyItemize}
+
+\DoxyHorRuler{0}
+\hypertarget{md__r_e_a_d_m_e_autotoc_md53}{}\doxysection{Drivers vs Microphysics}\label{md__r_e_a_d_m_e_autotoc_md53}
+Compact\+Star distinguishes between\+:
+
+
+\begin{DoxyItemize}
+\item {\bfseries{Microphysics}}\+:
+\begin{DoxyItemize}
+\item reaction rates
+\item matrix elements
+\item particle models
+\item EOS-\/level inputs
+\end{DoxyItemize}
+\item {\bfseries{Drivers}}\+:
+\begin{DoxyItemize}
+\item convert microphysics into time derivatives
+\item operate on State blocks
+\item are stateless apart from configuration
+\item are pluggable and composable
+\end{DoxyItemize}
+\end{DoxyItemize}
+
+Microphysics never modifies state directly. All time evolution enters the system exclusively through Drivers.
+
+\DoxyHorRuler{0}
+\hypertarget{md__r_e_a_d_m_e_autotoc_md55}{}\doxysection{Extending Compact\+Star}\label{md__r_e_a_d_m_e_autotoc_md55}
+To add a new physical process\+:
+
+
+\begin{DoxyEnumerate}
+\item Define a new State block if new DOFs are required
+\item Implement a Driver that\+:
+\begin{DoxyItemize}
+\item declares its State\+Tag dependencies
+\item contributes to RHS accumulation
+\item optionally exposes diagnostics
+\end{DoxyItemize}
+\item Register the driver with the Evolution\+System
+\item (Optional) add diagnostics catalog entries
+\end{DoxyEnumerate}\hypertarget{md__r_e_a_d_m_e_autotoc_md56}{}\doxysubsection{No changes to the integrator or solver core are required.}\label{md__r_e_a_d_m_e_autotoc_md56}
+\hypertarget{md__r_e_a_d_m_e_autotoc_md57}{}\doxysection{Core Capabilities}\label{md__r_e_a_d_m_e_autotoc_md57}
+\hypertarget{md__r_e_a_d_m_e_autotoc_md58}{}\doxysubsubsection{Stellar Structure}\label{md__r_e_a_d_m_e_autotoc_md58}
 
 \begin{DoxyItemize}
 \item {\bfseries{TOVSolver}}\+: static Tolman–\+Oppenheimer–\+Volkoff integration for any tabulated or analytical EOS.
 \item {\bfseries{TOVSolver\+\_\+\+Thread}}\+: multithreaded parallel wrapper for generating full sequences.
 \item {\bfseries{Hartle\+Solver}}\+: slow-\/rotation solver for frame-\/dragging and O(Ω²) structure perturbations.
 \item Computes mass–radius curves, moment of inertia, compactness, redshift, and structural profiles.
-\end{DoxyItemize}\hypertarget{md__r_e_a_d_m_e_autotoc_md36}{}\doxysubsubsection{Equations of State}\label{md__r_e_a_d_m_e_autotoc_md36}
+\end{DoxyItemize}\hypertarget{md__r_e_a_d_m_e_autotoc_md59}{}\doxysubsubsection{Equations of State}\label{md__r_e_a_d_m_e_autotoc_md59}
 
 \begin{DoxyItemize}
 \item Supports tabulated, analytical, and hybrid/multiphase EOS formats.
 \item Built-\/in EOS readers, interpolation, thermodynamic derivatives.
 \item Clean interfaces for adding microphysical modules (effective masses, symmetry energy, thresholds).
-\end{DoxyItemize}\hypertarget{md__r_e_a_d_m_e_autotoc_md37}{}\doxysubsubsection{Thermal \& Chemical Evolution}\label{md__r_e_a_d_m_e_autotoc_md37}
+\end{DoxyItemize}\hypertarget{md__r_e_a_d_m_e_autotoc_md60}{}\doxysubsubsection{Thermal \& Chemical Evolution}\label{md__r_e_a_d_m_e_autotoc_md60}
 
 \begin{DoxyItemize}
 \item Fully implements the Reisenegger–\+Fernández rotochemical heating formalism.
@@ -41,18 +98,18 @@ Compact\+Star is written in {\bfseries{C++17}}, designed for {\bfseries{flexibil
 \item heating vs cooling balance,
 \item photon output.
 \end{DoxyItemize}
-\end{DoxyItemize}\hypertarget{md__r_e_a_d_m_e_autotoc_md38}{}\doxysubsubsection{BNV Heating (\+Baryon Number Violation)}\label{md__r_e_a_d_m_e_autotoc_md38}
+\end{DoxyItemize}\hypertarget{md__r_e_a_d_m_e_autotoc_md61}{}\doxysubsubsection{BNV Heating (\+Baryon Number Violation)}\label{md__r_e_a_d_m_e_autotoc_md61}
 
 \begin{DoxyItemize}
 \item Dedicated BNVState and reaction-\/rate infrastructure.
 \item User-\/defined particle-\/physics models plug in cleanly via the Driver abstraction.
 \item Supports energy injection, matter depletion, and thermal feedback.
-\end{DoxyItemize}\hypertarget{md__r_e_a_d_m_e_autotoc_md39}{}\doxysubsubsection{Spin Evolution}\label{md__r_e_a_d_m_e_autotoc_md39}
+\end{DoxyItemize}\hypertarget{md__r_e_a_d_m_e_autotoc_md62}{}\doxysubsubsection{Spin Evolution}\label{md__r_e_a_d_m_e_autotoc_md62}
 
 \begin{DoxyItemize}
 \item Magnetic-\/dipole braking, custom torque laws, and coupling to chemical/thermal evolution.
 \item Integrates naturally with Hartle structure corrections.
-\end{DoxyItemize}\hypertarget{md__r_e_a_d_m_e_autotoc_md40}{}\doxysubsubsection{Sequences, Contours \& Analysis}\label{md__r_e_a_d_m_e_autotoc_md40}
+\end{DoxyItemize}\hypertarget{md__r_e_a_d_m_e_autotoc_md63}{}\doxysubsubsection{Sequences, Contours \& Analysis}\label{md__r_e_a_d_m_e_autotoc_md63}
 
 \begin{DoxyItemize}
 \item Sequence generator for\+:
@@ -64,7 +121,7 @@ Compact\+Star is written in {\bfseries{C++17}}, designed for {\bfseries{flexibil
 \end{DoxyItemize}
 \item Contour and profile exporter (csv, json, dataset format).
 \item Tools for generating stability curves and parameter-\/space scans.
-\end{DoxyItemize}\hypertarget{md__r_e_a_d_m_e_autotoc_md41}{}\doxysubsubsection{Core Mathematics, Physics, and Datasets}\label{md__r_e_a_d_m_e_autotoc_md41}
+\end{DoxyItemize}\hypertarget{md__r_e_a_d_m_e_autotoc_md64}{}\doxysubsubsection{Core Mathematics, Physics, and Datasets}\label{md__r_e_a_d_m_e_autotoc_md64}
 Provided by the new Core module\+:
 
 
@@ -77,46 +134,148 @@ Provided by the new Core module\+:
 \end{DoxyItemize}
 
 \DoxyHorRuler{0}
-\hypertarget{md__r_e_a_d_m_e_autotoc_md43}{}\doxysection{Project Structure}\label{md__r_e_a_d_m_e_autotoc_md43}
+\hypertarget{md__r_e_a_d_m_e_autotoc_md66}{}\doxysection{Typical Workflow}\label{md__r_e_a_d_m_e_autotoc_md66}
+
+\begin{DoxyEnumerate}
+\item Build a stellar profile using Core (e.\+g. {\ttfamily NStar\+::\+Solve\+TOV\+\_\+\+Profile})
+\item Construct {\ttfamily Star\+Context} and {\ttfamily Geometry\+Cache}
+\item Define evolved state blocks (Thermal\+State, Spin\+State, etc.)
+\item Register state blocks and packing order
+\item Attach physics drivers (cooling, heating, torques, …)
+\item Assemble {\ttfamily Evolution\+System}
+\item Attach observers (Diagnostics, Time\+Series)
+\item Integrate forward in time
+\end{DoxyEnumerate}
+
+\DoxyHorRuler{0}
+\hypertarget{md__r_e_a_d_m_e_autotoc_md68}{}\doxysection{Diagnostics and Provenance}\label{md__r_e_a_d_m_e_autotoc_md68}
+Compact\+Star treats diagnostics as first-\/class, schema-\/defined data products.
+
+Every physical quantity emitted during evolution is\+:
+
+
+\begin{DoxyItemize}
+\item explicitly named,
+\item unit-\/labeled,
+\item source-\/typed ({\ttfamily state}, {\ttfamily computed}, {\ttfamily cache}),
+\item cadence-\/controlled (always, on change, once per run),
+\item versioned via a diagnostics catalog.
+\end{DoxyItemize}
+
+Diagnostics are emitted in three complementary forms\+:
+
+
+\begin{DoxyItemize}
+\item {\bfseries{JSONL packets}} ~\newline
+ Full-\/fidelity diagnostic records, suitable for post-\/processing, validation, and long-\/term archival.
+\item {\bfseries{Schema catalogs (JSON)}} ~\newline
+ Machine-\/readable descriptions of all diagnostics, including units, descriptions, and provenance. These act as a contract between physics drivers and observers.
+\item {\bfseries{Compact time-\/series tables (CSV/\+TSV)}} ~\newline
+ Plot-\/friendly, schema-\/driven tables derived directly from the catalog, guaranteeing consistency between raw diagnostics and reduced outputs.
+\end{DoxyItemize}
+
+This design ensures\+:
+
+
+\begin{DoxyItemize}
+\item reproducibility across runs and code versions,
+\item safe post-\/processing without hard-\/coded column assumptions,
+\item clear provenance for every reported physical quantity.
+\end{DoxyItemize}
+
+\DoxyHorRuler{0}
+\hypertarget{md__r_e_a_d_m_e_autotoc_md70}{}\doxysection{Project Structure}\label{md__r_e_a_d_m_e_autotoc_md70}
 
 \begin{DoxyCode}{0}
 \DoxyCodeLine{CompactStar/}
-\DoxyCodeLine{├── Core/                           \# Math, physics primitives, TOV/Hartle solvers, star builders}
+\DoxyCodeLine{├── CMakeLists.txt                  \# Top-\/level build}
+\DoxyCodeLine{│}
+\DoxyCodeLine{├── Core/                           \# Star construction + stellar structure solvers + core utilities}
+\DoxyCodeLine{│   ├── CMakeLists.txt}
 \DoxyCodeLine{│   ├── src/                        \# Implementations for Core classes}
-\DoxyCodeLine{│   └── (various headers)           \# NStar, Pulsar, RotationSolver, StarBuilder, etc.}
+\DoxyCodeLine{│   └── (headers)                   \# NStar, Pulsar, MixedStar, TOVSolver(+Thread), RotationSolver,}
+\DoxyCodeLine{│                                   \# StarBuilder, StarProfile, Analysis, TaskManager, etc.}
 \DoxyCodeLine{│}
-\DoxyCodeLine{├── EOS/                            \# Equation of state models and infrastructure}
-\DoxyCodeLine{│   └── src/                        \# EOS implementations (CompOSE, Fermi gas, sigma-\/omega models)}
+\DoxyCodeLine{├── EOS/                            \# Equation-\/of-\/state models and infrastructure}
+\DoxyCodeLine{│   ├── CMakeLists.txt}
+\DoxyCodeLine{│   ├── src/                        \# EOS implementations (CompOSE, Fermi gas, sigma-\/omega(-\/rho), polytropes, etc.)}
+\DoxyCodeLine{│   └── (headers)                   \# Baryon/Lepton/Particle/Model, CoulombLattice, CompOSE\_EOS, SigmaOmega*, ...}
 \DoxyCodeLine{│}
-\DoxyCodeLine{├── Physics/                        \# Full evolution engine (thermal + spin + chemical + BNV coupling)}
-\DoxyCodeLine{│   ├── Driver/                     \# Thermal, chemical, and spin drivers (pluggable modules)}
-\DoxyCodeLine{│   │   ├── Chem/                   \# Rotochemical, weak restoration, BNV chemical sources}
-\DoxyCodeLine{│   │   ├── Spin/                   \# Spin-\/down, accretion, BNV torque models}
-\DoxyCodeLine{│   │   └── Thermal/                \# Cooling/heating channels}
-\DoxyCodeLine{│   ├── Evolution/                  \# Integrators, observers, system assembly}
-\DoxyCodeLine{│   │   ├── Integrator/             \# GSL integrator bindings}
-\DoxyCodeLine{│   │   └── Observers/              \# Logging, checkpointing, diagnostics}
-\DoxyCodeLine{│   └── State/                      \# ThermalState, SpinState, ChemState, BNVState}
+\DoxyCodeLine{├── Microphysics/                   \# Reaction-\/level particle/nuclear microphysics}
+\DoxyCodeLine{│   ├── CMakeLists.txt}
+\DoxyCodeLine{│   ├── Rates/                      \# Shared microphysical rate tables / parametrizations (e.g., Urca.hpp)}
+\DoxyCodeLine{│   └── BNV/                        \# Baryon-\/number-\/violating microphysics package}
+\DoxyCodeLine{│       ├── CMakeLists.txt}
+\DoxyCodeLine{│       ├── Analysis/               \# BNV diagnostic tools, sequences, decay analysis}
+\DoxyCodeLine{│       │   ├── CMakeLists.txt}
+\DoxyCodeLine{│       │   └── src/}
+\DoxyCodeLine{│       ├── Channels/               \# Concrete BNV reaction channels}
+\DoxyCodeLine{│       │   ├── CMakeLists.txt}
+\DoxyCodeLine{│       │   └── src/}
+\DoxyCodeLine{│       └── Internal/               \# Internal BNV particle/field definitions}
+\DoxyCodeLine{│           ├── CMakeLists.txt}
+\DoxyCodeLine{│           └── src/}
 \DoxyCodeLine{│}
-\DoxyCodeLine{├── Microphysics/                   \# Reaction-\/level particle physics (BNV, Urca, etc.)}
-\DoxyCodeLine{│   ├── BNV/                        \# Baryon-\/number-\/violating models}
-\DoxyCodeLine{│   │   ├── Analysis/               \# BNV diagnostic tools, sequences, decay analysis}
-\DoxyCodeLine{│   │   ├── Channels/               \# BNV reaction channels}
-\DoxyCodeLine{│   │   └── Internal/               \# BNV particle/field definitions}
-\DoxyCodeLine{│   └── Rates/                      \# Urca and related microphysical rates}
+\DoxyCodeLine{├── Physics/                        \# Evolution engine (state + drivers + integrators + diagnostics)}
+\DoxyCodeLine{│   ├── CMakeLists.txt}
+\DoxyCodeLine{│   ├── State/                      \# Evolved state blocks and tags}
+\DoxyCodeLine{│   │   ├── CMakeLists.txt}
+\DoxyCodeLine{│   │   ├── src/}
+\DoxyCodeLine{│   │   └── (headers)               \# ThermalState, SpinState, ChemState, BNVState, Tags, base State.hpp}
+\DoxyCodeLine{│   │}
+\DoxyCodeLine{│   ├── Driver/                     \# Pluggable RHS “drivers” (thermal/spin/chem) + coupling + diagnostics interfaces}
+\DoxyCodeLine{│   │   ├── CMakeLists.txt}
+\DoxyCodeLine{│   │   ├── IDriver.hpp}
+\DoxyCodeLine{│   │   ├── Coupling.hpp}
+\DoxyCodeLine{│   │   ├── Diagnostics/            \# Driver diagnostics interface (IDriverDiagnostics)}
+\DoxyCodeLine{│   │   │   └── DriverDiagnostics.hpp}
+\DoxyCodeLine{│   │   ├── Thermal/                \# Photon/Neutrino cooling, heating from chemistry, etc.}
+\DoxyCodeLine{│   │   │   ├── CMakeLists.txt}
+\DoxyCodeLine{│   │   │   ├── src/}
+\DoxyCodeLine{│   │   │   └── (headers)           \# PhotonCooling(+Details), NeutrinoCooling(+Details), HeatingFromChem, ...}
+\DoxyCodeLine{│   │   ├── Spin/                   \# Spin evolution drivers (e.g., MagneticDipole, AccretionTorque, BNV torques)}
+\DoxyCodeLine{│   │   │   ├── CMakeLists.txt}
+\DoxyCodeLine{│   │   │   ├── src/}
+\DoxyCodeLine{│   │   │   └── (headers)}
+\DoxyCodeLine{│   │   └── Chem/                   \# Chemical evolution drivers (rotochemical, weak restoration, BNV sources)}
+\DoxyCodeLine{│   │       ├── CMakeLists.txt}
+\DoxyCodeLine{│   │       └── (headers)}
+\DoxyCodeLine{│   │}
+\DoxyCodeLine{│   └── Evolution/                  \# System assembly, integrators, observers, diagnostics, run helpers}
+\DoxyCodeLine{│       ├── CMakeLists.txt}
+\DoxyCodeLine{│       ├── src/                    \# Evolution core implementations}
+\DoxyCodeLine{│       ├── Integrator/             \# Numerical integrators (GSL bindings)}
+\DoxyCodeLine{│       │   ├── CMakeLists.txt}
+\DoxyCodeLine{│       │   └── src/}
+\DoxyCodeLine{│       ├── Observers/              \# Diagnostics/time series/checkpoint observers}
+\DoxyCodeLine{│       │   ├── CMakeLists.txt}
+\DoxyCodeLine{│       │   └── src/}
+\DoxyCodeLine{│       ├── Diagnostics/            \# JSONL diagnostics packets + catalog schema/contracts}
+\DoxyCodeLine{│       │   ├── CMakeLists.txt}
+\DoxyCodeLine{│       │   └── src/}
+\DoxyCodeLine{│       └── Run/                    \# Run-\/level orchestration helpers (paths, builders, observer factories)}
+\DoxyCodeLine{│           ├── CMakeLists.txt}
+\DoxyCodeLine{│           ├── RunPaths.hpp}
+\DoxyCodeLine{│           ├── RunBuilder.hpp}
+\DoxyCodeLine{│           ├── RunObservers.hpp}
+\DoxyCodeLine{│           └── src/}
 \DoxyCodeLine{│}
 \DoxyCodeLine{├── Extensions/                     \# Optional add-\/ons beyond the core framework}
-\DoxyCodeLine{│   ├── LightDM/                    \# Light dark-\/matter scalar density models}
-\DoxyCodeLine{│   └── MixedStar/                  \# Dark–visible mixed star analysis extensions}
+\DoxyCodeLine{│   ├── CMakeLists.txt}
+\DoxyCodeLine{│   ├── LightDM/                    \# Light dark-\/matter scalar density extension}
+\DoxyCodeLine{│   │   ├── CMakeLists.txt}
+\DoxyCodeLine{│   │   └── src/}
+\DoxyCodeLine{│   └── MixedStar/                  \# Dark–visible mixed star analysis extension(s)}
+\DoxyCodeLine{│       ├── CMakeLists.txt}
+\DoxyCodeLine{│       └── src/}
 \DoxyCodeLine{│}
-\DoxyCodeLine{├── CMakeLists.txt                  \# Build system}
 \DoxyCodeLine{└── (other top-\/level support files)}
 
 \end{DoxyCode}
 
 
 \DoxyHorRuler{0}
-\hypertarget{md__r_e_a_d_m_e_autotoc_md45}{}\doxysection{State Interface Architecture}\label{md__r_e_a_d_m_e_autotoc_md45}
+\hypertarget{md__r_e_a_d_m_e_autotoc_md72}{}\doxysection{State Interface Architecture}\label{md__r_e_a_d_m_e_autotoc_md72}
 Compact\+Star’s evolution engine treats each physical subsystem ~\newline
  (Spin, Thermal, Chem, BNV, …) as a {\bfseries{state block}} derived from a single abstract base class {\ttfamily State}. This base class defines a small, uniform interface\+:
 
@@ -134,7 +293,7 @@ but {\bfseries{it intentionally does not define storage}}. ~\newline
  Each derived state type owns its own internal representation.
 
 \DoxyHorRuler{0}
-\hypertarget{md__r_e_a_d_m_e_autotoc_md47}{}\doxysubsection{Why the base class does $<$em$>$not$<$/em$>$ own $<$tt$>$values\+\_\+$<$/tt$>$}\label{md__r_e_a_d_m_e_autotoc_md47}
+\hypertarget{md__r_e_a_d_m_e_autotoc_md74}{}\doxysubsection{Why the base class does $<$em$>$not$<$/em$>$ own $<$tt$>$values\+\_\+$<$/tt$>$}\label{md__r_e_a_d_m_e_autotoc_md74}
 Different state types have very different physical and numerical needs\+:
 
 
@@ -161,7 +320,7 @@ Leaving storage fully up to the derived class gives\+:
 Every state remains free to choose {\bfseries{any internal representation}}, as long as it can supply a contiguous DOF view to the evolution engine.
 
 \DoxyHorRuler{0}
-\hypertarget{md__r_e_a_d_m_e_autotoc_md49}{}\doxysubsection{Packing and Unpacking\+: How Evolution Works}\label{md__r_e_a_d_m_e_autotoc_md49}
+\hypertarget{md__r_e_a_d_m_e_autotoc_md76}{}\doxysubsection{Packing and Unpacking\+: How Evolution Works}\label{md__r_e_a_d_m_e_autotoc_md76}
 During time evolution, the framework assembles one global ODE vector\+:
 
 
@@ -187,10 +346,17 @@ This enables\+:
 \item custom block sizes
 \item clean separation between the physics model and GSL/\+Sundials interfaces
 \item modular drivers that specify dependencies via {\ttfamily State\+Tag}
+\end{DoxyItemize}\hypertarget{md__r_e_a_d_m_e_autotoc_md77}{}\doxysection{Numerical Considerations}\label{md__r_e_a_d_m_e_autotoc_md77}
+
+\begin{DoxyItemize}
+\item Evolution uses adaptive explicit Runge–\+Kutta (RKF45 via GSL)
+\item State blocks are packed contiguously for solver compatibility
+\item Stiff processes should be modeled carefully (implicit solvers may be added later)
+\item Conservation laws are enforced at the driver level, not globally
 \end{DoxyItemize}
 
 \DoxyHorRuler{0}
-\hypertarget{md__r_e_a_d_m_e_autotoc_md51}{}\doxysubsection{Summary}\label{md__r_e_a_d_m_e_autotoc_md51}
+\hypertarget{md__r_e_a_d_m_e_autotoc_md79}{}\doxysubsection{Summary}\label{md__r_e_a_d_m_e_autotoc_md79}
 This architecture\+:
 
 
@@ -206,7 +372,7 @@ For additional detail, see the comments in ~\newline
  {\ttfamily \mbox{\hyperlink{_state_8hpp}{Compact\+Star/\+Physics/\+State/\+State.\+hpp}}}.
 
 \DoxyHorRuler{0}
-\hypertarget{md__r_e_a_d_m_e_autotoc_md53}{}\doxysection{Features}\label{md__r_e_a_d_m_e_autotoc_md53}
+\hypertarget{md__r_e_a_d_m_e_autotoc_md81}{}\doxysection{Features}\label{md__r_e_a_d_m_e_autotoc_md81}
 
 \begin{DoxyItemize}
 \item Tabulated + analytical EOS support
@@ -220,7 +386,7 @@ For additional detail, see the comments in ~\newline
 \end{DoxyItemize}
 
 \DoxyHorRuler{0}
-\hypertarget{md__r_e_a_d_m_e_autotoc_md55}{}\doxysection{Building}\label{md__r_e_a_d_m_e_autotoc_md55}
+\hypertarget{md__r_e_a_d_m_e_autotoc_md83}{}\doxysection{Building}\label{md__r_e_a_d_m_e_autotoc_md83}
 
 \begin{DoxyCode}{0}
 \DoxyCodeLine{mkdir build}
@@ -241,7 +407,7 @@ Optional flags\+:
 \end{DoxyItemize}
 
 \DoxyHorRuler{0}
-\hypertarget{md__r_e_a_d_m_e_autotoc_md57}{}\doxysection{Documentation}\label{md__r_e_a_d_m_e_autotoc_md57}
+\hypertarget{md__r_e_a_d_m_e_autotoc_md85}{}\doxysection{Documentation}\label{md__r_e_a_d_m_e_autotoc_md85}
 Compact\+Star uses {\bfseries{Doxygen}} documentation. ~\newline
  To build\+:
 
@@ -255,12 +421,12 @@ Compact\+Star uses {\bfseries{Doxygen}} documentation. ~\newline
 
 
 \DoxyHorRuler{0}
-\hypertarget{md__r_e_a_d_m_e_autotoc_md59}{}\doxysection{Author}\label{md__r_e_a_d_m_e_autotoc_md59}
+\hypertarget{md__r_e_a_d_m_e_autotoc_md87}{}\doxysection{Author}\label{md__r_e_a_d_m_e_autotoc_md87}
 {\bfseries{Mohammadreza Zakeri}} ~\newline
  Assistant Professor of Physics ~\newline
  Eastern Kentucky University ~\newline
  📧 \href{mailto:M.Zakeri@eku.edu}{\texttt{ M.\+Zakeri@eku.\+edu}}
 
 \DoxyHorRuler{0}
-\hypertarget{md__r_e_a_d_m_e_autotoc_md61}{}\doxysection{Citation}\label{md__r_e_a_d_m_e_autotoc_md61}
+\hypertarget{md__r_e_a_d_m_e_autotoc_md89}{}\doxysection{Citation}\label{md__r_e_a_d_m_e_autotoc_md89}
 If you use Compact\+Star in published research, please cite this repository and the author. 

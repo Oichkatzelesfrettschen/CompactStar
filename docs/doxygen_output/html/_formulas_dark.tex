@@ -54,74 +54,130 @@ $H$
 $\Gamma_{\mathrm{BNV}}$
 \pagebreak
 
+$\rho_b \sim 10^{10}\,\mathrm{g\,cm^{-3}}$
+\pagebreak
+
+$10^{14}\,\mathrm{cm\,s^{-2}}$
+\pagebreak
+
+$T_s(T_b, g_{14})$
+\pagebreak
+
+$T_s(T_b, g_{14}, \xi)$
+\pagebreak
+
 \[
-  \frac{d\ln (T_\infty / T_{\rm ref})}{dt} = - \frac{L_{\gamma,\infty}}{C_{\rm eff}\,T_\infty}
+  T_s = T_s(T_b, g_{14}, \xi)
 \]
 \pagebreak
 
 \[
-  \frac{d\ln (T_\infty / T_{\rm ref})}{dt} = \frac{1}{T_\infty}\,\frac{dT_\infty}{dt}.
+    T_s^4 = 10^{24}\, g_{14}\, \left( 1.81\, \frac{T_b}{10^8\,\mathrm{K}} \right)^{2.42}
+  \]
+\pagebreak
+
+\[
+  g_{14} \equiv \frac{g}{10^{14}\;\mathrm{cm\,s^{-2}}}.
 \]
 \pagebreak
 
 \[
-  L_{\gamma,\infty} = \mathcal{F}_{\rm rad}\; A_{\infty}\; \sigma_{\rm SB}\; T_{\rm surf}^4 .
+  ds^2 = -e^{2\nu(r)} dt^2 + e^{2\lambda(r)} dr^2 + r^2 d\Omega^2 .
 \]
 \pagebreak
 
-$T_{\rm surf}$
+\[
+  g = \frac{GM}{R^2} \frac{1}{\sqrt{1 - 2GM/(Rc^2)}} .
+\]
 \pagebreak
 
-$\sigma_{\rm SB}$
+\[
+  g = \frac{GM}{R^2 \, e^{\nu(R)}} .
+\]
 \pagebreak
 
-$A_{\infty}$
+\[
+  M_{\rm geom} \equiv \frac{GM}{c^2},
+\]
+\pagebreak
+
+\[
+  g_{\rm cgs}
+  = \frac{c^2 \, M_{\rm cm}}{R_{\rm cm}^2 \, e^{\nu(R)}},
+\]
+\pagebreak
+
+\[
+  g_{14} = g_{\rm cgs} / 10^{14}.
+\]
+\pagebreak
+
+\[
+  x \equiv \ln\!\left(\frac{T_\infty}{T_{\rm ref}}\right),
+\]
+\pagebreak
+
+\[
+  \frac{dx}{dt} = \frac{1}{T_\infty}\,\frac{dT_\infty}{dt}.
+\]
+\pagebreak
+
+\[
+  L_{\nu,\infty} = \int dV_{\rm proper}\; Q_\nu(r)\times(\text{redshift factors}),
+\]
+\pagebreak
+
+\[
+  \frac{dT_\infty}{dt} = -\frac{L_{\nu,\infty}}{C_{\rm eff}},
+\]
+\pagebreak
+
+\[
+  \frac{dx}{dt} = -\frac{L_{\nu,\infty}}{C_{\rm eff}\,T_\infty}.
+\]
+\pagebreak
+
+\[
+     \frac{dx}{dt} \mathrel{+}= \left(\frac{d}{dt}\ln(T_\infty/T_{\rm ref})\right)_{\nu}
+   \]
+\pagebreak
+
+\[
+  y_T \equiv \ln\!\left(\frac{T_\infty}{T_{\rm ref}}\right),
+\]
+\pagebreak
+
+\[
+  \frac{dy_T}{dt} = \frac{1}{T_\infty}\frac{dT_\infty}{dt}.
+\]
+\pagebreak
+
+\[
+  L_{\gamma,\infty}
+  = \mathcal{S}\;\mathcal{F}_{\rm rad}\;A_\infty\;\sigma_{\rm SB}\;T_{\rm surf}^4,
+\quad
+  A_\infty \equiv 4\pi R^2 e^{2\nu(R)}.
+\]
+\pagebreak
+
+\[
+  \frac{dy_T}{dt}
+  \mathrel{+}= - \frac{L_{\gamma,\infty}}{C_{\rm eff}\,T_\infty}.
+\]
 \pagebreak
 
 $\mathcal{F}_{\rm rad}$
 \pagebreak
 
 \[
-  L_{\gamma,\infty} = 4\pi R^2 \, e^{2\nu(R)} \, \sigma_{\rm SB}\, T_{\rm surf}^4 ,
+  \frac{dT_\infty}{dt} = -\frac{L_{\gamma,\infty}}{C_{\rm eff}}.
 \]
 \pagebreak
 
-\[
-  A_\infty \equiv 4\pi R^2 e^{2\nu(R)} .
-\]
+$\mathcal{S}$
 \pagebreak
 
-\[
-      A_\infty = 4\pi R^2 e^{2\nu(R)} .
-   \]
-\pagebreak
-
-\[
-     L_{\gamma,\infty} = \mathrm{global\_scale}\;
-                         \mathrm{radiating\_fraction}\;
-                         A_\infty\;
-                         \sigma_{\rm SB}\;
-                         T_{\rm surf}^4 ,
-   \]
-\pagebreak
-
-\[
-     \frac{dT_\infty}{dt} = -\frac{L_{\gamma,\infty}}{C_{\rm eff}} .
-   \]
-\pagebreak
-
-\[
-     \frac{d\ln (T_\infty / T_{\rm ref})}{dt} \mathrel{+}= \frac{1}{T_\infty}\,\frac{dT_\infty}{dt}
-     = -\frac{L_{\gamma,\infty}}{C_{\rm eff}\,T_\infty}.
-   \]
-\pagebreak
-
-\[
-  \frac{dT_\infty}{dt} = -\frac{L_{\gamma,\infty}}{C_{\rm eff}} .
-\]
-\pagebreak
-
-$T_b \to T_s$
+$\xi$
 \pagebreak
 
 $\eta$

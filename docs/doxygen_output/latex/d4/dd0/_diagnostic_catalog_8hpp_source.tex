@@ -1,0 +1,61 @@
+\hypertarget{_diagnostic_catalog_8hpp_source}{}\doxysection{Diagnostic\+Catalog.\+hpp}
+\label{_diagnostic_catalog_8hpp_source}\index{CompactStar/Physics/Evolution/Diagnostics/DiagnosticCatalog.hpp@{CompactStar/Physics/Evolution/Diagnostics/DiagnosticCatalog.hpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#pragma once}}
+\DoxyCodeLine{2 \textcolor{preprocessor}{\#include <map>}}
+\DoxyCodeLine{3 \textcolor{preprocessor}{\#include <string>}}
+\DoxyCodeLine{4 \textcolor{preprocessor}{\#include <vector>}}
+\DoxyCodeLine{5 }
+\DoxyCodeLine{6 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_diagnostic_packet_8hpp}{CompactStar/Physics/Evolution/Diagnostics/DiagnosticPacket.hpp}}"{}} \textcolor{comment}{// for Cadence}}
+\DoxyCodeLine{7 \textcolor{preprocessor}{\#include "{}CompactStar/Physics/Evolution/Diagnostics/Schema.hpp"{}}}
+\DoxyCodeLine{8 }
+\DoxyCodeLine{9 \textcolor{keyword}{namespace }CompactStar::Physics::Evolution::Diagnostics}
+\DoxyCodeLine{10 \{}
+\DoxyCodeLine{11 \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{17 \textcolor{comment}{}\textcolor{keyword}{struct }\mbox{\hyperlink{struct_compact_star_1_1_physics_1_1_evolution_1_1_diagnostics_1_1_scalar_descriptor}{ScalarDescriptor}}}
+\DoxyCodeLine{18 \{}
+\DoxyCodeLine{19     std::string key;         \textcolor{comment}{// e.g. "{}L\_gamma\_inf\_erg\_s"{}}}
+\DoxyCodeLine{20     std::string unit;        \textcolor{comment}{// e.g. "{}erg/s"{}}}
+\DoxyCodeLine{21     std::string description; \textcolor{comment}{// human-\/readable}}
+\DoxyCodeLine{22     std::string source\_hint; \textcolor{comment}{// e.g. "{}computed"{}, "{}state"{}, "{}cache"{}}}
+\DoxyCodeLine{23     \mbox{\hyperlink{_diagnostic_packet_8hpp_a0b4a78e3cbdcedd41943393c406987d1}{Cadence}} default\_cadence = Cadence::Always;}
+\DoxyCodeLine{24 }
+\DoxyCodeLine{25     \textcolor{comment}{// Optional extras that help tooling}}
+\DoxyCodeLine{26     \textcolor{keywordtype}{bool} required = \textcolor{keyword}{false}; \textcolor{comment}{// if true, packet validator can enforce presence}}
+\DoxyCodeLine{27     \textcolor{keywordtype}{bool} is\_dimensionless = \textcolor{keyword}{false};}
+\DoxyCodeLine{28 \};}
+\DoxyCodeLine{29 }
+\DoxyCodeLine{30 \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{34 \textcolor{comment}{}\textcolor{keyword}{struct }\mbox{\hyperlink{struct_compact_star_1_1_physics_1_1_evolution_1_1_diagnostics_1_1_producer_catalog}{ProducerCatalog}}}
+\DoxyCodeLine{35 \{}
+\DoxyCodeLine{36     std::string producer; \textcolor{comment}{// matches pkt.Producer()/DiagnosticsName()}}
+\DoxyCodeLine{37     std::vector<ScalarDescriptor> scalars;}
+\DoxyCodeLine{38     std::vector<std::string> contract\_lines; \textcolor{comment}{// optional: stable unit contract lines}}
+\DoxyCodeLine{39 }
+\DoxyCodeLine{40     \textcolor{keyword}{struct }\mbox{\hyperlink{struct_compact_star_1_1_physics_1_1_evolution_1_1_diagnostics_1_1_producer_catalog_1_1_profile}{Profile}}}
+\DoxyCodeLine{41     \{}
+\DoxyCodeLine{42         std::string name;}
+\DoxyCodeLine{43         std::vector<std::string> keys;}
+\DoxyCodeLine{44     \};}
+\DoxyCodeLine{45     std::vector<Profile> profiles;}
+\DoxyCodeLine{46 \};}
+\DoxyCodeLine{47 }
+\DoxyCodeLine{48 \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{54 \textcolor{comment}{}\textcolor{keyword}{class }\mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_diagnostics_1_1_diagnostic_catalog}{DiagnosticCatalog}}}
+\DoxyCodeLine{55 \{}
+\DoxyCodeLine{56   \textcolor{keyword}{public}:}
+\DoxyCodeLine{57     \textcolor{keywordtype}{void} AddProducer(\mbox{\hyperlink{struct_compact_star_1_1_physics_1_1_evolution_1_1_diagnostics_1_1_producer_catalog}{ProducerCatalog}} pc);}
+\DoxyCodeLine{58 }
+\DoxyCodeLine{59     [[nodiscard]] \textcolor{keyword}{const} std::map<std::string, ProducerCatalog> \&Producers()\textcolor{keyword}{ const }\{ \textcolor{keywordflow}{return} producers\_; \}}
+\DoxyCodeLine{60 }
+\DoxyCodeLine{61     \textcolor{comment}{// Convenience: merge-\/in scalars for an existing producer}}
+\DoxyCodeLine{62     \textcolor{keywordtype}{void} AddScalar(\textcolor{keyword}{const} std::string \&producer, \mbox{\hyperlink{struct_compact_star_1_1_physics_1_1_evolution_1_1_diagnostics_1_1_scalar_descriptor}{ScalarDescriptor}} sd);}
+\DoxyCodeLine{63 }
+\DoxyCodeLine{64   \textcolor{keyword}{private}:}
+\DoxyCodeLine{65     std::map<std::string, ProducerCatalog> producers\_;}
+\DoxyCodeLine{66 \};}
+\DoxyCodeLine{67 \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{68 \} \textcolor{comment}{// namespace CompactStar::Physics::Evolution::Diagnostics}}
+
+\end{DoxyCode}

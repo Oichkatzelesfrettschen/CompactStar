@@ -91,6 +91,7 @@ Inheritance diagram for CompactStar::Physics::Evolution::Observers::IObserver:</
   <img src="../../dd/de2/class_compact_star_1_1_physics_1_1_evolution_1_1_observers_1_1_i_observer.png" usemap="#CompactStar::Physics::Evolution::Observers::IObserver_map" alt=""/>
   <map id="CompactStar::Physics::Evolution::Observers::IObserver_map" name="CompactStar::Physics::Evolution::Observers::IObserver_map">
 <area href="../../d8/ded/class_compact_star_1_1_physics_1_1_evolution_1_1_observers_1_1_diagnostics_observer.html" title="Periodic diagnostics writer for drivers (JSONL)." alt="CompactStar::Physics::Evolution::Observers::DiagnosticsObserver" shape="rect" coords="0,56,383,80"/>
+<area href="../../db/d81/class_compact_star_1_1_physics_1_1_evolution_1_1_observers_1_1_time_series_observer.html" title="Minimal time-series recorder for selected scalar quantities." alt="CompactStar::Physics::Evolution::Observers::TimeSeriesObserver" shape="rect" coords="393,56,776,80"/>
   </map>
 </div></div>
 <table class="memberdecls">
@@ -105,15 +106,43 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a6c8f9110c9a1e13675c384d103f64782"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/de2/class_compact_star_1_1_physics_1_1_evolution_1_1_observers_1_1_i_observer.html#a6c8f9110c9a1e13675c384d103f64782">OnFinish</a> (const <a class="el" href="../../d1/d45/struct_compact_star_1_1_physics_1_1_evolution_1_1_observers_1_1_finish_info.html">FinishInfo</a> &amp;fin, const <a class="el" href="../../da/d36/class_compact_star_1_1_physics_1_1_evolution_1_1_state_vector.html">Evolution::StateVector</a> &amp;Yf, const <a class="el" href="../../d1/db5/struct_compact_star_1_1_physics_1_1_evolution_1_1_driver_context.html">Evolution::DriverContext</a> &amp;ctx)</td></tr>
 <tr class="memdesc:a6c8f9110c9a1e13675c384d103f64782"><td class="mdescLeft">&#160;</td><td class="mdescRight">Called once after the integration ends (success or failure).  <a href="../../dd/de2/class_compact_star_1_1_physics_1_1_evolution_1_1_observers_1_1_i_observer.html#a6c8f9110c9a1e13675c384d103f64782">More...</a><br /></td></tr>
 <tr class="separator:a6c8f9110c9a1e13675c384d103f64782"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aacc16e14cdf6031c4bb69f7ff8ea7e59"><td class="memItemLeft" align="right" valign="top"><a id="aacc16e14cdf6031c4bb69f7ff8ea7e59" name="aacc16e14cdf6031c4bb69f7ff8ea7e59"></a>
-virtual std::string&#160;</td><td class="memItemRight" valign="bottom"><b>Name</b> () const</td></tr>
-<tr class="memdesc:aacc16e14cdf6031c4bb69f7ff8ea7e59"><td class="mdescLeft">&#160;</td><td class="mdescRight">Optional human-readable observer name for logs. <br /></td></tr>
+<tr class="memitem:aacc16e14cdf6031c4bb69f7ff8ea7e59"><td class="memItemLeft" align="right" valign="top">virtual std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/de2/class_compact_star_1_1_physics_1_1_evolution_1_1_observers_1_1_i_observer.html#aacc16e14cdf6031c4bb69f7ff8ea7e59">Name</a> () const</td></tr>
+<tr class="memdesc:aacc16e14cdf6031c4bb69f7ff8ea7e59"><td class="mdescLeft">&#160;</td><td class="mdescRight">Optional human-readable observer name for logs.  <a href="../../dd/de2/class_compact_star_1_1_physics_1_1_evolution_1_1_observers_1_1_i_observer.html#aacc16e14cdf6031c4bb69f7ff8ea7e59">More...</a><br /></td></tr>
 <tr class="separator:aacc16e14cdf6031c4bb69f7ff8ea7e59"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Base interface for evolution observers. </p>
 <p>Observers should be cheap to construct; heavy resources should be opened in OnStart. </p>
 </div><h2 class="groupheader">Member Function Documentation</h2>
+<a id="aacc16e14cdf6031c4bb69f7ff8ea7e59" name="aacc16e14cdf6031c4bb69f7ff8ea7e59"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aacc16e14cdf6031c4bb69f7ff8ea7e59">&#9670;&#160;</a></span>Name()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::string CompactStar::Physics::Evolution::Observers::IObserver::Name </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Optional human-readable observer name for logs. </p>
+
+<p>Reimplemented in <a class="el" href="../../db/d81/class_compact_star_1_1_physics_1_1_evolution_1_1_observers_1_1_time_series_observer.html#ad09fe15d806b74be9ccdf045aa684b0a">CompactStar::Physics::Evolution::Observers::TimeSeriesObserver</a>.</p>
+
+</div>
+</div>
 <a id="a6c8f9110c9a1e13675c384d103f64782" name="a6c8f9110c9a1e13675c384d103f64782"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a6c8f9110c9a1e13675c384d103f64782">&#9670;&#160;</a></span>OnFinish()</h2>
 
@@ -168,6 +197,8 @@ virtual std::string&#160;</td><td class="memItemRight" valign="bottom"><b>Name</
   </table>
   </dd>
 </dl>
+
+<p>Reimplemented in <a class="el" href="../../db/d81/class_compact_star_1_1_physics_1_1_evolution_1_1_observers_1_1_time_series_observer.html#aba66e59e3948534e3090fcdfec12211d">CompactStar::Physics::Evolution::Observers::TimeSeriesObserver</a>.</p>
 
 </div>
 </div>
@@ -227,7 +258,7 @@ virtual std::string&#160;</td><td class="memItemRight" valign="bottom"><b>Name</
   </dd>
 </dl>
 
-<p>Implemented in <a class="el" href="../../d8/ded/class_compact_star_1_1_physics_1_1_evolution_1_1_observers_1_1_diagnostics_observer.html#a11c39761b8722bc0062df685ef78d1c9">CompactStar::Physics::Evolution::Observers::DiagnosticsObserver</a>.</p>
+<p>Implemented in <a class="el" href="../../db/d81/class_compact_star_1_1_physics_1_1_evolution_1_1_observers_1_1_time_series_observer.html#aa6656929b81b4797703199f69f09a963">CompactStar::Physics::Evolution::Observers::TimeSeriesObserver</a>, and <a class="el" href="../../d8/ded/class_compact_star_1_1_physics_1_1_evolution_1_1_observers_1_1_diagnostics_observer.html#a11c39761b8722bc0062df685ef78d1c9">CompactStar::Physics::Evolution::Observers::DiagnosticsObserver</a>.</p>
 
 </div>
 </div>
@@ -287,7 +318,7 @@ virtual std::string&#160;</td><td class="memItemRight" valign="bottom"><b>Name</
   </dd>
 </dl>
 
-<p>Reimplemented in <a class="el" href="../../d8/ded/class_compact_star_1_1_physics_1_1_evolution_1_1_observers_1_1_diagnostics_observer.html#aa2815290e01460c161090592b803ab8a">CompactStar::Physics::Evolution::Observers::DiagnosticsObserver</a>.</p>
+<p>Reimplemented in <a class="el" href="../../db/d81/class_compact_star_1_1_physics_1_1_evolution_1_1_observers_1_1_time_series_observer.html#a4b11195e540dce6671de183647d338db">CompactStar::Physics::Evolution::Observers::TimeSeriesObserver</a>, and <a class="el" href="../../d8/ded/class_compact_star_1_1_physics_1_1_evolution_1_1_observers_1_1_diagnostics_observer.html#aa2815290e01460c161090592b803ab8a">CompactStar::Physics::Evolution::Observers::DiagnosticsObserver</a>.</p>
 
 </div>
 </div>

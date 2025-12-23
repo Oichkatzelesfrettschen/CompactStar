@@ -1,0 +1,47 @@
+\hypertarget{_neutrino_cooling_8cpp}{}\doxysection{Compact\+Star/\+Physics/\+Driver/\+Thermal/src/\+Neutrino\+Cooling.cpp File Reference}
+\label{_neutrino_cooling_8cpp}\index{CompactStar/Physics/Driver/Thermal/src/NeutrinoCooling.cpp@{CompactStar/Physics/Driver/Thermal/src/NeutrinoCooling.cpp}}
+
+
+Implementation of Neutrino\+Cooling driver (core neutrino cooling).  
+
+
+{\ttfamily \#include \char`\"{}Compact\+Star/\+Physics/\+Driver/\+Thermal/\+Neutrino\+Cooling.\+hpp\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}Compact\+Star/\+Physics/\+Evolution/\+Diagnostics/\+Diagnostic\+Catalog.\+hpp\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}Compact\+Star/\+Physics/\+Evolution/\+Diagnostics/\+Diagnostic\+Packet.\+hpp\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}Compact\+Star/\+Physics/\+Driver/\+Thermal/\+Neutrino\+Cooling\+\_\+\+Details.\+hpp\char`\"{}}\newline
+{\ttfamily \#include $<$cmath$>$}\newline
+{\ttfamily \#include $<$limits$>$}\newline
+{\ttfamily \#include \char`\"{}Compact\+Star/\+Physics/\+Evolution/\+Driver\+Context.\+hpp\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}Compact\+Star/\+Physics/\+Evolution/\+RHSAccumulator.\+hpp\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}Compact\+Star/\+Physics/\+Evolution/\+State\+Vector.\+hpp\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}Compact\+Star/\+Physics/\+State/\+Thermal\+State.\+hpp\char`\"{}}\newline
+{\ttfamily \#include $<$Zaki/\+Util/\+Instrumentor.\+hpp$>$}\newline
+{\ttfamily \#include $<$Zaki/\+Util/\+Logger.\+hpp$>$}\newline
+\doxysubsection*{Namespaces}
+\begin{DoxyCompactItemize}
+\item 
+namespace \mbox{\hyperlink{namespace_compact_star_1_1_physics}{Compact\+Star\+::\+Physics}}
+\begin{DoxyCompactList}\small\item\em High-\/level physical modeling layer for compact stars. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Implementation of Neutrino\+Cooling driver (core neutrino cooling). 
+
+This file implements\+:
+\begin{DoxyItemize}
+\item Neutrino\+Cooling\+::\+Accumulate\+RHS
+\item IDriver\+Diagnostics interface methods
+\end{DoxyItemize}\hypertarget{_neutrino_cooling_8cpp_autotoc_md39}{}\doxysubsubsection{Design policy}\label{_neutrino_cooling_8cpp_autotoc_md39}
+This driver mirrors Photon\+Cooling\textquotesingle{}s architecture\+:
+\begin{DoxyItemize}
+\item The {\itshape only} physics done here is to call {\ttfamily Detail\+::\+Compute\+Derived()} and add the derived RHS contribution.
+\item Diagnostics are produced by calling {\ttfamily Detail\+::\+Diagnose()} to prevent drift.
+\end{DoxyItemize}\hypertarget{_neutrino_cooling_8cpp_autotoc_md40}{}\doxysubsubsection{Why derived helpers matter}\label{_neutrino_cooling_8cpp_autotoc_md40}
+Neutrino cooling will evolve quickly (DUrca thresholds, composition masks, superfluid suppression, PBF, etc.). If you compute {\ttfamily L\+\_\+nu} one way in physics and re-\/implement it differently in diagnostics, they will diverge.
+
+Centralizing the model in the details layer ensures\+:
+\begin{DoxyItemize}
+\item a single definition of {\ttfamily L\+\_\+nu\+\_\+inf}, {\ttfamily d\+T/dt}, and {\ttfamily d/dt ln(Tinf/\+Tref)},
+\item consistent output between RHS and packets,
+\item easier maintenance as microphysics matures. 
+\end{DoxyItemize}

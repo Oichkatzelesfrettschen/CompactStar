@@ -1,0 +1,166 @@
+\hypertarget{_run_builder_8cpp}{}\doxysection{Compact\+Star/\+Physics/\+Evolution/\+Run/src/\+Run\+Builder.cpp File Reference}
+\label{_run_builder_8cpp}\index{CompactStar/Physics/Evolution/Run/src/RunBuilder.cpp@{CompactStar/Physics/Evolution/Run/src/RunBuilder.cpp}}
+
+
+Implementation of Evolution run builder helpers.  
+
+
+{\ttfamily \#include \char`\"{}Compact\+Star/\+Physics/\+Evolution/\+Run/\+Run\+Builder.\+hpp\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}Compact\+Star/\+Physics/\+Driver/\+IDriver.\+hpp\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}Compact\+Star/\+Physics/\+Evolution/\+Geometry\+Cache.\+hpp\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}Compact\+Star/\+Physics/\+Evolution/\+Star\+Context.\+hpp\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}Compact\+Star/\+Physics/\+State/\+Spin\+State.\+hpp\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}Compact\+Star/\+Physics/\+State/\+Thermal\+State.\+hpp\char`\"{}}\newline
+{\ttfamily \#include $<$Zaki/\+Util/\+Logger.\+hpp$>$}\newline
+\doxysubsection*{Namespaces}
+\begin{DoxyCompactItemize}
+\item 
+namespace \mbox{\hyperlink{namespace_compact_star_1_1_physics}{Compact\+Star\+::\+Physics}}
+\begin{DoxyCompactList}\small\item\em High-\/level physical modeling layer for compact stars. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+Evolution\+::\+Config \mbox{\hyperlink{_run_builder_8hpp_a018582771ad0d4ec1ddb6e7812158c66}{Compact\+Star\+::\+Physics\+::\+Evolution\+::\+Run\+::\+Make\+Default\+Config}} ()
+\begin{DoxyCompactList}\small\item\em Create a \mbox{\hyperlink{struct_compact_star_1_1_physics_1_1_evolution_1_1_config}{Config}} with safe/typical defaults for debug runs. \end{DoxyCompactList}\item 
+Evolution\+::\+Driver\+Context \mbox{\hyperlink{_run_builder_8hpp_a5053de4181e162c95a7f8bb9bf9672e8}{Compact\+Star\+::\+Physics\+::\+Evolution\+::\+Run\+::\+Make\+Driver\+Context}} (Evolution\+::\+Star\+Context \&star, Evolution\+::\+Geometry\+Cache \&geo, Evolution\+::\+Config \&cfg)
+\begin{DoxyCompactList}\small\item\em Wire a \mbox{\hyperlink{struct_compact_star_1_1_physics_1_1_evolution_1_1_driver_context}{Driver\+Context}} from pre-\/built Star\+Context/\+Geometry\+Cache and \mbox{\hyperlink{struct_compact_star_1_1_physics_1_1_evolution_1_1_config}{Config}}. \end{DoxyCompactList}\item 
+Evolution\+::\+Driver\+Context \mbox{\hyperlink{_run_builder_8hpp_af42f7616b069a2299d1dee1e354524d8}{Compact\+Star\+::\+Physics\+::\+Evolution\+::\+Run\+::\+Make\+Driver\+Context}} (Evolution\+::\+Star\+Context \&star, Evolution\+::\+Geometry\+Cache \&geo, Evolution\+::\+Config \&cfg, const Physics\+::\+Driver\+::\+Thermal\+::\+Boundary\+::\+IEnvelope $\ast$env)
+\begin{DoxyCompactList}\small\item\em Wire a \mbox{\hyperlink{struct_compact_star_1_1_physics_1_1_evolution_1_1_driver_context}{Driver\+Context}} from pre-\/built Star\+Context/\+Geometry\+Cache, \mbox{\hyperlink{struct_compact_star_1_1_physics_1_1_evolution_1_1_config}{Config}}, and Envelope. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{_run_builder_8hpp_a7851f1b1c90c72e1ccc82b28e403b802}{Compact\+Star\+::\+Physics\+::\+Evolution\+::\+Run\+::\+Configure\+Layout}} (State\+Wiring \&wiring, const std\+::vector$<$ Physics\+::\+State\+::\+State\+Tag $>$ \&order)
+\begin{DoxyCompactList}\small\item\em Configure \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_state_layout}{State\+Layout}} packing order for the given tags. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{_run_builder_8hpp_af80df2383109297454afef6cb4f63bd7}{Compact\+Star\+::\+Physics\+::\+Evolution\+::\+Run\+::\+Configure\+RHS}} (State\+Wiring \&wiring, const std\+::vector$<$ Physics\+::\+State\+::\+State\+Tag $>$ \&tags)
+\begin{DoxyCompactList}\small\item\em Configure \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_r_h_s_accumulator}{RHSAccumulator}} buffers for a set of registered tags. \end{DoxyCompactList}\item 
+std\+::vector$<$ const Physics\+::\+Driver\+::\+Diagnostics\+::\+IDriver\+Diagnostics $\ast$ $>$ \mbox{\hyperlink{_run_builder_8hpp_a04ce978cf3af7c7c7f6aa945f0df5dfc}{Compact\+Star\+::\+Physics\+::\+Evolution\+::\+Run\+::\+Collect\+Diagnostics\+Drivers}} (const std\+::vector$<$ Evolution\+::\+Driver\+Ptr $>$ \&drivers)
+\begin{DoxyCompactList}\small\item\em Collect diagnostics-\/capable drivers into a non-\/owning pointer list. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Implementation of Evolution run builder helpers. 
+
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{_run_builder_8hpp_a04ce978cf3af7c7c7f6aa945f0df5dfc}\label{_run_builder_8hpp_a04ce978cf3af7c7c7f6aa945f0df5dfc}} 
+\index{RunBuilder.cpp@{RunBuilder.cpp}!CollectDiagnosticsDrivers@{CollectDiagnosticsDrivers}}
+\index{CollectDiagnosticsDrivers@{CollectDiagnosticsDrivers}!RunBuilder.cpp@{RunBuilder.cpp}}
+\doxysubsubsection{\texorpdfstring{CollectDiagnosticsDrivers()}{CollectDiagnosticsDrivers()}}
+{\footnotesize\ttfamily std\+::vector$<$ const Physics\+::\+Driver\+::\+Diagnostics\+::\+IDriver\+Diagnostics $\ast$ $>$ Compact\+Star\+::\+Physics\+::\+Evolution\+::\+Run\+::\+Collect\+Diagnostics\+Drivers (\begin{DoxyParamCaption}\item[{const std\+::vector$<$ Evolution\+::\+Driver\+Ptr $>$ \&}]{drivers }\end{DoxyParamCaption})}
+
+
+
+Collect diagnostics-\/capable drivers into a non-\/owning pointer list. 
+
+This is a tiny helper so mains don’t repeat the dynamic\+\_\+cast boilerplate.
+
+
+\begin{DoxyParams}{Parameters}
+{\em drivers} & Vector of shared\+\_\+ptr$<$\+IDriver$>$ (or Driver\+Ptr). \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Vector of pointers to drivers that implement IDriver\+Diagnostics.
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+The returned pointers are non-\/owning and remain valid only as long as the underlying shared\+\_\+ptr instances remain alive. 
+\end{DoxyNote}
+\mbox{\Hypertarget{_run_builder_8hpp_a7851f1b1c90c72e1ccc82b28e403b802}\label{_run_builder_8hpp_a7851f1b1c90c72e1ccc82b28e403b802}} 
+\index{RunBuilder.cpp@{RunBuilder.cpp}!ConfigureLayout@{ConfigureLayout}}
+\index{ConfigureLayout@{ConfigureLayout}!RunBuilder.cpp@{RunBuilder.cpp}}
+\doxysubsubsection{\texorpdfstring{ConfigureLayout()}{ConfigureLayout()}}
+{\footnotesize\ttfamily void Compact\+Star\+::\+Physics\+::\+Evolution\+::\+Run\+::\+Configure\+Layout (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_compact_star_1_1_physics_1_1_evolution_1_1_run_1_1_state_wiring}{State\+Wiring}} \&}]{wiring,  }\item[{const std\+::vector$<$ \mbox{\hyperlink{namespace_compact_star_1_1_physics_1_1_state_af14f5554b0d9be50c5ea718733bc424b}{Physics\+::\+State\+::\+State\+Tag}} $>$ \&}]{order }\end{DoxyParamCaption})}
+
+
+
+Configure State\+Layout packing order for the given tags. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em wiring} & State\+Wiring with state\+\_\+vec already registered. \\
+\hline
+{\em order} & Tag order for packing (authoritative). \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{_run_builder_8hpp_af80df2383109297454afef6cb4f63bd7}\label{_run_builder_8hpp_af80df2383109297454afef6cb4f63bd7}} 
+\index{RunBuilder.cpp@{RunBuilder.cpp}!ConfigureRHS@{ConfigureRHS}}
+\index{ConfigureRHS@{ConfigureRHS}!RunBuilder.cpp@{RunBuilder.cpp}}
+\doxysubsubsection{\texorpdfstring{ConfigureRHS()}{ConfigureRHS()}}
+{\footnotesize\ttfamily void Compact\+Star\+::\+Physics\+::\+Evolution\+::\+Run\+::\+Configure\+RHS (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_compact_star_1_1_physics_1_1_evolution_1_1_run_1_1_state_wiring}{State\+Wiring}} \&}]{wiring,  }\item[{const std\+::vector$<$ \mbox{\hyperlink{namespace_compact_star_1_1_physics_1_1_state_af14f5554b0d9be50c5ea718733bc424b}{Physics\+::\+State\+::\+State\+Tag}} $>$ \&}]{tags }\end{DoxyParamCaption})}
+
+
+
+Configure RHSAccumulator buffers for a set of registered tags. 
+
+This reads the sizes from the State\+Vector blocks and configures rhs accordingly.
+
+
+\begin{DoxyParams}{Parameters}
+{\em wiring} & State\+Wiring with state\+\_\+vec already registered. \\
+\hline
+{\em tags} & Tags to configure for RHS accumulation. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{_run_builder_8hpp_a018582771ad0d4ec1ddb6e7812158c66}\label{_run_builder_8hpp_a018582771ad0d4ec1ddb6e7812158c66}} 
+\index{RunBuilder.cpp@{RunBuilder.cpp}!MakeDefaultConfig@{MakeDefaultConfig}}
+\index{MakeDefaultConfig@{MakeDefaultConfig}!RunBuilder.cpp@{RunBuilder.cpp}}
+\doxysubsubsection{\texorpdfstring{MakeDefaultConfig()}{MakeDefaultConfig()}}
+{\footnotesize\ttfamily Evolution\+::\+Config Compact\+Star\+::\+Physics\+::\+Evolution\+::\+Run\+::\+Make\+Default\+Config (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Create a Config with safe/typical defaults for debug runs. 
+
+\begin{DoxyReturn}{Returns}
+Config with deterministic defaults\+:
+\begin{DoxyItemize}
+\item RKF45
+\item rtol=1e-\/6, atol=1e-\/10
+\item dt\+\_\+save=1e5
+\item max\+\_\+steps=1e6
+\end{DoxyItemize}
+\end{DoxyReturn}
+Caller can override fields after return. \mbox{\Hypertarget{_run_builder_8hpp_a5053de4181e162c95a7f8bb9bf9672e8}\label{_run_builder_8hpp_a5053de4181e162c95a7f8bb9bf9672e8}} 
+\index{RunBuilder.cpp@{RunBuilder.cpp}!MakeDriverContext@{MakeDriverContext}}
+\index{MakeDriverContext@{MakeDriverContext}!RunBuilder.cpp@{RunBuilder.cpp}}
+\doxysubsubsection{\texorpdfstring{MakeDriverContext()}{MakeDriverContext()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily Evolution\+::\+Driver\+Context Compact\+Star\+::\+Physics\+::\+Evolution\+::\+Run\+::\+Make\+Driver\+Context (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_star_context}{Evolution\+::\+Star\+Context}} \&}]{star,  }\item[{\mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_geometry_cache}{Evolution\+::\+Geometry\+Cache}} \&}]{geo,  }\item[{\mbox{\hyperlink{struct_compact_star_1_1_physics_1_1_evolution_1_1_config}{Evolution\+::\+Config}} \&}]{cfg }\end{DoxyParamCaption})}
+
+
+
+Wire a Driver\+Context from pre-\/built Star\+Context/\+Geometry\+Cache and Config. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em star} & Star\+Context (must outlive ctx). \\
+\hline
+{\em geo} & Geometry\+Cache (must outlive ctx). \\
+\hline
+{\em cfg} & Evolution\+::\+Config (must outlive ctx).\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Driver\+Context with star/geo/cfg set and envelope set to nullptr. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{_run_builder_8hpp_af42f7616b069a2299d1dee1e354524d8}\label{_run_builder_8hpp_af42f7616b069a2299d1dee1e354524d8}} 
+\index{RunBuilder.cpp@{RunBuilder.cpp}!MakeDriverContext@{MakeDriverContext}}
+\index{MakeDriverContext@{MakeDriverContext}!RunBuilder.cpp@{RunBuilder.cpp}}
+\doxysubsubsection{\texorpdfstring{MakeDriverContext()}{MakeDriverContext()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily Evolution\+::\+Driver\+Context Compact\+Star\+::\+Physics\+::\+Evolution\+::\+Run\+::\+Make\+Driver\+Context (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_star_context}{Evolution\+::\+Star\+Context}} \&}]{star,  }\item[{\mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_geometry_cache}{Evolution\+::\+Geometry\+Cache}} \&}]{geo,  }\item[{\mbox{\hyperlink{struct_compact_star_1_1_physics_1_1_evolution_1_1_config}{Evolution\+::\+Config}} \&}]{cfg,  }\item[{const \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_boundary_1_1_i_envelope}{Physics\+::\+Driver\+::\+Thermal\+::\+Boundary\+::\+IEnvelope}} $\ast$}]{env }\end{DoxyParamCaption})}
+
+
+
+Wire a Driver\+Context from pre-\/built Star\+Context/\+Geometry\+Cache, Config, and Envelope. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em star} & Star\+Context (must outlive ctx). \\
+\hline
+{\em geo} & Geometry\+Cache (must outlive ctx). \\
+\hline
+{\em cfg} & Evolution\+::\+Config (must outlive ctx). \\
+\hline
+{\em env} & Envelope model (must outlive ctx). \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+$\ast$ Evolution\+::\+Driver\+Context 
+\end{DoxyReturn}

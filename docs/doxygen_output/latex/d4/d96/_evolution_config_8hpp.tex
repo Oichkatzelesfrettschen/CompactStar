@@ -28,12 +28,7 @@ enum class \mbox{\hyperlink{_evolution_config_8hpp_a0319e48cd15f3f7460b2432fd507
 , \newline
 \mbox{\hyperlink{_evolution_config_8hpp_a0319e48cd15f3f7460b2432fd507fd34a14a72850b24c13d12d4e2370e682a181}{MSBDF}}
  \}
-\begin{DoxyCompactList}\small\item\em Available ODE steppers (GSL backends). \end{DoxyCompactList}\item 
-enum class \mbox{\hyperlink{_evolution_config_8hpp_a77ec205aab45375896e1afc074f535bc}{Compact\+Star\+::\+Physics\+::\+Evolution\+::\+Envelope\+Model}} \{ {\bfseries Iron}
-, {\bfseries Accreted}
-, \mbox{\hyperlink{_evolution_config_8hpp_a77ec205aab45375896e1afc074f535bca90589c47f06eb971d548591f23c285af}{Custom}}
- \}
-\begin{DoxyCompactList}\small\item\em Surface boundary models mapping $T_b \to T_s$. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Available ODE steppers (GSL backends). \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}
@@ -42,22 +37,6 @@ User-\/configurable options for chemical/thermal/spin evolution runs.
 Includes integrator tolerances, enabled physics channels, envelope and gap choices, output cadence, and initial-\/condition sizes (e.\+g. n\+\_\+eta). 
 
 \doxysubsection{Enumeration Type Documentation}
-\mbox{\Hypertarget{_evolution_config_8hpp_a77ec205aab45375896e1afc074f535bc}\label{_evolution_config_8hpp_a77ec205aab45375896e1afc074f535bc}} 
-\index{EvolutionConfig.hpp@{EvolutionConfig.hpp}!EnvelopeModel@{EnvelopeModel}}
-\index{EnvelopeModel@{EnvelopeModel}!EvolutionConfig.hpp@{EvolutionConfig.hpp}}
-\doxysubsubsection{\texorpdfstring{EnvelopeModel}{EnvelopeModel}}
-{\footnotesize\ttfamily enum class \mbox{\hyperlink{_evolution_config_8hpp_a77ec205aab45375896e1afc074f535bc}{Compact\+Star\+::\+Physics\+::\+Evolution\+::\+Envelope\+Model}}\hspace{0.3cm}{\ttfamily [strong]}}
-
-
-
-Surface boundary models mapping $T_b \to T_s$. 
-
-\begin{DoxyEnumFields}{Enumerator}
-\raisebox{\heightof{T}}[0pt][0pt]{\index{Custom@{Custom}!EvolutionConfig.hpp@{EvolutionConfig.hpp}}\index{EvolutionConfig.hpp@{EvolutionConfig.hpp}!Custom@{Custom}}}\mbox{\Hypertarget{_evolution_config_8hpp_a77ec205aab45375896e1afc074f535bca90589c47f06eb971d548591f23c285af}\label{_evolution_config_8hpp_a77ec205aab45375896e1afc074f535bca90589c47f06eb971d548591f23c285af}} 
-Custom&Provide a custom callable in Phase 2+. \\
-\hline
-
-\end{DoxyEnumFields}
 \mbox{\Hypertarget{_evolution_config_8hpp_a0319e48cd15f3f7460b2432fd507fd34}\label{_evolution_config_8hpp_a0319e48cd15f3f7460b2432fd507fd34}} 
 \index{EvolutionConfig.hpp@{EvolutionConfig.hpp}!StepperType@{StepperType}}
 \index{StepperType@{StepperType}!EvolutionConfig.hpp@{EvolutionConfig.hpp}}

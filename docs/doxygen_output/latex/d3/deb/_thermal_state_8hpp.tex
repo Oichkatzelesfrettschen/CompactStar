@@ -27,11 +27,11 @@ Thermal evolution state block for a compact star.
 
 This class provides the {\bfseries{dynamical thermal degrees of freedom}} used by the evolution system (typically the redshifted internal temperature T∞, or multiple temperature components if needed), as well as optional auxiliary temperatures used by microphysics or cooling models.
 
-Directory-\/based namespace\+: \mbox{\hyperlink{namespace_compact_star_1_1_physics_1_1_state}{Compact\+Star\+::\+Physics\+::\+State}}\hypertarget{_thermal_state_8hpp_autotoc_md27}{}\doxyparagraph{Design}\label{_thermal_state_8hpp_autotoc_md27}
+Directory-\/based namespace\+: \mbox{\hyperlink{namespace_compact_star_1_1_physics_1_1_state}{Compact\+Star\+::\+Physics\+::\+State}}\hypertarget{_thermal_state_8hpp_autotoc_md44}{}\doxyparagraph{Design}\label{_thermal_state_8hpp_autotoc_md44}
 
 \begin{DoxyItemize}
 \item The evolution DOFs live in a contiguous vector ({\ttfamily values\+\_\+}).
 \item A typical minimal configuration has just one DOF = T∞.
 \item Subclasses or callers may configure multiple components by calling Resize().
-\end{DoxyItemize}\hypertarget{_thermal_state_8hpp_autotoc_md28}{}\doxyparagraph{Auxiliary variables}\label{_thermal_state_8hpp_autotoc_md28}
+\end{DoxyItemize}\hypertarget{_thermal_state_8hpp_autotoc_md45}{}\doxyparagraph{Auxiliary variables}\label{_thermal_state_8hpp_autotoc_md45}
 The local-\/frame temperatures (T\+\_\+core, T\+\_\+blanket, T\+\_\+surf) are {\bfseries{not}} part of the ODE vector. They are cached values used by cooling models, envelopes, emissivity computations, and diagnostics. 

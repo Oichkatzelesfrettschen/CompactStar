@@ -1,0 +1,172 @@
+\hypertarget{struct_compact_star_1_1_physics_1_1_evolution_1_1_observers_1_1_time_series_observer_1_1_options}{}\doxysection{Compact\+Star\+::Physics\+::Evolution\+::Observers\+::Time\+Series\+Observer\+::Options Struct Reference}
+\label{struct_compact_star_1_1_physics_1_1_evolution_1_1_observers_1_1_time_series_observer_1_1_options}\index{CompactStar::Physics::Evolution::Observers::TimeSeriesObserver::Options@{CompactStar::Physics::Evolution::Observers::TimeSeriesObserver::Options}}
+
+
+Configuration for \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_observers_1_1_time_series_observer}{Time\+Series\+Observer}}.  
+
+
+
+
+{\ttfamily \#include $<$Time\+Series\+Observer.\+hpp$>$}
+
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{struct_compact_star_1_1_physics_1_1_evolution_1_1_observers_1_1_time_series_observer_1_1_options_ad60b2e6703778934516c8c95907f6102}\label{struct_compact_star_1_1_physics_1_1_evolution_1_1_observers_1_1_time_series_observer_1_1_options_ad60b2e6703778934516c8c95907f6102}} 
+\mbox{\hyperlink{class_zaki_1_1_string_1_1_directory}{Zaki\+::\+String\+::\+Directory}} {\bfseries output\+\_\+path} = \char`\"{}timeseries.\+csv\char`\"{}
+\begin{DoxyCompactList}\small\item\em Output file path for the table (CSV/\+TSV). \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{struct_compact_star_1_1_physics_1_1_evolution_1_1_observers_1_1_time_series_observer_1_1_options_a4c331408a171623d5bcb827abe7015c7}\label{struct_compact_star_1_1_physics_1_1_evolution_1_1_observers_1_1_time_series_observer_1_1_options_a4c331408a171623d5bcb827abe7015c7}} 
+\mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_observers_1_1_time_series_observer_af22274949fdb7545a83fe6f520e1c3f4}{Output\+Format}} {\bfseries format} = \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_observers_1_1_time_series_observer_af22274949fdb7545a83fe6f520e1c3f4acc8d68c551c4a9a6d5313e07de4deafd}{Output\+Format\+::\+CSV}}
+\begin{DoxyCompactList}\small\item\em Output format (CSV by default). \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{struct_compact_star_1_1_physics_1_1_evolution_1_1_observers_1_1_time_series_observer_1_1_options_ac3aaf7844057e444a61a43e203485ab3}\label{struct_compact_star_1_1_physics_1_1_evolution_1_1_observers_1_1_time_series_observer_1_1_options_ac3aaf7844057e444a61a43e203485ab3}} 
+bool {\bfseries append} = false
+\begin{DoxyCompactList}\small\item\em If true, append to existing output file; otherwise truncate. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{struct_compact_star_1_1_physics_1_1_evolution_1_1_observers_1_1_time_series_observer_1_1_options_aa1552752b60a7788d7d83efde73f8492}\label{struct_compact_star_1_1_physics_1_1_evolution_1_1_observers_1_1_time_series_observer_1_1_options_aa1552752b60a7788d7d83efde73f8492}} 
+bool {\bfseries record\+\_\+at\+\_\+start} = true
+\begin{DoxyCompactList}\small\item\em If true, record at On\+Start (t=t0) before first On\+Sample. \end{DoxyCompactList}\item 
+std\+::size\+\_\+t \mbox{\hyperlink{struct_compact_star_1_1_physics_1_1_evolution_1_1_observers_1_1_time_series_observer_1_1_options_acd793235cedabd33df1e4be92e069c53}{record\+\_\+every\+\_\+n\+\_\+samples}} = 1
+\begin{DoxyCompactList}\small\item\em Record every N On\+Sample calls (step-\/based scheduling). \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{struct_compact_star_1_1_physics_1_1_evolution_1_1_observers_1_1_time_series_observer_1_1_options_a74aa057d034d15f6ea1b2b963aa31717}{record\+\_\+every\+\_\+dt}} = 0.\+0
+\begin{DoxyCompactList}\small\item\em Record every dt in simulation time (time-\/based scheduling). \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{struct_compact_star_1_1_physics_1_1_evolution_1_1_observers_1_1_time_series_observer_1_1_options_a6bf29e4db4a89c20df6d81af743e6bbf}{write\+\_\+header}} = true
+\begin{DoxyCompactList}\small\item\em If true, write a one-\/line header row containing column keys. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{struct_compact_star_1_1_physics_1_1_evolution_1_1_observers_1_1_time_series_observer_1_1_options_aaff53c10fffc24e4ed14abf3944e7b0b}{write\+\_\+sidecar\+\_\+metadata}} = true
+\begin{DoxyCompactList}\small\item\em If true, also emit a sidecar metadata file describing columns. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{struct_compact_star_1_1_physics_1_1_evolution_1_1_observers_1_1_time_series_observer_1_1_options_a18c85a60253edef3329dd579a75ea90f}{float\+\_\+precision}} = 17
+\begin{DoxyCompactList}\small\item\em Numeric formatting precision for floating point output. \end{DoxyCompactList}\item 
+std\+::vector$<$ \mbox{\hyperlink{struct_compact_star_1_1_physics_1_1_evolution_1_1_observers_1_1_time_series_observer_1_1_column}{Column}} $>$ \mbox{\hyperlink{struct_compact_star_1_1_physics_1_1_evolution_1_1_observers_1_1_time_series_observer_1_1_options_a986c08a0d8e9d7871de09a898ff3bc50}{columns}}
+\begin{DoxyCompactList}\small\item\em Columns to record, in the order they will appear in the table. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{struct_compact_star_1_1_physics_1_1_evolution_1_1_observers_1_1_time_series_observer_1_1_options_a5e770028e164a52415c646c96e4e94dc}{use\+\_\+catalog}} = false
+\begin{DoxyCompactList}\small\item\em If true, build columns automatically from the diagnostics catalog. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_zaki_1_1_string_1_1_directory}{Zaki\+::\+String\+::\+Directory}} \mbox{\hyperlink{struct_compact_star_1_1_physics_1_1_evolution_1_1_observers_1_1_time_series_observer_1_1_options_a2a1bc681329f36eebef7f8cc4b25748e}{catalog\+\_\+path}} = \char`\"{}\char`\"{}
+\begin{DoxyCompactList}\small\item\em Optional\+: path to the catalog JSON (diagnostics.\+catalog.\+json). \end{DoxyCompactList}\item 
+std\+::vector$<$ std\+::string $>$ \mbox{\hyperlink{struct_compact_star_1_1_physics_1_1_evolution_1_1_observers_1_1_time_series_observer_1_1_options_ac17631af81952d8eac03e279f217d784}{catalog\+\_\+profiles}}
+\begin{DoxyCompactList}\small\item\em Optional\+: which catalog profile(s) to use when auto-\/building columns. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{struct_compact_star_1_1_physics_1_1_evolution_1_1_observers_1_1_time_series_observer_1_1_options_a7072842e254002333afd761ad00baeff}{include\+\_\+builtin\+\_\+time}} = true
+\begin{DoxyCompactList}\small\item\em If true, prepend/ensure common builtin columns (time, sample\+\_\+index). \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{struct_compact_star_1_1_physics_1_1_evolution_1_1_observers_1_1_time_series_observer_1_1_options_a2892ee8c9a46717b584d7e2406af8463}\label{struct_compact_star_1_1_physics_1_1_evolution_1_1_observers_1_1_time_series_observer_1_1_options_a2892ee8c9a46717b584d7e2406af8463}} 
+bool {\bfseries include\+\_\+builtin\+\_\+sample\+\_\+index} = true
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Configuration for \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_observers_1_1_time_series_observer}{Time\+Series\+Observer}}. 
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{struct_compact_star_1_1_physics_1_1_evolution_1_1_observers_1_1_time_series_observer_1_1_options_a2a1bc681329f36eebef7f8cc4b25748e}\label{struct_compact_star_1_1_physics_1_1_evolution_1_1_observers_1_1_time_series_observer_1_1_options_a2a1bc681329f36eebef7f8cc4b25748e}} 
+\index{CompactStar::Physics::Evolution::Observers::TimeSeriesObserver::Options@{CompactStar::Physics::Evolution::Observers::TimeSeriesObserver::Options}!catalog\_path@{catalog\_path}}
+\index{catalog\_path@{catalog\_path}!CompactStar::Physics::Evolution::Observers::TimeSeriesObserver::Options@{CompactStar::Physics::Evolution::Observers::TimeSeriesObserver::Options}}
+\doxysubsubsection{\texorpdfstring{catalog\_path}{catalog\_path}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_zaki_1_1_string_1_1_directory}{Zaki\+::\+String\+::\+Directory}} Compact\+Star\+::\+Physics\+::\+Evolution\+::\+Observers\+::\+Time\+Series\+Observer\+::\+Options\+::catalog\+\_\+path = \char`\"{}\char`\"{}}
+
+
+
+Optional\+: path to the catalog JSON (diagnostics.\+catalog.\+json). 
+
+Used when use\+\_\+catalog==true and no in-\/memory catalog is supplied. \mbox{\Hypertarget{struct_compact_star_1_1_physics_1_1_evolution_1_1_observers_1_1_time_series_observer_1_1_options_ac17631af81952d8eac03e279f217d784}\label{struct_compact_star_1_1_physics_1_1_evolution_1_1_observers_1_1_time_series_observer_1_1_options_ac17631af81952d8eac03e279f217d784}} 
+\index{CompactStar::Physics::Evolution::Observers::TimeSeriesObserver::Options@{CompactStar::Physics::Evolution::Observers::TimeSeriesObserver::Options}!catalog\_profiles@{catalog\_profiles}}
+\index{catalog\_profiles@{catalog\_profiles}!CompactStar::Physics::Evolution::Observers::TimeSeriesObserver::Options@{CompactStar::Physics::Evolution::Observers::TimeSeriesObserver::Options}}
+\doxysubsubsection{\texorpdfstring{catalog\_profiles}{catalog\_profiles}}
+{\footnotesize\ttfamily std\+::vector$<$std\+::string$>$ Compact\+Star\+::\+Physics\+::\+Evolution\+::\+Observers\+::\+Time\+Series\+Observer\+::\+Options\+::catalog\+\_\+profiles}
+
+
+
+Optional\+: which catalog profile(s) to use when auto-\/building columns. 
+
+Examples\+: \char`\"{}timeseries\+\_\+default\char`\"{} \char`\"{}regression\+\_\+minimal\char`\"{}
+
+If empty, you can fall back to \char`\"{}timeseries\+\_\+default\char`\"{} if present, otherwise use all scalars or none (cpp policy). \mbox{\Hypertarget{struct_compact_star_1_1_physics_1_1_evolution_1_1_observers_1_1_time_series_observer_1_1_options_a986c08a0d8e9d7871de09a898ff3bc50}\label{struct_compact_star_1_1_physics_1_1_evolution_1_1_observers_1_1_time_series_observer_1_1_options_a986c08a0d8e9d7871de09a898ff3bc50}} 
+\index{CompactStar::Physics::Evolution::Observers::TimeSeriesObserver::Options@{CompactStar::Physics::Evolution::Observers::TimeSeriesObserver::Options}!columns@{columns}}
+\index{columns@{columns}!CompactStar::Physics::Evolution::Observers::TimeSeriesObserver::Options@{CompactStar::Physics::Evolution::Observers::TimeSeriesObserver::Options}}
+\doxysubsubsection{\texorpdfstring{columns}{columns}}
+{\footnotesize\ttfamily std\+::vector$<$\mbox{\hyperlink{struct_compact_star_1_1_physics_1_1_evolution_1_1_observers_1_1_time_series_observer_1_1_column}{Column}}$>$ Compact\+Star\+::\+Physics\+::\+Evolution\+::\+Observers\+::\+Time\+Series\+Observer\+::\+Options\+::columns}
+
+
+
+Columns to record, in the order they will appear in the table. 
+
+The observer will not reorder; this is the authoritative ordering. \mbox{\Hypertarget{struct_compact_star_1_1_physics_1_1_evolution_1_1_observers_1_1_time_series_observer_1_1_options_a18c85a60253edef3329dd579a75ea90f}\label{struct_compact_star_1_1_physics_1_1_evolution_1_1_observers_1_1_time_series_observer_1_1_options_a18c85a60253edef3329dd579a75ea90f}} 
+\index{CompactStar::Physics::Evolution::Observers::TimeSeriesObserver::Options@{CompactStar::Physics::Evolution::Observers::TimeSeriesObserver::Options}!float\_precision@{float\_precision}}
+\index{float\_precision@{float\_precision}!CompactStar::Physics::Evolution::Observers::TimeSeriesObserver::Options@{CompactStar::Physics::Evolution::Observers::TimeSeriesObserver::Options}}
+\doxysubsubsection{\texorpdfstring{float\_precision}{float\_precision}}
+{\footnotesize\ttfamily int Compact\+Star\+::\+Physics\+::\+Evolution\+::\+Observers\+::\+Time\+Series\+Observer\+::\+Options\+::float\+\_\+precision = 17}
+
+
+
+Numeric formatting precision for floating point output. 
+
+Use sufficiently high precision for regression comparisons. Suggested default is 17 (full double precision). \mbox{\Hypertarget{struct_compact_star_1_1_physics_1_1_evolution_1_1_observers_1_1_time_series_observer_1_1_options_a7072842e254002333afd761ad00baeff}\label{struct_compact_star_1_1_physics_1_1_evolution_1_1_observers_1_1_time_series_observer_1_1_options_a7072842e254002333afd761ad00baeff}} 
+\index{CompactStar::Physics::Evolution::Observers::TimeSeriesObserver::Options@{CompactStar::Physics::Evolution::Observers::TimeSeriesObserver::Options}!include\_builtin\_time@{include\_builtin\_time}}
+\index{include\_builtin\_time@{include\_builtin\_time}!CompactStar::Physics::Evolution::Observers::TimeSeriesObserver::Options@{CompactStar::Physics::Evolution::Observers::TimeSeriesObserver::Options}}
+\doxysubsubsection{\texorpdfstring{include\_builtin\_time}{include\_builtin\_time}}
+{\footnotesize\ttfamily bool Compact\+Star\+::\+Physics\+::\+Evolution\+::\+Observers\+::\+Time\+Series\+Observer\+::\+Options\+::include\+\_\+builtin\+\_\+time = true}
+
+
+
+If true, prepend/ensure common builtin columns (time, sample\+\_\+index). 
+
+Useful when catalog-\/driven columns only cover driver scalars. \mbox{\Hypertarget{struct_compact_star_1_1_physics_1_1_evolution_1_1_observers_1_1_time_series_observer_1_1_options_a74aa057d034d15f6ea1b2b963aa31717}\label{struct_compact_star_1_1_physics_1_1_evolution_1_1_observers_1_1_time_series_observer_1_1_options_a74aa057d034d15f6ea1b2b963aa31717}} 
+\index{CompactStar::Physics::Evolution::Observers::TimeSeriesObserver::Options@{CompactStar::Physics::Evolution::Observers::TimeSeriesObserver::Options}!record\_every\_dt@{record\_every\_dt}}
+\index{record\_every\_dt@{record\_every\_dt}!CompactStar::Physics::Evolution::Observers::TimeSeriesObserver::Options@{CompactStar::Physics::Evolution::Observers::TimeSeriesObserver::Options}}
+\doxysubsubsection{\texorpdfstring{record\_every\_dt}{record\_every\_dt}}
+{\footnotesize\ttfamily double Compact\+Star\+::\+Physics\+::\+Evolution\+::\+Observers\+::\+Time\+Series\+Observer\+::\+Options\+::record\+\_\+every\+\_\+dt = 0.\+0}
+
+
+
+Record every dt in simulation time (time-\/based scheduling). 
+
+
+\begin{DoxyItemize}
+\item If \texorpdfstring{$<$}{<}= 0, time-\/based triggering is disabled.
+\item If enabled, the observer maintains an internal \char`\"{}next\+\_\+time\+\_\+trigger\char`\"{}. 
+\end{DoxyItemize}\mbox{\Hypertarget{struct_compact_star_1_1_physics_1_1_evolution_1_1_observers_1_1_time_series_observer_1_1_options_acd793235cedabd33df1e4be92e069c53}\label{struct_compact_star_1_1_physics_1_1_evolution_1_1_observers_1_1_time_series_observer_1_1_options_acd793235cedabd33df1e4be92e069c53}} 
+\index{CompactStar::Physics::Evolution::Observers::TimeSeriesObserver::Options@{CompactStar::Physics::Evolution::Observers::TimeSeriesObserver::Options}!record\_every\_n\_samples@{record\_every\_n\_samples}}
+\index{record\_every\_n\_samples@{record\_every\_n\_samples}!CompactStar::Physics::Evolution::Observers::TimeSeriesObserver::Options@{CompactStar::Physics::Evolution::Observers::TimeSeriesObserver::Options}}
+\doxysubsubsection{\texorpdfstring{record\_every\_n\_samples}{record\_every\_n\_samples}}
+{\footnotesize\ttfamily std\+::size\+\_\+t Compact\+Star\+::\+Physics\+::\+Evolution\+::\+Observers\+::\+Time\+Series\+Observer\+::\+Options\+::record\+\_\+every\+\_\+n\+\_\+samples = 1}
+
+
+
+Record every N On\+Sample calls (step-\/based scheduling). 
+
+
+\begin{DoxyItemize}
+\item If 0, step-\/based triggering is disabled.
+\item If both step-\/based and time-\/based are enabled, either trigger records. 
+\end{DoxyItemize}\mbox{\Hypertarget{struct_compact_star_1_1_physics_1_1_evolution_1_1_observers_1_1_time_series_observer_1_1_options_a5e770028e164a52415c646c96e4e94dc}\label{struct_compact_star_1_1_physics_1_1_evolution_1_1_observers_1_1_time_series_observer_1_1_options_a5e770028e164a52415c646c96e4e94dc}} 
+\index{CompactStar::Physics::Evolution::Observers::TimeSeriesObserver::Options@{CompactStar::Physics::Evolution::Observers::TimeSeriesObserver::Options}!use\_catalog@{use\_catalog}}
+\index{use\_catalog@{use\_catalog}!CompactStar::Physics::Evolution::Observers::TimeSeriesObserver::Options@{CompactStar::Physics::Evolution::Observers::TimeSeriesObserver::Options}}
+\doxysubsubsection{\texorpdfstring{use\_catalog}{use\_catalog}}
+{\footnotesize\ttfamily bool Compact\+Star\+::\+Physics\+::\+Evolution\+::\+Observers\+::\+Time\+Series\+Observer\+::\+Options\+::use\+\_\+catalog = false}
+
+
+
+If true, build columns automatically from the diagnostics catalog. 
+
+This is the schema-\/driven path\+: no hardcoded column list in main. If enabled, the observer will append (or replace) \mbox{\hyperlink{struct_compact_star_1_1_physics_1_1_evolution_1_1_observers_1_1_time_series_observer_1_1_options_a986c08a0d8e9d7871de09a898ff3bc50}{Options\+::columns}} based on catalog profiles and/or explicit key lists. \mbox{\Hypertarget{struct_compact_star_1_1_physics_1_1_evolution_1_1_observers_1_1_time_series_observer_1_1_options_a6bf29e4db4a89c20df6d81af743e6bbf}\label{struct_compact_star_1_1_physics_1_1_evolution_1_1_observers_1_1_time_series_observer_1_1_options_a6bf29e4db4a89c20df6d81af743e6bbf}} 
+\index{CompactStar::Physics::Evolution::Observers::TimeSeriesObserver::Options@{CompactStar::Physics::Evolution::Observers::TimeSeriesObserver::Options}!write\_header@{write\_header}}
+\index{write\_header@{write\_header}!CompactStar::Physics::Evolution::Observers::TimeSeriesObserver::Options@{CompactStar::Physics::Evolution::Observers::TimeSeriesObserver::Options}}
+\doxysubsubsection{\texorpdfstring{write\_header}{write\_header}}
+{\footnotesize\ttfamily bool Compact\+Star\+::\+Physics\+::\+Evolution\+::\+Observers\+::\+Time\+Series\+Observer\+::\+Options\+::write\+\_\+header = true}
+
+
+
+If true, write a one-\/line header row containing column keys. 
+
+For CSV/\+TSV outputs, the header is strongly recommended. \mbox{\Hypertarget{struct_compact_star_1_1_physics_1_1_evolution_1_1_observers_1_1_time_series_observer_1_1_options_aaff53c10fffc24e4ed14abf3944e7b0b}\label{struct_compact_star_1_1_physics_1_1_evolution_1_1_observers_1_1_time_series_observer_1_1_options_aaff53c10fffc24e4ed14abf3944e7b0b}} 
+\index{CompactStar::Physics::Evolution::Observers::TimeSeriesObserver::Options@{CompactStar::Physics::Evolution::Observers::TimeSeriesObserver::Options}!write\_sidecar\_metadata@{write\_sidecar\_metadata}}
+\index{write\_sidecar\_metadata@{write\_sidecar\_metadata}!CompactStar::Physics::Evolution::Observers::TimeSeriesObserver::Options@{CompactStar::Physics::Evolution::Observers::TimeSeriesObserver::Options}}
+\doxysubsubsection{\texorpdfstring{write\_sidecar\_metadata}{write\_sidecar\_metadata}}
+{\footnotesize\ttfamily bool Compact\+Star\+::\+Physics\+::\+Evolution\+::\+Observers\+::\+Time\+Series\+Observer\+::\+Options\+::write\+\_\+sidecar\+\_\+metadata = true}
+
+
+
+If true, also emit a sidecar metadata file describing columns. 
+
+This keeps the table compact while preserving units and descriptions. A typical sidecar file could be\+: \char`\"{}$<$output\+\_\+path$>$.\+meta.\+json\char`\"{} or \char`\"{}.\+meta.\+txt\char`\"{} depending on implementation.
+
+NOTE\+: This header does not prescribe the exact sidecar format; the .cpp should implement a deterministic, low-\/dependency approach. 
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Compact\+Star/\+Physics/\+Evolution/\+Observers/\mbox{\hyperlink{_time_series_observer_8hpp}{Time\+Series\+Observer.\+hpp}}\end{DoxyCompactItemize}

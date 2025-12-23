@@ -17,6 +17,7 @@ var searchData=
   ['findnmominertia_14',['FindNMomInertia',['../d7/d64/class_compact_star_1_1_core_1_1_rotation_solver.html#ae6d9fdb90475708d2444dd300fe8c92d',1,'CompactStar::Core::RotationSolver']]],
   ['findprofile_15',['FindProfile',['../db/d2f/class_compact_star_1_1_core_1_1_pulsar.html#a223e0ccdd16e2ced6bffa8d9f0b1a3cc',1,'CompactStar::Core::Pulsar']]],
   ['findpulsar_16',['FindPulsar',['../dc/dd8/class_compact_star_1_1_light_d_m___scalar___density.html#a4139feeb6b3aa7af65643c7193df8435',1,'CompactStar::LightDM_Scalar_Density::FindPulsar()'],['../d4/d16/class_compact_star_1_1_microphysics_1_1_b_n_v_1_1_channels_1_1_b_n_v___b___chi___combo.html#a583ab2d0ecfd5b3deb397c6d5a993f4a',1,'CompactStar::Microphysics::BNV::Channels::BNV_B_Chi_Combo::FindPulsar()'],['../d6/d63/class_compact_star_1_1_microphysics_1_1_b_n_v_1_1_internal_1_1_b_n_v___chi.html#a757844bfe4b402da78f62896d2278360',1,'CompactStar::Microphysics::BNV::Internal::BNV_Chi::FindPulsar()']]],
-  ['freq_5fddot_17',['Freq_ddot',['../da/d11/class_compact_star_1_1_microphysics_1_1_b_n_v_1_1_analysis_1_1_b_n_v___sequence.html#a215cd4ddb22f1a92545d77e5be76906f',1,'CompactStar::Microphysics::BNV::Analysis::BNV_Sequence']]],
-  ['fromrow_18',['FromRow',['../d4/dc4/class_compact_star_1_1_core_1_1_seq_point.html#ab6a9749ce5a6ac8655f3f1964ce96059',1,'CompactStar::Core::SeqPoint']]]
+  ['findtbindex_17',['FindTbIndex',['../d5/d38/_tb_definition_8cpp.html#a5b615534bdb8b02d3098e5a3b92682ee',1,'CompactStar::Physics::Driver::Thermal::Boundary']]],
+  ['freq_5fddot_18',['Freq_ddot',['../da/d11/class_compact_star_1_1_microphysics_1_1_b_n_v_1_1_analysis_1_1_b_n_v___sequence.html#a215cd4ddb22f1a92545d77e5be76906f',1,'CompactStar::Microphysics::BNV::Analysis::BNV_Sequence']]],
+  ['fromrow_19',['FromRow',['../d4/dc4/class_compact_star_1_1_core_1_1_seq_point.html#ab6a9749ce5a6ac8655f3f1964ce96059',1,'CompactStar::Core::SeqPoint']]]
 ];

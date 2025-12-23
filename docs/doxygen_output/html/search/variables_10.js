@@ -1,20 +1,4 @@
 var searchData=
 [
-  ['sample_5findex_0',['sample_index',['../d6/d21/struct_compact_star_1_1_physics_1_1_evolution_1_1_observers_1_1_sample_info.html#acf63327094b58fb3a698fb46abb0e4ea',1,'CompactStar::Physics::Evolution::Observers::SampleInfo']]],
-  ['sat_5fden_1',['sat_den',['../d8/dce/struct_compact_star_1_1_nucl_matter_par.html#aa915ab79c1ac6aea0557f9420a80adc6',1,'CompactStar::NuclMatterPar']]],
-  ['seq_5findex_2',['seq_index',['../d1/d1b/struct_compact_star_1_1_core_1_1_star_builder_1_1_output.html#acbd146a449bfffe2e112e13b45a80256',1,'CompactStar::Core::StarBuilder::Output']]],
-  ['seq_5fpoint_3',['seq_point',['../d1/d1b/struct_compact_star_1_1_core_1_1_star_builder_1_1_output.html#aeab0a1e7a669cba2249ea216e6156462',1,'CompactStar::Core::StarBuilder::Output::seq_point()'],['../d4/d29/struct_compact_star_1_1_core_1_1_star_profile.html#ae19034719eed95b1ffe940faedcb3c35',1,'CompactStar::Core::StarProfile::seq_point()']]],
-  ['sequence_4',['sequence',['../dd/d31/class_compact_star_1_1_core_1_1_t_o_v_solver.html#a2102eb9a8c9f55989ead115fa87a7f5c',1,'CompactStar::Core::TOVSolver']]],
-  ['set_5fname_5fflag_5',['set_name_flag',['../d7/dd0/class_c_o_n_f_i_n_d_1_1_base.html#a018bb5a56d3d3986ead69d6985dcf314',1,'CONFIND::Base']]],
-  ['set_5fname_5fflag_5f_6',['set_name_flag_',['../d1/dbf/class_compact_star_1_1_core_1_1_prog.html#ae04879f14cb8f86a9968c97c050f952e',1,'CompactStar::Core::Prog']]],
-  ['set_5fwrk_5fdir_5fflag_7',['set_wrk_dir_flag',['../d7/dd0/class_c_o_n_f_i_n_d_1_1_base.html#a096505baac9118f09157bb39b5deffac',1,'CONFIND::Base']]],
-  ['short_5fname_8',['short_name',['../d4/da6/struct_compact_star_1_1_light_d_m___scalar___density_1_1_baryon.html#a8d3f5e0fe5868e574c86641bed30224d',1,'CompactStar::LightDM_Scalar_Density::Baryon::short_name()'],['../d8/d2f/struct_compact_star_1_1_microphysics_1_1_b_n_v_1_1_internal_1_1_b_n_v___chi_1_1_baryon.html#a8c6112bb412c598afab0adc59f4ee654',1,'CompactStar::Microphysics::BNV::Internal::BNV_Chi::Baryon::short_name()']]],
-  ['sig0_5fds_9',['sig0_ds',['../dc/dd8/class_compact_star_1_1_light_d_m___scalar___density.html#ad86e89de172f0d293a62797ea15eeb0f',1,'CompactStar::LightDM_Scalar_Density::sig0_ds()'],['../d6/d63/class_compact_star_1_1_microphysics_1_1_b_n_v_1_1_internal_1_1_b_n_v___chi.html#ac833ed7c4b0447195596520df1c222d3',1,'CompactStar::Microphysics::BNV::Internal::BNV_Chi::sig0_ds()']]],
-  ['source_10',['source',['../d7/dae/struct_compact_star_1_1_physics_1_1_evolution_1_1_diagnostics_1_1_scalar_entry.html#a1bbbdfedc86b4ab0c7b0bcd420111ace',1,'CompactStar::Physics::Evolution::Diagnostics::ScalarEntry']]],
-  ['species_5fidx_11',['species_idx',['../d4/d29/struct_compact_star_1_1_core_1_1_star_profile.html#aab8ba5deee62a546a0782d21900df993',1,'CompactStar::Core::StarProfile']]],
-  ['species_5flabels_12',['species_labels',['../d4/d29/struct_compact_star_1_1_core_1_1_star_profile.html#a2aff71901f78187dfbbfaa48a1354b05',1,'CompactStar::Core::StarProfile']]],
-  ['star_13',['star',['../d1/db5/struct_compact_star_1_1_physics_1_1_evolution_1_1_driver_context.html#a7b9661a3ea07074e7e35d0052dc8017d',1,'CompactStar::Physics::Evolution::DriverContext']]],
-  ['step_14',['step',['../d2/d06/struct_compact_star_1_1_physics_1_1_state_1_1_step_meta.html#af1efce5cf8852ffdbc474b24939a0cd0',1,'CompactStar::Physics::State::StepMeta']]],
-  ['step_5findex_15',['step_index',['../d6/d21/struct_compact_star_1_1_physics_1_1_evolution_1_1_observers_1_1_sample_info.html#a1307dba5cda602bdaad1d43a01e8a4a3',1,'CompactStar::Physics::Evolution::Observers::SampleInfo']]],
-  ['stepper_16',['stepper',['../d5/d7b/struct_compact_star_1_1_physics_1_1_evolution_1_1_config.html#ae283786bfb5c27a7d4b0a48375e30294',1,'CompactStar::Physics::Evolution::Config']]]
+  ['q_0',['Q',['../d4/da4/class_compact_star_1_1_particle.html#a0743f35fe16d498ca13d21ed94319ee8',1,'CompactStar::Particle']]]
 ];

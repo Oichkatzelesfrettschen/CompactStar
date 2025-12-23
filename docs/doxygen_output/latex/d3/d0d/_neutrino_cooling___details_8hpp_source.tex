@@ -1,0 +1,94 @@
+\hypertarget{_neutrino_cooling___details_8hpp_source}{}\doxysection{Neutrino\+Cooling\+\_\+\+Details.\+hpp}
+\label{_neutrino_cooling___details_8hpp_source}\index{CompactStar/Physics/Driver/Thermal/NeutrinoCooling\_Details.hpp@{CompactStar/Physics/Driver/Thermal/NeutrinoCooling\_Details.hpp}}
+\mbox{\hyperlink{_neutrino_cooling___details_8hpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#pragma once}}
+\DoxyCodeLine{2 \textcolor{comment}{// -\/*-\/ lsst-\/c++ -\/*-\/}}
+\DoxyCodeLine{3 \textcolor{comment}{/*}}
+\DoxyCodeLine{4 \textcolor{comment}{ * CompactStar}}
+\DoxyCodeLine{5 \textcolor{comment}{ * See License file at the top of the source tree.}}
+\DoxyCodeLine{6 \textcolor{comment}{ *}}
+\DoxyCodeLine{7 \textcolor{comment}{ * Copyright (c) 2025}}
+\DoxyCodeLine{8 \textcolor{comment}{ * Mohammadreza Zakeri}}
+\DoxyCodeLine{9 \textcolor{comment}{ *}}
+\DoxyCodeLine{10 \textcolor{comment}{ * MIT License — see LICENSE at repo root.}}
+\DoxyCodeLine{11 \textcolor{comment}{ */}}
+\DoxyCodeLine{12 }
+\DoxyCodeLine{28 \textcolor{preprocessor}{\#include <string>}}
+\DoxyCodeLine{29 \textcolor{preprocessor}{\#include <vector>}}
+\DoxyCodeLine{30 }
+\DoxyCodeLine{31 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_driver_context_8hpp}{CompactStar/Physics/Evolution/DriverContext.hpp}}"{}}}
+\DoxyCodeLine{32 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_state_vector_8hpp}{CompactStar/Physics/Evolution/StateVector.hpp}}"{}}}
+\DoxyCodeLine{33 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_thermal_state_8hpp}{CompactStar/Physics/State/ThermalState.hpp}}"{}}}
+\DoxyCodeLine{34 }
+\DoxyCodeLine{35 \textcolor{keyword}{namespace }CompactStar::Physics::Evolution}
+\DoxyCodeLine{36 \{}
+\DoxyCodeLine{37 \textcolor{keyword}{class }StateVector;}
+\DoxyCodeLine{38 \textcolor{keyword}{class }DriverContext;}
+\DoxyCodeLine{39 \} \textcolor{comment}{// namespace CompactStar::Physics::Evolution}}
+\DoxyCodeLine{40 }
+\DoxyCodeLine{41 \textcolor{keyword}{namespace }CompactStar::Physics::Evolution::Diagnostics}
+\DoxyCodeLine{42 \{}
+\DoxyCodeLine{43 \textcolor{keyword}{class }DiagnosticPacket;}
+\DoxyCodeLine{44 \}}
+\DoxyCodeLine{45 }
+\DoxyCodeLine{46 \textcolor{keyword}{namespace }CompactStar::Physics::Driver::Thermal}
+\DoxyCodeLine{47 \{}
+\DoxyCodeLine{48 \textcolor{keyword}{class }NeutrinoCooling;}
+\DoxyCodeLine{49 \} \textcolor{comment}{// namespace CompactStar::Physics::Driver::Thermal}}
+\DoxyCodeLine{50 }
+\DoxyCodeLine{51 \textcolor{keyword}{namespace }CompactStar::Physics::Driver::Thermal::Detail}
+\DoxyCodeLine{52 \{}
+\DoxyCodeLine{53 }
+\DoxyCodeLine{69 \textcolor{keyword}{struct }\mbox{\hyperlink{struct_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_detail_1_1_neutrino_cooling___details}{NeutrinoCooling\_Details}}}
+\DoxyCodeLine{70 \{}
+\DoxyCodeLine{72     \textcolor{keywordtype}{bool} \mbox{\hyperlink{struct_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_detail_1_1_neutrino_cooling___details_aa4c72f96137c797e35dac44a39f44661}{ok}} = \textcolor{keyword}{true};}
+\DoxyCodeLine{73 }
+\DoxyCodeLine{75     std::string \mbox{\hyperlink{struct_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_detail_1_1_neutrino_cooling___details_a3ddde548786cf6914aa02251e0098b5d}{message}};}
+\DoxyCodeLine{76 }
+\DoxyCodeLine{77     \textcolor{comment}{// -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{78     \textcolor{comment}{// Resolved inputs}}
+\DoxyCodeLine{79     \textcolor{comment}{// -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{81 \textcolor{comment}{}    \textcolor{keywordtype}{double} \mbox{\hyperlink{struct_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_detail_1_1_neutrino_cooling___details_a264ad433c310eec55cc7e88afeff658d}{Tinf\_K}} = 0.0;}
+\DoxyCodeLine{82 }
+\DoxyCodeLine{84     \textcolor{keywordtype}{double} \mbox{\hyperlink{struct_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_detail_1_1_neutrino_cooling___details_a3a91f9f3da1a74dbe2589abe5e82dfae}{C\_eff\_erg\_K}} = 0.0;}
+\DoxyCodeLine{85 }
+\DoxyCodeLine{86     \textcolor{comment}{// -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{87     \textcolor{comment}{// Neutrino luminosity bookkeeping (at infinity)}}
+\DoxyCodeLine{88     \textcolor{comment}{// -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{90 \textcolor{comment}{}    \textcolor{keywordtype}{double} \mbox{\hyperlink{struct_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_detail_1_1_neutrino_cooling___details_a1d110ed8bc740bdea92db7be44f28e0d}{L\_nu\_inf\_erg\_s}} = 0.0;}
+\DoxyCodeLine{91 }
+\DoxyCodeLine{93     \textcolor{keywordtype}{double} \mbox{\hyperlink{struct_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_detail_1_1_neutrino_cooling___details_a42d65c57af56996a639429445f360475}{L\_nu\_DU\_inf\_erg\_s}} = 0.0;}
+\DoxyCodeLine{94 }
+\DoxyCodeLine{96     \textcolor{keywordtype}{double} \mbox{\hyperlink{struct_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_detail_1_1_neutrino_cooling___details_a54247f57291cb65b367876b656976dd4}{L\_nu\_MU\_inf\_erg\_s}} = 0.0;}
+\DoxyCodeLine{97 }
+\DoxyCodeLine{99     \textcolor{keywordtype}{double} \mbox{\hyperlink{struct_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_detail_1_1_neutrino_cooling___details_a1d56d8dc7a09140bce321fb0522180d4}{L\_nu\_PBF\_inf\_erg\_s}} = 0.0;}
+\DoxyCodeLine{100 }
+\DoxyCodeLine{101     \textcolor{comment}{// -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{102     \textcolor{comment}{// Evolution RHS contribution}}
+\DoxyCodeLine{103     \textcolor{comment}{// -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{105 \textcolor{comment}{}    \textcolor{keywordtype}{double} \mbox{\hyperlink{struct_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_detail_1_1_neutrino_cooling___details_a6249098f5da2e5a9e5905287abc3a2bd}{dTinf\_dt\_K\_s}} = 0.0;}
+\DoxyCodeLine{106 }
+\DoxyCodeLine{108     \textcolor{keywordtype}{double} \mbox{\hyperlink{struct_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_detail_1_1_neutrino_cooling___details_a520800e8e34c02cfa88c9ca72d8dd326}{dLnTinf\_dt\_1\_s}} = 0.0;}
+\DoxyCodeLine{109 }
+\DoxyCodeLine{110     \textcolor{comment}{// -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{111     \textcolor{comment}{// Integration diagnostics (optional but very useful)}}
+\DoxyCodeLine{112     \textcolor{comment}{// -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{114 \textcolor{comment}{}    \textcolor{keywordtype}{bool} \mbox{\hyperlink{struct_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_detail_1_1_neutrino_cooling___details_a191dc3e3b34bd15767048fe1eddf6137}{has\_structure}} = \textcolor{keyword}{false};}
+\DoxyCodeLine{115 }
+\DoxyCodeLine{117     std::size\_t \mbox{\hyperlink{struct_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_detail_1_1_neutrino_cooling___details_ae8e2d8ab9855396f6b37cbb5b2261690}{n\_zones}} = 0;}
+\DoxyCodeLine{118 \};}
+\DoxyCodeLine{119 }
+\DoxyCodeLine{134 \mbox{\hyperlink{struct_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_detail_1_1_neutrino_cooling___details}{NeutrinoCooling\_Details}} \mbox{\hyperlink{_neutrino_cooling___details_8hpp_a017b32db80be303c7f5724ca4770e18f}{ComputeDerived}}(\textcolor{keyword}{const} \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_neutrino_cooling}{NeutrinoCooling}} \&drv,}
+\DoxyCodeLine{135                                        \textcolor{keyword}{const} \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_state_vector}{Evolution::StateVector}} \&Y,}
+\DoxyCodeLine{136                                        \textcolor{keyword}{const} \mbox{\hyperlink{struct_compact_star_1_1_physics_1_1_evolution_1_1_driver_context}{Evolution::DriverContext}} \&ctx);}
+\DoxyCodeLine{137 }
+\DoxyCodeLine{149 \textcolor{keywordtype}{void} \mbox{\hyperlink{_neutrino_cooling___details_8hpp_a1207123648f14ac2377601828aa19e12}{Diagnose}}(\textcolor{keyword}{const} \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_neutrino_cooling}{NeutrinoCooling}} \&self,}
+\DoxyCodeLine{150               \textcolor{keywordtype}{double} t,}
+\DoxyCodeLine{151               \textcolor{keyword}{const} \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_state_vector}{Evolution::StateVector}} \&Y,}
+\DoxyCodeLine{152               \textcolor{keyword}{const} \mbox{\hyperlink{struct_compact_star_1_1_physics_1_1_evolution_1_1_driver_context}{Evolution::DriverContext}} \&ctx,}
+\DoxyCodeLine{153               \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_diagnostics_1_1_diagnostic_packet}{Evolution::Diagnostics::DiagnosticPacket}} \&out);}
+\DoxyCodeLine{154 }
+\DoxyCodeLine{155 \} \textcolor{comment}{// namespace CompactStar::Physics::Driver::Thermal::Detail}}
+
+\end{DoxyCode}

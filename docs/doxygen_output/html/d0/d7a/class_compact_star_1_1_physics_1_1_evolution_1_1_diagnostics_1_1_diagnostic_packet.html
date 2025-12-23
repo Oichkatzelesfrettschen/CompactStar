@@ -127,6 +127,9 @@ const std::string &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>Pr
 <tr class="memitem:a3a0a6fd0da5d14923b2d6cb6d6d19873"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d0/d7a/class_compact_star_1_1_physics_1_1_evolution_1_1_diagnostics_1_1_diagnostic_packet.html#a3a0a6fd0da5d14923b2d6cb6d6d19873">AddScalar</a> (const std::string &amp;key, double value, std::string unit=&quot;&quot;, std::string description=&quot;&quot;, std::string source=&quot;&quot;)</td></tr>
 <tr class="memdesc:a3a0a6fd0da5d14923b2d6cb6d6d19873"><td class="mdescLeft">&#160;</td><td class="mdescRight">Add/replace a scalar.  <a href="../../d0/d7a/class_compact_star_1_1_physics_1_1_evolution_1_1_diagnostics_1_1_diagnostic_packet.html#a3a0a6fd0da5d14923b2d6cb6d6d19873">More...</a><br /></td></tr>
 <tr class="separator:a3a0a6fd0da5d14923b2d6cb6d6d19873"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae3e2b9e173bd89094aa5c37fa3d243a9"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d0/d7a/class_compact_star_1_1_physics_1_1_evolution_1_1_diagnostics_1_1_diagnostic_packet.html#ae3e2b9e173bd89094aa5c37fa3d243a9">AddScalar</a> (const std::string &amp;key, double value, std::string unit, std::string description, std::string source, <a class="el" href="../../dc/d74/_diagnostic_packet_8hpp.html#a0b4a78e3cbdcedd41943393c406987d1">Cadence</a> cadence)</td></tr>
+<tr class="memdesc:ae3e2b9e173bd89094aa5c37fa3d243a9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Add/replace a scalar with cadence hint. If the key already exists, it is overwritten (deterministic).  <a href="../../d0/d7a/class_compact_star_1_1_physics_1_1_evolution_1_1_diagnostics_1_1_diagnostic_packet.html#ae3e2b9e173bd89094aa5c37fa3d243a9">More...</a><br /></td></tr>
+<tr class="separator:ae3e2b9e173bd89094aa5c37fa3d243a9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2a2affd7d8fd21e1a254c1b4d13fc226"><td class="memItemLeft" align="right" valign="top"><a id="a2a2affd7d8fd21e1a254c1b4d13fc226" name="a2a2affd7d8fd21e1a254c1b4d13fc226"></a>
 bool&#160;</td><td class="memItemRight" valign="bottom"><b>HasScalar</b> (const std::string &amp;key) const</td></tr>
 <tr class="memdesc:a2a2affd7d8fd21e1a254c1b4d13fc226"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns true if the scalar exists. <br /></td></tr>
@@ -181,7 +184,7 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>ClearTextBlocks</b> (
 <div class="line">pkt.SetTime(t);</div>
 <div class="line">pkt.AddScalar(<span class="stringliteral">&quot;Tinf_K&quot;</span>, Tinf, <span class="stringliteral">&quot;K&quot;</span>, <span class="stringliteral">&quot;Redshifted internal temperature&quot;</span>, <span class="stringliteral">&quot;state&quot;</span>);</div>
 <div class="line">pkt.AddScalar(<span class="stringliteral">&quot;A_inf_cm2&quot;</span>, Ainf, <span class="stringliteral">&quot;cm^2&quot;</span>, <span class="stringliteral">&quot;Redshifted area at infinity&quot;</span>, <span class="stringliteral">&quot;computed&quot;</span>);</div>
-<div class="ttc" id="aclass_compact_star_1_1_physics_1_1_evolution_1_1_diagnostics_1_1_diagnostic_packet_html"><div class="ttname"><a href="../../d0/d7a/class_compact_star_1_1_physics_1_1_evolution_1_1_diagnostics_1_1_diagnostic_packet.html">CompactStar::Physics::Evolution::Diagnostics::DiagnosticPacket</a></div><div class="ttdoc">Single diagnostics snapshot with metadata and scalar fields.</div><div class="ttdef"><b>Definition:</b> DiagnosticPacket.hpp:76</div></div>
+<div class="ttc" id="aclass_compact_star_1_1_physics_1_1_evolution_1_1_diagnostics_1_1_diagnostic_packet_html"><div class="ttname"><a href="../../d0/d7a/class_compact_star_1_1_physics_1_1_evolution_1_1_diagnostics_1_1_diagnostic_packet.html">CompactStar::Physics::Evolution::Diagnostics::DiagnosticPacket</a></div><div class="ttdoc">Single diagnostics snapshot with metadata and scalar fields.</div><div class="ttdef"><b>Definition:</b> DiagnosticPacket.hpp:92</div></div>
 </div><!-- fragment --> </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a46193bc90f6c4d17dcb28f3a4d7cc16d" name="a46193bc90f6c4d17dcb28f3a4d7cc16d"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a46193bc90f6c4d17dcb28f3a4d7cc16d">&#9670;&#160;</a></span>DiagnosticPacket()</h2>
@@ -218,8 +221,73 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>ClearTextBlocks</b> (
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
+<a id="ae3e2b9e173bd89094aa5c37fa3d243a9" name="ae3e2b9e173bd89094aa5c37fa3d243a9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae3e2b9e173bd89094aa5c37fa3d243a9">&#9670;&#160;</a></span>AddScalar() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void CompactStar::Physics::Evolution::Diagnostics::DiagnosticPacket::AddScalar </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>key</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>value</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::string&#160;</td>
+          <td class="paramname"><em>unit</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::string&#160;</td>
+          <td class="paramname"><em>description</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::string&#160;</td>
+          <td class="paramname"><em>source</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="../../dc/d74/_diagnostic_packet_8hpp.html#a0b4a78e3cbdcedd41943393c406987d1">Cadence</a>&#160;</td>
+          <td class="paramname"><em>cadence</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Add/replace a scalar with cadence hint. If the key already exists, it is overwritten (deterministic). </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">key</td><td>Stable key name (tooling-friendly). </td></tr>
+    <tr><td class="paramname">value</td><td>Numeric value. </td></tr>
+    <tr><td class="paramname">unit</td><td>Optional unit string. </td></tr>
+    <tr><td class="paramname">description</td><td>Optional one-line description. </td></tr>
+    <tr><td class="paramname">source</td><td>Optional provenance label (e.g., "computed", "state"). </td></tr>
+    <tr><td class="paramname">cadence</td><td>Cadence hint for recording this scalar. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
 <a id="a3a0a6fd0da5d14923b2d6cb6d6d19873" name="a3a0a6fd0da5d14923b2d6cb6d6d19873"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a3a0a6fd0da5d14923b2d6cb6d6d19873">&#9670;&#160;</a></span>AddScalar()</h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a3a0a6fd0da5d14923b2d6cb6d6d19873">&#9670;&#160;</a></span>AddScalar() <span class="overload">[2/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">

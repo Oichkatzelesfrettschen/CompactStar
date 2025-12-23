@@ -39,17 +39,6 @@ bool \mbox{\hyperlink{struct_compact_star_1_1_physics_1_1_evolution_1_1_config_a
 \item 
 bool \mbox{\hyperlink{struct_compact_star_1_1_physics_1_1_evolution_1_1_config_afb3eba73bbc39057f6f04d905b0cc27b}{couple\+\_\+spin}} = false
 \item 
-\mbox{\Hypertarget{struct_compact_star_1_1_physics_1_1_evolution_1_1_config_afaf335ececb43540fec904cd694a7dd5}\label{struct_compact_star_1_1_physics_1_1_evolution_1_1_config_afaf335ececb43540fec904cd694a7dd5}} 
-\mbox{\hyperlink{_evolution_config_8hpp_a77ec205aab45375896e1afc074f535bc}{Envelope\+Model}} {\bfseries envelope} = Envelope\+Model\+::\+Iron
-\item 
-double \mbox{\hyperlink{struct_compact_star_1_1_physics_1_1_evolution_1_1_config_a956575775d60221464dd6732798fa247}{envelope\+\_\+xi}} = 0.\+0
-\item 
-\mbox{\Hypertarget{struct_compact_star_1_1_physics_1_1_evolution_1_1_config_abe7b18882c30cc1b4ed49db3a3ef0cb3}\label{struct_compact_star_1_1_physics_1_1_evolution_1_1_config_abe7b18882c30cc1b4ed49db3a3ef0cb3}} 
-bool {\bfseries superfluid\+\_\+n} = false
-\item 
-\mbox{\Hypertarget{struct_compact_star_1_1_physics_1_1_evolution_1_1_config_aa4601e07c871835f48ef2eff98fc2eea}\label{struct_compact_star_1_1_physics_1_1_evolution_1_1_config_aa4601e07c871835f48ef2eff98fc2eea}} 
-bool {\bfseries superfluid\+\_\+p} = false
-\item 
 std\+::size\+\_\+t \mbox{\hyperlink{struct_compact_star_1_1_physics_1_1_evolution_1_1_config_ab2e24ae85b3b6f4d3b2496fde7d61a9d}{n\+\_\+eta}} = 1
 \item 
 \mbox{\Hypertarget{struct_compact_star_1_1_physics_1_1_evolution_1_1_config_a1c3cc96651c726d6a76c5ae20c067393}\label{struct_compact_star_1_1_physics_1_1_evolution_1_1_config_a1c3cc96651c726d6a76c5ae20c067393}} 
@@ -62,7 +51,7 @@ std\+::string \mbox{\hyperlink{struct_compact_star_1_1_physics_1_1_evolution_1_1
 \doxysubsection{Detailed Description}
 Configuration for a single evolution run. 
 
-This struct is intentionally small and POD-\/like; it is passed by const reference into {\ttfamily \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_evolution_system}{Evolution\+System}}} and {\ttfamily \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_g_s_l_integrator}{GSLIntegrator}}}.\hypertarget{struct_compact_star_1_1_physics_1_1_evolution_1_1_config_autotoc_md26}{}\doxyparagraph{Integrator-\/related fields}\label{struct_compact_star_1_1_physics_1_1_evolution_1_1_config_autotoc_md26}
+This struct is intentionally small and POD-\/like; it is passed by const reference into {\ttfamily \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_evolution_system}{Evolution\+System}}} and {\ttfamily \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_g_s_l_integrator}{GSLIntegrator}}}.\hypertarget{struct_compact_star_1_1_physics_1_1_evolution_1_1_config_autotoc_md43}{}\doxyparagraph{Integrator-\/related fields}\label{struct_compact_star_1_1_physics_1_1_evolution_1_1_config_autotoc_md43}
 
 \begin{DoxyItemize}
 \item {\ttfamily stepper} \+: choice of GSL backend ({\ttfamily Stepper\+Type}).
@@ -129,13 +118,7 @@ Pair-\/breaking/formation emission. ~\newline
 {\footnotesize\ttfamily bool Compact\+Star\+::\+Physics\+::\+Evolution\+::\+Config\+::enable\+\_\+rotochem\+\_\+driver = false}
 
 Spin-\/down driver for $\eta$. ~\newline
- \mbox{\Hypertarget{struct_compact_star_1_1_physics_1_1_evolution_1_1_config_a956575775d60221464dd6732798fa247}\label{struct_compact_star_1_1_physics_1_1_evolution_1_1_config_a956575775d60221464dd6732798fa247}} 
-\index{CompactStar::Physics::Evolution::Config@{CompactStar::Physics::Evolution::Config}!envelope\_xi@{envelope\_xi}}
-\index{envelope\_xi@{envelope\_xi}!CompactStar::Physics::Evolution::Config@{CompactStar::Physics::Evolution::Config}}
-\doxysubsubsection{\texorpdfstring{envelope\_xi}{envelope\_xi}}
-{\footnotesize\ttfamily double Compact\+Star\+::\+Physics\+::\+Evolution\+::\+Config\+::envelope\+\_\+xi = 0.\+0}
-
-Light-\/element column parameter (if used). \mbox{\Hypertarget{struct_compact_star_1_1_physics_1_1_evolution_1_1_config_aab3086a741f75d60f631d5b5648df469}\label{struct_compact_star_1_1_physics_1_1_evolution_1_1_config_aab3086a741f75d60f631d5b5648df469}} 
+ \mbox{\Hypertarget{struct_compact_star_1_1_physics_1_1_evolution_1_1_config_aab3086a741f75d60f631d5b5648df469}\label{struct_compact_star_1_1_physics_1_1_evolution_1_1_config_aab3086a741f75d60f631d5b5648df469}} 
 \index{CompactStar::Physics::Evolution::Config@{CompactStar::Physics::Evolution::Config}!max\_steps@{max\_steps}}
 \index{max\_steps@{max\_steps}!CompactStar::Physics::Evolution::Config@{CompactStar::Physics::Evolution::Config}}
 \doxysubsubsection{\texorpdfstring{max\_steps}{max\_steps}}

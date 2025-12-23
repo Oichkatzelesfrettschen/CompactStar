@@ -12,7 +12,7 @@ Base interface for evolution observers.
 Inheritance diagram for Compact\+Star\+::Physics\+::Evolution\+::Observers\+::IObserver\+:\begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[height=2.000000cm]{dd/de2/class_compact_star_1_1_physics_1_1_evolution_1_1_observers_1_1_i_observer}
+\includegraphics[height=1.432225cm]{dd/de2/class_compact_star_1_1_physics_1_1_evolution_1_1_observers_1_1_i_observer}
 \end{center}
 \end{figure}
 \doxysubsection*{Public Member Functions}
@@ -24,8 +24,7 @@ virtual void \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_o
 \begin{DoxyCompactList}\small\item\em Called whenever the evolution loop decides to record a sample. \end{DoxyCompactList}\item 
 virtual void \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_observers_1_1_i_observer_a6c8f9110c9a1e13675c384d103f64782}{On\+Finish}} (const \mbox{\hyperlink{struct_compact_star_1_1_physics_1_1_evolution_1_1_observers_1_1_finish_info}{Finish\+Info}} \&fin, const \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_state_vector}{Evolution\+::\+State\+Vector}} \&Yf, const \mbox{\hyperlink{struct_compact_star_1_1_physics_1_1_evolution_1_1_driver_context}{Evolution\+::\+Driver\+Context}} \&ctx)
 \begin{DoxyCompactList}\small\item\em Called once after the integration ends (success or failure). \end{DoxyCompactList}\item 
-\mbox{\Hypertarget{class_compact_star_1_1_physics_1_1_evolution_1_1_observers_1_1_i_observer_aacc16e14cdf6031c4bb69f7ff8ea7e59}\label{class_compact_star_1_1_physics_1_1_evolution_1_1_observers_1_1_i_observer_aacc16e14cdf6031c4bb69f7ff8ea7e59}} 
-virtual std\+::string {\bfseries Name} () const
+virtual std\+::string \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_observers_1_1_i_observer_aacc16e14cdf6031c4bb69f7ff8ea7e59}{Name}} () const
 \begin{DoxyCompactList}\small\item\em Optional human-\/readable observer name for logs. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
@@ -35,6 +34,20 @@ Base interface for evolution observers.
 Observers should be cheap to construct; heavy resources should be opened in On\+Start. 
 
 \doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_compact_star_1_1_physics_1_1_evolution_1_1_observers_1_1_i_observer_aacc16e14cdf6031c4bb69f7ff8ea7e59}\label{class_compact_star_1_1_physics_1_1_evolution_1_1_observers_1_1_i_observer_aacc16e14cdf6031c4bb69f7ff8ea7e59}} 
+\index{CompactStar::Physics::Evolution::Observers::IObserver@{CompactStar::Physics::Evolution::Observers::IObserver}!Name@{Name}}
+\index{Name@{Name}!CompactStar::Physics::Evolution::Observers::IObserver@{CompactStar::Physics::Evolution::Observers::IObserver}}
+\doxysubsubsection{\texorpdfstring{Name()}{Name()}}
+{\footnotesize\ttfamily std\+::string Compact\+Star\+::\+Physics\+::\+Evolution\+::\+Observers\+::\+IObserver\+::\+Name (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Optional human-\/readable observer name for logs. 
+
+
+
+Reimplemented in \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_observers_1_1_time_series_observer_ad09fe15d806b74be9ccdf045aa684b0a}{Compact\+Star\+::\+Physics\+::\+Evolution\+::\+Observers\+::\+Time\+Series\+Observer}}.
+
 \mbox{\Hypertarget{class_compact_star_1_1_physics_1_1_evolution_1_1_observers_1_1_i_observer_a6c8f9110c9a1e13675c384d103f64782}\label{class_compact_star_1_1_physics_1_1_evolution_1_1_observers_1_1_i_observer_a6c8f9110c9a1e13675c384d103f64782}} 
 \index{CompactStar::Physics::Evolution::Observers::IObserver@{CompactStar::Physics::Evolution::Observers::IObserver}!OnFinish@{OnFinish}}
 \index{OnFinish@{OnFinish}!CompactStar::Physics::Evolution::Observers::IObserver@{CompactStar::Physics::Evolution::Observers::IObserver}}
@@ -61,6 +74,10 @@ Use this for\+:
 {\em ctx} & Driver context (read-\/only). \\
 \hline
 \end{DoxyParams}
+
+
+Reimplemented in \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_observers_1_1_time_series_observer_aba66e59e3948534e3090fcdfec12211d}{Compact\+Star\+::\+Physics\+::\+Evolution\+::\+Observers\+::\+Time\+Series\+Observer}}.
+
 \mbox{\Hypertarget{class_compact_star_1_1_physics_1_1_evolution_1_1_observers_1_1_i_observer_ae8f5cf1b4c8bf1170402166950d9baab}\label{class_compact_star_1_1_physics_1_1_evolution_1_1_observers_1_1_i_observer_ae8f5cf1b4c8bf1170402166950d9baab}} 
 \index{CompactStar::Physics::Evolution::Observers::IObserver@{CompactStar::Physics::Evolution::Observers::IObserver}!OnSample@{OnSample}}
 \index{OnSample@{OnSample}!CompactStar::Physics::Evolution::Observers::IObserver@{CompactStar::Physics::Evolution::Observers::IObserver}}
@@ -90,7 +107,7 @@ This is the primary callback for\+:
 \end{DoxyParams}
 
 
-Implemented in \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_observers_1_1_diagnostics_observer_a11c39761b8722bc0062df685ef78d1c9}{Compact\+Star\+::\+Physics\+::\+Evolution\+::\+Observers\+::\+Diagnostics\+Observer}}.
+Implemented in \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_observers_1_1_time_series_observer_aa6656929b81b4797703199f69f09a963}{Compact\+Star\+::\+Physics\+::\+Evolution\+::\+Observers\+::\+Time\+Series\+Observer}}, and \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_observers_1_1_diagnostics_observer_a11c39761b8722bc0062df685ef78d1c9}{Compact\+Star\+::\+Physics\+::\+Evolution\+::\+Observers\+::\+Diagnostics\+Observer}}.
 
 \mbox{\Hypertarget{class_compact_star_1_1_physics_1_1_evolution_1_1_observers_1_1_i_observer_ac0fc3ae20bdb247ac53141d3e5772a4d}\label{class_compact_star_1_1_physics_1_1_evolution_1_1_observers_1_1_i_observer_ac0fc3ae20bdb247ac53141d3e5772a4d}} 
 \index{CompactStar::Physics::Evolution::Observers::IObserver@{CompactStar::Physics::Evolution::Observers::IObserver}!OnStart@{OnStart}}
@@ -121,7 +138,7 @@ Use this for\+:
 \end{DoxyParams}
 
 
-Reimplemented in \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_observers_1_1_diagnostics_observer_aa2815290e01460c161090592b803ab8a}{Compact\+Star\+::\+Physics\+::\+Evolution\+::\+Observers\+::\+Diagnostics\+Observer}}.
+Reimplemented in \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_observers_1_1_time_series_observer_a4b11195e540dce6671de183647d338db}{Compact\+Star\+::\+Physics\+::\+Evolution\+::\+Observers\+::\+Time\+Series\+Observer}}, and \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_observers_1_1_diagnostics_observer_aa2815290e01460c161090592b803ab8a}{Compact\+Star\+::\+Physics\+::\+Evolution\+::\+Observers\+::\+Diagnostics\+Observer}}.
 
 
 

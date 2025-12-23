@@ -1,0 +1,41 @@
+\hypertarget{class_compact_star_1_1_physics_1_1_evolution_1_1_diagnostics_1_1_diagnostics_catalog_json}{}\doxysection{Compact\+Star\+::Physics\+::Evolution\+::Diagnostics\+::Diagnostics\+Catalog\+Json Class Reference}
+\label{class_compact_star_1_1_physics_1_1_evolution_1_1_diagnostics_1_1_diagnostics_catalog_json}\index{CompactStar::Physics::Evolution::Diagnostics::DiagnosticsCatalogJson@{CompactStar::Physics::Evolution::Diagnostics::DiagnosticsCatalogJson}}
+
+
+JSON writer for \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_diagnostics_1_1_diagnostic_catalog}{Diagnostic\+Catalog}}.  
+
+
+
+
+{\ttfamily \#include $<$Diagnostics\+Catalog\+Json.\+hpp$>$}
+
+\doxysubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static void \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_diagnostics_1_1_diagnostics_catalog_json_a1113ace8a7f04d85dff10408380284bd}{Write\+Catalog}} (std\+::ostream \&os, const \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_diagnostics_1_1_diagnostic_catalog}{Diagnostic\+Catalog}} \&catalog, const \mbox{\hyperlink{struct_compact_star_1_1_physics_1_1_evolution_1_1_diagnostics_1_1_catalog_json_options}{Catalog\+Json\+Options}} \&opts=\{\})
+\begin{DoxyCompactList}\small\item\em Write a diagnostics catalog as a JSON object. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_compact_star_1_1_physics_1_1_evolution_1_1_diagnostics_1_1_diagnostics_catalog_json_abda9576741858dab19173a071a8c9e3a}\label{class_compact_star_1_1_physics_1_1_evolution_1_1_diagnostics_1_1_diagnostics_catalog_json_abda9576741858dab19173a071a8c9e3a}} 
+static void {\bfseries Read\+Catalog} (std\+::istream \&is, \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_diagnostics_1_1_diagnostic_catalog}{Diagnostic\+Catalog}} \&out)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+JSON writer for \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_diagnostics_1_1_diagnostic_catalog}{Diagnostic\+Catalog}}. 
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_compact_star_1_1_physics_1_1_evolution_1_1_diagnostics_1_1_diagnostics_catalog_json_a1113ace8a7f04d85dff10408380284bd}\label{class_compact_star_1_1_physics_1_1_evolution_1_1_diagnostics_1_1_diagnostics_catalog_json_a1113ace8a7f04d85dff10408380284bd}} 
+\index{CompactStar::Physics::Evolution::Diagnostics::DiagnosticsCatalogJson@{CompactStar::Physics::Evolution::Diagnostics::DiagnosticsCatalogJson}!WriteCatalog@{WriteCatalog}}
+\index{WriteCatalog@{WriteCatalog}!CompactStar::Physics::Evolution::Diagnostics::DiagnosticsCatalogJson@{CompactStar::Physics::Evolution::Diagnostics::DiagnosticsCatalogJson}}
+\doxysubsubsection{\texorpdfstring{WriteCatalog()}{WriteCatalog()}}
+{\footnotesize\ttfamily void Compact\+Star\+::\+Physics\+::\+Evolution\+::\+Diagnostics\+::\+Diagnostics\+Catalog\+Json\+::\+Write\+Catalog (\begin{DoxyParamCaption}\item[{std\+::ostream \&}]{os,  }\item[{const \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_diagnostics_1_1_diagnostic_catalog}{Diagnostic\+Catalog}} \&}]{catalog,  }\item[{const \mbox{\hyperlink{struct_compact_star_1_1_physics_1_1_evolution_1_1_diagnostics_1_1_catalog_json_options}{Catalog\+Json\+Options}} \&}]{opts = {\ttfamily \{\}} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Write a diagnostics catalog as a JSON object. 
+
+Output format\+: \{ \char`\"{}schema\char`\"{}\+: \char`\"{}$<$\+Schema\+::\+Catalog\+Id$>$\char`\"{}, \char`\"{}schema\+\_\+version\char`\"{}\+: \texorpdfstring{$<$}{<}Schema\+::\+Catalog\+Ver\texorpdfstring{$>$}{>}, \char`\"{}producers\char`\"{}\+: \{ \char`\"{}$<$producer$>$\char`\"{}\+: \{ \char`\"{}contract\char`\"{}\+: \mbox{[}...\mbox{]}, \char`\"{}scalars\char`\"{}\+: \mbox{[} \{ \char`\"{}key\char`\"{}\+: \char`\"{}...\char`\"{}, \char`\"{}unit\char`\"{}\+: \char`\"{}...\char`\"{}, \char`\"{}description\char`\"{}\+: \char`\"{}...\char`\"{}, \char`\"{}source\+\_\+hint\char`\"{}\+: \char`\"{}...\char`\"{}, \char`\"{}default\+\_\+cadence\char`\"{}\+: \char`\"{}...\char`\"{}, \char`\"{}required\char`\"{}\+: true/false, \char`\"{}is\+\_\+dimensionless\char`\"{}\+: true/false \} \mbox{]} \} \} \} 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Compact\+Star/\+Physics/\+Evolution/\+Diagnostics/\mbox{\hyperlink{_diagnostics_catalog_json_8hpp}{Diagnostics\+Catalog\+Json.\+hpp}}\item 
+Compact\+Star/\+Physics/\+Evolution/\+Diagnostics/src/Diagnostics\+Catalog\+Json.\+cpp\end{DoxyCompactItemize}

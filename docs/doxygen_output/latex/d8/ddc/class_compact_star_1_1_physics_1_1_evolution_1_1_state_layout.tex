@@ -20,8 +20,11 @@ struct \mbox{\hyperlink{struct_compact_star_1_1_physics_1_1_evolution_1_1_state_
 \mbox{\Hypertarget{class_compact_star_1_1_physics_1_1_evolution_1_1_state_layout_aea7cbb39ad8cd9aa81134c560daa85b2}\label{class_compact_star_1_1_physics_1_1_evolution_1_1_state_layout_aea7cbb39ad8cd9aa81134c560daa85b2}} 
 {\bfseries State\+Layout} ()=default
 \begin{DoxyCompactList}\small\item\em Default constructor\+: all blocks inactive, total size = 0. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_state_layout_ab444e011bdc1266189ddf7ac55d6bebf}{Configure}} (const \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_state_vector}{State\+Vector}} \&state, std\+::initializer\+\_\+list$<$ \mbox{\hyperlink{namespace_compact_star_1_1_physics_1_1_state_af14f5554b0d9be50c5ea718733bc424b}{Physics\+::\+State\+::\+State\+Tag}} $>$ tags)
+void \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_state_layout_a15a5ae4230a16c4f3855cc2612decc9c}{Configure}} (const \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_state_vector}{State\+Vector}} \&state, const std\+::initializer\+\_\+list$<$ \mbox{\hyperlink{namespace_compact_star_1_1_physics_1_1_state_af14f5554b0d9be50c5ea718733bc424b}{Physics\+::\+State\+::\+State\+Tag}} $>$ \&tags)
 \begin{DoxyCompactList}\small\item\em Configure layout from a \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_state_vector}{State\+Vector}} and an ordered list of tags. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_compact_star_1_1_physics_1_1_evolution_1_1_state_layout_afaed840890f4ac1203ad6d4f7026659c}\label{class_compact_star_1_1_physics_1_1_evolution_1_1_state_layout_afaed840890f4ac1203ad6d4f7026659c}} 
+void {\bfseries Configure} (const \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_state_vector}{State\+Vector}} \&state, const std\+::vector$<$ \mbox{\hyperlink{namespace_compact_star_1_1_physics_1_1_state_af14f5554b0d9be50c5ea718733bc424b}{Physics\+::\+State\+::\+State\+Tag}} $>$ \&tags)
+\item 
 \mbox{\Hypertarget{class_compact_star_1_1_physics_1_1_evolution_1_1_state_layout_a9b32f1c96f528d596ab57940a1ace2cc}\label{class_compact_star_1_1_physics_1_1_evolution_1_1_state_layout_a9b32f1c96f528d596ab57940a1ace2cc}} 
 std\+::size\+\_\+t {\bfseries Total\+Size} () const noexcept
 \begin{DoxyCompactList}\small\item\em Total dimension of the flat ODE vector y\mbox{[}\mbox{]} after configuration. \end{DoxyCompactList}\item 
@@ -59,11 +62,11 @@ Number of scalar components in the block with the given tag.
 {\em std\+::runtime\+\_\+error} & if the tag is not active. \\
 \hline
 \end{DoxyExceptions}
-\mbox{\Hypertarget{class_compact_star_1_1_physics_1_1_evolution_1_1_state_layout_ab444e011bdc1266189ddf7ac55d6bebf}\label{class_compact_star_1_1_physics_1_1_evolution_1_1_state_layout_ab444e011bdc1266189ddf7ac55d6bebf}} 
+\mbox{\Hypertarget{class_compact_star_1_1_physics_1_1_evolution_1_1_state_layout_a15a5ae4230a16c4f3855cc2612decc9c}\label{class_compact_star_1_1_physics_1_1_evolution_1_1_state_layout_a15a5ae4230a16c4f3855cc2612decc9c}} 
 \index{CompactStar::Physics::Evolution::StateLayout@{CompactStar::Physics::Evolution::StateLayout}!Configure@{Configure}}
 \index{Configure@{Configure}!CompactStar::Physics::Evolution::StateLayout@{CompactStar::Physics::Evolution::StateLayout}}
 \doxysubsubsection{\texorpdfstring{Configure()}{Configure()}}
-{\footnotesize\ttfamily void Compact\+Star\+::\+Physics\+::\+Evolution\+::\+State\+Layout\+::\+Configure (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_state_vector}{State\+Vector}} \&}]{state,  }\item[{std\+::initializer\+\_\+list$<$ \mbox{\hyperlink{namespace_compact_star_1_1_physics_1_1_state_af14f5554b0d9be50c5ea718733bc424b}{Physics\+::\+State\+::\+State\+Tag}} $>$}]{tags }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily void Compact\+Star\+::\+Physics\+::\+Evolution\+::\+State\+Layout\+::\+Configure (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_state_vector}{State\+Vector}} \&}]{state,  }\item[{const std\+::initializer\+\_\+list$<$ \mbox{\hyperlink{namespace_compact_star_1_1_physics_1_1_state_af14f5554b0d9be50c5ea718733bc424b}{Physics\+::\+State\+::\+State\+Tag}} $>$ \&}]{tags }\end{DoxyParamCaption})}
 
 
 

@@ -1,0 +1,49 @@
+\hypertarget{struct_compact_star_1_1_physics_1_1_evolution_1_1_run_1_1_state_wiring}{}\doxysection{Compact\+Star\+::Physics\+::Evolution\+::Run\+::State\+Wiring Struct Reference}
+\label{struct_compact_star_1_1_physics_1_1_evolution_1_1_run_1_1_state_wiring}\index{CompactStar::Physics::Evolution::Run::StateWiring@{CompactStar::Physics::Evolution::Run::StateWiring}}
+
+
+Bundle of Evolution state wiring objects commonly needed by a main().  
+
+
+
+
+{\ttfamily \#include $<$Run\+Builder.\+hpp$>$}
+
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{struct_compact_star_1_1_physics_1_1_evolution_1_1_run_1_1_state_wiring_ae4096fd3e7a60c78a653e862c9268283}\label{struct_compact_star_1_1_physics_1_1_evolution_1_1_run_1_1_state_wiring_ae4096fd3e7a60c78a653e862c9268283}} 
+\mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_state_vector}{Evolution\+::\+State\+Vector}} {\bfseries state\+\_\+vec}
+\item 
+\mbox{\Hypertarget{struct_compact_star_1_1_physics_1_1_evolution_1_1_run_1_1_state_wiring_a381cfca37d87343bb088ffc004d843c8}\label{struct_compact_star_1_1_physics_1_1_evolution_1_1_run_1_1_state_wiring_a381cfca37d87343bb088ffc004d843c8}} 
+\mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_state_layout}{Evolution\+::\+State\+Layout}} {\bfseries layout}
+\item 
+\mbox{\Hypertarget{struct_compact_star_1_1_physics_1_1_evolution_1_1_run_1_1_state_wiring_a3705753f2865244ee0f18f11b01c1abe}\label{struct_compact_star_1_1_physics_1_1_evolution_1_1_run_1_1_state_wiring_a3705753f2865244ee0f18f11b01c1abe}} 
+\mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_r_h_s_accumulator}{Evolution\+::\+RHSAccumulator}} {\bfseries rhs}
+\item 
+\mbox{\Hypertarget{struct_compact_star_1_1_physics_1_1_evolution_1_1_run_1_1_state_wiring_a6ccf8eb7f17f73e8831553f3d39eb24d}\label{struct_compact_star_1_1_physics_1_1_evolution_1_1_run_1_1_state_wiring_a6ccf8eb7f17f73e8831553f3d39eb24d}} 
+std\+::size\+\_\+t {\bfseries dim} = 0
+\begin{DoxyCompactList}\small\item\em Total packed dimension (layout.\+Total\+Size()). \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Bundle of Evolution state wiring objects commonly needed by a main(). 
+
+A debug main typically needs all of these\+:
+\begin{DoxyItemize}
+\item \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_state_vector}{State\+Vector}}\+: block registry and view into concrete state blocks
+\item \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_state_layout}{State\+Layout}}\+: packing order and total dimension
+\item \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_r_h_s_accumulator}{RHSAccumulator}}\+: per-\/tag RHS accumulation buffers
+\end{DoxyItemize}
+
+This struct keeps them together for ergonomic use.
+
+Ownership\+:
+\begin{DoxyItemize}
+\item \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_state_vector}{State\+Vector}} stores references/copies depending on your implementation; this struct only stores the \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_state_vector}{State\+Vector}} instance itself.
+\item The concrete state blocks (Thermal\+State, Spin\+State, etc.) are owned by your main. 
+\end{DoxyItemize}
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Compact\+Star/\+Physics/\+Evolution/\+Run/\mbox{\hyperlink{_run_builder_8hpp}{Run\+Builder.\+hpp}}\end{DoxyCompactItemize}

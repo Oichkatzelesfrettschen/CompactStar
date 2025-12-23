@@ -81,7 +81,7 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 
-<p>Configuration parameters for <a class="el" href="../../d8/df7/class_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_photon_cooling.html" title="Adds a photon-cooling contribution to the thermal RHS (redshifted frame).">PhotonCooling</a>.  
+<p>Configuration parameters for <a class="el" href="../../d8/df7/class_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_photon_cooling.html" title="Surface photon cooling driver (redshifted frame).">PhotonCooling</a>.  
  <a href="../../d4/d9a/struct_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_photon_cooling_1_1_options.html#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="../../db/d12/_photon_cooling_8hpp_source.html">PhotonCooling.hpp</a>&gt;</code></p>
@@ -89,33 +89,48 @@ $(function() {
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-types" name="pub-types"></a>
 Public Types</h2></td></tr>
 <tr class="memitem:a1db89fd4a5a8c77fc76d2570512180b0"><td class="memItemLeft" align="right" valign="top">enum class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d4/d9a/struct_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_photon_cooling_1_1_options.html#a1db89fd4a5a8c77fc76d2570512180b0">SurfaceModel</a> { <a class="el" href="../../d4/d9a/struct_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_photon_cooling_1_1_options.html#a1db89fd4a5a8c77fc76d2570512180b0a31df53c693659e5e312ab6387c68ee4a">DirectTSurf</a>
-, <a class="el" href="../../d4/d9a/struct_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_photon_cooling_1_1_options.html#a1db89fd4a5a8c77fc76d2570512180b0aa4fea34445f4251020fd1c3c14acd626">EnvelopeMapping</a>
+, <a class="el" href="../../d4/d9a/struct_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_photon_cooling_1_1_options.html#a1db89fd4a5a8c77fc76d2570512180b0ae59965b5d60645672c0223a3c8299b36">EnvelopeTbTs</a>
 , <a class="el" href="../../d4/d9a/struct_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_photon_cooling_1_1_options.html#a1db89fd4a5a8c77fc76d2570512180b0a98f677e2b96d80e0c853d448714c5731">ApproxFromTinf</a>
  }</td></tr>
-<tr class="memdesc:a1db89fd4a5a8c77fc76d2570512180b0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Specifies how the driver obtains (T_{\rm surf}).  <a href="../../d4/d9a/struct_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_photon_cooling_1_1_options.html#a1db89fd4a5a8c77fc76d2570512180b0">More...</a><br /></td></tr>
+<tr class="memdesc:a1db89fd4a5a8c77fc76d2570512180b0"><td class="mdescLeft">&#160;</td><td class="mdescRight">How the driver obtains the local surface temperature (T_{\rm surf}).  <a href="../../d4/d9a/struct_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_photon_cooling_1_1_options.html#a1db89fd4a5a8c77fc76d2570512180b0">More...</a><br /></td></tr>
 <tr class="separator:a1db89fd4a5a8c77fc76d2570512180b0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
 <tr class="memitem:ad86432222d490304b78ba4e919529f7f"><td class="memItemLeft" align="right" valign="top"><a id="ad86432222d490304b78ba4e919529f7f" name="ad86432222d490304b78ba4e919529f7f"></a>
-enum <a class="el" href="../../d4/d9a/struct_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_photon_cooling_1_1_options.html#a1db89fd4a5a8c77fc76d2570512180b0">CompactStar::Physics::Driver::Thermal::PhotonCooling::Options::SurfaceModel</a>&#160;</td><td class="memItemRight" valign="bottom"><b>surface_model</b> = <a class="el" href="../../d4/d9a/struct_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_photon_cooling_1_1_options.html#a1db89fd4a5a8c77fc76d2570512180b0a98f677e2b96d80e0c853d448714c5731">SurfaceModel::ApproxFromTinf</a></td></tr>
+enum <a class="el" href="../../d4/d9a/struct_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_photon_cooling_1_1_options.html#a1db89fd4a5a8c77fc76d2570512180b0">CompactStar::Physics::Driver::Thermal::PhotonCooling::Options::SurfaceModel</a>&#160;</td><td class="memItemRight" valign="bottom"><b>surface_model</b> = <a class="el" href="../../d4/d9a/struct_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_photon_cooling_1_1_options.html#a1db89fd4a5a8c77fc76d2570512180b0ae59965b5d60645672c0223a3c8299b36">SurfaceModel::EnvelopeTbTs</a></td></tr>
 <tr class="separator:ad86432222d490304b78ba4e919529f7f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa1cfded12d2ee64573749ee89121d44f"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d4/d9a/struct_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_photon_cooling_1_1_options.html#aa1cfded12d2ee64573749ee89121d44f">radiating_fraction</a> = 1.0</td></tr>
-<tr class="memdesc:aa1cfded12d2ee64573749ee89121d44f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Dimensionless radiating fraction <picture><source srcset="../../form_20_dark.png" media="(prefers-color-scheme: dark)"/><img class="formulaInl" alt="$\mathcal{F}_{\rm rad}$" src="../../form_20.png"/></picture>.  <a href="../../d4/d9a/struct_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_photon_cooling_1_1_options.html#aa1cfded12d2ee64573749ee89121d44f">More...</a><br /></td></tr>
+<tr class="memdesc:aa1cfded12d2ee64573749ee89121d44f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Dimensionless radiating fraction <picture><source srcset="../../form_37_dark.png" media="(prefers-color-scheme: dark)"/><img class="formulaInl" alt="$\mathcal{F}_{\rm rad}$" src="../../form_37.png"/></picture>.  <a href="../../d4/d9a/struct_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_photon_cooling_1_1_options.html#aa1cfded12d2ee64573749ee89121d44f">More...</a><br /></td></tr>
 <tr class="separator:aa1cfded12d2ee64573749ee89121d44f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5493255a672378d4ced037d3308b9610"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d4/d9a/struct_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_photon_cooling_1_1_options.html#a5493255a672378d4ced037d3308b9610">C_eff</a> = 1.0e40</td></tr>
-<tr class="memdesc:a5493255a672378d4ced037d3308b9610"><td class="mdescLeft">&#160;</td><td class="mdescRight">Effective heat capacity of the evolved thermal DOF.  <a href="../../d4/d9a/struct_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_photon_cooling_1_1_options.html#a5493255a672378d4ced037d3308b9610">More...</a><br /></td></tr>
+<tr class="memdesc:a5493255a672378d4ced037d3308b9610"><td class="mdescLeft">&#160;</td><td class="mdescRight">Effective heat capacity (C_{\rm eff}) of the evolved thermal DOF.  <a href="../../d4/d9a/struct_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_photon_cooling_1_1_options.html#a5493255a672378d4ced037d3308b9610">More...</a><br /></td></tr>
 <tr class="separator:a5493255a672378d4ced037d3308b9610"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2859ac2d399d27d8d9ee410c8175b9ae"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d4/d9a/struct_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_photon_cooling_1_1_options.html#a2859ac2d399d27d8d9ee410c8175b9ae">global_scale</a> = 1.0</td></tr>
-<tr class="memdesc:a2859ac2d399d27d8d9ee410c8175b9ae"><td class="mdescLeft">&#160;</td><td class="mdescRight">Global dimensionless multiplicative scale.  <a href="../../d4/d9a/struct_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_photon_cooling_1_1_options.html#a2859ac2d399d27d8d9ee410c8175b9ae">More...</a><br /></td></tr>
+<tr class="memdesc:a2859ac2d399d27d8d9ee410c8175b9ae"><td class="mdescLeft">&#160;</td><td class="mdescRight">Global dimensionless multiplicative scale <picture><source srcset="../../form_39_dark.png" media="(prefers-color-scheme: dark)"/><img class="formulaInl" alt="$\mathcal{S}$" src="../../form_39.png"/></picture>.  <a href="../../d4/d9a/struct_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_photon_cooling_1_1_options.html#a2859ac2d399d27d8d9ee410c8175b9ae">More...</a><br /></td></tr>
 <tr class="separator:a2859ac2d399d27d8d9ee410c8175b9ae"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a30dfac9d1374cac18c1e3c1d0819c7dc"><td class="memItemLeft" align="right" valign="top"><a id="a30dfac9d1374cac18c1e3c1d0819c7dc" name="a30dfac9d1374cac18c1e3c1d0819c7dc"></a>
+<a class="el" href="../../d8/df7/class_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_photon_cooling.html#a96bcc265f89cbaab1819395ba3abcf24">EnvelopeModel</a>&#160;</td><td class="memItemRight" valign="bottom"><b>envelope</b> = <a class="el" href="../../d8/df7/class_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_photon_cooling.html#a96bcc265f89cbaab1819395ba3abcf24acefa8a9606819ed409dc761ca6080887">EnvelopeModel::Iron</a></td></tr>
+<tr class="memdesc:a30dfac9d1374cac18c1e3c1d0819c7dc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Select which analytic envelope prescription is used (Tb → Ts). <br /></td></tr>
+<tr class="separator:a30dfac9d1374cac18c1e3c1d0819c7dc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a779d1abdc6a31e44a9a580e2d271ffc6"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d4/d9a/struct_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_photon_cooling_1_1_options.html#a779d1abdc6a31e44a9a580e2d271ffc6">envelope_xi</a> = 0.0</td></tr>
+<tr class="memdesc:a779d1abdc6a31e44a9a580e2d271ffc6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Envelope composition/column parameter <picture><source srcset="../../form_40_dark.png" media="(prefers-color-scheme: dark)"/><img class="formulaInl" alt="$\xi$" src="../../form_40.png"/></picture> (model-dependent).  <a href="../../d4/d9a/struct_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_photon_cooling_1_1_options.html#a779d1abdc6a31e44a9a580e2d271ffc6">More...</a><br /></td></tr>
+<tr class="separator:a779d1abdc6a31e44a9a580e2d271ffc6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9900900e32dd8527663359a6553cc307"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d4/d9a/struct_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_photon_cooling_1_1_options.html#a9900900e32dd8527663359a6553cc307">rho_b</a> = 1.0e10</td></tr>
+<tr class="memdesc:a9900900e32dd8527663359a6553cc307"><td class="mdescLeft">&#160;</td><td class="mdescRight">Base-of-envelope density threshold (for documentation / future use).  <a href="../../d4/d9a/struct_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_photon_cooling_1_1_options.html#a9900900e32dd8527663359a6553cc307">More...</a><br /></td></tr>
+<tr class="separator:a9900900e32dd8527663359a6553cc307"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Configuration parameters for <a class="el" href="../../d8/df7/class_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_photon_cooling.html" title="Adds a photon-cooling contribution to the thermal RHS (redshifted frame).">PhotonCooling</a>. </p>
-<p>The goal is to keep these <b>physically interpretable</b> and <b>unit-consistent</b>:</p><ul>
+<div class="textblock"><p>Configuration parameters for <a class="el" href="../../d8/df7/class_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_photon_cooling.html" title="Surface photon cooling driver (redshifted frame).">PhotonCooling</a>. </p>
+<p>Design goals:</p><ul>
+<li>Parameters should be physically interpretable.</li>
+<li>All scale factors are dimensionless.</li>
 <li>Temperatures are in Kelvin.</li>
-<li>Heat capacity is in erg/K if we use cgs (\sigma_{\rm SB}).</li>
-<li>All scale factors are dimensionless. </li>
+<li>Heat capacity is in erg/K (if using cgs σ_SB).</li>
+</ul>
+<p>Validation policy (recommended in implementation):</p><ul>
+<li>If radiating_fraction &lt;= 0 or global_scale &lt;= 0: treat as intentionally disabled and produce zero RHS contribution (no exception).</li>
+<li>If C_eff &lt;= 0: this is physically invalid; throw or log+skip (choose one policy). </li>
 </ul>
 </div><h2 class="groupheader">Member Enumeration Documentation</h2>
 <a id="a1db89fd4a5a8c77fc76d2570512180b0" name="a1db89fd4a5a8c77fc76d2570512180b0"></a>
@@ -138,16 +153,17 @@ enum <a class="el" href="../../d4/d9a/struct_compact_star_1_1_physics_1_1_driver
 </table>
 </div><div class="memdoc">
 
-<p>Specifies how the driver obtains (T_{\rm surf}). </p>
+<p>How the driver obtains the local surface temperature (T_{\rm surf}). </p>
 <table class="fieldtable">
 <tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="a1db89fd4a5a8c77fc76d2570512180b0a31df53c693659e5e312ab6387c68ee4a" name="a1db89fd4a5a8c77fc76d2570512180b0a31df53c693659e5e312ab6387c68ee4a"></a>DirectTSurf&#160;</td><td class="fielddoc"><p>Use ThermalState::T_surf directly.</p>
-<p>This assumes the caller (or another driver) has already populated <code>ThermalState::T_surf</code> in Kelvin. </p>
+<p>Assumes some external code populated ThermalState with a local surface temperature (Kelvin). </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a1db89fd4a5a8c77fc76d2570512180b0aa4fea34445f4251020fd1c3c14acd626" name="a1db89fd4a5a8c77fc76d2570512180b0aa4fea34445f4251020fd1c3c14acd626"></a>EnvelopeMapping&#160;</td><td class="fielddoc"><p>Use a physically motivated envelope model.</p>
-<p>Reserved for: <code>ctx.envelope != nullptr</code>. The envelope typically maps from (T_\infty) or (T_{\rm core}) (and possibly surface gravity) to (T_{\rm surf}). </p>
+<tr><td class="fieldname"><a id="a1db89fd4a5a8c77fc76d2570512180b0ae59965b5d60645672c0223a3c8299b36" name="a1db89fd4a5a8c77fc76d2570512180b0ae59965b5d60645672c0223a3c8299b36"></a>EnvelopeTbTs&#160;</td><td class="fielddoc"><p>Use an envelope (blanket) model Tb → Ts.</p>
+<p>The driver computes/assumes a base-of-envelope temperature Tb (local frame) from the evolved interior temperature variable, then applies the selected EnvelopeModel.</p>
+<p>This is the physically preferred mode once Tb is defined consistently. </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a1db89fd4a5a8c77fc76d2570512180b0a98f677e2b96d80e0c853d448714c5731" name="a1db89fd4a5a8c77fc76d2570512180b0a98f677e2b96d80e0c853d448714c5731"></a>ApproxFromTinf&#160;</td><td class="fielddoc"><p>Simple fallback model.</p>
-<p>For infrastructure testing: (T_{\rm surf} \approx T_\infty). This is <em>not</em> physically accurate but is useful for wiring tests. </p>
+<tr><td class="fieldname"><a id="a1db89fd4a5a8c77fc76d2570512180b0a98f677e2b96d80e0c853d448714c5731" name="a1db89fd4a5a8c77fc76d2570512180b0a98f677e2b96d80e0c853d448714c5731"></a>ApproxFromTinf&#160;</td><td class="fielddoc"><p>Simple fallback approximation for infrastructure testing.</p>
+<p>For debugging only: (T_{\rm surf} \approx T_\infty). Not physically accurate. </p>
 </td></tr>
 </table>
 
@@ -166,23 +182,37 @@ enum <a class="el" href="../../d4/d9a/struct_compact_star_1_1_physics_1_1_driver
       </table>
 </div><div class="memdoc">
 
-<p>Effective heat capacity of the evolved thermal DOF. </p>
-<p>This is the denominator in:  </p><p class="formulaDsp">
-<picture><source srcset="../../form_27_dark.png" media="(prefers-color-scheme: dark)"/><img class="formulaDsp" alt="\[
-  \frac{dT_\infty}{dt} = -\frac{L_{\gamma,\infty}}{C_{\rm eff}} .
-\]" src="../../form_27.png"/></picture>
+<p>Effective heat capacity (C_{\rm eff}) of the evolved thermal DOF. </p>
+<p>Enters as:  </p><p class="formulaDsp">
+<picture><source srcset="../../form_38_dark.png" media="(prefers-color-scheme: dark)"/><img class="formulaDsp" alt="\[
+  \frac{dT_\infty}{dt} = -\frac{L_{\gamma,\infty}}{C_{\rm eff}}.
+\]" src="../../form_38.png"/></picture>
 </p>
-<h3><a class="anchor" id="autotoc_md19"></a>
-Units</h3>
-<p>If (L_{\gamma,\infty}) is in erg/s and (T) is in K:</p><ul>
-<li>(C_{\rm eff}) must be in <b>erg/K</b>.</li>
+<p>Units:</p><ul>
+<li>erg/K (if (L) is erg/s and (T) is K).</li>
 </ul>
-<h3><a class="anchor" id="autotoc_md20"></a>
-Notes</h3>
-<ul>
-<li>In realistic models, (C_{\rm eff}) is computed from structure + microphysics (composition, superfluidity, etc.) and can depend on T.</li>
-<li>Here it is a user-provided effective constant for simplicity. </li>
+<p>Notes:</p><ul>
+<li>In realistic models, (C_{\rm eff}) depends on T and composition.</li>
+<li>Here it is treated as a user-provided effective constant. </li>
 </ul>
+
+</div>
+</div>
+<a id="a779d1abdc6a31e44a9a580e2d271ffc6" name="a779d1abdc6a31e44a9a580e2d271ffc6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a779d1abdc6a31e44a9a580e2d271ffc6">&#9670;&#160;</a></span>envelope_xi</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">double CompactStar::Physics::Driver::Thermal::PhotonCooling::Options::envelope_xi = 0.0</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Envelope composition/column parameter <picture><source srcset="../../form_40_dark.png" media="(prefers-color-scheme: dark)"/><img class="formulaInl" alt="$\xi$" src="../../form_40.png"/></picture> (model-dependent). </p>
+<p>Interpretation depends on the chosen <code>envelope</code> prescription. For some common fits, this may represent an effective light-element column depth or a proxy parameter controlling the transition between iron-like and fully accreted envelopes.</p>
+<p>Units: model-defined (often treated as dimensionless in fit formulas). </p>
 
 </div>
 </div>
@@ -198,18 +228,13 @@ Notes</h3>
       </table>
 </div><div class="memdoc">
 
-<p>Global dimensionless multiplicative scale. </p>
-<p>A final multiplicative factor applied to the luminosity. Useful for:</p><ul>
+<p>Global dimensionless multiplicative scale <picture><source srcset="../../form_39_dark.png" media="(prefers-color-scheme: dark)"/><img class="formulaInl" alt="$\mathcal{S}$" src="../../form_39.png"/></picture>. </p>
+<p>Applied as a final factor multiplying the luminosity. Useful for:</p><ul>
+<li>debugging sensitivity,</li>
 <li>controlled unit tests,</li>
-<li>turning effects up/down without changing <a class="el" href="../../d4/d9a/struct_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_photon_cooling_1_1_options.html" title="Configuration parameters for PhotonCooling.">Options</a> semantics,</li>
-<li>debugging sensitivity.</li>
+<li>temporary “turn up/down” without changing semantic parameters.</li>
 </ul>
-<h3><a class="anchor" id="autotoc_md21"></a>
-Units</h3>
-<ul>
-<li>Dimensionless.</li>
-</ul>
-<dl class="section note"><dt>Note</dt><dd><b>Disabled-but-valid policy:</b> if <code>global_scale &lt;= 0</code>, the driver produces a <b>zero</b> luminosity and <b>zero</b> RHS contribution (not an error condition). </dd></dl>
+<p>Units: dimensionless. </p>
 
 </div>
 </div>
@@ -225,25 +250,36 @@ Units</h3>
       </table>
 </div><div class="memdoc">
 
-<p>Dimensionless radiating fraction <picture><source srcset="../../form_20_dark.png" media="(prefers-color-scheme: dark)"/><img class="formulaInl" alt="$\mathcal{F}_{\rm rad}$" src="../../form_20.png"/></picture>. </p>
-<p>Multiplies the redshifted geometric area (A_\infty) to represent:</p><ul>
+<p>Dimensionless radiating fraction <picture><source srcset="../../form_37_dark.png" media="(prefers-color-scheme: dark)"/><img class="formulaInl" alt="$\mathcal{F}_{\rm rad}$" src="../../form_37.png"/></picture>. </p>
+<p>Multiplies the redshifted emitting area to represent:</p><ul>
 <li>partial surface emission (hot spots),</li>
 <li>effective emissivity &lt; 1,</li>
-<li>crude beaming / atmosphere suppression factors,</li>
-<li>quick “knob” for unit tests.</li>
+<li>crude atmosphere suppression factors,</li>
+<li>a convenient knob for controlled tests.</li>
 </ul>
-<h3><a class="anchor" id="autotoc_md17"></a>
-Units</h3>
-<ul>
-<li>Dimensionless.</li>
+<p>Units: dimensionless.</p>
+<p>Convention:</p><ul>
+<li>1.0 : full-surface emission</li>
+<li>0.0 : disabled (no photon cooling) </li>
 </ul>
-<h3><a class="anchor" id="autotoc_md18"></a>
-Recommended behavior</h3>
-<ul>
-<li>If set to 1: full surface emission.</li>
-<li>If set to 0 (or ≤ 0): disables photon cooling from this driver.</li>
-</ul>
-<dl class="section note"><dt>Note</dt><dd><b>Disabled-but-valid policy:</b> if <code>radiating_fraction &lt;= 0</code>, this driver is treated as intentionally disabled and produces a <b>zero</b> luminosity and <b>zero</b> RHS contribution (not an error condition). </dd></dl>
+
+</div>
+</div>
+<a id="a9900900e32dd8527663359a6553cc307" name="a9900900e32dd8527663359a6553cc307"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9900900e32dd8527663359a6553cc307">&#9670;&#160;</a></span>rho_b</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">double CompactStar::Physics::Driver::Thermal::PhotonCooling::Options::rho_b = 1.0e10</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Base-of-envelope density threshold (for documentation / future use). </p>
+<p>Many envelope fits define Tb at a fiducial density (\rho_b\sim 10^{10}\,{\rm g\,cm^{-3}}). This option is included to make that boundary explicit; it may become active once Tb is computed from a resolved crust model or a stored profile marker.</p>
+<p>Units: g/cm^3. </p>
 
 </div>
 </div>

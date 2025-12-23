@@ -90,12 +90,16 @@ Inheritance diagram for CompactStar::Physics::Driver::Diagnostics::IDriverDiagno
  <div class="center">
   <img src="../../d2/ddd/class_compact_star_1_1_physics_1_1_driver_1_1_diagnostics_1_1_i_driver_diagnostics.png" usemap="#CompactStar::Physics::Driver::Diagnostics::IDriverDiagnostics_map" alt=""/>
   <map id="CompactStar::Physics::Driver::Diagnostics::IDriverDiagnostics_map" name="CompactStar::Physics::Driver::Diagnostics::IDriverDiagnostics_map">
-<area href="../../d8/df7/class_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_photon_cooling.html" title="Adds a photon-cooling contribution to the thermal RHS (redshifted frame)." alt="CompactStar::Physics::Driver::Thermal::PhotonCooling" shape="rect" coords="0,56,357,80"/>
+<area href="../../d7/daf/class_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_neutrino_cooling.html" title="Adds a neutrino-cooling contribution to the thermal RHS (redshifted frame)." alt="CompactStar::Physics::Driver::Thermal::NeutrinoCooling" shape="rect" coords="0,56,357,80"/>
+<area href="../../d8/df7/class_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_photon_cooling.html" title="Surface photon cooling driver (redshifted frame)." alt="CompactStar::Physics::Driver::Thermal::PhotonCooling" shape="rect" coords="367,56,724,80"/>
   </map>
 </div></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
+<tr class="memitem:ad256b3ad094d1dd5343a018c54a498e5"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="../../df/d44/struct_compact_star_1_1_physics_1_1_evolution_1_1_diagnostics_1_1_producer_catalog.html">Evolution::Diagnostics::ProducerCatalog</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d2/ddd/class_compact_star_1_1_physics_1_1_driver_1_1_diagnostics_1_1_i_driver_diagnostics.html#ad256b3ad094d1dd5343a018c54a498e5">DiagnosticsCatalog</a> () const =0</td></tr>
+<tr class="memdesc:ad256b3ad094d1dd5343a018c54a498e5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return schema-level catalog entries (what this driver may emit).  <a href="../../d2/ddd/class_compact_star_1_1_physics_1_1_driver_1_1_diagnostics_1_1_i_driver_diagnostics.html#ad256b3ad094d1dd5343a018c54a498e5">More...</a><br /></td></tr>
+<tr class="separator:ad256b3ad094d1dd5343a018c54a498e5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae39990bca910f580804aaa21e347537c"><td class="memItemLeft" align="right" valign="top">virtual std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d2/ddd/class_compact_star_1_1_physics_1_1_driver_1_1_diagnostics_1_1_i_driver_diagnostics.html#ae39990bca910f580804aaa21e347537c">DiagnosticsName</a> () const =0</td></tr>
 <tr class="memdesc:ae39990bca910f580804aaa21e347537c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Human-readable stable name for this driver instance.  <a href="../../d2/ddd/class_compact_star_1_1_physics_1_1_driver_1_1_diagnostics_1_1_i_driver_diagnostics.html#ae39990bca910f580804aaa21e347537c">More...</a><br /></td></tr>
 <tr class="separator:ae39990bca910f580804aaa21e347537c"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -175,7 +179,37 @@ Public Member Functions</h2></td></tr>
   </dd>
 </dl>
 
-<p>Implemented in <a class="el" href="../../d8/df7/class_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_photon_cooling.html#a66ec050c82074aa8847ed1d3872d257e">CompactStar::Physics::Driver::Thermal::PhotonCooling</a>.</p>
+<p>Implemented in <a class="el" href="../../d7/daf/class_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_neutrino_cooling.html#aa74afbc210c241667811ee958c5bbc4d">CompactStar::Physics::Driver::Thermal::NeutrinoCooling</a>, and <a class="el" href="../../d8/df7/class_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_photon_cooling.html#a66ec050c82074aa8847ed1d3872d257e">CompactStar::Physics::Driver::Thermal::PhotonCooling</a>.</p>
+
+</div>
+</div>
+<a id="ad256b3ad094d1dd5343a018c54a498e5" name="ad256b3ad094d1dd5343a018c54a498e5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad256b3ad094d1dd5343a018c54a498e5">&#9670;&#160;</a></span>DiagnosticsCatalog()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual <a class="el" href="../../df/d44/struct_compact_star_1_1_physics_1_1_evolution_1_1_diagnostics_1_1_producer_catalog.html">Evolution::Diagnostics::ProducerCatalog</a> CompactStar::Physics::Driver::Diagnostics::IDriverDiagnostics::DiagnosticsCatalog </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Return schema-level catalog entries (what this driver may emit). </p>
+<p>This should be static metadata only: keys, units, descriptions, cadence defaults. No runtime state access. </p>
+
+<p>Implemented in <a class="el" href="../../d7/daf/class_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_neutrino_cooling.html#a60ac72882c5a4d8946e9ea3211362474">CompactStar::Physics::Driver::Thermal::NeutrinoCooling</a>, and <a class="el" href="../../d8/df7/class_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_photon_cooling.html#a776205ce86f52382ebba846fa5bff698">CompactStar::Physics::Driver::Thermal::PhotonCooling</a>.</p>
 
 </div>
 </div>
@@ -205,7 +239,7 @@ Public Member Functions</h2></td></tr>
 <p>Human-readable stable name for this driver instance. </p>
 <p>Example: "PhotonCooling" If you have multiple instances (different options), you can include an instance suffix (e.g., "PhotonCooling#0") but keep it stable for tooling. </p>
 
-<p>Implemented in <a class="el" href="../../d8/df7/class_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_photon_cooling.html#a80765fd32881122d00150939a4119f03">CompactStar::Physics::Driver::Thermal::PhotonCooling</a>.</p>
+<p>Implemented in <a class="el" href="../../d7/daf/class_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_neutrino_cooling.html#aab15bad47f18a6075c5e768513254af6">CompactStar::Physics::Driver::Thermal::NeutrinoCooling</a>, and <a class="el" href="../../d8/df7/class_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_photon_cooling.html#a80765fd32881122d00150939a4119f03">CompactStar::Physics::Driver::Thermal::PhotonCooling</a>.</p>
 
 </div>
 </div>
@@ -239,7 +273,7 @@ Public Member Functions</h2></td></tr>
 <li>document inputs/outputs and required unit systems. </li>
 </ul>
 
-<p>Implemented in <a class="el" href="../../d8/df7/class_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_photon_cooling.html#a7b609acb6e931f07674ef9b2312324fc">CompactStar::Physics::Driver::Thermal::PhotonCooling</a>.</p>
+<p>Implemented in <a class="el" href="../../d7/daf/class_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_neutrino_cooling.html#a4b62bd4b829c22cb169093ad03995758">CompactStar::Physics::Driver::Thermal::NeutrinoCooling</a>, and <a class="el" href="../../d8/df7/class_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_photon_cooling.html#a7b609acb6e931f07674ef9b2312324fc">CompactStar::Physics::Driver::Thermal::PhotonCooling</a>.</p>
 
 </div>
 </div>

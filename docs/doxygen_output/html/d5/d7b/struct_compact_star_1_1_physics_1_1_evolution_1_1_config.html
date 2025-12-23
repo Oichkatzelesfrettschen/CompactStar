@@ -114,17 +114,6 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><b>save_intermediate</b>
 <tr class="separator:a7aa038ac3c3e393f3854a7b39fe67309"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:afb3eba73bbc39057f6f04d905b0cc27b"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d5/d7b/struct_compact_star_1_1_physics_1_1_evolution_1_1_config.html#afb3eba73bbc39057f6f04d905b0cc27b">couple_spin</a> = false</td></tr>
 <tr class="separator:afb3eba73bbc39057f6f04d905b0cc27b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:afaf335ececb43540fec904cd694a7dd5"><td class="memItemLeft" align="right" valign="top"><a id="afaf335ececb43540fec904cd694a7dd5" name="afaf335ececb43540fec904cd694a7dd5"></a>
-<a class="el" href="../../d4/d96/_evolution_config_8hpp.html#a77ec205aab45375896e1afc074f535bc">EnvelopeModel</a>&#160;</td><td class="memItemRight" valign="bottom"><b>envelope</b> = EnvelopeModel::Iron</td></tr>
-<tr class="separator:afaf335ececb43540fec904cd694a7dd5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a956575775d60221464dd6732798fa247"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d5/d7b/struct_compact_star_1_1_physics_1_1_evolution_1_1_config.html#a956575775d60221464dd6732798fa247">envelope_xi</a> = 0.0</td></tr>
-<tr class="separator:a956575775d60221464dd6732798fa247"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:abe7b18882c30cc1b4ed49db3a3ef0cb3"><td class="memItemLeft" align="right" valign="top"><a id="abe7b18882c30cc1b4ed49db3a3ef0cb3" name="abe7b18882c30cc1b4ed49db3a3ef0cb3"></a>
-bool&#160;</td><td class="memItemRight" valign="bottom"><b>superfluid_n</b> = false</td></tr>
-<tr class="separator:abe7b18882c30cc1b4ed49db3a3ef0cb3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa4601e07c871835f48ef2eff98fc2eea"><td class="memItemLeft" align="right" valign="top"><a id="aa4601e07c871835f48ef2eff98fc2eea" name="aa4601e07c871835f48ef2eff98fc2eea"></a>
-bool&#160;</td><td class="memItemRight" valign="bottom"><b>superfluid_p</b> = false</td></tr>
-<tr class="separator:aa4601e07c871835f48ef2eff98fc2eea"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab2e24ae85b3b6f4d3b2496fde7d61a9d"><td class="memItemLeft" align="right" valign="top">std::size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d5/d7b/struct_compact_star_1_1_physics_1_1_evolution_1_1_config.html#ab2e24ae85b3b6f4d3b2496fde7d61a9d">n_eta</a> = 1</td></tr>
 <tr class="separator:ab2e24ae85b3b6f4d3b2496fde7d61a9d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1c3cc96651c726d6a76c5ae20c067393"><td class="memItemLeft" align="right" valign="top"><a id="a1c3cc96651c726d6a76c5ae20c067393" name="a1c3cc96651c726d6a76c5ae20c067393"></a>
@@ -136,7 +125,7 @@ std::string&#160;</td><td class="memItemRight" valign="bottom"><b>unit_policy</b
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Configuration for a single evolution run. </p>
 <p>This struct is intentionally small and POD-like; it is passed by const reference into <code><a class="el" href="../../d1/d5f/class_compact_star_1_1_physics_1_1_evolution_1_1_evolution_system.html" title="GSL-compatible RHS functor for dY/dt.">EvolutionSystem</a></code> and <code><a class="el" href="../../d7/d03/class_compact_star_1_1_physics_1_1_evolution_1_1_g_s_l_integrator.html" title="Thin RAII wrapper around gsl_odeiv2_driver.">GSLIntegrator</a></code>.</p>
-<h3><a class="anchor" id="autotoc_md26"></a>
+<h3><a class="anchor" id="autotoc_md43"></a>
 Integrator-related fields</h3>
 <ul>
 <li><code>stepper</code> : choice of GSL backend (<code>StepperType</code>).</li>
@@ -173,7 +162,7 @@ Integrator-related fields</h3>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Include <picture><source srcset="../../form_30_dark.png" media="(prefers-color-scheme: dark)"/><img class="formulaInl" alt="$\Omega$" src="../../form_30.png"/></picture> in the state. <br  />
+<p>Include <picture><source srcset="../../form_42_dark.png" media="(prefers-color-scheme: dark)"/><img class="formulaInl" alt="$\Omega$" src="../../form_42.png"/></picture> in the state. <br  />
  </p>
 
 </div>
@@ -268,23 +257,8 @@ Integrator-related fields</h3>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Spin-down driver for <picture><source srcset="../../form_29_dark.png" media="(prefers-color-scheme: dark)"/><img class="formulaInl" alt="$\eta$" src="../../form_29.png"/></picture>. <br  />
+<p>Spin-down driver for <picture><source srcset="../../form_41_dark.png" media="(prefers-color-scheme: dark)"/><img class="formulaInl" alt="$\eta$" src="../../form_41.png"/></picture>. <br  />
  </p>
-
-</div>
-</div>
-<a id="a956575775d60221464dd6732798fa247" name="a956575775d60221464dd6732798fa247"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a956575775d60221464dd6732798fa247">&#9670;&#160;</a></span>envelope_xi</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">double CompactStar::Physics::Evolution::Config::envelope_xi = 0.0</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<p>Light-element column parameter (if used). </p>
 
 </div>
 </div>
@@ -315,7 +289,7 @@ Integrator-related fields</h3>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Number of <picture><source srcset="../../form_31_dark.png" media="(prefers-color-scheme: dark)"/><img class="formulaInl" alt="$\eta_i$" src="../../form_31.png"/></picture> components. </p>
+<p>Number of <picture><source srcset="../../form_43_dark.png" media="(prefers-color-scheme: dark)"/><img class="formulaInl" alt="$\eta_i$" src="../../form_43.png"/></picture> components. </p>
 
 </div>
 </div>

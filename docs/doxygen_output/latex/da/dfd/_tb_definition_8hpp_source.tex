@@ -1,0 +1,51 @@
+\hypertarget{_tb_definition_8hpp_source}{}\doxysection{Tb\+Definition.\+hpp}
+\label{_tb_definition_8hpp_source}\index{CompactStar/Physics/Driver/Thermal/Boundary/TbDefinition.hpp@{CompactStar/Physics/Driver/Thermal/Boundary/TbDefinition.hpp}}
+\mbox{\hyperlink{_tb_definition_8hpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#ifndef CompactStar\_Physics\_Driver\_Thermal\_Boundary\_TbDefinition\_H}}
+\DoxyCodeLine{2 \textcolor{preprocessor}{\#define CompactStar\_Physics\_Driver\_Thermal\_Boundary\_TbDefinition\_H}}
+\DoxyCodeLine{3 }
+\DoxyCodeLine{4 \textcolor{comment}{// -\/*-\/ lsst-\/c++ -\/*-\/}}
+\DoxyCodeLine{5 \textcolor{comment}{/*}}
+\DoxyCodeLine{6 \textcolor{comment}{ * CompactStar}}
+\DoxyCodeLine{7 \textcolor{comment}{ * See License file at the top of the source tree.}}
+\DoxyCodeLine{8 \textcolor{comment}{ *}}
+\DoxyCodeLine{9 \textcolor{comment}{ * Copyright (c) 2025}}
+\DoxyCodeLine{10 \textcolor{comment}{ * Mohammadreza Zakeri}}
+\DoxyCodeLine{11 \textcolor{comment}{ *}}
+\DoxyCodeLine{12 \textcolor{comment}{ * MIT License — see LICENSE at repo root.}}
+\DoxyCodeLine{13 \textcolor{comment}{ */}}
+\DoxyCodeLine{14 }
+\DoxyCodeLine{40 \textcolor{preprocessor}{\#include <cstddef>}}
+\DoxyCodeLine{41 \textcolor{preprocessor}{\#include <stdexcept>}}
+\DoxyCodeLine{42 }
+\DoxyCodeLine{43 \textcolor{keyword}{namespace }CompactStar::Physics::Evolution}
+\DoxyCodeLine{44 \{}
+\DoxyCodeLine{45 \textcolor{keyword}{class }StarContext;}
+\DoxyCodeLine{46 \textcolor{keyword}{class }GeometryCache;}
+\DoxyCodeLine{47 \} \textcolor{comment}{// namespace CompactStar::Physics::Evolution}}
+\DoxyCodeLine{48 }
+\DoxyCodeLine{49 \textcolor{keyword}{namespace }CompactStar::Physics::Driver::Thermal::Boundary}
+\DoxyCodeLine{50 \{}
+\DoxyCodeLine{51 \textcolor{comment}{// -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{55 \textcolor{comment}{}\textcolor{keyword}{struct }\mbox{\hyperlink{struct_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_boundary_1_1_tb_definition}{TbDefinition}}}
+\DoxyCodeLine{56 \{}
+\DoxyCodeLine{60     \textcolor{keywordtype}{double} \mbox{\hyperlink{struct_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_boundary_1_1_tb_definition_a136b61fb11a42680646a93e304494192}{rho\_b}} = 1.0e10;}
+\DoxyCodeLine{61 }
+\DoxyCodeLine{69     \textcolor{keywordtype}{bool} \mbox{\hyperlink{struct_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_boundary_1_1_tb_definition_a643fe33b8bed41aa185fa40a190bb4c9}{assume\_isothermal\_redshifted}} = \textcolor{keyword}{true};}
+\DoxyCodeLine{70 }
+\DoxyCodeLine{74     \textcolor{keywordtype}{bool} \mbox{\hyperlink{struct_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_boundary_1_1_tb_definition_af6bce3e28e31b7c0833af3594e01bb95}{prefer\_geometry\_cache}} = \textcolor{keyword}{true};}
+\DoxyCodeLine{75 \};}
+\DoxyCodeLine{76 \textcolor{comment}{// -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{89 \textcolor{comment}{}std::size\_t \mbox{\hyperlink{_tb_definition_8cpp_a5b615534bdb8b02d3098e5a3b92682ee}{FindTbIndex}}(\textcolor{keyword}{const} \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_star_context}{Evolution::StarContext}} \&star, \textcolor{keywordtype}{double} rho\_b);}
+\DoxyCodeLine{90 }
+\DoxyCodeLine{101 \textcolor{keywordtype}{double} \mbox{\hyperlink{_tb_definition_8cpp_a15c7287afe10e84a037a634caed1e4cb}{ComputeTb}}(\textcolor{keyword}{const} \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_star_context}{Evolution::StarContext}} \&star,}
+\DoxyCodeLine{102                  \textcolor{keyword}{const} \mbox{\hyperlink{class_compact_star_1_1_physics_1_1_evolution_1_1_geometry_cache}{Evolution::GeometryCache}} *geo,}
+\DoxyCodeLine{103                  \textcolor{keywordtype}{double} T\_inf,}
+\DoxyCodeLine{104                  \textcolor{keyword}{const} \mbox{\hyperlink{struct_compact_star_1_1_physics_1_1_driver_1_1_thermal_1_1_boundary_1_1_tb_definition}{TbDefinition}} \&def);}
+\DoxyCodeLine{105 }
+\DoxyCodeLine{106 \} \textcolor{comment}{// namespace CompactStar::Physics::Driver::Thermal::Boundary}}
+\DoxyCodeLine{107 \textcolor{comment}{// -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{108 \textcolor{preprocessor}{\#endif }\textcolor{comment}{/* CompactStar\_Physics\_Driver\_Thermal\_Boundary\_TbDefinition\_H */}\textcolor{preprocessor}{}}
+
+\end{DoxyCode}

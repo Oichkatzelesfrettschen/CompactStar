@@ -1,0 +1,82 @@
+\hypertarget{_time_series_observer_8cpp}{}\doxysection{Compact\+Star/\+Physics/\+Evolution/\+Observers/src/\+Time\+Series\+Observer.cpp File Reference}
+\label{_time_series_observer_8cpp}\index{CompactStar/Physics/Evolution/Observers/src/TimeSeriesObserver.cpp@{CompactStar/Physics/Evolution/Observers/src/TimeSeriesObserver.cpp}}
+
+
+Implementation of Time\+Series\+Observer.  
+
+
+{\ttfamily \#include \char`\"{}Compact\+Star/\+Physics/\+Evolution/\+Observers/\+Time\+Series\+Observer.\+hpp\char`\"{}}\newline
+{\ttfamily \#include $<$cmath$>$}\newline
+{\ttfamily \#include $<$iomanip$>$}\newline
+{\ttfamily \#include $<$limits$>$}\newline
+{\ttfamily \#include $<$stdexcept$>$}\newline
+{\ttfamily \#include $<$unordered\+\_\+set$>$}\newline
+{\ttfamily \#include $<$Zaki/\+Util/\+Logger.\+hpp$>$}\newline
+{\ttfamily \#include \char`\"{}Compact\+Star/\+Physics/\+Evolution/\+Diagnostics/\+Diagnostic\+Packet.\+hpp\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}Compact\+Star/\+Physics/\+Evolution/\+Diagnostics/\+Diagnostics\+Catalog\+Json.\+hpp\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}Compact\+Star/\+Physics/\+Evolution/\+State\+Vector.\+hpp\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}Compact\+Star/\+Physics/\+State/\+Spin\+State.\+hpp\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}Compact\+Star/\+Physics/\+State/\+Thermal\+State.\+hpp\char`\"{}}\newline
+\doxysubsection*{Namespaces}
+\begin{DoxyCompactItemize}
+\item 
+namespace \mbox{\hyperlink{namespace_compact_star_1_1_physics}{Compact\+Star\+::\+Physics}}
+\begin{DoxyCompactList}\small\item\em High-\/level physical modeling layer for compact stars. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+bool \mbox{\hyperlink{_time_series_observer_8cpp_ad5b6b824502f73eeea9bd2c72977ef80}{Compact\+Star\+::\+Physics\+::\+Evolution\+::\+Observers\+::\+Is\+State\+Scalar\+Key}} (const std\+::string \&key)
+\begin{DoxyCompactList}\small\item\em Return true if a scalar key should be treated as a \char`\"{}state scalar\char`\"{} and therefore NOT emitted as a Driver\+Scalar column. \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{_time_series_observer_8cpp_ac7b3dcd92e49da6840a4c40fe87428ad}{Compact\+Star\+::\+Physics\+::\+Evolution\+::\+Observers\+::\+Make\+Unique\+Driver\+Column\+Key}} (const std\+::string \&producer, const std\+::string \&base\+\_\+key, std\+::unordered\+\_\+set$<$ std\+::string $>$ \&seen)
+\begin{DoxyCompactList}\small\item\em Generate a unique, deterministic column header for Driver\+Scalar columns. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Implementation of Time\+Series\+Observer. 
+
+This observer writes a compact table (CSV/\+TSV) suitable for plotting, with one row per recorded sample and a stable set of columns.
+
+Key behavior\+:
+\begin{DoxyItemize}
+\item Scheduling\+: record\+\_\+every\+\_\+n\+\_\+samples (sample-\/index cadence) and/or record\+\_\+every\+\_\+dt (time cadence).
+\item record\+\_\+at\+\_\+start\+: optionally emits an initial row at t0 before integration samples.
+\item Header\+: one line with column keys (optional).
+\item Sidecar metadata\+: optional column documentation (units/descriptions) in a tiny JSON file.
+\end{DoxyItemize}
+
+Notes\+:
+\begin{DoxyItemize}
+\item This module is deliberately low-\/dependency; it does not rely on external JSON libs.
+\item Driver\+Scalar columns query IDriver\+Diagnostics each row; this is acceptable for a small number of columns and moderate cadence. If performance becomes an issue, add a “bulk snapshot” interface or cache precomputed derived values upstream. 
+\end{DoxyItemize}
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{_time_series_observer_8cpp_ad5b6b824502f73eeea9bd2c72977ef80}\label{_time_series_observer_8cpp_ad5b6b824502f73eeea9bd2c72977ef80}} 
+\index{TimeSeriesObserver.cpp@{TimeSeriesObserver.cpp}!IsStateScalarKey@{IsStateScalarKey}}
+\index{IsStateScalarKey@{IsStateScalarKey}!TimeSeriesObserver.cpp@{TimeSeriesObserver.cpp}}
+\doxysubsubsection{\texorpdfstring{IsStateScalarKey()}{IsStateScalarKey()}}
+{\footnotesize\ttfamily bool Compact\+Star\+::\+Physics\+::\+Evolution\+::\+Observers\+::\+Is\+State\+Scalar\+Key (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{key }\end{DoxyParamCaption})}
+
+
+
+Return true if a scalar key should be treated as a \char`\"{}state scalar\char`\"{} and therefore NOT emitted as a Driver\+Scalar column. 
+
+Policy rationale\+:
+\begin{DoxyItemize}
+\item State scalars (e.\+g. Tinf\+\_\+K) should be owned by the state/builtin layer, not duplicated across multiple drivers. Drivers may still emit them in diagnostics packets for auditing, but Time\+Series should not flatten them multiple times into the table. 
+\end{DoxyItemize}\mbox{\Hypertarget{_time_series_observer_8cpp_ac7b3dcd92e49da6840a4c40fe87428ad}\label{_time_series_observer_8cpp_ac7b3dcd92e49da6840a4c40fe87428ad}} 
+\index{TimeSeriesObserver.cpp@{TimeSeriesObserver.cpp}!MakeUniqueDriverColumnKey@{MakeUniqueDriverColumnKey}}
+\index{MakeUniqueDriverColumnKey@{MakeUniqueDriverColumnKey}!TimeSeriesObserver.cpp@{TimeSeriesObserver.cpp}}
+\doxysubsubsection{\texorpdfstring{MakeUniqueDriverColumnKey()}{MakeUniqueDriverColumnKey()}}
+{\footnotesize\ttfamily std\+::string Compact\+Star\+::\+Physics\+::\+Evolution\+::\+Observers\+::\+Make\+Unique\+Driver\+Column\+Key (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{producer,  }\item[{const std\+::string \&}]{base\+\_\+key,  }\item[{std\+::unordered\+\_\+set$<$ std\+::string $>$ \&}]{seen }\end{DoxyParamCaption})}
+
+
+
+Generate a unique, deterministic column header for Driver\+Scalar columns. 
+
+
+\begin{DoxyItemize}
+\item First tries base\+\_\+key (e.\+g. \char`\"{}d\+Ln\+Tinf\+\_\+dt\+\_\+1\+\_\+s\char`\"{}).
+\item If collision, uses \char`\"{}\+Producer\+\_\+\+\_\+base\+\_\+key\char`\"{}.
+\item If still collision (rare), appends \char`\"{}\+\_\+\+N\char`\"{}. 
+\end{DoxyItemize}
